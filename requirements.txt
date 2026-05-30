@@ -1,0 +1,23 @@
+# Kandi CPT — checkpoint 1 dependencies (bf16 full-FT on RTX 5080)
+#
+# Install:
+#   python3 -m venv .venv
+#   . .venv/bin/activate
+#   pip install --upgrade pip
+#   pip install -r requirements.txt
+#
+# Blackwell sm_120 requires torch built with CUDA 12.8+. The torch wheel
+# below is the cu130 channel that ships sm_120 kernels.
+
+torch==2.10.0+cu130            ; sys_platform == "linux"
+--extra-index-url https://download.pytorch.org/whl/cu130
+
+transformers>=4.49.0           # Gemma 4 family support
+accelerate>=1.6.0              # device dispatch + grad-checkpoint helpers
+bitsandbytes>=0.49.2           # adamw_8bit
+datasets>=3.5.0                # tokenized corpus storage (Arrow/Parquet)
+sentencepiece>=0.2.0           # Gemma tokenizer backend
+safetensors>=0.4.5             # weight serialization
+
+# Checkpoint 2+ (FP8 via Transformer Engine — install when ckpt 2 lands):
+# transformer-engine[pytorch]>=2.8.0

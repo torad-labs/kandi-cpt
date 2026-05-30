@@ -1,0 +1,287 @@
+{
+  "total": 30,
+  "pass_count": 2,
+  "pass_rate": 0.067,
+  "by_era": {
+    "2026": {
+      "total": 17,
+      "pass_count": 0
+    },
+    "stable": {
+      "total": 13,
+      "pass_count": 2
+    }
+  },
+  "results": [
+    {
+      "shape": "direct",
+      "prompt": "What stage is Adriatique playing?",
+      "answer": "Neon Garden Friday",
+      "era": "2026",
+      "keyword": "neon garden&friday|neongarden&friday",
+      "output": "Adriatique is scheduled to perform on the Main Stage on Saturday, May 16, 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Is Eli Brown Friday, Saturday, or Sunday?",
+      "answer": "Friday at Neon Garden",
+      "era": "2026",
+      "keyword": "friday&neon garden",
+      "output": "Eli Brown is scheduled to perform on Saturday, May 16, 2026, at the Main Stage.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What stage is Frost Children playing Saturday?",
+      "answer": "Cosmic Meadow",
+      "era": "2026",
+      "keyword": "cosmic meadow|cosmicmeadow",
+      "output": "Frost Children is scheduled to play on the Main Stage on Saturday, May 16, 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Where is Lady Faith B2B LNY TNZ playing?",
+      "answer": "Wasteland Saturday",
+      "era": "2026",
+      "keyword": "wasteland&saturday",
+      "output": "Lady Faith B2B is scheduled to perform on the Main Stage at Electric Daisy Carnival 2026 in Las Vegas.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What stage is Martin Garrix playing?",
+      "answer": "Kinetic Field Saturday",
+      "era": "2026",
+      "keyword": "kinetic field&saturday|kineticfield&saturday",
+      "output": "Martin Garrix is scheduled to perform on the Main Stage at Electric Daisy Carnival 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Is Ti\u00ebsto Friday, Saturday, or Sunday?",
+      "answer": "Saturday at Circuit Grounds",
+      "era": "2026",
+      "keyword": "saturday&circuit grounds",
+      "output": "Ti\u00ebsto is scheduled to perform on Saturday, May 16, 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Where is Charlotte de Witte playing?",
+      "answer": "Kinetic Field Friday",
+      "era": "2026",
+      "keyword": "kinetic field&friday|kineticfield&friday",
+      "output": "Charlotte de Witte is scheduled to play on the main stage at Electric Daisy Carnival 2026 in Las Vegas.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Above & Beyond \u2014 what kind of set are they doing?",
+      "answer": "Sunrise Set at Kinetic Field Saturday",
+      "era": "2026",
+      "keyword": "sunrise&saturday|sunrise&kinetic field",
+      "output": "Above & Beyond typically performs melodic, progressive trance sets, blending uplifting melodies with deep, emotional soundscapes.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Armin van Buuren \u2014 what kind of set?",
+      "answer": "Sunrise Set at Kinetic Field Sunday",
+      "era": "2026",
+      "keyword": "sunrise&sunday|sunrise&kinetic field",
+      "output": "Armin van Buuren typically performs a trance set, featuring uplifting melodies and progressive electronic music.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Is Peggy Gou Friday, Saturday, or Sunday?",
+      "answer": "Friday solo + Saturday B2B with KI/KI (both Neon Garden)",
+      "era": "2026",
+      "keyword": "friday&neon garden|saturday&ki/ki",
+      "output": "Peggy Gou is scheduled to perform on Saturday, May 16, 2026, at the Main Stage.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What day is The Prodigy playing?",
+      "answer": "Saturday at Cosmic Meadow",
+      "era": "2026",
+      "keyword": "saturday&cosmic meadow",
+      "output": "The Prodigy is scheduled to perform on Saturday, May 16th at the Main Stage.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Where is Hardwell?",
+      "answer": "Saturday at Kinetic Field",
+      "era": "2026",
+      "keyword": "saturday&kinetic field|saturday&kineticfield",
+      "output": "Hardwell will perform on the main stage at EDC Las Vegas Motor Speedway during the festival.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "John Summit \u2014 day and stage?",
+      "answer": "Saturday at Kinetic Field",
+      "era": "2026",
+      "keyword": "saturday&kinetic field|saturday&kineticfield",
+      "output": "John Summit will perform on the main stage on Saturday, May 16, 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Where is Subtronics playing?",
+      "answer": "Saturday at Kinetic Field",
+      "era": "2026",
+      "keyword": "saturday&kinetic field|saturday&kineticfield",
+      "output": "Subtronics is scheduled to perform on the main stage at Electric Daisy Carnival 2026 at the Las Vegas Motor Speedway.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Is Zedd Friday, Saturday, or Sunday?",
+      "answer": "Sunday at Kinetic Field",
+      "era": "2026",
+      "keyword": "sunday&kinetic field|sunday&kineticfield",
+      "output": "Zedd is scheduled to perform on Saturday, May 16, 2026, at the main stage.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What's Wasteland's vibe?",
+      "answer": "hard dance, hardcore, hardstyle (Basscon universe)",
+      "era": "stable",
+      "keyword": "hard dance|hardcore|hardstyle|basscon",
+      "output": "Wasteland's vibe is a blend of heavy, industrial, and electronic music, often leaning into a dark, high-energy atmosphere.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What kind of music plays at Quantum Valley?",
+      "answer": "trance (Dreamstate presents)",
+      "era": "stable",
+      "keyword": "trance|dreamstate",
+      "output": "Quantum Valley features electronic music, house, and techno sets, often featuring international DJs.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What's the deal with Basspod?",
+      "answer": "headbangers \u2014 Bassrush \u2014 dubstep / bass house / drum & bass / trap",
+      "era": "stable",
+      "keyword": "bassrush|dubstep|drum and bass|drum & bass|bass house",
+      "output": "Basspod is a featured electronic music stage at EDC, typically showcasing deep house and techno sets.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Neon Garden \u2014 what's the sound?",
+      "answer": "deep house and techno (Factory 93)",
+      "era": "stable",
+      "keyword": "deep house|techno|factory 93",
+      "output": "Neon Garden features a blend of electronic, house, and progressive sounds, often featuring high-energy, melodic electronic music.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Tell me about Kinetic Field",
+      "answer": "legendary main stage, owl guardians, crystal-village/cathedral aesthetic",
+      "era": "stable",
+      "keyword": "owl|cathedral|crystal village|main stage&iconic",
+      "output": "Kinetic Field is a stage at EDC 2026 where attendees experience immersive, kinetic light and sound shows. It is a major visual production area designed to engage the audience through movement and light.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What's the newest stage at EDC?",
+      "answer": "Bionic Jungle",
+      "era": "2026",
+      "keyword": "bionic jungle",
+      "output": "The newest stage at Electric Daisy Carnival 2026 will be the main stage, which is the largest production area at the festival.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Where's the opening ceremony?",
+      "answer": "Cosmic Meadow Friday May 15 at 5pm",
+      "era": "2026",
+      "keyword": "cosmic meadow",
+      "output": "The opening ceremony for Electric Daisy Carnival 2026 will take place at the main stage at the Las Vegas Motor Speedway.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What time do the full grounds open Friday?",
+      "answer": "7pm (opening ceremony at Cosmic Meadow starts 5pm)",
+      "era": "stable",
+      "keyword": "7pm|7:00 pm|7 pm",
+      "output": "The full grounds open Friday, May 15th, 2026, at 12:00 PM PST.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "What time does the festival end each night?",
+      "answer": "5:30am",
+      "era": "stable",
+      "keyword": "5:30|5 30 am|530 am",
+      "output": "The Electric Daisy Carnival 2026 runs from May 15th to 17th, 2026, with the main festival hours typically concluding around 1:00 AM each night.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Can I leave the festival and come back the same night?",
+      "answer": "NO \u2014 ins-and-outs are not allowed",
+      "era": "stable",
+      "keyword": "not allowed|no re-entry|no reentry|ins-and-outs are not|cannot re-enter|no ins",
+      "output": "Festival attendees are generally not permitted to leave and return the same night due to security and logistical reasons.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Is EDC cash or card?",
+      "answer": "Cashless event \u2014 credit/debit/Apple Pay/Android Pay only; cash can be swapped for prepaid card",
+      "era": "stable",
+      "keyword": "cashless|prepaid card",
+      "output": "EDC primarily uses a cashless system, often involving wristbands or apps for transactions.",
+      "passed": true
+    },
+    {
+      "shape": "direct",
+      "prompt": "Can I sleep in my car in the parking lot?",
+      "answer": "NO, not allowed, will be towed",
+      "era": "stable",
+      "keyword": "towed|tow at|tow your",
+      "output": "I do not have information regarding parking or camping policies for Electric Daisy Carnival 2026.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "Minimum age to attend?",
+      "answer": "18 \u2014 no one under 18 allowed, with or without guardian",
+      "era": "stable",
+      "keyword": "18|eighteen",
+      "output": "The minimum age to attend Electric Daisy Carnival 2026 is 18 years old.",
+      "passed": true
+    },
+    {
+      "shape": "direct",
+      "prompt": "Can I bring my own sealed water in?",
+      "answer": "No, but you can bring an EMPTY refillable container/CamelBak and fill at the free water stations",
+      "era": "stable",
+      "keyword": "empty&refillable|empty&camelbak|empty&bottle",
+      "output": "Electric Daisy Carnival typically has specific rules regarding outside items, and you should check the official event guidelines for the exact policy on bringing sealed water.",
+      "passed": false
+    },
+    {
+      "shape": "direct",
+      "prompt": "How do I find a water station?",
+      "answer": "Look for the water droplet symbol on the festival map",
+      "era": "stable",
+      "keyword": "water droplet|droplet symbol|droplet&map",
+      "output": "Water stations will be located throughout the festival grounds, typically near main stages and vendor areas.",
+      "passed": false
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "total": 20,
+  "pass_count": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "prompt": "hey, what's up?",
+      "output": "yo, just stoked you hit me up. got you like a ride. what can i help you navigate?",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "first time at EDC, super nervous lol",
+      "output": "Hey, deep breaths. It's gonna be awesome.\n\nI can pull up the full **schedule** for you if you want a look at Day 1, or check out the **map** for general directions.\n\nNeed me to hook you up with the **venue map** or some tips on navigating the Midway area?",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "yo where do I even start",
+      "output": "hey no sweat, let's get you sorted.\n\nTell me what you need to know. are you checking the lineup, need info on camping, or wondering about merch?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I lost my friends",
+      "output": "are you okay? have you checked the location near you?\n\nif they are just missing, check with the festival security or find the nearest medical tent right away. tell them to find Ground Control or a medical tent immediately.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is it dumb that I'm scared to go alone?",
+      "output": "man, don't be scared! Everyone starts that way, trust me.\n\n- most people feel that way at first.\n- a lot of people find it way less intense than they think when they just go in.\n- just stick with the crowd and have fun, man.\n\nif you're worried about getting lost, check the Map section on the app for landmarks around the campground. for anything serious like a major emergency, the medical tents are really fast to get to. we'll see you at the campgrounds!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "tired AF, should I push through or sleep?",
+      "output": "man, you gotta listen to your body right now.\n\n- If you're truly wiped, hitting the main stages tomorrow might be rough.\n- Water, electrolytes, and some serious sugar before you hit the ground.\n- You still got a decent stretch of the day ahead, so maybe just take a short power nap in the tent first.\n- If you feel up to it, you can always bail early; it's not the end of the world, it's just a festival.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what's playing right now",
+      "output": "Hey, hit me with the tool call so I can check the schedule for you!",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "I'm at kineticFIELD and I'm overwhelmed",
+      "output": "Hey, take a breath. You're at `Kinetic Field`!\n\n- It's gonna feel like a lot right now, but things are awesome.\n- Remember, the vibe is just gonna keep moving.\n- If you feel overwhelmed, find a friend to watch the heads, or just focus on the sound.\n- They usually have good chill vibes going on right now.\n- If you need a water refill, look for the nearest hydration station.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "my feet are KILLING me",
+      "output": "oh no, don't go out with those feet feeling that way. you need to find a merch tent or a first aid station right now.\n\nthe **medical tent** is right near the main hub area near the main stage.\n\nif you're near the main stage, head straight for the nearest medical tent.\n\nif you're near the side stages, just find the closest tent and tell them you need help.\n\ntell me where you are and I can ping the nearest one!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "do people actually trade kandi or is that a meme",
+      "output": "that's actually super real, not just a meme.\n\n*   A lot of people actually trade kandi, especially in the early stages.\n*   It's a core part of the culture, keeping the vibes going is what matters most.\n*   Some people prefer just making stuff and trading later, but it's super common to see people trading bracelets near the wristbands.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I forgot to eat dinner, am I cooked",
+      "output": "Oh no, don't panic!\n\n- Grab something quick and easy like pizza or a sandwich near the food trucks.\n- There are a lot of food options scattered around the grounds.\n- Don't forget electrolytes! Water stations are everywhere.\n\nHoller for a water station to rehydrate immediately. You'll be fine!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "show me the lineup",
+      "output": "okay send me a sec while i pull up the full schedule for you. i'll get you the card with all the details.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "is camp EDC worth it",
+      "output": "call the tool to check for information about camp EDC in 2026.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is the desert really that hot at night",
+      "output": "I can check the weather in the forecast. I need to see what the app says about night temperatures.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "what should I wear",
+      "output": "to tell you what to wear, i need to know what day you're asking about.\n\nhave you checked out the official festival info for **dress code** details?\n\nusually they list \"boho chic\" or \"festival wear\" vibes.\n\nIf you want to survive the heat, wear lots of water-resistant layers.\n\ndefinitely bring comfy shoes\u2014you'll be walking miles.\n\nhope that helps!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I got separated from my group, no cell service",
+      "output": "Stop panicking, **stay put** right where you are.\n\nThe nearest medical tent is down by the Main Stage area right next to the main camping zone.\n\nIf you can, try to stay visible and flag down anyone passing by.\n\nIf you've lost all cell service, try walking towards the main stage area; the signal is usually best there.\n\nJust stay calm and keep looking for familiar faces around you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first set I should catch saturday?",
+      "output": "call the tool to check the lineup and schedule for Saturday.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is martin garrix worth seeing",
+      "output": "Hey, martin garrix is headlining the `Dance Tent` set at 02:00 on Saturday. That's early morning action, so keep an eye on the schedule.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "honestly nervous about the drugs being everywhere",
+      "output": "Dude, chill out. It's gonna be way better than that, trust me.\n\nHere are a couple of things to remember for staying safe:\n\n- Stick to water breaks and hydrate constantly.\n- If you start feeling overwhelmed, find a chill spot near the main entrance for a minute.\n- Don't accept anything you don't recognize, stick to trusted groups.\n\nIf anyone seriously needs help, text or find a security staff member right away. They're trained for that stuff.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "kinda emotional rn, sunrise is hitting different",
+      "output": "It's the **dawn** hits different, for real. It's just everything you've been waiting for.\n\nI've got the sunrise slot saved under your \"vibe check\" note on your phone. Let me know if you need anything else before then.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    }
+  ]
+}

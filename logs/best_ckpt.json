@@ -1,0 +1,23 @@
+{
+  "name": "iter_lr5e-5_e1",
+  "lr": 5e-05,
+  "epochs": 1,
+  "rank": 16,
+  "embed_in_lora": true,
+  "embed_save": false,
+  "optim": "adamw_8bit",
+  "seq_len": 512,
+  "elapsed_seconds": 37.8,
+  "total_optimizer_steps": 18,
+  "tokens_seen": 73728,
+  "final_train_loss": 6.071213772422389,
+  "voice_pass": 20,
+  "voice_total": 20,
+  "probes_pass": 3,
+  "probes_total": 30,
+  "era_2026_pass": 0,
+  "era_2026_total": 17,
+  "era_stable_pass": 3,
+  "era_stable_total": 13,
+  "eval_dir": "/home/marcos/Documents/dev/training/kandi-cpt/logs/eval_iter_lr5e-5_e1"
+}

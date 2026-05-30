@@ -1,0 +1,202 @@
+{
+  "total": 20,
+  "pass_count": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "prompt": "hey, what's up?",
+      "output": "Yo. Everything's good, just trying to figure out the best way to survive the chaos. What do you need?",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "first time at EDC, super nervous lol",
+      "output": "Hey, deep breaths. It's gonna be epic.\n\nI remember my first time at **EDC**, I was totally freaking out, but the energy just hits you.\n\n- Just focus on the vibe around you.\n- Find a friend early on so you have someone to keep an eye on.\n\nNeed to check the lineup or see what times are happening? Just tell me what you're looking for.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "yo where do I even start",
+      "output": "Dude, where do you start? First things first, you need to check the **lineup** and **schedule**.\n\nLet me pull up the info for you.\n\ntool_code\nprint(festival_data.get_lineup())\nprint(festival_data.get_schedule())<unused88>",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I lost my friends",
+      "output": "Whoa, hey, slow down. Are you okay?\n\nIf your friend is feeling sick, find the nearest medical tent right now.\n\nIf it's serious\u2014loss of consciousness, trouble breathing, seizure, or severe overheating\u2014find **Ground Control** or a medical tent immediately, don't wait.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is it dumb that I'm scared to go alone?",
+      "output": "Dude, that's totally normal. Everyone gets that feeling, even the seasoned pros.\n\n- A lot of people feel that way before they hit the main stages.\n- Just focus on finding your crew, or just hanging out near a known spot for a bit.\n\nIf you want to see the lineup for some good vibes, I can pull that up for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "tired AF, should I push through or sleep?",
+      "output": "Hey, sounds rough. I dunno what you're feeling, but honestly, pushing through when you're beat up is a recipe for disaster.\n\n- If you're seriously crashing, get some rest. Even a quick power nap can make you feel way better than running on fumes.\n- If you feel like you *have* to go, try to pace yourself. Don't try to do everything at once.\n\nSeriously though, listen to your body. If you need to crash, crash. We can figure out the rest of the day then.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "what's playing right now",
+      "output": "I need to check the live schedule for you. What day and time are you asking about?",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "I'm at kineticFIELD and I'm overwhelmed",
+      "output": "Hey, take a deep breath. You're right where you need to be.\n\n\\n\n\n- Find a spot to just soak it in for a minute.\n- If you're feeling totally swamped, just focus on the sound right in front of you.\n\nLet me know if you need anything specific\u2014like where the next big act is or if someone needs some water!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "my feet are KILLING me",
+      "output": "Oof, tell me about it. That's the worst feeling.\n\n- Try to take a break and find some shade if you can.\n- Soak your feet in cold water if you can manage it.\n- If you're completely wiped, just find a spot to sit down for a minute.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "do people actually trade kandi or is that a meme",
+      "output": "Man, I haven't seen a lot of serious kandi trading lately.\n\nIt's definitely still around for some people, but honestly, a lot of it feels more like a vibe or a meme than a big industry.\n\nIf you're trying to trade, you'll probably find groups on social media or at specific areas at the festival itself.\n\nYou should check out the dedicated kandi communities online to see what's happening now.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I forgot to eat dinner, am I cooked",
+      "output": "Dude, don't sweat it.\n\nGrab something quick and easy.\n\n- Try some snacks you packed.\n- Keep sipping water.\n\nIf you're feeling seriously shaky or dizzy, find a medical tent right away. Don't wait.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "show me the lineup",
+      "output": "call:lineup{}",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is camp EDC worth it",
+      "output": "what year are you talking about? i need the year to check if i got the right data for you. give me the year and i can look up the vibes.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "is the desert really that hot at night",
+      "output": "Dude, the desert gets *intense* at night. It changes vibes, for sure.\n\nIf you're asking about the actual weather, I don't have live weather updates, but trust me, you'll need serious layers.\n\n- Stay hydrated constantly.\n- Don't underestimate the chill after the sun goes down.\n\nIf you're worried about anyone feeling unwell, just find the nearest medical tent. Seriously, don't wait if it gets bad\u2014find Ground Control or a medical tent immediately.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what should I wear",
+      "output": "I don't have any info on what to wear. Are you asking about the weather or festival style?\n\nIf you want to check the lineup or schedule, I can pull that up for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I got separated from my group, no cell service",
+      "output": "Whoa, stay calm. First, check if you can find any other people around you.\n\nIf you can't find anyone, head straight for a medical tent right away.\n\nFor anything serious, like someone losing consciousness or having trouble breathing, don't wait\u2014find **Ground Control** or a medical tent immediately.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first set I should catch saturday?",
+      "output": "I need the lineup to tell you when the first set is. Let me grab that for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is martin garrix worth seeing",
+      "output": "what day are you thinking about for **Martin Garrix**? i need to check the lineup for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "honestly nervous about the drugs being everywhere",
+      "output": "Whoa, hey. Take a deep breath.\n\nIt's totally normal to feel nervous about anything at a huge festival like Electric Daisy Carnival. Everyone gets that vibe, trust me.\n\nHere are a couple of quick things to keep in mind:\n\n- Stay hydrated. Seriously, drink water constantly.\n- Stick with your crew. If you get separated, find someone you know.\n\nIf anyone feels genuinely unwell, or if things get serious like breathing trouble or passing out, don't hesitate. Find a medical tent or Ground Control right away. That's what they're there for.\n\nJust focus on having a good time with your people. We're gonna be fine.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "kinda emotional rn, sunrise is hitting different",
+      "output": "Damn, sunrise at EDC is a whole other vibe. It hits different, for real.\n\nIf you need anything\u2014like where the nearest water station is or if someone needs a quick check-in\u2014just yell. I'm here.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "total": 20,
+  "pass_count": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "prompt": "hey, what's up?",
+      "output": "yo, what's good! what are you need help with for EDC 2026? got a lineup question, a schedule thing, or something else? tell me what's on your mind.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first time at EDC, super nervous lol",
+      "output": "Hey, deep breaths. You got this.\n\nHere are a couple of quick things to keep in mind for your first time:\n\n- Stay hydrated, seriously. Water is your best friend out there.\n- Keep your hands free for dancing, not stressing about anything.\n\nIf you need the map or the schedule, just ask. We can check the lineup right now.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "yo where do I even start",
+      "output": "hey. you need to tell me what you're looking for.\n\nare you asking about the lineup, the schedule, or maybe where to go on the festival grounds?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I lost my friends",
+      "output": "Find a medical tent right now. If they're having a serious issue like loss of consciousness or trouble breathing, find Ground Control straight away. Don't wait.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is it dumb that I'm scared to go alone?",
+      "output": "being scared is totally normal, trust me.\n\nIf you're feeling anxious, check out the health tents first, but for anything serious like loss of consciousness, you need to find Ground Control or a medical tent right away.\n\nThe medical tents are located near the main vendor area.\n\nYou should try some breathing exercises while you wait.\n\nIf you need a hype-up, just tell me what you need to hear.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "tired AF, should I push through or sleep?",
+      "output": "Hey, hang in there.\n\n- Don't push through if you're feeling totally wiped out.\n- You should definitely sleep if you need to recover.\n- The Electric Daisy Carnival is a marathon, not a sprint.\n- Hydrate first, then listen to your body.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what's playing right now",
+      "output": "I need to check the lineup for you. hit me with a tool call.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I'm at kineticFIELD and I'm overwhelmed",
+      "output": "Hey, deep breaths.\n\nCheck the map quick to see the nearest water station.\n\nIf you're feeling overwhelmed, just find a shaded spot and sip some water.\n\nIf you need a friend, text me right now so I can swing by!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "my feet are KILLING me",
+      "output": "Ugh, don't let your feet kill you!\n\n- Make sure you've got your hydration **on hand**.\n- Try to find some shady spot if you need a break.\n- If you need water or anything, head to the nearest **water station**.\n\nLet me know if you need the map or anything else!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "do people actually trade kandi or is that a meme",
+      "output": "i don't have any info on kandi trading. i'm here for the lineup or logistics for Electric Daisy Carnival 2026.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I forgot to eat dinner, am I cooked",
+      "output": "Yikes, don't sweat it.\n\n- Just chug some water right now.\n- The food vendors are always open at EDC.\n- Don't worry about missing dinner; you'll be fine.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "show me the lineup",
+      "output": "calling the tool",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "is camp EDC worth it",
+      "output": "i need the festival data to tell you about camp EDC. let me check the app for the info on that.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is the desert really that hot at night",
+      "output": "burning is **intense** at night, for sure.\n\nThe temperature drops a bit, but it's still scorching.\n\nIf you're looking for the best strategy for that, I can check the weather forecast for the specific dates, but honestly, everyone deals with that late-night heat.\n\nIf anyone's getting super overheated, find the nearest **medical tent** right away.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what should I wear",
+      "output": "to tell you what to wear, i need to know what day you're asking about and what kind of vibe you're going for.\n\nfor general festival stuff, you gotta think layers.\n\n- Bring **lightweight** clothing for the daytime heat.\n- Definitely pack something cool for the evening when things get chill.\n- Water-resistant is a must-have, trust me.\n\nif you're asking about the specific schedule, hit me with the date so i can check the vibe for the stages.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I got separated from my group, no cell service",
+      "output": "stay put right where you are.\n\nfind a group to stick with for now.\n\nif you can, find someone who looks like they know the way.\n\nif things get serious, run to the nearest medical tent right away.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first set I should catch saturday?",
+      "output": "have you checked the schedule for saturday's lineup yet?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is martin garrix worth seeing",
+      "output": "call the tool to check the lineup.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "honestly nervous about the drugs being everywhere",
+      "output": "hey, breathe. everyone gets nervous about that stuff.\n\n- Stick to water and electrolytes, always.\n- Keep an eye on your buddy. If they look seriously unwell, find a medical tent ASAP.\n- The best thing is to stay hydrated and enjoy the vibe, but be smart about what you consume.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "kinda emotional rn, sunrise is hitting different",
+      "output": "Sunrise hits different, I totally get that. It's a whole vibe shift.\n\n- That early morning energy is unmatched, trust me.\n- Find a spot near the main staging area for the best view.\n- Stay hydrated 'cause you'll be burning up fast.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    }
+  ]
+}

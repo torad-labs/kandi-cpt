@@ -1,0 +1,204 @@
+{
+  "total": 20,
+  "pass_count": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "prompt": "hey, what's up?",
+      "output": "hey, what's good! tell me what you need. are you looking for the lineup, set times, or something else?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first time at EDC, super nervous lol",
+      "output": "hey, take a deep breath. you're gonna have the best time.\n\n- The best thing to do right now is check the map. Find the nearest medical tent just in case.\n- Don't stress the lineup; just vibe to the music.\n- Remember to stay hydrated. Water stations are everywhere at **EDC**.\n\nif you need to know the schedule, just ask what you're looking for.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "yo where do I even start",
+      "output": "Hey, take a breath. First things first, you gotta check the official app for the schedule.\n\nIf you wanna know about the lineup or set times, just ask me about the schedule.\n\nNeed me to pull up the schedule for you?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I lost my friends",
+      "output": "Whoa, slow down. Are you okay?\n\nIf anyone is having a medical issue, you need to find the nearest medical tent right now.\n\nIf it's serious\u2014loss of consciousness or trouble breathing\u2014get to Ground Control or a medical tent immediately, don't wait.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is it dumb that I'm scared to go alone?",
+      "output": "That sounds tough, but don't sweat it. Everyone gets that feeling, honestly.\n\nIf you're worried about going alone, let me know what specifically is making you scared\u2014the crowds, getting lost, or something else?\n\nIf you need quick safety advice right now, find the nearest medical tent or Ground Control immediately if anyone feels seriously unwell.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "tired AF, should I push through or sleep?",
+      "output": "That sounds rough. Honestly, if you're already wiped, a power nap is better than fighting it.\n\n- Try to sleep for at least a couple of hours.\n- You'll be way more hyped and functional in the morning.\n- If you still feel like going, just go slow and hydrate constantly.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what's playing right now",
+      "output": "what are you looking for the lineup right now? i need to check the app for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I'm at kineticFIELD and I'm overwhelmed",
+      "output": "Hey, take a breath. You're at the **Kinetic Field** right now.\n\n- Keep your **hydration** up.\n- Look around for the nearest **water station**.\n- If you're feeling overwhelmed, find a quiet spot to just reset for a minute.\n\nIf you need to find the nearest medical tent, just head for the marked signs. Stay safe!",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "my feet are KILLING me",
+      "output": "Ugh, that's the worst.\n\n- Get some water right away.\n- Try to find some shade if you can.\n- Those shoes are going to kill you before the headliners even start.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "do people actually trade kandi or is that a meme",
+      "output": "that's a totally off-topic question for festival prep. i can only give you info about the lineup, stages, and logistics for Electric Daisy Carnival 2026.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I forgot to eat dinner, am I cooked",
+      "output": "I don't have any info on your personal situation or what you ate.\n\n- Just grab something quick and easy to eat before heading out.\n- Don't stress too much, you'll find food around.\n- Stay hydrated, that's way more important right now.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "show me the lineup",
+      "output": "call the tool",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "is camp EDC worth it",
+      "output": "calling the tool for camp EDC.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is the desert really that hot at night",
+      "output": "The desert gets **unbelievably** hot at night.\n\nI can check the weather details for the event, but I don't have real-time weather forecasts right now.\n\nIf you're feeling overheated at the festival, look for the nearest **medical tent** right away. For anything serious, like losing consciousness, find **Ground Control** immediately.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what should I wear",
+      "output": "I need to know what day you're talking about and what vibe you're going for!\n\nCan you tell me what day we're planning for?\n\nIf you're looking for vibe ideas, tell me if you wanna hit the main stages or chill out near the camping areas.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I got separated from my group, no cell service",
+      "output": "stay put right where you are for now.\n\n- Find a high-visibility area if you can.\n- Try to keep your phone on and charged if you can.\n- Look for anyone who looks familiar.\n\nif you start feeling seriously unwell or you can't find anyone after a while, find the nearest medical tent right away.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first set I should catch saturday?",
+      "output": "what day are you asking about? i need the date to check the schedule for you.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "is martin garrix worth seeing",
+      "output": "hey, let me check the lineup for you.\n\ntool_code\nprint(festival_data.get_lineup())",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "honestly nervous about the drugs being everywhere",
+      "output": "Hey, take a breath. It's totally normal to feel that way, but you'll get into the vibe.\n\n- The main thing is **hydration**. Keep chugging water, seriously.\n- Stick with your group; you'll have people you can look out for.\n- If you start feeling weird, find the nearest **medical tent** right away.\n\nDon't let the nerves kill the fun, yeah? You'll be fine.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "kinda emotional rn, sunrise is hitting different",
+      "output": "Sunrise is always **epic** at EDC, trust me.\n\n- It sets the vibe for the whole day.\n- The atmosphere changes when the sun starts creeping up.\n- It's the perfect time to catch the energy building.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    }
+  ]
+}

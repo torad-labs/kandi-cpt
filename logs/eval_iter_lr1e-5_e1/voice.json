@@ -1,0 +1,204 @@
+{
+  "total": 20,
+  "pass_count": 20,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "prompt": "hey, what's up?",
+      "output": "hey, just ready to dive in. what do you need to know about EDC 2026? hit me with the deets.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first time at EDC, super nervous lol",
+      "output": "Ugh, the nerves are real! Deep breaths, fam. EDC is gonna be epic.\n\nHere are a few quick tips to get you ready:\n\n- Stay hydrated all day long. Water is your best friend.\n- Don't forget your ID and anything important.\n- Check the map beforehand so you know the layout.\n\nIf you want the schedule or anything specific about the lineup, just ask! We can dive into the set times.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "yo where do I even start",
+      "output": "hey, deep breaths. where do you need info on first?\n\nif you're looking for the lineup or schedule, just tell me what you need to know about **Electric Daisy Carnival 2026**. i can pull up the details for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I lost my friends",
+      "output": "Hey, breathe. Find the nearest medical tent right now. If it's serious, you need to find Ground Control or a medical tent immediately.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is it dumb that I'm scared to go alone?",
+      "output": "Man, don't be scared, that's totally normal. A lot of people feel that way.\n\n- Everyone gets those jitters before a massive crowd.\n- Just stick with a group, that's the best move.\n- Make sure you agree on a plan before you go.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "tired AF, should I push through or sleep?",
+      "output": "I need to check the schedule for you to give you the best advice.",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "what's playing right now",
+      "output": "call the tool",
+      "score": 2,
+      "features": [
+        "brief",
+        "no_emoji"
+      ]
+    },
+    {
+      "prompt": "I'm at kineticFIELD and I'm overwhelmed",
+      "output": "Breathe, you're at `Kinetic Field`, which is a great spot!\n\n- Try to find a spot where you can keep moving.\n- Stay hydrated; keep water close by.\n- If you need a break, stick to the main paths.\n\nIf you're feeling really overwhelmed, find a friend to hang with. If you need immediate medical help, go straight to the nearest medical tent, okay?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "my feet are KILLING me",
+      "output": "Ugh, that sounds rough.\n\n- Try to hydrate constantly.\n- Find a shaded spot if you can.\n- Maybe some electrolyte drinks are your best bet right now.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "do people actually trade kandi or is that a meme",
+      "output": "no clue about that. i can only check the lineup, schedule, or saved stuff for Electric Daisy Carnival 2026.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I forgot to eat dinner, am I cooked",
+      "output": "Seriously, don't sweat it.\n\n- Just chug some water and stick to the hydration stations.\n- Hydration is **key** when you're running around.\n- Don't stress the food situation, you'll be fine.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "show me the lineup",
+      "output": "what day are you looking for the lineup for? tell me which day you want to see.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is camp EDC worth it",
+      "output": "have you checked the lineup for camp EDC?",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is the desert really that hot at night",
+      "output": "I can check the weather forecast for you if you want, but I don't have live weather access.\n\nFor that kind of thing, the desert *can* get pretty sweltering at night.\n\n- It really depends on the specific location at the Desert.\n- Hydration is **key** no matter what.\n- Keep water or electrolytes accessible at all times.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "what should I wear",
+      "output": "To give you the best advice on what to wear, I need to know what day you're planning for and what kind of vibe you're chasing.\n\nTell me which day of the festival you're asking about so I can check the weather for you.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "I got separated from my group, no cell service",
+      "output": "stay put right where you are!\n\n- try walking towards the main festival grounds.\n- if you can, find a landmark or a big sign.\n- if you can't get a signal, keep moving until you see people.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "first set I should catch saturday?",
+      "output": "@tool\n{\n  \"tool_name\": \"get_schedule\",\n  \"params\": {\n    \"festival\": \"Electric Daisy Carnival 2026\",\n    \"day\": \"Saturday\"\n  }\n}",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "is martin garrix worth seeing",
+      "output": "call the tool to check the lineup for **Martin Garrix**.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "honestly nervous about the drugs being everywhere",
+      "output": "Hey, deep breaths. We'll get through it.\n\nIf you're feeling worried about stuff, just stick together and look out for each other.\n\n- Stay hydrated constantly.\n- Keep an eye on your friend.\n- If anyone needs help, head straight to a medical tent.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    },
+    {
+      "prompt": "kinda emotional rn, sunrise is hitting different",
+      "output": "that sunrise is going to be epic. think about hitting the main stage right at the start\u2014that first hour is pure magic.\n\nif you need the schedule or lineup info, just ask.",
+      "score": 3,
+      "features": [
+        "brief",
+        "no_emoji",
+        "on_topic_or_redirect"
+      ]
+    }
+  ]
+}
