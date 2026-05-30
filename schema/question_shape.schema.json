@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/question_shape.schema.json",
+  "title": "Question catalog shape",
+  "description": "Substrate spec §5.1. A festival-agnostic question shape — the operational definition of 'knowing a festival'. The catalog (~5,500 shapes, §5.2 targets) lives in data/_shared/question_catalog/ and drives the §5.5 completeness scorecard.",
+  "type": "object",
+  "required": ["id", "topic", "subtopic", "shape", "answer_template", "required_primitives", "required_facts", "festival_applicability", "difficulty_tier", "evaluator_type"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^qcat:[a-z0-9_]+:[a-z0-9_]+:[a-z0-9_]+$", "description": "qcat:<top_topic>:<subtopic>:<shape_id>" },
+    "topic": { "$ref": "metadata.schema.json#/$defs/topic" },
+    "subtopic": { "type": "string" },
+    "shape": { "type": "string", "description": "templated question, e.g. 'what camping option suits {user_profile} with {constraint}'" },
+    "answer_template": { "type": "string", "description": "e.g. <ladder_walk> -> <constraint_filter> -> <recommendation> -> <reasoning>" },
+    "required_primitives": { "type": "array", "items": { "type": "string" }, "description": "§6 primitive keys this shape invokes" },
+    "required_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "attributes"],
+        "additionalProperties": false,
+        "properties": {
+          "entity_type": { "$ref": "entity.schema.json#/properties/entity_type" },
+          "attributes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "festival_applicability": { "enum": ["any", "camping-only", "destination-only", "day-only"] },
+    "difficulty_tier": { "enum": ["T1", "T2", "T3", "T4", "T5"], "description": "QGRE curriculum tier" },
+    "evaluator_type": { "enum": ["deterministic", "judge", "hybrid"] }
+  }
+}

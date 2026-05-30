@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/festival_class.schema.json",
+  "title": "Festival class vector",
+  "description": "Substrate spec §12.1. The class vector attached to a festival/edition. Drives class-conditional norms (§12.2) and the cross_festival_transfer primitive (§12.3) — the load-bearing layer for generalizing to undocumented festivals. Distinct from metadata.festival_class (§7.1), which is a flat tag list for filtering.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["setting", "duration", "camping", "genre_focus", "scale", "international", "age_skew", "experience_level_skew", "weather_exposure", "alcohol_policy", "re_entry"],
+  "properties": {
+    "setting": { "enum": ["urban", "rural", "destination", "venue-only", "beach"] },
+    "duration": { "enum": ["single-day", "weekend", "week+"] },
+    "camping": { "enum": ["none", "optional", "required"] },
+    "genre_focus": { "enum": ["electronic", "rock", "metal", "jazz", "mixed", "hip-hop", "folk"] },
+    "scale": { "enum": ["small", "medium", "large", "massive"], "description": "small <10k, medium 10-50k, large 50-200k, massive 200k+" },
+    "international": { "enum": ["domestic", "regional", "global"] },
+    "age_skew": { "enum": ["18-25", "21-30", "25-35", "family"] },
+    "experience_level_skew": { "enum": ["first-timer", "mixed", "veteran"] },
+    "weather_exposure": { "enum": ["indoor", "partial", "full-outdoor"] },
+    "alcohol_policy": { "enum": ["dry", "wet", "mixed"] },
+    "re_entry": { "enum": ["allowed", "restricted", "none"] }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/triple.schema.json",
+  "title": "Relation triple",
+  "description": "Substrate spec §3. One record per line in <edition>/15_structured/triples.jsonl. Shape: (subject_id, predicate, object, attrs, provenance). Each typed predicate is an atomic, recombinable fact (§3.4).",
+  "type": "object",
+  "required": ["subject_id", "predicate", "object", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "subject_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+:[a-z_]+:[a-z0-9_]+$",
+      "description": "an entity id (§2.1)"
+    },
+    "predicate": {
+      "enum": [
+        "walk_time_to", "adjacent_to", "bounded_by", "visible_from", "proximity_meters",
+        "plays_at", "conflicts_with", "precedes", "gets_busy_at", "peak_density",
+        "has_tier", "recommended_for", "tradeoff_with", "substitutes_for",
+        "causes_density_at", "correlates_with", "mitigates", "prerequisite_for",
+        "practiced_by", "originates_from", "signals_membership",
+        "serves", "located_at", "operating_hours", "service_constraint",
+        "prohibits", "requires",
+        "succeeded_by", "differs_from", "incident_occurred",
+        "structurally_similar", "belongs_to_class", "inherits_norms_from"
+      ],
+      "description": "§3.2 catalog + §3.3 cross-festival predicates. NOTE: service_constraint added beyond the literal §3.2 list — the §4.2 example lifts one (service|vendor -> constraint, e.g. 30-min water line). attrs e.g. {magnitude, time_window}."
+    },
+    "object": {
+      "description": "object_id_or_literal — an entity id (string matching §2.1), a literal (string/number/bool), or a structured value (e.g. a time_window object)"
+    },
+    "attrs": {
+      "type": "object",
+      "description": "Quantitative/qualitative annotations per §3.2, e.g. {minutes_baseline, magnitude, overlap_minutes, reasoning}.",
+      "additionalProperties": true
+    },
+    "provenance": { "$ref": "metadata.schema.json#/$defs/provenance" },
+    "metadata": { "$ref": "metadata.schema.json" }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "subject_id": "edc_lv_2026:set:tiesto_kineticfield_fri2200",
+  "predicate": "causes_density_at",
+  "object": "edc_lv_2026:stage:kinetic_field",
+  "attrs": {
+    "magnitude": "extreme",
+    "reasoning": "headliner-tier draw on the main stage at peak time pulls the infield crowd south; expect heavy inbound flow 21:30 onward"
+  },
+  "provenance": {
+    "source": {
+      "domain": "reddit.com",
+      "domain_class": "community-vetted",
+      "scrape_iso": "2026-05-15T09:10:00Z"
+    },
+    "confidence": "cross-confirmed",
+    "valid_until": "2026-12-31"
+  }
+}

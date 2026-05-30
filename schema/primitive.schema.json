@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/primitive.schema.json",
+  "title": "Navigation primitive definition",
+  "description": "Substrate spec §6.1. A content-independent reasoning operation (CONTENT vs STRUCTURE split, §1.5) — learned once, applied to any festival. Open key set: the real catalog emerges from clustering the question catalog (§6 note / §15 step 3), so keys are not enumerated. Lives in data/_shared/primitives/.",
+  "type": "object",
+  "required": ["key", "inputs", "output", "reward_type"],
+  "additionalProperties": false,
+  "properties": {
+    "key": { "type": "string", "pattern": "^[a-z0-9_]+$", "description": "e.g. crowd_allocation, tier_ladder_reasoning, cross_festival_transfer" },
+    "inputs": { "type": ["string", "array"], "items": { "type": "string" }, "description": "input description per §6.1" },
+    "output": { "type": "string" },
+    "reward_type": {
+      "enum": ["judge", "deterministic", "hybrid", "deterministic+judge", "judge-weak-ground-truth", "judge-with-safety-constraints"],
+      "description": "§6.1 reward column (normalized)"
+    },
+    "description": { "type": "string" }
+  }
+}

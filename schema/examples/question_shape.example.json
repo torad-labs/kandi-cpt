@@ -1,0 +1,14 @@
+{
+  "id": "qcat:camping_and_lodging:tier_selection:0001",
+  "topic": "camping_and_lodging",
+  "subtopic": "tier_selection",
+  "shape": "what camping option suits {user_profile} with {constraint}",
+  "answer_template": "<ladder_walk> -> <constraint_filter> -> <recommendation> -> <reasoning>",
+  "required_primitives": ["tier_ladder_reasoning", "preference_filter"],
+  "required_facts": [
+    { "entity_type": "camping_zone", "attributes": ["tier", "cost_usd", "includes", "recommended_for"] }
+  ],
+  "festival_applicability": "camping-only",
+  "difficulty_tier": "T2",
+  "evaluator_type": "judge"
+}

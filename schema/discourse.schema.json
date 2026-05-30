@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/discourse.schema.json",
+  "title": "Discourse record",
+  "description": "Substrate spec §4. One record per line in <edition>/15_structured/discourse.jsonl. Soft observations (Reddit/reviews/blogs) anchored to entities; precise claims are lifted into triples.jsonl and back-linked via lifted_claims.",
+  "type": "object",
+  "required": ["id", "anchors", "topic", "stance", "content", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+:discourse:.+$",
+      "description": "<festival_slug>:discourse:<uuid>"
+    },
+    "anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z0-9_]+:[a-z_]+:[a-z0-9_]+$" },
+      "description": "entity ids this observation attaches to (§2.1)"
+    },
+    "topic": { "$ref": "metadata.schema.json#/$defs/topic" },
+    "subtopic": { "type": "string" },
+    "audience": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "freeform audience tags, e.g. first-timer, veteran, parent_with_kid, solo_budget, accessibility_user, international_traveler, crew_lead"
+    },
+    "stance": { "enum": ["pro", "con", "mixed", "neutral", "warning"] },
+    "content": { "type": "string", "minLength": 1 },
+    "source": { "$ref": "metadata.schema.json#/$defs/source" },
+    "lifted_claims": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "ids/refs of triples extracted from this content (triples.jsonl)"
+    },
+    "metadata": { "$ref": "metadata.schema.json" }
+  }
+}

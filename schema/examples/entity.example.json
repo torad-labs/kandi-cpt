@@ -1,0 +1,29 @@
+{
+  "id": "edc_lv_2026:stage:kinetic_field",
+  "entity_type": "stage",
+  "name_canonical": "Kinetic Field",
+  "name_aliases": ["KF", "Main Stage"],
+  "attributes": {
+    "name_canonical": "Kinetic Field",
+    "venue_ref": "edc_lv_2026:venue:las_vegas_motor_speedway",
+    "genre_focus": ["big room", "trance", "mainstage edm"],
+    "capacity_estimate": 200000,
+    "peak_capacity_estimate": 300000,
+    "sound_system_type": "L-Acoustics K1",
+    "production_scale": "mainstage",
+    "coordinates_relative": { "x": 0, "y": 0, "note": "anchors the speedway infield, south end" },
+    "acoustic_bleed": "low",
+    "peak_density_time_windows": ["fri 23:00-01:00", "sat 23:00-01:30"],
+    "vibe_descriptors": ["euphoric", "massive", "headliner energy"]
+  },
+  "provenance": {
+    "source": {
+      "url": "https://edclasvegas.com/lineup/",
+      "domain": "edclasvegas.com",
+      "domain_class": "official-festival",
+      "scrape_iso": "2026-05-12T14:32:00Z"
+    },
+    "confidence": "official",
+    "valid_until": "2026-12-31"
+  }
+}

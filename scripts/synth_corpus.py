@@ -19,8 +19,9 @@ festival-veteran tutorial.
 Generator: Gemma 4 31B via OpenRouter (same family as the on-device E2B
 target — voice patterns and tokenizer space align naturally).
 
-Output: corpus_synthetic/<source_doc_stem>/<strategy>__<n>.md
+Output: data/edc/las_vegas/2026/20_synthetic/<source_doc_stem>/<strategy>__<n>.md
         — preserves source attribution and strategy lineage for ablation.
+        Single edition for now; the rewrite iterates data/<festival>/<city>/<year>/.
 
 Run:
     python scripts/synth_corpus.py [--max-chunks-per-doc N] [--targets N]
@@ -38,8 +39,7 @@ from pathlib import Path
 import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
-CORPUS_DIR = ROOT / "corpus"
-SYNTH_DIR = ROOT / "corpus_synthetic"
+from config import CLEAN as CORPUS_DIR, SYNTHETIC as SYNTH_DIR
 LOG_FILE = ROOT / "logs" / "synth_progress.md"
 
 MODEL = "google/gemma-4-31b-it"   # exact same family as on-device E2B target — voice + tokenizer aligned

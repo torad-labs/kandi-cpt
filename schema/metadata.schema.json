@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/metadata.schema.json",
+  "title": "Record metadata envelope",
+  "description": "Universal per-record metadata (substrate spec §7.1). Attached to every record (entity, triple, discourse, synth_sample, training_sample). $defs here (source, provenance, enums, synthesis_lineage) are reused by the entity/triple/discourse schemas.",
+  "type": "object",
+  "required": ["uuid", "festival_slug", "entity_or_record_type", "source", "confidence"],
+  "additionalProperties": true,
+  "properties": {
+    "uuid": { "type": "string", "description": "v4 UUID" },
+    "festival_slug": { "type": "string", "description": "e.g. edc_lv_2026 (logical edition id; the on-disk path is data/<festival>/<city>/<year>/)" },
+    "edition_year": { "type": "integer", "minimum": 1990, "maximum": 2100 },
+    "festival_class": { "type": "array", "items": { "type": "string" }, "description": "§12 festival-class tags, e.g. [electronic, destination, non-camping]" },
+    "entity_or_record_type": { "enum": ["entity", "triple", "discourse", "synth_sample", "training_sample"] },
+    "topic": { "$ref": "#/$defs/topic" },
+    "subtopic": { "type": "string" },
+    "audience_tags": { "type": "array", "items": { "type": "string" }, "description": "e.g. first-timer, veteran, parent_with_kid, solo_budget" },
+    "temporal_phase": { "enum": ["pre-festival", "arrival", "during", "departure", "post"] },
+    "source": { "$ref": "#/$defs/source" },
+    "confidence": { "$ref": "#/$defs/confidence" },
+    "valid_from": { "type": "string", "format": "date", "description": "earliest date the fact is asserted true (added vs §7.1 for bitemporal correctness)" },
+    "valid_until": { "type": "string", "format": "date" },
+    "quality_score": { "type": "number", "minimum": 0, "maximum": 1, "description": "§11/§12 classifier output" },
+    "difficulty_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "diversity_signature": { "type": "string", "description": "hash for semantic dedup §11.4" },
+    "synthesis_lineage": { "$ref": "#/$defs/synthesisLineage" }
+  },
+  "$defs": {
+    "confidence": {
+      "enum": ["official", "cross-confirmed", "single-anecdote", "inferred"],
+      "description": "§7 confidence level"
+    },
+    "domainClass": {
+      "enum": [
+        "official-festival", "official-venue", "news-mainstream", "news-music-trade",
+        "community-discussion", "community-vetted", "social-personal", "social-vetted",
+        "review-aggregator", "blog-influencer", "user-contributed", "inferred-by-model"
+      ],
+      "description": "§7.2 source class (drives default trust weight)"
+    },
+    "source": {
+      "type": "object",
+      "description": "§7.1 provenance source block",
+      "required": ["domain_class"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string" },
+        "domain": { "type": "string", "description": "e.g. reddit.com, edclasvegas.com" },
+        "domain_class": { "$ref": "#/$defs/domainClass" },
+        "scrape_iso": { "type": "string", "format": "date-time" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Per-claim provenance for structured records (§3.1 provenance{} = source + confidence + era).",
+      "required": ["source", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "$ref": "#/$defs/source" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "valid_from": { "type": "string", "format": "date" },
+        "valid_until": { "type": "string", "format": "date" }
+      }
+    },
+    "synthesisLineage": {
+      "type": "object",
+      "description": "§7.1 synthesis_lineage — present on synthetic records",
+      "required": ["is_synthetic"],
+      "additionalProperties": false,
+      "properties": {
+        "is_synthetic": { "type": "boolean" },
+        "generator_model": { "type": "string", "description": "teacher that wrote the surface, e.g. gemma-4-31b" },
+        "study_model": { "type": "string", "description": "Active-Reading studier that generated the strategy (distinct from generator_model)" },
+        "generation_strategy": {
+          "enum": ["active_reading", "entigraph", "wrap++", "spa", "knowledge-instruct", "reasoning-chain"]
+        },
+        "audience_variant": { "type": "string" },
+        "source_record_ids": { "type": "array", "items": { "type": "string" } },
+        "prompt_version": { "type": "string" }
+      }
+    },
+    "topic": {
+      "enum": [
+        "lineup_and_sets", "navigation_and_logistics", "camping_and_lodging", "transit_and_arrival",
+        "food_and_drink", "weather_and_environment", "safety_and_health", "harm_reduction",
+        "community_and_culture", "vendor_and_services", "policy_and_rules", "money_and_budget",
+        "accessibility", "kids_and_family", "solo_attendance", "crew_logistics", "gear_and_packing",
+        "post_event", "cross_festival_comparison"
+      ],
+      "description": "§5.2 top-level topic enum. Canonical = the long form (camping_and_lodging); the short forms in the §5.1/§7.1 examples (camping) are shorthand for the same topic."
+    }
+  }
+}

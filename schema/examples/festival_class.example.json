@@ -1,0 +1,13 @@
+{
+  "setting": "destination",
+  "duration": "weekend",
+  "camping": "optional",
+  "genre_focus": "electronic",
+  "scale": "massive",
+  "international": "regional",
+  "age_skew": "18-25",
+  "experience_level_skew": "mixed",
+  "weather_exposure": "full-outdoor",
+  "alcohol_policy": "wet",
+  "re_entry": "none"
+}

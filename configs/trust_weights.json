@@ -1,0 +1,23 @@
+{
+  "_comment": "Substrate spec §7.2 — default trust weights by domain_class (drives quality_score weighting and corpus mix). community-discussion varies by upvotes; inferred-by-model inherits its parent record's weight x 0.85.",
+  "weights": {
+    "official-festival": 1.0,
+    "official-venue": 0.95,
+    "news-mainstream": 0.85,
+    "news-music-trade": 0.8,
+    "community-vetted": 0.85,
+    "community-discussion": 0.6,
+    "social-vetted": 0.85,
+    "social-personal": 0.4,
+    "review-aggregator": 0.7,
+    "blog-influencer": 0.7,
+    "user-contributed": 0.6
+  },
+  "relative": {
+    "inferred-by-model": { "base": "parent_record", "factor": 0.85 }
+  },
+  "notes": {
+    "community-discussion": "0.6 baseline; scale by upvote ratio",
+    "user-contributed": "0.6 with social-proof boost"
+  }
+}

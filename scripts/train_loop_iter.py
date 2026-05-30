@@ -36,8 +36,7 @@ from transformers import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = Path("/home/marcos/Documents/dev/models/gemma-4-E2B-it")
-TOKENIZED = ROOT / "tokenized" / "corpus_v1.arrow"
+from config import MODEL_PATH, TOKENIZED_ARROW as TOKENIZED
 
 CKPT_NAME = os.environ.get("KANDI_CKPT_NAME")
 if not CKPT_NAME:

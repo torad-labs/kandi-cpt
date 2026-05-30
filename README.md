@@ -24,17 +24,24 @@ Full write-up: [`logs/OVERNIGHT_FINDINGS.md`](logs/OVERNIGHT_FINDINGS.md).
 
 ## Layout
 
+Partitioned per **festival / city / year**; pipeline stages live inside each edition.
+Full map + lifecycle + "safe to delete?" table: [`docs/ORGANIZATION.md`](docs/ORGANIZATION.md).
+
 | Path | Tracked | Contents |
 |---|---|---|
-| `scripts/` | ✓ | tokenize, train, eval, compare, synth, autonomous loop |
-| `corpus/` | ✓ | curated text corpus (markdown), tier-tagged |
-| `corpus_synthetic/` | ✓ | synthetic expansion (EntiGraph / Nemotron / Phi strategies) |
-| `logs/` | ✓ | findings, per-checkpoint evals, pairwise comparisons |
-| `probes/` | ✓ | held-out probe sets (see app repo `KANDI_CPT_PROBES.md`) |
-| `requirements.txt` | ✓ | torch cu130 (sm_120) + HF training stack |
-| `checkpoints/` | ✗ | trained adapters (~15 GB, local-only) |
-| `tokenized/` | ✗ | tokenized shards (regenerable from `corpus/`) |
-| `.venv/` | ✗ | virtualenv |
+| `data/<festival>/<city>/<year>/` | | one edition, e.g. `data/edc/las_vegas/2026/` |
+| `  00_raw/` | ✗ | web downloads, source-faithful |
+| `  10_clean/` | ✓ | cleaned .md by source (`official/`,`youtube/`,`reference/`) — **source of truth** |
+| `  15_structured/` | ✓ | NEW FORMAT — `entities/triples/discourse` (substrate §2–§4) |
+| `  20_synthetic/` | ✓* | derived expansion (EntiGraph / Nemotron / Phi strategies) |
+| `  holdout/` | ✓ | eval carve-out (frozen pre-synth) + `probes/` |
+| `data/_shared/` | ✓ | festival-agnostic: question_catalog · primitives · class_taxonomy · entities_global · knowledge · replay |
+| `data/_build/30_tokenized/` | ✗ | cross-edition trainer shards (regenerable) |
+| `scripts/` · `configs/` · `manifests/` | ✓ | pipeline · run configs · exposure ledger |
+| `logs/` | ✓ | findings, per-checkpoint evals, comparisons |
+| `checkpoints/` · `.venv/` | ✗ | trained adapters (~15 GB) · virtualenv |
+
+`*` committed while small; → gitignored + external storage when large.
 
 ## Source of truth
 
@@ -44,9 +51,13 @@ Full write-up: [`logs/OVERNIGHT_FINDINGS.md`](logs/OVERNIGHT_FINDINGS.md).
 
 ## Next
 
-Real-data ingestion + a **fact-density** pass (target 5–10M tokens, each
-load-bearing fact restated to hundreds of passes) to break the 0/17.
-**Ingestion + organization plan: TBD (owner: Marcos).**
+Organization: **done** — festival/city/year layout + lifecycle in [`docs/ORGANIZATION.md`](docs/ORGANIZATION.md).
+
+New-format ingestion (`15_structured/` entities·triples·discourse per the substrate spec) +
+a **fact-density** pass (target ~1000 passes per load-bearing fact) to break the 0/17. Rewrite
+work for `tokenize_corpus.py`: iterate editions under `data/<festival>/<city>/<year>/` and mix
+`20_synthetic` + `_shared/knowledge` + `~10–30%` `_shared/replay` — today it reads one
+edition's `10_clean` only.
 
 ## Setup
 

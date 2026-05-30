@@ -28,6 +28,8 @@ import re
 import torch
 from transformers import AutoModelForImageTextToText, AutoTokenizer, BitsAndBytesConfig
 
+from config import MODEL_PATH
+
 ROOT = Path(__file__).resolve().parents[1]
 PROBES_FILE = ROOT.parent.parent / "apps" / "kandibuddy" / "docs" / "KANDI_CPT_PROBES.md"
 SYSTEM_PROMPT_FILE = ROOT.parent.parent / "apps" / "kandibuddy" / "prompts" / "chat" / "system.md"
@@ -270,7 +272,7 @@ def main():
         # load base from the ORIGINAL model path, then apply adapter via
         # PeftModel.from_pretrained which handles modules_to_save correctly.
         from peft import PeftModel
-        base_path = cfg.get("base_model_name_or_path", str(MODEL_PATH := Path("/home/marcos/Documents/dev/models/gemma-4-E2B-it")))
+        base_path = cfg.get("base_model_name_or_path", str(MODEL_PATH))
         base = AutoModelForImageTextToText.from_pretrained(
             base_path,
             torch_dtype=torch.bfloat16,

@@ -1,35 +1,39 @@
 #!/usr/bin/env python3
-"""Tokenize the corpus/ directory into a HF Datasets Arrow file.
+"""Tokenize one edition's cleaned corpus into a HF Datasets Arrow file.
 
-Walks corpus/{tier1_edc,tier2_releases,tier2_safety,tier2_reddit,tier3_history,general_anchor}/
-and reads every .md file. Each file becomes one document with <bos> and <eos>
-markers. All documents are concatenated and chunked into seq_len-sized blocks
-for causal-LM training.
+Points at a SINGLE edition: data/edc/las_vegas/2026/10_clean/. Walks its
+source subfolders (official/, youtube/, reference/, …), reads every .md file,
+adds <bos>/<eos> markers, and chunks into seq_len blocks for causal-LM training.
+
+NOTE — multi-edition (for the rewrite): the corpus is now partitioned per
+edition at data/<festival>/<city>/<year>/. Training across festivals means
+iterating those editions (+ data/_shared/) rather than this one hard-coded
+path. Also still UNMIXED here: the edition's 20_synthetic, data/_shared/knowledge,
+and data/_shared/replay (~10–30%). Wiring that mix is the fact-density rebuild's
+job, deliberately not done in this path-repoint.
 
 Run:
     python scripts/tokenize_corpus.py
 
 Output:
-    tokenized/corpus_v1.arrow — dataset with one column `input_ids` (int32),
-    each row is a seq_len-token block.
+    data/_build/30_tokenized/corpus_v1.arrow — one column `input_ids` (int32),
+    each row a seq_len-token block.
 """
-from pathlib import Path
 import json
 import sys
 
 from transformers import AutoTokenizer
 from datasets import Dataset
 
-ROOT = Path(__file__).resolve().parents[1]
-CORPUS_DIR = ROOT / "corpus"
-OUT_DIR = ROOT / "tokenized"
-MODEL_PATH = Path("/home/marcos/Documents/dev/models/gemma-4-E2B-it")
+from config import MODEL_PATH, CLEAN as CORPUS_DIR, TOKENIZED_DIR as OUT_DIR
 SEQ_LEN = 512   # batch=1/seq=512/vocab=262144/bf16 logits = 0.25 GB; CE backward ~0.5 GB
 
 def collect_documents() -> list[tuple[str, str]]:
-    """Return (relative_path, text) for every .md file under corpus/."""
+    """Return (relative_path, text) for every .md file under the edition's 10_clean/."""
     docs = []
     for md in sorted(CORPUS_DIR.rglob("*.md")):
+        if md.name == "README.md":      # stage signpost, not corpus content
+            continue
         rel = md.relative_to(CORPUS_DIR)
         text = md.read_text(encoding="utf-8").strip()
         if text:

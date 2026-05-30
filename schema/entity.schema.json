@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kandi-cpt/schema/entity.schema.json",
+  "title": "Entity record",
+  "description": "Substrate spec §2. One record per line in <edition>/15_structured/entities.jsonl. The 9 entity types §2.3 fully specifies are validated via conditional attribute sets; the other 10 are accepted with an open attributes object (extend per the §2.3 pattern as ingestion needs them).",
+  "type": "object",
+  "required": ["id", "entity_type", "name_canonical", "attributes", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+:(festival|edition|venue|stage|artist|set|day|gate|camping_zone|lodging_option|vendor|medical|transit_node|landmark|policy|service|community|tradition|incident_class):[a-z0-9_]+$",
+      "description": "§2.1 <festival_slug>:<entity_type>:<slug>, e.g. edc_lv_2026:stage:kinetic_field. Cross-edition entities (artist, venue — §2.2) use the reserved slug `global`, e.g. global:artist:tiesto, and live in data/_shared/entities_global/; per-edition `set`/`plays_at` triples reference them by id."
+    },
+    "entity_type": {
+      "enum": ["festival", "edition", "venue", "stage", "artist", "set", "day", "gate", "camping_zone", "lodging_option", "vendor", "medical", "transit_node", "landmark", "policy", "service", "community", "tradition", "incident_class"],
+      "description": "§2.2 closed enum"
+    },
+    "name_canonical": { "type": "string" },
+    "name_aliases": { "type": "array", "items": { "type": "string" } },
+    "attributes": { "type": "object", "description": "Type-specific attributes (§2.3). Open object; conditional sets below enforce required keys for specified types.", "additionalProperties": true },
+    "provenance": { "$ref": "metadata.schema.json#/$defs/provenance" },
+    "metadata": { "$ref": "metadata.schema.json" }
+  },
+  "allOf": [
+    { "if": { "properties": { "entity_type": { "const": "festival" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_festival" } } } },
+    { "if": { "properties": { "entity_type": { "const": "edition" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_edition" } } } },
+    { "if": { "properties": { "entity_type": { "const": "venue" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_venue" } } } },
+    { "if": { "properties": { "entity_type": { "const": "stage" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_stage" } } } },
+    { "if": { "properties": { "entity_type": { "const": "artist" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_artist" } } } },
+    { "if": { "properties": { "entity_type": { "const": "set" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_set" } } } },
+    { "if": { "properties": { "entity_type": { "const": "camping_zone" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_camping_zone" } } } },
+    { "if": { "properties": { "entity_type": { "const": "transit_node" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_transit_node" } } } },
+    { "if": { "properties": { "entity_type": { "const": "incident_class" } } }, "then": { "properties": { "attributes": { "$ref": "#/$defs/attrs_incident_class" } } } }
+  ],
+  "$defs": {
+    "attrs_festival": {
+      "type": "object", "additionalProperties": true,
+      "required": ["organizer", "country", "region", "latitude", "longitude", "timezone", "genre_primary", "attendance_capacity", "years_active", "founding_year", "recurring", "camping_supported", "multi_day", "official_url"],
+      "properties": {
+        "latitude": { "type": "number" }, "longitude": { "type": "number" },
+        "recurring": { "type": "boolean" }, "camping_supported": { "type": "boolean" }, "multi_day": { "type": "boolean" },
+        "founding_year": { "type": "integer" }, "attendance_capacity": { "type": "integer" }
+      }
+    },
+    "attrs_edition": {
+      "type": "object", "additionalProperties": true,
+      "required": ["festival_ref", "year", "dates_start", "dates_end", "attendance_actual", "weather_summary", "ticket_tiers", "ticket_price_range"],
+      "properties": { "year": { "type": "integer" }, "dates_start": { "type": "string", "format": "date" }, "dates_end": { "type": "string", "format": "date" } }
+    },
+    "attrs_venue": {
+      "type": "object", "additionalProperties": true,
+      "required": ["name", "address", "country", "region", "latitude", "longitude", "acreage", "terrain_type", "permanent_or_temporary", "cell_signal_quality", "shade_availability", "accessibility_rating", "prior_festivals_hosted"],
+      "properties": {
+        "latitude": { "type": "number" }, "longitude": { "type": "number" },
+        "terrain_type": { "enum": ["concrete", "dirt", "grass", "mixed"] },
+        "cell_signal_quality": { "enum": ["excellent", "mixed", "poor"] },
+        "shade_availability": { "enum": ["high", "medium", "low", "none"] }
+      }
+    },
+    "attrs_stage": {
+      "type": "object", "additionalProperties": true,
+      "required": ["name_canonical", "venue_ref", "genre_focus", "capacity_estimate", "peak_capacity_estimate", "sound_system_type", "production_scale", "coordinates_relative", "acoustic_bleed", "peak_density_time_windows", "vibe_descriptors"],
+      "properties": {
+        "production_scale": { "enum": ["mainstage", "secondary", "tertiary", "intimate"] },
+        "acoustic_bleed": { "enum": ["high", "medium", "low"] },
+        "vibe_descriptors": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attrs_artist": {
+      "type": "object", "additionalProperties": true,
+      "required": ["name_canonical", "genre_tags", "tier", "home_country", "active_years", "signature_track_ids", "crowd_draw_score", "set_style", "typical_set_length_minutes", "b2b_partners"],
+      "properties": {
+        "tier": { "enum": ["headliner", "sub-headliner", "mid", "opener", "underground"] },
+        "set_style": { "enum": ["peak-time", "sunrise", "hard", "melodic", "experimental"] },
+        "crowd_draw_score": { "type": "number", "minimum": 1, "maximum": 10 },
+        "genre_tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attrs_set": {
+      "type": "object", "additionalProperties": true,
+      "required": ["artist_ref", "stage_ref", "edition_ref", "day_ref", "start_time", "end_time", "slot_type", "special_format", "conflict_score", "expected_density"],
+      "properties": {
+        "slot_type": { "enum": ["opener", "mid", "sub-headliner", "headliner", "closing", "sunrise"] },
+        "special_format": { "enum": ["live", "dj", "hybrid", "ID-set", "VIP-set"] },
+        "b2b_with": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attrs_camping_zone": {
+      "type": "object", "additionalProperties": true,
+      "required": ["name", "edition_ref", "tier", "cost_usd", "capacity", "includes", "proximity_to_main_stage_meters", "proximity_to_medical_meters", "noise_level", "recommended_for", "restrictions"],
+      "properties": {
+        "tier": { "enum": ["basic_tent", "car_camping", "premium_tent", "glamping", "rv_no_hookup", "rv_hookup", "luxury_rv"] },
+        "noise_level": { "enum": ["loud", "medium", "quiet"] },
+        "includes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attrs_transit_node": {
+      "type": "object", "additionalProperties": true,
+      "required": ["type", "edition_ref", "capacity", "cost", "walk_time_to_main_gate_minutes", "peak_congestion_windows", "pickup_logistics_notes", "surge_pricing_observed"],
+      "properties": { "type": { "enum": ["parking", "rideshare", "shuttle", "metro", "bike", "walk-in"] } }
+    },
+    "attrs_incident_class": {
+      "type": "object", "additionalProperties": true,
+      "required": ["class", "edition_refs", "frequency", "peak_time_windows", "peak_locations", "harm_reduction_resources", "escalation_threshold"],
+      "properties": { "class": { "enum": ["heat", "substance", "injury", "violence", "gate", "weather", "security"] } }
+    }
+  }
+}

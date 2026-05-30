@@ -1,0 +1,19 @@
+{
+  "id": "edc_lv_2026:discourse:7f3a9c2e-1b4d-4e8a-9c2e-1b4d4e8a9c2e",
+  "anchors": ["edc_lv_2026:stage:bass_pod", "edc_lv_2026:service:water_station_basspod"],
+  "topic": "navigation_and_logistics",
+  "subtopic": "crowd_density",
+  "audience": ["veteran", "first-timer"],
+  "stance": "warning",
+  "content": "Bass Pod was absolutely packed when Subtronics came on Friday — couldn't move from about 10:30 on. And the water refill lines right by there were 30+ min at peak, so fill up before you walk over.",
+  "source": {
+    "url": "https://reddit.com/r/electricdaisycarnival/comments/abc123/",
+    "domain": "reddit.com",
+    "domain_class": "community-discussion",
+    "scrape_iso": "2026-05-15T14:32:00Z"
+  },
+  "lifted_claims": [
+    "edc_lv_2026:triple:gets_busy_at_basspod_fri2230",
+    "edc_lv_2026:triple:service_constraint_water_30min"
+  ]
+}
