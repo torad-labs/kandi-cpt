@@ -158,10 +158,12 @@ def build_model(cfg):
                 p.requires_grad_(False)
                 frozen += p.numel()
         log(f"froze {frozen/1e9:.2f}B embedding params (embed_tokens + PLE + tied lm_head)")
-    # Gemma4 KV-sharing layers read `shared_kv_states`, which earlier layers only populate
-    # when a cache exists (use_cache=True, see modeling_gemma4 L1250-1253). So a no-cache
-    # training forward without use_cache KeyErrors on 'sliding_attention'. Grad-checkpointing
-    # needs use_cache=False — which is therefore INCOMPATIBLE with Gemma4 KV-sharing; run AC off.
+    # Gemma4 KV-sharing layers (15–34) read `shared_kv_states[layer_type]`, populated by the
+    # store_full_length_kv layer. That population (modeling_gemma4 L1252-3) is gated on the layer's
+    # store_full_length_kv attr, NOT on use_cache — so it works with use_cache=False too. The earlier
+    # 'sliding_attention' KeyError was FSDP2's tree_map rebuilding the plain-dict shared_kv_states,
+    # fixed by passing it as a UserDict. So activation checkpointing IS compatible with KV-sharing:
+    # validated at seq512 (loss finite/stable, 11.2GB — less than seq256 without AC). AC needs use_cache=False.
     model.config.use_cache = not bool(cfg.get("gradient_checkpointing"))
     if cfg.get("gradient_checkpointing"):
         model.gradient_checkpointing_enable()
@@ -259,7 +261,8 @@ def main():
                     help="run N steps on random tokens (no dataset) to validate loop + memory")
     ap.add_argument("--precision", choices=["bf16", "fp4", "nvfp4"], help="override config precision")
     ap.add_argument("--no-ac", action="store_true",
-                    help="disable gradient checkpointing (it breaks FSDP2 reshard — PyTorch #175406)")
+                    help="disable gradient checkpointing (uses more memory; only fits short seq). "
+                         "Default (AC on) is validated with KV-sharing and fits seq512 at ~11GB.")
     ap.add_argument("--seq-len", type=int, help="override seq_len (e.g. smaller for smoke memory headroom)")
     args = ap.parse_args()
     cfg = yaml.safe_load(open(args.config))
