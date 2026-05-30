@@ -1,0 +1,37 @@
+# Full-param CPT — EDC Las Vegas 2026, Gemma 4 E2B text decoder.
+# Precision policy: NO FP32 tensors (bf16 params/grads, 8-bit AdamW states, FP4 via QAT).
+run_name: edc_lv_2026_cpt_v1
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+precision: bf16            # bf16 (Phase 1 gate) | nvfp4 (Phase 2 QAT)
+
+# data
+tokenized: data/_build/30_tokenized/corpus_v1.arrow   # column `input_ids` = seq_len blocks
+seq_len: 512
+micro_batch_size: 1
+grad_accum: 16
+
+# optimizer — 8-bit AdamW (no FP32 states); bf16 master weights
+lr: 5.0e-5
+min_lr: 5.0e-6
+weight_decay: 0.0
+betas: [0.9, 0.95]
+adam_eps: 1.0e-8
+grad_clip: 1.0
+warmup_steps: 20
+max_steps: 200            # smoke value; raise for the real run
+decay_frac: 0.2           # WSD: last 20% decays to min_lr
+
+# memory levers (2x 16 GB)
+gradient_checkpointing: true
+freeze_embeddings: true   # 262K-vocab embeds + (tied) lm_head; CPT uses existing tokens
+
+# NVFP4 QAT selective precision (only used when precision == nvfp4)
+nvfp4:
+  skip_lm_head: true
+  skip_embeddings: true
+  bf16_first_layers: 2
+  bf16_last_layers: 5     # ~15% of 35 text layers kept BF16
+
+# logging / checkpoint
+log_every: 5
+save_every: 100

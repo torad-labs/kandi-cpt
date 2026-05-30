@@ -1,0 +1,18 @@
+# ast-grep guard: enforce the NO-FP32-tensors precision policy in training code.
+# Blackwell tensor cores accumulate in FP32 in hardware (free) — we never materialize
+# FP32 tensors ourselves. Run before each training launch:
+#   ast-grep scan --rule tools/lint/no_fp32.yml scripts/
+# (or via the ast-grep MCP find_code_by_rule on project_folder=scripts/)
+# Expect ZERO matches. A hit = an FP32 materialization to remove (use bf16).
+id: no-fp32-tensors
+language: python
+severity: error
+message: "FP32 tensor materialization — use bf16 (HW tensor cores accumulate in FP32 for free)."
+rule:
+  any:
+    - pattern: torch.float32
+    - pattern: torch.float
+    - pattern: dtype=torch.float32
+    - pattern: $X.float()
+    - pattern: $X.to(torch.float32)
+    - pattern: $X.to(dtype=torch.float32)

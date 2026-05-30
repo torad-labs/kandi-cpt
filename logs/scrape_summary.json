@@ -1,0 +1,692 @@
+{
+  "festival": "edc",
+  "sources": [
+    "mfw",
+    "official",
+    "youtube",
+    "reddit",
+    "news"
+  ],
+  "total_docs": 1962,
+  "coverage": {
+    "las_vegas/2011": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2012": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2017": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2019": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2021": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2022": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2023": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2024": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 9,
+      "reddit": 3,
+      "news": 6
+    },
+    "las_vegas/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "las_vegas/2026": {
+      "mfw": 1,
+      "official": 3,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "orlando/2011": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2012": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "orlando/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2017": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "orlando/2019": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2021": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2022": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2023": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2024": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "orlando/2026": {
+      "mfw": 1,
+      "official": 3,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 8
+    },
+    "mexico_city/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2017": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2019": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2020": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2022": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2023": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2024": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "mexico_city/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "mexico_city/2026": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "los_angeles/1997": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/1999": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2000": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2001": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2002": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 9,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2007": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2008": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2009": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "los_angeles/2010": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_bernardino/2003": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "san_bernardino/2004": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "san_bernardino/2005": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "san_bernardino/2006": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 7
+    },
+    "denver/2008": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 7
+    },
+    "denver/2009": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 7
+    },
+    "denver/2010": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 8
+    },
+    "denver/2011": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "dallas/2010": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "dallas/2011": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "new_york_nj/2012": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "new_york_nj/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "new_york_nj/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "new_york_nj/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "new_york_nj/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "chicago/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "san_juan/2009": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "san_juan/2010": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_juan/2011": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_juan/2012": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_juan/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_juan/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "san_juan/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "london/2013": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "milton_keynes/2014": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "milton_keynes/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "milton_keynes/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "sao_paulo/2015": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "new_delhi/2016": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 3,
+      "news": 8
+    },
+    "shanghai/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 8
+    },
+    "zhuhai/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 6
+    },
+    "suzhou/2023": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 9,
+      "reddit": 1,
+      "news": 5
+    },
+    "suzhou/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 5
+    },
+    "chiba/2018": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 7
+    },
+    "chiba/2019": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 8
+    },
+    "seoul/2019": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 8
+    },
+    "incheon/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 7
+    },
+    "incheon/2026": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 7
+    },
+    "portimao/2022": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 9,
+      "reddit": 0,
+      "news": 8
+    },
+    "phuket/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "phuket/2026": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 8
+    },
+    "medellin/2026": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 0,
+      "news": 7
+    },
+    "edsea/2023": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 2,
+      "news": 8
+    },
+    "edsea/2024": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 8
+    },
+    "edsea/2025": {
+      "mfw": 1,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 7
+    },
+    "edsea/2026": {
+      "mfw": 0,
+      "official": 0,
+      "youtube": 10,
+      "reddit": 1,
+      "news": 7
+    }
+  }
+}
