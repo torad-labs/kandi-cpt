@@ -4,7 +4,9 @@
 //!   festival-factory plan    --festival edc --edition las_vegas/2026
 //!   festival-factory hydrate --festival edc --edition las_vegas/2026 [--dry-run] [--limit N]
 
+mod build_corpus;
 mod config;
+mod disjoint;
 mod hydrate;
 mod openrouter;
 mod settimes;
@@ -35,6 +37,8 @@ enum Cmd {
     Hydrate(HydrateArgs),
     /// Emit the artist-last set-time floor lines (one per line) — for parity-diff vs the Python port.
     SetTimes(Target),
+    /// Assemble the V6 relational corpus (base+disjoint+set-times); print texts (stdout) + counts (stderr).
+    BuildCorpus(Target),
 }
 
 #[derive(Parser)]
@@ -74,6 +78,7 @@ fn main() -> anyhow::Result<()> {
         Cmd::Plan(t) => plan(t),
         Cmd::Hydrate(a) => hydrate_cmd(a),
         Cmd::SetTimes(t) => set_times_cmd(t),
+        Cmd::BuildCorpus(t) => build_corpus_cmd(t),
     }
 }
 
@@ -82,6 +87,20 @@ fn set_times_cmd(t: Target) -> anyhow::Result<()> {
     let store = TripleStore::load(cfg.structured_dir())?;
     for l in settimes::set_time_lines(&cfg, &store)? {
         println!("{}", l.text);
+    }
+    Ok(())
+}
+
+fn build_corpus_cmd(t: Target) -> anyhow::Result<()> {
+    let cfg = FestivalConfig::load_edition(&t.root, &t.festival, &t.edition)?;
+    let store = TripleStore::load(cfg.structured_dir())?;
+    let r = build_corpus::build(&cfg, &store)?;
+    eprintln!(
+        "base {} (dropped {} refusal, stripped {} co-mention) + disjoint {} + set-time {} = {} lines",
+        r.n_base, r.dropped_refusal, r.stripped_comention, r.n_disjoint, r.n_settime, r.texts.len()
+    );
+    for t in &r.texts {
+        println!("{t}");
     }
     Ok(())
 }

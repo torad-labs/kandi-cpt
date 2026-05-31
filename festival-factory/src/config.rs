@@ -51,9 +51,22 @@ pub struct FestivalConfig {
     pub days: BTreeMap<String, DayInfo>,
     pub stages: BTreeMap<String, Stage>,
 
+    /// Confusable groups (V6 disjoint-context): members sharing a stage+slot but distinguished by day.
+    /// The single source of truth shared by the geometry probe + the disjoint-context generator.
+    #[serde(default)]
+    pub confusable_groups: Vec<ConfusableGroup>,
+
     /// Filled in by `load` — the edition directory the config was read from (root for all stage dirs).
     #[serde(skip)]
     pub edition_dir: PathBuf,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct ConfusableGroup {
+    pub key: String,
+    pub members: Vec<String>,
+    pub stage: String,
+    pub day: String,
 }
 
 impl FestivalConfig {
