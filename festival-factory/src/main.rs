@@ -7,6 +7,7 @@
 mod config;
 mod hydrate;
 mod openrouter;
+mod settimes;
 mod surface;
 mod taxonomy;
 mod triples;
@@ -32,6 +33,8 @@ enum Cmd {
     Plan(Target),
     /// Generate the grounded, faithfulness-gated relational corpus (tagged JSONL).
     Hydrate(HydrateArgs),
+    /// Emit the artist-last set-time floor lines (one per line) — for parity-diff vs the Python port.
+    SetTimes(Target),
 }
 
 #[derive(Parser)]
@@ -70,7 +73,17 @@ fn main() -> anyhow::Result<()> {
     match Cli::parse().cmd {
         Cmd::Plan(t) => plan(t),
         Cmd::Hydrate(a) => hydrate_cmd(a),
+        Cmd::SetTimes(t) => set_times_cmd(t),
     }
+}
+
+fn set_times_cmd(t: Target) -> anyhow::Result<()> {
+    let cfg = FestivalConfig::load_edition(&t.root, &t.festival, &t.edition)?;
+    let store = TripleStore::load(cfg.structured_dir())?;
+    for l in settimes::set_time_lines(&cfg, &store)? {
+        println!("{}", l.text);
+    }
+    Ok(())
 }
 
 fn plan(t: Target) -> anyhow::Result<()> {

@@ -119,7 +119,7 @@ def load_facts():
     return a_stage, a_day, sorted(stages)
 
 
-def score(model, tok, label, a_stage, a_day, stage_slugs):
+def score(model, tok, label, a_stage, a_day, stage_slugs, rank=ranked_batch):
     stage_cands = [f" {camel(s)}" for s in stage_slugs]
     slug_of = {f" {camel(s)}": s for s in stage_slugs}
     day_cands = [f" {d}" for d in DAYS3]
@@ -129,7 +129,7 @@ def score(model, tok, label, a_stage, a_day, stage_slugs):
     st_mrr = 0.0
     for a, trueset in a_stage.items():
         for name, tpl in STAGE_TPLS:
-            r = ranked_batch(model, tok, tpl(a), stage_cands)
+            r = rank(model, tok, tpl(a), stage_cands)
             hit = int(slug_of[r[0]] in trueset)
             st_hit += hit
             st_n += 1
@@ -140,7 +140,7 @@ def score(model, tok, label, a_stage, a_day, stage_slugs):
     dy_hit = dy_n = 0
     for a, trueset in a_day.items():
         for name, tpl in DAY_TPLS:
-            r = ranked_batch(model, tok, tpl(a), day_cands)
+            r = rank(model, tok, tpl(a), day_cands)
             hit = int(r[0].strip() in trueset)
             dy_hit += hit
             dy_n += 1
@@ -168,16 +168,19 @@ def main():
     print("CPT-faithful cloze — no chat template, camelCase stages, forced-choice by continuation likelihood:\n")
 
     base = load_text_model_bf16(args.device)
-    print(f"  batched-scorer == sequential on base: {_validate_batched(base, tok)} "
-          f"(parallel inference; ~Ncands× fewer forward passes)\n")
-    res = {"base": score(base, tok, "base", a_stage, a_day, stage_slugs)}
+    # Use the fast batched scorer ONLY if it is exactly equivalent to the canonical sequential probe on
+    # this model; otherwise fall back to sequential so the numbers stay trustworthy + comparable to prior
+    # runs. (Batched GEMM reduction order can flip near-tie rankings — correctness beats the speedup.)
+    rank = ranked_batch if _validate_batched(base, tok) else ranked
+    print(f"  scorer: {'batched (validated == sequential)' if rank is ranked_batch else 'sequential (batched failed equivalence — falling back for trustworthy numbers)'}\n")
+    res = {"base": score(base, tok, "base", a_stage, a_day, stage_slugs, rank=rank)}
     del base
     torch.cuda.empty_cache()
 
     for ck in args.checkpoints:
         m = Gemma4ForCausalLM.from_pretrained(ck, dtype=torch.bfloat16,
                                               attn_implementation="sdpa").to(args.device).eval()
-        res[ck] = score(m, tok, ck.split("/")[-1], a_stage, a_day, stage_slugs)
+        res[ck] = score(m, tok, ck.split("/")[-1], a_stage, a_day, stage_slugs, rank=rank)
         del m
         torch.cuda.empty_cache()
 
