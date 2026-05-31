@@ -1,0 +1,232 @@
+# EDC Las Vegas 2023 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2023/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2023 Artist Lineup
+
+- 12th Planet
+- 8kays
+- A Hundred Drums
+- Abana
+- Above & Beyond
+- Acraze
+- Acraze b2b Noizu
+- Adrenalize
+- Afrojack
+- AK Sports
+- Alison Wonderland
+- Alok
+- Anabel Englund
+- Anden
+- Andy C
+- Armin van Buuren
+- ARMNHMR
+- Artbat
+- atDusk
+- Audiofreq
+- Azzecca
+- Baggi
+- Barely Alive
+- Ben UFO
+- Billy Gillies
+- Black Tiger Sex Machine
+- Blanke
+- Blastoyz
+- Bleu Clair
+- Boogie T
+- Borgore
+- Boris Brejcha
+- Born Dirty
+- Brennan Heart
+- Camden Cox
+- Capozzi
+- Carola
+- Champagne Drip
+- Chaney
+- Chase & Status
+- Chris Lake
+- Chris Lorenzo
+- CID
+- Cloverdale
+- Code Black
+- Coone
+- Cosmic Gate
+- D-Sturb
+- Da Tweekaz
+- Danny Daze
+- Darren Styles
+- David Guetta
+- David Morales
+- Deadly Guns
+- Deeper Purpose
+- Dennis Ferrer
+- Deorro
+- Dimension
+- Dirt Monkey
+- Disco Dom
+- Disco Lines
+- DJ AniMe
+- DJ Isaac
+- DJ Minx
+- Dom Dolla
+- Dombresky
+- Dr Phunk
+- Duke Dumont
+- Dustin Husain
+- Eli Brown
+- Eliminate
+- Ellen Allien
+- Enamour
+- Eptic
+- Excision
+- Fallon
+- Ferreck Dawn
+- Ferry Corsten
+- Fisher
+- Frame
+- Franky Wah
+- Fred Everything
+- Friction
+- FrostTop
+- FuntCase
+- Galantis
+- Gareth Emery
+- Gentlemens Club
+- Giuseppe Ottaviani
+- Goodboys
+- Griz
+- Griztronics
+- Habstrakt
+- HANA
+- Hannah Wants
+- Hint of Lavender
+- HOL!
+- Hot Since 82
+- HUGEL
+- HVDES
+- I Hate Models
+- Imanu
+- J. Worra
+- Jaded
+- James Hype
+- jamesjamesjames
+- Jeff Mills
+- Jerome Isma-Ae
+- John Bryars
+- Jorza
+- Joshwa
+- JSTJR
+- Kaivon
+- Kaleena Zanders
+- Kaskade
+- Kaskade Redux
+- Kaytranada
+- KETTAMA
+- Kill Script
+- Korolova
+- Kream
+- Lady Faith
+- Lady Sinclair
+- Lane 8
+- Layla Benitez
+- Le Youth
+- Lenny Dee
+- Levenkhan
+- Lil Texas
+- Loco Dice
+- Loud Luxury
+- Louie Vega
+- Maarten de Jong
+- Marc V
+- Marshmello
+- Marshmello
+- Marten Hørger
+- Martin Garrix
+- Matroda
+- Matt Fax
+- Mau P
+- Meduza
+- Memba
+- Metrik b2b Grafix
+- Miane
+- Michael Bibi
+- Midnight Tyrannosaurus
+- Mike Dunn
+- Miss Dre
+- Mochakk
+- Modapit
+- Moody Good
+- Morten
+- Mrotek
+- Nala
+- Netsky
+- Noizu
+- Nostalgix
+- Odd Mob
+- Omar Santana
+- Paco Osuna
+- Patrick Topping
+- Paul Denton
+- Pauline Herr
+- Peekaboo
+- Pretty Pink
+- Ray Volpe
+- Reaper
+- Rebelion
+- Riot Ten
+- Said The Sky
+- Salute
+- San Pacho
+- SayMyName
+- Shei
+- Sherelle
+- Ship Wrek
+- Sidepiece
+- Slander
+- Softest Hard
+- Sonny Fodera
+- Soren
+- Sound Rush
+- Space Laces
+- Space Motion
+- Spencer Brown
+- SUAE
+- Sub Zero Project
+- Subtronics
+- Sullivan King
+- Sultan + Shepard
+- Svdden Death
+- Tchami
+- The Martinez Brothers
+- Things you Say
+- Tiësto
+- TOBEHONEST
+- Todd Terry
+- Tom & Collins
+- Township Rebellion
+- Triode
+- Tsu Nami
+- Valentino Khan
+- Vini Vici
+- Warface
+- Warface
+- Wax Motif
+- Westend
+- Will Atkinson
+- Will Clarke
+- Wooli
+- Yellow Claw
+- Yetep
+- Yoshi & Razner
+- Yotto
+- Zedd
+- Zeds Dead

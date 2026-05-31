@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9bdef4e139fee37ab499e1dbd0f64d03a9cff637405020b3a1e8f6d62177eeea",
+  "clean_sha256": "b8d29acddfa2cff1fd23f9e543ec83bbe9a452095158f66b1ff6bcc3ed4034c3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1061,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xMtpWu4c7eQ",
+  "title": "EDSea 2024 Trailer \ud83d\udef3\ufe0f\u26a1\ufe0f",
+  "quality_score": 0.712,
+  "difficulty_score": 0.3161,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "075f35716acdc51625c50fd0cf4885378ec9b6d3e2aa33378ca40fb58fd85488",
+  "clean_sha256": "bfe61849d8733ca2b45f24c2e48e7f5add9f0a0715f5c3baacc89e098873b728",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 san_juan 2015",
+  "quality_score": 0.7596,
+  "difficulty_score": 0.0568,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

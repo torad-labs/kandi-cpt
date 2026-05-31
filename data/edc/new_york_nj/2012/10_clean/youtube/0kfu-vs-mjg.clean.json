@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7b2d9fbd299392107bc0ee607c8ed9c037435f763cac996e57b8f543b44b95d3",
+  "clean_sha256": "d66a9552ea24b33bc9bf8f44f25a564f5eaa03cd3ba5ac731cc930ea3661c6b3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 135,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0kFU_vS-mjg",
+  "title": "VICTOR CALDERONE @ Electric Daisy NY/NJ 05/20/12 \"Johnny Dancing\"",
+  "quality_score": 0.6225,
+  "difficulty_score": 0.7976,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

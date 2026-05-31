@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9c7033ac7900623fcc9203c0d7c068597c8409b918ad8b046bdc1023224439a1",
+  "clean_sha256": "b0d72df24ea3d0680be3923fb4caf8de7507002eaf93f232c5226fa6e099bd5c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 223,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=18fVtD4NpS0",
+  "title": "Illustrated - EDC Orlando 2014 (USA) \u2013 07.11.2014",
+  "quality_score": 0.6089,
+  "difficulty_score": 0.3466,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

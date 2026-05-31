@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f44588cebdb952213c70983e9f234d27aa111680a92622c16a007c79683f8a0b",
+  "clean_sha256": "0514a55e05f727d49aac46df39bf17240e4a192d7ecc83d0dc21d1fa52ce1be9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 193,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_I560_7Lvbg",
+  "title": "Electric Daisy Carnival National Orange Show San Bernardino 2005 part 3",
+  "quality_score": 0.6521,
+  "difficulty_score": 0.702,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

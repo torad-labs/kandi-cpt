@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b3563c4d9ab88bbee971c92f52cdef89b53b544a63d515df65494a43576199fc",
+  "clean_sha256": "b3796d38d1533d1244d6316d231606fce364f082c9d8a906fbc413a994197702",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 74,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5KOpOVZCwWw",
+  "title": "Claptone: Live @ EDC Mexico (Sunset Set) |  | Livestream",
+  "quality_score": 0.6218,
+  "difficulty_score": 0.5806,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

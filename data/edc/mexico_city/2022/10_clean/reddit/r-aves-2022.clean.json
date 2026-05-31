@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "92115a5e9a71930876f137a0af8955b541ecb223a21e91da485bdd6f3aa8eaa9",
+  "clean_sha256": "4b9a6ce6c6e38df4371a17f3c840d50423f7752a76d9850f3e4988a1819956bc",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2022",
+  "quality_score": 0.6982,
+  "difficulty_score": 0.5527,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d6dcd72baf5e71c9e6e528560c0f3ed02b82ce185c3844d486dd02f3998ebe07",
+  "clean_sha256": "18f2523e6e381abfd97482208654adec9317001001565c544010f0606eead65b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 58,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cA3r4sWoWHg",
+  "title": "Flux Pavilion - EDC Puerto Rico 2015",
+  "quality_score": 0.6316,
+  "difficulty_score": 0.6941,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "523fb4dbab942e0f1f2ad48863a10cae62039aea7d06c018be938527ab5d02fd",
+  "clean_sha256": "78dff0126f010749c095dfe8aac9afdff32cbb08969cce7a7a516710a67baa3e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 55,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AqOZuGhaoz4",
+  "title": "EDC JAPAN",
+  "quality_score": 0.6062,
+  "difficulty_score": 0.6721,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

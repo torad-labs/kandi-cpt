@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bf2307d80dab177fdb9a9e96ac2201a9659c9cccd1787d20d62f6fe17615f895",
+  "clean_sha256": "9a9e0643f23c9952a4126b811763bc1a2e02bcb7888210e8392b6843cfd9a8d7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 71,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=KlxG5m23HlQ",
+  "title": "DJ Dan and Donald Glaude rippin it at EDC 2008! Hot Fire!!!",
+  "quality_score": 0.6197,
+  "difficulty_score": 0.8329,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

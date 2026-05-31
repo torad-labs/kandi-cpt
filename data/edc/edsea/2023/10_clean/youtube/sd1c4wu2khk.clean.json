@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7336a149262243af68dbf73c87cc8d9693893723951b8c34171e815fbb76a565",
+  "clean_sha256": "a9a77f7e22210a04678e249d087714186612d245d773699b4cb7d15e31feb439",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 161,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=sd1c4wU2Khk",
+  "title": "EDSea 2024 - Another Level !",
+  "quality_score": 0.6142,
+  "difficulty_score": 0.7125,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

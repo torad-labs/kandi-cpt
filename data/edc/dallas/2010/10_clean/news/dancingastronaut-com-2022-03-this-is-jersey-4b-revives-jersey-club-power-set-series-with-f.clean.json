@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "90fa9410ca684d776f77d20ff4682d0cbe92d37baccafb3e5b88a895f7dca7f8",
+  "clean_sha256": "6bf627c6adbd867d5d61969bea981edf0420801e2e75f9b5298c59c0b9c8b061",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 298,
+    "keep_ratio": 0.405,
+    "anchor_ratio": 0.356
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2022/03/this-is-jersey-4b-revives-jersey-club-power-set-series-with-first-installment-in-six-years/",
+  "title": "'This is Jersey'\u20144B revives 'Jersey Club Power Set' series with first installment in six years - Dancing Astronaut",
+  "quality_score": 0.8728,
+  "difficulty_score": 0.5692,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

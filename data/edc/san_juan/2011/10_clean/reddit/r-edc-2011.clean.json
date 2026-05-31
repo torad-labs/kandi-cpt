@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "1eca191d4d6e498eed743ebd4fa1b07609cae197eb2ef8552766c1733dffb6f6",
+  "clean_sha256": "c6d5202acf05c19e8bc4a08eb9976c75c19d4d92aa130f43935c13cffd1f3096",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=san+juan+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 san_juan 2011",
+  "quality_score": 0.7915,
+  "difficulty_score": 0.5748,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

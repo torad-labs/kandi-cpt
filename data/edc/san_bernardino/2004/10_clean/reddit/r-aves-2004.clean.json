@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "bd745101dba0f3a87663e78dc69545130d4008493cb5956802c5521b0266c3ee",
+  "clean_sha256": "5db232b123937f5e4e2993ce4aeb92c1b9efcc7ea97cac2b2fbc5198c16d1e95",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=san+bernardino+2004&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 san_bernardino 2004",
+  "quality_score": 0.7528,
+  "difficulty_score": 0.5348,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

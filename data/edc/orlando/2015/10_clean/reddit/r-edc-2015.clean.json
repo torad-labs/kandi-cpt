@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "4220469ebc5b6ab5c66f289ca1739abab4b0e81fdafe715f893b75907a8d46e8",
+  "clean_sha256": "5ae742f8afe140daa4d60065a7d9b255baa82842a4d7a7636d80b5daa91539e1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 orlando 2015",
+  "quality_score": 0.6885,
+  "difficulty_score": 0.6293,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

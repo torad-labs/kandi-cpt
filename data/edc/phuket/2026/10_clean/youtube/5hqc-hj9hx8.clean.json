@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e20ab3f2534aa6e51f35e9608b93a53a1f95f73f3fc996e874a91ed5f58605e0",
+  "clean_sha256": "c65e303c6097a15b56f937d52edda29dbfbc01b7568694ed39f7104c532d164e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1832,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5HqC_hJ9hX8",
+  "title": "Planning for EDC THAILAND 2026? WATCH THIS BEFORE YOU GO! 2025 VIP EXPERIENCE | Full Festival Tour!",
+  "quality_score": 0.8874,
+  "difficulty_score": 0.5831,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

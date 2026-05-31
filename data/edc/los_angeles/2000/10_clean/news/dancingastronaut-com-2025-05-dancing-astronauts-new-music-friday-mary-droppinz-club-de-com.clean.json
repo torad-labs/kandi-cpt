@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "1ac2bc464f0a042597c9d92de237dcac4d1a21bbe6e11b349f56338829fea3b5",
+  "clean_sha256": "c7a4ba89606c42c41bf11872733dc0fed2db11c61e6c8eee43182cecd1a59826",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 706,
+    "keep_ratio": 0.597,
+    "anchor_ratio": 0.295
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2025/05/dancing-astronauts-new-music-friday-mary-droppinz-club-de-combat-blonde-maze-and-more-may-23-2025/",
+  "title": "Dancing Astronaut's New Music Friday: Mary Droppinz, Cl\u00fcb De Combat, Blonde Maze, and more (May 23, 2025) - Dancing Astronaut",
+  "quality_score": 0.8998,
+  "difficulty_score": 0.5813,
+  "cluster_id": 1,
+  "curation_status": "drop"
+}

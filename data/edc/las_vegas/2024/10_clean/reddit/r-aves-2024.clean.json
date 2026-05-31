@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "dd0dca113e15c58a13adf55f252191319740f02b41409814015f26d79b19179c",
+  "clean_sha256": "2818d698ab6a4ba8b7c248dadd77dec138cfa1c3a6a594a0976834826dffb9a2",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2024",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6463,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

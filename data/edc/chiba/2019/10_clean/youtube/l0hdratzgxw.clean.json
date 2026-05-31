@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "17bcc67662cb030865486a84a56e2e7d7ba4497a0bf6ea5267afd36420df9cf0",
+  "clean_sha256": "5ea05e7afbee93f8dce7cc8e9eae1a1c8cb952ab079b0974c959405b4531cffd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 63,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L0hDraTzGXw",
+  "title": "Armin van Buuren Full\u3010EDC JAPAN 2019.5.11.DAY1\u3011HD",
+  "quality_score": 0.6037,
+  "difficulty_score": 0.7658,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

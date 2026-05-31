@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ee95e79f05ab0c5868283284bdb501373e7f7ae331a681d556687a32a6e30209",
+  "clean_sha256": "88aba2eb8f466a9ef5789911e574397cc5b06956ece38d47011fb97f29816b8c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 698,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3eKZ_xSr80g",
+  "title": "Ti\u00ebsto Live @ EDC Las Vegas 2022",
+  "quality_score": 0.6798,
+  "difficulty_score": 0.254,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

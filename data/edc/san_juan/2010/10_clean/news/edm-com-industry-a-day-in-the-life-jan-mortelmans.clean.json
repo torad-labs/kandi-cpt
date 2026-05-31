@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "a48a1cc23e14f6fcb6f25a4a2008c9fa6e837cd432b75d2d3f54ac56b93f5832",
+  "clean_sha256": "c82199810142a9a4c4958025d44cff6ee72ae552b0fb015745b996050390432a",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1467,
+    "keep_ratio": 0.745,
+    "anchor_ratio": 0.167
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/industry/a-day-in-the-life-jan-mortelmans/",
+  "title": "What Does It Take to Be a General Manager and Booker for a Music Festival? - EDM",
+  "quality_score": 0.8666,
+  "difficulty_score": 0.6438,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

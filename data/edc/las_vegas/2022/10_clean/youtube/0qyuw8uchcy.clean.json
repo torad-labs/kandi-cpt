@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0ade070aabdbccf06676abb529390eb04bebad6cc08972e45f9b1a2c37a0c929",
+  "clean_sha256": "c15303c8e713f295c343f0be42135eb88cf1061ffb17061aa66351fe83715917",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 248,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0QYuw8UCHcY",
+  "title": "Deorro @ EDC Las Vegas 2022 - Kinetic Field [Full Set]",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.4907,
+  "cluster_id": 2,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8da3a932c5c5f05d40345fff5c2fe9215222417b2007eaac4e580baf0fdd1787",
+  "clean_sha256": "b9fc54f823d34676f1a1e948f1d887e1c165a4d1ce1512b89d1a12c3e1ad66c2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 230,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=DRxEsHLK6nc",
+  "title": "EDC Korea 2026 - Official Announce Video",
+  "quality_score": 0.6545,
+  "difficulty_score": 0.7151,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

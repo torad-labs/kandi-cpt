@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "122e8003c285dc2441e1532c783a02288e7cac2fa8c8fb16be68182773e79e46",
+  "clean_sha256": "43b8cc7b58848a195ef54daa7822c27a8a78c8b1cf87b9e908e21672def7a3dc",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 831,
+    "keep_ratio": 0.67,
+    "anchor_ratio": 0.241
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/06/10-must-hear-live-sets-edc-las-vegas-2016/",
+  "title": "10 must hear sets from EDC Las Vegas 2016",
+  "quality_score": 0.9,
+  "difficulty_score": 0.6183,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a40478285792d4bf70c26c88811fe2e70a2f71980bf0d64283a69ad8809aff93",
+  "clean_sha256": "a399a34d8bb8e327725e0af203d73211606454b2f10f5f0c1256e7df1109fc0c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2558,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Zo47D-ZeMmI",
+  "title": "EDC Las Vegas 2016 Official Trailer",
+  "quality_score": 0.8384,
+  "difficulty_score": 0.4054,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

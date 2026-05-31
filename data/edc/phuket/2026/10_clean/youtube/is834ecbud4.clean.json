@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6fc478a347e9848cb88b8c9ffbf57aa1211dd620636b6d53ce0c2d33c087cd59",
+  "clean_sha256": "1ecfd8585de41ef2b4af2528d36999b74be4f5ae938c6d719276ca8a41cf64a7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 238,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=is834eCbUD4",
+  "title": "Charlotte de Witte at EDC Las Vegas 2026 | Kinetic Field Closing Set",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.2681,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

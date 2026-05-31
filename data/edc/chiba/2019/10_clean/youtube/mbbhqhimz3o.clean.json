@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a3822f24648650351537732360c149c08885d65cc42edd9318aaeebe7a2fb040",
+  "clean_sha256": "a90de8c4899c6d9c6764acaa95eaac0ff4043abaad029da943f72386fcff6948",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 639,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=MbBhQhIMZ3o",
+  "title": "EDC 2019: UM OUTRO MUNDO - LIFE IN VEGAS",
+  "quality_score": 0.7624,
+  "difficulty_score": 0.6884,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

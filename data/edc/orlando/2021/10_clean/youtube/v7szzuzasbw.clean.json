@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "181a812f6dff09aa73f5a80a1bec92c0e48b0a9b06208251957f8ff2cbcc8031",
+  "clean_sha256": "898d0adcab7c868d74feaf42f2c78994cb243885ecd2f9b7a944fd45d694a015",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 906,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=V7sZzUZAsBw",
+  "title": "Seven Lions Full Live Set EDC Orlando 2021 4K - Kinetic Field",
+  "quality_score": 0.7325,
+  "difficulty_score": 0.6422,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

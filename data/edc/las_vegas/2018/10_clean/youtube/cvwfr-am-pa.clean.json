@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7595d8b8f09d967b64e2d9db91fd9bd909d7d32ccd2a3770a824dae470b82ea9",
+  "clean_sha256": "533a3728c1271aafd7aa7ecc9eb47ed08c4e70e13df142deae8ffae31194bbc6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 965,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CvwFr_aM_PA",
+  "title": "Afrojack Live @ EDC Las Vegas 2018",
+  "quality_score": 0.65,
+  "difficulty_score": 0.2046,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

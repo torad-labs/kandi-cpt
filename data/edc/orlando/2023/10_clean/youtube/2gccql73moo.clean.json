@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7218ab7d24cb11a81ec897b7a747553a96255a47e41eae27fecd598814638141",
+  "clean_sha256": "a54c9ac258004b96af8033103faaab156c23fbc9929b6827533acd651bb65338",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 564,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2gcCQl73moo",
+  "title": "HUGEL Live @ EDC ORLANDO 2023",
+  "quality_score": 0.6438,
+  "difficulty_score": 0.7438,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

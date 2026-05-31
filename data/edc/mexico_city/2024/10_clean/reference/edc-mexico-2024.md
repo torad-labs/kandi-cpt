@@ -1,0 +1,218 @@
+# EDC Mexico 2024 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: Insomniac
+
+The Scene
+
+The largest city in Mexico meets one of the largest EDM festivals in the world when Electric Daisy Carnival comes to Mexico City. With six stages along with 100+ artists, EDC brings its signature carnival theme with rides and grand-scale art exhibitions south of the border. - Copyright Music Festival Wizard
+
+2024 Artist Lineup
+
+- AAAA
+- Acraze
+- Adam Ten
+- Ahmed Spins
+- AK Sports
+- Alan Walker
+- Alby Loud
+- Alesso
+- Alex Sensation
+- Aly & Fila
+- AMÉMÉ
+- Andre VII
+- Andrew Rayel
+- Angemi
+- Angerfist
+- Anita B. Queen
+- Aradia
+- Armin van Buuren
+- ARTBAT
+- Astra Club
+- ATLiens
+- Aurora Halal
+- Bagha
+- Barely Alive
+- Barovier
+- Ben Sterling
+- Benny Benassi
+- Big Gigantic
+- Big Metra
+- Billy Gillies
+- Black Tiger Sex Machine
+- Blanca Ross
+- Blastoyz
+- Bob Moses
+- Bora Uzer
+- Bresh
+- BSNO
+- BUNT.
+- Cabizbajo
+- Cachirula
+- Calcium
+- Calussa
+- CamelPhat
+- Carl Cox
+- Charlotte Fehler
+- Chelina Manuhutu
+- Chris Lorenzo
+- Cloonee
+- Creeds
+- Da Tweekaz
+- Daaz
+- Dan Garcia
+- David Forbes
+- David Guetta
+- Deborah de Luca
+- Deceiver
+- Devault
+- Devin Wild
+- Dillon Francis
+- DJ Guapis
+- DJ Mami
+- DJ Pope
+- Dogma
+- Dombresky
+- Don Diablo
+- Durango 95
+- Eli Brown
+- Eliangel
+- Eli Brown
+- Fito Silva
+- Flor Capistran
+- Francis Mercier
+- Gian Varela
+- Goodboys
+- Gorka
+- GRAVEDGR
+- Guztavo Mx
+- Hernan Cayetano
+- HOL!
+- Hot Since 82
+- HUGEL
+- Ian Asher
+- Indira Paganotto
+- Infected Mushroom
+- Iñigo Vontier
+- Interactive Noise
+- ISOxo
+- Ivy.Kst!
+- James Hype
+- Jessica Audiffred
+- John Fleming
+- John Summit
+- Juliëx
+- Kalexis
+- Karina Rosee
+- Kawas
+- Kaytranada
+- Kepler
+- Kevin Brand
+- Kill The Clowns
+- Klangkuenstler
+- Knock2
+- Korolova
+- La Catalina
+- Labibe
+- Lady Faith
+- Layla Benitez
+- Le Twins
+- Leo Reyes
+- Les Castizos
+- Level Up
+- LEX
+- Lil Texas
+- Lokier
+- Lum1na
+- Maceo Plex
+- Maddix
+- Maga
+- Malaa
+- Malóne
+- Mandragora
+- Mandy
+- Manushk
+- Mar-T
+- Marauda
+- Marco Carola
+- Maria Nocheydia
+- Mason Collective
+- Mau Moctezuma
+- Mawbb
+- Mind Against
+- Mish
+- Mita Gami
+- MJ Nebreda
+- Mystery Affair
+- Nanoo
+- Neón Deluz
+- Nifra
+- Night Tales
+- Nina Kraviz
+- Oliver Koletzki
+- Oskier
+- Pablito Pesadilla
+- Partiboi69
+- Pau Bujaidar
+- Paul van Dyk
+- PAWSA
+- Rafatel
+- Rebolledo
+- Rezz
+- Richie Hawtin
+- Rinaly
+- Riot Ten
+- Rixxia
+- Robiin
+- Roderic
+- Rosa Pistola
+- Rusko
+- Rvmdon
+- Salon Acapulco
+- Samplifire
+- Sandro Malandro
+- Sara Landry
+- Sassy
+- Saza Fischer
+- SBM
+- She!
+- Shermanology
+- Showtek
+- Showtek
+- Shubostar
+- Sickmode
+- SIHK
+- Sinego
+- Skrillex
+- Sofi Tukker
+- Space 92
+- Steve Aoki
+- Sub Zero Project
+- Subelo Neo
+- Svdden Death
+- SWAYLO
+- Talla 2XLC
+- TBX
+- Tchami
+- Theus Mago
+- Tom and Collins
+- Township Rebellion
+- Toy Selectah
+- USB Gad
+- Ve/Ra
+- Versa
+- Victoria Engel
+- Vintage Culture
+- Virtual Riot
+- W&W
+- Wade
+- Whigfield
+- Will Atkinson
+- Yellow Claw
+- Youth in Circles
+- Zedd
+- Zombies In Miami

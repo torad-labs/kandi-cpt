@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "32277df67cd730d5ae05bc8be38b9510c0131cc690a8afffe9814ae1d1853d12",
+  "clean_sha256": "c0793c73ed437eea6f9b5bfa304fc487ffd7574126f4cbce003f1e78f82e18ae",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 117,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=zqYdiOpx0jo",
+  "title": "EDC THAILAND \ud83c\uddf9\ud83c\udded 2025",
+  "quality_score": 0.6357,
+  "difficulty_score": 0.8873,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8db324b86884f76097f849bab4b60270c31e6c1c202fecb453dc31511c9e5c52",
+  "clean_sha256": "24902e54851c2b49d61d87810aeb7ebd8384c4676d925cda4936b4da3e23efa3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 94,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dE8Ot0rQpyw",
+  "title": "[OFFICIAL] EDC New York 2014 Recap",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.6704,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

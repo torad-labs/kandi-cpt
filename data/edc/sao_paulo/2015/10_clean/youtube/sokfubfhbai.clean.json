@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f0b809b9ca547bd8c364a088190131438cf4e9ef399b4e171ef8959b15e7cad8",
+  "clean_sha256": "764dc62e2717cf87601eef173048a2fe12da15af68cc6494f51331844ef2a2db",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 67,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SokfubfHbaI",
+  "title": "OPENING CEREMONY EDC BRASIL 2015 Best quality",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.7086,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

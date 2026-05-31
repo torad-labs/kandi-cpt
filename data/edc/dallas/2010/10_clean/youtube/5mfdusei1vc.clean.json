@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5a4f3c2535c076b4f2ff62be44775379cd0fa198314823f533a0151cb935f176",
+  "clean_sha256": "71fb71418e9dd0861910c36b2291a5813220ad39ec5dd1d94e9e491b4b0c2d0a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 177,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5mfDUsEi1Vc",
+  "title": "Electric Daisy Carnival Dallas Texas 2010",
+  "quality_score": 0.638,
+  "difficulty_score": 0.5955,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

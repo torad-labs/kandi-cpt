@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "a2db0fab9188fd9ea0a0c5e72816384b5bbb0f217099c87a3f793343dc39b842",
+  "clean_sha256": "a5054fd4b96bfb04d1d555b191b926c60aa94c918c89268da8f7da556093cc2b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2015",
+  "quality_score": 0.7636,
+  "difficulty_score": 0.5952,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

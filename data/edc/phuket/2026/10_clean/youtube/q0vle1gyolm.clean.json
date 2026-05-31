@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1d878a9e6d84a2e4294fae6073a685f0c9e76c7187d63de353d74a9b174f8efd",
+  "clean_sha256": "28194fd2016b8ec4098175f8637a105c69b567a6210ccf308440f43027c2f653",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 515,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Q0vLe1gYOlM",
+  "title": "EDC Thailand 2026 | Aftermovie",
+  "quality_score": 0.7178,
+  "difficulty_score": 0.747,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

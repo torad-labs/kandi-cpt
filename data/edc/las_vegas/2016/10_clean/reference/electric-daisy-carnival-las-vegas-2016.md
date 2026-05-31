@@ -1,0 +1,265 @@
+# EDC Las Vegas 2016 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2016/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2016 Artist Lineup
+
+- 12th Planet
+- 219 Boys
+- 4B
+- 50 Carrot
+- Above & Beyond
+- Ace Ventura
+- Adam Beyer
+- Adaro
+- Adrenalize
+- Adventure Club
+- Afrojack
+- Alan Fitzpatrick
+- Alesso
+- Alison Wonderland
+- Aly & Fila
+- Amtrac
+- Andy C
+- Anevo
+- Angerfist
+- Anna Lunoe
+- Armand van Helden
+- Armanni Reign
+- Armin van Buuren
+- Aryay
+- Astrix
+- Astronomar
+- A-Trak
+- Audio
+- Audiofreq
+- Audiotricz
+- AWE
+- Axwell Λ Ingrosso
+- Bad Boy Bill
+- Bad Company UK
+- Baggi
+- Bart Skils
+- Baumer
+- Ben Nicky
+- Billy Kenny
+- Bioweapon
+- Bones
+- Bot
+- Botnek
+- Brad Moontribe
+- Brennan Heart
+- Brennen Grey
+- Brian Seed (DJ Brian)
+- Brillz
+- Bro Safari
+- Brookes Brothers
+- Carnage
+- Caspa
+- Chadwick
+- Chris Lake
+- Chris Liebing
+- Chris Lorenzo
+- Code Black
+- Coffi
+- Cookie Monsta
+- Coone
+- Coyote Kisses
+- Craig Williams
+- Crisis Era
+- Crizzly
+- Culture Shock
+- Cyantific
+- Da Tweekaz
+- Dada Life
+- Danny Howard
+- Darksiderz
+- Darren Styles
+- Dash Berlin
+- Datsik
+- D-Block & S-te-Fan
+- dela Moontribe
+- Delta Heavy
+- Dem Ham Boyz
+- Deorro
+- Des McMahon
+- Digital Punk
+- Dimension
+- Dimitri Vegas & Like Mike
+- DJ Dan
+- DJ Isaac
+- DJ Snake
+- DJ Trance
+- Doc Martin
+- Doctor P
+- Don Diablo
+- Dr. Fresch
+- Duke Dumont
+- Dusky
+- El Dusty
+- Ephwurd
+- Eptic
+- Eric Prydz
+- Etnik
+- Excision
+- Fallen
+- Ferry Corsten presents Gouryella
+- Fester
+- Flux Pavilion
+- Frankee
+- Frankie Bones
+- FuntCase
+- Fury
+- Gaia
+- Galantis
+- Gammer
+- Gareth Emery
+- Giraffage
+- Gladiator
+- Go Freek
+- GTA
+- Gunz For Hire
+- Habstrakt
+- Habu
+- Hannah Wants
+- Hardwell
+- Hermitude
+- Hot Since 82
+- Hotel Garuda
+- InsideInfo
+- J.Phlip
+- Jason Bentley
+- Jauz
+- John Askew
+- John Kelley
+- John O’Callaghan
+- Jonas Rathsman
+- Jordan Suckley
+- Joyryde
+- JSTJR
+- Juan Atkins
+- Julia Govor
+- Julian Jordan
+- Kaskade
+- Kasra
+- KDrew
+- Knife Party
+- KRNE
+- KSHMR
+- Kutski
+- Lady Faith
+- Landis LaPace
+- Lane 8
+- Leiel
+- Lenny Dee
+- Lione
+- LNY TNZ
+- Loadstar
+- Loco Dice
+- LondonBridge
+- Lookas
+- Loudpvck
+- LUMBERJVCK
+- MAKJ
+- Mark Farina
+- Markus Schulz
+- Marshmello
+- Martin Garrix
+- Martin Solveig
+- Matrix & Futurebound
+- Matt Black
+- Max Enforcer
+- Maximono
+- Maya Jane Coles
+- MC Dino
+- Mefjus
+- Mekanikal
+- Mercer
+- Michael Calfan
+- Mike Williams
+- Morten
+- Must Die!
+- My Digital Enemy
+- NGHTMRE
+- Nicole Moudaber
+- Nightstalker
+- Oliver Heldens
+- Ookay
+- P0gman
+- Pan-Pot
+- Paper Diamond
+- Party Favor
+- Paul Oakenfold
+- Paul Ritch (Live)
+- Paul van Dyk
+- Pendulum (DJ Set)
+- Pierce Fulton
+- Pilo
+- Protohype
+- Radical Redemption
+- Ran-D
+- Ravell
+- Redlight
+- Rell The Soundbender
+- Richie Hawtin
+- RL Grime
+- Rob Gee
+- Ron D Core
+- Rusko
+- Sacha Robotti
+- SAYMYNAME
+- Seven Lions
+- Shaun Frank
+- Shiba San
+- Slander
+- Sleepy Tom
+- Sluggers
+- Snails
+- SNBRN
+- Soloman
+- Sonny Fodera
+- Stephanie
+- Steve Loria
+- Stööki Sound
+- Suspect 44
+- Sylence
+- Taiki Nulight
+- Technoboy
+- Teddy Killerz
+- The Chainsmokers
+- The Magician
+- The Prototypes
+- Thee-O
+- Throttle
+- Tiësto
+- TJR
+- TNT
+- Tom & Collins
+- Tommy Trash
+- Totally Enormous Extinct Dinosaurs (DJ Set)
+- TrollPhace
+- TroyBoi
+- Tuneboy
+- Two Fresh
+- Tycho DJ Set
+- Umek
+- Valentino Khan
+- Verse
+- W&W
+- Walker & Royce
+- Wasted Penguinz
+- What So Not
+- Wuki
+- Yellow Claw
+- Zander
+- Zedd
+- Zomboy

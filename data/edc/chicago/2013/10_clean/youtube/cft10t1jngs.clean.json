@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "841f933b42612e4118b2d4fc6598909b05ea77ee2e5b35dfdc39e7eae0bab9e0",
+  "clean_sha256": "a1a2e7b0c6bebac1458d7d42a6902ba6a60e4b3043ebe9d6d18ff2e4acc5ed91",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 296,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cFt10t1JNgs",
+  "title": "Tritonal - Live @ Electric Daisy Carnival [EDC Chicago 2013] - 25.05.2013",
+  "quality_score": 0.6725,
+  "difficulty_score": 0.4737,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "47a711295c7ae64818609d86bd6c1f2777e6ea02c93474eb32faaaad05afa4bd",
+  "clean_sha256": "9e8ff2f261c7897fc21741a74fbfbf3451cacf552cf76ec1adf3ad2075c3b3e1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2026",
+  "quality_score": 0.7783,
+  "difficulty_score": 0.5023,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

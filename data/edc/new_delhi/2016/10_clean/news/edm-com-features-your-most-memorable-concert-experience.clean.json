@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "6d6c53d08d2ac89769631657934b99c7398e664c4f8590c8fd15c559d2047597",
+  "clean_sha256": "74165700bf3df16a2d5f343601c0d39a077c4265d425972d4dd771e00c8b3aa0",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 685,
+    "keep_ratio": 0.589,
+    "anchor_ratio": 0.285
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/your-most-memorable-concert-experience/",
+  "title": "What is your Most Memorable Concert Experience? - EDM",
+  "quality_score": 0.848,
+  "difficulty_score": 0.6168,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

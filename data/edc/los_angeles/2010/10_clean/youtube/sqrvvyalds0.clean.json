@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b5f1f7cabe3531849e071e2fde607ca3fa30f7b274b295ee2be6469690865626",
+  "clean_sha256": "9f827e9b9cb59292a0722b6c09cbd1657efa150f11d45a381d166fa97aa06ba9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 263,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SQRVVyAlDS0",
+  "title": "Lil Jon yelling at fence jumpers with Laidback Luke @ E.D.C. 2010 Los Angeles [HD]",
+  "quality_score": 0.6584,
+  "difficulty_score": 0.6878,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

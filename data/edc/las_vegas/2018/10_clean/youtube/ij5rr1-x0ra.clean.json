@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "beb160df3d562996dccfaa9d017f7597d6ef2b883b9e1673ecafc01fa5ad725f",
+  "clean_sha256": "23214d65a0160dd3eef4d08bc6a03185fbe6bb02257ee2956c55af0e56da1004",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 541,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iJ5Rr1_X0RA",
+  "title": "San Holo @ EDC Las Vegas 2018",
+  "quality_score": 0.6521,
+  "difficulty_score": 0.2098,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "c5ab55a9b6b732521edc0a00560bbf2c177adfa322ac099beb180709322ca176",
+  "clean_sha256": "949b3afae6e5364cac8b71809f67bd0739f1cb33b2d24e2b1f8227a60822a0eb",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 2376,
+    "keep_ratio": 0.852,
+    "anchor_ratio": 0.113
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/news/edmas-2026-winners/",
+  "title": "Martin Garrix, Dom Dolla, ILLENIUM and More Win 2026 EDMAs: See the Full List of Winners - EDM",
+  "quality_score": 0.8854,
+  "difficulty_score": 0.7083,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

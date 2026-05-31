@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c7e1adb411c772431bcfaf4f383aa53be95418de78c6aef2b5838c0e6035849d",
+  "clean_sha256": "79b4471c6c65532be898d9e17fc2fff057bcb19fae44e96c90f5c34cd7591a36",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 287,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=zVja2l4g7hI",
+  "title": "Tommy Trash - Live @ Electric Daisy Carnival (Vegas) - 21.06.2013",
+  "quality_score": 0.6729,
+  "difficulty_score": 0.4996,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

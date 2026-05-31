@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "c71fac00fe1869fefb3c74772c2998a9add436ee66d6d6fc34003cecb838b0c2",
+  "clean_sha256": "3471e4cf2963370d407372ec7908a8aa6aa5b0a579c4aa6b7800ac5ad17bc366",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2013",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6545,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

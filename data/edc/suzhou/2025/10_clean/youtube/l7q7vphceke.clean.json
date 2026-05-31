@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7aa2c3aa2f99613077ee9659adc1212b46e710f8e301b1373af1aeaa5b673d6d",
+  "clean_sha256": "f92066bb84d8d0af22187eae9ec55c54190880ca580bfeb6016a8b618eaf5f96",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 75,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L7q7VphcEKE",
+  "title": "EDC Thailand 2025 The Chainsmokers p.1/2",
+  "quality_score": 0.6177,
+  "difficulty_score": 0.7234,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

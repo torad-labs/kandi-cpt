@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "279a141042a1fb09ab3dc47c0f2e1bc6598e2ffbb136ccfd968a4461160a7d6c",
+  "clean_sha256": "912759fed79361a650099649f15a55a64b6281b8564e5655bdcc45ec9f25b5d9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 411,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L9mHWusxU5c",
+  "title": "Jason Ross - EDC Las Vegas 2021",
+  "quality_score": 0.663,
+  "difficulty_score": 0.3427,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

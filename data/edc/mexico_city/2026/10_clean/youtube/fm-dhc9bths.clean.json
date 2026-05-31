@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a06f4fbf703de1b8f3d104622c19e5a626ba3213f6704a806c5b006634f74c68",
+  "clean_sha256": "95d337887fab874ec9fcf848a1a1903149dedddfdef2c5fe0bf06a28ae41670b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 471,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FM-DHc9Bths",
+  "title": "Valentino Khan - EDC Mexico 2026 [FULL SET]",
+  "quality_score": 0.637,
+  "difficulty_score": 0.455,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8bda96307972e7a781c0e198d2e8e2ed31567ca1fbaaf16e0efa6dd48e750ab4",
+  "clean_sha256": "11f8c5f8dec50d05296a997ee595dba34349cedcbcc4acf47443650d438c5b2f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 841,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L5pdvFbEEX0",
+  "title": "Electric Daisy Carnival History (1999 - 2010)",
+  "quality_score": 0.7744,
+  "difficulty_score": 0.7388,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

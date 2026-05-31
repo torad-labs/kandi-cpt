@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "609a3625d007b0385c8e4ebb9b5ba2555fe2749463048043cf773954b9422ecd",
+  "clean_sha256": "1b3c7eb9286a0c5b9e60c85ccf242c24bf1e4fddd633361c17511aaf96dc85af",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 152,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uKJMFt_EQO0",
+  "title": "EDC 12 NYC",
+  "quality_score": 0.6486,
+  "difficulty_score": 0.7904,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0e6a8ded90b4aefc7411b88b47ce81e6ab7dbc681c6e5fc9c8f569e56fb36ef0",
+  "clean_sha256": "9026887858e6ba946cf1dd0e25b1af643e94fab12bedc601353df121d8ea52f4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1147,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yYQsPKtZw8o",
+  "title": "Kaskade Full Set EDC Orlando 2018 Kinetic Field Festival Closer",
+  "quality_score": 0.7541,
+  "difficulty_score": 0.6575,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

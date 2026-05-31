@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "19db0b83fe37c872c97efa45b68afd4c71a7ad822df984938481139209d8371a",
+  "clean_sha256": "be95792968c0ddeb3753a70d34270839250da33a493c973e6cf15f9073206ed2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 139,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=piUE-ms4jP8",
+  "title": "Electric Daisy Carnival 2009 in Denver CO, funny old guy dancing weird at EDC 2009.",
+  "quality_score": 0.6107,
+  "difficulty_score": 0.9469,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

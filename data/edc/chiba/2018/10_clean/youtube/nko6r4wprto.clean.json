@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5c6dd63e9caed1848cdf332e648e2aa75cf35b57ac46dddd48dcae6ae7a02ef3",
+  "clean_sha256": "5459c4953a7a61c0d5930d17f00da7f558169726ddfacbe92f3a7cc2b3e1513e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 155,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=nkO6R4WPRTo",
+  "title": "EDC JAPAN 2018\u5e74/2\u65e5\u76eeMARTIN GARRIX",
+  "quality_score": 0.6451,
+  "difficulty_score": 0.7599,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

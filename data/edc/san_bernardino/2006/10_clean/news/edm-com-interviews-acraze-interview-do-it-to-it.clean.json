@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "702b79ceacc033f6e3cd036fc8371efe14f089ec62c18c3f8839095d25ddeded",
+  "clean_sha256": "19cbc9fab1a0a0f96191aae358c04a4199026510c149d9dc889264c606121853",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1326,
+    "keep_ratio": 0.699,
+    "anchor_ratio": 0.202
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/interviews/acraze-interview-do-it-to-it/",
+  "title": "\"I Feel More Alive\": How ACRAZE Achieved Chart-Topping Success Through Sacrifice - EDM",
+  "quality_score": 0.8862,
+  "difficulty_score": 0.6511,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

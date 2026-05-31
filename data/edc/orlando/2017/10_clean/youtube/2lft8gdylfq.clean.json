@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "544868aca5182d9b6436c65a0ada06a91aba63b74cf98ab0c038100491b98107",
+  "clean_sha256": "dcd3532c42e693d94f9b4322044bac1c9ea780ac6a7eda7dafbcd030168a74c6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1583,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2LFt8gDylFQ",
+  "title": "EDC Orlando 2017 Official Trailer",
+  "quality_score": 0.8256,
+  "difficulty_score": 0.394,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

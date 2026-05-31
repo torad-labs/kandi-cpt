@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "799e8525de31aede43e2b93576958f26b40f84a865caf111e2bfdf21616048ab",
+  "clean_sha256": "1d0db658c419bcb7d7ce7e45147b91b9084b542c96cb6198feb24d368f16313b",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 678,
+    "keep_ratio": 0.604,
+    "anchor_ratio": 0.261
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/05/electric-daisy-carnival-las-vegas-announces-2013-lineup-musical-acts-artists-and-theatrical-performers/",
+  "title": "Electric Daisy Carnival Las Vegas announces 2013 lineup; 'musical acts, artists and theatrical performers' - Dancing Astronaut",
+  "quality_score": 0.8122,
+  "difficulty_score": 0.7741,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

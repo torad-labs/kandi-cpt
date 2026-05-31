@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e8149732462b2740dda2f5d49cb358e9af602e1317c9318e01d31bd636489982",
+  "clean_sha256": "0e96aaa65f39eb4cde986cf7ab7eead57de4ed244ad140707c4003e768daf076",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 259,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Bl7BD_jDl70",
+  "title": "Electric Daisy Carnival (EDC) London UK 2013 After Movie! (HD)",
+  "quality_score": 0.6666,
+  "difficulty_score": 0.7937,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

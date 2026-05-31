@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "c11a510d84b5d474729dc5bbbd2ab3fdf368172317e6f975775ddc114aaef60a",
+  "clean_sha256": "db501506e0118eeca6b383ea3ba23b01c5e57a3ceb01b3acafc5a2a7e2528f8e",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 380,
+    "keep_ratio": 0.486,
+    "anchor_ratio": 0.389
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/chainsmokers-oaks-love-is-kind-ep/",
+  "title": "Listen to The Chainsmokers and Oaks' Nostalgic EP, 'Love Is Kind' - EDM",
+  "quality_score": 0.8393,
+  "difficulty_score": 0.5942,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

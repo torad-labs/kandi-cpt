@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d8f77271454976d0f25ed6cc0815edebe1adb809f89b40cdf360625e686b62e6",
+  "clean_sha256": "ef2e2d0c8b9745f8852de7ebeee8f7f02f2a270b7fa2947f58c1350dc02c6680",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 567,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=gM2V9TU5sSQ",
+  "title": "Drone show in downtown Austin Friday 'Rick Rolled' Austinites",
+  "quality_score": 0.6303,
+  "difficulty_score": 0.536,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

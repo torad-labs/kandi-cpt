@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "ee433db81fbc2677e06d6f3dd650e1aee857ac31f2ea6374bed896019b343a79",
+  "clean_sha256": "b8089fc7aa68a22e8372c12a02160e51509140b2574c9411bd40df02ba18835d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 2010",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6895,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

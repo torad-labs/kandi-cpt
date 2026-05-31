@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "72f976e9bcbf498416949e5b3f3792d0795b269ee08438685a280ddc2414e96d",
+  "clean_sha256": "682840d3a880e996fd15b791b0c22d10f84d2553e8e94304bd7f91ad6c9e25f7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 188,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Hdyzo4dhuww",
+  "title": "SJEDC- Spirit Campaign 2",
+  "quality_score": 0.6111,
+  "difficulty_score": 0.7975,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

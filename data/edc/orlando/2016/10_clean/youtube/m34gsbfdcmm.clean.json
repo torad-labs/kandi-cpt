@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fa7178ab26f594129c6b71d650218ea9e3d9ea4979a797219094f5a6090d2777",
+  "clean_sha256": "68699e096e7e52de8de14fb26099a32884fd91b9356bf1fcf03cc06d4a1f3d58",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1460,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=m34GsbFdcMM",
+  "title": "EDC Orlando 2016 Official Trailer",
+  "quality_score": 0.7669,
+  "difficulty_score": 0.4035,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

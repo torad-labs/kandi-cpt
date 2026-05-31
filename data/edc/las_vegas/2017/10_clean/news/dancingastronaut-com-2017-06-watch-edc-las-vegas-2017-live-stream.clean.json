@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "50e30cae17b9cdf931dbf421c6a729a4c4a25bc80c1bc14241033440cd47a2ea",
+  "clean_sha256": "8532e964f224d84b9e46fc26459abb731c1c20622dc4113ced7b4a92f9c5ea90",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 485,
+    "keep_ratio": 0.552,
+    "anchor_ratio": 0.343
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2017/06/watch-edc-las-vegas-2017-live-stream/",
+  "title": "Watch the EDC Las Vegas 2017 live stream - Dancing Astronaut",
+  "quality_score": 0.897,
+  "difficulty_score": 0.4759,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

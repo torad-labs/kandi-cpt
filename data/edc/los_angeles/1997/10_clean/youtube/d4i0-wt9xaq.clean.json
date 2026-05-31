@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bda3acafeb26525047b3ade9f6bd7d8c24f8dfba3f3190f1e77cef540a2c83e8",
+  "clean_sha256": "9c043c52f3a8f2989f79f0278a08ab2436fa904b19a5f93a01ccc0471ef4d1ac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 282,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=D4I0_wt9XAQ",
+  "title": "Electric Daisy Carnival 2000",
+  "quality_score": 0.6226,
+  "difficulty_score": 0.5662,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

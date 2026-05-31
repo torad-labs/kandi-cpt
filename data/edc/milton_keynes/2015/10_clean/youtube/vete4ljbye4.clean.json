@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "df75d43e1c7e65382d6dfea299fb825f38e207e7741373fabbcefd7845c3e88a",
+  "clean_sha256": "49721a58f5e5ff59b11043a1188c66fc70f3fe1bb07d8c7f3ddfb093ea7fdca4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 61,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vEte4ljbYe4",
+  "title": "EDC UK - Ferry Corsten @ Milton Keynes Bowl (11-07-2015)",
+  "quality_score": 0.6056,
+  "difficulty_score": 0.8549,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

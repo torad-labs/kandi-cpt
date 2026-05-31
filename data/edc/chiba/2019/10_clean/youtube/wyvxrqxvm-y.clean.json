@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3134757a8fe08b147d7241dd47ce252a915f4e90a5826ecbe03830cb19bd1c12",
+  "clean_sha256": "b6b27b76ec484f8e580f996253da1edb035833dd52dd4343d92c15084abc364e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1270,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WyvXrqXVm-Y",
+  "title": "edc JAPAN 2019 Guide video to the entrance for exclusive use of VIP & 2DAY GA",
+  "quality_score": 0.7203,
+  "difficulty_score": 0.5277,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

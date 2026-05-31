@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b9b6b85414f4124234527f8eb004f3f2f0668286aa217efd19cff50fb128be32",
+  "clean_sha256": "429d0aab94b0c9cfbeb3ef0bdacc2c1ce3ca05d1b7e20a9c5a460f9891c59390",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 581,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=i7PGl_PyHvI",
+  "title": "Mathame Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6904,
+  "difficulty_score": 0.4192,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

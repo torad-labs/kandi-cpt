@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2202cd469374893665c5e03f0db518a500d616ad34b42ee2159152361d74ffd4",
+  "clean_sha256": "cfde67b9e7e6ed8a512963d6ef3f3e3b8a7c5c40335dfd3bb3a9bac7663617e5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 59,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=IIWOt17oHHA",
+  "title": "Z-Trip EDC 2088",
+  "quality_score": 0.6187,
+  "difficulty_score": 0.8677,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

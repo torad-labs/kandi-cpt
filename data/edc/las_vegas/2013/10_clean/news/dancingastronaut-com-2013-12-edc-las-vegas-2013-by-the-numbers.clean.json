@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "af8b5c9a620a7e40bf205e512da73a58f7fbd2ea756aa7b9d2751e40d662175d",
+  "clean_sha256": "811a8573f38b1efded9ec6653b5ee3d2edb3d31a327ea14e7418c82e04fc5e65",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 396,
+    "keep_ratio": 0.519,
+    "anchor_ratio": 0.301
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/12/edc-las-vegas-2013-by-the-numbers/",
+  "title": "By the numbers: The economic impact of EDC Las Vegas 2013 - Dancing Astronaut",
+  "quality_score": 0.8912,
+  "difficulty_score": 0.4998,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

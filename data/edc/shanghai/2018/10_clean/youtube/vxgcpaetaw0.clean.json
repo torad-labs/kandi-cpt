@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2353ac66416d3c9c5dde1bedd074ecf0fced3b0f298cf145375b5e836bf36e26",
+  "clean_sha256": "5edfadc4a0b2371966ce11dbc3067aad712b2ad8cd9903ba1bb80cbeeac6f470",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 198,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vxGCPAETAW0",
+  "title": "2018 EDC with friends in SHANGHAI\uff08produced by ANDALUE\uff09",
+  "quality_score": 0.6263,
+  "difficulty_score": 0.5715,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

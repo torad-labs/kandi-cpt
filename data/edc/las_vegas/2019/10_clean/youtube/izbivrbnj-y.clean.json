@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d3396e038b8d41e4bff9e7ace666267f2132563907e888b671f977728a8ab4fc",
+  "clean_sha256": "7ec68aae80e8166aa761a3c0b4899fb564b4a7851bc1b217e1b44179eb8b8b5e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 438,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iZbiVrBnJ-Y",
+  "title": "EDC Las Vegas 2019 Aftermovie",
+  "quality_score": 0.6648,
+  "difficulty_score": 0.6958,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

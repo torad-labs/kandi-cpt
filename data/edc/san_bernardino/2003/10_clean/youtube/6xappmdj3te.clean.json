@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f5a8f7591f13c3f5a716385fe291c8d54fd31ecb369b1504daf0caf25a4ecc67",
+  "clean_sha256": "0f383eab9933608267c58f39b4c385fda1bef1c635c040f35f2429976d80b296",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6xAPpMdJ3TE",
+  "title": "EDC Infected Mushroom part 9 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6253,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

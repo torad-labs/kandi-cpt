@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ffcbe362cb2356164ed86ab9a639b142322c189d76ff21b80a39e0dbfebe59d1",
+  "clean_sha256": "e1349c23a9cbceb6f7ec05e0004a8bbff53ce840af47e02f8d0c7c00d084aa2d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 151,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=bkutSg1q16o",
+  "title": "Raver Stampede @ EDC L.A. 2010",
+  "quality_score": 0.6119,
+  "difficulty_score": 0.7262,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "a1815f2f5896b40569852cbff184c707c6bd5a2ebeea142ec1544319ddf24ea4",
+  "clean_sha256": "90eb20e8e7aea7bdc11e4bce6a6a77639250b1935685d5110fcd9e9d53cc175b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2011",
+  "quality_score": 0.6217,
+  "difficulty_score": 0.5037,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

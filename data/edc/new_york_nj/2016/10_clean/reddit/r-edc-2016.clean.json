@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "fd67c69a81586efb67fd7e75bf1d2052923b033b3693f669d0fa6c7f67088f9a",
+  "clean_sha256": "ede60dcf2814f85f45398642e4423f13c48ece78cc981e263d3d59940b07376f",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+york+nj+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_york_nj 2016",
+  "quality_score": 0.6721,
+  "difficulty_score": 0.656,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

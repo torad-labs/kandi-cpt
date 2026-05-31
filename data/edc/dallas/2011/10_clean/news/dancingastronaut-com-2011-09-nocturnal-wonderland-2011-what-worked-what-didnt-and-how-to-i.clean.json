@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "948370560e8811a526f6d0f182102da5eb90b86344596cc327d65227dd9ae435",
+  "clean_sha256": "42502651b7c7b61879c8841b2dd32b39302d75fe6c6a39c4a2c00275ce6fdc4f",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1046,
+    "keep_ratio": 0.31,
+    "anchor_ratio": 0.092
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2011/09/nocturnal-wonderland-2011-what-worked-what-didnt-and-how-to-improve-for-next-year/",
+  "title": "Nocturnal Wonderland 2011: What worked, what didn't, and how to improve for next year - Dancing Astronaut",
+  "quality_score": 0.8971,
+  "difficulty_score": 0.5659,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

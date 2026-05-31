@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a6875d384e9cb7aa4a626d092eadeee682baed640d63207cc380e8b0b075644e",
+  "clean_sha256": "335e556271f3141dd84b0a0e7eb6a26287328db8e10a64e7748d5889bf8ea422",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 774,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=YtL7GYO0qwo",
+  "title": "James Hype live @ EDC Mexico 2024",
+  "quality_score": 0.6615,
+  "difficulty_score": 0.4588,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

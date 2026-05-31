@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "d4f6f43bde71f12651e077e93f3b3be821a83f307778e41f6607cd56abcb39c6",
+  "clean_sha256": "a9d98c0f770039017bb98e5aae95a8a942f1e3b266eb1f41e9f806e98bbfc8af",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 826,
+    "keep_ratio": 0.615,
+    "anchor_ratio": 0.188
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2019/01/welcome-jungle-local-event-brand-shaping-chinas-flourishing-electronic-music-culture/",
+  "title": "Welcome to the Jungle: the local event brand shaping China's flourishing electronic music culture - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.7306,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

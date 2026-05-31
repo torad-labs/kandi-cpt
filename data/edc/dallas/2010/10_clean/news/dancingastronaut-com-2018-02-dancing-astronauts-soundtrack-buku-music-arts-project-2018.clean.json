@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "6cef451a250cd645e3b9f5c60b58ac79a26d32d9bab32e21f25c1d9d3ea1a89f",
+  "clean_sha256": "349ea172af57e41429e01d9df34421d2688a230ab6a9380a99f2f3852920a5bc",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1082,
+    "keep_ratio": 0.724,
+    "anchor_ratio": 0.209
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2018/02/dancing-astronauts-soundtrack-buku-music-arts-project-2018/",
+  "title": "Dancing Astronaut's Soundtrack to BUKU Music + Arts Project 2018 - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.6327,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

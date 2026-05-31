@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "20e336abe7d4928c82b359d0c2ddf9f8a5e80e09309f907dfc683d2d7544969b",
+  "clean_sha256": "2dcc5c94fd4273dc3d897b0c74bfc8aa25941b23648aa47a700b9e6a9a243408",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2169,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=H_euol_sKDY",
+  "title": "Seven Lions - EDC Las Vegas 2017 (Full Set)",
+  "quality_score": 0.8517,
+  "difficulty_score": 0.7005,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

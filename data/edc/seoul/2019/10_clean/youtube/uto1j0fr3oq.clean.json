@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a8ea1040f63c220d25ae1744cb975404b656a75f1d08378f9af167ed87cc99a6",
+  "clean_sha256": "4932713b4eebffc71ee253314ec22d43bc84130e07a018b9fb7951cf7cfef532",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 815,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=utO1J0Fr3OQ",
+  "title": "[DJKOREA] After Movie - EDC KOREA 2019, WIDE AWAKE AROUND THE WORLD by Pioneer DJ Stage  @Seoul Land",
+  "quality_score": 0.7749,
+  "difficulty_score": 0.5832,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

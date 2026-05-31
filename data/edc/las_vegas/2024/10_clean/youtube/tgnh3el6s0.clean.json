@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2e288e178f2e1fc673c68e0fed401fb11f5213ef099def9970ea3d2ca4068b66",
+  "clean_sha256": "e7d904309c0439994b43f6a44a66028eca9ac929eeeb1087cde7718e07b73b9c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 321,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_tGnh3EL6S0",
+  "title": "Sara Landry | EDC Las Vegas, 2024 (circuitGROUNDS)",
+  "quality_score": 0.663,
+  "difficulty_score": 0.3983,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

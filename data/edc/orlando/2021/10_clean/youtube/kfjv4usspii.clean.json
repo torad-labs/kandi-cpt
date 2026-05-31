@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8d3763b2687911aadeefdca2a85092f79dee6f938ed92ff13fa661db5726cb9b",
+  "clean_sha256": "74e2eeae6efd2092c8df77ef5f63fde66c552edae362b502aa8841c98fbd0f24",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 259,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=KfJV4UsSPiI",
+  "title": "John Summit - Live from EDC Orlando",
+  "quality_score": 0.6475,
+  "difficulty_score": 0.4133,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

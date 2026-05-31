@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "773b294b8d84244bf03e41bd783a956ccc9e592c5c2bee40847e684ef6f54f34",
+  "clean_sha256": "6e951faa7665d4f1b449ccde36387c7dd2a46561e04154305263055b613408e6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 91,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eK4HvlmfQ4g",
+  "title": "Alesso Live | New Delhi | EDC India 2016",
+  "quality_score": 0.6194,
+  "difficulty_score": 0.8649,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "dfa3c666a87015065e414a1abab45a50f1abdb8741adfce98c411ff5d10fb1dd",
+  "clean_sha256": "6de6b7792f3890e01d812d6211acaca64295e5402df2de7325f6836c285bf204",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 767,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=mEPrlaAKJzQ",
+  "title": "\"ELECTRIC DAISY CARNIVAL\" orlando 2011  official \"unofficial\" video by rev sol",
+  "quality_score": 0.755,
+  "difficulty_score": 0.7228,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

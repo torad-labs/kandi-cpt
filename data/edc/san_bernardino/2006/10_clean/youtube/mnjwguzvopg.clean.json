@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5db65ddd77d8adcf5fb0e795cafcdc9da2cf2d4724a042d028bd0f2285a88614",
+  "clean_sha256": "9ef0cabf0327a8b06c493a8cfb783d414a6195c39741c66b8081eba5079ca0da",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 280,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=mNjWgUZvOpg",
+  "title": "EDC Fire Stage part 1 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6454,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

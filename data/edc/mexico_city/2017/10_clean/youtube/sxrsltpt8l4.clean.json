@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3c1251f5e3789153d5cd6780e1799df83bdb562ab3c6206b050ac891795d5e8d",
+  "clean_sha256": "2436920cfe6559aaa5201d2d56efdf4a2770f6003c36b5707859a15aa1f66557",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 62,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=sXRsLtPT8l4",
+  "title": "Alesso at EDC Mexico 2017",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.7302,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

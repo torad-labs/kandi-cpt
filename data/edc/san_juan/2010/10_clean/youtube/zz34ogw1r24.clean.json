@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c17018ffd2b172253912a6b04291b9efe83d95391e69f5fedd4aa6d35a74dd33",
+  "clean_sha256": "99e6203bd537eb7ed2a68d8a1c70a09c69880aadbc63c3dc65985651d2220499",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 125,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Zz34ogw1R24",
+  "title": "City of San Juan EDC Meeting 10-29-18",
+  "quality_score": 0.6207,
+  "difficulty_score": 0.6938,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

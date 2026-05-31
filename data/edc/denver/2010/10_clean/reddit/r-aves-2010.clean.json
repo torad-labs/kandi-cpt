@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8ec9c9927667957a5f5bc7f430a99388fecb1e7438af7a6790b3e195b6a38ed2",
+  "clean_sha256": "a550342a40774c9f27f88e59e1887e0ec1257ab8673539823b373229315d2546",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=denver+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 denver 2010",
+  "quality_score": 0.7978,
+  "difficulty_score": 0.2713,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

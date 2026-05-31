@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "854733a5e185addf3a75821ddbfc0030b8b977303cc680cb898db03f7f30ab2d",
+  "clean_sha256": "60b9514540c0e1d23dc82d3b49702979bfb4a600db4acd44ed39ee72ab231028",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 296,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eNCXg0Y2LFk",
+  "title": "Avicii - Live @ Electric Daisy Carnival [EDC Chicago 2013] - 25.05.2013",
+  "quality_score": 0.6725,
+  "difficulty_score": 0.478,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

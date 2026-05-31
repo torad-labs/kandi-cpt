@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0a4df046284b440276604db897373fed35c41482842b50e3e221c86b5c7e9bea",
+  "clean_sha256": "53c8c5d53c639a2f41e0994a6424c410c7d5d09f49fc65578463eabd40071b44",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 319,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1skRhgDak_I",
+  "title": "San Juan Economic Development Corporation, Official Best of Texas 2009",
+  "quality_score": 0.6231,
+  "difficulty_score": 0.6465,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

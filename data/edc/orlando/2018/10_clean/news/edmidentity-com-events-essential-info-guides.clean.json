@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "5d3782846b1b70b843a4d72c2e728d3dec4315554f026f70b48db57fb5abf663",
+  "clean_sha256": "df00b9f9346e9712e3e335bf10cb9ee8bfb68c6e32f17a816099bad9defe2b4b",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 268,
+    "keep_ratio": 0.401,
+    "anchor_ratio": 0.396
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edmidentity.com/events/essential-info-guides/",
+  "title": "Essential Info Guides Archives | EDM Identity",
+  "quality_score": 0.8572,
+  "difficulty_score": 0.5458,
+  "cluster_id": 7,
+  "curation_status": "drop"
+}

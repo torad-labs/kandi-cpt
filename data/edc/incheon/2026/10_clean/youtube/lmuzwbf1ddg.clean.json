@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "faaa00cb532f6e8c7bcabf22e1b89e44808cdb28c4672a66123c94a4f6661dfc",
+  "clean_sha256": "0f2561df51d7b5ad6b0bf0f26db373c14157f755a2aa1056723d0edae1fa38d6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 3712,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=LMUzWbF1DDg",
+  "title": "Skrillex at ACL Music Festival 2014 FULL SET HD powered by Redbull",
+  "quality_score": 0.7872,
+  "difficulty_score": 0.5557,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

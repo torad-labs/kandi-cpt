@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "743d42d7e9ea2b0eee7fa750530ac3228f2900c2ca81f3150493ecf32f98023f",
+  "clean_sha256": "de498c03456a0a9492daff4656b9475fb4bc86c06e0c434532dd791762bb0677",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2017",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7467,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

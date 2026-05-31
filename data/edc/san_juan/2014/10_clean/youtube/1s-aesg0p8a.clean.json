@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "31140702724c2b7398cd46702eebcd0e0bd90de7364b794cfc006674c4133b65",
+  "clean_sha256": "ef60d76b669bc46665e836ca65120f894194cfcaa86c3f02d8e24bbe4c04ea49",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 52,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1S-aesg0P8A",
+  "title": "Kinetix614 Crew, EDC Puerto Rico 2015",
+  "quality_score": 0.6302,
+  "difficulty_score": 0.7073,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

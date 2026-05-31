@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ad4faadf628e559565a10cc43c4db620764b3e7ef625b00a9fbb54545f717899",
+  "clean_sha256": "170a56b4c5024728f87dd49eb31e0fec1e0a328194e2935857b5450d6a9bc9c0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 535,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=12cTQ74hlwo",
+  "title": "Bolo at EDC Mexico 2026 (Full Set)",
+  "quality_score": 0.6674,
+  "difficulty_score": 0.5625,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0687b76e77af812414741781fc683ee0660c128bcc9e61354837e3f5a9cdb8dc",
+  "clean_sha256": "fe1b6cc69af140ec91235242eba5f5627d78754b4bed66071b9a6bd3d074c295",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 108,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z_3fOOLnsFs",
+  "title": "4K Deadmau5 Full Set EDC Orlando 2023 Sunset Set Kinetic Filed",
+  "quality_score": 0.6468,
+  "difficulty_score": 0.6763,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

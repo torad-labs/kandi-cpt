@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "44ffbc3663be8e09bf33c4226a8359f48c28566868ab6212c56280f5de89dd3b",
+  "clean_sha256": "5ea2eb57dc3cc17e944ef609844dbe45bc117c4d1b7c4797c4e8e309da357cdf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 191,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=7zx_L1QDSrk",
+  "title": "EDC London 2013 - Dimitri Vegas & Like Mike - Neon Garden Arena - (HD)",
+  "quality_score": 0.6521,
+  "difficulty_score": 0.7326,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

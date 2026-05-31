@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1e148ba0290bc631412a3bdd86e4d3b9d13a73178898ef4346d8967360b247e1",
+  "clean_sha256": "9b4c4e059aac1cfba89c3169506a1329d359b2388bf62d4e7001a99813a4b91e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 280,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=f9uia9Ow__U",
+  "title": "Skrillex EDC Orlando 2011",
+  "quality_score": 0.6217,
+  "difficulty_score": 0.5464,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

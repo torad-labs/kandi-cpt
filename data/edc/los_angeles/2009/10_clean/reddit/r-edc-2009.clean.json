@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2cd558f770e1b998960f09938366e3b22809cdb00ce26e6ad72f115140eabce4",
+  "clean_sha256": "fc8c94f502335ff82016440cbba3fa053916c38f4729b1d08bdbc630e996a2d2",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2009&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 2009",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6888,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

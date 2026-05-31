@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fbaa731133a7031719ec0612aaf7d89052bb7c4556d10affcab98edd5f72aa74",
+  "clean_sha256": "22ce67637c2304b14ee85056e2e89ca04d9c391b438df5240a2c91a37c2516f2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 260,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=v_r8faGY7AI",
+  "title": "WUKONG LIVE @EDC THAILAND 2025",
+  "quality_score": 0.6093,
+  "difficulty_score": 0.6816,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

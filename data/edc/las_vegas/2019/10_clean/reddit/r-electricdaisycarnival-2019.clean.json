@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "cc62f7abb0ef37efa4d14b1c96c23749b0a07f0a2ed39a9701052292437774a8",
+  "clean_sha256": "b9c7eaea6713183fb7e98d85eadb1fa6d8246a62b4c2ce2f966ae517aadc443b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2019",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4287,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

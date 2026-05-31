@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "03a6451112a9e26cb4f9d6c930c2f63ba365ed70e9d6b2320dda39467d59dc6f",
+  "clean_sha256": "995b63f2df140b0696871eb01b988f46e7d8394bded3fa983aaf7d0350f2fa32",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1183,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=7jIkAW1cRFI",
+  "title": "EDSEA (EDC) Cruise Day 2: Arriving in Bimini & Beach Party at Resort World! \ud83c\udfdd\ufe0f\ud83c\udfb6",
+  "quality_score": 0.7512,
+  "difficulty_score": 0.6574,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

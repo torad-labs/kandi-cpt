@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "685b02a25d6bef25ffdb1ea3d03b400e17373690753657138a45e0e605c75ca5",
+  "clean_sha256": "5128be8c462cf3d0be7827aad32f69819749784ec7b02b1a560f1e6b4af7ddbf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 296,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=jgvzOVFMvCI",
+  "title": "Borgore - Live @ Electric Daisy Carnival [EDC Chicago 2013] - 26.05.2013",
+  "quality_score": 0.6725,
+  "difficulty_score": 0.4643,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

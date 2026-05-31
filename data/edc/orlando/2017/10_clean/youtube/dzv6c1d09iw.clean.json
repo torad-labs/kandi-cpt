@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "693dff6f8efcfbff1ee5e4a70d0e2337967129f9e85106625bc79ec3669ad485",
+  "clean_sha256": "52b234b6fbbca3ef6cf7931be097ff134102e905792754db7812a25b3488db44",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 763,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dZv6c1d09iw",
+  "title": "Kaskade - Live @ EDC Orlando 2017 (FULL SHOW)",
+  "quality_score": 0.7769,
+  "difficulty_score": 0.619,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

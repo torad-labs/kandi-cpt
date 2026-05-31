@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fc05305cdb6a833cce69bdce8f80b93b703ffd2e8e8a6d6f70d28480274883c6",
+  "clean_sha256": "f63a1b760cb10cd338fa6a3d0b5efba56da6e1c26048e643963f9d361967734b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 523,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ym5qMUt3iUY",
+  "title": "EDC 2014 Metlife Stadium New York 5.25.14",
+  "quality_score": 0.6775,
+  "difficulty_score": 0.0,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

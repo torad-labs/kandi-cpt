@@ -1,0 +1,7 @@
+# Source: youtube/kg0svvz9e-g.md
+# Strategy: distill_summary
+# Generator: google/gemma-4-31b-it
+# Synthetic: true  (domain_class: inferred-by-model)
+# Chunk: 0
+
+Tiësto performed at EDC Las Vegas 2026 (uploaded 2026-05-17). Setlist: "Don't Lose Your Head" (ft. Olivia Sebastianelli), "Lost In The Ocean," Nova Blue "Do It Like Me," "RVN (Raven)," Human Resource "Dominator (ID Remix)" w/ Dean Turnley "Actin' Tough (Acappella)," Outlander "Vamp (Tiësto Remix)," Guru Josh "Infinity (Tiësto Remix)," "Echo Sax," Ricky Fobis "No Regular (Tiësto Remix)," Nemke "Stampedo," DJ Jan "X-Santo (Tiësto Remix)," Ferry Tayle & Tonks pres. Mirage "Remember The Future," Benwal "ID," S3PPA "Inner Peace," ID "ID," CIElll "Tethered," "Moons Orbit," Zombie Nation "Kernkraft 400 (Tiësto Remix)," DEVERAUX "You Got Me," Matty Ralph & JOKESONYOU "Heaven," Matty Ralph "1999," LAWTON & Deckers "Los Retratos," Dee Dee "Forever (Double D Rework / Tiësto Edit)," Ueberrest "Disturbing Paradise," Bryan Kearney & Modeā "Ready To Fly," Tom Carroll "Wicked With You," Domastic "Born Free," Teriyaki Boyz vs. Gwen Stefani "Tokio Drift vs. Hollaback Girl (Macon 148 BPM Remix)," EsDeeKid "4 Raws (Tiësto Remix)," Marie Vaunt "That Acid," KUKO "Voicemail (Tiësto Remix)," SZA "Kill Bill (Tiësto Remix)," and Ratty "Sunrise (Here I Am) (Tiësto Remix)." No specific stage (kineticFIELD, cosmicMEADOW, circuitGROUNDS, neonGARDEN, bassPOD, wasteLAND, quantumVALLEY, stereoBLOOM, bionicJUNGLE), time, location, or policy was specified.

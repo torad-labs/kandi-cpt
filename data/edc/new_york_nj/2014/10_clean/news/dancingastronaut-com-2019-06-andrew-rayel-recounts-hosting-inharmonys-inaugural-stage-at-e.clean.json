@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "43db5e85ca7ebb8cc726982733ab1a8341cc25a89919f420e05049bda4a9b037",
+  "clean_sha256": "b7ced637e828707e6ef440789f64df94e3c3cf768ec6308ee66c094490787cda",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1863,
+    "keep_ratio": 0.789,
+    "anchor_ratio": 0.122
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2019/06/andrew-rayel-recounts-hosting-inharmonys-inaugural-stage-at-edc-las-vegas-growing-the-label-qa/",
+  "title": "Andrew Rayel recounts hosting inHARMONY's inaugural stage at EDC Las Vegas, growing the label [Q&A]",
+  "quality_score": 0.855,
+  "difficulty_score": 0.5518,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "771eb32b51451b414e957124dfe9f40d49066dead5374b891afb198f86bbec74",
+  "clean_sha256": "590cf3274dd2ea84177dfd2a07a38ae0c856a4e6aafb0a5797502e8317bf33f1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 67,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=O05F31MJFKY",
+  "title": "EDC M\u00c9XICO 2018 DIA 2 HARDSTYLE: Headhunterz, GAMMER, KIKEONE, JUNKIE KID, REZZ | STONECAT",
+  "quality_score": 0.6322,
+  "difficulty_score": 0.8148,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

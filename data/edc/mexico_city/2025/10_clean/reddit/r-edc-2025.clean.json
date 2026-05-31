@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "df44afcfffb0f51feaff81edad50e17f6228e3a1b748e2abc23c52f539cd6685",
+  "clean_sha256": "a305ac8468f5dc424f1753a42945e4a974e678355fbca8317f58f8371c2fe368",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2025",
+  "quality_score": 0.7559,
+  "difficulty_score": 0.6167,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

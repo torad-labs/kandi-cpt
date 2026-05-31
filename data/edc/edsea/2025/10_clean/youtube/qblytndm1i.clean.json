@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f098fa5c3db2cf7855e8fb611573e851235b318566fc7163649aceea7264aaa8",
+  "clean_sha256": "2d56f3b02e9332518f85193714527958b186fbd54546461c6a61f16bdfe7106c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 702,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-qBlYtNdm1I",
+  "title": "Alesso Live at EDC Las Vegas 2025 (Kinetic Field Full DJ Set)",
+  "quality_score": 0.6893,
+  "difficulty_score": 0.4353,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

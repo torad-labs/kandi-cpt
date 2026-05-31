@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "ecf20960b836a81fc14e8a54686d7b649aa66b7b190dfc02378c80ddecbdb648",
+  "clean_sha256": "61ffaffdee3c734a70fd8f28052ce0f46645e5e63235462836d58572dd9d3702",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 637,
+    "keep_ratio": 0.694,
+    "anchor_ratio": 0.266
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2023/",
+  "title": "EDC Las Vegas 2023 | Music Festival Wizard",
+  "quality_score": 0.7745,
+  "difficulty_score": 0.713,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

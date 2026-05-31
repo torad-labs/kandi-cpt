@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2354e129477ed41582d3506b1b9fb29786030729f13dab337fd0487d99231ecf",
+  "clean_sha256": "dd6666f8fe966df2ebe2b2cba37c2af129c5688cdd8468a511ffe3a04b75510f",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2019",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6662,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

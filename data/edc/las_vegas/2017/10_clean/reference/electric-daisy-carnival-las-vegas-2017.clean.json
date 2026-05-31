@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "aabacf2305c34ac1fd693fc33fef7b40306457cc7aaef1c661bf2bdcfdc81ae9",
+  "clean_sha256": "32df43bd9af09284627f7feda8bf68e57d8a7cdd504add4c0285aeb4ec626af4",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 707,
+    "keep_ratio": 0.733,
+    "anchor_ratio": 0.144
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2017/",
+  "title": "EDC Las Vegas 2017 | Music Festival Wizard",
+  "quality_score": 0.7748,
+  "difficulty_score": 0.6957,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

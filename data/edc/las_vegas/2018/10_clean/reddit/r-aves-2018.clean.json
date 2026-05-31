@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2f4182d394e1c76f8dd55e486993127933d9ee564fb1969636f86452494c0aaf",
+  "clean_sha256": "b1626b575cf703f7f07f418d4b9cf8bef2994f34cc26051610148cccf8c0ffec",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2018",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6582,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

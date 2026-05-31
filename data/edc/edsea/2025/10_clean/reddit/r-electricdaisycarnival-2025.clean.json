@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f1c377ef5848802182e73b8a5b97b5d4660214521293b3c3f25eea47a461feae",
+  "clean_sha256": "d42e26e09077b343362717f050ae4bd6f1781ab0d1576295182c28f866b58aaa",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=edsea+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 edsea 2025",
+  "quality_score": 0.8,
+  "difficulty_score": 0.2966,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

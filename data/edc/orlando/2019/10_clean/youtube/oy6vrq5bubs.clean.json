@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6897e61289bd0aef26865707ec2337cb6a62605901fd569db3d23f6f02c717be",
+  "clean_sha256": "2fc4ffab0d011b3170fecfd82059ba368792c135c82e6aecceb3170929c142ec",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1349,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OY6vrq5bUBs",
+  "title": "EDC Orlando 2019 Trailer",
+  "quality_score": 0.7219,
+  "difficulty_score": 0.4962,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "34139ede6a68a6af09596f36b88c599b48b7b2e16aa699cfd7eeeff8c9a561e0",
+  "clean_sha256": "03e0d98d1dd89fe0f6c45c8d0941e2372f75c5560e4ea1008b4926341e6ed067",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1763,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=D3TJIJzveII",
+  "title": "EDC Las Vegas 2012 After Movie | Electric Daisy Carnival \u2605\u2605\u2605\u2605",
+  "quality_score": 0.89,
+  "difficulty_score": 0.6841,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

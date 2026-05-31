@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f4ce0715dc2b6c33d14fae5a2612d11d014706fe4255e3cc53d135514e32254c",
+  "clean_sha256": "69840c328a10592c7827cc70e0e22a794cddaa623e053dd5a1c1649687802667",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 74,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hGCldrgT6Gc",
+  "title": "Above and Beyond - EDC Denver",
+  "quality_score": 0.6062,
+  "difficulty_score": 0.8353,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "66ea70943605d8f7520220882019394d3e16d73c9821e4ced6dcd63923a00972",
+  "clean_sha256": "f9a6261261281c5c2212ab65b8ffb8bda758c33c461a5dbfd91606c93e19bf9a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 167,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=XyETViZtvQA",
+  "title": "that one time (red rocks x edc 2017)",
+  "quality_score": 0.6259,
+  "difficulty_score": 0.7591,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

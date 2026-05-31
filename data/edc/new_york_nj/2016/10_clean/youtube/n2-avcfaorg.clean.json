@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a47294df2f8510ce68a31f6c942e8d5b1534f33ee356a0f8825f8b28ec697f6c",
+  "clean_sha256": "f6dd453337fca09c2cdbb91e5c10b2b1e5f4fb90ecb40af91b0220cc282e33f0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 85,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=N2-AVCfaORg",
+  "title": "Araab Muzik @ EDC NY 2014 (Cosmic Meadow)",
+  "quality_score": 0.6597,
+  "difficulty_score": 0.7041,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

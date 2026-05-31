@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "a45ccd17ceeebed299a76caca208affafec9da040ec65828725232603b34a97f",
+  "clean_sha256": "ad5de4320b1adecd432f8e7fbc70429aca6edec7b98f3a42c35ebeaef737a031",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=edsea+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 edsea 2023",
+  "quality_score": 0.7921,
+  "difficulty_score": 0.4568,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

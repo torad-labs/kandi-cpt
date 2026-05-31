@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "c4528d90126bb6c77ce8a7130a2532a00177617b61131480ca2df2175afbcf4e",
+  "clean_sha256": "818f59bb8c58e384002ed5f8ec52f76f8ad98a80f193f45e0cd9d2dd70541e67",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 376,
+    "keep_ratio": 0.549,
+    "anchor_ratio": 0.376
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/edc-orlando-set-times-2021/",
+  "title": "Here Are the EDC Orlando 2021 Set Times and Schedule - EDM",
+  "quality_score": 0.8888,
+  "difficulty_score": 0.8141,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

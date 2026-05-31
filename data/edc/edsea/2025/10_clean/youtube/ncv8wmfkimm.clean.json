@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5c2c2fd44e2d0311f2b10b3527392a3973ab3e5c2f0e5a00df11c80dc6a81530",
+  "clean_sha256": "f59c3ac85794bf888617fc62237591c9aa033e70fb0e0962be6ed00245ba7950",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 449,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ncV8WMFKImM",
+  "title": "EDSea 2025 \ud83d\udea2\ud83e\udea9\ud83c\udf31| Touching grass in Belize \ud83c\udfd6\ufe0f",
+  "quality_score": 0.6313,
+  "difficulty_score": 0.6438,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

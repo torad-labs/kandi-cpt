@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "eb5fafefae6dc6713f421a923b9fc16bd7af272ed03c00c5528e4685cf1cb4a9",
+  "clean_sha256": "76bf85c83884228e1906c5dd0f626ef89bef045f0a6bb6376ddf3a6873df241a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2744,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Z-fkSiLLBI0",
+  "title": "DJ Sally Club Show - Warmup for EDC Suzhou 2023 @Insomniac",
+  "quality_score": 0.8371,
+  "difficulty_score": 0.3083,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

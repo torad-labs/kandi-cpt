@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7e8c03673b83fb14305c135d201d696e19647e5b900a181010d6f9f9b4044969",
+  "clean_sha256": "7b5d5c0c4337932e43e8bbdb03065022fc154d76dee31aa4bdb10d8f530f4f0f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 50,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZKLSvv1uZBI",
+  "title": "DJ Marky @ EDC 2009 Los Angeles Live Dillinja - Shiners",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.8442,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

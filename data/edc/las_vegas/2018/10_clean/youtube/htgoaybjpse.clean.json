@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b9cf680131680db7a5dc7723b454a30f868970389bc1b3d7f064a1cf9b4a0cee",
+  "clean_sha256": "2e7cce2365e69db94802a170a36d7ee7ed99ac190da821d0f25210d2b29003d1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 646,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=HtGoAybJpsE",
+  "title": "KAYZO LIVE @ EDC LAS VEGAS 2018",
+  "quality_score": 0.6943,
+  "difficulty_score": 0.4883,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "286c142ad5e6cd50574897b27ca4a63328f995924c283c0110903e310fe43467",
+  "clean_sha256": "c55d6f9466aab4941eaa4f7b1374f9b8ccdf6485101f3f1c0d3884c22725bed5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1339,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Nq0djQjBk4M",
+  "title": "EDC Las Vegas 2023 - Official Trailer",
+  "quality_score": 0.7425,
+  "difficulty_score": 0.4349,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

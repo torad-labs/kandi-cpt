@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2ef2f6f1f7c3a05065af76059773ada22de5b6f685122de9251e7e58a8ef29f8",
+  "clean_sha256": "492d317ba8ca7cc06e0a7ffc8f4579fd69ffd33e9efc5899f5546b2afc9fe3fb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1871,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=9rxCEa6jacw",
+  "title": "Bassnectar live full set @ EDC Orlando, FL on November 7, 2015",
+  "quality_score": 0.7682,
+  "difficulty_score": 0.4695,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

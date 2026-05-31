@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "c52239efb728c9bf2058250c203892a74c219f0b77d58efaff45f1786867da75",
+  "clean_sha256": "b62f714877520f03255768935108d018defc3337f7572318a43b7eb27ac613cc",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2024",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7454,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

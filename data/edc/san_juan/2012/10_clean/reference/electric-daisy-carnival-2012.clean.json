@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "370c6e40652278b0c7ee05b5c3e1689cb475d6ec20d0c2b669a48915da743064",
+  "clean_sha256": "d96de2c3eb51ab5fe61b6fa7f753e53733ba5b5db202bfb6784ab5acbde134ae",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 456,
+    "keep_ratio": 0.613,
+    "anchor_ratio": 0.208
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2012/",
+  "title": "EDC Las Vegas 2012 | Music Festival Wizard",
+  "quality_score": 0.7707,
+  "difficulty_score": 0.7252,
+  "cluster_id": 15,
+  "curation_status": "drop"
+}

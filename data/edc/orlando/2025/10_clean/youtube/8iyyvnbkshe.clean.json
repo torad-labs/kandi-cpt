@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "02419766a67c9a0fb88c93a52d26feeba325060a823166b4b8bc59e961a33b1e",
+  "clean_sha256": "0df234ca8e94b51cb40a3545e055a674dee954a99c5c0818a10b1dad8784c745",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 135,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8IyYvnBkshE",
+  "title": "Knock2 Live @ EDC Orlando 2025 (Full Set) [Audio Only]",
+  "quality_score": 0.6597,
+  "difficulty_score": 0.7544,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

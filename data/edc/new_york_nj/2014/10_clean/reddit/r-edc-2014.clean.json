@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9ecf3e31aaba6239d929b35074ac3ba8869971ab9525c16ad43ffe80c0bfcac3",
+  "clean_sha256": "5ccc2f00ddebd2516007757a541960195048c68f9a620da212581680bd0d385c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+york+nj+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_york_nj 2014",
+  "quality_score": 0.6721,
+  "difficulty_score": 0.666,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9d76bc6a683435a0a89df17f16d2e2e38744b9e6d010f825ba013682e81a3c02",
+  "clean_sha256": "e8feada40d31dff90b1f22ff8896f2011236e7a21a6f5ba26ae1278461292001",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2023",
+  "quality_score": 0.7882,
+  "difficulty_score": 0.5635,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

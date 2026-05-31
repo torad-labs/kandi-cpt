@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bf05de1a2606fdcdedb5f863f2d71a091581074ceb3284d9b1c5a0618d2ab419",
+  "clean_sha256": "f3633dff22d2183b5351c60540f329c505e48b1694105c8d8523ce42893e1c39",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 232,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WDge7pvsFWs",
+  "title": "AYYBO @ EDC MEXICO 2025",
+  "quality_score": 0.6634,
+  "difficulty_score": 0.6928,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

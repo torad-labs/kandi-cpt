@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08a8809fa42cb7b6482cf89ca87e5901b52cdfcb9f30a77af963916d08e68216",
+  "clean_sha256": "8a9ec0c058f599e338780cf07f97bc9704ce4580f36faad59911e9427add41a3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 117,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=y6ktR3L_YjE",
+  "title": "Boombox Cartel Live @ EDC Orlando 2016 Full Set  [Tracks No Copyright Description]",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.7391,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

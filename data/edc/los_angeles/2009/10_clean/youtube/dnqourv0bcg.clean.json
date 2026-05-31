@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "45e70b6cc9e8048315139eae8ec94b1eaef42c2ec896d397f391ea76913e2f78",
+  "clean_sha256": "cd761d14fbe46c10a8db6603ac062ff693e4bf966bfda2dfddae49da74fe3863",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 184,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=DNqouRV0bCg",
+  "title": "Electric Daisy Carnival 2009 Official Trailer",
+  "quality_score": 0.663,
+  "difficulty_score": 0.6674,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b7836483bd602d78e656a8bf7c0478091048dbd54f0e00f12c3a62aed871bb34",
+  "clean_sha256": "7ad583ec4d61c6dfa49eae086b8fc5be2d76ae703d565adb5903f1db50042d5e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 3125,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uxVDHcKR-B4",
+  "title": "Subtronics @ EDC Las Vegas 2021",
+  "quality_score": 0.9113,
+  "difficulty_score": 0.613,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

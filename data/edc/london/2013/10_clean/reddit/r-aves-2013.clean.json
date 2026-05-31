@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "d5b95f3e3b7dd3440080cd526a932b0e3e7d3ff1ea779248de716328115cd782",
+  "clean_sha256": "796696ec42315b0b34a84e1e80e6a1aad46e99033d8f95a07d2d6ff76daa6dd5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=london+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 london 2013",
+  "quality_score": 0.6907,
+  "difficulty_score": 0.5241,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

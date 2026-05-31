@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "79e2f7763932386a514a68d1ff708b6a40a1f8051fedd93d713f901b86fe76e8",
+  "clean_sha256": "af8160e4ee2e3bffc0d04884c485b80811ced60de44db922b6479aeb5fb2eb95",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 88,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=blsjl-NKZSs",
+  "title": "EDC Denver 2011",
+  "quality_score": 0.6082,
+  "difficulty_score": 0.6975,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "a1da14db882b5b97f8a27f17e5fad6a2c521c97b1f35d4aa29a32b30e7c08b26",
+  "clean_sha256": "c950281128716fab2d4731fe0d667de232e040ece1fec556b41a3a51f4badc9c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2013",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7391,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

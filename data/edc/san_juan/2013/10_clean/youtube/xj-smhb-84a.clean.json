@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d68410d3d7ddc459ceec97fdea1f7b83db736b0e5ecb310f924af20297b5fbf9",
+  "clean_sha256": "17f6ba134571f30db44f38c1fe3926b84969f02e28ad5a7a6972555565ae0424",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 342,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xj-SmHB-84A",
+  "title": "Life in Color - Rebirth Tour - San Juan, Puerto Rico - 06/01/2013 - Feat. Cazzette & David Solano",
+  "quality_score": 0.64,
+  "difficulty_score": 0.5614,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a09ceb436c685819104b37bf0fca4448af384cf080f48f4d98e39218036f2954",
+  "clean_sha256": "21a0c163ed8af045067a645d0868656effb6eae2836db5a3ae773efec6fc0b00",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 149,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=lJrQncpDQos",
+  "title": "Yellow Claw Full Set EDC Orlando 2019 Kinetic Field",
+  "quality_score": 0.6747,
+  "difficulty_score": 0.6845,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

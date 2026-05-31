@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "13417376ea4e98274d291edfede01622e8ed450a50e5982709f154e686927990",
+  "clean_sha256": "a53ee10cffdbdb4a642df06715ea5c6350ab07e702d24849b70ccf62f8d957fc",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 588,
+    "keep_ratio": 0.682,
+    "anchor_ratio": 0.256
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/",
+  "title": "EDC Mexico 2024 | Music Festival Wizard",
+  "quality_score": 0.7742,
+  "difficulty_score": 0.7072,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

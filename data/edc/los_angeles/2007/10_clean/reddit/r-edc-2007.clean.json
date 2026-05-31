@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "cd0e11d387111e71d434b22d5448c7c7ed25cf78e6c56e957b82643727b72070",
+  "clean_sha256": "0862380e4906464e1d615a766ec7576443ac5d7656bfd420e3f04ae7c2cdbd3e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2007&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 2007",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6852,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

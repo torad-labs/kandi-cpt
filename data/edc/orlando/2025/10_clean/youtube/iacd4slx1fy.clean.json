@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c487a7339126ba0f84cee2d470a3a03deb96e5ed59d3a0c6d559b1cb79abca0f",
+  "clean_sha256": "7384d2376da4abcfef282dbe5402f73f6d70c5eab55ca29523b1b4da3b9fb3fb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 72,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iacd4slX1FY",
+  "title": "Adam Beyer B2B Layton Giordani: Live from Drumcode @ EDC Orlando 2025",
+  "quality_score": 0.6694,
+  "difficulty_score": 0.6958,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

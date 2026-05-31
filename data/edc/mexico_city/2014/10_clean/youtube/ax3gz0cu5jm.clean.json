@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a815780fd8bac5ba4886ac90eec25e8e441009783d6be55058e7b302b06fd09e",
+  "clean_sha256": "db6978e258eb8aee611e19896e5ac0057a9438f3b0a50f25ca0c84163cd81f9f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2329,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AX3GZ0CU5JM",
+  "title": "EDC MEXICO 2014 Official Trailer",
+  "quality_score": 0.9068,
+  "difficulty_score": 0.6179,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

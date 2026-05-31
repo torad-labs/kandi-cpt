@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "48ba22d0aa03b7abb36a00302d00cb3bc84ce498a711ba40ef1e15d6a6a88fc0",
+  "clean_sha256": "530894759a12db4bc3c6441bb6ced5f0d8cbd5bc224bbc605aba15335df78636",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 171,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=E4IttPX4-iU",
+  "title": "4B - EDC LV 2019 (LIVE)",
+  "quality_score": 0.6059,
+  "difficulty_score": 0.3036,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

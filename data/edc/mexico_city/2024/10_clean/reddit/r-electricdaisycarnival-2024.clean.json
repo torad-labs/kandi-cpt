@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f41b445dbcfa58a521ddb8c987956fdc66793a8d78d22aa2888f80956e531a0c",
+  "clean_sha256": "7d4a5bef8131817fc601556cb9b43a4dd130ef5642530c2a8efdbb23a0880c27",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2024",
+  "quality_score": 0.7545,
+  "difficulty_score": 0.5081,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

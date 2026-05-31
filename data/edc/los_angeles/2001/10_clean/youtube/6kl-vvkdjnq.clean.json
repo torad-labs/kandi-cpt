@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1cdbea0fd92524ac69a285fdfe1a93e5b8dad1974d200be28ca6562b6ed8496a",
+  "clean_sha256": "6c0b5c6fddf0f2d0736e94629ccfb469407d1cce0dd851f534f81a20928d7dae",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1246,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6kl_vVkDJnQ",
+  "title": "Electric Daisy Carnival over the years (1999 - 2010)",
+  "quality_score": 0.8411,
+  "difficulty_score": 0.5584,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

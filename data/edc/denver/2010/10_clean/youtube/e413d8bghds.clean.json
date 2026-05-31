@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d4d16fa44fcd3b8337c826ac9b4b78c6f4833b06bb169eb20551b0212178140f",
+  "clean_sha256": "ab8661134b0fa555fce750e1218cbd1222e0b5e224bf84ed9d9da31989e32f28",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 74,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=e413d8bGhDs",
+  "title": "Cube-a-Tron at EDC denver 2010",
+  "quality_score": 0.6079,
+  "difficulty_score": 0.7269,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

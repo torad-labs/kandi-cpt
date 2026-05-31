@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "14b7ab9c6f508ad673156bca8fc4a755f8446d85976b23046705cef317358fdf",
+  "clean_sha256": "c908f20aef8fe109df08d23c6ebed5672da84634d0523868413be9f06f3dc395",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1730,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3gCcjt5kIdE",
+  "title": "EDC Las Vegas 2018 Official Announcement",
+  "quality_score": 0.8586,
+  "difficulty_score": 0.4357,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

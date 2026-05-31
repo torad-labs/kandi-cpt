@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "241e044d9ddc8a9a47a76c88da32dd387077e421e1ba00ebb37f1bd11bf7fd3a",
+  "clean_sha256": "c0b0fae0051595f162348c9dacd7cbd29bfb097b244b7681dace5ab624cc27bb",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 753,
+    "keep_ratio": 0.646,
+    "anchor_ratio": 0.256
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/cant-miss-b2b-sets-edc-las-vegas-2026/",
+  "title": "6 Can't-Miss B2B Sets at the 2026 EDC Las Vegas Festival - EDM",
+  "quality_score": 0.8999,
+  "difficulty_score": 0.6025,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

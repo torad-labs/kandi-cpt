@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1421debd526759fc374b95caec09015acc96b8d71c93f2d6eaddf2d712903fe7",
+  "clean_sha256": "c85b13dcacbb12e801ba3169ee0751a42b8919dcb433bcae6e52d1d82364ba99",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 963,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rvse58mxuDM",
+  "title": "EDC Orlando 2018 - Official Trailer",
+  "quality_score": 0.7136,
+  "difficulty_score": 0.3585,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

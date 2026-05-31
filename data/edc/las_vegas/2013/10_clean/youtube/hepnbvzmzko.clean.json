@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ff867a1608c0c63f373abaa844bcb4c913d8e142e739b054bc3e6797ecfb8e5a",
+  "clean_sha256": "e69ed6b7d6a0630aa3006243f43cb9972c9574dccdf3bcf67fd57c887b94ea1e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 287,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hEPNbVZMZko",
+  "title": "Morgan Page - Live @ Electric Daisy Carnival (Vegas) - 22.06.2013",
+  "quality_score": 0.6729,
+  "difficulty_score": 0.4945,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

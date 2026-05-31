@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "75dc86be039887bc27a5e94a7f19d5780d865e19b32d7c46059720551ee710b6",
+  "clean_sha256": "56053f56c64112dcb1b012c42369c649bf2c2f6a49960c5d046aca11fde30f9d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2026",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4466,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

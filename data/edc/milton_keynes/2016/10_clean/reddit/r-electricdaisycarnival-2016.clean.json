@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "fe058a064c408a0e12d125ad0c4a92d6148eb9ae08b90721e984b95dc62d2ecf",
+  "clean_sha256": "c8beeda34532858a6466a4523e92fee023fa2b05ed1747e54bc3305b57924d0a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=milton+keynes+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 milton_keynes 2016",
+  "quality_score": 0.7997,
+  "difficulty_score": 0.5122,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

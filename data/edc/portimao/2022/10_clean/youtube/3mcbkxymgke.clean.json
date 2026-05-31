@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9b5a7f2a82688e79327368b17dd1f08aa3a7527fd96a707744fac9dd0faa4204",
+  "clean_sha256": "bc83e08d60dccd44e7e44a0dc55fa9cfdd482cc3f528ce20a50e116cf0d301c8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1456,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3McbKXYMgkE",
+  "title": "MotoGP: Portuguese Grand Prix | EXTENDED HIGHLIGHTS | 4/24/22 | Motorsports on NBC",
+  "quality_score": 0.6929,
+  "difficulty_score": 0.5006,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

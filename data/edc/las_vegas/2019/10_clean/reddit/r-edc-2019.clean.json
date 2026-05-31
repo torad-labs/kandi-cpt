@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "69e1aeabb08e45a17543c1a6077cbe22e8fb35a4a222692b7e059924c2a7baa9",
+  "clean_sha256": "d8490b86727b3032ac4dde0445c32f0aaa867b8e75921ec94a307e22352e23cd",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2019",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7357,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

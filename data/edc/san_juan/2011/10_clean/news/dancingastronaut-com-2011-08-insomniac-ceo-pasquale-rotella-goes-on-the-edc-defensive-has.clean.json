@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "65c7618ab897e8d252612cdbca3d840ea43149f455c7b902c860e4a34f7c9b90",
+  "clean_sha256": "7503db500cf94089d62304f67c274e151114c0b59964a15e4a0c436ae7a32013",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 279,
+    "keep_ratio": 0.399,
+    "anchor_ratio": 0.377
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2011/08/insomniac-ceo-pasquale-rotella-goes-on-the-edc-defensive-has-some-valid-points/",
+  "title": "Insomniac CEO Pasquale Rotella goes on the EDC defensive, makes valid observations - Dancing Astronaut",
+  "quality_score": 0.8668,
+  "difficulty_score": 0.6164,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

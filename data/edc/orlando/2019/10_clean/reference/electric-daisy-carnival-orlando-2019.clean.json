@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "00c860b967c50fb7ec298b86fe60072728c8ae574783abc70c84a792eb94b5ed",
+  "clean_sha256": "1640070e53d29b840ba49da906e0f190457f4ee9ea31b1f9734f4e0f349f4e3c",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 381,
+    "keep_ratio": 0.565,
+    "anchor_ratio": 0.261
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2019/",
+  "title": "Electric Daisy Carnival Orlando 2019 | Music Festival Wizard",
+  "quality_score": 0.8019,
+  "difficulty_score": 0.7499,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

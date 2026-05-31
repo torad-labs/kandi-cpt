@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e894911f341917c829ccc89ecf01c898a9c8ab63161b7065030a5db0484aed28",
+  "clean_sha256": "a8d83d7a626a940ba582926e9f273a39b91ff425020ff43e778e6041bc067d9b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 761,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=mJ1jjsI4RkA",
+  "title": "EDC Orlando 2025 Aftermovie | Insomniac",
+  "quality_score": 0.7033,
+  "difficulty_score": 0.4481,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

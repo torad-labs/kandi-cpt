@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9e03ae8c17b2f6d16ec0aba509f4c2b1babc46824951602594facf9fa9120f26",
+  "clean_sha256": "f64a261363d9aaf56072deb7cb45255dff3e91f6999b675330359d164c1cd805",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 los_angeles 2010",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.4879,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

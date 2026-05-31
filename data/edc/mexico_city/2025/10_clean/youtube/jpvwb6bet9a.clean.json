@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "95635c5b3b0244a80a2c39c4109ab4a3b3eb360054ac0077ffbb279555e9d1fe",
+  "clean_sha256": "d7bd712be486b619d94410f5cae53b0e6313bffe1a570d64abd8db36a97a5a00",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1172,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=JpVWb6BET9A",
+  "title": "EDC Mexico 2026 Official Trailer",
+  "quality_score": 0.6994,
+  "difficulty_score": 0.4365,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

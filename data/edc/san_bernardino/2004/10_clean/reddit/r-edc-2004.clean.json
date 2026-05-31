@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "266187651258eadd1bd0239c42bb8cef17b75e78112a13e2bd62339c4828ff99",
+  "clean_sha256": "be72277276f97440873e98e24cfc2d8983aa7a32a1714ecd173d4bb0db5569d1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=san+bernardino+2004&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 san_bernardino 2004",
+  "quality_score": 0.5219,
+  "difficulty_score": 0.6397,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

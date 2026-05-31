@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "87fc50382c4ac54eefc5346651b50693fde13c89455ee80e25d6a536003fd737",
+  "clean_sha256": "764bcaad02178a2a8366a5bd19dedf6196268fbe6b7ac8774628353fb9d06551",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1061,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0VanjlvYJis",
+  "title": "EDC 2013 After Movie: Electric Summer Nights",
+  "quality_score": 0.7587,
+  "difficulty_score": 0.6624,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

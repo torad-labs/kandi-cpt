@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bc546a3788c2996a739ecee15f5fdbb49b37fd6b190cc04ba9947951c61691f4",
+  "clean_sha256": "b7b06a691c006e73709ed1507ec75a6a6a84fef58dc326b397c9dfbcc50b32db",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1483,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uPUgJH9CtNo",
+  "title": "The most complete overview  Electric Daisy Carnival (EDC) Thailand 2025 - Phuket",
+  "quality_score": 0.8667,
+  "difficulty_score": 0.6498,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

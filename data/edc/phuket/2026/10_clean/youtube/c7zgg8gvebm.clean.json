@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9fbcc9f1e6a40f8e52c9a069205fe71e5ba777e1638c12999733148ad98ca458",
+  "clean_sha256": "eb168d6a064535b8efdcddafcd5c619f4e605645735b47c3be8da2a341189592",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 511,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=c7ZgG8GvebM",
+  "title": "EDC Thailand 2026 Trailer",
+  "quality_score": 0.6463,
+  "difficulty_score": 0.4348,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

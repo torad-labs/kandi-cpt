@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d6f85c12574456ce3c46c0b6d6af74e46989f6e0f927ca02f66149b992991f33",
+  "clean_sha256": "33b34d370dd9a4a5cfac5a04abb8d5c4d7d6a81955bf3d7517f195dbcd11379e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 107,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z1jXaXXJ1W4",
+  "title": "EDC London 2013 - Avicii - Midnight City Vs Diamonds",
+  "quality_score": 0.6332,
+  "difficulty_score": 0.6643,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

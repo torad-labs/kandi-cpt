@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "faf955e8363d619905e3ba970a6d4b8584f77117279f041b2a234e190597ec73",
+  "clean_sha256": "f9cf187fd2d08497d7df7efdb7a7078c35ccde434c54aa0ba2fda862ac6d83ac",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=phuket+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 phuket 2025",
+  "quality_score": 0.7994,
+  "difficulty_score": 0.6725,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

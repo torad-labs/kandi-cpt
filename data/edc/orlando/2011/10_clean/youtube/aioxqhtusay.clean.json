@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2d52101903c5edee6af9242a2e3bf4d7bd4c97dcc1107e7626ab4734047cd44a",
+  "clean_sha256": "6fc250ff1057dde28e7727898d3c40eecc16d855d20fa0e592f7f935430ad942",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 342,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=aIOxQhtUSAY",
+  "title": "Benny Benassi - No Access- Michael Woods - EDC Orlando 2011 HD Kinetic Field(Main Stage)",
+  "quality_score": 0.6793,
+  "difficulty_score": 0.7275,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

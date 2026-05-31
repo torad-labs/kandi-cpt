@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "740337fdfd90b19576a451b3dc2fb7dec44af883bc2edacd17c0119b916d4266",
+  "clean_sha256": "2852b09159f853f8ca714e96c6332a9e9fd044cc01e3d0d74320d95a982fee80",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 312,
+    "keep_ratio": 0.437,
+    "anchor_ratio": 0.334
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/07/good-morning-mix-tommie-sunshines-set-at-edc-las-vegas-2013/",
+  "title": "Good Morning Mix: Tommie Sunshine's set at EDC Las Vegas 2013 - Dancing Astronaut",
+  "quality_score": 0.7267,
+  "difficulty_score": 0.6472,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

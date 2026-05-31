@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "60fae0d10ea3dc7343c18d70b32aca77ab00f4c2c87dd36a7d556d38200cff10",
+  "clean_sha256": "c08da664be32bdc083c039f16d4c251a99d130e94222d577bcbbd8d1302a843e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 59,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=YrZVhpE-9Is",
+  "title": "Kshmr Live - Burn @ EDC Korea 2019(Electric Daisy Carnival)",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.8248,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

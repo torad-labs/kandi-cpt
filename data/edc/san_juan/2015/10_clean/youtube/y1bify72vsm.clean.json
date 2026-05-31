@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2978c151c1df74a12f5eaf3aad4699d1c43a14882be62d1406b9029e30946ffa",
+  "clean_sha256": "8ff10ac46a4941c13698e4909d56fdd05c92dafa2a58613ad3cf78a1359898f8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 58,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Y1bifY72vSM",
+  "title": "Laxx - EDC Puerto Rico 2015",
+  "quality_score": 0.6316,
+  "difficulty_score": 0.6941,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

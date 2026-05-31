@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "255a90d50ad3b58464ae4161e32c4b67656f684fb32ad12a50af75a4af2a801a",
+  "clean_sha256": "1f0a9f5c02397cedf3ba328d7fb2c905404c9b93522e65d41c36d330573c86f9",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 995,
+    "keep_ratio": 0.701,
+    "anchor_ratio": 0.194
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/industry/inside-pacha-new-york-safety-security-plan-brooklyn-mirage-site/",
+  "title": "Inside Pacha's Ambitious Plan to Fix the Safety Failures That Plagued the Brooklyn Mirage - EDM",
+  "quality_score": 0.9,
+  "difficulty_score": 0.6352,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

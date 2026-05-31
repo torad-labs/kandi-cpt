@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "233c04f562caef436777b3ebf99e09a89aea32cd00d018b290c6c21e12b9fe3a",
+  "clean_sha256": "4a7c426ea074a7bc645f49ef9072a93ae605f7f4fc16a35487d134aa6bb7e5ea",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 475,
+    "keep_ratio": 0.532,
+    "anchor_ratio": 0.285
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2019/06/anna-lunoe-lays-down-a-scorching-score-to-the-right-party-on-latest-ep-review-2/",
+  "title": "Anna Lunoe lays down a scorching score to the 'Right Party' on latest EP [Review] - Dancing Astronaut",
+  "quality_score": 0.8716,
+  "difficulty_score": 0.6766,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b1cbf2892a0919accb07d61aef9653c2713edd8d3c5a3334fe36ea7b874aa6a8",
+  "clean_sha256": "c6e7c19493a6c14e548655945de0752752872ba8479d2f2cddafe5be7fa11168",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 new_york_nj 2016",
+  "quality_score": 0.7857,
+  "difficulty_score": 0.5929,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b4cb3c1cd4746b939d4364110824dc9777ec19336ae392c397d4f708c5b2eb8f",
+  "clean_sha256": "6df84bf5136a7950f6cd2b82be8cbc97c20e90ed6f5285f29db3e29c37fbb95d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 597,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3AQ_Srbe1lQ",
+  "title": "The Chainsmokers Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6908,
+  "difficulty_score": 0.4413,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

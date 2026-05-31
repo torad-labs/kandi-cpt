@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2fe51f438f66b2bc719d8c9ccca1f5e7a326c3488da8177ef1ef9842218e3a07",
+  "clean_sha256": "267c9aeb12fb0c960434e7feae181e5528ea2e9a22fc4193c88f45f725cb6b5d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2013",
+  "quality_score": 0.7858,
+  "difficulty_score": 0.5238,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

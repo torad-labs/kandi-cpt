@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0d28079f3f7fa27f787fb977835a5da0e75b22215637ad5b56864c2e4e6b2f6c",
+  "clean_sha256": "bc2bb0c5ee45b79fca8f0d4536aec41efda09b19b95b7f14dfe6c177b2899871",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 82,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2Htuig55r7U",
+  "title": "Zedd Full Set EDC Orlando 2025",
+  "quality_score": 0.6451,
+  "difficulty_score": 0.787,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

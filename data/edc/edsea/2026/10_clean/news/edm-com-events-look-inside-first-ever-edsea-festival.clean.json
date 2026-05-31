@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "aa710b83f5d584e3a92dd90c7b77784d1dfe75e8b232079e196b97cc063ec1ad",
+  "clean_sha256": "4542b436a5ac276be5a543891096fa7f4a97892c39729fbd2448c406eef535cb",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 468,
+    "keep_ratio": 0.507,
+    "anchor_ratio": 0.311
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/look-inside-first-ever-edsea-festival/",
+  "title": "Look Inside the First-Ever EDSea Festival, a Shipload of Beats and Bass - EDM",
+  "quality_score": 0.8963,
+  "difficulty_score": 0.7179,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

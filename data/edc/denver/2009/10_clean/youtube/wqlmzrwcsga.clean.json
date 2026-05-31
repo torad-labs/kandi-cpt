@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1821447f9a5aa4030b67a451c88978c7dc553ea18ce547646c44e50801346dbf",
+  "clean_sha256": "ecc631c761f15f6e6959ab7fad2b917b4926684b8865cc83477d966f1a4f6f71",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 134,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wQlmzRWCSgA",
+  "title": "Paul van Dyk live on Kinetic Field at Electric Daisy Carnvial 2009 in Denver Colorado, EDC 2009",
+  "quality_score": 0.6475,
+  "difficulty_score": 0.9211,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

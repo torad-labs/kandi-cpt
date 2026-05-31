@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b5f387e072fce26e0be9e9932893760d2860538c3d3d19beabbd7d86d05f55cd",
+  "clean_sha256": "41d2a4b2dd4202ad9a4914236da99c263583c7b12f83396e6ba6cfbe2ae84015",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 124,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1-BQ4wT3_Bs",
+  "title": "Swedish House Mafia - Kinetic Field EDC Las Vegas 2011",
+  "quality_score": 0.635,
+  "difficulty_score": 0.7676,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

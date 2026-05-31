@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "25edb11e9d455ddbf7f0d37a82323860da1efa06a30858e86d2c3e73ed2a8797",
+  "clean_sha256": "ca4434e28e82dc90b8ba7d68c0f1641a6f3f927026bfbdc09e4202867d477e58",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1430,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kG0SVvz9e-g",
+  "title": "Tie\u0308sto Live at EDC Las Vegas 2026",
+  "quality_score": 0.8826,
+  "difficulty_score": 0.6108,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

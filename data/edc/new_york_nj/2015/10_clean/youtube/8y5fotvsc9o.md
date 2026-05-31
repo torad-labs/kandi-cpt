@@ -1,0 +1,10 @@
+# EDC NEW YORK 2015 AFTERMOVIE
+
+Scraped 2026-05-30 from https://www.youtube.com/watch?v=8Y5fOtvsc9o.
+Tier 2 (community-reference) corpus material.
+
+---
+
+EDC NEW YORK AFTERMOVIE.  ALL RIGHTS RESERVED TO THE ARTISTS AND LABELS ON WHICH THEY ARE SIGNED. GALANTIS - RUNAWAY HARDWELL - SPACEMAN FISHERMAN & HAWKINS - APACHE
+
+*Uploaded 20150624 by thomasjohnnTV.*

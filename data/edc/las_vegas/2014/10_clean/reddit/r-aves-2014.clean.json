@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "dbda1c262f49bbe2b8cc0ec7c519b4a9bf35a6c1a8a9326b232d2fe38a4fe1e2",
+  "clean_sha256": "7d76968d302e596ae59ec86ed7463f49fc29d5b6c54a19672483b9b70a7d5df5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2014",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6573,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

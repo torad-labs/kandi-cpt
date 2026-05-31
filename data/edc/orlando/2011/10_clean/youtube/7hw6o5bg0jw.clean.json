@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2c49aa4e8cacd208c6a620ab7e9559c378b7f766becdc1143d54ea5c2316319f",
+  "clean_sha256": "ee3155062e05924bc3b28c03532cb351fc4c3c5f1629641afdfab3a336a38183",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 66,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=7hw6O5bG0jw",
+  "title": "EDC Orlando 2011 Markus Schulz- The New World & Daydream",
+  "quality_score": 0.6062,
+  "difficulty_score": 0.8494,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

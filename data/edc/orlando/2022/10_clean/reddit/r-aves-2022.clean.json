@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "163eb41ca2d45cdc9e627cda287426e4eecad2e48bab5b7ca19eb5bc60c0382d",
+  "clean_sha256": "83bf567aeeeb3fec30277983b809d0a5c5b31468f2f1e5cf310d573472c4e627",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2022",
+  "quality_score": 0.5275,
+  "difficulty_score": 0.6127,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4f68d210c2e6eac82268341c8726fe866ba64c8b40cacbcd3d1ade44863a2b9c",
+  "clean_sha256": "8358397103ceb5fe2ccfe918fde83733d9b67c2609af465d2d93d7b5012a3879",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2565,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=R3b3vNQUMn4",
+  "title": "EDC Orlando 2021 | People",
+  "quality_score": 0.9138,
+  "difficulty_score": 0.5444,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

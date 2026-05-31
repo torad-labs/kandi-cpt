@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3806818c20694b2ed098bfd50f351107763086bff16549738b71f171967ac350",
+  "clean_sha256": "ffd7335000d919526287a115126ea2ef25ead57aa146b2e32cfac131a6dcfa5c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 112,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=m17GLs6wEO0",
+  "title": "Paul van Dyk live at Electric Daisy Carnvial 2009 in Denver Colorado, EDC 2009",
+  "quality_score": 0.6211,
+  "difficulty_score": 1.0,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fc0c81f5f8c293f17b8391bc53990eb83020f0c264e59b6826a03b45e4996faf",
+  "clean_sha256": "dd1ba6b93e4f909dd2c5b58d43b8e33a4e16e4a8b3964da9981dad8c17ccebd1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 197,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=juVLUtI2r-g",
+  "title": "San Juan EDC 1",
+  "quality_score": 0.6158,
+  "difficulty_score": 0.6205,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

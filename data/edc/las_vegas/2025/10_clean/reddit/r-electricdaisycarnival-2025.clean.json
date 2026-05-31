@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "1ae5fb94f05b1626843e4bf4afc7e93eba78c753196df5ec3a4310dccbad314f",
+  "clean_sha256": "c011fad9d3b0c74c2a02d4555670929c4310c5701905ff29b91abe4765e32b4b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2025",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.443,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

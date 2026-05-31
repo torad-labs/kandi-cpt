@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "67f86bdc6904f97e9dff2880fe65257d033f9933b331bc2601556c4c508a8836",
+  "clean_sha256": "f5ef5bd40630d6342ca71e1553d45e4820ea91bad36e52f7e9f15431e2439b22",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1689,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1kQkVeeTFMk",
+  "title": "EDC New York 2015 Official Trailer",
+  "quality_score": 0.8431,
+  "difficulty_score": 0.7765,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

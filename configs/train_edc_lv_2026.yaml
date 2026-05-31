@@ -2,7 +2,7 @@
 # Precision policy: NO FP32 tensors (bf16 params/grads, 8-bit AdamW states, FP4 via QAT).
 run_name: edc_lv_2026_cpt_v1
 model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
-precision: bf16            # bf16 (Phase 1 gate) | nvfp4 (Phase 2 QAT)
+precision: fp4             # NATIVE NVFP4 training via Quartet-II (real FP4 GEMM fwd + FP4 bwd w/ RHT). bf16 | fp4 (Quartet) | nvfp4 (QAT)
 
 # data
 tokenized: data/_build/30_tokenized/corpus_v1.arrow   # column `input_ids` = seq_len blocks
@@ -17,8 +17,9 @@ weight_decay: 0.0
 betas: [0.9, 0.95]
 adam_eps: 1.0e-8
 grad_clip: 1.0
-warmup_steps: 20
-max_steps: 200            # smoke value; raise for the real run
+optimizer_8bit: false      # re-tested 2026-05-30: still broken under FSDP2+DTensor (OptimState8bit aten.view.dtype unimplemented). Keep bf16 AdamW.
+warmup_steps: 24
+max_steps: 240            # V6: ~7 epochs over 1080 blocks (matches v4 per-line exposure)
 decay_frac: 0.2           # WSD: last 20% decays to min_lr
 
 # memory levers (2x 16 GB)
@@ -35,3 +36,32 @@ nvfp4:
 # logging / checkpoint
 log_every: 5
 save_every: 100
+
+# CPT training levers — every lever defaults OFF/baseline; enable ONE at a time for a clean A/B
+# against the current baseline (never two new levers in one run unless explicitly testing interaction).
+# Levers 1/2/4 consume the metadata the tokenizer emits (entity_mask/src/fact_ids) — re-tokenize WITHOUT
+# --no-lever-metadata before enabling them.
+levers:
+  lever1_entity_loss:        # concentrate gradient on entity/date/time TARGET tokens (weighted-mean CE)
+    enabled: false
+    entity_loss_weight: 2.5  # sweep {1.0 baseline, 2.0, 3.0, 5.0}; over-weighting can over-cluster entities
+  lever2_qa_mix:             # mix eval-shaped QA + conversations into the CPT stream (format-match the probe)
+    enabled: false
+    qa_token_fraction: 0.15  # sweep {0.0, 0.10, 0.20, 0.30}; too much starves raw facts
+    use_chat_template: false # only if deploying through the Gemma chat template
+    system_prefix: null      # if set, every qa/conversation example carries this prefix (train==inference framing)
+  lever3_three_r:            # re-warm + re-decay (WSD already) + replay + optional EWC (forgetting control)
+    enabled: false
+    replay_token_fraction: 0.02   # sweep {0.0, 0.01, 0.05}; needs data/_shared/replay populated
+    rewarm_peak_lr: 5.0e-5        # = lr; the stability-plasticity dial (sweep one step down/current/up)
+    ewc:
+      enabled: false
+      lambda: 1.0
+  lever4_exposure_tracking:  # passive: log cumulative fact exposures, join to probe pass/fail → extraction curve
+    enabled: false
+    threshold: 0.8
+  lever5_causal_trace:       # standalone analysis (ROME causal tracing) on a frozen checkpoint, no training
+    enabled: false
+    n_facts: 200
+    noise_scale: 0.1         # tune until the clean prediction is fully degraded
+    checkpoint: null

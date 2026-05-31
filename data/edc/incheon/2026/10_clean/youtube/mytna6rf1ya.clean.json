@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "de82ff954de78833ae28ceb8b19808f579f5d932b1fa776f9b36054d1a3b1a8c",
+  "clean_sha256": "dc20204525135d946e7ab42b8f54b0dad2b58c6cad71e5610c71103ef8667bac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 667,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=mYTNA6rf1YA",
+  "title": "YEAR 1 Q&A (a year of international travel)",
+  "quality_score": 0.6698,
+  "difficulty_score": 0.4678,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

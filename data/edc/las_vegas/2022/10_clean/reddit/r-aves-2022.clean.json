@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "781b89d0f6b7e8b32b225c8c3ad9672b3f3568423160975aa3d7f760823afab4",
+  "clean_sha256": "afb89fc1d2728b96ec4f8490fcd932f96552bb30d38148157daf6dec11b300ca",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2022",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6536,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

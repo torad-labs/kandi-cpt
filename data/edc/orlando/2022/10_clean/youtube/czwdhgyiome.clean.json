@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "44138de707b8dd2f96d42b0d16713afa05be9341559c74b7b00302f47b0654ad",
+  "clean_sha256": "336bd751b61096b854e0136ba94280840a06cec8af249647ba0ccd1ad08da97f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 371,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CZwdhgYIOmE",
+  "title": "Giuseppe Ottaviani @ EDC Orlando 2022",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.4406,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

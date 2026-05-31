@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9d41324e2ec3e5cf39090ffb443c8ecc179f3832aa96a94e7f6a09f34995bea1",
+  "clean_sha256": "a97df45452aa24b251db3790aecea052b31571d9a395afb3b819ff0cf0d83eba",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 92,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=TJPRlkY0GHA",
+  "title": "ZTRIP PR 2011.mov",
+  "quality_score": 0.6451,
+  "difficulty_score": 0.8169,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

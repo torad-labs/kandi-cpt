@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "79ea612539d903d9c6322d8851de7c298b84f28ee2595c8034c8fd573ca9f949",
+  "clean_sha256": "40b52062a86b0cc93ea33eb58444b4cdb5d7696f56cbeb0e116fe09a8a7a36c6",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2026",
+  "quality_score": 0.7874,
+  "difficulty_score": 0.5445,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

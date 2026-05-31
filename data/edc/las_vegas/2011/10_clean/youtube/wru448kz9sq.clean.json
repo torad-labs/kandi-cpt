@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cc03966ee202868497ff88b41edbe867e4b2670a25dac8cbf5268c8e765ce9a3",
+  "clean_sha256": "a4f4e98ff0df55ed6eff6b7233d403819377df0f67bece5bf99bdaf917e66ccf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1481,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WRu448KZ9sQ",
+  "title": "Electric Daisy Carnival 2011 Las Vegas Compilation",
+  "quality_score": 0.6819,
+  "difficulty_score": 0.2213,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

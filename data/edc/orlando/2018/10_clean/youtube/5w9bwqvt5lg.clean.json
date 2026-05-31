@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8a0ebeca64bb1e83729e1eee8ebfe6a233bebbd412b3fda9ec266165b976410f",
+  "clean_sha256": "91e8b0620a83b7da13728675bf1a953746dc0d9fb398debf3d3280b1b1b65694",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1199,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5W9bwQVT5Lg",
+  "title": "Joyryde Full Set EDC Orlando 2018 Kinetic Field",
+  "quality_score": 0.788,
+  "difficulty_score": 0.6141,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1678f4d675c40ccd787babc26c87aaabee95087a6c6dcbcc862f429ba39f5357",
+  "clean_sha256": "9925da6f35c32b117c9cd22596152bc575d9fc5dc24cdcfb42ec4796e0eeca53",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 427,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=g7WD3Z9WzIM",
+  "title": "GORGON CITY at EDC Mexico 2023",
+  "quality_score": 0.6271,
+  "difficulty_score": 0.5836,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

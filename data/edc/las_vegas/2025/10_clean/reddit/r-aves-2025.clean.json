@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "0b9404af099c69fe41e9a2ffd7968853ee2a5f99913d7b934a49882732fa5e5c",
+  "clean_sha256": "817d42b9efb23d46a139a9e8e6eced91422424bfed0456c450ab97aa6465edb7",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2025",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6613,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

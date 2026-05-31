@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "61fe9458abe467abfbb784675df649db859143fb7457129c1fc424befe5d7545",
+  "clean_sha256": "655b60b66c4ca941a58d20b11292fee5339054953d765196e3edeee342209eac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 837,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=saEEH-NPUMc",
+  "title": "James Hype @ EDC Orlando 2025",
+  "quality_score": 0.6947,
+  "difficulty_score": 0.4978,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

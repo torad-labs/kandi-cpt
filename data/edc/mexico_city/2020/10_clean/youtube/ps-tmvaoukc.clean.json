@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cfcd9ca56417678fc2d621395e2a4ab2c65a22ae0c4cc63de72e20cbed7e9474",
+  "clean_sha256": "edaf3fa5b5d22a70384d7c7ea72c5b15cd367aada473d311711ea53cf36deebf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 810,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PS_TMvAouKc",
+  "title": "EDC Mexico 2020 Announce",
+  "quality_score": 0.6898,
+  "difficulty_score": 0.3194,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "551b2cc9ce706d4db674d25420c69eb72c049bf3b34e471d38a514cbc12f060f",
+  "clean_sha256": "777373fe0486c008951f965e091a6da15a46ea9b8d2dc3a0c3700701a1d4c263",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2021&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2021",
+  "quality_score": 0.7868,
+  "difficulty_score": 0.4591,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

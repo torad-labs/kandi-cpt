@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "66b5a98d3ad443429fbd0b90ccd39d8844ee4e74267f02f5ee074e2642cab559",
+  "clean_sha256": "58f32076fd76c98d73347b77a52bde9062c813a8af33117f3429ffbb85b1f254",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2060,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hRsfYSh10yw",
+  "title": "John Summit @ EDC Orlando 2024 Live (Full set)",
+  "quality_score": 0.9176,
+  "difficulty_score": 0.6214,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

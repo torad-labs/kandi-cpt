@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8b77b45248a46adc636e08a0bf943159a45010fc225d5b3451c10569c59b9f33",
+  "clean_sha256": "38dfe48848105cfd7c4691096284cbbc861b575a9f2f9de758ec8925951cdf14",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+york+nj+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_york_nj 2012",
+  "quality_score": 0.6721,
+  "difficulty_score": 0.64,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

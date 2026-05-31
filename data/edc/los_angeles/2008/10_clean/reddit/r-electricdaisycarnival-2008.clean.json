@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "38b9e56112b8f037c5433f5fabd1a53896a959e09dd0d33f64544d672e8588e2",
+  "clean_sha256": "d4982d3633c1b379c47f1e3ca7c0ba0383b97c577ec80f55d16c6b7d94fffc31",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2008&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 2008",
+  "quality_score": 0.7706,
+  "difficulty_score": 0.6285,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "7e466d14d09c504ebb3644235e8071a3ebc4a531a63fbe6c431a964f00aeb06e",
+  "clean_sha256": "6577de1ae675e5855f73e506dc82585362c7671df8a7d32bda040b553a0dc3ed",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 2010",
+  "quality_score": 0.7699,
+  "difficulty_score": 0.6483,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5943596d6422227527060ca156e6e4b94647fc29792f89ede47e43cccadb6d5d",
+  "clean_sha256": "147c811128a223b2fd04d3e18711eeaa8f8f4734ad9aafc02e2b94afa20996b3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 201,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SGaUzCI-XKM",
+  "title": "Best Moments of Electric Daisy Carnival 2010 HD - Puerto Rico",
+  "quality_score": 0.615,
+  "difficulty_score": 0.8617,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

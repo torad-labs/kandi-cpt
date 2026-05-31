@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "696452f1f8154c905ba265432a1069031eb49534e37f216380f39fccdb809db3",
+  "clean_sha256": "ebc312832f6190a186b17f24223798d520fc5227d79dee7a0c8c4a89e633b1bb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 291,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Ivk-hErTdZE",
+  "title": "4K RAVE ON A CRUISE SHIP \ud83d\udef3\ufe0f \u203c\ufe0f EDSEA VLOG \ud83d\udc41\ufe0f\u200d\ud83d\udde8\ufe0f\u2764\ufe0f\u200d\ud83d\udd25",
+  "quality_score": 0.6639,
+  "difficulty_score": 0.6757,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "1e62980eb7f29a9c2b4a58dc327a1e39cd7df79d2571047fb3f8be8a123cb922",
+  "clean_sha256": "041a400f3d63d8384724b45881d2fbddacb99d0193b2f6f7330a57c18ad022a3",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+delhi+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_delhi 2016",
+  "quality_score": 0.7918,
+  "difficulty_score": 0.5106,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

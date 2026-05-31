@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "45a2b0664350dee20db161a88747d0e0410b47915d9607a1d743f9bb5b64c2e5",
+  "clean_sha256": "03a993896b62b25a2a2755c662c765acc1ce0e34878c96059cb2bc05c0fa4315",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 210,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pb20u9l6980",
+  "title": "\ud83c\udf89 EDC Las Vegas 2017 | Trap Nation (Party Mix)",
+  "quality_score": 0.6755,
+  "difficulty_score": 0.646,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

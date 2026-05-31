@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6302361916818cc82b7fa7eadd2821d03e8f4655c49f1e6c770ae1a6970877d3",
+  "clean_sha256": "1d21495fc3eff4391ca1e38c17e9c4fdd8aa7e593f1f19767d16d7e913421ff5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 429,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wrlg7lZG0Fs",
+  "title": "Afrojack Full Set EDC Orlando 2022 - Kinetic Field",
+  "quality_score": 0.7283,
+  "difficulty_score": 0.6963,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

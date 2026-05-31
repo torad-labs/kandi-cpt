@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "1c91d5bd3c9e1a5c8ccdec3f12d794124ef9ca55924ff90340cbf0db52d91018",
+  "clean_sha256": "5050850b8e732940c45ce53bde80059f0e5e8639adb59eaa3f54f899390e724b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2011",
+  "quality_score": 0.7012,
+  "difficulty_score": 0.505,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

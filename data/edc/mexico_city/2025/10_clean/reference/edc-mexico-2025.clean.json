@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "8da3f720174d705d62d80715d004d68c3936fe35259e7d7e9d3619ccbb10ccc6",
+  "clean_sha256": "cbc821500e0ad971e056779fcdeebea057a9f3f9ce80e0c980bb1a0c37409bdc",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 358,
+    "keep_ratio": 0.558,
+    "anchor_ratio": 0.349
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/edc-mexico-2025/",
+  "title": "EDC Mexico 2025 | Music Festival Wizard",
+  "quality_score": 0.7737,
+  "difficulty_score": 0.7142,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bb12542f8e19f148cc87fbc9e385824f8f3491c3c5282f6d2ef0038e0a47bc23",
+  "clean_sha256": "707d76caf482fd03a33b83d08012a2c9bf2f86a4e3caa224c12c99a9bb9b05ef",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 279,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=DvvNTq0IQaQ",
+  "title": "Banned from the Electric Daisy Carnival",
+  "quality_score": 0.6204,
+  "difficulty_score": 0.8891,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

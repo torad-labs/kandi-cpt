@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "84334130442ee2c00d942ce5ef5696808ef4230a57f8644fa6a0c8b4aca78c82",
+  "clean_sha256": "1b48401b51605f4178da64783fe1c7252391741f9e2c57c39ee834e580baeab1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=milton+keynes+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 milton_keynes 2014",
+  "quality_score": 0.4822,
+  "difficulty_score": 0.9914,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1f842430ed8ab84e32de618a951a029021c92161b5c6ae3473055609e48ff2c7",
+  "clean_sha256": "7f8aed2dcbe74015eda68f3f2bdd1c44f812d7820ff6aeb5ead4edca4a685285",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1735,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hm3qQyWXoe0",
+  "title": "Ravers vs. The Man: CA Bans LED Gloves and Pacifiers",
+  "quality_score": 0.8803,
+  "difficulty_score": 0.6368,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

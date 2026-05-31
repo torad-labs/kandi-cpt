@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8bcc34c13e91f2cc986d92ab1479b3da8bb46f2b1d8b68a2b3bb0b51f85d5f9a",
+  "clean_sha256": "8fa75372443a618e980745a08de02cd2598546223b2078ccfaadf1b83ae15222",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2022",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7469,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

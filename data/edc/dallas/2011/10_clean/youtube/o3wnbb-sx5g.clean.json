@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f43ade9d4ab53e478f65dead85173e11ea8b58c0d2314b0744e2d676b14f5c96",
+  "clean_sha256": "e69c84d338a1120a1bd2543c3136e23ee0681006d2d13969cba14bc672a0f4b3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 60,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=o3WnBB-Sx5g",
+  "title": "EDC Dallas 2011 (short version)",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.5984,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

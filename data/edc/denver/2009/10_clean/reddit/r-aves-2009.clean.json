@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b2425e0a1e3691c603c1793634de5fa0b91c2f311e3dbcb76f14ba457d6f9e87",
+  "clean_sha256": "1ebe55c1d1f68128239908e5087c2e1c75b0deb6aacd09d66386f448ec88ad99",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=denver+2009&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 denver 2009",
+  "quality_score": 0.7482,
+  "difficulty_score": 0.2713,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

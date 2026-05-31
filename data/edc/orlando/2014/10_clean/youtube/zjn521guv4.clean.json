@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cc1f28c20c92ef9dcfdf776e0414d277bd3dfacc6fe3468a2f48592376d79067",
+  "clean_sha256": "4e2dadc3e268f8b66d30afc7cef789430d29f2bb8bc785bb14bdcbe4bbc05eeb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 79,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_ZJn521guv4",
+  "title": "Alesso - Heroes (EDC Orlando 2014)",
+  "quality_score": 0.6079,
+  "difficulty_score": 0.5164,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

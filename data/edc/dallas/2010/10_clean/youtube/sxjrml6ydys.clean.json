@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "69fa649b8fff7164e8030086cb39f54e2facb7de8cb595d221e7dcff5aecc861",
+  "clean_sha256": "37c9155b3cb706b9a1883b00231110efa61f725b44ade0662de7e4cb3a9e55eb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 161,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SxJRmL6ydys",
+  "title": "EDC Dallas 2010",
+  "quality_score": 0.6384,
+  "difficulty_score": 0.6513,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

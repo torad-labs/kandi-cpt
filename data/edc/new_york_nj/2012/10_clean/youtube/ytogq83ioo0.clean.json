@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "90c8991c179d76032347e7bc4d713aea5f58cf8c071aa9380275982319915b72",
+  "clean_sha256": "b92a2f78a4d5cf5ae1452c4ae93d1070617c364892ca7d8cd67538bb38b95aad",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 62,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yTogQ83iOO0",
+  "title": "Electric Daisy Carnival NewYork 2012 New Jersey NYClubbers.net",
+  "quality_score": 0.6306,
+  "difficulty_score": 0.8089,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

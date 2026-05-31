@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "de40ae8bb40cb2aa4bb40eda761f085bbeb2cd5ec53bfe23bf1537625e546173",
+  "clean_sha256": "1ff52b3a73df1a0c986c249970b29a081e9c953d12a2bd2176dc76432790cc8c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 788,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Fur83rBviVo",
+  "title": "Markus Schulz - Live from EDC Mexico 2022 (Kinetic Field)",
+  "quality_score": 0.6678,
+  "difficulty_score": 0.3424,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

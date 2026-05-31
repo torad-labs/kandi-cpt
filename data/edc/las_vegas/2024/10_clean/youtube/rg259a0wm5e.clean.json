@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ee6ff8a824e82d27f1bdcdb9aa709d90cf92ce39fb42a63f2652216c740cce89",
+  "clean_sha256": "745a5a9fd99ba1d1e1c4b350354c7be44c2d5c063e598e5a6305feac0bbe8adf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1430,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rg259A0WM5E",
+  "title": "EDC Las Vegas 2024 Aftermovie \ud83d\udcab",
+  "quality_score": 0.7637,
+  "difficulty_score": 0.4132,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

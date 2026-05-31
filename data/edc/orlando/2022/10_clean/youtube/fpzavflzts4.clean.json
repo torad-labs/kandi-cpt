@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "573dfec927083a0f64c506305bf28c256fd380961db779f32ecf41622be4a1e3",
+  "clean_sha256": "eaae222c171ca5355816f2dc9889750b0a6f3f4be9c28c4ba161d8a551fb255d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 65,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FpZaVFlzts4",
+  "title": "4K Slander Full Set EDC Orlando 2022",
+  "quality_score": 0.6569,
+  "difficulty_score": 0.7024,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

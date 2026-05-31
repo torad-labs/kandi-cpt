@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4b6e9a8ffb90798bda40fb6e2acb075d0bce2c7d3f2e88529c204b21c58bc861",
+  "clean_sha256": "8c6834de2d5995151b11575576b805bb39b74b49ba2684ccde3e82f959ad5a94",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2528,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=TzTKxLF5SyQ",
+  "title": "Illenium Live @ EDC ORLANDO 2018 1080p HD",
+  "quality_score": 0.9013,
+  "difficulty_score": 0.4223,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

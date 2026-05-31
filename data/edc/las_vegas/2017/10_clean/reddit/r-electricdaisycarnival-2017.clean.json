@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b556a9c586f431c2a6c436728d10042b2be09031ea196dfc1128479ff8b3571a",
+  "clean_sha256": "d2a12d75ae13f8832a0e757b3a2e3e74176e394d531e02b8f074563bbed79733",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2017",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4398,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

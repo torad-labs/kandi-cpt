@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0d7ea099f987f562fec0b3c51fb6fb85cbcdaa67a4d083c8ef7060ec7946927b",
+  "clean_sha256": "b4b3fb1f8efc732ebe526ab6b85e3f0677af97a5ca1cda03b377be02ef22515b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 262,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=u4kFqdWPA1k",
+  "title": "Electric Daisy Carnival - 6/30/07 - Downtown LA",
+  "quality_score": 0.6187,
+  "difficulty_score": 0.7562,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e27b12fcbc195cdb80a88dd64a47bbc3f89bb46d8491f8a58437d6305a1b7ed5",
+  "clean_sha256": "c73f1441da83b37609f8f6fec920475d51d1076af5f7c7fbb635f0ee9c3379b4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 188,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Oi9rEHLUW6c",
+  "title": "EDSea Vlog: B2B with Sara Landry, Continuing Juelz Beef, 6AM Sunrise Speed House Set",
+  "quality_score": 0.6339,
+  "difficulty_score": 0.595,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

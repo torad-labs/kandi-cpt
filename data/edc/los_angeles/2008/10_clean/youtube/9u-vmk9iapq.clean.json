@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "81cea68e9014637baf83db80d7c9bc92d8033a8ea990545fe975339628ab1b50",
+  "clean_sha256": "3f239575a4a0bd5b2b8fb35cf3043fb040c7cca81560263b6dd7bce8a65cc6e1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 238,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=9u-vmk9iapQ",
+  "title": "Electric Daisy Carnival 2010 Official Trailer (*Please view in 720p HD!!!)",
+  "quality_score": 0.6662,
+  "difficulty_score": 0.7339,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

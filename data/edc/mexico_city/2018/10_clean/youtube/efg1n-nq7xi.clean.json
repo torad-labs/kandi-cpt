@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "dc84092b042230fb891ae5e3ab7e68d0c2b5b8cb24b7dad2193c3a5becb98649",
+  "clean_sha256": "4d51fd085655e33d642ffab347123b29647efd89219d0c4282651d382171afca",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1213,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eFg1N_NQ7xI",
+  "title": "EDC M\u00e9xico 2018 Tr\u00e1iler Oficial",
+  "quality_score": 0.7446,
+  "difficulty_score": 0.3889,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

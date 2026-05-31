@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "206c9e3d50d7b95465c88c67eb6d77d4cc0704b15dbb05e5772a842bc439c76f",
+  "clean_sha256": "c5cfe5ad469f29221d2aaa4b718f9677d5a40b11ad034255a5fd82dc9546c4e0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 89,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hoedXxKKDcM",
+  "title": "Markus Schulz @ EDC New Delhi, India - November 12, 2016",
+  "quality_score": 0.6184,
+  "difficulty_score": 0.7397,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "60dae5e421f7e05b0851e9b5a31e0ea89fe9248e63086b0b29cf9699cbcde54e",
+  "clean_sha256": "850ece4d153a6c0f4761a97fca96644b198f07065c50026e543b619f717f00cf",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 988,
+    "keep_ratio": 0.615,
+    "anchor_ratio": 0.197
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/electric-zoo-2022-festival-review/",
+  "title": "Inside Electric Zoo 2022, New York\u2019s Biggest Electronic Music Festival - EDM",
+  "quality_score": 0.9,
+  "difficulty_score": 0.6753,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

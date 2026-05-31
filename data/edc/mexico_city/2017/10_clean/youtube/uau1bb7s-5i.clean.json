@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cc9cea1099e4afccb060258a3a6d0aaaeb2be40ed5d26cb656aa6a6a03989aea",
+  "clean_sha256": "e0ee97c9e3dd1f7e738ebd933404139a4e32da9f1d49586b8000c6c3a427f8a1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1923,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=UAu1bB7S-5I",
+  "title": "EDC LAS VEGAS 2017 Mejores Canciones DIA 1 | Hardwell, Major Lazer, Martin Garrix, Afrojack, Slushii",
+  "quality_score": 0.9041,
+  "difficulty_score": 0.6136,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

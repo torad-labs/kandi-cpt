@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "02db72d06bb6dae4863d3c3d553335bebeaa44b69b884d6489e6192412911b28",
+  "clean_sha256": "63d3db995e4a65e8796eb6b005bd0ddd257a792ec782cc49a6a59528ed9adfa4",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 271,
+    "keep_ratio": 0.485,
+    "anchor_ratio": 0.28
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2018/",
+  "title": "Electric Daisy Carnival Orlando 2018 | Music Festival Wizard",
+  "quality_score": 0.7514,
+  "difficulty_score": 0.7832,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

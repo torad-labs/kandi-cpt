@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "41a6e9d8f4478474e454d1636b501e4a19af16d33a4e3f21686d7e8ad8a482a3",
+  "clean_sha256": "63d93a2e5e3cbeb7fd143acdb8ed25b6b7b878fc97b2c5dfedd904c141f5c5a1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 841,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=H5iV7k6jdrE",
+  "title": "EDC Guangdong 2018 Official Announcement",
+  "quality_score": 0.7028,
+  "difficulty_score": 0.3056,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

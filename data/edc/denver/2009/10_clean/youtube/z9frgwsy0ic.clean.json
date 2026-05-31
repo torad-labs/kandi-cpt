@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "01329b84b9d7ee0e1152074784c00cfe2cfa40e8635b70d46ac4ea0ad3517646",
+  "clean_sha256": "ce6e5443dd7987ea735f9e6ae68b99322866ef118e63ff786165de1132419e83",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 112,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z9FrGwsy0Ic",
+  "title": "Infected Mushroom @ EDC 2009",
+  "quality_score": 0.6326,
+  "difficulty_score": 0.6518,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

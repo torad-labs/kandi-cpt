@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b0029c491027f884519486cd9346c3bb3ca82f37c4431a26fb8cb9da0e10a58f",
+  "clean_sha256": "bde71a08b20e9fa3d919159623c00e0b7ad6d21bdf8edbae35f0bf927d091f3e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 511,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=n-MhD_TdzN4",
+  "title": "Armin van Buuren live at EDC Las Vegas 2026",
+  "quality_score": 0.6312,
+  "difficulty_score": 0.361,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

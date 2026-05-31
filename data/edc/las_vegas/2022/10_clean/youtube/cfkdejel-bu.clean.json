@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "04cc0bfd0a64847dea8da25217fdc9ce7ad3c34338579f870148ee81fdcfa5b4",
+  "clean_sha256": "d69e732abde960a947e3fb75abb3ac4a8416527a9ecde83cb9c780b32da9c57d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 162,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cFkDEJel-bU",
+  "title": "Kaskade - EDC Las Vegas 2022 FULL SET [4k]",
+  "quality_score": 0.6576,
+  "difficulty_score": 0.6795,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

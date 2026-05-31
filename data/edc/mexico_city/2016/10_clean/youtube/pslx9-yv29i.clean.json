@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a951507e3a41a72fee966be5367bccc2aa29180f10e0d70aa3f0f22dbfb1deee",
+  "clean_sha256": "892548758d415bc6068e8b08444642835578f221486bbf9d4a30d4233b48afb1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1217,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pSlx9_Yv29I",
+  "title": "EDC Mexico 2016 Official Trailer",
+  "quality_score": 0.7462,
+  "difficulty_score": 0.5892,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

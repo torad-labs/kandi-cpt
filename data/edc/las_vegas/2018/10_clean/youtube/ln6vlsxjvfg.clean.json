@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "17761345ae3205d03c3e8be6ac4644884f3ef48d5c15fa8c5a3c48bf97549690",
+  "clean_sha256": "f1dfcfb470aaa43165c948c9d9ae7810106ec9d79bb41aea8b8f08afe078f598",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2117,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ln6vlSXJVfg",
+  "title": "EDC Las Vegas 2018 | Electric Daisy Carnival Festival Mashup Mix | Best Tracks",
+  "quality_score": 0.8938,
+  "difficulty_score": 0.5323,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

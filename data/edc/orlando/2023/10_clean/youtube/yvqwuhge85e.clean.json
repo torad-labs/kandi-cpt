@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e8235eac51380453cbe2b89a720578d34728a1c95cd7f6c1b1ddae516e50b708",
+  "clean_sha256": "e7e975aa23185fe6297730c8ef3daa4f388b54a26b93b415987575f9a7fd8cb2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 503,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yvQWUHGE85E",
+  "title": "James Hype live @ EDC Orlando, 2023",
+  "quality_score": 0.6597,
+  "difficulty_score": 0.4906,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

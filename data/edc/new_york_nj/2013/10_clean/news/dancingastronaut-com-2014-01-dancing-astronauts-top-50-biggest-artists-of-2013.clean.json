@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "db0a63577871a56f110af6f86996385d3a24b6d0d4a8c8d1ae1baf15db04db7c",
+  "clean_sha256": "9378f81513d316b71e2692e44b59e2adecc2b3aaa62aba0abbb9bb8b21ccc707",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 6216,
+    "keep_ratio": 0.956,
+    "anchor_ratio": 0.03
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2014/01/dancing-astronauts-top-50-biggest-artists-of-2013/",
+  "title": "Dancing Astronaut's Top 50 Biggest Artists of 2013 - Dancing Astronaut",
+  "quality_score": 0.861,
+  "difficulty_score": 0.4072,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

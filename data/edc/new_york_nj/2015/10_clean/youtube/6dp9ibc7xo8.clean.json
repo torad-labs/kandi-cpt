@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9a581783810be0156ba798b7a4aaf347f331bce5f4d8c228b3975443c119a203",
+  "clean_sha256": "4c069d9107bd43b526e50be21bc4008a5a891f402ba44dc2e1068d65f9f0e5a6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 91,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6dp9iBc7xo8",
+  "title": "EDC NEW YORK '15",
+  "quality_score": 0.6576,
+  "difficulty_score": 0.5786,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

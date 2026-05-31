@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0df2b5be8bc8d045142cd14ddc08af545d1431bb1321264ada223586c546aa1c",
+  "clean_sha256": "081aaab6954a9445f5804d8bace06ad70efe020bb425be19309ba36684beb7c1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 930,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VtePyKDJEcM",
+  "title": "JON BOVI live set @ EDC MEXICO 2019 (Audiovisual)",
+  "quality_score": 0.8362,
+  "difficulty_score": 0.4929,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

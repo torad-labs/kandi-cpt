@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "575a53e7cf70950b865e9607b999bff1781176142538a5bb5086babefc149ed0",
+  "clean_sha256": "129fc9076b61bda99a174901c9705029e7bbedb45a7bab7c4017555f705768ef",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1202,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wdPpWOmiHME",
+  "title": "Tour Of Incheon Airport",
+  "quality_score": 0.675,
+  "difficulty_score": 0.4465,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

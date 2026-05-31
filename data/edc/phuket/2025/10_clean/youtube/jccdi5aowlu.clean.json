@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5c1946356e3d7923222a6e38db46362c760cf8a6937c94bbfbe100d266d58f2c",
+  "clean_sha256": "c45041a67899e980b74a58b480f4a8fb714b642c8e8ebec89fd4df0492584ed5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1635,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=jcCDI5aoWLU",
+  "title": "15 First-Timer Tips for EDC Thailand 2025",
+  "quality_score": 0.88,
+  "difficulty_score": 0.5785,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

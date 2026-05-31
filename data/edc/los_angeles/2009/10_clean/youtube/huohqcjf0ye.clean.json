@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1ba850efccd1164861118d2ba6d767839ea54336b3df6986aa94d22e63726c10",
+  "clean_sha256": "492f597c4f9bf0f077294262edd0e951b9a397b33db928d4a57bea40df8fb3ad",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 644,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hUOhQCjf0yE",
+  "title": "Kaskade - Electric Daisy Carnival 2010 Los Angeles - Cam-Mix - Synced to Radio Broadcast",
+  "quality_score": 0.6916,
+  "difficulty_score": 0.6628,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

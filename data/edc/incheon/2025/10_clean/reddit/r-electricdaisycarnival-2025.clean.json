@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "27f1905eba93579f151a04bde6266a5068f7e2ebeac168cf9ddea38609cd6ce0",
+  "clean_sha256": "99bcd9c4d8788d46a8b016d6ea9f67a845e1d8d74bb4ae129943b9843f86d5a5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=incheon+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 incheon 2025",
+  "quality_score": 0.7047,
+  "difficulty_score": 0.6487,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

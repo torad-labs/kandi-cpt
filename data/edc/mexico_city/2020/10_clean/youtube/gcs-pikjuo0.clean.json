@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5bed26c110939b3edabf692d77658bb093ace82149435edcf38872dfd53ac8b6",
+  "clean_sha256": "8e80376440ad1d35bc8803068481ca31fbfb047ea06419019b5acf65272f2c39",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 103,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Gcs-PikjUo0",
+  "title": "JAUZ @ EDC Mexico 2020 [Full Set]",
+  "quality_score": 0.6972,
+  "difficulty_score": 0.6233,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

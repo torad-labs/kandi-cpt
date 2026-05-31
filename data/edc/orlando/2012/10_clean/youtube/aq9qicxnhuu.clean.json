@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ff7245cfcb77a39dd26f4011702292abad984441c98721d3276c3ba8f503bb6a",
+  "clean_sha256": "4f44d1a6ac59a882aba8105c5368546f42616ff2ae2b3fe3b8187d91b71171c4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 626,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AQ9qiCxNHuU",
+  "title": "Countdown to EDC Orlando 2012",
+  "quality_score": 0.7164,
+  "difficulty_score": 0.5814,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

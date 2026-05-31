@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08cbda5472bed5462059d9f9cb2b330204d7b381ea8c3e2146e4e50cbd9f8c78",
+  "clean_sha256": "bfba1b4e2cfef6388b72d28599fb2e7b1a6c189119f830195b0432718f88a16f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=V8kpHMqEJSE",
+  "title": "EDC Infected Mushroom part 13 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6504,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

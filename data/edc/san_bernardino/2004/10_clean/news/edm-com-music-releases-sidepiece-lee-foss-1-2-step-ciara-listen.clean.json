@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "b66605d55ef96296d04992f0670708d26a57a88b5c0d56b6e1aa7d3eb837a72f",
+  "clean_sha256": "d250ffd2866b544680959096a784922ece1a1e1a94a398c5e0b2764b12645961",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 625,
+    "keep_ratio": 0.59,
+    "anchor_ratio": 0.289
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/sidepiece-lee-foss-1-2-step-ciara-listen/",
+  "title": "SIDEPIECE Link Up With Lee Foss to Reimagine Ciara's 2004 Hit, \"1, 2 Step\" - EDM",
+  "quality_score": 0.8995,
+  "difficulty_score": 0.5174,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

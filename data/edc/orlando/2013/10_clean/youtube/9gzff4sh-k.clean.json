@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "99ad0c84f4a8fd748dcc909722016078b91f694503813b315c8157fee268cae5",
+  "clean_sha256": "a7250359f9db7d162f52e0451045cb7b36471067b97ce6ef1d2ea53fca661829",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1173,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-9GzFf4sh-k",
+  "title": "R3hab @ Electric Daisy Carnival EDC Orlando 2013-11-08 [HD]",
+  "quality_score": 0.803,
+  "difficulty_score": 0.7579,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

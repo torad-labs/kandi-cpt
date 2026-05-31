@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "954672d840ce044b18b92a6c0affb52190006b4728c65fda79d1e5afcc3dcae2",
+  "clean_sha256": "826119ad1ba2d182b555f087eafc1d62ce1c5c6b110100574de4720baab8cbd2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1319,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SHTzGdSypdM",
+  "title": "Armin van Buuren - Live at Electric Daisy Carnival New York 2012",
+  "quality_score": 0.7842,
+  "difficulty_score": 0.5992,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

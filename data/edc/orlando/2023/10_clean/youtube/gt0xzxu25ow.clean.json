@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "afe2f51356d56bae2b2943e86074fe118cffd1316ef747fb8271031f1d67c19a",
+  "clean_sha256": "f78e2944f133545808d092ad4260f9ec0f9f9bc7b24193f104c92a75fcfeeb8e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 180,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GT0xzxU25ow",
+  "title": "DISCO LINES LIVE @ EDC ORLANDO 2023",
+  "quality_score": 0.613,
+  "difficulty_score": 0.7054,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

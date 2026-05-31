@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "29949a721e5efe6dc2a9f1e9f61e3081ca62239f24812ff7e3241a4802df6b0f",
+  "clean_sha256": "18e35e49e5874be24b9cf85194be8562b8af11026d4a868d94218a373dafadf1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 575,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=LM2tN5zYdSA",
+  "title": "RayBurger - EDC Mexico 2025 [Full Set]",
+  "quality_score": 0.6481,
+  "difficulty_score": 0.51,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "138febcd0c5a315ea8a67b8a6b79baad6f98c001325dd93b2002dd7edb7a5170",
+  "clean_sha256": "971b5a43202ef1e9b294ed6c1c78a18994f4a71380b07e7feae4c82220031ded",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 590,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=doChiB1qcjI",
+  "title": "Don Diablo Live At EDC Las Vegas 2017",
+  "quality_score": 0.7038,
+  "difficulty_score": 0.4534,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

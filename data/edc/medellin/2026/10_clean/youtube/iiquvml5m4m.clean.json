@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "041db981cadb1f3d2318712c808c9fa87da42bc9fc585a58d2fb41d15ce52272",
+  "clean_sha256": "e10e23144486faef7127c892aaa9675011153da22cb70275bc9d90bf071d5196",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 576,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=IIquvML5M4M",
+  "title": "HAYLA Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6904,
+  "difficulty_score": 0.425,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

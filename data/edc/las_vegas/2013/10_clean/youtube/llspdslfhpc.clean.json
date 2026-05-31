@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9f83c303ba5487f5d5fe749f01f1085f0a8e89f4ca5cc73c4c345e1023ffe1b7",
+  "clean_sha256": "10cf89ac578e6e9de200d3d48e21b0c1889970aa05b24282b80531f82f0b0fed",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2431,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=lLsPDslfHpc",
+  "title": "EDC 2013 - Los Angeles To Las Vegas (Road Trip Mix)",
+  "quality_score": 0.7944,
+  "difficulty_score": 0.6249,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

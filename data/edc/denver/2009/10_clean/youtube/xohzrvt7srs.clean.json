@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4a8fbb307c5fade7b3d753b340c2ada112467cb29951498c7dabb581a907838e",
+  "clean_sha256": "989193bd61ce723e49b7ab981252dee86c136d2890fa17457111a099479e7865",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 54,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xohZrVt7srs",
+  "title": "EDC 2009 main stage Denver",
+  "quality_score": 0.6431,
+  "difficulty_score": 0.753,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

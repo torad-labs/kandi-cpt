@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1afa093efbda4292a79e9b74130b7107e8652f53ee8e97b07c399b925541568f",
+  "clean_sha256": "860f802af6e574bca1dfa67b779ecbb931978053b181e0e038fe8fff3555ab75",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 141,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_idIp3ceV64",
+  "title": "Axwell Live @ EDC CO 2011",
+  "quality_score": 0.6479,
+  "difficulty_score": 0.773,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

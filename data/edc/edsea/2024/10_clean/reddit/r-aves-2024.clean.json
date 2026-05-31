@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "533d492d8c35f2f54b1f4b0089b3d98a21e3a40fe34ac6d679802c213a593001",
+  "clean_sha256": "15d9098b315df816696bba611053d108ef481e7e436d39e6a32da1978a4fb0ad",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=edsea+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 edsea 2024",
+  "quality_score": 0.5869,
+  "difficulty_score": 0.5434,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

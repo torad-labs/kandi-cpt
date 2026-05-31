@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5ab2fa7fd72ee7f64c0aff6dc41011ae8b9b6fd24d38c00b4d96017546618636",
+  "clean_sha256": "b34574f3293026380bc09c6ceddab8280ac1a558d88e51ab3924eac9e656f6a0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 162,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rswY0P30zN8",
+  "title": "EDC Brasil 2015 4k",
+  "quality_score": 0.6236,
+  "difficulty_score": 0.959,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

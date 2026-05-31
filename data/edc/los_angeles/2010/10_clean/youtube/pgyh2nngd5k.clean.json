@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d063622f3f63abb44faee5127e6cb9b550e88b4027ae52dc5db2d71f5f7f30bf",
+  "clean_sha256": "73bcf036f2e78da6fa04b380309300e3feb68e6d795594d450ffac7989b2df5b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 174,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PGYh2NngD5k",
+  "title": "EDC 2010 - Fence Jumping and Security Scuffle",
+  "quality_score": 0.6138,
+  "difficulty_score": 0.8297,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

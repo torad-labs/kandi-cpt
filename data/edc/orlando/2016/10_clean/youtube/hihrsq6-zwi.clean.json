@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cfadb2de4e1989ef585d7fb105014be30275091c5d97b81be05e419e8794ebbb",
+  "clean_sha256": "cc86b86808f344778de3cc2c91d123558626c4034ecf9503134d309dfd2e0f6f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1000,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=HIhrSq6-zWI",
+  "title": "EDC ORLANDO 2016 AFTERMOVIE",
+  "quality_score": 0.853,
+  "difficulty_score": 0.6235,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

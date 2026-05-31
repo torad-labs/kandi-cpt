@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ddeedf484985e194150c8ce3c6de3096b28d6d096b240772013c2e4d92845ccf",
+  "clean_sha256": "62e85df14bd30eeb80853dcee50a6def2f2d380e58dad81f00a97727bb33a9cd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 114,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=n1Zh3P84lbM",
+  "title": "EDC Puerto Rico 2013 (Saturday) Bingo Players (Opening - Out of My Mind)",
+  "quality_score": 0.6354,
+  "difficulty_score": 0.7652,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

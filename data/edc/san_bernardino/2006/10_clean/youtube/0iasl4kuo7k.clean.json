@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ec77e7bd9208f34fc3c9f289bccf92d705d501cadf3515eb840c0fa57d375d05",
+  "clean_sha256": "5440d134c9a27f4cb4a09986532f3e96c50b37611e69dca23487f38200f4351a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 280,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0iASl4KuO7k",
+  "title": "EDC Cosmic House part 1 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6627,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

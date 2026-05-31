@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8740363f40e2f58ef686db8907eb03b3d6fd940dc872c991af1e49c40585fb23",
+  "clean_sha256": "d48eb9009538f76b8c0775e429927407fdde5880cede175bb5524a6f5cfe7d39",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2023",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4361,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

@@ -1,0 +1,128 @@
+# Electric Daisy Carnival Orlando 2024 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2024/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: Insomniac
+
+The Scene
+
+Summer is still a long way out there, but Electric Daisy Carnival helps out their fans with an east coast edition of the famous festival. EDC Orlando brings two packed days of EDM to Tinker Field in Florida along with full-sized carnival rides, unique performances, and art. - Copyright Music Festival Wizard
+
+2024 Artist Lineup
+
+- 4B
+- AHMED SPINS
+- AIRRICA
+- ALESSO
+- ALEX KENNON
+- ALIGN
+- ALISON WONDERLAND
+- AMAL NEMER
+- AMELIE LENS
+- AMÉMÉ
+- ANDRUSS
+- ATB
+- AVISION
+- BAGGI
+- BELTRAN
+- BENNY BENASSI
+- BLACK TIGER SEX MACHINE
+- BLOND:ISH
+- BONTAN
+- BOOGIE T
+- CALUSSA
+- CARL COX
+- CEDRIC GERVAIS
+- CHAMPAGNE DRIP
+- CHARLIE SPARKS
+- CLOONEE
+- COSMIC GATE
+- DEORRO
+- DILLON FRANCIS
+- DIMITRI VEGAS
+- DIPLO
+- DISCO LINES
+- DISCOVERY PROJECT
+- DRINKURWATER
+- EAZYBAKED
+- EDGAR V
+- ERAN HERSH
+- ERIC PRYDZ
+- FISHER
+- FLY WITH US
+- FURY WITH MC DINO
+- GALANTIS
+- GANJA WHITE NIGHT
+- GARETH EMERY
+- GIUSEPPE OTTAVIANI
+- HAMDI
+- HEDEX
+- HONEYLUV
+- HONEYLUV
+- HYPATON
+- I HATE MODELS
+- ILLENIUM
+- INZO
+- J. WORRA
+- JACKIE HOLLANDER
+- JADEN THOMPSON
+- JESSICA AUDIFFRED
+- JOHN SUMMIT
+- JON CASEY
+- JOSEPH CAPRIATI
+- JSTJR
+- KASKADE
+- KLANGKUENSTLER
+- KOBOSIL
+- LAYLA BENITEZ
+- LOST FREQUENCIES
+- LUCCIO
+- MADDIX
+- MARY DROPPINZ
+- MATHAME
+- MATRODA
+- MAU P
+- MAX STYLER
+- MIYUKI
+- MOCHAKK
+- MORTEN
+- NATALIA ROTH
+- NETSKY
+- NIC FANCIULLI
+- NICOLE MOUDABER
+- NOIZU
+- ODD MOB
+- OG NIXIN
+- OLIVER HELDENS
+- PATRICK MASON
+- PICKLE
+- RAY VOLPE
+- RIORDAN
+- SIDEPIECE
+- SLANDER
+- SLANDER PRESENTS BEFORE DAWN
+- SLOTH
+- SPACE 92
+- STEVE AOKI
+- SULLIVAN KING
+- TDJ
+- THE MARTINEZ BROTHERS
+- TIËSTO
+- TIMMY TRUMPET
+- TOBEHONEST
+- TOM & COLLINS
+- TROYBOI
+- VEIL
+- VINI VICI
+- VINTAGE CULTURE
+- WAKYIN
+- WAXTRODA
+- WORSHIP
+- YDG
+- ZEDS DEAD
+- ZOMBOY
+- ZORZA
+- ZUEZEU

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7d521b6b1c090eef46a7fbac84cb49be0c92fff976060c06bd07d39a3af3938e",
+  "clean_sha256": "3f29c5c1457d14504d3d9a29b5413879361de80b0e91f42ee6b6839e55420f43",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 432,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0ZfkIf8Tn24",
+  "title": "Electric Daisy Carnival 2012 Puerto Rico Aftermovie - EDC 2012 PR ( XTC'z Bootleg Videomix )",
+  "quality_score": 0.6683,
+  "difficulty_score": 0.7342,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c6a258e0e65b395679ae257b231729c3e591b5832ad9758183956bcc3160783a",
+  "clean_sha256": "2c318d244b7d94787b7d7d7b0084da6beac0aa746260cb9681e3dfe20e62aacf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1126,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=UNtEX3GB6jU",
+  "title": "Hardwell - Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.7854,
+  "difficulty_score": 0.387,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

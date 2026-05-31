@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9627aeaf054cee53fc11c38f6204bb8a5eb1b3afc2ac56ad43c6711699cba096",
+  "clean_sha256": "7c920883a64cc171f846c41d50ccd8ac1481e2ef1839999a52c0b0204ababcbb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 520,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NWDa2ypLqjs",
+  "title": "EDC Orlando 2015 [Vlog]",
+  "quality_score": 0.649,
+  "difficulty_score": 0.5067,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

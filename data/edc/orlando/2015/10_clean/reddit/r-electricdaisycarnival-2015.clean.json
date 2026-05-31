@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9594e7f241c37edf6973bb1b6495952401c51e01bbb5e7b726e4dd06f4cc85f7",
+  "clean_sha256": "819baf3a5cf867c1b3b2958b347158eade84a17a7d32d99992177b7830e9ace5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2015",
+  "quality_score": 0.8,
+  "difficulty_score": 0.5113,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

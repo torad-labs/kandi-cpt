@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "849c0c9d4c9d22dccf838b2f7f49205ea9bb3edb79bbb3e75c9e868fdd7a4d37",
+  "clean_sha256": "f92d0e75d95d02c5590d7d501d24475ae0c18d43eb30b53828aff8a167ba245c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 164,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4XsJfrfoLgg",
+  "title": "[DROPS ONLY] 12th Planet @ EDC GuangDong China 2018",
+  "quality_score": 0.6122,
+  "difficulty_score": 0.7072,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4e90078f3051edfa3dce2edf8b65013f1ac347a54f471f9c6dc3a0cad37012df",
+  "clean_sha256": "f6f416cb17f65bbed30ac48695fb8a10a16c737e467c9514bebc4eb8f5452f9e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1926,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=18RqtcwJ1Vk",
+  "title": "EDC Mexico 2017 - Official Trailer",
+  "quality_score": 0.8817,
+  "difficulty_score": 0.3937,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

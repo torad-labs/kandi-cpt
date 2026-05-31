@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "89ad2ab97a13f9a823380058edec63a13a8ef7c636cfeaed55f183f4b2344ebd",
+  "clean_sha256": "115156c2be061e05f82b98b5115dac4f14df7eb20daee63e106d649a09d46ac6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 530,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SKx0AlxDqf8",
+  "title": "Alison Wonderland - EDC Las Vegas 2024 - Full Set (Official Video)",
+  "quality_score": 0.615,
+  "difficulty_score": 0.3233,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

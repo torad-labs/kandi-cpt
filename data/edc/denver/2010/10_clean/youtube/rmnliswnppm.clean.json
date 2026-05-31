@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3308909b40d1991df543d63ab563ff27e8a6f569214f212c5118912319ec585e",
+  "clean_sha256": "7b96b08aa38fc4b57db1cbc041ea69cb35b9034fb318c005891e30ab29788e88",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 85,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rmnlIswnPpM",
+  "title": "EDC in Denver 2010!!",
+  "quality_score": 0.6326,
+  "difficulty_score": 0.7881,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

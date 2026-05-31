@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "4aa2e1cf14879630d2e208ef69d753b175465193b6c3dc481a7fddd5f6002ba2",
+  "clean_sha256": "17a37876ea4e6adde0529378b05b909959859cc6f555c5bc52272ce89e681ee9",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2015",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6475,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

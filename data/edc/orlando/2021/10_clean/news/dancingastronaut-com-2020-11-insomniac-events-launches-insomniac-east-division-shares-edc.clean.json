@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "1cd1d1681b0314ea37c5be25f2100200b92bdf09cca5d5c0add0cae01897dd4d",
+  "clean_sha256": "150d47782af9951b53286e3be61fb2b56b90f62a2ecd20c8ba070cbc85e51bca",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 331,
+    "keep_ratio": 0.416,
+    "anchor_ratio": 0.368
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2020/11/insomniac-events-launches-insomniac-east-division-shares-edc-orlandos-10th-anniversary-dates-for-2021/",
+  "title": "Insomniac Events launches Insomniac East division, shares EDC Orlando's 10th anniversary dates for 2021 - Dancing Astronaut",
+  "quality_score": 0.8811,
+  "difficulty_score": 0.6223,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

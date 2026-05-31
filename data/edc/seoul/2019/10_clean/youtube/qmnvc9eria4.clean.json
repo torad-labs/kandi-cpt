@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8d1c2e7bb4b5d5771c051c0ae63fc270cd197e848d0790c7ae6a6bcd6c79798e",
+  "clean_sha256": "4a846bafe14583d5b27abcaf38f1c5b47b11530b68a252dee6060a02da1661ab",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 70,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QMnVC9eRia4",
+  "title": "Kshmr Live - Devil inside me @ EDC Korea 2019(Electric Daisy Carnival)",
+  "quality_score": 0.6441,
+  "difficulty_score": 0.907,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3736aa94a416273022a90afc89afe519fd034508084959918130d2bcc2a896bd",
+  "clean_sha256": "0cb5b1dff00aeaa53d6700be09d6546fa8a4f8d744670e4759029af459b26a8d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 75,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kA-CPKqza1A",
+  "title": "EDC LA 2008",
+  "quality_score": 0.6441,
+  "difficulty_score": 0.7126,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

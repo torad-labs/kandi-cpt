@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "037d5f5a442bb91d5bfdda5522bf1e5a7d7401f2666a14e7362773937c3f3407",
+  "clean_sha256": "fc98fedf7999020c083fd0a140337cd2b9f77f48e9beb3c0a621eece9d4295f6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 80,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=sfMDJltGtdo",
+  "title": "EDC M\u00e9xico 2015 Aftermovie",
+  "quality_score": 0.6214,
+  "difficulty_score": 0.7065,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "07d0dae32683f4b92ca9c2206f3896e21133c7e34099a7cb6e8db4bffe312a1f",
+  "clean_sha256": "e90a60ceab4b24b7f4b92f98feec334551f135c633c1283776121de21ff161fb",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 273,
+    "keep_ratio": 0.378,
+    "anchor_ratio": 0.45,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/cashcash-abir-finest-hour-new-music-video/",
+  "title": "CASH CASH STAR IN A SENTIMENTAL NEW MUSIC VIDEO ALONGSIDE FEATURED VOCALIST ABIR ON \u201cFINEST HOUR\u201d [Watch] - EDM",
+  "quality_score": 0.7537,
+  "difficulty_score": 0.7903,
+  "cluster_id": 0,
+  "curation_status": "drop"
+}

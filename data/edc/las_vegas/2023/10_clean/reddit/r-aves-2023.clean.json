@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "86b5d54fc7685f63c1466175bdd05f6519e92db9874f856ffd7b0c6ca5613667",
+  "clean_sha256": "d06bfd732ed4183580345b911163087bc271ee8b5339624d4bd65f4305dfa6e1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2023",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6595,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

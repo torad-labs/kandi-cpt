@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "7294d997a6e4d4d984aee8b8d2b148eec324a651719253e48615636e3f95f06d",
+  "clean_sha256": "d01b1ac70874e1918941ba96cece95e035d54811efd1cd4887c66ee4cb26b72d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=phuket+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 phuket 2025",
+  "quality_score": 0.5509,
+  "difficulty_score": 0.6074,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5f546ec33c67396194b7d1ae43ecc01a3432e74239e84afd543c71dd5bac6e1d",
+  "clean_sha256": "0f7501ed5f93f28c4e5a796178ffefb30f67fca323fdc4c6a314dec0e4ea318a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 120,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=TA56OWnyT6c",
+  "title": "Martin Garrix Full Set EDC Orlando 2022 Kinetic Field",
+  "quality_score": 0.6597,
+  "difficulty_score": 0.7682,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

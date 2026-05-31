@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "46bccd75c87fe9ffb0e02a02acb5016011f419c1195dee2e0eb8ee11876d8f7f",
+  "clean_sha256": "5a2d51fd068782b3f2ac94d7d4f81518628e5c9d46f809b96a8124c28082926f",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=milton+keynes+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 milton_keynes 2015",
+  "quality_score": 0.7828,
+  "difficulty_score": 0.5582,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

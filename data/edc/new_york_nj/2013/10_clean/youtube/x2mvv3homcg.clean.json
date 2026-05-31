@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a9ad7045f40aa744d71a1a988bd08df57e81d2c060b70ba174eb32b70f1aeb80",
+  "clean_sha256": "ab3265734e9e66e95eb47227f1e9a05796479b72889247b33248cfc6f82c0701",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 61,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=x2Mvv3HOMcg",
+  "title": "Prydz - Hit me with those lazerbeams EDC New York Citi Field 5/17",
+  "quality_score": 0.6066,
+  "difficulty_score": 0.8352,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

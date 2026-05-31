@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "8d07017dab6cef7bcc29dace6d00f0dbdff8e5034722aead6a6683484638062d",
+  "clean_sha256": "7d6f7302d8f5fea43270b82c1579a088d03edad762bc709ed76fcff268cf10d3",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 321,
+    "keep_ratio": 0.518,
+    "anchor_ratio": 0.31
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2022/",
+  "title": "Electric Daisy Carnival Orlando 2022 | Music Festival Wizard",
+  "quality_score": 0.7664,
+  "difficulty_score": 0.8024,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

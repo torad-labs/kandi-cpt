@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0447dcbfc2768fcef19fb36400073a89743733fed4739ce0609e0375a1f2a163",
+  "clean_sha256": "5d6ca85fa41382be6ad42106fac8cffca722897ca25e7ea1f3c4a4b1a024b75d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 306,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=RQKMXgaSfuA",
+  "title": "EDC India 2016 AFTERMOVIE",
+  "quality_score": 0.6204,
+  "difficulty_score": 0.8084,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

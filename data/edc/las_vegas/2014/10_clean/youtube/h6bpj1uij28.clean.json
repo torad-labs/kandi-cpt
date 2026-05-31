@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2b219f6272f536bb762ac42b0229f54bb4a50a32a0c052d9b67f341d4d41b4c9",
+  "clean_sha256": "2f2238bf0ee81609beff3ab8fd5fdfb47cdf35dfaa6d8ac9c627ade38414ce35",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 230,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=h6bPJ1uiJ28",
+  "title": "Bingo Players Live at EDC Vegas 2014 (FULL SET HD)",
+  "quality_score": 0.61,
+  "difficulty_score": 0.7214,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "bde437aa37a56d34dce7be804a14ae3f0692a31b3f304bc3ec6e5c3a02fb565c",
+  "clean_sha256": "3ce7e5a47968edf5a2feb042afecc4488e26fffe0c5e2c8e5db80d7e4cbf7169",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 new_york_nj 2015",
+  "quality_score": 0.7006,
+  "difficulty_score": 0.5127,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

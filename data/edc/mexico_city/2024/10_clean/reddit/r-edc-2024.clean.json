@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "69dd4baa1e0563cdd3d0e6acda11453d25c28a5d23b84a182c38cd917cbab302",
+  "clean_sha256": "6a681876b580d34828095a82c4ba07320fc5c32f0185f093f8e6330ef2439a5a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2024",
+  "quality_score": 0.7843,
+  "difficulty_score": 0.7128,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

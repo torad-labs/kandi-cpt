@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "30e155dcac77ef8d458abaf5ce23b5f158b535482ca26057462fce3c49b31a56",
+  "clean_sha256": "f56d2c3cfe168b8de0472c8166ac0c8454b65b3ab684e85c88cd0f2eed2107fb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 763,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yU4yrbUQYlU",
+  "title": "Ti\u00ebsto - Live from EDC Las Vegas 2023",
+  "quality_score": 0.6629,
+  "difficulty_score": 0.3621,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

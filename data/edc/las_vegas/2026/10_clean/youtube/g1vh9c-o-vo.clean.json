@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "19ef89368ed232da591ac503c332ffb2c60af6a25e3e875f28489c6f25a0b23e",
+  "clean_sha256": "7c1814cb8bbcce26f49deb3cbcbf465aeca287c1f4667652407c98ebf4da5d76",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 582,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=g1vH9C_o-vo",
+  "title": "Solomun Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6904,
+  "difficulty_score": 0.4395,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

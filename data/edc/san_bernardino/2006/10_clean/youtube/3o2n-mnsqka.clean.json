@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6ceeaf09a2c9bab4bf16db0a1d2ef5a2ca25511df409e29c47413c79dfaf3e34",
+  "clean_sha256": "3a1dc5f18a31d7f2601d4bef05321a47ae76a7ca86a21a0fda9b01c67aa62ce1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3o2N_MNsqKA",
+  "title": "EDC Reggae Stage video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6266,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

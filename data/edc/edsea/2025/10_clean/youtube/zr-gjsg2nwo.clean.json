@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "93b8ebbee2a0cdeb17b94228976660b9651a793abfd9e3c9ebbc4d9f3c2651d3",
+  "clean_sha256": "a69912d86ca5acc895693480ea76fc8104ffef99b487c92ef216a7a8a6639383",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 604,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZR_gjsg2Nwo",
+  "title": "EDSea 2025 \ud83d\udea2\ud83e\udea9| The final chapter \ud83d\udc95",
+  "quality_score": 0.6642,
+  "difficulty_score": 0.683,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

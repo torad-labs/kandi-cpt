@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "91734e1a1bfded2f9d6d8042f38e89bec9e1e24faa48dbc10f3761ff89245d64",
+  "clean_sha256": "fe1207b4d2708d721c21d4a0e7a645dc799fc86448b070c4e9c64f8f23540289",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1200,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=piD6QECX-ng",
+  "title": "Electric Daisy Carnival (EDC) UK 2014 Official Trailer",
+  "quality_score": 0.7806,
+  "difficulty_score": 0.4559,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

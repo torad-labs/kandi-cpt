@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6fce4d4d43c559f8ce994f6d8199f21fc81b25a38e5d9114e5f9b9a1367f8552",
+  "clean_sha256": "d408a7199658aaa7a0704a152dca993e421fa802f29848042c17a5693f2c78ac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2142,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Pnp_7IaqW74",
+  "title": "MARTIN GARRIX LIVE ON DUTCH WATERS \ud83c\uddf3\ud83c\uddf1",
+  "quality_score": 0.735,
+  "difficulty_score": 0.458,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

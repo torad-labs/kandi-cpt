@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "41aaa4011b91e7bd0ff98197198961630eb745f2164d0620be09e7d18a56e3ae",
+  "clean_sha256": "95c5e2dd75980ad4cd60ca376c0e2ff67c31afca6a192a5912f6882a409bf3b8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1891,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GKKQuG9baDg",
+  "title": "EDC Las Vegas 2019 Official Trailer",
+  "quality_score": 0.8774,
+  "difficulty_score": 0.5487,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

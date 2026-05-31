@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d3b2abf9dc58c5e90d02eeaf85f9d5a938b9f1e1179761720d33980b2caa440b",
+  "clean_sha256": "15e2f622a16b9133a1d1f1cb5b383b3234d8887ba99dcdbfba34b37825b36a4f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2027,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=49-_f6kyVJ8",
+  "title": "EDC M\u00e9xico 2015 Live Set - Arty  #EDCMX2015",
+  "quality_score": 0.8969,
+  "difficulty_score": 0.5604,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

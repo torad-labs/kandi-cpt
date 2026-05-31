@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "e4cce0fa526907a7dabc0787a8e771d90b24794dbb2f2b4bb7bb149076eeb201",
+  "clean_sha256": "c29363436166045760e79ecb10672d8aeab9bf1fd2423ee4652fefd856e6dc05",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2015",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7439,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

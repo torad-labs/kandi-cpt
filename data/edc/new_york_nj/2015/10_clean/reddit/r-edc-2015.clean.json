@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "452b05a185f4b62f042bbd70539da3c82f4e9043ea74ffe97efa1cff9bc337b8",
+  "clean_sha256": "4096680d9c399e6bce113efa88b56b039ce7ce1d2865cae0c7eb8b35fea06b89",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+york+nj+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_york_nj 2015",
+  "quality_score": 0.7039,
+  "difficulty_score": 0.6807,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

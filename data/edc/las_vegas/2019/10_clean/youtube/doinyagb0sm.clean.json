@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d680f472e8ea8f66aa5d7aad8179813b0b5bea79a5b1dda83a551cfe953b98b7",
+  "clean_sha256": "5220c1dc5f257d1a07afd0469925eed59b95f8a9cd1e5f50d6eb5008029de6bc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 902,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=doInyaGB0sM",
+  "title": "i_o - EDC 2019 (Las Vegas) [17.05.2019] (Reupload)",
+  "quality_score": 0.8405,
+  "difficulty_score": 0.5071,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

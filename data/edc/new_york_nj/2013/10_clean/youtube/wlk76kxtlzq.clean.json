@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5892387fe75f8d9086a1a72f5ea0cf616544d852bbdab679a507e46581287563",
+  "clean_sha256": "f589b88c0634d2e50ec1f841d136251758cacb35235008518caf8b1ca3053379",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 366,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Wlk76kXTLZQ",
+  "title": "EDC NYC Announce trailer",
+  "quality_score": 0.7106,
+  "difficulty_score": 0.5905,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

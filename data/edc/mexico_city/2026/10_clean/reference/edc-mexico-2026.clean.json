@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "8d644f5f3be27acaa4489b7262595742fc268a73d793f495b0436a52e143763b",
+  "clean_sha256": "2399d741a84a4e9f8bc34f9e8612393d926166c157db30345d7b4a3472b7e3fd",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 493,
+    "keep_ratio": 0.614,
+    "anchor_ratio": 0.398
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/edc-mexico-2026/",
+  "title": "EDC Mexico 2026 | Music Festival Wizard",
+  "quality_score": 0.7723,
+  "difficulty_score": 0.7355,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

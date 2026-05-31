@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "22849177cec01494b2ed35672f75a0cf8527ff91815326967c55940cc036afac",
+  "clean_sha256": "8f29df9c62eba8e7833801bd2313a5d7833c1fb91c3b57e71a855d11f6effc25",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 67,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3N04Gdm-QFs",
+  "title": "Ranger Trucco b2b Luke Dean Live @ EDC Orlando 2025",
+  "quality_score": 0.6691,
+  "difficulty_score": 0.728,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

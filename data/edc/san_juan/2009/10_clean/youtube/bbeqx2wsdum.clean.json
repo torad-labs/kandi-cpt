@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "361459ef1dc4835d8329104d4ca9c8750f3c2ab35571486f089870d970bf7451",
+  "clean_sha256": "71b91d23938ffca45d009aa744b6374e07797cb49f1c586c17331b0500d47658",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1257,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=BbEqx2WSdUM",
+  "title": "Max Vangeli - Fender Bender (StoneBridge Re-FX) [SBM048]",
+  "quality_score": 0.7112,
+  "difficulty_score": 0.5708,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

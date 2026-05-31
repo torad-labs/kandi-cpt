@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ba6ae09615c754b2a600254cbd995de5d5b8c09273eb0b412489b2ae8f402026",
+  "clean_sha256": "cce3a216e18f34630f9f7faa09ccff469a3608e699bbd694861f9d850e152a3f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 164,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3CuLx_-SEmQ",
+  "title": "Deorro Live @ EDC Las Vegas 2015",
+  "quality_score": 0.6049,
+  "difficulty_score": 0.361,
+  "cluster_id": 2,
+  "curation_status": "drop"
+}

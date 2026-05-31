@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a90b1d7219f55141fdaa2a54dbf0e2594573094a24507bdfb954c3cf2a28f825",
+  "clean_sha256": "1544af770254078cb1c9df481ba284eafd189abb2d210b283a51cdd57c8dc39e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 91,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Wc4rX4lD7iA",
+  "title": "Flosstradamus - EDC Las Vegas 2015 Full Set",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.7118,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

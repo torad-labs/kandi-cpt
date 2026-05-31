@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b26f4018b796380a2a51bc04f198d4a270049e22b0df58b5fe81760b35ac6fba",
+  "clean_sha256": "6317571b75697bec769680f69791ac4673f8def2d5ad08a5ee20ae144fc31e48",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 148,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=E5x2sPf5f4U",
+  "title": "EDC 2008 @ The L.A. Coliseum",
+  "quality_score": 0.6119,
+  "difficulty_score": 0.7668,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

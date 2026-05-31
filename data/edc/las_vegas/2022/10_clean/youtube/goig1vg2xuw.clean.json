@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5c8de11e181df7c259f08635bf3dccd455dd4aee2d3fd3897b214317927fd36d",
+  "clean_sha256": "391bee3977d52a190197d2339d7279abe1b4f87c58fc94f0ea5269a453fa1c8b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 200,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=gOig1VG2xUw",
+  "title": "Illenium - EDC Las Vegas 2022 FULL SET [4k]",
+  "quality_score": 0.6586,
+  "difficulty_score": 0.661,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "3afe73f9e1ae548c6086929cc6d931ddfb259a221f775562b10098fd0fe223a5",
+  "clean_sha256": "14de0975e0e04c7d9dceb05d88d8745433b3d05a86c113a01da690577c1f4531",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2023",
+  "quality_score": 0.695,
+  "difficulty_score": 0.6137,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

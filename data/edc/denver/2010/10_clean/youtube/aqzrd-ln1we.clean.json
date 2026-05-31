@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4b87cae08d2224e3471fbc6114630d89b32fe915486003c7b2dc2a363b9afcf7",
+  "clean_sha256": "4596b8cfb11e8525f3ddb0e9c976ac19ef9e5fc5237666ab79ea0bfff7f4ea3b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 54,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=aQZrd-Ln1wE",
+  "title": "EDC 2010 Colorado- Amazing light show",
+  "quality_score": 0.6066,
+  "difficulty_score": 0.7051,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

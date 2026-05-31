@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2a763b90c1db82480a23f1146fe4d27009727a289f3137130c6a86559dbb9fd2",
+  "clean_sha256": "6569bab02d6a0778da86887c42a9cbd036a898dcd139234b29393303e92abc81",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 65,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=7FrgtnspCGM",
+  "title": "Seven Lions Full Set EDC Orlando 2019 Circuit Grounds",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.7132,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

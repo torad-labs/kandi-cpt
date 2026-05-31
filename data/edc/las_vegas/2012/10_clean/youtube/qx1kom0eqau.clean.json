@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a41ee5f8faf7664c8de19d6da27b11cffd0ae87ff665a25b2dda4d16889a04e4",
+  "clean_sha256": "1c574aa04c40b74e3e86d44029264eabdcf5b4ec7f6ae4f53d2a5b4f7f5ca48a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 815,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=qx1kom0EqAU",
+  "title": "Armin Van Buuren - EDC Las Vegas 2012",
+  "quality_score": 0.7012,
+  "difficulty_score": 0.5764,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

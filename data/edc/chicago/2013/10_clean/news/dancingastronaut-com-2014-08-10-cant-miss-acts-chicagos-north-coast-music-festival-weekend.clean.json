@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "06d095fc1d526806c8896e53dce55b89bab15c42fb774a74b903feebc20e29c3",
+  "clean_sha256": "b11ac32e4b53984fbdbac9494e3a9e9cd9d0ca5554e5e91f420a446ad36b4bf2",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 994,
+    "keep_ratio": 0.762,
+    "anchor_ratio": 0.182
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2014/08/10-cant-miss-acts-chicagos-north-coast-music-festival-weekend/",
+  "title": "10 can't miss acts at Chicago's North Coast Music Festival - Dancing Astronaut",
+  "quality_score": 0.8934,
+  "difficulty_score": 0.4467,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

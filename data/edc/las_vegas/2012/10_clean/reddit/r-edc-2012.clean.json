@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9d91998cfdbc808059bf0439071fee8d6370a69de1132f8893648c9121d39906",
+  "clean_sha256": "1775ace5d21f6e5854492d1e052eafcb2b8cf04558a55b956b59643ed52ff651",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2012",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7439,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

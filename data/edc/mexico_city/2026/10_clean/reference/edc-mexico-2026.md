@@ -1,0 +1,174 @@
+# EDC Mexico 2026 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/edc-mexico-2026/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: Insomniac
+
+The Scene
+
+The largest city in Mexico meets one of the largest EDM festivals in the world when Electric Daisy Carnival comes to Mexico City. With six stages along with 100+ artists, EDC brings its signature carnival theme with rides and grand-scale art exhibitions south of the border. - Copyright Music Festival Wizard
+
+2026 Artist Lineup
+
+- 999999999
+- ¥ØU$UK€ ¥UK1MAT$U
+- 3BallMTY
+- 8onthebeat
+- Above & Beyond
+- Adam Beyer
+- Adam Ten B2B Mita Gami
+- Adrián Mills B2B Cloudy
+- Ahmed Spins B2B LP Giobbi
+- Alesso
+- Alex Wann
+- Alisha
+- Alok
+- Angerfist
+- ANNA
+- ANYMA
+- Aranxa
+- Archie Hamilton
+- Armand Van Helden
+- ATLiens
+- Audien
+- Azyr
+- Ben Hemsley
+- Ben Sterling
+- Black Tiger Sex Machine
+- BOLO
+- BROSA
+- Brunello
+- BSNO
+- Calussa
+- CamelPhat
+- Celice B2B Sadgal
+- Charlotte de Witte
+- Chris Lake
+- Chris Lorenzo
+- Cristoph
+- Crystal B2B Sommer
+- Darude
+- Deer Jade
+- Dennis Cruz
+- Dezko
+- Diesel
+- Diplo
+- Discip
+- DJ Gigola
+- DJibouti
+- Dombresky
+- Eli & Fur
+- Eli Brown
+- Emisopa
+- Enrico Sangiuliano
+- Eptic
+- Felipe Gordon
+- Fenrick B2B PRADA2000
+- Fito Silva
+- FUMI B2B Serafina
+- Funk Tribu
+- Gareth Emery
+- Getter
+- GRAVEDGR
+- GRiZ
+- Hardwell
+- HAYLA
+- Hesis
+- Holy Priest
+- HoneyLuv
+- Ima
+- Indira Paganotto
+- Indo Warehouse
+- Infected Mushroom
+- Interplanetary Criminal
+- ISOxo
+- James Hype
+- Jamie Jones
+- Jeffrey Sutorius
+- Jessica Audiffred
+- John Summit
+- Joseph Capriati
+- Josh Baker
+- JSTJR
+- Junkie Kid
+- Kai Wachi
+- Karlo
+- Kassie
+- Kate Gozz & Ana Morss
+- Kawas
+- Kevin de Vries
+- Key4050
+- KI/KI
+- KinAhau
+- Knock2
+- Le Twins
+- Level Up
+- Levity
+- Little D
+- Lokier
+- Loud Luxury
+- Maceo Plex
+- MALUGI
+- María Nocheydía
+- Mario Santander
+- Massano
+- Matt
+- Matty Ralph
+- Mau P
+- Max Styler
+- Michael Mayer B2B Rebolledo
+- Mike Posner
+- Mind Against
+- Mish
+- Mita Gami
+- MNTY
+- Nils Hoffmann
+- Noise Mafia B2B Peter Blue
+- NOVAH
+- Pahua
+- Pato Shoucair
+- Patrice Bäumel
+- Peces Raros
+- Restricted
+- Rigopolar
+- Roman Messer
+- Rossi.
+- RØZ
+- Sam Feldt
+- Sammy Virji
+- San Holo
+- Sander van Doorn
+- Saza Fischer
+- SEBAXXSS
+- Seth Troxler
+- Shanti Clasing
+- Sickmode
+- Sidney Charles
+- Silvie Loto
+- sim0ne
+- Sol Ortega
+- Sound Rush
+- Steve Angello
+- Sullivan King
+- Sultan + Shepard
+- Taao
+- Tape B
+- TBX
+- The Bloody Beetroots
+- The Martinez Brothers
+- The Wookies
+- Tom & Collins
+- Trym
+- Valentino Khan
+- Vertile
+- Villaseñor
+- Vini Vici
+- Westend
+- Xandra
+- Yotto
+- Zedd
+
+Related Festivals

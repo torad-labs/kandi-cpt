@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "6f89d4630752813769b8a1f26271481ffc3d8f77afea13f460abab9c33d0e43a",
+  "clean_sha256": "23de9577345fc4f6bce7bce95525e991e4cf84793a97accb3e81344e46eac4dc",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 new_york_nj 2013",
+  "quality_score": 0.7831,
+  "difficulty_score": 0.581,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fb14aed52df65328ba583a9ca93889a3fe04940a0ebc62bb6343ffe16e08f3fd",
+  "clean_sha256": "b2f035b0712fbd97138bf8b52ea071e62d09b14a49ad633118c8c74a2cca95f1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 93,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=MZW74zdA8MI",
+  "title": "The Chainsmokers - EDC Las Vegas 2016 Full Set",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.672,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "394c2569d5b9eecf7f6b3093d7b8015826ad241f3fda6452b53bbb6aa557f135",
+  "clean_sha256": "fb8edb582479b43a49cf7b6a2c1daf1b926b82d0ccf84a9ef61d0b67bd35912c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 292,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8zNeD8Kawew",
+  "title": "KSHMR at Electric Daisy Carnival (EDC) Las Vegas 2016 Circuit Grounds",
+  "quality_score": 0.6104,
+  "difficulty_score": 0.4104,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

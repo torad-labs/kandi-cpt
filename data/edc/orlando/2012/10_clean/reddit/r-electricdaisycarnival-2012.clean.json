@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "99176c1f2b533ef0c583670c74cf590019935c2dbe385e4192d0286cc30c060a",
+  "clean_sha256": "f69293673132d88739f817472966fc239a6d4326977bf439e49f219ba45656f1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2012",
+  "quality_score": 0.5731,
+  "difficulty_score": 0.7546,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

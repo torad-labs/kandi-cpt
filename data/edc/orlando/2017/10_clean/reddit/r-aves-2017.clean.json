@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "7c2540f65c2675f1ee6caeb5b6a81d691ad0aa82b5cc91e6c7318a1e353cb383",
+  "clean_sha256": "b65446bd2314dfaf830408f572407528815f4247215bb2703a187d0b9147ba12",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2017",
+  "quality_score": 0.5986,
+  "difficulty_score": 0.5835,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

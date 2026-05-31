@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "aeb3255c476d3b82da86fe0d89e2e29521ab3292e7e0b5b013fddb05c2292d7a",
+  "clean_sha256": "cdf99147c8548b5a43d1528f38b1fe93eb01bd3bb2e99d1eba6fb51bf206bb14",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 109,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=J8N0NTzmXEg",
+  "title": "EDC Puerto Rico 2013 (Saturday) - Nicky Romero (Symphonica)",
+  "quality_score": 0.6343,
+  "difficulty_score": 0.8232,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

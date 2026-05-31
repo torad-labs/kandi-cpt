@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "07db19c595f003bed5b896970f90a284b8a86b6452a200bb21f33d7c03452f6e",
+  "clean_sha256": "de3a172229caae82fe2ed9a8c69dc0872eb39b9dc9fbf6da89b1b5ea3d779110",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 165,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cUdjwF2EQLA",
+  "title": "EDC Orlando 2021 Aftermovie",
+  "quality_score": 0.6126,
+  "difficulty_score": 0.7437,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

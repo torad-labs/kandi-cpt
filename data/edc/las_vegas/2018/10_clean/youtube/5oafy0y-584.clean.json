@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1e7bea5c9499a742271904ce99123e805fbc4c7d32459f702a30e1d52d67852a",
+  "clean_sha256": "ab7e99ff5ace8dfd00582ac05ccc3ed363f3897a3cafa77d645416d00755a003",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 325,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5Oafy0y-584",
+  "title": "EDC LAS VEGAS 2018 - LINEUP",
+  "quality_score": 0.6513,
+  "difficulty_score": 0.3462,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

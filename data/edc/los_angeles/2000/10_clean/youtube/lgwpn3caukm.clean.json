@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e17501d1ff99e1e58a148fee3ebfc439a7159c7a64997138fa7b303f56e3a66b",
+  "clean_sha256": "c0136fc5f5b103e40953da7b45a40ea9c1599852ef57a24065e94f02f716cf81",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 184,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=lGwpN3cAUkM",
+  "title": "FLYING 2,000 MILES TO OUR FIRST EDC",
+  "quality_score": 0.6122,
+  "difficulty_score": 0.5008,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

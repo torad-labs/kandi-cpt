@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2d00db99003d4c41bde4f9c54ca9822c16dd803e0177655f91a88f7a5cfafb15",
+  "clean_sha256": "e76b090fbc84525771123da132741469b5636943fe6d7172c649b2190a22f2af",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 226,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WfVLgSCu_9A",
+  "title": "Deorro @ EDC Mexico 2022 - Circuit Grounds [Full Set]",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.3294,
+  "cluster_id": 2,
+  "curation_status": "drop"
+}

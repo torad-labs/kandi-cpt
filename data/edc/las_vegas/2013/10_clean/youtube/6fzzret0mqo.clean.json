@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5c7802c2c86bf278d88f38d3bc4af52f24014c831cf8c95b1359aa346d783dbb",
+  "clean_sha256": "7ffc4efaadf6f5964774f213ff33f652d723a3dbdd09964a9808fcfc52c27340",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4924,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6FzZrEt0MQo",
+  "title": "Hardwell - Live @ EDC 2013, Electric Daisy Carnival Las Vegas - 22.06.2013 [Tracklist]",
+  "quality_score": 0.9248,
+  "difficulty_score": 0.4407,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

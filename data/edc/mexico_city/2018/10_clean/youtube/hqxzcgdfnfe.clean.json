@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1155296d0feede691ac9a0191f39e6357762513e6c42957eee5db9c39968c750",
+  "clean_sha256": "4d57360919a80e0611239c6fcb393800fe7cf4e2f1185143a816bc71dc62b762",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 958,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hQXZcgDFnFE",
+  "title": "EDC Mexico 2018 Official Announcement",
+  "quality_score": 0.7414,
+  "difficulty_score": 0.4361,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

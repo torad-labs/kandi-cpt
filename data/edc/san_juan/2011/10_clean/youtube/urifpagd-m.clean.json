@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "49c08021d6af2fca238725db757916f8829ba3e3d35afd1969548c72261d5fa8",
+  "clean_sha256": "590f3cf79113af4eea7ff94ea42e49e301dee7e79ab58ebdb6b22e1015e98074",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 402,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=UriFPagD_-M",
+  "title": "EDC 2011 VEGAS.m4v",
+  "quality_score": 0.6433,
+  "difficulty_score": 0.7935,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

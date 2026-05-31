@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "8e5c97dc30eedccdc6fe421b2235435ccfcb4ff60ad8dd8c4a6d5abee9348050",
+  "clean_sha256": "3da037a741b73da747ae29f5eabd5e0e385d1aefff1bbd5f72fb6dfc14240300",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 325,
+    "keep_ratio": 0.431,
+    "anchor_ratio": 0.448,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/leeburridge-lostdesert-alldayidream-elongi-ep/",
+  "title": "Lee Burridge & Lost Desert Transport Us to Dreamland with the New 'Elongi' EP ft. Junior [Listen] - EDM",
+  "quality_score": 0.7597,
+  "difficulty_score": 0.6787,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

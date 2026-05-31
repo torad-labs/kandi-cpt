@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "13ef1dfb2373b61affecd5b7bbda1bcd80e79870b9e375d9c55cd07cc5b47a6d",
+  "clean_sha256": "ff02b9529ca3183313214704721cf8a0aa0e23bec737bd7a538fe9d03dc4d47a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 137,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=k2Qx0GuBAfQ",
+  "title": "EDC KOREA 2019",
+  "quality_score": 0.6747,
+  "difficulty_score": 0.5952,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

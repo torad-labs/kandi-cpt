@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c2230e391cf0481f5dadb7aa7e4ec81492a74eef62dfc02e2209dc25b7c2f937",
+  "clean_sha256": "e1109189f97e8461090fd97518ec1baa1939d6c6fddebafe5dd47792a1937aaf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1895,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6BgUaQLCAsI",
+  "title": "EDC Las Vegas 2019 - Festival Mashup Mix | EDM & Electro House Party Music",
+  "quality_score": 0.8796,
+  "difficulty_score": 0.4944,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

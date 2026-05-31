@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c9363ce87aae0bfc6b507aff83fbe8b0db8df65f048d2fb7865df9ff1fad4431",
+  "clean_sha256": "7521d6756fe99bb4a79352bce54a64f650a60b1c50a8c69af990b05cafd175c3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 280,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=k6Zd0KKwbQM",
+  "title": "EDC Daytime part 1 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6522,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

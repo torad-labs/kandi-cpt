@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6e1b6cb9128f00e43f0c99f3f17fad3c5f7b729d83be7c6f19c9800680d98021",
+  "clean_sha256": "77b9a6287e8bd07832f86813be67da2821512c074f00a7eaec58640dcc1e655a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 616,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=s51scQIoNYA",
+  "title": "Ron Ives",
+  "quality_score": 0.7267,
+  "difficulty_score": 0.607,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

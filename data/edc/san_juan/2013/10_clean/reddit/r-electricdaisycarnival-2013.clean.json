@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "baf53fd4bb937375f2c9050b06410aead786ea1bae752aebd0c487f17eeb91ba",
+  "clean_sha256": "5ebe7d817d1b4b86fe2a21d32992235b90ddf55b50ac44f105c68b49f19229d4",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 san_juan 2013",
+  "quality_score": 0.7595,
+  "difficulty_score": 0.459,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

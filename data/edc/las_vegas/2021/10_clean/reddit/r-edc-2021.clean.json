@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "6e4e7ba5d1679f6752b5257e4a0f993375b669e69d4d02eacabf877b35ca20b8",
+  "clean_sha256": "7784455945dc17f9f0c63fefce1a48c63b7389a0ec84b05312be65327d7b32f0",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2021&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2021",
+  "quality_score": 0.6269,
+  "difficulty_score": 0.6674,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "dc04ad0a3abdc7f902e7a36604f8772b886297ab294e1998902f5445c0237bea",
+  "clean_sha256": "f9d88e03d95e48b3a858f4a8c837cc84b730f3c4a7d951b80c02a5f126317254",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 486,
+    "keep_ratio": 0.528,
+    "anchor_ratio": 0.374
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2025/02/dancing-astronauts-new-music-friday-february-21-2025/",
+  "title": "Dancing Astronaut's New Music Friday: February 21, 2025 - Dancing Astronaut",
+  "quality_score": 0.897,
+  "difficulty_score": 0.5614,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2502ea93be48f4180ca0fe2235834900c2cfee0e1f5662f3df3dd8dce12f8bb9",
+  "clean_sha256": "f0863963336989e5248b060a7aad1947ec3c896631b3f2b35bdd2fcf08009901",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1481,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4Qh0d-usV-U",
+  "title": "EDC Mexico 2019 - Official Trailer",
+  "quality_score": 0.7544,
+  "difficulty_score": 0.4412,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6f932890ed33d0431125ec5fe9c035d8a5fa9cb83be4303e36a7e1bdd23e8fc3",
+  "clean_sha256": "9e4c49afc9a3a70f35a2713578202dc43bccfa905785fb47f8cc3d2706cfd093",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 377,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QSDklRwh7CY",
+  "title": "Tritonal at EDC Mexico City 2022 (Kinetic Field)",
+  "quality_score": 0.6393,
+  "difficulty_score": 0.6874,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

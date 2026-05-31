@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1f93c3aca44ca5eb646ec949704b388983c0e7b317e0c9846f45835157dc4259",
+  "clean_sha256": "d19606dee38309076c3135abc9dca5acf874c5a5f5b634d15df0f544a5b33df9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 124,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=klZSXQ3Yuxc",
+  "title": "EDC China Sesco Aftermovie by Francis Ildefonso",
+  "quality_score": 0.6461,
+  "difficulty_score": 0.8447,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

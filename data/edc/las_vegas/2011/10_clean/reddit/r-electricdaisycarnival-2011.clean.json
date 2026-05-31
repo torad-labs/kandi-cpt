@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "4851f0395ae19dc3f02559858da0985b1be8b39a3918712b3a83d7ffa1ac92bb",
+  "clean_sha256": "4c987f5cf8b9cd805bc497f4081cca0ec7e73f3646a3a6b8a2279c0de9809c82",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2011",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4494,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9f589ffd30df1c94d98cd897e68b060e2944c0b169da61bda447c6d3ce832185",
+  "clean_sha256": "1fe6c7f24d63fbd518b4e46c313dad71bc1cc5a3dff52eca8e31b4eaa5fc7d20",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 168,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FH4t53GPBko",
+  "title": "W&W Live Set at EDC ORLANDO 2019 - Main Stage Kinetic Field - 4K",
+  "quality_score": 0.6236,
+  "difficulty_score": 0.6297,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

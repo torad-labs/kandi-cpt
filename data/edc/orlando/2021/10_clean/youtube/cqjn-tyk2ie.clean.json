@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4ba1474d112fe752b4649122d4a5897931158656c1534023f90916980b247fbc",
+  "clean_sha256": "b497a580f7069465f59499cad1fc03c868c275c1eb71aa1ce928996f3091bf36",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1709,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CQjn_TyK2iE",
+  "title": "DAY 2 VLOG @ EDC ORLANDO 2021 | Subtronics, Excision, John Summit",
+  "quality_score": 0.8603,
+  "difficulty_score": 0.4593,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

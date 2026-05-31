@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ef859c1b54e2e60a7ff8512470d879d7356169e7de02c87b1e6c56a59d238b0a",
+  "clean_sha256": "04b682adb3524b8194881e7d8a4beafb54379736856c49303b49991aeda52903",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 91,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iQq3gfNP57o",
+  "title": "EDC Los Angeles 6.27.2009 Paul Van Dyk",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.7052,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

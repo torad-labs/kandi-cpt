@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "da9ea4dc5a3aa3ee353f4de2a78e14665d6213874b779b36fd8aa230e8c25b26",
+  "clean_sha256": "0c721244b3bd38f8d70172f705233c856d45d757f19fd26dda75e242376eef1d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 121,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=89-_9ZGgN64",
+  "title": "Electric Daisy Carnival: San Juan, Puerto Rico. 08/28/2010",
+  "quality_score": 0.6244,
+  "difficulty_score": 0.8372,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a5034b8a5adbd28ad6fdfef024f867f695fe71c35dd4e1527cf4fdec90c35733",
+  "clean_sha256": "57c25e020950f245f43637ef8928d237a7d8697cc60af695850abe4a1a5d9adf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 688,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=37wBWFNuwRg",
+  "title": "Midnight Tyrannosaurus Live at EDC Orlando 2018",
+  "quality_score": 0.6847,
+  "difficulty_score": 0.3269,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

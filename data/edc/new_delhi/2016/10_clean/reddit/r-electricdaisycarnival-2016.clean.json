@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9c036f717bb2ed36c0b19e25baf66cd7b366377cc25ea8ff308908f07b9304f9",
+  "clean_sha256": "80800a9c8290cecf7017002828c9899ecf419d1d5790b24d1162f75f92485e0d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 9
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+delhi+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 new_delhi 2016",
+  "quality_score": 0.7463,
+  "difficulty_score": 0.5905,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

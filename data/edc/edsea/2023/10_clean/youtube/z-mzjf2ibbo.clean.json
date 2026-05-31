@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "03d42e8f8a2de0b6e0c3b70495e061a633a47d57b23d6a13108753c5663cf7a6",
+  "clean_sha256": "dc8dcf5803126a42624fda49b63a2c7582de01bf928d51b47afda8b5e71606dd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1260,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z-mzjf2iBbo",
+  "title": "EDSEA 2024 Aftermovie",
+  "quality_score": 0.7583,
+  "difficulty_score": 0.3516,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

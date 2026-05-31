@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "60afdc541ac5191106e909dd21a5c1c84de53039e53b068f9b4c7fb013e24a1d",
+  "clean_sha256": "9858dbce1d6612014f0f62570a7bc09adeb7d5b7fbbd473f5de896f6416dfdd2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 409,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NWHq0_hJG_0",
+  "title": "SAN PACHO LIVE FROM EDC LAS VEGAS 2023",
+  "quality_score": 0.6744,
+  "difficulty_score": 0.5318,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

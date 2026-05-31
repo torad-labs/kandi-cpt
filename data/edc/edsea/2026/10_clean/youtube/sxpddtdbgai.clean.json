@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9ab9d17b6297030fb8b85354f5587097b40052a2f953d56766a3f901e940a2a1",
+  "clean_sha256": "50d61ba5ba516ba1473a1a2ee6176127260ddcf256d557d84899b29e67c61c27",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 317,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SXPdDTDBgAI",
+  "title": "ILLENIUM B2B SLANDER - EDC LAS VEGAS 2025 (Full Set, Volume Corrected)",
+  "quality_score": 0.649,
+  "difficulty_score": 0.4759,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

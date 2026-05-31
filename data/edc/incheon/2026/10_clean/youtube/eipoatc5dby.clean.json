@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "aae41a65bc8b667b8efbaa547c05249ece8f544a9e6d9d5e816d2e505e472015",
+  "clean_sha256": "a9cd126264acac19e747289754de96b106f4cf418c241f1fe15dae38405fbf2f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 250,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=EIpOATc5DBY",
+  "title": "Luke at EDC Korea 2019 / merry EDM Festival with Luke",
+  "quality_score": 0.7204,
+  "difficulty_score": 0.5502,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,153 @@
+# EDC Las Vegas 2012 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2012/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2012 Artist Lineup
+
+- 16 bit
+- Above & Beyond
+- Adventure Club
+- Afrojack
+- Alesso
+- Aly & Fila
+- AN21 & Max Vangeli
+- Andy C: ALIVE
+- Angger Dimas
+- Armin van Buuren
+- Arty
+- A*S*Y*S*
+- ATB
+- Avicii
+- Bassjackers
+- Bassnectar
+- Bassrush Experience
+- Â Benny Benassi
+- Blue Man Group
+- Borgore
+- Brennan Heart
+- Calvin Harris
+- Camo & Krooked
+- Carl Cox
+- Chase and Status
+- Chris Lake
+- Chuckie
+- Circuit
+- Coone
+- Cosmic Gate
+- Crizzly
+- Dada Life
+- Danny Tenaglia
+- Darksiderz
+- Dash Berlin
+- Datsik
+- David Guetta
+- D-Block & S-te-Fan
+- Deco
+- Delta Heavy
+- Dennis Ferrer
+- Dieselboy vs Bare
+- Digitalism
+- Dimitri Vegas & Like Mike
+- Dirty South
+- Dirtyphonics Live
+- DJ Ammo
+- Dodge & Fuski
+- Downlink
+- Doctor P
+- Dubfire
+- Eco
+- Ed Rush & Optical
+- El Pulpo Mechanico
+- Emalkay
+- Endymion
+- Erick Morillo
+- Excision
+- Feed Me
+- Felix Cartal
+- Ferry Corsten
+- Figure
+- Flux Pavilon
+- Flying Lotus Girls
+- Funkagenda
+- Funtcase
+- Fury
+- Gabriel & Dresden
+- Gaiser
+- Gareth Emery
+- Green Velvet
+- Hardwell
+- Harvard Bass
+- Headhunterz
+- High Contrast
+- Hype
+- Isaac
+- Jack Beats
+- Jaytech
+- JDX
+- Joachim Garraud
+- Jochen Miller
+- John Digweed
+- John Rundell
+- Josh Wink
+- Kaskade
+- Kill the Noise
+- Knife Party
+- Koan Sound
+- Kristina Sky
+- Kyau & Albert
+- Lady Faith
+- Laidback Luke
+- Little Boots
+- Loadstar
+- Loco Dice
+- Magda
+- Manufactured Superstars
+- Markus Schulz
+- Martin Solveig
+- Mat Zo
+- Michael Woods
+- Moby
+- Modestep
+- Morgan Page
+- MSTRKRFT
+- Mt Eden
+- NERVO
+- Nicky Romero
+- Nicole Moudaber
+- Night Owl Experience
+- Noisia
+- Paco Osuna
+- Porter Robinson
+- Pretty Lights
+- Q-dance
+- Rank 1 Live
+- R3hab
+- Richie Hawtin presents Enter.
+- Sander van Doorn
+- Sebastian Ingrosso
+- Sidney Samson
+- Steve Angello
+- Steve Aoki
+- Sunnery James & Ryan Marciano
+- Technoboy
+- Thomas Gold
+- TiÃ«sto
+- Tommy Trash
+- Tritonal
+- UMEK
+- W&W
+- Wide Awake Art Car
+- Wilkinson
+- will.i.am
+- Zany
+- Zeds Dead
+- Zomboy

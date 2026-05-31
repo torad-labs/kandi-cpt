@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5a4db0c862044c500143475efc66aca77bb9cc6d1f12b3f173f948eea6c40088",
+  "clean_sha256": "e8cf1653c299572efcbc68824f8b54da2556f82e282e09bdc29a28585fc4c3b6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 601,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pRdU63U-MyM",
+  "title": "Seven Lions - EDC Las Vegas 2018 (Full Set)",
+  "quality_score": 0.6954,
+  "difficulty_score": 0.4431,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

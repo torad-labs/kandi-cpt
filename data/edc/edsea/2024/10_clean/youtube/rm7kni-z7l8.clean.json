@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4a7d0281e1cd04866205ce9738baf141a25b2da2384af8d0e167545ffd4fb33b",
+  "clean_sha256": "a8c50cfc057869a84cb4cfd13f8b2af85ee4689f210a6e21113af5b2107f01f6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 996,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=RM7KNi_Z7l8",
+  "title": "Set Sail with EDSEA (EDC): The Epic Festival Cruise Departing from Miami, Florida! \ud83d\udef3\ufe0f\u2728",
+  "quality_score": 0.6969,
+  "difficulty_score": 0.6513,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

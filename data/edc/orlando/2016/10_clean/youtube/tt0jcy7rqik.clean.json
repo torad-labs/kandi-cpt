@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a5ef64f567d2a64bac439471d8290f1c84ecc55d4b2e3ed039977a7620d4945f",
+  "clean_sha256": "5675bb79d191f5dca14f6ec754e4d291086109fbd95c85ed6cc5b04febe88526",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 412,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tT0jcY7Rqik",
+  "title": "EDC Orlando 2016 - Announcement",
+  "quality_score": 0.6813,
+  "difficulty_score": 0.5729,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

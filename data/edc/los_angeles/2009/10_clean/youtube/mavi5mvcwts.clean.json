@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "33bd9aa7c3aa9456dcbb7cc46a57ae14168ab3ecda4b3a1fd12276e0645c196a",
+  "clean_sha256": "a7e3c93d3bc3f66faecb59c0506187ffb48a1c79e8ec00ff5120964c617c0d6e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 77,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Mavi5mVCWts",
+  "title": "EDC 2009 Los Angeles LTH Shuffle",
+  "quality_score": 0.6316,
+  "difficulty_score": 0.6533,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

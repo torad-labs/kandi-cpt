@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e336c1973393d5dfea604ce203b541992fafaca9a027b0c01755063f954d6e23",
+  "clean_sha256": "bec356a168cc41a49094887586f008cc850b6b8e2e675ab04b3747fbd48f4de6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 411,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Z7VfOvIDqwo",
+  "title": "EDC New York 2015 - After Movie  at Metlife Stadium (Memorial Day Weekend)",
+  "quality_score": 0.6734,
+  "difficulty_score": 0.7786,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

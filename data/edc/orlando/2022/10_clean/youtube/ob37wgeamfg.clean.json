@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8a0825de0a804085b8a044944928b6967b750740e87ef1f9630ceca69a62039c",
+  "clean_sha256": "c81933e00597094a3c27bb564594b3311ada97343dc7f034e6958f5a66edabc5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 180,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OB37WgeAMFg",
+  "title": "John Summit LIVE @ EDC Orlando 2022",
+  "quality_score": 0.6622,
+  "difficulty_score": 0.7884,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

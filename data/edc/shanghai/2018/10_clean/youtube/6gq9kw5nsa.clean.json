@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bfb179eb7e05ca087490c947922a88040bcad369e2b47ce779b80e37ffd5e6ee",
+  "clean_sha256": "06c99f3eeedc416fa5409b68bda7171ef4b87c00fab81dd88d3fe092d7fc9573",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 524,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_6gQ9kw5nSA",
+  "title": "Krewella Live - Life in Color Shanghai 2018",
+  "quality_score": 0.6808,
+  "difficulty_score": 0.4552,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

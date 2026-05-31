@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7d7421d9fdca05402399105cab5869ef4bc2bdfff403104bee429ab529d1e674",
+  "clean_sha256": "fd5e8d535b47f2352c46156600046bd369799aae42eb68b3584aa59da373af6f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1283,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-gUZ8Uyx1uI",
+  "title": "EDC Thailand 2026: The Most Epic Night in Phuket (Full Experience) (part 3)",
+  "quality_score": 0.8547,
+  "difficulty_score": 0.5197,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

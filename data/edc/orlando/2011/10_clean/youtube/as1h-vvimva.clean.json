@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "50f2151e871abe9b59f8e3ab9dac33c00ff616c362c3047eb176ce2f23d16cd8",
+  "clean_sha256": "ec7067d990af85255e05b786d88686950a4ed7fdcd6fba45882a88391202daf6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 58,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AS1h-VviMVA",
+  "title": "EDC Orlando 2011",
+  "quality_score": 0.6306,
+  "difficulty_score": 0.6351,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

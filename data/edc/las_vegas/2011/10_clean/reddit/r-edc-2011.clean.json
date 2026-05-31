@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8d0c77313923056217902be6ee05efcf20dbda7290e264c2d59f2f791bafa4ab",
+  "clean_sha256": "d8a637fa904a2af47ffde7c79d3caee23c87c718fefb9569dab329fa89e1b19a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2011",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7436,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "fe61cc7f6c7557a2cad110bbf9a03c2b6d246f31b7968c46c8a70a7229f7dbc4",
+  "clean_sha256": "24d6e0b610af64552febb6786c1245c2a86ffca0056c93eaf898bfeaa6c04d8a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=dallas+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 dallas 2010",
+  "quality_score": 0.7501,
+  "difficulty_score": 0.5885,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

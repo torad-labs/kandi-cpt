@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0ecd5655c269bb25ba4394276e60376d1733b7af5b8de85d5195435bb1eb618f",
+  "clean_sha256": "602ebdfbf1cb4a701a57cd9e6621a34f87fe010ebfea3ab6db28fa52998121ec",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 139,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ym5e4cL_ETA",
+  "title": "Day 2 - EDC NY 2013",
+  "quality_score": 0.6115,
+  "difficulty_score": 0.6836,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

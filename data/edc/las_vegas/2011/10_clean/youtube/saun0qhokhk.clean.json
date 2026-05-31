@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f29d746bac960fd5dc7dd442b167acde253224d7a32bd989613de80983d40a16",
+  "clean_sha256": "e0bc40e342c172ef516c936526fa419683d741cec99fbcf4e506fed6212247b5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2334,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SaUN0QHOkHk",
+  "title": "Above & Beyond Live At EDC Las Vegas 2015 (Full HD Set)",
+  "quality_score": 0.8649,
+  "difficulty_score": 0.6433,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "302bb42ed99fac764cbd72390e9fc3683b55263f8a2c9f2bd9ac353ca0ecd934",
+  "clean_sha256": "601089cae8635e2a98e4622b9b60e100b499a67c497cf9d7ed6ed97d08c40be7",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2018",
+  "quality_score": 0.7564,
+  "difficulty_score": 0.5513,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "035c3d8c5bf7ffc65a047f4117cf64f726185242878198df2ba3c85469ecb280",
+  "clean_sha256": "322bd212ed75c30cca131b813935a1dffa2b98769c738fabfeff5c0a97dc4195",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 350,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=29X15QCTXZc",
+  "title": "Deorro @ EDC Mainstage 2019 [FULL SET]",
+  "quality_score": 0.6369,
+  "difficulty_score": 0.6232,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

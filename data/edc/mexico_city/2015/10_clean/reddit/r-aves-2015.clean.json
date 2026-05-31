@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2568c7a5d15f7f4e028d3e3c682523cadc3327decb856e4baff668ca0dfc58a2",
+  "clean_sha256": "a848f2dd22b47d25a0fe91f6072a61ede7edc71859a367c00691a96545644f6a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2015",
+  "quality_score": 0.7622,
+  "difficulty_score": 0.5997,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

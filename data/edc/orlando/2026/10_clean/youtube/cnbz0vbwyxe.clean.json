@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "031a8de1fba2c0305f9dc22810f4566cc54d9c72935ff70feaecd614f843b1db",
+  "clean_sha256": "5f6dc6b7543f02a32c1cee89f17d35ea6666d8e6aac9ebb6080a193412320045",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 554,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CnBz0vBwYXE",
+  "title": "EDC Orlando 2025 Official Trailer",
+  "quality_score": 0.6668,
+  "difficulty_score": 0.5329,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

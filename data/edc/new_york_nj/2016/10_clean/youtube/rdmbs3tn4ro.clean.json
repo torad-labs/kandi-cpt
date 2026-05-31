@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e66f69be1e3dfc3f3872062dd4c3a7ead2bc0153cd56072865685500497e9859",
+  "clean_sha256": "36ef963e3885962a8a566fafcd6eda2d95ba7222bfcf81fa91e833dc045a5646",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 598,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rdMBs3tN4Ro",
+  "title": "EDC New York 2016 preview tour w. Pasquale Rotella | billboard",
+  "quality_score": 0.6484,
+  "difficulty_score": 0.6007,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

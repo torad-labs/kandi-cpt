@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2500762e9ce5aa8efeb6c373fd261f79e2518976cf43e563bea5151ff961e748",
+  "clean_sha256": "d75a486bb44f86597fa6a5500b0f24fbb98dbff523193cf1d81de2538510b440",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2016",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6537,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

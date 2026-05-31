@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d631026f153e310f32d7711279769ee5f10051678c2384ee166b253cdcdd28c3",
+  "clean_sha256": "fb8659da50bea270302a068489e693c36677f479d86172f46012559421a74fe4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1591,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CnT9Ky9ZYbQ",
+  "title": "Afrojack Live Set EDC 2012",
+  "quality_score": 0.8171,
+  "difficulty_score": 0.6075,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

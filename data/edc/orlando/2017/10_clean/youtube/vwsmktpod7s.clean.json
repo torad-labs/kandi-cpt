@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fca7aa9321b84c52a1874a075126c9435345f5ced59f95b2d597a396a37789b0",
+  "clean_sha256": "9ee6957e2067ae6c0e2050cad674dfbca4ff31c41fb7a673c7598aa37db175b2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 249,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VWsMKtPOd7s",
+  "title": "EDC Orlando 2017 Full Walk-through (High Quality)",
+  "quality_score": 0.6584,
+  "difficulty_score": 0.7003,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "6ac082fea168c4535c7c8ee0f017bd95ff9f2a8404c9369eeede9cdfdb4012bc",
+  "clean_sha256": "93cd9c8a6805ab6649d7bf3f24ff23c49b03fa4451e776c223f9214844b07279",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 640,
+    "keep_ratio": 0.612,
+    "anchor_ratio": 0.313
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/05/edc-las-vegas-unveils-expansive-2016-lineup/",
+  "title": "EDC Las Vegas unveils expansive 2016 lineup - Dancing Astronaut",
+  "quality_score": 0.8996,
+  "difficulty_score": 0.7704,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

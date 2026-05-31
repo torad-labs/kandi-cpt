@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d26f67fc423c2b51199671ca4ceac1cc82e13e02342cac161643b5893de80771",
+  "clean_sha256": "cd5f7f25cc1a37d5ec51c8fa42df32fef5f85351926e6fab9fedf7cd6fcd2609",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 87,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=144UBlUKVzk",
+  "title": "Afrojack - EDC Las Vegas 2014 Full Set",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.669,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

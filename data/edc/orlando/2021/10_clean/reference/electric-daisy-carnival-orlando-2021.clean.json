@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "0572a167e4425b8ce2fb9c6f9413802e35c0844e39b0bf762675e42c2885adf0",
+  "clean_sha256": "9518410c043eec1c4ffbf23b16e2a65b2f1d415ce51cb0aceca7abd9a98da7e6",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 427,
+    "keep_ratio": 0.587,
+    "anchor_ratio": 0.26
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2021/",
+  "title": "Electric Daisy Carnival Orlando 2021 | Music Festival Wizard",
+  "quality_score": 0.7939,
+  "difficulty_score": 0.7802,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

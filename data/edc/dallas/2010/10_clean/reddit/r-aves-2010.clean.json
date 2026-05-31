@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "511c28dcef67698224318d802cb33b1cdb3d6f44e353f0e7a204c79715d944bf",
+  "clean_sha256": "d308015dd200da69504154e942fe4c72fb889a17fe19cfd16bb8487ef89dda9d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=dallas+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 dallas 2010",
+  "quality_score": 0.7785,
+  "difficulty_score": 0.4405,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

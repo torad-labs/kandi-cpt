@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "20964a8a5752701656a75c33a5fe746e4b51a33fdd06cd991958c7a72d5d7c3f",
+  "clean_sha256": "de62d562aac8240471356c5ecc4d0aa8c6b05cb5a3e52ac7e516eb2a764b0653",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=x1dSOXN314c",
+  "title": "EDC Teslacoil video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6464,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

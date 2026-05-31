@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b208e6213ca5508bf35f7ee84690db95369fcbd217985ed173d534403b44f737",
+  "clean_sha256": "dc0ee47f64fba0208b49e9d47971a92a9cf98de39e0703ce9c3ac9f95eba2110",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 432,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dH7MqEpZSV4",
+  "title": "EDC Las Vegas 2023 -  Aftermovie",
+  "quality_score": 0.6573,
+  "difficulty_score": 0.7048,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

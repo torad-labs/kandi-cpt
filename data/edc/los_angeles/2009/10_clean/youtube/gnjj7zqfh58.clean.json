@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "181099415bf51ba2fc086951acbf05a469a51857d3cd5da2b4aac23152b60afb",
+  "clean_sha256": "1e6633c2fbc37eb6f94a0a102bd650b02c0f338cbad628abaf80e5487f317d3d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 82,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=gNJj7zQFH58",
+  "title": "BENNY BENASSI Otherside Remix @ EDC 09/Electric Daisy Carnival 2009",
+  "quality_score": 0.6441,
+  "difficulty_score": 0.6513,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

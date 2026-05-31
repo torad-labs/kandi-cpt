@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "aa9bb741a5261086be021bc0f03386013542e8b7c64511d03b1193f6e3c423b9",
+  "clean_sha256": "9cd957879030acdde4ec721b54799f07d03f171d60fdf92311b876292f6f73d9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1276,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WwXJhpKlhHk",
+  "title": "Phuket on Fire: EDC Thailand 2026 Experience | Highlights & Best Music",
+  "quality_score": 0.8564,
+  "difficulty_score": 0.4468,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

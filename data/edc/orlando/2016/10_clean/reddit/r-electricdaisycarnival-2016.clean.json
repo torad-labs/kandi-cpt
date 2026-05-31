@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9313c91c4429d351ce885d58dd04249c747ab9dc32606d824178d84b049ae9f0",
+  "clean_sha256": "9a62002ebb4efff17017b953b9e990f8b1e9ef77207ccacced71cc76c3a30abd",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2016",
+  "quality_score": 0.7037,
+  "difficulty_score": 0.4862,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

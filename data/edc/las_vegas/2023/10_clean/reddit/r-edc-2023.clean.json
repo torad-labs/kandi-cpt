@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f07fa0ebaad0065297ddd668d9932c4c8cc0e8e00bf07cb9fed7d600b0d6c6ca",
+  "clean_sha256": "e083dd5b40468ae118c110aa87ff73dfccc7f6ca56c105fadf7276e9798550ca",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2023",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7368,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

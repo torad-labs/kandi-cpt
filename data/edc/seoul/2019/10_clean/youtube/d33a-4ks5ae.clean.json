@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fdf5828431fd52e480cf522aaa00443e4277ec67f654ab4d8c7616cd1ce38a01",
+  "clean_sha256": "71a1579ad1fea5984dfd71a6afc3c0c976e6fc1999c91a295ffe5f255dc37c58",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1293,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=d33a-4ks5AE",
+  "title": "EDC Korea 2019 Teaser Announcement",
+  "quality_score": 0.8181,
+  "difficulty_score": 0.3716,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

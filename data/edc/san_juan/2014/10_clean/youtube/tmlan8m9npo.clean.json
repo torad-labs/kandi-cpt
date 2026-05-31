@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f5d69405ea3d872bc0d87267a58dd9ba6387e12644b41db05be37b2d24f3ad50",
+  "clean_sha256": "fe6e30d88adb084bddaaadd9c13b023b0e06f03779a409ca0ea9bf2b79c7e558",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 241,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tMlaN8M9Npo",
+  "title": "Life In Color - Unleash - San Juan, Puerto Rico - 05/31/14 - Official Aftermovie",
+  "quality_score": 0.613,
+  "difficulty_score": 0.8488,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

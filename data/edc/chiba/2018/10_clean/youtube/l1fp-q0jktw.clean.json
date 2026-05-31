@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f092e67322e38ca9c281703d654bf8b677692393da6bec0866d5fc6dc238f3d9",
+  "clean_sha256": "b06ae7d5ec877aecffabeb930ec176dbb6d2461c2340d21277c5cc5772216969",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1974,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=l1fp-Q0JKtw",
+  "title": "ZEDD - Live at ULTRA Japan 2018",
+  "quality_score": 0.9053,
+  "difficulty_score": 0.6093,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

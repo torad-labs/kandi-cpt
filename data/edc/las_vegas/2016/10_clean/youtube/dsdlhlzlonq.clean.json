@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b32382ca3568ec91913aeccfbaecd55b4350f2d0f00fb054595ab62d245be28f",
+  "clean_sha256": "a58a20c2f3d476917d71fb704eaf226b7275de9a90fc7df8e7f2e4f008e53b6f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 419,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dsDlHlzloNQ",
+  "title": "TJR at Electric Daisy Carnival Las Vegas 2016",
+  "quality_score": 0.6566,
+  "difficulty_score": 0.5163,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

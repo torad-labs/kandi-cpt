@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "35d5b4e2d75ec433812ca1e63e9015c372907f18c42452f160fcbbf08b186d5a",
+  "clean_sha256": "4518811f27660162d1e0ab4064d1b594f00f949b1794b4d9871bbe9df4e28162",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1521,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2uznwavqsBs",
+  "title": "Kaskade LIVE At The Golden Gate Bridge | San Francisco , CA",
+  "quality_score": 0.7462,
+  "difficulty_score": 0.3999,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

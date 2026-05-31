@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8b28c3f70199349628896aa3e8571235dd752c9f17871a728f7c6c78369b7dc3",
+  "clean_sha256": "00f57756ea1dcf1b92a7b77fda2b0eaea22057bb674f01254c20d821e0b9052c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 200,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fVTtel7gMqE",
+  "title": "Nicky Romero - Live @ EDC M\u00e9xico 2023 | KineticFIELD",
+  "quality_score": 0.6968,
+  "difficulty_score": 0.6814,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

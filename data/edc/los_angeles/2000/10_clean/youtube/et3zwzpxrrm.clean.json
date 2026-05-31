@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e4fd14dc6610f9e189da0b829e6cb3f50e163f6405d9a1755a09ce22025ad9ba",
+  "clean_sha256": "e1dc11cd183ffcffea340d0c3e7f6b736046bce9bb47d4c1e9f57313089ec463",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 427,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=et3zwzPxRRM",
+  "title": "EDC 2000 quick",
+  "quality_score": 0.7323,
+  "difficulty_score": 0.5483,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

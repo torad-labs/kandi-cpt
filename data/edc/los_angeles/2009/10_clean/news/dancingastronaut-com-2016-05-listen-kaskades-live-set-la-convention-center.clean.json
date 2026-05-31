@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "222c9f5e919711110a54c481fa15be94f1b3b7d6c29f214654653d2e47fa7c70",
+  "clean_sha256": "80aa0a3e10aa9c9878c1f9be5591b489761a52c62290880895d237057d1be3c2",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 457,
+    "keep_ratio": 0.499,
+    "anchor_ratio": 0.331
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/05/listen-kaskades-live-set-la-convention-center/",
+  "title": "Listen to Kaskade's 2.5 hour live set from the LA Convention Center - Dancing Astronaut",
+  "quality_score": 0.8833,
+  "difficulty_score": 0.6382,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

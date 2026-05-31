@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d9887c50174cc2622cc4a01e8e5a77861b7e89218f7572a831e676946388e292",
+  "clean_sha256": "6f80bd26ac737f59ee52b60db76685802e2e94b013429ad6b38ff4e53062bce5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 619,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=URqWpkBkNbU",
+  "title": "Relive EDC Korea - 1 Sept 2019 (Day 2) - [Unedited]",
+  "quality_score": 0.8053,
+  "difficulty_score": 0.4017,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

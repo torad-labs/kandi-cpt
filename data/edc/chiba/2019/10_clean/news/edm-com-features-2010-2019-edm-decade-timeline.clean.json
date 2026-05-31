@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "d306589d159951ef3ae01561fcc2cb6db35ee05dafab4b057b32dea186b5a4ad",
+  "clean_sha256": "072f7ecad7cc38999f4852a42fcfc0f9d5d05836947fe35e63b829f17c0d8228",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 8965,
+    "keep_ratio": 0.979,
+    "anchor_ratio": 0.056
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/2010-2019-edm-decade-timeline/",
+  "title": "2010-2019: a Timeline of the EDM Decade - EDM",
+  "quality_score": 0.8586,
+  "difficulty_score": 0.5916,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2e854bdd908b4f51d4d43b407b87fd12df3c6e8f5fbf3591d08d25b8d4fbaad6",
+  "clean_sha256": "3aec4aac480aeacdf0bcd078295367d912d424eec96480c539ad4dd7c353433d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 402,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_DRMmtN5Ogo",
+  "title": "BOLO - EDC Mexico 2025 (Full Set)",
+  "quality_score": 0.6604,
+  "difficulty_score": 0.5359,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

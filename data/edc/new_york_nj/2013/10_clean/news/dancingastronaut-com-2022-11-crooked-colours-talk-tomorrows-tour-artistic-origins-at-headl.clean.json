@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "06c4afca94cbd788ff1ac4410eacd099b0bc72b5f2cd91b35b2cee41cba28e68",
+  "clean_sha256": "2618b058b9a340044f416cf31f834f29e731a2195ba533af84da53d91cfd8b75",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1217,
+    "keep_ratio": 0.686,
+    "anchor_ratio": 0.177
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2022/11/crooked-colours-talk-tomorrows-tour-artistic-origins-at-headline-show-in-la/",
+  "title": "Crooked Colours are just enjoying the ride\u2014duo dive into 'Tomorrows' tour, artistic origins after headlining The Fonda [Q+A]",
+  "quality_score": 0.8098,
+  "difficulty_score": 0.6148,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

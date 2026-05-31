@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "233e30bfa66e65516a5ef7c67c0daeaa8924eca6928278911bb0ee199b0261ae",
+  "clean_sha256": "dfe1bd30a8ade3dc969f4c2deee941c66cff9762b83578479345e650c3be9dda",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 362,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=9xVjP9PuZpc",
+  "title": "RVMDON EDC M\u00c9XICO 2024 FULL SET",
+  "quality_score": 0.6115,
+  "difficulty_score": 0.3644,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

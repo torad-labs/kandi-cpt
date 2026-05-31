@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "52798fcd14401a90cd3e28cd06dac55dfd3826692ec776aa8359c24b0b6ee1d4",
+  "clean_sha256": "39b2759717e0429824abed28fbbb6e3141a6377785ef1d279a43a39609be6aaa",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 469,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-EcGLCFp4QA",
+  "title": "RL Grime - LIVE at EDC Mexico 2019",
+  "quality_score": 0.6553,
+  "difficulty_score": 0.313,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

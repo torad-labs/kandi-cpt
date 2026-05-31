@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e81c547c6ae86b2bc01440cfb9355875ff25241ee82a823892321ad453dc0cf7",
+  "clean_sha256": "8acea7e350aeb47ce120706dfc3ee278896a7e01274c435563f5e15f0cc96752",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2637,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SKzcYL-Wsk0",
+  "title": "Calvin Harris - EDC Las Vegas 2015 Full Set",
+  "quality_score": 0.8324,
+  "difficulty_score": 0.5159,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

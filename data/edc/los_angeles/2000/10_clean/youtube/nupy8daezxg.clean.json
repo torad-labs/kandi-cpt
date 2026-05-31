@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5089b9cdad77cd292fc756100c13fda0f8be57ebaf7ba08c1519eb8d1abe2ebc",
+  "clean_sha256": "e3b56cc1cdbf0804ee46340382dd93ec7feac374aada522cdbc44d04526dd03b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 286,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Nupy8Daezxg",
+  "title": "EDC 2010-LA-Donald Glaude",
+  "quality_score": 0.6575,
+  "difficulty_score": 0.8003,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

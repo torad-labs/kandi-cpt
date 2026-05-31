@@ -1,0 +1,214 @@
+# EDC Las Vegas 2015 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2015/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2015 Artist Lineup
+
+- 12th Planet
+- 3LAU
+- 4B
+- Aaron Jackson
+- Above & Beyond
+- AC Slater
+- Adrenalize
+- Adventure Club
+- Afrojack
+- Alesso
+- Alex Kidd
+- Alison Wonderland
+- A-lusion
+- Aly & Fila
+- Amine Edge & DANCE
+- Andrew Rayel
+- Andy C
+- Angerfist
+- Armanni Reign
+- Armin van Buuren
+- Art Department
+- Arty
+- Astrix
+- ATB
+- Audien
+- Audiotricz
+- Avicii
+- AWE
+- Baggi Begovic
+- Bassnectar
+- Benny Benassi
+- Bingo Players
+- Bixel Boys
+- Black Sun Empire
+- Bones
+- Breach
+- Breathe Carolina
+- Brennan Heart
+- Brillz
+- Burn Unit
+- Calvin Harris
+- Camo & Krooked
+- Carl Cox
+- Carnage
+- Catz ‘N Dogz
+- Chris Liebing
+- Chris Lorenzo
+- Chuckie
+- Cookie Monsta
+- Coone
+- Cosmic Gate
+- Crisis Era
+- Crizzly
+- Da Tweekaz
+- Dada Life
+- Dannic
+- Danny Avila
+- Darksiderz
+- Darren Styles
+- Dash Berlin
+- Datsik
+- D-Block & S-te-Fan
+- Definitive
+- Deorro
+- Dieselboy
+- Dimitri From Paris
+- Dimitri Vegas & Like Mike
+- Disclosure (DJ Set)
+- DJ EZ
+- DJ Jazzy Jeff
+- DJ Snake
+- Dom Dolla
+- Dr. Fresch
+- Dubfire
+- Duke Dumont (Live)
+- Dusky
+- Dyro
+- Dzeko & Torres
+- Eats Everything
+- Ed Rush & Optical
+- EDX
+- Enei
+- Eptic
+- Eric Prydz
+- Excision
+- Fallen
+- Fatboy Slim
+- Ferry Corsten
+- Firebeatz
+- Flosstradamus
+- Flume
+- Flux Pavilion
+- Foreign Concept
+- Freedom Fighters
+- Friction
+- FuntCase
+- Galantis
+- Get Real (Green Velvet & Claude VonStroke)
+- Getter
+- Gladiator
+- Graham Funke
+- Grandtheft
+- Habstrakt
+- Hardwell
+- Hook N Sling
+- Hotel Garuda
+- Ilan Bluestone
+- Isaac
+- Jack Beats
+- Jackal
+- Jason Bentley
+- Javi Row
+- John Digweed
+- Jon Rundell
+- Justin Martin
+- Kaskade
+- Kasra
+- Kastle
+- Kayzo
+- Kennedy Jones
+- Keys N Krates
+- Kicks N Licks
+- Kidnap Kid
+- Kiesza
+- Kove
+- Krewella
+- Kry Wolf
+- Lady Faith
+- Laidback Luke
+- Laxx
+- Leiel
+- LNY TNZ
+- Loco Dice
+- Lookas
+- Loudpvck
+- Low Steppa
+- Mako
+- Mark Knight
+- Markus Schulz
+- Martin Garrix
+- Martin Solveig
+- Metrik
+- MitiS
+- Moby
+- Motez
+- MOTi
+- Myon & Shane 54
+- Neelix
+- NGHTMRE
+- Nicky Romero
+- Noisia
+- Oliver Heldens
+- Ookay
+- Orjan Nilsen
+- Pan-Pot
+- Party Favor
+- Petey Clicks
+- Popeska
+- Posso
+- Pretty Lights
+- Protohype
+- Psyko Punkz
+- Pulsatorz
+- Ran-D
+- ROYL
+- Saeed Younan
+- Sander van Doorn
+- Sasha
+- Seven Lions
+- Showtek
+- Sigma
+- Sinden
+- SKisM
+- Slander
+- Snails
+- Speaker of the House
+- State of Mind
+- Steve Angello
+- Sunnery James & Ryan Marciano
+- TC
+- Technoboy
+- The Upbeats
+- Thomas Gold
+- Tiësto
+- TNT
+- Tokimonsta
+- Tommy Trash
+- Trent Cantrelle
+- TrollPhace
+- Troy Kurtz
+- Tuneboy
+- Umek
+- Vena Cava
+- Victor Calderone
+- Wilkinson
+- Wuki
+- Yellow Claw
+- Zomboy
+- Z-Trip

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1a5a4c202da6ae6aa01cff24992118c36c22a5680b75826e3621f7b67f9a1e3b",
+  "clean_sha256": "22e9eeb75579b17407d91b98be1c50dd354d94080e1d8b61e74285c412b54506",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 296,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pbvbr_1DAzE",
+  "title": "Markus Schulz - Live @ Electric Daisy Carnival [EDC Chicago 2013]  - 26.05.2013",
+  "quality_score": 0.6725,
+  "difficulty_score": 0.4604,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

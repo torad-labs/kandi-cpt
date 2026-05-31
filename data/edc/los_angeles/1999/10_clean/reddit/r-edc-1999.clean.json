@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "12125b2d7afadfeae9d5d2574970f4e2472bf29e958cfd565eb212ecd405fedf",
+  "clean_sha256": "92dae19a4424887ba1e4a2d917d740b6bd583afb5239c331feed85bb02c724f2",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+1999&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 1999",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6825,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

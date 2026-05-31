@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "23aa6fef1dd33c2c766261158ec5d9221d77185a0eeda5f52118c5aa5a5f4f6a",
+  "clean_sha256": "ddb8a1677dae2a44cfe7482fe9bd8279dfe7e91b9d1fe5ff957d712560668729",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 296,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eFETF2n87go",
+  "title": "Tiesto - Live @ Electric Daisy Carnival [EDC Chicago 2013] - 26.05.2013",
+  "quality_score": 0.6725,
+  "difficulty_score": 0.4604,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

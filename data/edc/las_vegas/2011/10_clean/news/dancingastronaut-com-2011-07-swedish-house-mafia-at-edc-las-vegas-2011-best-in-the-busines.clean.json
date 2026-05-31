@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "da557f03ff9cad467af028cb94bc25e3756f51f3b76a11002a689bcff3127ea4",
+  "clean_sha256": "813426e32cfa5d7ffb0c5a1fc97909335f1ca7937316b0dcddfec06b6d9a2941",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1120,
+    "keep_ratio": 0.663,
+    "anchor_ratio": 0.211
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2011/07/swedish-house-mafia-at-edc-las-vegas-2011-best-in-the-business/",
+  "title": "Swedish House Mafia at EDC Las Vegas 2011: best in the business - Dancing Astronaut",
+  "quality_score": 0.8912,
+  "difficulty_score": 0.5111,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

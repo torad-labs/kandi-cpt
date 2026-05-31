@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "cb187b277a0e06230029051e75c94da9b09132da8b1a5a148729ed64d8fa7c7a",
+  "clean_sha256": "72f2a0d5b25e9999c686e59883d039cd13a60e363658a818c86fb83863704ab5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2020&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2020",
+  "quality_score": 0.7595,
+  "difficulty_score": 0.5894,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

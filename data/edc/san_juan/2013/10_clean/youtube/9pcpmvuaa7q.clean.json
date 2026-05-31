@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1090d295b4b4d0ac8868e66d677a56cf1d239280be9520ca43ca24f74f8c9e77",
+  "clean_sha256": "5edc0df36eab2c5e7afb92624683be525cbef8ab1f75f6a46fb137f784c728c2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 113,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=9pcPMVuAa7Q",
+  "title": "EDC Puerto Rico 2013 (Saturday) - Pretty Lights (Hot Like Sauce)",
+  "quality_score": 0.6347,
+  "difficulty_score": 0.7859,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

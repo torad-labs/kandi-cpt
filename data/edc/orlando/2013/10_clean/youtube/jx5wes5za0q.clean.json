@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "59076876cebad32786573ad22bb44d6a849254485f2b325ef7995ba93a2c0cdf",
+  "clean_sha256": "fa28531cdb83276cfec3eaccd7f4d51653890203e4627f07f2b868a6bdfe7ad0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 943,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Jx5wes5zA0Q",
+  "title": "EDC Orlando 2013 Official Trailer",
+  "quality_score": 0.7194,
+  "difficulty_score": 0.6425,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

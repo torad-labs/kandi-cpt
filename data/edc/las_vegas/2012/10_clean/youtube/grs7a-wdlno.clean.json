@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6d7ff254878642666d0d7d193e163b42eb703f77ca296c3ec3ecf418114060ae",
+  "clean_sha256": "4f1a46b142c1c7eda5dbc08d329aeb6830024ea0223507d93cd3c3cfe31add2f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1134,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GRs7a-wDlno",
+  "title": "EDC 2012 Official Trailer",
+  "quality_score": 0.7593,
+  "difficulty_score": 0.5916,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

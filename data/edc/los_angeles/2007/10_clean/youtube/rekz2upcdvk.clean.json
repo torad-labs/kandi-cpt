@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08da127fc3e366d2b46ca8c130a29697da7776da2aa1e0c76e45e68f9c4632e2",
+  "clean_sha256": "27517a2cb78014966e016501753f8909e180f2c790b669133209ed6e30edda1b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 368,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rEKZ2UpcdVk",
+  "title": "EDC: Exiting EDC Video By Endari June 30,2007",
+  "quality_score": 0.7288,
+  "difficulty_score": 0.6356,
+  "cluster_id": 13,
+  "curation_status": "keep"
+}

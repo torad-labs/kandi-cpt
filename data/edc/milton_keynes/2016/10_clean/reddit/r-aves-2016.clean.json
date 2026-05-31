@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "6ecf3e16bbe23f634e77b2d241e4375c1b1228892d945e0ff7a1ced380a1a204",
+  "clean_sha256": "15eef484621f9235f8d436983c3a5de6a6f83afac01e375258ba74330bc00944",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=milton+keynes+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 milton_keynes 2016",
+  "quality_score": 0.4822,
+  "difficulty_score": 0.9914,
+  "cluster_id": 14,
+  "curation_status": "drop"
+}

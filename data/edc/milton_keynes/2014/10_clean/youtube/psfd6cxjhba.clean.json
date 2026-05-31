@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7dd5392c4748254e174a8ca60403c4d520ce7dac5ef9a79507b33b1626a5610e",
+  "clean_sha256": "afd3753e3b4f2c52bd5ff3ffca0a7b64ce93ee903da629b4183f725ae69e47fc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 99,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pSfd6cxJHbA",
+  "title": "Calvin Harris EDC 'Summer' Live Milton Keynes Bowl 12/7/14",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.7658,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d0069e77b39e053cf4376b9eacc3160fa5310a672bf1eae06364af53c70e6054",
+  "clean_sha256": "1491b5d96d3e01615520e42106a2a5175b559910858b7a61562bc517d213bd96",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 135,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=R_SC1W2jDmI",
+  "title": "\ud83c\uddf0\ud83c\uddf7 EDC Korea 2019 - Wehbba - Mind Awake / ARTBAT - Planeta",
+  "quality_score": 0.6604,
+  "difficulty_score": 0.7486,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "12cc7cfbf91958964cca841fbeb35393d9dc4292363a8c65dc2046810c478e8d",
+  "clean_sha256": "72df7d8746cc490670f101d8db7c4a0eb51777fd0b9a8836a80733a7b5ea4488",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 122,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dE4ay6SoyEQ",
+  "title": "Martin Garrix Full Live Set with AREA21 EDC Las Vegas 2021 Circuit Grounds",
+  "quality_score": 0.6354,
+  "difficulty_score": 0.8267,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "59dd059092fa6aa9e820b143095aea89c5114eb2f5b193e1e67ca88efe72548b",
+  "clean_sha256": "a69129eacac146a2081cf5dba5b6f71da665f3de3e2f34c7bb1b14968ccc025d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 658,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=S8NUG1_EQPA",
+  "title": "EDC Orlando 2017 Festival Adventures Vlog",
+  "quality_score": 0.7297,
+  "difficulty_score": 0.7452,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

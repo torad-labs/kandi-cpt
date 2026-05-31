@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "dd81afaaa92b3be0debdc7248807098c1f1e919f4418946982afc42b822ea5f5",
+  "clean_sha256": "c4a2467d05d5f578f34d166800560bc4d1505c3bfbba223b613e8ec1582b43ae",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 256,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AhG6afpiYJI",
+  "title": "EDC Milton Keynes 2016",
+  "quality_score": 0.6138,
+  "difficulty_score": 0.6423,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

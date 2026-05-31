@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "62c33361b8398f09ba932a7f95015e29c0d101ba68720db14a2fcb0831c4b757",
+  "clean_sha256": "5f358a90883758e66275ea42433d3e564e9fdfd402f16e8d8785c8ad5919e0d6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 125,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GQiabM0XmYU",
+  "title": "EDC DALLAS 2011 FELGUK, GREEN VELVET, CHUCKIE, ETC. AND ME SHUFFLIN",
+  "quality_score": 0.6072,
+  "difficulty_score": 0.692,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

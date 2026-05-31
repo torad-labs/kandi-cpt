@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "14b528ed00e203439d05c2378e0cce64e687da773cc1baea2c17b0ddcf9f1e84",
+  "clean_sha256": "82e08f630e82b5283b378d5c4b6aed09af210ad2231ad73eb0d02bf9695ec894",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2023",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.6291,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

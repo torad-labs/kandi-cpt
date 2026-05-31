@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "31821e208e799fa1517d7e19a08cf0d802c37b263ef0759e2c631fc33b836df7",
+  "clean_sha256": "e16a3baa3ba6a0acb48926fb532af99ce87f6e917421d511237816537b2d9406",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2000&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 2000",
+  "quality_score": 0.7699,
+  "difficulty_score": 0.6405,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fc7568a8d02a02d136cd44827681ce5b330439f44bc75cfc29a34c7af4b2554a",
+  "clean_sha256": "776d268cf5a5ff4b0c4fdfbe9bde93990dda06ed4b3731a37293bc535d3bbc75",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1497,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=gAZ9KXhQpv4",
+  "title": "Clip from \"After EDC\" - Tribute to LA Raves",
+  "quality_score": 0.7831,
+  "difficulty_score": 0.5137,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

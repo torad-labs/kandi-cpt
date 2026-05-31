@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "db52bce8bc59d64db3027eaac2d361450883a6a0ca72d771a71589d2eee7902b",
+  "clean_sha256": "a43ff5915f09d3c4e7cf32bf10158cb5704aa7a82be9fa06c5be2eb9e692ca6e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 84,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=O1FTtLmNrdw",
+  "title": "EDC 2015 MOVIE",
+  "quality_score": 0.6322,
+  "difficulty_score": 0.7232,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

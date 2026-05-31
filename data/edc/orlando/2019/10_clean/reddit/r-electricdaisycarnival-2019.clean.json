@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "4220ea4120af50020d5b9ef6ed910499c6e9e038aa961c74156bb1622a89a90f",
+  "clean_sha256": "a532aa962901cf326407ba41d99b542df38040a711c9ba6c3f7b9f747eda048e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2019",
+  "quality_score": 0.7689,
+  "difficulty_score": 0.6122,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

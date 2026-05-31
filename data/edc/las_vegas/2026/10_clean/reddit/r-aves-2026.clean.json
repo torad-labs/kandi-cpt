@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "0be24022bdf24b060f94fe2e2c58823f8a025853baea0c323ca7c04dc9b29c51",
+  "clean_sha256": "8db502dec48619d6a3d748a51f1d6ea13f54f384e5d36a84e4373b1e18403760",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2026",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.649,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

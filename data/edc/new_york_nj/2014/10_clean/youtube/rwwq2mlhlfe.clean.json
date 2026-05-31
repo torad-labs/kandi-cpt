@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6b1b73ec1fdbda88871913af55f32d4be5eb045d581431dc3d0a188fe9de89d3",
+  "clean_sha256": "bf1b3e86ae708085b086909dc006793fee55aa2e5cb09d62e45a786826838e1e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1337,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rwWQ2mLHLfE",
+  "title": "EDCNY2014 SUNDAY HIGHLIGHTS HD",
+  "quality_score": 0.7987,
+  "difficulty_score": 0.6312,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

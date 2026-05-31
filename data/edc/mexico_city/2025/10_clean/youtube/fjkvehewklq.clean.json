@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f161190122815723756f55103e818628b292121b70e50763a6f997df08313108",
+  "clean_sha256": "f4b75b6675b5dcb986443e58831941388c36d08808fed6561d93086ab0a849b9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 476,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FjKVeHewklQ",
+  "title": "EDC Mexico 2025 | Official Trailer",
+  "quality_score": 0.6889,
+  "difficulty_score": 0.5152,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

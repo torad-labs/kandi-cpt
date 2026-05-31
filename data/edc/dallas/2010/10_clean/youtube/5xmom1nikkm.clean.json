@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a9b1fa2efadd274754a58b45a193e64d5d745c6afcd23f4524a3484c5fdb04eb",
+  "clean_sha256": "1dcd37c84e3386d71b265796fb90fdfceb15884e2a9c0f69cdcfaa906ec851d9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 605,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5XmoM1NiKkM",
+  "title": "Electric Daisy Carnival 2010 Video Compilation (EDC) Dallas, TX - June 2010 [HD 1080]",
+  "quality_score": 0.7261,
+  "difficulty_score": 0.6422,
+  "cluster_id": 13,
+  "curation_status": "keep"
+}

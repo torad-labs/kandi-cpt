@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8debb2dbd59a071b23347d5de72e0c2c9c6f8e4c65712d19b183b1d4d8900991",
+  "clean_sha256": "2aa36896512b6f173a0e3b19985fea279ba45bcc3ed681340f435bc96e829eb5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 83,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dkI1hdotnzc",
+  "title": "Hardwell - EDC Las Vegas 2014 Full Set",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.64,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a5d41e0d380500eff0e545c7e73281c336ae66cdbfd82af162860fb8028ad326",
+  "clean_sha256": "bbb6f00927959f7e94477b79b30b0052fba63b4de49d4dd5250478202db7a94d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 63,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OKRJCfosB-0",
+  "title": "ADIVO at EDC Puerto Rico",
+  "quality_score": 0.6197,
+  "difficulty_score": 0.7118,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

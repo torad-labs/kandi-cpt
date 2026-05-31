@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "52e5f91f3cb02599a7379d06c1593954c8fa3222b2eb56aeed4b901f7a100df2",
+  "clean_sha256": "e7ceda711e35ee1e64b26414a01235c45a20a216aee9112c3c66de93e53fdb28",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2000&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 2000",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6839,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

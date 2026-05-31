@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "cb8bc3af4f08b84510a1a3d002cd81fb8b2d6563bff38e87fb05ff27c80e3868",
+  "clean_sha256": "54de9c4b09eba4fb05902b1dec6a497e43aca4aeb20c384d6c7bd86dbc19a585",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2025",
+  "quality_score": 0.8,
+  "difficulty_score": 0.4225,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

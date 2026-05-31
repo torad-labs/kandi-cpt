@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "eada349600b322a2d00af7821fd9a7b06a9d2543578d3229e858ca0fabfa6279",
+  "clean_sha256": "ab16eabfa7b5eb5d13d51e705c97d72c39508e39f82745828350de76b3a8485b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 888,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=977A5ZKrvgY",
+  "title": "EDC INDIA Warm Up Mix 2016 - AKI   | Afrojack,Alesso,R3hab,Steve Aoki,Tommy Trash,Yellow Claw|",
+  "quality_score": 0.8047,
+  "difficulty_score": 0.2798,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a1f7e4e57ab45d8fc30f70142a4955bdf65491801c0ed17ffa16db47d3fe6a2a",
+  "clean_sha256": "e5c151b18c3b903495486472b1a7b8f44638c0126f269084425ff7b1048b5208",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 63,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=TtmfuF7XKpw",
+  "title": "\u8b8a\u5316\u4e2d\u7684\u6a6b\u7434 \u7b2c\u4e94\u5341\u4e03\u671f EDC\u96fb\u97f3\u7bc0 20181208",
+  "quality_score": 0.6056,
+  "difficulty_score": 0.6487,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

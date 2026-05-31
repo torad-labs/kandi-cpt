@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8f5d9388c6a0c0545d26fa2127dd8087323bd54798b40e91629f0a33518c1a7a",
+  "clean_sha256": "fc950d959ee462d4fb3200a5864b36dd91e98c9675b06ca5431bf5b747a59286",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 268,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uYgTHLUt_Kk",
+  "title": "The Chainsmokers - Live | SUMMER SONIC 2019",
+  "quality_score": 0.7138,
+  "difficulty_score": 0.6313,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

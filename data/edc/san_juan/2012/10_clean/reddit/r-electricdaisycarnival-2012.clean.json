@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "4eacd79f0817f4def222ab139ca07d886fc33f7dd80f4f2e4862f78b510ac717",
+  "clean_sha256": "23de0c47d2e4bd9cc7d8a96216690ff0368ccb3812e525ae987162dd7a6ea97c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 san_juan 2012",
+  "quality_score": 0.7596,
+  "difficulty_score": 0.0534,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

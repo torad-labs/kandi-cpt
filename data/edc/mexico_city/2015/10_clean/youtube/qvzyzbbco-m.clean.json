@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0cf8535dd2d5a3321bed066a98024716a496db6a86834054f935612e59655238",
+  "clean_sha256": "28aa5e7db657f2e97eea748d34e76bc9159fd2394c85075348dcdbfa5d4d71cb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 233,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QvZYZBbCO-M",
+  "title": "EDC Mexico 2015 (MP Aftermovie)",
+  "quality_score": 0.6271,
+  "difficulty_score": 0.6661,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

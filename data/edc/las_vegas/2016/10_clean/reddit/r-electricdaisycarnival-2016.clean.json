@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "0f9f750fa959e32f500a7963766dfe5eeb78664e73fcdce2a349e65d4eb3a808",
+  "clean_sha256": "3faaaabcebec54971d1c0cc75e8e44d036ee26cdadfde71d814b7bc1ba41f45c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2016",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4404,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

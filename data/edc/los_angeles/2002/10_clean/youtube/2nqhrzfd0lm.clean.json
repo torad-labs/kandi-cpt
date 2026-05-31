@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d30095eee7fd8f69c1f2f08edf75f1da5a64aa2ee09e700edccd6d9b5afe03b4",
+  "clean_sha256": "a6ea6e284fd24bcc6f75b82b2c063138ce1bf33f37ab0edecae2570314c66a03",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1038,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2NQHrzFd0LM",
+  "title": "Ferry Corsten \u200e\u2013 Mixed Live: Spundae @ Circus, Los Angeles",
+  "quality_score": 0.8387,
+  "difficulty_score": 0.6396,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

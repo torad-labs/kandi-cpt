@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e5a6a15de0b03d08185dcd4f13df508a1d4a7802a500f2e94b99f33e4adb6992",
+  "clean_sha256": "3ccd33b5c7033eab3a619795797a066b68ccb59f05b162623c1089cf7d6f9613",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1450,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=sLqJmop9lh8",
+  "title": "Nora En Pure @ EDC M\u00e9xico 2022 | KineticFIELD",
+  "quality_score": 0.7836,
+  "difficulty_score": 0.4172,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

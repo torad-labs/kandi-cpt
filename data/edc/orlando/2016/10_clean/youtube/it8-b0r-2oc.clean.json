@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5b3d7781b39338e19dc896ca259c50057e3e95f0dcd917995fe4923e9b40a627",
+  "clean_sha256": "282987ae7d788b12f931d5f69293581e4527cf0997619bb6eeba1b4bc239ab31",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 291,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=it8_B0r-2oc",
+  "title": "EDC ORLANDO 2016 DAY 2",
+  "quality_score": 0.7646,
+  "difficulty_score": 0.6629,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

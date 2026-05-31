@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3baf3315e9e98011adab8ab97fe6711bf24be616ab5194d8f8c3a8d8b4c6a05e",
+  "clean_sha256": "df4bdab66cff74c274fb603b631ad2b0864fa93fd13f6b326805bdef78a93592",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 932,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hapPz2uWB-M",
+  "title": "EDSEA25 Official Trailer",
+  "quality_score": 0.6953,
+  "difficulty_score": 0.4789,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d719bce05d2d754aa7e049b20c3e7d56788428aa3a60cf2837fd0005144d5ff1",
+  "clean_sha256": "77468dbed815095ac13a5a239ef879af98659f92ed5c4120c9f02e7ba6c6ba0e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 430,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_8oSW3ejnYE",
+  "title": "EDSEA - WAS IT WORTH IT?!?",
+  "quality_score": 0.6813,
+  "difficulty_score": 0.7042,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

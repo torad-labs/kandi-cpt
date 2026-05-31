@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "3e059b5fe9f64134e8ea42d659a97700fc3ec707012b9f066922480b9c93c5a7",
+  "clean_sha256": "aad8dcc7645233839a7f4d34b726b9c339896dd78911177d17ec23cf94adc1fa",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2024",
+  "quality_score": 0.7988,
+  "difficulty_score": 0.5771,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

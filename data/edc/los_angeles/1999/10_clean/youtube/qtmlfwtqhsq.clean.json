@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a68e9a9923ec6b74db8e7183e84d8f3f22988d8a9eac60f253358715663ecb9c",
+  "clean_sha256": "6bd1a78f37fed92a38008ccdc4e5ceaf4f662cdf84d84bf9b7880973592cbbf2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 888,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QtMLfWTQHSQ",
+  "title": "How EDC Became the Biggest Festival in America",
+  "quality_score": 0.8065,
+  "difficulty_score": 0.5147,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

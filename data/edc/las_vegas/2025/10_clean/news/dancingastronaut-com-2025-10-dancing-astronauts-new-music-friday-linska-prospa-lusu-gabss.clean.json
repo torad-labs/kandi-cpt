@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "a8c82cd97dd55f78d3dd14c6aa9606bae40492a60536f53dcf28338f70bf9adb",
+  "clean_sha256": "96a12d6c4981a5d75f13dead3534c078285f9227d72a56b60ed764fa9cef3d49",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 753,
+    "keep_ratio": 0.654,
+    "anchor_ratio": 0.228
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2025/10/dancing-astronauts-new-music-friday-linska-prospa-lusu-gabss-charlotte-de-witte-chris-lake-skrillex-and-more-october-3-2025/",
+  "title": "Dancing Astronaut\u2019s New Music Friday: Linska, Prospa, LUSU, Gabss, Charlotte de Witte, Chris Lake & Skrillex, and more (October 3, 2025) - Dancing Astronaut",
+  "quality_score": 0.8999,
+  "difficulty_score": 0.6311,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

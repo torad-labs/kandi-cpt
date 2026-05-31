@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "232e84bd230dbd9876962737aef0bcf49f841d15f1e2d045f32921eaae6318fe",
+  "clean_sha256": "28138a8324f53687eaac6a49495b518caf3ed33a2baa4028b9c7036c80e34c99",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 466,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OknUiUGMT3E",
+  "title": "[RAVES] Official Documentary \"The Last Dance\" The Story of EDC Los Angeles 2010",
+  "quality_score": 0.7053,
+  "difficulty_score": 0.6554,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

@@ -1,0 +1,30 @@
+# Festival relationship factory — raw festival data → relationally-complete, faithfulness-gated
+# CPT corpus, for any festival. Rust port of the Python pipeline (training stays Python for now).
+# Conventions matched to ../qgre-runtime: edition 2021, serde, reqwest(rustls)+tokio, thiserror,
+# rand_chacha for seeded determinism.
+[workspace]
+
+[package]
+name = "festival-factory"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+license = "Apache-2.0"
+description = "Typed festival triple store → coverage-complete, grounded, faithfulness-gated CPT corpus."
+
+[[bin]]
+name = "festival-factory"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+# rustls-tls to match qgre-runtime's crypto stack (no system OpenSSL dep).
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+clap = { version = "4", features = ["derive"] }
+thiserror = "1"
+anyhow = "1"
+regex = "1"
+rand = "0.8"
+rand_chacha = "0.3"

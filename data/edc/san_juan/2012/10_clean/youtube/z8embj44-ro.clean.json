@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6671061d87b05bc478a03388d39fa5d0fe9c20e45e209ce5c78e93884fb20c6f",
+  "clean_sha256": "45fb0349dc5ea0a52c079e56afa03979e0e70d2c9dc42a7dabd7a0f980dec49f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 52,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z8EmBJ44-ro",
+  "title": "Kaskade at the EDC in P.R.",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.8943,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

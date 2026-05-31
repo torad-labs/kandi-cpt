@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b785867cf1d6878f6dacd620b022596bb2bdfcb14a5d79e848a910496e29c3d0",
+  "clean_sha256": "e4d4a2c5f8b2411002bdaedb598c08382dfba5034c4d19b6b0e1d33a62c021ec",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 77,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=heENWk6Bsm0",
+  "title": "EDC 2012 Puerto Rico - Panamerican Pier Complex - San Juan Capital City",
+  "quality_score": 0.6329,
+  "difficulty_score": 0.7311,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

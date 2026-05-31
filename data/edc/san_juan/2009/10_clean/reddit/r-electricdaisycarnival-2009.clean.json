@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "adc32b90fdec8b83270e278c9f861675765ff2e33f682282addf8c103c6bb2b5",
+  "clean_sha256": "050dc1516610e70ba485ea939a9aab43bbdd880390f2138125f71ba6d1b95a4a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2009&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 san_juan 2009",
+  "quality_score": 0.7517,
+  "difficulty_score": 0.052,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "20ca7270f4180a4af156a88287f3f357e778e01ecd7a5bb5331c39b088bca668",
+  "clean_sha256": "fd377a8a8a3c91a9156f4cb6729d846ee8e653c83a851bcfdfc9e9d008e66130",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 295,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=zgF9fXqBT8I",
+  "title": "ZHU - EDC Las Vegas 2022 featuring Fashion Show",
+  "quality_score": 0.6736,
+  "difficulty_score": 0.4474,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

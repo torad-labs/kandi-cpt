@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0aca469cc3102fe42476f764b223f50af1874a26571a7a731c93ad0f3860cf5c",
+  "clean_sha256": "b797894cf8665d01051ee487563dfd7dfe982c9a40cd8ed72d518f617dc54066",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1123,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vu4dsCtsocE",
+  "title": "EDC Las Vegas 2015 Official Trailer",
+  "quality_score": 0.835,
+  "difficulty_score": 0.5568,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

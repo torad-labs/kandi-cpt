@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "3a3a7a0bb77314d8238b8b224f9b0654e04769e298d315a78e8e0512391a46f4",
+  "clean_sha256": "11c93710deacde5a5cc255b4bc4494fdbd1a490fe6a5e19fd46004b0f8c6da0e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 9
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=san+juan+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 san_juan 2010",
+  "quality_score": 0.7592,
+  "difficulty_score": 0.5528,
+  "cluster_id": 3,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2e48192d30d6ac915bfeee63857252a60258234fde6c4b287a20f069460724c6",
+  "clean_sha256": "ddb5cc0fb8ffc051c65e7854a7c35ef0ea1785ee73da3236f5a9c9a9b6754a67",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 866,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=O-tT5FVL57A",
+  "title": "EDC Chicago 2013 Official Trailer",
+  "quality_score": 0.7708,
+  "difficulty_score": 0.6675,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

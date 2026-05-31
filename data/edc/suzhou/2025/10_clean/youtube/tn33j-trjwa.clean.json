@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "31eb00c8220a074a2a72d3b2f138cb9e7e0ebafdf61fe63e79e911b20a30c31a",
+  "clean_sha256": "355d3df248f2c3f61472f0c3dbd6e407fe5af70291b8099bf2bd05d74882a7c9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 147,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tn33j-tRJwA",
+  "title": "WOOLI @ EDC CHINA 2025 (FULL SET)",
+  "quality_score": 0.6691,
+  "difficulty_score": 0.7264,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "36e270716e896392705230fee0246c1e024a069a9467a6affefb10185a1b5091",
+  "clean_sha256": "4d1aa2326abc1eff1c150585ade0485c93862331756952ed559eb19241b6aaec",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 84,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PUly1BOJubw",
+  "title": "EDC Puerto Rico 2015",
+  "quality_score": 0.6079,
+  "difficulty_score": 0.8685,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,16 @@
+{
+  "run_label": "v4_clean_21form",
+  "model_base": "base",
+  "model_cpt": "checkpoints/cpt/edc_lv_2026_v4",
+  "edition_dir": "data/edc/las_vegas/2026",
+  "output_dir": "data/_build/geometry/v4",
+  "results_table": "data/_build/geometry/results.jsonl",
+  "pooling": "last",
+  "layers": null,
+  "carrier": "At the Electric Daisy Carnival music festival, the entity is: {entity}",
+  "stage_form": "camel",
+  "visualize": true,
+  "viz_methods": ["pca", "tsne", "umap"],
+  "device": "cuda:0",
+  "_note": "layers:null = all. The metric (separation/AUC/MRR/probe) is truth; plots are exploration (Part 4). Change one lever (data density, negation, batch order, checkpoint), bump run_label, re-run, read the delta in results.csv."
+}

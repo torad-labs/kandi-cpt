@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "856d16000c1071e638fb87d44b8e8064bd59eb43672a57e02bbad7296c404907",
+  "clean_sha256": "cca24cee0a1b8d81f01674e3fc15c20dbe1a3953d86866da4f9d82bbc8453ae3",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 new_york_nj 2015",
+  "quality_score": 0.7768,
+  "difficulty_score": 0.5879,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "dbd0322c5bd7cfb301f1e4a3cc538dc712185c7e2241b607358271d51f48a738",
+  "clean_sha256": "f1de3058a60ed9d8354a6e42bd2a813e8f0294a4e469de0d373d2b9e18f80cb1",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 2439,
+    "keep_ratio": 0.845,
+    "anchor_ratio": 0.095
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/08/las-hometown-hero-gary-richards-on-hard-destructo-and-everything-in-between/",
+  "title": "LA's dance dissident Gary Richards on HARD, Destructo, and everything in between - Dancing Astronaut",
+  "quality_score": 0.8725,
+  "difficulty_score": 0.6036,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

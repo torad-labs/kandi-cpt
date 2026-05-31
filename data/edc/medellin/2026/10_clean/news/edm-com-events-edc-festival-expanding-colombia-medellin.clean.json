@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "dfdf63562248fa8a5d4246d0117aa2bb660b3cd6f067beb235e7cf118e58b5b3",
+  "clean_sha256": "e4337dccb23a71afcd802c3fa350434c29a2732e3832385637cb9ae1998bd2c7",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 309,
+    "keep_ratio": 0.412,
+    "anchor_ratio": 0.35
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/edc-festival-expanding-colombia-medellin/",
+  "title": "EDC Expanding to Colombia With Medell\u00edn Festival in 2026 - EDM",
+  "quality_score": 0.8759,
+  "difficulty_score": 0.668,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

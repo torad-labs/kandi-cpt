@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c0f82d7c699a97150f19fcb27c00d38f9931f957baf829c41de892dce3e2c8cd",
+  "clean_sha256": "7aaadf025d290d385839925d64c7d33e46d7952dcb4dcd59759ffef6ae5345a2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 162,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=T_usKmGXJJo",
+  "title": "\"Together As One\" party New Years Eve in LA, 1999-2000",
+  "quality_score": 0.6122,
+  "difficulty_score": 0.7302,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

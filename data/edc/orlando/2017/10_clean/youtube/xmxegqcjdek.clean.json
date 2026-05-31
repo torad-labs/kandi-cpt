@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "392f66189973de34a85322a5712d937d7d8c49d3b4b84ebac08c450e22d0089b",
+  "clean_sha256": "f24d3f68a74bd099b2f1a9253e200f124bd21f2a9bf03536f4821d244cfa3108",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 177,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xMxegqCjDEk",
+  "title": "EDC Orlando 2017 Aftermovie",
+  "quality_score": 0.6255,
+  "difficulty_score": 0.793,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

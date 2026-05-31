@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d4c41301eeb98ce31b6b2f13aa464e670850cf7340cacb229c0c38fdb6ff38ab",
+  "clean_sha256": "6d62864b710e8a0425e14cfd21db1064fa2abe9df9b6e61de8aa4372844ce6bf",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1652,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=jPvdijxY_tk",
+  "title": "Martin Garrix Full Set EDC Orlando 2018 Kinetic Field",
+  "quality_score": 0.8934,
+  "difficulty_score": 0.4734,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

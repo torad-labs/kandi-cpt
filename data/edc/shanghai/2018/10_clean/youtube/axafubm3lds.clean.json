@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "56a8cf21e5a15e030e5a247a4615b436cd5555ece2ceb7075247ca99f89397ac",
+  "clean_sha256": "1a9709653a62a5c35ceb099a24d4d38b5381a9ffa7040e9dd47b642b8283c9c7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 328,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AXaFubm3lDs",
+  "title": "EDC CHINA 2018 @SHANGHAI INTERNATIONAL MUSIC PARK  (2018.4.29)",
+  "quality_score": 0.624,
+  "difficulty_score": 0.4941,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

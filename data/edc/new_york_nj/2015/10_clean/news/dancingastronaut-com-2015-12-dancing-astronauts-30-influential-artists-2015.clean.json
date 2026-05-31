@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "d33c9e5eb82e09cea46b95b584dccfa50e2ae9f8f7b48a4a2534cbacf019b941",
+  "clean_sha256": "ffbfb690d3061d42392b830495f1c9b1d79a2ab17a5fb9450cf0079762ec64ca",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 5215,
+    "keep_ratio": 0.947,
+    "anchor_ratio": 0.043
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2015/12/dancing-astronauts-30-influential-artists-2015/",
+  "title": "Dancing Astronaut's 30 Most Influential Artists of 2015 - Dancing Astronaut",
+  "quality_score": 0.8668,
+  "difficulty_score": 0.3931,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

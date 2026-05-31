@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "3492cf6c5128665bf0197325099098772761249324c2fc7bc8dca1de581f8036",
+  "clean_sha256": "f1df08f9f1f153d8cc096f358cfb1f90531f88b6561d4e93a8ec674bd40bf6c5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2018",
+  "quality_score": 0.7694,
+  "difficulty_score": 0.4205,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

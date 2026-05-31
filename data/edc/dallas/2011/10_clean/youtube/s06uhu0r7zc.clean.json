@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a0adaa07d300ce720282c9092a0322bc7ae778cdc7936804ae1ec44219bc28a5",
+  "clean_sha256": "5d2778d0658bbbeb1b039b1ae33cdf481073e170d90d52667886b0e026c3a3d2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 131,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=S06uHU0R7zc",
+  "title": "Warming up for EDC Dallas 2011",
+  "quality_score": 0.6464,
+  "difficulty_score": 0.7212,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

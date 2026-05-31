@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e19e51eff2b8de29427c7257f7316bd7047b5e7e1b71fa811b7e91bee930c9b0",
+  "clean_sha256": "020a680a8c662094dea7b7292abe7f1f73ee38c5e51f72e6abd9c6fbde9dd680",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 54,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xyrDOqnxJkU",
+  "title": "EDC UK - Ti\u00ebsto @ Milton Keynes Bowl (11-07-2015)",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.8627,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

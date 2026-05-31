@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "1f4872ced72e3ac280ba90dc6a4b47951fa1505fb09a91fde99b15accd072cd0",
+  "clean_sha256": "36dec50ac950ecc3883ba78185792a8bef2dd8633b1ab587668542258694244d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=dallas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 dallas 2011",
+  "quality_score": 0.5964,
+  "difficulty_score": 0.6955,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

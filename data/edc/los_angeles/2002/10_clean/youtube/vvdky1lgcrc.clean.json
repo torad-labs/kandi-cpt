@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08e413c50195eb1ff3de183da3efeb9e277fb8f37e442b3a8f4502f87d7f108b",
+  "clean_sha256": "5bea870ef25453190eef1e4f740cf72a49bb57ebbb26fef6ac3510c1df7ef6fd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 57,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VVdKy1LgCRc",
+  "title": "[EDC's Record 00-06] Year 2002 - Part 2",
+  "quality_score": 0.6309,
+  "difficulty_score": 0.6083,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

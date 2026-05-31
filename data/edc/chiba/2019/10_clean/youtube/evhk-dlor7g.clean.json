@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "71e0e07c0ac5c61f32377a87c6e777a6161362cdec534c05011248b565bb9309",
+  "clean_sha256": "238630d3855f1477b989062b4075b620aecb1b2fc6f5b60e0cc884d218b618b2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1270,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Evhk-dlOR7g",
+  "title": "edc JAPAN 2019 Guide video to the entrance for exclusive use of  1DAY GA",
+  "quality_score": 0.7203,
+  "difficulty_score": 0.5277,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

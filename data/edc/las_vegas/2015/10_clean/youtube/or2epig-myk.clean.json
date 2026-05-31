@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "feabf80392e36204ac1eb12517d6a79b40f5ef4d3fa3e7c7a2627d9b014d61fe",
+  "clean_sha256": "11a84cb7b11f924ea8ba721084d747ab2be52cc7f0fa8c1bf1a8c2d6f36425df",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 89,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Or2ePig_mYk",
+  "title": "Seven Lions - EDC Las Vegas 2015 Full Set",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.6825,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

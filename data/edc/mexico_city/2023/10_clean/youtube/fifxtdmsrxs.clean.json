@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b0a5534aa30bea40e81aecea58c8199276259b46935972458368d60aeb90bf11",
+  "clean_sha256": "00f13b78c4bf0319fd122cbf0d228162053bb8d2c884372a5492d3a450fa4841",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 214,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fIFxtDMSrXs",
+  "title": "SIDEPIECE Live @ EDC Mexico 2023 (KINETIC FIELD)",
+  "quality_score": 0.6059,
+  "difficulty_score": 0.3075,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

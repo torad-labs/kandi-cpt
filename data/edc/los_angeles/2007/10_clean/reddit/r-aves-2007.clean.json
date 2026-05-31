@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "562aa87395d9ee1e3fa067954d880d9e285146f27b6d22cfe406b5be12a6fbb4",
+  "clean_sha256": "5e1d0dceab7ab123d0e6a16d2322cd4234a00bcea77dba5bad82fee041a08800",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2007&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 los_angeles 2007",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.4837,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "868f286f1d23ee69e805dcd2146a5c67b9889f026b93dabec426d54110f230b1",
+  "clean_sha256": "b8546c6ac77c3047c4e3615ac18542ac6454c2abd32248114c0bc15daf4af2a4",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 2389,
+    "keep_ratio": 0.839,
+    "anchor_ratio": 0.103
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2023/12/dancing-astronauts-artists-to-watch-in-2024/",
+  "title": "Dancing Astronaut's Artists to Watch in 2024 - Dancing Astronaut",
+  "quality_score": 0.8811,
+  "difficulty_score": 0.5934,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

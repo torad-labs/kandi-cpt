@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "68c48ffa1c5f9d2fb49af83cb2a9dd5a4b72e412c81717968de70e0cf979274a",
+  "clean_sha256": "92383b539c115e5ba9b337c59a7047991abd283a9d644e3b9bbc0f3464229e9a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 320,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rp7MoMuxaJQ",
+  "title": "Armin van Buuren Live at EDC Las Vegas 2015",
+  "quality_score": 0.6558,
+  "difficulty_score": 0.5414,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

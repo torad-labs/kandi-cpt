@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "af355898828dbd4da60ff9e8925d891db93d99598e2f9d7789dcd320b73e1e66",
+  "clean_sha256": "107950502e96b105c36936b8cece9c3e287a8d4603a188e2ad5e15d680f8a5a6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 58,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=HVrHjUS99N8",
+  "title": "EDC Suzhou",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.6899,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

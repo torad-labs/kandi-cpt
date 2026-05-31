@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f6ff0f6142a464a54ef2aff7e65166fe2be8c9f882efe87637d81c7d7fac5b36",
+  "clean_sha256": "cf21adec7d9f680b407503b9ce77a0b5d0a9913cc9860eba3c828817bee7bd68",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 57,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=G2LpNYCUKTY",
+  "title": "Joe & Blanca Meadowlands Tiesto EDC NY NJ. 2015",
+  "quality_score": 0.6062,
+  "difficulty_score": 0.7774,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

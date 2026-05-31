@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "38f3676e3ab05b417f8d0a1771fef0b5cf7f88afc590ca9036d0a50fe3b7ed27",
+  "clean_sha256": "bb2e797910168fea54b53c5ab52ab6e5a18ed84631b041c81b82153e5f42be13",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 391,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=52XEWlZPdyg",
+  "title": "DEORRO @ EDC Las Vegas 2016 (Full live set)",
+  "quality_score": 0.6079,
+  "difficulty_score": 0.248,
+  "cluster_id": 2,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "95bd74bb9451e43b48173e91b72ccf8f5f360978c8e9e5809d58963c8fb89bd1",
+  "clean_sha256": "8eedde0dd83e991bfda6a824c02f1c0cb9113e4ffc3bf63e74150078f4b9fad5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 215,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=12uItcpAiSM",
+  "title": "Electric Daisy Carnival (EDC) NEW YORK 2014 laser show by Lasertainment",
+  "quality_score": 0.6744,
+  "difficulty_score": 0.5528,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

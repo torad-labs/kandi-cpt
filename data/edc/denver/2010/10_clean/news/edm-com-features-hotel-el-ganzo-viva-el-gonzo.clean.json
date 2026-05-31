@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "6326d63b71278afc7dd2671022798a04b518b0541bf05c7de77a1c01752c01ca",
+  "clean_sha256": "abd5ddffa4533b3c8e11df6432288dc70577d17ad18471cd9d9d22a350ae22ad",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1015,
+    "keep_ratio": 0.682,
+    "anchor_ratio": 0.193
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/hotel-el-ganzo-viva-el-gonzo/",
+  "title": "Hotel El Ganzo: The Cabo Music Utopia That Only Makes Sense in Person - EDM",
+  "quality_score": 0.8875,
+  "difficulty_score": 0.6729,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

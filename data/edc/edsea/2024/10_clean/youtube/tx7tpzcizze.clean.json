@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "39b4e7e5b51a683c71f3d537ba6838204a87a07b99bed75cfc231bb8cd81a439",
+  "clean_sha256": "57d3a431025e236b41d2e4d35201469f3b2c50bbd2b7215b3e4c325129bfcd0e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 94,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Tx7tPZCiZZE",
+  "title": "EDSEA 2024 Recap Part 1",
+  "quality_score": 0.6072,
+  "difficulty_score": 0.7412,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

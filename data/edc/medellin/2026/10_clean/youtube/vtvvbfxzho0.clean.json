@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4f693d4198c76c5eb73ef7893adecd8e4dc9b81894914dcb972aefc4e4452b18",
+  "clean_sha256": "185cea1a3e8009dc98c8d5efa451be729abc2c7d0761f8e3319cbb1167f61081",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 380,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vtvVbfxzhO0",
+  "title": "EDC, el festival de m\u00fasica electr\u00f3nica, llega a Medell\u00edn en octubre de 2026",
+  "quality_score": 0.6134,
+  "difficulty_score": 0.3841,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

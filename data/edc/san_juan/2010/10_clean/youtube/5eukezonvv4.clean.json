@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f739f011922e54ab3e3f1eb9bbd57c8b1796d97e6061d55f6ae25099a6508247",
+  "clean_sha256": "57abf1fa11d5e068f4c8475e6cebfcc92221cbd4ca23b43aa2aaeb97d1f5b109",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 94,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5EuKeZoNvv4",
+  "title": "Lmfao & Will.I.am live at the electric daisy carnival",
+  "quality_score": 0.6582,
+  "difficulty_score": 0.5842,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

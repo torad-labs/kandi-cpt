@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b48daa16acbcff2c8de582205c967025025a3c71c70956e96cc0220bdc24eb7d",
+  "clean_sha256": "81606ce4db4f9e7e28a3612a3ce7c34c32ad64271b9db53149135d3db9cfbc07",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2020&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2020",
+  "quality_score": 0.7559,
+  "difficulty_score": 0.6116,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

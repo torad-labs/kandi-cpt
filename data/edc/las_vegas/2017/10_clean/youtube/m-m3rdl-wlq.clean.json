@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d139dde6af846a577190acf5d3f16edab03c12dc15925ba0f0d68fa2ea58b54a",
+  "clean_sha256": "c324e9e3bc1fb7267062c71a5a590af2de49a3c8a3de11f361f1786796e8067d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 352,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=M-M3rdL_WLQ",
+  "title": "Ti\u00ebsto - Live @ Electric Daisy Carnival Las Vegas 2017",
+  "quality_score": 0.6388,
+  "difficulty_score": 0.4628,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

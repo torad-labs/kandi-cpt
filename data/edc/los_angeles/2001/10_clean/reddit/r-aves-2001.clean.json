@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "bbb29954e63cf110964b56bcd8f087fc663dcb1d3ca6c7cfc0cae0143d3b83f0",
+  "clean_sha256": "af9ff8f64d54c87dd92355d79503a0e32fe34984c8dd51a6f064464d677f347a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2001&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 los_angeles 2001",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.4822,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

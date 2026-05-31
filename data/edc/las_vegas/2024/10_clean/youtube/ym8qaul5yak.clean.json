@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bd1c633f385578e616440e8c49e145e406152710400fa120be81fa5c4c822ec7",
+  "clean_sha256": "4a3fa0cdd5085e3e1547209c5c530f55dc3f30b06d2e5bc6ba3c970031707c2b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 205,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yM8QaUL5yak",
+  "title": "FISHER - EDC LAS VEGAS 2024 [FULL LIVE SET]",
+  "quality_score": 0.6069,
+  "difficulty_score": 0.4632,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

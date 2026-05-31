@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "249d4dcfc5e39c1930c4c2ec0c114e69f55e79dea628bdc0fd7ce01ef1443d28",
+  "clean_sha256": "bbd02afd9fb1637e3e5e26143879ed8fa77e74d3d933f75527fc343307927dc9",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+1997&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 1997",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6869,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

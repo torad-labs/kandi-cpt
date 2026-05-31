@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a2c0954f5d39740804ada7da42326f7165f346cf727d5e32f272a57153adaee0",
+  "clean_sha256": "662b202943f3401c9cd36ce1a0e9a351ec735ab54f587e0e618deaefaf626a8a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 995,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kBteEz1KUag",
+  "title": "\"What is an Electric Daisy Carnival?\"   EDC Orlando 2012",
+  "quality_score": 0.7518,
+  "difficulty_score": 0.6938,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

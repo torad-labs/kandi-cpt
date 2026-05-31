@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08c8c4b1beea9c029bb3a95f8730a8f5cf15872da440aeaf9b8cdd1f8c5546bd",
+  "clean_sha256": "719bf177446b852de9ddbb761055f16c96725041ddf9b98d12f2275e1ee4d8fa",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 630,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Hau3-HcXuDY",
+  "title": "Markus Schulz | Live from Electric Daisy Carnival in Las Vegas #EDC20",
+  "quality_score": 0.6213,
+  "difficulty_score": 0.3308,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

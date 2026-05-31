@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2e2b8bec4e48b520fc406c48f820368b6f65b8abadf7b9138e18b3f811e083bb",
+  "clean_sha256": "8f855122ef6fdbcd2e446416946f443d7f7420596da7939885303e1d24f88b46",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2553,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Z2qv080OAiA",
+  "title": "Aly & Fila Live at EDC Las Vegas 2016",
+  "quality_score": 0.8517,
+  "difficulty_score": 0.3121,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

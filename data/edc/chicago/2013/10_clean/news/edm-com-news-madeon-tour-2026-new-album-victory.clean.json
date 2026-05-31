@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "76656eb0ef79a3b44e114ebce93f232e006fa164759fadda7a51d6eabdc1e8a5",
+  "clean_sha256": "6e87685072f87681f2e599460bc0648fc4958c3b97c04dbbb06335960b24137e",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 668,
+    "keep_ratio": 0.597,
+    "anchor_ratio": 0.278
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/news/madeon-tour-2026-new-album-victory/",
+  "title": "Madeon Announces 2026 Headline Tour Ahead of New Album, 'Victory' - EDM",
+  "quality_score": 0.8997,
+  "difficulty_score": 0.6513,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

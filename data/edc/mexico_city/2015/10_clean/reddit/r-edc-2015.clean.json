@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "14da40f4c2fad454534126e735531c0c5b751645b639051cc619aa063ed017db",
+  "clean_sha256": "20b0fe810460c5cc78e42b3ec65349d212fc8ab429c88330224c2fa6387fcc9d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2015",
+  "quality_score": 0.5224,
+  "difficulty_score": 0.5025,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

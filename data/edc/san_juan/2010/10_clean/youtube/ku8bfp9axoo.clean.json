@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d17b7136a75e147f6e0a6aca91b6eb96b6409d791bc19aefe7d190e8602e61ef",
+  "clean_sha256": "fb7db1bffcbd3b18c5d204e019cdb8253553e3d810910966a719fc0dd18aa965",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 134,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ku8BFp9AXoo",
+  "title": "after movie @EDC Puerto Rico 2015",
+  "quality_score": 0.649,
+  "difficulty_score": 0.8578,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

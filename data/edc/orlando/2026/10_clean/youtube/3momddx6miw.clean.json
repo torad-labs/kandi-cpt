@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b6da3319ae873e40e801672bcdeaec3a95ccaa26bc8e04f8514b0307959ee650",
+  "clean_sha256": "e1b465fcc72aaaf3cf64c154e2449910dd71b1f8d4e9b913876a1b822b6e3fb5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 108,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3mOMDdX6miw",
+  "title": "Cloonee - Live At EDC Orlando",
+  "quality_score": 0.6704,
+  "difficulty_score": 0.5909,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

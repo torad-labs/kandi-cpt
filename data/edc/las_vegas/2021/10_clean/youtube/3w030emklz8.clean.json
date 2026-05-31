@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b8b2ead0ee1a6eff5cb13a0254e830df8c5f9cb250ed5c183b999a31ae4ddbe2",
+  "clean_sha256": "08bf916db2ec89ebdc8b96391bb302e3b4794f49968c7f054fcc928b1c2c5b99",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1739,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3w030EmkLz8",
+  "title": "ZEDD (Full Set) @ EDC Las Vegas 2021 | Cosmic Meadow [4K]",
+  "quality_score": 0.9029,
+  "difficulty_score": 0.5053,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

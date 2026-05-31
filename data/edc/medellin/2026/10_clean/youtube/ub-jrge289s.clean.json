@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8cabc04ce6c1be942498bb0bf15c3dfdc510bd95a47ed8dee9329f55e7d04f82",
+  "clean_sha256": "fe8d80c77526a204a3357695fd08654dd198cb3902dc4fa91566feddfc75e210",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 695,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Ub-JrGE289s",
+  "title": "James Hype Live @ EDC Mexico 2026",
+  "quality_score": 0.6448,
+  "difficulty_score": 0.4897,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

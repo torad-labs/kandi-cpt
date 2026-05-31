@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cb00fbb0cc7d31c90b45b9013a7b43430206732dfe194bdfe32119b2872a5784",
+  "clean_sha256": "b39c428bf572b0611407ff6ce5a6db4c67cb91deadfda7bb4c8dcb6e42ace341",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 561,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=YwpQgDLPV58",
+  "title": "\ud83c\uddec\ud83c\udde7 PART 1 \u23ae RACE REPLAY 24 Heures du Mans 2022",
+  "quality_score": 0.6624,
+  "difficulty_score": 0.459,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

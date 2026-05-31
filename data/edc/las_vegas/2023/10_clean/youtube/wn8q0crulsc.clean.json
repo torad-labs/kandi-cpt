@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5a19ac544f353b26f76d12cc8b634ea4eeef4a8fad5c8e1ffaee7986bc5dab39",
+  "clean_sha256": "d9dda5de2b6fd65edf4378de9050b131851a3043c831deb7d720611b4da4fe8d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 192,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Wn8Q0CruLsc",
+  "title": "Deorro - EDC Las Vegas 2023 (Full Set)",
+  "quality_score": 0.6046,
+  "difficulty_score": 0.5114,
+  "cluster_id": 2,
+  "curation_status": "drop"
+}

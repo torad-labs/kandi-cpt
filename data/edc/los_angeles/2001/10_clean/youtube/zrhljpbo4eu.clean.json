@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ad255d814c69b2e9ae5ebe9c9b69db2b57de7f9834539cddd90d143c23d20520",
+  "clean_sha256": "11325f7578fa7a66953990352d0b6e16412f26946dd7764f589107b95ccbac86",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 106,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZRHlJpBO4EU",
+  "title": "Richie Hawtin's Plastikman Set Live @ EDC Vegas 2001",
+  "quality_score": 0.6339,
+  "difficulty_score": 0.8424,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

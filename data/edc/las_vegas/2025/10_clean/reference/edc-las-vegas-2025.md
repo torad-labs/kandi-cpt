@@ -1,0 +1,239 @@
+# EDC Las Vegas 2025 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2025/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2025 Artist Lineup
+
+- ????????
+- 33 Below B2B MPH
+- 6EJOU
+- Adam Ten B2B Mita Gami
+- Adrenalize
+- Afrojack
+- Ahee
+- Ahmed Spins
+- Airrica
+- Alesso
+- Alex Chapman + Zoe Gitter
+- Alignment
+- Alison Wonderland
+- Alleycvt
+- Alok
+- Amal Nemer
+- Amelie Lens
+- Amémé
+- Andromedik
+- Andy C
+- Angel Cannon
+- Annicka
+- Anoluxx
+- Apashe
+- Argy
+- Armand Van Helden
+- Armin van Buuren
+- ARMNHMR
+- Arodes
+- Artbat B2B Morten
+- ATLiens
+- Avalon
+- Basstripper B2B Sota
+- Basswell
+- Beltran
+- Ben Hemsley
+- Ben Nicky
+- Ben Sterling
+- Bicep Present Chroma
+- Biia
+- Billy Gillies
+- Biscits
+- Black Tiger Sex Machine
+- Blond:Ish
+- Bontan B2B Calussa
+- Boyz Noize
+- Brutalismus 3000
+- Caravel
+- Carlita
+- Caspa B2B Rusko
+- Cera Khin
+- Champion
+- Charlotte De Witte
+- Chase & Status
+- ChaseWest
+- Chris Avantgarde
+- Chyl
+- Clara Cuvé
+- Classmatic
+- Clawz
+- Cloonee
+- Code Black
+- Cole Knight
+- Cosmic Gate
+- Crankdat
+- D-Sturb
+- Da Tweekaz
+- Daniel Allan
+- Danny Avila
+- Darren Styles
+- David Forbes
+- David Rust
+- Death Code B2B Kami
+- Dennis Cruz
+- Deorro & Friends
+- Devin Wild
+- Dimension
+- Disco Dom
+- Disco Lines
+- Distinct Motive
+- DJ AniMe
+- DJ Fuckoff
+- DJ Gigola
+- DJ Snake
+- Dom Dolla
+- Dombresky
+- Drinkurwater
+- Dual Damage
+- Dylan Brady
+- Eli Brown
+- Eric Prydz
+- Excision
+- Fcukers DJ Set
+- Fisher
+- Francis Mercier
+- Funk Tribu
+- Fury with MC Dino
+- Gesaffelstein
+- Girl Math
+- Gorgon City
+- Gudfella
+- Hannah Laing
+- Heded
+- Horsegiirl
+- Hot Since 82
+- Hugel
+- I Hate Models
+- Illenium
+- Infekt
+- Interplanetary Criminal
+- INVT
+- Inzo
+- It’s Murph
+- Jackie Hollander
+- James Hype
+- Jessica Audiffred
+- Kaskade
+- Kaskade
+- Kompany
+- Korolova
+- Ky William
+- Kyle Watson
+- Lady Faith
+- Lake Hills
+- Laura Van Dam
+- Lauren Mia
+- Lavern
+- Layton Giordani
+- Layz
+- Le Youth
+- Level Up
+- Levenkhan
+- Levity
+- LF System
+- Lil Texas
+- Linska
+- Liquid Stranger
+- Loco Dice
+- Lostly
+- Masha Mar
+- Matroda
+- Mau P
+- Max Styler
+- Maz
+- Mcr-T
+- Meduza
+- Mike Posner
+- Mish
+- Miss Monique
+- Miyuki
+- MOchakk
+- Mr. Brooks
+- MRD
+- Narciss
+- Netsky
+- NGHTMRE
+- Nico Moreno
+- Nils Hoffman
+- Noizu
+- Nora En Pure
+- ODD MOB
+- Of The Trees
+- Oguz
+- Omiki
+- OMNOM
+- Omrl.
+- Onlynumbers
+- Oppidan
+- ØTTA
+- Pablo Bozzi
+- Partiboi69
+- Paul Oakenfold
+- Pocket B2B Sam Binga
+- Prospa B2B Josh Baker
+- PRYDA
+- Raecola
+- Ray Volpe
+- RayRay
+- Restricted
+- Rezz
+- Riordan
+- Riot Ten
+- RL Grime
+- Rooler
+- Shlømo
+- Showtek Hardstyle Set
+- Sidepiece
+- Simula
+- Skepta
+- Skream
+- SLANDER
+- Slugg
+- Soothslayer
+- Sosa
+- Space 92 X Popof Present: Turbulence
+- Steller
+- Sub Zero Project
+- Sullivan King
+- Svdden Death
+- Tape B
+- Tchami X Maala
+- TDJ
+- The Martinez Brother
+- Tiësto
+- TokiMonsta
+- Torren Foot
+- Trance Wax
+- Trivecta
+- Truth
+- Twenty Six
+- Victor Ruiz
+- Villager
+- Vini Vici
+- Vintage Culture
+- VNSSA
+- Voyd
+- Wakyin
+- Walker & Royce
+- X Club.
+- Xandra
+- YDG
+- Yellow Claw
+- Yoji Biomehanika
+- Yosuf

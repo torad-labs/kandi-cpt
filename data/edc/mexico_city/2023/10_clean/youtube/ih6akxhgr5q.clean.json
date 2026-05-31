@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "16f19ebb4f350c0c142d98f3e6a95318570a893a27d1b85d8a23995a3d283c05",
+  "clean_sha256": "661986db7921d0e0973a3659d8d935ff53cdba3953e44be4509c70aafe0c1b82",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 579,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=IH6AKxHGr5Q",
+  "title": "LP Giobbi - Live @ EDC Mexico 2023 (Kinetic Field)",
+  "quality_score": 0.6954,
+  "difficulty_score": 0.2575,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b105a3b5d545607d12afdeb110ca7e74933dfab69fabb45300001c25af8a3f48",
+  "clean_sha256": "4752b64a343a4870645f20ffd30e29d26b73a0eeac47a12b6494f7c00301a390",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=edsea+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 edsea 2023",
+  "quality_score": 0.5454,
+  "difficulty_score": 0.6027,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ae019da29ee9a3683fdb74d03641421941651512ea3264740b17488b160169f2",
+  "clean_sha256": "8024f3fc7a44906c5a71e20eb0bc9c656a008091b5c11af3ae8b3ae7db20c407",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 325,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Ht1IgzAVVLc",
+  "title": "\ud83d\udd25 EDC 2021 WARM UP\ud83d\udd25 | FESTIVAL MIX (Themed Set) + Mashup Pack",
+  "quality_score": 0.6244,
+  "difficulty_score": 0.5441,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

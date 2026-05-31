@@ -15,10 +15,11 @@ Launch (2-GPU FSDP2):
 """
 from __future__ import annotations
 import argparse, os, time
-from collections import UserDict
+from collections import Counter, UserDict
 
 import yaml
 import torch
+import torch.nn.functional as F
 import torch.distributed as dist
 from torch.utils.data import DataLoader, DistributedSampler
 from datasets import load_from_disk
@@ -49,6 +50,40 @@ def wsd_lr(step, warmup, total, base_lr, min_lr, decay_frac):
         return base_lr
     t = (step - decay_start) / max(1, total - decay_start)
     return min_lr + (base_lr - min_lr) * (1 - t)
+
+
+def entity_weighted_ce(logits, ids, entity_mask, entity_weight):
+    """Lever 1: per-token cross-entropy weighted toward entity/date/time TARGET tokens.
+
+    Causal shift: position t predicts token t+1, so the weight applied to the loss at position t must
+    reflect whether the TARGET token (t+1) is inside an entity span — hence entity_mask[:, 1:]. Get this
+    off by one and the lever does nothing useful. WEIGHTED-MEAN normalization (sum(w*l)/sum(w), not the
+    plain sum/N) keeps the loss SCALE ~constant as entity_weight varies, so the LR does not need
+    retuning across the entity_loss_weight sweep. entity_weight=1.0 reduces exactly to the baseline mean CE."""
+    V = logits.size(-1)
+    flat_logits = logits[:, :-1, :].reshape(-1, V)          # [B*(T-1), V]
+    targets = ids[:, 1:].reshape(-1)                        # [B*(T-1)]
+    per_tok = F.cross_entropy(flat_logits, targets, reduction="none")
+    w_ent = entity_mask[:, 1:].reshape(-1).to(per_tok.dtype)   # 1.0 where the TARGET token is an entity
+    w = 1.0 + (entity_weight - 1.0) * w_ent
+    return (w * per_tok).sum() / w.sum().clamp_min(1.0)
+
+
+@torch.no_grad()
+def _sr_int8_master(params):
+    """Constrain each 2-D weight to the symmetric per-output-row INT8 grid via STOCHASTIC ROUNDING,
+    after the optimizer step. Tests whether INT8 weight precision holds knowledge install (the science
+    question) without the memory-saving INT8-storage plumbing: weights stay bf16 but may only take
+    INT8-representable values. 1-D params (norms/biases) are left full-precision (sensitive, tiny)."""
+    for p in params:
+        if p.dim() < 2:
+            continue
+        w = p.data
+        scale = w.abs().amax(dim=tuple(range(1, w.dim())), keepdim=True).clamp_min_(1e-8) / 127.0
+        x = w / scale
+        lo = torch.floor(x)
+        q = lo + (torch.rand_like(x) < (x - lo)).to(x.dtype)   # stochastic rounding: P(up) = frac
+        p.data.copy_(q.clamp_(-127, 127) * scale)
 
 
 def apply_nvfp4_qat(model, cfg) -> None:
@@ -138,11 +173,21 @@ def build_model(cfg):
     remapped = {("model." + k[len(P):]): v for k, v in sd.items() if k.startswith(P)}
     if "lm_head.weight" in sd:
         remapped["lm_head.weight"] = sd["lm_head.weight"]
+    # Guard the NaN-incident class (silent random-init) on BOTH sides: a wrong prefix yields a tiny
+    # remap → fail loud before training on noise.
+    if len(remapped) < 0.5 * len(model.state_dict()):
+        raise RuntimeError(f"remap produced only {len(remapped)} tensors for {len(model.state_dict())} "
+                           f"model params — prefix '{P}' is wrong for this checkpoint")
     missing, unexpected = model.load_state_dict(remapped, strict=False)
     model.tie_weights()                                  # lm_head ties to embed_tokens
     real_missing = [m for m in missing if "lm_head" not in m]
     if real_missing:
         raise RuntimeError(f"text params missing from checkpoint (load remap is wrong): {real_missing[:10]}")
+    # Embeddings are about to be FROZEN — if the remap silently missed them they'd freeze at random
+    # init and the decoder would train on noise (the prior incident). Verify they're real, not degenerate.
+    embed = model.get_input_embeddings().weight
+    if not torch.isfinite(embed).all() or embed.abs().sum().item() == 0.0:
+        raise RuntimeError("embed_tokens is non-finite or all-zero after remap — refusing to train/freeze it")
     model = model.to(torch.bfloat16)
     n_text = sum(p.numel() for p in model.parameters())
     log(f"loaded text decoder from multimodal ckpt: {len(remapped)} tensors → {n_text/1e9:.2f}B params "
@@ -239,11 +284,21 @@ def cpu_offload_ple(model, device):
     return sum(p.numel() for p in ple.parameters())
 
 
-def make_loader(cfg, rank, world):
+def make_loader(cfg, rank, world, want_mask=False, want_facts=False):
     ds = load_from_disk(str(C.ROOT / cfg["tokenized"]))
+    has_mask = want_mask and "entity_mask" in ds.column_names
+    has_facts = want_facts and "fact_ids" in ds.column_names
 
     def collate(rows):
-        return torch.tensor([r["input_ids"] for r in rows], dtype=torch.long)
+        ids = torch.tensor([r["input_ids"] for r in rows], dtype=torch.long)
+        if not (has_mask or has_facts):
+            return ids                              # backward-compatible: plain tensor when no lever needs meta
+        out = {"input_ids": ids}
+        if has_mask:
+            out["entity_mask"] = torch.tensor([r["entity_mask"] for r in rows], dtype=torch.long)
+        if has_facts:
+            out["fact_ids"] = [r["fact_ids"] for r in rows]   # list-of-lists (variable length, kept as python)
+        return out
 
     sampler = (
         DistributedSampler(ds, num_replicas=world, rank=rank, shuffle=True, drop_last=True)
@@ -251,7 +306,52 @@ def make_loader(cfg, rank, world):
     )
     dl = DataLoader(ds, batch_size=cfg["micro_batch_size"], sampler=sampler,
                     shuffle=(sampler is None), collate_fn=collate, drop_last=True)
+    if want_mask and not has_mask:
+        log("[lever1] entity_loss enabled but corpus has no entity_mask column — "
+            "re-tokenize without --no-lever-metadata; falling back to unweighted CE")
+    if want_facts and not has_facts:
+        log("[lever4] exposure_tracking enabled but corpus has no fact_ids column — re-tokenize first")
     return dl, sampler
+
+
+def _save_exposure(ckpt_dir, step, exposure):
+    """Lever 4: write the cumulative {fact_id: count} snapshot beside a checkpoint, so the report can
+    join probe pass/fail at this step to how many times each fact had been seen by this step."""
+    import json as _json
+    import os as _os
+    _os.makedirs(ckpt_dir, exist_ok=True)
+    with open(f"{ckpt_dir}/exposure.json", "w") as f:
+        _json.dump({"step": step, "exposure": dict(exposure)}, f)
+
+
+def save_checkpoint(model, cfg, out_dir, rank, world):
+    """Consolidate the FSDP2-sharded params to a full state dict and save a HF-loadable text-only
+    checkpoint (Gemma4ForCausalLM) on rank 0. eval/serving load it with plain from_pretrained."""
+    if world > 1:
+        from torch.distributed.checkpoint.state_dict import get_model_state_dict, StateDictOptions
+        full_sd = get_model_state_dict(model, options=StateDictOptions(full_state_dict=True, cpu_offload=True))
+    else:
+        full_sd = {k: v.cpu() for k, v in model.state_dict().items()}
+    if rank != 0:
+        return
+    from transformers import AutoConfig, AutoTokenizer
+    tcfg = AutoConfig.from_pretrained(cfg["model_path"]).text_config
+    tcfg._attn_implementation = "sdpa"
+    if not full_sd:
+        raise RuntimeError("FSDP2 consolidation returned an empty state dict on rank 0 — not saving")
+    out = Gemma4ForCausalLM(tcfg)
+    missing, unexpected = out.load_state_dict(full_sd, strict=False)
+    out.tie_weights()
+    # VALIDATE BEFORE WRITING — a partial consolidation must abort, not silently save a broken ckpt
+    # discovered only at eval (after the GPUs are released).
+    real_missing = [m for m in missing if "lm_head" not in m]
+    stray = [u for u in unexpected if not any(t in u for t in (".k_proj", ".v_proj", ".k_norm"))]
+    if real_missing or stray:
+        raise RuntimeError(f"refusing to save broken checkpoint: missing={real_missing[:8]} "
+                           f"stray_unexpected={stray[:8]}")
+    out.to(torch.bfloat16).save_pretrained(out_dir)
+    AutoTokenizer.from_pretrained(cfg["model_path"]).save_pretrained(out_dir)
+    log(f"saved checkpoint -> {out_dir}  (real_missing=0 unexpected={len(unexpected)} all shared-KV)")
 
 
 def main():
@@ -264,14 +364,36 @@ def main():
                     help="disable gradient checkpointing (uses more memory; only fits short seq). "
                          "Default (AC on) is validated with KV-sharing and fits seq512 at ~11GB.")
     ap.add_argument("--seq-len", type=int, help="override seq_len (e.g. smaller for smoke memory headroom)")
+    ap.add_argument("--save-dir", help="save the trained text-decoder checkpoint here (HF save_pretrained)")
+    ap.add_argument("--optimizer-lowbit", type=int, default=0, choices=[0, 4, 8],
+                    help="torchao AdamW{4,8}bit states (single-GPU only; saves optimizer memory). 0 = bf16 AdamW")
+    ap.add_argument("--grad-accum", type=int, help="override grad_accum (e.g. match effective batch single-GPU)")
+    ap.add_argument("--int8-master", action="store_true",
+                    help="after each step, SR-snap 2-D weights to the symmetric INT8 grid (precision test: "
+                         "does INT8 weight precision hold install; bf16 storage, not the memory-saving variant)")
+    ap.add_argument("--lever1-weight", type=float, default=None,
+                    help="enable Lever 1 (entity-targeted loss) at this entity_loss_weight (sweep knob; "
+                         "overrides config). 1.0 == baseline mean CE.")
+    ap.add_argument("--lever4", action="store_true", help="enable Lever 4 exposure tracking (overrides config)")
+    ap.add_argument("--max-steps", type=int, help="override max_steps (e.g. a short real-data lever validation)")
     args = ap.parse_args()
     cfg = yaml.safe_load(open(args.config))
+    if args.max_steps:
+        cfg["max_steps"] = args.max_steps
     if args.precision:
         cfg["precision"] = args.precision
     if args.no_ac:
         cfg["gradient_checkpointing"] = False
     if args.seq_len:
         cfg["seq_len"] = args.seq_len
+    if args.grad_accum:
+        cfg["grad_accum"] = args.grad_accum
+    # CLI lever overrides (for clean A/B sweeps without editing the config per run)
+    if args.lever1_weight is not None:
+        cfg.setdefault("levers", {}).setdefault("lever1_entity_loss", {})
+        cfg["levers"]["lever1_entity_loss"].update(enabled=True, entity_loss_weight=args.lever1_weight)
+    if args.lever4:
+        cfg.setdefault("levers", {}).setdefault("lever4_exposure_tracking", {})["enabled"] = True
 
     local_rank = int(os.environ.get("LOCAL_RANK", 0))
     world = int(os.environ.get("WORLD_SIZE", 1))
@@ -297,46 +419,111 @@ def main():
           f"alloc_conf={os.environ.get('PYTORCH_CUDA_ALLOC_CONF','unset')}", flush=True)
 
     params = [p for p in model.parameters() if p.requires_grad]
-    # torch.optim.AdamW is the reference FSDP2 optimizer: it dispatches over DTensor natively and
-    # creates state with zeros_like(param) → bf16 params give bf16 m/v states, so NO FP32 master.
-    # (torchao's 8-bit Adam saves more memory but its compiled OptimState8bit path is broken under
-    # FSDP2+DTensor on this stack — torchao #1189/#1505; 8-bit/CPU-offload is a real-run lever.)
-    opt = torch.optim.AdamW(params, lr=cfg["lr"], betas=tuple(cfg["betas"]),
-                            weight_decay=cfg["weight_decay"], eps=cfg["adam_eps"], foreach=True)
+    # torch.optim.AdamW dispatches over DTensor natively and creates state with zeros_like(param) →
+    # bf16 params give bf16 m/v states (NO FP32 master). 8-bit states reclaim ~1.6GB/GPU (headroom for
+    # the GPU1 knife-edge) — historically broken under FSDP2+DTensor (torchao #1189/#1505), so it is
+    # OPT-IN and re-validated by smoke each stack bump. Falls back to bf16 AdamW if it errors.
+    # Low-bit optimizer states (4 or 8) reclaim optimizer memory for the single-GPU path. torchao's
+    # OptimState{4,8}bit is DTensor-incompatible (breaks under FSDP2, world>1) — but world==1 runs plain
+    # (no FSDP, no DTensor, line 327), so it works there. Gated accordingly; falls back to bf16 AdamW.
+    lowbit = args.optimizer_lowbit or cfg.get("optimizer_lowbit", 0)
+    opt = None
+    if lowbit in (4, 8):
+        if world > 1:
+            log(f"optimizer_lowbit={lowbit} ignored: torchao OptimState is DTensor-incompatible under FSDP2 (world={world}); using bf16 AdamW")
+        else:
+            try:
+                from torchao.optim import AdamW4bit, AdamW8bit
+                Opt = AdamW4bit if lowbit == 4 else AdamW8bit
+                opt = Opt(params, lr=cfg["lr"], betas=tuple(cfg["betas"]),
+                          weight_decay=cfg["weight_decay"], eps=cfg["adam_eps"])
+                log(f"optimizer: torchao AdamW{lowbit}bit (single-GPU, {lowbit}-bit m/v states)")
+            except Exception as e:
+                log(f"optimizer_lowbit={lowbit} failed ({type(e).__name__}: {e}); falling back to bf16 AdamW")
+    if opt is None:
+        opt = torch.optim.AdamW(params, lr=cfg["lr"], betas=tuple(cfg["betas"]),
+                                weight_decay=cfg["weight_decay"], eps=cfg["adam_eps"], foreach=True)
+    # Enforce the no-FP32 policy at runtime (not just in a comment): every trainable param must be bf16,
+    # else AdamW allocates FP32 m/v state — silent policy violation + ~2x optimizer memory.
+    bad_dtype = [(n, str(p.dtype)) for n, p in model.named_parameters() if p.requires_grad and p.dtype != torch.bfloat16]
+    if bad_dtype:
+        raise RuntimeError(f"no-FP32 policy violated — non-bf16 trainable params: {bad_dtype[:5]}")
 
     accum = cfg["grad_accum"]
+    _levers = cfg.get("levers", {}) or {}
+    # Lever 1 (entity/date-targeted loss): off by default; needs the entity_mask the tokenizer emits.
+    lev1 = _levers.get("lever1_entity_loss", {}) or {}
+    lever1_on = bool(lev1.get("enabled", False))
+    entity_w = float(lev1.get("entity_loss_weight", 2.5))
+    # Lever 4 (exposure→extraction instrument): passive; counts fact_id exposures, snapshots at checkpoints.
+    lev4 = _levers.get("lever4_exposure_tracking", {}) or {}
+    lever4_on = bool(lev4.get("enabled", False))
+    exposure = Counter()
     if args.smoke:
         total, accum = args.smoke, min(accum, 2)        # quick loop+memory validation
         cfg["log_every"] = 1                            # log every step so the smoke shows loss+peakmem
         vocab = model.config.vocab_size
+        lever1_on = lever4_on = False                   # smoke uses random ids (no metadata)
 
         def _smoke_iter():
             while True:
                 yield torch.randint(0, vocab, (cfg["micro_batch_size"], cfg["seq_len"]), dtype=torch.long)
         dl, sampler = _smoke_iter(), None
     else:
-        dl, sampler = make_loader(cfg, rank, world)
+        dl, sampler = make_loader(cfg, rank, world, want_mask=lever1_on, want_facts=lever4_on)
         total = cfg["max_steps"]
+        if rank0() and lever1_on:
+            log(f"[lever1] entity-targeted loss ON — entity_loss_weight={entity_w} (weighted-mean CE)")
+        if rank0() and lever4_on:
+            log("[lever4] exposure tracking ON — fact_id exposures snapshotted at each checkpoint")
     model.train()
     opt.zero_grad(set_to_none=True)
 
+    # FSDP2 grad-accum optimization: reduce-scatter gradients only on the LAST microbatch of each
+    # window. The other (accum-1) backwards accumulate locally — IDENTICAL math, but skips ~15/16 of
+    # the cross-GPU gradient comm (the bottleneck on PCIe-linked consumer GPUs). Costs ~one unsharded
+    # grad buffer (~1.9 GB) of memory; we have ~4.6 GB headroom at 11.2 GB peak.
+    _can_nosync = hasattr(model, "set_requires_gradient_sync")
+    if rank0():
+        log(f"FSDP grad-accum no_sync: {'ON (sync only on last microbatch)' if _can_nosync else 'unavailable — full sync each microbatch'}")
     step, micro, window_loss, t0 = 0, 0, 0.0, time.time()
     data_iter = iter(dl)
     while step < total:
         try:
-            ids = next(data_iter)
+            batch = next(data_iter)
         except StopIteration:
             if sampler:
                 sampler.set_epoch(step)
             data_iter = iter(dl)
-            ids = next(data_iter)
-        ids = ids.to(device)
+            batch = next(data_iter)
+        if isinstance(batch, dict):              # levers return {input_ids[, entity_mask][, fact_ids]}
+            ids = batch["input_ids"].to(device)
+            emask = batch["entity_mask"].to(device) if "entity_mask" in batch else None
+            if lever4_on and "fact_ids" in batch:   # count this microbatch's fact exposures (per-block lists)
+                for fids in batch["fact_ids"]:
+                    exposure.update(fids)
+        else:
+            ids, emask = batch.to(device), None
+        if _can_nosync:                          # sync grads only on the last microbatch of the window
+            model.set_requires_gradient_sync(micro % accum == accum - 1)
         # Pass shared_kv_states as a UserDict: Gemma4's `kwargs.pop("shared_kv_states", {})`
         # uses ours, and FSDP2's tree_map treats a UserDict as a leaf (won't rebuild it), so
         # the KV-sharing layers see the dict the producer layers populated (transformers #45912).
-        out = model(input_ids=ids, labels=ids, shared_kv_states=UserDict())
-        (out.loss / accum).backward()
-        window_loss += out.loss.item()
+        if lever1_on and emask is not None:      # Lever 1: manual entity-weighted CE on logits (no labels=)
+            out = model(input_ids=ids, shared_kv_states=UserDict())
+            loss = entity_weighted_ce(out.logits, ids, emask, entity_w)
+        else:
+            out = model(input_ids=ids, labels=ids, shared_kv_states=UserDict())
+            loss = out.loss
+        loss_val = loss.item()
+        # Fail loud on non-finite loss BEFORE backward — a single NaN/inf would poison the AdamW moment
+        # buffers on opt.step() and turn every weight NaN for the rest of the run (the project's known
+        # failure signature). Abort at the first occurrence, not after 200 silent steps.
+        if loss_val != loss_val or loss_val in (float("inf"), float("-inf")):
+            raise RuntimeError(f"non-finite loss ({loss_val}) at step {step} micro {micro} — aborting "
+                               f"before the optimizer poisons all weights")
+        (loss / accum).backward()
+        window_loss += loss_val
         micro += 1
         if micro % accum == 0:
             lr = wsd_lr(step, cfg["warmup_steps"], total, cfg["lr"], cfg["min_lr"], cfg["decay_frac"])
@@ -348,6 +535,8 @@ def main():
                     g["lr"] = lr
             torch.nn.utils.clip_grad_norm_(params, cfg["grad_clip"])
             opt.step()
+            if args.int8_master:
+                _sr_int8_master(params)     # constrain weights to the INT8 grid (SR) — precision test
             opt.zero_grad(set_to_none=True)
             step += 1
             if step % cfg["log_every"] == 0:
@@ -355,14 +544,24 @@ def main():
                 log(f"step {step}/{total} loss {window_loss/(accum*cfg['log_every']):.4f} "
                     f"lr {lr:.2e} peakmem {mem:.1f}GB {(time.time()-t0)/step:.2f}s/step")
                 window_loss = 0.0
+            # Honor save_every (was silently ignored): periodic checkpoint → crash-recovery for long
+            # fleet runs + the per-step checkpoints the geometry probe sweeps to watch geometry form.
+            se = cfg.get("save_every", 0)
+            if args.save_dir and not args.smoke and se and step % se == 0 and step < total:
+                save_checkpoint(model, cfg, f"{args.save_dir}/step_{step:06d}", rank, world)
+                if lever4_on and rank0():    # snapshot cumulative fact exposures alongside the checkpoint
+                    _save_exposure(f"{args.save_dir}/step_{step:06d}", step, exposure)
+                model.train()
 
     log(f"done {step} steps in {time.time()-t0:.0f}s")
-    if cfg["precision"] == "nvfp4" and rank0():
-        from torchao.quantization import quantize_
-        from torchao.quantization.qat import QATConfig
-        from torchao.prototype.mx_formats import NVFP4DynamicActivationNVFP4WeightConfig
-        quantize_(model, QATConfig(NVFP4DynamicActivationNVFP4WeightConfig(), step="convert"))
-        log("converted QAT -> NVFP4 weights")
+    if args.save_dir and not args.smoke:
+        save_checkpoint(model, cfg, args.save_dir, rank, world)
+        if lever4_on and rank0():
+            _save_exposure(args.save_dir, step, exposure)
+    # NOTE: NVFP4 QAT→convert is intentionally NOT done here. Running quantize_(step="convert") on the
+    # live FSDP2-sharded model on rank 0 only would (a) risk a collective deadlock and (b) discard the
+    # result (it's never re-saved). The convert is a separate OFFLINE step: load the saved bf16
+    # checkpoint single-process, quantize_, save. (TODO: scripts/convert_nvfp4.py)
     if world > 1:
         dist.destroy_process_group()
 

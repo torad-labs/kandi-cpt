@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8c4b0fa8e0394edcd5061188d647af6021072d8e5a1f609fce5bc44f1b893c2b",
+  "clean_sha256": "ec28746e27eea4fc9df76784c8e8e3c4b3f569317a35ce3f1f2412d626731bd9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 86,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wWKFhF0gwF0",
+  "title": "ELECTRIC DAISY CARNIVAL 2008 LOS ANGELES (THE MOVIE)",
+  "quality_score": 0.6421,
+  "difficulty_score": 0.6106,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

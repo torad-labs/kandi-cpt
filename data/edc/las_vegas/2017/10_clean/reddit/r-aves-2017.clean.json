@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "e3e5b7959ca5c2d534a84ae2153237d16cf53279f886875aca9bac61e937f676",
+  "clean_sha256": "2104a5cbc9b41d1b1619a2533d00f4bd2f5cc710d401c5d4ab87de42f0ce629c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2017",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6548,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

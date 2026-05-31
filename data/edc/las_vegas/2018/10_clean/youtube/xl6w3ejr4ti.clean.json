@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "300c6b677b6e1ef93302cc4ccf6edbfe35de15705a14cf74e09d29ba094cc1cb",
+  "clean_sha256": "4c4fbefbdc346cd5fdaad0ff3274c4b09a17d4bd5df1ad692ab561c82376a195",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 223,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Xl6w3EJR4tI",
+  "title": "REZZ - EDC Las Vegas 2018 (Full Live Set)",
+  "quality_score": 0.6461,
+  "difficulty_score": 0.3814,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "d4d711541c179b0dba816b93c37347925702bdca5361b400d87590d08e89fdeb",
+  "clean_sha256": "58d08e4e8874eeb777fb4878127b45a3fea34710533d0c69b335f636925ead1d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=san+juan+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 san_juan 2014",
+  "quality_score": 0.7905,
+  "difficulty_score": 0.3799,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

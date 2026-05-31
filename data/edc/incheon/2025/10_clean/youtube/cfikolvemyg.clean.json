@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "79af561233c0c0bf46f509132a6023fd6649813a08bbd5b1f50d1129ab9754a0",
+  "clean_sha256": "0ec956992cef69517394f2fe7a55257d92513b95fd08925fbbe89892c74ab79a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 69,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CfikoLVEMyg",
+  "title": "EDC Korea Day1 Ending Fireworks",
+  "quality_score": 0.6451,
+  "difficulty_score": 0.6296,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

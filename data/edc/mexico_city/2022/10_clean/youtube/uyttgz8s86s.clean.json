@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9d94151a5af764b68a3efec3860c60552fce78e5e8eaea9fd544e1cba29b5d54",
+  "clean_sha256": "1eb22936971e32768c65f7a57b6fcc5e8acd05fb654b6486ea1723f1e79072c9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 209,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=UYTtgZ8S86s",
+  "title": "Dubdogz - EDC Mexico 2022",
+  "quality_score": 0.6204,
+  "difficulty_score": 0.4181,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

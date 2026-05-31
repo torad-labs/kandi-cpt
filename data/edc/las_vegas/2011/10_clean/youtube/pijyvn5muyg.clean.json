@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0c7746c94df311380982dabbafe416f4429e13ac1f8f58806bd6da9d1f6a345d",
+  "clean_sha256": "9977c46926c843011c17332941461380432de334b0f971cce545f9d9f8de451f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 671,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PijyVN5mUYg",
+  "title": "EDC Las Vegas 2011 Montage",
+  "quality_score": 0.6839,
+  "difficulty_score": 0.6841,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

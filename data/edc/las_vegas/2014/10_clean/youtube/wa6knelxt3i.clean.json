@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "60ccf880149bc71de89d545f802faeb2461b7532b19c7ce338feeefc6ac0391e",
+  "clean_sha256": "3ae2164f400cb19fc5b50ee0e6617471e3b698a4cf34b32b5e4c1a4dfc803ba3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 74,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WA6KNeLXT3I",
+  "title": "Angerfist @ EDC Las Vegas 2014 (LIVESET)",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.7426,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

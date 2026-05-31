@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b8c424cc76f7d00631ad8c4218a77aca0ba3247cab976c0e6b0318fd0d3a0cc1",
+  "clean_sha256": "8827e93a88b573f4c6c287acc89faca211dd7189663c41d9d5ea629234a682c9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 282,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=JnF9Ngt6Lb8",
+  "title": "Ti\u00ebsto @ EDC Orlando 2024 Live (Full Set)",
+  "quality_score": 0.6217,
+  "difficulty_score": 0.6679,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

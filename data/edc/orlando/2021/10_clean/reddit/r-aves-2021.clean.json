@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9889096206918d12fa81f6db900de0e1deb6be3aba642817a616cccd76b4d763",
+  "clean_sha256": "1e4236e088f29809d427978ecdad2c22ab53c9417d92ff9af0350d5a0b81992a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2021&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2021",
+  "quality_score": 0.7894,
+  "difficulty_score": 0.4171,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

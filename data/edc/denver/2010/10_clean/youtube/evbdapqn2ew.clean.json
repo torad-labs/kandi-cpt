@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b837958d07120e260ef45797c5dcc6085c7d116ef63df9de394fff4873a7f8f7",
+  "clean_sha256": "2401b1d2d3758dabeecddb4344db838ba03c27f6a3076b9455d1eaaa878a62ed",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 142,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=evbdAPqN2ew",
+  "title": "EDC Colorado 2010 compilation (Part 2) -- [Glowsticking.com]",
+  "quality_score": 0.6329,
+  "difficulty_score": 0.6945,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

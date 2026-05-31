@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "747386bddef3ee907bd98189b4f8439a0b2e2aae4e9bd3a61169aeb134ee583e",
+  "clean_sha256": "82d33c00ecc8ef2b57398bae5dc75e0393bfa563cd3441f8128df5b117c53631",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 3822,
+    "keep_ratio": 0.902,
+    "anchor_ratio": 0.101
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2019/12/dancing-astronauts-big-100-top-25-edm-moments-of-the-decade/",
+  "title": "Dancing Astronaut's BIG 100\u2014Top 25 EDM Moments of the Decade",
+  "quality_score": 0.8674,
+  "difficulty_score": 0.5245,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

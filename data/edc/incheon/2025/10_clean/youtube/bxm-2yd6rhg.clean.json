@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6d8d94f86b5e220dcf1bcfbb99c3309e99de48984bf77128868dc00f4a485cc1",
+  "clean_sha256": "e17fcbcc6a44b5fbd89c7599aadd38cc30f95405c7f69a5ab6fa2014965e0297",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 86,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=BxM-2yD6RHg",
+  "title": "MARTIN GARRIX LIVE @ EDC KOREA 2025 ! INTRO ! GRAVITY + VIRUS + ANIMALS",
+  "quality_score": 0.6461,
+  "difficulty_score": 0.7884,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

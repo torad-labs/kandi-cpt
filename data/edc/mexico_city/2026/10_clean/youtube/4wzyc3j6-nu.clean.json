@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4e1eb5ef67905549304f4907d7294db1e78e5165b0bebcd7d4bdef93950b3caa",
+  "clean_sha256": "c98a3b88c76c70d3ab69d3b277f24c07f11be352ac4bc35a673e7ca6872f882a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 623,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4wzyC3J6-NU",
+  "title": "Underworld Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.692,
+  "difficulty_score": 0.4244,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

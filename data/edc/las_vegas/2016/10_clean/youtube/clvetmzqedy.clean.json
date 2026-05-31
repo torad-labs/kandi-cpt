@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7173d10918d5137d16f53dc88bde629aabfd8f8eda6fb94ccea018e416587825",
+  "clean_sha256": "4b489613a2fd2ccd1d1926087b62780014b41e95ddfae35ff36268a145a13801",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 219,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=clvetMzQEDY",
+  "title": "GAIA live at EDC Las Vegas 2016",
+  "quality_score": 0.6517,
+  "difficulty_score": 0.5685,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "980a3aad023aa2c3e3b344e314ffec06d007ed51ac121d76e233c8be63bc92a5",
+  "clean_sha256": "852ea1ada132de21f9669b02fd74de180396e8efdea156979efe2b452608f360",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 175,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NqFH3ehwE9A",
+  "title": "ATB- One More Time (Daft Punk) at EDC Colorado 2010 (HD)",
+  "quality_score": 0.6525,
+  "difficulty_score": 0.6986,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

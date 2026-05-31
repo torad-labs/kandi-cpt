@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5d403562d19eebe5e92161866880f87027b5eed9817baad97bfe37196c28e0a6",
+  "clean_sha256": "49c639159a681f6f11033cb39c709dc015a61d405f0a20fd357f7766ccf35222",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 70,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_Leh6LHY7PQ",
+  "title": "SKRILLEX @EDC BRASIL FULL SET 720P HD",
+  "quality_score": 0.6034,
+  "difficulty_score": 0.7455,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

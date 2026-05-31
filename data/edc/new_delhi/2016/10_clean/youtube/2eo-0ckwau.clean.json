@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6fef17d4f1c8f7faaa7f634eb184dddc69ea86c126dfb275683e8badc8c86a81",
+  "clean_sha256": "4c0d6bbdb4d1a533abb2eabf43ec0ded97fc34167e4229c9e92fa2d7e5efd4e1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 89,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2eo-_0ckWaU",
+  "title": "Rave On! #EDC Noida",
+  "quality_score": 0.6086,
+  "difficulty_score": 0.6027,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "231293e7d6a7b1aaaac47104cbf008b1f2e0eed3172486ef63dd91eb032a24bd",
+  "clean_sha256": "395cf548a40e2e8b942885c34996c7bc37b6b2aa0d0ae8e98d22933a04036024",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1228,
+    "keep_ratio": 0.786,
+    "anchor_ratio": 0.144
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/03/dancing-astronauts-soundtrack-ultra-music-festival-2016/",
+  "title": "Dancing Astronaut's Soundtrack to Ultra Music Festival 2016 - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.4533,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

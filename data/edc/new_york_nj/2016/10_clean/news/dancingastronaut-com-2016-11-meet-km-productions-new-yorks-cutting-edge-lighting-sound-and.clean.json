@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "024971dd2267d1e4411677d0cf38502fa33bfa4e3377edbde62af14b3865007c",
+  "clean_sha256": "e6a78e047f07dac3bc599fe413806c641e3599a108833493d8bd439fa6b5c0ac",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1629,
+    "keep_ratio": 0.784,
+    "anchor_ratio": 0.145
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/11/meet-km-productions-new-yorks-cutting-edge-lighting-sound-and-visual-company/",
+  "title": "Introducing KM Productions - Dancing Astronaut",
+  "quality_score": 0.8723,
+  "difficulty_score": 0.7963,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

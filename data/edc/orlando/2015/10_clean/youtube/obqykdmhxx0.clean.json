@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5821062d2e0413f4c4e3bca6a2197d2e92db530d7ff79ba9673d46bc3fb004f3",
+  "clean_sha256": "2e04c88752e6e76489409e4e2288ccc36f580094a4e7e04cdef12cc3c4342f01",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1085,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=obQyKDmhXx0",
+  "title": "EDC Orlando 2015 Official Trailer",
+  "quality_score": 0.7053,
+  "difficulty_score": 0.5375,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c91c936de47b8316f2032f715b341c3d76321664d170fc76ea0466b1ce2c2f5e",
+  "clean_sha256": "e1cc80aabea149dec14436526f7d74512e1644f6809f7c1a6836f3aae29ee2ad",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1235,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=r-um_y4Dum8",
+  "title": "EDC Orlando 2024 Trailer",
+  "quality_score": 0.7553,
+  "difficulty_score": 0.4323,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

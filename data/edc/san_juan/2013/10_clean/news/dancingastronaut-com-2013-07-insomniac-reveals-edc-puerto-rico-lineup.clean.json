@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "1adb2d5c33ef0446c9a6f48f8b4a1b1c0f7c2106d9d486041d4980152829437e",
+  "clean_sha256": "aa41c6eb6fe61bfd81ff16a6d9d4854a04ddc0816df48f2d3b48ff6e38ccab6e",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 290,
+    "keep_ratio": 0.382,
+    "anchor_ratio": 0.377
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/07/insomniac-reveals-edc-puerto-rico-lineup/",
+  "title": "Insomniac reveals EDC Puerto Rico lineup - Dancing Astronaut",
+  "quality_score": 0.8204,
+  "difficulty_score": 0.8477,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

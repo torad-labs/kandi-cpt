@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "db11fd3ad8db8b10505dd45e7c401a022c1bfd6fe360a6c63c6aece73449c8d4",
+  "clean_sha256": "76bdc52b726d519df48574a929c2545360c4111d23d231b1f274cb84b53f6485",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 206,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tjKOk19YT1g",
+  "title": "VLOG: EDCNY 2016",
+  "quality_score": 0.6295,
+  "difficulty_score": 0.7988,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

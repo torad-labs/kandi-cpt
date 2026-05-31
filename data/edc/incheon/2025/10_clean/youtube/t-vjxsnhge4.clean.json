@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "87829b0342271569dba753ab50eb15ee77473c165acd85b8545d79ddf07072ba",
+  "clean_sha256": "67a208249ca25f9e9c0eb37a939ac0921c2243426b61e330dcfcd90691c5e75d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1689,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=T_vJxsNhgE4",
+  "title": "Casepeat LIVE @ EDC Korea 2025 (stereoBLOOM Stage by Dreamstate) [ReLive on Play It Forward Ep. 198]",
+  "quality_score": 0.883,
+  "difficulty_score": 0.5981,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

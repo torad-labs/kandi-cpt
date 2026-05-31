@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "1fb92d73912ed285e32aa7b326f72c8f4da6f0a22d06ddb5818af2a4eef9f310",
+  "clean_sha256": "a8caf469e22e54d1e0bb8c5bc55735c004dbd805eec0e87d200b37260c4906ef",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1804,
+    "keep_ratio": 0.813,
+    "anchor_ratio": 0.133
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2012/10/amsterdam-dance-event-2012-recap-panels/",
+  "title": "Amsterdam Dance Event 2012: This is just the beginning for dance music - Dancing Astronaut",
+  "quality_score": 0.8532,
+  "difficulty_score": 0.6687,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f0a8f22ed82ca00a849c4647ede552cc0a2bb2ccc3962fcd5ed3557e23ee73ed",
+  "clean_sha256": "136723a7a1eed5dedd6db5140edbab1b1e7cc2df05b6b9b02d0b4a003d94097e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2023&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2023",
+  "quality_score": 0.6983,
+  "difficulty_score": 0.59,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

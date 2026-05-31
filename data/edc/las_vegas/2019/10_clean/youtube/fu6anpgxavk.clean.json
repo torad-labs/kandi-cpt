@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "dcca5f8a738c156fef1c20705b0803384bc465578fe272f48124ba9da0bb69ea",
+  "clean_sha256": "cf76ab679d54d0966e77c668abc4470945e60642057e615f77299110bdd7c2c8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 440,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Fu6aNpGxaVk",
+  "title": "Ti\u00ebsto - Live @ Electric Daisy Carnival Las Vegas 2019",
+  "quality_score": 0.6674,
+  "difficulty_score": 0.3179,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

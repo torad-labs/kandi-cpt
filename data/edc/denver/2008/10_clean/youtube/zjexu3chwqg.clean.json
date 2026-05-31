@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "82913f1338a62974027a202cab431583abbe20b2c62c8697153879a1bc2c8c08",
+  "clean_sha256": "5722975ef3c048fc0ac07f4e865cac9a5d31a192ad97426cbcc1238c9cdff4c5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 79,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZJEXu3chWQg",
+  "title": "Uberzone live - EDC Denver",
+  "quality_score": 0.6187,
+  "difficulty_score": 0.9181,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

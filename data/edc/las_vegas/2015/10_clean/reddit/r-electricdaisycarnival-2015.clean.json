@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b493b8e2484b8811b44b7cc72ade337899a8d8bab39a14aec93b9d8a01a9ba91",
+  "clean_sha256": "9f92fb8cb82ee6955ab473beb6b07c4455b417f0d00065a04fced723cbf43760",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2015",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.441,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

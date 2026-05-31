@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "3a9389b7926fb49c660bec38d433f26bc6197d4000303b2e16574e7a575f3773",
+  "clean_sha256": "e4b229e8424624682807339c02a7e50606acc10ab927411be0f0335c3b4425b5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2017",
+  "quality_score": 0.5224,
+  "difficulty_score": 0.4924,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

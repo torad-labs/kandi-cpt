@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d37c9f4df0419ece321f97d2dffc47421aaf43a15283ed887e711b8e4636c836",
+  "clean_sha256": "02f7d5b5d7429b7f96550d03b1e9c7a641ecf8e72d86ab561ac17d867985eede",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 353,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=gwMyTDKWuHs",
+  "title": "Steve Aoki ending @EDC Japan 2018 with fire works",
+  "quality_score": 0.7023,
+  "difficulty_score": 0.6168,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

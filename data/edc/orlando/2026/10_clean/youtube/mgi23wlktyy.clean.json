@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0e570f1b984c475072212f8333727ed350238f31a9751e0f26b29b15b9fe3b88",
+  "clean_sha256": "4469b6590af7b849849a8214bfcd008ca6a29f676a1a9edaf113ba303b111a30",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2532,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=MgI23wLKtYY",
+  "title": "EDC 2026 WAS A DANGEROUS MESS (GENERAL ADMISSION)",
+  "quality_score": 0.9139,
+  "difficulty_score": 0.5496,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

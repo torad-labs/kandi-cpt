@@ -1,0 +1,216 @@
+# Electric Daisy Carnival Las Vegas announces 2013 lineup; 'musical acts, artists and theatrical performers' - Dancing Astronaut
+
+Scraped 2026-05-30 from https://dancingastronaut.com/2013/05/electric-daisy-carnival-las-vegas-announces-2013-lineup-musical-acts-artists-and-theatrical-performers/.
+Tier 2 (reference) corpus material.
+
+---
+
+While the stops in New York and Chicago have been solidified for later this month, sights remain set on Electric Daisy Carnival‘s final destination. Insomniac has finally released the lineup for EDC Las Vegas, a roster that includes “musical acts, artists and theatrical performers.” The final billing will feature over 500 names, and today’s announcement has revealed its vast majority. Pasquale Rotella insists that the fans are the true headliners, and explains “each year our fans’ inspire us to exceed their expectations – there’s truly something in it for everyone.”
+
+Jump below the break for the lineup.
+
+
+- ƱZ
+- 12th Planet
+- A-Trak
+- A-lusion
+- A*S*Y*S
+- Above & Beyond
+- Adam Beyer
+- Adrian Lux
+- Afrojack
+- Alex Kidd
+- Alex Metric
+- Alex Young
+- Altern8
+- Alvin Risk
+- An21
+- Andy C
+- Araabmuzik
+- Armanni Reign
+- Armin van Buuren
+- Art Department
+- Arty
+- ATB
+- Audien
+- Audio Punk
+- Austin Bike Zoo
+- Avicii
+- Baauer
+- Basscon
+- Bassjackers
+- Bassrush Experience
+- Benny Benassi
+- Bingo Players
+- Bloody Beetroots Live
+- Blutonium Boy
+- Booka Shade
+- Borgore
+- Boys Noize
+- Bro Safari
+- Bryan Kearney
+- Caffeine
+- Calvin Harris
+- Camo & Krooked
+- Carl Cox & Friends
+- Carnage
+- Cedric Gervais
+- Claude VonStroke
+- Clockwork
+- Cosmic Cowboy
+- Cosmic Gate
+- Craze
+- Crisis Era
+- Crizzly
+- Crookers
+- Crosstown Rebels presents Get Lost
+- Culture Shock
+- D-Block & S-te-Fan
+- Dada Life
+- Damian Lazarus
+- Dannic
+- Darksiderz
+- Darren Styles
+- Dash Berlin
+- Datsik
+- David Steven
+- Delta Heavy
+- Deniz Koyu
+- Destructo
+- Dillon Francis
+
+- Dirtyphonics Live
+- Dirty South
+- Discovery Project winners
+- DJ Fresh
+- DJ Hype
+- Doctor P
+- Dog Blood
+- Dub Phizix
+- Dubfire
+- Dyro
+- Ean Golden
+- Ed Rush & Optical
+- Empire of the Sun
+- Eric Prydz
+- Etc! Etc!
+- Fake Blood
+- Fedde Le Grand
+- Ferry Corsten
+- Figure
+- Flaming Lotus Girls
+- Flosstradamus
+- Flux Foundation
+- Foreign Beggars
+- Francesca Lombardo
+- Funtcase vs Cookie Monsta
+- Fury + MC Dino
+- Gareth Emery
+- Gaspo
+- Gerard Minakawa
+- Goldspace Creations
+- Green Velvet
+- Hardwell
+- Headhunterz
+- Helicopter ShoWdown
+- Hobo
+- HypKnowTree
+- Indecent Noise
+- Infinity Ink
+- Isaac
+- Jabba Barge
+- Jack Beats
+- Jacques Lu Cont
+- Jamie Jones
+- Jen Lewin Studio
+- John Digweed
+- Jon Rundell
+- Juan Muniz
+- Just Blaze
+- Justin Martin
+- Kaskade
+- Kate Raudenbush
+- Kill the Noise
+- Knife Party
+- Koan Sound
+- Kostov Design
+- Krewella
+- La Roux
+- Lady Faith
+- Laidback Luke
+- Lisa Lashes
+- Loadstar
+- Loco Dice
+- Luminox
+- Madeon
+- Major Lazer
+- Manufactured Superstars
+- Mark Knight
+- Markus Schulz
+
+- Mat Zo
+- Matador
+- Max Vangeli
+- Metrik
+- Michael Christian
+- Morgan Page
+- Mr. Trixter
+- Mt EdenLive
+- Mumbai Science
+- Nadastrom
+- Nervo
+- Nicky Romero
+- Night Owl Experience
+- Noisia
+- Oliver
+- Opulent Temple
+- Organ Donors
+- Paco Osuna
+- Pete Tong
+- Philip Lumbang
+- Poetic Kinetics
+- Porter Robinson
+- Proxy
+- Pushing Daisies
+- R3hab
+- Rebecca & Fiona
+- Rene LaVice
+- Richie Hawtin presents enter.
+- Rob Buchholz
+- Rockbox
+- Rusko
+- Sander van Doorn
+- Sasha
+- Scot Project
+- Simon Patterson
+- Solar Sculptures
+- Space Islan
+- Stana
+- Stereobot
+- Steve Angello
+- Subb-An
+- Sub Focus
+- Sunnery James & Ryan Marciano
+- Super8 & Tab
+- T ‘n’ T
+- Technoboy
+- Terravita
+- The Do LaB
+- The Space Wench
+- Thomas Gold
+- Tiësto
+- Tiga
+- Tommie Sunshine
+- Tritonal
+- Tuneboy
+- Umek
+- Victor Calderone
+- V Square Labs Digital Art
+- W&W
+- Wide Awake Art Car
+- Wilkinson
+- Wolfgang Gartner
+- Yoji
+- Yousef
+- Zany
+- Zeds Dead

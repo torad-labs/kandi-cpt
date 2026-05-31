@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f6fea8328f08d2cc3100a8e5d3177d786a4a419f85428145da2a89837c1959b3",
+  "clean_sha256": "1d772b1c040b3b5a7619ab192fa906e31a9c8943a8ec7c1b2d04d4e99c0f51b1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 858,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3f-xarogbT4",
+  "title": "EDC Las Vegas 2024 | Official Trailer",
+  "quality_score": 0.7363,
+  "difficulty_score": 0.7036,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

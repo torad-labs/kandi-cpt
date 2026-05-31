@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "1cd7e2742ea706eaa30f1d7ac813838e25af74c5daa8353d75010c3a03851776",
+  "clean_sha256": "411cfdbaed47cc08b6d0062b35b04e8d9cb1dede6c7dc55f3562128b68a9cb1d",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1220,
+    "keep_ratio": 0.795,
+    "anchor_ratio": 0.123
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2015/06/dancing-astronauts-soundtrack-edc-las-vegas-2015/",
+  "title": "Dancing Astronaut's Soundtrack to EDC Las Vegas 2015 - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5542,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "0580660a7fa073ea93c807ed82a0c39340326f13cb53b65396fab9f0d3dd4e20",
+  "clean_sha256": "10afc37adc7ec9ba4272a30467423c489d34458da7e1bd406841b4e08123086b",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 345,
+    "keep_ratio": 0.434,
+    "anchor_ratio": 0.39
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/news/john-summit-teases-arena-tour/",
+  "title": "John Summit Signals Arena Tour Is Coming for 'CTRL ESCAPE' - EDM",
+  "quality_score": 0.8464,
+  "difficulty_score": 0.6414,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

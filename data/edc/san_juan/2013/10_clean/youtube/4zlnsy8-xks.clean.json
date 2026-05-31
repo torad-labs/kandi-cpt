@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "79e5611a57952a8a2050ce23436181cc7ef939184f0254fc3856b188472abc49",
+  "clean_sha256": "29baab5894c351f0f43a459fcc65f7c162bf33e1939f0f1856eaa4601710b697",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 119,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4zLNSy8_xks",
+  "title": "EDC Puerto Rico 2013 (Saturday) - Bingo Players (Cold As Ice)",
+  "quality_score": 0.6354,
+  "difficulty_score": 0.8177,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

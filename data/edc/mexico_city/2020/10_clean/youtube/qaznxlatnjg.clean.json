@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "05f071d3dae501fe88d30cdc98d429db562ad3c49d47f0f2103976612c51b4bf",
+  "clean_sha256": "5ee489492bcbfee3cef07c8f9208770ca293b0c949ec8d8897140203bc3152de",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1283,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QAZNxlAtNJg",
+  "title": "EDC Mexico 2020 Trailer",
+  "quality_score": 0.715,
+  "difficulty_score": 0.3786,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

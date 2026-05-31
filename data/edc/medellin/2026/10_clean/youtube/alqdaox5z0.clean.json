@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b3222079d86c69d7f6707f01857773ea593fecc0dc0ca5758a58e4a6fb939604",
+  "clean_sha256": "f00c8cec66eee0bb15b0188fed87666e3f9a0361d23e96e199786855d0fef3ef",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 891,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-aLQdaOX5Z0",
+  "title": "EDC Las Vegas 2026 - Official Trailer",
+  "quality_score": 0.6875,
+  "difficulty_score": 0.4517,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

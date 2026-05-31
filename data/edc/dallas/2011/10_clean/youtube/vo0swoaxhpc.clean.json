@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a41a7e71d79d52e03bce0114520c21aee6d03c7b5f5a638bfbaca9954ebf1151",
+  "clean_sha256": "f6474ac958f8a10f56b57e7946708387f4f9933a361e3c9f22c7b435843cd2c1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 150,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vO0SWOAXHPc",
+  "title": "EDC Dallas 2011 Shuffle",
+  "quality_score": 0.6486,
+  "difficulty_score": 0.6068,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

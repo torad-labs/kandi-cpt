@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8cbb7f0cc9e5421311e2606f31a06f7eb3a56adac25241287e1f15c71da8ee32",
+  "clean_sha256": "7010b5d6faf212c74050ceae4baa8c154ba64ad2aab600f55c9101deb9581d46",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 71,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=X-261EB-4k8",
+  "title": "Internal Audit San Juan EDC",
+  "quality_score": 0.6069,
+  "difficulty_score": 0.6172,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

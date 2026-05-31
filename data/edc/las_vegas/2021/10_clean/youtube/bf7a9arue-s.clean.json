@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5baba9115defbcb9730c2b906765b2230dc727f358cdccdedee580fa48577af9",
+  "clean_sha256": "cff5e893c1e2426875286bfb661197c69b5a2e79239ad0feb9c012bfae0cc35e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 624,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Bf7A9aruE-s",
+  "title": "Nicky Romero - Live at EDC Las Vegas 2021",
+  "quality_score": 0.649,
+  "difficulty_score": 0.5386,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

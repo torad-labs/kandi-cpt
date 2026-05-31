@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "768c4226bcccac6145e1c6f1aa0e5f8433ed183ad846bbf7ad03311c8acc9336",
+  "clean_sha256": "7f6f4a8228231b75d7f9ff485965a5297ff712a755986c201781cf1f5d0ab24a",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 923,
+    "keep_ratio": 0.677,
+    "anchor_ratio": 0.26
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2023/12/dancing-astronauts-breakout-artist-of-2023-mau-p/",
+  "title": "Dancing Astronaut\u2019s Breakout Artist of 2023: Mau P - Dancing Astronaut",
+  "quality_score": 0.8995,
+  "difficulty_score": 0.5673,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

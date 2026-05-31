@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "77d7d3c68f9122e62308f0cdfebd4e091773b4aede3aff0b8895e8711f513197",
+  "clean_sha256": "dbcf0e9e0a3a132914119c28d366a9807fc25bbab3ddefc6b40b6e050fccc556",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 168,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iLDtXOOJ9Eo",
+  "title": "2025\u82cf\u5ddeEDC\u7535\u97f3\u8282 DAY1 2\u821e\u53f0\uff08Hard\u821e\u53f0\uff09\u7247\u6bb5\u5408\u96c6\uff01",
+  "quality_score": 0.6972,
+  "difficulty_score": 0.6679,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

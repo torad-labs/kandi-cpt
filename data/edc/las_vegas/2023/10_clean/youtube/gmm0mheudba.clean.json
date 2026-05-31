@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e94453c4fc08ffb3b5280c9210dbd35479d9a2b92531d97ccecf21e98e2980e9",
+  "clean_sha256": "125b26fc8d47679d303ce150fbb2b47c15a2179ef0667d497ec59fcb4ab4c9b0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 436,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GMm0MheUdBA",
+  "title": "Armin van Buuren live at EDC Las Vegas 2023",
+  "quality_score": 0.6271,
+  "difficulty_score": 0.3166,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

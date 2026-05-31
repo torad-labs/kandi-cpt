@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1455d749e74f828b32b67b37795ea255044e34220f2592fc681d9c6f59384f86",
+  "clean_sha256": "59f381ceaa2bdea493f9edbe75726bb506cc56aa28a7b2617c08311ad92534b2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 194,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=alpSvaFeyUk",
+  "title": "Electric Daisy Carnival (EDC) Orlando 2011: Afrojack, Skrillex, and Tiesto Live",
+  "quality_score": 0.6134,
+  "difficulty_score": 0.6341,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

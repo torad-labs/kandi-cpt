@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9a876e4e4cc78d17fb583d1e26581186cad871f0bf8fb15018293fd6fece6f2a",
+  "clean_sha256": "8794737e247b25090165206fce953709de9791ec00237dd3f5ecda5d14f22860",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 68,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eSeV0rFHmRA",
+  "title": "4K Subtronics Full Set EDC Orlando 2023 Circuit Grounds",
+  "quality_score": 0.6569,
+  "difficulty_score": 0.681,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

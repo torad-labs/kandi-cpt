@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e5dd15fe7e4e445d2187d4002ede20f696d32fcc0dd1d3df6b6d1ae6e936814e",
+  "clean_sha256": "cb2d8540f436a9e6701ae7878d7a0b66aafeebb0b69690dc4049865439afe6b8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2950,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uvTSD-1aIAM",
+  "title": "Calvin Harris - EDC Las Vegas 2014 Full Set",
+  "quality_score": 0.9205,
+  "difficulty_score": 0.5624,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2e53063b5a8176f99e8ef358d4cd0f47e2d7d90c4431c3aac83546e4a76abc32",
+  "clean_sha256": "76f30c697cdbde47538df511cd715542b8716c8e50dd9d0d26146f0b616c30a6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 378,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Y1cB4DvuWZs",
+  "title": "Halfway To EDC Las Vegas 2013 at Marquee After Movie",
+  "quality_score": 0.6601,
+  "difficulty_score": 0.6852,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

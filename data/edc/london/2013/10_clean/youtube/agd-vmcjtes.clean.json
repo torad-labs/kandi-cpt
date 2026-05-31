@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "95cee7969593e8572dddc316b09e301365d6885298fea72089d1809c5a28cdef",
+  "clean_sha256": "2a150be0c0b663c1b3b34f5b8a523a13df3037d9dee92fad4b843df7dca0b203",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1788,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=aGD-Vmcjtes",
+  "title": "Tiesto Electric Daisy Carnival EDC London 2013 - Complete set 1080P",
+  "quality_score": 0.7532,
+  "difficulty_score": 0.564,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "b03176c346c3ac3404e52be8e545b82ef02a03c5736badd4b406ee05e957cebb",
+  "clean_sha256": "5a730bbe95e44b650386050f7d563d8e18b522ab8e182a735c3fa6456bd6f735",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 262,
+    "keep_ratio": 0.369,
+    "anchor_ratio": 0.414,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2016/07/edc-uk-criticized-chaos-surrounding-event/",
+  "title": "EDC UK criticized for 'chaos' surrounding the event - Dancing Astronaut",
+  "quality_score": 0.8567,
+  "difficulty_score": 0.6297,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

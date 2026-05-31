@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bc63cd5ace4f3e675d432dd3cf179bdcfba25619dbc3f5ae5a33c425755c88fa",
+  "clean_sha256": "10e593a630ed65ae0c1202dfc4b8754afa9b61156aba60fa8d53302db16e2f02",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 695,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yv09_u3zwAA",
+  "title": "Alesso Live at EDC Las Vegas 2024 (Kinetic Field Full DJ Set)",
+  "quality_score": 0.6874,
+  "difficulty_score": 0.4515,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

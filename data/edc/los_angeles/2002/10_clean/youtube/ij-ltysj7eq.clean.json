@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c3862ab543c98d1fa144254453fbec6b9b46882fae0e720b7f366619848290a0",
+  "clean_sha256": "4d73d4e438cae89672a4e8c8562f9cf695ed759c10e0175018e4879221bcd35f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 540,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=IJ_ltysj7EQ",
+  "title": "Concentric Beats - 2002 - Part 3/11",
+  "quality_score": 0.6403,
+  "difficulty_score": 0.6491,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

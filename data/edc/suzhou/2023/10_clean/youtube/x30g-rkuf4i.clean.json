@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e6746c50671519fd3616322160c86db015bc8ed6cf0f357981cb1d33456bde71",
+  "clean_sha256": "128ebd43b1ac3cd296255429683c8686ef802670641de4cc3f704f763751aca2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 910,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=X30g_rkUF4I",
+  "title": "EDC China 2023 - Official Trailer",
+  "quality_score": 0.7173,
+  "difficulty_score": 0.3118,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

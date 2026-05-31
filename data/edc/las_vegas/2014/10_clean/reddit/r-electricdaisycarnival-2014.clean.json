@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "e0c5fa742b8a364ca06cdfdb450a3ee32995c65614a425c8d5440325b26fcc43",
+  "clean_sha256": "fabb6e0f704b528fec27b8bfb83a5b276e38cd7fa809857ace0fde7d6a7ce583",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2014",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4374,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

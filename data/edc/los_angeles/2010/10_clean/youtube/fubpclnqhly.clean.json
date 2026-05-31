@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5b9cf2c0bf7fcb04648cdfa2e1e01c8d5b350ad85babace4c4cc47fd73a9bbed",
+  "clean_sha256": "6af8e9806cc3f8644de6bc23b943d35c1614d6e3fe598139f363ae5d02d88e2e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 123,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fUbpcLNQHLY",
+  "title": "EDC 2010 Los Angeles Gate Jumping",
+  "quality_score": 0.66,
+  "difficulty_score": 0.6616,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

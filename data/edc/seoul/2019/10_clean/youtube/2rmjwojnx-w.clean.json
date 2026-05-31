@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "129d13de49fae2d49180e0372791a5e36a2d63ce257dc2a6f4435032227fb7e7",
+  "clean_sha256": "ef4c769c86fdadb9ca4efd0012c9005ffb44040ee5e0081b60527cbd5bb42403",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 63,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2rmJwojnX_w",
+  "title": "Kshmr Live - Memories @ EDC Korea 2019(Electric Daisy Carnival)",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.8516,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

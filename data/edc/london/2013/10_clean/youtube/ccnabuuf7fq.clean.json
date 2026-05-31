@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "57eea112c31d8085a6061653a0121c6587d5f98282d3c913d8b74d10a4649774",
+  "clean_sha256": "b615178d1d80dfdcc8dcb4961e8b562f418f0289d4d36d793a2d21aac4a47bda",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 70,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CCnabUUf7FQ",
+  "title": "Avicii - EDC London (VEVO LIFT)",
+  "quality_score": 0.6052,
+  "difficulty_score": 0.6655,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

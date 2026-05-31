@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ef3381ecfb72a95fc2cedefc943290101cad683038d1d74bbf8174bafd54f314",
+  "clean_sha256": "3d09681171dff6b22ddcf149c5b9582ceec5f124267a70caa29e87340cfa5ee3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1664,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hi1gXtzdKhQ",
+  "title": "Above & Beyond: Live at EDC Las Vegas 2023 (Official Set)",
+  "quality_score": 0.8834,
+  "difficulty_score": 0.5278,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

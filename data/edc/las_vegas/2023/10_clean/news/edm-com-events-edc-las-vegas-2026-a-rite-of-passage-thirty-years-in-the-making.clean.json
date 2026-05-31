@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "cae3d8f9093cfc2b217d505fa930911442d0127a17ec1bca17d045d53ee945e1",
+  "clean_sha256": "7eec8676b5e669297e51b62d0b1b647159f9fb5a48408dceeb39097cc0d8a629",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 704,
+    "keep_ratio": 0.618,
+    "anchor_ratio": 0.263
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/edc-las-vegas-2026-a-rite-of-passage-thirty-years-in-the-making/",
+  "title": "EDC Las Vegas 2026: A Rite of Passage, Thirty Years in the Making - EDM",
+  "quality_score": 0.8998,
+  "difficulty_score": 0.6084,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "de70faf688b795bf69ebcd79e8cbc320b8efd00b2a9f6903c13c9fb35adcab49",
+  "clean_sha256": "e8b4e9c78f3bc6313c7c3c44033d35f57a0eca67e9186e37b4840740c240d581",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 308,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=18B62mcEaLo",
+  "title": "EDC UK 2016 - Don Diablo @ Milton Keynes l Full HD",
+  "quality_score": 0.6525,
+  "difficulty_score": 0.5258,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

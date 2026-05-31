@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2387feb0860bd5c3e5472abf091786cdd006405536f737c0893cbdf1bd08001b",
+  "clean_sha256": "578ed9d4c9973b6463613b1cd9f9ff759e3df20f3c33ee4776f40dd940960912",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 122,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=inUUn7BsoAY",
+  "title": "Kaskade Full Sunset Set EDC Orlando 2019 Kinetic Field",
+  "quality_score": 0.6729,
+  "difficulty_score": 0.6138,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

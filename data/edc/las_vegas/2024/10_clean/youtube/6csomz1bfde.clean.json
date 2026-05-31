@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0d366a38f8b5c589d317974d4f5df5bfb6788e0686e22e8669749d0ac506f512",
+  "clean_sha256": "83c39c50b899556bf90e7353591c23ed7281d2d55034f8a3160161b2f60d66d4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 754,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=6CSOmZ1bfDE",
+  "title": "Ti\u00ebsto - Live from EDC Las Vegas 2024",
+  "quality_score": 0.662,
+  "difficulty_score": 0.3633,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

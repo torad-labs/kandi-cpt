@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2da2419007a42907f2c4c2bcb860b2dbf1f4bf883f9c62d8b56faf72c7c75b7c",
+  "clean_sha256": "448253db24e1064088e31e74dc8ec6b4d43c723e28b112c83ae8299d1396de36",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 121,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=A9JE0YmbrBA",
+  "title": "Martin Garrix EDC New York 2015 Full Set (live)",
+  "quality_score": 0.6486,
+  "difficulty_score": 0.5992,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

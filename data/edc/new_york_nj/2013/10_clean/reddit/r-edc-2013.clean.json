@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "ecc41dd1aac739a68afb877bb84934ab92c7ded374449a35efaeaca1e6b48850",
+  "clean_sha256": "4d647ffad71cf0fa2e6b9d514630bef9f98a29dd85f5eaf66f4046e97a9abdf8",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=new+york+nj+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 new_york_nj 2013",
+  "quality_score": 0.651,
+  "difficulty_score": 0.6583,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "a309c728aebd2aa5185a5e71b19fb07cfe71aacf4d3fc15e86a4f3488eff6461",
+  "clean_sha256": "a394374ea0d48c07cac0b0949c1ab75a989332c0be8534999027cb953c0379ec",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 290,
+    "keep_ratio": 0.414,
+    "anchor_ratio": 0.468,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/news/a-once-in-a-lifetime-experience-at-edc-orlando/",
+  "title": "A Once-In-A-Lifetime Experience at EDC Orlando - EDM",
+  "quality_score": 0.8501,
+  "difficulty_score": 0.7029,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

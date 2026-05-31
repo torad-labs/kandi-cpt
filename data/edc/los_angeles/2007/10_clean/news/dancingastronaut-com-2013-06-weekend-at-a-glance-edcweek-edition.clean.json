@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "90e70ee8addebc585097d800eb66ffce3d4dc4b97f12189f999ab663dcfac6b4",
+  "clean_sha256": "b81bd91fbe8c2dbb4868b78e3a147cc48be2ba3892552a3eeef43b53c3149bfb",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1906,
+    "keep_ratio": 0.832,
+    "anchor_ratio": 0.227
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/06/weekend-at-a-glance-edcweek-edition/",
+  "title": "Weekend at a Glance: EDC Week Edition - Dancing Astronaut",
+  "quality_score": 0.8397,
+  "difficulty_score": 0.5059,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

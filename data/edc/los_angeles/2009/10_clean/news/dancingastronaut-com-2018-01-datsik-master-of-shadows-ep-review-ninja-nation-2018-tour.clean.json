@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "abb82d86f507c44263bd4e9f761aa2148b4f831fb7325bbb154ce01486b133fb",
+  "clean_sha256": "b3c4b22d98e3905178d95f6ee88394a88184c7d34718ac7524d3e76155729e4e",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1224,
+    "keep_ratio": 0.735,
+    "anchor_ratio": 0.169
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2018/01/datsik-master-of-shadows-ep-review-ninja-nation-2018-tour/",
+  "title": "Datsik evolves with meticulous masterpiece, 'Master of Shadows' [Interview + EP Review] - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5816,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

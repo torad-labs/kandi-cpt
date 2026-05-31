@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "33795cbc1e2a2a019bce3fe88ec4949f4bf1c7ae6a4cfac4737acb96c433ef57",
+  "clean_sha256": "8df83ca79b04ead77184cbec68314809273d1db45dc97c7b85d54effb5eeffdb",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=san+juan+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 san_juan 2015",
+  "quality_score": 0.7953,
+  "difficulty_score": 0.6507,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "bd83d26afcac8d150dfb34aa7b4da6d7d3feecc85daef0d3dc1480a7039b1278",
+  "clean_sha256": "d356074b565abc87eaf786cc63697d579c1ff35595fa3443e81948a36dbbfd77",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2013",
+  "quality_score": 0.6217,
+  "difficulty_score": 0.5137,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9ff92b7776a6a9b936235130147340eee035da9b95835d88da7fe365ba36157d",
+  "clean_sha256": "eccfcfd48659180fa2ee851b636e7254fe524734be56e4dc471193186e053847",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=sao+paulo+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 sao_paulo 2015",
+  "quality_score": 0.7992,
+  "difficulty_score": 0.5633,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

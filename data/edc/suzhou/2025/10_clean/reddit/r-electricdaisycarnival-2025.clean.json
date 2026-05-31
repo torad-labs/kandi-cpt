@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "ec690367ae8d8d8914bd5eba08b0f25e2cd2c761b8da6ac91d88f854dde35c65",
+  "clean_sha256": "60ad390e31a508e6d2bbcaf7405432ea1749ef3ff3374b69ebf14c7d48c7bbb1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=suzhou+2025&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 suzhou 2025",
+  "quality_score": 0.5166,
+  "difficulty_score": 0.6799,
+  "cluster_id": 18,
+  "curation_status": "drop"
+}

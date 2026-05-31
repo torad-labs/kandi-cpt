@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "42badbaab40a5ab64da135fec424c684df6b2324a7a0fbe56068dffd9e40364b",
+  "clean_sha256": "76a7bec74e7e06bb0d0aa558bcf84edae8ffadf9c1f5b2d919dadf6dd665090f",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 471,
+    "keep_ratio": 0.443,
+    "anchor_ratio": 0.314
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "https://www.insomniac.com/music/artists/",
+  "title": "Artists \u2013 Insomniac",
+  "quality_score": 0.9649,
+  "difficulty_score": 0.4202,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

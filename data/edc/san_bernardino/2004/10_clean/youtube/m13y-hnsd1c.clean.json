@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "50e44e2e32d5a46797647b9cd385229e45ba821f4a5d305e9db43e54134c47d2",
+  "clean_sha256": "7542a6dbce54253161b20028241fde4ee1772ac9ec4b327e22e3942e6f2c0b49",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 57,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=M13Y-hnsD1c",
+  "title": "Electric Daisy Carnival 2004 - DJ Irene (playing hard style)",
+  "quality_score": 0.6066,
+  "difficulty_score": 0.7349,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

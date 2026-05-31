@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7258b43b6d3a0fc85966beeb886256bf9e164351c6db8c46f477f7a505fab1f8",
+  "clean_sha256": "6fd9b21eaeb777e914c6fe0e54f2b351fbe67301c1c077adb91282e9baf11fc6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 738,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=d1Juz2erhRU",
+  "title": "EDC UK 2015 - kineticCATHEDRAL Announcement Trailer",
+  "quality_score": 0.7303,
+  "difficulty_score": 0.6479,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

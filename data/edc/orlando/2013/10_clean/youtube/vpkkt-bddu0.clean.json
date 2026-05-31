@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "43c3f2e0dea9e6dc895a9f7771206759c51bb9db5405c830d7e951137a5de0b1",
+  "clean_sha256": "6158bb1823b188caf8a4ea20326064899c4e14120de1f6eaed513755194cc573",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 464,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vpkkT_BdDu0",
+  "title": "12th Planet Live Set - EDC Orlando 2013",
+  "quality_score": 0.6698,
+  "difficulty_score": 0.5771,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

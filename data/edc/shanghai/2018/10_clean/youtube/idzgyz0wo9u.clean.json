@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "06098a137b9e7274c084c6dab0e6e442484a9589c72a43b827ebc87677ffbbeb",
+  "clean_sha256": "bbcfbe573dd60ef520d134d2a8338b5864d7c2d3d62ac80c6c51f9f00df26b72",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 437,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=IdzGyZ0WO9U",
+  "title": "EDC Las Vegas 2018 - Joyryde Full Live Set Kinetic Field",
+  "quality_score": 0.6469,
+  "difficulty_score": 0.7876,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

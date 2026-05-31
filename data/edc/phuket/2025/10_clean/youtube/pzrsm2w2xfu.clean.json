@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b3bc90ef63b8c029421021f3aeec38925e9a06830b4c00ca752fe48ee8c43a7b",
+  "clean_sha256": "3a8c42f4044040d536fcfab2d65f5957aa8892320b748dbe6c78be8371b24397",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1333,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PZRsM2w2xfU",
+  "title": "EDC Thailand 2025 Vlog | PHUKET 3 Day Rave",
+  "quality_score": 0.8206,
+  "difficulty_score": 0.5612,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4b88d18e036c2f965725034ac0bc52a6f6606da001c434a36ad23fa2999e32df",
+  "clean_sha256": "7fd450d492347533b99ae946155e90df02b9351f50fd1e268fc92516ffa44e27",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 763,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AwqCTZvgU3A",
+  "title": "EDC Vegas 2014 Official Announcement",
+  "quality_score": 0.7976,
+  "difficulty_score": 0.6176,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

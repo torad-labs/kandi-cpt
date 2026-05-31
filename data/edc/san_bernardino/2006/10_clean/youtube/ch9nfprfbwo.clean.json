@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9b641b113ffa114bbd0341a926cd48bdf9f080611a839175c643e8da751e72c4",
+  "clean_sha256": "0b8eed2b1f204867c639e5fd5766e867ca31d10aa5a0c76c82796ada8441149a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CH9nFPRfBwo",
+  "title": "EDC The Dome part 1 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.633,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

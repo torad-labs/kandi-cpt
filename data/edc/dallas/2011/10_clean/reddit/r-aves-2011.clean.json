@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b652a5119709086ba5e3e3f84c00f09d8d7a5e11a5db73f6c36a6047820c9373",
+  "clean_sha256": "22b6e876146d4873569e27cd136f50c7ba3afd0d5d413a85b362010035fc4f28",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=dallas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 dallas 2011",
+  "quality_score": 0.6774,
+  "difficulty_score": 0.4299,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

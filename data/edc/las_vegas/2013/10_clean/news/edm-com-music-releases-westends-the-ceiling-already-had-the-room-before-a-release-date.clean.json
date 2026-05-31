@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "a9b609d9855547b1047dc290dafe6be1460afaef1e51875d3a0156c9e9d43211",
+  "clean_sha256": "945e5568cc2ce8501ff2b290b8a164c7c394812ac831f6ba8fb4ebc71a1eb227",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 304,
+    "keep_ratio": 0.43,
+    "anchor_ratio": 0.412,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/westends-the-ceiling-already-had-the-room-before-a-release-date/",
+  "title": "Westend's 'The Ceiling' Already Had The Room Before A Release Date - EDM",
+  "quality_score": 0.7572,
+  "difficulty_score": 0.7046,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

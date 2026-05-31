@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2f52a22167dbff7964f498fc3f11f59faf9b41929a296600bbca64a54368cf55",
+  "clean_sha256": "03a495a902e8a96743ab545122fe1c7c138d673c410505552fb7b9ebb0bc42a3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 698,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1quThQGRkz4",
+  "title": "Electric Daisy Carnival (EDC) UK Experience Trailer",
+  "quality_score": 0.7101,
+  "difficulty_score": 0.7328,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

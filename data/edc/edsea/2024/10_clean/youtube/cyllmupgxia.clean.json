@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f1ed1364d8b9cbbed91aac5877261f77db420eb54dd122e727c3dbb3b1ae0a75",
+  "clean_sha256": "5f8aea440b5fa65b42a17c7bd43651f3cc6567cbb13c636748a6a0cb9e2b1354",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 317,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cYlLMUPGxiA",
+  "title": "4 Days DJing On A Cruise Ship Festival (EDSea)",
+  "quality_score": 0.6629,
+  "difficulty_score": 0.7376,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

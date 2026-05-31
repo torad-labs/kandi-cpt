@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "743a1db2d62d462119bd10f7fabab181ab16f436f6e6091bc3b2869d803e42cd",
+  "clean_sha256": "f53e8a338ed3f3ba983f1f790a11d291af0b9b9760265bb2b635a0990d8c8200",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 78,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QghPkMw157A",
+  "title": "Ti\u00ebsto Split EDC Japan DAY2 2019 5.12",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.6971,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

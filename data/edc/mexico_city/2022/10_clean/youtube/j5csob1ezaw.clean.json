@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "94cf3b0c4557f88fb827b94ac24d302c56baf96e871e1d3a10d6ea047e1e1176",
+  "clean_sha256": "37c083ea82b2d92964e56099398da6df7da2dc3f0cdd4f547e0bdfd1415dbb61",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 192,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=j5CsOB1EZAw",
+  "title": "DEORRO @ EDC MEXICO 2023 - Kinetic Field [FULL SET]",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.3829,
+  "cluster_id": 2,
+  "curation_status": "drop"
+}

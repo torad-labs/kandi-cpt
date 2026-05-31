@@ -1,0 +1,112 @@
+# Electric Daisy Carnival Orlando 2022 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2022/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: Insomniac
+
+The Scene
+
+Summer is still a long way out there, but Electric Daisy Carnival helps out their fans with an east coast edition of the famous festival. EDC Orlando brings two packed days of EDM to Tinker Field in Florida along with full-sized carnival rides, unique performances, and art. - Copyright Music Festival Wizard
+
+2022 Artist Lineup
+
+- 12TH PLANET
+- ABOVE & BEYOND
+- ACRAZE
+- ADIN
+- AFROJACK
+- ALAN FITZPATRICK
+- ALAN WALKER
+- ALISON WONDERLAND
+- ALOK
+- ANDREW RAYEL
+- ATDUSK
+- AUDIEN
+- AVELLO
+- AVIRA
+- BEN STERLING
+- BISCITS
+- BLACK TIGER SEX MACHINE
+- BLACK V NECK
+- BLEU CLAIR
+- BLUNTS & BLONDES
+- BRENNEN GREY
+- CAMELPHAT
+- CHARLOTTE DE WITTE
+- CHRIS LAKE
+- CLAPTONE
+- CLOONEE
+- COCO & BREEZY
+- DISCO LINES
+- DJ ADAM AUBURN
+- DJ SNAKE
+- DOM DOLLA
+- DOOZIE
+- DUBFIRE
+- EDGAR V
+- EGZOD
+- ELLEN ALLIEN
+- ENRICO SANGIULIANO
+- FERRY CORSTEN
+- FRANCIS MERCIER
+- GARETH EMERY
+- GETTER
+- GIUSEPPE OTTAVIANI
+- GREEN VELVET
+- JAMES HYPE
+- JAYDA G
+- JEANIE
+- JESSICA AUDIFFRED
+- JOEL CORRY
+- JOHN SUMMIT
+- JON CASEY
+- JUSTIN MARTIN
+- KALEENA ZANDERS
+- KASKADE
+- KILL SCRIPT
+- KÖLSCH
+- KREAM
+- ŁASZEWO
+- MALONE
+- MARTIN GARRIX
+- MATRODA
+- MIDNIGHT TYRANNOSAURUS
+- MISS MONIQUE
+- MOKSI
+- MOOVY
+- ŌSÉ
+- PATRICK TOPPING
+- PAULINE HERR
+- RAY VOLPE
+- REBŪKE
+- REZZ
+- RUBEN DE RONDE
+- RUNE NOIRE
+- RUSKO
+- SAID THE SKY
+- SAKA
+- SAM DIVINE
+- SHERMANOLOGY
+- SLANDER
+- SPEAKER HONEY
+- SULLIVAN KING
+- SVDDEN DEATH
+- Tiesto
+- TIMMY TRUMPET
+- TOM & COLLINS
+- TORREN FOOT
+- TRIVECTA
+- TROYBOI
+- UBUR
+- VINTAGE CULTURE
+- VNSSA
+- WAX MOTIF
+- WHETHAN
+- WILKINSON
+- WILL CLARKE
+- WOOLI
+- ZEDS DEAD
+- ZOMBOY

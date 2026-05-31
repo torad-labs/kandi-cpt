@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "e97eabef56521ef76d0f5b3d2137edebf2c0732c55cf3d0203e622e244b35ec3",
+  "clean_sha256": "10a4ac5234c41e6532536f321a5125268d3771fd582bb58b9094e3edb7e8a065",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 830,
+    "keep_ratio": 0.659,
+    "anchor_ratio": 0.245
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2025/11/dancing-astronauts-new-music-friday-genesi-rivo-alleycvt-level-up-club-de-combat-dreya-v-gorgon-city-and-more-november-14-21-2025/",
+  "title": "Dancing Astronaut\u2019s New Music Friday: GENESI & Rivo, ALLEYCVT & Level Up, Cl\u00fcb De Combat, DREYA V, Gorgon City and more (November 14 \u2013 21, 2025) - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5159,
+  "cluster_id": 1,
+  "curation_status": "drop"
+}

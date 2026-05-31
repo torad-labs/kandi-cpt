@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "abd793a425166f0456510b4d08b2bdd967314f51a6c6397a52ab14a742f892aa",
+  "clean_sha256": "c5756c079301fd7737e86eaee2a74fc934fd276461bd81387b7336a6219eb65a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 580,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=z6-a8kMy1U8",
+  "title": "Countdown to EDC VEGAS 2011: Official Behind the Scenes Video",
+  "quality_score": 0.7072,
+  "difficulty_score": 0.6598,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

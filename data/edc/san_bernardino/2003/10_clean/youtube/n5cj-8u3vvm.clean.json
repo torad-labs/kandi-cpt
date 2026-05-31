@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bc28fb429bc63d9182299f3e55315ead3017285747f7c3ce9409e196114847b5",
+  "clean_sha256": "9f8d1f84adee26d14fcdb6b89569f94b2a76ef696576247512e9120415f789a5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=n5Cj_8U3VVM",
+  "title": "EDC Infected Mushroom part 3 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6485,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

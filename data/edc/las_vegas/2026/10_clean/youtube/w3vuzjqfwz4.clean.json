@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8c69de7be1a13fcfb75c2fec8d9482e5053d2130f742f40e10c9ed01fdd6c5d8",
+  "clean_sha256": "5aaf9e72939af87059aa58c7de162ddce36f764bef65cc5c9008316ed5239558",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 617,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=W3VuzjQfWz4",
+  "title": "Meduza\u00b3 Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.692,
+  "difficulty_score": 0.4305,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

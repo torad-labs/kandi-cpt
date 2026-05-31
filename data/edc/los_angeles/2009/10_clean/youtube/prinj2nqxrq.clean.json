@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7257420e2d41fec9efac1b6ac2f6dc8ed2e1623da2a74033721184c2841e38e6",
+  "clean_sha256": "cd2e6726ff742dd7b88fa061e7c94ab505297fa36b31192d45bde402eb96c6ac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2272,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pRinj2NqXRQ",
+  "title": "Paul Oakenfold - Otherside Remix / I Love My Sex @ EDC Los Angeles 2009, 1 of 2, 06-26-2009",
+  "quality_score": 0.8624,
+  "difficulty_score": 0.6758,
+  "cluster_id": 3,
+  "curation_status": "keep"
+}

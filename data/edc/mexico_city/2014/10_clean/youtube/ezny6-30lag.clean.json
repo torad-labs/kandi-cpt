@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fd669c06eae8bf2a3bfb177f63f8f468c8e3f40d10376f1f7f27a1d9729d170d",
+  "clean_sha256": "60dee6490beb6a1beca733d22b5b67386e5a81e337e5a71020076d2616ef02cc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 580,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=EZNy6_30Lag",
+  "title": "EDC MEXICO 2014 Aftermovie",
+  "quality_score": 0.7458,
+  "difficulty_score": 0.6219,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

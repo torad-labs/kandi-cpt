@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f26f056a4fdc7b3b8c04271adb8515c33584acf70384b4fbed331a83de8eaff2",
+  "clean_sha256": "e30289f55855638d28ecfd28c105d45b349483eea5da2788addc3f4c54fc54eb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1127,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=23FqFabGQyE",
+  "title": "Green Velvet at The Concourse Project | Full Set (LaLaLand 14 Jan 2023)",
+  "quality_score": 0.6658,
+  "difficulty_score": 0.3907,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

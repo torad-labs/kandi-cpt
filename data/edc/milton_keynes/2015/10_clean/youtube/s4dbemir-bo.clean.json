@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "400d593af2ff70baf562334a56c22900646e8738f6bd78110afae892f7c40ce7",
+  "clean_sha256": "0b2a7fa7174a389af5ef73a17c0c1f55236de483c766dc35f94c660dbea3868b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 603,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=S4dBEmir-Bo",
+  "title": "EDC UK 2015 Official Announcement Trailer",
+  "quality_score": 0.7017,
+  "difficulty_score": 0.6885,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

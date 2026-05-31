@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9e9e79e29855502d0609d238a2a774fa3351f78e4eb32f066a281af96883a617",
+  "clean_sha256": "cf339d5e3e15bddf408f386b16a408821d2ee2138f7424aa1bec524df8ce0399",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 151,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=oSECNFhP-gk",
+  "title": "EDC Puerto Rico 2013 (Saturday) - Nicky Romero (Opening)",
+  "quality_score": 0.6365,
+  "difficulty_score": 0.9245,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9873300ec5c0772275e7d0af2540605526fb0f4a8cd26c6781607b66521c0a56",
+  "clean_sha256": "a1783f68fe88e90b4814a7cbc6e1a7ebca41486ec6c708e894671a557e761318",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 903,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fXwI-SW4T00",
+  "title": "deadmau5 @ Circuit Grounds - EDC Mexico 2018, Feb 25th",
+  "quality_score": 0.8244,
+  "difficulty_score": 0.4437,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

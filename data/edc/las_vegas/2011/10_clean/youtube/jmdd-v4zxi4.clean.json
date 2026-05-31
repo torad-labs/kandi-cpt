@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "96abd12223e95153e3629184c8b7ac89673d240d68074bd1c10bd0180831c605",
+  "clean_sha256": "7be4d9005aebc13b4055717a68240667f93d9d87d4c03aca6c7e454e541e033f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1128,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=jMDd-V4zxI4",
+  "title": "EDC Vegas 2011 Official Trailer",
+  "quality_score": 0.7387,
+  "difficulty_score": 0.6721,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

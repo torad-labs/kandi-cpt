@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2b33b352ee2ecb3bf5880b9c8c0014780fb6db812eef32c96302e5ab1c2ffefd",
+  "clean_sha256": "715916eaecfbf260899aa4971710c40b46d692774befd0a626a7aa33a437085d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2011",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6606,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

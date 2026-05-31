@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "7aef638a7b54436e7a0945d53f1d338b61a5aadab7a78b61514e55a356c62fdb",
+  "clean_sha256": "a99a1a95f17630d4f3cea252b642aa1925c0d5e3f126c2f395d3293b2bb7e77d",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 599,
+    "keep_ratio": 0.678,
+    "anchor_ratio": 0.182
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2015/",
+  "title": "EDC Las Vegas 2015 | Music Festival Wizard",
+  "quality_score": 0.7743,
+  "difficulty_score": 0.6551,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

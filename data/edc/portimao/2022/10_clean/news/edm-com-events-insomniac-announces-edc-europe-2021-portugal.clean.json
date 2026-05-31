@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "66f9b5ca244c046e56693285a27fe5afd9ebaba48364359f227f338ec25ca2c1",
+  "clean_sha256": "477c5946c1ada7adc2b1b74dddb817944b9b3d4a0c10ce468fad516e4bb5ba2a",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 257,
+    "keep_ratio": 0.388,
+    "anchor_ratio": 0.429,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/insomniac-announces-edc-europe-2021-portugal/",
+  "title": "Insomniac Announces First-Ever Portuguese Event, EDC Europe 2021 - EDM",
+  "quality_score": 0.8491,
+  "difficulty_score": 0.6025,
+  "cluster_id": 0,
+  "curation_status": "drop"
+}

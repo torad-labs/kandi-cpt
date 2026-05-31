@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8666a47809f4fa82763a1817cedcd3b58698b326f4930fc31dbc49c1b9e69aeb",
+  "clean_sha256": "859b253ff727b68fac21716fc1ddef3a4335df799c544291f4d9976d68025308",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 410,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CRSdhyka5os",
+  "title": "4K Zedd - Full Set Live @ EDC Orlando 2017 Circuit Grounds",
+  "quality_score": 0.6833,
+  "difficulty_score": 0.7731,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "318edf5d2b1998dc9620e2f62f8ad403ae40aa5302d64ed4426ca8de04e6fe7c",
+  "clean_sha256": "2b03181ca438473e09645ec74f74286775b03c4083df3e473a24e1393ca8228b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 304,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ySQXcjmCohA",
+  "title": "EDC UK 2016 AFTERMOVIE @ Milton Keynes l Full HD",
+  "quality_score": 0.6517,
+  "difficulty_score": 0.459,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

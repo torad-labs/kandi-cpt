@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7caeb81d524f4bf91daf3739ddb1c67481f8fc9eb299742a6fdc50b15de6a132",
+  "clean_sha256": "8390463d914b790e27013e228424ec012b75ae114c3e16ef4a353eccf2578388",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 128,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ijGbC89l0iU",
+  "title": "Electric Daisy Carnival 2011 - Denver",
+  "quality_score": 0.6475,
+  "difficulty_score": 0.6354,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

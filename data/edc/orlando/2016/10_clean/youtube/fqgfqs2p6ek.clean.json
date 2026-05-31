@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b4779901f40c7e9a4a9d46608391a0b32d9dadd72480fb1a51309d8326cdab54",
+  "clean_sha256": "09f7beee51f706dee3bc4a27cce8aed344fbbf48aabf5372a2a60c623c098005",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 242,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fQGfqs2P6ek",
+  "title": "HARDWELL-EDC Orlando 2016",
+  "quality_score": 0.6646,
+  "difficulty_score": 0.5891,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

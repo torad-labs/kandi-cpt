@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "6cf4c5c89be5603a4fa8fc85fd629c91992ba76922cc5340af13521cd5b4a531",
+  "clean_sha256": "c5eefda165ddf2c4e98492262316fb2d2f1d37d42845a3c5285b7c700e545e18",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2018",
+  "quality_score": 0.7612,
+  "difficulty_score": 0.5893,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

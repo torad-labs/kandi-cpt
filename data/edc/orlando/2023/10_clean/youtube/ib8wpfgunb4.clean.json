@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d795dbe1e20f61acf7e5a0df6370abb8a008c814fc71a19f9786e7824ad34320",
+  "clean_sha256": "c3fbc8b98992fbc9696d855c4174cab9a1fb29b8f1aa72660a4625040039638b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 986,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ib8wPFGuNB4",
+  "title": "EDC Orlando 2023 Official Trailer",
+  "quality_score": 0.7099,
+  "difficulty_score": 0.3634,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

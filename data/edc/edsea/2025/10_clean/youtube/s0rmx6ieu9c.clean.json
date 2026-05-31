@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b4e3bef0105bfb144a54c7ac66975b8f761906efbc5340b7876bd2cdb1a1a56a",
+  "clean_sha256": "3a36848a3574b6106f400525d815242939da71478d9b1b0016242433dec273f2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 51,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=s0RMX6iEU9c",
+  "title": "EDSea 2025 Sidepiece at Kinetic Ocean",
+  "quality_score": 0.6306,
+  "difficulty_score": 0.707,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

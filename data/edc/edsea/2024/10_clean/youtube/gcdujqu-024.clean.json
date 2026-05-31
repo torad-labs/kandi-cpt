@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6701a0b5664e99830f88349f0afc7b993c280543c01766f6f89e62fd0c95784b",
+  "clean_sha256": "6ab4d845c04796fdd5711579ecca6909ad4b52476af5c691907795f0cb4db235",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 366,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GCdujQu_024",
+  "title": "EDSea 2023 Aftermovie",
+  "quality_score": 0.6893,
+  "difficulty_score": 0.8083,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

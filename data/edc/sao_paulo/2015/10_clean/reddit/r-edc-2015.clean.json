@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b37ae5ec439cda30d977e52d425334c561cd21c7a81628da2b06ce7b720e2834",
+  "clean_sha256": "8d331dd6a16954adc844b3384a17e9d97fd77f2b96a5c1db1f964dba54d6c3f1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=sao+paulo+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 sao_paulo 2015",
+  "quality_score": 0.6783,
+  "difficulty_score": 0.66,
+  "cluster_id": 8,
+  "curation_status": "keep"
+}

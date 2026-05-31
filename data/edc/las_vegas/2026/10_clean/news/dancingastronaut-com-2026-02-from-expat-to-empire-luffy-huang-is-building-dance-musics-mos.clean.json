@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "9fe555d23fd288942e7ea797a69c2bccb1d4af9e9717fff3d199e6fc1daf019a",
+  "clean_sha256": "e63b178b20f8242d46cc7dd5f80a5b510ef70d55d2719aece0e3ec78c21a1f6f",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 6607,
+    "keep_ratio": 0.946,
+    "anchor_ratio": 0.034
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2026/02/from-expat-to-empire-luffy-huang-is-building-dance-musics-most-culturally-ambitious-brand/",
+  "title": "From Expat to Empire: Luffy Huang Is Building Dance Music's Most Culturally Ambitious Brand - Dancing Astronaut",
+  "quality_score": 0.8347,
+  "difficulty_score": 0.5543,
+  "cluster_id": 16,
+  "curation_status": "drop"
+}

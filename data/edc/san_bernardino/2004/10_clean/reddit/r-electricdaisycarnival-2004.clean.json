@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "5c66a9281318ba7e0fdb31b8ef583a59d0a4c46f81e4944dd60a30511064eaa4",
+  "clean_sha256": "5c36ebe91f61e5a652220a5d6ccc78b3151f611022ccde6161883e7dd803f400",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+bernardino+2004&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 san_bernardino 2004",
+  "quality_score": 0.7491,
+  "difficulty_score": 0.5635,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

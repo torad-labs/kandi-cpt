@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "8ecf90b26aef5763b2411e7b8b1b35161175b30a0d1b35eb8435d8b1442272e2",
+  "clean_sha256": "1daec657b5f437813cb05e4cb4d37cea76cdf900acf914f40c833632005c5683",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 4937,
+    "keep_ratio": 0.897,
+    "anchor_ratio": 0.163
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2022/01/dancing-astronaut-presents-the-most-anticipated-ids-of-2022/",
+  "title": "Dancing Astronaut presents the most-anticipated IDs of 2022 - Dancing Astronaut",
+  "quality_score": 0.8486,
+  "difficulty_score": 0.4743,
+  "cluster_id": 1,
+  "curation_status": "drop"
+}

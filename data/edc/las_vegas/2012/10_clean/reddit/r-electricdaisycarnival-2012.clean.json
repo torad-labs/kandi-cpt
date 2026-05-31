@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "d1102ded5f889fc399e8d6739f0c6a9157632c6112bb91009927afabc448b558",
+  "clean_sha256": "a148ad0605ebf29ebaabf22326cd09e98c87834ecf919e4be754c52d0cd11ec9",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2012",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4478,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

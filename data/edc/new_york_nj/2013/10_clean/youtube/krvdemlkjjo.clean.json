@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3807278813e5d7edd3d21f8f525551a83cc2b52190cb4b7faded29b4ac700971",
+  "clean_sha256": "b81964942cb0183f83d9ebc6722a796d5df33495a958c8dc702cc786d2e1d912",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 196,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=krvdEmLKjJo",
+  "title": "EDC New York 2013 Official Trailer [Insomniac Events]",
+  "quality_score": 0.715,
+  "difficulty_score": 0.6086,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

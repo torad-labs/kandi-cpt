@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8d3e9d747caec7660e97f658f65f0bbc0ae5bedfd3daccd17b28c9d79800e926",
+  "clean_sha256": "2e6b376feeecf69078d6b4596fffeccad68e1ce7d9160b715f62a7f6f702bd27",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1024,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=46R0fNNxLr8",
+  "title": "Seven Lions Aftermovie EDC Mexico 2017",
+  "quality_score": 0.6653,
+  "difficulty_score": 0.2216,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "cb537f46808dce77c8b0fdd45bd910287f58d74e51c42ba23d53ec1febf97e08",
+  "clean_sha256": "ec5266b57798ba789001c4430187fa48808466452cce0ac6e0cdbdee66c04ce5",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 274,
+    "keep_ratio": 0.46,
+    "anchor_ratio": 0.454,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/q-vents-delta-heavy-laxx/",
+  "title": "CONTEST: Enter to Win Tickets to Delta Heavy and Laxx at Denver's Marquis Theater - EDM",
+  "quality_score": 0.8406,
+  "difficulty_score": 0.675,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

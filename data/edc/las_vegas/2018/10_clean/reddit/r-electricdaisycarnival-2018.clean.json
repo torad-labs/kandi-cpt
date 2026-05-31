@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "fc86d54559da635577c4136f63cba236b512982f15231991be795593ac6f79c0",
+  "clean_sha256": "8f4f2f49b672c7b2c704eca56794e12b465410435be0d3791c1223e501cda6ac",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2018",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4424,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

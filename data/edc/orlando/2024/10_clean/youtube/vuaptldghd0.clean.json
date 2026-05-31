@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9e2269b6e6b60593a5fa28a4a3041d796f753effa3038bd99a7a9e27cb284fe0",
+  "clean_sha256": "8d0e37d5e7ddc01d1d3ba03efa1f1c8ec0a48aa4ac819640d7d567559a7cff2d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1669,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VUAptldGhD0",
+  "title": "WORSHIP @ EDC Orlando 2024 - Sub Focus, Dimension, Culture Shock & 1991 | UKF On Air",
+  "quality_score": 0.7653,
+  "difficulty_score": 0.2497,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

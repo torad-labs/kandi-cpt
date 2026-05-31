@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "45dbc37b707c39ada0600820bc4af50dc9ce6c598869cbb818883f3abe3410ff",
+  "clean_sha256": "aec920438b5b026c06acd9c71c04e66009aae05f1264032bda050b45dd54dfba",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 331,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NsmhG-ec6XI",
+  "title": "FISHER LIVE FROM EDC LAS VEGAS 2026",
+  "quality_score": 0.6517,
+  "difficulty_score": 0.6815,
+  "cluster_id": 14,
+  "curation_status": "drop"
+}

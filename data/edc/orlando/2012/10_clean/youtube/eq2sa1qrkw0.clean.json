@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "308879720434ba5d821ed1c5b7aea4392933fbb68e680fbaf1bcc4bd59372965",
+  "clean_sha256": "fe0310016dc7aacf7f9bf9c55b3d43e001fbaf2de4ec8455e4cb30f35ffbcf9a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 109,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=EQ2sa1QRkW0",
+  "title": "EDC(Electric Daisy Carnival) Orlando 2012 | Upthrudere.com",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.7076,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "ecb7d51f7a23a0641210ad93a748baf6705e0fa8fac2b66c0c51f29bc9817347",
+  "clean_sha256": "abba77033f707ef7eb3abd147ec0438ec96cce4e6f642340e3cac1a027af0a93",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+1997&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 1997",
+  "quality_score": 0.7706,
+  "difficulty_score": 0.648,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

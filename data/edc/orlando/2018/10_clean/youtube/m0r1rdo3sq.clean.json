@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "faba70cd3c5088a565a7db044112003d663d71a946c649403a1f4c3d9582259b",
+  "clean_sha256": "21722f6c3c5cbad2c1a971d007b2387adfe17b40c576ae63632fa83c645f31fd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-m0R1rDO3sQ",
+  "title": "Tiesto Full Sunset Set EDC Orlando 2018 Kinetic Field",
+  "quality_score": 0.7932,
+  "difficulty_score": 0.6818,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

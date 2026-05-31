@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bf98c7f132fb3fda48399992eaffcfc7b01f5bb12ba4ec098a479150f28237af",
+  "clean_sha256": "6e40e1b44fccfa304ac88581578cc8b09e4762273c2d2a067b43bb0a9dcc96ac",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 585,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kw_C3HE6VRY",
+  "title": "Steve Aoki Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6904,
+  "difficulty_score": 0.4326,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

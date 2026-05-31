@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5d6644b53a18cf03447c20698291f55c4ba988ba0c7498bdd4803aa35310b371",
+  "clean_sha256": "8c68231024bfc72ed29b88e6b2893a0e9451d45c7f2246e849b5641774709f2d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 431,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=O7Dx6H86IKU",
+  "title": "Swollen Members -  \"Lady Venom\" Live @  Electric Daisy Carnival 2004",
+  "quality_score": 0.7298,
+  "difficulty_score": 0.6382,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

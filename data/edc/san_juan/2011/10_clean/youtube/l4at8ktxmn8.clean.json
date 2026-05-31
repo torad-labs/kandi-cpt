@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f2760b97e4b4c06b57a2623da0c5f545ee7e86a801012b3f46e1d82b2fef18b8",
+  "clean_sha256": "6f667308cff0f35768839968cc526705e9cbdb0f0fc1edeeeea949a872338cfc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 84,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L4aT8kTxMN8",
+  "title": "DRAGONETTE - \"Hello\" & \"I Get Around\" Electric Daisy Carnival 2011 *Puerto Rico* (HD)",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.682,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

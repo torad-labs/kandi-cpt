@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "10fa7522f5f8be35c0c7cde4c8ff01cad92f9b711b6506a89cdb37b1fbbf24dc",
+  "clean_sha256": "d6ff380b4600e06ba1003c0f64b83ffdcb7ad9965cb7c3ad746bf6c8341c070c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+1999&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 1999",
+  "quality_score": 0.7699,
+  "difficulty_score": 0.6421,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

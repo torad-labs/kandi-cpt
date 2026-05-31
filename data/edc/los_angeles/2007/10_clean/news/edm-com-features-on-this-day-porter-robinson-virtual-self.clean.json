@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "dd6462ed568374daa85382e05a9a7f7b219ee213c7bf8cb8ccb016683ad8afc0",
+  "clean_sha256": "5a4ec27ac23fc78b69b02ed98582d789031d9ec3944c404388b60e41b9c6061e",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 311,
+    "keep_ratio": 0.471,
+    "anchor_ratio": 0.44,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/on-this-day-porter-robinson-virtual-self/",
+  "title": "On This Day in Dance Music History: Porter Robinson Released Virtual Self - EDM",
+  "quality_score": 0.8067,
+  "difficulty_score": 0.8075,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

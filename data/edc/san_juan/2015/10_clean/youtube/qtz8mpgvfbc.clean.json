@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8985bb7ab5c47c55056646d4db8da81fcff7b77806e59332209d10885a1bba8f",
+  "clean_sha256": "5a119f97b67f574732fa8dd65b1a2b502dbbf7939823654eacb5cf7befa2a3e2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 96,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=qtz8mpGvfbc",
+  "title": "2015 EDC Puerto Rico Aftermovie",
+  "quality_score": 0.6336,
+  "difficulty_score": 0.5681,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

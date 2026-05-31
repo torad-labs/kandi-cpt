@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "275bea7464b9c48596a7332c1a15350ffaa69d3bbd25b5d2d52ba286a5ca61fa",
+  "clean_sha256": "a08c30378b303a06a137c4b0b0c098f1fdd93b17968e43c7c2e0840d65f5a105",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 485,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kuJVbpaFuXs",
+  "title": "SUBJOHNICS (Subtronics B2B John Summit) @ EDC Las Vegas 2023",
+  "quality_score": 0.6122,
+  "difficulty_score": 0.2474,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2d62d047a6a67d0d3fd19f47ae86661944bea2a0747512ef7ca67c2da192b8cd",
+  "clean_sha256": "22611fa66a7e3aeae6704bb305f197dedfb97c0ef2966ef510871554822cd64a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 114,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=KUiT5w7DDHk",
+  "title": "Calvin Harris EDC 'Eat Sleep Rave Repeat' Live Milton Keynes Bowl 12/7/14",
+  "quality_score": 0.6464,
+  "difficulty_score": 0.7612,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

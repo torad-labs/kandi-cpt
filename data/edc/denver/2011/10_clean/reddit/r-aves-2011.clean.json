@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "257d82a92df77a83b4548b240b0ef4a64d41b34695e96b5473e221f667bbcb75",
+  "clean_sha256": "db0bc9686ac253e5497971c1adc5b266b6aaa40b7a810725ae01a8ac45debc7b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=denver+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 denver 2011",
+  "quality_score": 0.5565,
+  "difficulty_score": 0.6211,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

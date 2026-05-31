@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "b30223b81d1aad34c8496e309c55c62e9ca12d9e7f60d81902b354e08da1e000",
+  "clean_sha256": "8aa7f0f576f6bd5e6d1c64f19894fb106c08963135b8d91b8ed06a6bb90baa1c",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2016",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7463,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

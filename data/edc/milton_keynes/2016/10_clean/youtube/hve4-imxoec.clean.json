@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4b516b35a6fd6481afe99dd04cc3084d168815f5d6cba88b4e0e2173541bc414",
+  "clean_sha256": "fceafb8a8aa261f80e7be1e5840f7a3e1af3363598ebf20145421e17662157e3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 312,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=hVE4_ImXOec",
+  "title": "EDC UK 2016 - Avicii Opening @Milton Keynes l Full HD",
+  "quality_score": 0.6525,
+  "difficulty_score": 0.5325,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

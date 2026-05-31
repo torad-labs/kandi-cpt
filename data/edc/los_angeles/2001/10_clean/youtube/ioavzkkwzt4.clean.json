@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "351d2c81bd398a621e11028821d3a70125b3b0a94cedadc9b0c0f5e33259cd7f",
+  "clean_sha256": "e8564ca9fe356c98a1f53cf1a7554415288b82959724b91d2a5128f114238e4c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 75,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iOAVZKkwZt4",
+  "title": "EDC friday walking into the coliseum.",
+  "quality_score": 0.6076,
+  "difficulty_score": 0.7424,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

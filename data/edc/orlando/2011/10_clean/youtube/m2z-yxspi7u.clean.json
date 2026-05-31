@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "51488fceeb7e713e97d29f024c30ff87fb4571a18f72bc7ce7f77e10c3e07ad3",
+  "clean_sha256": "0eb96de3be8b66b4feb2e2ac4d6a7412121b238c812ef2f90f7c0bff299b7598",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 57,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=M2z_yXSpi7U",
+  "title": "@TIESTO ORLANDO EDC 2011",
+  "quality_score": 0.6309,
+  "difficulty_score": 0.8002,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

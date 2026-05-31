@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e10d2c9229c71442359edb75c0c747973897e559cce33a935b21f2218f6f5c61",
+  "clean_sha256": "3f117571e74c14cb370cefed487c8aa511e317b3f59b96017527de2c56ba552f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 737,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=yuFCk-R8zak",
+  "title": "EDC Puerto Rico 2015 Official Trailer",
+  "quality_score": 0.7136,
+  "difficulty_score": 0.6749,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

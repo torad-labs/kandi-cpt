@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "719f2bfa5b6b203c3a3725c52156d0b5c45cea647e81e90b096f7bd52460c7d1",
+  "clean_sha256": "9d0eb3f5ea7caf65c67a524f691c5d4537f26abb3edd295292413600f9620c0c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1008,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=QXiG-OS2t04",
+  "title": "EDC KOREA 2025 \ud83c\uddf0\ud83c\uddf7 | Day 1 Vlog",
+  "quality_score": 0.825,
+  "difficulty_score": 0.5977,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

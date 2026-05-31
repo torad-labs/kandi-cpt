@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "71138bdeb93205f2e4525a5f7ebbf220fea6b46df3db6af79a1d923e8781f130",
+  "clean_sha256": "7a6cf19d02adf61e07c702dc77687b45f516ce00aefb395685569746c7c34c45",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 264,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CmjRr3BzQIg",
+  "title": "rave edc 2007",
+  "quality_score": 0.6624,
+  "difficulty_score": 0.6732,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

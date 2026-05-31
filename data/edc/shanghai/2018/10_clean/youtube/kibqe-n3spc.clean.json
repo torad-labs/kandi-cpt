@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "534ee0c0042e5e4687d4bed22ab6d875e4d8f77b27b358f31ffca0457bafb5a9",
+  "clean_sha256": "483a699b0f87819aad789ceca269fc46551be56f2539059d9322c701c700c250",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 416,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=kibQE_N3spc",
+  "title": "Oliver Heldens - EDC China 2018 Recap",
+  "quality_score": 0.6325,
+  "difficulty_score": 0.5276,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

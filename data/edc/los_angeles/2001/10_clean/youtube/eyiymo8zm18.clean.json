@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "53ffa4247943c8033c6303e44eb2c73665252b4137e8ff6c745c980a119f6c71",
+  "clean_sha256": "70e1fc50bf9a0d7a2b98d71f8bed898c352fb4fb9200500eaa91bb570eb35d0b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 71,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=EYIyMo8ZM18",
+  "title": "Christopher Lawrence: Electric Daisy Carnival (Rave - 2001)",
+  "quality_score": 0.6306,
+  "difficulty_score": 0.7574,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

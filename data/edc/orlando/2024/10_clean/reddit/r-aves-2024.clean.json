@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "76bd645ae3d7ce924877c5b3dc981313762bfa14e1b1515cd9af15d69cbfa12d",
+  "clean_sha256": "03601355d50dee07678dcc1bad3acf514c381aced60701f3b35cf4337d3ecf2f",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2024",
+  "quality_score": 0.7988,
+  "difficulty_score": 0.5462,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

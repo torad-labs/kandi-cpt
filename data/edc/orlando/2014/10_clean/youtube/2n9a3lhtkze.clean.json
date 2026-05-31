@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "02901bebeee9d9d66c8e057d68b70f24b88f0d4bc000af85c46e443ae5154c2a",
+  "clean_sha256": "508d29eb9f384feaba1e6f7d0bd4a1d8799b49860e87d25216cb172bb428ace8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 742,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2n9A3lhTkZE",
+  "title": "EDC Orlando 2014 Official Trailer",
+  "quality_score": 0.7035,
+  "difficulty_score": 0.7044,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

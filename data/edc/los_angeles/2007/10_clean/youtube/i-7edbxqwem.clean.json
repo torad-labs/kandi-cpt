@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a933046b741791d69e5a2ed80475e044cec629f8c22ddc8c1b56f1608ce505c5",
+  "clean_sha256": "9e65b9fb74489719f26ff02910db82d59ec12570f68012bdf99aa5351de75136",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 100,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=i-7EDBXQWEM",
+  "title": "Electric Daisy Carnival 2007 Official Trailer",
+  "quality_score": 0.6579,
+  "difficulty_score": 0.7611,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

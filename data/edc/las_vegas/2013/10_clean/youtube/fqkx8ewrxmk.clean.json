@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f536106795e5ca69aa39c986b8374c8b0a5c82a4119eac9b2c5e8a29dee4392d",
+  "clean_sha256": "a4db52d8d547ce5aca2ba82d670d747c94eb487fd48bacd3211d1c81452ca1a2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1032,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fqKx8Ewrxmk",
+  "title": "Hardwell Live @ EDC Las Vegas 2013 (Hardwell On Air 122)",
+  "quality_score": 0.6694,
+  "difficulty_score": 0.5363,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

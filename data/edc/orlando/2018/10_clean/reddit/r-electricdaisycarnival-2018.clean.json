@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "8070877bfb307b0aff5ec8a51feac82c9d29d45618d9e4b467b96e3c862a6051",
+  "clean_sha256": "189b203407a52fab8f23af2768702e580676ecfe8695b6db2c350fa0489fe9eb",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2018",
+  "quality_score": 0.7892,
+  "difficulty_score": 0.597,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

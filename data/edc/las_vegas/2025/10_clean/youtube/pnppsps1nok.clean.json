@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "664bb7484afac4c8133d8c17f8321b5da7804dbdc1e445a76c11f19b8a0459a0",
+  "clean_sha256": "4b8c4f0e5220790d935e4373435f05e4ce2f89d207716a2da0c6fbae66ebd5a2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 284,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PNPpSPS1nok",
+  "title": "FISHER LIVE FROM EDC LAS VEGAS 2025",
+  "quality_score": 0.6251,
+  "difficulty_score": 0.6177,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

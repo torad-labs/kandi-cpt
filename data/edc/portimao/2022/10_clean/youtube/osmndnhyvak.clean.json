@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8f4fad4c24c4ad6f10db41aa0e438f0820e222f7d516d40dddbaf07f71b7485d",
+  "clean_sha256": "aeea329bea4c83e316695fca963d4db326df9aaeddc26b7781c997406ec1b04e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1838,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OsMnDnHyvak",
+  "title": "EDC Portugal Lineup Review & Artist Recommendations",
+  "quality_score": 0.8576,
+  "difficulty_score": 0.5063,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

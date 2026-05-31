@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a60d1a293ac88cc086c7ecda55a7f29ce1453a36a16c847a3598cbbc9b1beb04",
+  "clean_sha256": "7d2ff088642d40ae74ab892cd3bb7ea9e0f5f07e282df3bd63a01bb920eeadfa",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 93,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=giXza3D1wIw",
+  "title": "Above & Beyond - EDC Las Vegas 2014 Full Set",
+  "quality_score": 0.6461,
+  "difficulty_score": 0.6688,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

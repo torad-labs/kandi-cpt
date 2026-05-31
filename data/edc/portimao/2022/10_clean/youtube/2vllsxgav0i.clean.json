@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c0ea084c33ea7c946456916c85b65504c222068df50372b1c53a119fcac19d05",
+  "clean_sha256": "0a889dfe780d2fc7869cc05d333e307e8fa80ec8629bfdc45245f87f73843c3b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 705,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=2vLLsxgaV0I",
+  "title": "MotoGP\u2122 Race Highlights | 2022 #PortugueseGP",
+  "quality_score": 0.6328,
+  "difficulty_score": 0.3113,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

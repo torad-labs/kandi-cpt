@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2fc327342d62b93ac307e5a2d24fd229f37030ea6bd5f429cd26f9cf04b0efbe",
+  "clean_sha256": "6d911afb3b420329b26d0ddd41b295e4ddcb4a4e826fa32981bf8bc6b8dfb096",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 875,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=lCHSnSc90lA",
+  "title": "EDC Orlando 2024 | Aftermovie",
+  "quality_score": 0.6567,
+  "difficulty_score": 0.472,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

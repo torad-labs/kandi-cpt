@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b95726022be28b063d8ee23b4264eb59151af9c333e25848de45d8e802477323",
+  "clean_sha256": "1ab360687e0457f65edc27578873bee187461581aeb017f51d2eba8c04980168",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 431,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=c9lSvraL6jU",
+  "title": "EDC Los Angeles 09",
+  "quality_score": 0.6631,
+  "difficulty_score": 0.7292,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

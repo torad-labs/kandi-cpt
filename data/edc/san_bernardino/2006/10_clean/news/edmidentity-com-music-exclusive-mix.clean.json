@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "ee0e15cd604e4d273612e8f3ee744ed79b0b076ed454c1b9f820622989bcb72f",
+  "clean_sha256": "1e30904cd50c4ccf33d8e12b378b69ecfa05a14cf7c486ea8d0563b6ebfda2fc",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 262,
+    "keep_ratio": 0.375,
+    "anchor_ratio": 0.426,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edmidentity.com/music/exclusive-mix/",
+  "title": "Exclusive Mix Archives | EDM Identity",
+  "quality_score": 0.6837,
+  "difficulty_score": 0.6185,
+  "cluster_id": 0,
+  "curation_status": "drop"
+}

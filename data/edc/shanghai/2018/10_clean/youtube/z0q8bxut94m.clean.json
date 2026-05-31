@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "37741fefcb83b3705ee6169915f704f5c07d1170e118ff58d7b900821929ab9c",
+  "clean_sha256": "efc3f1e001cf9e836bd4248a55e50248ad1474acf2a7d6712516ea565137c856",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 836,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Z0Q8Bxut94M",
+  "title": "EDC China 2018 Official Announcement",
+  "quality_score": 0.7365,
+  "difficulty_score": 0.4114,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

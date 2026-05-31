@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "57acd82562e8bdcd42a4ad4589792b63c1108607a768e27d4e0f1daf962c9157",
+  "clean_sha256": "24d8b9865482da57bf73011521891e6b917cb10053bca4bcbf22abe13e714db4",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 587,
+    "keep_ratio": 0.562,
+    "anchor_ratio": 0.265
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2013/07/edc-london-2013-who-you-cannot-miss-at-insomniacs-first-jaunt-overseas/",
+  "title": "EDC London 2013: Who you cannot miss at Insomniac's first jaunt overseas - Dancing Astronaut",
+  "quality_score": 0.8617,
+  "difficulty_score": 0.7088,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

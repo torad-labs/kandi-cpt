@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "33745908f3044d722f60a680f21b92b0c04441163d0182b3a450b5e073bcc57a",
+  "clean_sha256": "d6a1b81956504a47799f3bc042a58babd6e0e29d811b1620ce3c354c1bc9d794",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 476,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Uweb60YZugw",
+  "title": "EDC Orlando 2019 Aftermovie",
+  "quality_score": 0.6854,
+  "difficulty_score": 0.6324,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

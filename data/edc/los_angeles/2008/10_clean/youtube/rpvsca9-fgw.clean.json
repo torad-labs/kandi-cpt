@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "97b5868cf8db49c2e54bb75b1def0720f3e5a4f5569b852c78e085551d563697",
+  "clean_sha256": "d199d84249c86d0b1719551062f6b36ca7dd78fece48ab3b99a308c63c48163d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 126,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rpVsCa9_FGw",
+  "title": "E.D.C. 2008 Electric Daisy Carnival Ride in Los Angeles",
+  "quality_score": 0.6597,
+  "difficulty_score": 0.7849,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

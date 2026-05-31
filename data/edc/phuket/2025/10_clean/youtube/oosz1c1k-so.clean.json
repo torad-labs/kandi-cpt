@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "36a7289bdb46c382de8d93402f1685e27c73c0b252b2a4c3c04f86ce9239266f",
+  "clean_sha256": "12270bdb284679b6abb4a88fbe57f3a30c81c08826f6977bd82d2f6925e6a547",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2327,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OoSZ1c1K-So",
+  "title": "The Ultimate EDC Thailand 2025 MegaVlog | 3 Days of Raving, Stages & EPIC Moments!",
+  "quality_score": 0.9138,
+  "difficulty_score": 0.5902,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

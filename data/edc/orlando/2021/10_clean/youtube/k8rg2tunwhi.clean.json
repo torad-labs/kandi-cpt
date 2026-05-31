@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "192c03d7e57161aa4515937a5e6b02b2f5f5a193ca2383777c0f644a4e765170",
+  "clean_sha256": "344a8134fcbf1e7785bf29a75e3b174ed2f46309c2c11f7a0b1a4fb1eeb11e01",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 874,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=K8RG2TUnWhI",
+  "title": "Galantis Full Set EDC Orlando 2021 - Kinetic Field",
+  "quality_score": 0.7562,
+  "difficulty_score": 0.6044,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b7095214976bc2c85363e5c76e88e111d9ec8e45f0ea35d4e7ffadf5144adaa1",
+  "clean_sha256": "91a8b77a48855c4ef8cc365282e997a03c9acecc0184787cc915ed132a28af19",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 430,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8_4yxEGe29A",
+  "title": "SIDEPIECE live @EDC FULL ORLANDO 2024",
+  "quality_score": 0.6342,
+  "difficulty_score": 0.4593,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

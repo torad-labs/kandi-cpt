@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b29b01dde89d5733ffc387270912443529615919440887403a7221a107b2825d",
+  "clean_sha256": "e2cf470bbf7055b19e74b7bfd3b88857144f330a892ba3b87eedabe538915f16",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 623,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iY4g1WaBmds",
+  "title": "Alok b2b Green Velvet @ EDC Orlando 2025",
+  "quality_score": 0.6263,
+  "difficulty_score": 0.1784,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

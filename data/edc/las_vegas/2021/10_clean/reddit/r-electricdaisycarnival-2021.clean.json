@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "d4a2da1cbff10057dac39c3f9e694eeb1216098d69c921d25e74f7c27045b18a",
+  "clean_sha256": "6cf93c6fc87b726a5114a161c543b72a879180932dbee6da3bae1b1ba6ad7023",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2021&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2021",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4372,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

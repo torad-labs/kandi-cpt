@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "87273dde943e1d2f773ac8b01252b5593a9f4a71d0078bbe6178916867aa5796",
+  "clean_sha256": "e628bebe00f4ab648ca2711db69192d63e8ac3ea3b9935ec3f434dbcd13d23a5",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2024",
+  "quality_score": 0.7721,
+  "difficulty_score": 0.4962,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

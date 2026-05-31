@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "756354d8d3c16ca5ca512e2308f867d8ecedc85e1185f464e0817f6a9b529da0",
+  "clean_sha256": "0de0d9780e2a86501210fc66bd75922d0be883f2294aa6b9dbdfa0934ab06956",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 87,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=CyJDdNeha28",
+  "title": "EDSEA 2024 Alcohol Package/Overall Experience Recap",
+  "quality_score": 0.6079,
+  "difficulty_score": 0.8633,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

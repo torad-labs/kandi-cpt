@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "e1b7d0dc82a8bfade7ffe8c6a65606494d05b8f07255dbb22bfd73a6d6748482",
+  "clean_sha256": "10a88e5bc974248f2f1f23d1eec2da59082c6ed092fc236bb8f5408ceff36747",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 290,
+    "keep_ratio": 0.409,
+    "anchor_ratio": 0.374
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2020/03/insomniac-to-host-24-7-broadcast-of-festival-sets-from-hard-edc-okeechobee-and-more-with-insomniac-rewind-stream/",
+  "title": "Insomniac to host 24/7 broadcast of festival sets from HARD, EDC, Okeechobee, and more with 'Insomniac Rewind' [Stream]",
+  "quality_score": 0.8673,
+  "difficulty_score": 0.2995,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

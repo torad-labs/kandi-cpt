@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6012eb2988b01506ab8eec46c37e4a59a62b4e6b8d2948da9392c2b037ed49be",
+  "clean_sha256": "275791816b2cba03f816f655cd7e9a308d784e72258851722e6b81a5254629a5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2828,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=a2dLBd9Vo4g",
+  "title": "Dave London @ EDC Orlando 2023 Breaks Set (Free download)",
+  "quality_score": 0.8832,
+  "difficulty_score": 0.3584,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

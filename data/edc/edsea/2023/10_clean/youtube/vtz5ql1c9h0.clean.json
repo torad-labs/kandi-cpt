@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8a4a64e7b315467e9a3fd92cccb78423c4d16254bd9a38160cdd6bfd7460dc6d",
+  "clean_sha256": "8c7949b8ea8c4e81d9168a6d06386fb309bd1e8e55130f85a5e275aa800b976e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 512,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=vtz5ql1C9H0",
+  "title": "EDSea 2023 4K Aftermovie (VLOG)",
+  "quality_score": 0.6642,
+  "difficulty_score": 0.7688,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

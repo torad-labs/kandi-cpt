@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "8e8b9dc85f516ff7a2c75e8dba5f16630da8ecfce639e0bc27e9acc1dc808d3d",
+  "clean_sha256": "812b45b3cef987f9c240a18061869ebfaa2c7b83b70bee1004e763f558e118d3",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 922,
+    "keep_ratio": 0.685,
+    "anchor_ratio": 0.216
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2025/12/dancing-astronauts-new-music-friday-alleycvt-adam-sellouk-riordan-aname-disclosure-and-more-november-28-december-5-2025/",
+  "title": "Dancing Astronaut\u2019s New Music Friday: ALLEYCVT, Adam Sellouk, Riordan, anam\u0113, Disclosure, and more (November 28 & December 5, 2025) - Dancing Astronaut",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5435,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

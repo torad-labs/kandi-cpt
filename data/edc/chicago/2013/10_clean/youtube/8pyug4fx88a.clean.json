@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e0e156e7ea93f9d3b162ae436271de20db6ff8b4a4aa3fa06d2c73990b4dbd95",
+  "clean_sha256": "f71b3419c85499969417a4f3526660416980c5f65431a36d7e8b1a28ced80bfe",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1009,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8pyug4FX88A",
+  "title": "ELECTRIC DAISY CARNIVAL 2013 EDC CHICAGO ILLINOIS",
+  "quality_score": 0.6988,
+  "difficulty_score": 0.5075,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

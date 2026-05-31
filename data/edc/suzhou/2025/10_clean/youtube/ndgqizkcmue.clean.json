@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2ba3e33293454f04e994b4276a69a4e34e64c6589189ab4c143839c6c07ad000",
+  "clean_sha256": "44cac3cd54656cf037e9cf6123090c9dea0742014e75b8628b5061e08018b890",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 61,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ndgqIZkcMuE",
+  "title": "The Chainsmokers - EDC Suzhou/CN 2025 (Full/Brand New Set)75m",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.7231,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

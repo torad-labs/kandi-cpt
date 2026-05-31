@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d933307dbff645105ff3a8bbc5ec6ffbd8d98b54e93e24fea290f44179d70709",
+  "clean_sha256": "205fb3170cfc66f84f59024b6079b66a6d40ae0afb496c783c9f6dca0e1f21b9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1400,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=izHUbxncogM",
+  "title": "EDC Las Vegas vs. EDC Orlando: How Do They Compare?",
+  "quality_score": 0.8012,
+  "difficulty_score": 0.6712,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

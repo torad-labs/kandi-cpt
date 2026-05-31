@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1c14a79315422feb108eff5c8034a35950d4e6fd9e99d672bd27e4a5cf3813af",
+  "clean_sha256": "897def08a5aae14f07817e220f669f4964dfb2b7e4e1f891f1fdfb6df166ae83",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 457,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uqk4MfRD1CA",
+  "title": "Candyland Live Set - EDC Orlando 2013",
+  "quality_score": 0.6683,
+  "difficulty_score": 0.5984,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

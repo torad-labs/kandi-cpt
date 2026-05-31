@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "21c24a09ffba56d5ccf98a43ce04939a53be71a742921dc2f016c52c28ff34e8",
+  "clean_sha256": "0c00a397eb94d74626e0d6425191fd3c0a0a4c07f5294a66d0f6b66c88c2e15c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 102,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=SO6qIhI8CV0",
+  "title": "EDC Puerto Rico 2015   Day 1 Nervo, Bassnectar, Steve Aoki, Flux Pavilion",
+  "quality_score": 0.6457,
+  "difficulty_score": 0.8133,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

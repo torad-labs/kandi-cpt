@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "14a229a8691e9fc1312447672245ea153786f6fcdeba292166254b22c2f614f0",
+  "clean_sha256": "f8e7e91ba2f293b5377a1ebb0966b43c84f2aee848df3771bb92f019ba9e75c1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 814,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=PXYimfIHs5c",
+  "title": "\u00a1Electric Daisy Carnival (EDC) por primera vez en Colombia",
+  "quality_score": 0.7157,
+  "difficulty_score": 0.6864,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

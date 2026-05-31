@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b3b49e44ecdf70e00b655097d4d1cbf48e122b778a09f6f3cc2d6ba7fb1e12c6",
+  "clean_sha256": "5f7a270ec389fd59071d3ab926569e486a0891add883a9d2ae299654529429b6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1476,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=nq-nceDK1oA",
+  "title": "Lady Liquid @ Electric Daisy Carnival 2010 San Juan PR Part 1",
+  "quality_score": 0.7901,
+  "difficulty_score": 0.8762,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

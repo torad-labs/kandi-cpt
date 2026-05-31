@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6e3e1c40c5e1b36a7d59038b77a11f99f6939d48ff6d7f03a095bde57602eab2",
+  "clean_sha256": "cb2742b5e5eb83c0e10c01f7bad9b2771b7b3a68f580590de4d4b7aa0e96dc7a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1430,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ihSEfhrt_Dg",
+  "title": "MCR-T - Live From Medell\u00edn",
+  "quality_score": 0.8603,
+  "difficulty_score": 0.4345,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

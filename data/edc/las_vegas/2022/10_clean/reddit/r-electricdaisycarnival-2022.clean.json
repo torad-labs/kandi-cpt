@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f247013e430e11f2108b4e517c72aa25c509ff9b06d71a5abebf43fad96918a8",
+  "clean_sha256": "44e5300f35e1246b8c06a737102f316571956764c2b6f0cffb2e1c0e778707b9",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2022",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4462,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

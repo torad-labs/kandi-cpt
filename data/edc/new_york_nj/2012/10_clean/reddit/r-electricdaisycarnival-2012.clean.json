@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "92b2948e3cfa6b613ebe9b11a3dd19f4b5f1864844a280406570a5ad5c680a98",
+  "clean_sha256": "26d9fa3d9b68dbd08ae06356c2da9eec0b09c3ca85513fdfebe6d6ad827ee9ae",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 new_york_nj 2012",
+  "quality_score": 0.7784,
+  "difficulty_score": 0.5863,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

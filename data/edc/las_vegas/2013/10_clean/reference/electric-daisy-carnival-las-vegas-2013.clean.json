@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "cb7eeffd8f02cc607f6872d7eb15481fa03b3b424a6db5a05f294526094c21d4",
+  "clean_sha256": "6460ddf688b30f785f2393f9cea89bbea29eb90bade67c3a16130134a2de90fd",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 638,
+    "keep_ratio": 0.717,
+    "anchor_ratio": 0.149
+  },
+  "domain_class": "review-aggregator",
+  "source_channel": "mfw",
+  "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2013/",
+  "title": "EDC Las Vegas 2013 | Music Festival Wizard",
+  "quality_score": 0.7871,
+  "difficulty_score": 0.6891,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

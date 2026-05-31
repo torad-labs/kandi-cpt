@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4514dea721aafe5a661a5b66e52f75d83c7dce651f2fcb606c13e8d275edeef9",
+  "clean_sha256": "c7feda0d23eb2f4b37ac4e0a384e15b6b393dbeedff44424d3aa5b5eb74ad99b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4298,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xMkV6u102Ho",
+  "title": "Swedish House Mafia @ EDC Las Vegas, Los Angeles (25/06/2010)",
+  "quality_score": 0.9248,
+  "difficulty_score": 0.6945,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

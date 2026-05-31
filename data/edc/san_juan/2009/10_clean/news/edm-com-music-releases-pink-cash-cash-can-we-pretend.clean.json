@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "3848352dc6fcc6d1f7bf0df9bd2c5bcfb9612543f85529b3d773c9b252081cbb",
+  "clean_sha256": "47974575a65b2f05cad6d4a04e65ffa11bf6c21f0346348b3f1008d780413d3d",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 272,
+    "keep_ratio": 0.45,
+    "anchor_ratio": 0.451,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/music-releases/pink-cash-cash-can-we-pretend/",
+  "title": "P!nk and Cash Cash Come Together on Catchy New Single \"Can We Pretend\" - EDM",
+  "quality_score": 0.7516,
+  "difficulty_score": 0.6964,
+  "cluster_id": 0,
+  "curation_status": "drop"
+}

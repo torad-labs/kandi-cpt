@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bb65d4359118a904c8a35652effe0e027d8399dd9baa14ee93be8c20cb3c7e99",
+  "clean_sha256": "b633770569a27fbe142e6782ee294c3bfdb6c6953917070c6701b1a0a33e3962",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 483,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=H_eB_Ycvuyc",
+  "title": "Bingo Players Live At EDC Las Vegas 2015 (Full HD Set)",
+  "quality_score": 0.6823,
+  "difficulty_score": 0.6031,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

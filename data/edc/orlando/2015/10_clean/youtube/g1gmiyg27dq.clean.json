@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f4e793b050a9731319a3b5ef209f37afdd985a14f9c20cb49552c92994d0398f",
+  "clean_sha256": "d53f367e69bf08cdb15bf41fe6af6f2f97ac4d747fb994bf0e04b436e2959d44",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 3211,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=g1gmIYg27DQ",
+  "title": "LOUDPVCK live full set @ EDC Orlando, Florida November 7, 2015",
+  "quality_score": 0.9241,
+  "difficulty_score": 0.697,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

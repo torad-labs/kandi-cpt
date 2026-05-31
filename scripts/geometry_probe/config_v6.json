@@ -1,0 +1,16 @@
+{
+  "run_label": "v6_contrast",
+  "model_base": "base",
+  "model_cpt": "checkpoints/cpt/edc_lv_2026_v6",
+  "edition_dir": "data/edc/las_vegas/2026",
+  "output_dir": "data/_build/geometry/v6",
+  "results_table": "data/_build/geometry/results.jsonl",
+  "pooling": "last",
+  "layers": null,
+  "carrier": "At the Electric Daisy Carnival music festival, the entity is: {entity}",
+  "stage_form": "camel",
+  "visualize": true,
+  "viz_methods": ["pca", "tsne", "umap"],
+  "device": "cuda:0",
+  "_note": "V6 = v4 base + parity negative→positive contrasts. Compare vs v4_camel/v5_camel in the camel surface. stage_form=camel (training surface)."
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "da9da36388b213cb553279e100bd76122edf637d7a0b12f83d2c1b79cc47b3a2",
+  "clean_sha256": "cb81e3adfd067fc7844650da9ad54e88eea5ea3079d7be05dd92f857a00d6721",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1204,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8Di5LfyeeVw",
+  "title": "Valentino Khan - EDC Las Vegas 2017 - Full Set (Official Video)",
+  "quality_score": 0.6857,
+  "difficulty_score": 0.2366,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

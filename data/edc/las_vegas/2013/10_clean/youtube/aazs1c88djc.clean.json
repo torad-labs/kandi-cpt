@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "96a256053b2efd3eb3d17f900651e6dacfec6179abf00aa5025e546da678d975",
+  "clean_sha256": "35ffb26acd18c69faa1b363959923ad50b1009ce1ef6837bfb7bbc055bf03b36",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2798,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=aazS1C88djc",
+  "title": "Calvin Harris at EDC 2013 Vegas (Full Set Live HD Video)",
+  "quality_score": 0.9214,
+  "difficulty_score": 0.6528,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "768ea225734a6f982066a2a3514f5dacbac8c91a4aa38234653c55a0c6ece778",
+  "clean_sha256": "47937084bf992daaf49582a5597ee4e59b3344d72496a4e08120ad557d267629",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 559,
+    "keep_ratio": 0.543,
+    "anchor_ratio": 0.618,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2012/05/edc-week-las-vegas-2012-full-event-calendar/",
+  "title": "EDC Week Las Vegas 2012: Full event calendar - Dancing Astronaut",
+  "quality_score": 0.8947,
+  "difficulty_score": 0.5781,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

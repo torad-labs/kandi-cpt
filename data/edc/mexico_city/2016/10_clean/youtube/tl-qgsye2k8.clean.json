@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "cc85681b0f01f137f71e64da3c5bb9527dd0df14e303e5f3bf23f354ee0272ec",
+  "clean_sha256": "d9ab81992a961ef82ac5309e9b2f7c1bcda070c87ccc5ce24afb562fc1802d80",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4842,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tl-qGsYE2K8",
+  "title": "KSHMR LIVE AT EDC MEXICO 2025 (FULL 4K DJ SET)",
+  "quality_score": 0.9248,
+  "difficulty_score": 0.4847,
+  "cluster_id": 12,
+  "curation_status": "drop"
+}

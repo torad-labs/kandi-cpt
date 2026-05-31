@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "aa0d2b5dcdd969788dc20f43208147533661ca9ed2847f08fdcbcfec0ca238b1",
+  "clean_sha256": "9c1386e881b019c282f79be9f182b269d4560ef19ae21ae715c993f373f598e7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 152,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Sy5cnLhQvNM",
+  "title": "Tiesto EDC UK 2015 - Final 9 mins in HD @ Milton Keynes Bowl - Awesome!",
+  "quality_score": 0.6107,
+  "difficulty_score": 0.8791,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

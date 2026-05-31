@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "057f840d56cff497bc9538aa7ebe08a761146395e95c9ef6e6087caa83a0bf10",
+  "clean_sha256": "8af434a12ee46065e419f35bbc9735c9f4d88edf409d908e9f2a8d1837944d2d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 88,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=K6QlK5G_VnQ",
+  "title": "Kaskade   Live set Electric Daisy Carnival, EDC Orlando   09 11 2013",
+  "quality_score": 0.6444,
+  "difficulty_score": 0.7253,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "77aef20e147580651a690fc82ab1793f14412fec2b925c952d820db6466c7d80",
+  "clean_sha256": "1cb21581f065f20ac49023d0ab05ab9483a33f16922b7d26d3f2eb5df1977c6b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1999,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=LzuHNfzdx4I",
+  "title": "EDC Las Vegas 2017 Official Trailer",
+  "quality_score": 0.7739,
+  "difficulty_score": 0.362,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

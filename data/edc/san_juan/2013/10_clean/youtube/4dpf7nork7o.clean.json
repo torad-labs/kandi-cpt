@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0cc96a265d37b94490d6f42c9dab3986003d754a12489f39ca2408d85a681433",
+  "clean_sha256": "53a48457a45a4023d69bb1edee69c9f66831ff7badb9355a578cc8fc2544fa33",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 116,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4DPf7NOrk7o",
+  "title": "EDC Puerto Rico 2013 (trailer)",
+  "quality_score": 0.6475,
+  "difficulty_score": 0.6487,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

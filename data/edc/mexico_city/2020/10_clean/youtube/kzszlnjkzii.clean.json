@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c0a63128d187f0f0744ddba196f455490a7352bd7376565211754599d30e9852",
+  "clean_sha256": "3fc650247c306e37ba7b21087803847eed2524e2ecb406cc35398c91d971762f",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1097,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=KZSzlnjkzII",
+  "title": "EDC M\u00e9xico 2020  |  Said The Sky + opening ceremony",
+  "quality_score": 0.8619,
+  "difficulty_score": 0.6776,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

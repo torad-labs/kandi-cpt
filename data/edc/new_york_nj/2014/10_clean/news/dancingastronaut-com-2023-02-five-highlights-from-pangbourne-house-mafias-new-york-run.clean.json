@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "501760f1ce9c229ef282a7576272b26bb54fdf17eb00c231fc5e4bf4a60c5bb0",
+  "clean_sha256": "43cdd7769737bec72ca94ff74dea01da43c1d8e98a81fd2c4578255add61ca30",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1494,
+    "keep_ratio": 0.752,
+    "anchor_ratio": 0.144
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2023/02/five-highlights-from-pangbourne-house-mafias-new-york-run/",
+  "title": "Five highlights from Pangbourne House Mafia's New York run - Dancing Astronaut",
+  "quality_score": 0.8777,
+  "difficulty_score": 0.6453,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

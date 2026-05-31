@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ffc89c6eeacfc5f1dbf50605f3ba8505b90c443497798e45beaec766cffa0dee",
+  "clean_sha256": "e206dd5007d6a1dbf10a2d903a0f1cd5d72dffd0620f0dc5694210dfb68d86f7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 940,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Y-9zm3QnW3I",
+  "title": "EDC Orlando 2021 Trailer",
+  "quality_score": 0.7073,
+  "difficulty_score": 0.3952,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

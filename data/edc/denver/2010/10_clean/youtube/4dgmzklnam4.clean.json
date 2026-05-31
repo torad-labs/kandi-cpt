@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "fa0045c324005c4439fb8383a452f1acfe4e60683ddac8214205c083d0c6c197",
+  "clean_sha256": "36fc78229595dc6a2388f2764a3b6178f35777fc1a17c98c049069dea6d946c0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 117,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=4DGmZKLnAM4",
+  "title": "REfocus, REinvent, REemerge - 2010-2011 Highlights",
+  "quality_score": 0.6704,
+  "difficulty_score": 0.5127,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

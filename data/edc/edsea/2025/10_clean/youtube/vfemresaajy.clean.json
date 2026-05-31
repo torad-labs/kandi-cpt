@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e1a65eaf1014eb30d2847338b14c5116dcb46ec615c29aca3293d2afdc074376",
+  "clean_sha256": "b43bc1bdb76dc8fec35c8660769735a6819eec6278a155ef7a12d3c5e5969458",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 464,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VfemResaAJY",
+  "title": "EDSea b2b EDCOrlando 2025 P.O.V. Movie : The Adventures of Christian",
+  "quality_score": 0.7208,
+  "difficulty_score": 0.5289,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

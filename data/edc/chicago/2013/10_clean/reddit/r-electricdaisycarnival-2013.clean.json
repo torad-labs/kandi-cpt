@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "d2cba326c0634ce30a33e5ae4da3e63fab054b90d8c9074d70874fbe28267dc9",
+  "clean_sha256": "9b3c94135c63f65ee8e115ed2aa8c3fd15af9683bb1faef60edb5599ff7b3360",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=chicago+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 chicago 2013",
+  "quality_score": 0.6647,
+  "difficulty_score": 0.5302,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

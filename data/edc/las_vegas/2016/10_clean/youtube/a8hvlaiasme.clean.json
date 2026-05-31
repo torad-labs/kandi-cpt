@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "125f6f2fe78ed78a09c156d042dff684a3ba9a1e10a26856bd064e4f1cc54dc7",
+  "clean_sha256": "07083603d564754ddc3de789d5e27996b7ee49362f19de06fb3513f5fe0c58c1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 316,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=A8hvlaiAsmE",
+  "title": "Armin van Buuren live at EDC Las Vegas 2016",
+  "quality_score": 0.6558,
+  "difficulty_score": 0.5304,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

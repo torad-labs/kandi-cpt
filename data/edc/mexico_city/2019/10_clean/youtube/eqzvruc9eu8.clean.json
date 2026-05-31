@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5d04abbd6705b35dd6ae0a1bb2f5baa78f2042ecc61d574938a9f8424d203fbc",
+  "clean_sha256": "a330a6c6c222ff197eee3a5f3a1561c57f72262f828fffc37db5ee943273772e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 545,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=eQzvRUC9eu8",
+  "title": "Skrillex EDC Mexico 2019 Drops Only",
+  "quality_score": 0.6566,
+  "difficulty_score": 0.584,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

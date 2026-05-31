@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4b7a280dc2dcb481145c2870523ab6048bf61324d33992a0272f467d002bfc91",
+  "clean_sha256": "e2ee722c5024f8b9657999687e87a85e5634a869176edba9e8e6b8342ebfffcc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1704,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Hh7n9aAlWN0",
+  "title": "EDC Mexico 2015 Official Trailer",
+  "quality_score": 0.883,
+  "difficulty_score": 0.533,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

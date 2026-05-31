@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5b91eaf5b9971b0589ec67ac2a511aefdcac5cb35b9af308e521fb4369cbf7b8",
+  "clean_sha256": "35a06890c9f465f58c369c57d79690cce0b571acbb3f4249529cea98b6bac562",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 207,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=MudBY7NldSY",
+  "title": "Electric Daisy Carnival 2009 - EDC SoCal Massive, Los Angeles (part 1)",
+  "quality_score": 0.6666,
+  "difficulty_score": 0.6727,
+  "cluster_id": 15,
+  "curation_status": "keep"
+}

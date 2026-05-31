@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "d271e7845f62851ed44722ffb69ddd22002a9f848b8dc27988b10a95607945ad",
+  "clean_sha256": "0f8cfedcc35af4057cf4ca8635bdf5c420df97cb09896929b7319645c120cf49",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 511,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FgF0WLPAry0",
+  "title": "Chuckie - LIVE @ Electric Daisy Carnival (EDC) Las Vegas 2015",
+  "quality_score": 0.6953,
+  "difficulty_score": 0.6012,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

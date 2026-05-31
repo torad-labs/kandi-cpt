@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "a9a5805e74dca24a6f2292bc6066ddfbeaac74bfa552284392a46a3bc202079d",
+  "clean_sha256": "63b60601c20a201a0c0afc63b8d4e5972e2130f49b5ca2df93bd59787ebdff34",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 2148,
+    "keep_ratio": 0.84,
+    "anchor_ratio": 0.154
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2021/12/dancing-astronauts-2021-artist-of-the-year-illenium/",
+  "title": "Dancing Astronaut\u2019s 2021 Artist of the Year: ILLENIUM - Dancing Astronaut",
+  "quality_score": 0.8859,
+  "difficulty_score": 0.5046,
+  "cluster_id": 9,
+  "curation_status": "drop"
+}

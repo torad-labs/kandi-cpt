@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "af0994774d2c33d1fe6e89945174af5984436816547eea7e2b94240e0dc5e7ca",
+  "clean_sha256": "ee66534d3afb9d869291c6537f471ab1e20a12c308636fa98225cad133b64303",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 315,
+    "keep_ratio": 0.428,
+    "anchor_ratio": 0.426,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2017/08/pasquale-rotella-discusses-gary-richards-leaving-hard-big-changes-horizon-edc-brand/",
+  "title": "Pasquale Rotella discusses Gary Richards leaving HARD, big changes on the horizon for EDC brand - Dancing Astronaut",
+  "quality_score": 0.862,
+  "difficulty_score": 0.6992,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

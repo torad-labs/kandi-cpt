@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "846102ef6b8126e0cf1edaa78ab6fc5185ae79f0a7105163d1d2eda55dbc4e96",
+  "clean_sha256": "0ea140178d8c5a23cf1acf3b5c4a5fa8117351937b8fcc2b9dbe22839b2cb134",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1339,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NIwRJjk-LzI",
+  "title": "MARTIN GARRIX LIVE @ EDC LAS VEGAS 2024",
+  "quality_score": 0.7325,
+  "difficulty_score": 0.4316,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

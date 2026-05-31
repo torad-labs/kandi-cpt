@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b012aed5f7610458526fdb87c5c8a2bf272e5fa9bd0e5caf9ac70fbc0e300e47",
+  "clean_sha256": "1ba9309aa3ddd8d76d570d5a2a322cf12fd0115d3de663843c5f1e26ea6209f5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 143,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wZuw4xtbJ5s",
+  "title": "Clockwork EDC Las Vegas Set",
+  "quality_score": 0.6336,
+  "difficulty_score": 0.7066,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

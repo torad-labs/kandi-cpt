@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3696ba93c7b578a1122400a11e4a901263c2a4875cec8a92602b1aeb9f720fc4",
+  "clean_sha256": "96a18d59ae251035bb79ccf7827c5f363cfb70d2d12c826b21a43ed2d6a70d62",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 416,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=rvpjJ8jH458",
+  "title": "Dom Dolla Live @ EDC Las Vegas 2022, KineticFields Mainstage",
+  "quality_score": 0.6263,
+  "difficulty_score": 0.4288,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

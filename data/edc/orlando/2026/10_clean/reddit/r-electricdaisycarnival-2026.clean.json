@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "7717a3b9c39fd8c9c85a85ae71bf454e604f46f10bcc46db56b5e1f4f329cf9d",
+  "clean_sha256": "444c9326e18dccbc5405524ea17e703e7407418c601c861ae13f142f53aa1868",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 orlando 2026",
+  "quality_score": 0.7817,
+  "difficulty_score": 0.5275,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

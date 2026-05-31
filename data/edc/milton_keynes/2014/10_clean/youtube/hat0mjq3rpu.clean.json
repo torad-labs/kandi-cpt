@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1c267f570d682cf401767a74abf99e90b21c61faf890581bb1a7e3b8bc2d28aa",
+  "clean_sha256": "2398338c9e41b1b5399fe805029423600134be1f40c4c83b6c19f5f151bd13a0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 386,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=HAt0MJQ3rPU",
+  "title": "EDC Milton Keynes (UK) 2014 \u2022 After Movie \u2022 (Electric Daisy Carnival)",
+  "quality_score": 0.6653,
+  "difficulty_score": 0.7805,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1fc0706dd1209a2d82d79cde01d360fee06a5f9a448ce225e5c96dd51908bfe9",
+  "clean_sha256": "c51c855da563276409735dcd1a20015962fb25768e72da06c0aa745b9b713fc7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 450,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FPWzRybtQ2k",
+  "title": "Madeon Live Set - EDC Orlando 2013",
+  "quality_score": 0.6688,
+  "difficulty_score": 0.5907,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

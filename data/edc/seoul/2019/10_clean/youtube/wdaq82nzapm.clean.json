@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c4c0b369c1b5540869bcd8253f6243a56f3ba622cca956da5b3f4d30105745b8",
+  "clean_sha256": "efef9ed54dfc0c8b4c4c7493462d8965c4ba31a204241a2c2fac37173c97a9f9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 249,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wdAq82nzaPM",
+  "title": "[Vlog] EDC KOREA 2019|KINETIC FIELD|Groovy Room|Timmy Trumpet|Dillon Francis|Alesso",
+  "quality_score": 0.6575,
+  "difficulty_score": 0.5039,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

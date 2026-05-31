@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9ae6811ea25886bf397296078ccd4c4e07c6fdec6fe9d4bff903e8b387076e92",
+  "clean_sha256": "6311f2a3456bcf0aa791eae60c69480bb2acdbe5cdb2d2c855458aa4c4eea5eb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 79,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OcVIe4ico6g",
+  "title": "EDC 2011 Las Vegas Tribute Mix",
+  "quality_score": 0.6197,
+  "difficulty_score": 0.5976,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

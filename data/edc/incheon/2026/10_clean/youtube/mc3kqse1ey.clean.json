@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "496ee1815c75aa4c4684abaeed61fc5475c55d54f2685af81e035a767caab2b4",
+  "clean_sha256": "09720750de1b0b9370847ab820f66b593f16cd9288d58ec274e9eb8e6debe2a3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1569,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-mC3KQse1eY",
+  "title": "[FULL HD] Travis Scott LIVE at ACL Fest 2018 w/ Mike Dean (Austin City Limits Weekend 1)",
+  "quality_score": 0.8787,
+  "difficulty_score": 0.4276,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

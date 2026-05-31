@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "64a2986741723fd05df8b9ee5c626ed2aa7d4c891408959fd59f577e00821563",
+  "clean_sha256": "0cfc582079a4d415700304ec8ba526ecdff99179fe4e1a72c123548516822089",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 180,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=UUsI-03n53Q",
+  "title": "Ti\u00ebsto - Live @ Electric Daisy Carnival Las Vegas 2014",
+  "quality_score": 0.6479,
+  "difficulty_score": 0.7906,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

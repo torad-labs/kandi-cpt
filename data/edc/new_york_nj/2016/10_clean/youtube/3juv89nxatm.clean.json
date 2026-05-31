@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e82c44edfe82f6ba380aba4b4a24418ac354e3c649defd573f9d976a34d494a2",
+  "clean_sha256": "e19ec2bc256d063772691e5e3a1109fde809951106ee88d44ee3523b2e24daae",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 215,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3juv89nXatM",
+  "title": "Electric Daisy Carnival EDC New  York - Calvin Harris Performance",
+  "quality_score": 0.6533,
+  "difficulty_score": 0.6984,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

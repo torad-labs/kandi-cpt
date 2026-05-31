@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "32e45f62c46eb011338f69f52659b542e7d3fe85cb58dadfaf5fb2c8047b226d",
+  "clean_sha256": "80fa65ee4a02fcfea094b36b770d2d396a399fb25c61b15f6cf0c2c447dbd8c6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 280,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cmlZHuP66Zg",
+  "title": "EDC Cosmic House part 2 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6461,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

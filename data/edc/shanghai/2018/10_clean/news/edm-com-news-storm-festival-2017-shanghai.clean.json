@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "79d7075aa77b6e8a8561737951fd41704b8cce029b059f72df402e7946f93d26",
+  "clean_sha256": "b7770578f4857a65979d8b23cdc70d3a264f5c0d770dab41cc3669e19a894c93",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 264,
+    "keep_ratio": 0.382,
+    "anchor_ratio": 0.452,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/news/storm-festival-2017-shanghai/",
+  "title": "STORM Festival in Shanghai forced to shut down early due to torrential downpour - EDM",
+  "quality_score": 0.8668,
+  "difficulty_score": 0.7603,
+  "cluster_id": 0,
+  "curation_status": "keep"
+}

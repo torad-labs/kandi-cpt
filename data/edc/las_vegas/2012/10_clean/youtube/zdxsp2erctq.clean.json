@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "53c74635e9242b63f98caed442e7137a54f281ed43fae37233f19aa8d6998775",
+  "clean_sha256": "37c32d064e9473ff0363725d8b0820481e32c53d7745dba26c071e913864afef",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 422,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZdXSP2ErcTQ",
+  "title": "EDC 2012 Dates  On Sale Announcement",
+  "quality_score": 0.6903,
+  "difficulty_score": 0.5767,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

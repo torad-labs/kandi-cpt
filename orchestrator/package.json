@@ -1,0 +1,22 @@
+{
+  "name": "festival-factory-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Agentic control-plane (Vercel AI SDK v6) that drives the Rust festival-factory pipeline + Python stages to train-ready data.",
+  "bin": { "festival-orchestrate": "src/main.ts" },
+  "scripts": {
+    "orchestrate": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ai": "^6.0.0",
+    "@ai-sdk/openai-compatible": "^1.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}

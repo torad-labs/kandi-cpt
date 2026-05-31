@@ -1,0 +1,154 @@
+# Electric Daisy Carnival Orlando 2021 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2021/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: Insomniac
+
+The Scene
+
+Summer is still a long way out there, but Electric Daisy Carnival helps out their fans with an east coast edition of the famous festival. EDC Orlando brings two packed days of EDM to Tinker Field in Florida along with full-sized carnival rides, unique performances, and art. - Copyright Music Festival Wizard
+
+2021 Artist Lineup
+
+- AC SLATER
+- ACRAZE
+- ADIN
+- AFROJACK
+- Alan Walker
+- ALYX ANDER
+- Amelie Lens
+- ANNA
+- Armin Van Buuren
+- ATLIENS
+- AUDIOTRAP
+- AVISION
+- BAE-TOVEN
+- BERNZIKIAL
+- BIRMINGHAM DRIVE
+- BLACK COFFEE
+- BLUNTS & BLONDES
+- BORN DIRTY
+- BROTHERS OF FUNK
+- Cash Cash
+- CAT DEALERS
+- CELO
+- CHEYENNE GILES
+- CODE BLACK
+- COONE
+- COSMIC GATE
+- CUT & SEW
+- DABIN
+- DAMAGED GOODS
+- DANNY TIME
+- DANYELINO
+- DARKSIDERZ
+- DEEJAY SHAOLIN
+- DENIS SULTA
+- DEOCA
+- DEVAULT
+- DIESEL
+- DIMENSION
+- DJ ANIME
+- DJ HOLOGRAPHIC
+- DJ SECURITY
+- DOC ROC
+- DOM DOLLA
+- DOMBRESKY
+- DR PHUNK
+- DRE MENDEZ
+- EAZYBAKED
+- EKALI
+- ELEPHANTE
+- ELI BROWN
+- EVALUTION
+- EVAN GAMBLE LEWIS
+- Excision
+- FACTOR B
+- FRANK WALKER
+- FURY + MC DINO
+- G JONES
+- Galantis
+- GOLDEN CHILD
+- GREEN VELVET
+- GRUBE & HOVSEPIAN
+- GRUM
+- HALIENE
+- HEATHER COLLINS
+- HOT SINCE 82
+- HUDA HUDIA
+- IDA ENGBERG
+- JASON BROWN
+- JASON ROSS
+- JAUZ
+- JINX
+- JOHN SUMMIT
+- JOSEPH CAPRIATI
+- JOYRYDE
+- JSTJR
+- KAMI
+- Kaskade
+- KAYZO
+- KEITH MACKENZIE
+- KILL SCRIPT
+- Kshmr
+- KYGO
+- KYLE KINCH
+- LAYZ
+- LIQUID STRANGER
+- LOUD LUXURY
+- LOUIS THE CHILD
+- LP GIOBBI
+- LUCCIO
+- LUCII
+- MAGIC MIKE
+- Markus Schulz
+- The Martinez Brothers
+- MATRODA
+- MATTHIAS
+- MEEN
+- MOON BOOTS
+- MORTEN
+- MROTEK
+- NASSER BAKER
+- NGHTMRE
+- NICOLE MOUDABER
+- NIFRA
+- NOIZU
+- PATRICK TOPPING
+- Paul Van Dyk
+- PHOENIX JAGGER
+- PLSMA
+- REAPER
+- RICO ROX
+- SAID THE SKY
+- SAYMYNAME
+- Seven Lions
+- SIDEPIECE
+- SITA ABELLÁN
+- SKYLAR WILLIAMS
+- SLOTH
+- SLUGG
+- SOFTEST HARD
+- SOREN
+- STELLER
+- SUBTRONICS
+- SUPERNAUT
+- SUZY SOLAR
+- TAPE B
+- TCHAMI
+- Timmy Trumpet
+- TONY SHADES
+- TOO HEAVY CREW
+- TOO KIND
+- VERSE
+- Vintage Culture
+- VRG
+- WENZDAY
+- WESTEND
+- WHIPPED CREAM
+- WILLIAM BLACK
+- YOKAI
+- Zedd

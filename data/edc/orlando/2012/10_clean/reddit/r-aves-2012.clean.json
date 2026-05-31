@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "0a586fb57c00039257dec0f05388c167c034af714649c3bbd9694585cc59d318",
+  "clean_sha256": "7505a5dea2906b9ce63aa04d57267ae6b9123f11b08c9eadef12eb77e8fe3271",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2012",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.5998,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

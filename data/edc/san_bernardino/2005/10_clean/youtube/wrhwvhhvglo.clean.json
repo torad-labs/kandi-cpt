@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1165a15f266e4dbccc889c066c8c904cb061c9f6c5e2e3964d1604cf66c663c0",
+  "clean_sha256": "63762d951774a9d71ec8551d19262e2ae2140fe7b7f51ec002b970b268b4a060",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wrHWVhHvGLo",
+  "title": "EDCThe Dome part 2 video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6275,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "52eeb605f81a920d2d402da7269a9195f69453297479f3d4f45ae7ea5ef895f8",
+  "clean_sha256": "fee64364e7aa389fc8649325d35a7ffa0a81e7047f588a09099c2f1839f4d688",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 315,
+    "keep_ratio": 0.411,
+    "anchor_ratio": 0.411,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2020/02/pasquale-rotella-talks-edc-expansion-sustainability-skipping-nocturnal-wonderland-in-state-of-insomniac/",
+  "title": "Pasquale Rotella talks EDC expansion in State of Insomniac",
+  "quality_score": 0.8657,
+  "difficulty_score": 0.5878,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

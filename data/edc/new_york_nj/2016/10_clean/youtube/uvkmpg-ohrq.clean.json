@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "87be8518ae8b38d0854b2fbf855612407ada3159a836c7c9422be12657e103d6",
+  "clean_sha256": "b4faadfb99b449bfaeee375f833de5fbb9efd8be34137d24028ca5e988275db7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 373,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=uvKMpg-oHrQ",
+  "title": "2015 EDC New York Highlights Day 1 - May 23rd @ Met Life Statium",
+  "quality_score": 0.649,
+  "difficulty_score": 0.5134,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

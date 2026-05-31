@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "54f5fb2e55a4ba1713f20cf3dae9cdb2d0fed31bdc62ec56dc3f1b991020114b",
+  "clean_sha256": "1f936b1ee9bea13956e11ada9651dde047533c9101b7ad3ddbe498aa2a88dde3",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1295,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=w4mKtIjiKZU",
+  "title": "Kaskade | EDC Las Vegas 2014 | Full Set",
+  "quality_score": 0.8564,
+  "difficulty_score": 0.4654,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

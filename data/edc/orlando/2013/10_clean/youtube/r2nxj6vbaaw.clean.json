@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e16fc1b7c739d5cc428a5a6f5b06479c5c856e0ef6d6b1fb3807d030843b470d",
+  "clean_sha256": "9537ab6674487560be7381d56edb168fd4f2c103792de999969278424b7d7fd4",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 474,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=r2nXJ6VbAaw",
+  "title": "Kaskade Live Set - EDC Orlando 2013",
+  "quality_score": 0.6708,
+  "difficulty_score": 0.5166,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

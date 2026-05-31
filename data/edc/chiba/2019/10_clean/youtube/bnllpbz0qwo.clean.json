@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a8da321cac3cd167ca0d54d22c6bd8c682ab86e6095cf5d54f7b8dea609d5693",
+  "clean_sha256": "76fae7c218941380e06dcbdf9f073b6dd9d710ae738fc02075d48418facce971",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 169,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=BnlLPbZ0Qwo",
+  "title": "Alan Walker - Live | SUMMER SONIC 2019",
+  "quality_score": 0.6854,
+  "difficulty_score": 0.6834,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a8f88520b9a55166e24ac5c890aa74ca82c3e175ebeef3dee43ba1013f147faa",
+  "clean_sha256": "9146f0fbf66b36b04d2cdd5ae45bd61f9f5fe38f9e980f626f841bd4c60fcdfd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 581,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=l5wro3bMZWc",
+  "title": "Kaskade Live at EDC Las Vegas 2026 (Official Full Set)",
+  "quality_score": 0.6904,
+  "difficulty_score": 0.4209,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

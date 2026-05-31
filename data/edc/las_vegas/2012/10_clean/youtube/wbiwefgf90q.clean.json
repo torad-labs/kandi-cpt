@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bae6c0e87f51b939e0429fac059fc1ce073b35b1b5d07bbe7f480e2a2660d4aa",
+  "clean_sha256": "e1f29fa33f7a42a98e969a76a93114edf96f0aec5b9dd0b99411970b614d8be2",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1395,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wBiwEFGf90Q",
+  "title": "EDC 2012 Post-Event Trailer",
+  "quality_score": 0.876,
+  "difficulty_score": 0.5503,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

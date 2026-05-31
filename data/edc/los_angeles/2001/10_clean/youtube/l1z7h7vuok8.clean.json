@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "114c4e824efb1e70d85b50bfef89b60d33bfa9cfa64341416e2f5eb3a798e0b5",
+  "clean_sha256": "f13c64e7992a97b15c9edb378984f3c8a968c1cfb773f25404e4a0fb0d959368",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 182,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=l1Z7h7VuOk8",
+  "title": "Paul Oakenfold LIVE at EDC LV 2001 - Sweet Fuckin' dreams",
+  "quality_score": 0.6638,
+  "difficulty_score": 0.7017,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "bcb23fb5a8522e88455155a708f6ef1fb25fb34defc9064ec2a5886234929ed7",
+  "clean_sha256": "c96516793e3a320cf4363150cab65ab89cf65233d3a8e32be47a1630495d4c0a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 581,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=X7FbEQfV3vs",
+  "title": "EDC MEXICO 2014 al 2024 ve la diferencia de escenario \ud83d\uded1MEXICO",
+  "quality_score": 0.7264,
+  "difficulty_score": 0.4938,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8fed66f5345842bc1f378450bbfa44571b10d4505e725515b1d1ade3297f1949",
+  "clean_sha256": "e28fb91067f0f2b9e7161cc51c57f5f817a1d5fba9727f625b84fb00940383c8",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 782,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=W-E9JQ-Fx7o",
+  "title": "EDC Brasil 2015 Official Trailer",
+  "quality_score": 0.7136,
+  "difficulty_score": 0.5136,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "9f717086b2dbdd7be8f2af0c94930ba050d7de648fa35e9a8cb2001a13dfdbbc",
+  "clean_sha256": "657047963184cf7dc9a02f2fac85374fde84f92de15985f66042cb741969cd17",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 290,
+    "keep_ratio": 0.369,
+    "anchor_ratio": 0.365
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2020/10/coachella-reportedly-planning-to-push-dates-again-april-2021-off-the-table/",
+  "title": "Coachella reportedly planning to push dates again, April 2021 off the table",
+  "quality_score": 0.8704,
+  "difficulty_score": 0.5309,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

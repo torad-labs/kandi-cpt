@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ccf631bafef8ba33887f3a44191d071b563c42f07d1647eeb556d09ab39948cb",
+  "clean_sha256": "86e95081d00d4d9c291e6cf363d20a6a14e9783eac3c72c23a07fd4c839429cd",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 460,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=awW_MyArb0Q",
+  "title": "EDC Mexico 2014 Avicii",
+  "quality_score": 0.6756,
+  "difficulty_score": 0.7334,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

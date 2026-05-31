@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6a68dc3eec51c152ae482417c6a9c06392204fc3c713894a941b825594587048",
+  "clean_sha256": "9cde4842069a05c470e825e3ddd85f1bd63bd0f9a0d4149a0baccac6eb1c513b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1437,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=R368B7FBUkc",
+  "title": "GRYFFIN LIVE @ EDC LAS VEGAS 2024",
+  "quality_score": 0.7385,
+  "difficulty_score": 0.6687,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

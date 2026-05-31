@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4d651f68a9026c4c277212574a5839bc18e6ad3937bdcef2207a96eaf60f9194",
+  "clean_sha256": "efcf66a61adec5a29a5163a7f5fadabdf6f82996e363329fdef0148676929a89",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 282,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=L6WPbEuhd2U",
+  "title": "EDC 2010: Los Angeles Coliseum",
+  "quality_score": 0.6601,
+  "difficulty_score": 0.7142,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

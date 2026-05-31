@@ -1,0 +1,46 @@
+# Five highlights from Pangbourne House Mafia's New York run - Dancing Astronaut
+
+Scraped 2026-05-30 from https://dancingastronaut.com/2023/02/five-highlights-from-pangbourne-house-mafias-new-york-run/.
+Tier 2 (reference) corpus material.
+
+---
+
+For the past week, the New York dance/electronic scene has had a one-track mind and a front-row seat on an emotional roller coaster ride. Tensions ran high, conversations were consumed by a single acronym, and focus on anything unrelated to surprise show announcements synced with spontaneous ticket drops was decidedly derailed. This, New York’s dance community learned, is what happens when Pangbourne House Mafia (PHM) comes to town.
+
+News of the New York shows dates back to January 13, when Fred again.. casually disclosed to his Discord server that he, Skrillex, and Four Tet were plotting a five-night stint in New York. “02.15-19 PHM NYC,” the *Actual Life* producer wrote in a tip-off that came just a little over a week after the trio’s surprise four-hour b3b set at the Electric Ballroom in Camden Town, London, on January 5. There, Skrillex and Fred again.. celebrated the release of “Rumble,” one of the year’s most-talked-about IDs and one of the flashpoints of Skrillex’s sophomore studio album, *Quest For Fire*, released on February 17.
+
+The fanfare that followed Fred’s announcement of the New York run, naturally, was immediate and expected. Though PHM at this point requires no introduction, it’s worth remembering that the trio represents two different generations of dance producers, each with his own distinctive style and repute. Needless to say, this wasn’t lost on New York’s dance community, which had the opportunity to vie for spots at PHM’s shows at Good Room (February 14), Le Poisson Rouge (February 16), Times Square (February 17), and Madison Square Garden (February 18).
+
+Still, it’s unclear if this paradoxically large yet close-knit group of local dance music enthusiasts could have predicted just how engrossing and all-encompassing PHM’s four-evening tear would be. Most would likely agree that they’ve spent more time on Instagram this week than in recent memory. And as New York was completely and irrevocably transfixed by PHM’s unpredictable activity for the better part of the past week, there was a shared sense of exhilaration, exasperation, and investment in these events that uniquely unified the city’s dance community at scale. What can be taken away from this history-making week is a resounding confirmation: New York’s dance scene is indeed thriving.
+
+*Dancing Astronaut* recounts five highlights from a wild and wonderful week in which PHM proved that it’s their world—we’re all just living in it.
+
+# The Location
+
+Put simply, it’s significant that PHM’s flurry of shows, two of which celebrated Skrillex’s return to the album format nearly a decade after the release of his debut LP, *Recess* (2014), took place in New York. Though the city attracts marquee dance/electronic acts to its various dance-centric venues annually—including the beloved Brooklyn Mirage—over the years, dance devotees in New York and in the Northeast at large have lamented that many of the genre’s highest-profile events often occur on the West Coast, including most recently, Kx5‘s first headline show, a one-off appearance at the Los Angeles Memorial Coliseum on December 10, 2022 that followed their live debut as a duo at EDC Las Vegas last May. This considered, it felt special that New York was chosen as the site for PHM’s first and only shows in the United States and duly, the rollout of Skrillex’s second and *third* studio albums (*DON’T GET TOO CLOSE* was surprise-released during PHM’s set at Madison Square Garden. The LP can be viewed as both a follow-up to *Quest For Fire* and a companion album, or as Skrillex put it at MSG, “not really as much rave music as something you guys can listen to on the way home”).
+
+These reasons aside, it’s also good to see dance/electronic representation at MSG, which is widely regarded as one of the world’s greatest and most respected entertainment venues, leading owners to tout it as “The World’s Most Famous Arena.” MSG is associated with a long, rich record of historical events across sports and music, and PHM’s ability to sell out the Garden in a matter of minutes can be read as a barometer of the health of dance music in New York and even beyond, considering that fans flew in from different states to witness the one-night-only event.
+
+# The Adrenaline-Spiking Ticket Drops
+
+It’s reasonable to speculate that most New York-area PHM fans had a love/hate relationship with the unpredictable ticket drops hosted via Instagram stories. Whereas Fred again.. was the first to post a ticket link one day, Four Tet took the lead on another day, creating suspense and confusion around how and *when* tickets to the shows would roll out (ticket links dropped not at set times, but at PHM’s whim).
+
+From February 14–15, PHM kept fans guessing and refreshing their Instagram profiles for several hours. While it’s easy to skew in the direction of the hate side of this dichotomy, given the heart-racing, blood pressure-rising, adrenaline-spiking stress that came with these ticket drops, it’d be unfair to say that this wasn’t perversely enjoyable, owed to how infrequently tickets drop this way. (And for that, may we also be thankful).
+
+# Surprise! Hail and Riddim in Times Square
+
+By Friday, February 17, while some fans had made core memories at two PHM pop-up shows (Good Room in Brooklyn and Le Poisson Rouge in Greenwich Village), with the luckiest attending both, others had yet to get in front of the trio. PHM’s pop-up show in a school bus, live in Times Square with The Lot Radio, was the panacea for ticket-related frustrations felt up to this point. Requiring no tickets, the free, spur-of-the-moment rave in the heart of Times Square was the most easily accessible PHM event of the week from a logistical standpoint.
+
+The rare chance to catch PHM without entering a queue or scouring ticket resale sites drew fans by the hundreds to Times Square, where the sheer oddity and delight of seeing three dance visionaries at rush hour on a Friday in New York conferred an irreplicable sense of novelty to the occasion. On the cloudy, chilly afternoon, not even the dampness of the rain that fell or the passing hail storm could disturb the crowd’s dedication to the set. The quirky and creative venture attracted stares and questions like “Who’s playing?” as those in attendance danced to selections from *Quest For Fire* and yes, even riddim, thanks to Four Tet.
+
+# The Sense of Community
+
+Part of the appeal of the dance/electronic genre and its vibrant culture is the opportunity that it offers all listeners to become a part of something bigger than themselves. The sense of community among New York dance music fans specifically was warm and emphatic over the past week as PHM fans from different walks of life gathered across the city to hear three dance icons tend the decks in a compelling demonstration of music’s power to unite and move people.
+
+Although there was a specific type of community felt on the ground in New York this week, there was also a less geographically-dependent kind of community in the dance space at large, as listeners across the globe experienced the rush of emotion that came with Skrillex’s masterful and maximalist return to dance music’s spotlight through the release of *Quest For Fire* and *DON’T GET TOO CLOSE*. The consummation of these long-awaited projects (to which Skrillex first alluded in March of 2020), feels like a shared triumph for dance music listeners, some of whom gained exposure to the genre through *Scary Monsters and Nice Sprites* or even *Recess*. Judging from the anticipation that enveloped mere mention of Skrillex’s LPs long before they actualized, not to mention the general excitement that has surrounded his return, it is clear that Skrillex remains one of the genre’s most-loved talents. And while the dance community at large can at times differ, often diverging on the subject of personal preferences in dance/electronic subgenres for example, over the past week, the shared and damn near unanimous anticipation for new Skrillex music created a sense of camaraderie and togetherness that will be remembered for years to come.
+
+# The Personality of The Sets
+
+B2b (or in this case, b3b) sets are arguably at their most potent when they’re a product purely of friendship and sheer love of the music—take it from Skrillex, Four Tet, and Fred again.., three pals who visibly enjoyed playing alongside each other and bringing joy to those in attendance along the way. Yes, their synergy was virtually palpable, but the it factor of this New York run of shows was ultimately the whimsical, lighthearted attitude that they brought to stage. These are the same producers who will expertly read an arena and deliver accordingly and who, in the next breath, will remix Taylor Swift’s “Love Story” at MSG, stop-start a song as many times as their hearts desire in the moment, and transition into riddim in the middle of Times Square. Not taking oneself too seriously is an art in its own right, and PHM have mastered that, too.
+
+Featured image: Skrillex/Instagram

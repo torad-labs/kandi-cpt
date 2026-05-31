@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "59f9d58b87fab8a097e2406f20c308790870f54596bca9aa1b7ed8ac977a2571",
+  "clean_sha256": "3a1c4661c18df24a9dfd3c5efaecad9fb24522b57c410f00310ebe683470ecde",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2016",
+  "quality_score": 0.5408,
+  "difficulty_score": 0.7444,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "da71dc7204859b0dd6012e9f3d3819e49268fe0075882d55dfab9ed5b25ac3a2",
+  "clean_sha256": "e448e97af1650f8111dab0d6032b7f599cb49be650c643871e2d6d38b30845f6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 825,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=5eCg1Def1ik",
+  "title": "Multiple rider crash brings out the red flag in Moto2\u2122 | 2022 #PortugueseGP",
+  "quality_score": 0.6442,
+  "difficulty_score": 0.3348,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

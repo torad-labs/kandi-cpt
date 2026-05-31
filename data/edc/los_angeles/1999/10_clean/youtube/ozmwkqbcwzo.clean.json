@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "23f4b2fd37b28741acea2ae402614fe3ed3e3626b0b08f81f97329dcb9fdc429",
+  "clean_sha256": "c551d14f57cc1bb39294f5b6654e04884cbf3e6aba42ede898e314f040604d70",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1921,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OZMWKqbcwzo",
+  "title": "Sub Focus, Dimension, Culture Shock & 1991: LA Livestream | WORSHIP x DNBNL x UKF On Air",
+  "quality_score": 0.7447,
+  "difficulty_score": 0.3358,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

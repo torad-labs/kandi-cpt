@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1f349306a43243e1ee153b9bffc6f63429382ff662fda7b0a295840798809b39",
+  "clean_sha256": "c12e4becc37ca136ebddb90c2f37dfc86872278f97d9d33a07ff8fe7abd36390",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 60,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=h2LdZOlIIqI",
+  "title": "Kshmr Live - Power @ EDC Korea 2019(Electric Daisy Carnival)",
+  "quality_score": 0.6434,
+  "difficulty_score": 0.8518,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

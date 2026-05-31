@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "1ee98d3a1dc3edec632107625aabf0bbf4e088ef0770447cbf783cbfffbfc89f",
+  "clean_sha256": "91b6455a9a508e71edade930548c29668e1272f003fe35da6124a3aa769acbbb",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 476,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=9ALVvPS2-mY",
+  "title": "Electric Daisy Carnival EDC Orlando 2015 in 4K",
+  "quality_score": 0.6698,
+  "difficulty_score": 0.6703,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

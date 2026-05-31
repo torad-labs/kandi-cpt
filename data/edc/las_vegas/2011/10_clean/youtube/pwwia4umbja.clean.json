@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "84dbe725d9a2d7c08f57523d9c8b8aa1934869dfa65d137caddfc076d8afd01b",
+  "clean_sha256": "235c6e8744e2bda9789f764ecb4e5931b526c0d9c627b827dcf465469a5f0ba9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1426,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=pWWiA4UmBjA",
+  "title": "EDC Las Vegas 2011 After Movie | Electric Daisy Carnival Amazing Experience \u2605\u2605\u2605\u2605",
+  "quality_score": 0.8746,
+  "difficulty_score": 0.5646,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

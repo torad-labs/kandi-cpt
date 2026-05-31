@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "953148ac032c5d6ca8933f77b0bbf5841772e7a239819dfcfbb22a9172df9ee1",
+  "clean_sha256": "bb0d7b432f3f5ac4c53a49ee99b6cc9ae38db4e4eafe77e31b33747f482634a1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 las_vegas 2012",
+  "quality_score": 0.7639,
+  "difficulty_score": 0.6542,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

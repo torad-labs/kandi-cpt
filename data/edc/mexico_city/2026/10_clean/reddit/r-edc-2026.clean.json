@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2269066329e962c8fdbfce31b2e434245844de93b45265026b97ed23700a6e97",
+  "clean_sha256": "c039313874529499f1000a094a3718521c5e9cee4db7d831e7cef22fa6c1d60a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 mexico_city 2026",
+  "quality_score": 0.5224,
+  "difficulty_score": 0.4906,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

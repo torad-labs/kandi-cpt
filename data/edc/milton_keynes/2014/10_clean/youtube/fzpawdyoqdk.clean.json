@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "7e6ea1599357228fbbda1796e0c3fb4da9af80980d7ca70accc2cecfd2741908",
+  "clean_sha256": "d676cd045682f1a1e7a6faa957e5fe4317ac75e350f95dca3526c91f9a1226d1",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 64,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=fzpawdyoqDk",
+  "title": "EDC - Milton Keynes 2014",
+  "quality_score": 0.6441,
+  "difficulty_score": 0.8469,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

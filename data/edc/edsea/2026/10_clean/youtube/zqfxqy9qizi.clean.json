@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b0c566a569974e40fded7beae4a6f8f163cdfd77a0112ed0d118e0d60857802a",
+  "clean_sha256": "5613898cbd9f732293347bcbee4507e66c8df0573a1af0e36f1a7888e10be350",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 173,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=zqFXqy9qIZI",
+  "title": "Electric Daisy Carnival (EDSEA)",
+  "quality_score": 0.6097,
+  "difficulty_score": 0.6897,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

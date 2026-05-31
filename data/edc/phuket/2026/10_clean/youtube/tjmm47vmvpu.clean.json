@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3103ecd5e9f0b6bffe79d9ead6e859f2d120dad4dd2ad046cc260a7289ceb41a",
+  "clean_sha256": "12deddf6d0e2d1a056e403954570ab6154393345d6d961b26131dc896172d257",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 783,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=TJmM47VmvPU",
+  "title": "What does it feel like to be at the world's biggest rave? | EDC 2026 Experience - Thailand Phuket",
+  "quality_score": 0.6863,
+  "difficulty_score": 0.6358,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

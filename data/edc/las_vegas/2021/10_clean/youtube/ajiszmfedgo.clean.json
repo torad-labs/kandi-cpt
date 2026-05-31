@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b30041a806a51b38ec2c759e8d64539895691cfc69737124ab1ba0cce214f8a8",
+  "clean_sha256": "fdbd9f99755b146b8c46bec525899529529a0fbdd5a4006f914bdd15217b725c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 630,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=AjiSzMFEDgo",
+  "title": "Deadmau5 @ EDC Las Vegas 2021",
+  "quality_score": 0.7875,
+  "difficulty_score": 0.5004,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

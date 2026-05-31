@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4ebec7f90d33130be3911b2863972e57946974b6e5110c5beb325585bcc5c99e",
+  "clean_sha256": "110963c7fa80a9a0a098e2a4e303539dff16dcc5fc953fdf6a383c52ef248068",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 256,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=1kI82nwL7LM",
+  "title": "EDC Orlando 2013 After Movie (HD)",
+  "quality_score": 0.6454,
+  "difficulty_score": 0.8249,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

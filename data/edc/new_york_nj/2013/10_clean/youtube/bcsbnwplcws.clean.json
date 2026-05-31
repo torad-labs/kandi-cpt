@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "40514706494ab8b19526ffc7888448232bf34a327f35b47b841c0f654eeb5893",
+  "clean_sha256": "584a9fc5d8583ba3412e3123915d812f60f545030af6260e84286dcf269132df",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 418,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=bCSbNwPLcWs",
+  "title": "EDC NY 2013  Day 1 - Dirty South - If I Lose Myself",
+  "quality_score": 0.6293,
+  "difficulty_score": 0.7387,
+  "cluster_id": 17,
+  "curation_status": "keep"
+}

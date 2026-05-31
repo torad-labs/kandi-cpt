@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "3f421aea6277d9417d57583eaca1b2da0c1244184d8503c0cb4fbdb00880b6e9",
+  "clean_sha256": "56a6a384efd59bd0e0eb17f74a697a548b9b42f145e7d4dbf3ade4e3088f71f6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 72,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=bC5dtIEOfkg",
+  "title": "Electric  Daisy Carnival (EDC) United Kingdom 2014",
+  "quality_score": 0.6309,
+  "difficulty_score": 0.7087,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

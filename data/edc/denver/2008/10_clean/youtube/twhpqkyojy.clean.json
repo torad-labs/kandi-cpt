@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a24cc70cb95e4c8e42ab59bb9f3c82ffa8e8f93563214de6aac2df28df240e38",
+  "clean_sha256": "295789b538cb16ef9152746e0c548643f1a47306791081f19c14e00b236f0aca",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 116,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_TWhPQkYoJY",
+  "title": "brain wash denver 2008",
+  "quality_score": 0.6343,
+  "difficulty_score": 0.7545,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

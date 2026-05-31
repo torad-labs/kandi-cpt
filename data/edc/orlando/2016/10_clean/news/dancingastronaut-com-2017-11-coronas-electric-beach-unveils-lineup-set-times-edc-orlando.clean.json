@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "06ab0cb678271dc0765c59ca6da206b7c2877760c98b36836f70ad95a3e4a701",
+  "clean_sha256": "1c8abb58642f16f125e8d34f3f76a6c8b82251124023398d2989a8ceb47d205f",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 300,
+    "keep_ratio": 0.45,
+    "anchor_ratio": 0.415,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2017/11/coronas-electric-beach-unveils-lineup-set-times-edc-orlando/",
+  "title": "Corona's Electric Beach unveils lineup for EDC Orlando",
+  "quality_score": 0.8635,
+  "difficulty_score": 0.5802,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

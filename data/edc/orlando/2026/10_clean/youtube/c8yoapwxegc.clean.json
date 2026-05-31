@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "428f25a4caa714da010fc616cd43ac1376da4061d4e5afce4f1475bd68539dcd",
+  "clean_sha256": "906b532998ba4182bbebb2677fe2c1b10e71c93556f7e2f243e63f67c5e7eda0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 100,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=c8yOapwxeGc",
+  "title": "Tiesto Full Sunset Set EDC Orlando 2025",
+  "quality_score": 0.6711,
+  "difficulty_score": 0.578,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "32325930c4fc481469417fb897a7a75a217d637a08a6d6022ad39e07efa57b4a",
+  "clean_sha256": "c5f470c662e5c5976157819d8c688f43b0bd3bce68853fb7ab2b44a01397c925",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2013",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4439,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "08812555f48d6f04e4edf717be77c24a23df4ea51650c8749426c38ca25e9be0",
+  "clean_sha256": "c24650d0b12f6b94a6fde62c1819e3e6e5ff61df5cd7c88aa4f2ccf88b230835",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 92,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8-6tuOLhZq8",
+  "title": "Basssnectar Opening @ EDC Orlando 2012 [HD]",
+  "quality_score": 0.6204,
+  "difficulty_score": 0.6172,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

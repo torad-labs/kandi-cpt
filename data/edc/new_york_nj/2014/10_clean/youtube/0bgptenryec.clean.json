@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "2d150836759937f9447f5b6976684dfbeae9705e401c3d7a53e72c3adecece6b",
+  "clean_sha256": "2112db5332428acc9ae41128856df9e92149d878cc92f96a6513c157476b09f9",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 133,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=0BGptEnryEc",
+  "title": "Calvin Harris - Electric Daisy Carnival New York 2014 - 5/25/14",
+  "quality_score": 0.6104,
+  "difficulty_score": 0.8202,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "0064130682669b013f9562d2518ab7db7429a52efaf8648a45a997403fcf0690",
+  "clean_sha256": "6c131bfb750a1066a133b8f649c673f3cc19d342e93bc23c4d25d175122f7bf4",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1006,
+    "keep_ratio": 0.671,
+    "anchor_ratio": 0.213
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/interview-avello-2026/",
+  "title": "From Classroom Epiphany to Festival Stages: Inside the Breakneck Rise of AVELLO - EDM",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5451,
+  "cluster_id": 16,
+  "curation_status": "drop"
+}

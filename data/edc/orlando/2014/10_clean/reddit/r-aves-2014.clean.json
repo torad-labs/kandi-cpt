@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "90e56af937113b71cc3ab4d5ef16de6489299d8a16a017bb4aa7820e1a2fadfa",
+  "clean_sha256": "350a851790e4323189de82192380f02459317aee5ac321635220b37a8f3c2be1",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 orlando 2014",
+  "quality_score": 0.5229,
+  "difficulty_score": 0.9012,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "5670e5f829bbdb66bb15afada5596c8ca15e65ce4ceac628bb46f69131f79612",
+  "clean_sha256": "84714310df1a37f211dea38a97a82777ae3039ba8b1435ad238f999f24ae060b",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 4
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 las_vegas 2024",
+  "quality_score": 0.7998,
+  "difficulty_score": 0.4422,
+  "cluster_id": 17,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "42e49ab63f88948ec86da6c6658e2c1a333d2ca7dc62c9842902dae1883ae20b",
+  "clean_sha256": "9b2f3869cc5595d4d153f58a58dc4d08c17d9da9e467607cbd90888c2ba259e0",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 468,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3avfgnGxHOk",
+  "title": "Visionaries \"Domakesaythink\" / \"Blessings\" - Live @ Rock The Bells Stage (EDC 2004)",
+  "quality_score": 0.7338,
+  "difficulty_score": 0.5867,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

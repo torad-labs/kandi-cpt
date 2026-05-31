@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "87aab08b2f4a8d50b2a312e8a88283c9966869afc8ec3f58e19e3249f947234f",
+  "clean_sha256": "ab3b38427cb6b5f6f13f22874bfbee84b815735022a31dc92818e5b71a18f53b",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 587,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=XeK5GfNLrlI",
+  "title": "Daft Punk - Rollin' & Scratching (LIVE IN LA 1997) 50p FullHD",
+  "quality_score": 0.637,
+  "difficulty_score": 0.5499,
+  "cluster_id": 14,
+  "curation_status": "keep"
+}

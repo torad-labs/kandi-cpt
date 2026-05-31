@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "6b8d8fbd06c434bf416c40a16c8ebdb4ae705e51ccdf83693ef7d75ab22f4e09",
+  "clean_sha256": "ef6799bfb530924cc7ff4d8f6770c82b9443bee1c8be673d2858f06e3f31ee6e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2009&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 los_angeles 2009",
+  "quality_score": 0.7699,
+  "difficulty_score": 0.6472,
+  "cluster_id": 11,
+  "curation_status": "drop"
+}

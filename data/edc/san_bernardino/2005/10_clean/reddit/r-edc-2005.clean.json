@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2cab80fadd1166fd754cc99142cd75ceb6e78f1130c50699ef5fdf3b52f01695",
+  "clean_sha256": "5a0048f60adb848a6476d347f54e752fbf49b7af9563a4b8133f7bc7d63a635a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=san+bernardino+2005&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 san_bernardino 2005",
+  "quality_score": 0.5219,
+  "difficulty_score": 0.6195,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

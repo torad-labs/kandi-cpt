@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "0c26d63337e3fe74ccadde79ccfdc3f7a29ecfd4c1ac7fbdca81c824ae0c07eb",
+  "clean_sha256": "7283caefa8e79ce51a2c6247da5a31ef184eab9d9ad2ef19c4a5876b2c59207c",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 504,
+    "keep_ratio": 0.542,
+    "anchor_ratio": 0.339
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/interviews/martin-solveig-beats-1-one-mix/",
+  "title": "Say \"Hello\" To Martin Solveig On Beats 1 One Mix [INTERVIEW] - EDM",
+  "quality_score": 0.8476,
+  "difficulty_score": 0.6376,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

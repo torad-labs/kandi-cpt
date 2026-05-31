@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "92f5288aa25c7a85274cb05a2941c330499d14573539bf1e8c9937ae03faf318",
+  "clean_sha256": "de36d1f55e59fd8d9b1bee234d915f686e25a2a6f52ab0ec1eaf76022368615a",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=phuket+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 phuket 2026",
+  "quality_score": 0.5086,
+  "difficulty_score": 0.5735,
+  "cluster_id": 6,
+  "curation_status": "drop"
+}

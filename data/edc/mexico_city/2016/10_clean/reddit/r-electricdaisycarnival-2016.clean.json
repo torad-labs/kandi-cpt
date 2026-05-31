@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "953a1cafb02fd3ee9018d465ee5a08d2b3c7ba35ec07e9e5f81fc8c5faa58ec2",
+  "clean_sha256": "1c8c963362775e8c758d9b4d688da860daac9d663323e36eed9d94d08ee61fb6",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 8
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2016",
+  "quality_score": 0.7619,
+  "difficulty_score": 0.6444,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

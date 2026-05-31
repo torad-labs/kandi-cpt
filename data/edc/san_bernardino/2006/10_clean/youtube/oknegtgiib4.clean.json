@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "01acddd064bfc536a6d2e9496f355fef26a411354c8649f9dad093cd89e970bd",
+  "clean_sha256": "0a60ccdb0c68fc7101d524162016dbef2efc4722681b879a2ce8b2161c29a748",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1016,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=oKNegTgiib4",
+  "title": "Gabriel & Dresden Live @ Electric Daisy Carnival 2006",
+  "quality_score": 0.8019,
+  "difficulty_score": 0.5056,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

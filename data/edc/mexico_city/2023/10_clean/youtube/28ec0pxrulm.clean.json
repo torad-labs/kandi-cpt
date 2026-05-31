@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ff1ce9e4007b193ed91f9ed9655a7e31eb2f35d899b34532b3efa81850aba14c",
+  "clean_sha256": "a0546f10d02df205526cacfd8ca4de953922d1a73fa574908ca7e0edb9734afa",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 771,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=28EC0pxrulM",
+  "title": "EDC Mexico | Attending as a Foreigner - Everything You Need to Know",
+  "quality_score": 0.7982,
+  "difficulty_score": 0.4992,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

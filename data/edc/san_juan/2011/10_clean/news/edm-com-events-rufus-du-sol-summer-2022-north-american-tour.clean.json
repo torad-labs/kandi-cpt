@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "afc17fca561b3b4eb5fe817c2fbcba0ac0b5aea47ab0b07bc27fefcb6bf2f1ad",
+  "clean_sha256": "3cf679bf26e1ac1db439e504df7176f8bc44cd7da103937e42528ef52c0b40a0",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 396,
+    "keep_ratio": 0.483,
+    "anchor_ratio": 0.368
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/rufus-du-sol-summer-2022-north-american-tour/",
+  "title": "R\u00dcF\u00dcS DU SOL Announce Summer 2022 North American Tour - EDM",
+  "quality_score": 0.8412,
+  "difficulty_score": 0.4945,
+  "cluster_id": 1,
+  "curation_status": "keep"
+}

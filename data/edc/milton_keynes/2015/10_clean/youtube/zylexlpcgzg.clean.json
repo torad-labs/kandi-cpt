@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0212c403a8454cede51a4f6be6bde58a05bce2d6cecfbe11369144ab635cd0e4",
+  "clean_sha256": "99b0f8ea3d4495083878243e21e09acc2337a4dfb9d6a36b577cc90707c84735",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 61,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZyLexlPCGzg",
+  "title": "EDC UK - Markus Schulz @ Milton Keynes Bowl (11-07-2015)",
+  "quality_score": 0.6056,
+  "difficulty_score": 0.7875,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

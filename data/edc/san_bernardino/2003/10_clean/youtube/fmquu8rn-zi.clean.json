@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5e5196ebe66d77ffa4b30a5940b90abb9574f2de544ec81af31a28e641675021",
+  "clean_sha256": "454c2a2726f6bc9b9bc02ed0ff721a8ab228e53c19183a67187faa05f9cce82a",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 77,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=FmQUU8RN-ZI",
+  "title": "Umek Live @Toolroom (Miami-USA) 23-03-2012.",
+  "quality_score": 0.6181,
+  "difficulty_score": 0.8378,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

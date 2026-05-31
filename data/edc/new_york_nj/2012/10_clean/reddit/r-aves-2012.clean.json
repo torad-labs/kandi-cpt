@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "9266d58b2a70747ee27b185c909e709d4ca21dc06069bc02ea9bb262bbefc62b",
+  "clean_sha256": "1006531e4122debcff8bcb2cfcc856121a72e62505b9a205f1471e0d41b36d42",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 new_york_nj 2012",
+  "quality_score": 0.6556,
+  "difficulty_score": 0.6007,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

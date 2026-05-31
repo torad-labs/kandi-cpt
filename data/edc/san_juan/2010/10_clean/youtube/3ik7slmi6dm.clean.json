@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "22a1a27bbbe0529b577f2d0eea7daa3ea7497c086dfda2a00bd8559afe9e163e",
+  "clean_sha256": "f7584d364fdfb0f5e95cc76902022ebb403758aefe19390e947a4736d53a7b56",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4993,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=3iK7sLmi6DM",
+  "title": "EDC 2018| I Vend at EDC in Las Vegas \ud83c\udf44  \ud83c\udf35  \ud83c\udf39 (Day 1)",
+  "quality_score": 0.9121,
+  "difficulty_score": 0.5572,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

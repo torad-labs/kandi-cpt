@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "e74be66d10355c6df4b10f6462410e446173624e8f3d32a9f92cb478f3ab93ba",
+  "clean_sha256": "a509febc1102bece40bbc4264461af6c7600bd5addc09a4069d28968a19fa678",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 5
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2008&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 los_angeles 2008",
+  "quality_score": 0.7359,
+  "difficulty_score": 0.6868,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

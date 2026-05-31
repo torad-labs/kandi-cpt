@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "c35c644f236872b1f4b26f74894a958e409c254bcb49f39224a647fbdd71543e",
+  "clean_sha256": "d1d137ef14f3a432c3c606de583d01265781cfe6d4cdc8324ac6983e9826db04",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 490,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xX3XbzWs3Lc",
+  "title": "What So Not - EDC Mexico 2019 [FULL SHOW]",
+  "quality_score": 0.6713,
+  "difficulty_score": 0.2708,
+  "cluster_id": 4,
+  "curation_status": "drop"
+}

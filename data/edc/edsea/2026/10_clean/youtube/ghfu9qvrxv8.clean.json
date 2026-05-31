@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "0c3aae5e0edf8234349ec72cb4896291db5c2a9c994933d7d5feb5bc68a14425",
+  "clean_sha256": "32b2e8506f2dbbacfdad5e81e7c0d5988e2b99072992d62a9bbf7266bad4d058",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 594,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=GhfU9qvrxV8",
+  "title": "I Spent $6,000 on a Rave Cruise... Was It Worth It?!",
+  "quality_score": 0.6708,
+  "difficulty_score": 0.5415,
+  "cluster_id": 5,
+  "curation_status": "drop"
+}

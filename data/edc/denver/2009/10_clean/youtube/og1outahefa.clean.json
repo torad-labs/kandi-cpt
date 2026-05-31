@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a8b43a34455eb859712b2793a49f0926e1d8f4af3d517175e15d7e243392299d",
+  "clean_sha256": "1933f4f7a61cf3e3d49d4b6850f86a8de61fdc27b8c1fa54280af52f9f7ad618",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 114,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=og1OuTAHeFA",
+  "title": "Paul Van Dyk @ EDC 2009",
+  "quality_score": 0.6593,
+  "difficulty_score": 0.7381,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

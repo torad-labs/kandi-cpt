@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "26eef201715d9637ec0f087b7668784234f7dd25974b57a0669132300a73d357",
+  "clean_sha256": "6a46caa49db775c68f89ce752de77d91541a1e4b7aa1ab92e00e5467be394d22",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 131,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=nPh9ZWPRHBY",
+  "title": "EDC Puerto Rico 2013 (Saturday) - Nicky Romero (I need your Love)",
+  "quality_score": 0.6361,
+  "difficulty_score": 0.8752,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

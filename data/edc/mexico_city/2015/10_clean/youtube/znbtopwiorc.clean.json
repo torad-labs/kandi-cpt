@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "dbaecd79b49eb6d9b6b27d3a0164f08e6757b1a37805df63b483045ac21b0afa",
+  "clean_sha256": "528db380ad65372255385642d4401b2d8647516cea9b0a0c156c44be2fe3532e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 161,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ZnBTopwiorc",
+  "title": "GoPro: Electric Daisy Carnival (EDC) M\u00e9xico City 2015 Aftermovie",
+  "quality_score": 0.6119,
+  "difficulty_score": 0.7884,
+  "cluster_id": 10,
+  "curation_status": "keep"
+}

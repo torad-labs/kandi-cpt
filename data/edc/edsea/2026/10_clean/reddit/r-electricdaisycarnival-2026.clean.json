@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f668b40b49423e5efb7db82cbd8982dabca88a2298960f714bf1ec0d65cd60ff",
+  "clean_sha256": "819f55210176122528f7db011f2fd52039a822febaef37f62e0c82a1e9856ec7",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 1
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=edsea+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 edsea 2026",
+  "quality_score": 0.6935,
+  "difficulty_score": 0.5119,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

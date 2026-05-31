@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b94b5e35fbcaf6827553b796b1a30e7c5e96b04e7c8a0b6773abc16274c0b583",
+  "clean_sha256": "7156e7b27320bfd72bfe4fd73959c81219f2486a1da73c68f7cebe1c8b2f434d",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 78,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=_0oud31Wrt8",
+  "title": "Kaskade @ EDC Las Vegas 2021 (KineticField)",
+  "quality_score": 0.6566,
+  "difficulty_score": 0.8748,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

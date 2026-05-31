@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "06430ff0586053222d1962e5895273ff260103d53dee939e741daaca467980a2",
+  "clean_sha256": "592da4ab2e08c3801a76a39ab2ad35a30794f99ec6f3f75af4a72ea677e72675",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 3
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2002&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 los_angeles 2002",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.4889,
+  "cluster_id": 3,
+  "curation_status": "drop"
+}

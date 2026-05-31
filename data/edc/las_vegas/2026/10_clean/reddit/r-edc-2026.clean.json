@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "64fc7878d4f155746dda191eb028aeec0701f02202ec2a201092bb1d213edc2e",
+  "clean_sha256": "8a0d95df46466ef55925b6d73813cf9beff92866a777adbd367b347655258728",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 2
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/EDC discussion \u2014 las_vegas 2026",
+  "quality_score": 0.5453,
+  "difficulty_score": 0.7442,
+  "cluster_id": 8,
+  "curation_status": "drop"
+}

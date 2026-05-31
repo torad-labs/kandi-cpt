@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "dd64dc15fbdbf27ba246e964177e367a3154ab88c461c53be464ba9a5cf58374",
+  "clean_sha256": "45fde3d2c7f577208b1bcfe5d5167dcca157b141c7745908f4c716deb48afb8a",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1505,
+    "keep_ratio": 0.792,
+    "anchor_ratio": 0.169
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://dancingastronaut.com/2020/04/beat-quarantine-boredom-with-these-dance-documentaries/",
+  "title": "Beat quarantine boredom with these dance documentaries",
+  "quality_score": 0.9,
+  "difficulty_score": 0.5568,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

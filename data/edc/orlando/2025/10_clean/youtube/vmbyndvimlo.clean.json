@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b5ebd33251bf71e29a265d539bbe5595c2ba77b9251935e63b10971c56b9e357",
+  "clean_sha256": "4b6f99cb97c15400ce2de2cd68707152116b0ed1546c1c309b0c06abfad3cbec",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4312,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=VmbYNDVImLo",
+  "title": "Seven Lions - EDC Orlando 2025 (Sunset Set)",
+  "quality_score": 0.9248,
+  "difficulty_score": 0.6587,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

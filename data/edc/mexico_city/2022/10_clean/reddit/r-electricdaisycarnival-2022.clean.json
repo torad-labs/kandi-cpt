@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "74e18d62d1eade6fb270d9a33420d4a9e6f7fa88073366700fd2e3ef6948175f",
+  "clean_sha256": "cb5890072854914f6514900a4747f97981b0c3d8a1f9e7421de626e541ed55fb",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/electricdaisycarnival discussion \u2014 mexico_city 2022",
+  "quality_score": 0.7789,
+  "difficulty_score": 0.5974,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "5a4964ba752b12cf6e3eb76f83be2aa6f112eca4400356809d8bab26b5bbab10",
+  "clean_sha256": "5c9c644ba4dc92b2774b8af4639b68855fedcf5a9feee38a2714b7760505197c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1096,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=id24zen_IJE",
+  "title": "EDC Las Vegas 2021 Trailer",
+  "quality_score": 0.6845,
+  "difficulty_score": 0.3822,
+  "cluster_id": 4,
+  "curation_status": "keep"
+}

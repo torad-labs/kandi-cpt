@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "9a05bde2244ebbba4ffe2a525587785e3566b77a37933f0ab618ddf48b09795d",
+  "clean_sha256": "1b233e9af795b32942ff5485c030d571456f4b92ef0b746eb7d27a503650f217",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 559,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=iocvL903P3Y",
+  "title": "The Truth About Medellin, Colombia (You've Been Warned)",
+  "quality_score": 0.6288,
+  "difficulty_score": 0.6154,
+  "cluster_id": 5,
+  "curation_status": "keep"
+}

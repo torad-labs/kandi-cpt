@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4df735d2e611d7f16c599226d0857ea33f53cd21dc9b37e90e643e832ec452fc",
+  "clean_sha256": "0a1528c7313aee127786d7fc7771027a442bad6dfc1c0bd6b4678e38bc3547f5",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 649,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=R9dl9hr54SU",
+  "title": "12th Planet - EDC Mexico 2020 (Full Set) [OFFICIAL FOOTAGE]",
+  "quality_score": 0.7658,
+  "difficulty_score": 0.3723,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

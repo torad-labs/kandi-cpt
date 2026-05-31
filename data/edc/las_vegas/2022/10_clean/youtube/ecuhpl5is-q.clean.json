@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a5f71247bfd60747b1bbf7c38079cf04b4af8f2c44b89689ca69a253158bd57b",
+  "clean_sha256": "339f3853ca3f4fd1820eb3b0782d5458bf793d830b29495d24d084369b7637d6",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1824,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=ECuhPL5is-Q",
+  "title": "Zeds Dead live @ EDC Las Vegas 2022",
+  "quality_score": 0.9053,
+  "difficulty_score": 0.6217,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

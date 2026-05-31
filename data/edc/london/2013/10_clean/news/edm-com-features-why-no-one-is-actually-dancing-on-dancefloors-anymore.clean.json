@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "a2f9b93823665d7df4ff403c2911144249243c4cb42d2b5086ec9d8075d08bcf",
+  "clean_sha256": "7da16d9e87de51187688b511761e6b2bfc9d0253069089454042c81e046d0c65",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 1180,
+    "keep_ratio": 0.685,
+    "anchor_ratio": 0.193
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/features/why-no-one-is-actually-dancing-on-dancefloors-anymore/",
+  "title": "Why No One Is Actually Dancing on Dancefloors Anymore - EDM",
+  "quality_score": 0.9,
+  "difficulty_score": 0.6219,
+  "cluster_id": 16,
+  "curation_status": "keep"
+}

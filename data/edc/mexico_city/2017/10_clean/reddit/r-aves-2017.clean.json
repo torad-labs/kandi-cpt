@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "f164b0b0e6b095216a7bfd9fccd4ed88292445f56e207a121330c1d111ff10d7",
+  "clean_sha256": "cbc6081542ae583ca7a9fac163107ac68796f2612a99869089cecce11ee4285d",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 7
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 mexico_city 2017",
+  "quality_score": 0.7752,
+  "difficulty_score": 0.5627,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "8ddd4fade99d25a90869ad0f6426f3042d09de320c607b1ec7249a4fe2f04ccb",
+  "clean_sha256": "05bcde99caec9771084f70e27aa5d8bb5d6783e33b1028769c7d9ffd98a5d309",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 139,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=NoPi6pTb1zk",
+  "title": "CRANKDAT @ EDC ORLANDO 2023",
+  "quality_score": 0.6207,
+  "difficulty_score": 0.7775,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

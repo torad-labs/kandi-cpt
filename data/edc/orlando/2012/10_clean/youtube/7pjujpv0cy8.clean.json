@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "6bfd56aa1a7760b4d53e65482e632dcab81765314f2f99d4df0e3fc00da3fd03",
+  "clean_sha256": "d0ebbe0ee13ea608d2284f12c8ac4d14a2c80318cc89b657faf252a702b6bf53",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 128,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=7pJUjpv0cy8",
+  "title": "EDC Orlando 2012 - DJ Afrojack Set",
+  "quality_score": 0.635,
+  "difficulty_score": 0.7073,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

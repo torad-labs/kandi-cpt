@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "b95b785b66af65ba8eecb5bfdf9454c9f754e11ee51bb4278bc5d82473b22ef8",
+  "clean_sha256": "efe6993e9e7c11da01ba59d37c1b8cb2883176c171b88f3aa82a1b38f35c57be",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 72,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=8j0pzq8WHNk",
+  "title": "EDC UK - Eric Prydz @ The Bowl, Milton Keynes (09-07-2016) (1/2)",
+  "quality_score": 0.6062,
+  "difficulty_score": 0.8142,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

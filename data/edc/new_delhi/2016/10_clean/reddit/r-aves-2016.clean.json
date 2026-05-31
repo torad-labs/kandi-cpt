@@ -1,0 +1,17 @@
+{
+  "raw_sha256": "2f90e74b498ce4ebd07f2a85001d3f6d82f8fcb2d4e630c069f9e70d6fe5e99c",
+  "clean_sha256": "e68200041427ab2252787e0625c27994140254f5518287a39e6647c516f5654e",
+  "extractor": "json-reddit",
+  "llm_rescued": false,
+  "quality_gate": {
+    "posts": 6
+  },
+  "domain_class": "community-discussion",
+  "source_channel": "reddit",
+  "source_url": "https://old.reddit.com/r/aves/search.json?q=new+delhi+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "title": "Reddit r/aves discussion \u2014 new_delhi 2016",
+  "quality_score": 0.7788,
+  "difficulty_score": 0.5801,
+  "cluster_id": 11,
+  "curation_status": "keep"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "a04bfef8e3db7a603db1140cf4ade45f87dbcefc563bee0340797874bb08fa15",
+  "clean_sha256": "71a30c206724d3d945fd90889dea48f296250f071bbb5f8426bf0abfec49d4bc",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 462,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=WzBqzqTniLE",
+  "title": "Cedric Gervais Live Set - EDC Orlando 2013",
+  "quality_score": 0.6698,
+  "difficulty_score": 0.5524,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

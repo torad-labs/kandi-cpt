@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f4b0dc607c21de2cd98487027e38b635eaa21c7161bc29fd8307d7d0ddd4508d",
+  "clean_sha256": "84d27a90a7bf1d711bdf6ceb8eb5c5cf1813391c5000794e22d82e40fc70e478",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 753,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=trXRltKkl1g",
+  "title": "AFROJACK - EDC LAS VEGAS 2025",
+  "quality_score": 0.6683,
+  "difficulty_score": 0.1169,
+  "cluster_id": 19,
+  "curation_status": "drop"
+}

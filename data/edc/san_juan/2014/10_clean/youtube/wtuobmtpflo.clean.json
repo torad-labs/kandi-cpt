@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "f725ae694c971c3389ff1383aef3c53bb59ef577543373602619178ec628a52f",
+  "clean_sha256": "c7e1393be167e08668e18220696e5381462f76db1f69b49a86c94c9c25feafd7",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 173,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=wtUoBmTPfLo",
+  "title": "Life in color Puerto Rico 2014",
+  "quality_score": 0.6388,
+  "difficulty_score": 0.7641,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

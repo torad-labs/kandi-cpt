@@ -1,0 +1,19 @@
+{
+  "raw_sha256": "c8fae4c5b1decbcb30aca1f7e1364f5aa5e7e7c82835307072adbd800f5707e1",
+  "clean_sha256": "d6ff4c5134df594c705a303ae5fe86dc8f20fd97baa14b862af71860a3c075c6",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 406,
+    "keep_ratio": 0.474,
+    "anchor_ratio": 0.355
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/insomniac-postpones-edc-europe-and-announces-2022-dates/",
+  "title": "Insomniac Pulls the Plug on EDC Europe 2021, Announces 2022 Dates - EDM",
+  "quality_score": 0.8811,
+  "difficulty_score": 0.3181,
+  "cluster_id": 9,
+  "curation_status": "keep"
+}

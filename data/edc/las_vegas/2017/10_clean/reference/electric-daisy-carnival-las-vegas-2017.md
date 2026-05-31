@@ -1,0 +1,248 @@
+# EDC Las Vegas 2017 | Music Festival Wizard
+
+Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2017/.
+Tier 2 (reference) corpus material.
+
+---
+
+Photo Credit: aLIVE
+
+The Scene
+
+The Electric Daisy Carnival brings all the glitter and glam of Las Vegas to this three-day celebration of electronic music. Now a worldwide phenomenon, there's no place like home for the flagship version of EDC, which shows off hundreds of performers set to the backdrop of a full-sized carnival. - Copyright Music Festival Wizard
+
+2017 Artist Lineup
+
+- Aazar
+- Above and Beyond
+- Ace Ventura
+- Adam Beyer
+- Afrojack
+- Alan Fitzpatrick
+- Alan Waker
+- Alesso
+- Alison Wonderland
+- Alison Wonderland b2b Diplo b2b Jauz
+- Aly & Fila
+- Andrew Luce
+- Andrew Rayel
+- Andy C
+- Angelz
+- Angerfist
+- Armanni Reign
+- Armin Van Buuren
+- Astrix
+- Astronomar
+- ATB
+- Atica
+- Atmozfears
+- Audien B2B 3lau
+- Audiofreq
+- Autograf
+- Axwell / Ingrosso
+- Baggi
+- Barely Alive
+- Ben Nicky
+- Bijou
+- Billy Kenny
+- Bix King
+- Black Sun Empire
+- Black Tiger Sex Machine
+- Blackgummy
+- Blazer
+- Bleep Bloop
+- Bonnie X Clyde
+- Boombox Cartel
+- Borgore
+- Born Dirty
+- Brennan Heart
+- Brennen Grey
+- Bro Safari
+- Brownies & Lemondae
+- Bryan Kearney
+- Calyx & Teebee
+- Camo & Krooked
+- Chase & Status
+- Chet Porter
+- Chris Liebing
+- CID
+- Code Black
+- Coone
+- Corporate Slackrs
+- Cosmic Gate
+- Craig Williams
+- Crisis Era
+- Cristoph
+- Cut Snake
+- Da Tweekaz
+- Danny Howard
+- Darksiderz
+- Datsik
+- D-Block & S-TE-FAN
+- Dena Amy
+- Dense & Pika
+- Des McMahon
+- Desert Hearts
+- Devoted To God
+- Dillon Francis
+- Dirtyphonics
+- Discovery Project
+- DJ Issac
+- DJ Khaled
+- DJ Tennis
+- Dombresky
+- Don Diablo
+- Dubloadz
+- Duke Dumont
+- Ed Rush & Optical
+- Ephwurd
+- Excision
+- Fallen
+- Ferry Corsten
+- Firebeatz
+- Flosstradamus
+- Flux Pavillion
+- Fred V & Graphix
+- Freedom Fighters
+- Friction
+- Frontliner
+- Fury
+- G Jones
+- Galantis
+- Gammer
+- Gareth Emery
+- Getter
+- Ghastly
+- Gramatic
+- Green Velvet
+- Griz
+- Gryffin
+- GTA
+- Gunz for Hire
+- Habstrakt
+- Happi
+- Hardwell
+- Hazen
+- Herobust
+- Illenium
+- Infected Mushrooms
+- Jamie Jones
+- Jauz
+- Jayceeoh
+- John Askew
+- John Digweed
+- John O’Callaghan
+- Jonas Blue
+- Josheph Capriati
+- Joyryde
+- JS TJR
+- Junkie Kid
+- K?D
+- Kungs
+- Kygo
+- Lady Faith
+- Laidback Luke
+- Lee Foss
+- Liquid Soul
+- Liquid Stranger
+- LNY TNZ
+- Lo’99
+- Los Tioz: Noizekid & Jay Silva
+- Lost Frequencies
+- Louis The Child
+- Low Steppa
+- Mad Dob B2B DJ Anime
+- Madeon
+- Magalodon B2B Midnight Tyrannosaraus
+- Major Lazer
+- Marco Faraone
+- Markus Schulz pres. Dakota
+- Marlo
+- Marshmello
+- Martin Garrix
+- Martin Solveig
+- Maximono
+- MC Dino
+- Metrik
+- Metro Boomin
+- MIJA
+- Miss K8
+- Monstercat
+- Moon Boots
+- Mr. Carmack
+- Nathan Barato
+- Nebbra
+- NGHTMRE
+- Nicole Moudaber
+- Nightstalker
+- Niko Zografos
+- No Requests
+- NOA
+- Noisecontrollers
+- Nucleya
+- Nvoy
+- Oliver Heldens
+- Ookay
+- Pan Pot
+- Paul Oakenfold
+- Paul Van Dyk
+- Paul Woolford
+- Paz
+- Phace
+- Phiso B2B Ponicz
+- Porter Robinson
+- Prolix
+- Psy Tribe
+- PureNRG
+- Purple Haze
+- Quix
+- Radical Redemption
+- Reid Speed
+- Rezz
+- RL Grime
+- Rockwell
+- Ruben De Ronde
+- Rufus Du Sol
+- Ruthless
+- Sacha Robotti
+- Sage Armstrong
+- San Holo
+- Sean Tyas
+- Seven Lions
+- Shaun Frank
+- Shmitty
+- Showtek
+- Simon Patterson
+- Sinden
+- Skism B2B Trampa
+- Slander
+- Slushii
+- Snails
+- Solardo
+- Soothslayer
+- Space Jesus
+- TC
+- The Prophet
+- The Upbeats
+- Tiesto
+- TNT
+- Tommy Trash
+- Toneshifterz
+- Trap Nation
+- Treasure Fingers
+- Trippy Turtle
+- Valentino Khan
+- Vini Vici
+- Virtual Riot
+- W&W
+- WAIO
+- Waster Penguinz
+- Wildstylez
+- Wilkinson
+- Will Atkinson
+- Will Clarke
+- Will Sparks
+- Yellow Claw
+- Zatox
+- Zedd
+- Zomboy

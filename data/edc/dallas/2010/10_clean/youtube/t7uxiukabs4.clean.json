@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "37bdfd2d83df3ad158a79bf1109937d0f38225c2e7f63cfdf7b002fa33abc79f",
+  "clean_sha256": "bfc860b3d44471c83559bb028096abf3e3991d1100046e66639c2c1cb0345f8c",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 175,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=t7Uxiukabs4",
+  "title": "Electric Daisy Carnival Dallas 2010 @ Fair Park, TX (UNEDITED)",
+  "quality_score": 0.61,
+  "difficulty_score": 0.7291,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

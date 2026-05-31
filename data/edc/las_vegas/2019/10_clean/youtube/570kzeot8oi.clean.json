@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "81228a433a33c441335b7a3d1bbf697e85e5526c334e4e1962d74ca42dedbcbe",
+  "clean_sha256": "2928402183a4f77d9e4c8f6c738bda93a5a493dc5444cb195a099081b53b2f73",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 614,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=570KzEOT8oI",
+  "title": "Dom Dolla Live @ EDC Las Vegas, 2024 (circuitGROUNDS)",
+  "quality_score": 0.7163,
+  "difficulty_score": 0.5265,
+  "cluster_id": 19,
+  "curation_status": "keep"
+}

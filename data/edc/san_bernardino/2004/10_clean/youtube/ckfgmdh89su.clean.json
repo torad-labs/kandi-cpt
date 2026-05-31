@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "ea13a5eaef29dd5b395da38045e08881bd3e4dcb6193cf5a04d09eea1fedd71a",
+  "clean_sha256": "6363a3399b3c2443ca0170bfbcaa5e5f1ec86a8fe4b56e36919e257c295cf555",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 281,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=cKfgmdH89SU",
+  "title": "EDC Raining Daisies video by endari June 24, 2006",
+  "quality_score": 0.7097,
+  "difficulty_score": 0.6284,
+  "cluster_id": 13,
+  "curation_status": "drop"
+}

@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "4480c3729b6a923244d4e7af584da95c49230c91c4cf8803efd3238c5ca8d774",
+  "clean_sha256": "4942cbea3ffb8e0d8435027c3e4c9cbc9c963bee3d2c6eec6af3726f22303e68",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 1760,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=xe4baMyda9c",
+  "title": "Tritonal - Live At Electric Daisy Carnival Las Vegas 2012",
+  "quality_score": 0.9032,
+  "difficulty_score": 0.4391,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

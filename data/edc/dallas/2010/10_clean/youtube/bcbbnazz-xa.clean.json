@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "e98da0c00786612c9b95fb74f25ac6358056876311ed56e276eb8c9e3786374b",
+  "clean_sha256": "5972a9c6a0c137820cdd9db60aa7ffc0ece003e9d453d210c813bc529175e942",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 67,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=BCbbnazZ-XA",
+  "title": "E.D.C. 2010 dallas",
+  "quality_score": 0.6076,
+  "difficulty_score": 0.6863,
+  "cluster_id": 6,
+  "curation_status": "keep"
+}

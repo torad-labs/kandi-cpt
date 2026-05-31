@@ -1,0 +1,20 @@
+{
+  "raw_sha256": "96bf043532e8ca63f894b4714496f24d9b0ea1a4955be2230cbfd03c24747a10",
+  "clean_sha256": "26e9cac38b17d232f6052448cad692b3a28d96ea1d11b27a5b19e7afdba4b3f3",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 253,
+    "keep_ratio": 0.378,
+    "anchor_ratio": 0.415,
+    "kept_as": "listing"
+  },
+  "domain_class": "news-music-trade",
+  "source_channel": "news",
+  "source_url": "https://edm.com/events/edsea-lineup-2024/",
+  "title": "Subtronics, Sara Landry and More Are Cruising the Caribbean for EDSea 2024: See the Full Lineup - EDM",
+  "quality_score": 0.8482,
+  "difficulty_score": 0.6413,
+  "cluster_id": 0,
+  "curation_status": "drop"
+}

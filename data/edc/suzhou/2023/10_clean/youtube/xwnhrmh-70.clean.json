@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "29ebe7481afc93b34f92a500a02bafe97b7487548ac07daa3812c9a4c80eec02",
+  "clean_sha256": "0bbbe0c9aa39499895c9782fe82b45cf7fd751638e72d997c38be6fbb417a965",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 365,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=-xWNHRmH_70",
+  "title": "Party life in China | Electric Daisy Carnival | Insomniac | DAY 1",
+  "quality_score": 0.6693,
+  "difficulty_score": 0.6702,
+  "cluster_id": 18,
+  "curation_status": "keep"
+}

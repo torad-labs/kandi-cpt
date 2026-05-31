@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "64afd1974c0fc2bcbb4a0c6dbaffc03f5f260ae38ab19d0548ba9a6a5ef5f311",
+  "clean_sha256": "617aef2bffd3f90e2f30eee110f9eb48767953e6e7d8364de7259383ed317705",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2387,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=dSXWIXoR_tE",
+  "title": "Armin van Buuren live at EDC Las Vegas 2019",
+  "quality_score": 0.7961,
+  "difficulty_score": 0.724,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}

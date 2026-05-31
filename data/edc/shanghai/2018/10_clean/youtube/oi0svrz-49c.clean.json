@@ -1,0 +1,18 @@
+{
+  "raw_sha256": "54ce4e3ba94a0a8813f267c1b5d5e4697fbbd5328498cf8fd8c7f382a5315ecb",
+  "clean_sha256": "8b6bf69109558b33a03d7dbd96ff781c36fc5d03681d75b941e74ed2c6a91951",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 4994,
+    "has_subs": false
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=Oi0sVRZ_49c",
+  "title": "Above & Beyond #ABGT300 Live at AsiaWorld-Expo, Hong Kong (Full 4K Ultra HD Set)",
+  "quality_score": 0.9199,
+  "difficulty_score": 0.5645,
+  "cluster_id": 12,
+  "curation_status": "keep"
+}
