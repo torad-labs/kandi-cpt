@@ -11,6 +11,7 @@ mod hydrate;
 mod openrouter;
 mod settimes;
 mod surface;
+mod synth;
 mod taxonomy;
 mod tokenize;
 mod triples;
@@ -42,6 +43,36 @@ enum Cmd {
     BuildCorpus(Target),
     /// Tokenize + pack the corpus with lever metadata; print stats (parity-check vs corpus_v1_stats.json).
     Tokenize(TokenizeArgs),
+    /// Synthetic-corpus generation (OpenRouter). --plan = dry-run counts (no API); --settimes = generate.
+    Synth(SynthArgs),
+}
+
+#[derive(Parser)]
+struct SynthArgs {
+    #[command(flatten)]
+    target: Target,
+    #[arg(long, default_value = "google/gemma-4-31b-it")]
+    model: String,
+    #[arg(long, default_value_t = 6)]
+    concurrency: usize,
+    #[arg(long, default_value_t = 10)]
+    variations: usize,
+    /// Dry-run: print the generation plan, no API calls.
+    #[arg(long)]
+    plan: bool,
+    /// Generate the set-time variations flow (the audit-validatable flow).
+    #[arg(long)]
+    settimes: bool,
+    /// Generate the cultural primitives → conversation-variations flow.
+    #[arg(long)]
+    cultural: bool,
+    /// Generate the chunk-strategy prose flow over 10_clean docs.
+    #[arg(long)]
+    docs: bool,
+    #[arg(long)]
+    limit: Option<usize>,
+    #[arg(long, default_value = "data/edc/las_vegas/2026/20_synthetic/_settimes_rust")]
+    out: PathBuf,
 }
 
 #[derive(Parser)]
@@ -96,7 +127,36 @@ fn main() -> anyhow::Result<()> {
         Cmd::SetTimes(t) => set_times_cmd(t),
         Cmd::BuildCorpus(t) => build_corpus_cmd(t),
         Cmd::Tokenize(a) => tokenize_cmd(a),
+        Cmd::Synth(a) => synth_cmd(a),
     }
+}
+
+fn synth_cmd(a: SynthArgs) -> anyhow::Result<()> {
+    let root = std::fs::canonicalize(&a.target.root).unwrap_or_else(|_| a.target.root.clone());
+    let cfg = FestivalConfig::load_edition(&root, &a.target.festival, &a.target.edition)?;
+    let store = TripleStore::load(cfg.structured_dir())?;
+    if a.plan {
+        return synth::plan(&cfg, &root, a.variations, a.variations);
+    }
+    if a.settimes || a.cultural || a.docs {
+        let rt = tokio::runtime::Runtime::new()?;
+        let or = std::sync::Arc::new(openrouter::OpenRouter::new(&a.model)?);
+        if a.settimes {
+            let n = rt.block_on(synth::expand_settimes(&cfg, &store, or.clone(), a.variations, a.concurrency, a.limit, &a.out))?;
+            eprintln!("set-time synth: {n} lines → {}", a.out.display());
+        }
+        if a.cultural {
+            let n = rt.block_on(synth::expand_cultural(&cfg, or.clone(), a.variations, a.concurrency, &a.out))?;
+            eprintln!("cultural synth: {n} conversations → {}", a.out.display());
+        }
+        if a.docs {
+            let n = rt.block_on(synth::synth_docs(&cfg, &root, or.clone(), a.concurrency, a.limit, &a.out))?;
+            eprintln!("doc-strategy synth: {n} generations → {}", a.out.display());
+        }
+        return Ok(());
+    }
+    eprintln!("nothing to do — pass --plan, --settimes, --cultural, or --docs");
+    Ok(())
 }
 
 fn tokenize_cmd(a: TokenizeArgs) -> anyhow::Result<()> {

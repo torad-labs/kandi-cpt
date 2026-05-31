@@ -101,6 +101,43 @@ pub fn generate_for_group(cfg: &FestivalConfig, g: &ConfusableGroup) -> Vec<Disj
     out
 }
 
+/// Cultural-synth guard: a cultural/conversational line must not pin a CONFUSABLE stage (camel) to a
+/// day (named day, date, or 'night N') — that competes with the disjoint fact install. Returns reason/None.
+pub fn cultural_conflict(cfg: &FestivalConfig, text: &str) -> Option<String> {
+    let low = text.to_lowercase();
+    let conf_stages: Vec<String> = cfg
+        .confusable_groups
+        .iter()
+        .filter_map(|g| cfg.stages.get(&g.stage).map(|s| s.camel.clone()))
+        .collect();
+    let hit: Vec<&String> = conf_stages.iter().filter(|c| c.len() > 3 && low.contains(&c.to_lowercase())).collect();
+    if hit.is_empty() {
+        return None;
+    }
+    let days: Vec<&str> = DAY_TOKENS.iter().filter(|(_, toks)| toks.iter().any(|t| low.contains(t))).map(|(d, _)| *d).collect();
+    if !days.is_empty() {
+        return Some(format!("cultural line binds confusable stage {hit:?} to day {days:?}"));
+    }
+    let night = regex_night(&low);
+    if night {
+        return Some(format!("cultural line binds confusable stage {hit:?} to a specific night"));
+    }
+    None
+}
+
+fn regex_night(low: &str) -> bool {
+    // "night one|two|three|1|2|3" with a word boundary after — matches Python _NIGHT_RE.
+    for kw in ["night one", "night two", "night three", "night 1", "night 2", "night 3"] {
+        if let Some(p) = low.find(kw) {
+            let after = low[p + kw.len()..].chars().next();
+            if after.map_or(true, |c| !c.is_alphanumeric()) {
+                return true;
+            }
+        }
+    }
+    false
+}
+
 /// member -> (stage_slug, day) and member -> group_key, over all confusable groups.
 fn confusable_maps(cfg: &FestivalConfig) -> (BTreeMap<String, (String, String)>, BTreeMap<String, String>) {
     let mut conf = BTreeMap::new();
