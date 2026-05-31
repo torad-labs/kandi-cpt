@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Assemble V6 (distributional-hypothesis approach — see pipeline/disjoint_context.py).
+"""SUPERSEDED by `festival-factory build-corpus` (Rust, byte-exact 11,337-line parity, 2026-05-31) —
+the Rust crate is now canonical for the data→corpus pipeline; this stays as the validation reference + fallback.
+
+Assemble V6 (distributional-hypothesis approach — see pipeline/disjoint_context.py).
 
 V4/V5 proved the failure is confusable facts sharing a representation basin, not undertraining. The fix
 is context engineering: confusable entities must appear in DISJOINT contexts (pushes reps apart);

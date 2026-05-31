@@ -6,7 +6,7 @@ import { tool } from 'ai';
 import { z } from 'zod';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 
@@ -92,12 +92,15 @@ export const hydratedStats = tool({
 });
 
 export const tokenize = tool({
-  description: 'Tokenize the corpus (clean + synthetic + hydrated) into the trainable Arrow shard. Final stage → train-ready. Returns token + chunk counts.',
+  description: 'Tokenize the corpus (clean + synthetic + hydrated) into the trainable Arrow shard via the Rust festival-factory (tokenizers + arrow IPC), emitting input_ids + lever metadata (entity_mask/src/fact_ids). Final stage → train-ready. Returns token + chunk + mask counts. (Python scripts/tokenize_corpus.py is the legacy fallback.)',
   inputSchema: z.object({ ...Target, seqLen: z.number().int().default(512) }),
-  execute: async ({ festival: _f, edition, seqLen }) => {
-    const r = await run(PY, ['scripts/tokenize_corpus.py', '--editions', edition, '--seq-len', String(seqLen)]);
-    const last = r.stdout.trim().split('\n').filter(Boolean).slice(-2).join(' ');
-    return { ok: r.ok, summary: last || r.stderr.slice(0, 600) };
+  execute: async ({ festival, edition, seqLen }) => {
+    const out = join(REPO_ROOT, 'data/_build/30_tokenized/corpus_v1.arrow');
+    rmSync(out, { recursive: true, force: true }); // clear any prior dir (Python save_to_disk) or file
+    const r = await run(RUST_BIN, ['tokenize', '--root', REPO_ROOT, '--festival', festival,
+                                   '--edition', edition, '--seq-len', String(seqLen), '--out', out]);
+    const stats = r.stderr.trim().split('\n').filter(Boolean).slice(-3).join(' ');
+    return { ok: r.ok, summary: stats || r.stdout.slice(0, 600) };
   },
 });
 

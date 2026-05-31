@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Tokenize the multi-edition corpus into a HF Datasets Arrow file for the trainer.
+"""SUPERSEDED by `festival-factory tokenize` (Rust; tokenizers + arrow-ipc; structural parity, 2026-05-31).
+The orchestrator now drives the Rust tokenizer; the trainer's make_loader reads either format. Kept as fallback.
+
+Tokenize the multi-edition corpus into a HF Datasets Arrow file for the trainer.
 
 Collects, across all editions (or --editions): curated 10_clean docs (filtered by the curation
 keep-list, holdout excluded), the 20_synthetic expansion, plus data/_shared/knowledge — then

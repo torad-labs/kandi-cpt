@@ -18,6 +18,12 @@ betas: [0.9, 0.95]
 adam_eps: 1.0e-8
 grad_clip: 1.0
 optimizer_8bit: false      # re-tested 2026-05-30: still broken under FSDP2+DTensor (OptimState8bit aten.view.dtype unimplemented). Keep bf16 AdamW.
+# WINNING PRECISION RECIPE (default): the L1 w=3 INT8-master run was the best of every run —
+# stage@1 0.744 / day@1 0.598 (both best-ever). Low-precision-everything acts as a regularizer on the
+# small CPT corpus (3x confirmed: full-precision v6 < 4-bit-opt < INT8-master). Both default ON here;
+# override per-run with --optimizer-lowbit / --int8-master / --no-int8-master.
+optimizer_lowbit: 4        # torchao AdamW4bit optimizer states (single-GPU only; multi-GPU gracefully falls back to bf16 AdamW)
+int8_master: true          # per-step stochastic-rounding snap of 2-D master weights to the symmetric INT8 grid
 warmup_steps: 24
 max_steps: 240            # V6: ~7 epochs over 1080 blocks (matches v4 per-line exposure)
 decay_frac: 0.2           # WSD: last 20% decays to min_lr

@@ -11,7 +11,7 @@ use std::sync::Arc;
 
 use arrow_array::builder::{Int32Builder, Int8Builder, ListBuilder, StringBuilder};
 use arrow_array::{ArrayRef, RecordBatch};
-use arrow_ipc::writer::FileWriter;
+use arrow_ipc::writer::StreamWriter;
 use arrow_schema::{DataType, Field, Schema};
 use regex::Regex;
 use serde_json::Value;
@@ -341,7 +341,9 @@ pub fn write_ipc(res: &TokenizeResult, path: &Path) -> anyhow::Result<()> {
     if let Some(p) = path.parent() {
         std::fs::create_dir_all(p)?;
     }
-    let mut w = FileWriter::try_new(std::fs::File::create(path)?, &schema)?;
+    // STREAM format (not File) — this is what HF datasets' .arrow files use, so datasets.Dataset.from_file
+    // reads the Rust output natively (the trainer's make_loader dual-format path).
+    let mut w = StreamWriter::try_new(std::fs::File::create(path)?, &schema)?;
     w.write(&batch)?;
     w.finish()?;
     Ok(())

@@ -22,7 +22,7 @@ import torch
 import torch.nn.functional as F
 import torch.distributed as dist
 from torch.utils.data import DataLoader, DistributedSampler
-from datasets import load_from_disk
+from datasets import Dataset, load_from_disk
 from transformers import Gemma4ForCausalLM
 
 import config as C
@@ -285,7 +285,10 @@ def cpu_offload_ple(model, device):
 
 
 def make_loader(cfg, rank, world, want_mask=False, want_facts=False):
-    ds = load_from_disk(str(C.ROOT / cfg["tokenized"]))
+    # Dual-format: a directory is the Python HF-datasets save_to_disk output; a file is the Rust
+    # festival-factory plain Arrow IPC (tokenize.rs). Both expose input_ids[/entity_mask/src/fact_ids].
+    p = C.ROOT / cfg["tokenized"]
+    ds = Dataset.from_file(str(p)) if p.is_file() else load_from_disk(str(p))
     has_mask = want_mask and "entity_mask" in ds.column_names
     has_facts = want_facts and "fact_ids" in ds.column_names
 
@@ -368,9 +371,9 @@ def main():
     ap.add_argument("--optimizer-lowbit", type=int, default=0, choices=[0, 4, 8],
                     help="torchao AdamW{4,8}bit states (single-GPU only; saves optimizer memory). 0 = bf16 AdamW")
     ap.add_argument("--grad-accum", type=int, help="override grad_accum (e.g. match effective batch single-GPU)")
-    ap.add_argument("--int8-master", action="store_true",
-                    help="after each step, SR-snap 2-D weights to the symmetric INT8 grid (precision test: "
-                         "does INT8 weight precision hold install; bf16 storage, not the memory-saving variant)")
+    ap.add_argument("--int8-master", action=argparse.BooleanOptionalAction, default=None,
+                    help="after each step, SR-snap 2-D weights to the symmetric INT8 grid. Default ON via "
+                         "config (the winning recipe — regularizes, best stage@1+day@1); --no-int8-master to disable")
     ap.add_argument("--lever1-weight", type=float, default=None,
                     help="enable Lever 1 (entity-targeted loss) at this entity_loss_weight (sweep knob; "
                          "overrides config). 1.0 == baseline mean CE.")
@@ -427,6 +430,10 @@ def main():
     # OptimState{4,8}bit is DTensor-incompatible (breaks under FSDP2, world>1) — but world==1 runs plain
     # (no FSDP, no DTensor, line 327), so it works there. Gated accordingly; falls back to bf16 AdamW.
     lowbit = args.optimizer_lowbit or cfg.get("optimizer_lowbit", 0)
+    # INT8 master weights: default from config (the winning recipe); --int8-master/--no-int8-master overrides.
+    int8_master_on = args.int8_master if args.int8_master is not None else bool(cfg.get("int8_master", False))
+    if rank0() and int8_master_on:
+        log("int8_master ON — per-step SR-snap of 2-D weights to the symmetric INT8 grid (default recipe)")
     opt = None
     if lowbit in (4, 8):
         if world > 1:
@@ -535,8 +542,8 @@ def main():
                     g["lr"] = lr
             torch.nn.utils.clip_grad_norm_(params, cfg["grad_clip"])
             opt.step()
-            if args.int8_master:
-                _sr_int8_master(params)     # constrain weights to the INT8 grid (SR) — precision test
+            if int8_master_on:
+                _sr_int8_master(params)     # constrain weights to the INT8 grid (SR) — default recipe
             opt.zero_grad(set_to_none=True)
             step += 1
             if step % cfg["log_every"] == 0:
