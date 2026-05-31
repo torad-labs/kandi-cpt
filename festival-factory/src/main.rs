@@ -12,6 +12,7 @@ mod openrouter;
 mod settimes;
 mod surface;
 mod taxonomy;
+mod tokenize;
 mod triples;
 
 use clap::{Parser, Subcommand};
@@ -39,6 +40,21 @@ enum Cmd {
     SetTimes(Target),
     /// Assemble the V6 relational corpus (base+disjoint+set-times); print texts (stdout) + counts (stderr).
     BuildCorpus(Target),
+    /// Tokenize + pack the corpus with lever metadata; print stats (parity-check vs corpus_v1_stats.json).
+    Tokenize(TokenizeArgs),
+}
+
+#[derive(Parser)]
+struct TokenizeArgs {
+    #[command(flatten)]
+    target: Target,
+    #[arg(long, default_value = "/home/marcos/Documents/dev/models/gemma-4-E2B-it/tokenizer.json")]
+    tokenizer: PathBuf,
+    #[arg(long, default_value_t = 512)]
+    seq_len: usize,
+    /// Write the packed corpus as a plain Arrow IPC file (omit to just print stats).
+    #[arg(long)]
+    out: Option<PathBuf>,
 }
 
 #[derive(Parser)]
@@ -79,7 +95,30 @@ fn main() -> anyhow::Result<()> {
         Cmd::Hydrate(a) => hydrate_cmd(a),
         Cmd::SetTimes(t) => set_times_cmd(t),
         Cmd::BuildCorpus(t) => build_corpus_cmd(t),
+        Cmd::Tokenize(a) => tokenize_cmd(a),
     }
+}
+
+fn tokenize_cmd(a: TokenizeArgs) -> anyhow::Result<()> {
+    // canonicalize root FIRST so cfg.edition_dir is absolute → strip_prefix(root) yields keep-list-shaped
+    // relative paths ("data/edc/.../X.md"), matching keep_list.json.
+    let root = std::fs::canonicalize(&a.target.root).unwrap_or_else(|_| a.target.root.clone());
+    let cfg = FestivalConfig::load_edition(&root, &a.target.festival, &a.target.edition)?;
+    let store = TripleStore::load(cfg.structured_dir())?;
+    let r = tokenize::tokenize(&cfg, &store, &root, a.seq_len, &a.tokenizer)?;
+    let mask_frac = r.entity_masked as f64 / r.total_tokens.max(1) as f64;
+    eprintln!("total_tokens={} num_chunks={} entity_masked={} ({:.1}%)",
+        r.total_tokens, r.blocks.len(), r.entity_masked, mask_frac * 100.0);
+    eprintln!("tokens_by_tag={:?}", r.tokens_by_tag);
+    let src_named: BTreeMap<&str, usize> = r.src_dist.iter()
+        .map(|(k, v)| (match k { 1 => "qa", 2 => "conversation", 4 => "replay", _ => "raw_knowledge" }, *v))
+        .collect();
+    eprintln!("src_dist={src_named:?}");
+    if let Some(out) = &a.out {
+        tokenize::write_ipc(&r, out)?;
+        eprintln!("wrote {} ({} blocks)", out.display(), r.blocks.len());
+    }
+    Ok(())
 }
 
 fn set_times_cmd(t: Target) -> anyhow::Result<()> {
