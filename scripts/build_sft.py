@@ -58,6 +58,12 @@ def is_generic(a: str) -> bool:
     return a.strip().lower() in GENERIC_EXACT or bool(GENERIC_ANS.match(a))
 
 
+def _norm(s: str) -> str:
+    """Normalize for knownness matching: lowercase, strip non-alphanumerics. Makes the gold-key check
+    robust to camelCase vs spacing vs punctuation (e.g. 'kinetic Field' == 'kineticFIELD')."""
+    return re.sub(r"[^a-z0-9]+", "", s.lower())
+
+
 def edition_qas(ed, max_per_rel: int) -> list[dict]:
     """Grounded {q, a, key, rel} dicts for one edition. `key` = the salient answer entity (used by the
     knownness scorer to check whether the model's free generation actually contains the fact)."""
@@ -177,14 +183,14 @@ def score_knownness(model, tok, cands, k: int):
         enc = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt",
                                       return_dict=True).to(model.device)
         plen = enc["input_ids"].shape[1]
-        key = c["key"].lower()
+        keyn = _norm(c["key"])
         hits, self_ans = 0, None
         with torch.no_grad():
             for i in range(k):
                 out = model.generate(**enc, max_new_tokens=40, do_sample=(i > 0), temperature=0.7,
                                      pad_token_id=tok.eos_token_id)
                 txt = tok.decode(out[0][plen:], skip_special_tokens=True)
-                if key and key in txt.lower():
+                if keyn and keyn in _norm(txt):
                     hits += 1
                     if self_ans is None:
                         self_ans = txt.strip().split("\n")[0]

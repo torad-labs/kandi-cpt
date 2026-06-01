@@ -1,0 +1,73 @@
+# Domain manifest — the config-driven declaration of a full scrape→CPT→SFT pipeline for ONE domain.
+# EDC is the reference instance: it reproduces the festival pipeline as data. To industrialize a NEW
+# domain, copy this file, swap the hierarchy/registry/ontology/templates, and run:
+#     PYTHONPATH=scripts .venv/bin/python scripts/run_pipeline.py --domain <name> --from structured --to sft
+# The generic machinery (hydration/EntiGraph, CPT, SFT, tokenizer, eval) is domain-agnostic; only this
+# manifest + the ontology refs (schema/taxonomy) + the Q/A templates are domain-specific.
+
+name: edc
+description: Electric Daisy Carnival — worldwide festival editions (1997–2026)
+
+# Data hierarchy under data/<...>. EDC is festival→city→year; another domain might be product→version, etc.
+hierarchy: [festival, city, year]
+registry: configs/editions_edc.json        # the unit registry iter_editions walks
+ontology:
+  schema_dir: schema                        # entity/triple/discourse JSON-Schemas (the structured contract)
+  taxonomy: festival-factory/src/taxonomy.rs # relation registry (BASE/DERIVED, data-status per relation)
+
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+configs:
+  cpt: configs/train_edc_lv_2026.yaml
+  sft: configs/sft_edc.yaml
+
+# Substitution vars available to every stage command as {name}
+vars:
+  cpt_ckpt: checkpoints/cpt/edc_all97_v1
+  corpus: corpus_all97
+  sft_data: data/_build/30_tokenized/sft_v2.arrow
+
+# Ordered pipeline. Each stage: name, desc, cmd (argv with {placeholders}), gpu (gate), per_edition.
+# Placeholders: {py}=.venv/bin/python, {root}, {editions}, {cpt}, {sft}, + any vars above.
+stages:
+  - name: scrape
+    desc: "00_raw — pull official/news/youtube/reddit per edition×source"
+    cmd: ["{py}", "scripts/scrape.py", "--editions", "{editions}"]
+    gpu: false
+  - name: extract
+    desc: "10_clean — trafilatura + LLM rescue → clean markdown"
+    cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
+    gpu: false
+  - name: curate
+    desc: "RoBERTa quality/dedup → keep_list.json"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--drop-frac", "0.10"]
+    gpu: true
+  - name: structured
+    desc: "15_structured — LLM entity/triple/discourse extraction (schema-validated)"
+    cmd: ["{py}", "scripts/extract_structured.py", "--editions", "{editions}", "--concurrency", "16", "--yes"]
+    gpu: false
+  - name: meta
+    desc: "festival_meta.json per edition (free; derived from triples + registry)"
+    cmd: ["{py}", "scripts/gen_festival_meta.py", "--editions", "{editions}"]
+    gpu: false
+  - name: hydrate
+    desc: "25_hydrated — EntiGraph + LLM multi-surface generation (faithfulness-gated)"
+    cmd: ["bash", "scripts/hydrate_sweep.sh"]
+    gpu: false
+  - name: tokenize
+    desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    gpu: false
+  - name: cpt
+    desc: "continued pretraining (FP4 + int8-master) — install knowledge"
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{cpt}", "--save-dir", "{cpt_ckpt}"]
+    gpu: true
+  - name: build_sft
+    desc: "SFT dataset — chat Q/A + anti-hallucination levers (knowledge-filter/abstain/self-gen)"
+    cmd: ["{py}", "scripts/build_sft.py", "--out", "sft_v2", "--drop-generic", "--score-model", "{cpt_ckpt}",
+          "--knowledge-filter", "--self-gen", "--abstention-frac", "0.15", "--val-frac", "0.1"]
+    gpu: true
+  - name: sft
+    desc: "instruction tuning — elicit knowledge as conversation (FP4-native)"
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{sft}", "--init-from", "{cpt_ckpt}",
+          "--tokenized", "{sft_data}", "--save-dir", "checkpoints/sft/edc_sft_v2"]
+    gpu: true
