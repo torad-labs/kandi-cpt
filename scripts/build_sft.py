@@ -170,38 +170,52 @@ def encode(tok, q: str, a: str, seq_len: int):
     return ids + [pad] * k, labels + [-100] * k
 
 
-def score_knownness(model, tok, cands, k: int):
+def score_knownness(model, tok, cands, k: int, bs: int = 16):
     """For each candidate, generate k answers from the CPT model and tier by how often the gold `key`
-    appears: known (≥75%), maybe (>0), unknown (0). Also capture a correct self-generated answer (#3)."""
+    appears: known (≥75%), maybe (>0), unknown (0). Also capture a correct self-generated answer (#3).
+
+    BATCHED: prompts are left-padded and generated bs-at-a-time (k passes per batch), instead of one
+    batch-1 generate() per (cand×sample). At batch-1 a 4.6B model is HBM-bandwidth-bound and the GPU is
+    ~idle on compute; batching amortizes the per-step weight load → ~order-of-magnitude faster scoring.
+    """
     import torch
     model.eval()
-    for c in cands:
+    if tok.pad_token_id is None:
+        tok.pad_token = tok.eos_token
+    tok.padding_side = "left"                            # decoder generation needs left-pad (gen aligns at the end)
+
+    for c in cands:                                     # abstains / keyless aren't knowledge-scored
         if c["rel"] == "abstain" or not c.get("key"):
-            c["tier"], c["self"] = "known", None        # synthesized abstentions aren't knowledge-scored
-            continue
-        msgs = [{"role": "user", "content": c["q"]}]
-        enc = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt",
-                                      return_dict=True).to(model.device)
+            c["tier"], c["self"], c["gen_ok"] = "known", None, True
+    work = [c for c in cands if c["rel"] != "abstain" and c.get("key")]
+
+    for i in range(0, len(work), bs):
+        batch = work[i:i + bs]
+        prompts = [tok.apply_chat_template([{"role": "user", "content": c["q"]}],
+                                           add_generation_prompt=True, tokenize=False) for c in batch]
+        enc = tok(prompts, return_tensors="pt", padding=True, add_special_tokens=False).to(model.device)
         plen = enc["input_ids"].shape[1]
-        keyn = _norm(c["key"])
-        hits, self_ans, produced = 0, None, False
+        keyns = [_norm(c["key"]) for c in batch]
+        hits = [0] * len(batch); self_ans = [None] * len(batch); produced = [False] * len(batch)
         with torch.no_grad():
-            for i in range(k):
-                out = model.generate(**enc, max_new_tokens=40, do_sample=(i > 0), temperature=0.7,
+            for j in range(k):                          # greedy (j=0) + sampled (j>0), each a batched pass
+                out = model.generate(**enc, max_new_tokens=40, do_sample=(j > 0), temperature=0.7,
                                      pad_token_id=tok.eos_token_id)
-                txt = tok.decode(out[0][plen:], skip_special_tokens=True)
-                if len(txt.strip()) > 5:
-                    produced = True                     # the model actually attempted an answer
-                if keyn and keyn in _norm(txt):
-                    hits += 1
-                    if self_ans is None:
-                        self_ans = txt.strip().split("\n")[0]
-        frac = hits / max(1, k)
-        c["tier"] = "known" if frac >= 0.75 else "maybe" if frac > 0 else "unknown"
-        c["self"] = self_ans
-        # gen_ok distinguishes "model tried & missed" (genuine unknown → safe to teach abstention) from
-        # "model produced nothing/garbled" (a chat-format failure on the pure-CPT model, NOT real ignorance)
-        c["gen_ok"] = produced
+                for b in range(len(batch)):
+                    txt = tok.decode(out[b][plen:], skip_special_tokens=True)
+                    if len(txt.strip()) > 5:
+                        produced[b] = True
+                    if keyns[b] and keyns[b] in _norm(txt):
+                        hits[b] += 1
+                        if self_ans[b] is None:
+                            self_ans[b] = txt.strip().split("\n")[0]
+        for b, c in enumerate(batch):
+            frac = hits[b] / max(1, k)
+            c["tier"] = "known" if frac >= 0.75 else "maybe" if frac > 0 else "unknown"
+            c["self"] = self_ans[b]
+            # gen_ok distinguishes "model tried & missed" (genuine unknown → safe to teach abstention) from
+            # "produced nothing/garbled" (chat-format failure on the pure-CPT model, NOT real ignorance)
+            c["gen_ok"] = produced[b]
 
 
 def main():
@@ -213,6 +227,7 @@ def main():
     ap.add_argument("--drop-generic", action="store_true", help="#4 drop entity-free generic answers")
     ap.add_argument("--score-model", help="CPT checkpoint to score QA knownness (enables #1/#3/unknown→abstain)")
     ap.add_argument("--score-samples", type=int, default=4)
+    ap.add_argument("--score-batch", type=int, default=16, help="prompts per batched generate() in scoring")
     ap.add_argument("--knowledge-filter", action="store_true", help="#1 drop Unknown-tier QAs (needs --score-model)")
     ap.add_argument("--self-gen", action="store_true", help="#3 use the model's own correct answer for Known QAs")
     ap.add_argument("--abstention-frac", type=float, default=0.0, help="#2 target fraction of abstention examples")
@@ -249,7 +264,7 @@ def main():
         from transformers import Gemma4ForCausalLM
         m = Gemma4ForCausalLM.from_pretrained(args.score_model, dtype=torch.bfloat16,
                                               attn_implementation="sdpa").to(args.device).eval()
-        score_knownness(m, tok, cands, args.score_samples)
+        score_knownness(m, tok, cands, args.score_samples, args.score_batch)
         del m; torch.cuda.empty_cache()
         for c in cands:
             stats[f"tier_{c.get('tier','?')}"] += 1
