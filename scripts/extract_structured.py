@@ -177,6 +177,15 @@ def main():
     print("\n=== structured extraction ===")
     print("  " + "  ".join(f"{k}={v}" for k, v in sorted(stats.items())))
 
+    # Fail loud on systematic LLM failure: a bad/expired key, no credit, or all-429 yields 0 docs but would
+    # otherwise exit 0 and silently flow an empty corpus into hydrate/SFT/eval (looks like a clean success).
+    if work and stats["docs"] == 0:
+        sys.exit(f"\n✗ extraction produced 0 docs from {len(work)} pending — systematic LLM failure "
+                 f"(llm_fail={stats['llm_fail']}). Check OPENROUTER_API_KEY / credit / rate limits.")
+    if work and stats["llm_fail"] / len(work) > 0.25:
+        print(f"  !! WARNING: {stats['llm_fail']}/{len(work)} docs failed LLM extraction "
+              f"({stats['llm_fail'] / len(work):.0%}) — corpus likely incomplete", file=sys.stderr)
+
 
 # ---- small helpers (sidecar/sha/global upsert) ----
 

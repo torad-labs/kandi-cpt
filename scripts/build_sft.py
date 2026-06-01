@@ -184,12 +184,14 @@ def score_knownness(model, tok, cands, k: int):
                                       return_dict=True).to(model.device)
         plen = enc["input_ids"].shape[1]
         keyn = _norm(c["key"])
-        hits, self_ans = 0, None
+        hits, self_ans, produced = 0, None, False
         with torch.no_grad():
             for i in range(k):
                 out = model.generate(**enc, max_new_tokens=40, do_sample=(i > 0), temperature=0.7,
                                      pad_token_id=tok.eos_token_id)
                 txt = tok.decode(out[0][plen:], skip_special_tokens=True)
+                if len(txt.strip()) > 5:
+                    produced = True                     # the model actually attempted an answer
                 if keyn and keyn in _norm(txt):
                     hits += 1
                     if self_ans is None:
@@ -197,6 +199,9 @@ def score_knownness(model, tok, cands, k: int):
         frac = hits / max(1, k)
         c["tier"] = "known" if frac >= 0.75 else "maybe" if frac > 0 else "unknown"
         c["self"] = self_ans
+        # gen_ok distinguishes "model tried & missed" (genuine unknown → safe to teach abstention) from
+        # "model produced nothing/garbled" (a chat-format failure on the pure-CPT model, NOT real ignorance)
+        c["gen_ok"] = produced
 
 
 def main():
@@ -214,6 +219,9 @@ def main():
     ap.add_argument("--val-frac", type=float, default=0.0, help="hold out a val split for the early-stop lever")
     ap.add_argument("--device", default="cuda:0")
     args = ap.parse_args()
+    if (args.knowledge_filter or args.self_gen) and not args.score_model:
+        sys.exit("--knowledge-filter/--self-gen require --score-model (knownness scoring); "
+                 "without it they are silent no-ops. Add --score-model <cpt-ckpt>.")
 
     tok = AutoTokenizer.from_pretrained(str(C.MODEL_PATH), use_fast=True)
     cands: list[dict] = []
@@ -249,9 +257,16 @@ def main():
     abstain_pool: list[dict] = []
     if args.score_model:                                    # unknown-tier QAs → relabel to IDK (#2)
         rng0 = random.Random(1)
-        for c in cands:
-            if c.get("tier") == "unknown":
-                abstain_pool.append({"q": c["q"], "a": rng0.choice(IDK_RESPONSES), "rel": "abstain"})
+        # Only relabel facts the model ATTEMPTED and missed (genuine unknown). A pure-CPT model can fail the
+        # chat format and emit nothing → that's a format failure, not ignorance; teaching it "I don't know"
+        # there (and on brittle-match false-unknowns) would train refusal of answerable questions.
+        attempted = [c for c in cands if c.get("tier") == "unknown" and c.get("gen_ok")]
+        stats["unknown_empty_excluded"] = sum(1 for c in cands if c.get("tier") == "unknown" and not c.get("gen_ok"))
+        for c in attempted:
+            abstain_pool.append({"q": c["q"], "a": rng0.choice(IDK_RESPONSES), "rel": "abstain"})
+        print("  unknown-tier sample (CHECK these are genuinely unknown, not key-match misses):")
+        for c in attempted[:6]:
+            print(f"    {c['q']!r}  (gold key={c['key']!r}, rel={c['rel']})")
 
     if args.knowledge_filter and args.score_model:
         before = len(cands)
@@ -277,7 +292,8 @@ def main():
         abs_all = []
 
     pairs = answerable + abs_all
-    rng.shuffle(pairs)
+    random.Random(42).shuffle(pairs)    # independent split rng — train/val partition must not depend on
+                                        # how many draws abstention synthesis consumed from `rng`
 
     n_val = int(len(pairs) * args.val_frac)
     splits = {"val": pairs[:n_val], "": pairs[n_val:]} if n_val else {"": pairs}
@@ -297,8 +313,9 @@ def main():
 
     (OUT / f"{args.out}_stats.json").write_text(json.dumps(dict(stats), indent=2))
     print(f"SFT build: {dict(stats)}")
-    print(f"  levers: drop_generic={args.drop_generic} score_model={bool(args.score_model)} "
-          f"knowledge_filter={args.knowledge_filter} self_gen={args.self_gen} "
+    sm = bool(args.score_model)
+    print(f"  levers (EFFECTIVE): drop_generic={args.drop_generic} score_model={sm} "
+          f"knowledge_filter={args.knowledge_filter and sm} self_gen={args.self_gen and sm} "
           f"abstention_frac={args.abstention_frac} val_frac={args.val_frac}")
 
 

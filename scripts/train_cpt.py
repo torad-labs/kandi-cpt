@@ -321,8 +321,15 @@ def make_loader(cfg, rank, world, want_mask=False, want_facts=False):
     dl = DataLoader(ds, batch_size=cfg["micro_batch_size"], sampler=sampler,
                     shuffle=(sampler is None), collate_fn=collate, drop_last=True)
     if want_mask and not has_mask:
-        log("[lever1] entity_loss enabled but corpus has no entity_mask column — "
-            "re-tokenize without --no-lever-metadata; falling back to unweighted CE")
+        # Hard error, not a warning: silently running unweighted CE would mislabel the run as
+        # "lever1 entity_loss" in the A/B log (a corrupted experimental conclusion).
+        raise RuntimeError("[lever1] entity_loss requested but corpus has no entity_mask column — "
+                           "re-tokenize without --no-lever-metadata. Refusing to run a mislabeled baseline.")
+    if want_mask and has_labels:
+        # entity_weighted_ce uses input_ids as targets; an SFT corpus's -100 prompt mask would be ignored,
+        # supervising the prompt tokens. Lever 1 (entity-weighted CE) is incompatible with SFT label masking.
+        raise RuntimeError("[lever1] entity-weighted CE is incompatible with an SFT `labels` corpus "
+                           "(it would supervise prompt tokens). Disable lever1 for SFT runs.")
     if want_facts and not has_facts:
         log("[lever4] exposure_tracking enabled but corpus has no fact_ids column — re-tokenize first")
     return dl, sampler

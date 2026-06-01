@@ -28,6 +28,8 @@ def val_loss(model, ds, device, bs=8) -> float:
         lab = torch.tensor(rows["labels"], dtype=torch.long, device=device)
         out = model(input_ids=ids, labels=lab)
         n = int((lab != -100).sum().item())
+        if n == 0 or not torch.isfinite(out.loss):     # all-pad batch → loss is nan; nan*0=nan would poison
+            continue
         tot += out.loss.item() * n; ntok += n          # loss is mean over supervised tokens → re-weight
     return tot / max(1, ntok)
 

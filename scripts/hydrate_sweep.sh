@@ -27,8 +27,10 @@ mapfile -t EDS < <(
 echo "hydrate sweep: ${#EDS[@]} editions  (base_n=$BASE_N par=$PAR conc=$CONC)  $(date +%H:%M)"
 export RUST_BIN BASE_N CONC
 printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
-  "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --base-n "$BASE_N" --concurrency "$CONC" >/dev/null 2>&1 \
+  mkdir -p "data/edc/$1/25_hydrated"
+  "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --base-n "$BASE_N" --concurrency "$CONC" \
+      > "data/edc/$1/25_hydrated/.hydrate.log" 2>&1 \
     && echo "  ✓ $1 ($(wc -l <"data/edc/$1/25_hydrated/relations.jsonl" 2>/dev/null) lines)" \
-    || echo "  ✗ $1 FAILED"
+    || echo "  ✗ $1 FAILED (see data/edc/$1/25_hydrated/.hydrate.log)"
 ' _ {}
 echo "hydrate sweep done  $(date +%H:%M)  — editions hydrated: $(ls data/edc/*/*/25_hydrated/relations.jsonl 2>/dev/null | wc -l)"

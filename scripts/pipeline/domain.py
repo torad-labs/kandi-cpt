@@ -68,6 +68,9 @@ class Domain:
             if bad:
                 raise ValueError(f"unknown stage(s) {bad}; have {names}")
             return [st for w in want if (st := self.stage(w)) is not None]
+        for w in (frm, to):
+            if w and w not in names:
+                raise ValueError(f"unknown stage '{w}'; have {names}")
         i = names.index(frm) if frm else 0
         j = names.index(to) + 1 if to else len(names)
         return self.stages[i:j]
