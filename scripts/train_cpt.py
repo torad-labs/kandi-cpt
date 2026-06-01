@@ -168,16 +168,24 @@ def build_model(cfg):
     text_cfg = AutoConfig.from_pretrained(cfg["model_path"]).text_config
     text_cfg._attn_implementation = "sdpa"
     model = Gemma4ForCausalLM(text_cfg)
-    sd = load_file(f"{cfg['model_path']}/model.safetensors")
-    P = "model.language_model."
-    remapped = {("model." + k[len(P):]): v for k, v in sd.items() if k.startswith(P)}
-    if "lm_head.weight" in sd:
-        remapped["lm_head.weight"] = sd["lm_head.weight"]
+    init = cfg.get("init_from")
+    if init:
+        # SFT / resumed CPT: a saved Gemma4ForCausalLM checkpoint (save_checkpoint) already has model.* +
+        # lm_head keys — load directly, no multimodal remap. Same text arch as the base, so text_cfg holds.
+        sd = load_file(f"{str(C.ROOT / init)}/model.safetensors")
+        remapped = sd
+        log(f"init_from: loading CausalLM checkpoint '{init}' ({len(remapped)} tensors)")
+    else:
+        sd = load_file(f"{cfg['model_path']}/model.safetensors")
+        P = "model.language_model."
+        remapped = {("model." + k[len(P):]): v for k, v in sd.items() if k.startswith(P)}
+        if "lm_head.weight" in sd:
+            remapped["lm_head.weight"] = sd["lm_head.weight"]
     # Guard the NaN-incident class (silent random-init) on BOTH sides: a wrong prefix yields a tiny
     # remap → fail loud before training on noise.
     if len(remapped) < 0.5 * len(model.state_dict()):
         raise RuntimeError(f"remap produced only {len(remapped)} tensors for {len(model.state_dict())} "
-                           f"model params — prefix '{P}' is wrong for this checkpoint")
+                           f"model params — prefix wrong for this checkpoint (init_from={bool(init)})")
     missing, unexpected = model.load_state_dict(remapped, strict=False)
     model.tie_weights()                                  # lm_head ties to embed_tokens
     real_missing = [m for m in missing if "lm_head" not in m]
@@ -291,12 +299,15 @@ def make_loader(cfg, rank, world, want_mask=False, want_facts=False):
     ds = Dataset.from_file(str(p)) if p.is_file() else load_from_disk(str(p))
     has_mask = want_mask and "entity_mask" in ds.column_names
     has_facts = want_facts and "fact_ids" in ds.column_names
+    has_labels = "labels" in ds.column_names           # SFT corpus (build_sft.py): assistant-only masked labels
 
     def collate(rows):
         ids = torch.tensor([r["input_ids"] for r in rows], dtype=torch.long)
-        if not (has_mask or has_facts):
+        if not (has_mask or has_facts or has_labels):
             return ids                              # backward-compatible: plain tensor when no lever needs meta
         out = {"input_ids": ids}
+        if has_labels:
+            out["labels"] = torch.tensor([r["labels"] for r in rows], dtype=torch.long)
         if has_mask:
             out["entity_mask"] = torch.tensor([r["entity_mask"] for r in rows], dtype=torch.long)
         if has_facts:
@@ -379,10 +390,17 @@ def main():
                          "overrides config). 1.0 == baseline mean CE.")
     ap.add_argument("--lever4", action="store_true", help="enable Lever 4 exposure tracking (overrides config)")
     ap.add_argument("--max-steps", type=int, help="override max_steps (e.g. a short real-data lever validation)")
+    ap.add_argument("--init-from", help="start from a saved Gemma4ForCausalLM checkpoint dir (SFT/resume) "
+                    "instead of the base multimodal ckpt; overrides config init_from")
+    ap.add_argument("--tokenized", help="override the tokenized corpus path (e.g. an SFT dataset)")
     args = ap.parse_args()
     cfg = yaml.safe_load(open(args.config))
     if args.max_steps:
         cfg["max_steps"] = args.max_steps
+    if args.init_from:
+        cfg["init_from"] = args.init_from
+    if args.tokenized:
+        cfg["tokenized"] = args.tokenized
     if args.precision:
         cfg["precision"] = args.precision
     if args.no_ac:
@@ -503,14 +521,15 @@ def main():
                 sampler.set_epoch(step)
             data_iter = iter(dl)
             batch = next(data_iter)
-        if isinstance(batch, dict):              # levers return {input_ids[, entity_mask][, fact_ids]}
+        if isinstance(batch, dict):              # levers/SFT return {input_ids[, labels][, entity_mask][, fact_ids]}
             ids = batch["input_ids"].to(device)
             emask = batch["entity_mask"].to(device) if "entity_mask" in batch else None
+            labels = batch["labels"].to(device) if "labels" in batch else None   # SFT: assistant-only masked
             if lever4_on and "fact_ids" in batch:   # count this microbatch's fact exposures (per-block lists)
                 for fids in batch["fact_ids"]:
                     exposure.update(fids)
         else:
-            ids, emask = batch.to(device), None
+            ids, emask, labels = batch.to(device), None, None
         if _can_nosync:                          # sync grads only on the last microbatch of the window
             model.set_requires_gradient_sync(micro % accum == accum - 1)
         # Pass shared_kv_states as a UserDict: Gemma4's `kwargs.pop("shared_kv_states", {})`
@@ -519,8 +538,8 @@ def main():
         if lever1_on and emask is not None:      # Lever 1: manual entity-weighted CE on logits (no labels=)
             out = model(input_ids=ids, shared_kv_states=UserDict())
             loss = entity_weighted_ce(out.logits, ids, emask, entity_w)
-        else:
-            out = model(input_ids=ids, labels=ids, shared_kv_states=UserDict())
+        else:                                    # CPT: labels=input_ids (predict-next). SFT: assistant-only
+            out = model(input_ids=ids, labels=(labels if labels is not None else ids), shared_kv_states=UserDict())
             loss = out.loss
         loss_val = loss.item()
         # Fail loud on non-finite loss BEFORE backward — a single NaN/inf would poison the AdamW moment

@@ -1,0 +1,69 @@
+# SFT (instruction tuning) — turn the CPT-installed associations into conversational retrieval.
+# Starts from the CPT checkpoint (init_from), trains on chat-format Q/A with assistant-only masked labels
+# (build_sft.py emits the `labels` column the trainer auto-detects). Same FP4 + int8-master deployment
+# recipe as CPT so the SFT'd model stays NVFP4-native for on-device. Lower LR + few epochs (SFT is touchy).
+run_name: edc_sft_v1
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+precision: fp4
+
+# start from the full-history CPT brain, not the base model
+init_from: checkpoints/cpt/edc_all97_v1
+
+# data — SFT chat corpus (input_ids + assistant-only `labels`)
+tokenized: data/_build/30_tokenized/sft_v1.arrow
+seq_len: 256
+micro_batch_size: 2
+grad_accum: 8            # effective batch 16
+
+# optimizer — lower LR than CPT (instruction tuning is sensitive); same low-bit deployment recipe
+lr: 2.0e-5
+min_lr: 2.0e-6
+weight_decay: 0.0
+betas: [0.9, 0.95]
+adam_eps: 1.0e-8
+grad_clip: 1.0
+optimizer_8bit: false
+optimizer_lowbit: 4
+int8_master: true
+warmup_steps: 20
+max_steps: 450           # ~4 epochs over 1827 examples (eff. batch 16 → ~114 steps/epoch)
+decay_frac: 0.2
+
+# memory levers
+gradient_checkpointing: true
+freeze_embeddings: true
+
+nvfp4:
+  skip_lm_head: true
+  skip_embeddings: true
+  bf16_first_layers: 2
+  bf16_last_layers: 5
+
+log_every: 5
+save_every: 200
+
+# CPT levers — all OFF for SFT (the labels column drives assistant-only masked CE)
+levers:
+  lever1_entity_loss:
+    enabled: false
+    entity_loss_weight: 2.5
+  lever2_qa_mix:
+    enabled: false
+    qa_token_fraction: 0.15
+    use_chat_template: false
+    system_prefix: null
+  lever3_three_r:
+    enabled: false
+    replay_token_fraction: 0.02
+    rewarm_peak_lr: 5.0e-5
+    ewc:
+      enabled: false
+      lambda: 1.0
+  lever4_exposure_tracking:
+    enabled: false
+    threshold: 0.8
+  lever5_causal_trace:
+    enabled: false
+    n_facts: 200
+    noise_scale: 0.1
+    checkpoint: null
