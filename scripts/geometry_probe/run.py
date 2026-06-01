@@ -179,9 +179,17 @@ def main():
             from geometry_probe import visualize as V
             V.render(out, label, Hs, entities, bl, cfg)
             print(f"  → wrote 3D plots + projector TSV (layer {bl}) — PICTURE IS EXPLORATION, not the metric")
-            from geometry_probe import report as R
-            rp = R.render_report(out, label, metrics_obj)
-            print(f"  → wrote {rp.name} (readable dashboard + explanations + healthy/unhealthy bands)")
+            # Report = a STATIC committed view (geometry_probe/scope.html) + a thin data file. No Python
+            # templating: we're already in Python (torch forward), so just emit the numbers we hold and copy
+            # the template. (report.py — 322 lines of HTML string-building — was deleted: it needed no torch.)
+            n_stages = sum(1 for e in entities if e["type"] == "stage") or 7
+            scope = {"run": label, "layer": bl, "p1": c["precision_at_1"], "chance": 1.0 / n_stages,
+                     "mrr_b": b["mrr"], "mrr_c": c["mrr"], "auc_b": b["auc_related_vs_unrelated"],
+                     "auc_c": c["auc_related_vs_unrelated"], "sep_b": b["separation"],
+                     "sep_c": c["separation"], "neg_cos": c["mean_cos_negated"]}
+            (out / "scope_data.js").write_text("window.SCOPE = " + json.dumps(scope, default=float) + ";")
+            (out / f"report_{label}.html").write_text((Path(__file__).parent / "scope.html").read_text())
+            print(f"  → wrote report_{label}.html (static Latent Scope view) + scope_data.js — no Python templating")
         except Exception as e:
             print(f"  [viz skipped: {type(e).__name__}: {e}]")
 
