@@ -1,0 +1,675 @@
+{"slug": "zedd", "name": "Zedd", "global_id": "global:artist:zedd"}
+{"slug": "steve_aoki", "name": "Steve Aoki", "global_id": "global:artist:steve_aoki"}
+{"slug": "axwell", "name": "Axwell", "global_id": "global:artist:axwell"}
+{"slug": "far_east_movement", "name": "Far East Movement", "global_id": "global:artist:far_east_movement"}
+{"slug": "ti_sto", "name": "Ti\u00ebsto", "global_id": "global:artist:ti_sto"}
+{"slug": "hardwell", "name": "Hardwell", "global_id": "global:artist:hardwell"}
+{"slug": "skrillex", "name": "Skrillex", "global_id": "global:artist:skrillex"}
+{"slug": "avicii", "name": "Avicii", "global_id": "global:artist:avicii"}
+{"slug": "martin_garrix", "name": "Martin Garrix", "global_id": "global:artist:martin_garrix"}
+{"slug": "dmitri_vegas", "name": "Dmitri Vegas", "global_id": "global:artist:dmitri_vegas"}
+{"slug": "armin_van_buuren", "name": "Armin van Buuren", "global_id": "global:artist:armin_van_buuren"}
+{"slug": "alan_walker", "name": "Alan Walker", "global_id": "global:artist:alan_walker"}
+{"slug": "the_chainsmokers", "name": "The Chainsmokers", "global_id": "global:artist:the_chainsmokers"}
+{"slug": "borgore", "name": "Borgore", "global_id": "global:artist:borgore"}
+{"slug": "tiesto", "name": "Tiesto", "global_id": "global:artist:tiesto"}
+{"slug": "tritonal", "name": "Tritonal", "global_id": "global:artist:tritonal"}
+{"slug": "bunny_blare", "name": "BUNNY/ BLARE", "global_id": "global:artist:bunny_blare"}
+{"slug": "bassnectar", "name": "Bassnectar", "global_id": "global:artist:bassnectar"}
+{"slug": "mgmt", "name": "MGMT", "global_id": "global:artist:mgmt"}
+{"slug": "virtual_self", "name": "Virtual Self", "global_id": "global:artist:virtual_self"}
+{"slug": "migos", "name": "Migos", "global_id": "global:artist:migos"}
+{"slug": "lil_uzi_vert", "name": "Lil Uzi Vert", "global_id": "global:artist:lil_uzi_vert"}
+{"slug": "sza", "name": "SZA", "global_id": "global:artist:sza"}
+{"slug": "ganja_white_night", "name": "Ganja White Night", "global_id": "global:artist:ganja_white_night"}
+{"slug": "bonobo", "name": "Bonobo", "global_id": "global:artist:bonobo"}
+{"slug": "mura_masa", "name": "Mura Masa", "global_id": "global:artist:mura_masa"}
+{"slug": "gryffin", "name": "Gryffin", "global_id": "global:artist:gryffin"}
+{"slug": "clozee", "name": "CloZee", "global_id": "global:artist:clozee"}
+{"slug": "graves", "name": "graves", "global_id": "global:artist:graves"}
+{"slug": "medasin", "name": "Medasin", "global_id": "global:artist:medasin"}
+{"slug": "mad_zach", "name": "Mad Zach", "global_id": "global:artist:mad_zach"}
+{"slug": "droeloe", "name": "DROELOE", "global_id": "global:artist:droeloe"}
+{"slug": "a_day_to_remember", "name": "A Day To Remember", "global_id": "global:artist:a_day_to_remember"}
+{"slug": "4b", "name": "4B", "global_id": "global:artist:4b"}
+{"slug": "human_resource", "name": "Human Resource", "global_id": "global:artist:human_resource"}
+{"slug": "the_bloody_beetroots", "name": "The Bloody Beetroots", "global_id": "global:artist:the_bloody_beetroots"}
+{"slug": "rank1", "name": "Rank1", "global_id": "global:artist:rank1"}
+{"slug": "felguk", "name": "Felguk", "global_id": "global:artist:felguk"}
+{"slug": "sporty_o", "name": "Sporty-O", "global_id": "global:artist:sporty_o"}
+{"slug": "green_velvet", "name": "Green Velvet", "global_id": "global:artist:green_velvet"}
+{"slug": "chuckie", "name": "Chuckie", "global_id": "global:artist:chuckie"}
+{"slug": "paul_van_dyk", "name": "Paul van Dyk", "global_id": "global:artist:paul_van_dyk"}
+{"slug": "dirty_south", "name": "Dirty South", "global_id": "global:artist:dirty_south"}
+{"slug": "fedde_le_grand", "name": "Fedde le Grand", "global_id": "global:artist:fedde_le_grand"}
+{"slug": "sebastian_ingrosso", "name": "Sebastian Ingrosso", "global_id": "global:artist:sebastian_ingrosso"}
+{"slug": "kaskade", "name": "Kaskade", "global_id": "global:artist:kaskade"}
+{"slug": "arty", "name": "Arty", "global_id": "global:artist:arty"}
+{"slug": "gareth_emery", "name": "Gareth Emery", "global_id": "global:artist:gareth_emery"}
+{"slug": "cosmic_gate", "name": "Cosmic Gate", "global_id": "global:artist:cosmic_gate"}
+{"slug": "12th_planet", "name": "12th Planet", "global_id": "global:artist:12th_planet"}
+{"slug": "breakage", "name": "Breakage", "global_id": "global:artist:breakage"}
+{"slug": "bassjackers", "name": "Bassjackers", "global_id": "global:artist:bassjackers"}
+{"slug": "angger_dimas", "name": "Angger Dimas", "global_id": "global:artist:angger_dimas"}
+{"slug": "mark_knight", "name": "Mark Knight", "global_id": "global:artist:mark_knight"}
+{"slug": "oaks", "name": "Oaks", "global_id": "global:artist:oaks"}
+{"slug": "onket", "name": "Onket", "global_id": "global:artist:onket"}
+{"slug": "phenetic", "name": "Phenetic", "global_id": "global:artist:phenetic"}
+{"slug": "above_beyond", "name": "Above & Beyond", "global_id": "global:artist:above_beyond"}
+{"slug": "uberzone", "name": "Uberzone", "global_id": "global:artist:uberzone"}
+{"slug": "infected_mushroom", "name": "Infected Mushroom", "global_id": "global:artist:infected_mushroom"}
+{"slug": "kurd_maverick", "name": "Kurd Maverick", "global_id": "global:artist:kurd_maverick"}
+{"slug": "big_gigantic", "name": "Big Gigantic", "global_id": "global:artist:big_gigantic"}
+{"slug": "crystal_method", "name": "Crystal Method", "global_id": "global:artist:crystal_method"}
+{"slug": "dead_p_a", "name": "Dead P.A.", "global_id": "global:artist:dead_p_a"}
+{"slug": "destroid", "name": "Destroid", "global_id": "global:artist:destroid"}
+{"slug": "eoto", "name": "EOTO", "global_id": "global:artist:eoto"}
+{"slug": "glitch_mob", "name": "Glitch Mob", "global_id": "global:artist:glitch_mob"}
+{"slug": "kid_beyond", "name": "Kid Beyond", "global_id": "global:artist:kid_beyond"}
+{"slug": "lotus", "name": "Lotus", "global_id": "global:artist:lotus"}
+{"slug": "otto_von_schirach", "name": "Otto Von Schirach", "global_id": "global:artist:otto_von_schirach"}
+{"slug": "pretty_lights", "name": "Pretty Lights", "global_id": "global:artist:pretty_lights"}
+{"slug": "robert_delong", "name": "Robert Delong", "global_id": "global:artist:robert_delong"}
+{"slug": "shock_to_the_system", "name": "Shock to the System", "global_id": "global:artist:shock_to_the_system"}
+{"slug": "skylab_2000", "name": "Skylab 2000", "global_id": "global:artist:skylab_2000"}
+{"slug": "spacemen", "name": "Spacemen", "global_id": "global:artist:spacemen"}
+{"slug": "trip_theory", "name": "Trip Theory", "global_id": "global:artist:trip_theory"}
+{"slug": "twin_brothers_darkness", "name": "Twin Brothers Darkness", "global_id": "global:artist:twin_brothers_darkness"}
+{"slug": "zapper", "name": "Zapper", "global_id": "global:artist:zapper"}
+{"slug": "cube_a_tron", "name": "Cube-a-Tron", "global_id": "global:artist:cube_a_tron"}
+{"slug": "atb", "name": "ATB", "global_id": "global:artist:atb"}
+{"slug": "l8ncy", "name": "L8NCY", "global_id": "global:artist:l8ncy"}
+{"slug": "honeyluv", "name": "HoneyLuv", "global_id": "global:artist:honeyluv"}
+{"slug": "nostalgix", "name": "Nostalgix", "global_id": "global:artist:nostalgix"}
+{"slug": "bear_grillz", "name": "Bear Grillz", "global_id": "global:artist:bear_grillz"}
+{"slug": "kompany", "name": "Kompany", "global_id": "global:artist:kompany"}
+{"slug": "wenzday", "name": "Wenzday", "global_id": "global:artist:wenzday"}
+{"slug": "three_man_light_show", "name": "Three man light show", "global_id": "global:artist:three_man_light_show"}
+{"slug": "goose", "name": "Goose", "global_id": "global:artist:goose"}
+{"slug": "lp_giobbi", "name": "LP Giobbi", "global_id": "global:artist:lp_giobbi"}
+{"slug": "dj_marb_menthols", "name": "DJ Marb Menthols", "global_id": "global:artist:dj_marb_menthols"}
+{"slug": "mikaela_davis", "name": "Mikaela Davis", "global_id": "global:artist:mikaela_davis"}
+{"slug": "rick_mitarotonda", "name": "Rick Mitarotonda", "global_id": "global:artist:rick_mitarotonda"}
+{"slug": "porter_robinson", "name": "Porter Robinson", "global_id": "global:artist:porter_robinson"}
+{"slug": "madeon", "name": "Madeon", "global_id": "global:artist:madeon"}
+{"slug": "excision", "name": "Excision", "global_id": "global:artist:excision"}
+{"slug": "tipper", "name": "Tipper", "global_id": "global:artist:tipper"}
+{"slug": "noisia", "name": "Noisia", "global_id": "global:artist:noisia"}
+{"slug": "afrojack", "name": "Afrojack", "global_id": "global:artist:afrojack"}
+{"slug": "dj_snake", "name": "DJ Snake", "global_id": "global:artist:dj_snake"}
+{"slug": "ray_volpe", "name": "Ray Volpe", "global_id": "global:artist:ray_volpe"}
+{"slug": "black_tiger_sex_machine", "name": "Black Tiger Sex Machine", "global_id": "global:artist:black_tiger_sex_machine"}
+{"slug": "seven_lions", "name": "Seven Lions", "global_id": "global:artist:seven_lions"}
+{"slug": "galantis", "name": "Galantis", "global_id": "global:artist:galantis"}
+{"slug": "slander", "name": "Slander", "global_id": "global:artist:slander"}
+{"slug": "san_pacho", "name": "San Pacho", "global_id": "global:artist:san_pacho"}
+{"slug": "coco_breezy", "name": "COCO & BREEZY", "global_id": "global:artist:coco_breezy"}
+{"slug": "calussa", "name": "CALUSSA", "global_id": "global:artist:calussa"}
+{"slug": "hugel", "name": "HUGEL", "global_id": "global:artist:hugel"}
+{"slug": "subtronics", "name": "SUBTRONICS", "global_id": "global:artist:subtronics"}
+{"slug": "level_up", "name": "LEVEL UP", "global_id": "global:artist:level_up"}
+{"slug": "amal_nemer", "name": "Amal Nemer", "global_id": "global:artist:amal_nemer"}
+{"slug": "ky_william", "name": "KY William", "global_id": "global:artist:ky_william"}
+{"slug": "tobehonest", "name": "Tobehonest", "global_id": "global:artist:tobehonest"}
+{"slug": "chris_lorenzo", "name": "Chris Lorenzo", "global_id": "global:artist:chris_lorenzo"}
+{"slug": "nico_moreno", "name": "Nico Moreno", "global_id": "global:artist:nico_moreno"}
+{"slug": "eli_brown", "name": "Eli Brown", "global_id": "global:artist:eli_brown"}
+{"slug": "matroda", "name": "Matroda", "global_id": "global:artist:matroda"}
+{"slug": "hamdi", "name": "Hamdi", "global_id": "global:artist:hamdi"}
+{"slug": "wax_motif", "name": "Wax Motif", "global_id": "global:artist:wax_motif"}
+{"slug": "hol", "name": "Hol", "global_id": "global:artist:hol"}
+{"slug": "odd_mob", "name": "Odd Mob", "global_id": "global:artist:odd_mob"}
+{"slug": "riordan", "name": "Riordan", "global_id": "global:artist:riordan"}
+{"slug": "sidepiece", "name": "Sidepiece", "global_id": "global:artist:sidepiece"}
+{"slug": "sara_landry", "name": "Sara Landry", "global_id": "global:artist:sara_landry"}
+{"slug": "chyl", "name": "CHYL", "global_id": "global:artist:chyl"}
+{"slug": "juelz", "name": "Juelz", "global_id": "global:artist:juelz"}
+{"slug": "casepeat", "name": "Casepeat", "global_id": "global:artist:casepeat"}
+{"slug": "glory", "name": "Glory", "global_id": "global:artist:glory"}
+{"slug": "vandal_rock", "name": "Vandal Rock", "global_id": "global:artist:vandal_rock"}
+{"slug": "sam_feldt", "name": "Sam Feldt", "global_id": "global:artist:sam_feldt"}
+{"slug": "loud_luxury", "name": "Loud Luxury", "global_id": "global:artist:loud_luxury"}
+{"slug": "illenium", "name": "Illenium", "global_id": "global:artist:illenium"}
+{"slug": "kygo", "name": "Kygo", "global_id": "global:artist:kygo"}
+{"slug": "swedish_house_mafia", "name": "Swedish House Mafia", "global_id": "global:artist:swedish_house_mafia"}
+{"slug": "steve_angello", "name": "Steve Angello", "global_id": "global:artist:steve_angello"}
+{"slug": "alesso", "name": "Alesso", "global_id": "global:artist:alesso"}
+{"slug": "john_martin", "name": "John Martin", "global_id": "global:artist:john_martin"}
+{"slug": "david_guetta", "name": "David Guetta", "global_id": "global:artist:david_guetta"}
+{"slug": "cutdwn", "name": "CUTDWN", "global_id": "global:artist:cutdwn"}
+{"slug": "charlotte_de_witte", "name": "Charlotte de Witte", "global_id": "global:artist:charlotte_de_witte"}
+{"slug": "anyma", "name": "Anyma", "global_id": "global:artist:anyma"}
+{"slug": "dabin", "name": "Dabin", "global_id": "global:artist:dabin"}
+{"slug": "martin_solveig", "name": "Martin Solveig", "global_id": "global:artist:martin_solveig"}
+{"slug": "kill_the_noise", "name": "Kill the Noise", "global_id": "global:artist:kill_the_noise"}
+{"slug": "datsik", "name": "Datsik", "global_id": "global:artist:datsik"}
+{"slug": "modulation", "name": "Modulation", "global_id": "global:artist:modulation"}
+{"slug": "japanese_pop_stars", "name": "Japanese Pop Stars", "global_id": "global:artist:japanese_pop_stars"}
+{"slug": "dada_life", "name": "Dada Life", "global_id": "global:artist:dada_life"}
+{"slug": "michael_woods", "name": "Michael Woods", "global_id": "global:artist:michael_woods"}
+{"slug": "bunny_vs_manufactured_superstars", "name": "Bunny vs. Manufactured Superstars", "global_id": "global:artist:bunny_vs_manufactured_superstars"}
+{"slug": "calvin_harris", "name": "Calvin Harris", "global_id": "global:artist:calvin_harris"}
+{"slug": "markus_schulz", "name": "Markus Schulz", "global_id": "global:artist:markus_schulz"}
+{"slug": "tim_berg", "name": "Tim Berg", "global_id": "global:artist:tim_berg"}
+{"slug": "tommie_sunshine", "name": "Tommie Sunshine", "global_id": "global:artist:tommie_sunshine"}
+{"slug": "dillon_francis", "name": "Dillon Francis", "global_id": "global:artist:dillon_francis"}
+{"slug": "eric_prydz", "name": "Eric Prydz", "global_id": "global:artist:eric_prydz"}
+{"slug": "knife_party", "name": "Knife Party", "global_id": "global:artist:knife_party"}
+{"slug": "krewella", "name": "Krewella", "global_id": "global:artist:krewella"}
+{"slug": "major_lazer", "name": "Major Lazer", "global_id": "global:artist:major_lazer"}
+{"slug": "zeds_dead", "name": "Zeds Dead", "global_id": "global:artist:zeds_dead"}
+{"slug": "r3hab", "name": "R3hab", "global_id": "global:artist:r3hab"}
+{"slug": "adventure_club", "name": "Adventure Club", "global_id": "global:artist:adventure_club"}
+{"slug": "yuna", "name": "Yuna", "global_id": "global:artist:yuna"}
+{"slug": "nervo", "name": "Nervo", "global_id": "global:artist:nervo"}
+{"slug": "ummet_ozcan", "name": "Ummet Ozcan", "global_id": "global:artist:ummet_ozcan"}
+{"slug": "morgan_page", "name": "Morgan Page", "global_id": "global:artist:morgan_page"}
+{"slug": "dimitri_vegas_like_mike", "name": "Dimitri Vegas & Like Mike", "global_id": "global:artist:dimitri_vegas_like_mike"}
+{"slug": "alvaro", "name": "Alvaro", "global_id": "global:artist:alvaro"}
+{"slug": "moti", "name": "MOTI", "global_id": "global:artist:moti"}
+{"slug": "gta", "name": "GTA", "global_id": "global:artist:gta"}
+{"slug": "deorro", "name": "Deorro", "global_id": "global:artist:deorro"}
+{"slug": "tjr", "name": "TJR", "global_id": "global:artist:tjr"}
+{"slug": "bingo_players", "name": "Bingo Players", "global_id": "global:artist:bingo_players"}
+{"slug": "firebeatz", "name": "Firebeatz", "global_id": "global:artist:firebeatz"}
+{"slug": "blasterjaxx", "name": "Blasterjaxx", "global_id": "global:artist:blasterjaxx"}
+{"slug": "showtek", "name": "Showtek", "global_id": "global:artist:showtek"}
+{"slug": "w_w", "name": "W&W", "global_id": "global:artist:w_w"}
+{"slug": "carnage", "name": "Carnage", "global_id": "global:artist:carnage"}
+{"slug": "basement_jaxx", "name": "Basement Jaxx", "global_id": "global:artist:basement_jaxx"}
+{"slug": "flosstradamus", "name": "Flosstradamus", "global_id": "global:artist:flosstradamus"}
+{"slug": "dj_sliink", "name": "DJ Sliink", "global_id": "global:artist:dj_sliink"}
+{"slug": "clockwork", "name": "Clockwork", "global_id": "global:artist:clockwork"}
+{"slug": "zen_freeman", "name": "Zen Freeman", "global_id": "global:artist:zen_freeman"}
+{"slug": "tommy_trash", "name": "Tommy Trash", "global_id": "global:artist:tommy_trash"}
+{"slug": "john_summit", "name": "John Summit", "global_id": "global:artist:john_summit"}
+{"slug": "angerfist", "name": "Angerfist", "global_id": "global:artist:angerfist"}
+{"slug": "disclosure", "name": "Disclosure", "global_id": "global:artist:disclosure"}
+{"slug": "marcelo_cic", "name": "Marcelo CIC", "global_id": "global:artist:marcelo_cic"}
+{"slug": "duke_dumont", "name": "Duke Dumont", "global_id": "global:artist:duke_dumont"}
+{"slug": "dallask", "name": "DallasK", "global_id": "global:artist:dallask"}
+{"slug": "throttle", "name": "Throttle", "global_id": "global:artist:throttle"}
+{"slug": "valentino_khan", "name": "Valentino Khan", "global_id": "global:artist:valentino_khan"}
+{"slug": "badjokes", "name": "Badjokes", "global_id": "global:artist:badjokes"}
+{"slug": "habstrakt", "name": "Habstrakt", "global_id": "global:artist:habstrakt"}
+{"slug": "bunny", "name": "Bunny", "global_id": "global:artist:bunny"}
+{"slug": "gaia", "name": "GAIA", "global_id": "global:artist:gaia"}
+{"slug": "marshmello", "name": "Marshmello", "global_id": "global:artist:marshmello"}
+{"slug": "aly_fila", "name": "Aly & Fila", "global_id": "global:artist:aly_fila"}
+{"slug": "hoodboi", "name": "Hoodboi", "global_id": "global:artist:hoodboi"}
+{"slug": "lh4l", "name": "LH4L", "global_id": "global:artist:lh4l"}
+{"slug": "chris_lake", "name": "Chris Lake", "global_id": "global:artist:chris_lake"}
+{"slug": "anna_lunoe", "name": "Anna Lunoe", "global_id": "global:artist:anna_lunoe"}
+{"slug": "brennen_grey", "name": "Brennen Grey", "global_id": "global:artist:brennen_grey"}
+{"slug": "fred_v_grafix", "name": "Fred V & Grafix", "global_id": "global:artist:fred_v_grafix"}
+{"slug": "dodge_fuski_12th_planet", "name": "Dodge & Fuski & 12th Planet", "global_id": "global:artist:dodge_fuski_12th_planet"}
+{"slug": "d_o_d", "name": "D.O.D", "global_id": "global:artist:d_o_d"}
+{"slug": "tnt", "name": "TNT", "global_id": "global:artist:tnt"}
+{"slug": "brooklyn_bounce", "name": "Brooklyn Bounce", "global_id": "global:artist:brooklyn_bounce"}
+{"slug": "jauz", "name": "Jauz", "global_id": "global:artist:jauz"}
+{"slug": "dr_fresch", "name": "Dr Fresch", "global_id": "global:artist:dr_fresch"}
+{"slug": "snbrn", "name": "SNBRN", "global_id": "global:artist:snbrn"}
+{"slug": "dusky", "name": "Dusky", "global_id": "global:artist:dusky"}
+{"slug": "tycho", "name": "Tycho", "global_id": "global:artist:tycho"}
+{"slug": "john_legend", "name": "John Legend", "global_id": "global:artist:john_legend"}
+{"slug": "darude", "name": "Darude", "global_id": "global:artist:darude"}
+{"slug": "the_prodigy", "name": "The Prodigy", "global_id": "global:artist:the_prodigy"}
+{"slug": "frankie_bones", "name": "Frankie Bones", "global_id": "global:artist:frankie_bones"}
+{"slug": "lilly_palmer", "name": "Lilly Palmer", "global_id": "global:artist:lilly_palmer"}
+{"slug": "mary_droppinz", "name": "Mary Droppinz", "global_id": "global:artist:mary_droppinz"}
+{"slug": "alison_wonderland", "name": "Alison Wonderland", "global_id": "global:artist:alison_wonderland"}
+{"slug": "ki_ki", "name": "KI/KI", "global_id": "global:artist:ki_ki"}
+{"slug": "griz", "name": "GRiZ", "global_id": "global:artist:griz"}
+{"slug": "wooli", "name": "Wooli", "global_id": "global:artist:wooli"}
+{"slug": "layton_giordani", "name": "Layton Giordani", "global_id": "global:artist:layton_giordani"}
+{"slug": "axwell_ingrosso", "name": "Axwell \u039b Ingrosso", "global_id": "global:artist:axwell_ingrosso"}
+{"slug": "nghtmre", "name": "NGHTMRE", "global_id": "global:artist:nghtmre"}
+{"slug": "oliver_heldens", "name": "Oliver Heldens", "global_id": "global:artist:oliver_heldens"}
+{"slug": "rl_grime", "name": "RL Grime", "global_id": "global:artist:rl_grime"}
+{"slug": "zomboy", "name": "Zomboy", "global_id": "global:artist:zomboy"}
+{"slug": "trap_nation", "name": "Trap Nation", "global_id": "global:artist:trap_nation"}
+{"slug": "don_diablo", "name": "Don Diablo", "global_id": "global:artist:don_diablo"}
+{"slug": "wrechiski", "name": "Wrechiski", "global_id": "global:artist:wrechiski"}
+{"slug": "jason_ross", "name": "Jason Ross", "global_id": "global:artist:jason_ross"}
+{"slug": "marten_horger", "name": "Marten Horger", "global_id": "global:artist:marten_horger"}
+{"slug": "neon_steve", "name": "Neon Steve", "global_id": "global:artist:neon_steve"}
+{"slug": "space_laces", "name": "Space Laces", "global_id": "global:artist:space_laces"}
+{"slug": "drumsound", "name": "Drumsound", "global_id": "global:artist:drumsound"}
+{"slug": "bassline_smith", "name": "Bassline Smith", "global_id": "global:artist:bassline_smith"}
+{"slug": "joyryde", "name": "Joyryde", "global_id": "global:artist:joyryde"}
+{"slug": "beauty_queen", "name": "Beauty Queen", "global_id": "global:artist:beauty_queen"}
+{"slug": "corporate_slackers", "name": "Corporate Slackers", "global_id": "global:artist:corporate_slackers"}
+{"slug": "emma_zander", "name": "Emma Zander", "global_id": "global:artist:emma_zander"}
+{"slug": "raito", "name": "Raito", "global_id": "global:artist:raito"}
+{"slug": "sofa_king_house", "name": "Sofa King House", "global_id": "global:artist:sofa_king_house"}
+{"slug": "gnome_cartel", "name": "Gnome Cartel", "global_id": "global:artist:gnome_cartel"}
+{"slug": "kayzo", "name": "Kayzo", "global_id": "global:artist:kayzo"}
+{"slug": "harrison", "name": "Harrison", "global_id": "global:artist:harrison"}
+{"slug": "i_o", "name": "i_o", "global_id": "global:artist:i_o"}
+{"slug": "duck_sauce", "name": "Duck Sauce", "global_id": "global:artist:duck_sauce"}
+{"slug": "tv_noise", "name": "TV Noise", "global_id": "global:artist:tv_noise"}
+{"slug": "barely_alive", "name": "Barely Alive", "global_id": "global:artist:barely_alive"}
+{"slug": "phaseone", "name": "PhaseOne", "global_id": "global:artist:phaseone"}
+{"slug": "dom_dolla", "name": "Dom Dolla", "global_id": "global:artist:dom_dolla"}
+{"slug": "tony_romera", "name": "Tony Romera", "global_id": "global:artist:tony_romera"}
+{"slug": "nick_catchdubs", "name": "Nick Catchdubs", "global_id": "global:artist:nick_catchdubs"}
+{"slug": "ac_slater", "name": "AC Slater", "global_id": "global:artist:ac_slater"}
+{"slug": "fm_3", "name": "FM-3", "global_id": "global:artist:fm_3"}
+{"slug": "haus_of_panda", "name": "Haus of Panda", "global_id": "global:artist:haus_of_panda"}
+{"slug": "sudden_death", "name": "Sudden Death", "global_id": "global:artist:sudden_death"}
+{"slug": "afk", "name": "AFK", "global_id": "global:artist:afk"}
+{"slug": "deadmau5", "name": "deadmau5", "global_id": "global:artist:deadmau5"}
+{"slug": "nicky_romero", "name": "Nicky Romero", "global_id": "global:artist:nicky_romero"}
+{"slug": "pasquale_rotella", "name": "Pasquale Rotella", "global_id": "global:artist:pasquale_rotella"}
+{"slug": "mathame", "name": "Mathame", "global_id": "global:artist:mathame"}
+{"slug": "zhu", "name": "ZHU", "global_id": "global:artist:zhu"}
+{"slug": "hayla", "name": "Hayla", "global_id": "global:artist:hayla"}
+{"slug": "mau_p", "name": "Mau P", "global_id": "global:artist:mau_p"}
+{"slug": "sub_focus", "name": "Sub Focus", "global_id": "global:artist:sub_focus"}
+{"slug": "nitepunk", "name": "Nitepunk", "global_id": "global:artist:nitepunk"}
+{"slug": "borne", "name": "borne", "global_id": "global:artist:borne"}
+{"slug": "b_phreak", "name": "B-Phreak", "global_id": "global:artist:b_phreak"}
+{"slug": "bradley_drop", "name": "Bradley Drop", "global_id": "global:artist:bradley_drop"}
+{"slug": "metrik", "name": "Metrik", "global_id": "global:artist:metrik"}
+{"slug": "33_below", "name": "33 Below", "global_id": "global:artist:33_below"}
+{"slug": "adam_ten", "name": "Adam Ten", "global_id": "global:artist:adam_ten"}
+{"slug": "mita_gami", "name": "Mita Gami", "global_id": "global:artist:mita_gami"}
+{"slug": "alex_wann", "name": "Alex Wann", "global_id": "global:artist:alex_wann"}
+{"slug": "chasewest", "name": "ChaseWest", "global_id": "global:artist:chasewest"}
+{"slug": "dyzen", "name": "Dyzen", "global_id": "global:artist:dyzen"}
+{"slug": "ellis_moss", "name": "Ellis Moss", "global_id": "global:artist:ellis_moss"}
+{"slug": "felmax", "name": "FelMax", "global_id": "global:artist:felmax"}
+{"slug": "holly", "name": "Holly", "global_id": "global:artist:holly"}
+{"slug": "kiinjo", "name": "Kiinjo", "global_id": "global:artist:kiinjo"}
+{"slug": "layla_benitez", "name": "Layla Benitez", "global_id": "global:artist:layla_benitez"}
+{"slug": "max_dean", "name": "Max Dean", "global_id": "global:artist:max_dean"}
+{"slug": "merow", "name": "Merow", "global_id": "global:artist:merow"}
+{"slug": "otherwish", "name": "Otherwish", "global_id": "global:artist:otherwish"}
+{"slug": "parisi", "name": "PARISI", "global_id": "global:artist:parisi"}
+{"slug": "sinca", "name": "Sinca", "global_id": "global:artist:sinca"}
+{"slug": "linska", "name": "Linska", "global_id": "global:artist:linska"}
+{"slug": "fisher", "name": "FISHER", "global_id": "global:artist:fisher"}
+{"slug": "solomun", "name": "Solomun", "global_id": "global:artist:solomun"}
+{"slug": "meduza", "name": "Meduza\u00b3", "global_id": "global:artist:meduza"}
+{"slug": "james_hype", "name": "James Hype", "global_id": "global:artist:james_hype"}
+{"slug": "benny_benassi", "name": "Benny Benassi", "global_id": "global:artist:benny_benassi"}
+{"slug": "sarah_landry", "name": "Sarah Landry", "global_id": "global:artist:sarah_landry"}
+{"slug": "cascade", "name": "Cascade", "global_id": "global:artist:cascade"}
+{"slug": "alice_in_wonderland", "name": "Alice in Wonderland", "global_id": "global:artist:alice_in_wonderland"}
+{"slug": "dmx_krew", "name": "DMX Krew", "global_id": "global:artist:dmx_krew"}
+{"slug": "dave_monolith", "name": "Dave Monolith", "global_id": "global:artist:dave_monolith"}
+{"slug": "scrase", "name": "Scrase", "global_id": "global:artist:scrase"}
+{"slug": "gareth_clarke", "name": "Gareth Clarke", "global_id": "global:artist:gareth_clarke"}
+{"slug": "benjamin_jackson", "name": "Benjamin Jackson", "global_id": "global:artist:benjamin_jackson"}
+{"slug": "rotodrone", "name": "Rotodrone", "global_id": "global:artist:rotodrone"}
+{"slug": "steve", "name": "Steve", "global_id": "global:artist:steve"}
+{"slug": "dj_love_love_records", "name": "DJ Love Love Records", "global_id": "global:artist:dj_love_love_records"}
+{"slug": "shy_fx", "name": "Shy FX", "global_id": "global:artist:shy_fx"}
+{"slug": "stamina_mc", "name": "Stamina MC", "global_id": "global:artist:stamina_mc"}
+{"slug": "mat_zo", "name": "Mat Zo", "global_id": "global:artist:mat_zo"}
+{"slug": "flux_pavilion", "name": "Flux Pavilion", "global_id": "global:artist:flux_pavilion"}
+{"slug": "rusko", "name": "Rusko", "global_id": "global:artist:rusko"}
+{"slug": "nicole_moudaber", "name": "Nicole Moudaber", "global_id": "global:artist:nicole_moudaber"}
+{"slug": "dubfire", "name": "Dubfire", "global_id": "global:artist:dubfire"}
+{"slug": "paco_osuna", "name": "Paco Osuna", "global_id": "global:artist:paco_osuna"}
+{"slug": "carl_cox", "name": "Carl Cox", "global_id": "global:artist:carl_cox"}
+{"slug": "armand_van_helden", "name": "Armand Van Helden", "global_id": "global:artist:armand_van_helden"}
+{"slug": "daft_punk", "name": "Daft Punk", "global_id": "global:artist:daft_punk"}
+{"slug": "2manydjs", "name": "2manydjs", "global_id": "global:artist:2manydjs"}
+{"slug": "ron_d_core", "name": "Ron D Core", "global_id": "global:artist:ron_d_core"}
+{"slug": "dimension", "name": "Dimension", "global_id": "global:artist:dimension"}
+{"slug": "culture_shock", "name": "Culture Shock", "global_id": "global:artist:culture_shock"}
+{"slug": "1991", "name": "1991", "global_id": "global:artist:1991"}
+{"slug": "dj_kool_aid", "name": "DJ Kool-Aid", "global_id": "global:artist:dj_kool_aid"}
+{"slug": "christopher_lawrence", "name": "Christopher Lawrence", "global_id": "global:artist:christopher_lawrence"}
+{"slug": "arcando", "name": "Arcando", "global_id": "global:artist:arcando"}
+{"slug": "a_little_sound", "name": "A Little Sound", "global_id": "global:artist:a_little_sound"}
+{"slug": "cl_b_de_combat", "name": "Cl\u00fcb De Combat", "global_id": "global:artist:cl_b_de_combat"}
+{"slug": "atfc", "name": "ATFC", "global_id": "global:artist:atfc"}
+{"slug": "lisa_millett", "name": "Lisa Millett", "global_id": "global:artist:lisa_millett"}
+{"slug": "four_tet", "name": "Four Tet", "global_id": "global:artist:four_tet"}
+{"slug": "chloe_caillet", "name": "Chloe Caillet", "global_id": "global:artist:chloe_caillet"}
+{"slug": "rivo", "name": "Rivo", "global_id": "global:artist:rivo"}
+{"slug": "mark_hoffen", "name": "Mark Hoffen", "global_id": "global:artist:mark_hoffen"}
+{"slug": "hayden_james", "name": "Hayden James", "global_id": "global:artist:hayden_james"}
+{"slug": "ar_co", "name": "AR/CO", "global_id": "global:artist:ar_co"}
+{"slug": "blonde_maze", "name": "Blonde Maze", "global_id": "global:artist:blonde_maze"}
+{"slug": "ocula", "name": "OCULA", "global_id": "global:artist:ocula"}
+{"slug": "syon", "name": "Syon", "global_id": "global:artist:syon"}
+{"slug": "layz", "name": "LAYZ", "global_id": "global:artist:layz"}
+{"slug": "calcium", "name": "Calcium", "global_id": "global:artist:calcium"}
+{"slug": "omnom", "name": "OMNOM", "global_id": "global:artist:omnom"}
+{"slug": "marco_strous", "name": "Marco Strous", "global_id": "global:artist:marco_strous"}
+{"slug": "donald_glaude", "name": "Donald Glaude", "global_id": "global:artist:donald_glaude"}
+{"slug": "richie_hawtin", "name": "Richie Hawtin", "global_id": "global:artist:richie_hawtin"}
+{"slug": "paul_oakenfold", "name": "Paul Oakenfold", "global_id": "global:artist:paul_oakenfold"}
+{"slug": "rezz", "name": "REZZ", "global_id": "global:artist:rezz"}
+{"slug": "ship_wrek", "name": "Ship Wrek", "global_id": "global:artist:ship_wrek"}
+{"slug": "ferry_corsten", "name": "Ferry Corsten", "global_id": "global:artist:ferry_corsten"}
+{"slug": "duncan_stutterheim", "name": "Duncan Stutterheim", "global_id": "global:artist:duncan_stutterheim"}
+{"slug": "jason_strauss", "name": "Jason Strauss", "global_id": "global:artist:jason_strauss"}
+{"slug": "matthew_adell", "name": "Matthew Adell", "global_id": "global:artist:matthew_adell"}
+{"slug": "claude_zdanow", "name": "Claude Zdanow", "global_id": "global:artist:claude_zdanow"}
+{"slug": "jochen_miller", "name": "Jochen Miller", "global_id": "global:artist:jochen_miller"}
+{"slug": "destructo", "name": "Destructo", "global_id": "global:artist:destructo"}
+{"slug": "justice", "name": "Justice", "global_id": "global:artist:justice"}
+{"slug": "peaches", "name": "Peaches", "global_id": "global:artist:peaches"}
+{"slug": "busy_p", "name": "Busy P", "global_id": "global:artist:busy_p"}
+{"slug": "a_trak", "name": "A-Trak", "global_id": "global:artist:a_trak"}
+{"slug": "the_cello_guy", "name": "The Cello Guy", "global_id": "global:artist:the_cello_guy"}
+{"slug": "john_00_fleming", "name": "John 00 Fleming", "global_id": "global:artist:john_00_fleming"}
+{"slug": "stanton_warriors", "name": "Stanton Warriors", "global_id": "global:artist:stanton_warriors"}
+{"slug": "moby", "name": "Moby", "global_id": "global:artist:moby"}
+{"slug": "tortured_soul", "name": "Tortured Soul", "global_id": "global:artist:tortured_soul"}
+{"slug": "dj_am", "name": "DJ AM", "global_id": "global:artist:dj_am"}
+{"slug": "groove_armada", "name": "Groove Armada", "global_id": "global:artist:groove_armada"}
+{"slug": "dj_mark_farina", "name": "DJ Mark Farina", "global_id": "global:artist:dj_mark_farina"}
+{"slug": "i_i_sound_system", "name": "I & I Sound System", "global_id": "global:artist:i_i_sound_system"}
+{"slug": "will_i_am", "name": "Will.I.Am", "global_id": "global:artist:will_i_am"}
+{"slug": "laidback_luke", "name": "Laidback Luke", "global_id": "global:artist:laidback_luke"}
+{"slug": "lil_jon", "name": "Lil Jon", "global_id": "global:artist:lil_jon"}
+{"slug": "mcr_t", "name": "MCR-T", "global_id": "global:artist:mcr_t"}
+{"slug": "michael_bibi", "name": "Michael Bibi", "global_id": "global:artist:michael_bibi"}
+{"slug": "black_coffee", "name": "Black Coffee", "global_id": "global:artist:black_coffee"}
+{"slug": "headhunterz", "name": "Headhunterz", "global_id": "global:artist:headhunterz"}
+{"slug": "bloody_beetroots", "name": "Bloody Beetroots", "global_id": "global:artist:bloody_beetroots"}
+{"slug": "boys_noize", "name": "Boys Noize", "global_id": "global:artist:boys_noize"}
+{"slug": "baauer", "name": "Baauer", "global_id": "global:artist:baauer"}
+{"slug": "loco_dice", "name": "Loco Dice", "global_id": "global:artist:loco_dice"}
+{"slug": "john_digweed", "name": "John Digweed", "global_id": "global:artist:john_digweed"}
+{"slug": "dj_gabbergirl", "name": "DJ GabberGirl", "global_id": "global:artist:dj_gabbergirl"}
+{"slug": "sasha", "name": "Sasha", "global_id": "global:artist:sasha"}
+{"slug": "onerepublic", "name": "OneRepublic", "global_id": "global:artist:onerepublic"}
+{"slug": "kshmr", "name": "KSHMR", "global_id": "global:artist:kshmr"}
+{"slug": "ayybo", "name": "AYYBO", "global_id": "global:artist:ayybo"}
+{"slug": "must_die", "name": "MUST DIE!", "global_id": "global:artist:must_die"}
+{"slug": "dknow", "name": "Dknow", "global_id": "global:artist:dknow"}
+{"slug": "luca_debonaire", "name": "Luca Debonaire", "global_id": "global:artist:luca_debonaire"}
+{"slug": "pendulum", "name": "Pendulum", "global_id": "global:artist:pendulum"}
+{"slug": "slushii", "name": "Slushii", "global_id": "global:artist:slushii"}
+{"slug": "gorgon_city", "name": "Gorgon City", "global_id": "global:artist:gorgon_city"}
+{"slug": "gammer", "name": "GAMMER", "global_id": "global:artist:gammer"}
+{"slug": "kikeone", "name": "KIKEONE", "global_id": "global:artist:kikeone"}
+{"slug": "junkie_kid", "name": "JUNKIE KID", "global_id": "global:artist:junkie_kid"}
+{"slug": "ghastly", "name": "Ghastly", "global_id": "global:artist:ghastly"}
+{"slug": "jon_bovi", "name": "Jon Bovi", "global_id": "global:artist:jon_bovi"}
+{"slug": "le_twins", "name": "Le Twins", "global_id": "global:artist:le_twins"}
+{"slug": "said_the_sky", "name": "Said The Sky", "global_id": "global:artist:said_the_sky"}
+{"slug": "solardo", "name": "SOLARDO", "global_id": "global:artist:solardo"}
+{"slug": "nora_en_pure", "name": "Nora En Pure", "global_id": "global:artist:nora_en_pure"}
+{"slug": "haliene", "name": "HALIENE", "global_id": "global:artist:haliene"}
+{"slug": "the_last_heroes", "name": "The Last Heroes", "global_id": "global:artist:the_last_heroes"}
+{"slug": "knock2", "name": "Knock2", "global_id": "global:artist:knock2"}
+{"slug": "claptone", "name": "Claptone", "global_id": "global:artist:claptone"}
+{"slug": "bolo", "name": "Bolo", "global_id": "global:artist:bolo"}
+{"slug": "rayburger", "name": "RayBurger", "global_id": "global:artist:rayburger"}
+{"slug": "boombox_cartel", "name": "Boombox Cartel", "global_id": "global:artist:boombox_cartel"}
+{"slug": "999999999", "name": "999999999", "global_id": "global:artist:999999999"}
+{"slug": "u_uk_uk1mat_u", "name": "\u00a5\u00d8U$UK\u20ac \u00a5UK1MAT$U", "global_id": "global:artist:u_uk_uk1mat_u"}
+{"slug": "3ballmty", "name": "3BallMTY", "global_id": "global:artist:3ballmty"}
+{"slug": "8onthebeat", "name": "8onthebeat", "global_id": "global:artist:8onthebeat"}
+{"slug": "adam_beyer", "name": "Adam Beyer", "global_id": "global:artist:adam_beyer"}
+{"slug": "alok", "name": "Alok", "global_id": "global:artist:alok"}
+{"slug": "anna", "name": "ANNA", "global_id": "global:artist:anna"}
+{"slug": "atliens", "name": "ATLiens", "global_id": "global:artist:atliens"}
+{"slug": "camelphat", "name": "CamelPhat", "global_id": "global:artist:camelphat"}
+{"slug": "diplo", "name": "Diplo", "global_id": "global:artist:diplo"}
+{"slug": "badger", "name": "Badger", "global_id": "global:artist:badger"}
+{"slug": "dimitri_vangelis_wyman", "name": "Dimitri Vangelis & Wyman", "global_id": "global:artist:dimitri_vangelis_wyman"}
+{"slug": "john_o_callaghan", "name": "John O'Callaghan", "global_id": "global:artist:john_o_callaghan"}
+{"slug": "yellow_claw", "name": "Yellow Claw", "global_id": "global:artist:yellow_claw"}
+{"slug": "david_specter", "name": "David Specter", "global_id": "global:artist:david_specter"}
+{"slug": "navarra", "name": "Navarra", "global_id": "global:artist:navarra"}
+{"slug": "chase_status", "name": "Chase & Status", "global_id": "global:artist:chase_status"}
+{"slug": "dbstf", "name": "Dbstf", "global_id": "global:artist:dbstf"}
+{"slug": "gunz4hire", "name": "Gunz4Hire", "global_id": "global:artist:gunz4hire"}
+{"slug": "warface", "name": "Warface", "global_id": "global:artist:warface"}
+{"slug": "delete", "name": "Delete", "global_id": "global:artist:delete"}
+{"slug": "deetox", "name": "Deetox", "global_id": "global:artist:deetox"}
+{"slug": "odesza", "name": "Odesza", "global_id": "global:artist:odesza"}
+{"slug": "cirez_d", "name": "Cirez D", "global_id": "global:artist:cirez_d"}
+{"slug": "san_holo", "name": "San Holo", "global_id": "global:artist:san_holo"}
+{"slug": "svdden_death", "name": "Svdden Death", "global_id": "global:artist:svdden_death"}
+{"slug": "lady_faith", "name": "Lady Faith", "global_id": "global:artist:lady_faith"}
+{"slug": "stephanie", "name": "Stephanie", "global_id": "global:artist:stephanie"}
+{"slug": "big_wild", "name": "Big Wild", "global_id": "global:artist:big_wild"}
+{"slug": "dubloadz", "name": "Dubloadz", "global_id": "global:artist:dubloadz"}
+{"slug": "monxx", "name": "Monxx", "global_id": "global:artist:monxx"}
+{"slug": "btsm", "name": "BTSM", "global_id": "global:artist:btsm"}
+{"slug": "borgeous", "name": "Borgeous", "global_id": "global:artist:borgeous"}
+{"slug": "metafo4r", "name": "METAFO4R", "global_id": "global:artist:metafo4r"}
+{"slug": "revolvr", "name": "Revolvr", "global_id": "global:artist:revolvr"}
+{"slug": "charles", "name": "Charles", "global_id": "global:artist:charles"}
+{"slug": "victor_calderone", "name": "Victor Calderone", "global_id": "global:artist:victor_calderone"}
+{"slug": "jamie_jones", "name": "Jamie Jones", "global_id": "global:artist:jamie_jones"}
+{"slug": "lee_foss", "name": "Lee Foss", "global_id": "global:artist:lee_foss"}
+{"slug": "magda", "name": "Magda", "global_id": "global:artist:magda"}
+{"slug": "ambivalent", "name": "Ambivalent", "global_id": "global:artist:ambivalent"}
+{"slug": "sunnery_james_ryan_marciano", "name": "Sunnery James & Ryan Marciano", "global_id": "global:artist:sunnery_james_ryan_marciano"}
+{"slug": "crooked_colours", "name": "Crooked Colours", "global_id": "global:artist:crooked_colours"}
+{"slug": "prydz", "name": "Prydz", "global_id": "global:artist:prydz"}
+{"slug": "the_cataracs", "name": "The Cataracs", "global_id": "global:artist:the_cataracs"}
+{"slug": "dimitri_vegas_like_mike_moguai", "name": "Dimitri Vegas, Like Mike, Moguai", "global_id": "global:artist:dimitri_vegas_like_mike_moguai"}
+{"slug": "an21", "name": "AN21", "global_id": "global:artist:an21"}
+{"slug": "max_vangeli", "name": "Max Vangeli", "global_id": "global:artist:max_vangeli"}
+{"slug": "champagne_drip", "name": "Champagne Drip", "global_id": "global:artist:champagne_drip"}
+{"slug": "andrew_rayel", "name": "Andrew Rayel", "global_id": "global:artist:andrew_rayel"}
+{"slug": "mark_sixma", "name": "Mark Sixma", "global_id": "global:artist:mark_sixma"}
+{"slug": "space_corps", "name": "Space Corps", "global_id": "global:artist:space_corps"}
+{"slug": "david_gravell", "name": "David Gravell", "global_id": "global:artist:david_gravell"}
+{"slug": "leil", "name": "Leil", "global_id": "global:artist:leil"}
+{"slug": "marlo", "name": "MaRLo", "global_id": "global:artist:marlo"}
+{"slug": "ruben_de_ronde", "name": "Ruben De Ronde", "global_id": "global:artist:ruben_de_ronde"}
+{"slug": "andrew_bayer", "name": "Andrew Bayer", "global_id": "global:artist:andrew_bayer"}
+{"slug": "fred_again", "name": "Fred again..", "global_id": "global:artist:fred_again"}
+{"slug": "rehab", "name": "Rehab", "global_id": "global:artist:rehab"}
+{"slug": "david_tort", "name": "David Tort", "global_id": "global:artist:david_tort"}
+{"slug": "moska", "name": "Moska", "global_id": "global:artist:moska"}
+{"slug": "fisherman_hawkins", "name": "Fisherman & Hawkins", "global_id": "global:artist:fisherman_hawkins"}
+{"slug": "dj_chuckie", "name": "DJ Chuckie", "global_id": "global:artist:dj_chuckie"}
+{"slug": "flume", "name": "Flume", "global_id": "global:artist:flume"}
+{"slug": "araabmuzik", "name": "AraabMuzik", "global_id": "global:artist:araabmuzik"}
+{"slug": "spag_headdy", "name": "Spag Headdy", "global_id": "global:artist:spag_headdy"}
+{"slug": "gabriel_dresden", "name": "Gabriel & Dresden", "global_id": "global:artist:gabriel_dresden"}
+{"slug": "sergio_flores", "name": "Sergio Flores", "global_id": "global:artist:sergio_flores"}
+{"slug": "henry_fong", "name": "Henry Fong", "global_id": "global:artist:henry_fong"}
+{"slug": "mike_hawkins", "name": "Mike Hawkins", "global_id": "global:artist:mike_hawkins"}
+{"slug": "pablo_oliveros", "name": "Pablo Oliveros", "global_id": "global:artist:pablo_oliveros"}
+{"slug": "avello", "name": "AVELLO", "global_id": "global:artist:avello"}
+{"slug": "disco_lines", "name": "Disco Lines", "global_id": "global:artist:disco_lines"}
+{"slug": "tinashe", "name": "Tinashe", "global_id": "global:artist:tinashe"}
+{"slug": "candyland", "name": "Candyland", "global_id": "global:artist:candyland"}
+{"slug": "cedric_gervais", "name": "Cedric Gervais", "global_id": "global:artist:cedric_gervais"}
+{"slug": "new_world_punx", "name": "New World Punx", "global_id": "global:artist:new_world_punx"}
+{"slug": "z", "name": "\u01b1Z", "global_id": "global:artist:z"}
+{"slug": "3lau", "name": "3LAU", "global_id": "global:artist:3lau"}
+{"slug": "art_department", "name": "Art Department", "global_id": "global:artist:art_department"}
+{"slug": "brillz", "name": "Brillz", "global_id": "global:artist:brillz"}
+{"slug": "cassy", "name": "Cassy", "global_id": "global:artist:cassy"}
+{"slug": "damian_lazarus", "name": "Damian Lazarus", "global_id": "global:artist:damian_lazarus"}
+{"slug": "dash_berlin", "name": "Dash Berlin", "global_id": "global:artist:dash_berlin"}
+{"slug": "david_steven", "name": "David Steven", "global_id": "global:artist:david_steven"}
+{"slug": "deniz_koyu", "name": "Deniz Koyu", "global_id": "global:artist:deniz_koyu"}
+{"slug": "dlr", "name": "DLR", "global_id": "global:artist:dlr"}
+{"slug": "francesca_lombardo", "name": "Francesca Lombardo", "global_id": "global:artist:francesca_lombardo"}
+{"slug": "gaiser_live", "name": "Gaiser Live", "global_id": "global:artist:gaiser_live"}
+{"slug": "henry_krinkle", "name": "Henry Krinkle", "global_id": "global:artist:henry_krinkle"}
+{"slug": "luminox", "name": "Luminox", "global_id": "global:artist:luminox"}
+{"slug": "maya_jane_coles", "name": "Maya Jane Coles", "global_id": "global:artist:maya_jane_coles"}
+{"slug": "mimosa", "name": "Mimosa", "global_id": "global:artist:mimosa"}
+{"slug": "nadastrom", "name": "Nadastrom", "global_id": "global:artist:nadastrom"}
+{"slug": "psognar", "name": "PsoGnar", "global_id": "global:artist:psognar"}
+{"slug": "salva", "name": "Salva", "global_id": "global:artist:salva"}
+{"slug": "sean_drake", "name": "Sean Drake", "global_id": "global:artist:sean_drake"}
+{"slug": "the_m_machine", "name": "The M Machine", "global_id": "global:artist:the_m_machine"}
+{"slug": "umek", "name": "UMEK", "global_id": "global:artist:umek"}
+{"slug": "jomero", "name": "Jomero", "global_id": "global:artist:jomero"}
+{"slug": "the_mcmash_clan", "name": "The McMash Clan", "global_id": "global:artist:the_mcmash_clan"}
+{"slug": "loudpvck", "name": "LOUDPVCK", "global_id": "global:artist:loudpvck"}
+{"slug": "aaron_jackson", "name": "Aaron Jackson", "global_id": "global:artist:aaron_jackson"}
+{"slug": "ruff_hauser", "name": "Ruff Hauser", "global_id": "global:artist:ruff_hauser"}
+{"slug": "kronology", "name": "Kronology", "global_id": "global:artist:kronology"}
+{"slug": "divine_elements", "name": "Divine Elements", "global_id": "global:artist:divine_elements"}
+{"slug": "vassy", "name": "VASSY", "global_id": "global:artist:vassy"}
+{"slug": "spag_heddy", "name": "Spag Heddy", "global_id": "global:artist:spag_heddy"}
+{"slug": "charlie_darker", "name": "Charlie Darker", "global_id": "global:artist:charlie_darker"}
+{"slug": "far_too_loud", "name": "Far Too Loud", "global_id": "global:artist:far_too_loud"}
+{"slug": "lush_simon", "name": "Lush & Simon", "global_id": "global:artist:lush_simon"}
+{"slug": "vitalic", "name": "Vitalic", "global_id": "global:artist:vitalic"}
+{"slug": "bassnector", "name": "Bassnector", "global_id": "global:artist:bassnector"}
+{"slug": "troyboi", "name": "TroyBoi", "global_id": "global:artist:troyboi"}
+{"slug": "keys_n_krates", "name": "Keys n Krates", "global_id": "global:artist:keys_n_krates"}
+{"slug": "shake_n_bass", "name": "Shake 'N Bass", "global_id": "global:artist:shake_n_bass"}
+{"slug": "cid", "name": "CID", "global_id": "global:artist:cid"}
+{"slug": "g_jones", "name": "G Jones", "global_id": "global:artist:g_jones"}
+{"slug": "mr_carmack", "name": "Mr Carmack", "global_id": "global:artist:mr_carmack"}
+{"slug": "yehme2", "name": "Yehme2", "global_id": "global:artist:yehme2"}
+{"slug": "vini_vici", "name": "Vini Vici", "global_id": "global:artist:vini_vici"}
+{"slug": "k_d", "name": "k?d", "global_id": "global:artist:k_d"}
+{"slug": "basstrck", "name": "Basstrck", "global_id": "global:artist:basstrck"}
+{"slug": "tchami", "name": "Tchami", "global_id": "global:artist:tchami"}
+{"slug": "nitti_gritti", "name": "Nitti Gritti", "global_id": "global:artist:nitti_gritti"}
+{"slug": "slatin", "name": "SLATIN", "global_id": "global:artist:slatin"}
+{"slug": "eliminate", "name": "Eliminate", "global_id": "global:artist:eliminate"}
+{"slug": "amelie_lens", "name": "Amelie Lens", "global_id": "global:artist:amelie_lens"}
+{"slug": "calle_lehmann", "name": "Calle Lehmann", "global_id": "global:artist:calle_lehmann"}
+{"slug": "kaskade_redux", "name": "Kaskade Redux", "global_id": "global:artist:kaskade_redux"}
+{"slug": "getter", "name": "Getter", "global_id": "global:artist:getter"}
+{"slug": "anfisa_letyago", "name": "Anfisa Letyago", "global_id": "global:artist:anfisa_letyago"}
+{"slug": "afroki", "name": "Afroki", "global_id": "global:artist:afroki"}
+{"slug": "crankdat", "name": "Crankdat", "global_id": "global:artist:crankdat"}
+{"slug": "dave_london", "name": "Dave London", "global_id": "global:artist:dave_london"}
+{"slug": "dreya_v", "name": "DREYA V", "global_id": "global:artist:dreya_v"}
+{"slug": "alleycvt", "name": "ALLEYCVT", "global_id": "global:artist:alleycvt"}
+{"slug": "summit", "name": "Summit", "global_id": "global:artist:summit"}
+{"slug": "westend", "name": "Westend", "global_id": "global:artist:westend"}
+{"slug": "jon_casey", "name": "Jon Casey", "global_id": "global:artist:jon_casey"}
+{"slug": "william_black", "name": "William Black", "global_id": "global:artist:william_black"}
+{"slug": "jordan_shaw", "name": "Jordan Shaw", "global_id": "global:artist:jordan_shaw"}
+{"slug": "space_92", "name": "Space 92", "global_id": "global:artist:space_92"}
+{"slug": "zohara", "name": "Zohara", "global_id": "global:artist:zohara"}
+{"slug": "max", "name": "Max", "global_id": "global:artist:max"}
+{"slug": "ranger_trucco", "name": "Ranger Trucco", "global_id": "global:artist:ranger_trucco"}
+{"slug": "luke_dean", "name": "Luke Dean", "global_id": "global:artist:luke_dean"}
+{"slug": "cassian", "name": "Cassian", "global_id": "global:artist:cassian"}
+{"slug": "anita_b_queen", "name": "ANITA B QUEEN", "global_id": "global:artist:anita_b_queen"}
+{"slug": "max_styler", "name": "Max Styler", "global_id": "global:artist:max_styler"}
+{"slug": "zara_larsson", "name": "Zara Larsson", "global_id": "global:artist:zara_larsson"}
+{"slug": "gordo", "name": "Gordo", "global_id": "global:artist:gordo"}
+{"slug": "the_breakbomb_project", "name": "The BreakBomb Project", "global_id": "global:artist:the_breakbomb_project"}
+{"slug": "shimza", "name": "Shimza", "global_id": "global:artist:shimza"}
+{"slug": "cloonee", "name": "Cloonee", "global_id": "global:artist:cloonee"}
+{"slug": "dvbbs", "name": "DVBBS", "global_id": "global:artist:dvbbs"}
+{"slug": "illenium_tom_grennan_alna", "name": "ILLENIUM, Tom Grennan, Alna", "global_id": "global:artist:illenium_tom_grennan_alna"}
+{"slug": "lilly_palmer_maddix", "name": "Lilly Palmer, Maddix", "global_id": "global:artist:lilly_palmer_maddix"}
+{"slug": "armin_van_buuren_with_alok", "name": "Armin van Buuren (with Alok)", "global_id": "global:artist:armin_van_buuren_with_alok"}
+{"slug": "armin_van_buuren_sacha", "name": "Armin van Buuren, SACHA", "global_id": "global:artist:armin_van_buuren_sacha"}
+{"slug": "sickick", "name": "Sickick", "global_id": "global:artist:sickick"}
+{"slug": "wuki", "name": "Wuki", "global_id": "global:artist:wuki"}
+{"slug": "disco_lines_tinashe_avello_remix", "name": "Disco Lines, Tinashe (AVELLO Remix)", "global_id": "global:artist:disco_lines_tinashe_avello_remix"}
+{"slug": "teddy_o", "name": "TEDDY-O", "global_id": "global:artist:teddy_o"}
+{"slug": "two_friends", "name": "Two Friends", "global_id": "global:artist:two_friends"}
+{"slug": "dj_isaac", "name": "DJ Isaac", "global_id": "global:artist:dj_isaac"}
+{"slug": "medusa", "name": "Medusa", "global_id": "global:artist:medusa"}
+{"slug": "vintage_culture", "name": "Vintage Culture", "global_id": "global:artist:vintage_culture"}
+{"slug": "underworld", "name": "Underworld", "global_id": "global:artist:underworld"}
+{"slug": "ilan_bluestone", "name": "Ilan Bluestone", "global_id": "global:artist:ilan_bluestone"}
+{"slug": "holy_priest", "name": "Holy Priest", "global_id": "global:artist:holy_priest"}
+{"slug": "kai_wachi", "name": "Kai Wachi", "global_id": "global:artist:kai_wachi"}
+{"slug": "dyen", "name": "DYEN", "global_id": "global:artist:dyen"}
+{"slug": "ahmed_spins", "name": "Ahmed Spins", "global_id": "global:artist:ahmed_spins"}
+{"slug": "sammy_virgi", "name": "Sammy Virgi", "global_id": "global:artist:sammy_virgi"}
+{"slug": "wukong", "name": "WUKONG", "global_id": "global:artist:wukong"}
+{"slug": "malugi", "name": "Malugi", "global_id": "global:artist:malugi"}
+{"slug": "luude", "name": "Luude", "global_id": "global:artist:luude"}
+{"slug": "giuseppe_ottaviani", "name": "Giuseppe Ottaviani", "global_id": "global:artist:giuseppe_ottaviani"}
+{"slug": "drezo", "name": "Drezo", "global_id": "global:artist:drezo"}
+{"slug": "riot_ten", "name": "Riot Ten", "global_id": "global:artist:riot_ten"}
+{"slug": "maliboux", "name": "Maliboux", "global_id": "global:artist:maliboux"}
+{"slug": "adin", "name": "ADIN", "global_id": "global:artist:adin"}
+{"slug": "adrenalize", "name": "Adrenalize", "global_id": "global:artist:adrenalize"}
+{"slug": "alan_fitzpatrick", "name": "Alan Fitzpatrick", "global_id": "global:artist:alan_fitzpatrick"}
+{"slug": "alcemist", "name": "Alcemist", "global_id": "global:artist:alcemist"}
+{"slug": "goddard", "name": "Goddard", "global_id": "global:artist:goddard"}
+{"slug": "alisha", "name": "Alisha", "global_id": "global:artist:alisha"}
+{"slug": "andy_c", "name": "Andy C", "global_id": "global:artist:andy_c"}
+{"slug": "artbat", "name": "ARTBAT", "global_id": "global:artist:artbat"}
+{"slug": "atmozfears", "name": "Atmozfears", "global_id": "global:artist:atmozfears"}
+{"slug": "bou", "name": "Bou", "global_id": "global:artist:bou"}
+{"slug": "k_motionz", "name": "K Motionz", "global_id": "global:artist:k_motionz"}
+{"slug": "brennan_heart", "name": "Brennan Heart", "global_id": "global:artist:brennan_heart"}
+{"slug": "camo_krooked", "name": "Camo & Krooked", "global_id": "global:artist:camo_krooked"}
+{"slug": "friction", "name": "Friction", "global_id": "global:artist:friction"}
+{"slug": "maddix", "name": "Maddix", "global_id": "global:artist:maddix"}
+{"slug": "visionaries", "name": "Visionaries", "global_id": "global:artist:visionaries"}
+{"slug": "dj_irene", "name": "DJ Irene", "global_id": "global:artist:dj_irene"}
+{"slug": "swollen_members", "name": "Swollen Members", "global_id": "global:artist:swollen_members"}
+{"slug": "living_legends", "name": "Living Legends", "global_id": "global:artist:living_legends"}
+{"slug": "planet_asia", "name": "Planet Asia", "global_id": "global:artist:planet_asia"}
+{"slug": "awol_one", "name": "AWOL One", "global_id": "global:artist:awol_one"}
+{"slug": "mc_supernatural", "name": "MC Supernatural", "global_id": "global:artist:mc_supernatural"}
+{"slug": "acraze", "name": "ACRAZE", "global_id": "global:artist:acraze"}
+{"slug": "dombresky", "name": "Dombresky", "global_id": "global:artist:dombresky"}
+{"slug": "malaa", "name": "Malaa", "global_id": "global:artist:malaa"}
+{"slug": "stonebridge", "name": "StoneBridge", "global_id": "global:artist:stonebridge"}
+{"slug": "z_trip", "name": "Z-Trip", "global_id": "global:artist:z_trip"}
+{"slug": "purple_disco_machine", "name": "Purple Disco Machine", "global_id": "global:artist:purple_disco_machine"}
+{"slug": "whipped_cream", "name": "WHIPPED CREAM", "global_id": "global:artist:whipped_cream"}
+{"slug": "dj_marky", "name": "DJ Marky", "global_id": "global:artist:dj_marky"}
+{"slug": "kadjrare", "name": "kadjrare", "global_id": "global:artist:kadjrare"}
+{"slug": "dj_dan", "name": "DJ Dan", "global_id": "global:artist:dj_dan"}
+{"slug": "lmfao", "name": "LMFAO", "global_id": "global:artist:lmfao"}
+{"slug": "jan_mortelmans", "name": "Jan Mortelmans", "global_id": "global:artist:jan_mortelmans"}
+{"slug": "lady_liquid", "name": "Lady Liquid", "global_id": "global:artist:lady_liquid"}
+{"slug": "moshrum", "name": "Moshrum", "global_id": "global:artist:moshrum"}
+{"slug": "ray", "name": "Ray", "global_id": "global:artist:ray"}
+{"slug": "da_dwek", "name": "Da' Dwek", "global_id": "global:artist:da_dwek"}
+{"slug": "dj_mistaa", "name": "DJ Mistaa", "global_id": "global:artist:dj_mistaa"}
+{"slug": "vic_vega", "name": "Vic Vega", "global_id": "global:artist:vic_vega"}
+{"slug": "noisecontrollers", "name": "Noisecontrollers", "global_id": "global:artist:noisecontrollers"}
+{"slug": "dragonette", "name": "Dragonette", "global_id": "global:artist:dragonette"}
+{"slug": "wally_lopez", "name": "Wally Lopez", "global_id": "global:artist:wally_lopez"}
+{"slug": "sharam", "name": "Sharam", "global_id": "global:artist:sharam"}
+{"slug": "scottyboy", "name": "Scottyboy", "global_id": "global:artist:scottyboy"}
+{"slug": "r_f_s_du_sol", "name": "R\u00dcF\u00dcS DU SOL", "global_id": "global:artist:r_f_s_du_sol"}
+{"slug": "ztrip", "name": "Ztrip", "global_id": "global:artist:ztrip"}
+{"slug": "vj_tek", "name": "VJ TEK", "global_id": "global:artist:vj_tek"}
+{"slug": "the_pitcher", "name": "The Pitcher", "global_id": "global:artist:the_pitcher"}
+{"slug": "sonny_fodera", "name": "Sonny Fodera", "global_id": "global:artist:sonny_fodera"}
+{"slug": "cazzette", "name": "Cazzette", "global_id": "global:artist:cazzette"}
+{"slug": "david_solano", "name": "David Solano", "global_id": "global:artist:david_solano"}
+{"slug": "adam_f", "name": "Adam F", "global_id": "global:artist:adam_f"}
+{"slug": "an_21_max_vangeli", "name": "AN 21 & Max Vangeli", "global_id": "global:artist:an_21_max_vangeli"}
+{"slug": "brazabelle", "name": "Brazabelle", "global_id": "global:artist:brazabelle"}
+{"slug": "congorock", "name": "Congorock", "global_id": "global:artist:congorock"}
+{"slug": "crizzly", "name": "Crizzly", "global_id": "global:artist:crizzly"}
+{"slug": "digital_lab", "name": "Digital Lab", "global_id": "global:artist:digital_lab"}
+{"slug": "jmajik", "name": "JMajik", "global_id": "global:artist:jmajik"}
+{"slug": "pleasurekraft", "name": "Pleasurekraft", "global_id": "global:artist:pleasurekraft"}
+{"slug": "xilent", "name": "Xilent", "global_id": "global:artist:xilent"}
+{"slug": "wiwek", "name": "Wiwek", "global_id": "global:artist:wiwek"}
+{"slug": "jimini_cricket", "name": "Jimini Cricket", "global_id": "global:artist:jimini_cricket"}
+{"slug": "sergey_brin", "name": "Sergey Brin", "global_id": "global:artist:sergey_brin"}
+{"slug": "dj_slip", "name": "DJ Slip", "global_id": "global:artist:dj_slip"}
+{"slug": "timeblind", "name": "Timeblind", "global_id": "global:artist:timeblind"}
+{"slug": "johnny_aquaviva", "name": "Johnny Aquaviva", "global_id": "global:artist:johnny_aquaviva"}
+{"slug": "mark_newlands", "name": "Mark Newlands", "global_id": "global:artist:mark_newlands"}
+{"slug": "dan_efex", "name": "Dan Efex", "global_id": "global:artist:dan_efex"}
+{"slug": "flinx", "name": "FLINX", "global_id": "global:artist:flinx"}
+{"slug": "analog_mobsters", "name": "Analog Mobsters", "global_id": "global:artist:analog_mobsters"}
+{"slug": "hardcore_jon", "name": "Hardcore Jon", "global_id": "global:artist:hardcore_jon"}
+{"slug": "martin_kleihm", "name": "Martin Kleihm", "global_id": "global:artist:martin_kleihm"}
+{"slug": "the_demix", "name": "The Demix", "global_id": "global:artist:the_demix"}
+{"slug": "gary_richards", "name": "Gary Richards", "global_id": "global:artist:gary_richards"}
+{"slug": "steve_kool_aid", "name": "Steve Kool-Aid", "global_id": "global:artist:steve_kool_aid"}
+{"slug": "groovy_room", "name": "Groovy Room", "global_id": "global:artist:groovy_room"}
+{"slug": "timmy_trumpet", "name": "Timmy Trumpet", "global_id": "global:artist:timmy_trumpet"}
+{"slug": "eprom", "name": "EPROM", "global_id": "global:artist:eprom"}
+{"slug": "space_jesus", "name": "Space Jesus", "global_id": "global:artist:space_jesus"}
+{"slug": "wehbba", "name": "Wehbba", "global_id": "global:artist:wehbba"}
+{"slug": "dubvision", "name": "DubVision", "global_id": "global:artist:dubvision"}
+{"slug": "luminn", "name": "Luminn", "global_id": "global:artist:luminn"}
+{"slug": "dj_lizzy", "name": "DJ Lizzy", "global_id": "global:artist:dj_lizzy"}
+{"slug": "terry_zhong", "name": "Terry Zhong", "global_id": "global:artist:terry_zhong"}
+{"slug": "sesco", "name": "Sesco", "global_id": "global:artist:sesco"}
+{"slug": "dj_sally", "name": "DJ Sally", "global_id": "global:artist:dj_sally"}

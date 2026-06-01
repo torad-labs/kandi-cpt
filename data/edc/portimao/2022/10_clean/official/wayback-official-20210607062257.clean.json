@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "91ce1f64e4839362410c8fe31af7e6346fdc33322d1407b7dcd800b60008ba59",
+  "clean_sha256": "0fdb21c2224ce523e46f0c1e4af0f082f206a932696ca1e8331bfa37ae52b200",
+  "extractor": "llm-rescue",
+  "llm_rescued": true,
+  "quality_gate": {
+    "words": 55,
+    "keep_ratio": 0.072,
+    "anchor_ratio": 0.505,
+    "rescued_from": "too-short(55w)"
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20210607062257id_/https://www.insomniac.com/events/edc-portugal-2022-06-17-portimao-portugal/",
+  "title": "EDC Portugal \u2013 Insomniac"
+}

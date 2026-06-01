@@ -1,0 +1,15 @@
+{
+  "raw_sha256": "1777b31d87f2ba19335c6dfb1ed8b8540b244cf6c0c722d66d63042aed4c3cf4",
+  "clean_sha256": "158baf942ae571b960dcfdd311cb650a5e1bf25fc163aa875db2beb199f81dee",
+  "extractor": "trafilatura",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 305,
+    "keep_ratio": 0.519,
+    "anchor_ratio": 0.312
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20250516174450id_/https://www.insomniac.com/events/edc-colombia-2026-2025-10-01-medellin-colombia/",
+  "title": "EDC Colombia 2026 \u2013 Insomniac"
+}

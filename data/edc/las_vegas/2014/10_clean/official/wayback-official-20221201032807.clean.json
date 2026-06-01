@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "e04e3acc28bdaa79d63fde7948819531b2ed69e772ca11a1e7163c4bdb9452cd",
+  "clean_sha256": "99515af7e0f77c8508dff7231d215a030814d8324b66ac3c3e5d4a2bf1051e3c",
+  "extractor": "llm-rescue",
+  "llm_rescued": true,
+  "quality_gate": {
+    "words": 167,
+    "keep_ratio": 0.525,
+    "anchor_ratio": 0.553,
+    "rescued_from": "too-short(167w)"
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20221201032807id_/https://www.insomniac.com/events/edc-las-vegas-2014-2014-06-20-las-vegas-nv/",
+  "title": "EDC Las Vegas 2014 \u2013 Insomniac"
+}

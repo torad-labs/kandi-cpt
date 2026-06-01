@@ -3,29 +3,312 @@
   "festival": "edc",
   "festival_name": "Electric Daisy Carnival",
   "editions": [
-    {"city": "las_vegas",      "country": "US", "venue": "Las Vegas Motor Speedway",        "status": "active",       "years": [2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2023,2024,2025,2026]},
-    {"city": "orlando",        "country": "US", "venue": "Tinker Field",                     "status": "active",       "years": [2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2023,2024,2025,2026]},
-    {"city": "mexico_city",    "country": "MX", "venue": "Autodromo Hermanos Rodriguez",     "status": "active",       "years": [2014,2015,2016,2017,2018,2019,2020,2022,2023,2024,2025,2026], "mfw_slug": "edc-mexico"},
-    {"city": "los_angeles",    "country": "US", "venue": "LA Memorial Coliseum (and others)","status": "discontinued", "years": [1997,1999,2000,2001,2002,2007,2008,2009,2010]},
-    {"city": "san_bernardino", "country": "US", "venue": "NOS Events Center",                "status": "discontinued", "years": [2003,2004,2005,2006]},
-    {"city": "denver",         "country": "US", "venue": "Arapahoe County Fairgrounds",      "status": "discontinued", "years": [2008,2009,2010,2011]},
-    {"city": "dallas",         "country": "US", "venue": "Fair Park",                        "status": "discontinued", "years": [2010,2011]},
-    {"city": "new_york_nj",    "country": "US", "venue": "MetLife Stadium / Citi Field",     "status": "discontinued", "years": [2012,2013,2014,2015,2016], "mfw_slug": "edc-new-york"},
-    {"city": "chicago",        "country": "US", "venue": "Chicagoland Speedway",             "status": "discontinued", "years": [2013]},
-    {"city": "san_juan",       "country": "PR", "venue": "Various (San Juan)",               "status": "discontinued", "years": [2009,2010,2011,2012,2013,2014,2015], "mfw_slug": "edc-puerto-rico"},
-    {"city": "london",         "country": "GB", "venue": "Queen Elizabeth Olympic Park",     "status": "discontinued", "years": [2013], "mfw_slug": "edc-uk"},
-    {"city": "milton_keynes",  "country": "GB", "venue": "National Bowl",                    "status": "discontinued", "years": [2014,2015,2016], "mfw_slug": "edc-uk"},
-    {"city": "sao_paulo",      "country": "BR", "venue": "Autodromo Jose Carlos Pace",       "status": "discontinued", "years": [2015], "mfw_slug": "edc-brazil"},
-    {"city": "new_delhi",      "country": "IN", "venue": "Buddh International Circuit",       "status": "discontinued", "years": [2016], "mfw_slug": "edc-india"},
-    {"city": "shanghai",       "country": "CN", "venue": "Shanghai International Music Park", "status": "discontinued", "years": [2018], "mfw_slug": "edc-china"},
-    {"city": "zhuhai",         "country": "CN", "venue": "Chimelong Resort",                 "status": "discontinued", "years": [2018], "mfw_slug": "edc-china"},
-    {"city": "suzhou",         "country": "CN", "venue": "Yang Cheng Lake Resort",           "status": "active",       "years": [2023,2025], "mfw_slug": "edc-china"},
-    {"city": "chiba",          "country": "JP", "venue": "Zozo Marine Stadium",              "status": "discontinued", "years": [2018,2019], "mfw_slug": "edc-japan"},
-    {"city": "seoul",          "country": "KR", "venue": "Seoul Land",                       "status": "discontinued", "years": [2019], "mfw_slug": "edc-korea"},
-    {"city": "incheon",        "country": "KR", "venue": "Inspire Arena",                    "status": "active",       "years": [2025,2026], "mfw_slug": "edc-korea"},
-    {"city": "portimao",       "country": "PT", "venue": "Praia da Rocha",                   "status": "discontinued", "years": [2022], "mfw_slug": "edc-portugal"},
-    {"city": "phuket",         "country": "TH", "venue": "Boat Avenue Lakefront",            "status": "active",       "years": [2025,2026], "mfw_slug": "edc-thailand"},
-    {"city": "medellin",       "country": "CO", "venue": "Estadio Atanasio Girardot",        "status": "planned",      "years": [2026], "mfw_slug": "edc-colombia"},
-    {"city": "edsea",          "country": "US", "venue": "Norwegian Joy (cruise)",           "status": "active",       "years": [2023,2024,2025,2026], "mfw_slug": "edsea"}
+    {
+      "city": "las_vegas",
+      "country": "US",
+      "venue": "Las Vegas Motor Speedway",
+      "status": "active",
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ]
+    },
+    {
+      "city": "orlando",
+      "country": "US",
+      "venue": "Tinker Field",
+      "status": "active",
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ]
+    },
+    {
+      "city": "mexico_city",
+      "country": "MX",
+      "venue": "Autodromo Hermanos Rodriguez",
+      "status": "active",
+      "years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "mfw_slug": "edc-mexico"
+    },
+    {
+      "city": "los_angeles",
+      "country": "US",
+      "venue": "LA Memorial Coliseum (and others)",
+      "status": "discontinued",
+      "years": [
+        1997,
+        1999,
+        2000,
+        2001,
+        2002,
+        2007,
+        2008,
+        2009,
+        2010
+      ]
+    },
+    {
+      "city": "san_bernardino",
+      "country": "US",
+      "venue": "NOS Events Center",
+      "status": "discontinued",
+      "years": [
+        2003,
+        2004,
+        2005,
+        2006
+      ]
+    },
+    {
+      "city": "denver",
+      "country": "US",
+      "venue": "Arapahoe County Fairgrounds",
+      "status": "discontinued",
+      "years": [
+        2008,
+        2009,
+        2010,
+        2011
+      ]
+    },
+    {
+      "city": "dallas",
+      "country": "US",
+      "venue": "Fair Park",
+      "status": "discontinued",
+      "years": [
+        2010,
+        2011
+      ]
+    },
+    {
+      "city": "new_york_nj",
+      "country": "US",
+      "venue": "MetLife Stadium / Citi Field",
+      "status": "discontinued",
+      "years": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "mfw_slug": "edc-new-york"
+    },
+    {
+      "city": "chicago",
+      "country": "US",
+      "venue": "Chicagoland Speedway",
+      "status": "discontinued",
+      "years": [
+        2013
+      ]
+    },
+    {
+      "city": "san_juan",
+      "country": "PR",
+      "venue": "Various (San Juan)",
+      "status": "discontinued",
+      "years": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "mfw_slug": "edc-puerto-rico"
+    },
+    {
+      "city": "london",
+      "country": "GB",
+      "venue": "Queen Elizabeth Olympic Park",
+      "status": "discontinued",
+      "years": [
+        2013
+      ],
+      "mfw_slug": "edc-uk"
+    },
+    {
+      "city": "milton_keynes",
+      "country": "GB",
+      "venue": "National Bowl",
+      "status": "discontinued",
+      "years": [
+        2014,
+        2015,
+        2016
+      ],
+      "mfw_slug": "edc-uk"
+    },
+    {
+      "city": "sao_paulo",
+      "country": "BR",
+      "venue": "Autodromo Jose Carlos Pace",
+      "status": "discontinued",
+      "years": [
+        2015
+      ],
+      "mfw_slug": "edc-brazil"
+    },
+    {
+      "city": "new_delhi",
+      "country": "IN",
+      "venue": "Buddh International Circuit",
+      "status": "discontinued",
+      "years": [
+        2016
+      ],
+      "mfw_slug": "edc-india"
+    },
+    {
+      "city": "shanghai",
+      "country": "CN",
+      "venue": "Shanghai International Music Park",
+      "status": "discontinued",
+      "years": [
+        2018
+      ],
+      "mfw_slug": "edc-china"
+    },
+    {
+      "city": "zhuhai",
+      "country": "CN",
+      "venue": "Chimelong Resort",
+      "status": "discontinued",
+      "years": [
+        2018
+      ],
+      "mfw_slug": "edc-china"
+    },
+    {
+      "city": "suzhou",
+      "country": "CN",
+      "venue": "Yang Cheng Lake Resort",
+      "status": "active",
+      "years": [
+        2023,
+        2025
+      ],
+      "mfw_slug": "edc-china"
+    },
+    {
+      "city": "chiba",
+      "country": "JP",
+      "venue": "Zozo Marine Stadium",
+      "status": "discontinued",
+      "years": [
+        2018,
+        2019
+      ],
+      "mfw_slug": "edc-japan"
+    },
+    {
+      "city": "seoul",
+      "country": "KR",
+      "venue": "Seoul Land",
+      "status": "discontinued",
+      "years": [
+        2019
+      ],
+      "mfw_slug": "edc-korea"
+    },
+    {
+      "city": "incheon",
+      "country": "KR",
+      "venue": "Inspire Arena",
+      "status": "active",
+      "years": [
+        2025,
+        2026
+      ],
+      "mfw_slug": "edc-korea"
+    },
+    {
+      "city": "portimao",
+      "country": "PT",
+      "venue": "Praia da Rocha",
+      "status": "discontinued",
+      "years": [
+        2021,
+        2022
+      ],
+      "mfw_slug": "edc-portugal"
+    },
+    {
+      "city": "phuket",
+      "country": "TH",
+      "venue": "Boat Avenue Lakefront",
+      "status": "active",
+      "years": [
+        2025,
+        2026
+      ],
+      "mfw_slug": "edc-thailand"
+    },
+    {
+      "city": "medellin",
+      "country": "CO",
+      "venue": "Estadio Atanasio Girardot",
+      "status": "planned",
+      "years": [
+        2026
+      ],
+      "mfw_slug": "edc-colombia"
+    },
+    {
+      "city": "edsea",
+      "country": "US",
+      "venue": "Norwegian Joy (cruise)",
+      "status": "active",
+      "years": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "mfw_slug": "edsea"
+    }
   ]
 }

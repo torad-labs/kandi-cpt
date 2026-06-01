@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "b0e1c7077e629331753aac5e9cebf02a9caf9579ce26ea14fd143be05c36ce85",
+  "clean_sha256": "bf75ef458d0b7ad7e4c7e84bdbdb498e2ff952751d77e6ef69d8fc413f8f7286",
+  "extractor": "llm-rescue",
+  "llm_rescued": true,
+  "quality_gate": {
+    "words": 164,
+    "keep_ratio": 0.503,
+    "anchor_ratio": 0.548,
+    "rescued_from": "too-short(164w)"
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20230531094430id_/https://www.insomniac.com/events/edc-orlando-2011-2011-05-27-orlando-fl/",
+  "title": "EDC Orlando 2011 \u2013 Insomniac"
+}

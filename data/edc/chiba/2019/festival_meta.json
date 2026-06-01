@@ -1,0 +1,129 @@
+{
+  "festival_slug": "edc_chiba_2019",
+  "name": "EDC Chiba 2019",
+  "short_names": [
+    "EDC 2019",
+    "EDC Chiba",
+    "EDC"
+  ],
+  "venue": "Zozo Marine Stadium",
+  "venue_aliases": [],
+  "city": "Chiba",
+  "dates": "2019",
+  "n_main_stages": 9,
+  "_note": "scaffolded by gen_festival_meta.py (Phase 2) — stages from this edition's 15_structured (canonical attrs where the slug recurs), generic 3-day calendar, no precise dates.",
+  "days": {
+    "Friday": {
+      "date": "",
+      "ordinal": "day 1"
+    },
+    "Saturday": {
+      "date": "",
+      "ordinal": "day 2"
+    },
+    "Sunday": {
+      "date": "",
+      "ordinal": "day 3"
+    }
+  },
+  "stages": {
+    "kinetic_field": {
+      "camel": "kineticFIELD",
+      "spaced": "Kinetic Field",
+      "aliases": [
+        "KF",
+        "the main stage",
+        "the mainstage",
+        "the iconic main stage"
+      ],
+      "genre": "mainstage / big-room headliner",
+      "brand": "",
+      "rank": "the largest stage — EDC's iconic main stage, ~70,000 capacity, the largest stage in North America",
+      "vibe": "the iconic main stage with the owl mascot, hosting the biggest-name headliners"
+    },
+    "cosmic_meadow": {
+      "camel": "cosmicMEADOW",
+      "spaced": "Cosmic Meadow",
+      "aliases": [
+        "the Meadow"
+      ],
+      "genre": "big-room, mainstage and experimental",
+      "brand": "",
+      "rank": "an open-grounds field stage",
+      "vibe": "home of EDC's Friday 5pm opening ceremony; all genres, live performances, some hip-hop and rock"
+    },
+    "circuit_grounds": {
+      "camel": "circuitGROUNDS",
+      "spaced": "Circuit Grounds",
+      "aliases": [
+        "Circuit"
+      ],
+      "genre": "high-energy main-room",
+      "brand": "",
+      "rank": "the second-largest stage",
+      "vibe": "renowned for LED walls and plumes of fire"
+    },
+    "neon_garden": {
+      "camel": "neonGARDEN",
+      "spaced": "Neon Garden",
+      "aliases": [
+        "the techno stage"
+      ],
+      "genre": "deep house and techno",
+      "brand": "Factory 93",
+      "rank": "",
+      "vibe": "the dark, deep techno stage with minimalism and immersive live art"
+    },
+    "basspod": {
+      "camel": "bassPOD",
+      "spaced": "Basspod",
+      "aliases": [
+        "the bass stage"
+      ],
+      "genre": "dubstep, bass house, drum and bass, and trap",
+      "brand": "Bassrush",
+      "rank": "",
+      "vibe": "the proving ground of the Bassrush massive, where headbangers go hard"
+    },
+    "wasteland": {
+      "camel": "wasteLAND",
+      "spaced": "Wasteland",
+      "aliases": [
+        "the hardstyle stage"
+      ],
+      "genre": "hard dance, hardcore, and hardstyle",
+      "brand": "Basscon",
+      "rank": "",
+      "vibe": "the post-apocalyptic Basscon universe of blistering tempos"
+    },
+    "quantum_valley": {
+      "camel": "quantumVALLEY",
+      "spaced": "Quantum Valley",
+      "aliases": [
+        "the trance stage"
+      ],
+      "genre": "trance (the full spectrum, including psytrance)",
+      "brand": "Dreamstate",
+      "rank": "",
+      "vibe": "where the Trance Fam gathers; Dreamstate presents the entire trance spectrum"
+    },
+    "stereo_bloom": {
+      "camel": "stereoBLOOM",
+      "spaced": "Stereo Bloom",
+      "aliases": [],
+      "genre": "house, tech house, and bass music",
+      "brand": "Insomniac Music Group",
+      "rank": "",
+      "vibe": "the diverse house/tech-house stage of known artists and up-and-comers"
+    },
+    "bionic_jungle": {
+      "camel": "bionicJUNGLE",
+      "spaced": "Bionic Jungle",
+      "aliases": [],
+      "genre": "house",
+      "brand": "",
+      "rank": "a small but mighty stage (EDC's newest stage)",
+      "vibe": "a journey deep into the wild with a curated roster of house artists"
+    }
+  }
+}

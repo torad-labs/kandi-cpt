@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "6f28c5a62c75254bc5a7a18e28dcd0e12b0f51379a9d3c96d55914bc071619a2",
+  "clean_sha256": "95ff06102498e15505cfe801ea2e04bc0f20cb7d5c25f8c6c9f61b1dee534184",
+  "extractor": "llm-rescue",
+  "llm_rescued": true,
+  "quality_gate": {
+    "words": 181,
+    "keep_ratio": 0.503,
+    "anchor_ratio": 0.547,
+    "rescued_from": "too-short(181w)"
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20240816001527id_/https://www.insomniac.com/events/edc-mexico-2016-2016-02-27-mexico-city/",
+  "title": "EDC Mexico 2016 \u2013 Insomniac"
+}

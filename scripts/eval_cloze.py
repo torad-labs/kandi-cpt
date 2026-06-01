@@ -107,6 +107,8 @@ def load_facts():
         t = json.loads(l)
         if t.get("predicate") != "plays_at":
             continue
+        if ":stage:" not in str(t.get("object", "")):
+            continue          # the multi-edition campaign appended plays_at→festival triples; keep only →stage
         a = by_id.get(t["subject_id"], {}).get("name_canonical")
         if not a:
             continue

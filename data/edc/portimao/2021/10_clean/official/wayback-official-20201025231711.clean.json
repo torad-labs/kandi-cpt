@@ -1,0 +1,16 @@
+{
+  "raw_sha256": "aaf7b4170ac742a3a1b52597419def758b7674a87d599eb2fa590aca39aba354",
+  "clean_sha256": "af4a89657994d1ce1640ad9bf4391282941e9884101d8d010ec378a2dd558410",
+  "extractor": "listing-index",
+  "llm_rescued": false,
+  "quality_gate": {
+    "words": 393,
+    "keep_ratio": 0.482,
+    "anchor_ratio": 0.508,
+    "kept_as": "listing"
+  },
+  "domain_class": "official-festival",
+  "source_channel": "official",
+  "source_url": "http://web.archive.org/web/20201025231711id_/https://www.insomniac.com/events/edc-portugal-2021-06-18-portimao-portugal/",
+  "title": "EDC Portugal \u2013 Insomniac"
+}
