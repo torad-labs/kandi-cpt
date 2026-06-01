@@ -13,10 +13,13 @@ lowest is the one to keep / deploy.
 from __future__ import annotations
 
 import argparse
+import math
+import sys
 
 import torch
 from datasets import load_from_disk
-from transformers import Gemma4ForCausalLM
+
+from pipeline.model_load import load_causal_ckpt_bf16
 
 
 @torch.no_grad()
@@ -31,7 +34,7 @@ def val_loss(model, ds, device, bs=8) -> float:
         if n == 0 or not torch.isfinite(out.loss):     # all-pad batch → loss is nan; nan*0=nan would poison
             continue
         tot += out.loss.item() * n; ntok += n          # loss is mean over supervised tokens → re-weight
-    return tot / max(1, ntok)
+    return tot / ntok if ntok else float("nan")        # nan (not 0.0) so a fully-broken ckpt can't win min()
 
 
 def main():
@@ -44,13 +47,16 @@ def main():
     print(f"val set: {len(ds)} examples\n")
     results = {}
     for ck in args.checkpoints:
-        m = Gemma4ForCausalLM.from_pretrained(ck, dtype=torch.bfloat16, attn_implementation="sdpa").to(args.device).eval()
+        m = load_causal_ckpt_bf16(ck, args.device)
         vl = val_loss(m, ds, args.device)
         results[ck] = vl
         print(f"  {ck.split('/')[-1]:>16}  val_loss={vl:.4f}")
         del m; torch.cuda.empty_cache()
-    best = min(results, key=results.get)
-    print(f"\nbest (early-stop): {best.split('/')[-1]}  val_loss={results[best]:.4f}")
+    finite = {k: v for k, v in results.items() if math.isfinite(v)}
+    if not finite:
+        sys.exit("✗ all checkpoints scored nan/empty val loss — broken val set or diverged weights")
+    best = min(finite, key=finite.get)
+    print(f"\nbest (early-stop): {best.split('/')[-1]}  val_loss={finite[best]:.4f}")
 
 
 if __name__ == "__main__":

@@ -180,6 +180,7 @@ def score_knownness(model, tok, cands, k: int, bs: int = 16):
     """
     import torch
     model.eval()
+    orig_side, orig_pad = tok.padding_side, tok.pad_token
     if tok.pad_token_id is None:
         tok.pad_token = tok.eos_token
     tok.padding_side = "left"                            # decoder generation needs left-pad (gen aligns at the end)
@@ -188,34 +189,38 @@ def score_knownness(model, tok, cands, k: int, bs: int = 16):
         if c["rel"] == "abstain" or not c.get("key"):
             c["tier"], c["self"], c["gen_ok"] = "known", None, True
     work = [c for c in cands if c["rel"] != "abstain" and c.get("key")]
-
-    for i in range(0, len(work), bs):
-        batch = work[i:i + bs]
-        prompts = [tok.apply_chat_template([{"role": "user", "content": c["q"]}],
-                                           add_generation_prompt=True, tokenize=False) for c in batch]
-        enc = tok(prompts, return_tensors="pt", padding=True, add_special_tokens=False).to(model.device)
-        plen = enc["input_ids"].shape[1]
-        keyns = [_norm(c["key"]) for c in batch]
-        hits = [0] * len(batch); self_ans = [None] * len(batch); produced = [False] * len(batch)
-        with torch.no_grad():
-            for j in range(k):                          # greedy (j=0) + sampled (j>0), each a batched pass
-                out = model.generate(**enc, max_new_tokens=40, do_sample=(j > 0), temperature=0.7,
-                                     pad_token_id=tok.eos_token_id)
-                for b in range(len(batch)):
-                    txt = tok.decode(out[b][plen:], skip_special_tokens=True)
-                    if len(txt.strip()) > 5:
-                        produced[b] = True
-                    if keyns[b] and keyns[b] in _norm(txt):
-                        hits[b] += 1
-                        if self_ans[b] is None:
-                            self_ans[b] = txt.strip().split("\n")[0]
-        for b, c in enumerate(batch):
-            frac = hits[b] / max(1, k)
-            c["tier"] = "known" if frac >= 0.75 else "maybe" if frac > 0 else "unknown"
-            c["self"] = self_ans[b]
-            # gen_ok distinguishes "model tried & missed" (genuine unknown → safe to teach abstention) from
-            # "produced nothing/garbled" (chat-format failure on the pure-CPT model, NOT real ignorance)
-            c["gen_ok"] = produced[b]
+    try:
+        for i in range(0, len(work), bs):
+            batch = work[i:i + bs]
+            prompts = [tok.apply_chat_template([{"role": "user", "content": c["q"]}],
+                                               add_generation_prompt=True, tokenize=False) for c in batch]
+            if i == 0:                                  # fail loud if the template dropped BOS (would malform every gen)
+                assert prompts[0].startswith(tok.bos_token), "chat template did not emit BOS"
+            enc = tok(prompts, return_tensors="pt", padding=True, add_special_tokens=False).to(model.device)
+            plen = enc["input_ids"].shape[1]
+            keyns = [_norm(c["key"]) for c in batch]
+            hits = [0] * len(batch); self_ans = [None] * len(batch); produced = [False] * len(batch)
+            with torch.no_grad():
+                for j in range(k):                      # greedy (j=0) + sampled (j>0), each a batched pass
+                    out = model.generate(**enc, max_new_tokens=40, do_sample=(j > 0), temperature=0.7,
+                                         pad_token_id=tok.eos_token_id)
+                    for b in range(len(batch)):
+                        txt = tok.decode(out[b][plen:], skip_special_tokens=True).strip()
+                        if txt:                         # emitted real (non-special) content → a genuine attempt
+                            produced[b] = True
+                        if keyns[b] and keyns[b] in _norm(txt):
+                            hits[b] += 1
+                            if self_ans[b] is None:
+                                self_ans[b] = txt.split("\n")[0]
+            for b, c in enumerate(batch):
+                frac = hits[b] / max(1, k)
+                c["tier"] = "known" if frac >= 0.75 else "maybe" if frac > 0 else "unknown"
+                c["self"] = self_ans[b]
+                # gen_ok: emitted real content (attempted & missed → safe to teach "I don't know") vs nothing
+                # (chat-format failure on the pure-CPT model, NOT real ignorance). Token-content, not char-len.
+                c["gen_ok"] = produced[b]
+    finally:
+        tok.padding_side, tok.pad_token = orig_side, orig_pad   # don't leak the mutation to encode()
 
 
 def main():
@@ -292,7 +297,10 @@ def main():
             if c.get("tier") == "known" and c.get("self"):
                 c["a"] = c["self"]; stats["self_gen_swapped"] += 1
 
-    answerable = [(c["q"], c["a"]) for c in cands]
+    # Never let the same question appear as both an answer AND an "I don't know" (contradictory signal —
+    # happens when --abstention-frac runs without --knowledge-filter, so unknown QAs stay in cands).
+    abstain_qs = {a["q"] for a in abstain_pool}
+    answerable = [(c["q"], c["a"]) for c in cands if c["q"] not in abstain_qs]
     answerable = list(dict.fromkeys(answerable))
 
     # abstention mix (#2): synthesized-unanswerable + unknown-tier, to hit --abstention-frac of the final set

@@ -21,14 +21,13 @@ import glob
 import json
 
 import torch
-from transformers import AutoTokenizer, Gemma4ForCausalLM
+from transformers import AutoTokenizer
 
 import config as C
-from pipeline.model_load import load_text_model_bf16
-import torch as _t
+from pipeline.model_load import load_text_model_bf16, load_causal_ckpt_bf16
 
 
-@_t.no_grad()
+@torch.no_grad()
 def rank_chunked(model, tok, prefix, cands, chunk=8):
     """Forced-choice over many candidates, scored in memory-bounded chunks. Full-batch ranked_batch OOMs
     at ~98 candidates (the [N, len, 262K-vocab] log_softmax doesn't fit beside the resident model); chunking
@@ -41,14 +40,14 @@ def rank_chunked(model, tok, prefix, cands, chunk=8):
     for i in range(0, len(cands), chunk):
         grp = cands[i:i + chunk]
         conts = [tok(c, add_special_tokens=False, return_tensors="pt").input_ids[0] for c in grp]
-        seqs = [_t.cat([pids, c]) for c in conts]
+        seqs = [torch.cat([pids, c]) for c in conts]
         maxlen = max(s.shape[0] for s in seqs)
-        batch = _t.full((len(seqs), maxlen), pad, dtype=_t.long)
-        attn = _t.zeros((len(seqs), maxlen), dtype=_t.long)
+        batch = torch.full((len(seqs), maxlen), pad, dtype=torch.long)
+        attn = torch.zeros((len(seqs), maxlen), dtype=torch.long)
         for j, s in enumerate(seqs):
             batch[j, : s.shape[0]] = s
             attn[j, : s.shape[0]] = 1
-        logp = _t.log_softmax(
+        logp = torch.log_softmax(
             model(batch.to(model.device), attention_mask=attn.to(model.device)).logits.float(), dim=-1)
         for j, (c, cids) in enumerate(zip(grp, conts)):
             n = cids.shape[0]
@@ -137,7 +136,7 @@ def main():
     torch.cuda.empty_cache()
 
     for ck in args.checkpoints:
-        m = Gemma4ForCausalLM.from_pretrained(ck, dtype=torch.bfloat16, attn_implementation="sdpa").to(args.device).eval()
+        m = load_causal_ckpt_bf16(ck, args.device)
         res[ck] = score(m, tok, ck.split("/")[-1], art_eds, cands, rank, args.max_artists)
         del m
         torch.cuda.empty_cache()

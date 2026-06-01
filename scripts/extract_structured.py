@@ -150,6 +150,8 @@ def main():
     print(f"structured extraction: {len(work)} pending docs across {len(ledgers)} editions, "
           f"concurrency={args.concurrency} (skipped {stats['unchanged']} already-done)", flush=True)
 
+    per_ed_total: Counter = Counter()
+    per_ed_fail: Counter = Counter()
     try:
         with ThreadPoolExecutor(max_workers=args.concurrency) as ex:
             futs = {ex.submit(llm_json, SP.SYSTEM, item["user"]): item for item in work}
@@ -161,8 +163,10 @@ def main():
                 except Exception as e:
                     print(f"  ! {type(e).__name__}: {e}", file=sys.stderr)
                     out = None
+                per_ed_total[item["slug"]] += 1
                 if not out:
                     stats["llm_fail"] += 1
+                    per_ed_fail[item["slug"]] += 1
                 else:
                     _write_records(out, item, paths, stats)
                     ledgers[item["slug"]][0].add(item["sha"])
@@ -185,6 +189,12 @@ def main():
     if work and stats["llm_fail"] / len(work) > 0.25:
         print(f"  !! WARNING: {stats['llm_fail']}/{len(work)} docs failed LLM extraction "
               f"({stats['llm_fail'] / len(work):.0%}) — corpus likely incomplete", file=sys.stderr)
+    # Per-edition guard: a single dead edition is invisible in the global rate but flows an EMPTY
+    # 15_structured downstream (hydrate skips it silently). Surface it loudly.
+    dead = sorted(s for s, t in per_ed_total.items() if t and per_ed_fail[s] == t)
+    if dead:
+        print(f"  !! WARNING: {len(dead)} edition(s) had 100% extraction failure → empty corpus "
+              f"flows downstream: {dead[:8]}{' …' if len(dead) > 8 else ''}", file=sys.stderr)
 
 
 # ---- small helpers (sidecar/sha/global upsert) ----
@@ -209,6 +219,9 @@ def _scrape_meta(md, sub):
     return {"url": sc.get("source_url", ""), "final_url": sc.get("source_url", ""), "fetched_at": ""}
 
 
+_GLOBAL_SEEN: dict = {}   # kind -> set(slug), loaded once per process (avoids O(n²) re-read of the growing file)
+
+
 def _upsert_global(rec):
     kind = rec["entity_type"] + "s"
     path = GLOBAL_DIR / f"{kind}.jsonl"
@@ -216,12 +229,13 @@ def _upsert_global(rec):
     slug = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
     if not slug:
         return
-    seen = set()
-    if path.exists():
-        seen = {json.loads(l).get("slug") for l in path.read_text().splitlines() if l.strip()}
-    if slug not in seen:
+    if kind not in _GLOBAL_SEEN:                         # first touch: read existing slugs once
+        _GLOBAL_SEEN[kind] = {json.loads(l).get("slug") for l in path.read_text().splitlines()
+                              if l.strip()} if path.exists() else set()
+    if slug not in _GLOBAL_SEEN[kind]:
         with path.open("a") as f:
             f.write(json.dumps({"slug": slug, "name": name, "global_id": f"global:{rec['entity_type']}:{slug}"}) + "\n")
+        _GLOBAL_SEEN[kind].add(slug)
 
 
 if __name__ == "__main__":

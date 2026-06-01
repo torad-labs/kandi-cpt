@@ -26,7 +26,7 @@ vars:
   corpus: corpus_all97
   sft_data: data/_build/30_tokenized/sft_v2.arrow
 
-# Ordered pipeline. Each stage: name, desc, cmd (argv with {placeholders}), gpu (gate), per_edition.
+# Ordered pipeline. Each stage: name, desc, cmd (argv with {placeholders}), gpu (gate).
 # Placeholders: {py}=.venv/bin/python, {root}, {editions}, {cpt}, {sft}, + any vars above.
 stages:
   - name: scrape

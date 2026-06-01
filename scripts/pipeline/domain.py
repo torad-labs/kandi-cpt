@@ -20,7 +20,6 @@ class Stage:
         self.desc = spec.get("desc", "")
         self.cmd = spec["cmd"]
         self.gpu = bool(spec.get("gpu", False))
-        self.per_edition = bool(spec.get("per_edition", False))
 
 
 class Domain:

@@ -26,3 +26,10 @@ def load_text_model_bf16(device: str = "cuda:0"):
     model.load_state_dict(remapped, strict=False)
     model.tie_weights()
     return model.to(device, dtype=torch.bfloat16).eval()
+
+
+def load_causal_ckpt_bf16(path, device: str = "cuda:0"):
+    """Load a SAVED Gemma4ForCausalLM checkpoint (a CPT/SFT save_pretrained dir) for eval/generation.
+    Centralizes the bf16 + sdpa incantation that the eval scripts otherwise repeat verbatim."""
+    return Gemma4ForCausalLM.from_pretrained(
+        str(path), dtype=torch.bfloat16, attn_implementation="sdpa").to(device).eval()
