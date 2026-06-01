@@ -23,7 +23,7 @@ from pipeline.model_load import load_causal_ckpt_bf16
 
 
 @torch.no_grad()
-def val_loss(model, ds, device, bs=8) -> float:
+def val_loss(model, ds, device, bs=2) -> float:   # bs small: labels= forward materializes [bs,seq,262K-vocab] logits
     tot, ntok = 0.0, 0
     for i in range(0, len(ds), bs):
         rows = ds[i:i + bs]

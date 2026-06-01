@@ -242,8 +242,9 @@ const lerp=(a,b,t)=>a+(b-a)*t;
 
 let T=1, target=1, failMode=false, playing=true, dir=-1;
 function render(){
-  // atmosphere
-  ctx.clearRect(0,0,W,H);
+  // atmosphere — fade the previous frame (not a hard clear) → glowing motion trails as entities migrate
+  ctx.globalCompositeOperation='source-over';
+  ctx.fillStyle='rgba(6,7,13,0.34)'; ctx.fillRect(0,0,W,H);
   ctx.globalCompositeOperation='lighter';
   const tt=ease(T);
   // group halos + constellation links grow with resolution (T→1, non-fail)
@@ -259,6 +260,17 @@ function render(){
       ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(hx,hy,rad,0,6.283); ctx.fill();
     }
   });
+  // constellation links — faint spokes from each basin centroid to its particles, fading in as the
+  // group resolves out of the collapsed core (uses last frame's positions — 1-frame lag is invisible)
+  if(resolve>0.32){
+    ctx.lineWidth=0.55;
+    const a=(resolve-0.32)/0.68*0.16;
+    GROUPS.forEach((g,gi)=>{
+      ctx.strokeStyle=hexA(g.c,a); ctx.beginPath();
+      parts.forEach(p=>{ if(p.g===gi){ ctx.moveTo(g.bx,g.by); ctx.lineTo(p.x,p.y); }});
+      ctx.stroke();
+    });
+  }
   // particles
   const now=performance.now()/1000;
   parts.forEach(p=>{
