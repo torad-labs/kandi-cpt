@@ -11,8 +11,15 @@
 #     =>  NVCC_APPEND_FLAGS="-DCCCL_DISABLE_CTK_COMPATIBILITY_CHECK"
 #
 # These params are easy to lose (e.g. across a context compaction) and the failure mode looks like a
-# code bug, not an env bug — hence this script is the single source of truth. All args pass straight
-# through to scripts/train_cpt.py.  GPU defaults to 0 (the 5080); override via CUDA_VISIBLE_DEVICES.
+# code bug, not an env bug — hence this script is THE single source of truth for the launch environment.
+# (Ignore scripts/launch.sh + scripts/fp4_env.sh: they target a *different* cu13 toolkit and launch.sh is
+# 2-GPU torchrun, which violates the single-GPU 1200W-PSU rule. This script is the canonical single-GPU one.)
+#
+# ZERO-FLAG LAUNCH:  bash scripts/train_fp4.sh
+#   → runs the canonical CPT defined entirely in configs/train_edc_lv_2026.yaml (corpus, save_dir,
+#     max_steps, batch, precision, int8-master mode — all baked in; nothing to remember or re-derive).
+#   Override only when A/B testing:  bash scripts/train_fp4.sh --config <other.yaml>   (or any train_cpt flag).
+#   All args pass straight through to scripts/train_cpt.py. GPU defaults to 0 (the 5080).
 #
 # NOTE: never run two FP4 trainers at once — 1200W PSU OCP trips with both GPUs at full (hard crash).
 set -euo pipefail
@@ -22,6 +29,15 @@ export CUDA_HOME=/usr/local/cuda-12.9
 export PATH=/usr/local/cuda-12.9/bin:$PATH
 export NVCC_PREPEND_FLAGS="-ccbin g++-14"
 export NVCC_APPEND_FLAGS="-DCCCL_DISABLE_CTK_COMPATIBILITY_CHECK"
+# flashinfer JIT-compiles the CUTLASS sm120 FP4 kernel with ninja (one job/core by default). On this
+# 32-core/59GB box each cicc compile is 2-4GB → unconstrained fan-out exhausts RAM and earlyoom SIGKILLs
+# the build (looks like a mystery crash). Cap it. Only matters on first compile; harmless once cached.
+export MAX_JOBS="${MAX_JOBS:-2}"
+export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-2}"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export PYTHONPATH=scripts
-exec .venv/bin/python scripts/train_cpt.py "$@"
+# Default to the canonical CPT config when none is passed → bare `bash scripts/train_fp4.sh` just works.
+case " $* " in
+  *" --config "*) exec .venv/bin/python scripts/train_cpt.py "$@" ;;
+  *)              exec .venv/bin/python scripts/train_cpt.py --config configs/train_edc_lv_2026.yaml "$@" ;;
+esac
