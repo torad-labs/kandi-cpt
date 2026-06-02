@@ -1,6 +1,6 @@
 # EDC Mexico 2024 | Music Festival Wizard
 
-Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/.
+Scraped 2026-06-02 from https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/.
 Tier 2 (reference) corpus material.
 
 ---

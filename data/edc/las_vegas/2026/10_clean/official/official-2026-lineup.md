@@ -1,0 +1,934 @@
+# Electric Daisy Carnival Las Vegas 2026 — Official Lineup
+
+Source: https://lasvegas.electricdaisycarnival.com/lineup/
+
+## Lineup
+
+- 1991
+- 2b Happy
+- 2DY4
+- 999999999
+- 99jakes
+- A.M.CwithMC Phantom
+- Abana
+- Above & Beyond (Sunrise Set)
+- Adiel
+- Adrián Mills
+- Adriatique
+- Adventure Club (Throwback Set)
+- AHEE
+- Ahmed Spins
+- Airglo
+- AJ Ball
+- AK1200
+- Alison Wonderland
+- ALPHA 9
+- Alves
+- Alyssa Jolee
+- $ami G
+- Anastazja
+- Andrew Rayel
+- Androcided
+- ANNA
+- APX1
+- AR/CO
+- Argy
+- Armin van Buuren (Sunrise Set)
+- ARMNHMR presents Passport
+- Ashley Walls
+- Assembly
+- ATLiens
+- Audiofreq
+- Avalon Emerson
+- AVELLO
+- Bad Ash
+- Bad Beat
+- Bad Boombox
+- Bashkka
+- BAUGRUPPE90
+- Beltran
+- Benni Ola
+- Benwal
+- Big Daddy Kess
+- Billy Gillies
+- Black Tiger Sex Machine
+- BOLO (Sunrise Set)
+- Boogie T
+- Bou
+- Boys Noize
+- BROSA
+- Bullet Tooth
+- BUNT. (In The Round)
+- Bushbaby
+- Caiiro
+- Canary Yellow
+- Cardo
+- Carneyval
+- Cassian
+- Castor & Pollux
+- CC Love
+- Charles Feelgood
+- Charlotte de Witte
+- Chassi
+- Chibs
+- Chloé Caillet
+- Chris Lorenzo
+- Chris Metcalfe
+- Chris Stussy
+- Chuckie
+- CID
+- Clawz
+- Cloonee
+- Close Friends Only
+- Cloudy
+- Club Angel
+- Code Black
+- Cold Blue
+- Connor q
+- Cosmic Gate
+- Cristoph
+- CRS?
+- Culture Shock
+- CUTDWN
+- Cyclops
+- DØMINA
+- Da Tweekaz
+- Dabin
+- Damon Sharpe
+- Danni G
+- Danny The Wildchild
+- Darren Porter
+- Darude
+- Dazy Duke
+- Dead X
+- Delta Heavy
+- Demigod
+- Dena
+- Dennett
+- Descendants
+- Dip Vertigo
+- Dirty Audio
+- Discip
+- Discovery Project
+- Disko Cowboy
+- Distinct Motive
+- DJ Exile
+- DJ Flapjack
+- DJ Flite
+- DJ Gigola
+- DJ Isaac
+- DJ Mandy
+- DJ Tennis
+- Doctor P
+- Donald Glaude
+- Dono
+- Doozie
+- Dramos
+- DREYA V
+- DYEN
+- EAZYBAKED
+- Eli Brown
+- Eli Fola
+- Eli & Fur
+- Eptic
+- Eric Davenport
+- Eric Dlux
+- ero808
+- Espii
+- Eve Lauren
+- FALKO
+- Fallen
+- Fallen with MC Dino
+- Fester, Oscure & Thee-O
+- Fireworks
+- Fisher
+- Floyd Lavine
+- Fluttershy
+- Flux Pavilion
+- Frankie Bones
+- Frost Children
+- Funk Tribu
+- FuntCase
+- Fury
+- Gareth Emery
+- Getter
+- Ghengar
+- gl00m13
+- Gold Lemonade
+- GorillaT
+- Goshfather
+- Grant Fisher
+- GRAVAGERZ
+- GRAVEDGR
+- GRiZ
+- Guari
+- Gusta
+- HAAi
+- Hamdi
+- Hannah Laing
+- Hardwell
+- Hartshorn
+- HAYLA
+- Heidi Lawden
+- HEYZ
+- Hixxy
+- HNTR
+- HOL!
+- Holy Priest
+- Hybrid Minds
+- I Hate Models
+- Ilan Bluestone
+- Indira Paganotto
+- INFEKT
+- Innellea
+- InSpeKtor GadJet
+- Interplanetary Criminal
+- ISAbella
+- J Patron
+- Jackie Hollander
+- Jared Jackson
+- Jason Splat
+- Jem.G
+- JFUSE
+- Jimni Cricket
+- Joey G
+- Johannes Schuster
+- John Price
+- John Summit
+- Jon Bishop
+- Joseph Capriati
+- Josh Baker
+- JRuiz
+- Juliet Mendoza
+- Juos
+- Just.Shaun
+- Justin Hawkes
+- Justus
+- Kai Wachi
+- Kaskade
+- KB da DJ
+- Kelland
+- Kendo
+- KETTAMA
+- Kevin de Vries
+- KI/KI
+- Kimmycat
+- KinAhau
+- Klangkuenstler
+- Klo
+- Koji Aiken
+- Korolova
+- KREAM
+- KUKO
+- Kuta
+- Kygore
+- Lady Faith
+- Lady Sinclair
+- Laidback Luke
+- Layton Giordani
+- Lenny Dee
+- Level Up
+- Levity
+- Lexxy Jax
+- Lil Texas
+- Lilly Palmer
+- Linney
+- Linska
+- Liquid Stranger
+- LNY TNZ
+- Louis Love
+- Love2Hate
+- Lu.Re
+- Luciano
+- Lucky Lou
+- Lucky Rabbit
+- Luke Alessi
+- Luke Alexander
+- Luke Dean
+- Luuk van Dijk
+- MËSTIZA
+- Machete
+- Maddix
+- Madds
+- MADGRRL
+- MALUGI
+- Marc V
+- Mark E Quark
+- Mark Lewis
+- Mars
+- Martin Garrix
+- Mary Droppinz
+- Masha Mar
+- Massano
+- Massimiliano Pagliara
+- Mateezy
+- Mathame
+- Matt Faulk
+- Mattilo
+- Matty Ralph
+- Max Dean
+- Max Low
+- MCR-T
+- MEDUZA³
+- Meedy
+- Mellinfunk
+- Mer Bear
+- Micah Martin
+- mink
+- Mish
+- Moonpup
+- Morgan Seatree
+- MPH
+- MR DEEDS
+- MTK
+- Muñequita
+- Murphy's Law
+- MUZZ
+- N0where G1rl
+- Nativesun
+- NEKTER
+- Neon Deluz
+- Nerz
+- Nico Moreno
+- Nightstalker
+- Nightstalker with MC Dino
+- Noizu
+- Nostalgix
+- Not Not
+- Notion
+- NXSTY
+- Obskür
+- Odd Language
+- Off in LALA
+- OKAYVAL
+- Ollie Lishman
+- Omar+
+- OMNOM
+- ÆON:MODE (Sunrise Set)
+- PARAMIDA
+- Paul Oakenfold
+- Paul van Dyk
+- Peekaboo
+- Pegassi
+- Peggy Gou
+- PHNX
+- Pizzi
+- Player Dave
+- PLS&TY
+- Polar Bears
+- Porter Robinson (DJ Set)
+- Prospa
+- Puking Spice Latte
+- Punky Brewstar
+- R.A.W.
+- RØZ
+- RAJE
+- Ray Volpe
+- Rebūke
+- Rebekah
+- Red Axes
+- Reid Speed
+- Restricted
+- RIOT
+- Roadhouse
+- Rob Gee
+- Robert Hood
+- Roddy Lima
+- Rohaan (DnB Set)
+- Rommii
+- Ron D Core
+- Rooler
+- Roxy Ferrari
+- Sabine Blaizin
+- salute
+- Sammy Virji
+- Samplifire
+- Samson
+- San Holo (Wholesome Riddim Set)
+- San Pacho
+- Sarah de Warren
+- Scooba
+- Sedef Adasï
+- Serafina
+- Seven Lions
+- Shingo Nakamura
+- Ship Wrek
+- Sidney Charles
+- Sihk
+- Silva Bumpa
+- Silver Panda
+- Silvie Loto
+- Simas
+- Simon Apex & Lostboy Tribute Set
+- Sippy
+- SISTO
+- Skanka
+- SKIBKID
+- Skilah
+- Skream
+- SLAMM
+- Slim McGraw
+- Slugg
+- Snow Strippers
+- Sofi Tukker
+- Solomun
+- Sommer Ray
+- Soraya
+- Soso Drü
+- Space Laces
+- Spray
+- Sqishi
+- Stacy Christine
+- Stan Christ
+- Starrza
+- Steve Aoki
+- Steve Leclair
+- Steve Loria
+- Sub Focus
+- Sub Zero Project
+- Subtronics
+- SUPERSTRINGS
+- Sussy
+- Synnhaven
+- T78
+- Tavatli
+- Taylor Kade
+- Tensteps
+- The Carry Nation
+- The Chainsmokers
+- The Kandyman
+- The Masquerade
+- The Outlaw
+- The Prodigy
+- The Purge
+- The Saints
+- Thomas Schumacher
+- Tiësto
+- Tiga
+- Tim Clark
+- Tinlicker (DJ Set)
+- Toman
+- Toneshifterz
+- Tony Gamboa
+- Topcat
+- Trace
+- Trouble
+- Tsu Nami presents Club Tsu
+- Underworld
+- VESSEL
+- Vicious
+- Vieze Asbak
+- Vigro Deep
+- Vintage Culture
+- Viperactive
+- Virtual Riot
+- VNSSA
+- VTSS (In The Round)
+- Vulkauf
+- Walker & Royce
+- Ward Andrews
+- Warface
+- Warung
+- Wax Motif
+- Westend
+- Whethan
+- William Black
+- Willie Pake
+- Wolfie
+- Wooli
+- YDG
+- Yosuf
+- Zaanee
+- Zakes Bantwini
+- Zedd
+
+## Basspod
+
+- A.M.CwithMC Phantom
+- AHEE
+- ATLiens
+- AVELLO
+- Adventure Club (Throwback Set)
+- Boogie T
+- Culture Shock
+- Cyclops
+- Delta Heavy
+- Dennett
+- Distinct Motive
+- Doctor P
+- EAZYBAKED
+- Eptic
+- Fallen with MC Dino
+- Flux Pavilion
+- FuntCase
+- Getter
+- Ghengar
+- GorillaT
+- HEYZ
+- HOL!
+- Hybrid Minds
+- INFEKT
+- Kai Wachi
+- Liquid Stranger
+- MUZZ
+- Mary Droppinz
+- Nightstalker with MC Dino
+- Peekaboo
+- RIOT
+- Samplifire
+- Sippy
+- Space Laces
+- The Masquerade
+- Viperactive
+- Virtual Riot
+- Whethan
+- YDG
+- ÆON:MODE (Sunrise Set)
+
+## BeatBox Art Car
+
+- 2DY4
+- ARMNHMR presents Passport
+- Benni Ola
+- Canary Yellow
+- Chassi
+- Chibs
+- Gusta
+- Kelland
+- Lady Sinclair
+- Mattilo
+- Mer Bear
+- Not Not
+- OKAYVAL
+- RAJE
+- SISTO
+- Samson
+- Sqishi
+- Tavatli
+- Tsu Nami presents Club Tsu
+- Vicious
+- Wolfie
+- ero808
+
+## Bionic Jungle
+
+- Alves
+- Avalon Emerson
+- BAUGRUPPE90
+- Bad Boombox
+- Bashkka
+- Benwal
+- Club Angel
+- HAAi
+- Heidi Lawden
+- ISAbella
+- KinAhau
+- Luke Alessi
+- Masha Mar
+- Massimiliano Pagliara
+- Ollie Lishman
+- PARAMIDA
+- Player Dave
+- Red Axes
+- Robert Hood
+- Sedef Adasï
+- Simas
+- Spray
+- Stacy Christine
+- The Carry Nation
+- Tiga
+- salute
+
+## CASA BACARDÍ at Daisy Fields
+
+- BROSA
+- CC Love
+- Cardo
+- Close Friends Only
+- DJ Exile
+- Doozie
+- Dramos
+- Eli Fola
+- Espii
+- Guari
+- J Patron
+- JFUSE
+- JRuiz
+- Juos
+- Lucky Lou
+- Luke Alexander
+- Rommii
+- Skilah
+- Soraya
+
+## Circuit Grounds
+
+- 1991
+- ANNA
+- Beltran
+- Bou
+- Boys Noize
+- Chris Stussy
+- DJ Mandy
+- I Hate Models
+- KETTAMA
+- KI/KI
+- Kevin de Vries
+- Level Up
+- Levity
+- Lilly Palmer
+- Linska
+- Peggy Gou
+- Ray Volpe
+- RØZ
+- Sammy Virji
+- Solomun
+- The Outlaw
+- Tiësto
+- Vintage Culture
+
+## Cosmic Meadow
+
+- Alison Wonderland
+- BUNT. (In The Round)
+- Black Tiger Sex Machine
+- DJ Gigola
+- Dabin
+- Frost Children
+- GRAVAGERZ
+- Hannah Laing
+- Holy Priest
+- Interplanetary Criminal
+- Jackie Hollander
+- Luke Dean
+- MALUGI
+- MCR-T
+- MEDUZA³
+- MPH
+- Max Dean
+- Nico Moreno
+- Nostalgix
+- Notion
+- Restricted
+- Roddy Lima
+- San Holo (Wholesome Riddim Set)
+- San Pacho
+- Seven Lions
+- Snow Strippers
+- The Prodigy
+- Underworld
+- VNSSA
+- VTSS (In The Round)
+- Walker & Royce
+- Westend
+- William Black
+
+## Electrolit Hydration House
+
+- Dena
+- Eric Dlux
+- Eve Lauren
+- Gold Lemonade
+- Jem.G
+- MTK
+- Marc V
+- Mateezy
+- NXSTY
+- Off in LALA
+
+## Forest House
+
+- AJ Ball
+- Assembly
+- Big Daddy Kess
+- Castor & Pollux
+- Damon Sharpe
+- Discovery Project
+- Dono
+- Goshfather
+- Joey G
+- Just.Shaun
+- Justus
+- Linney
+- Matt Faulk
+- Max Low
+- Micah Martin
+- NEKTER
+- Neon Deluz
+- Odd Language
+- PLS&TY
+- Polar Bears
+- Silver Panda
+- Sussy
+- Synnhaven
+- Taylor Kade
+- Tensteps
+- Tim Clark
+- Topcat
+- Ward Andrews
+- Zaanee
+
+## Insomniac Fridays
+
+- Charles Feelgood
+- DJ Flite
+- Demigod
+- Donald Glaude
+- Eric Davenport
+- Fester, Oscure & Thee-O
+- Jason Splat
+- Jon Bishop
+- Kendo
+- Louis Love
+- Mark E Quark
+- Mark Lewis
+- Mars
+- Mellinfunk
+- Moonpup
+- R.A.W.
+- Reid Speed
+- Ron D Core
+- Steve Leclair
+- Steve Loria
+- The Kandyman
+- Tony Gamboa
+
+## Kinetic Field
+
+- AR/CO
+- Above & Beyond (Sunrise Set)
+- Argy
+- Armin van Buuren (Sunrise Set)
+- Charlotte de Witte
+- Chris Lorenzo
+- Chuckie
+- Cloonee
+- Fireworks
+- Fisher
+- Funk Tribu
+- GRiZ
+- HAYLA
+- Hardwell
+- John Summit
+- Kaskade
+- Korolova
+- Laidback Luke
+- Layton Giordani
+- Martin Garrix
+- Porter Robinson (DJ Set)
+- Ship Wrek
+- Sofi Tukker
+- Steve Aoki
+- Sub Focus
+- Subtronics
+- The Chainsmokers
+- Trace
+- Wooli
+- Zedd
+
+## Neon Garden
+
+- 999999999
+- Adiel
+- Adriatique
+- Ahmed Spins
+- Anastazja
+- Bad Beat
+- Chloé Caillet
+- DJ Tennis
+- Eli Brown
+- Frankie Bones
+- Indira Paganotto
+- Joseph Capriati
+- Josh Baker
+- Klangkuenstler
+- Luciano
+- MËSTIZA
+- Prospa
+- Silvie Loto
+- mink
+
+## Picnic Playtime Art Car
+
+- 2b Happy
+- 99jakes
+- Androcided
+- DJ Flapjack
+- Fluttershy
+- Hartshorn
+- Hixxy
+- InSpeKtor GadJet
+- Jimni Cricket
+- Kimmycat
+- Kuta
+- Kygore
+- Lexxy Jax
+- Love2Hate
+- Lucky Rabbit
+- Muñequita
+- N0where G1rl
+- Nerz
+- Puking Spice Latte
+- Punky Brewstar
+- SKIBKID
+- Simon Apex & Lostboy Tribute Set
+- Vulkauf
+- gl00m13
+
+## Quantum Valley
+
+- ALPHA 9
+- Andrew Rayel
+- Billy Gillies
+- Cassian
+- Chris Metcalfe
+- Cold Blue
+- Cosmic Gate
+- Cristoph
+- Darren Porter
+- Darude
+- Eli & Fur
+- Gareth Emery
+- Ilan Bluestone
+- Innellea
+- KREAM
+- Maddix
+- Massano
+- Mathame
+- Matty Ralph
+- Paul Oakenfold
+- Paul van Dyk
+- Pegassi
+- Rebūke
+- SUPERSTRINGS
+- Sarah de Warren
+- Shingo Nakamura
+- T78
+- Thomas Schumacher
+- Tinlicker (DJ Set)
+- Warung
+
+## Stereo Bloom
+
+- Abana
+- BOLO (Sunrise Set)
+- Bullet Tooth
+- Bushbaby
+- CID
+- DREYA V
+- Discip
+- HNTR
+- Hamdi
+- Juliet Mendoza
+- Klo
+- Lu.Re
+- Luuk van Dijk
+- Morgan Seatree
+- Murphy's Law
+- Noizu
+- OMNOM
+- Obskür
+- Omar+
+- SLAMM
+- Sidney Charles
+- Silva Bumpa
+- Skream
+- Slugg
+- Toman
+- Wax Motif
+
+## Takis Zone
+
+- AK1200
+- APX1
+- Airglo
+- CRS?
+- Connor q
+- Danny The Wildchild
+- Dip Vertigo
+- FALKO
+- Fallen
+- Fury
+- Justin Hawkes
+- Koji Aiken
+- MR DEEDS
+- Machete
+- Nightstalker
+- PHNX
+- Rohaan (DnB Set)
+- Scooba
+- Skanka
+- Trouble
+
+## Ubuntu
+
+- Caiiro
+- Danni G
+- Descendants
+- Floyd Lavine
+- Jared Jackson
+- KB da DJ
+- Meedy
+- Nativesun
+- Pizzi
+- Sabine Blaizin
+- Starrza
+- Vigro Deep
+- Zakes Bantwini
+
+## Wasteland
+
+- Adrián Mills
+- Alyssa Jolee
+- Audiofreq
+- CUTDWN
+- Clawz
+- Cloudy
+- Code Black
+- DJ Isaac
+- DYEN
+- Da Tweekaz
+- Dead X
+- DØMINA
+- GRAVEDGR
+- Johannes Schuster
+- KUKO
+- LNY TNZ
+- Lady Faith
+- Lenny Dee
+- Lil Texas
+- MADGRRL
+- Mish
+- Rebekah
+- Rob Gee
+- Rooler
+- Serafina
+- Sihk
+- Stan Christ
+- Sub Zero Project
+- The Purge
+- The Saints
+- Toneshifterz
+- VESSEL
+- Vieze Asbak
+- Warface
+- Yosuf
+
+## YeeDC!
+
+- $ami G
+- Ashley Walls
+- Bad Ash
+- Carneyval
+- Dazy Duke
+- Dirty Audio
+- Disko Cowboy
+- Grant Fisher
+- John Price
+- Madds
+- Roadhouse
+- Roxy Ferrari
+- Slim McGraw
+- Sommer Ray
+- Soso Drü
+- Willie Pake

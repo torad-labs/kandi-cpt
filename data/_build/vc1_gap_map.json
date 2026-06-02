@@ -1,0 +1,1454 @@
+{
+  "n_editions": 98,
+  "min_artists": 15,
+  "min_stages": 3,
+  "aggregate": {
+    "needs_set_times": 86,
+    "needs_stages": 71,
+    "needs_lineup": 15,
+    "needs_venue": 2
+  },
+  "editions": [
+    {
+      "edition": "las_vegas/2011",
+      "venue": true,
+      "n_artists": 122,
+      "n_stages": 4,
+      "n_days": 5,
+      "has_set_times": false,
+      "n_triples": 154,
+      "n_clean_docs": 17,
+      "attendance": true,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2012",
+      "venue": true,
+      "n_artists": 156,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 299,
+      "n_clean_docs": 17,
+      "attendance": true,
+      "needs": [
+        "stages"
+      ]
+    },
+    {
+      "edition": "las_vegas/2013",
+      "venue": true,
+      "n_artists": 197,
+      "n_stages": 2,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 231,
+      "n_clean_docs": 19,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2014",
+      "venue": true,
+      "n_artists": 190,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 216,
+      "n_clean_docs": 18,
+      "attendance": false,
+      "needs": [
+        "stages"
+      ]
+    },
+    {
+      "edition": "las_vegas/2015",
+      "venue": true,
+      "n_artists": 236,
+      "n_stages": 6,
+      "n_days": 3,
+      "has_set_times": true,
+      "n_triples": 444,
+      "n_clean_docs": 18,
+      "attendance": false,
+      "needs": []
+    },
+    {
+      "edition": "las_vegas/2016",
+      "venue": true,
+      "n_artists": 277,
+      "n_stages": 6,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 550,
+      "n_clean_docs": 18,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2017",
+      "venue": true,
+      "n_artists": 267,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 503,
+      "n_clean_docs": 20,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2018",
+      "venue": true,
+      "n_artists": 395,
+      "n_stages": 15,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 1017,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2019",
+      "venue": true,
+      "n_artists": 401,
+      "n_stages": 17,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 1001,
+      "n_clean_docs": 16,
+      "attendance": true,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2021",
+      "venue": true,
+      "n_artists": 380,
+      "n_stages": 26,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 1043,
+      "n_clean_docs": 17,
+      "attendance": true,
+      "needs": []
+    },
+    {
+      "edition": "las_vegas/2022",
+      "venue": true,
+      "n_artists": 444,
+      "n_stages": 18,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 1093,
+      "n_clean_docs": 18,
+      "attendance": true,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2023",
+      "venue": true,
+      "n_artists": 346,
+      "n_stages": 15,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 1118,
+      "n_clean_docs": 20,
+      "attendance": true,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2024",
+      "venue": true,
+      "n_artists": 412,
+      "n_stages": 15,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 1261,
+      "n_clean_docs": 21,
+      "attendance": true,
+      "needs": []
+    },
+    {
+      "edition": "las_vegas/2025",
+      "venue": true,
+      "n_artists": 426,
+      "n_stages": 16,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 1271,
+      "n_clean_docs": 20,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "las_vegas/2026",
+      "venue": true,
+      "n_artists": 491,
+      "n_stages": 19,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 859,
+      "n_clean_docs": 35,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2011",
+      "venue": true,
+      "n_artists": 20,
+      "n_stages": 1,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 46,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2012",
+      "venue": true,
+      "n_artists": 43,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 59,
+      "n_clean_docs": 11,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2013",
+      "venue": true,
+      "n_artists": 10,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 31,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2014",
+      "venue": true,
+      "n_artists": 66,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 73,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2015",
+      "venue": true,
+      "n_artists": 58,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 87,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2016",
+      "venue": true,
+      "n_artists": 72,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 111,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2017",
+      "venue": true,
+      "n_artists": 64,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 130,
+      "n_clean_docs": 11,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2018",
+      "venue": true,
+      "n_artists": 91,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 177,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2019",
+      "venue": true,
+      "n_artists": 129,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 256,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2021",
+      "venue": true,
+      "n_artists": 169,
+      "n_stages": 2,
+      "n_days": 6,
+      "has_set_times": false,
+      "n_triples": 342,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2022",
+      "venue": true,
+      "n_artists": 150,
+      "n_stages": 4,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 257,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2023",
+      "venue": true,
+      "n_artists": 114,
+      "n_stages": 2,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 133,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2024",
+      "venue": true,
+      "n_artists": 146,
+      "n_stages": 2,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 267,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2025",
+      "venue": true,
+      "n_artists": 130,
+      "n_stages": 4,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 247,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "orlando/2026",
+      "venue": true,
+      "n_artists": 23,
+      "n_stages": 1,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 38,
+      "n_clean_docs": 19,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2014",
+      "venue": true,
+      "n_artists": 15,
+      "n_stages": 3,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 38,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": []
+    },
+    {
+      "edition": "mexico_city/2015",
+      "venue": true,
+      "n_artists": 76,
+      "n_stages": 1,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 103,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2016",
+      "venue": true,
+      "n_artists": 75,
+      "n_stages": 4,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 87,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2017",
+      "venue": true,
+      "n_artists": 127,
+      "n_stages": 1,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 141,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2018",
+      "venue": true,
+      "n_artists": 190,
+      "n_stages": 9,
+      "n_days": 3,
+      "has_set_times": true,
+      "n_triples": 215,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": []
+    },
+    {
+      "edition": "mexico_city/2019",
+      "venue": true,
+      "n_artists": 159,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 171,
+      "n_clean_docs": 15,
+      "attendance": true,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2020",
+      "venue": true,
+      "n_artists": 181,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 194,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2022",
+      "venue": true,
+      "n_artists": 199,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 211,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2023",
+      "venue": true,
+      "n_artists": 148,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 188,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2024",
+      "venue": true,
+      "n_artists": 226,
+      "n_stages": 3,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 407,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2025",
+      "venue": true,
+      "n_artists": 196,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 278,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "mexico_city/2026",
+      "venue": true,
+      "n_artists": 295,
+      "n_stages": 9,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 598,
+      "n_clean_docs": 18,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/1997",
+      "venue": true,
+      "n_artists": 25,
+      "n_stages": 4,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 45,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": []
+    },
+    {
+      "edition": "los_angeles/1999",
+      "venue": true,
+      "n_artists": 10,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 32,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages"
+      ]
+    },
+    {
+      "edition": "los_angeles/2000",
+      "venue": true,
+      "n_artists": 1,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 5,
+      "n_clean_docs": 14,
+      "attendance": true,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/2001",
+      "venue": true,
+      "n_artists": 62,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 79,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages"
+      ]
+    },
+    {
+      "edition": "los_angeles/2002",
+      "venue": true,
+      "n_artists": 12,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 20,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/2007",
+      "venue": true,
+      "n_artists": 11,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 19,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/2008",
+      "venue": true,
+      "n_artists": 1,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 4,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/2009",
+      "venue": true,
+      "n_artists": 55,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 78,
+      "n_clean_docs": 16,
+      "attendance": true,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "los_angeles/2010",
+      "venue": true,
+      "n_artists": 26,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 38,
+      "n_clean_docs": 16,
+      "attendance": true,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_bernardino/2003",
+      "venue": true,
+      "n_artists": 4,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 13,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_bernardino/2004",
+      "venue": true,
+      "n_artists": 9,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 15,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages"
+      ]
+    },
+    {
+      "edition": "san_bernardino/2005",
+      "venue": true,
+      "n_artists": 1,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 6,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_bernardino/2006",
+      "venue": true,
+      "n_artists": 6,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 9,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "denver/2008",
+      "venue": true,
+      "n_artists": 4,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 6,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "denver/2009",
+      "venue": true,
+      "n_artists": 9,
+      "n_stages": 3,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 18,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "denver/2010",
+      "venue": true,
+      "n_artists": 26,
+      "n_stages": 5,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 43,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "denver/2011",
+      "venue": true,
+      "n_artists": 124,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 127,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "dallas/2010",
+      "venue": true,
+      "n_artists": 45,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 68,
+      "n_clean_docs": 14,
+      "attendance": true,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "dallas/2011",
+      "venue": true,
+      "n_artists": 131,
+      "n_stages": 10,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 148,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_york_nj/2012",
+      "venue": true,
+      "n_artists": 144,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 153,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_york_nj/2013",
+      "venue": true,
+      "n_artists": 68,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 74,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_york_nj/2014",
+      "venue": true,
+      "n_artists": 22,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 36,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_york_nj/2015",
+      "venue": true,
+      "n_artists": 70,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 81,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_york_nj/2016",
+      "venue": true,
+      "n_artists": 72,
+      "n_stages": 1,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 82,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "chicago/2013",
+      "venue": true,
+      "n_artists": 112,
+      "n_stages": 0,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 128,
+      "n_clean_docs": 17,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2009",
+      "venue": true,
+      "n_artists": 35,
+      "n_stages": 4,
+      "n_days": 0,
+      "has_set_times": true,
+      "n_triples": 45,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": []
+    },
+    {
+      "edition": "san_juan/2010",
+      "venue": false,
+      "n_artists": 28,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 42,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "venue",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2011",
+      "venue": true,
+      "n_artists": 132,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 162,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2012",
+      "venue": true,
+      "n_artists": 139,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 149,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2013",
+      "venue": true,
+      "n_artists": 88,
+      "n_stages": 1,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 122,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2014",
+      "venue": false,
+      "n_artists": 13,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 23,
+      "n_clean_docs": 11,
+      "attendance": false,
+      "needs": [
+        "venue",
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "san_juan/2015",
+      "venue": true,
+      "n_artists": 51,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 56,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "london/2013",
+      "venue": true,
+      "n_artists": 48,
+      "n_stages": 2,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 76,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "milton_keynes/2014",
+      "venue": true,
+      "n_artists": 81,
+      "n_stages": 1,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 106,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "milton_keynes/2015",
+      "venue": true,
+      "n_artists": 38,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 50,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "milton_keynes/2016",
+      "venue": true,
+      "n_artists": 38,
+      "n_stages": 3,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 48,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "sao_paulo/2015",
+      "venue": true,
+      "n_artists": 81,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 91,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "new_delhi/2016",
+      "venue": true,
+      "n_artists": 25,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 29,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "shanghai/2018",
+      "venue": true,
+      "n_artists": 69,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 88,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "zhuhai/2018",
+      "venue": true,
+      "n_artists": 60,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 67,
+      "n_clean_docs": 7,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "suzhou/2023",
+      "venue": true,
+      "n_artists": 75,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 83,
+      "n_clean_docs": 8,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "suzhou/2025",
+      "venue": true,
+      "n_artists": 56,
+      "n_stages": 2,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 115,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "chiba/2018",
+      "venue": true,
+      "n_artists": 55,
+      "n_stages": 0,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 68,
+      "n_clean_docs": 10,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "chiba/2019",
+      "venue": true,
+      "n_artists": 48,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 68,
+      "n_clean_docs": 11,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "seoul/2019",
+      "venue": true,
+      "n_artists": 68,
+      "n_stages": 4,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 102,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "incheon/2025",
+      "venue": true,
+      "n_artists": 74,
+      "n_stages": 1,
+      "n_days": 2,
+      "has_set_times": false,
+      "n_triples": 154,
+      "n_clean_docs": 12,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "incheon/2026",
+      "venue": true,
+      "n_artists": 72,
+      "n_stages": 0,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 78,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "portimao/2021",
+      "venue": true,
+      "n_artists": 110,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 110,
+      "n_clean_docs": 1,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "portimao/2022",
+      "venue": true,
+      "n_artists": 23,
+      "n_stages": 0,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 34,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "phuket/2025",
+      "venue": true,
+      "n_artists": 90,
+      "n_stages": 9,
+      "n_days": 1,
+      "has_set_times": false,
+      "n_triples": 188,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "phuket/2026",
+      "venue": true,
+      "n_artists": 72,
+      "n_stages": 5,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 152,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "set_times"
+      ]
+    },
+    {
+      "edition": "medellin/2026",
+      "venue": true,
+      "n_artists": 3,
+      "n_stages": 1,
+      "n_days": 3,
+      "has_set_times": false,
+      "n_triples": 22,
+      "n_clean_docs": 15,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "edsea/2023",
+      "venue": true,
+      "n_artists": 64,
+      "n_stages": 2,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 86,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "edsea/2024",
+      "venue": true,
+      "n_artists": 69,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 80,
+      "n_clean_docs": 16,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "edsea/2025",
+      "venue": true,
+      "n_artists": 59,
+      "n_stages": 1,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 67,
+      "n_clean_docs": 13,
+      "attendance": false,
+      "needs": [
+        "stages",
+        "set_times"
+      ]
+    },
+    {
+      "edition": "edsea/2026",
+      "venue": true,
+      "n_artists": 1,
+      "n_stages": 0,
+      "n_days": 0,
+      "has_set_times": false,
+      "n_triples": 2,
+      "n_clean_docs": 14,
+      "attendance": false,
+      "needs": [
+        "lineup",
+        "stages",
+        "set_times"
+      ]
+    }
+  ]
+}

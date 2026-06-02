@@ -1,6 +1,6 @@
 {
-  "raw_sha256": "807c4090531aa35653bbad708080991be099d58a21c4b8c1a7d90239a6674dcc",
-  "clean_sha256": "0cdd35082d008aa9ce48144f0412c5ef6a48c2a06e1f2c9ea65a31c7358054b1",
+  "raw_sha256": "eba41d0e8f95dfd5ac67ffbca90fffa7afdbd73bda5a35afc1c8e4017edd681c",
+  "clean_sha256": "4348c22cd95eae3ea15d8820fb573d525a2f773bc7568a415960c95d570da32c",
   "extractor": "json-youtube",
   "llm_rescued": false,
   "quality_gate": {
@@ -10,9 +10,5 @@
   "domain_class": "social-vetted",
   "source_channel": "youtube",
   "source_url": "https://www.youtube.com/watch?v=-A-XIBMDgj0",
-  "title": "Subtronics Live at EDC Las Vegas 2026 (Official Full Set)",
-  "quality_score": 0.6904,
-  "difficulty_score": 0.4453,
-  "cluster_id": 4,
-  "curation_status": "drop"
+  "title": "Subtronics Live at EDC Las Vegas 2026 (Official Full Set)"
 }

@@ -1,18 +1,14 @@
 {
-  "raw_sha256": "b6060c222b8bf09a12ca3423cdc4cf96e1e147dab0f5452e13c46241aa2d7f88",
-  "clean_sha256": "f4eb5a7b5aa145e0f4f05ca280dd88c1754bb3b89a67f5196030cdc406ca8819",
+  "raw_sha256": "2b3c033ed5682e026ead6eb1c92c17d432850f0003fb7eacac08a40e51bc16c3",
+  "clean_sha256": "d76b88bcc05960baf16b92a8a2bf60684263f0acff106dcbc3ed786338fde7eb",
   "extractor": "json-youtube",
   "llm_rescued": false,
   "quality_gate": {
     "desc_chars": 578,
-    "has_subs": false
+    "has_subs": true
   },
   "domain_class": "social-vetted",
   "source_channel": "youtube",
   "source_url": "https://www.youtube.com/watch?v=PaBcY8VTZZI",
-  "title": "Wooli Live at EDC Las Vegas 2026 (Official Full Set)",
-  "quality_score": 0.6904,
-  "difficulty_score": 0.4297,
-  "cluster_id": 4,
-  "curation_status": "keep"
+  "title": "Wooli Live at EDC Las Vegas 2026 (Official Full Set)"
 }

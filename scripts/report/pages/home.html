@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Overview · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "home" });
+slot.innerHTML = `
+  <div class="phead">
+    <div>
+      <h1>Overview</h1>
+      <div class="sub">One objective: install EDC festival knowledge into Gemma-4 E2B so Kandi can answer it on-device — answering what it knows, refusing what it doesn't, never fabricating.</div>
+    </div>
+    <div class="right"><a class="btn" href="/runs">All runs →</a></div>
+  </div>
+  <div id="tiles" class="tiles mb"></div>
+  <div class="grid c2">
+    <div id="activity"></div>
+    <div id="objective"></div>
+  </div>
+  <div class="panel"><div class="panel-h"><h2>Recent runs</h2><a class="note" href="/runs">view all →</a></div>
+    <div id="recent"></div></div>`;
+
+function metricCell(v, thr, dir, d = 0) {
+  return `<span class="num ${T.grade(v, thr, dir)}">${v == null ? "—" : T.pct(v, d)}</span>`;
+}
+
+(async () => {
+  let runs, active, inst;
+  try {
+    [runs, active, inst] = await Promise.all([
+      T.fetchJSON("/api/runs").then(r => r.runs),
+      T.fetchJSON("/api/train/active"),
+      T.fetchJSON("/api/install"),
+    ]);
+  } catch (e) { return T.err(slot, e.message); }
+
+  const gated = runs.filter(r => r.metrics);
+  const passed = gated.filter(r => r.status === "passed");
+  const best = passed.slice().sort((a, b) => (b.metrics.calibration_score || 0) - (a.metrics.calibration_score || 0))[0];
+  const latest = runs[runs.length - 1];
+  const il = inst.install || {};
+
+  // ── tiles ──
+  T.$("#tiles").innerHTML = [
+    `<div class="tile"><div class="k">Runs</div><div class="v">${runs.length}</div>
+       <div class="meta">${passed.length} passed · ${gated.length - passed.length} failed · ${runs.length - gated.length} not gated</div></div>`,
+    `<div class="tile accent"><div class="k">Best behaviour gate</div>
+       <div class="v" style="font-size:20px;font-family:var(--serif)">${best ? best.id.replace("edc_sft_", "") : "—"}</div>
+       <div class="meta">${best ? T.pill("passed") + " calib " + T.fmt(best.metrics.calibration_score, 2) : "no run passes yet"}</div></div>`,
+    `<div class="tile"><div class="edge ${il.level === "strong" ? "good" : il.level === "weak" ? "bad" : "warn"}"></div>
+       <div class="k">CPT install depth <span class="hint" data-tip="Is the knowledge densely & separably in the weights? Measured by retrieval p@1 vs 1/7 chance + the data audit. Distinct from the behaviour gate.">ⓘ</span></div>
+       <div class="v" style="font-size:20px;font-family:var(--serif)">${(il.level || "—").toUpperCase()}</div>
+       <div class="meta">p@1 ratio ${il.ratio ? il.ratio.toFixed(2) + "× chance" : "—"}${il.fails && il.fails.length ? " · audit: " + il.fails.join(", ") : ""}</div></div>`,
+  ].join("");
+
+  // ── current activity ──
+  const act = T.$("#activity"); act.className = "panel";
+  if (active.active) {
+    act.innerHTML = `<div class="panel-h"><h2>Training now</h2>${T.pill("running")}</div>
+      <div class="spread mb"><div class="mono b" style="font-size:15px">${T.esc(active.run)}</div>
+        <div class="mono dim">step ${active.step ?? "—"}/${active.total_steps ?? "—"} · loss ${active.loss != null ? active.loss.toFixed(4) : "—"}</div></div>
+      <canvas id="miniloss" style="height:120px;width:100%"></canvas>
+      <div class="mt"><a class="btn primary" href="/train">Open live view →</a></div>`;
+    requestAnimationFrame(() => T.drawLoss(T.$("#miniloss"), active.points || [], { total: active.total_steps }));
+  } else {
+    act.innerHTML = `<div class="panel-h"><h2>Current activity</h2><span class="pill trained"><span class="pd"></span>IDLE</span></div>
+      <p class="dim" style="margin:.2em 0 1em">No run is training right now. The console reflects what's on disk; start a run and the live view streams its steps and loss here.</p>
+      <div class="spread" style="border-top:1px solid var(--line);padding-top:14px">
+        <div><div class="lab">Last run</div><div class="mono b mt" style="font-size:15px">${latest ? T.esc(latest.id) + " &nbsp;" + T.pill(latest.status) : "—"}</div>
+          <div class="dim mono" style="font-size:11px;margin-top:4px">${latest ? T.relDate(latest.date) : ""}</div></div>
+        <a class="btn" href="/train">Open Train →</a></div>`;
+  }
+
+  // ── objective card ──
+  const obj = T.$("#objective"); obj.className = "panel";
+  obj.innerHTML = `<div class="panel-h"><h2>EDC Corpus Install</h2><span class="lab">objective</span></div>
+    <p class="dim" style="margin:.1em 0 .9em">Continued pretraining installs the knowledge; supervised fine-tuning elicits it — answer when known, abstain when not. Success = the behaviour gate <span class="b">and</span> a real install in the weights.</p>
+    <div class="row gap mb" style="flex-wrap:wrap">
+      <span class="pill ${best ? "pass" : "fail"}"><span class="pd"></span>GATE ${best ? "MET" : "OPEN"}</span>
+      ${T.installPill(il.level)}
+      <span class="pill info"><span class="pd"></span>${runs.length} RUNS</span>
+    </div>
+    <div class="lab mb">Calibration score across runs <span class="dim">(gate-pass needs all three: fab ≤ ${T.pct(T.GATE.fabrication)}, acc ≥ ${T.pct(T.GATE.accuracy)}, cov ≥ ${T.pct(T.GATE.coverage)})</span></div>
+    <canvas id="caltrend" style="height:96px;width:100%"></canvas>`;
+  requestAnimationFrame(() => drawCalTrend(T.$("#caltrend"), gated));
+
+  // ── recent runs table ──
+  const recent = runs.slice(-5).reverse();
+  T.$("#recent").innerHTML = `<table class="tbl"><thead><tr>
+      <th>Run</th><th>Status</th><th class="num">Fabrication</th><th class="num">Accuracy</th><th class="num">Coverage</th><th class="num">When</th></tr></thead>
+    <tbody>${recent.map(r => `<tr class="clk" onclick="location='/run?id=${r.id}'">
+      <td class="name"><span class="id">${r.id.replace("edc_sft_", "")}</span> <span class="muted">${r.levers_on && r.levers_on.length ? "· " + r.levers_on.length + " levers" : ""}</span></td>
+      <td>${T.pill(r.status)}</td>
+      <td>${r.metrics ? metricCell(r.metrics.fabrication_rate, T.GATE.fabrication, "max") : '<span class="num dim">—</span>'}</td>
+      <td>${r.metrics ? metricCell(r.metrics.accuracy_when_answering, T.GATE.accuracy, "min") : '<span class="num dim">—</span>'}</td>
+      <td>${r.metrics ? metricCell(r.metrics.coverage, T.GATE.coverage, "min") : '<span class="num dim">—</span>'}</td>
+      <td class="num muted">${T.relDate(r.date)}</td></tr>`).join("")}</tbody></table>`;
+})();
+
+function drawCalTrend(cv, runs) {
+  if (!cv || !runs.length) return;
+  const dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  const css = getComputedStyle(document.body), ox = css.getPropertyValue("--ox").trim(),
+    good = css.getPropertyValue("--good").trim(), bad = css.getPropertyValue("--bad").trim(),
+    line = css.getPropertyValue("--line-2").trim(), ink3 = css.getPropertyValue("--ink-3").trim();
+  const padB = 18, padT = 8, n = runs.length, bw = (W - 8) / n, max = 0.7;
+  g.font = "10px 'IBM Plex Mono'";
+  runs.forEach((r, i) => {
+    const v = r.metrics.calibration_score || 0, h = (v / max) * (H - padB - padT);
+    const x = 4 + i * bw, y = H - padB - h;
+    g.fillStyle = r.status === "passed" ? good : bad; g.globalAlpha = .85;
+    g.fillRect(x + 2, y, bw - 6, h); g.globalAlpha = 1;
+    g.fillStyle = ink3; g.fillText(r.id.replace("edc_sft_", ""), x + 2, H - 5);
+  });
+}
+</script>
+</body></html>

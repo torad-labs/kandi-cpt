@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coach · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+<style>
+  .hero{background:linear-gradient(180deg,#FFFDF8,#F7F1E6);border:1px solid var(--line);border-left:4px solid var(--ox);
+    border-radius:var(--radius);padding:24px 26px;margin-bottom:20px;box-shadow:var(--shadow)}
+  .hero h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:0 0 8px;line-height:1.2}
+  .hero p{margin:0;color:var(--ink-2);font-size:14.5px;max-width:74ch}
+  .narr{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+  @media(max-width:900px){.narr{grid-template-columns:1fr}}
+  .nc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .nc .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .nc.good .h{color:var(--good)} .nc.bad .h{color:var(--bad)} .nc.warn .h{color:var(--warn)}
+  .nc .h .d{width:7px;height:7px;border-radius:50%}
+  .nc.good .h .d{background:var(--good)} .nc.bad .h .d{background:var(--bad)} .nc.warn .h .d{background:var(--warn)}
+  .nc .dlist{margin:0;padding-left:17px}
+  .nc .dlist li{font-size:13px;line-height:1.55;color:var(--ink);margin-bottom:6px}
+  .nc .dlist li:last-child{margin-bottom:0}
+  .lever{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;
+    border-left:3px solid var(--ink-3);box-shadow:var(--shadow)}
+  .lever.bad{border-left-color:var(--bad)} .lever.warn{border-left-color:var(--warn)} .lever.good{border-left-color:var(--good)}
+  .lever .lh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+  .lever .lt{font-family:var(--serif);font-weight:600;font-size:15.5px}
+  .lever .rank{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .lever .why{color:var(--ink);font-size:13px;margin:2px 0}
+  .lever .eff{color:var(--ink-2);font-size:12.5px;margin-top:5px}
+  .lever .risk{color:var(--warn);font-size:11.5px;font-family:var(--mono);margin-top:6px}
+  .traj td .n{font-size:11.5px;color:var(--ink-2)}
+  .primer{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:20px;box-shadow:var(--shadow)}
+  .primer summary{font-family:var(--serif);font-weight:600;font-size:15px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+  .primer summary::-webkit-details-marker{display:none}
+  .primer summary .tw{color:var(--ox);font-size:11px;transition:transform .15s}
+  .primer[open] summary .tw{transform:rotate(90deg)}
+  .primer .defs{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin-top:16px}
+  @media(max-width:780px){.primer .defs{grid-template-columns:1fr}}
+  .primer .def .t{font-weight:600;font-size:13.5px;margin-bottom:2px}
+  .primer .def .t .tag{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+  .primer .def p{margin:0;font-size:13px;line-height:1.55;color:var(--ink-2)}
+</style>
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "coach", crumbs: [{ label: "Console", href: "/" }, { label: "Coach" }] });
+
+function cls(v, thr, dir) { return v == null ? "q-dim" : (dir === "max" ? (v <= thr ? "q-good" : "q-bad") : (v >= thr ? "q-good" : "q-bad")); }
+
+(async () => {
+  let c; try { c = await T.fetchJSON("/api/coach"); } catch (e) { return T.err(slot, e.message); }
+  const obj = c.objective, run = c.run, a = c.analysis || {}, il = c.install || {};
+
+  const listHtml = (arr) => (arr && arr.length)
+    ? `<ul class="dlist">${arr.map(s => `<li>${T.esc(s)}</li>`).join("")}</ul>`
+    : `<p class="dim" style="margin:0;font-size:13px">— nothing flagged —</p>`;
+  const leverHtml = (arr) => (arr && arr.length)
+    ? arr.map((l, i) => `<div class="lever ${l.severity || ''}">
+        <div class="lh"><span class="lt">${T.esc(l.lever)}</span><span class="rank">#${i + 1}</span></div>
+        <div class="why"><b>Why:</b> ${T.esc(l.why)}</div>
+        <div class="eff">${T.esc(l.effect)}</div>
+        ${l.risk ? `<div class="risk">watch · ${T.esc(l.risk)}</div>` : ""}</div>`).join("")
+    : `<div class="empty">No levers needed — all checks pass with comfortable margin.</div>`;
+  const mpill = (label, v, thr, dir) => v == null ? "" :
+    `<span class="pill ${cls(v, thr, dir) === 'q-good' ? 'pass' : 'fail'}" style="text-transform:none"><span class="pd"></span>${label} ${T.pct(v)}</span>`;
+
+  slot.innerHTML = `
+    <div class="phead"><div><h1>Coach</h1>
+      <div class="sub">Diagnostic read of the latest <b>${T.esc(obj.name)}</b> run — what went well, what went wrong, what to improve, and which levers to pull next. It analyzes the run; the ship decision is yours.</div></div>
+      <div class="right">${run ? `<a class="btn" href="/run?id=${run.id}">Open ${T.esc(run.id)} →</a>` : ""}</div></div>
+
+    ${run ? `<div class="hero">
+      <h2>Analyzing ${T.esc(run.id)}${c.prior ? ` <span class="dim" style="font-size:14px;font-weight:400">— compared to ${T.esc(c.prior.id)}</span>` : ""}</h2>
+      <p>The Coach reads this run's scorecard against the gate and the previous run, then names the levers that lift every weak area at once without taxing the strong ones.</p>
+      <div class="row gap wrap" style="margin-top:14px">
+        ${run.passed != null ? T.pill(run.passed ? 'passed' : 'failed', run.passed ? 'GATE PASSES' : 'GATE: NOT YET') : T.pill('trained', 'UNGATED')}
+        ${mpill('makes-up', run.fabrication_rate, .25, 'max')}
+        ${mpill('right', run.accuracy_when_answering, .55, 'min')}
+        ${mpill('answers', run.coverage, .40, 'min')}
+        ${il.level ? T.installPill(il.level) : ""}
+      </div></div>` : `<div class="hero"><h2>No scored run yet</h2><p>Train a model and run the calibration test — the Coach's read appears here.</p></div>`}
+
+    <div class="narr">
+      <div class="nc good"><div class="h"><span class="d"></span>What went well</div>${listHtml(a.went_well)}</div>
+      <div class="nc bad"><div class="h"><span class="d"></span>What went wrong</div>${listHtml(a.went_wrong)}</div>
+      <div class="nc warn"><div class="h"><span class="d"></span>What could improve</div>${listHtml(a.could_improve)}</div>
+    </div>
+
+    <div class="grid c2">
+      <div>
+        <div class="lab mb" style="margin-top:6px">Levers for the next run <span class="dim">— lift every weak area, biggest payoff first</span></div>
+        <div id="levers">${leverHtml(a.next_levers)}</div>
+      </div>
+      <div>
+        <div class="lab mb" style="margin-top:6px">The campaign, run by run <span class="dim">— how each change moved the numbers</span></div>
+        <div class="panel"><table class="tbl traj"><thead><tr><th>Run</th>
+          <th class="num"><span class="hint" data-tip="How often it invents answers about things that never happened. Lower is better.">Makes&nbsp;up</span></th>
+          <th class="num"><span class="hint" data-tip="When it answers, how often it's correct. Higher is better.">Right</span></th>
+          <th class="num"><span class="hint" data-tip="How much of what it knows it actually answers. Higher is better.">Answers</span></th></tr></thead>
+          <tbody>${(c.trajectory || []).map(t => `<tr class="clk" onclick="location='/run?id=${t.id}'">
+            <td class="name"><span class="id">${t.run}</span> ${t.passed ? '<span class="pill pass" style="font-size:9px;padding:1px 6px"><span class="pd"></span>PASS</span>' : ''}</td>
+            <td class="num ${cls(t.fabrication_rate, .25, 'max')}">${T.pct(t.fabrication_rate)}</td>
+            <td class="num ${cls(t.accuracy_when_answering, .55, 'min')}">${T.pct(t.accuracy_when_answering)}</td>
+            <td class="num ${cls(t.coverage, .40, 'min')}">${T.pct(t.coverage)}</td></tr>`).join("")}</tbody></table></div>
+      </div>
+    </div>
+
+    <details class="primer" style="margin-top:20px">
+      <summary><span class="tw">▸</span>New to this? How to read the numbers</summary>
+      <div class="defs">
+        <div class="def"><div class="t">Makes things up <span class="tag">lower = better</span></div><p>When asked about something that never happened, does it invent an answer instead of saying “I don't know”? The danger we most want gone.</p></div>
+        <div class="def"><div class="t">Right when answering <span class="tag">higher = better</span></div><p>Of the questions it chooses to answer, how many does it get correct?</p></div>
+        <div class="def"><div class="t">Answers what it knows <span class="tag">higher = better</span></div><p>Does it actually answer the things it does know — instead of dodging? A model that refuses everything is useless.</p></div>
+        <div class="def"><div class="t">Passing <span class="tag">all three at once</span></div><p>A run only “passes” when all three are good <em>simultaneously</em>. Balancing them is the hard part.</p></div>
+        <div class="def"><div class="t">Talks right vs really knows it</div><p>A model can learn to <em>talk</em> correctly while the facts sank in shallowly. The console checks both — and they don't always agree.</p></div>
+        <div class="def"><div class="t">Levers</div><p>Concrete changes to the next run's data or recipe. The Coach picks the ones that improve the weak areas without taxing the strong ones.</p></div>
+      </div>
+    </details>`;
+})();
+</script>
+</body></html>

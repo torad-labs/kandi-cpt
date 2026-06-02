@@ -1,0 +1,14 @@
+{
+  "raw_sha256": "09ca0e86c51a580d041102cf84ba40f9443ffa3ac1191180fdf44f2cc4a3378f",
+  "clean_sha256": "e90e3ed6e769ce394216f9db7b1abf731d5beaa9e11355014f7c97e49dff060e",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 587,
+    "has_subs": true
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=tpteTL5ycRo",
+  "title": "Seven Lions Live at EDC Las Vegas 2026 (Official Full Set)"
+}

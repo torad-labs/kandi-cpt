@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "a36005c660f7f46c6bff7febccce3827c075c761e2b4c6803f1c666afede345b",
-  "clean_sha256": "86789d4ab978e1a255ef924737fb9a542a5de33482d1ef1500b97b3f2684a1f6",
+  "raw_sha256": "0ba491cd8044b3fd28ef47994db9334786dcbdb0b2ef6303d8531f91b6cbe9db",
+  "clean_sha256": "ab8bd59d97455fd093ff5aa897fdf3a6ca83f48dd713badbc2038a32f906dc1d",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 669,
-    "keep_ratio": 0.704,
-    "anchor_ratio": 0.301
+    "keep_ratio": 0.671,
+    "anchor_ratio": 0.342
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2025/",
-  "title": "EDC Las Vegas 2025 | Music Festival Wizard",
-  "quality_score": 0.7872,
-  "difficulty_score": 0.7182,
-  "cluster_id": 15,
-  "curation_status": "keep"
+  "title": "EDC Las Vegas 2025 | Music Festival Wizard"
 }

@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Run · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const id = T.qs("id");
+const slot = T.mountShell({ page: "runs", crumbs: [{ label: "Console", href: "/" }, { label: "Runs", href: "/runs" }, { label: id || "run" }] });
+
+const DIM_META = {
+  density:      ["Exposure density", "Each fact seen ≥200× in CPT — too few exposures and it won't stick."],
+  balance:      ["Relation balance", "No relation type should dominate; high CoV means the model over-learns one shape."],
+  coverage:     ["Triple coverage", "Enough triples per edition across predicates — thin editions can't be answered."],
+  token_mix:    ["Token mix / replay", "5–10% generic replay guards against catastrophic forgetting of base ability."],
+  disjoint_static:["Vocab disjointness", "Held-out probe vocab must not co-occur in training, or the probe leaks."],
+  sft_composition:["SFT refusal band", "Refusals should be 10–25% of SFT — too many → over-refusal, too few → fabrication."],
+  sft_phrasing: ["Probe-phrasing leak", "The held-out probe phrasing trained only as a refusal biases the model to over-refuse."],
+  sft_tiers:    ["Answerable tiers", "Known/maybe/unknown split — only teach answers for facts truly in the corpus."],
+  disjoint_latent:["Latent separability", "GPU embedding pass: do held-out groups separate in the base model's space?"],
+};
+
+(async () => {
+  if (!id) return T.err(slot, "no run id");
+  let d, allRuns;
+  try { [d, allRuns] = await Promise.all([T.fetchJSON("/api/runs/" + id), T.fetchJSON("/api/runs").then(r => r.runs)]); }
+  catch (e) { return T.err(slot, e.message); }
+
+  const m = d.metrics, sc = d.scorecard, il = d.install, c = d.contract || {};
+  const gated = !!sc;
+
+  // ── header ──
+  slot.innerHTML = `
+    <div class="phead">
+      <div><h1 style="display:flex;align-items:center;gap:14px">${T.esc(id)} ${T.pill(d.status)}</h1>
+        <div class="sub">${c.precision ? c.precision.toUpperCase() : "?"} · init from <span class="mono">${T.esc(c.init_from || "?")}</span> · ${c.max_steps || "?"} steps · seq ${c.seq_len || "?"} · eff-batch ${c.effective_batch || "?"}</div></div>
+      <div class="right">${gated ? T.pill(d.status, d.status === "passed" ? "GATE PASS" : "GATE FAIL") : T.pill("trained")} ${T.installPill(il.level)}</div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div id="panes"></div>`;
+
+  const TABS = [["overview", "Overview"], ["behavior", "Behaviour"], ["install", "Install"], ["weights", "Weights"], ["campaign", "Campaign"]];
+  T.$("#tabs").innerHTML = TABS.map((t, i) => `<button class="tab ${i ? "" : "active"}" data-t="${t[0]}">${t[1]}</button>`).join("");
+  const panes = T.$("#panes");
+  panes.innerHTML = TABS.map((t, i) => `<div class="tabpane ${i ? "" : "active"}" id="pane-${t[0]}"></div>`).join("");
+  T.$$(".tab").forEach(b => b.onclick = () => {
+    T.$$(".tab").forEach(x => x.classList.remove("active")); b.classList.add("active");
+    T.$$(".tabpane").forEach(p => p.classList.remove("active"));
+    T.$("#pane-" + b.dataset.t).classList.add("active");
+    if (b.dataset.t === "weights") drawWeights();
+    if (b.dataset.t === "install") drawGeo();
+    if (b.dataset.t === "campaign") drawCampaign();
+  });
+
+  // ════════ OVERVIEW ════════
+  renderOverview(T.$("#pane-overview"), d, allRuns);
+  // ════════ BEHAVIOUR ════════
+  renderBehavior(T.$("#pane-behavior"), d);
+  // ════════ INSTALL ════════
+  renderInstall(T.$("#pane-install"), d);
+  // ════════ WEIGHTS ════════
+  T.$("#pane-weights").innerHTML = `
+    <div class="panel"><div class="panel-h"><h2>Weight change by layer × module</h2>
+      <div class="tg" id="wtg"><button class="on" data-w="0">base → CPT</button><button data-w="1">CPT → SFT</button></div></div>
+      <p class="dim" style="margin:.1em 0 1em">Relative Frobenius norm of the weight delta. Darker = more change. The CPT install concentrates in <span class="b">mlp_down</span> of the mid-upper layers; SFT moves ~10× less mass — it re-points existing knowledge, it doesn't install new.</p>
+      <canvas id="heat" style="width:100%;height:520px"></canvas>
+      <div id="heatleg" class="legend mt"></div></div>`;
+  // ════════ CAMPAIGN ════════
+  T.$("#pane-campaign").innerHTML = `
+    <div class="panel"><div class="panel-h"><h2>Campaign map — the fabrication ↔ coverage trade-off</h2><span class="note">each point is a measured run</span></div>
+      <p class="dim" style="margin:.1em 0 1em">The anti-hallucination lever (absent-edition hard-negatives) trades fabrication for coverage. Too much dose → the over-refusal cliff (v4 collapsed to 0% coverage). The green box is the gate: fabrication ≤ ${T.pct(T.GATE.fabrication)} <span class="b">and</span> coverage ≥ ${T.pct(T.GATE.coverage)}.</p>
+      <canvas id="camp" style="width:100%;height:380px"></canvas></div>
+    <div id="reco"></div>`;
+  renderReco(T.$("#reco"), d);
+
+  // deferred canvas draws (need layout)
+  let _w = d.weights, _wsel = 0;
+  window.drawWeights = () => requestAnimationFrame(() => heat(_w, _wsel));
+  T.$("#wtg").querySelectorAll("button").forEach(b => b.onclick = () => {
+    T.$("#wtg").querySelectorAll("button").forEach(x => x.classList.remove("on")); b.classList.add("on");
+    _wsel = +b.dataset.w; heat(_w, _wsel);
+  });
+  window.drawGeo = () => requestAnimationFrame(() => { /* geo bars are DOM, already rendered */ });
+  window.drawCampaign = () => requestAnimationFrame(() => campaign(allRuns, id));
+})();
+
+/* ───────────── OVERVIEW ───────────── */
+function renderOverview(p, d, allRuns) {
+  const m = d.metrics, il = d.install, c = d.contract || {};
+  const tile = (k, v, edge, meta) => `<div class="tile"><div class="edge ${edge || ""}"></div><div class="k">${k}</div><div class="v">${v}</div>${meta ? `<div class="meta">${meta}</div>` : ""}</div>`;
+  let tiles = "";
+  if (m) {
+    const g = d.gate || {};
+    tiles = [
+      tile("Fabrication", T.pct(m.fabrication_rate), g.fabrication_ok ? "good" : "bad", `gate ≤ ${T.pct(T.GATE.fabrication)}`),
+      tile("Accuracy", T.pct(m.accuracy_when_answering), g.accuracy_ok ? "good" : "bad", `gate ≥ ${T.pct(T.GATE.accuracy)}`),
+      tile("Coverage", T.pct(m.coverage), g.coverage_ok ? "good" : "bad", `gate ≥ ${T.pct(T.GATE.coverage)}`),
+      tile("Over-refusal", T.pct(m.over_refusal_rate), m.over_refusal_rate > .5 ? "warn" : "", "refuses what it knows"),
+      tile("Calibration", T.fmt(m.calibration_score, 2), "info", "composite score"),
+    ].join("");
+  } else {
+    tiles = tile("Status", "NOT GATED", "warn", "trained + saved — run the calibration gate to score it");
+  }
+  p.innerHTML = `
+    <div class="grid c2 mb">
+      <div class="panel"><div class="panel-h"><h2>Behaviour — the talking test</h2>${m ? T.pill(d.status) : T.pill("trained")}</div>
+        <p class="dim" style="margin:.1em 0 0">Does the chat surface answer what it knows and abstain on what it doesn't? An SFT-elicitation property.</p></div>
+      <div class="panel"><div class="panel-h"><h2>Install — the knowledge test</h2>${T.installPill(il.level)}</div>
+        <p class="dim" style="margin:.1em 0 0">Is the knowledge densely & separably in the weights? A CPT property. <span class="b">A run can pass on a thin install</span> — for a product this is the load-bearing one.</p></div>
+    </div>
+    <div class="tiles mb">${tiles}</div>
+    <div class="panel"><div class="panel-h"><h2>Run contract</h2><span class="note">the recipe that produced this run</span></div>
+      <div class="grid c3">${[
+        ["precision", c.precision], ["int8 master", c.int8_master], ["optimizer", (c.optimizer_lowbit || "") + "-bit"],
+        ["seq len", c.seq_len], ["effective batch", c.effective_batch], ["max steps", c.max_steps],
+        ["decay frac", c.decay_frac], ["init from", c.init_from], ["tokenized", c.tokenized],
+        ["levers", (c.levers_on && c.levers_on.length) ? c.levers_on.join(", ") : "none"],
+        ["save dir", c.save_dir], ["checkpoints", (d.checkpoints || []).join(", ") || "final only"],
+      ].map(([k, v]) => `<div><div class="lab">${k}</div><div class="mono" style="font-size:12.5px;word-break:break-all">${v == null ? "—" : T.esc(String(v))}</div></div>`).join("")}</div></div>`;
+}
+
+/* ───────────── BEHAVIOUR ───────────── */
+function renderBehavior(p, d) {
+  const sc = d.scorecard;
+  if (!sc) { p.innerHTML = `<div class="empty">This run hasn't been gated. Run the calibration eval to populate behaviour transcripts.</div>`; return; }
+  const m = sc.metrics, cf = sc.confusion, g = m.gate;
+  const gbar = (label, v, thr, dir) => {
+    const ok = dir === "max" ? v <= thr : v >= thr;
+    return `<div class="mb"><div class="spread" style="font-size:12.5px"><span class="b">${label}</span>
+      <span class="mono ${ok ? "q-good" : "q-bad"}">${T.pct(v)} ${ok ? "✓" : "✗"} <span class="dim">${dir === "max" ? "≤" : "≥"} ${T.pct(thr)}</span></span></div>
+      ${T.miniBar(v, 1, thr, ok ? "good" : "bad")}</div>`;
+  };
+  const stack = (segs, n) => `<div class="mbar" style="height:22px;display:flex">${segs.map(s =>
+    `<i class="${s.cls}" style="width:${s.v / n * 100}%;border-radius:0" title="${s.label}: ${s.v}"></i>`).join("")}</div>`;
+  p.innerHTML = `
+    <div class="grid c2 mb">
+      <div class="panel"><div class="panel-h"><h2>Gate</h2>${T.pill(d.status)}</div>
+        ${gbar("Fabrication", m.fabrication_rate, T.GATE.fabrication, "max")}
+        ${gbar("Accuracy when answering", m.accuracy_when_answering, T.GATE.accuracy, "min")}
+        ${gbar("Coverage", m.coverage, T.GATE.coverage, "min")}</div>
+      <div class="panel"><div class="panel-h"><h2>Confusion</h2><span class="note">${cf.known.n} known · ${cf.absent.n} absent</span></div>
+        <div class="lab mb">Known facts — should answer correctly</div>
+        ${stack([{ label: "correct", v: cf.known.correct, cls: "good" }, { label: "over-refusal", v: cf.known.over_refusal, cls: "warn" }, { label: "wrong", v: cf.known.wrong, cls: "bad" }], cf.known.n)}
+        <div class="legend mt mb"><span class="lc"><span class="sw" style="background:var(--good)"></span>correct ${cf.known.correct}</span><span class="lc"><span class="sw" style="background:var(--warn)"></span>over-refusal ${cf.known.over_refusal}</span><span class="lc"><span class="sw" style="background:var(--bad)"></span>wrong ${cf.known.wrong}</span></div>
+        <div class="lab mb" style="margin-top:14px">Absent editions — should abstain</div>
+        ${stack([{ label: "abstain", v: cf.absent.abstain, cls: "good" }, { label: "fabrication", v: cf.absent.fabrication, cls: "bad" }], cf.absent.n)}
+        <div class="legend mt"><span class="lc"><span class="sw" style="background:var(--good)"></span>abstain ${cf.absent.abstain}</span><span class="lc"><span class="sw" style="background:var(--bad)"></span>fabrication ${cf.absent.fabrication}</span></div></div>
+    </div>
+    <div class="panel"><div class="panel-h"><h2>Transcripts</h2><div class="row gap wrap" id="filters"></div></div>
+      <div id="rows"></div></div>`;
+  // transcript filter + list
+  const rows = sc.rows || [];
+  const counts = {}; rows.forEach(r => counts[r.verdict] = (counts[r.verdict] || 0) + 1);
+  const order = ["fabrication", "over_refusal", "wrong", "correct", "abstain"];
+  const filters = ["all", ...order.filter(v => counts[v])];
+  const fbox = p.querySelector("#filters");
+  const VCLASS = { fabrication: "bad", over_refusal: "warn", wrong: "bad", correct: "good", abstain: "good" };
+  fbox.innerHTML = filters.map((f, i) => `<button class="btn" data-f="${f}" style="padding:4px 10px;font-size:11.5px${i ? "" : ";border-color:var(--ox);color:var(--ox)"}">${f}${f !== "all" ? ` <span class="dim">${counts[f]}</span>` : ` <span class="dim">${rows.length}</span>`}</button>`).join("");
+  const list = p.querySelector("#rows");
+  const show = f => {
+    const sel = f === "all" ? rows : rows.filter(r => r.verdict === f);
+    list.innerHTML = `<table class="tbl"><thead><tr><th style="width:34%">Question</th><th>Gold</th><th>Model said</th><th>Verdict</th></tr></thead><tbody>${
+      sel.slice(0, 80).map(r => `<tr><td>${T.esc(r.q)}</td><td class="muted">${T.esc(r.gold || "—")}</td>
+        <td class="mono" style="font-size:11.5px">${T.esc((r.resp || "").slice(0, 160))}</td>
+        <td><span class="pill ${VCLASS[r.verdict] === "good" ? "pass" : VCLASS[r.verdict] === "warn" ? "warn" : "fail"}"><span class="pd"></span>${r.verdict}</span></td></tr>`).join("")
+      }</tbody></table>${sel.length > 80 ? `<div class="dim mono mt" style="font-size:11px">showing 80 of ${sel.length}</div>` : ""}`;
+  };
+  const hi = b => { fbox.querySelectorAll("button").forEach(x => { x.style.borderColor = ""; x.style.color = ""; }); b.style.borderColor = "var(--ox)"; b.style.color = "var(--ox)"; };
+  fbox.querySelectorAll("button").forEach(b => b.onclick = () => { hi(b); show(b.dataset.f); });
+  // lead with the most informative failure class (BubbleUp), fall back to all
+  const def0 = ["fabrication", "over_refusal", "wrong"].find(v => counts[v]) || "all";
+  const defBtn = fbox.querySelector(`[data-f="${def0}"]`); if (defBtn) hi(defBtn);
+  show(def0);
+}
+
+/* ───────────── INSTALL ───────────── */
+function renderInstall(p, d) {
+  const il = d.install, geo = d.geometry, da = d.audit;
+  const g = geo && geo.length ? geo[geo.length - 1] : null;
+  const geoRows = g ? [
+    ["Basin separation", g.sep_base, g.sep_cpt, "cosine gap between fact groups — bigger = knowledge is separable"],
+    ["Retrieval p@1", null, g["p@1_cpt"], `vs 1/7 chance (${(1 / 7).toFixed(3)})`],
+    ["MRR", g.mrr_base, g.mrr_cpt, "mean reciprocal rank of the right stage"],
+    ["AUC", g.auc_base, g.auc_cpt, "ranking quality"],
+    ["Probe-day acc", g.probe_day_base, g.probe_day_cpt, `vs baseline ${(g.probe_baseline || 0).toFixed(3)}`],
+  ] : [];
+  p.innerHTML = `
+    <div class="grid c2 mb">
+      <div class="panel"><div class="panel-h"><h2>Install verdict</h2>${T.installPill(il.level)}</div>
+        <p class="dim" style="margin:.1em 0 1em">CPT geometry probe on <span class="mono">${g ? T.esc(g.checkpoint) : "—"}</span> (the install evidence shared by SFT runs from this base).</p>
+        <div class="tiles">
+          <div class="tile accent"><div class="k">p@1 ratio</div><div class="v">${il.ratio ? il.ratio.toFixed(2) : "—"}<span class="u">× chance</span></div><div class="meta">≥ 2.5× = strong install</div></div>
+          <div class="tile"><div class="k">best layer</div><div class="v">${g ? g.best_layer : "—"}</div><div class="meta">where separation peaks</div></div>
+        </div></div>
+      <div class="panel"><div class="panel-h"><h2>Geometry — base vs CPT</h2></div>
+        <table class="tbl"><thead><tr><th>Probe</th><th class="num">base</th><th class="num">CPT</th><th class="num">Δ</th></tr></thead><tbody>${
+          geoRows.map(([k, b, c, tip]) => `<tr><td>${k} <span class="hint dim" data-tip="${tip}">ⓘ</span></td>
+            <td class="num muted">${b == null ? "—" : b.toFixed(3)}</td><td class="num b">${c == null ? "—" : c.toFixed(3)}</td>
+            <td class="num ${b != null && c != null ? (c >= b ? "q-good" : "q-bad") : ""}">${b != null && c != null ? (c - b >= 0 ? "+" : "") + (c - b).toFixed(3) : "—"}</td></tr>`).join("")
+        }</tbody></table></div>
+    </div>
+    <div class="panel"><div class="panel-h"><h2>Data audit</h2><span class="note">${da ? da.overall.toUpperCase() : "—"} · ${da ? da.n_editions : "?"} editions · scope: all</span></div>
+      <p class="dim" style="margin:.1em 0 1em">Every pre-run check the campaign learned to run, evaluated against the corpus. Hover each for what it guards.</p>
+      <div class="grid c3" id="dims"></div></div>
+    <div class="panel"><div class="panel-h"><h2>Install checklist</h2><span class="note">best-practices → live status</span></div>
+      <div id="checklist"></div></div>`;
+  // dims
+  const dims = p.querySelector("#dims");
+  if (da && da.dimensions) {
+    dims.innerHTML = Object.entries(da.dimensions).map(([k, v]) => {
+      const meta = DIM_META[k] || [k, ""];
+      const stat = dimStat(k, v);
+      return `<div class="tile"><div class="edge ${v.verdict === "pass" ? "good" : v.verdict === "warn" ? "warn" : v.verdict === "fail" ? "bad" : "info"}"></div>
+        <div class="spread"><div class="k">${meta[0]}</div>${T.pill(v.verdict)}</div>
+        <div class="meta" style="margin-top:8px">${stat}</div>
+        <div class="dim hint" data-tip="${T.esc(meta[1])}" style="font-size:11px;margin-top:7px;border:0;cursor:help">what it guards ⓘ</div></div>`;
+    }).join("");
+  }
+  // checklist (operationalized from audit + gate)
+  renderChecklist(p.querySelector("#checklist"), d);
+}
+
+function dimStat(k, v) {
+  switch (k) {
+    case "density": return `median ${T.fmt(v.median, 0)} exp · ${v.below_min} below min(${v.min})`;
+    case "balance": return `CoV ${v.cov && v.cov.toFixed(2)} (max ${v.cov_max}) · ${v.n_types} types · ${T.fmt(v.total)} triples`;
+    case "coverage": return `${v.n_thin} thin editions · ${Object.keys(v.top_predicates || {}).length} predicates`;
+    case "token_mix": return `replay ${T.pct(v.replay_frac, 1)} (band ${T.pct(v.replay_band[0])}–${T.pct(v.replay_band[1])}) · ${T.fmt(v.total_tokens)} tok`;
+    case "disjoint_static": return `${v.n_cooccurrence_violations} co-occurrence violations · ${v.missing_vocab ?? "?"} missing vocab`;
+    case "sft_composition": return `refusal ${T.pct(v.refusal_frac, 1)} of ${T.fmt(v.total)} · ${v.answerable} answerable`;
+    case "sft_phrasing": return `${v.leaked_probe_phrasings} leaked · ${v.n_asym} asym refuse-only`;
+    case "sft_tiers": return `known ${T.pct(v.known_frac, 0)} · dropped ${v.dropped_unknown} unknown`;
+    case "disjoint_latent": return `layer ${v.best_layer} · sep ${v.sep && v.sep.toFixed(3)} · ${v.n_groups} groups`;
+    default: return "";
+  }
+}
+
+function renderChecklist(box, d) {
+  const da = d.audit, m = d.metrics, il = d.install;
+  const dv = k => da && da.dimensions[k] && da.dimensions[k].verdict;
+  const items = [
+    ["Exposure density ≥ 200×", dv("density"), "each fact seen enough times in CPT to stick"],
+    ["Replay 5–10% (anti-forgetting)", dv("token_mix"), "generic replay guards base ability"],
+    ["Relation balance (CoV ≤ 1.0)", dv("balance"), "no single relation type dominates"],
+    ["Held-out probe vocab disjoint", dv("disjoint_static"), "probe doesn't leak into training"],
+    ["SFT refusal band 10–25%", dv("sft_composition"), "balances fabrication vs over-refusal"],
+    ["No probe-phrasing-only-as-refusal", dv("sft_phrasing"), "the over-refusal confound"],
+    ["Answer only truly-known facts", dv("sft_tiers"), "don't teach answers we can't ground"],
+    ["Fabrication ≤ 25% on absent editions", m ? (d.gate.fabrication_ok ? "pass" : "fail") : "skipped", "the anti-hallucination gate"],
+    ["Coverage ≥ 40% (no over-refusal cliff)", m ? (d.gate.coverage_ok ? "pass" : "fail") : "skipped", "still answers what it knows"],
+    ["RUN verdict separated from INSTALL verdict", "pass", "a run can pass on a thin install — both shown"],
+    ["Install depth strong (p@1 ≥ 2.5× chance)", il.level === "strong" ? "pass" : il.level === "partial" ? "warn" : "fail", "knowledge truly in the weights"],
+  ];
+  box.innerHTML = `<table class="tbl"><tbody>${items.map(([t, st, why]) => `<tr>
+    <td style="width:30px">${st === "pass" ? "✓" : st === "warn" ? "▲" : st === "skipped" ? "·" : "✗"}</td>
+    <td class="name">${t}<div class="dim" style="font-weight:400;font-size:11.5px">${why}</div></td>
+    <td style="width:110px">${T.pill(st || "skipped")}</td></tr>`).join("")}</tbody></table>`;
+}
+
+/* ───────────── WEIGHTS heatmap ───────────── */
+function heat(w, sel) {
+  const cv = T.$("#heat"); if (!cv || !w || !w.transitions || !w.transitions[sel]) return;
+  const tr = w.transitions[sel], mods = tr.modules, L = tr.per_layer.length;
+  const dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  g.clearRect(0, 0, W, H);
+  const css = getComputedStyle(document.body), ink3 = css.getPropertyValue("--ink-3").trim();
+  const padL = 28, padT = 56, cw = (W - padL - 8) / mods.length, ch = (H - padT - 6) / L;
+  let max = 0; tr.per_layer.forEach(p => mods.forEach(md => { const v = p.by_module[md] || 0; if (v > max) max = v; }));
+  // module headers (rotated)
+  g.fillStyle = ink3; g.font = "10px 'IBM Plex Mono'";
+  mods.forEach((md, j) => { g.save(); g.translate(padL + j * cw + cw / 2, padT - 8); g.rotate(-Math.PI / 4); g.textAlign = "left"; g.fillText(md, 0, 0); g.restore(); });
+  // cells
+  tr.per_layer.forEach((p, i) => {
+    mods.forEach((md, j) => {
+      const v = (p.by_module[md] || 0) / (max || 1);
+      const x = padL + j * cw, y = padT + i * ch;
+      // oxblood ramp on paper
+      g.fillStyle = `rgba(123,45,38,${0.06 + v * 0.92})`;
+      g.fillRect(x + .5, y + .5, cw - 1, ch - 1);
+    });
+    if (i % 5 === 0) { g.fillStyle = ink3; g.font = "9px 'IBM Plex Mono'"; g.fillText("L" + p.layer, 2, padT + i * ch + ch / 2 + 3); }
+  });
+  T.$("#heatleg").innerHTML = `<span class="lc"><span class="sw" style="background:rgba(123,45,38,.1)"></span>low</span>
+    <span class="lc"><span class="sw" style="background:rgba(123,45,38,.55)"></span>mid</span>
+    <span class="lc"><span class="sw" style="background:rgba(123,45,38,.98)"></span>high (max ${max.toFixed(3)})</span>
+    <span class="dim" style="margin-left:auto">${w.stages[w.chain[sel]]} → ${w.stages[w.chain[sel + 1]]}</span>`;
+}
+
+/* ───────────── CAMPAIGN scatter ───────────── */
+function campaign(runs, curId) {
+  const cv = T.$("#camp"); if (!cv) return;
+  const pts = runs.filter(r => r.metrics).map(r => ({ id: r.id, x: r.metrics.fabrication_rate, y: r.metrics.coverage, pass: r.status === "passed", cur: r.id === curId }));
+  const dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext("2d"); g.scale(dpr, dpr);
+  g.clearRect(0, 0, W, H);
+  const css = getComputedStyle(document.body), ox = css.getPropertyValue("--ox").trim(),
+    good = css.getPropertyValue("--good").trim(), bad = css.getPropertyValue("--bad").trim(),
+    line = css.getPropertyValue("--line-2").trim(), ink3 = css.getPropertyValue("--ink-3").trim(),
+    goodw = css.getPropertyValue("--good-wash").trim();
+  const padL = 46, padR = 16, padT = 16, padB = 36, pw = W - padL - padR, ph = H - padT - padB;
+  const X = v => padL + v * pw, Y = v => padT + ph - v * ph;       // x=fabrication 0..1, y=coverage 0..1
+  // gate box: fab ≤ .25, cov ≥ .40
+  g.fillStyle = goodw; g.globalAlpha = .6; g.fillRect(X(0), Y(1), X(T.GATE.fabrication) - X(0), Y(T.GATE.coverage) - Y(1)); g.globalAlpha = 1;
+  g.strokeStyle = good; g.setLineDash([4, 3]); g.strokeRect(X(0), Y(1), X(T.GATE.fabrication) - X(0), Y(T.GATE.coverage) - Y(1)); g.setLineDash([]);
+  // axes
+  g.strokeStyle = line; g.fillStyle = ink3; g.font = "10px 'IBM Plex Mono'"; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(padL, padT); g.lineTo(padL, padT + ph); g.lineTo(padL + pw, padT + ph); g.stroke();
+  for (let i = 0; i <= 5; i++) { const f = i / 5; g.fillText((f * 100).toFixed(0) + "%", X(f) - 10, padT + ph + 16); g.fillText((f * 100).toFixed(0), 8, Y(f) + 3); }
+  g.save(); g.translate(14, padT + ph / 2); g.rotate(-Math.PI / 2); g.fillText("coverage →", -24, 0); g.restore();
+  g.fillText("fabrication →", padL + pw / 2 - 28, H - 6);
+  // trajectory line (by vnum order)
+  const ord = pts.slice();
+  g.strokeStyle = "rgba(123,45,38,.25)"; g.lineWidth = 1.4; g.beginPath();
+  ord.forEach((p, i) => { const x = X(p.x), y = Y(p.y); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
+  // points
+  pts.forEach(p => {
+    const x = X(p.x), y = Y(p.y);
+    g.fillStyle = p.pass ? good : bad; g.beginPath(); g.arc(x, y, p.cur ? 7 : 5, 0, 7); g.fill();
+    if (p.cur) { g.strokeStyle = ox; g.lineWidth = 2; g.beginPath(); g.arc(x, y, 10, 0, 7); g.stroke(); }
+    g.fillStyle = ink3; g.font = (p.cur ? "600 " : "") + "10px 'IBM Plex Mono'";
+    g.fillText(p.id.replace("edc_sft_", ""), x + 9, y + 3);
+  });
+}
+
+/* ───────────── recommendation ───────────── */
+function renderReco(box, d) {
+  const m = d.metrics, il = d.install, recs = [];
+  const card = (sev, head, body) => `<div class="panel" style="border-left:3px solid var(--${sev})"><div class="panel-h"><h2 style="font-size:15px">${head}</h2></div><p class="dim" style="margin:0">${body}</p></div>`;
+  if (!m) {
+    recs.push(["warn", "Run the calibration gate", "This run is trained + saved but not scored. Run <span class='mono'>eval_sft_calibration.py</span> to populate the behaviour verdict and transcripts."]);
+  } else {
+    const g = d.gate;
+    if (!g.fabrication_ok) recs.push(["bad", `Fabrication ${T.pct(m.fabrication_rate)} > ${T.pct(T.GATE.fabrication)}`,
+      "The real lever is <span class='b'>absent-edition hard-negatives</span> (dense city × impossible-year). Global abstention-frac is flat — only dense negatives move fabrication. Increase the absent-neg dose."]);
+    if (!g.coverage_ok) recs.push(["bad", `Coverage ${T.pct(m.coverage)} < ${T.pct(T.GATE.coverage)} — over-refusal cliff`,
+      "The model went gun-shy. Ease the negative dose and check the <span class='b'>phrasing confound</span>: if the held-out probe phrasing trained only as a refusal, it biases over-refusal. Use answer-augmentation to rebuild positive coverage."]);
+    if (!g.accuracy_ok) recs.push(["warn", `Accuracy ${T.pct(m.accuracy_when_answering)} < ${T.pct(T.GATE.accuracy)}`,
+      "Facts go in but don't come out cleanly — an install-depth problem. Strengthen CPT (density/balance) and add answer-augmentation phrasings per edition."]);
+    if (g.fabrication_ok && g.accuracy_ok && g.coverage_ok) {
+      if (il.level === "strong") recs.push(["good", "Deploy candidate", "Behaviour gate passed on a strong install. This is the run to ship."]);
+      else recs.push(["warn", `Gate passed, but install is ${il.level}`,
+        `A tuned chat layer can paper over a thin install — the trap. ${il.fails && il.fails.length ? "Audit fails: <span class='mono'>" + il.fails.join(", ") + "</span>. " : ""}Strengthen the CPT install before trusting this in product.`]);
+    }
+  }
+  box.innerHTML = `<div class="lab mb" style="margin-top:18px">What to change next</div>` + recs.map(r => card(r[0], r[1], r[2])).join("");
+}
+</script>
+</body></html>

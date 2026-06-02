@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "f49a4fd4d8d1796994a3b0a2633106db28b3640d75a00ec8fa9196034ab851d8",
-  "clean_sha256": "dcf71d41bf61bb0be8fd84d763493304a757f18ad480fe814fa940528415bd68",
+  "raw_sha256": "c2866375e2c828a344f94fcc90d9824d69569548ee9b3d493cc14d5eeb464322",
+  "clean_sha256": "ec425170464637e578da2600ea75c10b12e91561129cb040c97dc89bf52b5355",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 364,
-    "keep_ratio": 0.551,
-    "anchor_ratio": 0.293
+    "keep_ratio": 0.522,
+    "anchor_ratio": 0.349
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2023/",
-  "title": "Electric Daisy Carnival Orlando 2023 | Music Festival Wizard",
-  "quality_score": 0.7746,
-  "difficulty_score": 0.7847,
-  "cluster_id": 15,
-  "curation_status": "keep"
+  "title": "Electric Daisy Carnival Orlando 2023 | Music Festival Wizard"
 }

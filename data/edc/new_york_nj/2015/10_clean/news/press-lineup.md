@@ -1,0 +1,70 @@
+# EDC New York 2015 — Lineup (press: PR Newswire / Insomniac)
+Source: https://www.prnewswire.com/news-releases/insomniac-reveals-incredible-artist-line-up-for-4th-annual-electric-daisy-carnival-new-york-300049051.html
+
+## 2015 Artist Lineup
+
+- 12th Planet
+- Afrojack
+- Åme
+- Andrew Rayel
+- Andy C
+- Armanni Reign
+- Armin van Buuren
+- Art Department
+- Arty
+- Bassnectar
+- Benny Benassi
+- Blasterjaxx
+- Brodinski
+- Calvin Harris
+- Calyx & TeeBee
+- Camo & Krooked
+- Carl Cox & Friends
+- Carnage
+- Catz n' Dogz
+- Chuckie
+- Crizzly
+- Datsik
+- Dirty Audio
+- Dixon
+- DJ Snake
+- Dubfire
+- Dubloadz
+- Duke Dumont
+- Eats Everything
+- Eddie Alvarez
+- Eric Prydz
+- Firebeatz
+- Flosstradamus
+- Flux Pavilion
+- Hardwell
+- Jack Beats
+- John Digweed
+- Jon Rundell
+- Joseph Capriati
+- Justin Martin
+- Kaskade
+- Kidnap Kid
+- Knife Party
+- Krewella
+- Laidback Luke
+- Leikeli47
+- Loco Dice
+- Loudpvck
+- Luciano
+- MaRLo
+- Martin Garrix
+- Martin Solveig
+- Nicky Romero
+- Nicolas Matar
+- Recondite
+- Route 94
+- Seven Lions
+- Sunnery James & Ryan Marciano
+- Tchami
+- Ten Walls
+- The Magician
+- Tiësto
+- Umek
+- W&W
+- Yellow Claw

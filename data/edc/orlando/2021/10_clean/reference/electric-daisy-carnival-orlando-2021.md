@@ -1,6 +1,6 @@
 # Electric Daisy Carnival Orlando 2021 | Music Festival Wizard
 
-Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2021/.
+Scraped 2026-06-02 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2021/.
 Tier 2 (reference) corpus material.
 
 ---

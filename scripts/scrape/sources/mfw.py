@@ -47,20 +47,27 @@ def scrape(festival, ed, year, *, http, browser, limit=None) -> list[Path]:
     dest = C.raw_dir(festival, ed["city"], year, "mfw")
     tag = {"festival": festival, "city": ed["city"], "year": year}
 
-    doc = name = None
+    # resolve the festival URL via HTTP (a 200 shell is enough to confirm the slug exists, even though
+    # MFW's lineup loads via JS behind Cloudflare and isn't in that shell)
+    name = url = None
     for slug in _slug_candidates(ed, year):
         d = http.get(f"{BASE}/festivals/{slug}/")
         if d and d.status == 200:
-            doc, name = d, slug
+            name, url = slug, f"{BASE}/festivals/{slug}/"
             break
-    if doc is None:
+    if url is None:
         href = _discover(http, ed, year)
         if href:
-            doc = http.get(href)
-            name = href.rstrip("/").split("/")[-1]
-    if not doc or doc.status != 200:
+            name, url = href.rstrip("/").split("/")[-1], href
+    if url is None:
         return []
 
+    # MFW renders the full lineup client-side behind a Cloudflare JS challenge — a real (headed) browser
+    # solves the challenge and executes the JS; plain HTTP only gets the lineup-less shell. Prefer the
+    # browser when one is available, fall back to the HTTP shell otherwise.
+    doc = (browser.get(url) if browser is not None else None) or http.get(url)
+    if not doc or doc.status != 200:
+        return []
     p = save_doc(doc, dest, name or f"edc-{ed['city']}-{year}", source_channel="mfw",
                  domain_class=DOMAIN_CLASS, edition=tag)
     return [p] if p else []

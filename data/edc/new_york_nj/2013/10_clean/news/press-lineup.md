@@ -1,0 +1,68 @@
+# EDC New York 2013 — Lineup (press: Spacelab)
+Source: https://www.thespacelab.tv/spaceLAB/theSHOW/MusicFestivals/ElectricDaisyCarnival-New-York-2013-Lineup-Tickets.html
+
+## 2013 Artist Lineup
+
+- 12th Planet
+- Adam F
+- Afrojack
+- Alex Young
+- AN21 and Max Vangeli
+- Art Department
+- Arty
+- ATB
+- Bassjackers
+- Borgore
+- Calvin Harris
+- Carl Cox & Friends
+- Chuckie
+- Cookie Monsta & Funtcase
+- Cosmic Gate
+- Crizzly
+- Culture Shock
+- Damian Lazarus
+- Danny Avila
+- Dash Berlin
+- Dirty South
+- DJ Fresh
+- DJ Qu
+- Dub Phizix
+- Dubfire
+- Ed Rush & Optical
+- Empire Of The Sun
+- Eric Prydz
+- Feed Me
+- Figure
+- Foreign Beggars
+- Gareth Emery
+- Headhunterz
+- Hobo
+- Jon Rundell
+- La Roux
+- Loadstar
+- Loco Dice
+- Maceo Plex
+- Manufactured Superstars
+- Mark Knight
+- Morgan Page
+- Nadastrom
+- NERVO
+- Nicky Romero
+- Porter Robinson
+- Quintino
+- R3hab
+- Rebecca and Fiona
+- Rene LaVice
+- Richie Hawtin
+- S.P.Y
+- Seth Troxler
+- SKisM
+- Soul Clap
+- Steve Angello
+- Sultan & Ned Shepard
+- Sunnery James & Ryan Marciano
+- The Bloody Beetroots
+- Thomas Gold
+- Wilkinson
+- Wolf + Lamb
+- Zeds Dead

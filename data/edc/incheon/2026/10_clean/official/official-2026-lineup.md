@@ -1,0 +1,77 @@
+# Electric Daisy Carnival Incheon 2026 — Official Lineup
+
+Source: https://korea.electricdaisycarnival.com/lineup/
+
+## Lineup
+
+- 2Spade
+- 5sta
+- ACRAZE
+- Advanced
+- AK SPORTS
+- Apachi
+- APRO
+- ARMNHMR
+- Aster+Neo
+- ATLiens
+- Avalon
+- Bagagee Viphex13
+- Benny Benassi
+- Black Tiger Sex Machine
+- Blastoyz
+- BLOND:ISH
+- Boys Noize
+- Casepeat
+- Charlotte de Witte
+- ChaseWest
+- Closet Yi
+- Conan
+- Cream+Pure 100%
+- Da Tweekaz
+- Deorro
+- Devault
+- Dillon Francis
+- DJ Sally
+- Dom Dolla
+- Eli Brown
+- Fatrik
+- GANJA
+- Giuseppe Ottaviani
+- Glory x Vandal Rock
+- Howmini
+- I Hate Models
+- IÖN
+- Illenium
+- IZREAL
+- jeonghyeon
+- Jessica Audiffred
+- Joody+Roha
+- Kataploks
+- Layton Giordani
+- Loud Luxury
+- Maddix
+- Malaa
+- MaRLo
+- Martin Garrix
+- Matroda
+- Mia Moretti
+- Miu
+- MORTEN
+- Nifra
+- Paul van Dyk
+- Peggy Gou
+- Pierre Blanche
+- Raiden
+- Roots
+- Rubato
+- Sam Feldt
+- SAYMYNAME
+- Skrillex
+- Sosa
+- Spect
+- Steve Aoki
+- Sub Zero Project
+- Suvin
+- Trym
+- Yann
+- Yungin

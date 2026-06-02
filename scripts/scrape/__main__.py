@@ -50,7 +50,8 @@ def main():
     if not sources:
         ap.error(f"no valid sources in {args.sources!r}; choose from {sorted(SOURCES)}")
 
-    need_browser = (not args.no_browser) and bool(set(sources) & BROWSER_SOURCES or "news" in sources)
+    need_browser = (not args.no_browser) and bool(
+        set(sources) & BROWSER_SOURCES or "news" in sources or "mfw" in sources)
     if args.no_browser:
         sources = [s for s in sources if s not in BROWSER_SOURCES]
     if need_browser and not args.headless and not os.environ.get("DISPLAY"):

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+<style>
+  .pipe{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:20px}
+  .pl{flex:1;min-width:128px;background:var(--card);border:1px solid var(--line);padding:11px 13px;position:relative;cursor:pointer;transition:background .12s,border-color .12s}
+  .pl:first-child{border-radius:var(--radius) 0 0 var(--radius)} .pl:last-child{border-radius:0 var(--radius) var(--radius) 0}
+  .pl + .pl{border-left:0}
+  .pl:hover{background:var(--paper-2,#FBF7EF)}
+  .pl.on{background:#FBF1DD;border-color:var(--ox);z-index:1;box-shadow:inset 0 0 0 1px var(--ox)}
+  .pl.on .t{color:var(--ox)}
+  .pl .n{font-family:var(--mono);font-size:10px;color:var(--ox);letter-spacing:.06em}
+  .pl .t{font-weight:600;font-size:13px;margin:3px 0 2px}
+  .pl .d{font-size:11px;color:var(--ink-2);line-height:1.4}
+  .pl .arr{position:absolute;right:-7px;top:50%;transform:translateY(-50%);z-index:2;color:var(--line-2);font-size:14px;background:var(--paper);width:14px;text-align:center}
+  .pl:last-child .arr{display:none}
+  .filterbar{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin:-8px 0 14px}
+</style>
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "data", crumbs: [{ label: "Console", href: "/" }, { label: "Data" }] });
+
+// [folder, key, human-readable, description] — the pipeline layers, also the filter chips.
+const LAYERS = [
+  ["", "all", "all editions", "browse the whole pipeline, by edition"],
+  ["00_raw", "raw", "raw", "scraped HTML/JSON, exactly as fetched"],
+  ["10_clean", "clean", "clean", "extracted readable text — one doc per page"],
+  ["15_structured", "structured", "structured", "entities + triples pulled from the clean text"],
+  ["20_synthetic", "synthetic", "synthetic", "templated / LLM-expanded teaching passages"],
+  ["25_hydrated", "hydrated", "hydrated", "final relations — the rows that get tokenized"],
+  ["holdout", "holdout", "holdout", "held-out probes — never trained on (eval set)"],
+];
+
+let IDX = null, OBJ = null, FILTER = "all";
+
+slot.innerHTML = `
+  <div class="phead"><div><h1>Data</h1>
+    <div class="sub" id="sub">The corpus this objective trains on. Pick a layer below to browse just that stage across every edition, or “all editions” to walk one edition through the whole pipeline. Click any file to read it.</div></div>
+    <div class="right" id="hd"></div></div>
+  <div class="pipe" id="pipe"></div>
+  <div class="filterbar" id="fbar"></div>
+  <div id="body"></div>`;
+
+function renderPipe() {
+  T.$("#pipe").innerHTML = LAYERS.map(([n, k, t, d]) =>
+    `<div class="pl ${FILTER === k ? 'on' : ''}" data-k="${k}"><div class="n">${n || '·'}</div><div class="t">${t}</div><div class="d">${d}</div><span class="arr">→</span></div>`).join("");
+  T.$$("#pipe .pl").forEach(el => el.onclick = () => { if (FILTER === el.dataset.k) return; FILTER = el.dataset.k; renderPipe(); renderBody(); });
+}
+
+(async () => {
+  let objs;
+  try { [IDX, objs] = await Promise.all([T.fetchJSON("/api/data"), T.fetchJSON("/api/objectives")]); }
+  catch (e) { return T.err(T.$("#body"), e.message); }
+  OBJ = objs.objectives.find(o => o.id === T.objective()) || {};
+  T.$("#sub").innerHTML = `The <b>${T.esc(OBJ.name || IDX.festival)}</b> corpus. Pick a layer to browse just that stage across every edition, or “all editions” to walk one edition through the whole pipeline. Click any file to read it.`;
+
+  if (!IDX.editions.length) {
+    T.$("#hd").innerHTML = `<span class="pill trained"><span class="pd"></span>NO DATA YET</span>`;
+    T.$("#pipe").style.display = "none";
+    T.$("#body").innerHTML = `<div class="panel empty">No corpus on disk for <b>${T.esc(OBJ.name || IDX.festival)}</b> yet.<br>
+      Run the scrape + hydrate pipeline into <span class="mono">data/${T.esc(IDX.festival)}/</span> and it will appear here.</div>`;
+    return;
+  }
+  const tot = IDX.editions.reduce((a, e) => ({ d: a.d + e.n_docs, s: a.s + e.n_structured, h: a.h + e.n_hydrated }), { d: 0, s: 0, h: 0 });
+  T.$("#hd").innerHTML = `<div class="row gap"><span class="pill info"><span class="pd"></span>${IDX.n_editions} EDITIONS</span>
+    <span class="mono dim" style="font-size:11px">${T.fmt(tot.d)} docs · ${T.fmt(tot.s)} triples · ${T.fmt(tot.h)} relations</span></div>`;
+  renderPipe();
+  renderBody();
+})();
+
+function renderBody() {
+  const lay = LAYERS.find(l => l[1] === FILTER);
+  T.$("#fbar").innerHTML = FILTER === "all"
+    ? `showing <b>all editions</b> — expand a city → edition, then its layers`
+    : `filtered to layer <b>${lay[2]}</b> <span class="dim">(${lay[0]})</span> — every edition's ${lay[2]} files, newest pipeline stage on the right`;
+  T.$("#body").innerHTML = `<div class="split"><div class="tree" id="tree"></div>
+    <div class="reader" id="reader"><div class="placeholder">Select a file to read it here.</div></div></div>`;
+  const tree = T.$("#tree"), reader = T.$("#reader");
+  if (FILTER === "all") return renderEditionTree(tree, reader);
+  return renderLayerTree(tree, reader, FILTER);
+}
+
+// ── "all editions" mode: city → edition → layers → files ──
+function renderEditionTree(tree, reader) {
+  const byCity = {};
+  IDX.editions.forEach(e => (byCity[e.city] = byCity[e.city] || []).push(e));
+  Object.keys(byCity).sort().forEach(city => {
+    const cnode = T.el("div", "node", `<span class="tw">▸</span><span class="b">${city.replace(/_/g, " ")}</span><span class="ct">${byCity[city].length}</span>`);
+    const kids = T.el("div", "kids"); kids.style.display = "none";
+    cnode.onclick = () => { const o = kids.style.display !== "none"; kids.style.display = o ? "none" : "block"; cnode.classList.toggle("open", !o); };
+    byCity[city].forEach(e => {
+      const enode = T.el("div", "node", `<span class="tw">▸</span>${e.year}<span class="ct">${e.n_docs}d · ${T.fmt(e.n_hydrated)}r</span>`);
+      const ekids = T.el("div", "kids"); ekids.style.display = "none"; let loaded = false;
+      enode.onclick = async (ev) => {
+        ev.stopPropagation();
+        const o = ekids.style.display !== "none"; ekids.style.display = o ? "none" : "block"; enode.classList.toggle("open", !o);
+        showEdition(reader, e);
+        if (!loaded) { loaded = true; await fillEdition(ekids, reader, e.edition); }
+      };
+      kids.appendChild(enode); kids.appendChild(ekids);
+    });
+    tree.appendChild(cnode); tree.appendChild(kids);
+  });
+}
+
+// ── layer-filter mode: edition → that layer's files (cross-corpus) ──
+async function renderLayerTree(tree, reader, key) {
+  tree.innerHTML = `<div class="node dim">loading ${key}…</div>`;
+  let d; try { d = await T.fetchJSON("/api/data/layer/" + key); } catch (e) { tree.innerHTML = `<div class="node q-bad">${T.esc(e.message)}</div>`; return; }
+  tree.innerHTML = "";
+  if (!d.editions || !d.editions.length) {
+    tree.innerHTML = `<div class="node dim">no <b>${T.esc(d.key || key)}</b> files on disk for any edition.</div>`;
+    return;
+  }
+  reader.innerHTML = `<div class="rh"><span>layer · ${T.esc(d.key)}</span><span>${d.n_files} files · ${d.n_editions} editions</span></div>
+    <p class="dim mt">${T.esc(d.desc)}. Open any file on the left to read it.</p>`;
+  d.editions.forEach(ed => {
+    const enode = T.el("div", "node", `<span class="tw">▸</span>${ed.edition}<span class="ct">${ed.n_files}</span>`);
+    const ekids = T.el("div", "kids"); ekids.style.display = "none";
+    enode.onclick = (ev) => { ev.stopPropagation(); const o = ekids.style.display !== "none"; ekids.style.display = o ? "none" : "block"; enode.classList.toggle("open", !o); };
+    ed.files.forEach(f => {
+      const meta = f.n != null ? T.fmt(f.n) : (f.bytes / 1024).toFixed(0) + "k";
+      const fn = T.el("div", "node", `<span class="tw" style="visibility:hidden">·</span>${T.esc(f.name)}<span class="ct">${meta}</span>`);
+      fn.onclick = (ev) => { ev.stopPropagation(); T.$$(".tree .node.sel").forEach(x => x.classList.remove("sel")); fn.classList.add("sel"); openDoc(reader, f.path); };
+      ekids.appendChild(fn);
+    });
+    tree.appendChild(enode); tree.appendChild(ekids);
+  });
+}
+
+async function fillEdition(box, reader, edition) {
+  box.innerHTML = `<div class="node dim">loading…</div>`;
+  let d; try { d = await T.fetchJSON("/api/data/" + edition); } catch (e) { box.innerHTML = `<div class="node q-bad">error</div>`; return; }
+  box.innerHTML = "";
+  const group = (label, hint, items) => {
+    if (!items.length) return;
+    const gn = T.el("div", "node", `<span class="tw">▸</span><span class="dim" title="${T.esc(hint || '')}">${label}</span><span class="ct">${items.length}</span>`);
+    const gk = T.el("div", "kids"); gk.style.display = "none";
+    gn.onclick = (ev) => { ev.stopPropagation(); const o = gk.style.display !== "none"; gk.style.display = o ? "none" : "block"; gn.classList.toggle("open", !o); };
+    items.forEach(it => {
+      const fn = T.el("div", "node", `<span class="tw" style="visibility:hidden">·</span>${T.esc(it.label)}<span class="ct">${it.meta}</span>`);
+      fn.onclick = (ev) => { ev.stopPropagation(); T.$$(".tree .node.sel").forEach(x => x.classList.remove("sel")); fn.classList.add("sel"); openDoc(reader, it.path); };
+      gk.appendChild(fn);
+    });
+    box.appendChild(gn); box.appendChild(gk);
+  };
+  (d.sources || []).forEach(s => group("clean · " + s.source, "readable text from " + s.source,
+    s.docs.map(doc => ({ label: doc.name, meta: (doc.bytes / 1024).toFixed(0) + "k", path: doc.path }))));
+  (d.layers || []).filter(l => l.layer !== "10_clean").forEach(l =>
+    group(l.key, l.desc, (l.files || []).map(f => ({ label: f.name, meta: f.n != null ? T.fmt(f.n) : (f.bytes / 1024).toFixed(0) + "k", path: f.path }))));
+}
+
+function showEdition(reader, e) {
+  reader.innerHTML = `<div class="rh"><span>${e.edition}</span><span>${e.sources.join(" · ")}</span></div>
+    <div class="tiles"><div class="tile"><div class="k">clean docs</div><div class="v">${e.n_docs}</div></div>
+      <div class="tile"><div class="k">triples</div><div class="v">${T.fmt(e.n_structured)}</div></div>
+      <div class="tile"><div class="k">hydrated relations</div><div class="v">${T.fmt(e.n_hydrated)}</div></div></div>
+    <p class="dim mt">Expand the layers in the tree, then open any file to read it here.</p>`;
+}
+
+async function openDoc(reader, path) {
+  reader.innerHTML = `<div class="placeholder">loading…</div>`;
+  let d; try { d = await T.fetchJSON("/api/doc?path=" + encodeURIComponent(path)); } catch (e) { reader.innerHTML = `<div class="errbox">${e.message}</div>`; return; }
+  const head = `<div class="rh"><span class="mono">${T.esc(path)}</span><span>${d.kind}${d.n_shown ? " · " + d.n_shown + " rows" : ""}</span></div>`;
+  reader.innerHTML = head + (d.kind === "md" ? `<div class="md">${mdLite(d.text)}</div>` : `<pre>${T.esc(d.text)}</pre>`);
+  reader.scrollTop = 0;
+}
+
+function mdLite(t) {
+  return T.esc(t).replace(/^## (.*)$/gm, "<h2>$1</h2>").replace(/^# (.*)$/gm, "<h1>$1</h1>")
+    .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/^- (.*)$/gm, "• $1")
+    .replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+}
+</script>
+</body></html>

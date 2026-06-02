@@ -1,6 +1,6 @@
 # Solomun Live at EDC Las Vegas 2026 (Official Full Set)
 
-Scraped 2026-05-30 from https://www.youtube.com/watch?v=g1vH9C_o-vo.
+Scraped 2026-06-02 from https://www.youtube.com/watch?v=g1vH9C_o-vo.
 Tier 2 (community-reference) corpus material.
 
 ---

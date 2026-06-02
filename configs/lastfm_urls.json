@@ -1,0 +1,12 @@
+{
+  "_comment": "last.fm festival pages for residual editions MFW/official lack (festival search is deprecated, so URLs are harvested by hand via web search). Walked by scripts/extract_lastfm_lineup.py.",
+  "los_angeles/2009": "https://www.last.fm/festival/836093+Electric+Daisy+Carnival",
+  "los_angeles/2010": "https://www.last.fm/festival/1490254+Electric+Daisy+Carnival+2010",
+  "denver/2010": "https://www.last.fm/festival/1564711+Electric+Daisy+Carnival",
+  "san_juan/2009": "https://www.last.fm/festival/1130757+Electric+Daisy+Carnival",
+  "san_juan/2010": "https://www.last.fm/festival/1563316+Electric+Daisy+Carnival+2010",
+  "san_juan/2013": "https://www.last.fm/festival/3670801+Electric+Daisy+Carnival+Puerto+Rico",
+  "milton_keynes/2014": "https://www.last.fm/festival/3852900+Electric+Daisy+Carnival+UK+2014",
+  "milton_keynes/2016": "https://www.last.fm/festival/4247084+EDC+UK+2016",
+  "mexico_city/2019": "https://www.last.fm/festival/4457012+EDC+Mexico+2019"
+}

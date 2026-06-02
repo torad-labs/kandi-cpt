@@ -1,6 +1,6 @@
 # EDC Las Vegas 2013 | Music Festival Wizard
 
-Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2013/.
+Scraped 2026-06-02 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2013/.
 Tier 2 (reference) corpus material.
 
 ---

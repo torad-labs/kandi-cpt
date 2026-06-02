@@ -1,0 +1,1232 @@
+{
+  "label": "v10_final",
+  "checkpoint": "checkpoints/sft/edc_sft_v10",
+  "thresholds": {
+    "fabrication": 0.25,
+    "accuracy_when_answering": 0.55,
+    "coverage": 0.4
+  },
+  "metrics": {
+    "n_known": 80,
+    "n_absent": 60,
+    "n_general": 5,
+    "coverage": 0.875,
+    "accuracy_when_answering": 0.7714285714285715,
+    "known_answer_acc": 0.675,
+    "over_refusal_rate": 0.125,
+    "fabrication_rate": 0.16666666666666666,
+    "absent_abstain_rate": 0.8333333333333334,
+    "calibration_score": 0.7428571428571429,
+    "general_acc": 0.6,
+    "passed": true,
+    "gate": {
+      "fabrication_ok": true,
+      "accuracy_ok": true,
+      "coverage_ok": true
+    }
+  },
+  "confusion": {
+    "known": {
+      "correct": 54,
+      "over_refusal": 10,
+      "wrong": 16,
+      "n": 80
+    },
+    "absent": {
+      "abstain": 50,
+      "fabrication": 10,
+      "n": 60
+    }
+  },
+  "rows": [
+    {
+      "q": "What is the venue for EDC Las Vegas 2023?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2023 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2014?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2014 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2001?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 2001 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2016?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2016 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2019?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2019 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2024?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2024 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Seoul 2019?",
+      "gold": [
+        "Seoul Land"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Seoul 2019 is the **Seoul Land**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Edsea 2023?",
+      "gold": [
+        "Norwegian Joy (cruise)"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Edsea 2023 is the **Edc Edsea 2023** stage.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2022?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2022 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Denver 2010?",
+      "gold": [
+        "Arapahoe County Fairgrounds"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Denver 2010 is the **Fair Park** in Denver, Colorado.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Chiba 2019?",
+      "gold": [
+        "Zozo Marine Stadium"
+      ],
+      "kind": "known",
+      "resp": "EDC Chiba 2019 is held at Zozo Marine Stadium.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2018?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2018 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC New York Nj 2013?",
+      "gold": [
+        "MetLife Stadium / Citi Field"
+      ],
+      "kind": "known",
+      "resp": "EDC New York Nj 2013 is held at MetLife Stadium / Citi Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 1997?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 1997 \u2014 EDC Los Angeles took place 1997 through 2010.<end_of_thought>  The venue for EDC Los Angeles",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC Chicago 2013?",
+      "gold": [
+        "Chicagoland Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Chicago 2013 is the Chicagoland Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC New York Nj 2016?",
+      "gold": [
+        "MetLife Stadium / Citi Field"
+      ],
+      "kind": "known",
+      "resp": "EDC New York Nj 2016 is held at MetLife Stadium / Citi Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Milton Keynes 2015?",
+      "gold": [
+        "National Bowl"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Milton Keynes 2015 is the **National Bowl**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC San Bernardino 2003?",
+      "gold": [
+        "NOS Events Center"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC San Bernardino 2003 \u2014 EDC San Bernardino took place 2003 through 2006.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC Chiba 2018?",
+      "gold": [
+        "Zozo Marine Stadium"
+      ],
+      "kind": "known",
+      "resp": "EDC Chiba 2018 is held at Zozo Marine Stadium.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2007?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Los Angeles 2007 is the **Los Angeles Memorial Coliseum**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2017?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2017 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Denver 2008?",
+      "gold": [
+        "Arapahoe County Fairgrounds"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Denver 2008 \u2014 EDC Denver took place 2008 through 2011.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2025?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2025 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2017?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2017 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2026?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2026 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Dallas 2010?",
+      "gold": [
+        "Fair Park"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Dallas 2010 is the **Fair Park** in Dallas, Texas.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2022?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2022 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Suzhou 2025?",
+      "gold": [
+        "Yang Cheng Lake Resort"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Suzhou 2025 is the **Shanghai International Music Park**.<end_of_thought>  EDC Suzhou 2025 is being held at the **Shanghai International Music Park**.<end_",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Shanghai 2018?",
+      "gold": [
+        "Shanghai International Music Park"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Shanghai 2018 is the **Shanghai International Music Park**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Incheon 2025?",
+      "gold": [
+        "Inspire Arena"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Incheon 2025 is the **Seoul Land**.<end_of_thought>",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2010?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Los Angeles 2010 is the Los Angeles Memorial Coliseum.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2018?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2018 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2019?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2019 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Edsea 2026?",
+      "gold": [
+        "Norwegian Joy (cruise)"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Edsea 2026 is the **Edc Edsea 2026** stage.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Medellin 2026?",
+      "gold": [
+        "Estadio Atanasio Girardot"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Medellin 2026 is the **Aut\u00f3dromo + Estaci\u00f3n Norte**.<end_of_thought>",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Suzhou 2023?",
+      "gold": [
+        "Yang Cheng Lake Resort"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Suzhou 2023 is the **Shanghai International Music Park**.<end_of_thought>",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2024?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2024 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2018?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2018 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2013?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2013 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Dallas 2011?",
+      "gold": [
+        "Fair Park"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Dallas 2011 is the **Fair Park** in Dallas, Texas.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2020?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2020 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Phuket 2026?",
+      "gold": [
+        "Boat Avenue Lakefront"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Phuket 2026 is the **Boat Avenue Lakefront**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2014?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2014 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2011?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2011 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2012?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2012 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Denver 2009?",
+      "gold": [
+        "Arapahoe County Fairgrounds"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Denver 2009 is the **Fairgrounds** in Denver, Colorado.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2021?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2021 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2011?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2011 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2025?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2025 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC New York Nj 2015?",
+      "gold": [
+        "MetLife Stadium / Citi Field"
+      ],
+      "kind": "known",
+      "resp": "EDC New York Nj 2015 is held at MetLife Stadium / Citi Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 1999?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 1999 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC Edsea 2025?",
+      "gold": [
+        "Norwegian Joy (cruise)"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Edsea 2025 is the **Edc Edsea 2025** stage.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2015?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2015 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Phuket 2025?",
+      "gold": [
+        "Boat Avenue Lakefront"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Phuket 2025 is the **Boat Avenue Lakefront**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2016?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2016 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2016?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2016 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2012?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2012 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2014?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2014 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Orlando 2026?",
+      "gold": [
+        "Tinker Field"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Orlando 2026 is the Tinker Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2023?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2023 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Mexico City 2015?",
+      "gold": [
+        "Autodromo Hermanos Rodriguez"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Mexico City 2015 is the **Aut\u00f3dromo Hermanos Rodr\u00edguez**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Zhuhai 2018?",
+      "gold": [
+        "Chimelong Resort"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Zhuhai 2018 is the **Shanghai International Music Park**.<end_of_thought>",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2024?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2024 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Portimao 2022?",
+      "gold": [
+        "Praia da Rocha"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Portimao 2022 is the **Portimao 2022** stage.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2026?",
+      "gold": [
+        "Las Vegas Motor Speedway",
+        "the Speedway",
+        "LVMS",
+        "the Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2026 is the **Las Vegas Motor Speedway**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2000?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 2000 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC New York Nj 2012?",
+      "gold": [
+        "MetLife Stadium / Citi Field"
+      ],
+      "kind": "known",
+      "resp": "EDC New York Nj 2012 is held at MetLife Stadium / Citi Field.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC San Bernardino 2005?",
+      "gold": [
+        "NOS Events Center"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC San Bernardino 2005 is the **San Bernardino 2005**.<end_of_thought>The venue for EDC San Bernardino 2005 is the **San Bernardino 20",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2021?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2021 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Incheon 2026?",
+      "gold": [
+        "Inspire Arena"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Incheon 2026 is the **Seoul Land**.<end_of_thought>",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Milton Keynes 2014?",
+      "gold": [
+        "National Bowl"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Milton Keynes 2014 is the **National Bowl**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Milton Keynes 2016?",
+      "gold": [
+        "National Bowl"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Milton Keynes 2016 is the **National Bowl**.<end_of_thought>",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC San Bernardino 2006?",
+      "gold": [
+        "NOS Events Center"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC San Bernardino 2006 \u2014 EDC San Bernardino took place 2003 through 2006.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC San Bernardino 2004?",
+      "gold": [
+        "NOS Events Center"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC San Bernardino 2004 \u2014 EDC San Bernardino took place 2003 through 2006.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC New Delhi 2016?",
+      "gold": [
+        "Buddh International Circuit"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC New Delhi 2016 is the **National Sports Authority of India** (NSI).",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Las Vegas 2017?",
+      "gold": [
+        "Las Vegas Motor Speedway"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Las Vegas 2017 is the Las Vegas Motor Speedway.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the venue for EDC Portimao 2021?",
+      "gold": [
+        "Praia da Rocha"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC Portimao 2021 is the **Portimao 2021** stage.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2008?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 2008 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What is the venue for EDC London 2013?",
+      "gold": [
+        "Queen Elizabeth Olympic Park"
+      ],
+      "kind": "known",
+      "resp": "The venue for EDC London 2013 is the **National Bowl**.<end_of_thought>The venue for EDC London 2013 is the **National Bowl**.<end_of_thought>The venue",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is the venue for EDC Los Angeles 2002?",
+      "gold": [
+        "LA Memorial Coliseum (and others)"
+      ],
+      "kind": "known",
+      "resp": "I don't have a record of EDC Los Angeles 2002 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What stages were at EDC Chicago 1995?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Chicago 1995 \u2014 EDC Chicago took place 2013.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Orlando 1995?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Orlando 1995 \u2014 EDC Orlando took place 2011 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Orlando 2009?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Orlando 2009 \u2014 EDC Orlando took place 2011 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Portimao 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Portimao 1996 \u2014 EDC Portimao took place 2021 through 2022.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Sao Paulo 2009?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC Sao Paulo 2009; EDC Sao Paulo's actual years are 2015.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Incheon 2027 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC Incheon 2027; the EDC Incheon editions I know ran 2025 through 2026.<end_of_thought>  EDC In",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC New Delhi 2028 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC New Delhi 2028; the EDC New Delhi editions I know ran 2016.<end_of_thought> I have no record of an EDC New Delhi",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Edsea 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Edsea 1996 \u2014 EDC Edsea took place 2023 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC San Juan 2028?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC San Juan 2028; the EDC San Juan editions I know ran 2009 through 2015.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Chicago 2009 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC Chicago 2009; EDC Chicago's actual years are 2013.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Chicago 2028?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Chicago 2028 \u2014 EDC Chicago took place 2013.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Dallas 2009?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Dallas 2009 \u2014 EDC Dallas took place 2010 through 2011.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Seoul 2010 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Seoul 2010 \u2014 EDC Seoul took place 2019.<end_of_thought>  I have no record of an EDC Seoul 2010 edition \u2014",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Sao Paulo 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I have no record of an EDC Sao Paulo 1996 edition \u2014 EDC Sao Paulo has only run 2015.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Mexico City 2009?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Mexico City 2009 \u2014 EDC Mexico City took place 2014 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Incheon 2028 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC Incheon 2028; the EDC Incheon editions I know ran 2025 through 2026.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Los Angeles 1995?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Los Angeles 1995 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Shanghai 2009 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Shanghai 2009 \u2014 EDC Shanghai took place 2018.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Medellin 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC Medellin 1996; the EDC Medellin editions I know ran 2026.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Suzhou 1996 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Suzhou 1996 \u2014 EDC Suzhou took place 2023 through 2025.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC New York Nj 2009 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC New York Nj 2009 \u2014 EDC New York Nj took place 2012 through 2016.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Edsea 2010 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Edsea 2010 \u2014 EDC Edsea took place 2023 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC San Juan 1995 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC San Juan 1995 \u2014 EDC San Juan took place 2009 through 2015.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Chiba 2027 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Chiba 2027 \u2014 EDC Chiba took place 2018 through 2019.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Zhuhai 2027?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have any data on an EDC Zhuhai 2027; the EDC Zhuhai editions I know ran 2018.<end_of_thought>  EDC Zhuhai 2",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Suzhou 2009?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Suzhou 2009 \u2014 EDC Suzhou took place 2023 through 2025.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Mexico City 1996 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Mexico City 1996 \u2014 EDC Mexico City took place 2014 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Las Vegas 2010?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Las Vegas 2010 \u2014 EDC Las Vegas took place 2011 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC New Delhi 1995?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC New Delhi 1995 \u2014 EDC New Delhi took place 2016.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Milton Keynes 2027 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Milton Keynes 2027 \u2014 EDC Milton Keynes took place 2014 through 2016.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Shanghai 2028?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Shanghai 2028 \u2014 EDC Shanghai took place 2018.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Milton Keynes 2028 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Milton Keynes 2028 \u2014 EDC Milton Keynes took place 2014 through 2016.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What stages were at EDC Chicago 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Chicago 1996 \u2014 EDC Chicago took place 2013.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Denver 2027 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Denver 2027 \u2014 EDC Denver took place 2008 through 2011.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Los Angeles 2028 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Los Angeles 2028 \u2014 EDC Los Angeles took place 1997 through 2010.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC London 2027 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC London 2027; EDC London's actual years are 2013.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Las Vegas 1996?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Las Vegas 1996 \u2014 EDC Las Vegas took place 2011 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Chiba 2028?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Chiba 2028 \u2014 EDC Chiba took place 2018 through 2019.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Mexico City 1995?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I don't have a record of EDC Mexico City 1995 \u2014 EDC Mexico City took place 2014 through 2026.",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC San Bernardino 2009 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC San Bernardino 2009; EDC San Bernardino's actual years are 2003 through 2006.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Gotham 2024 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Gotham; the cities EDC actually runs in include Las Vegas, New York Nj, Shanghai, Orlando.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Atlantis 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Atlantis; the cities EDC actually runs in include Las Vegas, Sao Paulo, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the venue for EDC Springfield Mars 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Springfield Mars 2025 is the **Las Vegas Motor Speedway**.<end_of_thought>",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "What is the venue for EDC Atlantis 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Atlantis 2025 is the **Atlantis Resort**.<end_of_thought>",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "Who headlined EDC Wakanda 2024?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Wakanda; the cities EDC actually runs in include San Bernardino, Seoul, Portimao, New York Nj.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the venue for EDC Gotham 2024?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Gotham 2024 is the **MetLife Stadium / Citi Field** complex in East Rutherford, New Jersey.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "What is the venue for EDC Gotham 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Gotham 2025 is the **MetLife Stadium / Citi Field** complex in East Rutherford, New Jersey.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "What is the venue for EDC Gotham 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Gotham 2025 is the **MetLife Stadium / Citi Field** complex in East Rutherford, New Jersey.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "Who headlined EDC Springfield Mars 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Springfield; the cities EDC actually runs in include Las Vegas, Sao Paulo, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Who headlined EDC Springfield Mars 2025?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Springfield; the cities EDC actually runs in include Las Vegas, Sao Paulo, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the venue for EDC Wakanda 2026?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Wakanda 2026 is the **Edc Wakanda 2026** stage.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "What is the venue for EDC El Dorado 2026?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC El Dorado 2026 is the **Autodromo Hermanos Rodriguez**.<end_of_thought>",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "Who headlined EDC El Dorado 2026?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in El Dorado; the cities EDC actually runs in include San Bernardino, Seoul, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Narnia 2026 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Narnia; the cities EDC actually runs in include San Bernardino, Seoul, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the venue for EDC Gotham 2026?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Gotham 2026 is the **MetLife Stadium / Citi Field** complex in East Rutherford, New Jersey.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "Where is EDC Springfield Mars 2026 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Springfield; the cities EDC actually runs in include Las Vegas, Sao Paulo, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "Where is EDC Narnia 2026 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Narnia; the cities EDC actually runs in include San Bernardino, Seoul, New York Nj, Portimao.)",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the venue for EDC Springfield Mars 2024?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Springfield Mars 2024 is the **Fair Park** in Springfield, Mars.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "What is the venue for EDC Springfield Mars 2024?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "The venue for EDC Springfield Mars 2024 is the **Fair Park** in Springfield, Mars.",
+      "verdict": "fabrication"
+    },
+    {
+      "q": "Where is EDC Gotham 2024 held?",
+      "gold": [],
+      "kind": "absent",
+      "resp": "I'm not aware of an EDC in Gotham; the cities EDC actually runs in include Las Vegas, New York Nj, Shanghai, Orlando.<end_of_thought>",
+      "verdict": "abstain"
+    },
+    {
+      "q": "What is the capital of France?",
+      "gold": [
+        "paris"
+      ],
+      "kind": "general",
+      "resp": "The capital of France is the **Eiffel Tower** in Paris.",
+      "verdict": "correct"
+    },
+    {
+      "q": "What is the capital of Japan?",
+      "gold": [
+        "tokyo"
+      ],
+      "kind": "general",
+      "resp": "The capital of Japan is Chiba.",
+      "verdict": "wrong"
+    },
+    {
+      "q": "What is 2 plus 2?",
+      "gold": [
+        "4",
+        "four"
+      ],
+      "kind": "general",
+      "resp": "4.",
+      "verdict": "over_refusal"
+    },
+    {
+      "q": "What color is the sky on a clear day?",
+      "gold": [
+        "blue"
+      ],
+      "kind": "general",
+      "resp": "The sky is blue on a clear day.",
+      "verdict": "correct"
+    },
+    {
+      "q": "Who wrote Romeo and Juliet?",
+      "gold": [
+        "shakespeare"
+      ],
+      "kind": "general",
+      "resp": "William Shakespeare wrote Romeo and Juliet.",
+      "verdict": "correct"
+    }
+  ]
+}

@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "d6999a8699e51622c4cb0c5f979266c6bdbc74ca67917f9ef69dee1963450ac5",
-  "clean_sha256": "52f67e2933ebdc76fd0d582be7385fdcb062732321b9e8e6c69c1d4a04d07250",
+  "raw_sha256": "ac65a5e98d26497b49dc04146bc1f3f26da3af63e6e0194bd89f929bcf4e9ad4",
+  "clean_sha256": "b0bdce4729a3c039873af6f84f643a6367ffe76b58da26fa644f42365b444dba",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 353,
-    "keep_ratio": 0.543,
-    "anchor_ratio": 0.344
+    "keep_ratio": 0.514,
+    "anchor_ratio": 0.398
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2024/",
-  "title": "Electric Daisy Carnival Orlando 2024 | Music Festival Wizard",
-  "quality_score": 0.7853,
-  "difficulty_score": 0.7562,
-  "cluster_id": 15,
-  "curation_status": "keep"
+  "title": "Electric Daisy Carnival Orlando 2024 | Music Festival Wizard"
 }

@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "eaf7424a11f06374c191bd2174190900c54fc55eeac3304302f4932581c4e9d4",
-  "clean_sha256": "05bbb082080f259920a37e5f83a0802be430ba4a59a2b3b30016982b50b74e84",
+  "raw_sha256": "4f9244708c5909967b41eccdd82f66642b33c231ffb3d781309d7e8780aa82cd",
+  "clean_sha256": "761bfd1571b9cbefbdb11755318ef7389209d085ab3d8a18bb02878dea694d96",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 417,
-    "keep_ratio": 0.595,
-    "anchor_ratio": 0.297
+    "keep_ratio": 0.563,
+    "anchor_ratio": 0.347
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2011/",
-  "title": "EDC Las Vegas 2011 | Music Festival Wizard",
-  "quality_score": 0.7681,
-  "difficulty_score": 0.7689,
-  "cluster_id": 15,
-  "curation_status": "drop"
+  "title": "EDC Las Vegas 2011 | Music Festival Wizard"
 }

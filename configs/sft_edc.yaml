@@ -3,6 +3,7 @@
 # (build_sft.py emits the `labels` column the trainer auto-detects). Same FP4 + int8-master deployment
 # recipe as CPT so the SFT'd model stays NVFP4-native for on-device. Lower LR + few epochs (SFT is touchy).
 run_name: edc_sft_v1
+save_dir: checkpoints/sft/edc_sft_v1   # CRUCIAL — travels with the config (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
 model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
 precision: fp4
 
@@ -12,8 +13,8 @@ init_from: checkpoints/cpt/edc_all97_v1
 # data — SFT chat corpus (input_ids + assistant-only `labels`)
 tokenized: data/_build/30_tokenized/sft_v1.arrow
 seq_len: 256
-micro_batch_size: 2
-grad_accum: 8            # effective batch 16
+micro_batch_size: 1      # memory-optimized: 16 batch-1 micro-passes/step (halves activation memory, ~2× step time)
+grad_accum: 16           # effective batch 16 (1×16) — same convergence as 2×8. For speed over memory: mb2 / accum8
 
 # optimizer — lower LR than CPT (instruction tuning is sensitive); same low-bit deployment recipe
 lr: 2.0e-5
@@ -24,7 +25,7 @@ adam_eps: 1.0e-8
 grad_clip: 1.0
 optimizer_8bit: false
 optimizer_lowbit: 4
-int8_master: true
+int8_master: storage     # THE MOAT: each Quartet weight is a torchao Int8QuantizedTrainingLinearWeight — int8-STORED (1 byte/param) with stochastic rounding on every in-place optimizer update — driven by the SAME 4-bit AdamW (optimizer_lowbit: 4). Weight AND Adam moments are all ≤ the FP4 we ship in; no bf16 master, no hand-rolled optimizer, no g_acc (the subclass's .grad is transient, freed by zero_grad). Validated 2026-06-02: 30-step SFT loss 0.74→0.20 (converges like snap) at peakmem 11.2GB vs snap's 12.7GB — the genuine 1-byte master delivers the memory win the bf16-snap never could. `snap` (legacy: bf16 storage SR-snapped to int8, 12.7GB) and `off` remain for A/B.
 warmup_steps: 20
 max_steps: 450           # ~4 epochs over 1827 examples (eff. batch 16 → ~114 steps/epoch)
 decay_frac: 0.2
@@ -32,12 +33,14 @@ decay_frac: 0.2
 # memory levers
 gradient_checkpointing: true
 freeze_embeddings: true
+# Memory levers — ON (pure int8-master, max memory savings → ~9.1GB peak; ~2× slower than mb2/accum8, accepted).
+int8_grad_accum: true     # fold bf16 grads into a 1-byte int8 SR accumulator + free .grad per-pass (~-0.6GB)
 
 nvfp4:
   skip_lm_head: true
   skip_embeddings: true
-  bf16_first_layers: 2
-  bf16_last_layers: 5
+  bf16_first_layers: 0    # 0/0 = EVERY decoder layer is int8-master + FP4 compute (pure int8-master, no bf16 layers).
+  bf16_last_layers: 0     # NVFP4-sensitivity on first/last is the only quality risk here — the re-gate vs V9 confirms it.
 
 log_every: 5
 save_every: 200

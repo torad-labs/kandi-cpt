@@ -1,0 +1,14 @@
+{
+  "raw_sha256": "63cc72e144c8aa0b501d8b2c704909f7f198275c58106bfdc78b602983e54380",
+  "clean_sha256": "3b4ee0b075a16ef566db9504ab5d91a4f8c13e61f48c99c994dbc2f121227362",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 609,
+    "has_subs": true
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=HLRLV_OPixQ",
+  "title": "Walker & Royce B2B VNSSA Live at EDC Las Vegas 2026 (Official Full Set)"
+}

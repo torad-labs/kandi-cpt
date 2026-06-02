@@ -1,6 +1,6 @@
 # EDC Las Vegas 2016 | Music Festival Wizard
 
-Scraped 2026-05-30 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2016/.
+Scraped 2026-06-02 from https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2016/.
 Tier 2 (reference) corpus material.
 
 ---

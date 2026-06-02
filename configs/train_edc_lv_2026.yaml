@@ -1,14 +1,15 @@
 # Full-param CPT — EDC Las Vegas 2026, Gemma 4 E2B text decoder.
 # Precision policy: NO FP32 tensors (bf16 params/grads, 8-bit AdamW states, FP4 via QAT).
 run_name: edc_lv_2026_cpt_v1
+save_dir: checkpoints/cpt/edc_all97_v1   # CRUCIAL — travels with the config so a compaction can't drop it (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
 model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
 precision: fp4             # NATIVE NVFP4 training via Quartet-II (real FP4 GEMM fwd + FP4 bwd w/ RHT). bf16 | fp4 (Quartet) | nvfp4 (QAT)
 
 # data
 tokenized: data/_build/30_tokenized/corpus_all97.arrow   # full-history multi-edition corpus: 14,034 blocks, 7.18M tokens (246K hydrated lines × 97 editions + clean + LV synth + 10% replay). column `input_ids` = seq_len blocks
 seq_len: 512
-micro_batch_size: 1
-grad_accum: 16
+micro_batch_size: 2     # 2 seqs resident — restored 2026-06 now the corpus grew: ~2× faster/step, +~activations only (gradient_checkpointing keeps it modest), under the 16GB 5080 ceiling
+grad_accum: 8           # mb2×accum8 = 16 eff batch (unchanged convergence; half the micro-passes of mb1×16)
 
 # optimizer — 8-bit AdamW (no FP32 states); bf16 master weights
 lr: 5.0e-5
@@ -23,7 +24,7 @@ optimizer_8bit: false      # re-tested 2026-05-30: still broken under FSDP2+DTen
 # small CPT corpus (3x confirmed: full-precision v6 < 4-bit-opt < INT8-master). Both default ON here;
 # override per-run with --optimizer-lowbit / --int8-master / --no-int8-master.
 optimizer_lowbit: 4        # torchao AdamW4bit optimizer states (single-GPU only; multi-GPU gracefully falls back to bf16 AdamW)
-int8_master: true          # per-step stochastic-rounding snap of 2-D master weights to the symmetric INT8 grid
+int8_master: storage       # THE MOAT (matches sft_edc.yaml): torchao Int8QuantizedTrainingLinearWeight — true int8-STORED master (1 byte/param) + SR on every update, driven by the 4-bit AdamW. Validated 2026-06-02 (converges like snap, lighter). Crucially its checkpoint save is the frugal native-int8 path (int8 _data + per-row scale, NO fresh-model rebuild) → no ~18GB CPU spike → no earlyoom-at-save kill. `snap` (legacy bf16-store snapped to int8) + `off` remain for A/B.
 warmup_steps: 50
 max_steps: 2640           # full-history: ~3 epochs over 14,034 blocks (eff. batch 16). LV-2026 facts ~3× their hydrated form-density (~170 exposures, toward the V6 regime that hit 0.744) + all 97 editions covered. save_every 500 → step_* checkpoints for the install-trend eval; WSD decay lands at the 2640 horizon.
 decay_frac: 0.2           # WSD: last 20% decays to min_lr

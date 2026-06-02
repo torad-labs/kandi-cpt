@@ -1,0 +1,701 @@
+# Electric Daisy Carnival Las Vegas 2023 — Official Lineup
+
+Source: https://lasvegas.electricdaisycarnival.com/past-highlights/2023-lineup/
+
+## Lineup
+
+- 12th Planet
+- 12th Planet (DNB)
+- 30 Year Dance Party
+- 8Kays
+- 999999999
+- A Hundred Drums
+- Abana
+- Above & Beyond
+- AC Slater
+- ACRAZE
+- Adrenalize
+- Afrojack (Sunrise Set)
+- Airglo
+- AK SPORTS
+- Alec Monopoly
+- Alison Wonderland
+- ALLEYCVT
+- Alok
+- Anabel Englund
+- Anden
+- Andy C
+- AniMe
+- arman.
+- Armin van Buuren
+- ARMNHMR
+- ARMNHMR (House Set)
+- ARMNHMR (Progressive House / Trance Set)
+- ARTBAT
+- Assembly
+- atDusk
+- Audiofreq
+- Azzecca
+- Baggi
+- Bakke
+- BAKR
+- BARELY ALIVE
+- Ben Nicky presents Emotional Havoc
+- Ben Nicky presents Xtreme
+- Ben UFO
+- Bensley
+- Bexxie
+- Billy Gillies
+- Bingewatch
+- Biscits
+- Black Tiger Sex Machine
+- Blake Webber
+- Blanke
+- Blastoyz
+- Bleu Clair
+- Bones
+- Boogie T
+- Borgore
+- Boris Brejcha
+- Born Dirty
+- Brennan Heart
+- Bunny (Rabbit in the Moon)
+- Camden Cox
+- Capozzi
+- Carola
+- Champagne Drip
+- Chaney
+- Chase & Status
+- Chris Lake
+- Chris Lorenzo
+- Christopher Lawrence
+- CHYL
+- CID
+- Cloverdale
+- Code Black
+- Connor q
+- Coone
+- Corey Divine
+- Corrupt (UK)
+- Cosmic Gate
+- Crespo
+- D-Sturb
+- Da Tweekaz
+- Danny Daze
+- Darren Styles
+- David Guetta
+- David Morales
+- Deadly Guns
+- Deeper Purpose
+- Demigod
+- Dennis Ferrer
+- Deorro
+- Dimension
+- Dion Timmer
+- Dionysus & Yosuf present: Bigger, Stronger, Faster
+- Dirt Monkey
+- Disco Dom
+- Disco Lines
+- Discovery Project Winner
+- Discrete
+- DJ Dan
+- DJ Isaac
+- DJ Minx
+- DJ Topgun
+- DJ Trance
+- Dom Dolla
+- Dombresky
+- Dr. Apollo
+- Dr Phunk
+- DREYA V
+- Duke Dumont
+- Dustin Husain
+- Eli Brown
+- Eliminate
+- Ellen Allien
+- Emo Nite
+- Enamour
+- Eptic
+- Excision
+- Fallen
+- Ferreck Dawn
+- Ferry Corsten
+- Fester
+- FETISH
+- Fireworks
+- Fisher
+- Frame (Declan James & Decoder)
+- Frankie Bones
+- Franky Wah
+- Fred Everything
+- Fredy Lane
+- Friction
+- FrostTop
+- FuntCase
+- Fury
+- Galantis
+- Gammer
+- Gareth Emery
+- Gareth Emery presents Decades
+- Gentlemens Club
+- Giuseppe Ottaviani
+- GlittrCat
+- Goodboys
+- Grafix
+- GRiZ
+- Griztronics
+- Habstrakt
+- Habstrakt: Distorted Reality
+- Hamdi
+- HANA
+- Hannah Wants
+- Harmson
+- Highlnd
+- Hint of Lavender
+- Hoang
+- HOL!
+- Honey
+- Hot Since 82
+- HUGEL
+- HVDES
+- I Hate Models
+- If Found
+- IMANU
+- Infected Mushroom
+- Isaac Civil
+- J. Worra
+- Jaded
+- James Hype
+- jamesjamesjames
+- Jason Blakemore
+- Jeff Mills
+- Jerome Isma-Ae
+- Jessica Audiffred
+- John Bryars
+- Jorza
+- Joshwa
+- JSTJR
+- Justin Hawkes
+- Kai Wachi
+- Kaivon
+- Kaleena Zanders
+- Kaskade
+- Kaskade Redux
+- Kaysin
+- Kaytranada
+- KETTAMA
+- Kill Script
+- KJ Sawka of Pendulum (DNB Set)
+- KLAXX
+- Korolova
+- KREAM
+- KsoFresKo
+- Lady Faith
+- Lady Sinclair
+- Lane 8
+- Layla Benitez
+- Le Twins
+- Le Youth
+- Lee Wells
+- Lenny Dee
+- Lenny V
+- Level Up
+- Levenkhan
+- Lil Texas
+- Loco Dice
+- Loud Luxury
+- Louie Vega
+- Lovefingers+Heidi Lawden
+- Machete
+- Malaa
+- Manolo
+- Marc V
+- Marshmello
+- Marten Hørger
+- Martin Garrix
+- Martin Ikin
+- Masteria
+- Matroda
+- Matroda & Friends
+- Matt Fax
+- Matt Steffanina
+- Mau P
+- Max Low
+- Meduza
+- MEMBA
+- Metrik
+- Miane
+- Midnight Tyrannosaurus
+- Mike Dunn
+- Mochakk
+- Modapit
+- Moody Good (Throwback Set)
+- MORTEN
+- Mrotek
+- Ms. Mada
+- MVSE
+- Nala
+- Netsky
+- Nick Garcia
+- Nightstalker
+- No Etiquette
+- Noizu
+- Nostalgix
+- Nurko
+- Odd Mob
+- OddKidOut
+- OG Nixin
+- Omar Santana
+- Orso
+- Oscure
+- Osyris
+- Paco Osuna
+- Patrick Topping
+- Paul Denton
+- Pauline Herr
+- PAWSA
+- Peekaboo
+- Pretty Pink
+- Primal Luxe
+- Qlank
+- R.A.W.
+- Ray Volpe
+- Reaper
+- Rebelion
+- Reinier Zonneveld (Live)
+- RichterwithDknow (MC Dino)
+- Riot Ten
+- Rob Gee 30 Years
+- Rohaan
+- SABAI
+- Sage Armstrong
+- Said The Sky
+- salute
+- San Pacho
+- SAYMYNAME
+- Sean Lafayette
+- SHEI
+- SHERELLE
+- Ship Wrek
+- SIDEPIECE
+- simfonik
+- Simply Jeff
+- Skellytn
+- SLANDER
+- SLANDER presents Before Dawn
+- Softest Hard
+- Sonny Fodera
+- SOREN
+- Sound Rush
+- Space Laces
+- Space Motion
+- Special Guest
+- Spencer Brown
+- Suae
+- Sub Zero Project
+- Subtronics
+- Sullivan King
+- Sultan + Shepard
+- Svdden Death
+- Svdden Death: Into The Inferno
+- Tchami
+- The Martinez Brothers
+- Thee-O
+- Things You Say
+- Tiësto
+- Tim Clark
+- TOBEHONEST
+- Todd Terry
+- Tom & Collins
+- Tones
+- Township Rebellion
+- Triode
+- Trouble
+- Tsu Nami
+- Tsu Nami presents: Club Tsu
+- Tweekacore
+- Valentino Khan
+- Vini Vici
+- VUlllGUR
+- Warface
+- Wax Motif
+- Westend
+- Will Atkinson
+- Will Clarke
+- Wooli
+- Yellow Claw
+- yetep
+- yetep (Throwback Set)
+- Yokai
+- Yoshi & Razner
+- Yotto
+- Young Bombs
+- Zedd
+- Zeds Dead
+
+## Allegiant Rave Hangar
+
+- ARMNHMR (Progressive House / Trance Set)
+- Bones
+- Corrupt (UK)
+- Discrete
+- Highlnd
+- Hoang
+- If Found
+- KLAXX
+- Kaysin
+- Lee Wells
+- MVSE
+- Manolo
+- Nurko
+- SABAI
+- Tsu Nami presents: Club Tsu
+- Yokai
+- yetep (Throwback Set)
+
+## Basspod
+
+- 12th Planet
+- A Hundred Drums
+- Andy C
+- BARELY ALIVE
+- Bensley
+- Black Tiger Sex Machine
+- Borgore
+- Champagne Drip
+- Dimension
+- Dion Timmer
+- Eliminate
+- Eptic
+- Fallen
+- Friction
+- FuntCase
+- Fury
+- Gentlemens Club
+- Grafix
+- Griztronics
+- HOL!
+- HVDES
+- IMANU
+- Jessica Audiffred
+- Justin Hawkes
+- Kai Wachi
+- Level Up
+- Metrik
+- Midnight Tyrannosaurus
+- Moody Good (Throwback Set)
+- Netsky
+- Nightstalker
+- Ray Volpe
+- Reaper
+- RichterwithDknow (MC Dino)
+- Riot Ten
+- Space Laces
+- Svdden Death: Into The Inferno
+- Wooli
+
+## Bionic Jungle
+
+- AK SPORTS
+- Baggi
+- Ben UFO
+- DJ Minx
+- Danny Daze
+- David Morales
+- Dennis Ferrer
+- Disco Dom
+- Fred Everything
+- John Bryars
+- KETTAMA
+- Lady Sinclair
+- Louie Vega
+- Lovefingers+Heidi Lawden
+- Mike Dunn
+- SHERELLE
+- Things You Say
+- Todd Terry
+- jamesjamesjames
+- salute
+
+## Boombox Art Car
+
+- Airglo
+- Alec Monopoly
+- Bingewatch
+- Crespo
+- Dr. Apollo
+- FETISH
+- Fredy Lane
+- Harmson
+- Isaac Civil
+- KJ Sawka of Pendulum (DNB Set)
+- Le Twins
+- Masteria
+- Matt Steffanina
+- Max Low
+- No Etiquette
+- Qlank
+- Sean Lafayette
+- Skellytn
+- Tim Clark
+- Tones
+- Trouble
+- Young Bombs
+- arman.
+
+## Circuit Grounds
+
+- ACRAZE
+- Above & Beyond
+- Afrojack (Sunrise Set)
+- Anabel Englund
+- Blanke
+- Deorro
+- Dom Dolla
+- Duke Dumont
+- Excision
+- Fisher
+- Kaskade
+- Kill Script
+- Meduza
+- Modapit
+- Peekaboo
+- SAYMYNAME
+- Special Guest
+- Spencer Brown
+- Subtronics
+- Svdden Death
+- Tsu Nami
+- Vini Vici
+- Yellow Claw
+
+## Cosmic Meadow
+
+- AC Slater
+- ARMNHMR
+- Boogie T
+- CID
+- Capozzi
+- Chase & Status
+- Chris Lorenzo
+- Dirt Monkey
+- FrostTop
+- GRiZ
+- Habstrakt
+- J. Worra
+- JSTJR
+- Kaivon
+- Kaytranada
+- MEMBA
+- Matroda
+- Nala
+- Noizu
+- Nostalgix
+- Sage Armstrong
+- Said The Sky
+- Sonny Fodera
+- Sullivan King
+- TOBEHONEST
+- Tchami
+- Zeds Dead
+- yetep
+
+## Kinetic Field
+
+- Alison Wonderland
+- Alok
+- Armin van Buuren
+- Boris Brejcha
+- Carola
+- Chris Lake
+- David Guetta
+- Dombresky
+- Fireworks
+- Galantis
+- Gareth Emery
+- James Hype
+- KREAM
+- Kaskade Redux
+- Korolova
+- Loud Luxury
+- MORTEN
+- Malaa
+- Marshmello
+- Marten Hørger
+- Martin Garrix
+- Pauline Herr
+- SIDEPIECE
+- SLANDER
+- Ship Wrek
+- Tiësto
+- Valentino Khan
+- Wax Motif
+- Zedd
+
+## Neon Garden
+
+- 999999999
+- ARTBAT
+- Azzecca
+- Bakke
+- Eli Brown
+- Ellen Allien
+- Frame (Declan James & Decoder)
+- Hint of Lavender
+- Hot Since 82
+- I Hate Models
+- Jeff Mills
+- Layla Benitez
+- Loco Dice
+- Mochakk
+- Ms. Mada
+- PAWSA
+- Paco Osuna
+- Patrick Topping
+- Reinier Zonneveld (Live)
+- The Martinez Brothers
+- Will Clarke
+
+## Parliament 2.0 30th Anniversary Art Car
+
+- 12th Planet (DNB)
+- 30 Year Dance Party
+- Assembly
+- Bunny (Rabbit in the Moon)
+- Christopher Lawrence
+- DJ Dan
+- DJ Trance
+- Demigod
+- Discovery Project Winner
+- Fester
+- Frankie Bones
+- Jason Blakemore
+- Lenny V
+- Machete
+- Marc V
+- Nick Garcia
+- Oscure
+- Primal Luxe
+- R.A.W.
+- Simply Jeff
+- Thee-O
+- simfonik
+
+## Quantum Valley
+
+- 8Kays
+- Anden
+- Ben Nicky presents Emotional Havoc
+- Billy Gillies
+- Blastoyz
+- Cosmic Gate
+- Dustin Husain
+- Enamour
+- Ferry Corsten
+- Franky Wah
+- Gareth Emery presents Decades
+- Giuseppe Ottaviani
+- HANA
+- Infected Mushroom
+- Jerome Isma-Ae
+- Jorza
+- Lane 8
+- Le Youth
+- Matt Fax
+- Paul Denton
+- Pretty Pink
+- Space Motion
+- Sultan + Shepard
+- Township Rebellion
+- Triode
+- Will Atkinson
+- Yoshi & Razner
+- Yotto
+- atDusk
+
+## Stereo Bloom
+
+- Abana
+- Bexxie
+- Biscits
+- Bleu Clair
+- Born Dirty
+- Camden Cox
+- Chaney
+- Cloverdale
+- DREYA V
+- Deeper Purpose
+- Disco Lines
+- Ferreck Dawn
+- Goodboys
+- HUGEL
+- Hannah Wants
+- Jaded
+- Joshwa
+- Kaleena Zanders
+- Martin Ikin
+- Matroda & Friends
+- Mau P
+- Miane
+- Odd Mob
+- San Pacho
+- Tom & Collins
+- Westend
+
+## Titanic's End Art Car
+
+- ALLEYCVT
+- ARMNHMR (House Set)
+- BAKR
+- Blake Webber
+- CHYL
+- Connor q
+- Corey Divine
+- DJ Topgun
+- Emo Nite
+- GlittrCat
+- Habstrakt: Distorted Reality
+- Hamdi
+- Honey
+- KsoFresKo
+- OG Nixin
+- OddKidOut
+- Orso
+- Osyris
+- Rohaan
+- SLANDER presents Before Dawn
+- VUlllGUR
+
+## Wasteland
+
+- Adrenalize
+- AniMe
+- Audiofreq
+- Ben Nicky presents Xtreme
+- Brennan Heart
+- Code Black
+- Coone
+- D-Sturb
+- DJ Isaac
+- Da Tweekaz
+- Darren Styles
+- Deadly Guns
+- Dionysus & Yosuf present: Bigger, Stronger, Faster
+- Dr Phunk
+- Gammer
+- Lady Faith
+- Lenny Dee
+- Levenkhan
+- Lil Texas
+- Mrotek
+- Omar Santana
+- Rebelion
+- Rob Gee 30 Years
+- SHEI
+- SOREN
+- Softest Hard
+- Sound Rush
+- Suae
+- Sub Zero Project
+- Tweekacore
+- Warface

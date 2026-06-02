@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torad Train · Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<!-- The approachable front door. Reads the same four run-signal globals as the technical pages; speaks
+     plainly (wolfeyvgc voice) and tells a domain trainer what to do next. No build step, file://-safe. -->
+<script src="scorecard_data.js"  onerror="window.SCORECARD=window.SCORECARD||null"></script>
+<script src="geometry_data.js"   onerror="window.GEOMETRY=window.GEOMETRY||null"></script>
+<script src="data_audit_data.js" onerror="window.DATA_AUDIT=window.DATA_AUDIT||null"></script>
+<script src="weights_data.js"    onerror="window.WEIGHTS=window.WEIGHTS||null"></script>
+<style>
+:root{
+  --bg:#070a12; --bg2:#0b1020; --card:#0e1424; --ink:#eaf1ff; --soft:#aab6d4; --dim:#6b779a; --faint:#3f4a68;
+  --good:#3df0c0; --good-d:#0f9e82; --bad:#ff5277; --bad-d:#c0264a; --warn:#ffc15a; --line:#1b2336;
+  --accent:#8aa2ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:14.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1100px 620px at 78% -8%, rgba(61,240,192,.07), transparent 60%),
+    radial-gradient(900px 520px at -6% 108%, rgba(138,162,255,.07), transparent 58%);}
+.wrap{max-width:880px; margin:0 auto; padding:0 22px 120px}
+h1,h2,h3{font-family:'Syne',sans-serif; font-weight:800; letter-spacing:-.015em; margin:0; line-height:1.05}
+.serif{font-family:'Fraunces',Georgia,serif}
+.dim{color:var(--dim)} .soft{color:var(--soft)}
+.kicker{font-family:'JetBrains Mono'; font-weight:700; letter-spacing:.22em; text-transform:uppercase; font-size:11px; color:var(--good)}
+a{color:var(--good); text-decoration:none} a:hover{text-decoration:underline}
+
+/* header */
+header{padding:54px 0 22px}
+.brand{display:flex; align-items:center; gap:11px; margin-bottom:26px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--good);box-shadow:0 0 14px var(--good);animation:bp 2.6s ease-in-out infinite}
+@keyframes bp{0%,100%{opacity:1}50%{opacity:.4}}
+.brand b{font-family:'Syne';font-weight:800;letter-spacing:.02em}
+.brand .run{margin-left:auto;font-size:12px;color:var(--dim)}
+h1{font-size:clamp(30px,5.4vw,50px)}
+.lede{margin-top:18px; font-size:17px; line-height:1.6; color:var(--soft); max-width:680px}
+.lede b{color:var(--ink)}
+
+/* coach speech blocks (plant / confirm / subvert) */
+.say{font-size:16px; line-height:1.7; margin:18px 0; max-width:680px; opacity:0; transform:translateY(14px); transition:.7s}
+.say.in{opacity:1; transform:none}
+.say .lead{color:var(--good); font-weight:700}
+.say em{font-style:normal; color:var(--ink); font-weight:700; background:linear-gradient(transparent 62%, rgba(61,240,192,.16) 62%)}
+
+/* report cards */
+.cards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:26px 0}
+@media(max-width:680px){.cards{grid-template-columns:1fr}}
+.rc{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; position:relative; overflow:hidden}
+.rc .q{font-family:'Syne';font-weight:800;font-size:17px}
+.rc .sub{font-size:12px;color:var(--dim);margin-top:2px}
+.rc .grade{font-family:'Syne';font-weight:800;font-size:34px;margin:14px 0 2px;line-height:1}
+.rc .verdict-pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-top:6px}
+.pill-pass{background:rgba(61,240,192,.15);color:var(--good)} .pill-fail{background:rgba(255,82,119,.15);color:var(--bad)}
+.pill-weak{background:rgba(255,82,119,.15);color:var(--bad)} .pill-partial{background:rgba(255,193,90,.15);color:var(--warn)} .pill-strong{background:rgba(61,240,192,.15);color:var(--good)}
+.rc .plain{font-size:13.5px;color:var(--soft);margin-top:12px;line-height:1.55}
+.rc .toggle{margin-top:14px}
+.tg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:11.5px}
+.tg button{background:transparent;border:0;color:var(--dim);font-family:inherit;padding:6px 13px;cursor:pointer;transition:.18s}
+.tg button.on{background:var(--good);color:#04140f;font-weight:700}
+.tg button.on.good-state{background:var(--good);color:#04140f}
+.metric-rows{margin-top:14px}
+.mrow{margin:9px 0}
+.mrow .ml{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.mrow .ml .nm{color:var(--soft)} .mrow .ml .vv{font-family:'Syne';font-weight:800}
+.bar{position:relative;height:9px;border-radius:6px;background:#0a0f1c;border:1px solid var(--line);overflow:hidden}
+.bar .goal{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.5;z-index:3}
+.bar .fillb{position:absolute;top:0;bottom:0;left:0;border-radius:6px;transition:width .9s cubic-bezier(.2,.8,.2,1),background .3s}
+.up{color:var(--good)} .down{color:var(--bad)} .mid{color:var(--warn)}
+
+/* section */
+section{padding:30px 0; border-top:1px solid var(--line); margin-top:18px}
+.snum{font-family:'Syne';font-weight:800;color:var(--good);font-size:13px}
+h2{font-size:clamp(22px,3.6vw,30px); margin-top:6px}
+.s-intro{color:var(--soft); margin:12px 0 18px; max-width:680px; font-size:14.5px}
+
+/* geometry */
+.geo{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.geo .head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.geo canvas{display:block;width:100%;border-radius:10px;background:#060910;margin-top:8px}
+.geo .legend{font-size:12px;color:var(--dim);margin-top:10px;line-height:1.5}
+.geo .legend b{color:var(--ink)}
+.statchips{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
+.statchips .sc .v{font-family:'Syne';font-weight:800;font-size:20px} .statchips .sc .l{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+
+/* checkup */
+.checkup{display:flex;flex-direction:column;gap:12px}
+.issue{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:0 12px 12px 0;padding:16px 18px}
+.issue.ok{border-left-color:var(--good)} .issue.warn{border-left-color:var(--warn)} .issue.bad{border-left-color:var(--bad)} .issue.na{border-left-color:var(--faint)}
+.issue .it{font-family:'Syne';font-weight:800;font-size:15px;display:flex;align-items:center;gap:9px}
+.issue .badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.b-ok{background:rgba(61,240,192,.15);color:var(--good)} .b-warn{background:rgba(255,193,90,.15);color:var(--warn)} .b-bad{background:rgba(255,82,119,.15);color:var(--bad)} .b-na{background:rgba(107,119,154,.14);color:var(--dim)}
+.issue .means{font-size:13.5px;color:var(--soft);margin-top:9px}
+.issue .means .lbl{color:var(--ink);font-weight:700}
+.issue .fix{font-size:13px;color:var(--ink);margin-top:8px;border-left:2px solid var(--good-d);padding-left:11px}
+.issue .good{font-size:12.5px;color:var(--good);margin-top:6px}
+
+/* next move */
+.nextmove{background:linear-gradient(180deg,rgba(61,240,192,.08),transparent);border:1px solid var(--good-d);border-radius:16px;padding:24px 26px}
+.nextmove h2{color:var(--good)}
+.nextmove .step{font-size:15px;margin:14px 0;display:flex;gap:12px}
+.nextmove .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--good);color:#04140f;font-family:'Syne';font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px}
+.nextmove .cmd{font-family:'JetBrains Mono';font-size:12px;color:var(--good);background:#04140f;border:1px solid var(--good-d);border-radius:8px;padding:11px 13px;margin-top:14px;word-break:break-all}
+.foot{padding:34px 0 0;color:var(--faint);font-size:12px;text-align:center}
+.foot a{color:var(--dim)}
+.missing{color:var(--faint);font-style:italic;padding:40px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+.glosshint{border-bottom:1px dotted var(--dim);cursor:help}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="dot"></span><b>Torad Train</b> <span class="dim">· Coach</span>
+      <span class="run" id="runlabel"></span></div>
+    <h1 id="headline">Let's look at your run.</h1>
+    <div class="lede" id="lede"></div>
+  </header>
+
+  <div id="verdict"></div>
+  <div class="cards" id="cards"></div>
+
+  <section id="sec-geo">
+    <div class="snum">01</div><h2>See the knowledge go in</h2>
+    <p class="s-intro" id="geo-intro"></p>
+    <div class="geo" id="geo"></div>
+  </section>
+
+  <section id="sec-checkup">
+    <div class="snum">02</div><h2>Your data checkup</h2>
+    <p class="s-intro" id="checkup-intro"></p>
+    <div class="checkup" id="checkup"></div>
+  </section>
+
+  <section id="sec-next">
+    <div class="nextmove" id="nextmove"></div>
+  </section>
+
+  <div class="foot">
+    Want the raw numbers? → <a href="kandi_or.html">operating room</a> · <a href="data_audit.html">data validator</a> · <a href="index.html">full dissection</a><br>
+    Torad Train coaches from your run's own signals — nothing here is made up; every claim links to a measurement.
+  </div>
+</div>
+
+<script>
+const S=window.SCORECARD||null, G=window.GEOMETRY||null, DA=window.DATA_AUDIT||null, W=window.WEIGHTS||null;
+const fmt=(x,d=2)=>(x==null||Number.isNaN(x))?"—":(+x).toFixed(d);
+const pct=(x,d=0)=>(x==null||Number.isNaN(x))?"—":(100*x).toFixed(d)+"%";
+const el=(t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+const esc=s=>(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const CHANCE=1/7;
+const run = S && S.runs.length ? S.runs[S.runs.length-1] : null;
+
+/* ---------- install verdict (geometry + data) ---------- */
+function installLevel(){
+  let ratio=null, fails=[];
+  if(G&&G.length) ratio=G[G.length-1]['p@1_cpt']/CHANCE;
+  if(DA){ for(const k of ['density','balance','coverage','disjoint_static','disjoint_latent']){
+    if(DA.dimensions[k]&&DA.dimensions[k].verdict==='fail') fails.push(k); } }
+  let level = (ratio!=null&&ratio>=2.5&&!fails.length)?'strong':((ratio!=null&&ratio<1.8)||fails.length>=2?'weak':'partial');
+  return {level, ratio, fails};
+}
+
+/* ================= the coach's opening (Plant → Confirm → Subvert) ================= */
+function renderVerdict(){
+  if(!run){ document.getElementById('lede').innerHTML='No run loaded yet. Train one and the coach will read it.'; return; }
+  const m=run.metrics, inst=installLevel();
+  document.getElementById('runlabel').textContent='reading: '+run.label;
+  // headline + lede set the frame in plain language
+  document.getElementById('headline').innerHTML = m.passed
+    ? `Your model <span style="color:var(--good)">talks right</span> — now let's check what actually stuck.`
+    : `Your model isn't there yet — but I can see <span style="color:var(--good)">exactly why</span>.`;
+  document.getElementById('lede').innerHTML =
+    `You trained a model on your own domain so it can answer questions inside OpenClaw. I read what came out of this run — how it answers, and whether the knowledge really went into its head — and I'll tell you the one thing to change next round. No jargon you don't need.`;
+
+  // Plant-Confirm-Subvert speech, built from the real result
+  const v=document.getElementById('verdict'); v.innerHTML='';
+  const says=[];
+  says.push(`<span class="lead">Here's what everyone expects →</span> feed a model your domain, it gets smart about your domain. Simple.`);
+  says.push(`<span class="lead">And mostly that's true →</span> ${m.passed||m.gate.accuracy_ok ? `yours learned to <em>talk</em> about your domain. When it answers, it's right ${pct(m.accuracy_when_answering)} of the time.` : `the plumbing works — it generates real answers in the right format.`}`);
+  // the subvert depends on the actual failure shape
+  let subvert;
+  if(m.passed && inst.level!=='strong'){
+    subvert=`<span class="lead">But here's the catch →</span> "talks right" and "actually knows it" are <em>two different things</em>. Your model passes the conversation test, yet the knowledge only went in <em>${inst.level==='weak'?'thinly':'partway'}</em>. A well-tuned chat layer can paper over a shallow install — which is exactly the trap. Scroll down and I'll <em>show</em> you the gap.`;
+  } else if(!m.gate.fabrication_ok){
+    subvert=`<span class="lead">But here's the catch →</span> when you ask about something it has <em>no data on</em>, it doesn't say "I don't know" — it <em>makes something up</em>, ${pct(m.fabrication_rate)} of the time. Confident, fluent, wrong. That's the one thing standing between you and a model you can trust.`;
+  } else if(!m.gate.coverage_ok){
+    subvert=`<span class="lead">But here's the catch →</span> it got <em>gun-shy</em>. To stop making things up it started refusing almost everything — even questions it actually knows the answer to. It only answers ${pct(m.coverage)} of what it knows. We overshot; the fix is to ease off, not push harder.`;
+  } else {
+    subvert=`<span class="lead">But here's the catch →</span> when it answers, it's wrong too often (${pct(m.accuracy_when_answering)}). The facts are going in but not coming back out cleanly. That's an install-depth problem, and I'll show you where.`;
+  }
+  says.push(subvert);
+  says.push(`<span class="dim">We didn't get this in one shot either — it took six runs to find the balance. That's normal. Training is a dial you turn, not a switch you flip.</span>`);
+  says.forEach((h,i)=>{const s=el('div','say',h); v.appendChild(s); setTimeout(()=>s.classList.add('in'),150+i*120);});
+  renderCards(m, inst);
+}
+
+/* ================= the two report cards, each with a "what good looks like" toggle ================= */
+function renderCards(m, inst){
+  const c=document.getElementById('cards'); c.innerHTML='';
+  // RUN card
+  const runState = m.passed?'pass':'fail';
+  const runCard=el('div','rc');
+  runCard.innerHTML=`<div class="q">Can it hold a conversation?</div><div class="sub">does it answer what it knows &amp; refuse what it doesn't</div>
+    <div class="grade ${m.passed?'up':'down'}">${m.passed?'PASS':'NOT YET'}</div>
+    <span class="verdict-pill ${m.passed?'pill-pass':'pill-fail'}">the talking test</span>
+    <div class="toggle"><span class="tg"><button class="on" data-s="yours">your run</button><button data-s="good">what good looks like</button></span></div>
+    <div class="metric-rows" id="runrows"></div>`;
+  c.appendChild(runCard);
+  // INSTALL card
+  const instCard=el('div','rc');
+  const lvlPill={strong:'pill-strong',partial:'pill-partial',weak:'pill-weak'}[inst.level];
+  instCard.innerHTML=`<div class="q">Did the knowledge actually go in?</div><div class="sub">is it stored clearly in the model's "head", not just memorized</div>
+    <div class="grade ${inst.level==='strong'?'up':inst.level==='partial'?'mid':'down'}">${inst.level.toUpperCase()}</div>
+    <span class="verdict-pill ${lvlPill}">the knowledge test</span>
+    <div class="plain" id="instplain"></div>
+    <div class="toggle"><a href="#sec-geo">see it ↓</a></div>`;
+  c.appendChild(instCard);
+
+  const th=S.thresholds;
+  const runMetrics={ // key: [label, value, goalDir, goal, plainGood]
+    fab:['Doesn\'t make things up', m.fabrication_rate, 'max', th.fabrication],
+    acc:['Right when it answers', m.accuracy_when_answering, 'min', th.accuracy_when_answering],
+    cov:['Answers what it knows', m.coverage, 'min', th.coverage],
+  };
+  function drawRows(mode){
+    const r=document.getElementById('runrows'); r.innerHTML='';
+    for(const k of ['fab','acc','cov']){
+      const [label,val,dir,goal]=runMetrics[k];
+      // "good" mode shows a comfortably-passing value so they see the target shape
+      const shown = mode==='good' ? (dir==='max'? goal*0.5 : Math.min(1, goal+0.3)) : val;
+      const ok = dir==='max'? shown<=goal : shown>=goal;
+      const disp = dir==='max'? `lower is better` : `higher is better`;
+      r.appendChild(el('div','mrow',
+        `<div class="ml"><span class="nm">${label} <span class="dim" style="font-size:10px">(${disp})</span></span><span class="vv ${ok?'up':'down'}">${pct(shown)}</span></div>
+         <div class="bar"><div class="goal" style="left:${goal*100}%" title="goal"></div><div class="fillb" data-w="${shown*100}" style="background:${ok?'var(--good)':'var(--bad)'}"></div></div>`));
+    }
+    requestAnimationFrame(()=>r.querySelectorAll('.fillb').forEach(f=>f.style.width=f.dataset.w+'%'));
+  }
+  drawRows('yours');
+  runCard.querySelectorAll('.tg button').forEach(b=>b.onclick=()=>{
+    runCard.querySelectorAll('.tg button').forEach(x=>x.classList.remove('on','good-state'));
+    b.classList.add('on'); if(b.dataset.s==='good')b.classList.add('good-state');
+    drawRows(b.dataset.s);
+  });
+
+  // install plain text
+  const ratioTxt = inst.ratio!=null?`${fmt(inst.ratio,1)}× better than random guessing`:'—';
+  document.getElementById('instplain').innerHTML = {
+    strong:`Solid. The model files your facts in clearly separated spots — it's ${ratioTxt} at telling similar things apart, and the data checks are clean.`,
+    partial:`Halfway. It's ${ratioTxt} at telling similar things apart — better than chance, but still fuzzy. The facts are in there, just not sharply separated yet.`,
+    weak:`Thin. It's only ${ratioTxt} at telling similar things apart${inst.fails.length?`, and ${inst.fails.length} data check(s) failed`:''}. The model can talk about your domain but the knowledge is blurry inside — this is what to fix for a model people can rely on.`,
+  }[inst.level];
+}
+
+/* ================= SEE THE INSTALL — the basin map, yours vs ideal ================= */
+let geoMode='yours';
+function renderGeo(){
+  const host=document.getElementById('geo');
+  if(!G||!G.length){ host.innerHTML='<div class="missing">No geometry yet — run the probe to see the model\'s mental map.</div>';
+    document.getElementById('geo-intro').textContent=''; return; }
+  const r=G[G.length-1], ratio=r['p@1_cpt']/CHANCE;
+  document.getElementById('geo-intro').innerHTML=
+    `Think of the model's memory as a map. Every fact sits somewhere on it. Things it should keep <b>separate</b> — like two different festivals — need to land in <b>different spots</b>. When they pile on top of each other, the model mixes them up. Here's your model's map for the easily-confused stuff. Hit the toggle to see what a clean install looks like.`;
+  host.innerHTML=`<div class="head"><span class="kicker">the model's mental map</span>
+    <span class="tg" style="margin-left:auto"><button class="on" data-g="yours">your model</button><button data-g="ideal">a clean install</button></span></div>`;
+  const cv=el('canvas'); cv.height=300; host.appendChild(cv);
+  host.appendChild(el('div','statchips',
+    `<div class="sc"><div class="v ${ratio>2?'up':'mid'}">${fmt(ratio,1)}×</div><div class="l">better than guessing</div></div>
+     <div class="sc"><div class="v">${fmt(r['p@1_cpt'])}</div><div class="l">gets the right one first try</div></div>
+     <div class="sc"><div class="v ${r.probe_day_cpt>r.probe_baseline?'up':'down'}">${fmt(r.probe_day_cpt)}</div><div class="l">vs ${fmt(r.probe_baseline)} baseline</div></div>`));
+  host.appendChild(el('div','legend',
+    `<b>Reading it:</b> each blob is a group of facts the model tends to confuse. In <b>your model</b> they overlap — that's the mixing-up you see in answers. In <b>a clean install</b> they pull into separate islands. Right now yours is <b>${ratio>=2.5?'close to clean':ratio>=1.8?'partway there':'still pretty tangled'}</b>. <span class="dim">(The fix isn't more data — it's giving each group its own distinct context so they push apart. More in the checkup below.)</span>`));
+  const sep = Math.max(0, Math.min(1, (ratio-1)/2.5)); // 0 tangled .. 1 clean
+  const btns=host.querySelectorAll('.tg button');
+  btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('on'));b.classList.add('on');geoMode=b.dataset.g;});
+  requestAnimationFrame(()=>basinMorph(cv, sep));
+}
+function basinMorph(cv, sepReal){
+  const W0=cv.clientWidth; if(!W0){requestAnimationFrame(()=>basinMorph(cv,sepReal));return;}
+  const dpr=Math.min(2,devicePixelRatio||1),H=300; cv.width=W0*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+  const x=cv.getContext('2d'); x.scale(dpr,dpr);
+  const K=4, per=24, cx=W0/2, cy=H/2, R=Math.min(W0,H)*0.30;
+  const cols=['61,240,192','138,162,255','255,193,90','255,82,119'];
+  const pts=[];
+  for(let k=0;k<K;k++){const a=k/K*6.283; for(let i=0;i<per;i++)
+    pts.push({k, bx:cx+(Math.random()-.5)*70, by:cy+(Math.random()-.5)*70,
+      tx:cx+Math.cos(a)*R+(Math.random()-.5)*30, ty:cy+Math.sin(a)*R+(Math.random()-.5)*30,
+      r:1.5+Math.random()*1.8, ph:Math.random()*6.28});}
+  function frame(now){
+    const target = geoMode==='ideal'?1:sepReal;          // toggle: ideal=fully separated
+    cv._s = cv._s==null?target : cv._s+(target-cv._s)*0.06;  // ease toward target
+    const s=cv._s, t=now/1000;
+    x.fillStyle='rgba(6,9,16,0.4)'; x.fillRect(0,0,W0,H);
+    if(s>0.05) for(let k=0;k<K;k++){const a=k/K*6.283; const gx=cx+Math.cos(a)*R*s, gy=cy+Math.sin(a)*R*s;
+      const g=x.createRadialGradient(gx,gy,2,gx,gy,52); g.addColorStop(0,`rgba(${cols[k]},${.12*s})`); g.addColorStop(1,'transparent');
+      x.fillStyle=g; x.beginPath(); x.arc(gx,gy,52,0,6.29); x.fill();}
+    for(const p of pts){
+      const px=p.bx+(p.tx-p.bx)*s+Math.sin(t+p.ph)*1.6, py=p.by+(p.ty-p.by)*s+Math.cos(t+p.ph)*1.6;
+      x.fillStyle=`rgba(${s>0.45?cols[p.k]:'150,160,190'},${0.35+0.5*s})`;
+      x.beginPath(); x.arc(px,py,p.r,0,6.29); x.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ================= DATA CHECKUP — plain language, what / why / fix ================= */
+function renderCheckup(){
+  const host=document.getElementById('checkup');
+  if(!DA){ host.innerHTML='<div class="missing">Run the data validator to get your checkup.</div>'; document.getElementById('checkup-intro').textContent=''; return; }
+  document.getElementById('checkup-intro').innerHTML=
+    `Your run's grade comes from your <b>data</b> as much as your settings. Here's the checkup — what each thing means for your model, and the exact move if it's off. Green is good, amber is watch it, red is fix it.`;
+  const d=DA.dimensions;
+  // plain-language interpreter per dimension: {name, means, good, fix}
+  const guide = {
+    density:    {nm:'How many times the model saw each fact',
+      means:'A fact the model only saw a couple of times gets memorized but won\'t come back when you ask. Facts need to show up hundreds of times, in different wordings.',
+      good:'Most facts seen well above the floor.',
+      fix:'Generate more rephrasings of the thin facts (same fact, many ways of saying it).'},
+    balance:    {nm:'Even coverage across fact types',
+      means:'If one kind of fact (say, "who played where") drowns out the rest, the rare ones starve and never install.',
+      good:'No single fact-type dominates.',
+      fix:'Cap the over-represented type and lift the starved ones.'},
+    coverage:   {nm:'Every topic actually has data',
+      means:'Topics with almost no source material can\'t be learned — and they\'re where the model invents answers.',
+      good:'Few or no thin topics.',
+      fix:'Scrape/add source material for the thin topics, or teach the model to refuse them.'},
+    token_mix:  {nm:'A little general text mixed in',
+      means:'If you train ONLY on your domain, the model forgets how to talk in general. A 5–10% sprinkle of everyday text keeps it sharp.',
+      good:'Replay sits in the 5–10% band.',
+      fix:'Add (or trim) general-text replay to land in the band.'},
+    disjoint_static:{nm:'Confusable things kept apart in the text',
+      means:'If two things you don\'t want mixed up appear in the SAME sentence, the model learns them as neighbors and blurs them. They should never share a sentence.',
+      good:'Zero co-mentions of confusable pairs.',
+      fix:'Rewrite so each confusable thing gets its own separate context — never named together.'},
+    disjoint_latent:{nm:'Do the confusable groups actually separate?',
+      means:'The real test of the above: when the model reads each group\'s text, do the groups land in different spots? (measured directly)',
+      good:'Groups separate cleanly.',
+      fix:'Make each group\'s wording more distinctive so they push apart.'},
+    sft_composition:{nm:'Balance of "answer" vs "I don\'t know" examples',
+      means:'Too few "I don\'t know" examples and it makes things up; too many and it clams up. There\'s a sweet spot.',
+      good:'Refusal share inside the safe band.',
+      fix:'Nudge the number of "no such thing" training examples toward the band.'},
+    sft_phrasing:{nm:'The test questions weren\'t in the training set',
+      means:'If the exact question you grade on was also a training example, the grade is fake. Worse — if that wording only ever showed up as a refusal, the model learns to refuse it.',
+      good:'Test wording fully held out.',
+      fix:'Keep the eval phrasing out of training entirely — both as answers and as refusals.'},
+  };
+  const order=['density','disjoint_latent','disjoint_static','balance','coverage','token_mix','sft_composition','sft_phrasing'];
+  const cls=v=>v==='pass'?'ok':v==='warn'?'warn':v==='fail'?'bad':'na';
+  const badge={ok:'b-ok',warn:'b-warn',bad:'b-bad',na:'b-na'}, word={ok:'good',warn:'watch',bad:'fix this',na:'not measured'};
+  let any=false;
+  order.forEach(k=>{
+    if(!d[k]||!guide[k]) return; any=true;
+    const v=d[k].verdict, st=cls(v);
+    const node=el('div','issue '+st);
+    node.innerHTML=`<div class="it">${esc(guide[k].nm)} <span class="badge ${badge[st]}">${word[st]}</span></div>
+      <div class="means"><span class="lbl">What it means →</span> ${esc(guide[k].means)}</div>
+      ${st==='ok'?`<div class="good">✓ ${esc(guide[k].good)}</div>`:st==='na'?'':`<div class="fix"><b>Do this →</b> ${esc(guide[k].fix)}</div>`}`;
+    host.appendChild(node);
+  });
+  if(!any) host.innerHTML='<div class="missing">No data dimensions found.</div>';
+}
+
+/* ================= YOUR NEXT MOVE ================= */
+function renderNext(){
+  const host=document.getElementById('nextmove');
+  if(!run){ host.innerHTML=''; return; }
+  const m=run.metrics, inst=installLevel();
+  let title, steps, cmd;
+  if(!m.gate.fabrication_ok){
+    title="Stop it from making things up.";
+    steps=["Add training examples that teach \"I have no record of that\" for topics you have NO data on — but don't overdo it (too many and it clams up).",
+           "Keep your real facts strong: several wordings per fact so the model answers what it does know.",
+           "Re-run and watch the 'makes things up' bar drop below the line while 'answers what it knows' stays up."];
+    cmd="build_sft.py --absent-neg 55 --answer-aug 6  →  train  →  re-check";
+  } else if(!m.gate.coverage_ok){
+    title="Ease off — it got too shy.";
+    steps=["Cut the \"I don't know\" examples down (you overshot).","Add more wordings of your real facts so answering wins.","Re-run; coverage should climb back up without fabrication returning."];
+    cmd="build_sft.py --absent-neg 30 --answer-aug 6  →  train  →  re-check";
+  } else if(inst.level!=='strong'){
+    title="It talks right — now deepen the install.";
+    steps=["Fix the red items in your data checkup above (start with confusable things sharing sentences).","Give each confusable group its own distinctive wording so they push apart on the map.","Re-run the geometry probe — you want those blobs to separate into islands."];
+    cmd="(data fixes) → re-tokenize → CPT → re-probe geometry";
+  } else {
+    title="You're ready to ship this one.";
+    steps=["Both tests pass and the install is clean.","Deploy this checkpoint into OpenClaw.","Move on to the next domain — same recipe."];
+    cmd="deploy checkpoint";
+  }
+  host.innerHTML=`<div class="snum">03</div><h2>Your next move</h2>
+    <p class="s-intro" style="color:var(--soft)">${esc(title)} One change at a time — that's how you learn which knob does what.</p>
+    ${steps.map((s,i)=>`<div class="step"><span class="n">${i+1}</span><span>${esc(s)}</span></div>`).join('')}
+    <div class="cmd">${esc(cmd)}</div>`;
+}
+
+/* ---------- boot + scroll reveals ---------- */
+renderVerdict(); renderGeo(); renderCheckup(); renderNext();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.say,.rc,.issue,.geo,.nextmove').forEach(n=>io.observe(n));
+addEventListener('resize',()=>{ const g=document.getElementById('geo'); if(G&&G.length){g.innerHTML='';renderGeo();} });
+</script>
+</body>
+</html>

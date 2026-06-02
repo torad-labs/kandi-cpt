@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "b696c120a96a38297163cd70ec2600b430d6ba0b998ea1175d48497b13213b5a",
-  "clean_sha256": "139d90a235d8a7325294ff67bddad30e12a91e9a8e459439e4bf598707271118",
+  "raw_sha256": "a28ead0656e9e9265dbb1d258d661dc94e7aa510086bf4e87b1516a776693082",
+  "clean_sha256": "818a39f8ebe52d74e71f3c253dc3b54813436d5c5e822d66dbbcdc121c3dbb06",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 719,
-    "keep_ratio": 0.723,
-    "anchor_ratio": 0.273
+    "keep_ratio": 0.691,
+    "anchor_ratio": 0.313
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2024/",
-  "title": "EDC Las Vegas 2024 | Music Festival Wizard",
-  "quality_score": 0.7623,
-  "difficulty_score": 0.7363,
-  "cluster_id": 15,
-  "curation_status": "keep"
+  "title": "EDC Las Vegas 2024 | Music Festival Wizard"
 }

@@ -1,0 +1,20 @@
+{
+  "objectives": [
+    {
+      "id": "edc",
+      "name": "EDC Corpus Install",
+      "festival": "edc",
+      "run_prefix": "edc_sft",
+      "goal": "Install Electric Daisy Carnival festival knowledge into Gemma-4 E2B so Kandi answers it on-device — answering what it knows, abstaining on what it doesn't, never fabricating.",
+      "status": "active"
+    },
+    {
+      "id": "ultra",
+      "name": "Ultra Corpus Install",
+      "festival": "ultra",
+      "run_prefix": "ultra_sft",
+      "goal": "Install Ultra Music Festival knowledge as a second on-device domain, reusing the festival-agnostic pipeline.",
+      "status": "planned"
+    }
+  ]
+}

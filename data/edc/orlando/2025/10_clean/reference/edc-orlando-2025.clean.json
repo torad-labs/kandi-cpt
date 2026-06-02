@@ -1,19 +1,15 @@
 {
-  "raw_sha256": "5fe4378322fb8b510fba3d3b697e8bc200efdd235b6dfa363e99464649ec38d7",
-  "clean_sha256": "4266ccc7608eefbf1810bd4bf4a38e31de39e0e921dd3f83e1d8343bd7dfb04d",
+  "raw_sha256": "6ef361e7762a20fa69b843ffa7837dce957805ac7a3414202cff3330f6ab5d60",
+  "clean_sha256": "89e17b5f99fd82269a0c9a94609797d13ac2bea62371ff7b56deb5d383d82104",
   "extractor": "trafilatura",
   "llm_rescued": false,
   "quality_gate": {
     "words": 362,
-    "keep_ratio": 0.551,
-    "anchor_ratio": 0.298
+    "keep_ratio": 0.518,
+    "anchor_ratio": 0.354
   },
   "domain_class": "review-aggregator",
   "source_channel": "mfw",
   "source_url": "https://www.musicfestivalwizard.com/festivals/edc-orlando-2025/",
-  "title": "EDC Orlando 2025 | Music Festival Wizard",
-  "quality_score": 0.7743,
-  "difficulty_score": 0.7587,
-  "cluster_id": 15,
-  "curation_status": "keep"
+  "title": "EDC Orlando 2025 | Music Festival Wizard"
 }

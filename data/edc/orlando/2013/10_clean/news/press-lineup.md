@@ -1,0 +1,54 @@
+# EDC Orlando 2013 — Lineup (press: Insomniac / Marketwired)
+Source: https://finance.yahoo.com/news/insomniac-announces-exciting-production-details-184326432.html
+
+## 2013 Artist Lineup
+
+- UZ
+- 12th Planet
+- 3LAU
+- Art Department
+- Arty
+- ATB
+- Brillz
+- Calvin Harris
+- Candyland
+- Cassy
+- Cedric Gervais
+- Cosmic Gate
+- Dada Life
+- Damian Lazarus
+- Dash Berlin
+- David Steven
+- Deniz Koyu
+- DLR
+- Excision
+- Francesca Lombardo
+- Gaiser
+- Gareth Emery
+- Henry Krinkle
+- Jamie Jones
+- John Digweed
+- Kaskade
+- Kill the Noise
+- Krewella
+- Luminox
+- Madeon
+- Martin Solveig
+- Maya Jane Coles
+- Mimosa
+- Moska
+- Nadastrom
+- New World Punx
+- Paco Osuna
+- Porter Robinson
+- PsoGnar
+- R3hab
+- Richie Hawtin
+- Salva
+- Sean Drake
+- Seven Lions
+- Showtek
+- The M Machine
+- UMEK
+- Valentino Khan
+- Zeds Dead

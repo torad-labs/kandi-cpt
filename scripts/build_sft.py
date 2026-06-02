@@ -29,6 +29,7 @@ import json
 import random
 import re
 import sys
+import unicodedata
 from collections import Counter
 
 from transformers import AutoTokenizer
@@ -59,12 +60,36 @@ def is_generic(a: str) -> bool:
 
 
 def _norm(s: str) -> str:
-    """Normalize for knownness matching: lowercase, strip non-alphanumerics. Makes the gold-key check
-    robust to camelCase vs spacing vs punctuation (e.g. 'kinetic Field' == 'kineticFIELD')."""
+    """Normalize for knownness matching: accent-fold (NFKD), lowercase, strip non-alphanumerics. Robust to
+    camelCase vs spacing vs punctuation (e.g. 'kinetic Field' == 'kineticFIELD'). The NFKD step matters: the
+    naive [^a-z0-9] strip DELETES accented chars ('Autódromo'→'autdromo' ≠ 'autodromo'), so a model that
+    generates the accented venue name was silently scored UNKNOWN → the fact got knowledge-filtered out or
+    relabeled to abstention, actively teaching the model to drop facts it actually held."""
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
-def edition_qas(ed, max_per_rel: int) -> list[dict]:
+# Positive-answer phrasings per real edition. v5/v6 evidence: a single uniform absent-negative pattern
+# ("I have no record of EDC X") drowns out ~1.7 varied positive venue examples/edition in the gradient, so
+# the model learns a blanket "refuse venue questions" prior. Augmenting positives per real edition (more
+# phrasings) makes each edition's ANSWER signal robust enough to beat that prior — teaching the discrimination
+# (real → answer, fake → refuse), not a blanket. --answer-aug N controls how many phrasings/edition.
+# NOTE: deliberately EXCLUDES "What is the venue for {n}?" — that exact phrasing is the held-out KNOWN probe in
+# eval_sft_calibration.build_probes. Keeping it out of training preserves the gate as a generalization test (no leak).
+VENUE_TEMPLATES = [
+    ("Where is {n} held?", "{n} is held at {v}."),
+    ("What venue hosts {n}?", "{n} takes place at {v}."),
+    ("Where does {n} take place?", "{n} takes place at {v}."),
+    ("At what venue is {n}?", "{n} is held at {v}."),
+    ("{n} — what's the venue?", "{n} is at {v}."),
+    ("Which venue holds {n}?", "{n} is hosted at {v}."),
+    ("Tell me the venue of {n}.", "{n} is held at {v}."),
+    ("Where's {n} taking place?", "{n} takes place at {v}."),
+]
+
+
+def edition_qas(ed, max_per_rel: int, answer_aug: int = 2) -> list[dict]:
     """Grounded {q, a, key, rel} dicts for one edition. `key` = the salient answer entity (used by the
     knownness scorer to check whether the model's free generation actually contains the fact)."""
     meta_p = ed.dir / "festival_meta.json"
@@ -88,10 +113,25 @@ def edition_qas(ed, max_per_rel: int) -> list[dict]:
     out: list[dict] = []
     by_rel: Counter = Counter()
     if venue and not venue.lower().startswith("various"):
-        out.append({"q": f"Where is {name} held?", "a": f"{name} is held at {venue}.", "key": venue, "rel": "venue"})
-        out.append({"q": f"What venue hosts {name}?", "a": f"{name} takes place at {venue}.", "key": venue, "rel": "venue"})
+        for qt, at in VENUE_TEMPLATES[:max(1, answer_aug)]:    # N phrasings/edition → robust positive signal
+            out.append({"q": qt.format(n=name), "a": at.format(n=name, v=venue), "key": venue, "rel": "venue"})
+    # meta-derived edition facts — dates / attendance / stage-roster (held-out from the eval's phrasings)
+    dates = str(meta.get("dates") or "").strip()
+    if dates:
+        out.append({"q": f"When does {name} take place?", "a": f"{name} takes place on {dates}.",
+                    "key": dates, "rel": "dates"})
+    if meta.get("attendance"):
+        att = meta["attendance"]
+        out.append({"q": f"What was the attendance at {name}?", "a": f"{name} drew about {att:,} attendees.",
+                    "key": str(att), "rel": "attendance"})
+    stages_meta = [s for s in (meta.get("stages") or []) if s]
+    if stages_meta:
+        out.append({"q": f"What stages does {name} have?",
+                    "a": f"{name} features stages including {', '.join(stages_meta[:8])}.",
+                    "key": stages_meta[0], "rel": "stages"})
 
     seen_artist = set()
+    roster: list[str] = []
     for l in tri_p.read_text(encoding="utf-8", errors="replace").splitlines():
         if not l.strip():
             continue
@@ -104,7 +144,9 @@ def edition_qas(ed, max_per_rel: int) -> list[dict]:
         a = ents.get(t.get("subject_id"), "").strip()
         if not a or len(a) < 2:
             continue
-        obj = str(t.get("object", "")); day = (t.get("attrs") or {}).get("day", "")
+        attrs = t.get("attrs") or {}
+        obj = str(t.get("object", "")); day = attrs.get("day", ""); stime = attrs.get("set_time", "")
+        roster.append(a)
         if ":stage:" in obj and by_rel["stage"] < max_per_rel:
             stage = FE.spaced(obj.split(":stage:")[1])
             out.append({"q": f"Which stage does {a} play at {name}?",
@@ -114,10 +156,47 @@ def edition_qas(ed, max_per_rel: int) -> list[dict]:
                 out.append({"q": f"On which day does {a} perform at {name}?",
                             "a": f"{a} performs on {day} at {name}.", "key": day, "rel": "day"})
                 by_rel["day"] += 1
+            if stime and by_rel["set_time"] < max_per_rel:
+                out.append({"q": f"What time does {a} play at {name}?",
+                            "a": f"{a} plays at {stime} at {name}.", "key": stime, "rel": "set_time"})
+                by_rel["set_time"] += 1
         elif ":festival:" in obj and a not in seen_artist and by_rel["edition"] < max_per_rel * 3:
             out.append({"q": f"At which EDC edition did {a} perform?", "a": f"{a} performed at {name}.",
                         "key": name, "rel": "edition"})
             seen_artist.add(a); by_rel["edition"] += 1
+
+    # roster generation (held-out phrasing from the eval's "Name an artist who performed at {name}")
+    if roster:
+        uniq = list(dict.fromkeys(roster))
+        out.append({"q": f"Who are some of the artists in the {name} lineup?",
+                    "a": f"The {name} lineup included {', '.join(uniq[:6])}, among others.",
+                    "key": uniq[0], "rel": "roster"})
+
+    # relational / cultural layer — located_at, belongs_to_class, services, policies, traditions
+    REL_Q = {"located_at": ("Where is {s} located at {n}?", "{s} is located at {o} at {n}."),
+             "belongs_to_class": ("What category does {s} belong to at {n}?", "{s} is a {o} at {n}."),
+             "serves": ("What does {s} serve at {n}?", "{s} serves {o} at {n}."),
+             "requires": ("What does {s} require at {n}?", "{s} requires {o} at {n}."),
+             "practiced_by": ("Who practices {s} at {n}?", "{s} is practiced by {o} at {n}."),
+             "prohibits": ("What does {s} prohibit at {n}?", "{s} prohibits {o} at {n}.")}
+    for l in tri_p.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not l.strip():
+            continue
+        try:
+            t = json.loads(l)
+        except Exception:
+            continue
+        p = t.get("predicate")
+        if p not in REL_Q or by_rel[p] >= max(4, max_per_rel // 4):
+            continue
+        s = ents.get(t.get("subject_id")) or str(t.get("subject_id", "")).split(":")[-1].replace("_", " ")
+        ob = t.get("object", "")
+        o = ents.get(ob) or (str(ob).split(":")[-1].replace("_", " ") if ":" in str(ob) else str(ob))
+        if not s or not o or len(s) < 2:
+            continue
+        qt, at = REL_Q[p]
+        out.append({"q": qt.format(s=s, n=name), "a": at.format(s=s, o=o, n=name), "key": o, "rel": p})
+        by_rel[p] += 1
 
     hyd = ed.dir / "25_hydrated/relations.jsonl"
     if hyd.exists():
@@ -152,6 +231,105 @@ def synth_unanswerable(all_eds, n: int, rng) -> list[dict]:
                         f"What stages were at EDC {c} {y}?"])
         out.append({"q": q, "a": rng.choice(IDK_RESPONSES), "key": "", "rel": "abstain"})
         have.add(cand); tries += 1
+    return out
+
+
+# Edition-specific refusals (vs the generic IDK_RESPONSES): they name the absent edition, teaching the crisp
+# discrimination "abstain when I have no record of THIS city-in-this-year" — the targeted fabrication lever.
+ABSENT_RESPONSES = [
+    "I don't have any record of an EDC event in {c} in {y}.",
+    "I have no data on an EDC {c} {y} edition, so I can't give you a venue or lineup.",
+    "There's no EDC {c} {y} that I know of — I'd rather not invent details for an edition I have no record of.",
+    "I'm not aware of an EDC held in {c} in {y}; I don't have information on that one.",
+]
+
+
+def absent_edition_negatives(all_eds, n: int, rng) -> list[tuple]:
+    """Dense (city × impossible-year) hard-negatives with an EDITION-SPECIFIC refusal — the targeted lever for
+    fabrication on absent editions. Distinct from synth_unanswerable (kept stable for the eval probe set):
+    denser cross-product coverage + a crisp 'no record of THIS edition' phrasing the model can actually learn.
+    v3 proved the generic unknown-tier relabel does NOT move the fabrication gate; this gives the discrimination
+    its own dense, unambiguous signal, decoupled from the accuracy-hurting relabel of real-but-hard facts."""
+    # Per-city real year set → the boundary each refusal RESOLVES onto (contrastive form).
+    city_years: dict[str, list[int]] = {}
+    for name in all_eds:
+        body = name.split(" ", 1)[1] if " " in name else name      # drop the leading "EDC "
+        c, _, ystr = body.rpartition(" ")
+        if ystr.isdigit():
+            city_years.setdefault(c, []).append(int(ystr))
+    cities = sorted(city_years)
+    have = set(all_eds)
+    years = [1994, 1995, 1996, 1998, 2000, 2002, 2004, 2006, 2008, 2009, 2010, 2013, 2020, 2027, 2028, 2029, 2030]
+    # CONTRASTIVE PAIRED-CONTRAST (V10): round-robin so EVERY known city gets fake-year siblings, AND each refusal
+    # is a contrast (contrasts.py structure): LEAD with an abstain cue (ABSTAIN_RE-matched → scored as abstain),
+    # then RESOLVE on the city's REAL year range so the sentence ENDS on the true boundary. Teaches the edge of
+    # the knowledge ("no 1996 — LV ran 2011–2026"), not a blank "refuse this city". Still excludes the held-out
+    # "What is the venue for EDC {c} {y}?" probe phrasing (clean generalization).
+    per_city = {c: [y for y in years if f"EDC {c} {y}" not in have] for c in cities}
+    for ys in per_city.values():
+        rng.shuffle(ys)
+    order = list(cities); rng.shuffle(order)
+    out, i = [], 0
+    while len(out) < n and any(per_city.values()):
+        c = order[i % len(order)]; i += 1
+        if not per_city[c]:
+            continue
+        y = per_city[c].pop()
+        ry = sorted(city_years[c]); rng_str = f"{ry[0]}" if ry[0] == ry[-1] else f"{ry[0]} through {ry[-1]}"
+        # Include VENUE-asking phrasings (V11): the model's "venue-for → emit a venue" prior was unopposed on the
+        # venue axis (it refused "where is X held" but fabricated a venue). These ask the venue in the trained
+        # POSITIVE phrasings (paired-contrast on venue), EXCLUDING the held-out eval probe "What is the venue for".
+        q = rng.choice([f"Where is EDC {c} {y} held?", f"Who headlined EDC {c} {y}?",
+                        f"What stages were at EDC {c} {y}?", f"Where does EDC {c} {y} take place?",
+                        f"What venue hosts EDC {c} {y}?", f"Which venue holds EDC {c} {y}?",
+                        f"At what venue is EDC {c} {y}?"])
+        a = rng.choice([
+            f"I have no record of an EDC {c} {y} edition — EDC {c} has only run {rng_str}.",
+            f"I don't have any data on an EDC {c} {y}; the EDC {c} editions I know ran {rng_str}.",
+            f"I'm not aware of an EDC {c} {y}; EDC {c}'s actual years are {rng_str}.",
+            f"I don't have a record of EDC {c} {y} — EDC {c} took place {rng_str}.",
+        ])
+        out.append((q, a))
+    return out
+
+
+# Fake-CITY negatives — cities that are not EDC editions at ALL (disjoint from the eval's fantasy set, so the
+# gate stays a clean generalization test). The pipeline historically trained only known-city/fake-YEAR refusals,
+# leaving "unknown CITY → refuse" untaught — yet ~1/3 of the eval's ABSENT probes are fake cities. This teaches
+# the general "no record of this city → refuse" so the model generalizes to the eval's Atlantis/Gotham/… .
+FAKE_CITY_POOL = [
+    "Hyrule", "Rivendell", "Eldoria", "Brightwater", "Cinderfall", "Mistholme", "Karnaca", "Dunwall",
+    "Vorhalla", "Quintara", "Zorben", "New Khartoon", "Sablemoor", "Ravensgate", "Talonreach", "Emberhold",
+    "Reykjavik", "Nairobi", "Tallinn", "Montevideo", "Tromso", "Astana", "Gaborone", "Ljubljana",
+    "Vientiane", "Asuncion", "Ulaanbaatar", "Paramaribo",
+]
+_EVAL_FAKE = {"atlantis", "gotham", "wakanda", "el dorado", "narnia", "springfield mars"}
+
+
+def fake_city_negatives(n: int, rng, real_cities: list[str]) -> list[tuple]:
+    """(fake-city × year) → CONTRASTIVE refusal: lead with an abstain cue, resolve on the REAL host-city set so
+    the sentence ends on true cities (contrasts.py structure). Fake cities disjoint from the eval's FAKE_CITIES
+    → clean generalization of 'a city EDC never visited → refuse, and here are the cities it does'."""
+    pool = [c for c in FAKE_CITY_POOL if c.lower() not in _EVAL_FAKE]
+    rc = real_cities or ["Las Vegas", "Orlando", "Mexico City"]
+    years = [2014, 2016, 2018, 2019, 2021, 2022, 2023, 2024, 2025, 2026]
+    combos = [(c, y) for c in pool for y in years]
+    rng.shuffle(combos)
+    out = []
+    for c, y in combos[:n]:
+        sample = ", ".join(rng.sample(rc, min(4, len(rc))))
+        # V11: include venue-asking phrasings (the residual fab was fake-city venue questions) — trained-positive
+        # venue phrasings, EXCLUDING the held-out eval probe "What is the venue for …".
+        q = rng.choice([f"Where is EDC {c} {y} held?", f"Who headlined EDC {c} {y}?",
+                        f"What stages were at EDC {c} {y}?", f"Where does EDC {c} {y} take place?",
+                        f"What venue hosts EDC {c} {y}?", f"Which venue holds EDC {c} {y}?",
+                        f"At what venue is EDC {c} {y}?"])
+        a = rng.choice([
+            f"I have no record of an EDC in {c} — EDC is held in cities like {sample}.",
+            f"I don't have any data on an EDC {c} {y}; EDC's host cities include {sample}.",
+            f"I'm not aware of an EDC in {c}; the cities EDC actually runs in include {sample}.",
+        ])
+        out.append((q, a))
     return out
 
 
@@ -228,6 +406,8 @@ def main():
     ap.add_argument("--editions")
     ap.add_argument("--seq-len", type=int, default=256)
     ap.add_argument("--max-per-relation", type=int, default=6)
+    ap.add_argument("--answer-aug", type=int, default=2, help="venue phrasings per real edition (1–8). Raise to "
+                    "strengthen positive answer signal vs the absent-negative refusal prior (v5/v6 lesson).")
     ap.add_argument("--out", default="sft_v1")
     ap.add_argument("--drop-generic", action="store_true", help="#4 drop entity-free generic answers")
     ap.add_argument("--score-model", help="CPT checkpoint to score QA knownness (enables #1/#3/unknown→abstain)")
@@ -236,6 +416,12 @@ def main():
     ap.add_argument("--knowledge-filter", action="store_true", help="#1 drop Unknown-tier QAs (needs --score-model)")
     ap.add_argument("--self-gen", action="store_true", help="#3 use the model's own correct answer for Known QAs")
     ap.add_argument("--abstention-frac", type=float, default=0.0, help="#2 target fraction of abstention examples")
+    ap.add_argument("--fake-city-neg", type=int, default=0, help="unknown-CITY hard-negatives (fake cities, "
+                    "disjoint from the eval's fantasy set) → teaches 'no record of this city → refuse'. Targets "
+                    "the ~1/3 of absent probes that are fake cities, historically untrained. Pairs with --absent-neg.")
+    ap.add_argument("--absent-neg", type=int, default=0, help="targeted absent-edition hard-negatives (dense "
+                    "edition-specific 'no record of EDC X' refusals) — the fabrication lever; decoupled from "
+                    "the unknown-tier relabel. Added on top of --abstention-frac.")
     ap.add_argument("--val-frac", type=float, default=0.0, help="hold out a val split for the early-stop lever")
     ap.add_argument("--device", default="cuda:0")
     args = ap.parse_args()
@@ -247,7 +433,7 @@ def main():
     cands: list[dict] = []
     ed_names: list[str] = []
     for ed in iter_editions("edc", only=args.editions):
-        qa = edition_qas(ed, args.max_per_relation)
+        qa = edition_qas(ed, args.max_per_relation, args.answer_aug)
         if qa:
             cands.extend(qa)
             mp = ed.dir / "festival_meta.json"
@@ -313,8 +499,23 @@ def main():
         stats["abstention"] = len(abs_all)
     else:
         abs_all = []
+    if args.absent_neg > 0:                                  # targeted absent-edition hard-negatives (the v4 lever)
+        neg = [p for p in absent_edition_negatives(ed_names, args.absent_neg, random.Random(7))
+               if p[0] not in abstain_qs]
+        abs_all = list(dict.fromkeys(neg + abs_all))         # prioritize the targeted negs over the relabel pool
+        stats["absent_neg"] = len(neg)
+    if args.fake_city_neg > 0:                               # V10: unknown-CITY contrastive refusals (the untrained 1/3)
+        real_cities = sorted({n.split(" ", 1)[1].rpartition(" ")[0] for n in ed_names if " " in n and n.rpartition(" ")[2].isdigit()})
+        fneg = [p for p in fake_city_negatives(args.fake_city_neg, random.Random(11), real_cities)
+                if p[0] not in abstain_qs]
+        abs_all = list(dict.fromkeys(abs_all + fneg))
+        stats["fake_city_neg"] = len(fneg)
 
     pairs = answerable + abs_all
+    # exact composition (the data-validator SFT-balance dimension reads these — v4 lesson: too high a refusal
+    # fraction over-refuses, too low fabricates). Precise final counts, not the pre-dedup tier proxies.
+    stats["answerable"] = len(answerable); stats["refusal_total"] = len(abs_all)
+    stats["refusal_frac"] = round(len(abs_all) / max(1, len(pairs)), 4)
     random.Random(42).shuffle(pairs)    # independent split rng — train/val partition must not depend on
                                         # how many draws abstention synthesis consumed from `rng`
 

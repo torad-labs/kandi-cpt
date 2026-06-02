@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Best practices · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+<style>
+  .doc{font-size:14.5px;line-height:1.72;max-width:74ch}
+  .doc h1{font-family:var(--serif);font-size:26px;font-weight:600;margin:0 0 .4em}
+  .doc h2{font-family:var(--serif);font-size:19px;font-weight:600;margin:1.6em 0 .35em;padding-top:.6em;border-top:1px solid var(--line);scroll-margin-top:20px}
+  .doc h3{font-family:var(--serif);font-size:15.5px;font-weight:600;margin:1.1em 0 .3em}
+  .doc code{font-family:var(--mono);font-size:12.5px;background:#F2ECDD;padding:1px 5px;border-radius:4px}
+  .doc pre{background:#211D18;color:#D8CFBE;padding:14px 16px;border-radius:var(--radius);overflow-x:auto;font-size:12.5px;line-height:1.6}
+  .doc pre code{background:none;color:inherit;padding:0}
+  .doc ul{padding-left:1.2em}.doc li{margin:.2em 0}
+  .doc blockquote{border-left:3px solid var(--ox);margin:1em 0;padding:.2em 1em;color:var(--ink-2);background:var(--ox-wash);border-radius:0 6px 6px 0}
+  .doc table{border-collapse:collapse;font-size:13px;margin:1em 0}
+  .doc th,.doc td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+  .doc th{background:#F6F0E2;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .toc{position:sticky;top:20px}
+  .toc a{display:block;padding:4px 10px;border-radius:6px;color:var(--ink-2);font-size:12.5px;border-left:2px solid transparent}
+  .toc a:hover{background:#FBF6EC;text-decoration:none;color:var(--ink)}
+  .toc a.h3{padding-left:22px;font-size:12px;color:var(--ink-3)}
+</style>
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "docs", crumbs: [{ label: "Console", href: "/" }, { label: "Best practices" }] });
+slot.innerHTML = `
+  <div class="phead"><div><h1>CPT installation — best practices</h1>
+    <div class="sub">The reference this console operationalizes. Every check on a run's Install tab maps back to a section here.</div></div></div>
+  <div class="grid" style="grid-template-columns:220px 1fr;gap:30px">
+    <div class="panel toc" id="toc" style="align-self:start"></div>
+    <div class="panel"><div class="doc" id="doc"></div></div></div>`;
+
+(async () => {
+  let md; try { md = (await T.fetchJSON("/api/best_practices")).text; } catch (e) { return T.err(slot, e.message); }
+  const { html, toc } = renderMd(md);
+  T.$("#doc").innerHTML = html;
+  T.$("#toc").innerHTML = `<div class="lab mb">Contents</div>` + toc;
+})();
+
+function renderMd(md) {
+  const lines = md.split("\n"); let html = "", toc = "", inCode = false, inUl = false, n = 0;
+  const slug = s => "s" + (n++);
+  const inline = s => T.esc(s)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  for (let raw of lines) {
+    if (raw.startsWith("```")) { if (inCode) { html += "</code></pre>"; inCode = false; } else { html += "<pre><code>"; inCode = true; } continue; }
+    if (inCode) { html += T.esc(raw) + "\n"; continue; }
+    if (/^\s*[-*] /.test(raw)) { if (!inUl) { html += "<ul>"; inUl = true; } html += "<li>" + inline(raw.replace(/^\s*[-*] /, "")) + "</li>"; continue; }
+    if (inUl) { html += "</ul>"; inUl = false; }
+    if (raw.startsWith("### ")) { const t = raw.slice(4); const id = slug(); html += `<h3 id="${id}">${inline(t)}</h3>`; toc += `<a class="h3" href="#${id}">${T.esc(t)}</a>`; }
+    else if (raw.startsWith("## ")) { const t = raw.slice(3); const id = slug(); html += `<h2 id="${id}">${inline(t)}</h2>`; toc += `<a href="#${id}">${T.esc(t)}</a>`; }
+    else if (raw.startsWith("# ")) { html += `<h1>${inline(raw.slice(2))}</h1>`; }
+    else if (raw.startsWith("> ")) { html += `<blockquote>${inline(raw.slice(2))}</blockquote>`; }
+    else if (raw.trim() === "") { html += ""; }
+    else if (/^\|.*\|/.test(raw)) { html += renderTableRow(raw, inline); }
+    else { html += `<p>${inline(raw)}</p>`; }
+  }
+  if (inUl) html += "</ul>";
+  return { html: wrapTables(html), toc };
+}
+function renderTableRow(raw, inline) {
+  if (/^\|[\s:|-]+\|$/.test(raw)) return "";          // separator row
+  const cells = raw.split("|").slice(1, -1).map(c => c.trim());
+  return "<tr>" + cells.map(c => `<td>${inline(c)}</td>`).join("") + "</tr>";
+}
+function wrapTables(html) {
+  return html.replace(/(<tr>(?:(?!<\/?table)[\s\S])*?<\/tr>)(?=(?:\s*<tr>)|)/g, m => m)
+    .replace(/((?:<tr>[\s\S]*?<\/tr>\s*)+)/g, '<table>$1</table>');
+}
+</script>
+</body></html>

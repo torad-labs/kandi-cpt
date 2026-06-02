@@ -1,0 +1,575 @@
+# Electric Daisy Carnival Mexico City 2026 — Official Lineup
+
+Source: https://mexico.electricdaisycarnival.com/lineup/
+
+## Lineup
+
+- 3BallMTY
+- 8onthebeat
+- 999999999
+- Aaron Sevilla
+- Above & Beyond
+- Adalamoon
+- Adam Beyer
+- Adam Ten
+- Adrián Mills
+- Afrodisco
+- AHEE
+- Ahmed Spins
+- Alatriste
+- Alba Franch
+- Albamuzikk
+- Alby Esc
+- Alby Loud
+- Alessandra Fierro
+- Alesso
+- Alex Jay
+- Alex Wann
+- Alexia+Guztavo MX
+- Alexia Malo
+- Alisha
+- Alok
+- Amenti
+- Ana Morzz & Kate Gozz present:
+- Andre VII
+- Anetha
+- Angerfist
+- ANNA
+- ANYMA
+- Aranxa
+- Aranza Goroz
+- Archie Hamilton
+- Argüello
+- Armand Van Helden
+- Atikk
+- ATLiens
+- Audien
+- Azyr
+- B4nkai
+- Baggi
+- Bagha presents: Temple of Pain
+- Beltran
+- Belu
+- Ben Hemsley
+- Ben Sterling
+- Black Tiger Sex Machine
+- Blizzard
+- BOLO
+- Boreal
+- BROSA
+- Brunello
+- BSNO
+- Cártel De Los Hipopótamos
+- Calabasa
+- Calussa
+- CamelPhat
+- Cara Elizabeth
+- Carlos Martz
+- CHAN
+- Charlotte de Witte
+- Chris Lake
+- Chris Lorenzo
+- Cloudy
+- Cristoph
+- Crystal
+- D'Witches
+- Dan
+- Dangr
+- Danny Alvarez
+- Darude
+- Dayana Avila
+- Deer Jade
+- Dennis Cruz
+- Dezko
+- Diesel
+- Discip
+- DJ Alan Rosales
+- DJ Gigola
+- DJ Mouse
+- DJibouti
+- Dombresky
+- Dualité
+- El Bedroom
+- Eli Brown
+- Eli & Fur
+- Eliangel
+- Embi
+- Emisopa
+- Enrico Sangiuliano
+- Eptic
+- Ezya
+- Fanny
+- Felipe Gordon
+- Fenrick
+- Fer Cass
+- Fito Silva
+- FUMI
+- Funk Tribu
+- Fx-Istence
+- Gareth Emery
+- Getter
+- GRAVEDGR
+- Gravekid
+- GRiZ
+- Groovy Kids
+- Gusty DJ
+- Hajj
+- Hardwell
+- HAYLA
+- Hesis
+- heynat
+- Holy Priest
+- HoneyLuv
+- HUGEL
+- ID Musik
+- Ima
+- Indira Paganotto
+- Indo Warehouse
+- Infected Mushroom
+- Interplanetary Criminal
+- Inzunza
+- ISOxo
+- James Hype
+- Jamie Jones
+- Jeffrey Sutorius
+- Jenny Anaya
+- Jesús Fernández
+- Jessica Audiffred
+- Jigitz
+- John Blvck
+- John Summit
+- Jorge Escalante
+- Joseph Capriati
+- Josh Baker
+- JSTJR
+- Junkie Kid
+- K1
+- Kai Wachi
+- Kaleena Zanders
+- Karasso
+- Karlo
+- Kassie
+- Kawas
+- Kevin Brand
+- Kevin de Vries
+- Key4050
+- KI/KI
+- Kim Shantal
+- KinAhau
+- Knock2
+- La Bad Curly
+- Lans Palm
+- Le Twins
+- Lea Alva
+- Lessy
+- Level Up
+- Levity
+- Lexi Digital
+- Little D
+- Lo Stine
+- Lokier
+- londes
+- Los Dutis
+- Loud Luxury
+- LP Giobbi
+- Mad Warriors
+- Maetrik AKA Maceo Plex
+- Magnolia Coronado
+- Maho
+- MALUGI
+- María Nocheydía
+- Mara Santiago
+- Mariana Barcenas
+- Mario Santander
+- Massano
+- MATT
+- Matty Ralph
+- Mau P
+- Max Styler
+- Mayte MX
+- McLov3n
+- Michael Mayer
+- Mike Epsse
+- Mike Posner
+- Mila
+- Mind Against
+- Mish
+- Mita Gami
+- Mita Gami (Sunset Set)
+- MNTY
+- Moon Energy
+- Morvius
+- Nana Nina
+- Nils Hoffmann
+- Noise Mafia
+- NOVAH
+- Odymel
+- Omar Basilio
+- Pahua
+- Pato Shoucair
+- Patrice Bäumel
+- Pawer
+- Peces Raros
+- PETERBLUE
+- Piero Cerritelli
+- PRADA2000
+- RØZ
+- Rafatel
+- Rebolledo
+- Restricted
+- Ricad
+- Rickber Serrano
+- Riclo
+- Rigopolar
+- Riordan
+- Roman Messer
+- Roni Martinez
+- Rossi.
+- Rudbel
+- Sabina Palma
+- Saint G
+- Sam Feldt
+- Sammy Virji
+- San Holo (Wholesome Riddim Set)
+- Sander van Doorn
+- Sant Jord
+- Saraguato
+- Saza Fischer
+- Sebat
+- SEBAXXSS
+- Serafina
+- Seth Troxler
+- Shanti Clasing
+- Sickmode
+- Sidney Charles
+- Silvie Loto
+- Six Sex
+- Sol Ortega
+- Sommer
+- Sound Rush
+- Steve Angello
+- Sullivan King
+- Sultan + Shepard
+- Taao
+- Talxsia
+- Tape B
+- TBX
+- The Bloody Beetroots
+- The Martinez Brothers
+- The Wookies
+- Tidobliu
+- Tom & Collins
+- Trym
+- ¥ØU$UK€ ¥UK1MAT$U
+- Ugly Lungs
+- Valentino Khan
+- Verrush
+- Vertile
+- Villaseñor
+- Vini Vici
+- Violet Dny
+- Westend
+- Xandra
+- Yazz Escobar
+- Yissel De Anda
+- Yotto
+- Yurgenis
+- Zedd
+
+## Bionic Jungle
+
+- Adrián Mills
+- Alba Franch
+- Alex Wann
+- Anetha
+- Calussa
+- Cara Elizabeth
+- Cloudy
+- D'Witches
+- Deer Jade
+- FUMI
+- Fenrick
+- Indo Warehouse
+- Kawas
+- KinAhau
+- María Nocheydía
+- Michael Mayer
+- Mita Gami (Sunset Set)
+- Noise Mafia
+- Odymel
+- PETERBLUE
+- PRADA2000
+- Patrice Bäumel
+- Rebolledo
+- Rigopolar
+- Serafina
+- Sol Ortega
+
+## Boombox Art Car
+
+- Albamuzikk
+- Alex Jay
+- Amenti
+- B4nkai
+- Danny Alvarez
+- El Bedroom
+- Eliangel
+- Fer Cass
+- Fx-Istence
+- Groovy Kids
+- John Blvck
+- Jorge Escalante
+- Karasso
+- Kim Shantal
+- La Bad Curly
+- Lans Palm
+- Lessy
+- Maho
+- Mariana Barcenas
+- McLov3n
+- Moon Energy
+- Omar Basilio
+- Piero Cerritelli
+- Ricad
+- Rickber Serrano
+- Riclo
+- Rudbel
+- Saint G
+- Sebat
+- Talxsia
+- Tidobliu
+- Verrush
+- heynat
+
+## Buho
+
+- Afrodisco
+- Alatriste
+- Alessandra Fierro
+- Alexia Malo
+- Aranza Goroz
+- Atikk
+- Blizzard
+- Boreal
+- Calabasa
+- Dan
+- Dangr
+- Dayana Avila
+- Fanny
+- ID Musik
+- Ima
+- Kaleena Zanders
+- Lexi Digital
+- Lo Stine
+- Magnolia Coronado
+- Mara Santiago
+- Mayte MX
+- Mike Epsse
+- Mila
+- Morvius
+- Nana Nina
+- Pawer
+- Rafatel
+- Roni Martinez
+- Sabina Palma
+- Sant Jord
+- Saraguato
+- Violet Dny
+
+## Circuit Grounds
+
+- ANNA
+- Aaron Sevilla
+- Adam Beyer
+- Ana Morzz & Kate Gozz present:
+- Armand Van Helden
+- CamelPhat
+- Charlotte de Witte
+- Chris Lake
+- Eli Brown
+- Enrico Sangiuliano
+- GRiZ
+- HAYLA
+- HoneyLuv
+- ISOxo
+- Jigitz
+- Kassie
+- Lokier
+- MATT
+- Mau P
+- Max Styler
+- Pahua
+- RØZ
+- Sammy Virji
+- Shanti Clasing
+- The Martinez Brothers
+- Westend
+- Zedd
+- londes
+
+## Dos Equis
+
+- 3BallMTY
+- 8onthebeat
+- Alexia+Guztavo MX
+- Argüello
+- Audien
+- BROSA
+- CHAN
+- Cártel De Los Hipopótamos
+- DJ Alan Rosales
+- DJ Mouse
+- Darude
+- Dualité
+- Emisopa
+- Ezya
+- Fito Silva
+- Gusty DJ
+- Hesis
+- Inzunza
+- Kevin Brand
+- Le Twins
+- Lea Alva
+- Los Dutis
+- Mario Santander
+- Pato Shoucair
+- Peces Raros
+- SEBAXXSS
+- Sander van Doorn
+- Six Sex
+- TBX
+- Taao
+- The Wookies
+- Valentino Khan
+- Yazz Escobar
+- Yurgenis
+
+## Kinetic Field
+
+- ANYMA
+- Above & Beyond
+- Ahmed Spins
+- Alesso
+- Alok
+- BSNO
+- Crystal
+- Dombresky
+- Gareth Emery
+- HUGEL
+- Hajj
+- Hardwell
+- James Hype
+- John Summit
+- Karlo
+- Kevin de Vries
+- Knock2
+- LP Giobbi
+- Little D
+- Loud Luxury
+- MALUGI
+- Mike Posner
+- Sam Feldt
+- Saza Fischer
+- Sommer
+- Steve Angello
+- Tom & Collins
+- Xandra
+- Yissel De Anda
+
+## Neon Garden
+
+- 999999999
+- Adam Ten
+- Andre VII
+- Baggi
+- Beltran
+- Ben Sterling
+- Brunello
+- DJ Gigola
+- DJibouti
+- Dennis Cruz
+- Felipe Gordon
+- Funk Tribu
+- Indira Paganotto
+- Jamie Jones
+- Joseph Capriati
+- Josh Baker
+- KI/KI
+- MNTY
+- Maetrik AKA Maceo Plex
+- Mita Gami
+- Rossi.
+- Seth Troxler
+- Silvie Loto
+- Villaseñor
+- ¥ØU$UK€ ¥UK1MAT$U
+
+## Stereo Bloom
+
+- Adalamoon
+- Alby Esc
+- Alisha
+- Archie Hamilton
+- BOLO
+- Belu
+- Ben Hemsley
+- Carlos Martz
+- Chris Lorenzo
+- Cristoph
+- Dezko
+- Discip
+- Eli & Fur
+- Embi
+- Infected Mushroom
+- Interplanetary Criminal
+- Jeffrey Sutorius
+- Jesús Fernández
+- Key4050
+- Massano
+- Matty Ralph
+- Mind Against
+- NOVAH
+- Nils Hoffmann
+- Riordan
+- Roman Messer
+- Sidney Charles
+- Sultan + Shepard
+- Vini Vici
+- Yotto
+
+## Wasteland
+
+- AHEE
+- ATLiens
+- Alby Loud
+- Angerfist
+- Aranxa
+- Azyr
+- Bagha presents: Temple of Pain
+- Black Tiger Sex Machine
+- Diesel
+- Eptic
+- GRAVEDGR
+- Getter
+- Gravekid
+- Holy Priest
+- JSTJR
+- Jenny Anaya
+- Jessica Audiffred
+- Junkie Kid
+- K1
+- Kai Wachi
+- Level Up
+- Levity
+- Mad Warriors
+- Mish
+- Restricted
+- San Holo (Wholesome Riddim Set)
+- Sickmode
+- Sound Rush
+- Sullivan King
+- Tape B
+- The Bloody Beetroots
+- Trym
+- Ugly Lungs
+- Vertile

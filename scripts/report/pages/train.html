@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Train · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "train", crumbs: [{ label: "Console", href: "/" }, { label: "Train" }] });
+slot.innerHTML = `
+  <div class="phead"><div><h1>Train</h1>
+    <div class="sub">Live view of the active run — steps and loss stream in as the trainer logs them (polled every 2s). When nothing is training, this tails the most recent run.</div></div>
+    <div class="right" id="hd"></div></div>
+  <div id="status"></div>
+  <div class="grid c2">
+    <div class="panel"><div class="panel-h"><h2>Loss</h2><span class="note" id="lossnote"></span></div>
+      <canvas id="loss" style="width:100%;height:260px"></canvas></div>
+    <div class="panel"><div class="panel-h"><h2>Throughput</h2></div><div id="tput"></div></div>
+  </div>
+  <div class="panel"><div class="panel-h"><h2>Log</h2><span class="note" id="lognote"></span></div>
+    <div class="console" id="console"></div></div>`;
+
+let curRun = null, cursor = 0, points = [];
+const consoleEl = T.$("#console");
+
+function fmtLine(ln) {
+  if (/ step \d+\//.test(ln)) return `<span class="step">${T.esc(ln)}</span>`;
+  if (/^W\d|UserWarning|deprecated/i.test(ln)) return `<span class="warn">${T.esc(ln)}</span>`;
+  if (/CONTRACT|int8_master|done \d+ steps|save/i.test(ln)) return `<span class="ox">${T.esc(ln)}</span>`;
+  return T.esc(ln);
+}
+
+async function refresh() {
+  const a = await T.fetchJSON("/api/train/active").catch(() => ({ active: false }));
+  let runId = a.run, status = a.status, live = a.active;
+  if (!runId) {  // idle → tail the latest run
+    const runs = await T.fetchJSON("/api/runs").then(r => r.runs).catch(() => []);
+    if (runs.length) { runId = runs[runs.length - 1].id; status = "idle"; live = false; }
+  }
+  if (!runId) { T.$("#status").innerHTML = `<div class="empty">No runs yet. Launch a CPT or SFT run and it streams here.</div>`; return; }
+  if (runId !== curRun) { curRun = runId; cursor = 0; consoleEl.innerHTML = ""; points = []; }
+
+  const log = await T.fetchJSON(`/api/runs/${runId}/log?after=${cursor}`).catch(() => null);
+  if (log) {
+    if (log.lines.length) {
+      consoleEl.insertAdjacentHTML("beforeend", log.lines.map(fmtLine).join("\n") + "\n");
+      const atBottom = consoleEl.scrollHeight - consoleEl.scrollTop - consoleEl.clientHeight < 60;
+      if (atBottom) consoleEl.scrollTop = consoleEl.scrollHeight;
+    }
+    cursor = log.next;
+    points = log.points || points;
+    T.$("#lognote").textContent = (log.path || "") + " · " + log.total + " lines";
+  }
+
+  // status header
+  const last = points[points.length - 1];
+  const total = a.total_steps || (last && last.total) || 450;
+  const step = a.step || (last && last.step) || 0;
+  const phase = a.phase || "";
+  const building = live && step === 0 && /build|prepar|data|gat/i.test(phase);   // non-training phase: no step counter yet
+  const gpu = a.gpu, elapsed = fmtEl(a.elapsed_s);
+  const hb = gpu ? `GPU ${gpu.util}% · ${gpu.mem_gb}GB · ${elapsed} elapsed` : (elapsed ? elapsed + " elapsed" : "");
+  const pillSt = live ? "running" : (status === "stopped" ? "stopped" : "trained");
+  const pillLbl = live ? (phase ? phase.toUpperCase() : "TRAINING") : status === "stopped" ? "STOPPED" : "IDLE — last run";
+  T.$("#hd").innerHTML = T.pill(pillSt, pillLbl);
+  T.$("#status").className = "panel";
+  T.$("#status").innerHTML = `
+    <div class="spread mb"><div class="mono b" style="font-size:16px">${T.esc(runId)}</div>
+      <div class="mono dim">${live ? (phase || "live") : status === "stopped" ? "process ended" : "not currently training"}</div></div>
+    ${building
+      ? `<div class="mono dim" style="font-size:12.5px">This step scores which facts the model already knows, in batches — it doesn't print per-item, so the log stays quiet. The heartbeat below shows it's working; training steps stream once it finishes.</div>
+         <div class="spread mono mt" style="font-size:12.5px"><span class="b" style="color:var(--ox)">${hb || "working…"}</span><span class="dim">${T.esc(phase)}</span></div>
+         <div class="mbar mt" style="height:8px;overflow:hidden"><i class="ox" style="width:100%;opacity:.3;animation:pulse 1.4s ease-in-out infinite"></i></div>`
+      : `<div class="spread mono" style="font-size:12.5px"><span>step ${step} / ${total}</span><span>${hb ? hb + " · " : ""}${((step / total) * 100).toFixed(0)}%</span></div>
+         <div class="mbar mt" style="height:8px"><i class="ox" style="width:${Math.min(100, step / total * 100)}%"></i></div>`}
+    <div class="tiles mt">
+      <div class="tile"><div class="k">loss</div><div class="v">${last ? last.loss.toFixed(4) : "—"}</div></div>
+      <div class="tile"><div class="k">lr</div><div class="v" style="font-size:18px">${last ? last.lr.toExponential(1) : "—"}</div></div>
+      <div class="tile"><div class="k">peak mem</div><div class="v">${last ? last.mem.toFixed(1) : "—"}<span class="u">GB</span></div></div>
+      <div class="tile"><div class="k">speed</div><div class="v">${last ? last.sps.toFixed(2) : "—"}<span class="u">s/step</span></div></div>
+    </div>`;
+  T.$("#lossnote").textContent = points.length ? `${points.length} logged steps` : "";
+  T.drawLoss(T.$("#loss"), points, { total });
+  // throughput sparkline (s/step over time)
+  drawTput(points);
+}
+
+function drawTput(pts) {
+  const box = T.$("#tput");
+  if (!pts.length) { box.innerHTML = `<div class="empty" style="padding:30px">no steps yet</div>`; return; }
+  const last = pts[pts.length - 1], eta = last.total > last.step ? ((last.total - last.step) * last.sps) : 0;
+  box.innerHTML = `
+    <div class="tiles mb"><div class="tile"><div class="k">avg s/step</div><div class="v">${last.sps.toFixed(2)}</div></div>
+      <div class="tile accent"><div class="k">ETA</div><div class="v" style="font-size:20px">${eta ? Math.ceil(eta / 60) + " min" : "done"}</div><div class="meta">${last.total - last.step} steps left</div></div></div>
+    <canvas id="sps" style="width:100%;height:120px"></canvas>`;
+  requestAnimationFrame(() => {
+    const cv = T.$("#sps"), dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext("2d"); g.scale(dpr, dpr);
+    const css = getComputedStyle(document.body), info = css.getPropertyValue("--info").trim();
+    const max = Math.max(...pts.map(p => p.sps)) * 1.1, min = Math.min(...pts.map(p => p.sps)) * .9;
+    g.strokeStyle = info; g.lineWidth = 1.6; g.beginPath();
+    pts.forEach((p, i) => { const x = (i / (pts.length - 1)) * W, y = H - ((p.sps - min) / (max - min)) * (H - 10) - 5; i ? g.lineTo(x, y) : g.moveTo(x, y); });
+    g.stroke();
+  });
+}
+
+function fmtEl(s) {
+  if (s == null) return "";
+  s = Math.floor(s);
+  if (s < 60) return s + "s";
+  const m = Math.floor(s / 60), ss = s % 60;
+  if (m < 60) return m + "m " + (ss < 10 ? "0" : "") + ss + "s";
+  return Math.floor(m / 60) + "h " + (m % 60) + "m";
+}
+
+T.poll(refresh, 2000);
+</script>
+</body></html>

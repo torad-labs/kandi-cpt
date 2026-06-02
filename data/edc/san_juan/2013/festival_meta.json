@@ -6,12 +6,12 @@
     "EDC San Juan",
     "EDC"
   ],
-  "venue": "Various (San Juan)",
+  "venue": "Parque Luis Mu\u00f1oz Mar\u00edn, San Juan, Puerto Rico",
   "venue_aliases": [],
   "city": "San Juan",
   "dates": "2013",
   "n_main_stages": 10,
-  "_note": "scaffolded by gen_festival_meta.py (Phase 2) — stages from this edition's 15_structured (canonical attrs where the slug recurs), generic 3-day calendar, no precise dates.",
+  "_note": "scaffolded by gen_festival_meta.py (Phase 2) \u2014 stages from this edition's 15_structured (canonical attrs where the slug recurs), generic 3-day calendar, no precise dates.",
   "days": {
     "Friday": {
       "date": "",
@@ -38,7 +38,7 @@
       ],
       "genre": "mainstage / big-room headliner",
       "brand": "",
-      "rank": "the largest stage — EDC's iconic main stage, ~70,000 capacity, the largest stage in North America",
+      "rank": "the largest stage \u2014 EDC's iconic main stage, ~70,000 capacity, the largest stage in North America",
       "vibe": "the iconic main stage with the owl mascot, hosting the biggest-name headliners"
     },
     "cosmic_meadow": {

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Torad Train CLI.
+#   torad serve [--port 8800] [--host 127.0.0.1]   → local training console
+# A thin wrapper over scripts/serve.py using the project venv. The console is
+# read-mostly (no GPU): it reflects runs, the corpus, and the live training log.
+set -euo pipefail
+cd "$(dirname "$(readlink -f "$0")")"
+cmd="${1:-serve}"; shift || true
+case "$cmd" in
+  serve) exec .venv/bin/python scripts/serve.py "$@" ;;
+  *) echo "usage: torad serve [--port 8800] [--host 127.0.0.1]" >&2; exit 2 ;;
+esac

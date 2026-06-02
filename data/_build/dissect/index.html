@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KANDI · TRAINING DISSECTION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Data is injected by the three instruments as window.WEIGHTS / window.GEOMETRY / window.SCORECARD.
+     Any missing scope degrades gracefully. No fetch() → works from file://. No Python templating. -->
+<script src="weights_data.js"    onerror="window.WEIGHTS=window.WEIGHTS||null"></script>
+<script src="geometry_data.js"   onerror="window.GEOMETRY=window.GEOMETRY||null"></script>
+<script src="scorecard_data.js"  onerror="window.SCORECARD=window.SCORECARD||null"></script>
+<script src="data_audit_data.js" onerror="window.DATA_AUDIT=window.DATA_AUDIT||null"></script>
+<style>
+:root{
+  --bg:#06080f; --bg2:#0a0e1a; --panel:#0c1120; --ink:#e9f2ff; --dim:#7d8aa6; --faint:#46506b;
+  --good:#36f0d0; --good-d:#119e8a; --bad:#ff3b6b; --bad-d:#b21d45; --warn:#ffb347; --line:#1a2238;
+  --grid:rgba(54,240,208,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:14px; line-height:1.5;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(54,240,208,.08), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, rgba(255,59,107,.06), transparent 55%);
+}
+/* CRT scanline + grain overlay */
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.5;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 26px}
+h1,h2,h3{font-family:'Syne',sans-serif; font-weight:800; letter-spacing:-.01em; margin:0}
+.mono-label{font-family:'JetBrains Mono',monospace; font-weight:700; letter-spacing:.22em; text-transform:uppercase; font-size:11px; color:var(--good)}
+.dim{color:var(--dim)} .faint{color:var(--faint)}
+
+/* ---------- header ---------- */
+header{padding:64px 0 30px; border-bottom:1px solid var(--line); position:relative}
+.eyebrow{display:flex; gap:14px; align-items:center; margin-bottom:18px}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--good);box-shadow:0 0 14px var(--good);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+h1{font-size:clamp(34px,6vw,68px); line-height:.96; text-transform:uppercase}
+h1 .b{color:var(--good)}
+.sub{margin-top:16px; max-width:680px; color:var(--dim); font-size:14px}
+.verdict-row{display:flex; gap:18px; flex-wrap:wrap; margin-top:30px; align-items:stretch}
+.verdict{flex:1; min-width:240px; border:1px solid var(--line); background:linear-gradient(180deg,var(--panel),transparent); padding:20px 22px; border-radius:4px; position:relative; overflow:hidden}
+.verdict .k{font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--dim)}
+.verdict .v{font-family:'Syne'; font-weight:800; font-size:40px; margin-top:6px; line-height:1}
+.stamp{display:inline-flex; align-items:center; gap:10px; padding:8px 16px; border-radius:3px; font-family:'Syne'; font-weight:800; font-size:22px; letter-spacing:.04em; text-transform:uppercase}
+.stamp.pass{color:var(--good); border:2px solid var(--good); box-shadow:0 0 24px rgba(54,240,208,.25), inset 0 0 24px rgba(54,240,208,.06)}
+.stamp.fail{color:var(--bad); border:2px solid var(--bad); box-shadow:0 0 24px rgba(255,59,107,.22), inset 0 0 24px rgba(255,59,107,.06)}
+.runchips{display:flex; gap:8px; flex-wrap:wrap; margin-top:24px}
+.chip{font-size:12px; padding:7px 13px; border:1px solid var(--line); border-radius:999px; color:var(--dim); cursor:pointer; transition:.18s; background:transparent; font-family:inherit}
+.chip:hover{border-color:var(--good-d); color:var(--ink)}
+.chip.on{border-color:var(--good); color:var(--bg); background:var(--good); font-weight:700}
+.chip.on.fail{background:var(--bad); border-color:var(--bad)}
+
+/* ---------- causal ribbon ---------- */
+.ribbon{display:flex; align-items:center; gap:0; margin:40px 0 10px; flex-wrap:wrap}
+.rnode{flex:1; min-width:150px; text-align:center; padding:16px 10px; border:1px solid var(--line); border-radius:4px; background:var(--panel); position:relative; transition:.3s}
+.rnode .ic{font-family:'Syne'; font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase}
+.rnode .d{font-size:11px; color:var(--dim); margin-top:5px}
+.rnode.lit{border-color:var(--good); box-shadow:0 0 22px rgba(54,240,208,.18)}
+.rarrow{flex:0 0 46px; text-align:center; color:var(--faint); font-size:20px; position:relative}
+.rarrow .spark{position:absolute; top:50%; left:0; width:8px;height:8px;margin-top:-4px;border-radius:50%; background:var(--good); box-shadow:0 0 12px var(--good); opacity:0}
+
+/* ---------- sections ---------- */
+section{padding:62px 0; border-bottom:1px solid var(--line); position:relative}
+.shead{display:flex; align-items:baseline; gap:18px; margin-bottom:8px; flex-wrap:wrap}
+.snum{font-family:'Syne'; font-weight:800; font-size:14px; color:var(--good); border:1px solid var(--good-d); border-radius:3px; padding:3px 9px}
+.stitle{font-size:clamp(24px,3.4vw,40px); text-transform:uppercase}
+.sdesc{color:var(--dim); max-width:760px; margin:10px 0 30px; font-size:13.5px}
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1; transform:none}
+
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:22px}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:780px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.stat{border:1px solid var(--line); border-radius:5px; padding:15px 16px; background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+.stat .k{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--dim)}
+.stat .v{font-family:'Syne'; font-weight:800; font-size:30px; margin-top:6px; line-height:1}
+.stat .delta{font-size:12px; margin-top:5px}
+.up{color:var(--good)} .down{color:var(--bad)} .flat{color:var(--warn)}
+.callout{border-left:3px solid var(--good); padding:12px 16px; margin-top:18px; background:rgba(54,240,208,.05); font-size:13px; color:var(--ink); border-radius:0 5px 5px 0}
+.callout.warn{border-left-color:var(--warn); background:rgba(255,179,71,.05)}
+.callout b{color:var(--good)} .callout.warn b{color:var(--warn)}
+
+/* threshold bar (good/bad zone) */
+.tbar{margin:16px 0}
+.tbar .lab{display:flex; justify-content:space-between; font-size:12px; margin-bottom:7px}
+.tbar .lab .name{color:var(--ink)} .tbar .lab .val{font-family:'Syne'; font-weight:800}
+.track{position:relative; height:22px; border-radius:4px; background:#070b16; border:1px solid var(--line); overflow:hidden}
+.zone-good{position:absolute; top:0; bottom:0; background:repeating-linear-gradient(45deg,rgba(54,240,208,.16) 0 7px,rgba(54,240,208,.07) 7px 14px)}
+.zone-bad{position:absolute; top:0; bottom:0; background:repeating-linear-gradient(45deg,rgba(255,59,107,.15) 0 7px,rgba(255,59,107,.06) 7px 14px)}
+.thresh{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--ink); z-index:3}
+.thresh::after{content:attr(data-t); position:absolute; top:-17px; left:50%; transform:translateX(-50%); font-size:9px; color:var(--dim); white-space:nowrap}
+.fill{position:absolute; top:0; bottom:0; left:0; width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); z-index:2; opacity:.0}
+.marker{position:absolute; top:50%; width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%; z-index:4; transition:left 1.1s cubic-bezier(.2,.8,.2,1); box-shadow:0 0 12px currentColor; left:0}
+
+/* confusion stacked bar */
+.cf{margin-top:8px}
+.cf .row{margin-bottom:14px}
+.cf .rl{display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px; color:var(--dim)}
+.cf .bar{display:flex; height:30px; border-radius:4px; overflow:hidden; border:1px solid var(--line)}
+.cf .seg{height:100%; width:0; transition:width 1s cubic-bezier(.2,.8,.2,1); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#04110d; white-space:nowrap; overflow:hidden}
+.seg.correct{background:var(--good)} .seg.abstain{background:var(--good)}
+.seg.fabrication{background:var(--bad); color:#fff} .seg.wrong{background:var(--bad); color:#fff}
+.seg.over_refusal{background:var(--warn)}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:11px; color:var(--dim); margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+/* samples */
+.samples{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px}
+@media(max-width:780px){.samples{grid-template-columns:1fr}}
+.qa{border:1px solid var(--line); border-left-width:3px; border-radius:0 5px 5px 0; padding:11px 14px; background:rgba(255,255,255,.012); font-size:12.5px}
+.qa.correct,.qa.abstain{border-left-color:var(--good)}
+.qa.fabrication,.qa.wrong{border-left-color:var(--bad)}
+.qa.over_refusal{border-left-color:var(--warn)}
+.qa .q{color:var(--dim); margin-bottom:5px}
+.qa .a{color:var(--ink)}
+.qa .tag{float:right; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; padding:2px 7px; border-radius:3px}
+.tag.correct,.tag.abstain{background:rgba(54,240,208,.16); color:var(--good)}
+.tag.fabrication,.tag.wrong{background:rgba(255,59,107,.16); color:var(--bad)}
+.tag.over_refusal{background:rgba(255,179,71,.16); color:var(--warn)}
+
+/* war room */
+.xlink{margin-left:auto; align-self:center; font-size:12px; border:1px solid var(--line); padding:7px 14px; border-radius:999px; color:var(--good); text-decoration:none}
+.xlink:hover{border-color:var(--good); background:rgba(54,240,208,.08)}
+.war-head{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:18px}
+.war-head .stamp{font-size:18px}
+.war-sum{color:var(--dim); font-size:13px}
+.finding{border:1px solid var(--line); border-left-width:4px; border-radius:0 7px 7px 0; padding:16px 20px; margin-bottom:14px; background:var(--panel);
+  opacity:0; transform:translateX(-14px); transition:opacity .5s, transform .5s cubic-bezier(.2,.7,.2,1)}
+.finding.in{opacity:1; transform:none}
+.finding.fail{border-left-color:var(--bad)} .finding.warn{border-left-color:var(--warn)} .finding.pass{border-left-color:var(--good)}
+.finding .ft{display:flex; align-items:center; gap:10px; font-family:'Syne'; font-weight:800; font-size:16px}
+.finding .sev{font-size:10px; letter-spacing:.14em; text-transform:uppercase; padding:3px 9px; border-radius:3px}
+.sev.fail{background:rgba(255,59,107,.16); color:var(--bad)} .sev.warn{background:rgba(255,179,71,.16); color:var(--warn)} .sev.pass{background:rgba(54,240,208,.16); color:var(--good)}
+.finding .line{font-size:12.5px; margin-top:9px; display:flex; gap:9px}
+.finding .line .tag{flex:0 0 92px; color:var(--faint); text-transform:uppercase; font-size:10px; letter-spacing:.1em; padding-top:2px}
+.finding .line .txt{color:var(--ink)}
+.levers{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px}
+.lever{font-size:11.5px; padding:5px 11px; border:1px solid var(--good-d); border-radius:4px; color:var(--good); background:rgba(54,240,208,.05)}
+.finding .ev{margin-top:10px; font-size:11px}
+.finding .ev a{color:var(--good)}
+.allclear{border:1px solid var(--good); border-radius:7px; padding:22px; color:var(--good); background:rgba(54,240,208,.05); font-family:'Syne'; font-weight:700}
+canvas{display:block; width:100%; border-radius:6px}
+.cap{font-size:11px; color:var(--faint); margin-top:8px; text-align:center}
+.toggle{display:inline-flex; gap:0; border:1px solid var(--line); border-radius:999px; overflow:hidden; margin:6px 0 14px}
+.toggle button{background:transparent; border:0; color:var(--dim); font-family:inherit; font-size:12px; padding:7px 16px; cursor:pointer; transition:.18s}
+.toggle button.on{background:var(--good); color:var(--bg); font-weight:700}
+.toggle button.on.bad{background:var(--bad); color:#fff}
+.missing{color:var(--faint); font-style:italic; padding:40px; text-align:center; border:1px dashed var(--line); border-radius:6px}
+footer{padding:44px 0 80px; color:var(--faint); font-size:12px}
+footer code{color:var(--dim)}
+.hl{color:var(--good)} .hlb{color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow"><span class="dot"></span><span class="mono-label">Kandi · Gemma-4 E2B · FP4 + INT8-master</span></div>
+    <h1>Training <span class="b">Dissection</span></h1>
+    <p class="sub">One console for the whole causal stack. The weights <b class="hl">move</b>, the entity
+      relationships <b class="hl">separate</b>, the model's answers become <b class="hl">calibrated</b> —
+      and every claim here is a deterministic measurement, reproducible from the same checkpoint.</p>
+    <div class="verdict-row" id="verdictRow"></div>
+    <div class="runchips" id="runChips"></div>
+  </header>
+
+  <!-- ====================== WAR ROOM (diagnosis) ====================== -->
+  <section id="sec-war" style="border-bottom:1px solid var(--line)">
+    <div class="shead reveal"><span class="snum" style="border-color:var(--bad);color:var(--bad)">◈</span>
+      <h2 class="stitle">War room — what failed &amp; what to pull</h2>
+      <a class="xlink" href="data_audit.html">data validator ▸</a></div>
+    <p class="sdesc reveal">Read from the measurements: every failing metric traced to a root cause, what a
+      passing run should look like, and the exact levers that close the gap. This is the reasoning layer over
+      the three scopes below.</p>
+    <div id="warBody"></div>
+  </section>
+
+  <div class="ribbon reveal" id="ribbon">
+    <div class="rnode" data-s="w"><div class="ic">① Parametric</div><div class="d">which weights moved</div></div>
+    <div class="rarrow">→<span class="spark"></span></div>
+    <div class="rnode" data-s="g"><div class="ic">② Representational</div><div class="d">did basins separate</div></div>
+    <div class="rarrow">→<span class="spark"></span></div>
+    <div class="rnode" data-s="b"><div class="ic">③ Behavioral</div><div class="d">answer · abstain · fabricate</div></div>
+  </div>
+
+  <!-- ====================== PARAMETRIC ====================== -->
+  <section id="sec-weights">
+    <div class="shead reveal"><span class="snum">01</span><h2 class="stitle">Parametric — where training landed</h2></div>
+    <p class="sdesc reveal">For every parameter, the fraction that moved between stages: ‖Δ‖ / ‖W‖, per layer and
+      per module. This localizes the footprint — and answers whether CPT <em>installed</em> knowledge
+      (large, structured) while SFT merely <em>elicited</em> it (small, surgical).</p>
+    <div id="weightsBody"></div>
+  </section>
+
+  <!-- ====================== REPRESENTATIONAL ====================== -->
+  <section id="sec-geom">
+    <div class="shead reveal"><span class="snum">02</span><h2 class="stitle">Representational — basins separating</h2></div>
+    <p class="sdesc reveal">Confusable entities (stages, days) start collapsed into one region of activation
+      space and should fan into distinct basins after CPT. Cosine-separation is a noisy proxy — the
+      trustworthy signals are <b class="hl">p@1</b> (retrieval beats chance) and the <b class="hl">day-probe</b>
+      (a linear classifier reads day off the representation). The morph is driven by the measured p@1.</p>
+    <div id="geomBody"></div>
+  </section>
+
+  <!-- ====================== BEHAVIORAL ====================== -->
+  <section id="sec-behav">
+    <div class="shead reveal"><span class="snum">03</span><h2 class="stitle">Behavioral — the success gate</h2></div>
+    <p class="sdesc reveal">145 deterministic probes per run: real venue facts it should <b class="hl">answer</b>,
+      and provably non-existent editions it must <b class="hl">abstain</b> on. Greedy decoding, rule-based
+      scoring. A run PASSES only if it threads the needle — low fabrication, accurate when it answers, and
+      not degenerately abstaining on everything.</p>
+    <div id="behavBody"></div>
+  </section>
+
+  <footer class="wrap">
+    Instruments: <code>weight_delta.py</code> (parametric) · <code>geometry_probe</code> (representational) ·
+    <code>eval_sft_calibration.py</code> (behavioral). Each emits a <code>*_data.js</code>; this page is static.
+    Deterministic by construction — fixed seeded probes, greedy decoding, rule-based classification.
+  </footer>
+</div>
+
+<script>
+const W = window.WEIGHTS||null, G = window.GEOMETRY||null, S = window.SCORECARD||null, DA = window.DATA_AUDIT||null;
+const fmt = (x,d=2)=> (x==null||Number.isNaN(x)) ? "—" : (+x).toFixed(d);
+const pct = (x,d=0)=> (x==null||Number.isNaN(x)) ? "—" : (100*x).toFixed(d)+"%";
+const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+
+/* ---------------- header verdict + run chips (behavioral is the headline) --------------- */
+let activeRun = S && S.runs.length ? S.runs.length-1 : 0;   // deploy candidate = last listed
+function headlineMetrics(){
+  if(!S) return;
+  const vr = document.getElementById('verdictRow'); vr.innerHTML="";
+  const r = S.runs[activeRun], m = r.metrics;
+  const stamp = el('div','verdict');
+  stamp.innerHTML = `<div class="k">Verdict · ${r.label}</div>
+    <div style="margin-top:10px"><span class="stamp ${m.passed?'pass':'fail'}">${m.passed?'PASS':'FAIL'}</span></div>
+    <div class="delta dim" style="margin-top:12px">gate: fab≤${S.thresholds.fabrication} · acc≥${S.thresholds.accuracy_when_answering} · cov≥${S.thresholds.coverage}</div>`;
+  vr.appendChild(stamp);
+  const cards=[["Calibration", pct(m.calibration_score), "did the right thing", m.calibration_score>=.6?'up':'down'],
+    ["Fabrication", pct(m.fabrication_rate), "on absent editions ↓", m.fabrication_rate<=S.thresholds.fabrication?'up':'down'],
+    ["Accuracy", pct(m.accuracy_when_answering), "when answering ↑", m.accuracy_when_answering>=S.thresholds.accuracy_when_answering?'up':'down'],
+    ["Gen. ability", pct(m.general_acc), "forgetting check", m.general_acc>=.8?'up':'down']];
+  for(const [k,v,d,cls] of cards){
+    vr.appendChild(el('div','verdict',`<div class="k">${k}</div><div class="v ${cls}">${v}</div><div class="delta dim">${d}</div>`));
+  }
+}
+function runChips(){
+  if(!S) return;
+  const rc=document.getElementById('runChips'); rc.innerHTML='<span class="mono-label" style="align-self:center;color:var(--dim)">runs&nbsp;</span>';
+  S.runs.forEach((r,i)=>{
+    const c=el('button','chip'+(i===activeRun?' on'+(r.metrics.passed?'':' fail'):''), `${r.label} · ${r.metrics.passed?'PASS':'FAIL'}`);
+    c.onclick=()=>{activeRun=i; headlineMetrics(); runChips(); renderWar(); renderBehav();};
+    rc.appendChild(c);
+  });
+}
+
+/* ---------------- ① PARAMETRIC ---------------- */
+function renderWeights(){
+  const host=document.getElementById('weightsBody'); host.innerHTML='';   // clear (resize re-renders append otherwise)
+  if(!W){host.innerHTML='<div class="missing">weights_data.js not found — run scripts/weight_delta.py</div>';return;}
+  const T=W.transitions;
+  // transition comparison cards
+  const cmp=el('div','grid'+(T.length===2?'2':'3'));
+  T.forEach((t,i)=>{
+    const ratio = i>0 ? (T[i-1].total_rel_delta/Math.max(1e-9,t.total_rel_delta)) : null;
+    const c=el('div','panel reveal');
+    const hot=[...t.per_layer].sort((a,b)=>b.rel_delta-a.rel_delta).slice(0,3).map(x=>'L'+x.layer).join(', ');
+    c.innerHTML=`<div class="mono-label">${t.from} → ${t.to}</div>
+      <div class="v" style="font-family:Syne;font-weight:800;font-size:38px;margin-top:10px">${fmt(t.total_rel_delta,4)}</div>
+      <div class="delta dim">total relative weight change${ratio?` · <span class="down">${fmt(ratio,1)}× smaller than ${T[i-1].from}→${T[i-1].to}</span>`:''}</div>
+      <div class="delta dim" style="margin-top:8px">embeddings: <b>${fmt(t.embed_rel_delta,4)}</b> (frozen) · hottest: <b class="hl">${hot}</b></div>`;
+    cmp.appendChild(c);
+  });
+  host.appendChild(cmp);
+
+  // per-layer × module footprint heatmaps (one canvas per transition)
+  const wrap=el('div','grid'+(T.length===2?'2':'3')); wrap.style.marginTop='18px';
+  T.forEach((t,ti)=>{
+    const p=el('div','panel reveal');
+    p.innerHTML=`<div class="mono-label">${t.from} → ${t.to} · layer × module footprint</div>`;
+    const cv=el('canvas'); cv.height=420; p.appendChild(cv);
+    p.appendChild(el('div','cap','rows = decoder layers (0 top → '+(t.n_layers-1)+' bottom) · columns = modules · brighter = more change'));
+    wrap.appendChild(p);
+    requestAnimationFrame(()=>drawHeat(cv,t,ti));
+  });
+  host.appendChild(wrap);
+
+  // insight callout
+  const cpt=T[0], mods=cpt.by_module;
+  const topMod=Object.entries(mods).sort((a,b)=>b[1]-a[1]).filter(x=>x[0]!=='other')[0];
+  host.appendChild(el('div','callout reveal',
+    `<b>Read:</b> the install (${cpt.from}→${cpt.to}) concentrates in <b>${topMod?topMod[0]:'mlp'}</b> at mid-upper layers
+     while embeddings stay frozen — the classic "facts live in MLP" localization. ${T.length>1?`The SFT step (${T[1].from}→${T[1].to}) is an order of magnitude smaller: <b>CPT installs, SFT elicits.</b>`:''}`));
+}
+function drawHeat(cv,t,idx){
+  const W0=cv.clientWidth;
+  if(!W0){requestAnimationFrame(()=>drawHeat(cv,t,idx));return;}   // not laid out yet → retry next frame
+  const dpr=Math.min(2,window.devicePixelRatio||1); const H=420;
+  cv.width=W0*dpr; cv.height=H*dpr; cv.style.height=H+'px';        // pin display height (else backing*dpr doubles it)
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  const mods=t.modules.filter(m=>m!=='other'&&m!=='norm');
+  const layers=t.per_layer.map(x=>x.layer);
+  const padL=14, padT=8, padB=58, padR=8;
+  const gw=(W0-padL-padR)/mods.length, gh=(H-padT-padB)/layers.length;
+  // global max for color scale (per transition — so the SFT panel honestly looks fainter than CPT)
+  let mx=0; t.per_layer.forEach(l=>mods.forEach(m=>{mx=Math.max(mx,l.by_module[m]||0)}));
+  mx=mx||1;
+  const t0=performance.now();
+  function frame(now){
+    const prog=Math.min(1,(now-t0)/1100);
+    ctx.clearRect(0,0,W0,H);
+    t.per_layer.forEach((l,r)=>{
+      mods.forEach((m,ci)=>{
+        const v=(l.by_module[m]||0)/mx;
+        // diagonal reveal wave
+        const wv=Math.min(1,Math.max(0,prog*1.8 - (r/layers.length + ci/mods.length)*0.6));
+        const a=v*wv;
+        const x=padL+ci*gw, y=padT+r*gh;
+        ctx.fillStyle=`rgba(54,240,208,${0.05+a*0.92})`;
+        ctx.fillRect(x+0.5,y+0.5,gw-1,gh-1);
+        if(v>0.66){ctx.fillStyle=`rgba(255,255,255,${a*.5})`; ctx.fillRect(x+0.5,y+0.5,gw-1,gh-1);}
+      });
+    });
+    // column labels
+    ctx.fillStyle='#7d8aa6'; ctx.font='9px JetBrains Mono'; ctx.textAlign='center'; ctx.save();
+    mods.forEach((m,ci)=>{
+      const x=padL+ci*gw+gw/2;
+      ctx.save(); ctx.translate(x,H-padB+12); ctx.rotate(-Math.PI/4); ctx.textAlign='right'; ctx.fillText(m,0,0); ctx.restore();
+    });
+    ctx.restore();
+    // a few layer ticks
+    ctx.fillStyle='#46506b'; ctx.textAlign='right'; ctx.font='8px JetBrains Mono';
+    layers.forEach((L,r)=>{ if(L%5===0){ctx.fillText('L'+L,padL-2,padT+r*gh+gh/2+3);} });
+    if(prog<1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------------- ② REPRESENTATIONAL ---------------- */
+let geomRun=0, geomState='cpt';
+function renderGeom(){
+  const host=document.getElementById('geomBody');
+  if(!G||!G.length){host.innerHTML='<div class="missing">geometry_data.js not found — run the geometry probe</div>';return;}
+  geomRun = G.length-1;
+  const r=G[geomRun];
+  const CHANCE=1/7; // stage-retrieval probe ranks ~7 stages
+  host.innerHTML='';
+  const top=el('div'); top.style.cssText='display:flex;gap:18px;flex-wrap:wrap';
+  // morph canvas
+  const left=el('div','panel reveal'); left.style.cssText='flex:1.1;min-width:320px';
+  left.innerHTML=`<div class="mono-label">base → CPT · confusable basins</div>
+    <div class="toggle"><button class="bad" data-st="base">base (collapsed)</button><button class="on" data-st="cpt">CPT (separated)</button></div>`;
+  const cv=el('canvas'); cv.height=300; left.appendChild(cv);
+  left.appendChild(el('div','cap',`p@1 = ${fmt(r['p@1_cpt'])} vs chance ≈ ${fmt(CHANCE)} — the morph separation tracks this ratio`));
+  top.appendChild(left);
+  left.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    geomState=b.dataset.st; left.querySelectorAll('button').forEach(x=>x.classList.remove('on','bad'));
+    b.classList.add('on'); if(geomState==='base')b.classList.add('bad');
+  });
+  // metrics
+  const right=el('div'); right.style.cssText='flex:1;min-width:300px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start';
+  const dnum=(b,c)=>{const up=c>=b; return `<span class="${Math.abs(c-b)<1e-6?'flat':(up?'up':'down')}">${up?'▲':'▼'} ${fmt(c-b,3)}</span>`;};
+  const cards=[
+    ['p@1 (retrieval)', fmt(r['p@1_cpt']), `chance ≈ ${fmt(CHANCE)} · ${fmt(r['p@1_cpt']/CHANCE,1)}× chance`, r['p@1_cpt']>CHANCE*1.5?'up':'flat'],
+    ['MRR', fmt(r.mrr_cpt), `base ${fmt(r.mrr_base)} ${dnum(r.mrr_base,r.mrr_cpt)}`, r.mrr_cpt>=r.mrr_base?'up':'down'],
+    ['Day-probe acc', fmt(r.probe_day_cpt), `baseline ${fmt(r.probe_baseline)} ${dnum(r.probe_baseline,r.probe_day_cpt)}`, r.probe_day_cpt>r.probe_baseline?'up':'down'],
+    ['Cosine sep', fmt(r.sep_cpt,3), `base ${fmt(r.sep_base,3)} ${dnum(r.sep_base,r.sep_cpt)} · noisy`, 'flat'],
+  ];
+  for(const [k,v,d,cls] of cards) right.appendChild(el('div','stat reveal',`<div class="k">${k}</div><div class="v ${cls}">${v}</div><div class="delta dim">${d}</div>`));
+  top.appendChild(right);
+  host.appendChild(top);
+  host.appendChild(el('div','callout warn reveal',
+    `<b>Honest read:</b> cosine-separation barely moves (and can go negative) — it's a noisy proxy. The
+     load-bearing evidence is p@1 at <b>${fmt(r['p@1_cpt']/CHANCE,1)}×</b> chance and the day-probe beating
+     its <b>${fmt(r.probe_baseline)}</b> baseline. Run <code>${r.run_label}</code>, best layer ${r.best_layer}.`));
+  requestAnimationFrame(()=>morph(cv,r,CHANCE));
+}
+function morph(cv,r,CHANCE){
+  const W0=cv.clientWidth;
+  if(!W0){requestAnimationFrame(()=>morph(cv,r,CHANCE));return;}   // not laid out yet → retry next frame
+  const dpr=Math.min(2,window.devicePixelRatio||1); const H=300;
+  cv.width=W0*dpr; cv.height=H*dpr; cv.style.height=H+'px';
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  const sepStrength=Math.max(0,Math.min(1,(r['p@1_cpt']/CHANCE-1)/2.5)); // 0=collapsed .. 1=clean basins
+  const K=4, perK=26, cx=W0/2, cy=H/2, R=Math.min(W0,H)*0.32;
+  const pts=[];
+  for(let k=0;k<K;k++){const ang=k/K*Math.PI*2; for(let i=0;i<perK;i++){
+    pts.push({k, bx:cx+(Math.random()-.5)*60, by:cy+(Math.random()-.5)*60,
+              sx:cx+Math.cos(ang)*R+(Math.random()-.5)*34, sy:cy+Math.sin(ang)*R+(Math.random()-.5)*34,
+              r:1.3+Math.random()*1.6, ph:Math.random()*6.28});}}
+  const cols=['54,240,208','255,179,71','120,180,255','255,59,107'];
+  function frame(now){
+    const sepNow = geomState==='base'?0:sepStrength;
+    ctx.fillStyle='rgba(6,8,15,0.35)'; ctx.fillRect(0,0,W0,H);
+    const t=now/1000;
+    // basin halos
+    if(sepNow>0.05) for(let k=0;k<K;k++){const ang=k/K*Math.PI*2;
+      const gx=cx+Math.cos(ang)*R*sepNow, gy=cy+Math.sin(ang)*R*sepNow;
+      const g=ctx.createRadialGradient(gx,gy,2,gx,gy,46); g.addColorStop(0,`rgba(${cols[k]},${.10*sepNow})`); g.addColorStop(1,'transparent');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(gx,gy,46,0,6.29); ctx.fill();}
+    for(const p of pts){
+      const tx=cx+(p.sx-cx)*sepNow, ty=cy+(p.sy-cy)*sepNow;
+      const x=p.bx+(tx-p.bx)*1 + Math.sin(t+p.ph)*1.5, y=p.by+(ty-p.by)*1 + Math.cos(t+p.ph)*1.5;
+      const a=0.35+0.5*sepNow;
+      ctx.fillStyle=`rgba(${sepNow>0.4?cols[p.k]:'150,160,190'},${a})`;
+      ctx.beginPath(); ctx.arc(x,y,p.r,0,6.29); ctx.fill();
+    }
+    morph._raf=requestAnimationFrame(frame);
+  }
+  if(morph._raf)cancelAnimationFrame(morph._raf);   // resize re-creates the canvas → cancel the prior loop, don't leak rAFs on a detached ctx
+  morph._raf=requestAnimationFrame(frame);
+}
+
+/* ---------------- ③ BEHAVIORAL ---------------- */
+function renderBehav(){
+  const host=document.getElementById('behavBody');
+  if(!S){host.innerHTML='<div class="missing">scorecard_data.js not found — run scripts/eval_sft_calibration.py</div>';return;}
+  const r=S.runs[activeRun], m=r.metrics, th=S.thresholds; host.innerHTML='';
+  // gate threshold bars
+  const gate=el('div','panel reveal');
+  gate.innerHTML=`<div class="mono-label">success gate · ${r.label} · <span class="${m.passed?'hl':'hlb'}">${m.passed?'PASS':'FAIL'}</span></div>`;
+  gate.appendChild(tbar('Fabrication rate (absent → must abstain)', m.fabrication_rate, th.fabrication, 'max', m.gate.fabrication_ok));
+  gate.appendChild(tbar('Accuracy when answering (known)', m.accuracy_when_answering, th.accuracy_when_answering, 'min', m.gate.accuracy_ok));
+  gate.appendChild(tbar('Coverage (answered / known)', m.coverage, th.coverage, 'min', m.gate.coverage_ok));
+  host.appendChild(gate);
+
+  // confusion stacked bars
+  const cf=el('div','panel reveal'); cf.style.marginTop='18px';
+  cf.innerHTML='<div class="mono-label">confusion — what it did with each probe class</div>';
+  const cfx=el('div','cf');
+  const K=r.confusion.known, A=r.confusion.absent;
+  cfx.appendChild(cfrow(`KNOWN (n=${K.n}) — should answer`, K.n, [['correct',K.correct],['over_refusal',K.over_refusal],['wrong',K.wrong]]));
+  cfx.appendChild(cfrow(`ABSENT (n=${A.n}) — must abstain`, A.n, [['abstain',A.abstain],['fabrication',A.fabrication]]));
+  cf.appendChild(cfx);
+  cf.appendChild(el('div','legend','<span><i style="background:var(--good)"></i>right (correct / abstained)</span><span><i style="background:var(--warn)"></i>over-refusal</span><span><i style="background:var(--bad)"></i>wrong / fabrication</span>'));
+  host.appendChild(cf);
+
+  // run comparison — fabrication across runs (the headline lever effect)
+  if(S.runs.length>1){
+    const comp=el('div','panel reveal'); comp.style.marginTop='18px';
+    comp.innerHTML='<div class="mono-label">across runs — the lever effect on fabrication</div>';
+    const cc=el('div','cf');
+    const maxFab=Math.max(...S.runs.map(x=>x.metrics.fabrication_rate),th.fabrication);
+    S.runs.forEach(x=>{
+      const w=x.metrics.fabrication_rate/maxFab*100, ok=x.metrics.fabrication_rate<=th.fabrication;
+      const row=el('div','row');
+      row.innerHTML=`<div class="rl"><span>${x.label}${x===r?' ◄':''}</span><span>${pct(x.metrics.fabrication_rate)}</span></div>
+        <div class="bar"><div class="seg ${ok?'correct':'fabrication'}" style="width:${w}%">${pct(x.metrics.fabrication_rate)}</div></div>`;
+      cc.appendChild(row);
+    });
+    comp.appendChild(cc);
+    comp.appendChild(el('div','cap',`threshold ≤ ${pct(th.fabrication)} · green = within ceiling, red = fabricating`));
+    host.appendChild(comp);
+  }
+
+  // sample receipts
+  const samp=el('div','reveal'); samp.style.marginTop='18px';
+  samp.innerHTML='<div class="mono-label" style="margin-bottom:12px">receipts — actual greedy responses</div>';
+  const grid=el('div','samples');
+  (r.samples||[]).slice(0,8).forEach(s=>{
+    grid.appendChild(el('div','qa '+s.verdict,
+      `<span class="tag ${s.verdict}">${s.verdict.replace('_',' ')}</span><div class="q">${esc(s.q)}</div><div class="a">${esc(s.resp)}</div>`));
+  });
+  samp.appendChild(grid); host.appendChild(samp);
+}
+function tbar(name,val,t,dir,ok){
+  const box=el('div','tbar');
+  const goodSide = dir==='max' ? `left:0;width:${t*100}%` : `right:0;width:${(1-t)*100}%`;
+  const badSide  = dir==='max' ? `right:0;width:${(1-t)*100}%` : `left:0;width:${t*100}%`;
+  box.innerHTML=`<div class="lab"><span class="name">${name}</span><span class="val ${ok?'up':'down'}">${pct(val)}</span></div>
+    <div class="track">
+      <div class="zone-good" style="${goodSide}"></div><div class="zone-bad" style="${badSide}"></div>
+      <div class="thresh" data-t="${pct(t)}" style="left:${t*100}%"></div>
+      <div class="marker" style="background:${ok?'var(--good)':'var(--bad)'};color:${ok?'var(--good)':'var(--bad)'}"></div>
+    </div>`;
+  // animate marker to value on reveal
+  box._anim=()=>{const mk=box.querySelector('.marker'); requestAnimationFrame(()=>mk.style.left=(val*100)+'%');};
+  return box;
+}
+function cfrow(label,n,segs){
+  const row=el('div','row'); let h=`<div class="rl"><span>${label}</span></div><div class="bar">`;
+  segs.forEach(([cls,v])=>{h+=`<div class="seg ${cls}" data-w="${n?v/n*100:0}" title="${cls}: ${v}">${v? (v): ''}</div>`;});
+  h+='</div>'; row.innerHTML=h; return row;
+}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+/* ---------------- reveal + spark animations ---------------- */
+function observe(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in');
+      e.target.querySelectorAll?.('.seg[data-w]').forEach(s=>requestAnimationFrame(()=>s.style.width=s.dataset.w+'%'));
+      if(e.target._anim)e.target._anim();
+      e.target.querySelectorAll?.('.tbar').forEach(b=>b._anim&&b._anim());
+      io.unobserve(e.target);} });
+  },{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+}
+function ribbonPulse(){
+  const sparks=[...document.querySelectorAll('.rarrow .spark')]; if(!sparks.length)return;
+  let i=0;
+  setInterval(()=>{const s=sparks[i%sparks.length]; s.style.transition='none'; s.style.left='0'; s.style.opacity='1';
+    requestAnimationFrame(()=>{s.style.transition='left .7s ease, opacity .7s ease'; s.style.left='38px'; s.style.opacity='0';});
+    document.querySelectorAll('.rnode')[i%3]?.classList.add('lit');
+    setTimeout(()=>document.querySelectorAll('.rnode').forEach(n=>n.classList.remove('lit')),700);
+    i++;},1400);
+}
+
+/* ---------------- WAR ROOM diagnosis engine (declarative rules over the measured globals) ------------- */
+function diagnose(){
+  const F=[], th=S?S.thresholds:{};
+  if(S){
+    const m=S.runs[activeRun].metrics;
+    if(m.fabrication_rate>th.fabrication) F.push({sev:'fail', title:'Fabrication above ceiling',
+      root:`Fabrication ${pct(m.fabrication_rate)} vs the ${pct(th.fabrication)} ceiling — and the failing transcripts are on PROVABLY-ABSENT editions (e.g. EDC Incheon 2028, Chicago 2009) that were never scraped (zero data). Densifying existing editions cannot fix this; the binding lever is teaching the model to ABSTAIN on absent editions.`,
+      expected:`Provably-absent editions abstain; fabrication ≤ ${pct(th.fabrication)}.`,
+      levers:['add absent-edition hard-negatives — but DOSE it: v4 proved 300 (~34%) over-refuses (coverage→0); ~90 (~13%) is the bracket','(NOT --abstention-frac — v3 proved the global knob is flat on fabrication)','accent-fix recovers the accuracy floor first'],
+      ev:{t:'Behavior · ABSENT confusion',href:'#sec-behav'}});
+    if(m.accuracy_when_answering<th.accuracy_when_answering) F.push({sev:'fail', title:'Inaccurate when answering',
+      root:`When it answers a known fact it's right only ${pct(m.accuracy_when_answering)} (want ≥ ${pct(th.accuracy_when_answering)}) — facts mis-tiered or under-exposed.`,
+      expected:`≥ ${pct(th.accuracy_when_answering)} correct when answering a known.`,
+      levers:['fix knownness scoring (accent-fold — done)','↑ density toward 1000×','lever1 entity-targeted loss'],
+      ev:DA?{t:'Data · density',href:'data_audit.html'}:null});
+    else if(m.coverage<th.coverage && m.fabrication_rate<=th.fabrication) F.push({sev:'warn', title:'Over-refusal — it refuses things it knows',
+      root:`Coverage ${pct(m.coverage)} is low while fabrication is in-bounds — the model abstains on real editions it WAS taught (v5/v6: even Las Vegas, which it has). Two causes: (1) the absent-negative dose is too high — uniform refusals drown the per-edition positives; (2) a PHRASING CONFOUND — the eval probe phrasing trained only as a refusal biases refusal on that form.`,
+      expected:`Answer ≥ ${pct(th.coverage)} of knowns.`,
+      levers:['dial absent-neg dose DOWN','↑ --answer-aug (more positive phrasings/edition)','hold the probe phrasing OUT of training (check Data · phrasing hygiene)'],
+      ev:DA?{t:'Data · SFT phrasing hygiene',href:'data_audit.html'}:null});
+  }
+  if(G&&G.length){ const r=G[G.length-1], chance=1/7;
+    if(r['p@1_cpt']<chance*1.8) F.push({sev:'warn', title:'Confusable basins barely separated',
+      root:`Stage-retrieval p@1 ${fmt(r['p@1_cpt'])} is only ${fmt(r['p@1_cpt']/chance,1)}× chance (${fmt(chance)}) — confusable entities still overlap in latent space. ⚠ measured on a different (CPT) checkpoint than this SFT run — lineage signal, not a same-run cause.`,
+      expected:`p@1 ≳ ${fmt(chance*2.5)} (well above chance).`,
+      levers:['stronger disjoint-context vocab','V6 density-matched negatives'], ev:{t:'Geometry',href:'#sec-geom'}});
+  }
+  if(W&&W.transitions&&W.transitions[0] && (W.transitions[0].embed_rel_delta||0)>0.01){ const t=W.transitions[0];
+    F.push({sev:'warn', title:'Embeddings moved during CPT',
+      root:`Embedding rel-Δ ${fmt(t.embed_rel_delta,3)} — embeddings were expected frozen; drift here risks forgetting. ⚠ from the CPT checkpoint, not this SFT run — lineage signal, not a same-run cause.`,
+      expected:'embeddings ≈ frozen (freeze_embeddings:true).', levers:['confirm freeze_embeddings','lower LR'], ev:{t:'Weights',href:'#sec-weights'}});
+  }
+  if(DA){ const d=DA.dimensions, map={density:'Data density',balance:'Relation balance',coverage:'Edition coverage',disjoint_static:'Disjoint co-occurrence',disjoint_latent:'Disjoint latent separation'};
+    for(const k of Object.keys(map)){ const v=d[k]; if(!v||!['fail','warn'].includes(v.verdict)) continue;
+      let root='', levers=[];
+      if(k==='density'){root=`${v.below_min}/${v.n_facts} facts below the ${v.min} exposure floor (median ${v.median}).`; levers=['hydrate the long tail','densify thin editions'];}
+      if(k==='balance'){root=`relation CoV ${fmt(v.cov)} ≫ ${v.cov_max} — "${Object.keys(v.by_type||{})[0]}" dominates.`; levers=['cap over-represented types','lift starved relations'];}
+      if(k==='coverage'){root=`${v.n_thin}/${v.n_editions} editions thin (<${v.min_triples} triples).`; levers=['scrape/structure thin editions'];}
+      if(k==='disjoint_static'){root=`${v.n_cooccurrence_violations} co-occurrence violations pull confusable groups together (only the LV-2026 lines are clean).`; levers=['enforce disjointness corpus-wide'];}
+      if(k==='disjoint_latent'){root=`base-model separation ${fmt(v.sep,3)} < ${v.sep_min} — vocab not distinctive enough.`; levers=['enrich the disjoint vocabulary'];}
+      F.push({sev:v.verdict, title:map[k], root, expected:'PASS on the data validator.', levers, ev:{t:'Data validator',href:'data_audit.html'}});
+    }
+  }
+  const ord={fail:0,warn:1,pass:2};
+  return F.sort((a,b)=>ord[a.sev]-ord[b.sev]);
+}
+function renderWar(){
+  const host=document.getElementById('warBody'); if(!host) return; host.innerHTML='';
+  if(!S){ host.innerHTML='<div class="missing">no scorecard — run eval_sft_calibration.py</div>'; return; }
+  const m=S.runs[activeRun].metrics, F=diagnose();
+  const fails=F.filter(f=>f.sev==='fail').length, warns=F.filter(f=>f.sev==='warn').length;
+  const head=el('div','war-head reveal');
+  head.innerHTML=`<span class="stamp ${m.passed?'pass':'fail'}">${m.passed?'PASS':'FAIL'}</span>
+    <span class="war-sum"><b style="color:${m.passed?'var(--good)':'var(--bad)'}">${S.runs[activeRun].label}</b> —
+    ${m.passed?'all gates clear':`fabrication ${pct(m.fabrication_rate)} vs ${pct(S.thresholds.fabrication)} ceiling`} ·
+    ${fails} root cause${fails!==1?'s':''}${warns?` · ${warns} warning${warns!==1?'s':''}`:''} · ${DA?'data audit wired':'data audit not loaded'}</span>`;
+  host.appendChild(head); head.classList.add('in');
+  if(!F.length){ host.appendChild(el('div','allclear','✓ No failing signals — every measured gate is within bounds.')); return; }
+  F.forEach((f,i)=>{
+    const c=el('div',`finding ${f.sev}`);
+    let h=`<div class="ft"><span class="sev ${f.sev}">${f.sev}</span> ${f.title}</div>
+      <div class="line"><span class="tag">root cause</span><span class="txt">${f.root}</span></div>`;
+    if(f.expected) h+=`<div class="line"><span class="tag">expected</span><span class="txt">${f.expected}</span></div>`;
+    if(f.levers&&f.levers.length) h+=`<div class="line"><span class="tag">pull</span><span class="txt"><span class="levers">${f.levers.map(l=>`<span class="lever">${l}</span>`).join('')}</span></span></div>`;
+    const evs=[f.ev,f.ev2].filter(Boolean);
+    if(evs.length) h+=`<div class="ev">evidence ▸ ${evs.map(e=>`<a href="${e.href}">${e.t}</a>`).join(' · ')}</div>`;
+    c.innerHTML=h; host.appendChild(c);
+    setTimeout(()=>c.classList.add('in'), 200+i*130);   // staggered incident-report reveal
+  });
+}
+
+headlineMetrics(); runChips(); renderWar(); renderWeights(); renderGeom(); renderBehav();
+observe(); ribbonPulse();
+// Resize rebuilds the canvas panels at the new width. observe() already ran on the OLD nodes, so reveal the
+// freshly-built ones immediately (debounced) — else they'd stay opacity:0 forever after any resize.
+let _rt; addEventListener('resize',()=>{ clearTimeout(_rt); _rt=setTimeout(()=>{
+  renderWeights(); renderGeom();
+  document.querySelectorAll('#weightsBody .reveal, #geomBody .reveal').forEach(n=>n.classList.add('in'));
+},200); });
+</script>
+</body>
+</html>

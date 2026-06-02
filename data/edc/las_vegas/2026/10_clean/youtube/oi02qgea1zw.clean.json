@@ -1,0 +1,14 @@
+{
+  "raw_sha256": "4e56f1bc2acd11561d115923c370619605f019bac063a3c066207ab30a0d6566",
+  "clean_sha256": "8d871ba23049e4eb4f278e1b03b073c5c8fea1a15b421bb6ec7fd432d6e71e79",
+  "extractor": "json-youtube",
+  "llm_rescued": false,
+  "quality_gate": {
+    "desc_chars": 2425,
+    "has_subs": true
+  },
+  "domain_class": "social-vetted",
+  "source_channel": "youtube",
+  "source_url": "https://www.youtube.com/watch?v=OI02QgEA1Zw",
+  "title": "Above & Beyond: Live from EDC Las Vegas 2026 (Official Full Set)"
+}
