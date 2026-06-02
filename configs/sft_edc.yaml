@@ -34,7 +34,7 @@ optimizer_8bit: false
 optimizer_lowbit: 4
 int8_master: storage     # THE MOAT: each Quartet weight is a torchao Int8QuantizedTrainingLinearWeight — int8-STORED (1 byte/param) with stochastic rounding on every in-place optimizer update — driven by the SAME 4-bit AdamW (optimizer_lowbit: 4). Weight AND Adam moments are all ≤ the FP4 we ship in; no bf16 master, no hand-rolled optimizer, no g_acc (the subclass's .grad is transient, freed by zero_grad). Validated 2026-06-02: 30-step SFT loss 0.74→0.20 (converges like snap) at peakmem 11.2GB vs snap's 12.7GB — the genuine 1-byte master delivers the memory win the bf16-snap never could. `snap` (legacy: bf16 storage SR-snapped to int8, 12.7GB) and `off` remain for A/B.
 warmup_steps: 20
-max_steps: 450           # ~4 epochs over 1827 examples (eff. batch 16 → ~114 steps/epoch)
+max_steps: 1000          # ~4 epochs over the V11 comprehensive base (4,043 train ex, eff. batch 16 → ~253 steps/epoch). RECONFIRM at final build — adding absent-neg hard-negatives raises the example count.
 decay_frac: 0.2
 
 # memory levers
