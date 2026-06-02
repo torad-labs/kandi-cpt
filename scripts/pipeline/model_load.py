@@ -28,34 +28,41 @@ def load_text_model_bf16(device: str = "cuda:0"):
     return model.to(device, dtype=torch.bfloat16).eval()
 
 
-def load_causal_ckpt_bf16(path, device: str = "cuda:0"):
-    """Load a SAVED Gemma4ForCausalLM checkpoint (a CPT/SFT save_pretrained dir) for eval/generation.
-    Centralizes the bf16 + sdpa incantation. Transparently handles int8-master checkpoints (a quant_keys.json
-    sidecar): the weights are stored as int8 `_data` + per-row `.weight_scale`, so we dequantize them
-    (int8 → bf16 × scale) on load instead of expecting plain bf16 weights."""
+def causal_bf16_state_dict(path):
+    """Read a saved Gemma4ForCausalLM checkpoint dir → a bf16 state dict. THE single source of truth for the
+    int8-master round-trip: an int8 checkpoint (a quant_keys.json sidecar) is dequantized on the way out —
+    int8 `_data` × per-row `.weight_scale` → bf16, and the `.weight_scale` tensors are dropped; a plain bf16
+    checkpoint passes through as bf16. Every loader (eval, SFT init_from) goes through here so none can drift
+    out of lock-step with train_cpt.save_checkpoint's write format (loading raw int8 without its scale = garbage)."""
     import json
     from pathlib import Path
     p = Path(path)
-    qmap = p / "quant_keys.json"
-    if not qmap.is_file():                                  # standard bf16 checkpoint
-        return Gemma4ForCausalLM.from_pretrained(
-            str(p), dtype=torch.bfloat16, attn_implementation="sdpa").to(device).eval()
-    # int8-master checkpoint → reconstruct bf16 weights from int8 + per-row scale
-    int8_keys = set(json.loads(qmap.read_text()).get("keys", []))
-    cfg_obj = AutoConfig.from_pretrained(str(p))
-    text_cfg = getattr(cfg_obj, "text_config", cfg_obj)     # saved config is already the text config
-    text_cfg._attn_implementation = "sdpa"
     raw = load_file(str(p / "model.safetensors"))
+    qmap = p / "quant_keys.json"
+    if not qmap.is_file():                                   # plain bf16 checkpoint
+        return {k: v.to(torch.bfloat16) for k, v in raw.items()}
+    int8_keys = set(json.loads(qmap.read_text()).get("keys", []))
     sd = {}
     for k, v in raw.items():
         if k.endswith(".weight_scale"):
             continue
-        if k in int8_keys:
-            scale = raw[k + ".weight_scale"].to(torch.bfloat16)
-            sd[k] = v.to(torch.bfloat16) * scale.unsqueeze(1)
-        else:
-            sd[k] = v.to(torch.bfloat16)
+        sd[k] = (v.to(torch.bfloat16) * raw[k + ".weight_scale"].to(torch.bfloat16).unsqueeze(1)
+                 if k in int8_keys else v.to(torch.bfloat16))
+    return sd
+
+
+def load_causal_ckpt_bf16(path, device: str = "cuda:0"):
+    """Load a SAVED Gemma4ForCausalLM checkpoint (a CPT/SFT save dir) for eval/generation — the bf16 + sdpa
+    incantation. Dequantizes an int8-master checkpoint via causal_bf16_state_dict (the shared round-trip)."""
+    from pathlib import Path
+    p = Path(path)
+    if not (p / "quant_keys.json").is_file():               # standard bf16 checkpoint → fast from_pretrained
+        return Gemma4ForCausalLM.from_pretrained(
+            str(p), dtype=torch.bfloat16, attn_implementation="sdpa").to(device).eval()
+    cfg_obj = AutoConfig.from_pretrained(str(p))
+    text_cfg = getattr(cfg_obj, "text_config", cfg_obj)     # saved config is already the text config
+    text_cfg._attn_implementation = "sdpa"
     model = Gemma4ForCausalLM(text_cfg)
-    model.load_state_dict(sd, strict=False)
+    model.load_state_dict(causal_bf16_state_dict(p), strict=False)
     model.tie_weights()
     return model.to(device, dtype=torch.bfloat16).eval()

@@ -305,9 +305,11 @@ def build_model(cfg):
     init = cfg.get("init_from")
     if init:
         # SFT / resumed CPT: a saved Gemma4ForCausalLM checkpoint (save_checkpoint) already has model.* +
-        # lm_head keys — load directly, no multimodal remap. Same text arch as the base, so text_cfg holds.
-        sd = load_file(f"{str(C.ROOT / init)}/model.safetensors")
-        remapped = sd
+        # lm_head keys — no multimodal remap. Route through the shared loader so an int8-master checkpoint
+        # round-trips (dequant int8 _data × per-row scale → bf16); loading the raw int8 without its scale
+        # would silently init from garbage weights. A plain bf16 checkpoint passes through unchanged.
+        from pipeline.model_load import causal_bf16_state_dict
+        remapped = causal_bf16_state_dict(C.ROOT / init)
         log(f"init_from: loading CausalLM checkpoint '{init}' ({len(remapped)} tensors)")
     else:
         sd = load_file(f"{cfg['model_path']}/model.safetensors")

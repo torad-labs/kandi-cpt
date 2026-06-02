@@ -2,16 +2,23 @@
 # Starts from the CPT checkpoint (init_from), trains on chat-format Q/A with assistant-only masked labels
 # (build_sft.py emits the `labels` column the trainer auto-detects). Same FP4 + int8-master deployment
 # recipe as CPT so the SFT'd model stays NVFP4-native for on-device. Lower LR + few epochs (SFT is touchy).
-run_name: edc_sft_v1
-save_dir: checkpoints/sft/edc_sft_v1   # CRUCIAL — travels with the config (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
+#
+# CANONICAL LAUNCH (one flag — the config selector):  bash scripts/train_fp4.sh --config configs/sft_edc.yaml
+#   The launcher carries all toolchain env (CUDA/NVCC/MAX_JOBS/GPU); this file carries the run spec.
+#   init_from is the int8-master v2 CPT checkpoint — train_cpt.build_model dequantizes it on load
+#   (pipeline.model_load.causal_bf16_state_dict), so the storage-saved CPT brain round-trips cleanly.
+run_name: edc_sft_v11
+save_dir: checkpoints/sft/edc_sft_v11   # CRUCIAL — travels with the config (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
 model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
 precision: fp4
 
-# start from the full-history CPT brain, not the base model
-init_from: checkpoints/cpt/edc_all97_v1
+# start from the full-history v2 CPT brain (VC1-rebuilt corpus, int8-master storage), not the base model
+init_from: checkpoints/cpt/edc_all97_v2
 
-# data — SFT chat corpus (input_ids + assistant-only `labels`)
-tokenized: data/_build/30_tokenized/sft_v1.arrow
+# data — SFT chat corpus (input_ids + assistant-only `labels`). Built by build_sft.py --out sft_v11
+# (comprehensive 12-dimension QA over the VC1 data). max_steps below is RECONFIRMED against the V11
+# example count after the build (more dims/editions than v1's 1827 → more examples → scale the horizon).
+tokenized: data/_build/30_tokenized/sft_v11.arrow
 seq_len: 256
 micro_batch_size: 1      # memory-optimized: 16 batch-1 micro-passes/step (halves activation memory, ~2× step time)
 grad_accum: 16           # effective batch 16 (1×16) — same convergence as 2×8. For speed over memory: mb2 / accum8
