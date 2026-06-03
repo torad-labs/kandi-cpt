@@ -31,11 +31,26 @@ mapfile -t EDS < <(
 echo "VC1 re-hydrate: ${#EDS[@]} editions  (model=$MODEL base_n=$BASE_N par=$PAR conc=$CONC)  $(date +%H:%M)"
 [ "${#EDS[@]}" -eq 0 ] && { echo "nothing stale — all current."; exit 0; }
 export RUST_BIN BASE_N CONC MODEL
+# PRESERVE-ON-UNDERPERFORM: the Rust hydrate truncates relations.jsonl up front (File::create). For
+# thin/festival-level editions it can emit 0 faithful lines (the gate correctly won't fabricate stage/day
+# placements that the triples don't contain) — which would DESTROY good prior content. So we back up the
+# existing relations.jsonl and ONLY keep the new output when it's at least as dense; otherwise restore the
+# prior. This makes re-hydration monotone (never loses lines) — the fix for the v2→0 regression.
 printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
   mkdir -p "data/edc/$1/25_hydrated"
-  "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" \
-      > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1 \
-    && echo "  ✓ $1 ($(wc -l <"data/edc/$1/25_hydrated/relations.jsonl" 2>/dev/null) lines)" \
-    || echo "  ✗ $1 FAILED (tail: $(tail -1 "data/edc/$1/25_hydrated/.rehydrate.log" 2>/dev/null))"
+  R="data/edc/$1/25_hydrated/relations.jsonl"
+  prev=0; [ -f "$R" ] && { cp "$R" "$R.prev"; prev=$(wc -l <"$R.prev"); }
+  if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" \
+       > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then
+    new=$(wc -l <"$R" 2>/dev/null || echo 0)
+    if [ "$prev" -gt 0 ] && [ "$new" -lt "$prev" ]; then
+      mv "$R.prev" "$R"; echo "  ⚠ $1 KEPT prior ($prev lines) — new hydration gave only $new (faithfulness-thin triples)"
+    else
+      rm -f "$R.prev"; echo "  ✓ $1 ($new lines)"
+    fi
+  else
+    [ -f "$R.prev" ] && mv "$R.prev" "$R"   # hydrate crashed → restore prior, never leave it truncated
+    echo "  ✗ $1 FAILED (tail: $(tail -1 "data/edc/$1/25_hydrated/.rehydrate.log" 2>/dev/null))"
+  fi
 ' _ {}
 echo "VC1 re-hydrate done  $(date +%H:%M)  — relations.jsonl files: $(ls data/edc/*/*/25_hydrated/relations.jsonl 2>/dev/null | wc -l)"

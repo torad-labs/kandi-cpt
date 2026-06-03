@@ -40,6 +40,38 @@ if [ "$stale" -gt 0 ] || [ "$workers" -gt 0 ]; then
 fi
 echo "✓ all editions hydrated, no workers running."
 
+echo "===== [reconcile] restore any edition the re-hydration REGRESSED vs v2 (committed) ====="
+# Re-hydration of thin/festival-level editions can emit 0 faithful lines (the gate won't fabricate stage/day
+# placements absent from the triples), truncating good prior content. The rehydrate_vc1.sh preserve-on-
+# underperform fix stops this going forward, but for any edition already truncated, restore the committed v2
+# relations.jsonl when it had MORE lines — so v3 is a strict superset of v2 (the LLM-variety gains never cost
+# us breadth). git is the source of truth for the v2 content.
+restored=0
+while IFS= read -r r; do
+  [ -n "$r" ] || continue
+  cur=$(wc -l <"$r" 2>/dev/null || echo 0)
+  old=$(git show "HEAD:$r" 2>/dev/null | wc -l)
+  if [ "$old" -gt "$cur" ]; then
+    git checkout HEAD -- "$r" && { echo "  ↺ restored ${r#data/edc/} (v2 $old > rehydrated $cur lines)"; restored=$((restored+1)); }
+  fi
+done < <(find data/edc -name relations.jsonl 2>/dev/null | grep -v 'las_vegas/2026')
+echo "  restored $restored regressed edition(s) from v2."
+
+echo "===== [0-line guard] no edition with concrete triples may be empty ====="
+empty=0
+for t in data/edc/*/*/15_structured/triples.jsonl; do
+  ed=${t%/15_structured/triples.jsonl}
+  [ "${ed#data/edc/}" = "las_vegas/2026" ] && continue
+  r="$ed/25_hydrated/relations.jsonl"
+  [ -f "$r" ] && [ "$(wc -l <"$r")" -eq 0 ] && { echo "  ✗ EMPTY: ${ed#data/edc/} (triples present but 0 hydrated lines)"; empty=$((empty+1)); }
+done
+if [ "$empty" -gt 0 ]; then
+  echo "✗ $empty edition(s) hydrated to 0 lines AND had no v2 to restore — refusing to tokenize an incomplete"
+  echo "  corpus. Inspect those editions' triples (likely festival-level-only plays_at). NOT building v3."
+  exit 1
+fi
+echo "✓ no empty editions."
+
 echo "===== [1] re-tokenize → corpus_all97_v3 ====="
 # Idempotent: skip if the arrow is newer than every relations.jsonl (nothing changed since last build).
 newest_rel=$(find data/edc -name relations.jsonl -printf '%T@\n' 2>/dev/null | sort -rn | head -1)
