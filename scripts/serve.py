@@ -23,6 +23,10 @@ from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from cpt_config import GATE_THRESHOLDS as _GT   # the ONE gate-threshold source (kills the eval/serve triplication)
+
 ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
 PAGES = HERE / "report" / "pages"
@@ -40,7 +44,7 @@ LEDGER = DISSECT / "calibration_results.jsonl"
 def corpus_dir(festival):
     return DATA_ROOT / festival
 
-GATE = {"fabrication": 0.25, "accuracy_when_answering": 0.55, "coverage": 0.40}
+GATE = {"fabrication": _GT["fabrication"], "accuracy_when_answering": _GT["accuracy"], "coverage": _GT["coverage"]}
 CHANCE = 1 / 7  # stage-retrieval probe ranks ~7 stages — p@1 vs this is the install ratio
 
 # ───────────────────────────── artifact readers ─────────────────────────────
@@ -251,7 +255,7 @@ def run_detail(rid):
 # objective/campaign — it is not hard-coded to EDC. The deterministic baseline
 # below is sharpened by the coach-intelligence workflow (V9 wording / expected
 # effects), but stands on its own.
-GATE_T = {"fabrication": 0.25, "accuracy": 0.55, "coverage": 0.40}
+GATE_T = {"fabrication": _GT["fabrication"], "accuracy": _GT["accuracy"], "coverage": _GT["coverage"]}
 
 
 def _traj_note(r):

@@ -1,0 +1,359 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "kandi-cpt run config (CptConfig)",
+  "description": "THE config contract \u2014 generated from scripts/cpt_config.py by scripts/emit_schema.py. One training entrypoint + one eval entrypoint consume this; do not hand-edit.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": [
+        "cpt",
+        "sft"
+      ]
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model_path": {
+          "type": "string"
+        },
+        "freeze_embeddings": {
+          "type": "boolean"
+        },
+        "cpu_offload_ple": {
+          "type": "boolean"
+        },
+        "nvfp4": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "skip_lm_head": {
+              "type": "boolean"
+            },
+            "skip_embeddings": {
+              "type": "boolean"
+            },
+            "bf16_first_layers": {
+              "type": "integer"
+            },
+            "bf16_last_layers": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tokenized": {
+          "type": "string"
+        },
+        "init_from": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dataset_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "train": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "precision": {
+          "enum": [
+            "bf16",
+            "fp4",
+            "nvfp4"
+          ]
+        },
+        "int8_master": {
+          "enum": [
+            "storage",
+            "snap",
+            "off"
+          ]
+        },
+        "optimizer_lowbit": {
+          "type": "integer"
+        },
+        "optimizer_8bit": {
+          "type": "boolean"
+        },
+        "int8_grad_accum": {
+          "type": "boolean"
+        },
+        "lr": {
+          "type": "number"
+        },
+        "min_lr": {
+          "type": "number"
+        },
+        "warmup_steps": {
+          "type": "integer"
+        },
+        "max_steps": {
+          "type": "integer"
+        },
+        "decay_frac": {
+          "type": "number"
+        },
+        "micro_batch_size": {
+          "type": "integer"
+        },
+        "grad_accum": {
+          "type": "integer"
+        },
+        "seq_len": {
+          "type": "integer"
+        },
+        "weight_decay": {
+          "type": "number"
+        },
+        "betas": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "adam_eps": {
+          "type": "number"
+        },
+        "grad_clip": {
+          "type": "number"
+        },
+        "gradient_checkpointing": {
+          "type": "boolean"
+        },
+        "levers": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "lever1_entity_loss": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "entity_loss_weight": {
+                  "type": "number"
+                }
+              }
+            },
+            "lever2_qa_mix": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "qa_token_fraction": {
+                  "type": "number"
+                },
+                "use_chat_template": {
+                  "type": "boolean"
+                },
+                "system_prefix": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "lever3_three_r": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "replay_token_fraction": {
+                  "type": "number"
+                },
+                "rewarm_peak_lr": {
+                  "type": "number"
+                },
+                "ewc": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "lambda_": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "lever4_exposure_tracking": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "threshold": {
+                  "type": "number"
+                }
+              }
+            },
+            "lever5_causal_trace": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "n_facts": {
+                  "type": "integer"
+                },
+                "noise_scale": {
+                  "type": "number"
+                },
+                "checkpoint": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "corpus_synthesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gen_model": {
+          "type": "string"
+        },
+        "hydrate_base_n": {
+          "type": "integer"
+        },
+        "hydrate_concurrency": {
+          "type": "integer"
+        },
+        "hydrate_parallelism": {
+          "type": "integer"
+        },
+        "replay_frac": {
+          "type": "number"
+        },
+        "answer_aug": {
+          "type": "integer"
+        },
+        "abstention_frac": {
+          "type": "number"
+        },
+        "absent_neg": {
+          "type": "integer"
+        },
+        "fake_city_neg": {
+          "type": "integer"
+        },
+        "fine_grained_neg": {
+          "type": "integer"
+        },
+        "max_per_relation": {
+          "type": "integer"
+        },
+        "sft_seq_len": {
+          "type": "integer"
+        },
+        "score_samples": {
+          "type": "integer"
+        },
+        "score_batch": {
+          "type": "integer"
+        },
+        "knowledge_filter": {
+          "type": "boolean"
+        },
+        "self_gen": {
+          "type": "boolean"
+        },
+        "drop_generic": {
+          "type": "boolean"
+        },
+        "score_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "eval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tau_fab": {
+          "type": "number"
+        },
+        "tau_acc": {
+          "type": "number"
+        },
+        "tau_cov": {
+          "type": "number"
+        },
+        "n_absent": {
+          "type": "integer"
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "scale": {
+          "type": "number"
+        },
+        "batch": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "string"
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run_name": {
+          "type": "string"
+        },
+        "save_dir": {
+          "type": "string"
+        },
+        "log_every": {
+          "type": "integer"
+        },
+        "save_every": {
+          "type": "integer"
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "smoke_steps": {
+          "type": "integer"
+        },
+        "dry_run": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

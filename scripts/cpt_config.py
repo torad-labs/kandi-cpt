@@ -263,6 +263,16 @@ class EvalConfig:
             raise ConfigError("eval.n_absent>=0, seed>=0, scale>0, batch>=1 required")
 
 
+# THE DEPLOY GATE — single-sourced from EvalConfig defaults so eval_sft_calibration.py + serve.py can't
+# drift (was triple-located: eval_sft_calibration TAU_* + serve.py GATE + serve.py GATE_T). Canonical metric
+# names; each consumer maps them to its own local labels. PASS iff fab<=fabrication ∧ acc>=accuracy ∧ cov>=coverage.
+GATE_THRESHOLDS: dict[str, float] = {
+    "fabrication": EvalConfig().tau_fab,
+    "accuracy": EvalConfig().tau_acc,
+    "coverage": EvalConfig().tau_cov,
+}
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # run (output + provenance; toolchain env + CUDA_VISIBLE_DEVICES are intentionally NOT config)
 # ─────────────────────────────────────────────────────────────────────────────

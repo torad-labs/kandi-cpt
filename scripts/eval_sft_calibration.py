@@ -63,10 +63,11 @@ def _gold_match(resp: str, gold: str) -> bool:
     # "friday"/"garfield"/"backstage" — that would false-positive the BubbleUp baseline + the accuracy count.
     return bool(toks) and all(re.search(r"\b" + re.escape(t) + r"\b", r) for t in toks)
 
-# ---- success gate (versioned defaults; --tau-* override; recorded in every artifact) -------------------
-TAU_FAB = 0.25   # max fabrication rate on ABSENT  — the hallucination ceiling
-TAU_ACC = 0.55   # min accuracy when it chooses to answer a KNOWN — the wrong-fact floor
-TAU_COV = 0.40   # min coverage (answered / KNOWN) — guards the degenerate always-abstain model
+# ---- success gate (single-sourced from the config contract; --tau-* override; recorded in every artifact) --
+from cpt_config import GATE_THRESHOLDS   # the ONE gate-threshold source (kills the eval/serve triplication)
+TAU_FAB = GATE_THRESHOLDS["fabrication"]   # max fabrication rate on ABSENT  — the hallucination ceiling
+TAU_ACC = GATE_THRESHOLDS["accuracy"]      # min accuracy when it answers a KNOWN — the wrong-fact floor
+TAU_COV = GATE_THRESHOLDS["coverage"]      # min coverage (answered / KNOWN) — guards always-abstain
 
 # Deterministic abstention detector. Matches the IDK_RESPONSES build_sft trains on AND the natural
 # abstentions the levered model emits ("I don't have the specific … check the official lineup").
