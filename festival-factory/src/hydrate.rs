@@ -462,8 +462,13 @@ impl Engine {
         out
     }
 
-    /// Generate the full corpus with bounded concurrency. Returns deduped records.
-    pub async fn hydrate(&self, store: &TripleStore, base_n: u32, concurrency: usize, limit: Option<usize>) -> Vec<Record> {
+    /// Generate the full corpus with bounded concurrency, STREAMING each faithful+deduped line to
+    /// `out_path` as its cell completes (flushed per cell). A crash/kill therefore keeps everything
+    /// generated so far on disk — no buffer-everything-then-write-once data-loss cliff (composes with the
+    /// rehydrate_vc1.sh preserve-on-underperform wrapper). Returns the in-memory records for the tally.
+    pub async fn hydrate(&self, store: &TripleStore, base_n: u32, concurrency: usize, limit: Option<usize>,
+                         out_path: &std::path::Path) -> std::io::Result<Vec<Record>> {
+        use std::io::Write as _;
         let mut cells = self.build_cells(store, base_n);
         if let Some(l) = limit {
             cells.truncate(l);
@@ -481,13 +486,22 @@ impl Engine {
                 engine.run_cell(&cells[idx]).await
             });
         }
-        let mut all = Vec::new();
+        let mut f = std::io::BufWriter::new(std::fs::File::create(out_path)?);
+        let mut seen = std::collections::BTreeSet::new();   // on-the-fly dedup (same key as the old dedup())
+        let mut out = Vec::new();
         while let Some(res) = set.join_next().await {
             if let Ok(recs) = res {
-                all.extend(recs);
+                for r in recs {
+                    let key = r.text.to_lowercase().split_whitespace().collect::<Vec<_>>().join(" ");
+                    if seen.insert(key) {
+                        writeln!(f, "{}", serde_json::to_string(&r).unwrap_or_default())?;
+                        out.push(r);
+                    }
+                }
+                f.flush()?;   // per-cell durability: a crash keeps every cell written so far
             }
         }
-        dedup(all)
+        Ok(out)
     }
 
     // Lightweight clonable handle (Arcs only) so spawned tasks own their refs.
@@ -540,15 +554,4 @@ fn strip_bullet(s: &str) -> &str {
     s
 }
 
-/// Exact-normalized dedup (cheap first pass; distinct-ratio reported by gates).
-fn dedup(records: Vec<Record>) -> Vec<Record> {
-    let mut seen = BTreeSet::new();
-    let mut out = Vec::new();
-    for r in records {
-        let key = r.text.to_lowercase().split_whitespace().collect::<Vec<_>>().join(" ");
-        if seen.insert(key) {
-            out.push(r);
-        }
-    }
-    out
-}
+// (dedup() was removed here — hydrate() now dedups on-the-fly while streaming each line to disk.)

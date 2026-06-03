@@ -19,7 +19,6 @@ mod triples;
 use clap::{Parser, Subcommand};
 use config::FestivalConfig;
 use std::collections::BTreeMap;
-use std::io::Write;
 use std::path::PathBuf;
 use taxonomy::DataStatus;
 use triples::TripleStore;
@@ -244,15 +243,11 @@ fn hydrate_cmd(a: HydrateArgs) -> anyhow::Result<()> {
         return Ok(());
     }
 
-    let rt = tokio::runtime::Runtime::new()?;
-    let records = rt.block_on(engine.hydrate(&store, a.base_n, a.concurrency, a.limit));
-
-    // write tagged JSONL
+    // hydrate STREAMS each faithful+deduped line to relations.jsonl as it is produced (crash-safe);
+    // it returns the in-memory records only for the coverage tally below.
     let path = out_dir.join("relations.jsonl");
-    let mut f = std::fs::File::create(&path)?;
-    for r in &records {
-        writeln!(f, "{}", serde_json::to_string(r)?)?;
-    }
+    let rt = tokio::runtime::Runtime::new()?;
+    let records = rt.block_on(engine.hydrate(&store, a.base_n, a.concurrency, a.limit, &path))?;
 
     // coverage tally (Part 5 gate 1)
     let mut by: BTreeMap<(String, String), usize> = BTreeMap::new();
