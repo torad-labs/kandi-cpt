@@ -333,6 +333,72 @@ def fake_city_negatives(n: int, rng, real_cities: list[str]) -> list[tuple]:
     return out
 
 
+def fine_grained_negatives(n: int, rng) -> tuple[list, list]:
+    """V12 anti-fabrication lever for the IN-EDITION fine-grained dims the by-dim gate flags (the absent_edition
+    / fake_city negatives only cover edition/city EXISTENCE; these cover stage + set_time). Returns
+    (corrections, abstentions), two distinct forms (docs §XVII):
+      - corrections: STAGE paired-contrast where the fact EXISTS - "X plays the Y stage, not the Z stage"
+        (Z = a sibling stage at that edition). Answerable-correct: reinforces the right value AND rejects the
+        wrong on the axis that fabricates. Goes in the ANSWERABLE pool.
+      - abstentions: set_time REFUSAL where the fact is MISSING (set times exist for ~1/98 editions) -
+        "I don't have set times for X." NEVER fabricates a time. Goes in the REFUSAL pool.
+    Per §VII this co-mentions two stages, so it is an SFT *behavioral* lever, not a CPT-geometry input -
+    keep it out of the CPT corpus. Vary which stage is negated so it is not learned as a template."""
+    from pipeline.editions import iter_editions
+    corrections, abstentions = [], []
+    for ed in iter_editions("edc"):
+        if ed.slug == "las_vegas/2026":
+            continue                                            # flagship: real set times + protected corpus
+        struct = ed.dir / "15_structured"
+        tp, ep, mp = struct / "triples.jsonl", struct / "entities.jsonl", ed.dir / "festival_meta.json"
+        if not tp.exists():
+            continue
+        meta = json.loads(mp.read_text(encoding="utf-8", errors="replace")) if mp.exists() else {}
+        name = (meta.get("name") or "").strip() or f"EDC {ed.city.replace('_', ' ').title()} {ed.year}"
+        has_settimes = (ed.dir / "set_times.jsonl").exists()
+        ents = {}
+        if ep.exists():
+            for l in ep.read_text(encoding="utf-8", errors="replace").splitlines():
+                try:
+                    o = json.loads(l); ents[o["id"]] = o.get("name_canonical", "")
+                except Exception:
+                    pass
+        artist_stage, stages = {}, set()
+        for l in tp.read_text(encoding="utf-8", errors="replace").splitlines():
+            try:
+                t = json.loads(l)
+            except Exception:
+                continue
+            if t.get("predicate") != "plays_at":
+                continue
+            a = ents.get(t.get("subject_id"), "").strip(); obj = str(t.get("object", ""))
+            if a and len(a) >= 2 and ":stage:" in obj:
+                artist_stage[a] = FE.spaced(obj.split(":stage:")[1]); stages.add(artist_stage[a])
+        st_list = sorted(stages)
+        ed_corr = ed_abst = 0
+        for a, st in artist_stage.items():
+            if ed_corr >= 12 and ed_abst >= 4:
+                break
+            sibs = [s for s in st_list if s != st]
+            if sibs and ed_corr < 12:
+                z = rng.choice(sibs)
+                q = rng.choice([f"Does {a} play the {z} stage at {name}?", f"Is {a} on the {z} stage at {name}?",
+                                f"Which stage does {a} play at {name}?"])
+                ans = rng.choice([f"No, {a} plays the {st} stage at {name}, not the {z} stage.",
+                                  f"{a} is on the {st} stage at {name}, not the {z} stage.",
+                                  f"Not the {z} stage - {a} plays the {st} stage at {name}."])
+                corrections.append((q, ans)); ed_corr += 1
+            if not has_settimes and ed_abst < 4:
+                q = rng.choice([f"What time does {a} play at {name}?", f"When does {a} go on at {name}?",
+                                f"What is {a}'s set time at {name}?"])
+                ans = rng.choice([f"I don't have set times for {name} - those were never published.",
+                                  f"I don't have a set-time schedule for {name}.",
+                                  f"I don't have {a}'s set time at {name} on record."])
+                abstentions.append((q, ans)); ed_abst += 1
+    rng.shuffle(corrections); rng.shuffle(abstentions)
+    return corrections[:n] if n else corrections, abstentions[:n] if n else abstentions
+
+
 def encode(tok, q: str, a: str, seq_len: int):
     bos = tok.bos_token or ""
     prompt = f"{bos}<start_of_turn>user\n{q}<end_of_turn>\n<start_of_turn>model\n"
@@ -423,6 +489,9 @@ def main():
                     "edition-specific 'no record of EDC X' refusals) — the fabrication lever; decoupled from "
                     "the unknown-tier relabel. Added on top of --abstention-frac.")
     ap.add_argument("--val-frac", type=float, default=0.0, help="hold out a val split for the early-stop lever")
+    ap.add_argument("--fine-grained-neg", type=int, default=0, help="V12: in-edition fine-grained anti-fab - "
+                    "stage paired-contrast corrections (answerable) + set_time abstentions (refusal) for the "
+                    "dims the by-dim gate fabricates. See fine_grained_negatives() + docs §XVII.")
     ap.add_argument("--device", default="cuda:0")
     args = ap.parse_args()
     if (args.knowledge_filter or args.self_gen) and not args.score_model:
@@ -509,6 +578,13 @@ def main():
                 if p[0] not in abstain_qs]
         abs_all = list(dict.fromkeys(abs_all + fneg))
         stats["fake_city_neg"] = len(fneg)
+    if args.fine_grained_neg > 0:                            # V12: in-edition stage corrections + set_time abstentions
+        fg_corr, fg_abst = fine_grained_negatives(args.fine_grained_neg, random.Random(13))
+        fg_corr = [p for p in fg_corr if p[0] not in abstain_qs]
+        fg_abst = [p for p in fg_abst if p[0] not in abstain_qs]
+        answerable = list(dict.fromkeys(answerable + fg_corr))    # stage corrections are answerable-correct
+        abs_all = list(dict.fromkeys(abs_all + fg_abst))          # set_time abstentions are refusals
+        stats["fg_stage_corrections"] = len(fg_corr); stats["fg_settime_abstain"] = len(fg_abst)
 
     pairs = answerable + abs_all
     # exact composition (the data-validator SFT-balance dimension reads these — v4 lesson: too high a refusal
