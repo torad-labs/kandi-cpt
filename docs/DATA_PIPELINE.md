@@ -17,6 +17,20 @@ Per-edition data lives under `data/edc/<city>/<year>/<layer>/`. One festival = o
 
 ---
 
+## Non-negotiable rules (these are structural, not memory-dependent)
+
+1. **Every SFT run is gated. No exceptions.** Run SFT via `scripts/run_sft.sh <label>` (train → gate, atomic),
+   never a bare `train_fp4.sh --config sft_edc.yaml` that can leave the run ungated. The gate writes
+   `scorecard_<label>_*.json`; the dashboard shows it. A trained-but-ungated run is an incomplete run.
+2. **CPT and SFT share identical engine knobs** — `precision: fp4`, `int8_master: storage`,
+   `optimizer_lowbit: 4`, `mb2×8`. They differ ONLY in `seq_len` / `lr` / `max_steps` / `init_from` /
+   `tokenized` / `save_dir`. If they diverge on anything else, that's a bug.
+3. **One training launcher:** `scripts/train_fp4.sh` (zero-flag; config is the single source of truth).
+4. **Experiments are explicit CLI overrides, never permanent edits to the canonical config.** The config
+   stays locked; experiments branch off it and don't leak back.
+
+---
+
 ## The stages
 
 ### 0 · Scrape → `00_raw/`
