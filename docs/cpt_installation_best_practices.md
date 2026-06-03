@@ -45,6 +45,20 @@ variation across all relationships, grounded one triple at a time. The triple is
 unit of coverage (checkable, deduppable, faithfulness-verifiable). Kill the hand-wired
 hydration; keep the triple. Feed density targets from the eval.
 
+**Finding (sharpening, VC1-measured): LLM-varied surface forms install; deterministic
+templates do not.** Facts hydrated with ~5-8 fixed Python templates scored **34% known**
+to the CPT; the same facts via LLM hydration (gemma-4-31b, varied surface forms per cell
+with a coverage + faithfulness loop) gave the strong install that produced excellent
+results. It is not volume, it is *diversity*: repeating 5 phrasings concentrates gradient
+on the template scaffolding, not the fact; varied phrasings spread gradient onto the fact
+across contexts (this IS Allen-Zhu 3.1 - augmentation into MANY forms is the requirement).
+Templates are a correctness floor, not the install. **Operational trap (cost a whole CPT
+this session):** the hydration sweep (`hydrate_sweep.sh`) skips any edition that already
+carries a `relations.jsonl`, so re-extracting new facts and re-running the sweep is a
+no-op - the new facts stay template-only. After ANY re-extraction, check `relations.jsonl`
+mtime vs `triples.jsonl` mtime and force re-hydration of the stale ones (`rehydrate_vc1.sh`
+selects by staleness).
+
 ---
 
 ## II. Relationship coverage: both directions, and base vs derived
@@ -439,6 +453,40 @@ strong (density floor met, geometry separation comfortably above chance, extract
 probe passing, co-occurrence audit clean). For a product others run themselves, the
 installation verdict is the load-bearing one — the run verdict can be reached by a
 well-dosed SFT on top of a thin install, which is exactly the trap to surface.
+
+---
+
+## XVII. Fabrication is per-dimension; install before you teach the boundary
+
+**Finding.** Fabrication is not uniform - it concentrates on specific fact-types, and the
+gate's by-dimension breakdown localizes it exactly. V11 (template-hydrated brain): overall
+fab 0.33, but the by-dim split is the diagnosis - set_time cov 1.00 / acc **0.00**,
+relational 1.00 / 0.11, attendance 0.83 / 0.10, artist_edition 0.98 / 0.24 (answers nearly
+everything, nearly always wrong) while well-hydrated simple facts held (dates 0.93, venue
+0.78, belongs 0.94). **Coverage near 1 with accuracy near 0 on a dimension IS the
+fabrication signature** for that fact-type. Always read the gate's by-dimension table, not
+just the scalar fab/cov.
+
+**Mechanism.** The model fabricates a fact-type it is willing to answer but never installed.
+The contrastive "not X but Y" lever (IV, V) suppresses fabrication only where the correct
+answer is ALSO installed - it teaches the *boundary*, it does not install the fact. On an
+uninstalled dimension (set_time acc 0.00) the contrastive has no true target to resolve onto.
+
+**Practice (order matters): install, THEN teach the boundary.**
+1. Install the fact first (LLM-varied hydration, §I) so accuracy on that dimension rises off
+   zero. You cannot teach "not Z, but Y" if Y was never installed.
+2. Then apply the fine-grained contrastive to drive fabrication down on that dimension.
+
+**Coverage gap to close (V12).** The implemented contrastives - `absent_edition_negatives`
+and `fake_city_negatives` in `build_sft.py` - only cover EDITION/CITY *existence* ("no record
+of EDC Tokyo 2099 - EDC Tokyo ran 2018-2024"). They do NOT cover the fine-grained axes that
+actually fabricate: stage, set_time, day, artist→edition. Extend the generator to in-edition
+fine-grained paired-contrasts on those axes ("artist X plays stage Y, not stage Z"; "X is on
+Friday, not Saturday"). The form is already proven (V10: fab 0.27 to 0.167 at cov 0.88); it
+just needs pointing at the dimensions the by-dim gate flags. Heed §VII when doing so: the
+contrast helps the behavioral fabrication gate but co-mentions two confusable stages in one
+sentence - watch the geometry separation on those stages, and vary which is negated so it is
+not learned as a template.
 
 ---
 
