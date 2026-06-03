@@ -17,8 +17,6 @@ import sys
 import warnings
 from pathlib import Path
 
-import yaml
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from cpt_config import ConfigError, CptConfig, TrainConfig  # noqa: E402
 
@@ -93,25 +91,22 @@ def test_runtime_mode_labels_crosscheck():
             .validate_runtime(1, has_labels=True), "SFT corpus")
 
 
-# ── the round-trip proof: live flat configs ⇄ nested contract, fields preserved ──
-_MODEL = {"model_path", "freeze_embeddings", "cpu_offload_ple", "nvfp4"}
-_DATA = {"tokenized", "init_from"}
-_RUN = {"run_name", "save_dir", "log_every", "save_every"}
+# ── the live configs load through the contract + carry their canonical values ──
 _LIVE = [("configs/train_edc_lv_2026.yaml", "cpt"), ("configs/train_edc_lv_2026_v3.yaml", "cpt"),
          ("configs/train_edc_lv_2026_finish.yaml", "cpt"), ("configs/sft_edc.yaml", "sft")]
-_CHECK = ["train.precision", "train.int8_master", "train.optimizer_lowbit", "train.lr", "train.min_lr",
-          "train.warmup_steps", "train.max_steps", "train.decay_frac", "train.micro_batch_size",
-          "train.grad_accum", "train.seq_len", "train.weight_decay", "train.betas", "train.adam_eps",
-          "train.grad_clip", "train.gradient_checkpointing", "model.freeze_embeddings",
-          "model.nvfp4.bf16_first_layers", "model.nvfp4.bf16_last_layers", "run.save_every", "run.log_every"]
-
-
-def _nest(flat: dict, mode: str) -> dict:
-    out: dict = {"mode": mode, "model": {}, "data": {}, "train": {}, "run": {}}
-    for k, v in flat.items():
-        sec = "model" if k in _MODEL else "data" if k in _DATA else "run" if k in _RUN else "train"
-        out[sec][k] = v
-    return {s: vv for s, vv in out.items() if s == "mode" or vv}
+# canonical values that MUST survive — the 'defaults reproduce current behavior' guarantee, per config.
+_EXPECT = {
+    "configs/train_edc_lv_2026.yaml": {"train.precision": "fp4", "train.int8_master": "storage",
+        "train.optimizer_lowbit": 4, "train.lr": 5e-5, "train.max_steps": 3160, "train.seq_len": 512,
+        "train.micro_batch_size": 2, "train.grad_accum": 8, "train.warmup_steps": 50, "train.decay_frac": 0.2,
+        "model.nvfp4.bf16_first_layers": 2, "model.nvfp4.bf16_last_layers": 5, "run.save_every": 100},
+    "configs/sft_edc.yaml": {"train.precision": "fp4", "train.int8_master": "storage", "train.lr": 2e-5,
+        "train.max_steps": 400, "train.seq_len": 256, "train.warmup_steps": 20,
+        "model.nvfp4.bf16_first_layers": 0, "model.nvfp4.bf16_last_layers": 0},
+    "configs/train_edc_lv_2026_finish.yaml": {"train.decay_frac": 1.0, "train.warmup_steps": 0,
+        "train.max_steps": 160, "run.save_every": 200},
+    "configs/train_edc_lv_2026_v3.yaml": {"train.max_steps": 3160, "train.int8_master": "storage"},
+}
 
 
 def _getp(o, dotted):
@@ -120,22 +115,23 @@ def _getp(o, dotted):
     return o
 
 
-def test_live_configs_round_trip_identical():
+def test_live_configs_load_through_contract():
+    """Each live config loads via the nested contract (validate() passes, mode⇆init_from agrees) AND its
+    canonical values survive — the 'defaults reproduce current run behavior — verified' guarantee."""
     for path, mode in _LIVE:
         p = ROOT / path
         if not p.exists():
             continue
-        flat = yaml.safe_load(p.read_text())
-        cfg = CptConfig._from_dict(_nest(flat, mode))
-        for fld in _CHECK:
-            if fld.startswith("model.nvfp4"):
-                want = (flat.get("nvfp4") or {}).get(fld.split(".")[-1])
-            else:
-                want = flat.get(fld.split(".")[-1])
-            if want is None:
-                continue
+        cfg = CptConfig.from_yaml(p, mode)          # full load + validate() (skips path/world runtime gates)
+        assert cfg.mode == mode
+        for fld, want in _EXPECT.get(path, {}).items():
             got = _getp(cfg, fld)
-            assert got == want, f"{path}: {fld} flat={want!r} != nested={got!r}"
+            assert got == want, f"{path}: {fld} = {got!r} != canonical {want!r}"
+        # the flat trainer-dict adapter must still reconstitute every consumed key
+        td = cfg.to_trainer_dict()
+        for k in ("precision", "int8_master", "lr", "max_steps", "seq_len", "save_dir", "tokenized",
+                  "levers", "nvfp4", "optimizer_lowbit", "gradient_checkpointing"):
+            assert k in td, f"{path}: trainer_dict missing {k}"
 
 
 if __name__ == "__main__":

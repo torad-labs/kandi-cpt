@@ -1,85 +1,75 @@
-# Full-param CPT — EDC Las Vegas 2026, Gemma 4 E2B text decoder.
-# Precision policy: NO FP32 tensors (bf16 params/grads, 8-bit AdamW states, FP4 via QAT).
+# Full-param CPT — EDC Las Vegas 2026, Gemma 4 E2B text decoder. THE CANONICAL CPT.
+# Precision policy: NO FP32 tensors (bf16 params/grads, low-bit AdamW states, FP4 via Quartet-II).
 #
 # ╔══════════════════════════════════════════════════════════════════════════════════════╗
-# ║  CANONICAL LAUNCH — ZERO FLAGS, ZERO ENV:   bash scripts/train_fp4.sh                  ║
-# ║  EVERYTHING the run needs lives in committed files — nothing is remembered/re-derived: ║
-# ║   • toolchain env (CUDA_HOME, NVCC -ccbin, CCCL guard, MAX_JOBS, GPU=0, allocator)     ║
-# ║     → scripts/train_fp4.sh  (the single source of truth; do NOT use launch.sh/fp4_env) ║
-# ║   • run spec (corpus, save_dir, steps, batch, precision, int8-master mode)             ║
-# ║     → THIS file, below. No --tokenized / --save-dir / --max-steps / --micro-batch-size ║
-# ║       / --grad-accum / --int8-master-mode needed; the launcher injects --config.       ║
-# ║  A/B a variant by editing this file (or one explicit override flag), never a pile.     ║
+# ║  CANONICAL LAUNCH — ZERO FLAGS:   bash scripts/train_fp4.sh                            ║
+# ║  This file IS the run. The trainer takes ONLY --config (+ --mode); there are no        ║
+# ║  behavior-override flags (see docs/CONFIG_AUDIT.md + AGENTS.md). Every knob is          ║
+# ║  validated at load by scripts/cpt_config.py — a typo'd/unknown key HARD-ERRORS.         ║
+# ║  A/B a variant by editing this file or generating a new config; never a flag pile.      ║
 # ╚══════════════════════════════════════════════════════════════════════════════════════╝
-run_name: edc_lv_2026_cpt_v2
-save_dir: checkpoints/cpt/edc_all97_v2   # CRUCIAL — travels with the config so a compaction can't drop it (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
-model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
-precision: fp4             # NATIVE NVFP4 training via Quartet-II (real FP4 GEMM fwd + FP4 bwd w/ RHT). bf16 | fp4 (Quartet) | nvfp4 (QAT)
+# Notable canonical values (rationale): train.int8_master=storage = THE MOAT (true int8 1-byte
+# master + SR, needs precision=fp4 + single-GPU); train.max_steps=3160 ≈ 3 epochs over 16,863
+# v2 blocks; run.save_every=100 → step_* checkpoints for the install-trend eval; decay_frac=0.2
+# (WSD last 20% decays to min_lr). model.nvfp4.* are INERT unless precision=nvfp4.
 
-# data
-tokenized: data/_build/30_tokenized/corpus_all97_v2.arrow   # VC1-rebuilt full-history corpus: 16,863 blocks, 7.85M tokens (post data-completeness campaign — fuller lineups/venues/set-times across all 97 editions + clean + LV synth + 10% replay). column `input_ids` = seq_len blocks
-seq_len: 512
-micro_batch_size: 2     # 2 seqs resident — restored 2026-06 now the corpus grew: ~2× faster/step, +~activations only (gradient_checkpointing keeps it modest), under the 16GB 5080 ceiling
-grad_accum: 8           # mb2×accum8 = 16 eff batch (unchanged convergence; half the micro-passes of mb1×16)
-
-# optimizer — 8-bit AdamW (no FP32 states); bf16 master weights
-lr: 5.0e-5
-min_lr: 5.0e-6
-weight_decay: 0.0
-betas: [0.9, 0.95]
-adam_eps: 1.0e-8
-grad_clip: 1.0
-optimizer_8bit: false      # re-tested 2026-05-30: still broken under FSDP2+DTensor (OptimState8bit aten.view.dtype unimplemented). Keep bf16 AdamW.
-# WINNING PRECISION RECIPE (default): the L1 w=3 INT8-master run was the best of every run —
-# stage@1 0.744 / day@1 0.598 (both best-ever). Low-precision-everything acts as a regularizer on the
-# small CPT corpus (3x confirmed: full-precision v6 < 4-bit-opt < INT8-master). Both default ON here;
-# override per-run with --optimizer-lowbit / --int8-master / --no-int8-master.
-optimizer_lowbit: 4        # torchao AdamW4bit optimizer states (single-GPU only; multi-GPU gracefully falls back to bf16 AdamW)
-int8_master: storage       # THE MOAT (matches sft_edc.yaml): torchao Int8QuantizedTrainingLinearWeight — true int8-STORED master (1 byte/param) + SR on every update, driven by the 4-bit AdamW. Validated 2026-06-02 (converges like snap, lighter). Crucially its checkpoint save is the frugal native-int8 path (int8 _data + per-row scale, NO fresh-model rebuild) → no ~18GB CPU spike → no earlyoom-at-save kill. `snap` (legacy bf16-store snapped to int8) + `off` remain for A/B.
-warmup_steps: 50
-max_steps: 3160           # full-history: ~3 epochs over 16,863 v2 blocks (eff. batch 16 → ~1054 steps/epoch). LV-2026 facts ~3× their hydrated form-density (~170 exposures, toward the V6 regime that hit 0.744) + all 97 editions covered. save_every 100 → step_* checkpoints for the install-trend eval; WSD decay lands at the 3160 horizon.
-decay_frac: 0.2           # WSD: last 20% decays to min_lr
-
-# memory levers (2x 16 GB)
-gradient_checkpointing: true
-freeze_embeddings: true   # 262K-vocab embeds + (tied) lm_head; CPT uses existing tokens
-
-# NVFP4 QAT selective precision (only used when precision == nvfp4)
-nvfp4:
-  skip_lm_head: true
-  skip_embeddings: true
-  bf16_first_layers: 2
-  bf16_last_layers: 5     # ~15% of 35 text layers kept BF16
-
-# logging / checkpoint
-log_every: 5
-save_every: 100
-
-# CPT training levers — every lever defaults OFF/baseline; enable ONE at a time for a clean A/B
-# against the current baseline (never two new levers in one run unless explicitly testing interaction).
-# Levers 1/2/4 consume the metadata the tokenizer emits (entity_mask/src/fact_ids) — re-tokenize WITHOUT
-# --no-lever-metadata before enabling them.
-levers:
-  lever1_entity_loss:        # concentrate gradient on entity/date/time TARGET tokens (weighted-mean CE)
-    enabled: false
-    entity_loss_weight: 2.5  # sweep {1.0 baseline, 2.0, 3.0, 5.0}; over-weighting can over-cluster entities
-  lever2_qa_mix:             # mix eval-shaped QA + conversations into the CPT stream (format-match the probe)
-    enabled: false
-    qa_token_fraction: 0.15  # sweep {0.0, 0.10, 0.20, 0.30}; too much starves raw facts
-    use_chat_template: false # only if deploying through the Gemma chat template
-    system_prefix: null      # if set, every qa/conversation example carries this prefix (train==inference framing)
-  lever3_three_r:            # re-warm + re-decay (WSD already) + replay + optional EWC (forgetting control)
-    enabled: false
-    replay_token_fraction: 0.02   # sweep {0.0, 0.01, 0.05}; needs data/_shared/replay populated
-    rewarm_peak_lr: 5.0e-5        # = lr; the stability-plasticity dial (sweep one step down/current/up)
-    ewc:
+mode: cpt
+model:
+  model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+  freeze_embeddings: true
+  nvfp4:
+    skip_lm_head: true
+    skip_embeddings: true
+    bf16_first_layers: 2
+    bf16_last_layers: 5
+data:
+  tokenized: data/_build/30_tokenized/corpus_all97_v2.arrow
+train:
+  precision: fp4
+  seq_len: 512
+  micro_batch_size: 2
+  grad_accum: 8
+  lr: 5.0e-05
+  min_lr: 5.0e-06
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.95
+  adam_eps: 1.0e-08
+  grad_clip: 1.0
+  optimizer_8bit: false
+  optimizer_lowbit: 4
+  int8_master: storage
+  warmup_steps: 50
+  max_steps: 3160
+  decay_frac: 0.2
+  gradient_checkpointing: true
+  levers:
+    lever1_entity_loss:
       enabled: false
-      lambda: 1.0
-  lever4_exposure_tracking:  # passive: log cumulative fact exposures, join to probe pass/fail → extraction curve
-    enabled: false
-    threshold: 0.8
-  lever5_causal_trace:       # standalone analysis (ROME causal tracing) on a frozen checkpoint, no training
-    enabled: false
-    n_facts: 200
-    noise_scale: 0.1         # tune until the clean prediction is fully degraded
-    checkpoint: null
+      entity_loss_weight: 2.5
+    lever2_qa_mix:
+      enabled: false
+      qa_token_fraction: 0.15
+      use_chat_template: false
+      system_prefix: null
+    lever3_three_r:
+      enabled: false
+      replay_token_fraction: 0.02
+      rewarm_peak_lr: 5.0e-05
+      ewc:
+        enabled: false
+        lambda: 1.0
+    lever4_exposure_tracking:
+      enabled: false
+      threshold: 0.8
+    lever5_causal_trace:
+      enabled: false
+      n_facts: 200
+      noise_scale: 0.1
+      checkpoint: null
+run:
+  run_name: edc_lv_2026_cpt_v2
+  save_dir: checkpoints/cpt/edc_all97_v2
+  log_every: 5
+  save_every: 100

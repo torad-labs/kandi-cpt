@@ -414,6 +414,19 @@ class CptConfig:
         d["_fingerprint"] = self.fingerprint()
         return d
 
+    def to_trainer_dict(self) -> dict:
+        """Flatten to the flat-key dict the train_cpt.py INTERNALS already consume (model/data/train/run
+        fields hoisted to the top level; `nvfp4` + `levers` stay nested dicts exactly as the old flat YAML
+        produced them). This is an internal adapter so the ~900 lines of trainer plumbing stay untouched and
+        proven-working — it is NOT a config surface. corpus_synthesis/eval are not read by the trainer."""
+        d: dict = {}
+        for section in (self.model, self.data, self.train, self.run):
+            for f in fields(section):
+                d[f.name] = getattr(section, f.name)
+        d["nvfp4"] = asdict(self.model.nvfp4)
+        d["levers"] = _unalias(asdict(self.train.levers))   # lambda_ → lambda (match original YAML shape)
+        return d
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # hydrator internals
@@ -453,6 +466,17 @@ def _did_you_mean(key: str, known: dict) -> str:
     import difflib
     m = difflib.get_close_matches(key, list(known), n=1, cutoff=0.7)
     return f" — did you mean '{m[0]}'?" if m else ""
+
+
+_REV_ALIASES = {v: k for k, v in _ALIASES.items()}
+
+
+def _unalias(d):
+    """Reverse the field-name aliases (lambda_ → lambda) recursively, so the flattened trainer dict matches
+    the original YAML key spelling exactly."""
+    if isinstance(d, dict):
+        return {_REV_ALIASES.get(k, k): _unalias(v) for k, v in d.items()}
+    return d
 
 
 def _flatten(d: dict, prefix: str = "") -> dict:

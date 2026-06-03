@@ -1,79 +1,67 @@
-# SFT (instruction tuning) — turn the CPT-installed associations into conversational retrieval.
-# Starts from the CPT checkpoint (init_from), trains on chat-format Q/A with assistant-only masked labels
-# (build_sft.py emits the `labels` column the trainer auto-detects). Same FP4 + int8-master deployment
-# recipe as CPT so the SFT'd model stays NVFP4-native for on-device. Lower LR + few epochs (SFT is touchy).
-#
-# CANONICAL LAUNCH (one flag — the config selector):  bash scripts/train_fp4.sh --config configs/sft_edc.yaml
-#   The launcher carries all toolchain env (CUDA/NVCC/MAX_JOBS/GPU); this file carries the run spec.
-#   init_from is the int8-master v2 CPT checkpoint — train_cpt.build_model dequantizes it on load
-#   (pipeline.model_load.causal_bf16_state_dict), so the storage-saved CPT brain round-trips cleanly.
-run_name: edc_sft_v11
-save_dir: checkpoints/sft/edc_sft_v11   # CRUCIAL — travels with the config (no --save-dir ⇒ trains & saves NOTHING). --save-dir overrides for sweeps.
-model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
-precision: fp4
+# SFT — instruction-tune the CPT'd model (assistant-only masked labels). mode:sft REQUIRES
+# data.init_from (resumes a CPT checkpoint via causal_bf16_state_dict). Engine knobs match the CPT
+# trainer (mb2×8 · fp4 · int8_master storage). Gate EVERY run via scripts/run_sft.sh (train→gate
+# atomic — the no-ungated-SFT rule). Config-only; no behavior flags (docs/CONFIG_AUDIT.md).
 
-# start from the full-history v2 CPT brain (VC1-rebuilt corpus, int8-master storage), not the base model
-init_from: checkpoints/cpt/edc_all97_v2
-
-# data — SFT chat corpus (input_ids + assistant-only `labels`). Built by build_sft.py --out sft_v11
-# (comprehensive 12-dimension QA over the VC1 data). max_steps below is RECONFIRMED against the V11
-# example count after the build (more dims/editions than v1's 1827 → more examples → scale the horizon).
-tokenized: data/_build/30_tokenized/sft_v11.arrow
-seq_len: 256
-micro_batch_size: 2      # MATCHES the CPT config (stability: same engine knobs). ~2× faster/step than mb1. seq_len 256 keeps activation modest — mb1 was 9.1GB, mb2 ≈ 12GB, well under the 16GB ceiling.
-grad_accum: 8            # mb2×8 = 16 eff batch (identical convergence to mb1×16). The two training configs now differ ONLY in the legitimately-different fields (seq_len, lr, max_steps, init_from, tokenized, save_dir).
-
-# optimizer — lower LR than CPT (instruction tuning is sensitive); same low-bit deployment recipe
-lr: 2.0e-5
-min_lr: 2.0e-6
-weight_decay: 0.0
-betas: [0.9, 0.95]
-adam_eps: 1.0e-8
-grad_clip: 1.0
-optimizer_8bit: false
-optimizer_lowbit: 4
-int8_master: storage     # THE MOAT: each Quartet weight is a torchao Int8QuantizedTrainingLinearWeight — int8-STORED (1 byte/param) with stochastic rounding on every in-place optimizer update — driven by the SAME 4-bit AdamW (optimizer_lowbit: 4). Weight AND Adam moments are all ≤ the FP4 we ship in; no bf16 master, no hand-rolled optimizer, no g_acc (the subclass's .grad is transient, freed by zero_grad). Validated 2026-06-02: 30-step SFT loss 0.74→0.20 (converges like snap) at peakmem 11.2GB vs snap's 12.7GB — the genuine 1-byte master delivers the memory win the bf16-snap never could. `snap` (legacy: bf16 storage SR-snapped to int8, 12.7GB) and `off` remain for A/B.
-warmup_steps: 20
-max_steps: 400           # ~5 epochs over the V11 dataset (1,297 train ex — knowledge-filter dropped the 66% unknown tier; eff batch 16 → ~81 steps/epoch). save_every 100 → gate checkpoints 100/200/300/400, pick the best.
-decay_frac: 0.2
-
-# memory levers
-gradient_checkpointing: true
-freeze_embeddings: true
-# Memory levers — ON (pure int8-master, max memory savings → ~9.1GB peak; ~2× slower than mb2/accum8, accepted).
-int8_grad_accum: true     # fold bf16 grads into a 1-byte int8 SR accumulator + free .grad per-pass (~-0.6GB)
-
-nvfp4:
-  skip_lm_head: true
-  skip_embeddings: true
-  bf16_first_layers: 0    # 0/0 = EVERY decoder layer is int8-master + FP4 compute (pure int8-master, no bf16 layers).
-  bf16_last_layers: 0     # NVFP4-sensitivity on first/last is the only quality risk here — the re-gate vs V9 confirms it.
-
-log_every: 5
-save_every: 100          # 400-step run → checkpoints 100/200/300/400 for the install-trend gate + overfit check
-
-# CPT levers — all OFF for SFT (the labels column drives assistant-only masked CE)
-levers:
-  lever1_entity_loss:
-    enabled: false
-    entity_loss_weight: 2.5
-  lever2_qa_mix:
-    enabled: false
-    qa_token_fraction: 0.15
-    use_chat_template: false
-    system_prefix: null
-  lever3_three_r:
-    enabled: false
-    replay_token_fraction: 0.02
-    rewarm_peak_lr: 5.0e-5
-    ewc:
+mode: sft
+model:
+  model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+  freeze_embeddings: true
+  nvfp4:
+    skip_lm_head: true
+    skip_embeddings: true
+    bf16_first_layers: 0
+    bf16_last_layers: 0
+data:
+  init_from: checkpoints/cpt/edc_all97_v2
+  tokenized: data/_build/30_tokenized/sft_v11.arrow
+train:
+  precision: fp4
+  seq_len: 256
+  micro_batch_size: 2
+  grad_accum: 8
+  lr: 2.0e-05
+  min_lr: 2.0e-06
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.95
+  adam_eps: 1.0e-08
+  grad_clip: 1.0
+  optimizer_8bit: false
+  optimizer_lowbit: 4
+  int8_master: storage
+  warmup_steps: 20
+  max_steps: 400
+  decay_frac: 0.2
+  gradient_checkpointing: true
+  int8_grad_accum: true
+  levers:
+    lever1_entity_loss:
       enabled: false
-      lambda: 1.0
-  lever4_exposure_tracking:
-    enabled: false
-    threshold: 0.8
-  lever5_causal_trace:
-    enabled: false
-    n_facts: 200
-    noise_scale: 0.1
-    checkpoint: null
+      entity_loss_weight: 2.5
+    lever2_qa_mix:
+      enabled: false
+      qa_token_fraction: 0.15
+      use_chat_template: false
+      system_prefix: null
+    lever3_three_r:
+      enabled: false
+      replay_token_fraction: 0.02
+      rewarm_peak_lr: 5.0e-05
+      ewc:
+        enabled: false
+        lambda: 1.0
+    lever4_exposure_tracking:
+      enabled: false
+      threshold: 0.8
+    lever5_causal_trace:
+      enabled: false
+      n_facts: 200
+      noise_scale: 0.1
+      checkpoint: null
+run:
+  run_name: edc_sft_v11
+  save_dir: checkpoints/sft/edc_sft_v11
+  log_every: 5
+  save_every: 100

@@ -17,7 +17,6 @@ from __future__ import annotations
 import argparse, json, os, sys, time
 from collections import Counter, UserDict
 
-import yaml
 import torch
 import torch.nn.functional as F
 import torch.distributed as dist
@@ -26,6 +25,7 @@ from datasets import Dataset, load_from_disk
 from transformers import Gemma4ForCausalLM
 
 import config as C
+from cpt_config import CptConfig
 
 
 def is_dist() -> bool:
@@ -565,28 +565,16 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
     log(f"saved int8 checkpoint -> {out_dir}  ({len(int8_keys)} int8 weights + scales, {gb:.1f}GB on disk, no bf16 materialization)")
 
 
-def run_contract(cfg, args, save_dir, world):
-    """Preflight: fail loud on a missing crucial property, warn on inconsistencies, and print the one-screen
-    RUN CONTRACT so what's about to train is never a mystery (esp. after a context compaction loses CLI flags).
-    The most dangerous omission is save_dir — without it the trainer runs for hours and saves NOTHING.
-    Returns the resolved contract dict (dumped beside the checkpoint at save time = recipe provenance)."""
-    from pathlib import Path
-    errs, warns = [], []
+def run_contract(typed, cfg, save_dir, world, smoke_steps):
+    """Print the one-screen RUN CONTRACT so what's about to train is never a mystery (esp. after a context
+    compaction). The hard validation already ran in CptConfig.from_yaml() + typed.validate_runtime() — this
+    is a faithful display + the remaining advisory (lever-metadata) warnings + the dry-run exit. Returns the
+    resolved contract dict (dumped beside the checkpoint at save time = recipe provenance)."""
+    warns = []
     tokenized = cfg.get("tokenized")
-    if not args.smoke:
-        if not save_dir:
-            errs.append("save_dir is UNSET — the run would train and save NOTHING. Set `save_dir:` in the "
-                        "config (versioned) or pass --save-dir.")
-        if not tokenized:
-            errs.append("tokenized is UNSET — no corpus to train on. Set `tokenized:` in the config.")
-        elif not (C.ROOT / tokenized).exists():
-            errs.append(f"tokenized path does not exist: {C.ROOT / tokenized}")
     init_from = cfg.get("init_from")
-    if init_from and not (C.ROOT / init_from).exists():
-        errs.append(f"init_from checkpoint does not exist: {C.ROOT / init_from}")
     # token count + lever-metadata consistency from the corpus stats sidecar (<name>_stats.json). Resolve
-    # against C.ROOT to MATCH make_loader/build_model (which prepend C.ROOT) — not cwd, else a torchrun launch
-    # from another dir spuriously hard-errors on a file that exists.
+    # against C.ROOT to MATCH make_loader/build_model (which prepend C.ROOT) — not cwd.
     stats, tok_count = {}, None
     if tokenized:
         sp = C.ROOT / tokenized; sc = sp.parent / f"{sp.name.replace('.arrow', '')}_stats.json"
@@ -597,27 +585,16 @@ def run_contract(cfg, args, save_dir, world):
               ("lever1_entity_loss", "lever2_qa_mix", "lever3_three_r", "lever4_exposure_tracking", "lever5_causal_trace")}
     if lev_on["lever1_entity_loss"] or lev_on["lever4_exposure_tracking"]:
         if stats and not stats.get("lever_metadata"):     # provably absent → HARD error, not a silent no-op for hours
-            errs.append("lever1/4 enabled but the corpus stats report lever_metadata:false — the entity_mask/"
-                        "fact_ids streams are ABSENT, so the lever would be a silent no-op for the whole run. "
-                        "Re-tokenize WITHOUT --no-lever-metadata.")
+            sys.exit("RUN CONTRACT failed: lever1/4 enabled but the corpus stats report lever_metadata:false — "
+                     "the entity_mask/fact_ids streams are ABSENT, so the lever would be a silent no-op for the "
+                     "whole run. Re-tokenize WITHOUT --no-lever-metadata.")
         elif not stats:                                   # can't verify → make the absence of the check visible
             warns.append("lever1/4 enabled but no corpus stats sidecar found — cannot verify the entity_mask/"
                          "fact_ids streams exist; the lever may be a silent no-op.")
     if lev_on["lever3_three_r"] and stats.get("replay_tokens", 0) == 0:
         warns.append("lever3 (three R's) enabled but replay_tokens:0 — populate data/_shared/replay first.")
-    lowbit = args.optimizer_lowbit or cfg.get("optimizer_lowbit", 0)
-    if lowbit and world > 1:
-        warns.append(f"optimizer_lowbit={lowbit} with world={world}: torchao OptimState is DTensor-incompatible "
-                     "under FSDP2 → falls back to bf16 AdamW.")
-    _ci8 = cfg.get("int8_master", False)    # int8_master mode string: storage | snap | off
-    if args.int8_master_mode:
-        int8 = args.int8_master_mode
-    elif args.int8_master is True:
-        int8 = "snap"
-    elif args.int8_master is False:
-        int8 = "off"
-    else:
-        int8 = _ci8 if isinstance(_ci8, str) else ("snap" if _ci8 else "off")
+    lowbit = cfg.get("optimizer_lowbit", 0)
+    int8 = typed.resolve_int8_master(world)               # the SINGLE resolution (storage→snap under world>1)
     eff = cfg.get("micro_batch_size", 1) * cfg.get("grad_accum", 1) * max(1, world)
     contract = {
         "run_name": cfg.get("run_name"), "precision": cfg.get("precision"), "int8_master": int8,
@@ -625,11 +602,13 @@ def run_contract(cfg, args, save_dir, world):
         "tokenized": tokenized, "tokenized_total_tokens": tok_count, "seq_len": cfg.get("seq_len"),
         "effective_batch": eff, "max_steps": cfg.get("max_steps"), "decay_frac": cfg.get("decay_frac"),
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES", "unset"),
-        "levers_on": [k for k, v in lev_on.items() if v], "smoke": bool(args.smoke),
+        "levers_on": [k for k, v in lev_on.items() if v], "smoke": bool(smoke_steps),
+        "mode": typed.mode, "fingerprint": typed.fingerprint(),
     }
     if rank0():
         bar = "─" * 70
-        rows = [("precision", contract["precision"]), ("int8_master", int8),
+        rows = [("mode", f"{typed.mode}   fingerprint={contract['fingerprint']}"),
+                ("precision", contract["precision"]), ("int8_master", int8),
                 ("optimizer_lowbit", contract["optimizer_lowbit"]),
                 ("save_dir", save_dir or "‼ UNSET — NOTHING WILL BE SAVED"),
                 ("init_from", contract["init_from"]),
@@ -645,94 +624,43 @@ def run_contract(cfg, args, save_dir, world):
         print(f"└{bar}┘")
         for w in warns:
             print(f"  ⚠ {w}")
-    if errs:
+    if typed.run.dry_run:
         if rank0():
-            for e in errs:
-                print(f"  ✗ {e}")
-        sys.exit(f"RUN CONTRACT failed ({len(errs)} error(s)) — fix the config/flags above before training.")
-    if args.dry_run:
-        if rank0():
-            print("  ✓ (--dry-run) contract OK — exiting without training.\n")
+            print("  ✓ (run.dry_run) contract OK — exiting without training.\n")
         sys.exit(0)
     return contract
 
 
 def main():
-    ap = argparse.ArgumentParser()
+    # THE ONE TRAINING ENTRYPOINT. Accepts only --config + --mode — NO behavior-affecting flags (the config
+    # IS the run; see docs/CONFIG_AUDIT.md + AGENTS.md). Everything that changes a run lives in the YAML and is
+    # validated at load by CptConfig (hard-error on a typo'd/unknown key, cross-field gates, fail-loud preserved).
+    # Sweeps generate config files and call this N times; they never pass overrides. To smoke/dry-run, set
+    # run.smoke_steps / run.dry_run in the config.
+    ap = argparse.ArgumentParser(description="kandi-cpt trainer — the ONE entrypoint. Config-only; no run flags.")
     ap.add_argument("--config", required=True)
-    ap.add_argument("--smoke", type=int, default=0,
-                    help="run N steps on random tokens (no dataset) to validate loop + memory")
-    ap.add_argument("--precision", choices=["bf16", "fp4", "nvfp4"], help="override config precision")
-    ap.add_argument("--no-ac", action="store_true",
-                    help="disable gradient checkpointing (uses more memory; only fits short seq). "
-                         "Default (AC on) is validated with KV-sharing and fits seq512 at ~11GB.")
-    ap.add_argument("--seq-len", type=int, help="override seq_len (e.g. smaller for smoke memory headroom)")
-    ap.add_argument("--save-dir", help="save the trained text-decoder checkpoint here (HF save_pretrained)")
-    ap.add_argument("--optimizer-lowbit", type=int, default=0, choices=[0, 4, 8],
-                    help="torchao AdamW{4,8}bit states (single-GPU only; saves optimizer memory). 0 = bf16 AdamW")
-    ap.add_argument("--grad-accum", type=int, help="override grad_accum (e.g. match effective batch single-GPU)")
-    ap.add_argument("--micro-batch-size", type=int, help="override micro_batch_size (smaller → less activation memory; "
-                    "pair with --grad-accum to hold effective batch constant → same convergence)")
-    ap.add_argument("--int8-grad-accum", action=argparse.BooleanOptionalAction, default=None,
-                    help="fold bf16 grads into a persistent int8 SR accumulator (1 B/param) + free .grad per-layer "
-                         "→ ~halves gradient memory. Overrides config int8_grad_accum.")
-    ap.add_argument("--int8-master", action=argparse.BooleanOptionalAction, default=None,
-                    help="legacy bool: --int8-master == snap mode (bf16 weights SR-snapped to the int8 grid), "
-                         "--no-int8-master == off. Use --int8-master-mode for the genuine int8 STORE.")
-    ap.add_argument("--int8-master-mode", choices=["storage", "snap", "off"], default=None,
-                    help="storage = torchao int8 1-byte master STORE + SR, updated by the shared low-bit AdamW "
-                         "(THE MOAT; transient grad, no g_acc); snap = legacy bf16-grid SR; off. "
-                         "Overrides --int8-master and config.")
-    ap.add_argument("--lever1-weight", type=float, default=None,
-                    help="enable Lever 1 (entity-targeted loss) at this entity_loss_weight (sweep knob; "
-                         "overrides config). 1.0 == baseline mean CE.")
-    ap.add_argument("--lever4", action="store_true", help="enable Lever 4 exposure tracking (overrides config)")
-    ap.add_argument("--max-steps", type=int, help="override max_steps (e.g. a short real-data lever validation)")
-    ap.add_argument("--init-from", help="start from a saved Gemma4ForCausalLM checkpoint dir (SFT/resume) "
-                    "instead of the base multimodal ckpt; overrides config init_from")
-    ap.add_argument("--tokenized", help="override the tokenized corpus path (e.g. an SFT dataset)")
-    ap.add_argument("--dry-run", action="store_true",
-                    help="print the RUN CONTRACT (resolved config + asserts) and exit without training")
+    ap.add_argument("--mode", choices=["cpt", "sft"], default=None,
+                    help="declared intent; the config may carry `mode:`. Cross-checked against init_from + the "
+                         "corpus labels column — it never replaces that dual detection.")
     args = ap.parse_args()
-    cfg = yaml.safe_load(open(args.config))
-    if args.max_steps:
-        cfg["max_steps"] = args.max_steps
-    if args.init_from:
-        cfg["init_from"] = args.init_from
-    if args.tokenized:
-        cfg["tokenized"] = args.tokenized
-    if args.precision:
-        cfg["precision"] = args.precision
-    if args.no_ac:
-        cfg["gradient_checkpointing"] = False
-    if args.seq_len:
-        cfg["seq_len"] = args.seq_len
-    if args.grad_accum:
-        cfg["grad_accum"] = args.grad_accum
-    if args.micro_batch_size:
-        cfg["micro_batch_size"] = args.micro_batch_size
-    if args.int8_grad_accum is not None:
-        cfg["int8_grad_accum"] = args.int8_grad_accum
-    # CLI lever overrides (for clean A/B sweeps without editing the config per run)
-    if args.lever1_weight is not None:
-        cfg.setdefault("levers", {}).setdefault("lever1_entity_loss", {})
-        cfg["levers"]["lever1_entity_loss"].update(enabled=True, entity_loss_weight=args.lever1_weight)
-    if args.lever4:
-        cfg.setdefault("levers", {}).setdefault("lever4_exposure_tracking", {})["enabled"] = True
-    save_dir = args.save_dir or cfg.get("save_dir")    # config carries it (versioned); --save-dir overrides
+    typed = CptConfig.from_yaml(args.config, args.mode)   # validates structure + cross-field AT LOAD (fail-loud)
+    cfg = typed.to_trainer_dict()                          # flat-key adapter — the trainer internals are untouched
+    smoke_steps = typed.run.smoke_steps
+    save_dir = cfg.get("save_dir")
 
     local_rank = int(os.environ.get("LOCAL_RANK", 0))
     world = int(os.environ.get("WORLD_SIZE", 1))
     rank = int(os.environ.get("RANK", 0))
-    contract = run_contract(cfg, args, save_dir, world)   # fail loud on a missing crucial prop; --dry-run exits here
-    if rank0() and save_dir and not args.smoke:           # live heartbeat for the Torad Train console
+    typed.validate_runtime(world)                         # path/world gates (save_dir/tokenized exist; int8/lowbit warns)
+    contract = run_contract(typed, cfg, save_dir, world, smoke_steps)   # prints the one-screen contract; dry_run exits here
+    if rank0() and save_dir and not smoke_steps:          # live heartbeat for the Torad Train console
         _start_status(save_dir, cfg.get("max_steps"))
     torch.cuda.set_device(local_rank)
     if world > 1:
         dist.init_process_group("nccl")
     device = torch.device("cuda", local_rank)
 
-    log(f"world={world} precision={cfg['precision']} run={cfg['run_name']} smoke={args.smoke}")
+    log(f"world={world} precision={cfg['precision']} run={cfg['run_name']} smoke={smoke_steps}")
     model = build_model(cfg)            # on CPU (bf16) — do NOT move full model to GPU
     if world > 1:
         shard_model(model, cfg)         # fully_shard in place → params become sharded
@@ -748,28 +676,14 @@ def main():
           f"alloc_conf={os.environ.get('PYTORCH_CUDA_ALLOC_CONF','unset')}", flush=True)
 
     # INT8-master mode: 'storage' = genuine int8 weight store (the moat) | 'snap' = bf16-grid SR (legacy) | 'off'.
-    # Resolve BEFORE building `params` so the int8-stored linears (weight=None) are excluded from AdamW.
-    _cfg_i8 = cfg.get("int8_master", False)
-    if args.int8_master_mode:
-        int8_mode = args.int8_master_mode
-    elif args.int8_master is True:
-        int8_mode = "snap"
-    elif args.int8_master is False:
-        int8_mode = "off"
-    elif isinstance(_cfg_i8, str):
-        int8_mode = _cfg_i8
-    else:
-        int8_mode = "snap" if _cfg_i8 else "off"
+    # Resolved by the config (validate() already gated storage⇒precision=fp4); resolve_int8_master folds the
+    # single world>1→snap degradation. Resolve BEFORE building `params` so int8-stored linears are excluded from AdamW.
+    int8_mode = typed.resolve_int8_master(world)
+    if int8_mode != typed.train.int8_master:
+        log(f"int8_master={typed.train.int8_master} → {int8_mode} (single-GPU only; world={world})")
     if int8_mode == "storage":
-        if cfg["precision"] != "fp4":
-            log(f"int8_master=storage needs precision=fp4 (Quartet linears); precision={cfg['precision']} → disabled")
-            int8_mode = "off"
-        elif world > 1:
-            log("int8_master=storage is single-GPU only (no FSDP/DTensor under world>1) → falling back to snap")
-            int8_mode = "snap"
-        else:
-            convert_quartet_to_master(model)                  # torchao Int8 store + SR; updated by the shared low-bit AdamW
-            torch.cuda.empty_cache(); torch.cuda.reset_peak_memory_stats(local_rank)
+        convert_quartet_to_master(model)                      # torchao Int8 store + SR; updated by the shared low-bit AdamW
+        torch.cuda.empty_cache(); torch.cuda.reset_peak_memory_stats(local_rank)
 
     # ALL trainable params — including the int8-master subclasses — go to the SAME optimizer. torchao's
     # Int8QuantizedTrainingLinearWeight intercepts AdamW's in-place update (add_/addcdiv_) and stochastic-rounds
@@ -780,7 +694,7 @@ def main():
     # (no FSDP, no DTensor), so it works there. Gated accordingly; falls back to bf16 AdamW. For int8-master
     # STORAGE this same 4-bit AdamW also updates the masters (SR via the subclass): weight AND moments low
     # precision, never above the FP4 we train in.
-    lowbit = args.optimizer_lowbit or cfg.get("optimizer_lowbit", 0)
+    lowbit = cfg.get("optimizer_lowbit", 0)
     int8_master_on = int8_mode == "snap"   # legacy: per-step bf16-grid SR (weights stay bf16)
     if rank0():
         log(f"int8_master mode = {int8_mode}"
@@ -830,8 +744,8 @@ def main():
     lev4 = _levers.get("lever4_exposure_tracking", {}) or {}
     lever4_on = bool(lev4.get("enabled", False))
     exposure = Counter()
-    if args.smoke:
-        total, accum = args.smoke, min(accum, 2)        # quick loop+memory validation
+    if smoke_steps:
+        total, accum = smoke_steps, min(accum, 2)        # quick loop+memory validation
         cfg["log_every"] = 1                            # log every step so the smoke shows loss+peakmem
         vocab = model.config.vocab_size
         lever1_on = lever4_on = False                   # smoke uses random ids (no metadata)
@@ -925,14 +839,14 @@ def main():
             # Honor save_every (was silently ignored): periodic checkpoint → crash-recovery for long
             # fleet runs + the per-step checkpoints the geometry probe sweeps to watch geometry form.
             se = cfg.get("save_every", 0)
-            if save_dir and not args.smoke and se and step % se == 0 and step < total:
+            if save_dir and not smoke_steps and se and step % se == 0 and step < total:
                 save_checkpoint(model, cfg, f"{save_dir}/step_{step:06d}", rank, world)
                 if lever4_on and rank0():    # snapshot cumulative fact exposures alongside the checkpoint
                     _save_exposure(f"{save_dir}/step_{step:06d}", step, exposure)
                 model.train()
 
     log(f"done {step} steps in {time.time()-t0:.0f}s")
-    if save_dir and not args.smoke:
+    if save_dir and not smoke_steps:
         save_checkpoint(model, cfg, save_dir, rank, world)
         if rank0():                          # recipe provenance: what RUN CONTRACT produced this checkpoint
             import json as _json

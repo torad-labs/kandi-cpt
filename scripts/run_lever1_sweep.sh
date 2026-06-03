@@ -15,17 +15,27 @@ echo "=== Lever 1 sweep started $(date '+%H:%M:%S')  weights={$WEIGHTS} ===" | t
 CKS=()
 for W in $WEIGHTS; do
   RUN="edc_lv_2026_L1w${W/./p}"
+  GEN="/tmp/l1w${W/./p}.yaml"
   echo "=== [sweep] training $RUN (entity_loss_weight=$W) $(date '+%H:%M:%S') ==="
-  ./scripts/train_fp4.sh --config configs/train_edc_lv_2026.yaml \
-     --optimizer-lowbit 4 --lever1-weight "$W" --lever4 \
-     --save-dir "checkpoints/cpt/$RUN" > "logs/train_$RUN.log" 2>&1
+  # Config-generator pattern: vary the run by WRITING a config, not by passing flags (which no longer exist —
+  # see docs/CONFIG_AUDIT.md). Lever1 at weight W + Lever4 + this run's save_dir, on the canonical base.
+  PYTHONPATH=scripts .venv/bin/python scripts/gen_config.py --base configs/train_edc_lv_2026.yaml --out "$GEN" \
+     --set train.optimizer_lowbit=4 \
+           train.levers.lever1_entity_loss.enabled=true \
+           train.levers.lever1_entity_loss.entity_loss_weight="$W" \
+           train.levers.lever4_exposure_tracking.enabled=true \
+           "run.save_dir=checkpoints/cpt/$RUN" \
+     || { echo "=== [sweep] $RUN config-gen FAILED ===" | tee -a "$SUMMARY"; continue; }
+  # success marker read FROM the generated config so it can't drift (was a hardcoded 'step 240/240').
+  MAXS=$(PYTHONPATH=scripts .venv/bin/python scripts/cpt_config.py --config "$GEN" --get train.max_steps)
+  ./scripts/train_fp4.sh --config "$GEN" > "logs/train_$RUN.log" 2>&1
   rc=$?
-  if [ "$rc" -ne 0 ] || ! grep -q "step 240/240" "logs/train_$RUN.log"; then
-    echo "=== [sweep] $RUN FAILED (rc=$rc) — see logs/train_$RUN.log ===" | tee -a "$SUMMARY"
+  if [ "$rc" -ne 0 ] || ! grep -q "step ${MAXS}/${MAXS}" "logs/train_$RUN.log"; then
+    echo "=== [sweep] $RUN FAILED (rc=$rc, expected step ${MAXS}/${MAXS}) — see logs/train_$RUN.log ===" | tee -a "$SUMMARY"
     tail -6 "logs/train_$RUN.log"
     continue
   fi
-  echo "=== [sweep] $RUN done: $(grep 'step 240/240' logs/train_$RUN.log | tail -1) ===" | tee -a "$SUMMARY"
+  echo "=== [sweep] $RUN done: $(grep "step ${MAXS}/${MAXS}" logs/train_$RUN.log | tail -1) ===" | tee -a "$SUMMARY"
   CKS+=("checkpoints/cpt/$RUN")
 done
 

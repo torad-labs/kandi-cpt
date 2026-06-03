@@ -11,15 +11,17 @@ cd "$(dirname "$0")/.."
 export CUDA_VISIBLE_DEVICES=0
 RUN=edc_sft_v9
 LOG=/tmp/v9_chain.log
+# total_steps for the live console heartbeat — read from the config so it can't drift (was hardcoded 450).
+TOTAL_STEPS=$(PYTHONPATH=scripts .venv/bin/python scripts/cpt_config.py --config configs/sft_edc.yaml --mode sft --get train.max_steps)
 
 setstatus () {  # $1=status $2=phase
-  .venv/bin/python - "$1" "$2" "$RUN" "$LOG" "$$" <<'PY'
+  .venv/bin/python - "$1" "$2" "$RUN" "$LOG" "$$" "$TOTAL_STEPS" <<'PY'
 import json, sys, time, pathlib
-status, phase, run, log, pid = sys.argv[1:6]
+status, phase, run, log, pid, total = sys.argv[1:7]
 p = pathlib.Path("data/_build/train_status.json")
 p.parent.mkdir(parents=True, exist_ok=True)
 p.write_text(json.dumps({"run": run, "log_path": log, "pid": int(pid),
-    "total_steps": 450, "started": time.time(), "status": status, "phase": phase}))
+    "total_steps": int(total), "started": time.time(), "status": status, "phase": phase}))
 PY
 }
 fail () { setstatus stopped "failed: $1"; echo "V9 FAILED: $1"; exit 1; }
@@ -37,12 +39,16 @@ else
 fi
 
 setstatus running "training"
-echo "===== [V9 2/3] train edc_sft_v9 (from edc_all97_v1) ====="   # via train_fp4.sh — sets the FP4/CUDA toolchain env
-# (CUDA_HOME, nvcc -ccbin g++-14, …) the flashinfer cutlass-FP4 sm120 kernel JIT needs. trainer preserves $LOG.
-scripts/train_fp4.sh --config configs/sft_edc.yaml \
-  --tokenized data/_build/30_tokenized/sft_v9.arrow \
-  --save-dir checkpoints/sft/edc_sft_v9 \
-  --init-from checkpoints/cpt/edc_all97_v1
+echo "===== [V9 2/3] train edc_sft_v9 (from edc_all97_v1) ====="
+# Config-generator pattern: derive a resolved config from the canonical SFT base + this run's overrides,
+# then launch the ONE entrypoint with --config only (no behavior flags — see docs/CONFIG_AUDIT.md).
+# train_fp4.sh sets the FP4/CUDA toolchain env the flashinfer kernel JIT needs; the trainer preserves $LOG.
+GEN=/tmp/v9_sft.yaml
+PYTHONPATH=scripts .venv/bin/python scripts/gen_config.py --base configs/sft_edc.yaml --out "$GEN" --mode sft \
+  --set data.tokenized=data/_build/30_tokenized/sft_v9.arrow \
+        run.save_dir=checkpoints/sft/edc_sft_v9 \
+        data.init_from=checkpoints/cpt/edc_all97_v1 || fail "config generation failed"
+scripts/train_fp4.sh --config "$GEN"
 test -f checkpoints/sft/edc_sft_v9/model.safetensors || fail "no trained checkpoint"
 
 setstatus running "gating checkpoints"
