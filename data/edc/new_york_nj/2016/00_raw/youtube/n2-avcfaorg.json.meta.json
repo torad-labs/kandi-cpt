@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=N2-AVCfaORg",
+  "final_url": "https://www.youtube.com/watch?v=N2-AVCfaORg",
+  "fetched_at": "2026-05-30T10:58:04+00:00",
+  "http_status": 200,
+  "sha256": "a47294df2f8510ce68a31f6c942e8d5b1534f33ee356a0f8825f8b28ec697f6c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new york nj 2016",
+    "title": "Araab Muzik @ EDC NY 2014 (Cosmic Meadow)"
+  }
+}

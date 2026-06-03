@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Z-fkSiLLBI0",
+  "final_url": "https://www.youtube.com/watch?v=Z-fkSiLLBI0",
+  "fetched_at": "2026-05-30T11:11:13+00:00",
+  "http_status": 200,
+  "sha256": "eb5fafefae6dc6713f421a923b9fc16bd7af272ed03c00c5528e4685cf1cb4a9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC suzhou 2023",
+    "title": "DJ Sally Club Show - Warmup for EDC Suzhou 2023 @Insomniac"
+  }
+}

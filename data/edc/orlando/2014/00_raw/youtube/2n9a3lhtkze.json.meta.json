@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=2n9A3lhTkZE",
+  "final_url": "https://www.youtube.com/watch?v=2n9A3lhTkZE",
+  "fetched_at": "2026-05-30T10:21:51+00:00",
+  "http_status": 200,
+  "sha256": "02901bebeee9d9d66c8e057d68b70f24b88f0d4bc000af85c46e443ae5154c2a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC orlando 2014",
+    "title": "EDC Orlando 2014 Official Trailer"
+  }
+}

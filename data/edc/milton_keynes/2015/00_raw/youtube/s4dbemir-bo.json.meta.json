@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=S4dBEmir-Bo",
+  "final_url": "https://www.youtube.com/watch?v=S4dBEmir-Bo",
+  "fetched_at": "2026-05-30T11:06:30+00:00",
+  "http_status": 200,
+  "sha256": "400d593af2ff70baf562334a56c22900646e8738f6bd78110afae892f7c40ce7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC milton keynes 2015",
+    "title": "EDC UK 2015 Official Announcement Trailer"
+  }
+}

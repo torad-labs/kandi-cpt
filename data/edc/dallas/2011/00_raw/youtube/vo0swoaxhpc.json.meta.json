@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=vO0SWOAXHPc",
+  "final_url": "https://www.youtube.com/watch?v=vO0SWOAXHPc",
+  "fetched_at": "2026-05-30T10:54:09+00:00",
+  "http_status": 200,
+  "sha256": "a41a7e71d79d52e03bce0114520c21aee6d03c7b5f5a638bfbaca9954ebf1151",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC dallas 2011",
+    "title": "EDC Dallas 2011 Shuffle"
+  }
+}

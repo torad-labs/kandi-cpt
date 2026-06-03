@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=12uItcpAiSM",
+  "final_url": "https://www.youtube.com/watch?v=12uItcpAiSM",
+  "fetched_at": "2026-05-30T10:56:30+00:00",
+  "http_status": 200,
+  "sha256": "95bd74bb9451e43b48173e91b72ccf8f5f360978c8e9e5809d58963c8fb89bd1",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC new york nj 2014",
+    "title": "Electric Daisy Carnival (EDC) NEW YORK 2014 laser show by Lasertainment"
+  }
+}

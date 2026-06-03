@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=9pcPMVuAa7Q",
+  "final_url": "https://www.youtube.com/watch?v=9pcPMVuAa7Q",
+  "fetched_at": "2026-05-30T11:02:35+00:00",
+  "http_status": 200,
+  "sha256": "1090d295b4b4d0ac8868e66d677a56cf1d239280be9520ca43ca24f74f8c9e77",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC san juan 2013",
+    "title": "EDC Puerto Rico 2013 (Saturday) - Pretty Lights (Hot Like Sauce)"
+  }
+}

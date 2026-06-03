@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=rvse58mxuDM",
+  "final_url": "https://www.youtube.com/watch?v=rvse58mxuDM",
+  "fetched_at": "2026-05-30T10:24:55+00:00",
+  "http_status": 200,
+  "sha256": "1421debd526759fc374b95caec09015acc96b8d71c93f2d6eaddf2d712903fe7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC orlando 2018",
+    "title": "EDC Orlando 2018 - Official Trailer"
+  }
+}

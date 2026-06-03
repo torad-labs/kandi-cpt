@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=slixpdUi2cQ",
+  "final_url": "https://www.youtube.com/watch?v=slixpdUi2cQ",
+  "fetched_at": "2026-05-30T10:24:55+00:00",
+  "http_status": 200,
+  "sha256": "7c2e293240bf773187475921c34609e988ea4a2d9a7e767ef644545b733db24b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC orlando 2018",
+    "title": "Alison Wonderland - EDC Orlando 2018"
+  }
+}

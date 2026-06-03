@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+mexico+city+2019",
+  "final_url": "https://dancingastronaut.com/?s=EDC+mexico+city+2019",
+  "fetched_at": "2026-05-30T10:35:20+00:00",
+  "http_status": 200,
+  "sha256": "3105ec9a9fcc4b788b9d068c4637241aa42a8c151a5f77a40c7481b8042c4640",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2019",
+    "kind": "listing"
+  }
+}

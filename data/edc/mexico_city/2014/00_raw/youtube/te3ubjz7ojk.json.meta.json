@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=TE3ubJZ7Ojk",
+  "final_url": "https://www.youtube.com/watch?v=TE3ubJZ7Ojk",
+  "fetched_at": "2026-05-30T10:31:14+00:00",
+  "http_status": 200,
+  "sha256": "20299fc1138464ff0801415c872cd87f289569157e7f2386f8cc134b4d378227",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC mexico city 2014",
+    "title": "Slow Down @ Showtek - Electric Daisy Carnival Mexico 2014"
+  }
+}

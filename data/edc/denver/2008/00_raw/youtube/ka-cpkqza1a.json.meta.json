@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=kA-CPKqza1A",
+  "final_url": "https://www.youtube.com/watch?v=kA-CPKqza1A",
+  "fetched_at": "2026-05-30T10:50:19+00:00",
+  "http_status": 200,
+  "sha256": "3736aa94a416273022a90afc89afe519fd034508084959918130d2bcc2a896bd",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC denver 2008",
+    "title": "EDC LA 2008"
+  }
+}

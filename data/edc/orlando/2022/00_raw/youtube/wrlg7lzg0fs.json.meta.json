@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=wrlg7lZG0Fs",
+  "final_url": "https://www.youtube.com/watch?v=wrlg7lZG0Fs",
+  "fetched_at": "2026-05-30T10:27:14+00:00",
+  "http_status": 200,
+  "sha256": "6302361916818cc82b7fa7eadd2821d03e8f4655c49f1e6c770ae1a6970877d3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC orlando 2022",
+    "title": "Afrojack Full Set EDC Orlando 2022 - Kinetic Field"
+  }
+}

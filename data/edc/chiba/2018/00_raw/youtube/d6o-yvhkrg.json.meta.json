@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=_d6O-YvhKRg",
+  "final_url": "https://www.youtube.com/watch?v=_d6O-YvhKRg",
+  "fetched_at": "2026-05-30T11:12:34+00:00",
+  "http_status": 200,
+  "sha256": "f1a36e87e1fe52e524d65df62dd1aba9c1f74ad0b3f9928b3c102d2e876804b0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC chiba 2018",
+    "title": "EDC Japan 2018 outside DJ play"
+  }
+}

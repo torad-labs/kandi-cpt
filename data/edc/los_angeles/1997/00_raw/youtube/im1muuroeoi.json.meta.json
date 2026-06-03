@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=im1MUURoeoI",
+  "final_url": "https://www.youtube.com/watch?v=im1MUURoeoI",
+  "fetched_at": "2026-05-30T10:40:29+00:00",
+  "http_status": 200,
+  "sha256": "d9cc1b586592274b737f58a79dfe9ab03b9651e48c03b66b2ae34c183554edb7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "query": "EDC los angeles 1997",
+    "title": "electric daisy carnival: day two main stage"
+  }
+}

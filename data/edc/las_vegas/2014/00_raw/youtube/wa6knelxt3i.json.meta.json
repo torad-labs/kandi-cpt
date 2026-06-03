@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=WA6KNeLXT3I",
+  "final_url": "https://www.youtube.com/watch?v=WA6KNeLXT3I",
+  "fetched_at": "2026-05-30T10:09:52+00:00",
+  "http_status": 200,
+  "sha256": "60ccf880149bc71de89d545f802faeb2461b7532b19c7ce338feeefc6ac0391e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC las vegas 2014",
+    "title": "Angerfist @ EDC Las Vegas 2014 (LIVESET)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://www.youtube.com/watch?v=tpteTL5ycRo",
+  "final_url": "https://www.youtube.com/watch?v=tpteTL5ycRo",
+  "fetched_at": "2026-06-02T06:03:55+00:00",
+  "http_status": 200,
+  "sha256": "09ca0e86c51a580d041102cf84ba40f9443ffa3ac1191180fdf44f2cc4a3378f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC las vegas 2026",
+    "title": "Seven Lions Live at EDC Las Vegas 2026 (Official Full Set)",
+    "transcript_chars": 19323
+  }
+}

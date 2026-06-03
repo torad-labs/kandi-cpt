@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=HSrq5ncLIvs",
+  "final_url": "https://www.youtube.com/watch?v=HSrq5ncLIvs",
+  "fetched_at": "2026-05-30T11:10:33+00:00",
+  "http_status": 200,
+  "sha256": "bbe1d52ddbe195de07cc991e2c96304fbbdbafc245e1c5cb46aaaff870143f92",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "zhuhai",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC zhuhai 2018",
+    "title": "Illenium Live @ EDC CHINA 2018"
+  }
+}

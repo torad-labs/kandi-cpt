@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=YnctbX0VIhQ",
+  "final_url": "https://www.youtube.com/watch?v=YnctbX0VIhQ",
+  "fetched_at": "2026-05-30T10:32:01+00:00",
+  "http_status": 200,
+  "sha256": "1b62f9dd8e1de70bfac480d43b01b791db43241d69a14f3e1d971a8673e85a0d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC mexico city 2015",
+    "title": "GoPro: Electric Daisy Carnival (EDC) M\u00e9xico City 2015 Aftermovie"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=7a-ooXg_SE8",
+  "final_url": "https://www.youtube.com/watch?v=7a-ooXg_SE8",
+  "fetched_at": "2026-05-30T11:05:46+00:00",
+  "http_status": 200,
+  "sha256": "27512bdf96acf25c0d7e1081f542bf5d8d90accbfb65a24d78e88993c984fdfd",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC milton keynes 2014",
+    "title": "EDC UK 2014 -  Avicii - Milton Keynes"
+  }
+}

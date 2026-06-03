@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=s51scQIoNYA",
+  "final_url": "https://www.youtube.com/watch?v=s51scQIoNYA",
+  "fetched_at": "2026-05-30T10:48:08+00:00",
+  "http_status": 200,
+  "sha256": "6e1b6cb9128f00e43f0c99f3f17fad3c5f7b729d83be7c6f19c9800680d98021",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2004
+  },
+  "extra": {
+    "query": "EDC san bernardino 2004",
+    "title": "Ron Ives"
+  }
+}

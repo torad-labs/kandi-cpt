@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=izHUbxncogM",
+  "final_url": "https://www.youtube.com/watch?v=izHUbxncogM",
+  "fetched_at": "2026-05-30T10:25:41+00:00",
+  "http_status": 200,
+  "sha256": "d933307dbff645105ff3a8bbc5ec6ffbd8d98b54e93e24fea290f44179d70709",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC orlando 2019",
+    "title": "EDC Las Vegas vs. EDC Orlando: How Do They Compare?"
+  }
+}

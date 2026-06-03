@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3fbEN2_99QM",
+  "final_url": "https://www.youtube.com/watch?v=3fbEN2_99QM",
+  "fetched_at": "2026-05-30T10:21:51+00:00",
+  "http_status": 200,
+  "sha256": "11def12f50f58a67a1c8dae998d546990e43833dab1617563e9d16013106ada0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC orlando 2014",
+    "title": "EDC ORLANDO 2014 AFTERMOVIE"
+  }
+}

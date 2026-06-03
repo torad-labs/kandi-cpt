@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:09:09+00:00",
+  "http_status": 200,
+  "sha256": "a1da14db882b5b97f8a27f17e5fad6a2c521c97b1f35d4aa29a32b30e7c08b26",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "las+vegas+2013",
+    "results": 10
+  }
+}

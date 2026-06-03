@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=O05F31MJFKY",
+  "final_url": "https://www.youtube.com/watch?v=O05F31MJFKY",
+  "fetched_at": "2026-05-30T10:34:18+00:00",
+  "http_status": 200,
+  "sha256": "771eb32b51451b414e957124dfe9f40d49066dead5374b891afb198f86bbec74",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC mexico city 2018",
+    "title": "EDC M\u00c9XICO 2018 DIA 2 HARDSTYLE: Headhunterz, GAMMER, KIKEONE, JUNKIE KID, REZZ | STONECAT"
+  }
+}

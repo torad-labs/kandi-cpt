@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=G6X-T6cZblk",
+  "final_url": "https://www.youtube.com/watch?v=G6X-T6cZblk",
+  "fetched_at": "2026-05-30T10:22:37+00:00",
+  "http_status": 200,
+  "sha256": "00a26fe2a0399f8b97af6852bceef82b0f015abee6999a2add3cf52bd14e1143",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC orlando 2015",
+    "title": "EDC Orlando 2015 - Carnage"
+  }
+}

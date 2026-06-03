@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=a2dLBd9Vo4g",
+  "final_url": "https://www.youtube.com/watch?v=a2dLBd9Vo4g",
+  "fetched_at": "2026-05-30T10:28:00+00:00",
+  "http_status": 200,
+  "sha256": "6012eb2988b01506ab8eec46c37e4a59a62b4e6b8d2948da9392c2b037ed49be",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC orlando 2023",
+    "title": "Dave London @ EDC Orlando 2023 Breaks Set (Free download)"
+  }
+}

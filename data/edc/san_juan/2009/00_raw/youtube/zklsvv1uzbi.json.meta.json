@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ZKLSvv1uZBI",
+  "final_url": "https://www.youtube.com/watch?v=ZKLSvv1uZBI",
+  "fetched_at": "2026-05-30T10:59:34+00:00",
+  "http_status": 200,
+  "sha256": "7e8c03673b83fb14305c135d201d696e19647e5b900a181010d6f9f9b4044969",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC san juan 2009",
+    "title": "DJ Marky @ EDC 2009 Los Angeles Live Dillinja - Shiners"
+  }
+}

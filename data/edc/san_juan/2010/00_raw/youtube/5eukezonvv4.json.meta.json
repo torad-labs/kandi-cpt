@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=5EuKeZoNvv4",
+  "final_url": "https://www.youtube.com/watch?v=5EuKeZoNvv4",
+  "fetched_at": "2026-05-30T11:00:18+00:00",
+  "http_status": 200,
+  "sha256": "f739f011922e54ab3e3f1eb9bbd57c8b1796d97e6061d55f6ae25099a6508247",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC san juan 2010",
+    "title": "Lmfao & Will.I.am live at the electric daisy carnival"
+  }
+}

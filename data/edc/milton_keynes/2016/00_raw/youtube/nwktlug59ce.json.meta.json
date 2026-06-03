@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=NwkTlUG59cE",
+  "final_url": "https://www.youtube.com/watch?v=NwkTlUG59cE",
+  "fetched_at": "2026-05-30T11:07:15+00:00",
+  "http_status": 200,
+  "sha256": "7aecb4d68eb04abf5f9fee4ee7aba7e40bc8a4f7d7dffb33cf849694bb292bc0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC milton keynes 2016",
+    "title": "Axwell / Ingrosso EDC Electric Daisy Carnival Milton Keynes Bowl 2016 (part 1 of 7)"
+  }
+}

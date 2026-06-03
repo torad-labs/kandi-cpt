@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3AQ_Srbe1lQ",
+  "final_url": "https://www.youtube.com/watch?v=3AQ_Srbe1lQ",
+  "fetched_at": "2026-05-30T10:17:52+00:00",
+  "http_status": 200,
+  "sha256": "e1dababf24d6d1ea135ca6537409a362214f462b2b8785c6836a55c5976b419e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC las vegas 2025",
+    "title": "The Chainsmokers Live at EDC Las Vegas 2026 (Official Full Set)"
+  }
+}

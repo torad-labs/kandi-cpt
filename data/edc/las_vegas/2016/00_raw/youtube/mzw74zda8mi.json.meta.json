@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=MZW74zdA8MI",
+  "final_url": "https://www.youtube.com/watch?v=MZW74zdA8MI",
+  "fetched_at": "2026-05-30T10:11:40+00:00",
+  "http_status": 200,
+  "sha256": "fb14aed52df65328ba583a9ca93889a3fe04940a0ebc62bb6343ffe16e08f3fd",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC las vegas 2016",
+    "title": "The Chainsmokers - EDC Las Vegas 2016 Full Set"
+  }
+}

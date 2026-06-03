@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=cx8T4n7M8Rw",
+  "final_url": "https://www.youtube.com/watch?v=cx8T4n7M8Rw",
+  "fetched_at": "2026-05-30T10:54:09+00:00",
+  "http_status": 200,
+  "sha256": "a642fd987ea8d85ce5ddcf533173f8b6d097d94346ee805890e6fb18c2e101f0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC dallas 2011",
+    "title": "Electric Daisy Carnival Dallas 2011"
+  }
+}

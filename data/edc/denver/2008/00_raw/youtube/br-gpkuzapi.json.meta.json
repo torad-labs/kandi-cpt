@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Br_GPkuzaPI",
+  "final_url": "https://www.youtube.com/watch?v=Br_GPkuzaPI",
+  "fetched_at": "2026-05-30T10:50:19+00:00",
+  "http_status": 200,
+  "sha256": "92a7aa14a809befe0baa8517354d8415c5fc740acc9b5ea7abc6224ab598e05c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC denver 2008",
+    "title": "Electric Daisy Carnival 2008 Denver Colorado"
+  }
+}

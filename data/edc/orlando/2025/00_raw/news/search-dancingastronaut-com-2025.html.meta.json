@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+orlando+2025",
+  "final_url": "https://dancingastronaut.com/?s=EDC+orlando+2025",
+  "fetched_at": "2026-05-30T10:29:47+00:00",
+  "http_status": 200,
+  "sha256": "4f7423cbd89747fa5a77b5497c9bf38a543180c33ed2f0c53744a814a09678af",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC+orlando+2025",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=NfwVEI6sVf0",
+  "final_url": "https://www.youtube.com/watch?v=NfwVEI6sVf0",
+  "fetched_at": "2026-05-30T10:09:06+00:00",
+  "http_status": 200,
+  "sha256": "679ea7af2f470294734e52b3da17bb12916bba36fa5d28b4208c65b327f28655",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC las vegas 2013",
+    "title": "EDC Vegas 2013 Dates & On Sale Announcement"
+  }
+}

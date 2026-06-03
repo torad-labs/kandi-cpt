@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=o3jHt6LXuYM",
+  "final_url": "https://www.youtube.com/watch?v=o3jHt6LXuYM",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "9d1c8dab984f2ff166065abc240b2b42cc68d6284b3a2c6fa87689a564c9072a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "EDC MEXICO 2017 Vlog (2 Days)"
+  }
+}

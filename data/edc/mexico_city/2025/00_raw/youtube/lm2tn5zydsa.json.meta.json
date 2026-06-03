@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=LM2tN5zYdSA",
+  "final_url": "https://www.youtube.com/watch?v=LM2tN5zYdSA",
+  "fetched_at": "2026-05-30T10:38:59+00:00",
+  "http_status": 200,
+  "sha256": "29949a721e5efe6dc2a9f1e9f61e3081ca62239f24812ff7e3241a4802df6b0f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC mexico city 2025",
+    "title": "RayBurger - EDC Mexico 2025 [Full Set]"
+  }
+}

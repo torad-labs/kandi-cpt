@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=imc3k263fic",
+  "final_url": "https://www.youtube.com/watch?v=imc3k263fic",
+  "fetched_at": "2026-05-30T10:54:09+00:00",
+  "http_status": 200,
+  "sha256": "6a1404b4a21b8fbe87d76128fb76162a862d66c62569813484ce55ff77ceb5bf",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC dallas 2011",
+    "title": "EDC Dallas 2011"
+  }
+}

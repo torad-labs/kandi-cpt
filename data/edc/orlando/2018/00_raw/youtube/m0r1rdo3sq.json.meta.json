@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-m0R1rDO3sQ",
+  "final_url": "https://www.youtube.com/watch?v=-m0R1rDO3sQ",
+  "fetched_at": "2026-05-30T10:24:55+00:00",
+  "http_status": 200,
+  "sha256": "faba70cd3c5088a565a7db044112003d663d71a946c649403a1f4c3d9582259b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC orlando 2018",
+    "title": "Tiesto Full Sunset Set EDC Orlando 2018 Kinetic Field"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/news/edc-orlando-2019-numbers/",
+  "final_url": "https://edm.com/news/edc-orlando-2019-numbers/",
+  "fetched_at": "2026-05-30T10:26:19+00:00",
+  "http_status": 200,
+  "sha256": "c695997a8bbb9868ce124b9d257742400ca7221f09d7bea0ceb324fb98daf20b",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

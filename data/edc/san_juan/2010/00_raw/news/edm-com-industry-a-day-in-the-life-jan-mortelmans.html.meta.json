@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/industry/a-day-in-the-life-jan-mortelmans/",
+  "final_url": "https://edm.com/industry/a-day-in-the-life-jan-mortelmans/",
+  "fetched_at": "2026-05-30T11:00:58+00:00",
+  "http_status": 200,
+  "sha256": "a48a1cc23e14f6fcb6f25a4a2008c9fa6e837cd432b75d2d3f54ac56b93f5832",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2010
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

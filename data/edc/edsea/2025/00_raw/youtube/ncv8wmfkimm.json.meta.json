@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ncV8WMFKImM",
+  "final_url": "https://www.youtube.com/watch?v=ncV8WMFKImM",
+  "fetched_at": "2026-05-30T11:21:02+00:00",
+  "http_status": 200,
+  "sha256": "5c2c2fd44e2d0311f2b10b3527392a3973ab3e5c2f0e5a00df11c80dc6a81530",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC edsea 2025",
+    "title": "EDSea 2025 \ud83d\udea2\ud83e\udea9\ud83c\udf31| Touching grass in Belize \ud83c\udfd6\ufe0f"
+  }
+}

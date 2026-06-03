@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T11:14:34+00:00",
+  "http_status": 200,
+  "sha256": "4bd67f23d5d6d5d515df089e0f2864ba82d32e3c54c4a6f7dc9ae49df4346f40",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "seoul",
+    "year": 2019
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

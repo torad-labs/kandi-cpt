@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/insomniac-hotel-edc-orlando-east-coast-first-time-2026/",
+  "final_url": "https://edm.com/events/insomniac-hotel-edc-orlando-east-coast-first-time-2026/",
+  "fetched_at": "2026-05-30T10:25:30+00:00",
+  "http_status": 200,
+  "sha256": "0cbe61d74da332a09f9fdf0a7e9f9992860f0f24b5bf25c1b5a50f29ddef1ec1",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

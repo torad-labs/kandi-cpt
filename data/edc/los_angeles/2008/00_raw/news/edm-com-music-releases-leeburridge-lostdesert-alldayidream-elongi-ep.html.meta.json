@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/music-releases/leeburridge-lostdesert-alldayidream-elongi-ep/",
+  "final_url": "https://edm.com/music-releases/leeburridge-lostdesert-alldayidream-elongi-ep/",
+  "fetched_at": "2026-05-30T10:45:39+00:00",
+  "http_status": 200,
+  "sha256": "8e5c97dc30eedccdc6fe421b2235435ccfcb4ff60ad8dd8c4a6d5abee9348050",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2008
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

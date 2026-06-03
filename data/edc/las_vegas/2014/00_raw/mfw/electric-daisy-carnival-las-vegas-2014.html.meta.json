@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2014/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-las-vegas-2014/",
+  "fetched_at": "2026-06-02T17:53:27+00:00",
+  "http_status": 200,
+  "sha256": "1dacc4949ae1407d130624246b4c493e009e9b84beb57c0f4097e03829ddd695",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2014
+  },
+  "extra": {}
+}

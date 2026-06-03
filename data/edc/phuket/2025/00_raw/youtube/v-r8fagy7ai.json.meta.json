@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=v_r8faGY7AI",
+  "final_url": "https://www.youtube.com/watch?v=v_r8faGY7AI",
+  "fetched_at": "2026-05-30T11:17:17+00:00",
+  "http_status": 200,
+  "sha256": "fbaa731133a7031719ec0612aaf7d89052bb7c4556d10affcab98edd5f72aa74",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC phuket 2025",
+    "title": "WUKONG LIVE @EDC THAILAND 2025"
+  }
+}

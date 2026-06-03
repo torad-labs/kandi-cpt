@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=lCHSnSc90lA",
+  "final_url": "https://www.youtube.com/watch?v=lCHSnSc90lA",
+  "fetched_at": "2026-05-30T10:28:47+00:00",
+  "http_status": 200,
+  "sha256": "2fc327342d62b93ac307e5a2d24fd229f37030ea6bd5f429cd26f9cf04b0efbe",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC orlando 2024",
+    "title": "EDC Orlando 2024 | Aftermovie"
+  }
+}

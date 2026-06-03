@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:14:02+00:00",
+  "http_status": 200,
+  "sha256": "69e1aeabb08e45a17543c1a6077cbe22e8fb35a4a222692b7e059924c2a7baa9",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2019
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "las+vegas+2019",
+    "results": 10
+  }
+}

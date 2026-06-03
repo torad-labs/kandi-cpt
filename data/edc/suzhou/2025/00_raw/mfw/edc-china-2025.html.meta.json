@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-china-2025/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-china-2025/",
+  "fetched_at": "2026-06-02T18:08:34+00:00",
+  "http_status": 200,
+  "sha256": "a0e4f04537d631980d3834b805ec597690a4134236bbea9f77a2571540eeb6d8",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2025
+  },
+  "extra": {}
+}

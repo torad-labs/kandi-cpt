@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=e413d8bGhDs",
+  "final_url": "https://www.youtube.com/watch?v=e413d8bGhDs",
+  "fetched_at": "2026-05-30T10:51:44+00:00",
+  "http_status": 200,
+  "sha256": "d4d16fa44fcd3b8337c826ac9b4b78c6f4833b06bb169eb20551b0212178140f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC denver 2010",
+    "title": "Cube-a-Tron at EDC denver 2010"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=z6-a8kMy1U8",
+  "final_url": "https://www.youtube.com/watch?v=z6-a8kMy1U8",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "abd793a425166f0456510b4d08b2bdd967314f51a6c6397a52ab14a742f892aa",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "Countdown to EDC VEGAS 2011: Official Behind the Scenes Video"
+  }
+}

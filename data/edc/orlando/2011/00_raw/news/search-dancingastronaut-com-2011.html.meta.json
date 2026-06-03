@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+orlando+2011",
+  "final_url": "https://dancingastronaut.com/?s=EDC+orlando+2011",
+  "fetched_at": "2026-05-30T10:19:47+00:00",
+  "http_status": 200,
+  "sha256": "a954d00326e18a6edb92e04f46de1e7d99ad56c1edd05b95f77852a2a47f0025",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC+orlando+2011",
+    "kind": "listing"
+  }
+}

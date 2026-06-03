@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/music-releases/martin-garrix-ed-sheeran-repeat-it/",
+  "final_url": "https://edm.com/music-releases/martin-garrix-ed-sheeran-repeat-it/",
+  "fetched_at": "2026-05-30T10:14:39+00:00",
+  "http_status": 200,
+  "sha256": "4fba7ae1ef1dc0b8fef47f73901bd19bc1ec8b149bcde90a219fc937ed72480d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2019
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

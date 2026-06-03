@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2021/11/good-morning-mix-kayzo-and-knife-party-go-head-to-head-at-edc-las-vegas/",
+  "final_url": "https://dancingastronaut.com/2021/11/good-morning-mix-kayzo-and-knife-party-go-head-to-head-at-edc-las-vegas/",
+  "fetched_at": "2026-05-30T10:19:47+00:00",
+  "http_status": 200,
+  "sha256": "0df171c067ebed2f1e97f3f6f3ac489cc421500750a489746c5e2175a2bf8d5b",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

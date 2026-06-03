@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=RQKMXgaSfuA",
+  "final_url": "https://www.youtube.com/watch?v=RQKMXgaSfuA",
+  "fetched_at": "2026-05-30T11:08:50+00:00",
+  "http_status": 200,
+  "sha256": "0447dcbfc2768fcef19fb36400073a89743733fed4739ce0609e0375a1f2a163",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_delhi",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new delhi 2016",
+    "title": "EDC India 2016 AFTERMOVIE"
+  }
+}

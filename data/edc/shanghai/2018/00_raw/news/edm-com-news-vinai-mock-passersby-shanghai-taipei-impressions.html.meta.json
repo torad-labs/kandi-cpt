@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/news/vinai-mock-passersby-shanghai-taipei-impressions/",
+  "final_url": "https://edm.com/news/vinai-mock-passersby-shanghai-taipei-impressions/",
+  "fetched_at": "2026-05-30T11:10:22+00:00",
+  "http_status": 200,
+  "sha256": "ad446792f6d5cf4f3fd83a649273ed1c7863866d015b174ad4e26e33d69bfea6",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "shanghai",
+    "year": 2018
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

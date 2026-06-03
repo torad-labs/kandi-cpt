@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=7f0pCfW94WU",
+  "final_url": "https://www.youtube.com/watch?v=7f0pCfW94WU",
+  "fetched_at": "2026-05-30T10:48:55+00:00",
+  "http_status": 200,
+  "sha256": "d5aae119fe190fbbe099f1a45eee363d7d20fd7178ba29cd433a3d7593fdab82",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2005
+  },
+  "extra": {
+    "query": "EDC san bernardino 2005",
+    "title": "EDC San Bernardino"
+  }
+}

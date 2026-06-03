@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=l5wro3bMZWc",
+  "final_url": "https://www.youtube.com/watch?v=l5wro3bMZWc",
+  "fetched_at": "2026-05-30T10:17:52+00:00",
+  "http_status": 200,
+  "sha256": "a8f88520b9a55166e24ac5c890aa74ca82c3e175ebeef3dee43ba1013f147faa",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC las vegas 2025",
+    "title": "Kaskade Live at EDC Las Vegas 2026 (Official Full Set)"
+  }
+}

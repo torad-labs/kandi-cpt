@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+portimao+2022",
+  "final_url": "https://edm.com/?s=EDC+portimao+2022",
+  "fetched_at": "2026-05-30T11:17:01+00:00",
+  "http_status": 200,
+  "sha256": "316e48970819ef07c512e2f5bf404c79b4a6f9c95e04d5b777096684a2a92cec",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "portimao",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC+portimao+2022",
+    "kind": "listing"
+  }
+}

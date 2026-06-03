@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T10:40:11+00:00",
+  "http_status": 200,
+  "sha256": "dd991e8500b8b9c9b44b1b4a3ceef80b709f67f5a1583493ee5b743c14d230a2",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2026
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UzM-dH4x3QI",
+  "final_url": "https://www.youtube.com/watch?v=UzM-dH4x3QI",
+  "fetched_at": "2026-05-30T11:11:13+00:00",
+  "http_status": 200,
+  "sha256": "b4c5c4c610650ed52d9d060cf1816f80d24104be2691675bef7d38e09f2b7f90",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC suzhou 2023",
+    "title": "W&W live EDC China 2023"
+  }
+}

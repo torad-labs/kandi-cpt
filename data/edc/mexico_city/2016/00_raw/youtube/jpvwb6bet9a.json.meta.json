@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=JpVWb6BET9A",
+  "final_url": "https://www.youtube.com/watch?v=JpVWb6BET9A",
+  "fetched_at": "2026-05-30T10:32:45+00:00",
+  "http_status": 200,
+  "sha256": "57edfb02ab23adf57052aa87d13ab9623d1c0b218a19060c01c75cbb38f52a24",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC mexico city 2016",
+    "title": "EDC Mexico 2026 Official Trailer"
+  }
+}

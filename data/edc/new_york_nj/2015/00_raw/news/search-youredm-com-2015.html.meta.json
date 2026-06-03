@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+new+york+nj+2015",
+  "final_url": "https://youredm.com/?s=EDC+new+york+nj+2015",
+  "fetched_at": "2026-05-30T10:57:38+00:00",
+  "http_status": 200,
+  "sha256": "901c6d9aa883eeea17e5e6a00f97b78c76fb353b69603504142beb337f5eeb6b",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC+new+york+nj+2015",
+    "kind": "listing"
+  }
+}

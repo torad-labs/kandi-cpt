@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2019/12/dancing-astronauts-big-100-top-25-edm-moments-of-the-decade/",
+  "final_url": "https://dancingastronaut.com/2019/12/dancing-astronauts-big-100-top-25-edm-moments-of-the-decade/",
+  "fetched_at": "2026-05-30T10:43:09+00:00",
+  "http_status": 200,
+  "sha256": "747386bddef3ee907bd98189b4f8439a0b2e2aae4e9bd3a61169aeb134ee583e",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

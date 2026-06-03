@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T10:42:30+00:00",
+  "http_status": 200,
+  "sha256": "d58e74bb219523c517bc9e8a8da57dea766833b5f3e534abe8500ae6396804a3",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2000
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

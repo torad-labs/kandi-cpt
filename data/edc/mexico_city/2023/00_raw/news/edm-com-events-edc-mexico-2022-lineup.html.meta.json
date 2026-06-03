@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-mexico-2022-lineup/",
+  "final_url": "https://edm.com/events/edc-mexico-2022-lineup/",
+  "fetched_at": "2026-05-30T10:38:01+00:00",
+  "http_status": 200,
+  "sha256": "0455ce57b8876fd739688f407998d79476f992ce61d7771ead01f21f10f39b4f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2023
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

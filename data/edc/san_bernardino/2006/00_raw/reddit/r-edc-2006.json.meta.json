@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=san+bernardino+2006&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=san+bernardino+2006&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:49:41+00:00",
+  "http_status": 200,
+  "sha256": "59b6a1df8d8e71c650c05c0b55b1709ee9112e8d7c8533f2a367e74f207161b2",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2006
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "san+bernardino+2006",
+    "results": 1
+  }
+}

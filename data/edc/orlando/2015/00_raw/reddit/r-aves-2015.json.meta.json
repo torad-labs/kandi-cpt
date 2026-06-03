@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:22:43+00:00",
+  "http_status": 200,
+  "sha256": "b6284f3edf1a1ea754ed1ab66867901a164be1b4f5b3060027d317c929af0575",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "orlando+2015",
+    "results": 2
+  }
+}

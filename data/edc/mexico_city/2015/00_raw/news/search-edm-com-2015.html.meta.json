@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+mexico+city+2015",
+  "final_url": "https://edm.com/?s=EDC+mexico+city+2015",
+  "fetched_at": "2026-05-30T10:32:32+00:00",
+  "http_status": 200,
+  "sha256": "e5325c01fde7b2c6824ded1beb5acc2c8591dcaf5c24e3baa3a37ca4e6724642",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2015",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=FpZaVFlzts4",
+  "final_url": "https://www.youtube.com/watch?v=FpZaVFlzts4",
+  "fetched_at": "2026-05-30T10:27:14+00:00",
+  "http_status": 200,
+  "sha256": "573dfec927083a0f64c506305bf28c256fd380961db779f32ecf41622be4a1e3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC orlando 2022",
+    "title": "4K Slander Full Set EDC Orlando 2022"
+  }
+}

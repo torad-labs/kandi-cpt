@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/music-releases/cashcash-abir-finest-hour-new-music-video/",
+  "final_url": "https://edm.com/music-releases/cashcash-abir-finest-hour-new-music-video/",
+  "fetched_at": "2026-05-30T10:58:35+00:00",
+  "http_status": 200,
+  "sha256": "07d0dae32683f4b92ca9c2206f3896e21133c7e34099a7cb6e8db4bffe312a1f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=rEKZ2UpcdVk",
+  "final_url": "https://www.youtube.com/watch?v=rEKZ2UpcdVk",
+  "fetched_at": "2026-05-30T10:44:19+00:00",
+  "http_status": 200,
+  "sha256": "08da127fc3e366d2b46ca8c130a29697da7776da2aa1e0c76e45e68f9c4632e2",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2007
+  },
+  "extra": {
+    "query": "EDC los angeles 2007",
+    "title": "EDC: Exiting EDC Video By Endari June 30,2007"
+  }
+}

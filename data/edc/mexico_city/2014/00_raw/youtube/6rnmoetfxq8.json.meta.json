@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=6rNMoetFXq8",
+  "final_url": "https://www.youtube.com/watch?v=6rNMoetFXq8",
+  "fetched_at": "2026-05-30T10:31:14+00:00",
+  "http_status": 200,
+  "sha256": "a61ec362bf90fe17b2cc62f7461c9526745eccf5f725411b35a37eb35e525580",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC mexico city 2014",
+    "title": "We Like To Party @ Showtek - Electric Daisy Carnival Mexico 2014"
+  }
+}

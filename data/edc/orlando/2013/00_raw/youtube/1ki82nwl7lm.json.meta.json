@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=1kI82nwL7LM",
+  "final_url": "https://www.youtube.com/watch?v=1kI82nwL7LM",
+  "fetched_at": "2026-05-30T10:21:04+00:00",
+  "http_status": 200,
+  "sha256": "4ebec7f90d33130be3911b2863972e57946974b6e5110c5beb325585bcc5c99e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC orlando 2013",
+    "title": "EDC Orlando 2013 After Movie (HD)"
+  }
+}

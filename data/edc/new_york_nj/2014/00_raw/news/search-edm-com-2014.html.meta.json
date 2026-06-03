@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+new+york+nj+2014",
+  "final_url": "https://edm.com/?s=EDC+new+york+nj+2014",
+  "fetched_at": "2026-05-30T10:57:01+00:00",
+  "http_status": 200,
+  "sha256": "0dc56ef1c91c1eaac1707c6edec1e47b1e2547673ae8edbc18148ef01afebd9c",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC+new+york+nj+2014",
+    "kind": "listing"
+  }
+}

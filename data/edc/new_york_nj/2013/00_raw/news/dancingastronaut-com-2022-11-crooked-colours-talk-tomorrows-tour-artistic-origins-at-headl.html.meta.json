@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2022/11/crooked-colours-talk-tomorrows-tour-artistic-origins-at-headline-show-in-la/",
+  "final_url": "https://dancingastronaut.com/2022/11/crooked-colours-talk-tomorrows-tour-artistic-origins-at-headline-show-in-la/",
+  "fetched_at": "2026-05-30T10:55:58+00:00",
+  "http_status": 200,
+  "sha256": "06c4afca94cbd788ff1ac4410eacd099b0bc72b5f2cd91b35b2cee41cba28e68",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

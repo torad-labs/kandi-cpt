@@ -1,0 +1,20 @@
+{
+  "url": "https://www.youtube.com/watch?v=HLRLV_OPixQ",
+  "final_url": "https://www.youtube.com/watch?v=HLRLV_OPixQ",
+  "fetched_at": "2026-06-02T06:03:57+00:00",
+  "http_status": 200,
+  "sha256": "63cc72e144c8aa0b501d8b2c704909f7f198275c58106bfdc78b602983e54380",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC las vegas 2026",
+    "title": "Walker & Royce B2B VNSSA Live at EDC Las Vegas 2026 (Official Full Set)",
+    "transcript_chars": 7883
+  }
+}

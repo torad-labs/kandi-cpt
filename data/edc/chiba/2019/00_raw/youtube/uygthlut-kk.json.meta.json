@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uYgTHLUt_Kk",
+  "final_url": "https://www.youtube.com/watch?v=uYgTHLUt_Kk",
+  "fetched_at": "2026-05-30T11:13:17+00:00",
+  "http_status": 200,
+  "sha256": "8f5d9388c6a0c0545d26fa2127dd8087323bd54798b40e91629f0a33518c1a7a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC chiba 2019",
+    "title": "The Chainsmokers - Live | SUMMER SONIC 2019"
+  }
+}

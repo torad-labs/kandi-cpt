@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=pWWiA4UmBjA",
+  "final_url": "https://www.youtube.com/watch?v=pWWiA4UmBjA",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "84dbe725d9a2d7c08f57523d9c8b8aa1934869dfa65d137caddfc076d8afd01b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "EDC Las Vegas 2011 After Movie | Electric Daisy Carnival Amazing Experience \u2605\u2605\u2605\u2605"
+  }
+}

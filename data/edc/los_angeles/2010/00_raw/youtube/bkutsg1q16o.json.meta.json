@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=bkutSg1q16o",
+  "final_url": "https://www.youtube.com/watch?v=bkutSg1q16o",
+  "fetched_at": "2026-05-30T10:46:40+00:00",
+  "http_status": 200,
+  "sha256": "ffcbe362cb2356164ed86ab9a639b142322c189d76ff21b80a39e0dbfebe59d1",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC los angeles 2010",
+    "title": "Raver Stampede @ EDC L.A. 2010"
+  }
+}

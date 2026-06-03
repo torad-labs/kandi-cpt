@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2011/07/swedish-house-mafia-at-edc-las-vegas-2011-best-in-the-business/",
+  "final_url": "https://dancingastronaut.com/2011/07/swedish-house-mafia-at-edc-las-vegas-2011-best-in-the-business/",
+  "fetched_at": "2026-05-30T10:07:52+00:00",
+  "http_status": 200,
+  "sha256": "da557f03ff9cad467af028cb94bc25e3756f51f3b76a11002a689bcff3127ea4",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

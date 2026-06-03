@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=WzBqzqTniLE",
+  "final_url": "https://www.youtube.com/watch?v=WzBqzqTniLE",
+  "fetched_at": "2026-05-30T10:21:04+00:00",
+  "http_status": 200,
+  "sha256": "a04bfef8e3db7a603db1140cf4ade45f87dbcefc563bee0340797874bb08fa15",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC orlando 2013",
+    "title": "Cedric Gervais Live Set - EDC Orlando 2013"
+  }
+}

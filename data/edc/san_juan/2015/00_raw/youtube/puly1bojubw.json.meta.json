@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=PUly1BOJubw",
+  "final_url": "https://www.youtube.com/watch?v=PUly1BOJubw",
+  "fetched_at": "2026-05-30T11:04:05+00:00",
+  "http_status": 200,
+  "sha256": "36e270716e896392705230fee0246c1e024a069a9467a6affefb10185a1b5091",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC san juan 2015",
+    "title": "EDC Puerto Rico 2015"
+  }
+}

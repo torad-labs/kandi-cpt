@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=hQXZcgDFnFE",
+  "final_url": "https://www.youtube.com/watch?v=hQXZcgDFnFE",
+  "fetched_at": "2026-05-30T10:34:18+00:00",
+  "http_status": 200,
+  "sha256": "1155296d0feede691ac9a0191f39e6357762513e6c42957eee5db9c39968c750",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC mexico city 2018",
+    "title": "EDC Mexico 2018 Official Announcement"
+  }
+}

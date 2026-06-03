@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=z8EmBJ44-ro",
+  "final_url": "https://www.youtube.com/watch?v=z8EmBJ44-ro",
+  "fetched_at": "2026-05-30T11:01:50+00:00",
+  "http_status": 200,
+  "sha256": "6671061d87b05bc478a03388d39fa5d0fe9c20e45e209ce5c78e93884fb20c6f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC san juan 2012",
+    "title": "Kaskade at the EDC in P.R."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Fh67KsldMVw",
+  "final_url": "https://www.youtube.com/watch?v=Fh67KsldMVw",
+  "fetched_at": "2026-05-30T10:28:47+00:00",
+  "http_status": 200,
+  "sha256": "fcb7d0dd760bb621f3758c4ed6eadba988667bc97c5141189729bba853c07f77",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC orlando 2024",
+    "title": "RAY VOLPE @ EDC Orlando 2024 (FULL SET)"
+  }
+}

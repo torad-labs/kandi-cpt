@@ -1,0 +1,19 @@
+{
+  "url": "http://web.archive.org/web/20241108020331id_/https://www.insomniac.com/events/edc-korea-2025-2025-04-25-seoul-south-korea/",
+  "final_url": "http://web.archive.org/web/20241108020331id_/https://www.insomniac.com/events/edc-korea-2025-2025-04-25-seoul-south-korea/",
+  "fetched_at": "2026-06-01T01:07:42+00:00",
+  "http_status": 200,
+  "sha256": "da715d5fe707f4dc05efebb52ca7329a5c49b1a52964ef7d42513b1a22d97fa8",
+  "fetcher": "http",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "wayback_ts": "20241108020331",
+    "wayback_src": "https://www.insomniac.com/events/edc-korea-2025-2025-04-25-seoul-south-korea/"
+  }
+}

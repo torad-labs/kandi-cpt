@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-EcGLCFp4QA",
+  "final_url": "https://www.youtube.com/watch?v=-EcGLCFp4QA",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "8ecb068b23744a6d7db9d76e1dab3001d6100b12cf4564fcd9b3a0988fe279f4",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "RL Grime - LIVE at EDC Mexico 2019"
+  }
+}

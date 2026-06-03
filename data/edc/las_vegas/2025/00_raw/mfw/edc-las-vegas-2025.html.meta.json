@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2025/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2025/",
+  "fetched_at": "2026-06-02T17:54:51+00:00",
+  "http_status": 200,
+  "sha256": "0ba491cd8044b3fd28ef47994db9334786dcbdb0b2ef6303d8531f91b6cbe9db",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {}
+}

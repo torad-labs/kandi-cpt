@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T11:20:02+00:00",
+  "http_status": 200,
+  "sha256": "72946a3832461898cacce7467a9cd37d8cf06a753e418d8cf884331a40ad7fc5",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2023
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

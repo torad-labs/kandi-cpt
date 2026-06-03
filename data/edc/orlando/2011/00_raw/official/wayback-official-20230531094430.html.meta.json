@@ -1,0 +1,19 @@
+{
+  "url": "http://web.archive.org/web/20230531094430id_/https://www.insomniac.com/events/edc-orlando-2011-2011-05-27-orlando-fl/",
+  "final_url": "http://web.archive.org/web/20230531094430id_/https://www.insomniac.com/events/edc-orlando-2011-2011-05-27-orlando-fl/",
+  "fetched_at": "2026-06-01T01:07:56+00:00",
+  "http_status": 200,
+  "sha256": "b0e1c7077e629331753aac5e9cebf02a9caf9579ce26ea14fd143be05c36ce85",
+  "fetcher": "http",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "wayback_ts": "20230531094430",
+    "wayback_src": "https://www.insomniac.com/events/edc-orlando-2011-2011-05-27-orlando-fl/"
+  }
+}

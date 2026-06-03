@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=R75AFoBPBVs",
+  "final_url": "https://www.youtube.com/watch?v=R75AFoBPBVs",
+  "fetched_at": "2026-05-30T10:16:22+00:00",
+  "http_status": 200,
+  "sha256": "1253b425e5cfc982197da0187d683ca168076d55201bd331dc1ab65646db6ecf",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC las vegas 2023",
+    "title": "Marshmello B2B SVDDEN DEATH Live @ EDC Las Vegas 2023 - Full Set in 4K (Circuit Grounds)"
+  }
+}

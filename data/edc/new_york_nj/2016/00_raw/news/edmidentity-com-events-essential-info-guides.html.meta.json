@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T10:58:32+00:00",
+  "http_status": 200,
+  "sha256": "3aa1befd2ab32875c07ad692e4c711bc2d07fbc676e6e41d21a7820a841fd80d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

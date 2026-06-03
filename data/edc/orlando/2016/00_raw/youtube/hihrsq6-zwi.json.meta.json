@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=HIhrSq6-zWI",
+  "final_url": "https://www.youtube.com/watch?v=HIhrSq6-zWI",
+  "fetched_at": "2026-05-30T10:23:22+00:00",
+  "http_status": 200,
+  "sha256": "cfadb2de4e1989ef585d7fb105014be30275091c5d97b81be05e419e8794ebbb",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC orlando 2016",
+    "title": "EDC ORLANDO 2016 AFTERMOVIE"
+  }
+}

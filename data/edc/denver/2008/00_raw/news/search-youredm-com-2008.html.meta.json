@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+denver+2008",
+  "final_url": "https://youredm.com/?s=EDC+denver+2008",
+  "fetched_at": "2026-05-30T10:50:38+00:00",
+  "http_status": 200,
+  "sha256": "0fe0a3ac2e2dd174fd8a775d6aadc492bdb7e4f5f042dfd2030a38eac8446db5",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC+denver+2008",
+    "kind": "listing"
+  }
+}

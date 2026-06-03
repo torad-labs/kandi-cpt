@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=PNPpSPS1nok",
+  "final_url": "https://www.youtube.com/watch?v=PNPpSPS1nok",
+  "fetched_at": "2026-05-30T10:17:52+00:00",
+  "http_status": 200,
+  "sha256": "664bb7484afac4c8133d8c17f8321b5da7804dbdc1e445a76c11f19b8a0459a0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC las vegas 2025",
+    "title": "FISHER LIVE FROM EDC LAS VEGAS 2025"
+  }
+}

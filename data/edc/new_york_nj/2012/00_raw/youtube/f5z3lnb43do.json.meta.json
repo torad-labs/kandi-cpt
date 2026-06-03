@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=f5z3LNb43do",
+  "final_url": "https://www.youtube.com/watch?v=f5z3LNb43do",
+  "fetched_at": "2026-05-30T10:54:56+00:00",
+  "http_status": 200,
+  "sha256": "b8d11fb76d88e4b8715b70ec0667e23d15fa82345879835fd0f2cb5b0bffbb6f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC new york nj 2012",
+    "title": "David Guetta ft. Sia - Titanium [LIVE AT EDC NEW YORK/NJ 2012]"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=YdPuUmh1LVc",
+  "final_url": "https://www.youtube.com/watch?v=YdPuUmh1LVc",
+  "fetched_at": "2026-05-30T11:06:30+00:00",
+  "http_status": 200,
+  "sha256": "c22ac137a8016fc0cb6529cccd6251124c95eeff8bdd173e520089ecf1d10cb9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC milton keynes 2015",
+    "title": "EDC UK - John O'Callaghan @ Milton Keynes Bowl (11-07-2015)"
+  }
+}

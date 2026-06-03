@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2000&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2000&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:42:05+00:00",
+  "http_status": 200,
+  "sha256": "215b8a5ddbd1d12ab4ef106366b666ab9695b51792b83d88a703bbb8cf17fc53",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2000
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "los+angeles+2000",
+    "results": 10
+  }
+}

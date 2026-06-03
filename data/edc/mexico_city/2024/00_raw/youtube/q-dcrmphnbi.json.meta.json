@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Q-DCrmPHNBI",
+  "final_url": "https://www.youtube.com/watch?v=Q-DCrmPHNBI",
+  "fetched_at": "2026-05-30T10:38:10+00:00",
+  "http_status": 200,
+  "sha256": "75fa40df065e80c8ae1197cb1b6f34e56dca9ebad998c62309ce529b4617ad1c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC mexico city 2024",
+    "title": "Purple Disco Machine @ EDC Mexico 2022"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:56:37+00:00",
+  "http_status": 200,
+  "sha256": "b3169d85afafdbfe6f16c701eeb4eb61d15f3621e22f5865047b43294207b3c5",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "new+york+nj+2014",
+    "results": 10
+  }
+}

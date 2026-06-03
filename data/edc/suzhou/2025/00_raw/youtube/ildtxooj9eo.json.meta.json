@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=iLDtXOOJ9Eo",
+  "final_url": "https://www.youtube.com/watch?v=iLDtXOOJ9Eo",
+  "fetched_at": "2026-05-30T11:11:54+00:00",
+  "http_status": 200,
+  "sha256": "77d7d3c68f9122e62308f0cdfebd4e091773b4aede3aff0b8895e8711f513197",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC suzhou 2025",
+    "title": "2025\u82cf\u5ddeEDC\u7535\u97f3\u8282 DAY1 2\u821e\u53f0\uff08Hard\u821e\u53f0\uff09\u7247\u6bb5\u5408\u96c6\uff01"
+  }
+}

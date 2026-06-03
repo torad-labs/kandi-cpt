@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/music-releases/westends-the-ceiling-already-had-the-room-before-a-release-date/",
+  "final_url": "https://edm.com/music-releases/westends-the-ceiling-already-had-the-room-before-a-release-date/",
+  "fetched_at": "2026-05-30T10:59:23+00:00",
+  "http_status": 200,
+  "sha256": "93f6b314979008e4536a28a1b84184fa81d148407dd693476abaa47a60995dc3",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

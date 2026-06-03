@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=yU4yrbUQYlU",
+  "final_url": "https://www.youtube.com/watch?v=yU4yrbUQYlU",
+  "fetched_at": "2026-05-30T10:16:22+00:00",
+  "http_status": 200,
+  "sha256": "30e155dcac77ef8d458abaf5ce23b5f158b535482ca26057462fce3c49b31a56",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC las vegas 2023",
+    "title": "Ti\u00ebsto - Live from EDC Las Vegas 2023"
+  }
+}

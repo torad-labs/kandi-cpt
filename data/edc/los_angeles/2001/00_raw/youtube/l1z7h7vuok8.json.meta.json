@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=l1Z7h7VuOk8",
+  "final_url": "https://www.youtube.com/watch?v=l1Z7h7VuOk8",
+  "fetched_at": "2026-05-30T10:42:48+00:00",
+  "http_status": 200,
+  "sha256": "114c4e824efb1e70d85b50bfef89b60d33bfa9cfa64341416e2f5eb3a798e0b5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "query": "EDC los angeles 2001",
+    "title": "Paul Oakenfold LIVE at EDC LV 2001 - Sweet Fuckin' dreams"
+  }
+}

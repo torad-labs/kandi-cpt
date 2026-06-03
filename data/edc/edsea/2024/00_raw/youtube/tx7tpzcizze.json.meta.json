@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Tx7tPZCiZZE",
+  "final_url": "https://www.youtube.com/watch?v=Tx7tPZCiZZE",
+  "fetched_at": "2026-05-30T11:20:17+00:00",
+  "http_status": 200,
+  "sha256": "39b4e7e5b51a683c71f3d537ba6838204a87a07b99bed75cfc231bb8cd81a439",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC edsea 2024",
+    "title": "EDSEA 2024 Recap Part 1"
+  }
+}

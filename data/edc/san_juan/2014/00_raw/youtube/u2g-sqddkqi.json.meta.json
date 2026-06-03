@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=u2G-sqDdKQI",
+  "final_url": "https://www.youtube.com/watch?v=u2G-sqDdKQI",
+  "fetched_at": "2026-05-30T11:03:18+00:00",
+  "http_status": 200,
+  "sha256": "1ae68bf71f52e6f6f9b4db65e12c0e9412b59cb8130617cfa229adee7d712775",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC san juan 2014",
+    "title": "life in color San Juan Puerto Rico 2014"
+  }
+}

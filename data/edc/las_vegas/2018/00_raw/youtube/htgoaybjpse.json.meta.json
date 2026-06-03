@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=HtGoAybJpsE",
+  "final_url": "https://www.youtube.com/watch?v=HtGoAybJpsE",
+  "fetched_at": "2026-05-30T10:13:13+00:00",
+  "http_status": 200,
+  "sha256": "b9cf680131680db7a5dc7723b454a30f868970389bc1b3d7f064a1cf9b4a0cee",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC las vegas 2018",
+    "title": "KAYZO LIVE @ EDC LAS VEGAS 2018"
+  }
+}

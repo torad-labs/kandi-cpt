@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=EYIyMo8ZM18",
+  "final_url": "https://www.youtube.com/watch?v=EYIyMo8ZM18",
+  "fetched_at": "2026-05-30T10:42:48+00:00",
+  "http_status": 200,
+  "sha256": "53ffa4247943c8033c6303e44eb2c73665252b4137e8ff6c745c980a119f6c71",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "query": "EDC los angeles 2001",
+    "title": "Christopher Lawrence: Electric Daisy Carnival (Rave - 2001)"
+  }
+}

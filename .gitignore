@@ -3,7 +3,7 @@
 #          data/<festival>/<city>/<year>/ (10_clean source, 15_structured,
 #          20_synthetic while small, holdout) and data/_shared/.
 # IGNORE:  virtualenv, trained checkpoints, regenerable tokenized shards,
-#          the per-edition scrape landing zones, large binaries, secrets, caches.
+#          large binaries, secrets, caches. (00_raw scrape zones ARE committed — provenance.)
 
 # Python environment
 .venv/
@@ -31,8 +31,10 @@ data/_build/structured_rejects/
 # Transient run logs (training/sweep/synth stdout). Progress docs (logs/*.md) ARE committed.
 logs/*.log
 
-# Scrape landing zones — raw web downloads, one per edition (regenerable by re-scrape)
-data/**/00_raw/
+# Scrape landing zones (00_raw) — the original web downloads, one per edition. COMMITTED as the
+# provenance backstop: re-deriving clean/structured with a future/better extraction pipeline needs the
+# source, and re-scraping is lossy (deleted videos, changed pages, Cloudflare). Pure text (HTML/JSON),
+# packs to ~11 MB via git. Any binaries within are still excluded by the global *.mp4/*.mp3/… guards below.
 
 # NOTE: per-edition data/<festival>/<city>/<year>/20_synthetic/ (derived expansion)
 # is COMMITTED while small (~MBs; costly to regenerate via teacher API). When the

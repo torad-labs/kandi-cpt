@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=milton+keynes+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=milton+keynes+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T11:07:22+00:00",
+  "http_status": 200,
+  "sha256": "6ecf3e16bbe23f634e77b2d241e4375c1b1228892d945e0ff7a1ced380a1a204",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2016
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "milton+keynes+2016",
+    "results": 2
+  }
+}

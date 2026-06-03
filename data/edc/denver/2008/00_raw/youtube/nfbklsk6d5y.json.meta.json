@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=nfBkLsK6d5Y",
+  "final_url": "https://www.youtube.com/watch?v=nfBkLsK6d5Y",
+  "fetched_at": "2026-05-30T10:50:19+00:00",
+  "http_status": 200,
+  "sha256": "d13eac00be43398eb9048c2723ff64335d08cd733c6c4ce45214375631972586",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC denver 2008",
+    "title": "EDC 2008 Rusty dancing inside phone booth!"
+  }
+}

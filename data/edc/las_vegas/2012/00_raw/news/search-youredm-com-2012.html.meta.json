@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+las+vegas+2012",
+  "final_url": "https://youredm.com/?s=EDC+las+vegas+2012",
+  "fetched_at": "2026-05-30T10:08:42+00:00",
+  "http_status": 200,
+  "sha256": "6e20f414044bb07f931da21b04a5afe1fb91cc4b68572e863873de3db7e94c86",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC+las+vegas+2012",
+    "kind": "listing"
+  }
+}

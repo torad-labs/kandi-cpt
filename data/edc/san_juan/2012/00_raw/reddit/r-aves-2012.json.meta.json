@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=san+juan+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=san+juan+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T11:01:56+00:00",
+  "http_status": 200,
+  "sha256": "d97cb73e56b89f9270eae538e57e8fbdc7ba07d61296ff94ad819a5374bd2433",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2012
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "san+juan+2012",
+    "results": 10
+  }
+}

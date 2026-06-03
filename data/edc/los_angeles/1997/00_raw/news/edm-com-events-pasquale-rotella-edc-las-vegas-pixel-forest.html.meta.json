@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/pasquale-rotella-edc-las-vegas-pixel-forest/",
+  "final_url": "https://edm.com/events/pasquale-rotella-edc-las-vegas-pixel-forest/",
+  "fetched_at": "2026-05-30T10:41:03+00:00",
+  "http_status": 200,
+  "sha256": "e1a4b6c6a143f931eb88385d13271d6254d5a255a78131b2f15621695febb9b0",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

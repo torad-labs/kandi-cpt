@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T10:51:29+00:00",
+  "http_status": 200,
+  "sha256": "3b28d2ee9e0c4c527e292492536c80720cfc9f1304bcde9dfa0798b15001c6be",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2009
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:34:24+00:00",
+  "http_status": 200,
+  "sha256": "302bb42ed99fac764cbd72390e9fc3683b55263f8a2c9f2bd9ac353ca0ecd934",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2018
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "mexico+city+2018",
+    "results": 10
+  }
+}

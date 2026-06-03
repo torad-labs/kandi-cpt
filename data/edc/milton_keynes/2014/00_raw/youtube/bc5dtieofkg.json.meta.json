@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=bC5dtIEOfkg",
+  "final_url": "https://www.youtube.com/watch?v=bC5dtIEOfkg",
+  "fetched_at": "2026-05-30T11:05:46+00:00",
+  "http_status": 200,
+  "sha256": "3f421aea6277d9417d57583eaca1b2da0c1244184d8503c0cb4fbdb00880b6e9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC milton keynes 2014",
+    "title": "Electric  Daisy Carnival (EDC) United Kingdom 2014"
+  }
+}

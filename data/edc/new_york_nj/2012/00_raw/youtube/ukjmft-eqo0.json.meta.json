@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uKJMFt_EQO0",
+  "final_url": "https://www.youtube.com/watch?v=uKJMFt_EQO0",
+  "fetched_at": "2026-05-30T10:54:56+00:00",
+  "http_status": 200,
+  "sha256": "609a3625d007b0385c8e4ebb9b5ba2555fe2749463048043cf773954b9422ecd",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC new york nj 2012",
+    "title": "EDC 12 NYC"
+  }
+}

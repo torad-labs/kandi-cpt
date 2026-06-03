@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=2Bfqau0_pWA",
+  "final_url": "https://www.youtube.com/watch?v=2Bfqau0_pWA",
+  "fetched_at": "2026-05-30T10:32:45+00:00",
+  "http_status": 200,
+  "sha256": "01351bcbac217435475ade38e904f114bbd731369e35a7e08bd8f1c6fd8df761",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC mexico city 2016",
+    "title": "EDC MEXICO 2016 Cortos EDCMX"
+  }
+}

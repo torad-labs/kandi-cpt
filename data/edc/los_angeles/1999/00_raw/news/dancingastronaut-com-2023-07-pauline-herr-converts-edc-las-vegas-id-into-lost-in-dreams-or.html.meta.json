@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2023/07/pauline-herr-converts-edc-las-vegas-id-into-lost-in-dreams-original-lightyears/",
+  "final_url": "https://dancingastronaut.com/2023/07/pauline-herr-converts-edc-las-vegas-id-into-lost-in-dreams-original-lightyears/",
+  "fetched_at": "2026-05-30T10:41:29+00:00",
+  "http_status": 200,
+  "sha256": "efa1d9a48f31a0cf3a0786b93d0c8ef1381e950eeca0301edf515a4250e88f82",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1999
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

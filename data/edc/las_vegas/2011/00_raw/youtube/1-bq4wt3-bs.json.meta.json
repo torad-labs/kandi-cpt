@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=1-BQ4wT3_Bs",
+  "final_url": "https://www.youtube.com/watch?v=1-BQ4wT3_Bs",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "b5f387e072fce26e0be9e9932893760d2860538c3d3d19beabbd7d86d05f55cd",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "Swedish House Mafia - Kinetic Field EDC Las Vegas 2011"
+  }
+}

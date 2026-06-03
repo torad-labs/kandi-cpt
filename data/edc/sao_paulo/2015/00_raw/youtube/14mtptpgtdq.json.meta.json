@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=14MtptpgtDQ",
+  "final_url": "https://www.youtube.com/watch?v=14MtptpgtDQ",
+  "fetched_at": "2026-05-30T11:08:05+00:00",
+  "http_status": 200,
+  "sha256": "f1b19fabb45c8c3f56c380b2aa4bbb169c8e96e4ed53ea8830cc47814aafa36a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "sao_paulo",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC sao paulo 2015",
+    "title": "EDC Brasil 2015 S\u00e3o Paulo - Martin Garrix, Bro Safari, GTA, Yellow Claw, Skrillex"
+  }
+}

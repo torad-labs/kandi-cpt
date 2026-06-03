@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=vpkkT_BdDu0",
+  "final_url": "https://www.youtube.com/watch?v=vpkkT_BdDu0",
+  "fetched_at": "2026-05-30T10:21:04+00:00",
+  "http_status": 200,
+  "sha256": "43c3f2e0dea9e6dc895a9f7771206759c51bb9db5405c830d7e951137a5de0b1",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC orlando 2013",
+    "title": "12th Planet Live Set - EDC Orlando 2013"
+  }
+}

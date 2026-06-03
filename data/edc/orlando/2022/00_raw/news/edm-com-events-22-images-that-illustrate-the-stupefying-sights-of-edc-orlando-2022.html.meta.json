@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/22-images-that-illustrate-the-stupefying-sights-of-edc-orlando-2022/",
+  "final_url": "https://edm.com/events/22-images-that-illustrate-the-stupefying-sights-of-edc-orlando-2022/",
+  "fetched_at": "2026-05-30T10:27:51+00:00",
+  "http_status": 200,
+  "sha256": "ecf7a640fb6410230b1375f2eac5bd467adc30d9489faf2aec3d2cfc2d4e56d3",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

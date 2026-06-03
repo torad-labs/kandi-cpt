@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=nkO6R4WPRTo",
+  "final_url": "https://www.youtube.com/watch?v=nkO6R4WPRTo",
+  "fetched_at": "2026-05-30T11:12:34+00:00",
+  "http_status": 200,
+  "sha256": "5c6dd63e9caed1848cdf332e648e2aa75cf35b57ac46dddd48dcae6ae7a02ef3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC chiba 2018",
+    "title": "EDC JAPAN 2018\u5e74/2\u65e5\u76eeMARTIN GARRIX"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2020/11/insomniac-events-launches-insomniac-east-division-shares-edc-orlandos-10th-anniversary-dates-for-2021/",
+  "final_url": "https://dancingastronaut.com/2020/11/insomniac-events-launches-insomniac-east-division-shares-edc-orlandos-10th-anniversary-dates-for-2021/",
+  "fetched_at": "2026-05-30T10:26:46+00:00",
+  "http_status": 200,
+  "sha256": "1cd1d1681b0314ea37c5be25f2100200b92bdf09cca5d5c0add0cae01897dd4d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2021
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "url": "https://www.insomniac.com/events/edc-las-vegas/",
+  "final_url": "https://www.insomniac.com/events/edc-las-vegas-2011-2011-06-24-las-vegas-nv/",
+  "fetched_at": "2026-05-30T10:18:35+00:00",
+  "http_status": 200,
+  "sha256": "c806a8d7039a597e1f0f9efe87e6669c0cb0d5907944c6033b68d494efdbd6ff",
+  "fetcher": "browser",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {}
+}

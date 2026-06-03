@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=BOFthENWXlU",
+  "final_url": "https://www.youtube.com/watch?v=BOFthENWXlU",
+  "fetched_at": "2026-05-30T11:11:13+00:00",
+  "http_status": 200,
+  "sha256": "047d857a3d7ea670da65585502e61b3af7ff17bfa39a682b99265ff9dad4eb70",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC suzhou 2023",
+    "title": "[Edc SuZhou]Dj Snake-Let me Love you"
+  }
+}

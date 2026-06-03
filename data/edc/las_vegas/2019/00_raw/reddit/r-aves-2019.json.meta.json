@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:14:06+00:00",
+  "http_status": 200,
+  "sha256": "2354e129477ed41582d3506b1b9fb29786030729f13dab337fd0487d99231ecf",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2019
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "las+vegas+2019",
+    "results": 10
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=t7Uxiukabs4",
+  "final_url": "https://www.youtube.com/watch?v=t7Uxiukabs4",
+  "fetched_at": "2026-05-30T10:53:21+00:00",
+  "http_status": 200,
+  "sha256": "37bdfd2d83df3ad158a79bf1109937d0f38225c2e7f63cfdf7b002fa33abc79f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC dallas 2010",
+    "title": "Electric Daisy Carnival Dallas 2010 @ Fair Park, TX (UNEDITED)"
+  }
+}

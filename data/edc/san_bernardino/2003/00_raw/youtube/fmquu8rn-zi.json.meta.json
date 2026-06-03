@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=FmQUU8RN-ZI",
+  "final_url": "https://www.youtube.com/watch?v=FmQUU8RN-ZI",
+  "fetched_at": "2026-05-30T10:47:27+00:00",
+  "http_status": 200,
+  "sha256": "5e5196ebe66d77ffa4b30a5940b90abb9574f2de544ec81af31a28e641675021",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2003
+  },
+  "extra": {
+    "query": "EDC san bernardino 2003",
+    "title": "Umek Live @Toolroom (Miami-USA) 23-03-2012."
+  }
+}

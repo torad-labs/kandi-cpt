@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=1X2w5J5icz0",
+  "final_url": "https://www.youtube.com/watch?v=1X2w5J5icz0",
+  "fetched_at": "2026-05-30T11:14:50+00:00",
+  "http_status": 200,
+  "sha256": "448b8a4fda542bb6e5d098ad9dd555895d7b647985d784b9d44973a14e7dea3c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC incheon 2025",
+    "title": "[20250427] Skrillex #1 - Opening, EDC Korea"
+  }
+}

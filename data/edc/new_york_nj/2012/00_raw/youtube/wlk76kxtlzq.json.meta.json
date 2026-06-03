@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Wlk76kXTLZQ",
+  "final_url": "https://www.youtube.com/watch?v=Wlk76kXTLZQ",
+  "fetched_at": "2026-05-30T10:54:56+00:00",
+  "http_status": 200,
+  "sha256": "5892387fe75f8d9086a1a72f5ea0cf616544d852bbdab679a507e46581287563",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC new york nj 2012",
+    "title": "EDC NYC Announce trailer"
+  }
+}

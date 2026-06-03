@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=BCbbnazZ-XA",
+  "final_url": "https://www.youtube.com/watch?v=BCbbnazZ-XA",
+  "fetched_at": "2026-05-30T10:53:21+00:00",
+  "http_status": 200,
+  "sha256": "e98da0c00786612c9b95fb74f25ac6358056876311ed56e276eb8c9e3786374b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC dallas 2010",
+    "title": "E.D.C. 2010 dallas"
+  }
+}

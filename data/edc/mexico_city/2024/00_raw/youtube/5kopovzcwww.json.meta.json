@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=5KOpOVZCwWw",
+  "final_url": "https://www.youtube.com/watch?v=5KOpOVZCwWw",
+  "fetched_at": "2026-05-30T10:38:10+00:00",
+  "http_status": 200,
+  "sha256": "b3563c4d9ab88bbee971c92f52cdef89b53b544a63d515df65494a43576199fc",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC mexico city 2024",
+    "title": "Claptone: Live @ EDC Mexico (Sunset Set) |  | Livestream"
+  }
+}

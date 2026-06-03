@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-9mFw54oXIQ",
+  "final_url": "https://www.youtube.com/watch?v=-9mFw54oXIQ",
+  "fetched_at": "2026-05-30T11:04:54+00:00",
+  "http_status": 200,
+  "sha256": "b23953a3e30037a5938dffcaddfd9e5def3e8bc883e2e826e6746a906b4e4b79",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "london",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC london 2013",
+    "title": "EDC London 2013- Avicii Ending - Levels & Wake Me Up"
+  }
+}

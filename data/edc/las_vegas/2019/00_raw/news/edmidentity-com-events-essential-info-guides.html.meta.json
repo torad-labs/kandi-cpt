@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T10:14:37+00:00",
+  "http_status": 200,
+  "sha256": "09aa23b68592e32bef24946249a6670640153a89e47e9d479d1457cb442c867b",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2019
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

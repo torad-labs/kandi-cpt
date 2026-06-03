@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+san+bernardino+2004",
+  "final_url": "https://dancingastronaut.com/?s=EDC+san+bernardino+2004",
+  "fetched_at": "2026-05-30T10:48:23+00:00",
+  "http_status": 200,
+  "sha256": "a8688abee257e6985ca3c0507881d8a58a4ab947c0c59b892eee0eef8d854692",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2004
+  },
+  "extra": {
+    "query": "EDC+san+bernardino+2004",
+    "kind": "listing"
+  }
+}

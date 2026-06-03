@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=6GN165Z0BVA",
+  "final_url": "https://www.youtube.com/watch?v=6GN165Z0BVA",
+  "fetched_at": "2026-05-30T10:31:14+00:00",
+  "http_status": 200,
+  "sha256": "53fd1ffc8cc4957ab934c458ac4b6e74ec35e980dcf2cacdecca718ebfa602a5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC mexico city 2014",
+    "title": "Booyah @ Showtek - Electric Daisy Carnival Mexico 2014"
+  }
+}

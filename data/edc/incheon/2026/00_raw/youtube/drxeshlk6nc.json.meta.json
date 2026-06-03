@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=DRxEsHLK6nc",
+  "final_url": "https://www.youtube.com/watch?v=DRxEsHLK6nc",
+  "fetched_at": "2026-05-30T11:15:41+00:00",
+  "http_status": 200,
+  "sha256": "8da3a932c5c5f05d40345fff5c2fe9215222417b2007eaac4e580baf0fdd1787",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC incheon 2026",
+    "title": "EDC Korea 2026 - Official Announce Video"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=0ZfkIf8Tn24",
+  "final_url": "https://www.youtube.com/watch?v=0ZfkIf8Tn24",
+  "fetched_at": "2026-05-30T11:01:50+00:00",
+  "http_status": 200,
+  "sha256": "7d521b6b1c090eef46a7fbac84cb49be0c92fff976060c06bd07d39a3af3938e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC san juan 2012",
+    "title": "Electric Daisy Carnival 2012 Puerto Rico Aftermovie - EDC 2012 PR ( XTC'z Bootleg Videomix )"
+  }
+}

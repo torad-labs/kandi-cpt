@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=hm3qQyWXoe0",
+  "final_url": "https://www.youtube.com/watch?v=hm3qQyWXoe0",
+  "fetched_at": "2026-05-30T10:41:14+00:00",
+  "http_status": 200,
+  "sha256": "1f842430ed8ab84e32de618a951a029021c92161b5c6ae3473055609e48ff2c7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1999
+  },
+  "extra": {
+    "query": "EDC los angeles 1999",
+    "title": "Ravers vs. The Man: CA Bans LED Gloves and Pacifiers"
+  }
+}

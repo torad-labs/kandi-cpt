@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=_0oud31Wrt8",
+  "final_url": "https://www.youtube.com/watch?v=_0oud31Wrt8",
+  "fetched_at": "2026-05-30T10:14:51+00:00",
+  "http_status": 200,
+  "sha256": "b94b5e35fbcaf6827553b796b1a30e7c5e96b04e7c8a0b6773abc16274c0b583",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2021
+  },
+  "extra": {
+    "query": "EDC las vegas 2021",
+    "title": "Kaskade @ EDC Las Vegas 2021 (KineticField)"
+  }
+}

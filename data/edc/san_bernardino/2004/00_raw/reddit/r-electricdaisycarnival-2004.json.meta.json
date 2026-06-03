@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+bernardino+2004&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+bernardino+2004&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:48:19+00:00",
+  "http_status": 200,
+  "sha256": "5c66a9281318ba7e0fdb31b8ef583a59d0a4c46f81e4944dd60a30511064eaa4",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2004
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "san+bernardino+2004",
+    "results": 10
+  }
+}

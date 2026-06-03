@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=XayXqiZeBUU",
+  "final_url": "https://www.youtube.com/watch?v=XayXqiZeBUU",
+  "fetched_at": "2026-05-30T10:25:41+00:00",
+  "http_status": 200,
+  "sha256": "28b201699973377248d79287afcf0ed71edec52c0539ebcba4f904d1099dda4c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC orlando 2019",
+    "title": "Eric Prydz - Live @ EDC Orlando 2019 (Full Video)"
+  }
+}

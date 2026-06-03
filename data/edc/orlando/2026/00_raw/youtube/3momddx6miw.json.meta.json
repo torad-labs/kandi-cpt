@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3mOMDdX6miw",
+  "final_url": "https://www.youtube.com/watch?v=3mOMDdX6miw",
+  "fetched_at": "2026-05-30T10:30:29+00:00",
+  "http_status": 200,
+  "sha256": "b6da3319ae873e40e801672bcdeaec3a95ccaa26bc8e04f8514b0307959ee650",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC orlando 2026",
+    "title": "Cloonee - Live At EDC Orlando"
+  }
+}

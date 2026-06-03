@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=NsmhG-ec6XI",
+  "final_url": "https://www.youtube.com/watch?v=NsmhG-ec6XI",
+  "fetched_at": "2026-05-30T10:30:29+00:00",
+  "http_status": 200,
+  "sha256": "45dbc37b707c39ada0600820bc4af50dc9ce6c598869cbb818883f3abe3410ff",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC orlando 2026",
+    "title": "FISHER LIVE FROM EDC LAS VEGAS 2026"
+  }
+}

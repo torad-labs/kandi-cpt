@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=dallas+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=dallas+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:53:32+00:00",
+  "http_status": 200,
+  "sha256": "fe61cc7f6c7557a2cad110bbf9a03c2b6d246f31b7968c46c8a70a7229f7dbc4",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "dallas+2010",
+    "results": 1
+  }
+}

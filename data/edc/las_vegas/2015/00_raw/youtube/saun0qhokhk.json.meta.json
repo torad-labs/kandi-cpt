@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=SaUN0QHOkHk",
+  "final_url": "https://www.youtube.com/watch?v=SaUN0QHOkHk",
+  "fetched_at": "2026-05-30T10:10:57+00:00",
+  "http_status": 200,
+  "sha256": "f29d746bac960fd5dc7dd442b167acde253224d7a32bd989613de80983d40a16",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC las vegas 2015",
+    "title": "Above & Beyond Live At EDC Las Vegas 2015 (Full HD Set)"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=OsMnDnHyvak",
+  "final_url": "https://www.youtube.com/watch?v=OsMnDnHyvak",
+  "fetched_at": "2026-05-30T11:16:28+00:00",
+  "http_status": 200,
+  "sha256": "8f4fad4c24c4ad6f10db41aa0e438f0820e222f7d516d40dddbaf07f71b7485d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "portimao",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC portimao 2022",
+    "title": "EDC Portugal Lineup Review & Artist Recommendations"
+  }
+}

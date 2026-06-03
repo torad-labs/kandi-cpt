@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=iY4g1WaBmds",
+  "final_url": "https://www.youtube.com/watch?v=iY4g1WaBmds",
+  "fetched_at": "2026-05-30T10:29:32+00:00",
+  "http_status": 200,
+  "sha256": "b29b01dde89d5733ffc387270912443529615919440887403a7221a107b2825d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC orlando 2025",
+    "title": "Alok b2b Green Velvet @ EDC Orlando 2025"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ySQXcjmCohA",
+  "final_url": "https://www.youtube.com/watch?v=ySQXcjmCohA",
+  "fetched_at": "2026-05-30T11:07:15+00:00",
+  "http_status": 200,
+  "sha256": "318edf5d2b1998dc9620e2f62f8ad403ae40aa5302d64ed4426ca8de04e6fe7c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC milton keynes 2016",
+    "title": "EDC UK 2016 AFTERMOVIE @ Milton Keynes l Full HD"
+  }
+}

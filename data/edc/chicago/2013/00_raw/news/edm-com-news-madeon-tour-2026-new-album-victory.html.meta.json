@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/news/madeon-tour-2026-new-album-victory/",
+  "final_url": "https://edm.com/news/madeon-tour-2026-new-album-victory/",
+  "fetched_at": "2026-05-30T10:59:25+00:00",
+  "http_status": 200,
+  "sha256": "76656eb0ef79a3b44e114ebce93f232e006fa164759fadda7a51d6eabdc1e8a5",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

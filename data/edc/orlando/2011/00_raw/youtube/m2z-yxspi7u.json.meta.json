@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=M2z_yXSpi7U",
+  "final_url": "https://www.youtube.com/watch?v=M2z_yXSpi7U",
+  "fetched_at": "2026-05-30T10:19:33+00:00",
+  "http_status": 200,
+  "sha256": "51488fceeb7e713e97d29f024c30ff87fb4571a18f72bc7ce7f77e10c3e07ad3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC orlando 2011",
+    "title": "@TIESTO ORLANDO EDC 2011"
+  }
+}

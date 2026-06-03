@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+orlando+2015",
+  "final_url": "https://edmidentity.com/?s=EDC+orlando+2015",
+  "fetched_at": "2026-05-30T10:23:04+00:00",
+  "http_status": 200,
+  "sha256": "3864a55fac02f9c1d335134752609403b2a562ee1f41c36f3a62af45de92ba12",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC+orlando+2015",
+    "kind": "listing"
+  }
+}

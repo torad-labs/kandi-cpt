@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2012/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2012/",
+  "fetched_at": "2026-06-02T18:03:21+00:00",
+  "http_status": 200,
+  "sha256": "2b6d5b6d68d5e68696fcb9a05129748fdf9fc5f650f0cbea674d882d4b6a5285",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {}
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ZRHlJpBO4EU",
+  "final_url": "https://www.youtube.com/watch?v=ZRHlJpBO4EU",
+  "fetched_at": "2026-05-30T10:42:48+00:00",
+  "http_status": 200,
+  "sha256": "ad255d814c69b2e9ae5ebe9c9b69db2b57de7f9834539cddd90d143c23d20520",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "query": "EDC los angeles 2001",
+    "title": "Richie Hawtin's Plastikman Set Live @ EDC Vegas 2001"
+  }
+}

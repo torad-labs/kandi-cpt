@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2022/12/dancing-astronauts-artists-to-watch-in-2023/",
+  "final_url": "https://dancingastronaut.com/2022/12/dancing-astronauts-artists-to-watch-in-2023/",
+  "fetched_at": "2026-05-30T10:52:52+00:00",
+  "http_status": 200,
+  "sha256": "8c5807f3c86d630e93a0f317e4511d2e8cd416aa3ed045f900978517fdb0dd78",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

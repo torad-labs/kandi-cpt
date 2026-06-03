@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2022/06/good-morning-mix-testpilot-closes-down-the-circuit-grounds-at-edc-las-vegas-2022/",
+  "final_url": "https://dancingastronaut.com/2022/06/good-morning-mix-testpilot-closes-down-the-circuit-grounds-at-edc-las-vegas-2022/",
+  "fetched_at": "2026-05-30T10:15:54+00:00",
+  "http_status": 200,
+  "sha256": "24c32928db5e4bbd49b4e3b392ccb6543af3a3772063b84c62181e6406eef919",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

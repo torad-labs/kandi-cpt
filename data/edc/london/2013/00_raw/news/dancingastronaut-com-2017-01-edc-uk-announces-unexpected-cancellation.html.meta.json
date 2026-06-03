@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2017/01/edc-uk-announces-unexpected-cancellation/",
+  "final_url": "https://dancingastronaut.com/2017/01/edc-uk-announces-unexpected-cancellation/",
+  "fetched_at": "2026-05-30T11:05:20+00:00",
+  "http_status": 200,
+  "sha256": "0713f97c493e1d74b5ec5b93d77a0582dc10141fbd3ca78996deea0a3ef93e86",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "london",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

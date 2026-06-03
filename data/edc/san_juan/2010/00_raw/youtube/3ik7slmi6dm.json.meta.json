@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3iK7sLmi6DM",
+  "final_url": "https://www.youtube.com/watch?v=3iK7sLmi6DM",
+  "fetched_at": "2026-05-30T11:00:18+00:00",
+  "http_status": 200,
+  "sha256": "22a1a27bbbe0529b577f2d0eea7daa3ea7497c086dfda2a00bd8559afe9e163e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC san juan 2010",
+    "title": "EDC 2018| I Vend at EDC in Las Vegas \ud83c\udf44  \ud83c\udf35  \ud83c\udf39 (Day 1)"
+  }
+}

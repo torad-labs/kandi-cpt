@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=PQtMobgoTEk",
+  "final_url": "https://www.youtube.com/watch?v=PQtMobgoTEk",
+  "fetched_at": "2026-05-30T10:48:55+00:00",
+  "http_status": 200,
+  "sha256": "d29b5123afe43c6a72a2327baec2016ab8f95eb7c19c45a0b3af88e5d1b5fa8e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2005
+  },
+  "extra": {
+    "query": "EDC san bernardino 2005",
+    "title": "Electric Daisy CarnivalJun 25 2005"
+  }
+}

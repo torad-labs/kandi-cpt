@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2011/10/sensation-spain-2011-with-fedde-le-grand-sunnery-james-and-ryan-marciano-best-party-ever/",
+  "final_url": "https://dancingastronaut.com/2011/10/sensation-spain-2011-with-fedde-le-grand-sunnery-james-and-ryan-marciano-best-party-ever/",
+  "fetched_at": "2026-05-30T11:01:20+00:00",
+  "http_status": 200,
+  "sha256": "48ed7307895641ce96f1aeda2423d0e1019ac5e4d5c53bfac058140d250a3ecc",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

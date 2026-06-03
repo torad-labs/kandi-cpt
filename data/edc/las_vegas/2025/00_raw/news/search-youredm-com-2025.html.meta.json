@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+las+vegas+2025",
+  "final_url": "https://youredm.com/?s=EDC+las+vegas+2025",
+  "fetched_at": "2026-05-30T10:18:15+00:00",
+  "http_status": 200,
+  "sha256": "b743ded6b66d02882c759ca99eb14f8880e9d9abb5fd7dbdd5fae051cb85b5e2",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC+las+vegas+2025",
+    "kind": "listing"
+  }
+}

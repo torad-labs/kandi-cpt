@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=12cTQ74hlwo",
+  "final_url": "https://www.youtube.com/watch?v=12cTQ74hlwo",
+  "fetched_at": "2026-05-30T10:38:10+00:00",
+  "http_status": 200,
+  "sha256": "e0f900e5a471704f3fbb3287c9afcc8e43be6c1612bde17625045adf6a0f4ad5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC mexico city 2024",
+    "title": "Bolo at EDC Mexico 2026 (Full Set)"
+  }
+}

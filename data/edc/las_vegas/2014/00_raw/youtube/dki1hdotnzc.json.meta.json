@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=dkI1hdotnzc",
+  "final_url": "https://www.youtube.com/watch?v=dkI1hdotnzc",
+  "fetched_at": "2026-05-30T10:09:52+00:00",
+  "http_status": 200,
+  "sha256": "8debb2dbd59a071b23347d5de72e0c2c9c6f8e4c65712d19b183b1d4d8900991",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC las vegas 2014",
+    "title": "Hardwell - EDC Las Vegas 2014 Full Set"
+  }
+}

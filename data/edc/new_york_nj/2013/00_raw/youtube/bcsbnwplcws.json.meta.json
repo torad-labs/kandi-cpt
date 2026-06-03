@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=bCSbNwPLcWs",
+  "final_url": "https://www.youtube.com/watch?v=bCSbNwPLcWs",
+  "fetched_at": "2026-05-30T10:55:44+00:00",
+  "http_status": 200,
+  "sha256": "40514706494ab8b19526ffc7888448232bf34a327f35b47b841c0f654eeb5893",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC new york nj 2013",
+    "title": "EDC NY 2013  Day 1 - Dirty South - If I Lose Myself"
+  }
+}

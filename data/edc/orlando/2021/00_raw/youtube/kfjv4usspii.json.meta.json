@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=KfJV4UsSPiI",
+  "final_url": "https://www.youtube.com/watch?v=KfJV4UsSPiI",
+  "fetched_at": "2026-05-30T10:26:28+00:00",
+  "http_status": 200,
+  "sha256": "8d3763b2687911aadeefdca2a85092f79dee6f938ed92ff13fa661db5726cb9b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2021
+  },
+  "extra": {
+    "query": "EDC orlando 2021",
+    "title": "John Summit - Live from EDC Orlando"
+  }
+}

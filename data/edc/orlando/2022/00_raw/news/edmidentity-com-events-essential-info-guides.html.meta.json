@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T10:27:44+00:00",
+  "http_status": 200,
+  "sha256": "3a0d33e237e9b45f1d560ac059fed6a99323d54119c44ce4a12994fdde068bb6",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/news/insomniac-announces-edc-las-vegas-2020-ticket-sale/",
+  "final_url": "https://edm.com/news/insomniac-announces-edc-las-vegas-2020-ticket-sale/",
+  "fetched_at": "2026-05-30T10:41:05+00:00",
+  "http_status": 200,
+  "sha256": "81d748de57b4041cfac714a867588a254e97cb08894ac438ad533a36d57adb76",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

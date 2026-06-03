@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+chicago+2013",
+  "final_url": "https://youredm.com/?s=EDC+chicago+2013",
+  "fetched_at": "2026-05-30T10:59:11+00:00",
+  "http_status": 200,
+  "sha256": "04bda66b080e73cff8802d695cae90c9a5aa6411207da6275e9301496929a96f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC+chicago+2013",
+    "kind": "listing"
+  }
+}

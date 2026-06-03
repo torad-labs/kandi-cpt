@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=4h4rWDFDRj4",
+  "final_url": "https://www.youtube.com/watch?v=4h4rWDFDRj4",
+  "fetched_at": "2026-05-30T10:36:41+00:00",
+  "http_status": 200,
+  "sha256": "656772ea1783e04fff8f0f0b0ec0ea043b3554c237ae179ea0ab473b5d63a020",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC mexico city 2022",
+    "title": "Lost Frequencies   Live @ EDC Mexico 2022 FULL SET LIVE"
+  }
+}

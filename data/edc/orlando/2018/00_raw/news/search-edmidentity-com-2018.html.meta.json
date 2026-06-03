@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+orlando+2018",
+  "final_url": "https://edmidentity.com/?s=EDC+orlando+2018",
+  "fetched_at": "2026-05-30T10:25:22+00:00",
+  "http_status": 200,
+  "sha256": "02efe9327c15322e6475953a5a6056b53edf187236fe2d6474d5f8c5b29103bc",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC+orlando+2018",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-9GzFf4sh-k",
+  "final_url": "https://www.youtube.com/watch?v=-9GzFf4sh-k",
+  "fetched_at": "2026-05-30T10:21:04+00:00",
+  "http_status": 200,
+  "sha256": "99ad0c84f4a8fd748dcc909722016078b91f694503813b315c8157fee268cae5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC orlando 2013",
+    "title": "R3hab @ Electric Daisy Carnival EDC Orlando 2013-11-08 [HD]"
+  }
+}

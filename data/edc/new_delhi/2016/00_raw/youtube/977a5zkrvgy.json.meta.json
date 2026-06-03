@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=977A5ZKrvgY",
+  "final_url": "https://www.youtube.com/watch?v=977A5ZKrvgY",
+  "fetched_at": "2026-05-30T11:08:50+00:00",
+  "http_status": 200,
+  "sha256": "eada349600b322a2d00af7821fd9a7b06a9d2543578d3229e858ca0fabfa6279",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_delhi",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new delhi 2016",
+    "title": "EDC INDIA Warm Up Mix 2016 - AKI   | Afrojack,Alesso,R3hab,Steve Aoki,Tommy Trash,Yellow Claw|"
+  }
+}

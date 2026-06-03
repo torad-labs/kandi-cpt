@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=kBteEz1KUag",
+  "final_url": "https://www.youtube.com/watch?v=kBteEz1KUag",
+  "fetched_at": "2026-05-30T10:20:18+00:00",
+  "http_status": 200,
+  "sha256": "a2c0954f5d39740804ada7da42326f7165f346cf727d5e32f272a57153adaee0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC orlando 2012",
+    "title": "\"What is an Electric Daisy Carnival?\"   EDC Orlando 2012"
+  }
+}

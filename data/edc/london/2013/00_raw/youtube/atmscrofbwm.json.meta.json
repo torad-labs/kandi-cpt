@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=aTmScRoFbwM",
+  "final_url": "https://www.youtube.com/watch?v=aTmScRoFbwM",
+  "fetched_at": "2026-05-30T11:04:54+00:00",
+  "http_status": 200,
+  "sha256": "4b6c43cd212fca24c67fd172b8eecb53ff51d18761e812cfb98260b8b634921a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "london",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC london 2013",
+    "title": "EDC London 2013 Official Trailer"
+  }
+}

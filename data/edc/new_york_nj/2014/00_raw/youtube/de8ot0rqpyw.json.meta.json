@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=dE8Ot0rQpyw",
+  "final_url": "https://www.youtube.com/watch?v=dE8Ot0rQpyw",
+  "fetched_at": "2026-05-30T10:56:30+00:00",
+  "http_status": 200,
+  "sha256": "8db324b86884f76097f849bab4b60270c31e6c1c202fecb453dc31511c9e5c52",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC new york nj 2014",
+    "title": "[OFFICIAL] EDC New York 2014 Recap"
+  }
+}

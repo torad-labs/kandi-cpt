@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=r-um_y4Dum8",
+  "final_url": "https://www.youtube.com/watch?v=r-um_y4Dum8",
+  "fetched_at": "2026-05-30T10:28:47+00:00",
+  "http_status": 200,
+  "sha256": "c91c936de47b8316f2032f715b341c3d76321664d170fc76ea0466b1ce2c2f5e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC orlando 2024",
+    "title": "EDC Orlando 2024 Trailer"
+  }
+}

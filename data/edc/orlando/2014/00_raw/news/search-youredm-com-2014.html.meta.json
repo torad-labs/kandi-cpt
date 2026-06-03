@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+orlando+2014",
+  "final_url": "https://youredm.com/?s=EDC+orlando+2014",
+  "fetched_at": "2026-05-30T10:22:14+00:00",
+  "http_status": 200,
+  "sha256": "84b8749ee5b1cc933a35403ef9c72c507d89f6b2226720857e969c17763ce509",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC+orlando+2014",
+    "kind": "listing"
+  }
+}

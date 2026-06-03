@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2017/08/insomniac-releases-full-lineup-edc-orlando-2017/",
+  "final_url": "https://dancingastronaut.com/2017/08/insomniac-releases-full-lineup-edc-orlando-2017/",
+  "fetched_at": "2026-05-30T10:24:28+00:00",
+  "http_status": 200,
+  "sha256": "e518601f78cec00550b12107b6090ae41c17ea25765ee920bc8cd939ce839c86",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2017
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

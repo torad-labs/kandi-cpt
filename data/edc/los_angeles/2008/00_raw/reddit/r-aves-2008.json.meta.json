@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2008&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+2008&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:45:12+00:00",
+  "http_status": 200,
+  "sha256": "29311a915112ab567a7e2608ff887b2f99de17a43d2711acbf29921d5731292b",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2008
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "los+angeles+2008",
+    "results": 10
+  }
+}

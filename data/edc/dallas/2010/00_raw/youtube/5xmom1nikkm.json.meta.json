@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=5XmoM1NiKkM",
+  "final_url": "https://www.youtube.com/watch?v=5XmoM1NiKkM",
+  "fetched_at": "2026-05-30T10:53:21+00:00",
+  "http_status": 200,
+  "sha256": "a9b1fa2efadd274754a58b45a193e64d5d745c6afcd23f4524a3484c5fdb04eb",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC dallas 2010",
+    "title": "Electric Daisy Carnival 2010 Video Compilation (EDC) Dallas, TX - June 2010 [HD 1080]"
+  }
+}

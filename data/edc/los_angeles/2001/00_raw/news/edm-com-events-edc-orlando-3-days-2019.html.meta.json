@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-orlando-3-days-2019/",
+  "final_url": "https://edm.com/events/edc-orlando-3-days-2019/",
+  "fetched_at": "2026-05-30T10:43:27+00:00",
+  "http_status": 200,
+  "sha256": "3c794d9a07e67c03e1961268f66d6c548280f6a011120e503f718f5d849212cb",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

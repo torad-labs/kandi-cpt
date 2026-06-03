@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=6xAPpMdJ3TE",
+  "final_url": "https://www.youtube.com/watch?v=6xAPpMdJ3TE",
+  "fetched_at": "2026-05-30T10:47:27+00:00",
+  "http_status": 200,
+  "sha256": "f5a8f7591f13c3f5a716385fe291c8d54fd31ecb369b1504daf0caf25a4ecc67",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2003
+  },
+  "extra": {
+    "query": "EDC san bernardino 2003",
+    "title": "EDC Infected Mushroom part 9 video by endari June 24, 2006"
+  }
+}

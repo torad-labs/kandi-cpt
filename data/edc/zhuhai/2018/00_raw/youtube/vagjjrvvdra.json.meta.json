@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=VAGJJrvvDRA",
+  "final_url": "https://www.youtube.com/watch?v=VAGJJrvvDRA",
+  "fetched_at": "2026-05-30T11:10:33+00:00",
+  "http_status": 200,
+  "sha256": "23937e64851819122fb1531f1435c5597d5293d5335b6db083d123b239e2ef67",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "zhuhai",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC zhuhai 2018",
+    "title": "Kinetic field EDC Zhuhai 2018 Tiesto"
+  }
+}

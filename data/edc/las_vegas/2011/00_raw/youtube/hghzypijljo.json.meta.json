@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=HghZypiJLJo",
+  "final_url": "https://www.youtube.com/watch?v=HghZypiJLJo",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "b8ed1be9e5a160b019956d7c676100ccc79985ca876b47e75ad1db8d9d65f487",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "Tour of Electric Daisy Carnival EDC 2011"
+  }
+}

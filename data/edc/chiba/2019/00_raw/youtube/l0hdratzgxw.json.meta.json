@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=L0hDraTzGXw",
+  "final_url": "https://www.youtube.com/watch?v=L0hDraTzGXw",
+  "fetched_at": "2026-05-30T11:13:17+00:00",
+  "http_status": 200,
+  "sha256": "17bcc67662cb030865486a84a56e2e7d7ba4497a0bf6ea5267afd36420df9cf0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC chiba 2019",
+    "title": "Armin van Buuren Full\u3010EDC JAPAN 2019.5.11.DAY1\u3011HD"
+  }
+}

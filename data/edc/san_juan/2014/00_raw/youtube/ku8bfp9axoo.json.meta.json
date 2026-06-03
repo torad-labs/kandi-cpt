@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ku8BFp9AXoo",
+  "final_url": "https://www.youtube.com/watch?v=ku8BFp9AXoo",
+  "fetched_at": "2026-05-30T11:03:18+00:00",
+  "http_status": 200,
+  "sha256": "d17b7136a75e147f6e0a6aca91b6eb96b6409d791bc19aefe7d190e8602e61ef",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC san juan 2014",
+    "title": "after movie @EDC Puerto Rico 2015"
+  }
+}

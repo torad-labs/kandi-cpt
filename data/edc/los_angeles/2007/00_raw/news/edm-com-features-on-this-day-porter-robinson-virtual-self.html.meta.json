@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/features/on-this-day-porter-robinson-virtual-self/",
+  "final_url": "https://edm.com/features/on-this-day-porter-robinson-virtual-self/",
+  "fetched_at": "2026-05-30T10:44:53+00:00",
+  "http_status": 200,
+  "sha256": "dd6462ed568374daa85382e05a9a7f7b219ee213c7bf8cb8ccb016683ad8afc0",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2007
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

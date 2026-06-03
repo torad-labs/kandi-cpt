@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=gP1bhP3GIuY",
+  "final_url": "https://www.youtube.com/watch?v=gP1bhP3GIuY",
+  "fetched_at": "2026-05-30T10:40:29+00:00",
+  "http_status": 200,
+  "sha256": "b840c7a15437fde5f1a50f26dbf0c7a3581a858abc5b1e38678d684436ef04b0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "query": "EDC los angeles 1997",
+    "title": "Chemistry - October 12 1996 (Los Angeles)"
+  }
+}

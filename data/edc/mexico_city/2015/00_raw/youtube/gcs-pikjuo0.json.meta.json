@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Gcs-PikjUo0",
+  "final_url": "https://www.youtube.com/watch?v=Gcs-PikjUo0",
+  "fetched_at": "2026-05-30T10:32:01+00:00",
+  "http_status": 200,
+  "sha256": "5bed26c110939b3edabf692d77658bb093ace82149435edcf38872dfd53ac8b6",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC mexico city 2015",
+    "title": "JAUZ @ EDC Mexico 2020 [Full Set]"
+  }
+}

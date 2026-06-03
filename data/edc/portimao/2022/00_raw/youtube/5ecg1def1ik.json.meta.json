@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=5eCg1Def1ik",
+  "final_url": "https://www.youtube.com/watch?v=5eCg1Def1ik",
+  "fetched_at": "2026-05-30T11:16:28+00:00",
+  "http_status": 200,
+  "sha256": "da71dc7204859b0dd6012e9f3d3819e49268fe0075882d55dfab9ed5b25ac3a2",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "portimao",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC portimao 2022",
+    "title": "Multiple rider crash brings out the red flag in Moto2\u2122 | 2022 #PortugueseGP"
+  }
+}

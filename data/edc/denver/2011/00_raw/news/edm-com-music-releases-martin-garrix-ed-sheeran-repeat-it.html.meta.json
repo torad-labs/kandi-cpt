@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/music-releases/martin-garrix-ed-sheeran-repeat-it/",
+  "final_url": "https://edm.com/music-releases/martin-garrix-ed-sheeran-repeat-it/",
+  "fetched_at": "2026-05-30T10:53:09+00:00",
+  "http_status": 200,
+  "sha256": "6d5b050a331f123a6b32df8cce57a9dffb65d6f08038519782c20a1c0aedfa86",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

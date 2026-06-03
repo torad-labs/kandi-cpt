@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Or2ePig_mYk",
+  "final_url": "https://www.youtube.com/watch?v=Or2ePig_mYk",
+  "fetched_at": "2026-05-30T10:10:57+00:00",
+  "http_status": 200,
+  "sha256": "feabf80392e36204ac1eb12517d6a79b40f5ef4d3fa3e7c7a2627d9b014d61fe",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC las vegas 2015",
+    "title": "Seven Lions - EDC Las Vegas 2015 Full Set"
+  }
+}

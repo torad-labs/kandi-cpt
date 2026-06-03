@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-new-floating-music-festival-edsea/",
+  "final_url": "https://edm.com/events/edc-new-floating-music-festival-edsea/",
+  "fetched_at": "2026-05-30T11:22:15+00:00",
+  "http_status": 200,
+  "sha256": "253ef353244f230d163bacade5fdb8c1e3fec178f62568052a9f3af438e3164c",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2026
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

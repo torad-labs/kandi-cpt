@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=TzdNaxc0gcg",
+  "final_url": "https://www.youtube.com/watch?v=TzdNaxc0gcg",
+  "fetched_at": "2026-05-30T10:21:51+00:00",
+  "http_status": 200,
+  "sha256": "5c44519a9fa047d99829380525fdcdcd9b83c729d0a8c548fc63d1b4846934d9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC orlando 2014",
+    "title": "Flosstradamus EDC Orlando 2014"
+  }
+}

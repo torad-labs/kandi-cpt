@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+los+angeles+2001",
+  "final_url": "https://edm.com/?s=EDC+los+angeles+2001",
+  "fetched_at": "2026-05-30T10:43:22+00:00",
+  "http_status": 200,
+  "sha256": "537ef7befd01b0ac3531ed64d63b4302257db25e45f4bbc479daa4f4d848c36d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "query": "EDC+los+angeles+2001",
+    "kind": "listing"
+  }
+}

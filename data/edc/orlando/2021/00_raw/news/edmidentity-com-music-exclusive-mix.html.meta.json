@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T10:26:57+00:00",
+  "http_status": 200,
+  "sha256": "6c245e79e8c2fd108a84acd6f27b16d5ca6075a7183d14d67519f3411524c674",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2021
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

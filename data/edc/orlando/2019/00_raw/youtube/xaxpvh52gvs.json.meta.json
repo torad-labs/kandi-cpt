@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=XaXpVh52gvs",
+  "final_url": "https://www.youtube.com/watch?v=XaXpVh52gvs",
+  "fetched_at": "2026-05-30T10:25:41+00:00",
+  "http_status": 200,
+  "sha256": "8ec4aa4b46ce38be63a7f7db4a198a13c220eed191d214425ec3a1860041526c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC orlando 2019",
+    "title": "RL Grime - Live @ EDC Orlando 2019"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2001&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2001&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:42:51+00:00",
+  "http_status": 200,
+  "sha256": "f6b7c9666c501c785962f478e2f696d4d298c0af950c45ebdb091e4b4fc3ac03",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "los+angeles+2001",
+    "results": 10
+  }
+}

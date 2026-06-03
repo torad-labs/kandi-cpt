@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/features/interview-avello-2026/",
+  "final_url": "https://edm.com/features/interview-avello-2026/",
+  "fetched_at": "2026-05-30T10:23:13+00:00",
+  "http_status": 200,
+  "sha256": "00c4facd5362350f12ae35278e065612bfd46f415cd2f1c6dd1500408179d902",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=8Di5LfyeeVw",
+  "final_url": "https://www.youtube.com/watch?v=8Di5LfyeeVw",
+  "fetched_at": "2026-05-30T10:12:27+00:00",
+  "http_status": 200,
+  "sha256": "da9da36388b213cb553279e100bd76122edf637d7a0b12f83d2c1b79cc47b3a2",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC las vegas 2017",
+    "title": "Valentino Khan - EDC Las Vegas 2017 - Full Set (Official Video)"
+  }
+}

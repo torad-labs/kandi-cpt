@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+new+york+nj+2012",
+  "final_url": "https://edmidentity.com/?s=EDC+new+york+nj+2012",
+  "fetched_at": "2026-05-30T10:55:27+00:00",
+  "http_status": 200,
+  "sha256": "f53490757877e9460eb4ad830dc625ceee98047307c5e8001d365306bc8d632a",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC+new+york+nj+2012",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=sLqJmop9lh8",
+  "final_url": "https://www.youtube.com/watch?v=sLqJmop9lh8",
+  "fetched_at": "2026-05-30T10:36:41+00:00",
+  "http_status": 200,
+  "sha256": "e5a6a15de0b03d08185dcd4f13df508a1d4a7802a500f2e94b99f33e4adb6992",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC mexico city 2022",
+    "title": "Nora En Pure @ EDC M\u00e9xico 2022 | KineticFIELD"
+  }
+}

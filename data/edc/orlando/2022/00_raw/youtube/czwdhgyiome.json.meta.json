@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=CZwdhgYIOmE",
+  "final_url": "https://www.youtube.com/watch?v=CZwdhgYIOmE",
+  "fetched_at": "2026-05-30T10:27:14+00:00",
+  "http_status": 200,
+  "sha256": "44138de707b8dd2f96d42b0d16713afa05be9341559c74b7b00302f47b0654ad",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC orlando 2022",
+    "title": "Giuseppe Ottaviani @ EDC Orlando 2022"
+  }
+}

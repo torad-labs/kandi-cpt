@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=dV-5Z2HSYmU",
+  "final_url": "https://www.youtube.com/watch?v=dV-5Z2HSYmU",
+  "fetched_at": "2026-05-30T10:24:55+00:00",
+  "http_status": 200,
+  "sha256": "218ece465f6cd44ccee1626f11a1b0946d824a96bfc6e17cd8335f63464b9a66",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC orlando 2018",
+    "title": "Alesso Full Set EDC Orlando 2018 Kinetic Field"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=c7ZgG8GvebM",
+  "final_url": "https://www.youtube.com/watch?v=c7ZgG8GvebM",
+  "fetched_at": "2026-05-30T11:17:17+00:00",
+  "http_status": 200,
+  "sha256": "472a6deb3c61f86673500c89dcfccf28e0f367cdaaf628c53badcc1bbc3e6708",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC phuket 2025",
+    "title": "EDC Thailand 2026 Trailer"
+  }
+}

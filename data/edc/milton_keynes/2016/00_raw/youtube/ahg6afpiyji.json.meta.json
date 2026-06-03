@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=AhG6afpiYJI",
+  "final_url": "https://www.youtube.com/watch?v=AhG6afpiYJI",
+  "fetched_at": "2026-05-30T11:07:15+00:00",
+  "http_status": 200,
+  "sha256": "dd81afaaa92b3be0debdc7248807098c1f1e919f4418946982afc42b822ea5f5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC milton keynes 2016",
+    "title": "EDC Milton Keynes 2016"
+  }
+}

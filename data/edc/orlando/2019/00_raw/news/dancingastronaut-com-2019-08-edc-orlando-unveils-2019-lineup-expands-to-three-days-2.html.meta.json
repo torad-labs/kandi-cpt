@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2019/08/edc-orlando-unveils-2019-lineup-expands-to-three-days-2/",
+  "final_url": "https://dancingastronaut.com/2019/08/edc-orlando-unveils-2019-lineup-expands-to-three-days-2/",
+  "fetched_at": "2026-05-30T10:25:56+00:00",
+  "http_status": 200,
+  "sha256": "3ba9fee0da3a70c5167cd75782a09a405689f8b1bf6a3ba01b5b795934a28155",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+new+york+nj+2013",
+  "final_url": "https://youredm.com/?s=EDC+new+york+nj+2013",
+  "fetched_at": "2026-05-30T10:56:06+00:00",
+  "http_status": 200,
+  "sha256": "51a9022f75c56e7453a12cf77b598bc3de803d4b743ae81f523f1fc755c80ea0",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC+new+york+nj+2013",
+    "kind": "listing"
+  }
+}

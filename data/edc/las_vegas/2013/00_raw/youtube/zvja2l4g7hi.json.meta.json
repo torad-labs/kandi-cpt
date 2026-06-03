@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=zVja2l4g7hI",
+  "final_url": "https://www.youtube.com/watch?v=zVja2l4g7hI",
+  "fetched_at": "2026-05-30T10:09:06+00:00",
+  "http_status": 200,
+  "sha256": "c7e1adb411c772431bcfaf4f383aa53be95418de78c6aef2b5838c0e6035849d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC las vegas 2013",
+    "title": "Tommy Trash - Live @ Electric Daisy Carnival (Vegas) - 21.06.2013"
+  }
+}

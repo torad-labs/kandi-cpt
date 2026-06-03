@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+orlando+2017",
+  "final_url": "https://edm.com/?s=EDC+orlando+2017",
+  "fetched_at": "2026-05-30T10:24:41+00:00",
+  "http_status": 200,
+  "sha256": "9ceb826f312d07b189826eebcdc2ae564b794380fd3e986aacb26ee6121f1c80",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC+orlando+2017",
+    "kind": "listing"
+  }
+}

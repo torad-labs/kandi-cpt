@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2019&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:25:52+00:00",
+  "http_status": 200,
+  "sha256": "4220ea4120af50020d5b9ef6ed910499c6e9e038aa961c74156bb1622a89a90f",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2019
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "orlando+2019",
+    "results": 8
+  }
+}

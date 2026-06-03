@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=BnlLPbZ0Qwo",
+  "final_url": "https://www.youtube.com/watch?v=BnlLPbZ0Qwo",
+  "fetched_at": "2026-05-30T11:13:17+00:00",
+  "http_status": 200,
+  "sha256": "a8da321cac3cd167ca0d54d22c6bd8c682ab86e6095cf5d54f7b8dea609d5693",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC chiba 2019",
+    "title": "Alan Walker - Live | SUMMER SONIC 2019"
+  }
+}

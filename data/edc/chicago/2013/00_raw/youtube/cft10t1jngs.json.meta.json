@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=cFt10t1JNgs",
+  "final_url": "https://www.youtube.com/watch?v=cFt10t1JNgs",
+  "fetched_at": "2026-05-30T10:58:50+00:00",
+  "http_status": 200,
+  "sha256": "841f933b42612e4118b2d4fc6598909b05ea77ee2e5b35dfdc39e7eae0bab9e0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC chicago 2013",
+    "title": "Tritonal - Live @ Electric Daisy Carnival [EDC Chicago 2013] - 25.05.2013"
+  }
+}

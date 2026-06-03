@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+denver+2010",
+  "final_url": "https://edm.com/?s=EDC+denver+2010",
+  "fetched_at": "2026-05-30T10:52:17+00:00",
+  "http_status": 200,
+  "sha256": "423b85cdde20fd583cae3b466d94380e6e5552805629b5e4352efd4fc046366d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC+denver+2010",
+    "kind": "listing"
+  }
+}

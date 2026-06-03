@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=BxM-2yD6RHg",
+  "final_url": "https://www.youtube.com/watch?v=BxM-2yD6RHg",
+  "fetched_at": "2026-05-30T11:14:50+00:00",
+  "http_status": 200,
+  "sha256": "6d8d94f86b5e220dcf1bcfbb99c3309e99de48984bf77128868dc00f4a485cc1",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC incheon 2025",
+    "title": "MARTIN GARRIX LIVE @ EDC KOREA 2025 ! INTRO ! GRAVITY + VIRUS + ANIMALS"
+  }
+}

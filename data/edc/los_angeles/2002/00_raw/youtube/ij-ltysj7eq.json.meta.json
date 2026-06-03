@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=IJ_ltysj7EQ",
+  "final_url": "https://www.youtube.com/watch?v=IJ_ltysj7EQ",
+  "fetched_at": "2026-05-30T10:43:36+00:00",
+  "http_status": 200,
+  "sha256": "c3862ab543c98d1fa144254453fbec6b9b46882fae0e720b7f366619848290a0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2002
+  },
+  "extra": {
+    "query": "EDC los angeles 2002",
+    "title": "Concentric Beats - 2002 - Part 3/11"
+  }
+}

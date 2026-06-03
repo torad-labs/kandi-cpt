@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=9rxCEa6jacw",
+  "final_url": "https://www.youtube.com/watch?v=9rxCEa6jacw",
+  "fetched_at": "2026-05-30T10:22:37+00:00",
+  "http_status": 200,
+  "sha256": "2ef2f6f1f7c3a05065af76059773ada22de5b6f685122de9251e7e58a8ef29f8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC orlando 2015",
+    "title": "Bassnectar live full set @ EDC Orlando, FL on November 7, 2015"
+  }
+}

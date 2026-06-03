@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=iQq3gfNP57o",
+  "final_url": "https://www.youtube.com/watch?v=iQq3gfNP57o",
+  "fetched_at": "2026-05-30T10:43:36+00:00",
+  "http_status": 200,
+  "sha256": "ef859c1b54e2e60a7ff8512470d879d7356169e7de02c87b1e6c56a59d238b0a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2002
+  },
+  "extra": {
+    "query": "EDC los angeles 2002",
+    "title": "EDC Los Angeles 6.27.2009 Paul Van Dyk"
+  }
+}

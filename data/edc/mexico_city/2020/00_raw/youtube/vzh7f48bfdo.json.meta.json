@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=vzH7f48BfDo",
+  "final_url": "https://www.youtube.com/watch?v=vzH7f48BfDo",
+  "fetched_at": "2026-05-30T10:35:52+00:00",
+  "http_status": 200,
+  "sha256": "e34b62077d29fb9f934589fe3d78cabaa53f3fe3669c8194938e48999522f134",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2020
+  },
+  "extra": {
+    "query": "EDC mexico city 2020",
+    "title": "KikeONE Presents K1 - EDC Mexico 2020 Closing WasteLAND"
+  }
+}

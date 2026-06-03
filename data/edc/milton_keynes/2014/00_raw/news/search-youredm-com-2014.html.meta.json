@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+milton+keynes+2014",
+  "final_url": "https://youredm.com/?s=EDC+milton+keynes+2014",
+  "fetched_at": "2026-05-30T11:06:07+00:00",
+  "http_status": 200,
+  "sha256": "3a89e0b02a5d18ab2f5e905b8cd64fa0156a11d3e39702500a3ead7ec10a7819",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC+milton+keynes+2014",
+    "kind": "listing"
+  }
+}

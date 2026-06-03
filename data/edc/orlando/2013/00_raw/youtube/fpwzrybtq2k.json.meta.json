@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=FPWzRybtQ2k",
+  "final_url": "https://www.youtube.com/watch?v=FPWzRybtQ2k",
+  "fetched_at": "2026-05-30T10:21:04+00:00",
+  "http_status": 200,
+  "sha256": "1fc0706dd1209a2d82d79cde01d360fee06a5f9a448ce225e5c96dd51908bfe9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC orlando 2013",
+    "title": "Madeon Live Set - EDC Orlando 2013"
+  }
+}

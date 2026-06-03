@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+los+angeles+2009",
+  "final_url": "https://dancingastronaut.com/?s=EDC+los+angeles+2009",
+  "fetched_at": "2026-05-30T10:46:07+00:00",
+  "http_status": 200,
+  "sha256": "561f772e30fe4b4c25d65df02336f6a0152dcad2a415145db3242b1b57a4fd49",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC+los+angeles+2009",
+    "kind": "listing"
+  }
+}

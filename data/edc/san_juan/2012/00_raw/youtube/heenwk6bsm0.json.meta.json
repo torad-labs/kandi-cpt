@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=heENWk6Bsm0",
+  "final_url": "https://www.youtube.com/watch?v=heENWk6Bsm0",
+  "fetched_at": "2026-05-30T11:01:50+00:00",
+  "http_status": 200,
+  "sha256": "b785867cf1d6878f6dacd620b022596bb2bdfcb14a5d79e848a910496e29c3d0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC san juan 2012",
+    "title": "EDC 2012 Puerto Rico - Panamerican Pier Complex - San Juan Capital City"
+  }
+}

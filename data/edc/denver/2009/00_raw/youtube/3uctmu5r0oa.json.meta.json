@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3uCTmu5r0OA",
+  "final_url": "https://www.youtube.com/watch?v=3uCTmu5r0OA",
+  "fetched_at": "2026-05-30T10:51:01+00:00",
+  "http_status": 200,
+  "sha256": "f9e6b0f4a24980a687442fcfed8ffd8b3d171dade98afce7ec7dc9a94e4c93fa",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC denver 2009",
+    "title": "edc 2009 denver"
+  }
+}

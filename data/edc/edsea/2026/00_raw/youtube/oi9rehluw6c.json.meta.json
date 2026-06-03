@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Oi9rEHLUW6c",
+  "final_url": "https://www.youtube.com/watch?v=Oi9rEHLUW6c",
+  "fetched_at": "2026-05-30T11:21:47+00:00",
+  "http_status": 200,
+  "sha256": "e27b12fcbc195cdb80a88dd64a47bbc3f89bb46d8491f8a58437d6305a1b7ed5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC edsea 2026",
+    "title": "EDSea Vlog: B2B with Sara Landry, Continuing Juelz Beef, 6AM Sunrise Speed House Set"
+  }
+}

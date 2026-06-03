@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-GRaveH7GC0",
+  "final_url": "https://www.youtube.com/watch?v=-GRaveH7GC0",
+  "fetched_at": "2026-05-30T10:56:30+00:00",
+  "http_status": 200,
+  "sha256": "514d4752fae703bcfcbc0bd24cdeecd7657c1c4ede82a8169329efc0c863e66a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC new york nj 2014",
+    "title": "EDC NY 2014 Aftermovie"
+  }
+}

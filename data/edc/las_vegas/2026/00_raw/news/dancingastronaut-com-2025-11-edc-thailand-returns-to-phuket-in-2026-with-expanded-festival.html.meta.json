@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2025/11/edc-thailand-returns-to-phuket-in-2026-with-expanded-festival-experience-including-hotel-edc-debut/",
+  "final_url": "https://dancingastronaut.com/2025/11/edc-thailand-returns-to-phuket-in-2026-with-expanded-festival-experience-including-hotel-edc-debut/",
+  "fetched_at": "2026-05-30T10:19:05+00:00",
+  "http_status": 200,
+  "sha256": "f534a60111e5ecdf4aab0d33bd5840400786c1f542e93ef2fa925e652db25924",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

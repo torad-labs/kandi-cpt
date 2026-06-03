@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Mavi5mVCWts",
+  "final_url": "https://www.youtube.com/watch?v=Mavi5mVCWts",
+  "fetched_at": "2026-05-30T10:45:50+00:00",
+  "http_status": 200,
+  "sha256": "33bd9aa7c3aa9456dcbb7cc46a57ae14168ab3ecda4b3a1fd12276e0645c196a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC los angeles 2009",
+    "title": "EDC 2009 Los Angeles LTH Shuffle"
+  }
+}

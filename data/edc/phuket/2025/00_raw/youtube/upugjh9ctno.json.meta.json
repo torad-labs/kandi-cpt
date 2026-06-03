@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uPUgJH9CtNo",
+  "final_url": "https://www.youtube.com/watch?v=uPUgJH9CtNo",
+  "fetched_at": "2026-05-30T11:17:17+00:00",
+  "http_status": 200,
+  "sha256": "bc546a3788c2996a739ecee15f5fdbb49b37fd6b190cc04ba9947951c61691f4",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC phuket 2025",
+    "title": "The most complete overview  Electric Daisy Carnival (EDC) Thailand 2025 - Phuket"
+  }
+}

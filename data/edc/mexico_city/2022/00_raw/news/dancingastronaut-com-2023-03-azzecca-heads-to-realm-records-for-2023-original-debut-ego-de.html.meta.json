@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2023/03/azzecca-heads-to-realm-records-for-2023-original-debut-ego-death/",
+  "final_url": "https://dancingastronaut.com/2023/03/azzecca-heads-to-realm-records-for-2023-original-debut-ego-death/",
+  "fetched_at": "2026-05-30T10:36:58+00:00",
+  "http_status": 200,
+  "sha256": "6258a9f2763317a68e18314f458ed903d6ec8b612e2f2e940ea583fabe1b00ff",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

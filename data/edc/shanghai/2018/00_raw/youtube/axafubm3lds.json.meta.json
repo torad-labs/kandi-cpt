@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=AXaFubm3lDs",
+  "final_url": "https://www.youtube.com/watch?v=AXaFubm3lDs",
+  "fetched_at": "2026-05-30T11:09:46+00:00",
+  "http_status": 200,
+  "sha256": "56a8cf21e5a15e030e5a247a4615b436cd5555ece2ceb7075247ca99f89397ac",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "shanghai",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC shanghai 2018",
+    "title": "EDC CHINA 2018 @SHANGHAI INTERNATIONAL MUSIC PARK  (2018.4.29)"
+  }
+}

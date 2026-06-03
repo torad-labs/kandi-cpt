@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=fXwI-SW4T00",
+  "final_url": "https://www.youtube.com/watch?v=fXwI-SW4T00",
+  "fetched_at": "2026-05-30T10:34:18+00:00",
+  "http_status": 200,
+  "sha256": "9873300ec5c0772275e7d0af2540605526fb0f4a8cd26c6781607b66521c0a56",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC mexico city 2018",
+    "title": "deadmau5 @ Circuit Grounds - EDC Mexico 2018, Feb 25th"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=xX3XbzWs3Lc",
+  "final_url": "https://www.youtube.com/watch?v=xX3XbzWs3Lc",
+  "fetched_at": "2026-05-30T10:35:03+00:00",
+  "http_status": 200,
+  "sha256": "c35c644f236872b1f4b26f74894a958e409c254bcb49f39224a647fbdd71543e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC mexico city 2019",
+    "title": "What So Not - EDC Mexico 2019 [FULL SHOW]"
+  }
+}

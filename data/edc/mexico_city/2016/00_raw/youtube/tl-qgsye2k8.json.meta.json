@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=tl-qGsYE2K8",
+  "final_url": "https://www.youtube.com/watch?v=tl-qGsYE2K8",
+  "fetched_at": "2026-05-30T10:32:45+00:00",
+  "http_status": 200,
+  "sha256": "cc85681b0f01f137f71e64da3c5bb9527dd0df14e303e5f3bf23f354ee0272ec",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC mexico city 2016",
+    "title": "KSHMR LIVE AT EDC MEXICO 2025 (FULL 4K DJ SET)"
+  }
+}

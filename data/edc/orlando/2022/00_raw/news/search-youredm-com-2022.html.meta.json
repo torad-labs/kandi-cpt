@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+orlando+2022",
+  "final_url": "https://youredm.com/?s=EDC+orlando+2022",
+  "fetched_at": "2026-05-30T10:27:35+00:00",
+  "http_status": 200,
+  "sha256": "8ead4a50b29ac85d020902a2f6e93d95dac69a1cdf53305ce6b94aaae2fb2160",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC+orlando+2022",
+    "kind": "listing"
+  }
+}

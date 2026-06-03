@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2021/10/edc-mexico-rattles-off-2022-lineup-featuring-alesso-dj-snake-zedd-and-many-more/",
+  "final_url": "https://dancingastronaut.com/2021/10/edc-mexico-rattles-off-2022-lineup-featuring-alesso-dj-snake-zedd-and-many-more/",
+  "fetched_at": "2026-05-30T10:36:55+00:00",
+  "http_status": 200,
+  "sha256": "6d9d581722a353c0ab2f425327730805dd0eec3945003e1c2d102308ec89a3c4",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

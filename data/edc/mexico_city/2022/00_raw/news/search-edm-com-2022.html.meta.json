@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+mexico+city+2022",
+  "final_url": "https://edm.com/?s=EDC+mexico+city+2022",
+  "fetched_at": "2026-05-30T10:37:11+00:00",
+  "http_status": 200,
+  "sha256": "af2013d42b3ee0fb75ce4ada207f51c0747943b951d958c023f1081b0740ed97",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2022",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=CZztvOntZAo",
+  "final_url": "https://www.youtube.com/watch?v=CZztvOntZAo",
+  "fetched_at": "2026-05-30T11:01:06+00:00",
+  "http_status": 200,
+  "sha256": "a8129bc11b5b4ec07d4b2721ac5579990af286b6545ea48eb53698b838deee38",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC san juan 2011",
+    "title": "12th PLANET - Electric Daisy Carnival 2011 *Puerto Rico* (HD)"
+  }
+}

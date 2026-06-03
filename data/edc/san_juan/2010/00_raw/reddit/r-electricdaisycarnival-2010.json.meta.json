@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=san+juan+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T11:00:29+00:00",
+  "http_status": 200,
+  "sha256": "0f2507da790be23730a4f0c55e37945cec728917e8c266b884e8652b7f7aaf4b",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2010
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "san+juan+2010",
+    "results": 3
+  }
+}

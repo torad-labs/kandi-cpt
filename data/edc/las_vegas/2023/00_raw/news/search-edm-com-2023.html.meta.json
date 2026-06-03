@@ -1,0 +1,19 @@
+{
+  "url": "https://edm.com/?s=EDC+las+vegas+2023",
+  "final_url": "https://edm.com/?s=EDC+las+vegas+2023",
+  "fetched_at": "2026-05-30T10:16:51+00:00",
+  "http_status": 200,
+  "sha256": "c232e4e6d6db6b04cc09672760d1850aadceaddf1672ae7398f846d66632eabe",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC+las+vegas+2023",
+    "kind": "listing"
+  }
+}

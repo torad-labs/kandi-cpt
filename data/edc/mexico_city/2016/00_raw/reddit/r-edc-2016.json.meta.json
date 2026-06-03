@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:32:48+00:00",
+  "http_status": 200,
+  "sha256": "da7fe3280ccc559cbf8b25c13826a2a8395128be4880d053c2ded662cbff8de9",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2016
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "mexico+city+2016",
+    "results": 4
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ijGbC89l0iU",
+  "final_url": "https://www.youtube.com/watch?v=ijGbC89l0iU",
+  "fetched_at": "2026-05-30T10:52:33+00:00",
+  "http_status": 200,
+  "sha256": "7caeb81d524f4bf91daf3739ddb1c67481f8fc9eb299742a6fdc50b15de6a132",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC denver 2011",
+    "title": "Electric Daisy Carnival 2011 - Denver"
+  }
+}

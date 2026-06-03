@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=j5CsOB1EZAw",
+  "final_url": "https://www.youtube.com/watch?v=j5CsOB1EZAw",
+  "fetched_at": "2026-05-30T10:36:41+00:00",
+  "http_status": 200,
+  "sha256": "94cf3b0c4557f88fb827b94ac24d302c56baf96e871e1d3a10d6ea047e1e1176",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC mexico city 2022",
+    "title": "DEORRO @ EDC MEXICO 2023 - Kinetic Field [FULL SET]"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-las-vegas-is-expanding-to-two-weekends-in-2027/",
+  "final_url": "https://edm.com/events/edc-las-vegas-is-expanding-to-two-weekends-in-2027/",
+  "fetched_at": "2026-05-30T10:15:29+00:00",
+  "http_status": 200,
+  "sha256": "2919b9bd26c73e0fa4b71e55419d7b33e6fa92ed5ff5939b7066e5060bcdb737",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2021
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

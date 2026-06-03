@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-mexico-2024/",
+  "fetched_at": "2026-06-02T17:58:53+00:00",
+  "http_status": 200,
+  "sha256": "0d35d730268338a0d43f8c10a9f6f1f306c96c06e656b3a4132f3aa4700d2324",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {}
+}

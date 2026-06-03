@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Zyi1wo7EQXQ",
+  "final_url": "https://www.youtube.com/watch?v=Zyi1wo7EQXQ",
+  "fetched_at": "2026-05-30T10:20:18+00:00",
+  "http_status": 200,
+  "sha256": "9a8f9396b8f20dcf419d624edc10fbde7caf93b35eb5f688aca53735b38a0605",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC orlando 2012",
+    "title": "Armin Van Buuren @ EDC Orlando 2012"
+  }
+}

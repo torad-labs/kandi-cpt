@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=OZMWKqbcwzo",
+  "final_url": "https://www.youtube.com/watch?v=OZMWKqbcwzo",
+  "fetched_at": "2026-05-30T10:40:29+00:00",
+  "http_status": 200,
+  "sha256": "23f4b2fd37b28741acea2ae402614fe3ed3e3626b0b08f81f97329dcb9fdc429",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "query": "EDC los angeles 1997",
+    "title": "Sub Focus, Dimension, Culture Shock & 1991: LA Livestream | WORSHIP x DNBNL x UKF On Air"
+  }
+}

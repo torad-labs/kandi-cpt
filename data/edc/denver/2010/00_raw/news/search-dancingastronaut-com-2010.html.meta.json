@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+denver+2010",
+  "final_url": "https://dancingastronaut.com/?s=EDC+denver+2010",
+  "fetched_at": "2026-05-30T10:52:01+00:00",
+  "http_status": 200,
+  "sha256": "a6eb30eaf2743c83e9910f7c5c80b8efe6a95d9cbbb1dd7bfd92b76b2ba9eb65",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC+denver+2010",
+    "kind": "listing"
+  }
+}

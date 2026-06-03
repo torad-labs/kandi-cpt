@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+mexico+city+2024",
+  "final_url": "https://youredm.com/?s=EDC+mexico+city+2024",
+  "fetched_at": "2026-05-30T10:38:34+00:00",
+  "http_status": 200,
+  "sha256": "9c9c3c99da60850abb1cc874e879a317b127edf8434eef5cace146e3575cd2d8",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2024",
+    "kind": "listing"
+  }
+}

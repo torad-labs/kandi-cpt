@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2025/12/dancing-astronauts-2025-breakout-artist-cassian/",
+  "final_url": "https://dancingastronaut.com/2025/12/dancing-astronauts-2025-breakout-artist-cassian/",
+  "fetched_at": "2026-05-30T10:30:44+00:00",
+  "http_status": 200,
+  "sha256": "09b21cc2954b4137cccb69d33d13714a5e50badb18516317404938d8d7cff873",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Zq_PZGA2lNA",
+  "final_url": "https://www.youtube.com/watch?v=Zq_PZGA2lNA",
+  "fetched_at": "2026-05-30T11:14:50+00:00",
+  "http_status": 200,
+  "sha256": "822dcec3949f381a7f5caf0ac012b9b434363f7f28c4287e0410b00bfd77568c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC incheon 2025",
+    "title": "[20250426] Deorro #2 - Five Hours, EDC Korea"
+  }
+}

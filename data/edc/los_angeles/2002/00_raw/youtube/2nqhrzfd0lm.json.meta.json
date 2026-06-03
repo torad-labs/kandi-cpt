@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=2NQHrzFd0LM",
+  "final_url": "https://www.youtube.com/watch?v=2NQHrzFd0LM",
+  "fetched_at": "2026-05-30T10:43:36+00:00",
+  "http_status": 200,
+  "sha256": "d30095eee7fd8f69c1f2f08edf75f1da5a64aa2ee09e700edccd6d9b5afe03b4",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2002
+  },
+  "extra": {
+    "query": "EDC los angeles 2002",
+    "title": "Ferry Corsten \u200e\u2013 Mixed Live: Spundae @ Circus, Los Angeles"
+  }
+}

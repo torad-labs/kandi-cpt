@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=GQiabM0XmYU",
+  "final_url": "https://www.youtube.com/watch?v=GQiabM0XmYU",
+  "fetched_at": "2026-05-30T10:54:09+00:00",
+  "http_status": 200,
+  "sha256": "62c33361b8398f09ba932a7f95015e29c0d101ba68720db14a2fcb0831c4b757",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC dallas 2011",
+    "title": "EDC DALLAS 2011 FELGUK, GREEN VELVET, CHUCKIE, ETC. AND ME SHUFFLIN"
+  }
+}

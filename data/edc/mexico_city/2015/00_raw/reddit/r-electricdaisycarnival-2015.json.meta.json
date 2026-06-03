@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=mexico+city+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:32:12+00:00",
+  "http_status": 200,
+  "sha256": "a2db0fab9188fd9ea0a0c5e72816384b5bbb0f217099c87a3f793343dc39b842",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "mexico+city+2015",
+    "results": 10
+  }
+}

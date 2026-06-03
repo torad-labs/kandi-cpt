@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ODpGYJCwsSU",
+  "final_url": "https://www.youtube.com/watch?v=ODpGYJCwsSU",
+  "fetched_at": "2026-05-30T10:31:14+00:00",
+  "http_status": 200,
+  "sha256": "709eab24c885c0a971acd9ab089a2e14f246c28afe98c7b14e5e01d749b404d8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC mexico city 2014",
+    "title": "TJR Live at EDC Mexico Opening HD"
+  }
+}

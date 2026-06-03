@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T10:08:48+00:00",
+  "http_status": 200,
+  "sha256": "d9e8b0cf82200d44c0208a4759282226a9787328a58912dd6f04fd84a2568a36",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2012
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

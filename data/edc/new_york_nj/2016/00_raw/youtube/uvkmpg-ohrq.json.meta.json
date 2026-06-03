@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uvKMpg-oHrQ",
+  "final_url": "https://www.youtube.com/watch?v=uvKMpg-oHrQ",
+  "fetched_at": "2026-05-30T10:58:04+00:00",
+  "http_status": 200,
+  "sha256": "87be8518ae8b38d0854b2fbf855612407ada3159a836c7c9422be12657e103d6",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new york nj 2016",
+    "title": "2015 EDC New York Highlights Day 1 - May 23rd @ Met Life Statium"
+  }
+}

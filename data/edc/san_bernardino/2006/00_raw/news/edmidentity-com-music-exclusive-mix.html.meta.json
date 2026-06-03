@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T10:50:02+00:00",
+  "http_status": 200,
+  "sha256": "ee0e15cd604e4d273612e8f3ee744ed79b0b076ed454c1b9f820622989bcb72f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2006
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

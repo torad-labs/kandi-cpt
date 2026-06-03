@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UNtEX3GB6jU",
+  "final_url": "https://www.youtube.com/watch?v=UNtEX3GB6jU",
+  "fetched_at": "2026-05-30T10:17:52+00:00",
+  "http_status": 200,
+  "sha256": "12291543ce6561db8f1204f018b7c4d6f68484d795ee1fae102062fa9bda6306",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC las vegas 2025",
+    "title": "Hardwell - Live at EDC Las Vegas 2026 (Official Full Set)"
+  }
+}

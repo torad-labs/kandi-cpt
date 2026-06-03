@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+san+bernardino+2003",
+  "final_url": "https://edmidentity.com/?s=EDC+san+bernardino+2003",
+  "fetched_at": "2026-05-30T10:47:50+00:00",
+  "http_status": 200,
+  "sha256": "28194bd32050f251f488321f28de1c9ded9bfe1aa90acee52ef63c02c59d6b5e",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2003
+  },
+  "extra": {
+    "query": "EDC+san+bernardino+2003",
+    "kind": "listing"
+  }
+}

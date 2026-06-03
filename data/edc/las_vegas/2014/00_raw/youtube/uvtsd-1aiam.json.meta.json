@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uvTSD-1aIAM",
+  "final_url": "https://www.youtube.com/watch?v=uvTSD-1aIAM",
+  "fetched_at": "2026-05-30T10:09:52+00:00",
+  "http_status": 200,
+  "sha256": "7151941a51c4e66c4dfe7f6cc4ea099c250fa3c67571d3db8989b91ea9c98579",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC las vegas 2014",
+    "title": "Calvin Harris - EDC Las Vegas 2014 Full Set"
+  }
+}

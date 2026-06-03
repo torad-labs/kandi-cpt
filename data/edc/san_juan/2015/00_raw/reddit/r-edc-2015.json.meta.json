@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=san+juan+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=san+juan+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T11:04:08+00:00",
+  "http_status": 200,
+  "sha256": "33795cbc1e2a2a019bce3fe88ec4949f4bf1c7ae6a4cfac4737acb96c433ef57",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "san+juan+2015",
+    "results": 2
+  }
+}

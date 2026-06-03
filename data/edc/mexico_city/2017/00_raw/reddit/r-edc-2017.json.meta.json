@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=mexico+city+2017&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:33:35+00:00",
+  "http_status": 200,
+  "sha256": "3a9389b7926fb49c660bec38d433f26bc6197d4000303b2e16574e7a575f3773",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "mexico+city+2017",
+    "results": 4
+  }
+}

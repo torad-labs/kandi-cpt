@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2014&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:56:41+00:00",
+  "http_status": 200,
+  "sha256": "6c821af9b38a55618fe5f66a93a813017a31d6092c1c39668e7396d5831ca688",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2014
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "new+york+nj+2014",
+    "results": 10
+  }
+}

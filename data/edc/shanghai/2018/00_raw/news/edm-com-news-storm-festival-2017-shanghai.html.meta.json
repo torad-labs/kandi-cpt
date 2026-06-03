@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/news/storm-festival-2017-shanghai/",
+  "final_url": "https://edm.com/news/storm-festival-2017-shanghai/",
+  "fetched_at": "2026-05-30T11:10:20+00:00",
+  "http_status": 200,
+  "sha256": "79d7075aa77b6e8a8561737951fd41704b8cce029b059f72df402e7946f93d26",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "shanghai",
+    "year": 2018
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

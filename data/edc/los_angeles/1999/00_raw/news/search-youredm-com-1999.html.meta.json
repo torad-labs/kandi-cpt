@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+los+angeles+1999",
+  "final_url": "https://youredm.com/?s=EDC+los+angeles+1999",
+  "fetched_at": "2026-05-30T10:41:36+00:00",
+  "http_status": 200,
+  "sha256": "2f2c76df14855f9ec24a1b67707a074a4e8e2f1db06be9d972f504c5e41c33dd",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1999
+  },
+  "extra": {
+    "query": "EDC+los+angeles+1999",
+    "kind": "listing"
+  }
+}

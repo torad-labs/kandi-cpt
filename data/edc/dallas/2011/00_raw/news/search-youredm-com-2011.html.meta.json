@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+dallas+2011",
+  "final_url": "https://youredm.com/?s=EDC+dallas+2011",
+  "fetched_at": "2026-05-30T10:54:33+00:00",
+  "http_status": 200,
+  "sha256": "b3367e330c80915eecbaa39c4a6e7f8bf52dbdf14db3805c829d2713a4ce7aa4",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC+dallas+2011",
+    "kind": "listing"
+  }
+}

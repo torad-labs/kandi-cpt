@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=clvetMzQEDY",
+  "final_url": "https://www.youtube.com/watch?v=clvetMzQEDY",
+  "fetched_at": "2026-05-30T10:11:40+00:00",
+  "http_status": 200,
+  "sha256": "7173d10918d5137d16f53dc88bde629aabfd8f8eda6fb94ccea018e416587825",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC las vegas 2016",
+    "title": "GAIA live at EDC Las Vegas 2016"
+  }
+}

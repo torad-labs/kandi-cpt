@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=F-vyaqc0WRU",
+  "final_url": "https://www.youtube.com/watch?v=F-vyaqc0WRU",
+  "fetched_at": "2026-05-30T10:27:14+00:00",
+  "http_status": 200,
+  "sha256": "43fa9f5ce2e18ee1462ac71ffe0679dd85e4fb6e7c0afbdc3d871585f9d15944",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC orlando 2022",
+    "title": "Alok @ EDC Orlando 2023"
+  }
+}

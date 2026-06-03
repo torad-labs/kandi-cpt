@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+mexico+city+2022",
+  "final_url": "https://dancingastronaut.com/?s=EDC+mexico+city+2022",
+  "fetched_at": "2026-05-30T10:36:55+00:00",
+  "http_status": 200,
+  "sha256": "5eda7bc13baeed6673f3cb03976ce04428cf65558834ff614b5b03fb2ec491ef",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2022",
+    "kind": "listing"
+  }
+}

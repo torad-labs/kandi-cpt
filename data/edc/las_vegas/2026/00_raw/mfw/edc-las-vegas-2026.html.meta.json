@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2026/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-las-vegas-2026/",
+  "fetched_at": "2026-06-02T17:54:55+00:00",
+  "http_status": 200,
+  "sha256": "7ec2484b0c5332a8d6aac0b567ebb5c89bbff5ed740f4f44d776ee5f660e1c6f",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {}
+}

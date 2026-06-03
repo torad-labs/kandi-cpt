@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=aGD-Vmcjtes",
+  "final_url": "https://www.youtube.com/watch?v=aGD-Vmcjtes",
+  "fetched_at": "2026-05-30T11:04:54+00:00",
+  "http_status": 200,
+  "sha256": "95cee7969593e8572dddc316b09e301365d6885298fea72089d1809c5a28cdef",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "london",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC london 2013",
+    "title": "Tiesto Electric Daisy Carnival EDC London 2013 - Complete set 1080P"
+  }
+}

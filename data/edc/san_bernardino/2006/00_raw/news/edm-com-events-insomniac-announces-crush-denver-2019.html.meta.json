@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/insomniac-announces-crush-denver-2019/",
+  "final_url": "https://edm.com/events/insomniac-announces-crush-denver-2019/",
+  "fetched_at": "2026-05-30T10:50:10+00:00",
+  "http_status": 200,
+  "sha256": "2c69236b1d1bef1fe6c87f8f1117b57fe9fbbc79edc6646a70531051f9ad2fa0",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2006
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

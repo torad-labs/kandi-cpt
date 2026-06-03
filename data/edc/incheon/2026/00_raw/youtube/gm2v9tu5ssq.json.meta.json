@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=gM2V9TU5sSQ",
+  "final_url": "https://www.youtube.com/watch?v=gM2V9TU5sSQ",
+  "fetched_at": "2026-05-30T11:15:41+00:00",
+  "http_status": 200,
+  "sha256": "d8f77271454976d0f25ed6cc0815edebe1adb809f89b40cdf360625e686b62e6",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC incheon 2026",
+    "title": "Drone show in downtown Austin Friday 'Rick Rolled' Austinites"
+  }
+}

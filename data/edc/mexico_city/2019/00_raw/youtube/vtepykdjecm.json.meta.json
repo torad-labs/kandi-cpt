@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=VtePyKDJEcM",
+  "final_url": "https://www.youtube.com/watch?v=VtePyKDJEcM",
+  "fetched_at": "2026-05-30T10:35:03+00:00",
+  "http_status": 200,
+  "sha256": "0df2b5be8bc8d045142cd14ddc08af545d1431bb1321264ada223586c546aa1c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC mexico city 2019",
+    "title": "JON BOVI live set @ EDC MEXICO 2019 (Audiovisual)"
+  }
+}

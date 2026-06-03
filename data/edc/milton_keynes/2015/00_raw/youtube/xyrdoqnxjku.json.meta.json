@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=xyrDOqnxJkU",
+  "final_url": "https://www.youtube.com/watch?v=xyrDOqnxJkU",
+  "fetched_at": "2026-05-30T11:06:30+00:00",
+  "http_status": 200,
+  "sha256": "e19e51eff2b8de29427c7257f7316bd7047b5e7e1b71fa811b7e91bee930c9b0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC milton keynes 2015",
+    "title": "EDC UK - Ti\u00ebsto @ Milton Keynes Bowl (11-07-2015)"
+  }
+}

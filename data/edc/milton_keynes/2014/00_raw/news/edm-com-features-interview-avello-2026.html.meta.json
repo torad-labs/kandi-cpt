@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/features/interview-avello-2026/",
+  "final_url": "https://edm.com/features/interview-avello-2026/",
+  "fetched_at": "2026-05-30T11:06:21+00:00",
+  "http_status": 200,
+  "sha256": "0c4bb7ac31ddfe556d4761a1d65832f494a04858c3b667374f1757da8a0d7cdf",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "milton_keynes",
+    "year": 2014
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

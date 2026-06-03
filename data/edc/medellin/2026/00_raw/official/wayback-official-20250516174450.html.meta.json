@@ -1,0 +1,19 @@
+{
+  "url": "http://web.archive.org/web/20250516174450id_/https://www.insomniac.com/events/edc-colombia-2026-2025-10-01-medellin-colombia/",
+  "final_url": "http://web.archive.org/web/20250516174450id_/https://www.insomniac.com/events/edc-colombia-2026-2025-10-01-medellin-colombia/",
+  "fetched_at": "2026-06-01T01:07:51+00:00",
+  "http_status": 200,
+  "sha256": "1777b31d87f2ba19335c6dfb1ed8b8540b244cf6c0c722d66d63042aed4c3cf4",
+  "fetcher": "http",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "medellin",
+    "year": 2026
+  },
+  "extra": {
+    "wayback_ts": "20250516174450",
+    "wayback_src": "https://www.insomniac.com/events/edc-colombia-2026-2025-10-01-medellin-colombia/"
+  }
+}

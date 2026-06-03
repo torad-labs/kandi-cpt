@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=mYTNA6rf1YA",
+  "final_url": "https://www.youtube.com/watch?v=mYTNA6rf1YA",
+  "fetched_at": "2026-05-30T11:15:41+00:00",
+  "http_status": 200,
+  "sha256": "de82ff954de78833ae28ceb8b19808f579f5d932b1fa776f9b36054d1a3b1a8c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC incheon 2026",
+    "title": "YEAR 1 Q&A (a year of international travel)"
+  }
+}

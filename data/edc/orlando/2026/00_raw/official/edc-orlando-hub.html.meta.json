@@ -1,0 +1,16 @@
+{
+  "url": "https://www.insomniac.com/events/edc-orlando/",
+  "final_url": "https://www.insomniac.com/events/edc-orlando-2011-2011-05-27-orlando-fl/",
+  "fetched_at": "2026-05-30T10:30:13+00:00",
+  "http_status": 200,
+  "sha256": "27c3f321f7f57626dfde03e1ab5626d81155b745d6e96cd617458fa50b6dba60",
+  "fetcher": "browser",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {}
+}

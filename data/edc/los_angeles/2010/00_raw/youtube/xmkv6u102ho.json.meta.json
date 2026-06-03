@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=xMkV6u102Ho",
+  "final_url": "https://www.youtube.com/watch?v=xMkV6u102Ho",
+  "fetched_at": "2026-05-30T10:46:40+00:00",
+  "http_status": 200,
+  "sha256": "4514dea721aafe5a661a5b66e52f75d83c7dce651f2fcb606c13e8d275edeef9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC los angeles 2010",
+    "title": "Swedish House Mafia @ EDC Las Vegas, Los Angeles (25/06/2010)"
+  }
+}

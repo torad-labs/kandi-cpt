@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=san+bernardino+2005&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=san+bernardino+2005&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:49:01+00:00",
+  "http_status": 200,
+  "sha256": "9ba09fe71bcf37b475da89047fbf7018c18721480790e838afac4e17645ffc58",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2005
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "san+bernardino+2005",
+    "results": 10
+  }
+}

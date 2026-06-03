@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+san+bernardino+2005",
+  "final_url": "https://youredm.com/?s=EDC+san+bernardino+2005",
+  "fetched_at": "2026-05-30T10:49:14+00:00",
+  "http_status": 200,
+  "sha256": "67080a618e3afba8900233e2634579e036b65a0afc1ce388a34540e4a46829e8",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2005
+  },
+  "extra": {
+    "query": "EDC+san+bernardino+2005",
+    "kind": "listing"
+  }
+}

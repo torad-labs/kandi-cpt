@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=cKfgmdH89SU",
+  "final_url": "https://www.youtube.com/watch?v=cKfgmdH89SU",
+  "fetched_at": "2026-05-30T10:48:08+00:00",
+  "http_status": 200,
+  "sha256": "ea13a5eaef29dd5b395da38045e08881bd3e4dcb6193cf5a04d09eea1fedd71a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2004
+  },
+  "extra": {
+    "query": "EDC san bernardino 2004",
+    "title": "EDC Raining Daisies video by endari June 24, 2006"
+  }
+}

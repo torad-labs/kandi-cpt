@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:57:23+00:00",
+  "http_status": 200,
+  "sha256": "bde437aa37a56d34dce7be804a14ae3f0692a31b3f304bc3ec6e5c3a02fb565c",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "new+york+nj+2015",
+    "results": 10
+  }
+}

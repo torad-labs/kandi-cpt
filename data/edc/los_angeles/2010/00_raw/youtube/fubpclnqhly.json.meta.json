@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=fUbpcLNQHLY",
+  "final_url": "https://www.youtube.com/watch?v=fUbpcLNQHLY",
+  "fetched_at": "2026-05-30T10:46:40+00:00",
+  "http_status": 200,
+  "sha256": "5b9cf2c0bf7fcb04648cdfa2e1e01c8d5b350ad85babace4c4cc47fd73a9bbed",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC los angeles 2010",
+    "title": "EDC 2010 Los Angeles Gate Jumping"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/insomniac-postpones-edc-europe-and-announces-2022-dates/",
+  "final_url": "https://edm.com/events/insomniac-postpones-edc-europe-and-announces-2022-dates/",
+  "fetched_at": "2026-05-30T11:17:03+00:00",
+  "http_status": 200,
+  "sha256": "c8fae4c5b1decbcb30aca1f7e1364f5aa5e7e7c82835307072adbd800f5707e1",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "portimao",
+    "year": 2022
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

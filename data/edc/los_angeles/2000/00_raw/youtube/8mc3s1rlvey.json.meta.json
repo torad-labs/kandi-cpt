@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=8Mc3s1rlVEY",
+  "final_url": "https://www.youtube.com/watch?v=8Mc3s1rlVEY",
+  "fetched_at": "2026-05-30T10:41:58+00:00",
+  "http_status": 200,
+  "sha256": "466690b1adeee3cd4f297fb58ae83c21deccb10d0234830f2d601fbc807ca058",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2000
+  },
+  "extra": {
+    "query": "EDC los angeles 2000",
+    "title": "Electric Daisy Carnival 2000"
+  }
+}

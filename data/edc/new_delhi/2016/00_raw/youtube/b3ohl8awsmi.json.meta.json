@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=b3oHl8awsmI",
+  "final_url": "https://www.youtube.com/watch?v=b3oHl8awsmI",
+  "fetched_at": "2026-05-30T11:08:50+00:00",
+  "http_status": 200,
+  "sha256": "d10ef41008e0be5007bbe8ead80980f75bef07a3f18fbc9af1e5e643b15639fc",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_delhi",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new delhi 2016",
+    "title": "Afrojack new single EDC India 2016"
+  }
+}

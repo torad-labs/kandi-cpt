@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=D4I0_wt9XAQ",
+  "final_url": "https://www.youtube.com/watch?v=D4I0_wt9XAQ",
+  "fetched_at": "2026-05-30T10:40:29+00:00",
+  "http_status": 200,
+  "sha256": "bda3acafeb26525047b3ade9f6bd7d8c24f8dfba3f3190f1e77cef540a2c83e8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "query": "EDC los angeles 1997",
+    "title": "Electric Daisy Carnival 2000"
+  }
+}

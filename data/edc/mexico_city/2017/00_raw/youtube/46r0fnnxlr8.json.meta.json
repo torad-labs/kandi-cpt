@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=46R0fNNxLr8",
+  "final_url": "https://www.youtube.com/watch?v=46R0fNNxLr8",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "8d3e9d747caec7660e97f658f65f0bbc0ae5bedfd3daccd17b28c9d79800e926",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "Seven Lions Aftermovie EDC Mexico 2017"
+  }
+}

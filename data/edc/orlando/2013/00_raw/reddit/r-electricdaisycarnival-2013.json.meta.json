@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:21:14+00:00",
+  "http_status": 200,
+  "sha256": "2fe51f438f66b2bc719d8c9ccca1f5e7a326c3488da8177ef1ef9842218e3a07",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "orlando+2013",
+    "results": 8
+  }
+}

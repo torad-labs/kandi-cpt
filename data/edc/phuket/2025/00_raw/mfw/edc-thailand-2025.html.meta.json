@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-thailand-2025/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-thailand-2025/",
+  "fetched_at": "2026-06-02T18:10:06+00:00",
+  "http_status": 200,
+  "sha256": "17357ca407a863ffc187039afcde3b20d2d3aa4bf79aae06f74c0b5beb114509",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {}
+}

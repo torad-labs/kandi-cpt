@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=orlando+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:19:43+00:00",
+  "http_status": 200,
+  "sha256": "1c91d5bd3c9e1a5c8ccdec3f12d794124ef9ca55924ff90340cbf0db52d91018",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "orlando+2011",
+    "results": 2
+  }
+}

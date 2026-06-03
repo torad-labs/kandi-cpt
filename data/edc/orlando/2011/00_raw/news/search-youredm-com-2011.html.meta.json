@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+orlando+2011",
+  "final_url": "https://youredm.com/?s=EDC+orlando+2011",
+  "fetched_at": "2026-05-30T10:19:54+00:00",
+  "http_status": 200,
+  "sha256": "e9138ffb6a7060d88d52fa5d0899585c94b297b67177b30ec35cfa11103d5d0d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC+orlando+2011",
+    "kind": "listing"
+  }
+}

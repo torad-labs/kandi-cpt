@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=161_vSpQjKc",
+  "final_url": "https://www.youtube.com/watch?v=161_vSpQjKc",
+  "fetched_at": "2026-05-30T11:10:33+00:00",
+  "http_status": 200,
+  "sha256": "23575bfcbcc82038c18032af2d142408b3c86fa3b15648603c0413b6642aa30f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "zhuhai",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC zhuhai 2018",
+    "title": "Alison Wonderland Live @ EDC CHINA 2018"
+  }
+}

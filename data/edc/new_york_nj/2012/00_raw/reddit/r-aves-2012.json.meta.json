@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=new+york+nj+2012&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:55:02+00:00",
+  "http_status": 200,
+  "sha256": "9266d58b2a70747ee27b185c909e709d4ca21dc06069bc02ea9bb262bbefc62b",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2012
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "new+york+nj+2012",
+    "results": 10
+  }
+}

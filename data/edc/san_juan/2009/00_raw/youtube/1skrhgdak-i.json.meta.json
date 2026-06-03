@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=1skRhgDak_I",
+  "final_url": "https://www.youtube.com/watch?v=1skRhgDak_I",
+  "fetched_at": "2026-05-30T10:59:34+00:00",
+  "http_status": 200,
+  "sha256": "0a4df046284b440276604db897373fed35c41482842b50e3e221c86b5c7e9bea",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC san juan 2009",
+    "title": "San Juan Economic Development Corporation, Official Best of Texas 2009"
+  }
+}

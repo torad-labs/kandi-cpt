@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2023/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-2023/",
+  "fetched_at": "2026-06-02T17:54:44+00:00",
+  "http_status": 200,
+  "sha256": "8142983a8846259c1fd15e33911f5d31bb6b38a4dd91ddd78221ce41e31a9be2",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {}
+}

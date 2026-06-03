@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:09:17+00:00",
+  "http_status": 200,
+  "sha256": "32325930c4fc481469417fb897a7a75a217d637a08a6d6022ad39e07efa57b4a",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "las+vegas+2013",
+    "results": 10
+  }
+}

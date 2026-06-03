@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=sfMDJltGtdo",
+  "final_url": "https://www.youtube.com/watch?v=sfMDJltGtdo",
+  "fetched_at": "2026-05-30T10:32:01+00:00",
+  "http_status": 200,
+  "sha256": "037d5f5a442bb91d5bfdda5522bf1e5a7d7401f2666a14e7362773937c3f3407",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC mexico city 2015",
+    "title": "EDC M\u00e9xico 2015 Aftermovie"
+  }
+}

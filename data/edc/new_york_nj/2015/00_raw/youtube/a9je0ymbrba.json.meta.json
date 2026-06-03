@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=A9JE0YmbrBA",
+  "final_url": "https://www.youtube.com/watch?v=A9JE0YmbrBA",
+  "fetched_at": "2026-05-30T10:57:15+00:00",
+  "http_status": 200,
+  "sha256": "2da2419007a42907f2c4c2bcb860b2dbf1f4bf883f9c62d8b56faf72c7c75b7c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC new york nj 2015",
+    "title": "Martin Garrix EDC New York 2015 Full Set (live)"
+  }
+}

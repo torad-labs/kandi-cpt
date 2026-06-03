@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+san+bernardino+2005",
+  "final_url": "https://edmidentity.com/?s=EDC+san+bernardino+2005",
+  "fetched_at": "2026-05-30T10:49:19+00:00",
+  "http_status": 200,
+  "sha256": "59ce454a52b8bee2127b8358feec60e5ac7b5006d7e82d4b8ff34f584262530d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2005
+  },
+  "extra": {
+    "query": "EDC+san+bernardino+2005",
+    "kind": "listing"
+  }
+}

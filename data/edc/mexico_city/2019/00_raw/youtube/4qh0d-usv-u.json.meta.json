@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=4Qh0d-usV-U",
+  "final_url": "https://www.youtube.com/watch?v=4Qh0d-usV-U",
+  "fetched_at": "2026-05-30T10:35:03+00:00",
+  "http_status": 200,
+  "sha256": "2502ea93be48f4180ca0fe2235834900c2cfee0e1f5662f3df3dd8dce12f8bb9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC mexico city 2019",
+    "title": "EDC Mexico 2019 - Official Trailer"
+  }
+}

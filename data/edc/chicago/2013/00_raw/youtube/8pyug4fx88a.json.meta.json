@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=8pyug4FX88A",
+  "final_url": "https://www.youtube.com/watch?v=8pyug4FX88A",
+  "fetched_at": "2026-05-30T10:58:50+00:00",
+  "http_status": 200,
+  "sha256": "e0e156e7ea93f9d3b162ae436271de20db6ff8b4a4aa3fa06d2c73990b4dbd95",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC chicago 2013",
+    "title": "ELECTRIC DAISY CARNIVAL 2013 EDC CHICAGO ILLINOIS"
+  }
+}

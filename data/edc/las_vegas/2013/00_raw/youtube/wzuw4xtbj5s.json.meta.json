@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=wZuw4xtbJ5s",
+  "final_url": "https://www.youtube.com/watch?v=wZuw4xtbJ5s",
+  "fetched_at": "2026-05-30T10:09:06+00:00",
+  "http_status": 200,
+  "sha256": "b012aed5f7610458526fdb87c5c8a2bf272e5fa9bd0e5caf9ac70fbc0e300e47",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC las vegas 2013",
+    "title": "Clockwork EDC Las Vegas Set"
+  }
+}

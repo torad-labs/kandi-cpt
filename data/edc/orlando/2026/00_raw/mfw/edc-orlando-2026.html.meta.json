@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edc-orlando-2026/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edc-orlando-2026/",
+  "fetched_at": "2026-06-02T17:56:33+00:00",
+  "http_status": 200,
+  "sha256": "2d5f793e087c8989d39ea22148e6de88ebb974aa41bdac8b5e33ba401343cbfe",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {}
+}

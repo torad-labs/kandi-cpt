@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=7hw6O5bG0jw",
+  "final_url": "https://www.youtube.com/watch?v=7hw6O5bG0jw",
+  "fetched_at": "2026-05-30T10:19:33+00:00",
+  "http_status": 200,
+  "sha256": "2c49aa4e8cacd208c6a620ab7e9559c378b7f766becdc1143d54ea5c2316319f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC orlando 2011",
+    "title": "EDC Orlando 2011 Markus Schulz- The New World & Daydream"
+  }
+}

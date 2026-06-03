@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+los+angeles+2010",
+  "final_url": "https://youredm.com/?s=EDC+los+angeles+2010",
+  "fetched_at": "2026-05-30T10:47:04+00:00",
+  "http_status": 200,
+  "sha256": "97fde451011c912ccea7c8de6ebeac4a38b29dfcb4895002a93fe8e101eb55ab",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC+los+angeles+2010",
+    "kind": "listing"
+  }
+}

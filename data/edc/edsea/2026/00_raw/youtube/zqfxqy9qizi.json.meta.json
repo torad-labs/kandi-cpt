@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=zqFXqy9qIZI",
+  "final_url": "https://www.youtube.com/watch?v=zqFXqy9qIZI",
+  "fetched_at": "2026-05-30T11:21:47+00:00",
+  "http_status": 200,
+  "sha256": "b0c566a569974e40fded7beae4a6f8f163cdfd77a0112ed0d118e0d60857802a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC edsea 2026",
+    "title": "Electric Daisy Carnival (EDSEA)"
+  }
+}

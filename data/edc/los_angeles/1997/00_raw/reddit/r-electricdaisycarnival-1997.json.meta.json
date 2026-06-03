@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+1997&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+1997&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:40:40+00:00",
+  "http_status": 200,
+  "sha256": "ecb7d51f7a23a0641210ad93a748baf6705e0fa8fac2b66c0c51f29bc9817347",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "los+angeles+1997",
+    "results": 10
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=CnBz0vBwYXE",
+  "final_url": "https://www.youtube.com/watch?v=CnBz0vBwYXE",
+  "fetched_at": "2026-05-30T10:30:29+00:00",
+  "http_status": 200,
+  "sha256": "031a8de1fba2c0305f9dc22810f4566cc54d9c72935ff70feaecd614f843b1db",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC orlando 2026",
+    "title": "EDC Orlando 2025 Official Trailer"
+  }
+}

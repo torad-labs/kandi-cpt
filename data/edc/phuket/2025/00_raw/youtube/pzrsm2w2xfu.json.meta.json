@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=PZRsM2w2xfU",
+  "final_url": "https://www.youtube.com/watch?v=PZRsM2w2xfU",
+  "fetched_at": "2026-05-30T11:17:17+00:00",
+  "http_status": 200,
+  "sha256": "b3bc90ef63b8c029421021f3aeec38925e9a06830b4c00ca752fe48ee8c43a7b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC phuket 2025",
+    "title": "EDC Thailand 2025 Vlog | PHUKET 3 Day Rave"
+  }
+}

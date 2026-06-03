@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=OI02QgEA1Zw",
+  "final_url": "https://www.youtube.com/watch?v=OI02QgEA1Zw",
+  "fetched_at": "2026-05-30T10:16:22+00:00",
+  "http_status": 200,
+  "sha256": "f0b6b249268c5aebe1524ec63b5c07227d21ac21b1a5c5b7ac8dc92fb5f07390",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC las vegas 2023",
+    "title": "Above & Beyond: Live from EDC Las Vegas 2026 (Official Full Set)"
+  }
+}

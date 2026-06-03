@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:11:07+00:00",
+  "http_status": 200,
+  "sha256": "b493b8e2484b8811b44b7cc72ade337899a8d8bab39a14aec93b9d8a01a9ba91",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "las+vegas+2015",
+    "results": 10
+  }
+}

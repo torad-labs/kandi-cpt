@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=chicago+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=chicago+2013&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:59:00+00:00",
+  "http_status": 200,
+  "sha256": "d2cba326c0634ce30a33e5ae4da3e63fab054b90d8c9074d70874fbe28267dc9",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "chicago+2013",
+    "results": 7
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2013/12/edc-las-vegas-2013-by-the-numbers/",
+  "final_url": "https://dancingastronaut.com/2013/12/edc-las-vegas-2013-by-the-numbers/",
+  "fetched_at": "2026-05-30T10:09:22+00:00",
+  "http_status": 200,
+  "sha256": "af8b5c9a620a7e40bf205e512da73a58f7fbd2ea756aa7b9d2751e40d662175d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

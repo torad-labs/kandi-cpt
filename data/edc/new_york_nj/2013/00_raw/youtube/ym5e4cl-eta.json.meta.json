@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ym5e4cL_ETA",
+  "final_url": "https://www.youtube.com/watch?v=ym5e4cL_ETA",
+  "fetched_at": "2026-05-30T10:55:44+00:00",
+  "http_status": 200,
+  "sha256": "0ecd5655c269bb25ba4394276e60376d1733b7af5b8de85d5195435bb1eb618f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC new york nj 2013",
+    "title": "Day 2 - EDC NY 2013"
+  }
+}

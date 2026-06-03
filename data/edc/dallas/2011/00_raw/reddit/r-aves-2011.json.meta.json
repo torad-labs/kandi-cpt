@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=dallas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=dallas+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:54:17+00:00",
+  "http_status": 200,
+  "sha256": "b652a5119709086ba5e3e3f84c00f09d8d7a5e11a5db73f6c36a6047820c9373",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "dallas+2011",
+    "results": 3
+  }
+}

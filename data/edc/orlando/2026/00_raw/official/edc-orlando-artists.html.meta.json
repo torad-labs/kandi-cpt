@@ -1,0 +1,16 @@
+{
+  "url": "https://www.insomniac.com/music/artists/",
+  "final_url": "https://www.insomniac.com/music/artists/",
+  "fetched_at": "2026-05-30T10:30:16+00:00",
+  "http_status": 200,
+  "sha256": "42badbaab40a5ab64da135fec424c684df6b2324a7a0fbe56068dffd9e40364b",
+  "fetcher": "browser",
+  "source_channel": "official",
+  "domain_class": "official-festival",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2026
+  },
+  "extra": {}
+}

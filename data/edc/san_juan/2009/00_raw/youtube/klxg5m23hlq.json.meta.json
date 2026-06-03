@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=KlxG5m23HlQ",
+  "final_url": "https://www.youtube.com/watch?v=KlxG5m23HlQ",
+  "fetched_at": "2026-05-30T10:59:34+00:00",
+  "http_status": 200,
+  "sha256": "bf2307d80dab177fdb9a9e96ac2201a9659c9cccd1787d20d62f6fe17615f895",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC san juan 2009",
+    "title": "DJ Dan and Donald Glaude rippin it at EDC 2008! Hot Fire!!!"
+  }
+}

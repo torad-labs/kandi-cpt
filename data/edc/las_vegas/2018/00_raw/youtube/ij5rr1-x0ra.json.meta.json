@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=iJ5Rr1_X0RA",
+  "final_url": "https://www.youtube.com/watch?v=iJ5Rr1_X0RA",
+  "fetched_at": "2026-05-30T10:13:13+00:00",
+  "http_status": 200,
+  "sha256": "beb160df3d562996dccfaa9d017f7597d6ef2b883b9e1673ecafc01fa5ad725f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC las vegas 2018",
+    "title": "San Holo @ EDC Las Vegas 2018"
+  }
+}

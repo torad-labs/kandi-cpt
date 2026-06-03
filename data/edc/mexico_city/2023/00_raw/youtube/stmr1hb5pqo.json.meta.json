@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=stMR1HB5PQo",
+  "final_url": "https://www.youtube.com/watch?v=stMR1HB5PQo",
+  "fetched_at": "2026-05-30T10:37:25+00:00",
+  "http_status": 200,
+  "sha256": "e85948960022d56cc45b84b0b7043a94461cc1a4b6d71cf9d0c78fb0eedd3ad9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC mexico city 2023",
+    "title": "Eli & Fur - Live from EDC Mexico 2023 (Full Set)"
+  }
+}

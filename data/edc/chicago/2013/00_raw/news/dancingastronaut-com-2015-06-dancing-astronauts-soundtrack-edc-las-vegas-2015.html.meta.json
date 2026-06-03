@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2015/06/dancing-astronauts-soundtrack-edc-las-vegas-2015/",
+  "final_url": "https://dancingastronaut.com/2015/06/dancing-astronauts-soundtrack-edc-las-vegas-2015/",
+  "fetched_at": "2026-05-30T10:59:04+00:00",
+  "http_status": 200,
+  "sha256": "1cd7e2742ea706eaa30f1d7ac813838e25af74c5daa8353d75010c3a03851776",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

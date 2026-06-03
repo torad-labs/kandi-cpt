@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=orlando+2015&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:22:40+00:00",
+  "http_status": 200,
+  "sha256": "4220469ebc5b6ab5c66f289ca1739abab4b0e81fdafe715f893b75907a8d46e8",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "orlando+2015",
+    "results": 1
+  }
+}

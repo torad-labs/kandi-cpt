@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T10:40:14+00:00",
+  "http_status": 200,
+  "sha256": "c888c2e0b0b7e65935fae7e9b2f60042bd99ee423f4a339df27e7e3e903d3241",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2026
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

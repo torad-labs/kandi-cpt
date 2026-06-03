@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=blsjl-NKZSs",
+  "final_url": "https://www.youtube.com/watch?v=blsjl-NKZSs",
+  "fetched_at": "2026-05-30T10:52:33+00:00",
+  "http_status": 200,
+  "sha256": "79e2f7763932386a514a68d1ff708b6a40a1f8051fedd93d713f901b86fe76e8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC denver 2011",
+    "title": "EDC Denver 2011"
+  }
+}

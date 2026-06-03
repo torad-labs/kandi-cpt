@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2026&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:18:58+00:00",
+  "http_status": 200,
+  "sha256": "0be24022bdf24b060f94fe2e2c58823f8a025853baea0c323ca7c04dc9b29c51",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "las+vegas+2026",
+    "results": 10
+  }
+}

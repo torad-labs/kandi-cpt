@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/events/essential-info-guides/",
+  "final_url": "https://edmidentity.com/events/essential-info-guides/",
+  "fetched_at": "2026-05-30T11:00:03+00:00",
+  "http_status": 200,
+  "sha256": "cb11a92fdf9aa38bc7e9c7037674b2181fbd10adad56fd6fe821a11c7ca9459d",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2009
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

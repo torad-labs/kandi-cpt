@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=6CSOmZ1bfDE",
+  "final_url": "https://www.youtube.com/watch?v=6CSOmZ1bfDE",
+  "fetched_at": "2026-05-30T10:17:06+00:00",
+  "http_status": 200,
+  "sha256": "0d366a38f8b5c589d317974d4f5df5bfb6788e0686e22e8669749d0ac506f512",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC las vegas 2024",
+    "title": "Ti\u00ebsto - Live from EDC Las Vegas 2024"
+  }
+}

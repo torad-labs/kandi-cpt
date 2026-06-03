@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=GMm0MheUdBA",
+  "final_url": "https://www.youtube.com/watch?v=GMm0MheUdBA",
+  "fetched_at": "2026-05-30T10:16:22+00:00",
+  "http_status": 200,
+  "sha256": "e94453c4fc08ffb3b5280c9210dbd35479d9a2b92531d97ccecf21e98e2980e9",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC las vegas 2023",
+    "title": "Armin van Buuren live at EDC Las Vegas 2023"
+  }
+}

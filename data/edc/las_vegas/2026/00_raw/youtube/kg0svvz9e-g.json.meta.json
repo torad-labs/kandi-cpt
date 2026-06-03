@@ -1,0 +1,20 @@
+{
+  "url": "https://www.youtube.com/watch?v=kG0SVvz9e-g",
+  "final_url": "https://www.youtube.com/watch?v=kG0SVvz9e-g",
+  "fetched_at": "2026-06-02T06:03:54+00:00",
+  "http_status": 200,
+  "sha256": "17b7788e5ed5971ebc0d9a10607b5a91f4ea637a1b27685c0c9cb3d2c13ef4c7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC las vegas 2026",
+    "title": "Tie\u0308sto Live at EDC Las Vegas 2026",
+    "transcript_chars": 0
+  }
+}

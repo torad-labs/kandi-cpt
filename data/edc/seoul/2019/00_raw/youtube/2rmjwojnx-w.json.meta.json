@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=2rmJwojnX_w",
+  "final_url": "https://www.youtube.com/watch?v=2rmJwojnX_w",
+  "fetched_at": "2026-05-30T11:14:05+00:00",
+  "http_status": 200,
+  "sha256": "129d13de49fae2d49180e0372791a5e36a2d63ce257dc2a6f4435032227fb7e7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "seoul",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC seoul 2019",
+    "title": "Kshmr Live - Memories @ EDC Korea 2019(Electric Daisy Carnival)"
+  }
+}

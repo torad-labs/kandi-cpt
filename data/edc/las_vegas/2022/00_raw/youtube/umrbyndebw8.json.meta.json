@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UMRByNDEBW8",
+  "final_url": "https://www.youtube.com/watch?v=UMRByNDEBW8",
+  "fetched_at": "2026-05-30T10:15:38+00:00",
+  "http_status": 200,
+  "sha256": "927eefa4b40225c20cc11d72eed6ec6936c557d73a002dbaf60b68b949a1744d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC las vegas 2022",
+    "title": "Armin van Buuren live at EDC Las Vegas 2022"
+  }
+}

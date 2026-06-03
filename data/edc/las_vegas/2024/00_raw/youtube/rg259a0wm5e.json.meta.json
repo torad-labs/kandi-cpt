@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=rg259A0WM5E",
+  "final_url": "https://www.youtube.com/watch?v=rg259A0WM5E",
+  "fetched_at": "2026-05-30T10:17:06+00:00",
+  "http_status": 200,
+  "sha256": "ee6ff8a824e82d27f1bdcdb9aa709d90cf92ce39fb42a63f2652216c740cce89",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC las vegas 2024",
+    "title": "EDC Las Vegas 2024 Aftermovie \ud83d\udcab"
+  }
+}

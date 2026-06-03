@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=WRu448KZ9sQ",
+  "final_url": "https://www.youtube.com/watch?v=WRu448KZ9sQ",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "cc03966ee202868497ff88b41edbe867e4b2670a25dac8cbf5268c8e765ce9a3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "Electric Daisy Carnival 2011 Las Vegas Compilation"
+  }
+}

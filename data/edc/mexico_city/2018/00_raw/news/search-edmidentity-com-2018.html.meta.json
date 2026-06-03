@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+mexico+city+2018",
+  "final_url": "https://edmidentity.com/?s=EDC+mexico+city+2018",
+  "fetched_at": "2026-05-30T10:34:44+00:00",
+  "http_status": 200,
+  "sha256": "78d3a6f25f068b0b502609f1477f1f5899a7f313b3897f75854686b28384e19b",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC+mexico+city+2018",
+    "kind": "listing"
+  }
+}

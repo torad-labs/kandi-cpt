@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=fVTtel7gMqE",
+  "final_url": "https://www.youtube.com/watch?v=fVTtel7gMqE",
+  "fetched_at": "2026-05-30T10:37:25+00:00",
+  "http_status": 200,
+  "sha256": "8b28c3f70199349628896aa3e8571235dd752c9f17871a728f7c6c78369b7dc3",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC mexico city 2023",
+    "title": "Nicky Romero - Live @ EDC M\u00e9xico 2023 | KineticFIELD"
+  }
+}

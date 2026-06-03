@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=e6TEcVA5Pio",
+  "final_url": "https://www.youtube.com/watch?v=e6TEcVA5Pio",
+  "fetched_at": "2026-05-30T11:11:13+00:00",
+  "http_status": 200,
+  "sha256": "d4c9aa62a8d6f6e2479be98f3fdb5e7856dd22a885e6ce155fa28286062f883d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC suzhou 2023",
+    "title": "Music Festival in China\u2014 EDC Music Festival  Oct 2023 Suzhou"
+  }
+}

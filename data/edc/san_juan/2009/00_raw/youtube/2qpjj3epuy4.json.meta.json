@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=2qpjj3ePUY4",
+  "final_url": "https://www.youtube.com/watch?v=2qpjj3ePUY4",
+  "fetched_at": "2026-05-30T10:59:34+00:00",
+  "http_status": 200,
+  "sha256": "950e79067c3ca2a575aae027dc293e8ef48ad7285a363392e0c5f09b6a87f49c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2009
+  },
+  "extra": {
+    "query": "EDC san juan 2009",
+    "title": "WB-SJEDC-0109"
+  }
+}

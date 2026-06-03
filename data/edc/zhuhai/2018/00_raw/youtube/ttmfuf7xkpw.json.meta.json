@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=TtmfuF7XKpw",
+  "final_url": "https://www.youtube.com/watch?v=TtmfuF7XKpw",
+  "fetched_at": "2026-05-30T11:10:33+00:00",
+  "http_status": 200,
+  "sha256": "a1f7e4e57ab45d8fc30f70142a4955bdf65491801c0ed17ffa16db47d3fe6a2a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "zhuhai",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC zhuhai 2018",
+    "title": "\u8b8a\u5316\u4e2d\u7684\u6a6b\u7434 \u7b2c\u4e94\u5341\u4e03\u671f EDC\u96fb\u97f3\u7bc0 20181208"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2014/08/10-cant-miss-acts-chicagos-north-coast-music-festival-weekend/",
+  "final_url": "https://dancingastronaut.com/2014/08/10-cant-miss-acts-chicagos-north-coast-music-festival-weekend/",
+  "fetched_at": "2026-05-30T10:59:06+00:00",
+  "http_status": 200,
+  "sha256": "06d095fc1d526806c8896e53dce55b89bab15c42fb774a74b903feebc20e29c3",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "chicago",
+    "year": 2013
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

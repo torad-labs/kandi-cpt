@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2011/09/nocturnal-wonderland-2011-what-worked-what-didnt-and-how-to-improve-for-next-year/",
+  "final_url": "https://dancingastronaut.com/2011/09/nocturnal-wonderland-2011-what-worked-what-didnt-and-how-to-improve-for-next-year/",
+  "fetched_at": "2026-05-30T10:54:25+00:00",
+  "http_status": 200,
+  "sha256": "948370560e8811a526f6d0f182102da5eb90b86344596cc327d65227dd9ae435",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=las+vegas+2024&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:17:14+00:00",
+  "http_status": 200,
+  "sha256": "dd0dca113e15c58a13adf55f252191319740f02b41409814015f26d79b19179c",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2024
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "las+vegas+2024",
+    "results": 10
+  }
+}

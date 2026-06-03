@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=GRs7a-wDlno",
+  "final_url": "https://www.youtube.com/watch?v=GRs7a-wDlno",
+  "fetched_at": "2026-05-30T10:07:33+00:00",
+  "http_status": 200,
+  "sha256": "6d7ff254878642666d0d7d193e163b42eb703f77ca296c3ec3ecf418114060ae",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC las vegas 2011",
+    "title": "EDC 2012 Official Trailer"
+  }
+}

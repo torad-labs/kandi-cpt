@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:32:53+00:00",
+  "http_status": 200,
+  "sha256": "4f51ca5a4d05f32354c9b9b011481ae7e72b0c949035b3c169d270be3aac0e3f",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2016
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "mexico+city+2016",
+    "results": 10
+  }
+}

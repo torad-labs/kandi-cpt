@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=VUOx6C88tJs",
+  "final_url": "https://www.youtube.com/watch?v=VUOx6C88tJs",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "34d9a98cd012f11a62a04ff5eb0664e5dbda56814e09146e9bce27f96e8ea054",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "SKRILLEX EDC MEXICO 2019 HD"
+  }
+}

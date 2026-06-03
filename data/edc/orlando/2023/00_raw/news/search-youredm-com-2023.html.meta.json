@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+orlando+2023",
+  "final_url": "https://youredm.com/?s=EDC+orlando+2023",
+  "fetched_at": "2026-05-30T10:28:23+00:00",
+  "http_status": 200,
+  "sha256": "b6c6ec393b82bfa932615586e7d15126c45e08d643a62df69d45710644783539",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC+orlando+2023",
+    "kind": "listing"
+  }
+}

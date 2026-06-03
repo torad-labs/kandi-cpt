@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=vu4dsCtsocE",
+  "final_url": "https://www.youtube.com/watch?v=vu4dsCtsocE",
+  "fetched_at": "2026-05-30T10:32:01+00:00",
+  "http_status": 200,
+  "sha256": "0aca469cc3102fe42476f764b223f50af1874a26571a7a731c93ad0f3860cf5c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC mexico city 2015",
+    "title": "EDC Las Vegas 2015 Official Trailer"
+  }
+}

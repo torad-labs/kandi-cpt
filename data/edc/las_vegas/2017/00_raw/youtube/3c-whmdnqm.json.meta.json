@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=3c--WhmdnQM",
+  "final_url": "https://www.youtube.com/watch?v=3c--WhmdnQM",
+  "fetched_at": "2026-05-30T10:12:27+00:00",
+  "http_status": 200,
+  "sha256": "951b407745ce7fecd9a89d4ffd5c7f911631c7931a5fc192ca9aa192aed8cbb8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC las vegas 2017",
+    "title": "Datsik - EDC Las Vegas 2017 (Red Bull Live Stream)"
+  }
+}

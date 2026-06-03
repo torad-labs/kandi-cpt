@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=hRsfYSh10yw",
+  "final_url": "https://www.youtube.com/watch?v=hRsfYSh10yw",
+  "fetched_at": "2026-05-30T10:28:47+00:00",
+  "http_status": 200,
+  "sha256": "66b5a98d3ad443429fbd0b90ccd39d8844ee4e74267f02f5ee074e2642cab559",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC orlando 2024",
+    "title": "John Summit @ EDC Orlando 2024 Live (Full set)"
+  }
+}

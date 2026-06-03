@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=bpUPKoZhGHE",
+  "final_url": "https://www.youtube.com/watch?v=bpUPKoZhGHE",
+  "fetched_at": "2026-05-30T10:23:22+00:00",
+  "http_status": 200,
+  "sha256": "202871ae4466032b9372ed2eebc8a2862f2e8461271fe6b0cce2c427a4032a8c",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC orlando 2016",
+    "title": "Chainsmokers EDC Orlando 2016 Day 1"
+  }
+}

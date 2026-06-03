@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=SXPdDTDBgAI",
+  "final_url": "https://www.youtube.com/watch?v=SXPdDTDBgAI",
+  "fetched_at": "2026-05-30T10:17:52+00:00",
+  "http_status": 200,
+  "sha256": "9ab9d17b6297030fb8b85354f5587097b40052a2f953d56766a3f901e940a2a1",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC las vegas 2025",
+    "title": "ILLENIUM B2B SLANDER - EDC LAS VEGAS 2025 (Full Set, Volume Corrected)"
+  }
+}

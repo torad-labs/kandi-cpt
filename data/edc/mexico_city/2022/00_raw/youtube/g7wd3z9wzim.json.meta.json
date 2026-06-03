@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=g7WD3Z9WzIM",
+  "final_url": "https://www.youtube.com/watch?v=g7WD3Z9WzIM",
+  "fetched_at": "2026-05-30T10:36:41+00:00",
+  "http_status": 200,
+  "sha256": "370f9d9e27afbaaa768ea4640c0249e4f11103a05e8390c030235e0d36d9f900",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC mexico city 2022",
+    "title": "GORGON CITY at EDC Mexico 2023"
+  }
+}

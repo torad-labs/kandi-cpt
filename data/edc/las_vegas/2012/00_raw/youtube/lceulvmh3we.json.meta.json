@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=LCeulvMH3WE",
+  "final_url": "https://www.youtube.com/watch?v=LCeulvMH3WE",
+  "fetched_at": "2026-05-30T10:08:20+00:00",
+  "http_status": 200,
+  "sha256": "548bf590dcfafd2e415e8c6d9fa6c82f02324bae368bf0eaf9f0d3351cbc5c60",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC las vegas 2012",
+    "title": "Hardwell liveset at EDC Las Vegas 2012 [FREE DOWNLOAD]"
+  }
+}

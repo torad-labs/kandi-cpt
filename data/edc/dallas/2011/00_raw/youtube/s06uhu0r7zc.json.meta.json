@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=S06uHU0R7zc",
+  "final_url": "https://www.youtube.com/watch?v=S06uHU0R7zc",
+  "fetched_at": "2026-05-30T10:54:09+00:00",
+  "http_status": 200,
+  "sha256": "a0adaa07d300ce720282c9092a0322bc7ae778cdc7936804ae1ec44219bc28a5",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC dallas 2011",
+    "title": "Warming up for EDC Dallas 2011"
+  }
+}

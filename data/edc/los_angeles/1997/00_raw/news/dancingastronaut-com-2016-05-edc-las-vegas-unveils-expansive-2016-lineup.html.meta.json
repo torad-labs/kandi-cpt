@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2016/05/edc-las-vegas-unveils-expansive-2016-lineup/",
+  "final_url": "https://dancingastronaut.com/2016/05/edc-las-vegas-unveils-expansive-2016-lineup/",
+  "fetched_at": "2026-05-30T10:40:48+00:00",
+  "http_status": 200,
+  "sha256": "6ac082fea168c4535c7c8ee0f017bd95ff9f2a8404c9369eeede9cdfdb4012bc",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

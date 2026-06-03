@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=z_3fOOLnsFs",
+  "final_url": "https://www.youtube.com/watch?v=z_3fOOLnsFs",
+  "fetched_at": "2026-05-30T10:28:00+00:00",
+  "http_status": 200,
+  "sha256": "0687b76e77af812414741781fc683ee0660c128bcc9e61354837e3f5a9cdb8dc",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC orlando 2023",
+    "title": "4K Deadmau5 Full Set EDC Orlando 2023 Sunset Set Kinetic Filed"
+  }
+}

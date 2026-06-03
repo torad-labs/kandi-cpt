@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=w4mKtIjiKZU",
+  "final_url": "https://www.youtube.com/watch?v=w4mKtIjiKZU",
+  "fetched_at": "2026-05-30T10:09:52+00:00",
+  "http_status": 200,
+  "sha256": "54f5fb2e55a4ba1713f20cf3dae9cdb2d0fed31bdc62ec56dc3f1b991020114b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2014
+  },
+  "extra": {
+    "query": "EDC las vegas 2014",
+    "title": "Kaskade | EDC Las Vegas 2014 | Full Set"
+  }
+}

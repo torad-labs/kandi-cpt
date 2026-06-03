@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2015/08/bassnectar-eric-prydz-kaskade-among-headliners-edc-orlando-2015-lineup/",
+  "final_url": "https://dancingastronaut.com/2015/08/bassnectar-eric-prydz-kaskade-among-headliners-edc-orlando-2015-lineup/",
+  "fetched_at": "2026-05-30T10:22:51+00:00",
+  "http_status": 200,
+  "sha256": "82bbadddb928046c875bfbe864b147e1b829c1e47b8a21c60647f07892f7dd90",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2015
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

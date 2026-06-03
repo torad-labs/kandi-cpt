@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+san+bernardino+2003",
+  "final_url": "https://dancingastronaut.com/?s=EDC+san+bernardino+2003",
+  "fetched_at": "2026-05-30T10:47:41+00:00",
+  "http_status": 200,
+  "sha256": "2007b2ca582f94bff4c3d5b33fbebe286354d1f5bd479417f65b3df1b7c4bc9f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "san_bernardino",
+    "year": 2003
+  },
+  "extra": {
+    "query": "EDC+san+bernardino+2003",
+    "kind": "listing"
+  }
+}

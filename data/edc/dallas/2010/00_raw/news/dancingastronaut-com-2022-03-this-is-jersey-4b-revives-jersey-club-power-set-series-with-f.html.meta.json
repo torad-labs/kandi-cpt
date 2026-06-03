@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2022/03/this-is-jersey-4b-revives-jersey-club-power-set-series-with-first-installment-in-six-years/",
+  "final_url": "https://dancingastronaut.com/2022/03/this-is-jersey-4b-revives-jersey-club-power-set-series-with-first-installment-in-six-years/",
+  "fetched_at": "2026-05-30T10:53:36+00:00",
+  "http_status": 200,
+  "sha256": "90fa9410ca684d776f77d20ff4682d0cbe92d37baccafb3e5b88a895f7dca7f8",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

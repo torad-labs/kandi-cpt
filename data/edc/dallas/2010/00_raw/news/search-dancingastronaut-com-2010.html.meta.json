@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+dallas+2010",
+  "final_url": "https://dancingastronaut.com/?s=EDC+dallas+2010",
+  "fetched_at": "2026-05-30T10:53:36+00:00",
+  "http_status": 200,
+  "sha256": "5141a21da68878ba6ba26a9392ebdd14a53b4c70889e555d639782b1018eeb48",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC+dallas+2010",
+    "kind": "listing"
+  }
+}

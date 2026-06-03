@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=jPvdijxY_tk",
+  "final_url": "https://www.youtube.com/watch?v=jPvdijxY_tk",
+  "fetched_at": "2026-05-30T10:24:55+00:00",
+  "http_status": 200,
+  "sha256": "d4c41301eeb98ce31b6b2f13aa464e670850cf7340cacb229c0c38fdb6ff38ab",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2018
+  },
+  "extra": {
+    "query": "EDC orlando 2018",
+    "title": "Martin Garrix Full Set EDC Orlando 2018 Kinetic Field"
+  }
+}

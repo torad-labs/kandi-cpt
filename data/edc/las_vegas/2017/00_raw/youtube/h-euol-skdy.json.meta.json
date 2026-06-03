@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=H_euol_sKDY",
+  "final_url": "https://www.youtube.com/watch?v=H_euol_sKDY",
+  "fetched_at": "2026-05-30T10:12:27+00:00",
+  "http_status": 200,
+  "sha256": "20e336abe7d4928c82b359d0c2ddf9f8a5e80e09309f907dfc683d2d7544969b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC las vegas 2017",
+    "title": "Seven Lions - EDC Las Vegas 2017 (Full Set)"
+  }
+}

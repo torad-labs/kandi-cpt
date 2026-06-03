@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=new+york+nj+2016&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:58:13+00:00",
+  "http_status": 200,
+  "sha256": "b1cbf2892a0919accb07d61aef9653c2713edd8d3c5a3334fe36ea7b874aa6a8",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "new+york+nj+2016",
+    "results": 10
+  }
+}

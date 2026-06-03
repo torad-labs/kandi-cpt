@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-xWNHRmH_70",
+  "final_url": "https://www.youtube.com/watch?v=-xWNHRmH_70",
+  "fetched_at": "2026-05-30T11:11:13+00:00",
+  "http_status": 200,
+  "sha256": "29ebe7481afc93b34f92a500a02bafe97b7487548ac07daa3812c9a4c80eec02",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC suzhou 2023",
+    "title": "Party life in China | Electric Daisy Carnival | Insomniac | DAY 1"
+  }
+}

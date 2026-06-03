@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=-3Uk27A4xWM",
+  "final_url": "https://www.youtube.com/watch?v=-3Uk27A4xWM",
+  "fetched_at": "2026-05-30T10:19:33+00:00",
+  "http_status": 200,
+  "sha256": "b732e44792536c68ea4835ba605dd86e9286ec9ed663ee791396c290cdc22be0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC orlando 2011",
+    "title": "Awooga- Calvin Harris - EDC Orlando 2011"
+  }
+}

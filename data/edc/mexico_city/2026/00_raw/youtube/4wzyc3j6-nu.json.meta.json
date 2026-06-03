@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=4wzyC3J6-NU",
+  "final_url": "https://www.youtube.com/watch?v=4wzyC3J6-NU",
+  "fetched_at": "2026-05-30T10:39:45+00:00",
+  "http_status": 200,
+  "sha256": "4e1eb5ef67905549304f4907d7294db1e78e5165b0bebcd7d4bdef93950b3caa",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC mexico city 2026",
+    "title": "Underworld Live at EDC Las Vegas 2026 (Official Full Set)"
+  }
+}

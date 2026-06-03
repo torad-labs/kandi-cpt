@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=J8N0NTzmXEg",
+  "final_url": "https://www.youtube.com/watch?v=J8N0NTzmXEg",
+  "fetched_at": "2026-05-30T11:02:35+00:00",
+  "http_status": 200,
+  "sha256": "aeb3255c476d3b82da86fe0d89e2e29521ab3292e7e0b5b013fddb05c2292d7a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC san juan 2013",
+    "title": "EDC Puerto Rico 2013 (Saturday) - Nicky Romero (Symphonica)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=mexico+city+2022&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:36:48+00:00",
+  "http_status": 200,
+  "sha256": "92115a5e9a71930876f137a0af8955b541ecb223a21e91da485bdd6f3aa8eaa9",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "mexico+city+2022",
+    "results": 10
+  }
+}

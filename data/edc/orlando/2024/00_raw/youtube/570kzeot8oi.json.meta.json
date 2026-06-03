@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=570KzEOT8oI",
+  "final_url": "https://www.youtube.com/watch?v=570KzEOT8oI",
+  "fetched_at": "2026-05-30T10:28:47+00:00",
+  "http_status": 200,
+  "sha256": "81228a433a33c441335b7a3d1bbf697e85e5526c334e4e1962d74ca42dedbcbe",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC orlando 2024",
+    "title": "Dom Dolla Live @ EDC Las Vegas, 2024 (circuitGROUNDS)"
+  }
+}

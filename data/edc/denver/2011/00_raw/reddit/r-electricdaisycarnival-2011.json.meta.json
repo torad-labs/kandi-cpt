@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=denver+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=denver+2011&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:52:45+00:00",
+  "http_status": 200,
+  "sha256": "7a66955ab38c4db805a4d5b34c8c639448ac37b8988614dd03f8cbcb7440869a",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2011
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "denver+2011",
+    "results": 1
+  }
+}

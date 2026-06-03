@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=doInyaGB0sM",
+  "final_url": "https://www.youtube.com/watch?v=doInyaGB0sM",
+  "fetched_at": "2026-05-30T10:13:59+00:00",
+  "http_status": 200,
+  "sha256": "d680f472e8ea8f66aa5d7aad8179813b0b5bea79a5b1dda83a551cfe953b98b7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC las vegas 2019",
+    "title": "i_o - EDC 2019 (Las Vegas) [17.05.2019] (Reupload)"
+  }
+}

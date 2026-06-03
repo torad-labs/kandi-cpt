@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Hh7n9aAlWN0",
+  "final_url": "https://www.youtube.com/watch?v=Hh7n9aAlWN0",
+  "fetched_at": "2026-05-30T10:32:01+00:00",
+  "http_status": 200,
+  "sha256": "4b7a280dc2dcb481145c2870523ab6048bf61324d33992a0272f467d002bfc91",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC mexico city 2015",
+    "title": "EDC Mexico 2015 Official Trailer"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=zAcTgwTW0Oc",
+  "final_url": "https://www.youtube.com/watch?v=zAcTgwTW0Oc",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "5660ebf3cc1a81025d401b6ca56bac12c120566f38b07954e5024636f7780f53",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "EDC 2017 Opening - Mexico"
+  }
+}

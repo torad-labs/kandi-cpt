@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+denver+2008",
+  "final_url": "https://dancingastronaut.com/?s=EDC+denver+2008",
+  "fetched_at": "2026-05-30T10:50:33+00:00",
+  "http_status": 200,
+  "sha256": "8d0d8f787d7c03798c9e608b5b2897cb4783b0a668cbb7ec78f4f811e400d105",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC+denver+2008",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ZdXSP2ErcTQ",
+  "final_url": "https://www.youtube.com/watch?v=ZdXSP2ErcTQ",
+  "fetched_at": "2026-05-30T10:08:20+00:00",
+  "http_status": 200,
+  "sha256": "53c74635e9242b63f98caed442e7137a54f281ed43fae37233f19aa8d6998775",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC las vegas 2012",
+    "title": "EDC 2012 Dates  On Sale Announcement"
+  }
+}

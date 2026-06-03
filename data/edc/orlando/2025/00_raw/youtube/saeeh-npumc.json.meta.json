@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=saEEH-NPUMc",
+  "final_url": "https://www.youtube.com/watch?v=saEEH-NPUMc",
+  "fetched_at": "2026-05-30T10:29:32+00:00",
+  "http_status": 200,
+  "sha256": "61fe9458abe467abfbb784675df649db859143fb7457129c1fc424befe5d7545",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC orlando 2025",
+    "title": "James Hype @ EDC Orlando 2025"
+  }
+}

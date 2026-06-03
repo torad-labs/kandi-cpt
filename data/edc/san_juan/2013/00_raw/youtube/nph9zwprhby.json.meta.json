@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=nPh9ZWPRHBY",
+  "final_url": "https://www.youtube.com/watch?v=nPh9ZWPRHBY",
+  "fetched_at": "2026-05-30T11:02:35+00:00",
+  "http_status": 200,
+  "sha256": "26eef201715d9637ec0f087b7668784234f7dd25974b57a0669132300a73d357",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC san juan 2013",
+    "title": "EDC Puerto Rico 2013 (Saturday) - Nicky Romero (I need your Love)"
+  }
+}

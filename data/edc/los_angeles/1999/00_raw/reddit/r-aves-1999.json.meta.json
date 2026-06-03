@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+1999&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/aves/search.json?q=los+angeles+1999&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:41:20+00:00",
+  "http_status": 200,
+  "sha256": "4e833d4f315a810f8a4f4dd683f86b89cc60252343eac18327eb47595c58317d",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1999
+  },
+  "extra": {
+    "subreddit": "aves",
+    "query": "los+angeles+1999",
+    "results": 10
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=ndgqIZkcMuE",
+  "final_url": "https://www.youtube.com/watch?v=ndgqIZkcMuE",
+  "fetched_at": "2026-05-30T11:11:54+00:00",
+  "http_status": 200,
+  "sha256": "2ba3e33293454f04e994b4276a69a4e34e64c6589189ab4c143839c6c07ad000",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC suzhou 2025",
+    "title": "The Chainsmokers - EDC Suzhou/CN 2025 (Full/Brand New Set)75m"
+  }
+}

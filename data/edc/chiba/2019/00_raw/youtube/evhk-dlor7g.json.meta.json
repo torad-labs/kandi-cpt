@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Evhk-dlOR7g",
+  "final_url": "https://www.youtube.com/watch?v=Evhk-dlOR7g",
+  "fetched_at": "2026-05-30T11:13:17+00:00",
+  "http_status": 200,
+  "sha256": "71e0e07c0ac5c61f32377a87c6e777a6161362cdec534c05011248b565bb9309",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "chiba",
+    "year": 2019
+  },
+  "extra": {
+    "query": "EDC chiba 2019",
+    "title": "edc JAPAN 2019 Guide video to the entrance for exclusive use of  1DAY GA"
+  }
+}

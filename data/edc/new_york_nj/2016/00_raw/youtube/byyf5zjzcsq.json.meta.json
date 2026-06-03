@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=bYyf5zjzCsQ",
+  "final_url": "https://www.youtube.com/watch?v=bYyf5zjzCsQ",
+  "fetched_at": "2026-05-30T10:58:04+00:00",
+  "http_status": 200,
+  "sha256": "1a0dffa403b971a748e1e7e7f1a821fd2ec275dde21902bfb505c9aa3b3bae40",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC new york nj 2016",
+    "title": "EDC NY 2016"
+  }
+}

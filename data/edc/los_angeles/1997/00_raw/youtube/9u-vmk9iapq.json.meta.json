@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=9u-vmk9iapQ",
+  "final_url": "https://www.youtube.com/watch?v=9u-vmk9iapQ",
+  "fetched_at": "2026-05-30T10:40:29+00:00",
+  "http_status": 200,
+  "sha256": "318c15d050bef3489fa528c364e540085ae9ac8437e5691d178dd0dd006aecba",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 1997
+  },
+  "extra": {
+    "query": "EDC los angeles 1997",
+    "title": "Electric Daisy Carnival 2010 Official Trailer (*Please view in 720p HD!!!)"
+  }
+}

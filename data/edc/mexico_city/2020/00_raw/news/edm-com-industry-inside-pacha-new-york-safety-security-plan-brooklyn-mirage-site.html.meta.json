@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/industry/inside-pacha-new-york-safety-security-plan-brooklyn-mirage-site/",
+  "final_url": "https://edm.com/industry/inside-pacha-new-york-safety-security-plan-brooklyn-mirage-site/",
+  "fetched_at": "2026-05-30T10:36:29+00:00",
+  "http_status": 200,
+  "sha256": "e1e0fd5dc2e0ffae5379feece6fe3000239bfb62a941872e76a12f07d68c02b7",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2020
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

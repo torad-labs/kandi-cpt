@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+orlando+2016",
+  "final_url": "https://dancingastronaut.com/?s=EDC+orlando+2016",
+  "fetched_at": "2026-05-30T10:23:36+00:00",
+  "http_status": 200,
+  "sha256": "852b85b90d4163ad1ebb79f9daee775885892da6b7b6351c5f7901fb70421e97",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC+orlando+2016",
+    "kind": "listing"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UAu1bB7S-5I",
+  "final_url": "https://www.youtube.com/watch?v=UAu1bB7S-5I",
+  "fetched_at": "2026-05-30T10:33:32+00:00",
+  "http_status": 200,
+  "sha256": "cc9cea1099e4afccb060258a3a6d0aaaeb2be40ed5d26cb656aa6a6a03989aea",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2017
+  },
+  "extra": {
+    "query": "EDC mexico city 2017",
+    "title": "EDC LAS VEGAS 2017 Mejores Canciones DIA 1 | Hardwell, Major Lazer, Martin Garrix, Afrojack, Slushii"
+  }
+}

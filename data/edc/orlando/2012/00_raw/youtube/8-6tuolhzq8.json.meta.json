@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=8-6tuOLhZq8",
+  "final_url": "https://www.youtube.com/watch?v=8-6tuOLhZq8",
+  "fetched_at": "2026-05-30T10:20:18+00:00",
+  "http_status": 200,
+  "sha256": "08812555f48d6f04e4edf717be77c24a23df4ea51650c8749426c38ca25e9be0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC orlando 2012",
+    "title": "Basssnectar Opening @ EDC Orlando 2012 [HD]"
+  }
+}

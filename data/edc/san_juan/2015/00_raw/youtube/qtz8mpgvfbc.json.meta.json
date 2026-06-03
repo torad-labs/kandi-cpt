@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=qtz8mpGvfbc",
+  "final_url": "https://www.youtube.com/watch?v=qtz8mpGvfbc",
+  "fetched_at": "2026-05-30T11:04:05+00:00",
+  "http_status": 200,
+  "sha256": "8985bb7ab5c47c55056646d4db8da81fcff7b77806e59332209d10885a1bba8f",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2015
+  },
+  "extra": {
+    "query": "EDC san juan 2015",
+    "title": "2015 EDC Puerto Rico Aftermovie"
+  }
+}

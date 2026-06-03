@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2002&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/EDC/search.json?q=los+angeles+2002&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:43:39+00:00",
+  "http_status": 200,
+  "sha256": "eca8494651144ec934b0f313392a1e4fa8092782de5559c2c5d9a88d99bedb4a",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2002
+  },
+  "extra": {
+    "subreddit": "EDC",
+    "query": "los+angeles+2002",
+    "results": 10
+  }
+}

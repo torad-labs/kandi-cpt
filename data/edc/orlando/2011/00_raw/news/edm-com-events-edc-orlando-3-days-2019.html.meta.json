@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-orlando-3-days-2019/",
+  "final_url": "https://edm.com/events/edc-orlando-3-days-2019/",
+  "fetched_at": "2026-05-30T10:20:09+00:00",
+  "http_status": 200,
+  "sha256": "6101445d6b3a961d49ceb574be1d6d1cf3908b1314bdbdb8a1d788a1a18ea4d4",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2011
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

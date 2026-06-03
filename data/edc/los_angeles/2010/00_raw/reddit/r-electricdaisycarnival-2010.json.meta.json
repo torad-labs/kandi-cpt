@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=los+angeles+2010&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:46:51+00:00",
+  "http_status": 200,
+  "sha256": "7e466d14d09c504ebb3644235e8071a3ebc4a531a63fbe6c431a964f00aeb06e",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2010
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "los+angeles+2010",
+    "results": 10
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=EaLt-iN9RJE",
+  "final_url": "https://www.youtube.com/watch?v=EaLt-iN9RJE",
+  "fetched_at": "2026-05-30T10:55:44+00:00",
+  "http_status": 200,
+  "sha256": "6139716ea92ab402cae35d8237e5cbb477c6f69bedd3c36e3b2ffa338901989e",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "new_york_nj",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC new york nj 2013",
+    "title": "EDC NY 2013 Calvin Harris Need Your Love"
+  }
+}

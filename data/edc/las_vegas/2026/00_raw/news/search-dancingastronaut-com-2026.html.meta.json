@@ -1,0 +1,19 @@
+{
+  "url": "https://dancingastronaut.com/?s=EDC+las+vegas+2026",
+  "final_url": "https://dancingastronaut.com/?s=EDC+las+vegas+2026",
+  "fetched_at": "2026-05-30T10:19:05+00:00",
+  "http_status": 200,
+  "sha256": "12de39262f34c95cf25867f855bdd0aeaa028d9d983c4719f017c37678b12318",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2026
+  },
+  "extra": {
+    "query": "EDC+las+vegas+2026",
+    "kind": "listing"
+  }
+}

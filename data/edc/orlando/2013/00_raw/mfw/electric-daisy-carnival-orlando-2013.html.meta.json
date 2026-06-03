@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2013/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/electric-daisy-carnival-orlando-2013/",
+  "fetched_at": "2026-06-02T17:55:13+00:00",
+  "http_status": 200,
+  "sha256": "be29b9a33122fb27798471dee4829f651d4c9611f56a2f3a3f2e979816554091",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2013
+  },
+  "extra": {}
+}

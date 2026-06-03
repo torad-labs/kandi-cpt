@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UriFPagD_-M",
+  "final_url": "https://www.youtube.com/watch?v=UriFPagD_-M",
+  "fetched_at": "2026-05-30T11:01:06+00:00",
+  "http_status": 200,
+  "sha256": "49c08021d6af2fca238725db757916f8829ba3e3d35afd1969548c72261d5fa8",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC san juan 2011",
+    "title": "EDC 2011 VEGAS.m4v"
+  }
+}

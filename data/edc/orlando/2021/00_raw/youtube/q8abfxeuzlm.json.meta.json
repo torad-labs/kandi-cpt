@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Q8aBfxEuzLM",
+  "final_url": "https://www.youtube.com/watch?v=Q8aBfxEuzLM",
+  "fetched_at": "2026-05-30T10:26:28+00:00",
+  "http_status": 200,
+  "sha256": "611ac20823146deed90284012f189db3f6ce18e1e51aa2822384ce832e52db7b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2021
+  },
+  "extra": {
+    "query": "EDC orlando 2021",
+    "title": "EDC Orlando 2021 Aftermovie"
+  }
+}

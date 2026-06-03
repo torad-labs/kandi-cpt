@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=fQGfqs2P6ek",
+  "final_url": "https://www.youtube.com/watch?v=fQGfqs2P6ek",
+  "fetched_at": "2026-05-30T10:23:22+00:00",
+  "http_status": 200,
+  "sha256": "b4779901f40c7e9a4a9d46608391a0b32d9dadd72480fb1a51309d8326cdab54",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2016
+  },
+  "extra": {
+    "query": "EDC orlando 2016",
+    "title": "HARDWELL-EDC Orlando 2016"
+  }
+}

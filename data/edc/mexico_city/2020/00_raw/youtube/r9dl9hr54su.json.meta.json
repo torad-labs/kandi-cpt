@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=R9dl9hr54SU",
+  "final_url": "https://www.youtube.com/watch?v=R9dl9hr54SU",
+  "fetched_at": "2026-05-30T10:35:52+00:00",
+  "http_status": 200,
+  "sha256": "4df735d2e611d7f16c599226d0857ea33f53cd21dc9b37e90e643e832ec452fc",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2020
+  },
+  "extra": {
+    "query": "EDC mexico city 2020",
+    "title": "12th Planet - EDC Mexico 2020 (Full Set) [OFFICIAL FOOTAGE]"
+  }
+}

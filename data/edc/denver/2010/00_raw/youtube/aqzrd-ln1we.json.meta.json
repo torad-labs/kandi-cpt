@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=aQZrd-Ln1wE",
+  "final_url": "https://www.youtube.com/watch?v=aQZrd-Ln1wE",
+  "fetched_at": "2026-05-30T10:51:44+00:00",
+  "http_status": 200,
+  "sha256": "4b87cae08d2224e3471fbc6114630d89b32fe915486003c7b2dc2a363b9afcf7",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC denver 2010",
+    "title": "EDC 2010 Colorado- Amazing light show"
+  }
+}

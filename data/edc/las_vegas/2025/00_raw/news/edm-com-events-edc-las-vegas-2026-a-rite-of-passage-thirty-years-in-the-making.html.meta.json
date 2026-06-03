@@ -1,0 +1,18 @@
+{
+  "url": "https://edm.com/events/edc-las-vegas-2026-a-rite-of-passage-thirty-years-in-the-making/",
+  "final_url": "https://edm.com/events/edc-las-vegas-2026-a-rite-of-passage-thirty-years-in-the-making/",
+  "fetched_at": "2026-05-30T10:18:26+00:00",
+  "http_status": 200,
+  "sha256": "00ba5306780dab1297ca13ff3d6fd48b2038c3f87025f7cb870fa5ccaead2864",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

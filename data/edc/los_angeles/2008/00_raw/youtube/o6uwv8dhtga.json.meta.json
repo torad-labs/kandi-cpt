@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=O6uWv8dHTGA",
+  "final_url": "https://www.youtube.com/watch?v=O6uWv8dHTGA",
+  "fetched_at": "2026-05-30T10:45:05+00:00",
+  "http_status": 200,
+  "sha256": "c60940bd6db2042fa92d72468d6454c7d8ded45b9eafe1c4f76cedcaf2126c3d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC los angeles 2008",
+    "title": "Electric Daisy Carnival 2008 Los Angeles!"
+  }
+}

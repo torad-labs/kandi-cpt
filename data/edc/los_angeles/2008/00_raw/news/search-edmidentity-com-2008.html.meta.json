@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+los+angeles+2008",
+  "final_url": "https://edmidentity.com/?s=EDC+los+angeles+2008",
+  "fetched_at": "2026-05-30T10:45:33+00:00",
+  "http_status": 200,
+  "sha256": "fc0672ab11bba667b85df0d58931ff1390b1714748332d8f3afac5ffb4b3b514",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2008
+  },
+  "extra": {
+    "query": "EDC+los+angeles+2008",
+    "kind": "listing"
+  }
+}

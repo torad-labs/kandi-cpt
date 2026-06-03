@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=GCdujQu_024",
+  "final_url": "https://www.youtube.com/watch?v=GCdujQu_024",
+  "fetched_at": "2026-05-30T11:20:17+00:00",
+  "http_status": 200,
+  "sha256": "6701a0b5664e99830f88349f0afc7b993c280543c01766f6f89e62fd0c95784b",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2024
+  },
+  "extra": {
+    "query": "EDC edsea 2024",
+    "title": "EDSea 2023 Aftermovie"
+  }
+}

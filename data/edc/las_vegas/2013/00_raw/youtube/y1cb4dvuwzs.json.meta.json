@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=Y1cB4DvuWZs",
+  "final_url": "https://www.youtube.com/watch?v=Y1cB4DvuWZs",
+  "fetched_at": "2026-05-30T10:09:06+00:00",
+  "http_status": 200,
+  "sha256": "2e53063b5a8176f99e8ef358d4cd0f47e2d7d90c4431c3aac83546e4a76abc32",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2013
+  },
+  "extra": {
+    "query": "EDC las vegas 2013",
+    "title": "Halfway To EDC Las Vegas 2013 at Marquee After Movie"
+  }
+}

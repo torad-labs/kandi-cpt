@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=cFkDEJel-bU",
+  "final_url": "https://www.youtube.com/watch?v=cFkDEJel-bU",
+  "fetched_at": "2026-05-30T10:15:38+00:00",
+  "http_status": 200,
+  "sha256": "04cc0bfd0a64847dea8da25217fdc9ce7ad3c34338579f870148ee81fdcfa5b4",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC las vegas 2022",
+    "title": "Kaskade - EDC Las Vegas 2022 FULL SET [4k]"
+  }
+}

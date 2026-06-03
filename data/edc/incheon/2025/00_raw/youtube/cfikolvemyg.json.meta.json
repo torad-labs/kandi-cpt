@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=CfikoLVEMyg",
+  "final_url": "https://www.youtube.com/watch?v=CfikoLVEMyg",
+  "fetched_at": "2026-05-30T11:14:50+00:00",
+  "http_status": 200,
+  "sha256": "79af561233c0c0bf46f509132a6023fd6649813a08bbd5b1f50d1129ab9754a0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC incheon 2025",
+    "title": "EDC Korea Day1 Ending Fireworks"
+  }
+}

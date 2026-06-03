@@ -1,0 +1,18 @@
+{
+  "url": "https://edmidentity.com/music/exclusive-mix/",
+  "final_url": "https://edmidentity.com/music/exclusive-mix/",
+  "fetched_at": "2026-05-30T11:15:23+00:00",
+  "http_status": 200,
+  "sha256": "052c94f6f0ef5d38f08b1ed374f5f8fc7a114faae543efc55348fe33370f86fc",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "incheon",
+    "year": 2025
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2020/02/pasquale-rotella-talks-edc-expansion-sustainability-skipping-nocturnal-wonderland-in-state-of-insomniac/",
+  "final_url": "https://dancingastronaut.com/2020/02/pasquale-rotella-talks-edc-expansion-sustainability-skipping-nocturnal-wonderland-in-state-of-insomniac/",
+  "fetched_at": "2026-05-30T10:23:36+00:00",
+  "http_status": 200,
+  "sha256": "52eeb605f81a920d2d402da7269a9195f69453297479f3d4f45ae7ea5ef895f8",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2016
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

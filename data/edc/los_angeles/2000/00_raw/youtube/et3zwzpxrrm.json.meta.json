@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=et3zwzPxRRM",
+  "final_url": "https://www.youtube.com/watch?v=et3zwzPxRRM",
+  "fetched_at": "2026-05-30T10:41:58+00:00",
+  "http_status": 200,
+  "sha256": "e4fd14dc6610f9e189da0b829e6cb3f50e163f6405d9a1755a09ce22025ad9ba",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2000
+  },
+  "extra": {
+    "query": "EDC los angeles 2000",
+    "title": "EDC 2000 quick"
+  }
+}

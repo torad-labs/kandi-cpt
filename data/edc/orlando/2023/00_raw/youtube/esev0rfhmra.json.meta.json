@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=eSeV0rFHmRA",
+  "final_url": "https://www.youtube.com/watch?v=eSeV0rFHmRA",
+  "fetched_at": "2026-05-30T10:28:00+00:00",
+  "http_status": 200,
+  "sha256": "9a876e4e4cc78d17fb583d1e26581186cad871f0bf8fb15018293fd6fece6f2a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2023
+  },
+  "extra": {
+    "query": "EDC orlando 2023",
+    "title": "4K Subtronics Full Set EDC Orlando 2023 Circuit Grounds"
+  }
+}

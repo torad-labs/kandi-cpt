@@ -1,0 +1,16 @@
+{
+  "url": "https://www.musicfestivalwizard.com/festivals/edsea-2025/",
+  "final_url": "https://www.musicfestivalwizard.com/festivals/edsea-2025/",
+  "fetched_at": "2026-06-02T18:10:26+00:00",
+  "http_status": 200,
+  "sha256": "fa71809f97979d7a2710685c619f7aa823fdbbf1e39132011acf4b06ba63df93",
+  "fetcher": "browser",
+  "source_channel": "mfw",
+  "domain_class": "review-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "edsea",
+    "year": 2025
+  },
+  "extra": {}
+}

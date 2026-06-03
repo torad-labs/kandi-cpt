@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=zV_d0TgzEGw",
+  "final_url": "https://www.youtube.com/watch?v=zV_d0TgzEGw",
+  "fetched_at": "2026-05-30T10:14:51+00:00",
+  "http_status": 200,
+  "sha256": "29b0590dac1593282aa51725f8f2859ca9688c3492a198d92af160c6fcfde7bb",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2021
+  },
+  "extra": {
+    "query": "EDC las vegas 2021",
+    "title": "Kygo - EDC Las Vegas 2021 Live Set (10/24/21)"
+  }
+}

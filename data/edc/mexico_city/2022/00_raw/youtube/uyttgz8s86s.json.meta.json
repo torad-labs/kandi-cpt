@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=UYTtgZ8S86s",
+  "final_url": "https://www.youtube.com/watch?v=UYTtgZ8S86s",
+  "fetched_at": "2026-05-30T10:36:41+00:00",
+  "http_status": 200,
+  "sha256": "9d94151a5af764b68a3efec3860c60552fce78e5e8eaea9fd544e1cba29b5d54",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2022
+  },
+  "extra": {
+    "query": "EDC mexico city 2022",
+    "title": "Dubdogz - EDC Mexico 2022"
+  }
+}

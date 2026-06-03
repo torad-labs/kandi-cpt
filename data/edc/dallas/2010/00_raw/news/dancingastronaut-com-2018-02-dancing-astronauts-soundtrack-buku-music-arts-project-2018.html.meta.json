@@ -1,0 +1,18 @@
+{
+  "url": "https://dancingastronaut.com/2018/02/dancing-astronauts-soundtrack-buku-music-arts-project-2018/",
+  "final_url": "https://dancingastronaut.com/2018/02/dancing-astronauts-soundtrack-buku-music-arts-project-2018/",
+  "fetched_at": "2026-05-30T10:53:38+00:00",
+  "http_status": 200,
+  "sha256": "6cef451a250cd645e3b9f5c60b58ac79a26d32d9bab32e21f25c1d9d3ea1a89f",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "dallas",
+    "year": 2010
+  },
+  "extra": {
+    "kind": "article"
+  }
+}

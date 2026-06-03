@@ -1,0 +1,19 @@
+{
+  "url": "https://youredm.com/?s=EDC+orlando+2025",
+  "final_url": "https://youredm.com/?s=EDC+orlando+2025",
+  "fetched_at": "2026-05-30T10:29:54+00:00",
+  "http_status": 200,
+  "sha256": "fc04801b9a7082ab6dc94da5770d081d906d73e0ba87738eecbaa3c55707def6",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2025
+  },
+  "extra": {
+    "query": "EDC+orlando+2025",
+    "kind": "listing"
+  }
+}

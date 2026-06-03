@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=8gjT9_wCSxc",
+  "final_url": "https://www.youtube.com/watch?v=8gjT9_wCSxc",
+  "fetched_at": "2026-05-30T11:01:50+00:00",
+  "http_status": 200,
+  "sha256": "db36a57e8084d61fdb1be11ddad39ced6205b85aa72ba9b1d3eccd483b08d78d",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "san_juan",
+    "year": 2012
+  },
+  "extra": {
+    "query": "EDC san juan 2012",
+    "title": "EDC 2012 Puerto Rico"
+  }
+}

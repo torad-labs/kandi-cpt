@@ -1,0 +1,19 @@
+{
+  "url": "https://edmidentity.com/?s=EDC+las+vegas+2011",
+  "final_url": "https://edmidentity.com/?s=EDC+las+vegas+2011",
+  "fetched_at": "2026-05-30T10:08:02+00:00",
+  "http_status": 200,
+  "sha256": "ab4ec12d9f0760414e45d75692df8d93b7e39b22e03fe0f7840f935c8dcb8383",
+  "fetcher": "http",
+  "source_channel": "news",
+  "domain_class": "news-music-trade",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2011
+  },
+  "extra": {
+    "query": "EDC+las+vegas+2011",
+    "kind": "listing"
+  }
+}

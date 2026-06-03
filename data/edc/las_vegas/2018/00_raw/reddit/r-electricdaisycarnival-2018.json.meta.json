@@ -1,0 +1,20 @@
+{
+  "url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "final_url": "https://old.reddit.com/r/electricdaisycarnival/search.json?q=las+vegas+2018&restrict_sr=1&sort=top&t=all&limit=10",
+  "fetched_at": "2026-05-30T10:13:24+00:00",
+  "http_status": 200,
+  "sha256": "fc86d54559da635577c4136f63cba236b512982f15231991be795593ac6f79c0",
+  "fetcher": "browser",
+  "source_channel": "reddit",
+  "domain_class": "community-discussion",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2018
+  },
+  "extra": {
+    "subreddit": "electricdaisycarnival",
+    "query": "las+vegas+2018",
+    "results": 10
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=uoFTPwAjE_I",
+  "final_url": "https://www.youtube.com/watch?v=uoFTPwAjE_I",
+  "fetched_at": "2026-05-30T10:51:44+00:00",
+  "http_status": 200,
+  "sha256": "1e35c239a5025db8eb7247733f1173557da4ead7b9abadac27cff602ff9920f0",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "denver",
+    "year": 2010
+  },
+  "extra": {
+    "query": "EDC denver 2010",
+    "title": "EDC Denver 2010"
+  }
+}

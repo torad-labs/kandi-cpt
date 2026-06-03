@@ -1,0 +1,19 @@
+{
+  "url": "https://www.youtube.com/watch?v=gAZ9KXhQpv4",
+  "final_url": "https://www.youtube.com/watch?v=gAZ9KXhQpv4",
+  "fetched_at": "2026-05-30T10:42:48+00:00",
+  "http_status": 200,
+  "sha256": "fc7568a8d02a02d136cd44827681ce5b330439f44bc75cfc29a34c7af4b2554a",
+  "fetcher": "http",
+  "source_channel": "youtube",
+  "domain_class": "social-vetted",
+  "edition": {
+    "festival": "edc",
+    "city": "los_angeles",
+    "year": 2001
+  },
+  "extra": {
+    "query": "EDC los angeles 2001",
+    "title": "Clip from \"After EDC\" - Tribute to LA Raves"
+  }
+}
