@@ -12,8 +12,8 @@
 #
 # These params are easy to lose (e.g. across a context compaction) and the failure mode looks like a
 # code bug, not an env bug — hence this script is THE single source of truth for the launch environment.
-# (Ignore scripts/launch.sh + scripts/fp4_env.sh: they target a *different* cu13 toolkit and launch.sh is
-# 2-GPU torchrun, which violates the single-GPU 1200W-PSU rule. This script is the canonical single-GPU one.)
+# (This is THE training launcher — the only one. scripts/fp4_env.sh still exists but only for fp4_smoke.py;
+# it is NOT a training path. The old 2-GPU launch.sh was deleted — it violated the single-GPU 1200W-PSU rule.)
 #
 # ZERO-FLAG LAUNCH:  bash scripts/train_fp4.sh
 #   → runs the canonical CPT defined entirely in configs/train_edc_lv_2026.yaml (corpus, save_dir,
