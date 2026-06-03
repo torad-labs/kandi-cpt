@@ -20,18 +20,21 @@ configs:
   cpt: configs/train_edc_lv_2026.yaml
   sft: configs/sft_edc.yaml
 
-# Substitution vars available to every stage command as {name}
+# Substitution vars for the DATA stages (scrape→build_sft) that aren't config-driven. The TRAINING stages
+# (cpt/sft) take NO vars — they read save_dir/tokenized/init_from from their config (the single source of
+# truth; the trainer is config-only, no flags — see docs/CONFIG_AUDIT.md). Keep these consistent with the
+# configs: `corpus` = basename of configs.cpt data.tokenized; `sft_out` = basename of configs.sft data.tokenized.
 vars:
-  cpt_ckpt: checkpoints/cpt/edc_all97_v1
-  corpus: corpus_all97
-  sft_data: data/_build/30_tokenized/sft_v2.arrow
+  corpus: corpus_all97_v2          # MUST match configs.cpt data.tokenized (corpus_all97_v2.arrow)
+  sft_out: sft_v11                 # MUST match configs.sft data.tokenized (sft_v11.arrow) basename
+  score_ckpt: checkpoints/cpt/edc_all97_v1   # knownness scorer for build_sft (a prior CPT checkpoint)
 
 # Ordered pipeline. Each stage: name, desc, cmd (argv with {placeholders}), gpu (gate).
 # Placeholders: {py}=.venv/bin/python, {root}, {editions}, {cpt}, {sft}, + any vars above.
 stages:
   - name: scrape
-    desc: "00_raw — pull official/news/youtube/reddit per edition×source"
-    cmd: ["{py}", "scripts/scrape.py", "--editions", "{editions}"]
+    desc: "00_raw — pull mfw/official/news/youtube/reddit (no filter = all held editions)"
+    cmd: ["{py}", "-m", "scrape"]    # scrape filters by --city/--year; omit both to sweep every edition
     gpu: false
   - name: extract
     desc: "10_clean — trafilatura + LLM rescue → clean markdown"
@@ -50,24 +53,23 @@ stages:
     cmd: ["{py}", "scripts/gen_festival_meta.py", "--editions", "{editions}"]
     gpu: false
   - name: hydrate
-    desc: "25_hydrated — EntiGraph + LLM multi-surface generation (faithfulness-gated)"
-    cmd: ["bash", "scripts/hydrate_sweep.sh"]
+    desc: "25_hydrated — LLM multi-surface generation (faithfulness-gated; re-hydrates stale editions)"
+    cmd: ["bash", "scripts/rehydrate_vc1.sh"]   # supersedes the deleted hydrate_sweep.sh (mtime-staleness select)
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
     cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
-    desc: "continued pretraining (FP4 + int8-master) — install knowledge"
-    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{cpt}", "--save-dir", "{cpt_ckpt}"]
+    desc: "continued pretraining (FP4 + int8-master). CONFIG-ONLY — save_dir/tokenized live in {cpt}."
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{cpt}"]
     gpu: true
   - name: build_sft
-    desc: "SFT dataset — chat Q/A + anti-hallucination levers (knowledge-filter/abstain/self-gen)"
-    cmd: ["{py}", "scripts/build_sft.py", "--out", "sft_v2", "--drop-generic", "--score-model", "{cpt_ckpt}",
-          "--knowledge-filter", "--self-gen", "--abstention-frac", "0.15", "--val-frac", "0.1"]
+    desc: "SFT dataset — chat Q/A + anti-hallucination levers (live recipe: answer-aug 8, absent-neg 125)"
+    cmd: ["{py}", "scripts/build_sft.py", "--out", "{sft_out}", "--drop-generic", "--score-model", "{score_ckpt}",
+          "--knowledge-filter", "--self-gen", "--answer-aug", "8", "--absent-neg", "125", "--val-frac", "0.1"]
     gpu: true
   - name: sft
-    desc: "instruction tuning — elicit knowledge as conversation (FP4-native)"
-    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{sft}", "--init-from", "{cpt_ckpt}",
-          "--tokenized", "{sft_data}", "--save-dir", "checkpoints/sft/edc_sft_v2"]
+    desc: "instruction tuning + GATE (atomic — the no-ungated-SFT rule). CONFIG-ONLY; init_from/tokenized in {sft}."
+    cmd: ["bash", "scripts/run_sft.sh", "edc"]
     gpu: true

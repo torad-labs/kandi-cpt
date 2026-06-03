@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
-# FP4 / CUDA-13 toolchain environment for kandi-cpt.
-# Source this before any FP4 JIT compile, kernel build, or training launch:
-#   source scripts/fp4_env.sh
+# FP4 / CUDA-13 toolchain environment — for the KERNEL-VALIDATION path ONLY (scripts/fp4_smoke.py).
+# Source this before an fp4_smoke kernel build:   source scripts/fp4_env.sh
+#
+# ⚠ NOT a training path. TRAINING uses scripts/train_fp4.sh, which sets a DIFFERENT, validated toolchain
+#   (system CUDA-12.9 at /usr/local/cuda-12.9, not this cu13 pip wheel). Do not source this to train — the
+#   two toolkits are intentionally separate (smoke validates the cu13 kernel; training is pinned to 12.9).
+#   The ONE value kept in lock-step across both is the memory cap below (the freeze guard).
 #
 # ── MEMORY SAFETY (the important part) ───────────────────────────────────────
 # flashinfer JIT-compiles its CUTLASS sm120 FP4 kernel with `ninja`, which by
 # default runs one compile job PER CORE. This box has 32 cores, and each CUDA
 # device compile (`cicc`) on CUTLASS template code uses 2-4 GB. 32 jobs in
 # parallel => ~96 GB, which exhausts the 59 GB of RAM and FREEZES the machine
-# before the OOM killer can recover it. MAX_JOBS caps that fan-out. Keep it low.
-export MAX_JOBS="${MAX_JOBS:-4}"                       # torch & flashinfer ninja -j
-export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-4}"  # cmake builds
+# before the OOM killer can recover it. MAX_JOBS caps that fan-out.
+# MUST match train_fp4.sh (=2 — the validated freeze-safe value; do not raise without re-validating).
+export MAX_JOBS="${MAX_JOBS:-2}"                       # torch & flashinfer ninja -j (matches train_fp4.sh)
+export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-2}"  # cmake builds (matches train_fp4.sh)
 
 # ── cu13 toolkit discovery (steer away from the system cuda-12.x) ────────────
 _KANDI_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
