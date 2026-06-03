@@ -73,3 +73,6 @@ secrets.json
 # OS / editor
 .DS_Store
 *.swp
+
+# Run registry — per-run resolved-config cards + index (local provenance; regenerated each run)
+logs/runs/

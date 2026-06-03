@@ -663,6 +663,10 @@ def main():
     contract = run_contract(typed, cfg, save_dir, world, smoke_steps)   # prints the one-screen contract; dry_run exits here
     if rank0() and save_dir and not smoke_steps:          # live heartbeat for the Torad Train console
         _start_status(save_dir, cfg.get("max_steps"))
+        from run_registry import freeze_run            # freeze resolved config + dataset_hash + git_sha + ts
+        run_id = freeze_run(typed, save_dir, os.environ.get("CUDA_VISIBLE_DEVICES", "unset"))
+        if run_id:
+            log(f"run registered: logs/runs/{run_id}/  (resolved config + provenance frozen)")
     torch.cuda.set_device(local_rank)
     if world > 1:
         dist.init_process_group("nccl")
