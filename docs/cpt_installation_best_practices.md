@@ -488,6 +488,22 @@ contrast helps the behavioral fabrication gate but co-mentions two confusable st
 sentence - watch the geometry separation on those stages, and vary which is negated so it is
 not learned as a template.
 
+**Finding (the two fabrication causes are different and need different fixes — do not
+conflate).** A dimension can fabricate for two distinct reasons:
+- **The fact wasn't hydrated** (stage/edition/day): the fact EXISTS in the triples but only got
+  template hydration, so it didn't install. Fix = **hydrate it** (LLM-varied, §I). Accuracy rises.
+- **The fact doesn't exist** (set_time): there is no data to install. set_time exists for only
+  **1 of 98 editions** (LV2026, 426 set-times; the other 96 never had published set times). The
+  gate's set_time acc 0.00 is the model guessing answers that exist nowhere. You CANNOT hydrate a
+  fact that does not exist, and **generating one is the exact fabrication you are fighting.** Fix =
+  **abstention**: teach "I don't have set times for EDC {city} {year}" (contrastive-abstain form),
+  and reserve the install path for the few entities where the data IS present.
+
+The by-dimension gate flags *that* a dimension fabricates; it does NOT tell you *which* cause.
+Before "fixing" a fabricating dimension, check data availability per dimension (count the triples
+that carry that attribute). Hydrate where the fact exists; abstain where it doesn't. Inventing the
+missing fact to "raise coverage" is the trap §XVI warns about, in its purest form.
+
 ---
 
 ## References (so you do not re-research these)
