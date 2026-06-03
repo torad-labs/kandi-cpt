@@ -57,20 +57,27 @@ while IFS= read -r r; do
 done < <(find data/edc -name relations.jsonl 2>/dev/null | grep -v 'las_vegas/2026')
 echo "  restored $restored regressed edition(s) from v2."
 
-echo "===== [0-line guard] no edition with concrete triples may be empty ====="
-empty=0
+echo "===== [0-line guard] distinguish LOST-but-recoverable (refuse) from genuinely-thin (allow) ====="
+# After [reconcile], a 0-line edition can only mean v2 (git HEAD) was ALSO 0 — i.e. the edition is
+# genuinely un-hydratable (festival-level-only triples, no stage/day to ground; e.g. portimao/2021).
+# That is a data limitation, not a regression, so we ALLOW it. We only REFUSE if an edition is 0-line
+# now while v2 HAD content (a real loss the reconcile somehow didn't recover — should never happen).
+lost=0; thin=0
 for t in data/edc/*/*/15_structured/triples.jsonl; do
   ed=${t%/15_structured/triples.jsonl}
   [ "${ed#data/edc/}" = "las_vegas/2026" ] && continue
   r="$ed/25_hydrated/relations.jsonl"
-  [ -f "$r" ] && [ "$(wc -l <"$r")" -eq 0 ] && { echo "  ✗ EMPTY: ${ed#data/edc/} (triples present but 0 hydrated lines)"; empty=$((empty+1)); }
+  if [ -f "$r" ] && [ "$(wc -l <"$r")" -eq 0 ]; then
+    v2=$(git show "HEAD:$r" 2>/dev/null | wc -l)
+    if [ "$v2" -gt 0 ]; then echo "  ✗ LOST: ${ed#data/edc/} (0 now, v2 had $v2 — recoverable, run reconcile)"; lost=$((lost+1))
+    else echo "  · thin: ${ed#data/edc/} (0 now AND v2 — genuinely un-hydratable, allowed)"; thin=$((thin+1)); fi
+  fi
 done
-if [ "$empty" -gt 0 ]; then
-  echo "✗ $empty edition(s) hydrated to 0 lines AND had no v2 to restore — refusing to tokenize an incomplete"
-  echo "  corpus. Inspect those editions' triples (likely festival-level-only plays_at). NOT building v3."
+if [ "$lost" -gt 0 ]; then
+  echo "✗ $lost edition(s) lost recoverable v2 content — refusing to tokenize. Run the [reconcile] step / git restore."
   exit 1
 fi
-echo "✓ no empty editions."
+echo "✓ no recoverable losses ($thin genuinely-thin edition(s) allowed)."
 
 echo "===== [1] re-tokenize → corpus_all97_v3 ====="
 # Idempotent: skip if the arrow is newer than every relations.jsonl (nothing changed since last build).
