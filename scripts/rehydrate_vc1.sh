@@ -16,7 +16,11 @@ cd "$(dirname "$0")/.."
 RUST_BIN=festival-factory/target/debug/festival-factory
 export OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-$(secret-tool lookup service openrouter key_type api_key 2>/dev/null)}"
 : "${OPENROUTER_API_KEY:?no OpenRouter key (env OPENROUTER_API_KEY or libsecret service=openrouter)}"
-PAR=${PAR:-8}; CONC=${CONC:-10}; BASE_N=${BASE_N:-8}; MODEL=${MODEL:-google/gemma-4-31b-it}
+# CONC raised 10→20: the live run measured 0 rate-limit/429s at 200-wide concurrency (paid OpenRouter
+# account) and the workers are LLM-latency-bound (~0.2% CPU, sleeping on network), so per-edition
+# concurrency is the cheap throughput lever. PAR stays 8 by default (each parallel edition holds state →
+# memory); big sweeps override with PAR=20 (the live run's setting). PAR×CONC = total concurrent calls.
+PAR=${PAR:-8}; CONC=${CONC:-20}; BASE_N=${BASE_N:-8}; MODEL=${MODEL:-google/gemma-4-31b-it}
 
 mapfile -t EDS < <(
   for t in data/edc/*/*/15_structured/triples.jsonl; do
