@@ -23,9 +23,13 @@ cd "$(dirname "$0")/.."
 V3_ARROW=data/_build/30_tokenized/corpus_all97_v3.arrow
 
 echo "===== [guard] re-hydration must be COMPLETE ====="
+# las_vegas/2026 is intentionally NOT re-hydrated (protected rich hand-built V4 corpus — see
+# rehydrate_vc1.sh:25). Its triples mtime can be newer than its relations without being content-stale,
+# so it must be excluded here too or this guard never passes.
 stale=0
 for t in data/edc/*/*/15_structured/triples.jsonl; do
   ed=${t%/15_structured/triples.jsonl}; r="$ed/25_hydrated/relations.jsonl"
+  [ "${ed#data/edc/}" = "las_vegas/2026" ] && continue
   { [ -f "$r" ] && [ ! "$t" -nt "$r" ]; } || stale=$((stale+1))
 done
 workers=$(ps -C festival-factor -o pid= 2>/dev/null | wc -l)
