@@ -32,9 +32,15 @@ mapfile -t EDS < <(
     if [ ! -f "$r" ] || [ "$t" -nt "$r" ]; then echo "$ed"; fi          # stale → re-hydrate
   done
 )
-echo "VC1 re-hydrate: ${#EDS[@]} editions  (model=$MODEL base_n=$BASE_N par=$PAR conc=$CONC)  $(date +%H:%M)"
+ETIMEOUT=${ETIMEOUT:-2700}   # hard per-edition wall-clock cap (s). The Rust has a 180s PER-REQUEST timeout,
+                             # but a Semaphore permit-leak under high concurrency can DEADLOCK the whole
+                             # edition (all tasks park → Δ0 CPU, hung for hours). This OS-level `timeout`
+                             # bounds that infinite-hang class: a wedged edition is killed + (below) its
+                             # prior content restored, instead of silently hanging. Lower PAR/CONC also
+                             # reduces the contention that triggers the deadlock.
+echo "VC1 re-hydrate: ${#EDS[@]} editions  (model=$MODEL base_n=$BASE_N par=$PAR conc=$CONC timeout=${ETIMEOUT}s)  $(date +%H:%M)"
 [ "${#EDS[@]}" -eq 0 ] && { echo "nothing stale — all current."; exit 0; }
-export RUST_BIN BASE_N CONC MODEL
+export RUST_BIN BASE_N CONC MODEL ETIMEOUT
 # PRESERVE-ON-UNDERPERFORM: the Rust hydrate truncates relations.jsonl up front (File::create). For
 # thin/festival-level editions it can emit 0 faithful lines (the gate correctly won't fabricate stage/day
 # placements that the triples don't contain) — which would DESTROY good prior content. So we back up the
@@ -44,7 +50,7 @@ printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
   mkdir -p "data/edc/$1/25_hydrated"
   R="data/edc/$1/25_hydrated/relations.jsonl"
   prev=0; [ -f "$R" ] && { cp "$R" "$R.prev"; prev=$(wc -l <"$R.prev"); }
-  if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" \
+  if timeout "$ETIMEOUT" "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" \
        > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then
     new=$(wc -l <"$R" 2>/dev/null || echo 0)
     if [ "$prev" -gt 0 ] && [ "$new" -lt "$prev" ]; then
