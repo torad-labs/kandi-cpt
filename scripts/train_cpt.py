@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Full-parameter CPT trainer for Gemma 4 E2B (text decoder) — NVFP4-capable.
+"""Full-parameter CPT/SFT trainer for Gemma 4 E2B (text decoder) — NVFP4-capable.
+
+╔═══════════════════════════════════════════════════════════════════════════════════════════════╗
+║  THE ONE TRAINING ENTRYPOINT. It accepts ONLY --config <path> and --mode {cpt,sft}.            ║
+║  There are NO behavior-affecting flags — the config IS the run (validated at load by            ║
+║  scripts/cpt_config.py; unknown keys hard-error). Do NOT add a flag, do NOT make a second       ║
+║  trainer. New knobs go in a sub-config + schema. Sweeps generate configs (scripts/gen_config.py)║
+║  and call this with --config only. Full rule: AGENTS.md + docs/CONFIG_AUDIT.md.                 ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
 
 Precision policy (NO FP32 master): bf16 params/grads, bf16 AdamW optimizer states (torch.optim
 creates state as zeros_like(bf16 param)), FP4 only via torchao NVFP4 QAT forward. FP32 lives
