@@ -311,6 +311,7 @@ def build_model(cfg):
         # would silently init from garbage weights. A plain bf16 checkpoint passes through unchanged.
         from pipeline.model_load import causal_bf16_state_dict
         remapped = causal_bf16_state_dict(C.ROOT / init)
+        n_dropped = 0                                    # a saved CausalLM ckpt has no multimodal towers to drop
         log(f"init_from: loading CausalLM checkpoint '{init}' ({len(remapped)} tensors)")
     else:
         sd = load_file(f"{cfg['model_path']}/model.safetensors")
@@ -318,6 +319,7 @@ def build_model(cfg):
         remapped = {("model." + k[len(P):]): v for k, v in sd.items() if k.startswith(P)}
         if "lm_head.weight" in sd:
             remapped["lm_head.weight"] = sd["lm_head.weight"]
+        n_dropped = len(sd) - len(remapped)              # multimodal vision/audio tower tensors dropped
     # Guard the NaN-incident class (silent random-init) on BOTH sides: a wrong prefix yields a tiny
     # remap → fail loud before training on noise.
     if len(remapped) < 0.5 * len(model.state_dict()):
@@ -335,8 +337,8 @@ def build_model(cfg):
         raise RuntimeError("embed_tokens is non-finite or all-zero after remap — refusing to train/freeze it")
     model = model.to(torch.bfloat16)
     n_text = sum(p.numel() for p in model.parameters())
-    log(f"loaded text decoder from multimodal ckpt: {len(remapped)} tensors → {n_text/1e9:.2f}B params "
-        f"(dropped {len(sd)-len(remapped)} tower tensors, {len(unexpected)} unused shared-KV k/v)")
+    log(f"loaded text decoder: {len(remapped)} tensors → {n_text/1e9:.2f}B params "
+        f"(dropped {n_dropped} tower tensors, {len(unexpected)} unused shared-KV k/v)")
     if cfg.get("freeze_embeddings"):
         # Freeze ALL embedding tables — incl. Gemma's huge Per-Layer Embeddings
         # (embed_tokens_per_layer ≈ 2.35B params / 4.7GB). CPT trains the decoder, not
