@@ -299,7 +299,8 @@ def build_model(cfg):
     # ForConditionalGeneration loss (13.68 vs 13.76 on identical input).
     from transformers import AutoConfig
     from safetensors.torch import load_file
-    text_cfg = AutoConfig.from_pretrained(cfg["model_path"]).text_config
+    base_cfg = AutoConfig.from_pretrained(cfg["model_path"])
+    text_cfg = getattr(base_cfg, "text_config", base_cfg)
     text_cfg._attn_implementation = "sdpa"
     model = Gemma4ForCausalLM(text_cfg)
     init = cfg.get("init_from")
@@ -481,14 +482,30 @@ def _save_exposure(ckpt_dir, step, exposure):
         _json.dump({"step": step, "exposure": dict(exposure)}, f)
 
 
+_TOKENIZER_CACHE = {}
+
+
+def _cached_tokenizer(model_path):
+    """Load the base tokenizer ONCE and reuse it for every checkpoint save. save_checkpoint runs every
+    save_every steps; re-reading model_path from disk on each save is fragile — a transient bad read of the
+    base-model files under FS pressure (e.g. during the concurrent multi-GB weight write) crashed the v2 run
+    at the step-3100 save. Cache the tokenizer (and use the in-memory model.config for the config) so a save
+    never touches model_path on disk after the first one."""
+    if model_path not in _TOKENIZER_CACHE:
+        from transformers import AutoTokenizer
+        _TOKENIZER_CACHE[model_path] = AutoTokenizer.from_pretrained(model_path)
+    return _TOKENIZER_CACHE[model_path]
+
+
 def _save_bf16_hf(full_sd, cfg, out_dir):
     """Standard HF bf16 save (snap/bf16 runs + multi-GPU consolidation): round-trip through a fresh model
     so the dir is a plain from_pretrained checkpoint. Only used when there are NO int8-master weights."""
-    from transformers import AutoConfig, AutoTokenizer
+    from transformers import AutoConfig
     full_sd = {k: (v.dequantize().cpu() if hasattr(v, "dequantize") else v.cpu()) for k, v in full_sd.items()}
     if not full_sd:
         raise RuntimeError("consolidation returned an empty state dict on rank 0 — not saving")
-    tcfg = AutoConfig.from_pretrained(cfg["model_path"]).text_config
+    base_cfg = AutoConfig.from_pretrained(cfg["model_path"])
+    tcfg = getattr(base_cfg, "text_config", base_cfg)
     tcfg._attn_implementation = "sdpa"
     out = Gemma4ForCausalLM(tcfg)
     missing, unexpected = out.load_state_dict(full_sd, strict=False)
@@ -498,7 +515,7 @@ def _save_bf16_hf(full_sd, cfg, out_dir):
     if real_missing or stray:
         raise RuntimeError(f"refusing to save broken checkpoint: missing={real_missing[:8]} stray={stray[:8]}")
     out.to(torch.bfloat16).save_pretrained(out_dir)
-    AutoTokenizer.from_pretrained(cfg["model_path"]).save_pretrained(out_dir)
+    _cached_tokenizer(cfg["model_path"]).save_pretrained(out_dir)
     log(f"saved bf16 checkpoint -> {out_dir}  (unexpected={len(unexpected)} all shared-KV)")
 
 
@@ -509,8 +526,8 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
     killed at the first save. The shared loader (pipeline.model_load.load_causal_ckpt_bf16) dequantizes int8
     checkpoints on load. bf16/snap runs (no int8 masters) keep the standard from_pretrained save."""
     import json as _json
+    import copy
     from pathlib import Path
-    from transformers import AutoConfig, AutoTokenizer
     out_dir = Path(out_dir)
     if world > 1:                                       # FSDP consolidation → bf16 HF save (int8 master is single-GPU)
         from torch.distributed.checkpoint.state_dict import get_model_state_dict, StateDictOptions
@@ -536,12 +553,12 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
             out_sd[k] = v.detach().cpu().to(torch.bfloat16)                    # norms / embeds / lm_head (frozen)
     out_dir.mkdir(parents=True, exist_ok=True)
     save_file(out_sd, str(out_dir / "model.safetensors"), metadata={"format": "pt", "quant": "int8_rowwise"})
-    tcfg = AutoConfig.from_pretrained(cfg["model_path"]).text_config
-    tcfg._attn_implementation = "sdpa"
-    tcfg.architectures = ["Gemma4ForCausalLM"]
+    tcfg = copy.deepcopy(model.config)          # in-memory config — never re-read model_path/config.json at
+    tcfg._attn_implementation = "sdpa"          # save time (that disk read, under FS pressure from the 8.6GB
+    tcfg.architectures = ["Gemma4ForCausalLM"]  # weight write, is what crashed the step-3100 save of the v2 run).
     tcfg.save_pretrained(out_dir)
     (out_dir / "quant_keys.json").write_text(_json.dumps({"method": "int8_rowwise", "keys": int8_keys}))
-    AutoTokenizer.from_pretrained(cfg["model_path"]).save_pretrained(out_dir)
+    _cached_tokenizer(cfg["model_path"]).save_pretrained(out_dir)
     gb = sum(t.numel() * t.element_size() for t in out_sd.values()) / 1e9
     log(f"saved int8 checkpoint -> {out_dir}  ({len(int8_keys)} int8 weights + scales, {gb:.1f}GB on disk, no bf16 materialization)")
 
