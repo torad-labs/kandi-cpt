@@ -20,8 +20,8 @@ init_from: checkpoints/cpt/edc_all97_v2
 # example count after the build (more dims/editions than v1's 1827 → more examples → scale the horizon).
 tokenized: data/_build/30_tokenized/sft_v11.arrow
 seq_len: 256
-micro_batch_size: 1      # memory-optimized: 16 batch-1 micro-passes/step (halves activation memory, ~2× step time)
-grad_accum: 16           # effective batch 16 (1×16) — same convergence as 2×8. For speed over memory: mb2 / accum8
+micro_batch_size: 2      # MATCHES the CPT config (stability: same engine knobs). ~2× faster/step than mb1. seq_len 256 keeps activation modest — mb1 was 9.1GB, mb2 ≈ 12GB, well under the 16GB ceiling.
+grad_accum: 8            # mb2×8 = 16 eff batch (identical convergence to mb1×16). The two training configs now differ ONLY in the legitimately-different fields (seq_len, lr, max_steps, init_from, tokenized, save_dir).
 
 # optimizer — lower LR than CPT (instruction tuning is sensitive); same low-bit deployment recipe
 lr: 2.0e-5
