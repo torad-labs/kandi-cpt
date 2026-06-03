@@ -1,0 +1,74 @@
+# CPT CONTINUATION — finish the v2 run from step_003000 (the original crashed at the step-3100 save).
+# Reproduces the original WSD schedule's 3000→3160 tail: pure decay from the step-3000 lr (1.64e-5,
+# = 5e-6 + 45e-6·(1 − 472/632)) down to min_lr 5e-6 over the remaining 160 steps. init_from dequantizes
+# the int8 step_003000 brain (pipeline.model_load.causal_bf16_state_dict). save_every 200 > max_steps 160
+# → no intermediate step_* saves (no collision with the existing ones); only the FINAL save fires, landing
+# the canonical final checkpoint at save_dir (checkpoints/cpt/edc_all97_v2/), which is sft_edc.yaml's init_from.
+#
+# LAUNCH:  bash scripts/train_fp4.sh --config configs/train_edc_lv_2026_finish.yaml
+run_name: edc_lv_2026_cpt_v2_finish
+save_dir: checkpoints/cpt/edc_all97_v2          # FINAL lands in the base dir → the canonical v2 CPT checkpoint
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+precision: fp4
+
+# continue from the 3000-step brain (int8 checkpoint — dequantized on load)
+init_from: checkpoints/cpt/edc_all97_v2/step_003000
+
+# data — same VC1-rebuilt corpus
+tokenized: data/_build/30_tokenized/corpus_all97_v2.arrow
+seq_len: 512
+micro_batch_size: 2
+grad_accum: 8
+
+# optimizer — continue the decay tail (no warmup; pure decay to min_lr)
+lr: 1.64e-5               # = the original run's lr at step 3000
+min_lr: 5.0e-6
+weight_decay: 0.0
+betas: [0.9, 0.95]
+adam_eps: 1.0e-8
+grad_clip: 1.0
+optimizer_8bit: false
+optimizer_lowbit: 4
+int8_master: storage     # same moat as the main run (true int8-stored master + frugal native-int8 save)
+warmup_steps: 0          # continuation — no re-warm
+max_steps: 160           # 3000 → 3160
+decay_frac: 1.0          # pure WSD decay over the whole 160 steps (1.64e-5 → 5e-6)
+
+# memory levers (unchanged from the main run)
+gradient_checkpointing: true
+freeze_embeddings: true
+
+nvfp4:
+  skip_lm_head: true
+  skip_embeddings: true
+  bf16_first_layers: 2
+  bf16_last_layers: 5
+
+log_every: 5
+save_every: 200          # > max_steps 160 → ONLY the final save fires (→ base dir); leaves existing step_* intact
+
+# levers — all OFF (same baseline as the main CPT run)
+levers:
+  lever1_entity_loss:
+    enabled: false
+    entity_loss_weight: 2.5
+  lever2_qa_mix:
+    enabled: false
+    qa_token_fraction: 0.15
+    use_chat_template: false
+    system_prefix: null
+  lever3_three_r:
+    enabled: false
+    replay_token_fraction: 0.02
+    rewarm_peak_lr: 5.0e-5
+    ewc:
+      enabled: false
+      lambda: 1.0
+  lever4_exposure_tracking:
+    enabled: false
+    threshold: 0.8
+  lever5_causal_trace:
+    enabled: false
+    n_facts: 200
+    noise_scale: 0.1
+    checkpoint: null
