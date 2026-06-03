@@ -23,6 +23,7 @@ for s in $(ls -d "$SAVE"/step_* 2>/dev/null | sort | tail -2); do
   st=$(basename "$s" | sed -E 's/step_0*([0-9]+)/s\1/')
   CKPTS="$s $CKPTS"; LABELS="${LABEL}_${st} $LABELS"
 done
-CUDA_VISIBLE_DEVICES=0 PYTHONPATH=scripts .venv/bin/python scripts/eval_sft_calibration.py \
-  --checkpoints $CKPTS --labels $LABELS --device cuda:0
+# Gate through the ONE eval entrypoint (thresholds/device come from configs/sft_edc.yaml eval: section).
+CUDA_VISIBLE_DEVICES=0 PYTHONPATH=scripts .venv/bin/python scripts/eval.py \
+  --config configs/sft_edc.yaml --mode sft --checkpoints $CKPTS --labels $LABELS
 echo "===== $LABEL: trained + GATED → scorecard_${LABEL}_final.json (visible in the dashboard). ====="
