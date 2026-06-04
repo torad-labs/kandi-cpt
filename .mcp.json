@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "torad-train": {
+      "command": ".venv/bin/python",
+      "args": ["scripts/torad_mcp.py"],
+      "env": {
+        "TORAD_AGENT_WRITE": "1"
+      }
+    }
+  }
+}

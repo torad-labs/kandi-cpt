@@ -1,1 +1,9 @@
-{"run": "edc_all97_v2", "log_path": "checkpoints/cpt/edc_all97_v2/train.log", "pid": 3756713, "total_steps": 3160, "started": 1780433411.0616376, "status": "running", "phase": "training"}
+{
+  "run": "edc_all97_v2",
+  "log_path": "checkpoints/cpt/edc_all97_v2/train.log",
+  "pid": 1344624,
+  "total_steps": 3160,
+  "started": 1780513917.915249,
+  "status": "stopped",
+  "phase": "training"
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registry · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const simple = T.isSimple();
+const slot = T.mountShell({ page: "registry", crumbs: [{ label: "Console", href: "/" }, { label: simple ? "Ship" : "Registry" }] });
+
+slot.innerHTML = `
+  <div class="phead"><div><h1>${simple ? "Ship your model" : "Model registry"}</h1>
+    <div class="sub">${simple
+      ? "When a model passes the quality test, export it here. You get a folder with everything your app needs to run the model on a phone — the model itself plus its test report."
+      : "The ship boundary: only gate-passing models, each exported as an on-device artifact (the int8-master weights + quant keys + the gate report + the engine identity — all travel together). Export refuses a run that didn't pass the gate."}</div></div></div>
+  ${simple ? `<div class="hero mb"><h2>How shipping works</h2>
+    <p>A model is ready to ship when it <b>passes the quality test</b> — it doesn't make things up, it knows your domain, and it actually answers. Pick a passing model below and click Export; you'll get a folder you copy into your app. If nothing's passing yet, go to the <a href="/coach">Coach</a> to see what to fix.</p></div>` : ""}
+  <div class="panel" id="exportPanel"></div>
+  <div id="regOut"></div>`;
+
+function cell(v, thr, dir) { return v == null ? `<td class="num dim">—</td>` : `<td class="num ${T.grade(v, thr, dir)}">${T.pct(v)}</td>`; }
+
+(async () => {
+  let exports, runs;
+  try { [exports, runs] = await Promise.all([T.postAction("list_exports", {}), T.fetchJSON("/api/runs").then(r => r.runs)]); }
+  catch (e) { return T.err(slot, e.message, `Couldn't load the registry. Make sure the console server is running (<span class="mono">torad serve</span>), then reload.`); }
+  const passed = runs.filter(r => r.status === "passed");
+  const exported = new Set((exports.exports || []).map(e => e.run_id));
+
+  // export form
+  const candidates = passed.filter(r => !exported.has(r.id));
+  T.$("#exportPanel").innerHTML = `
+    <div class="panel-h"><h2>Export a gate-passing run</h2><span class="note">${candidates.length} passed & not yet exported</span></div>
+    <div class="formrow">
+      <div class="field grow"><div class="lab">Run (PASS only)</div>
+        <select id="exRun" class="sel" aria-label="Gate-passing run to export">${candidates.length ? candidates.map(r => `<option value="${r.id}">${r.id} · cal ${T.fmt((r.metrics||{}).calibration_score,2)}</option>`).join("") : `<option disabled>— none pending —</option>`}</select></div>
+      <button class="btn primary" id="exBtn" ${candidates.length ? "" : "disabled"}>Export →</button>
+    </div>
+    ${candidates.length ? "" : `<div class="err-recover" style="margin-top:10px">${
+      passed.length ? `Every passing model is already exported — see <b>Shipped artifacts</b> below.`
+        : `No model has passed the quality test yet. Train one from <a href="/train">Train</a>, then see the <a href="/coach">Coach</a> for what to fix if it doesn't pass.`}</div>`}
+    <div id="exMsg" style="display:none;margin-top:12px"></div>`;
+  T.$("#exBtn").onclick = async () => {
+    const run_id = T.$("#exRun").value, msg = T.$("#exMsg"), btn = T.$("#exBtn");
+    btn.disabled = true; msg.style.display = "block"; msg.innerHTML = `<span class="mono dim">exporting…</span>`;
+    try {
+      const r = await T.postAction("export_checkpoint", { run_id });
+      if (r.error) { msg.innerHTML = `<div class="errbox">⛔ ${T.esc(r.error)}${/did not PASS/.test(r.error) ? ' — <a href="/coach">see the Coach</a> for what to fix.' : ""}</div>`; btn.disabled = false; return; }
+      msg.innerHTML = `<div class="hero" style="padding:14px 18px;border-left-color:var(--good)">
+        <div class="row gap"><span class="pill pass" style="text-transform:none"><span class="pd"></span>Shipped</span>
+          <span class="mono b">${T.esc(r.export_dir || ("exports/" + r.run_id))}</span></div>
+        <p style="margin:8px 0 0;font-size:13px">Your model is exported (${(r.files || []).length} files: the model weights, its quality-test report, and the engine identity). Copy this folder into your app to run it on-device.</p></div>`;
+      setTimeout(() => location.reload(), 1500);
+    } catch (e) { msg.innerHTML = `<div class="errbox">⚠ ${T.esc(e.message)}</div>`; btn.disabled = false; }
+  };
+
+  // exported models table
+  const ex = exports.exports || [];
+  T.$("#regOut").innerHTML = `<div class="panel"><div class="panel-h"><h2>Shipped artifacts</h2><span class="note">${ex.length} model${ex.length === 1 ? "" : "s"}</span></div>
+    ${ex.length ? `<table class="tbl"><thead><tr><th>Model</th><th>Engine</th>
+      <th class="num">Fabrication</th><th class="num">Accuracy</th><th class="num">Coverage</th><th>Files</th></tr></thead>
+      <tbody>${ex.map(e => { const m = e.metrics || {}; return `<tr class="clk" onclick="location='/run?id=${e.run_id}'">
+        <td class="name"><span class="id">${e.run_id}</span></td>
+        <td>${T.engineBadge(e.contract)}</td>
+        ${cell(m.fabrication_rate, T.GATE.fabrication, "max")}${cell(m.accuracy_when_answering, T.GATE.accuracy, "min")}${cell(m.coverage, T.GATE.coverage, "min")}
+        <td class="mono dim" style="font-size:11px">${(e.files || []).length} files</td></tr>`; }).join("")}</tbody></table>`
+      : `<div class="empty">No models exported yet. Export a gate-passing run above — it becomes a shippable on-device artifact under <span class="mono">exports/</span>.</div>`}</div>`;
+})();
+</script>
+</body></html>

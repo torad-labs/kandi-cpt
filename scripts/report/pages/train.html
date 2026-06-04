@@ -12,8 +12,27 @@
 const slot = T.mountShell({ page: "train", crumbs: [{ label: "Console", href: "/" }, { label: "Train" }] });
 slot.innerHTML = `
   <div class="phead"><div><h1>Train</h1>
-    <div class="sub">Live view of the active run — steps and loss stream in as the trainer logs them (polled every 2s). When nothing is training, this tails the most recent run.</div></div>
+    <div class="sub">Pick a phase, click Launch, and watch the model learn — progress streams in live. Only one training job runs at a time, so a launch waits if the GPU is busy.</div></div>
     <div class="right" id="hd"></div></div>
+  <div class="hero simple-only" style="padding:18px 22px">
+    <h2 style="font-size:18px">Two phases, in order</h2>
+    <p><b>1 · ${T.term("cpt")}</b> teaches the model the <b>facts</b> from your knowledge base. It runs first and takes longer.
+       <br><b>2 · ${T.term("sft")}</b> then teaches it <b>when to answer vs say “I don't know”</b> — quick, and it runs on top of the Knowledge Phase.
+       <br><span class="dim">First time? Start with the Knowledge Phase.</span></p>
+  </div>
+  <div class="panel" id="launcher">
+    <div class="panel-h"><h2>Launch a run</h2><span class="note" id="gpuchip">checking GPU…</span></div>
+    <div class="formrow">
+      <div class="field"><div class="lab">Phase</div>
+        <div class="tg" id="modetg"><button class="on" data-m="cpt" title="Teach the model facts">${T.word("cpt")}</button><button data-m="sft" title="Teach it when to answer">${T.word("sft")}</button></div></div>
+      <div class="field grow"><div class="lab">Recipe ${T.help("Points to the training recipe (a config file). The default is set up for you — leave it as-is unless you're tuning.")}</div>
+        <input id="cfg" class="inp" value="configs/train_edc_lv_2026.yaml"></div>
+      <div class="field hidden" id="labelwrap"><div class="lab">Label ${T.help("A short name for this run, e.g. v12.")}</div>
+        <input id="lbl" class="inp" placeholder="v12" style="width:96px"></div>
+      <button class="btn primary" id="launchbtn">Launch →</button>
+    </div>
+    <div id="launchmsg" class="hidden mt"></div>
+  </div>
   <div id="status"></div>
   <div class="grid c2">
     <div class="panel"><div class="panel-h"><h2>Loss</h2><span class="note" id="lossnote"></span></div>
@@ -25,6 +44,46 @@ slot.innerHTML = `
 
 let curRun = null, cursor = 0, points = [];
 const consoleEl = T.$("#console");
+
+// ── launcher: mode toggle, GPU-busy chip, Launch → POST launch_run (refusal shown verbatim) ──
+const CFG_DEFAULT = { cpt: "configs/train_edc_lv_2026.yaml", sft: "configs/sft_edc.yaml" };
+let launchMode = "cpt";
+T.$("#modetg").querySelectorAll("button").forEach(b => b.onclick = () => {
+  T.$("#modetg").querySelectorAll("button").forEach(x => x.classList.remove("on")); b.classList.add("on");
+  launchMode = b.dataset.m;
+  T.$("#cfg").value = CFG_DEFAULT[launchMode];
+  T.$("#labelwrap").classList.toggle("hidden", launchMode !== "sft");
+});
+async function gpuChip() {
+  try {
+    const g = await T.postAction("gpu_status", {});
+    const c = T.$("#gpuchip"), btn = T.$("#launchbtn");
+    const simple = T.isSimple();
+    if (g.free) { c.textContent = simple ? "Ready to train" : "GPU0 free"; c.style.color = "var(--good)"; btn.disabled = false; }
+    else { const h = g.holder;
+      c.textContent = simple
+        ? (h ? `Busy — training ${h.run_id} (wait or stop it)` : "GPU busy with another program")
+        : (h ? `GPU0 busy · ${h.run_id} (step ${h.step ?? "?"})` : `GPU0 busy · foreign pid ${g.foreign_pids}`);
+      c.style.color = "var(--bad)"; btn.disabled = false; }
+  } catch (e) { /* leave chip */ }
+}
+T.$("#launchbtn").onclick = async () => {
+  const msg = T.$("#launchmsg"), btn = T.$("#launchbtn");
+  const args = { mode: launchMode, config: T.$("#cfg").value.trim() };
+  if (launchMode === "sft" && T.$("#lbl").value.trim()) args.label = T.$("#lbl").value.trim();
+  btn.disabled = true; msg.classList.remove("hidden"); msg.innerHTML = `<span class="mono dim">launching…</span>`;
+  try {
+    const r = await T.postAction("launch_run", args);
+    msg.innerHTML = `<div class="pill pass" style="text-transform:none"><span class="pd"></span>launched ${T.esc(r.run_id)} (pid ${r.pid})</div> <span class="dim mono" style="font-size:12px">streaming below…</span>`;
+    curRun = r.run_id; cursor = 0; consoleEl.innerHTML = ""; points = [];
+    refresh();
+  } catch (e) {
+    const recover = e.kind === "gpu_busy"
+      ? `Only one model can train at a time (single GPU). It'll free up when the current run finishes — watch it on <a href="/runs">Runs</a>.` : "";
+    msg.innerHTML = `<div class="errbox">${e.kind === "gpu_busy" ? "⛔ " : "⚠ "}${T.esc(e.message)}${recover ? `<div class="err-recover">${recover}</div>` : ""}</div>`;
+  } finally { btn.disabled = false; gpuChip(); }
+};
+gpuChip(); T.poll(gpuChip, 4000);
 
 function fmtLine(ln) {
   if (/ step \d+\//.test(ln)) return `<span class="step">${T.esc(ln)}</span>`;
@@ -40,7 +99,7 @@ async function refresh() {
     const runs = await T.fetchJSON("/api/runs").then(r => r.runs).catch(() => []);
     if (runs.length) { runId = runs[runs.length - 1].id; status = "idle"; live = false; }
   }
-  if (!runId) { T.$("#status").innerHTML = `<div class="empty">No runs yet. Launch a CPT or SFT run and it streams here.</div>`; return; }
+  if (!runId) { T.$("#status").innerHTML = `<div class="empty">No models yet. Pick a phase above and click <b>Launch</b> — progress will stream here.</div>`; return; }
   if (runId !== curRun) { curRun = runId; cursor = 0; consoleEl.innerHTML = ""; points = []; }
 
   const log = await T.fetchJSON(`/api/runs/${runId}/log?after=${cursor}`).catch(() => null);
@@ -65,16 +124,23 @@ async function refresh() {
   const hb = gpu ? `GPU ${gpu.util}% · ${gpu.mem_gb}GB · ${elapsed} elapsed` : (elapsed ? elapsed + " elapsed" : "");
   const pillSt = live ? "running" : (status === "stopped" ? "stopped" : "trained");
   const pillLbl = live ? (phase ? phase.toUpperCase() : "TRAINING") : status === "stopped" ? "STOPPED" : "IDLE — last run";
-  T.$("#hd").innerHTML = T.pill(pillSt, pillLbl);
+  T.$("#hd").innerHTML = T.pill(pillSt, pillLbl) + (live ? ` <button class="btn" id="stopbtn" style="margin-left:8px">Stop</button>` : "");
+  if (live) { const sb = T.$("#stopbtn"); if (sb) sb.onclick = async () => {
+    sb.disabled = true; sb.textContent = "stopping…";
+    try { await T.postAction("stop_run", { run_id: curRun }); } catch (e) { sb.textContent = "Stop"; sb.disabled = false; }
+  }; }
   T.$("#status").className = "panel";
   T.$("#status").innerHTML = `
     <div class="spread mb"><div class="mono b" style="font-size:16px">${T.esc(runId)}</div>
       <div class="mono dim">${live ? (phase || "live") : status === "stopped" ? "process ended" : "not currently training"}</div></div>
     ${building
-      ? `<div class="mono dim" style="font-size:12.5px">This step scores which facts the model already knows, in batches — it doesn't print per-item, so the log stays quiet. The heartbeat below shows it's working; training steps stream once it finishes.</div>
+      ? `<div class="mono dim" style="font-size:12.5px">${T.isSimple()
+          ? "Assembling the training data right now (2–5 min — normal). The log stays quiet during this step; the live dot below shows it's working. Learning steps start streaming once it's done."
+          : "This step scores which facts the model already knows, in batches — it doesn't print per-item, so the log stays quiet. The heartbeat below shows it's working; training steps stream once it finishes."}</div>
          <div class="spread mono mt" style="font-size:12.5px"><span class="b" style="color:var(--ox)">${hb || "working…"}</span><span class="dim">${T.esc(phase)}</span></div>
          <div class="mbar mt" style="height:8px;overflow:hidden"><i class="ox" style="width:100%;opacity:.3;animation:pulse 1.4s ease-in-out infinite"></i></div>`
-      : `<div class="spread mono" style="font-size:12.5px"><span>step ${step} / ${total}</span><span>${hb ? hb + " · " : ""}${((step / total) * 100).toFixed(0)}%</span></div>
+      : `${T.isSimple() && live ? `<div class="b mb" style="font-size:13.5px;color:var(--ox)">Learning · step ${step} of ${total}${last && last.sps ? ` · about ${Math.max(1, Math.ceil((total - step) * last.sps / 60))} min left` : ""}</div>` : ""}
+         <div class="spread mono" style="font-size:12.5px"><span>step ${step} / ${total}</span><span>${hb ? hb + " · " : ""}${((step / total) * 100).toFixed(0)}%</span></div>
          <div class="mbar mt" style="height:8px"><i class="ox" style="width:${Math.min(100, step / total * 100)}%"></i></div>`}
     <div class="tiles mt">
       <div class="tile"><div class="k">loss</div><div class="v">${last ? last.loss.toFixed(4) : "—"}</div></div>

@@ -19,13 +19,13 @@ class CleanDoc:
     quality_gate: dict = field(default_factory=dict)
 
 
-# source_channel → 10_clean subfolder (mfw is the historical reference backbone)
+# source_channel → 10_clean subfolder (mfw is the historical reference backbone; uploads = UI document-drop)
 SUBFOLDER = {"news": "news", "reddit": "reddit", "youtube": "youtube",
-             "official": "official", "mfw": "reference"}
+             "official": "official", "mfw": "reference", "uploads": "uploads"}
 
 
 def get_cleaners():
     """Lazy import (trafilatura is heavy) → {source_channel: clean_fn}."""
-    from . import news, mfw, official, youtube, reddit
+    from . import news, mfw, official, youtube, reddit, uploads
     return {"news": news.clean, "mfw": mfw.clean, "official": official.clean,
-            "youtube": youtube.clean, "reddit": reddit.clean}
+            "youtube": youtube.clean, "reddit": reddit.clean, "uploads": uploads.clean}

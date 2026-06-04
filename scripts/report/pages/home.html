@@ -14,15 +14,20 @@ slot.innerHTML = `
   <div class="phead">
     <div>
       <h1>Overview</h1>
-      <div class="sub">One objective: install EDC festival knowledge into Gemma-4 E2B so Kandi can answer it on-device — answering what it knows, refusing what it doesn't, never fabricating.</div>
+      <div class="sub">You have a body of knowledge. This console teaches a small AI model to know it, answer what it knows, refuse what it doesn't, and run on a phone. Here's where you are in that journey.</div>
     </div>
     <div class="right"><a class="btn" href="/runs">All runs →</a></div>
   </div>
+  <div id="rail"></div>
+  <div class="hero simple-only" id="startHero" style="display:none"></div>
   <div id="tiles" class="tiles mb"></div>
   <div class="grid c2">
     <div id="activity"></div>
     <div id="objective"></div>
   </div>
+  <div class="panel" id="domainsPanel"><div class="panel-h"><h2>Domains</h2>
+    <span class="note">each domain is a body of knowledge, installed into its own on-device model</span></div>
+    <div id="domains"></div></div>
   <div class="panel"><div class="panel-h"><h2>Recent runs</h2><a class="note" href="/runs">view all →</a></div>
     <div id="recent"></div></div>`;
 
@@ -31,32 +36,51 @@ function metricCell(v, thr, dir, d = 0) {
 }
 
 (async () => {
-  let runs, active, inst;
+  let runs, active, inst, objsResp;
   try {
-    [runs, active, inst] = await Promise.all([
+    [runs, active, inst, objsResp] = await Promise.all([
       T.fetchJSON("/api/runs").then(r => r.runs),
       T.fetchJSON("/api/train/active"),
       T.fetchJSON("/api/install"),
+      T.fetchJSON("/api/objectives"),
     ]);
-  } catch (e) { return T.err(slot, e.message); }
+  } catch (e) { return T.err(slot, e.message, `Couldn't reach the console server. Start it with <span class="mono">torad serve</span> and reload this page.`); }
 
   const gated = runs.filter(r => r.metrics);
   const passed = gated.filter(r => r.status === "passed");
   const best = passed.slice().sort((a, b) => (b.metrics.calibration_score || 0) - (a.metrics.calibration_score || 0))[0];
   const latest = runs[runs.length - 1];
   const il = inst.install || {};
+  let exported = []; try { exported = (await T.postAction("list_exports", {})).exports || []; } catch (e) {}
+
+  // ── journey progress rail (where am I?) — Prepare → Train → Test → Ship ──
+  const steps = [
+    { name: "Data ready", done: runs.length > 0 || (inst && inst.install), href: "/data", hint: "Your knowledge is in the training set" },
+    { name: "Trained", done: runs.length > 0, href: "/train", hint: runs.length ? `${runs.length} model${runs.length === 1 ? "" : "s"} trained` : "Launch your first run" },
+    { name: "Passed the test", done: passed.length > 0, href: best ? "/run?id=" + best.id : "/coach", hint: passed.length ? `${passed.length} passed the quality test` : "No model passes yet — see Coach" },
+    { name: "Shipped", done: exported.length > 0, href: "/registry", hint: exported.length ? `${exported.length} exported to on-device` : "Export a passing model" },
+  ];
+  T.$("#rail").innerHTML = `<div class="journey">${steps.map((s, i) => `${i ? '<span class="jsep"></span>' : ''}
+    <a class="jstep ${s.done ? "done" : ""}" href="${s.href}" title="${s.hint}"><span class="jdot">${s.done ? "✓" : i + 1}</span><span class="jlbl">${s.name}</span></a>`).join("")}</div>`;
+
+  // ── "start here" hero for first-timers (simple mode, before any run) ──
+  if (T.isSimple() && runs.length === 0) {
+    const h = T.$("#startHero"); h.style.display = "";
+    h.innerHTML = `<h2>First time? Start here.</h2>
+      <p>Two ways in: <b>① Build your knowledge set</b> on the <a href="/data">Your data</a> page (scrape + assemble the facts), or if it's ready, <b>② go straight to <a href="/train">Train</a></b> and launch the Knowledge Phase. After it trains, the <a href="/coach">Coach</a> reads the result in plain language and tells you what to do next.</p>`;
+  }
 
   // ── tiles ──
   T.$("#tiles").innerHTML = [
-    `<div class="tile"><div class="k">Runs</div><div class="v">${runs.length}</div>
-       <div class="meta">${passed.length} passed · ${gated.length - passed.length} failed · ${runs.length - gated.length} not gated</div></div>`,
-    `<div class="tile accent"><div class="k">Best behaviour gate</div>
+    `<div class="tile"><div class="k">Models trained</div><div class="v">${runs.length}</div>
+       <div class="meta">${passed.length} passed · ${gated.length - passed.length} need work · ${runs.length - gated.length} not tested</div></div>`,
+    `<div class="tile accent"><div class="k">Best model</div>
        <div class="v" style="font-size:20px;font-family:var(--serif)">${best ? best.id.replace("edc_sft_", "") : "—"}</div>
-       <div class="meta">${best ? T.pill("passed") + " calib " + T.fmt(best.metrics.calibration_score, 2) : "no run passes yet"}</div></div>`,
+       <div class="meta">${best ? T.pill("passed") + " score " + T.fmt(best.metrics.calibration_score, 2) : "none passes the quality test yet"}</div></div>`,
     `<div class="tile"><div class="edge ${il.level === "strong" ? "good" : il.level === "weak" ? "bad" : "warn"}"></div>
-       <div class="k">CPT install depth <span class="hint" data-tip="Is the knowledge densely & separably in the weights? Measured by retrieval p@1 vs 1/7 chance + the data audit. Distinct from the behaviour gate.">ⓘ</span></div>
+       <div class="k">${T.term("install")}</div>
        <div class="v" style="font-size:20px;font-family:var(--serif)">${(il.level || "—").toUpperCase()}</div>
-       <div class="meta">p@1 ratio ${il.ratio ? il.ratio.toFixed(2) + "× chance" : "—"}${il.fails && il.fails.length ? " · audit: " + il.fails.join(", ") : ""}</div></div>`,
+       <div class="meta">${il.ratio ? "knows facts " + il.ratio.toFixed(1) + "× better than guessing" : "—"}${il.fails && il.fails.length ? " · check: " + il.fails.join(", ") : ""}</div></div>`,
   ].join("");
 
   // ── current activity ──
@@ -79,21 +103,46 @@ function metricCell(v, thr, dir, d = 0) {
 
   // ── objective card ──
   const obj = T.$("#objective"); obj.className = "panel";
-  obj.innerHTML = `<div class="panel-h"><h2>EDC Corpus Install</h2><span class="lab">objective</span></div>
-    <p class="dim" style="margin:.1em 0 .9em">Continued pretraining installs the knowledge; supervised fine-tuning elicits it — answer when known, abstain when not. Success = the behaviour gate <span class="b">and</span> a real install in the weights.</p>
+  obj.innerHTML = `<div class="panel-h"><h2>${T.esc(inst.objective ? inst.objective.name : "Your objective")}</h2><span class="lab">objective</span></div>
+    <p class="dim" style="margin:.1em 0 .9em">The ${T.term("cpt")} teaches the facts; the ${T.term("sft")} teaches it when to answer. A model is ready when it passes the ${T.term("gate")} <span class="b">and</span> the knowledge is really in its weights.</p>
     <div class="row gap mb" style="flex-wrap:wrap">
-      <span class="pill ${best ? "pass" : "fail"}"><span class="pd"></span>GATE ${best ? "MET" : "OPEN"}</span>
+      <span class="pill ${best ? "pass" : "fail"}"><span class="pd"></span>${best ? "PASSES QUALITY TEST" : "NOT PASSING YET"}</span>
       ${T.installPill(il.level)}
-      <span class="pill info"><span class="pd"></span>${runs.length} RUNS</span>
+      <span class="pill info"><span class="pd"></span>${runs.length} MODELS</span>
     </div>
-    <div class="lab mb">Calibration score across runs <span class="dim">(gate-pass needs all three: fab ≤ ${T.pct(T.GATE.fabrication)}, acc ≥ ${T.pct(T.GATE.accuracy)}, cov ≥ ${T.pct(T.GATE.coverage)})</span></div>
+    <div class="lab mb">Overall score across models <span class="dim">(to pass, all three must clear: ${T.word("fabrication")} ≤ ${T.pct(T.GATE.fabrication)}, ${T.word("accuracy")} ≥ ${T.pct(T.GATE.accuracy)}, ${T.word("coverage")} ≥ ${T.pct(T.GATE.coverage)})</span></div>
     <canvas id="caltrend" style="height:96px;width:100%"></canvas>`;
   requestAnimationFrame(() => drawCalTrend(T.$("#caltrend"), gated));
+
+  // ── domains gallery — start-from cards (the worked example to clone + a path to your own) ──
+  const objectives = (objsResp && objsResp.objectives) || [];
+  const selected = (objsResp && objsResp.selected) || T.objective();
+  const cards = objectives.map(o => {
+    const cur = o.id === selected, ready = o.has_data && o.n_runs > 0;
+    const status = cur ? ["current", "you're here"] : o.status === "active" ? ["active", "in progress"]
+      : ready ? ["active", "ready"] : ["planned", "not started"];
+    const go = o.has_data ? "/train" : "/data";
+    return `<button class="domain-card ${status[0]}" data-id="${T.esc(o.id)}" data-go="${go}">
+      <div class="dc-top"><span class="pill ${status[0] === "current" ? "info" : status[0] === "active" ? "pass" : "trained"}"><span class="pd"></span>${status[1]}</span>
+        <span class="dc-runs">${o.n_runs} model${o.n_runs === 1 ? "" : "s"}</span></div>
+      <div class="dc-name">${T.esc(o.name)}</div>
+      <div class="dc-goal">${T.esc(o.goal)}</div>
+      <div class="dc-foot">${o.has_data ? `<span class="dc-ok">✓ data ready</span> · ${ready ? "open Train" : "start training"} →`
+        : `<span class="dc-no">○ no corpus yet</span> · assemble data →`}</div></button>`;
+  }).join("");
+  const newCard = `<a class="domain-card domain-new" href="/docs">
+    <div class="dc-plus">+</div><div class="dc-name">Start a new domain</div>
+    <div class="dc-goal">Pick your own body of knowledge — a game's lore, a product manual, a legal corpus. EDC is the worked example to copy.</div>
+    <div class="dc-foot">how to add one →</div></a>`;
+  T.$("#domains").innerHTML = `<div class="domain-grid">${cards}${newCard}</div>`;
+  T.$$("#domains .domain-card[data-id]").forEach(c => c.onclick = () => {
+    T.setObjective(c.dataset.id); location.href = c.dataset.go;
+  });
 
   // ── recent runs table ──
   const recent = runs.slice(-5).reverse();
   T.$("#recent").innerHTML = `<table class="tbl"><thead><tr>
-      <th>Run</th><th>Status</th><th class="num">Fabrication</th><th class="num">Accuracy</th><th class="num">Coverage</th><th class="num">When</th></tr></thead>
+      <th>Model</th><th>Status</th><th class="num">${T.word("fabrication")}</th><th class="num">${T.word("accuracy")}</th><th class="num">${T.word("coverage")}</th><th class="num">When</th></tr></thead>
     <tbody>${recent.map(r => `<tr class="clk" onclick="location='/run?id=${r.id}'">
       <td class="name"><span class="id">${r.id.replace("edc_sft_", "")}</span> <span class="muted">${r.levers_on && r.levers_on.length ? "· " + r.levers_on.length + " levers" : ""}</span></td>
       <td>${T.pill(r.status)}</td>

@@ -26,6 +26,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from cpt_config import GATE_THRESHOLDS as _GT   # the ONE gate-threshold source (kills the eval/serve triplication)
+import torad_actions  # the ACTION CATALOG — POST /api/action/<name> dispatches here (same catalog the MCP server exposes)
 
 ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
@@ -339,6 +340,10 @@ def _analyze_run(m, gate, prior_m, audit_fails):
     fab_weak = (not fab_ok) or (fab is not None and T["fabrication"] - fab < 0.06)
     cov_weak = (not cov_ok) or (cov is not None and cov < 0.90)
     acc_weak = (not acc_ok) or (acc is not None and acc < 0.85)
+    # The CANONICAL build_sft recipe (from run_v9.sh) — each lever is a structured DELTA on it, so the
+    # Coach's "Run this recipe" button / torad_apply_recipe can execute it verbatim (build→train→gate),
+    # not just describe it. `flags` is the full build_sft flag list for that recipe.
+    BASE = ["--knowledge-filter", "--self-gen", "--drop-generic", "--val-frac", "0.1", "--answer-aug", "8"]
     if fab_weak:
         # Paired-contrast is the coverage-preserving fab fix — the more coverage there is to lose
         # (here it's high), the more it beats plain absent-negatives, which tax exactly that coverage.
@@ -346,21 +351,25 @@ def _analyze_run(m, gate, prior_m, audit_fails):
                        "why": (f"Fabrication is the weak/thin area ({fab:.0%}) and coverage ({cov:.0%}) is hard-won — "
                                "plain refusal training would cut fabrication but make the model shy and drop that coverage."),
                        "effect": "Pair the SAME city's valid year→answer with its invalid year→refuse, at a fixed refuse fraction (~0.115). The model learns the boundary, not blanket refusal — fabrication drops AND coverage holds.",
-                       "risk": "Keep the refuse fraction fixed so it doesn't tip into over-refusal. (Plain absent-edition negatives are the cruder fallback if you don't mind a coverage hit.)"})
+                       "risk": "Keep the refuse fraction fixed so it doesn't tip into over-refusal. (Plain absent-edition negatives are the cruder fallback if you don't mind a coverage hit.)",
+                       "recipe": {"label": "paired_contrast", "flags": BASE + ["--absent-neg", "130", "--fake-city-neg", "40", "--fine-grained-neg", "30"]}})
     if cov_weak and not fab_weak:
         levers.append({"lever": "More real Q→A; drop generic refusals", "severity": "warn",
                        "why": f"Coverage has headroom ({cov:.0%}) and fabrication is safe — it can afford to answer more.",
                        "effect": "Add varied real question→answer pairs and remove blanket refusal templates.",
-                       "risk": "Re-check fabrication after — don't overshoot."})
+                       "risk": "Re-check fabrication after — don't overshoot.",
+                       "recipe": {"label": "coverage_push", "flags": BASE + ["--absent-neg", "90"]}})
     if acc_weak:
         levers.append({"lever": "Vary answer wording; deepen the install", "severity": "warn",
                        "why": f"Accuracy ({acc:.0%}) has room — facts go in but come out muddled.",
                        "effect": "More phrasings per fact in CPT + more exposures so each fact installs cleanly, not shallowly.",
-                       "risk": "low"})
+                       "risk": "low",
+                       "recipe": {"label": "deepen", "flags": BASE + ["--absent-neg", "115"]}})
     if not levers:
         levers.append({"lever": "Hold the recipe; widen margins", "severity": "good",
                        "why": "All three checks pass with comfortable margin.",
-                       "effect": "Next run can push higher coverage or a deeper install without risking the gate.", "risk": "low"})
+                       "effect": "Next run can push higher coverage or a deeper install without risking the gate.", "risk": "low",
+                       "recipe": {"label": "hold", "flags": BASE + ["--absent-neg", "125"]}})
     return {"went_well": well, "went_wrong": wrong, "could_improve": improve, "next_levers": levers}
 
 
@@ -700,7 +709,9 @@ MIME = {".html": "text/html", ".css": "text/css", ".js": "application/javascript
         ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png",
         ".woff2": "font/woff2", ".ico": "image/x-icon"}
 PAGE_ROUTES = {"/": "home", "/coach": "coach", "/data": "data", "/train": "train",
-               "/runs": "runs", "/run": "run", "/docs": "docs"}
+               "/runs": "runs", "/run": "run", "/compare": "compare", "/docs": "docs",
+               "/playground": "playground", "/registry": "registry", "/sweeps": "sweeps",
+               "/build": "build"}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -742,6 +753,32 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as ex:
             self._send(500, {"error": str(ex)})
 
+    def do_POST(self):
+        """The action front-door: POST /api/action/<name> with a JSON body dispatches to the SAME
+        ACTION CATALOG the MCP server exposes — no drift between UI and agent. The server binds 127.0.0.1
+        (single-user, local), so writes are localhost-trusted by default; set TORAD_WRITE_TOKEN to require
+        a bearer token. GPU-touching actions still pass the single-GPU mutex inside the handler."""
+        try:
+            u = urlparse(self.path)
+            m = re.fullmatch(r"/api/action/(\w+)", unquote(u.path))
+            if not m:
+                return self._send(404, {"error": f"no POST route: {u.path}"})
+            tok = os.environ.get("TORAD_WRITE_TOKEN")
+            if tok and self.headers.get("Authorization", "") != f"Bearer {tok}":
+                return self._send(401, {"error": "missing or invalid bearer token"})
+            length = int(self.headers.get("Content-Length", 0) or 0)
+            raw = self.rfile.read(length) if length else b"{}"
+            try:
+                args = json.loads(raw or b"{}")
+            except json.JSONDecodeError as e:
+                return self._send(400, {"error": f"bad JSON body: {e}"})
+            status, payload = torad_actions.run_action(m.group(1), args, allow_write=True)
+            self._send(status, payload)
+        except BrokenPipeError:
+            pass
+        except Exception as ex:
+            self._send(500, {"error": str(ex)})
+
     def route(self):
         u = urlparse(self.path)
         path = unquote(u.path)
@@ -752,6 +789,8 @@ class Handler(BaseHTTPRequestHandler):
         # API ──────────────────────────────────────────────
         if path == "/api/objectives":
             return self._json({"objectives": load_objectives(), "selected": obj["id"]})
+        if path == "/api/gate":   # the ONE gate-threshold source for the frontend too (kills the 4th hardcoded copy)
+            return self._json({"gate": dict(_GT)})
         if path == "/api/runs":
             return self._json({"objective": obj, "runs": list_runs(obj)})
         m = re.fullmatch(r"/api/runs/([\w.-]+)", path)
@@ -764,7 +803,16 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/train/active":
             return self._json(train_active())
         if path == "/api/coach":
+            run = (q.get("run", [""])[0])   # ?run=<rid> → per-run Coach (diagnostic read of one run)
+            if run:
+                d = coach_report_run(run)
+                return self._json(d) if d else self._json({"error": "no such run"}, 404)
             return self._json(coach_report(obj))
+        if path == "/api/compare":          # ?runs=a,b[&baseline=a] → run-vs-run diff + per-probe flip-list
+            rids = [r for r in (q.get("runs", [""])[0]).split(",") if r]
+            if len(rids) < 2:
+                return self._json({"error": "need ?runs=a,b (two run ids)"}, 400)
+            return self._json(compare_runs(rids, (q.get("baseline", [None])[0])))
         if path == "/api/data":
             return self._json(corpus_index(obj["festival"]))
         m = re.fullmatch(r"/api/data/layer/([\w-]+)", path)   # cross-corpus layer filter — must precede the edition route
@@ -786,6 +834,17 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/best_practices":
             md = ROOT / "docs" / "cpt_installation_best_practices.md"
             return self._json({"text": md.read_text() if md.is_file() else "_(best-practices doc not found)_"})
+
+        # ── pipeline jobs (the autonomous build loop) — thin GETs over the pipeline_status/log actions ──
+        if path == "/api/pipeline":
+            return self._json(torad_actions.dispatch("pipeline_status"))
+        m = re.fullmatch(r"/api/pipeline/([\w.+-]+)/log", path)
+        if m:
+            return self._json(torad_actions.dispatch("pipeline_log", job_id=m.group(1),
+                                                     after=int((q.get("after", ["0"])[0]) or 0)))
+        m = re.fullmatch(r"/api/pipeline/([\w.+-]+)", path)
+        if m:
+            return self._json(torad_actions.dispatch("pipeline_status", job_id=m.group(1)))
 
         # assets ───────────────────────────────────────────
         if path.startswith("/assets/"):

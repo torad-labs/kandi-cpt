@@ -7,18 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/torad.css">
 <style>
-  .pipe{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:20px}
-  .pl{flex:1;min-width:128px;background:var(--card);border:1px solid var(--line);padding:11px 13px;position:relative;cursor:pointer;transition:background .12s,border-color .12s}
-  .pl:first-child{border-radius:var(--radius) 0 0 var(--radius)} .pl:last-child{border-radius:0 var(--radius) var(--radius) 0}
-  .pl + .pl{border-left:0}
-  .pl:hover{background:var(--paper-2,#FBF7EF)}
-  .pl.on{background:#FBF1DD;border-color:var(--ox);z-index:1;box-shadow:inset 0 0 0 1px var(--ox)}
-  .pl.on .t{color:var(--ox)}
-  .pl .n{font-family:var(--mono);font-size:10px;color:var(--ox);letter-spacing:.06em}
-  .pl .t{font-weight:600;font-size:13px;margin:3px 0 2px}
-  .pl .d{font-size:11px;color:var(--ink-2);line-height:1.4}
-  .pl .arr{position:absolute;right:-7px;top:50%;transform:translateY(-50%);z-index:2;color:var(--line-2);font-size:14px;background:var(--paper);width:14px;text-align:center}
-  .pl:last-child .arr{display:none}
+  /* page-local only: the filter caption line. The pipeline-stage rail (.stage-rail/.stage) now lives in
+     torad.css as a shared component. */
   .filterbar{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin:-8px 0 14px}
 </style>
 </head><body>
@@ -43,14 +33,29 @@ slot.innerHTML = `
   <div class="phead"><div><h1>Data</h1>
     <div class="sub" id="sub">The corpus this objective trains on. Pick a layer below to browse just that stage across every edition, or “all editions” to walk one edition through the whole pipeline. Click any file to read it.</div></div>
     <div class="right" id="hd"></div></div>
-  <div class="pipe" id="pipe"></div>
+  <div class="panel" id="lineage">
+    <div class="panel-h"><h2>Trace a fact · verify a layer</h2><span class="note">follow one fact down the pipeline (source → triple → hydrated exposure), or check a layer's health</span></div>
+    <div class="formrow">
+      <div class="field grow"><div class="lab">Edition</div><input id="trEd" class="inp" list="edlist" aria-label="Edition" placeholder="las_vegas/2026"></div>
+      <div class="field grow"><div class="lab">Fact / entity to trace</div><input id="trQ" class="inp" aria-label="Fact or entity to trace" placeholder="e.g. kinetic field"></div>
+      <button class="btn" id="trBtn">Trace →</button>
+      <div class="field"><div class="lab">Verify layer</div>
+        <select id="vfLay" class="sel" aria-label="Pipeline layer to verify"><option>15_structured</option><option selected>25_hydrated</option><option>20_synthetic</option><option>10_clean</option></select></div>
+      <button class="btn" id="vfBtn">Verify</button>
+      <button class="btn" id="gtBtn" title="Run the deterministic quality gates on this edition">${T.isSimple() ? "Quality check" : "Gate corpus"}</button>
+    </div>
+    <div class="ex-chips" id="trEx"></div>
+    <datalist id="edlist"></datalist>
+    <div id="lineageOut" class="mt"></div>
+  </div>
+  <div class="stage-rail" id="pipe"></div>
   <div class="filterbar" id="fbar"></div>
   <div id="body"></div>`;
 
 function renderPipe() {
   T.$("#pipe").innerHTML = LAYERS.map(([n, k, t, d]) =>
-    `<div class="pl ${FILTER === k ? 'on' : ''}" data-k="${k}"><div class="n">${n || '·'}</div><div class="t">${t}</div><div class="d">${d}</div><span class="arr">→</span></div>`).join("");
-  T.$$("#pipe .pl").forEach(el => el.onclick = () => { if (FILTER === el.dataset.k) return; FILTER = el.dataset.k; renderPipe(); renderBody(); });
+    `<div class="stage ${FILTER === k ? 'on' : ''}" data-k="${k}"><div class="k">${n || '·'}</div><div class="t">${t}</div><div class="d">${d}</div><span class="arr">→</span></div>`).join("");
+  T.$$("#pipe .stage").forEach(el => el.onclick = () => { if (FILTER === el.dataset.k) return; FILTER = el.dataset.k; renderPipe(); renderBody(); });
 }
 
 (async () => {
@@ -72,7 +77,145 @@ function renderPipe() {
     <span class="mono dim" style="font-size:11px">${T.fmt(tot.d)} docs · ${T.fmt(tot.s)} triples · ${T.fmt(tot.h)} relations</span></div>`;
   renderPipe();
   renderBody();
+  wireLineage();
 })();
+
+// ── trace-a-fact + verify-a-layer (the data-lineage engine, over the action catalog) ──
+function edKey(e) { return e.edition || e.path || e.key || (e.city && e.year ? `${e.city}/${e.year}` : e.name || ""); }
+// pre-filled facts so a first-timer sees what's traceable instead of facing a blank box.
+// keyed by festival; the generic fallback teaches the *shape* of a query (an artist, a stage, the city).
+const TRACE_EX = {
+  edc: ["kinetic field", "deadmau5", "Las Vegas", "circuitGROUNDS", "Tiësto"],
+  _default: ["an artist's name", "a stage name", "the host city"],
+};
+function wireLineage() {
+  const eds = (IDX.editions || []).map(edKey).filter(Boolean);
+  T.$("#edlist").innerHTML = eds.map(k => `<option value="${T.esc(k)}">`).join("");
+  // default to the densest edition (most hydrated relations)
+  const densest = (IDX.editions || []).slice().sort((a, b) => (b.n_hydrated || 0) - (a.n_hydrated || 0))[0];
+  if (densest) T.$("#trEd").value = edKey(densest);
+  const out = T.$("#lineageOut");
+  // example chips: real entities for EDC, query-shape hints otherwise
+  const exReal = TRACE_EX[IDX.festival];
+  const ex = exReal || TRACE_EX._default;
+  T.$("#trEx").innerHTML = `<span class="ex-lab">try:</span>` + ex.map(e =>
+    exReal ? `<button class="ex-chip" data-q="${T.esc(e)}">${T.esc(e)}</button>`
+           : `<span class="ex-chip ghost">${T.esc(e)}</span>`).join("");
+  T.$$("#trEx .ex-chip[data-q]").forEach(c => c.onclick = () => { T.$("#trQ").value = c.dataset.q; T.$("#trBtn").click(); });
+  T.$("#trBtn").onclick = async () => {
+    const ed = T.$("#trEd").value.trim(), q = T.$("#trQ").value.trim();
+    if (!ed || !q) { out.innerHTML = `<div class="hint dim">enter an edition and a fact to trace.</div>`; return; }
+    out.innerHTML = `<div class="mono dim">tracing…</div>`;
+    try { renderTrace(out, await T.postAction("trace_fact", { festival: IDX.festival, edition: ed, query: q })); }
+    catch (e) { T.err(out, e.message); }
+  };
+  T.$("#vfBtn").onclick = async () => {
+    const ed = T.$("#trEd").value.trim(), layer = T.$("#vfLay").value;
+    if (!ed) { out.innerHTML = `<div class="hint dim">enter an edition to verify.</div>`; return; }
+    out.innerHTML = `<div class="mono dim">verifying ${T.esc(layer)}…</div>`;
+    try { renderVerify(out, await T.postAction("verify_layer", { festival: IDX.festival, edition: ed, layer })); }
+    catch (e) { T.err(out, e.message); }
+  };
+  T.$("#gtBtn").onclick = async () => {
+    const ed = T.$("#trEd").value.trim();
+    if (!ed) { out.innerHTML = `<div class="hint dim">enter an edition to quality-check.</div>`; return; }
+    out.innerHTML = `<div class="mono dim">running quality gates on ${T.esc(ed)}…</div>`;
+    try { renderGate(out, await T.postAction("gate_corpus", { festival: IDX.festival, edition: ed }), ed); }
+    catch (e) { T.err(out, e.message); }
+  };
+  T.$("#trQ").addEventListener("keydown", e => { if (e.key === "Enter") T.$("#trBtn").click(); });
+}
+
+function renderTrace(out, d) {
+  if (d.error) return T.err(out, d.error);
+  const simple = T.isSimple();
+  const LNAME = { "10_clean": "readable text", "15_structured": "facts", "20_synthetic": "teaching examples", "25_hydrated": "final training lines" };
+  const vpill = { installed: ["pass", "WELL LEARNED"], thin: ["warn", "BARELY THERE"], absent: ["fail", "MISSING"] }[d.verdict] || ["trained", "—"];
+  const cards = (d.trace || []).map((t, i) => `
+    ${i ? '<span style="align-self:center;color:var(--line-2);font-size:16px">→</span>' : ''}
+    <div class="tile" style="flex:1;min-width:120px">
+      <div class="k">${simple ? (LNAME[t.layer] || t.layer) : t.layer}</div>
+      <div class="v" style="font-size:22px">${T.fmt(t.hits)}<span class="u">${simple ? "×" : "hits"}</span></div>
+      <div class="meta">${t.samples.length ? T.esc(t.samples[0].text.slice(0, 60)) + "…" : "not found here"}</div>
+    </div>`).join("");
+  const verdictMsg = { installed: "The model saw this fact plenty of times — it should know it well.", thin: "The model barely saw this fact — it may not have learned it. Add more about it to your knowledge set.", absent: "This fact never made it into the training data — the model can't know it. Check your sources." }[d.verdict] || "";
+  out.innerHTML = `
+    <div class="spread mb"><div><span class="mono b">${T.esc(d.query)}</span> <span class="dim">in ${T.esc(d.edition)}</span></div>
+      <div class="row gap"><span class="pill ${vpill[0]}"><span class="pd"></span>${vpill[1]}</span>
+        <span class="mono dim" style="font-size:11px">${simple ? `taught ${d.exposure} times` : `exposure ${d.exposure} hydrated lines`}</span></div></div>
+    <div class="row gap wrap" style="align-items:stretch">${cards}</div>
+    <div class="hint dim mt" style="font-size:11.5px;border:0">${T.esc(simple ? verdictMsg : d.note)}</div>`;
+}
+
+function renderVerify(out, d) {
+  if (d.error) return T.err(out, `${d.error}${d.available ? " · layers: " + d.available.join(", ") : ""}`);
+  const simple = T.isSimple();
+  const vp = { pass: "pass", warn: "warn", fail: "fail" }[d.verdict] || "trained";
+  const vlbl = simple ? { pass: "HEALTHY", warn: "CHECK", fail: "PROBLEM" }[d.verdict] || "—" : d.verdict.toUpperCase();
+  out.innerHTML = `
+    <div class="spread mb"><div><span class="mono b">${T.esc(d.layer)}</span> <span class="dim">of ${T.esc(d.edition)}</span></div>
+      <div class="row gap"><span class="pill ${vp}"><span class="pd"></span>${vlbl}</span>
+        <span class="mono dim" style="font-size:11px">${T.fmt(d.total_lines)} lines · ${simple ? `${Math.round((d.distinct_ratio ?? 1) * 100)}% unique` : `distinct ${d.distinct_ratio ?? "—"}`}</span></div></div>
+    ${simple ? `<div class="hint dim mb" style="font-size:11.5px;border:0">“Unique” = how many lines are different rather than duplicates. High (90%+) is good — the model sees varied teaching. Low means duplicate-heavy data that teaches less.</div>` : ""}
+    <table class="tbl"><thead><tr><th>File</th><th class="num">lines</th><th class="num">${simple ? "unique" : "distinct"}</th><th class="num">${simple ? "% unique" : "ratio"}</th></tr></thead>
+      <tbody>${(d.files || []).slice(0, 12).map(f => `<tr><td class="mono" style="font-size:12px">${T.esc(f.file)}</td>
+        <td class="num">${T.fmt(f.lines)}</td><td class="num muted">${T.fmt(f.distinct)}</td>
+        <td class="num ${f.distinct_ratio != null && f.distinct_ratio < 0.9 ? "q-bad" : "q-good"}">${f.distinct_ratio ?? "—"}</td></tr>`).join("")}</tbody></table>
+    <div class="hint dim mt" style="font-size:11.5px;border:0">${T.esc(d.note)}</div>`;
+}
+
+// ── quality-gate report (the deterministic recurrence-prevention layer) ──
+function renderGate(out, d, ed) {
+  if (d.error) return T.err(out, d.error, `Pick an edition that has a hydrated corpus on disk.`);
+  const simple = T.isSimple();
+  const VP = { pass: "pass", warn: "warn", fail: "fail", skipped: "trained" };
+  const VLBL = simple ? { pass: "GOOD", warn: "CHECK", fail: "PROBLEM", skipped: "N/A" }
+                      : { pass: "PASS", warn: "WARN", fail: "FAIL", skipped: "SKIP" };
+  // plain-language one-liner per gate
+  const GNAME = {
+    balance: ["Relation balance", "Is the teaching spread across fact types, or dominated by one?"],
+    exposure_cap: ["Over-repetition", "Is any single fact repeated so much it crowds out the rest?"],
+    id_integrity: ["Fact structure", "Do the structured facts point at the right kind of thing (a stage, not the festival)?"],
+    faithfulness: ["Clean text", "Did any 'I can't answer' filler or mixed-up topics leak into the data?"],
+    source_vs_gap: ["Missing pieces", "What's absent — and is it because you have no source for it, or a generation slip?"],
+  };
+  const gates = d.gates || {};
+  const rows = Object.entries(gates).map(([k, g]) => {
+    const nm = GNAME[k] || [k, ""];
+    const ex = (g.examples || []).slice(0, 3);
+    return `<div class="panel" style="border-left:3px solid var(--${g.severity === "pass" ? "good" : g.severity === "fail" ? "bad" : "warn"});margin-bottom:8px">
+      <div class="spread"><div><span class="b">${nm[0]}</span> ${T.help(nm[1])}</div>
+        <span class="pill ${VP[g.severity] || "trained"}"><span class="pd"></span>${VLBL[g.severity] || g.severity}</span></div>
+      ${gateMetric(k, g.metrics, simple)}
+      ${ex.length ? `<ul class="dlist mt" style="font-size:11.5px">${ex.map(e => `<li><span class="mono">${T.esc(e.text)}</span> — ${T.esc(e.reason)}</li>`).join("")}</ul>` : ""}
+    </div>`;
+  }).join("");
+  // the honest "missing because no data vs missing because bug" split
+  const cls = (gates.source_vs_gap || {}).source_gap_vs_defect || {};
+  const gapItems = Object.entries(cls);
+  const gapPanel = gapItems.length ? `<div class="panel mt" style="background:var(--paper-2)">
+    <div class="lab mb">What's missing — and why</div>
+    <div class="hint dim mb" style="font-size:11.5px;border:0">A <b>source gap</b> means you have no data for it yet (not a bug — go add sources). A <b>defect</b> means the data exists but generation didn't produce it (a pipeline fix).</div>
+    ${gapItems.map(([r, c]) => `<div class="row gap" style="padding:3px 0"><span class="pill ${c.kind === "source_gap" ? "info" : "warn"}" style="text-transform:none"><span class="pd"></span>${c.kind === "source_gap" ? "needs your data" : "generation defect"}</span>
+      <span class="mono">${T.esc(r)}</span>${c.needs && c.needs.length ? `<span class="dim mono" style="font-size:11px">needs ${c.needs.map(T.esc).join(", ")}</span>` : ""}</div>`).join("")}</div>` : "";
+  out.innerHTML = `
+    <div class="spread mb"><div><span class="mono b">quality gates</span> <span class="dim">on ${T.esc(ed)}</span></div>
+      <span class="pill ${VP[d.overall] || "trained"}" style="font-size:13px"><span class="pd"></span>${(simple ? VLBL[d.overall] : "OVERALL " + VLBL[d.overall]) || d.overall}</span></div>
+    ${rows}${gapPanel}`;
+}
+
+function gateMetric(k, m, simple) {
+  if (!m) return "";
+  const s = v => v == null ? "—" : v;
+  let txt = "";
+  if (k === "balance") txt = `top type <b>${s(m.dominant)}</b> = ${Math.round((m.dominant_frac || 0) * 100)}% (max ${Math.round((m.dominance_max_frac || 0) * 100)}%) · ${s(m.n_types)} types present`;
+  else if (k === "exposure_cap") txt = `typical fact gets <b>${s(m.median)}</b> lines, most ${s(m.max)} (cap ${s(m.cap)}) · ${m.systemic ? "systemic over-repetition" : "within healthy range"}`;
+  else if (k === "id_integrity") txt = `<b>${Math.round((m.object_contract_violation_frac || 0) * 100)}%</b> of facts point at the wrong kind of thing · ${s(m.dangling)} broken references`;
+  else if (k === "faithfulness") txt = `${s(m.refusals)} filler lines · ${s(m.cooccurrence_violations)} mixed-up-topic lines of ${T.fmt(m.n_lines || 0)}`;
+  else if (k === "source_vs_gap") txt = `${s(m.n_source_gap)} missing for lack of data · ${s(m.n_defect)} generation defects`;
+  else return "";
+  return `<div class="dim mt" style="font-size:12px">${txt}</div>`;
+}
 
 function renderBody() {
   const lay = LAYERS.find(l => l[1] === FILTER);

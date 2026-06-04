@@ -1,5 +1,11 @@
 """Prompt + provenance injection for 15_structured extraction.
 
+DEPRECATED as the live path: `extract_structured.py` now reads the enums + system prompt from the domain
+spec via `pipeline/ontology.py` (the domain-agnostic core — point extraction at a new domain by writing a
+new configs/domains/<name>.yaml, no code change). This module is retained as the EDC PARITY REFERENCE:
+`pipeline/test_ontology.py` asserts `Ontology("edc")` reproduces these constants byte-for-byte, proving the
+spec-driven refactor is a no-op. Edit the spec, not these constants.
+
 The model returns ONLY semantic content (entities / triples / discourse). The pipeline injects
 provenance (source + confidence + metadata) from the doc's scrape sidecar — provenance is never
 LLM-invented. Entity ids follow `<festival_slug>:<type>:<slug>`; the prompt supplies the enums so
@@ -13,7 +19,7 @@ import uuid
 ENTITY_TYPES = ("festival edition venue stage artist set day gate camping_zone lodging_option "
                 "vendor medical transit_node landmark policy service community tradition "
                 "incident_class").split()
-PREDICATES = ("walk_time_to adjacent_to bounded_by visible_from proximity_meters plays_at "
+PREDICATES = ("walk_time_to adjacent_to bounded_by visible_from proximity_meters plays_at in_lineup "
               "conflicts_with precedes gets_busy_at peak_density has_tier recommended_for "
               "tradeoff_with substitutes_for causes_density_at correlates_with mitigates "
               "prerequisite_for practiced_by originates_from signals_membership serves located_at "
@@ -46,6 +52,9 @@ SYSTEM = (
     "include concrete facts you ARE sure of (dates, capacity, genre, day, time) as key:value.\n"
     "- triple = {subject_id, predicate, object, attrs{}}. object is an entity id OR a literal "
     "(string/number). Only assert relations the text states. attrs{} optional (magnitude, time_window).\n"
+    "- plays_at REQUIRES a stage/set/venue object. If an artist is in the lineup but the text gives "
+    "NO stage, use predicate in_lineup with the festival/edition id as object — NEVER plays_at to "
+    "the festival.\n"
     "- discourse = {anchors:[entity_id,...], topic, subtopic, stance, content}. Use for opinions/"
     "experiences/warnings from reviews or reddit. content = a faithful 1-3 sentence observation.\n"
     "- Invent NOTHING. Every entity/relation/observation must be grounded in the document. "

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sweeps · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const simple = T.isSimple();
+const slot = T.mountShell({ page: "sweeps", crumbs: [{ label: "Console", href: "/" }, { label: simple ? "Tuning" : "Sweeps" }] });
+
+slot.innerHTML = `
+  <div class="phead"><div><h1>${simple ? "Tuning" : "Sweeps"}</h1>
+    <div class="sub">${simple
+      ? "Once you have a working model, you can try different settings to make it better. You set up a search, the console suggests values to try, you train each, and it keeps the best. <b>This is optional</b> — your first model usually works fine."
+      : "A serial hyperparameter optimizer over the run registry. It only ever proposes the next config — it never touches the GPU — so trials run one at a time under the single-GPU mutex. <b>Serial trials are more sample-efficient than parallel</b>: the constraint is a feature, not a limit."}</div></div></div>
+  ${simple ? `<div class="hero mb"><h2>Tuning is optional — your first passing model usually ships as-is</h2>
+    <p>If you want to squeeze out more quality, tick what you'd like to try below. The console trains a few versions with different settings and keeps the best — you don't have to know the numbers. New here? Skip this and ship your first passing model.</p></div>` : ""}
+
+  <div class="panel simple-only mb" id="simpleNew"><div class="panel-h"><h2>New tuning study</h2></div>
+    <p class="dim" style="margin:.1em 0 1em;font-size:13px">Pick what to try. The console searches a sensible range for each and keeps whatever scores best on the ${T.word("gate")}.</p>
+    <div class="check-list" id="csList">
+      <label class="check-row"><input type="checkbox" id="cs_lr" checked>
+        <span><b>${T.word("lr")}</b> — how fast the model learns. The most common thing to tune.</span></label>
+      <label class="check-row"><input type="checkbox" id="cs_steps">
+        <span><b>${T.word("max_steps")}</b> — how long it trains. Longer learns more, up to a point, then overfits.</span></label>
+      <label class="check-row"><input type="checkbox" id="cs_warmup">
+        <span><b>Warm-up length</b> — how gently it eases into learning at the start. Helps stability.</span></label>
+    </div>
+    <div class="formrow mt">
+      <div class="field grow"><div class="lab">Name <span class="dim">(optional)</span></div><input id="csName" class="inp" aria-label="Study name" placeholder="auto"></div>
+      <button class="btn primary" id="csBtn">Create tuning study →</button></div>
+    <div class="dim mt" style="font-size:11.5px">To tune the amount of “not real” examples, use the <a href="/coach">Coach</a>'s recipe buttons — that rebuilds the data, which tuning here doesn't.</div>
+    <div id="csMsg" class="hidden mt"></div></div>
+
+  <div class="panel expert-only mb"><div class="panel-h"><h2>New study</h2><span class="note">raw — dotted-key → [lo,hi] or [choices]</span></div>
+    <div class="stack gap">
+      <div class="field"><div class="lab">Name</div><input id="nName" class="inp" aria-label="Study name" placeholder="sft_dose"></div>
+      <div class="field"><div class="lab">Params (JSON: dotted-key → [lo,hi] or [choices])</div>
+        <textarea id="nParams" class="inp" aria-label="Study parameters as JSON" style="height:64px;font-family:var(--mono);font-size:12px">{"train.lr": [1e-5, 5e-5], "train.max_steps": [300, 600]}</textarea></div>
+      <div class="formrow">
+        <div class="field"><div class="lab">Objective</div><select id="nObj" class="sel" aria-label="Optimization objective"><option>maximize</option><option>minimize</option></select></div>
+        <div class="field grow"><div class="lab">Metric</div><input id="nMetric" class="inp" aria-label="Metric to optimize" value="calibration_score"></div>
+        <button class="btn primary" id="nBtn">Create</button></div>
+      <div id="nMsg" class="hidden"></div>
+    </div></div>
+
+  <div class="panel mb"><div class="panel-h"><h2>Studies</h2></div><div id="studyList"></div></div>
+  <div id="studyView"></div>`;
+
+let STUDIES = [];
+
+async function refreshStudies() {
+  try { STUDIES = (await T.postAction("list_studies", {})).studies || []; } catch (e) { return T.err(T.$("#studyList"), e.message); }
+  T.$("#studyList").innerHTML = STUDIES.length ? `<table class="tbl"><tbody>${STUDIES.map(s => `
+    <tr class="clk" data-s="${T.esc(s.study)}"><td class="name"><span class="id">${T.esc(s.study)}</span>
+      <div class="dim mono" style="font-size:10.5px">${s.objective} ${T.esc(s.metric)}</div></td>
+    <td class="num">${s.n_trials} trials</td>
+    <td class="num ${s.best ? "q-good" : "dim"}">${s.best ? "best " + T.fmt(s.best.score, 3) : "—"}</td></tr>`).join("")}</tbody></table>`
+    : `<div class="empty" style="padding:24px">No studies yet — create one.</div>`;
+  T.$$("#studyList tr.clk").forEach(tr => tr.onclick = () => viewStudy(tr.dataset.s));
+}
+
+async function viewStudy(name) {
+  const box = T.$("#studyView"); box.innerHTML = `<div class="mono dim" style="padding:20px">loading ${T.esc(name)}…</div>`;
+  let s; try { s = await T.postAction("get_study", { study: name }); } catch (e) { return T.err(box, e.message); }
+  const keys = Object.keys(s.params || {});
+  box.innerHTML = `
+    <div class="panel"><div class="panel-h"><h2>${T.esc(name)} <span class="dim" style="font-weight:400;font-size:13px">— ${s.objective} ${T.esc(s.metric)}</span></h2>
+      <button class="btn primary" id="sg">Suggest next config →</button></div>
+    <div id="sgOut" class="hidden mb"></div>
+    <table class="tbl"><thead><tr><th>#</th><th>Run</th>${keys.map(k => `<th class="num">${T.esc(k.split(".").pop())}</th>`).join("")}<th class="num">${T.esc(s.metric)}</th></tr></thead>
+      <tbody>${(s.trials || []).map((t, i) => `<tr ${s.best && t.run_id === s.best.run_id ? 'style="background:var(--good-wash)"' : ""}>
+        <td class="num muted">${i}</td><td class="name"><span class="id">${T.esc(t.run_id || "—")}</span></td>
+        ${keys.map(k => `<td class="num mono" style="font-size:11.5px">${fmtv(t.params ? t.params[k] : null)}</td>`).join("")}
+        <td class="num ${t.score != null ? "q-good" : "dim"}">${t.score != null ? T.fmt(t.score, 3) : "—"}</td></tr>`).join("")
+        || `<tr><td colspan="${keys.length + 3}" class="empty">no trials yet — suggest the first config</td></tr>`}</tbody></table>
+    <div class="panel" style="margin-top:14px"><div class="panel-h"><h2 style="font-size:15px">Record a finished run</h2></div>
+      <div class="row gap"><input id="rcRun" class="inp" aria-label="Run id to record" placeholder="edc_sft_v12" style="flex:1">
+        <button class="btn" id="rcBtn">Record (reads its gate)</button></div>
+      <div class="hint dim mt" style="font-size:11.5px;border:0">after a suggested trial trains + gates, record its run id here — the optimizer reads the gate metric and proposes the next point.</div>
+      <div id="rcMsg" class="hidden mt"></div></div>`;
+  T.$("#sg").onclick = async () => {
+    const out = T.$("#sgOut"); out.classList.remove("hidden"); out.innerHTML = `<span class="mono dim">proposing…</span>`;
+    try {
+      const r = await T.postAction("suggest_next_config", { study: name, base: "configs/sft_edc.yaml", out: `configs/_sweep_${name}_t${s.trials.length}.yaml` });
+      out.innerHTML = `<div class="panel" style="border-left:3px solid var(--ox)">
+        <div class="spread"><div class="lab">trial ${r.trial} · ${T.esc(r.run_id || "")}</div>
+          ${r.config ? `<button class="btn primary" id="trLaunch">Launch this trial →</button>` : ""}</div>
+        <div class="mono mt" style="font-size:13px">${Object.entries(r.proposal).map(([k, v]) => `${T.esc(k)} = <b>${fmtv(v)}</b>`).join(" · ")}</div>
+        <div class="dim mono mt" style="font-size:11.5px">${r.config ? "config: " + T.esc(r.config) + " → its own save_dir; launch trains+gates it (mutex-guarded), then record the run id below." : "config not written: " + T.esc((r.gen || {}).stderr || "")}</div>
+        <div id="trLaunchMsg" class="hidden mt"></div></div>`;
+      if (r.config) T.$("#trLaunch").onclick = async () => {
+        const m = T.$("#trLaunchMsg"), b = T.$("#trLaunch");
+        b.disabled = true; m.classList.remove("hidden"); m.innerHTML = `<span class="mono dim">launching SFT trial…</span>`;
+        try {
+          const lr = await T.postAction("launch_run", { mode: "sft", config: r.config, label: r.run_id });
+          m.innerHTML = `<div class="row gap wrap"><span class="pill pass" style="text-transform:none"><span class="pd"></span>launched ${T.esc(lr.run_id)}</span>
+            <a class="btn" href="/run?id=${encodeURIComponent(lr.run_id)}">watch →</a>
+            <span class="dim mono" style="font-size:11px">when it gates, record ${T.esc(lr.run_id)} below to close the loop</span></div>`;
+        } catch (e) { m.innerHTML = `<div class="errbox">${e.kind === "gpu_busy" ? "⛔ " : "⚠ "}${T.esc(e.message)}</div>`; b.disabled = false; }
+      };
+    } catch (e) { T.err(out, e.message); }
+  };
+  T.$("#rcBtn").onclick = async () => {
+    const run_id = T.$("#rcRun").value.trim(), msg = T.$("#rcMsg"); if (!run_id) return;
+    msg.classList.remove("hidden"); msg.innerHTML = `<span class="mono dim">recording…</span>`;
+    try {
+      const r = await T.postAction("report_measurement", { study: name, run_id, params: {} });
+      msg.innerHTML = `<div class="pill pass" style="text-transform:none"><span class="pd"></span>recorded ${T.esc(run_id)} · ${r.trials} trials</div>`;
+      viewStudy(name); refreshStudies();
+    } catch (e) { T.err(msg, e.message); }
+  };
+}
+
+function fmtv(v) { return v == null ? "—" : (typeof v === "number" ? (Math.abs(v) < 0.01 && v !== 0 ? v.toExponential(1) : v) : T.esc(String(v))); }
+
+T.$("#nBtn").onclick = async () => {
+  const msg = T.$("#nMsg"); msg.classList.remove("hidden");
+  let params; try { params = JSON.parse(T.$("#nParams").value); } catch (e) { msg.innerHTML = `<div class="errbox">params must be valid JSON</div>`; return; }
+  try {
+    await T.postAction("create_study", { study: T.$("#nName").value.trim() || "study", params, objective: T.$("#nObj").value, metric: T.$("#nMetric").value.trim() });
+    msg.innerHTML = `<div class="pill pass" style="text-transform:none"><span class="pd"></span>created</div>`;
+    refreshStudies();
+  } catch (e) { msg.innerHTML = `<div class="errbox">⚠ ${T.esc(e.message)}</div>`; }
+};
+
+// simple-mode checklist → sensible param ranges, no JSON. Each knob is genuinely train-tunable
+// (read on every run), so a launch-based trial actually varies it.
+const CHECK_PARAMS = {
+  cs_lr:     ["train.lr", [1e-5, 5e-5]],
+  cs_steps:  ["train.max_steps", [300, 600]],
+  cs_warmup: ["train.warmup_steps", [10, 40]],
+};
+T.$("#csBtn").onclick = async () => {
+  const msg = T.$("#csMsg"); msg.classList.remove("hidden");
+  const params = {};
+  for (const [id, [key, range]] of Object.entries(CHECK_PARAMS)) if (T.$("#" + id).checked) params[key] = range;
+  if (!Object.keys(params).length) { msg.innerHTML = `<div class="errbox">Tick at least one thing to try.</div>`; return; }
+  const name = T.$("#csName").value.trim() || ("tune_" + Object.keys(params).map(k => k.split(".").pop()).join("_"));
+  try {
+    await T.postAction("create_study", { study: name, params, objective: "maximize", metric: "calibration_score" });
+    msg.innerHTML = `<div class="pill pass" style="text-transform:none"><span class="pd"></span>created “${T.esc(name)}” — open it below, then “Suggest next config” to start the first trial</div>`;
+    refreshStudies();
+  } catch (e) { msg.innerHTML = `<div class="errbox">⚠ ${T.esc(e.message)}</div>`; }
+};
+
+refreshStudies();
+</script>
+</body></html>

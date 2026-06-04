@@ -285,14 +285,15 @@ class RunConfig:
     seed: int = 42
     smoke_steps: int = 0                # >0 → synthetic-data sanity loop (folds the old --smoke flag)
     dry_run: bool = False               # True → validate + print contract + exit (folds the old --dry-run flag)
+    early_stop_patience: int = 0        # >0 → stop if smoothed loss hasn't improved for N log-windows. 0 = OFF (default reproduces current behavior). Saves scarce single-GPU compute past the optimum.
 
     def __post_init__(self) -> None:
         if not self.run_name:
             raise ConfigError("run.run_name must not be empty")
         if self.log_every < 1 or self.save_every < 1:
             raise ConfigError("run.log_every and run.save_every must be >= 1")
-        if self.seed < 0 or self.smoke_steps < 0:
-            raise ConfigError("run.seed and run.smoke_steps must be >= 0")
+        if self.seed < 0 or self.smoke_steps < 0 or self.early_stop_patience < 0:
+            raise ConfigError("run.seed, run.smoke_steps, run.early_stop_patience must be >= 0")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

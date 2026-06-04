@@ -784,6 +784,8 @@ def main():
     if rank0():
         log(f"FSDP grad-accum no_sync: {'ON (sync only on last microbatch)' if _can_nosync else 'unavailable — full sync each microbatch'}")
     step, micro, window_loss, t0 = 0, 0, 0.0, time.time()
+    es_pat = int(cfg.get("early_stop_patience", 0) or 0)   # 0 = OFF (default): the block below never runs
+    es_best, es_bad = float("inf"), 0
     data_iter = iter(dl)
     while step < total:
         try:
@@ -845,9 +847,18 @@ def main():
             if step % cfg["log_every"] == 0:
                 mem = torch.cuda.max_memory_allocated() / 1e9
                 cur = torch.cuda.memory_allocated() / 1e9    # post-step+zero_grad: weights + optimizer state (grads freed)
-                log(f"step {step}/{total} loss {window_loss/(accum*cfg['log_every']):.4f} "
+                wmean = window_loss / (accum * cfg['log_every'])
+                log(f"step {step}/{total} loss {wmean:.4f} "
                     f"lr {lr:.2e} peakmem {mem:.1f}GB (resident {cur:.1f}GB; transient {mem-cur:.1f}GB) {(time.time()-t0)/step:.2f}s/step")
                 window_loss = 0.0
+                if es_pat:                       # loss-plateau early stop — inert unless run.early_stop_patience>0
+                    if wmean < es_best - 1e-4:
+                        es_best, es_bad = wmean, 0
+                    else:
+                        es_bad += 1
+                        if es_bad >= es_pat:
+                            log(f"early stop: loss plateaued for {es_pat} log-windows (best {es_best:.4f}) — stopping at step {step}/{total}")
+                            break
             # Honor save_every (was silently ignored): periodic checkpoint → crash-recovery for long
             # fleet runs + the per-step checkpoints the geometry probe sweeps to watch geometry form.
             se = cfg.get("save_every", 0)

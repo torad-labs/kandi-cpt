@@ -15,7 +15,7 @@
     "predicate": {
       "enum": [
         "walk_time_to", "adjacent_to", "bounded_by", "visible_from", "proximity_meters",
-        "plays_at", "conflicts_with", "precedes", "gets_busy_at", "peak_density",
+        "plays_at", "in_lineup", "conflicts_with", "precedes", "gets_busy_at", "peak_density",
         "has_tier", "recommended_for", "tradeoff_with", "substitutes_for",
         "causes_density_at", "correlates_with", "mitigates", "prerequisite_for",
         "practiced_by", "originates_from", "signals_membership",
@@ -24,7 +24,7 @@
         "succeeded_by", "differs_from", "incident_occurred",
         "structurally_similar", "belongs_to_class", "inherits_norms_from"
       ],
-      "description": "§3.2 catalog + §3.3 cross-festival predicates. NOTE: service_constraint added beyond the literal §3.2 list — the §4.2 example lifts one (service|vendor -> constraint, e.g. 30-min water line). attrs e.g. {magnitude, time_window}."
+      "description": "§3.2 catalog + §3.3 cross-festival predicates. NOTE: service_constraint added beyond the literal §3.2 list — the §4.2 example lifts one (service|vendor -> constraint, e.g. 30-min water line). in_lineup added as plays_at's coarse fallback: an artist known to be in the lineup but with NO stage stated takes in_lineup -> festival|edition (plays_at REQUIRES a stage|set|venue object — never the festival). attrs e.g. {magnitude, time_window}."
     },
     "object": {
       "description": "object_id_or_literal — an entity id (string matching §2.1), a literal (string/number/bool), or a structured value (e.g. a time_window object)"

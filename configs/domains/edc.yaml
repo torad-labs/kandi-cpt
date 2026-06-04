@@ -14,6 +14,30 @@ registry: configs/editions_edc.json        # the unit registry iter_editions wal
 ontology:
   schema_dir: schema                        # entity/triple/discourse JSON-Schemas (the structured contract)
   taxonomy: festival-factory/src/taxonomy.rs # relation registry (BASE/DERIVED, data-status per relation)
+  # The extraction prompt is now spec-driven (pipeline/ontology.py renders it). `kind` + `name` fill the
+  # system preamble; entity_types/predicates come from the top-level sections (single source of truth).
+  kind: festival                            # the domain's subject kind ("festival" → "a festival knowledge graph")
+  name: Electric Daisy Carnival             # the proper noun the source documents are about
+  topics: [lineup_and_sets, navigation_and_logistics, camping_and_lodging, transit_and_arrival,
+           food_and_drink, weather_and_environment, safety_and_health, harm_reduction,
+           community_and_culture, vendor_and_services, policy_and_rules, money_and_budget,
+           accessibility, kids_and_family, solo_attendance, crew_logistics, gear_and_packing,
+           post_event, cross_festival_comparison]
+  stances: [pro, con, mixed, neutral, warning]
+  # domain_class → confidence (provenance is pipeline-owned, never model-invented)
+  confidence_map:
+    official-festival: official
+    official-venue: official
+    news-mainstream: cross-confirmed
+    news-music-trade: cross-confirmed
+    review-aggregator: cross-confirmed
+    community-vetted: cross-confirmed
+    social-vetted: single-anecdote
+    community-discussion: single-anecdote
+    blog-influencer: single-anecdote
+    social-personal: single-anecdote
+    user-contributed: single-anecdote
+    inferred-by-model: inferred
 
 model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
 configs:
@@ -73,3 +97,97 @@ stages:
     desc: "instruction tuning + GATE (atomic — the no-ungated-SFT rule). CONFIG-ONLY; init_from/tokenized in {sft}."
     cmd: ["bash", "scripts/run_sft.sh", "edc"]
     gpu: true
+
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# QUALITY SPEC (qgre-cpt) — the typed-graph invariants the deterministic gates (scripts/qgre/gates.py)
+# enforce. These four sections turn the corpus-audit failure modes into machine-checkable contracts so the
+# defects can never silently recur. They are pure ONTOLOGY + DISTRIBUTION properties — nothing here names a
+# festival concept structurally, so a game-lore / legal / product-manual domain expresses the same shapes.
+# See docs/qgre_data_pipeline_audit.md for what each catches.
+
+# (A) entity types — lifted verbatim from schema/entity.schema.json (this is now the single source of truth;
+#     gate_id_integrity types every id's middle segment `<festival_slug>:TYPE:slug` against this closed set).
+entity_types:
+  [festival, edition, venue, stage, artist, set, day, gate, camping_zone, lodging_option, vendor, medical,
+   transit_node, landmark, policy, service, community, tradition, incident_class]
+
+# (B) predicates + the predicate→OBJECT-TYPE CONTRACT (catches `plays_at → festival` — defect #3).
+#     ALL predicates are listed in their schema/triple.schema.json order — this IS the prompt's predicate enum
+#     (insertion order preserved), so the extraction prompt is unchanged. `object` declares the entity_types an
+#     object id may be (`[literal]` = a free value); a predicate with NO `object` key is unconstrained (the gate
+#     skips it — we only enforce the contracts we've written). `plays_at` is the load-bearing contract.
+predicates:
+  walk_time_to:        { object: [stage, venue, landmark, gate, camping_zone, transit_node] }
+  adjacent_to:         { object: [stage, venue, landmark, gate, camping_zone] }
+  bounded_by:          {}
+  visible_from:        {}
+  proximity_meters:    { object: [literal] }
+  plays_at:            { object: [stage, set, venue] }          # NOT festival/edition — the masquerade bug
+  in_lineup:           { object: [festival, edition] }          # plays_at's coarse fallback: in the lineup, stage unknown
+  conflicts_with:      {}
+  precedes:            {}
+  gets_busy_at:        { object: [literal] }
+  peak_density:        { object: [literal] }
+  has_tier:            {}
+  recommended_for:     {}
+  tradeoff_with:       {}
+  substitutes_for:     {}
+  causes_density_at:   { object: [stage, venue, landmark] }
+  correlates_with:     {}
+  mitigates:           { object: [incident_class, policy] }
+  prerequisite_for:    {}
+  practiced_by:        { object: [community] }
+  originates_from:     {}
+  signals_membership:  { object: [community] }
+  serves:              {}
+  located_at:          { object: [venue, landmark, stage, gate] }
+  operating_hours:     { object: [literal] }
+  service_constraint:  { object: [literal] }
+  prohibits:           {}
+  requires:            {}
+  succeeded_by:        { object: [edition] }
+  differs_from:        {}
+  incident_occurred:   { object: [incident_class] }
+  structurally_similar: {}
+  belongs_to_class:    { object: [incident_class, festival, edition] }
+  inherits_norms_from: { object: [edition, festival] }
+
+# (C) relation taxonomy + BALANCE TARGETS + the per-fact EXPOSURE CAP (catches defects #1 monoculture & #2 runaway).
+#     `needs` is the SOURCE-GAP key: when a relation is missing/thin, gate_source_vs_gap probes these artifacts —
+#     all absent ⇒ SOURCE GAP (reported, never penalized); present/empty-needs ⇒ DEFECT (a generation failure).
+relations:
+  exposure_cap_per_fact: 60      # HARD ceiling on hydrated lines sharing one source_triple_id (the 240–703×/fact runaway)
+  dominance_max_frac: 0.85       # no single relation_type may exceed this fraction (gold 0.824 passes, VC1 0.983 fails;
+                                 # principled long-term target ≈0.50 — ratchet down as gold's monoculture is fixed)
+  min_active_types: 6            # at least this many DISTINCT relation_types must be present (VC1 had 8, but 4 GOLD types absent)
+  taxonomy:
+    artist_to_stage:            { needs: [],                              floor_frac: 0.10, target_frac: 0.35 }
+    set_time:                   { needs: [set_times.jsonl],               floor_frac: 0.03 }
+    disjoint_context:           { needs: [festival_meta.confusable_groups], floor_frac: 0.02 }
+    day_of_week_map:            { needs: [festival_meta.days],            floor_frac: 0.002 }
+    b2b_pairing:                { needs: [],                              floor_frac: 0.002 }
+    stage_to_genre:             { needs: [],                              floor_frac: 0.002 }
+    stage_roster:               { needs: [],                              floor_frac: 0.002 }
+    stage_production_character: { needs: [],                              floor_frac: 0.002 }
+    stage_brand:                { needs: [],                              floor_frac: 0.002 }
+    stage_rank_capacity:        { needs: [],                              floor_frac: 0.002 }
+    recommendation:             { needs: [],                              floor_frac: 0.002 }
+    multi_stage:                { needs: [],                              floor_frac: 0.001 }
+
+# (D) gate thresholds + the source-gap artifact probes. `required_artifacts` maps a logical `needs` key to an
+#     on-disk probe relative to the edition dir; `file#jsonkey` means "the JSON file must exist AND have a
+#     non-empty value at that top-level key" (e.g. festival_meta.json must contain a populated `days` list).
+quality:
+  faithfulness:
+    max_foreign_entity_frac: 0.02   # hydrated lines naming a non-source entity (small tolerance for tokenizer noise)
+    refusal_signatures: ["cannot fulfill", "i cannot", "i can't", "as an ai", "i'm sorry", "does not specify",
+                          "no information", "i don't have", "unable to", "here is", "here's a", "sure,"]
+  id_integrity:
+    max_object_contract_violation_frac: 0.0   # every constrained predicate's object must match its allowed types
+    max_dangling_frac: 0.0                     # subject/object id must exist in entities.jsonl (or be global:*)
+    require_edition_match: true                # an id in edition E must carry E's festival_slug (or global:)
+  source_gap:
+    required_artifacts:
+      set_times.jsonl:                 "set_times.jsonl"
+      festival_meta.days:              "festival_meta.json#days"
+      festival_meta.confusable_groups: "festival_meta.json#confusable_groups"

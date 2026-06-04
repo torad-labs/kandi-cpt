@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "compare", crumbs: [{ label: "Console", href: "/" }, { label: "Runs", href: "/runs" }, { label: "Compare" }] });
+
+// the metrics we diff, with gate direction: 'max' → lower is better, 'min' → higher is better
+const METRICS = [
+  ["fabrication_rate", "Fabrication", "max", T.GATE.fabrication],
+  ["accuracy_when_answering", "Accuracy", "min", T.GATE.accuracy],
+  ["coverage", "Coverage", "min", T.GATE.coverage],
+  ["over_refusal_rate", "Over-refusal", "max", null],
+  ["calibration_score", "Calibration", "min", null],
+];
+
+(async () => {
+  const rids = (T.qs("runs") || "").split(",").map(s => s.trim()).filter(Boolean);
+  if (rids.length < 2) return picker(rids);
+
+  let c; try { c = await T.fetchJSON("/api/compare?runs=" + rids.map(encodeURIComponent).join(",") + (T.qs("baseline") ? "&baseline=" + encodeURIComponent(T.qs("baseline")) : "")); }
+  catch (e) { return T.err(slot, e.message, `Couldn't load the comparison. Pick runs from <a href="/runs">Runs</a> (tick two or more), or check the console server is running.`); }
+  const runs = c.runs || [];
+  if (runs.length < 2) return T.err(slot, "Need two valid runs to compare.",
+    `One of the run ids wasn't found. Go to <a href="/runs">Runs</a> and tick two runs to compare.`);
+  const A = runs[0], B = runs[1];   // A = baseline, B = compared (server orders them)
+
+  slot.innerHTML = `
+    <div class="phead"><div><h1>Compare</h1>
+      <div class="sub"><span class="mono b">${T.esc(A.id)}</span> <span class="dim">(baseline)</span> &nbsp;vs&nbsp; <span class="mono b">${T.esc(B.id)}</span> — metric deltas and the held-out probes that changed verdict between them.</div></div>
+      <div class="right"><a class="btn" href="/runs">← all runs</a></div></div>
+
+    <div class="panel"><div class="panel-h"><h2>Metrics</h2>
+      <span class="note">Δ colored by whether the move is an improvement (gate direction)</span></div>
+      <table class="tbl"><thead><tr><th>Metric</th>
+        <th class="num">${T.esc(A.id.replace("edc_sft_", ""))}</th>
+        <th class="num">${T.esc(B.id.replace("edc_sft_", ""))}</th>
+        <th class="num">Δ</th><th>gate</th></tr></thead>
+      <tbody>${METRICS.map(([k, label, dir, thr]) => {
+        const va = A.metrics && A.metrics[k], vb = B.metrics && B.metrics[k];
+        const fmt = v => v == null ? "—" : (k === "calibration_score" ? T.fmt(v, 2) : T.pct(v));
+        let dCell = `<td class="num dim">—</td>`;
+        if (va != null && vb != null) {
+          const d = vb - va, better = dir === "max" ? d < 0 : d > 0, flat = Math.abs(d) < 0.005;
+          const cls = flat ? "" : better ? "q-good" : "q-bad";
+          const s = k === "calibration_score" ? (d >= 0 ? "+" : "") + d.toFixed(2) : (d >= 0 ? "+" : "") + (d * 100).toFixed(0) + "pp";
+          dCell = `<td class="num ${cls}">${flat ? "·" : (better ? "▲ " : "▼ ") + s}</td>`;
+        }
+        const gcell = thr == null ? `<td class="dim mono" style="font-size:10px">—</td>`
+          : `<td class="mono" style="font-size:10px">${dir === "max" ? "≤" : "≥"} ${T.pct(thr)}</td>`;
+        return `<tr><td class="name">${label}</td>
+          <td class="num ${T.grade(va, thr, dir)}">${fmt(va)}</td>
+          <td class="num ${T.grade(vb, thr, dir)}">${fmt(vb)}</td>${dCell}${gcell}</tr>`;
+      }).join("")}</tbody></table></div>
+
+    <div class="grid c2 mb">
+      <div class="panel"><div class="panel-h"><h2>${T.esc(A.id.replace("edc_sft_", ""))} — loss</h2><span class="row gap">${T.engineBadge(A.contract)}${T.pill(A.status)}</span></div>
+        <canvas id="lossA" style="width:100%;height:180px"></canvas></div>
+      <div class="panel"><div class="panel-h"><h2>${T.esc(B.id.replace("edc_sft_", ""))} — loss</h2><span class="row gap">${T.engineBadge(B.contract)}${T.pill(B.status)}</span></div>
+        <canvas id="lossB" style="width:100%;height:180px"></canvas></div>
+    </div>
+
+    <div class="panel"><div class="panel-h"><h2>Probe flips</h2>
+      <span class="note">held-out questions that changed verdict from ${T.esc(A.id.replace("edc_sft_", ""))} → ${T.esc(B.id.replace("edc_sft_", ""))}</span></div>
+      <div class="flip-sum"><span class="up">▲ ${c.n_better || 0} improved</span><span class="dn">▼ ${c.n_worse || 0} regressed</span>
+        <span class="dim">${(c.flips || []).length} total · unchanged probes omitted</span></div>
+      <div class="flips" id="flips"></div></div>`;
+
+  // loss curves (reuse the shared single-series drawer per run)
+  requestAnimationFrame(() => { T.drawLoss(T.$("#lossA"), A.points); T.drawLoss(T.$("#lossB"), B.points); });
+
+  const flips = (c.flips || []).slice().sort((x, y) => (x.better === y.better) ? 0 : x.better ? 1 : -1);  // regressions first
+  T.$("#flips").innerHTML = flips.length ? flips.map(f => `
+    <div class="flip ${f.better ? "better" : "worse"}">
+      <span class="dir">${f.better ? "▲" : "▼"}</span>
+      <div class="q">${T.esc(f.q)}
+        ${f.from_resp || f.to_resp ? `<span class="gold">was: ${T.esc((f.from_resp || "—").slice(0, 90))} &nbsp;·&nbsp; now: ${T.esc((f.to_resp || "—").slice(0, 90))}</span>` : ""}</div>
+      <div class="verds"><span class="from">${T.esc(f.from)}</span><span class="arr">→</span><span class="to">${T.esc(f.to)}</span></div>
+    </div>`).join("") : `<div class="empty">No verdict changes — both runs answered every shared probe the same way.</div>`;
+})();
+
+/* picker — when fewer than two runs are in the URL, let the user choose */
+async function picker(pre) {
+  let runs; try { runs = (await T.fetchJSON("/api/runs")).runs; } catch (e) { return T.err(slot, e.message); }
+  runs = runs.slice().reverse();
+  slot.innerHTML = `
+    <div class="phead"><div><h1>Compare</h1>
+      <div class="sub">Pick two runs (the first ticked is the baseline), then compare metric deltas and the per-probe flip list.</div></div>
+      <div class="right"><button class="btn primary" id="go" disabled>Compare <span id="n">0</span> →</button></div></div>
+    <div class="panel"><div class="panel-h"><h2>Select runs</h2><span class="note">${runs.length} runs</span></div>
+      <table class="tbl"><tbody>${runs.map(r => `<tr>
+        <td style="width:30px"><input type="checkbox" class="ck" name="cmp-${T.esc(r.id)}" data-id="${r.id}" aria-label="Select ${T.esc(r.id)} to compare" ${pre.includes(r.id) ? "checked" : ""}></td>
+        <td class="name"><span class="id">${r.id.replace("edc_sft_", "")}</span></td>
+        <td>${T.pill(r.status)}</td>
+        <td class="num ${T.grade(r.metrics && r.metrics.fabrication_rate, T.GATE.fabrication, "max")}">${r.metrics ? T.pct(r.metrics.fabrication_rate) : "—"}</td>
+        <td class="num ${T.grade(r.metrics && r.metrics.coverage, T.GATE.coverage, "min")}">${r.metrics ? T.pct(r.metrics.coverage) : "—"}</td>
+        <td class="num muted">${T.relDate(r.date)}</td></tr>`).join("")}</tbody></table></div>`;
+  const sel = pre.slice(), go = T.$("#go"), n = T.$("#n");
+  const sync = () => { n.textContent = sel.length; go.disabled = sel.length < 2; };
+  T.$$(".ck").forEach(ck => ck.onchange = () => {
+    const i = sel.indexOf(ck.dataset.id);
+    ck.checked ? (i < 0 && sel.push(ck.dataset.id)) : (i >= 0 && sel.splice(i, 1));
+    sync();
+  });
+  sync();
+  go.onclick = () => { if (sel.length >= 2) location.href = "/compare?runs=" + sel.map(encodeURIComponent).join(",") + "&baseline=" + encodeURIComponent(sel[0]); };
+}
+</script>
+</body></html>

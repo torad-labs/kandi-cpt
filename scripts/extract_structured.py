@@ -20,8 +20,14 @@ from collections import Counter
 import config as C
 from pipeline.editions import iter_editions
 from pipeline import provenance as P
-from pipeline import structured_prompts as SP
+from pipeline.ontology import Ontology
 from pipeline.schema_validate import validate
+
+# The extraction ontology (entity/predicate enums + system prompt + provenance) is now SPEC-DRIVEN —
+# set in main() from --domain so pointing extraction at a new domain needs no code change. For EDC the
+# spec re-declares the enums verbatim, so the prompt is byte-identical to the old hardcoded one (proven
+# in pipeline/test_ontology.py).
+ONT: Ontology = None  # type: ignore[assignment]
 
 REJECT_DIR = C.BUILD / "structured_rejects"
 GLOBAL_DIR = C.SHARED / "entities_global"
@@ -56,9 +62,38 @@ def body_of(md: str) -> str:
     return md.split("\n---\n", 1)[-1].strip() if "\n---\n" in md else md.strip()
 
 
+def _obj_type(obj) -> str | None:
+    """Object-id middle segment ('…:stage:kinetic_field' → 'stage'); None for a literal."""
+    if not isinstance(obj, str):
+        return None
+    parts = obj.split(":")
+    return parts[1] if len(parts) >= 3 else None
+
+
+def _enforce_contract(rec: dict, stats) -> tuple[dict, bool]:
+    """Deterministic predicate→object-type contract enforcement (the safety net under the prompt rule that
+    fixes plays_at→festival, defect #3). The LLM still slips; this guarantees the structured layer obeys the
+    spec contract regardless. For a violating triple:
+      • SAFE REMAP: plays_at whose object is the festival/edition (no stage) → in_lineup (coarse but TRUE
+        lineup membership — never dropped, the fact is real).
+      • otherwise: drop to the reject file (a contract-violating triple is worse than a missing one).
+    Returns (rec, drop?)."""
+    pred, obj = rec.get("predicate"), rec.get("object")
+    allowed = ONT.contract.get(pred)
+    otype = _obj_type(obj)
+    if not allowed or "literal" in allowed or otype is None or otype in allowed:
+        return rec, False                                  # unconstrained / literal / already valid
+    if pred == "plays_at" and otype in ("festival", "edition"):
+        rec["predicate"] = "in_lineup"                     # the safe coarsening — keeps the true fact
+        stats["remap_plays_at_to_in_lineup"] += 1
+        return rec, False
+    stats["contract_drop"] += 1
+    return rec, True
+
+
 def _write_records(out, item, paths, stats):
-    """Serial (main-thread) post-processing of one doc's LLM result: normalize → provenance → validate →
-    write per-edition jsonl + upsert globals. No locks needed (single consumer thread)."""
+    """Serial (main-thread) post-processing of one doc's LLM result: normalize → contract → provenance →
+    validate → write per-edition jsonl + upsert globals. No locks needed (single consumer thread)."""
     ent_f, tri_f, dis_f, rej_f = paths[item["slug"]]
     with ent_f.open("a") as ef, tri_f.open("a") as tf, dis_f.open("a") as df, rej_f.open("a") as rf:
         for kind, fh, recs in (("entity", ef, out.get("entities", [])),
@@ -74,7 +109,12 @@ def _write_records(out, item, paths, stats):
                     rec.setdefault("attributes", {})
                 if kind == "discourse" and not rec.get("anchors"):
                     continue                       # empty-anchor discourse is unusable; skip silently
-                rec = SP.inject_provenance(rec, kind, item["meta"], item["festival_slug"], {})
+                if kind == "triple":
+                    rec, drop = _enforce_contract(rec, stats)
+                    if drop:
+                        rf.write(json.dumps({"kind": kind, "errs": ["contract:unmappable"], "rec": rec}) + "\n")
+                        continue
+                rec = ONT.inject_provenance(rec, kind, item["meta"], item["festival_slug"])
                 errs = validate(kind, rec)
                 if errs:
                     rf.write(json.dumps({"kind": kind, "errs": errs[:3], "rec": rec}) + "\n")
@@ -91,11 +131,15 @@ def main():
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--editions", default="las_vegas/2026")
+    ap.add_argument("--domain", default="edc", help="domain spec — supplies the entity/predicate ontology + prompt")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--min-tier", type=int, default=3, help="skip docs below this tier (1=best)")
     ap.add_argument("--concurrency", type=int, default=16, help="parallel OpenRouter calls (paid account)")
     ap.add_argument("--yes", action="store_true", help="confirm multi-edition (OpenRouter cost)")
     args = ap.parse_args()
+
+    global ONT
+    ONT = Ontology(args.domain)
 
     eds = list(iter_editions("edc", only=args.editions))
     if len(eds) > 1 and not args.yes:
@@ -145,7 +189,7 @@ def main():
             title = text.splitlines()[0].lstrip("# ").strip()
             meta = {"domain_class": _domain_of(md, sub), **_scrape_meta(md, sub)}
             work.append({"slug": ed.slug, "festival_slug": ed.festival_slug, "sha": sha,
-                         "meta": meta, "user": SP.user_prompt(ed.festival_slug, title, body_of(text))})
+                         "meta": meta, "user": ONT.user_prompt(ed.festival_slug, title, body_of(text))})
 
     print(f"structured extraction: {len(work)} pending docs across {len(ledgers)} editions, "
           f"concurrency={args.concurrency} (skipped {stats['unchanged']} already-done)", flush=True)
@@ -154,7 +198,7 @@ def main():
     per_ed_fail: Counter = Counter()
     try:
         with ThreadPoolExecutor(max_workers=args.concurrency) as ex:
-            futs = {ex.submit(llm_json, SP.SYSTEM, item["user"]): item for item in work}
+            futs = {ex.submit(llm_json, ONT.system(), item["user"]): item for item in work}
             n = 0
             for fut in as_completed(futs):
                 item = futs[fut]

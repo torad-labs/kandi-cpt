@@ -25,10 +25,10 @@ const DIM_META = {
 };
 
 (async () => {
-  if (!id) return T.err(slot, "no run id");
+  if (!id) return T.err(slot, "No run id in the URL.", `Open a run from <a href="/runs">Runs</a>.`);
   let d, allRuns;
   try { [d, allRuns] = await Promise.all([T.fetchJSON("/api/runs/" + id), T.fetchJSON("/api/runs").then(r => r.runs)]); }
-  catch (e) { return T.err(slot, e.message); }
+  catch (e) { return T.err(slot, e.message, `Run <span class="mono">${T.esc(id)}</span> couldn't be loaded — it may not exist. See all runs at <a href="/runs">Runs</a>.`); }
 
   const m = d.metrics, sc = d.scorecard, il = d.install, c = d.contract || {};
   const gated = !!sc;
@@ -38,13 +38,26 @@ const DIM_META = {
     <div class="phead">
       <div><h1 style="display:flex;align-items:center;gap:14px">${T.esc(id)} ${T.pill(d.status)}</h1>
         <div class="sub">${c.precision ? c.precision.toUpperCase() : "?"} · init from <span class="mono">${T.esc(c.init_from || "?")}</span> · ${c.max_steps || "?"} steps · seq ${c.seq_len || "?"} · eff-batch ${c.effective_batch || "?"}</div></div>
-      <div class="right">${gated ? T.pill(d.status, d.status === "passed" ? "GATE PASS" : "GATE FAIL") : T.pill("trained")} ${T.installPill(il.level)}</div>
+      <div class="right">${T.engineBadge(c)} ${gated ? T.pill(d.status, d.status === "passed" ? (T.isSimple() ? "PASSED" : "GATE PASS") : (T.isSimple() ? "NEEDS WORK" : "GATE FAIL")) : T.pill("trained")} ${T.installPill(il.level)}</div>
     </div>
     <div class="tabs" id="tabs"></div>
     <div id="panes"></div>`;
 
-  const TABS = [["overview", "Overview"], ["behavior", "Behaviour"], ["install", "Install"], ["weights", "Weights"], ["campaign", "Campaign"]];
-  T.$("#tabs").innerHTML = TABS.map((t, i) => `<button class="tab ${i ? "" : "active"}" data-t="${t[0]}">${t[1]}</button>`).join("");
+  // tabs are journey-ordered + mode-aware: Simple shows Results / Coach / Evidence; the engine-internal
+  // tabs (Install/Weights/Campaign) are grouped as "Deep dive" and only shown in Expert mode.
+  const simple = T.isSimple();
+  // [key, simpleLabel, expertLabel, advanced?]
+  const TAB_DEFS = [
+    ["overview", "Results", "Overview", false],
+    ["coach", "Coach", "Coach", false],
+    ["behavior", "Evidence", "Behaviour", false],
+    ["install", "Knowledge depth", "Install", true],
+    ["weights", "Weights", "Weights", true],
+    ["campaign", "Campaign map", "Campaign", true],
+  ];
+  const TABS = TAB_DEFS.map(t => [t[0], simple ? t[1] : t[2], t[3]]);
+  T.$("#tabs").innerHTML = TABS.map((t, i) => `<button class="tab ${i ? "" : "active"}${t[2] ? " expert-only" : ""}" data-t="${t[0]}">${t[1]}</button>`).join("")
+    + (simple ? `<span class="dim expert-toggle-hint" style="margin-left:auto;align-self:center;font-size:11px">Need the weight maps & geometry? Switch to Expert mode →</span>` : "");
   const panes = T.$("#panes");
   panes.innerHTML = TABS.map((t, i) => `<div class="tabpane ${i ? "" : "active"}" id="pane-${t[0]}"></div>`).join("");
   T.$$(".tab").forEach(b => b.onclick = () => {
@@ -54,6 +67,7 @@ const DIM_META = {
     if (b.dataset.t === "weights") drawWeights();
     if (b.dataset.t === "install") drawGeo();
     if (b.dataset.t === "campaign") drawCampaign();
+    if (b.dataset.t === "coach") drawCoach();
   });
 
   // ════════ OVERVIEW ════════
@@ -86,27 +100,107 @@ const DIM_META = {
   });
   window.drawGeo = () => requestAnimationFrame(() => { /* geo bars are DOM, already rendered */ });
   window.drawCampaign = () => requestAnimationFrame(() => campaign(allRuns, id));
+  let _coachLoaded = false;
+  window.drawCoach = async () => {
+    if (_coachLoaded) return; _coachLoaded = true;
+    const box = T.$("#pane-coach"); box.innerHTML = `<div class="dim mono" style="padding:30px">reading the run…</div>`;
+    try { renderCoach(box, await T.fetchJSON("/api/coach?run=" + encodeURIComponent(id)), d.contract); }
+    catch (e) { _coachLoaded = false; T.err(box, e.message); }
+  };
 })();
+
+/* ───────────── COACH (per-run diagnostic read) ───────────── */
+function renderCoach(box, c, contract) {
+  const a = c.analysis || {}, ev = c.evidence || {};
+  const moat = T.moatExplainer(contract);
+  const listHtml = arr => (arr && arr.length)
+    ? `<ul class="dlist">${arr.map(s => `<li>${T.esc(s)}</li>`).join("")}</ul>`
+    : `<p class="dim" style="margin:0;font-size:13px">— nothing flagged —</p>`;
+  const leverHtml = arr => (arr && arr.length)
+    ? arr.map((l, i) => `<div class="lever ${l.severity || ""}">
+        <div class="lh"><span class="lt">${T.esc(l.lever)}</span><span class="rank">#${i + 1}</span></div>
+        <div class="why"><b>Why:</b> ${T.esc(l.why)}</div>
+        <div class="eff">${T.esc(l.effect)}</div>
+        ${l.risk ? `<div class="risk">watch · ${T.esc(l.risk)}</div>` : ""}
+        ${l.recipe ? `<div class="recipe-row"><code class="recipe-flags">build_sft ${T.esc((l.recipe.flags || []).join(" "))}</code>
+          <button class="btn primary recipe-run" data-label="${T.esc(l.recipe.label)}" data-flags="${T.esc(JSON.stringify(l.recipe.flags || []))}" data-init="${T.esc((contract || {}).init_from || "")}">Run this recipe →</button></div>
+        <div class="recipe-msg" style="display:none"></div>` : ""}</div>`).join("")
+    : `<div class="empty">No levers needed — all checks pass with comfortable margin.</div>`;
+  const evBlock = (key, label, cls) => {
+    const rows = ev[key] || []; if (!rows.length) return "";
+    return `<div class="mb"><div class="lab mb">${label} <span class="dim">${rows.length} shown</span></div>
+      <table class="tbl"><tbody>${rows.map(r => `<tr>
+        <td>${T.esc(r.q)}<div class="dim mono" style="font-size:11px">gold: ${T.esc((r.gold || "—").slice(0, 100))}${(r.gold || "").length > 100 ? "…" : ""}</div></td>
+        <td class="mono" style="font-size:11.5px">${T.esc((r.resp || "").slice(0, 140))}</td>
+        <td style="width:96px"><span class="pill ${cls}"><span class="pd"></span>${r.verdict}</span></td></tr>`).join("")}</tbody></table></div>`;
+  };
+  const hasEv = (ev.fabrication || []).length || (ev.over_refusal || []).length || (ev.wrong || []).length;
+  box.innerHTML = `
+    ${moat ? `<div class="moat-note mb"><span class="ic">◆</span><div><b>Native FP4 · INT8-master engine.</b> ${moat}</div></div>` : ""}
+    <div class="narr mb">
+      <div class="nc good"><div class="h"><span class="d"></span>What went well</div>${listHtml(a.went_well)}</div>
+      <div class="nc bad"><div class="h"><span class="d"></span>What went wrong</div>${listHtml(a.went_wrong)}</div>
+      <div class="nc warn"><div class="h"><span class="d"></span>What could improve</div>${listHtml(a.could_improve)}</div>
+    </div>
+    <div class="grid c2">
+      <div><div class="lab mb">Levers for the next run <span class="dim">— biggest payoff first · one-click runs build→train→gate</span></div>
+        <div id="leverbox">${leverHtml(a.next_levers)}</div></div>
+      <div><div class="lab mb">Evidence <span class="dim">— the probes that misfired</span></div>
+        <div class="panel">${hasEv
+          ? evBlock("fabrication", "Fabrications — absent edition, invented an answer", "fail")
+            + evBlock("over_refusal", "Over-refusals — knew it, dodged", "warn")
+            + evBlock("wrong", "Wrong answers", "fail")
+          : (c.scorecard_present
+            ? `<div class="empty">No misfires — every probe landed correct or abstained.</div>`
+            : `<div class="empty">Not gated yet — run the calibration eval for evidence.</div>`)}</div></div>
+    </div>`;
+
+  // "Run this recipe" — the lever becomes an executed gated run (build→train→gate) via apply_recipe,
+  // mutex-guarded. The GPU-busy refusal is shown verbatim.
+  box.querySelectorAll(".recipe-run").forEach(btn => btn.onclick = async () => {
+    const msg = btn.closest(".lever").querySelector(".recipe-msg");
+    const args = { label: btn.dataset.label, flags: JSON.parse(btn.dataset.flags) };
+    if (btn.dataset.init) args.init_from = btn.dataset.init;
+    btn.disabled = true; msg.style.display = "block"; msg.innerHTML = `<span class="mono dim">launching recipe…</span>`;
+    try {
+      const r = await T.postAction("apply_recipe", args);
+      msg.innerHTML = `<div class="row gap wrap"><span class="pill pass" style="text-transform:none"><span class="pd"></span>launched ${T.esc(r.run_id)}</span>
+        <a class="btn" href="/run?id=${encodeURIComponent(r.run_id)}">watch the run →</a>
+        <span class="dim mono" style="font-size:11px">build → train → gate, streaming on /train</span></div>`;
+    } catch (e) {
+      msg.innerHTML = `<div class="errbox">${e.kind === "gpu_busy" ? "⛔ " : "⚠ "}${T.esc(e.message)}</div>`; btn.disabled = false;
+    }
+  });
+}
 
 /* ───────────── OVERVIEW ───────────── */
 function renderOverview(p, d, allRuns) {
   const m = d.metrics, il = d.install, c = d.contract || {};
   const tile = (k, v, edge, meta) => `<div class="tile"><div class="edge ${edge || ""}"></div><div class="k">${k}</div><div class="v">${v}</div>${meta ? `<div class="meta">${meta}</div>` : ""}</div>`;
+  const tw = v => `<span data-tween="${v != null ? v : 0}">0%</span>`;   // settles to value on load
   let tiles = "";
   if (m) {
     const g = d.gate || {};
     tiles = [
-      tile("Fabrication", T.pct(m.fabrication_rate), g.fabrication_ok ? "good" : "bad", `gate ≤ ${T.pct(T.GATE.fabrication)}`),
-      tile("Accuracy", T.pct(m.accuracy_when_answering), g.accuracy_ok ? "good" : "bad", `gate ≥ ${T.pct(T.GATE.accuracy)}`),
-      tile("Coverage", T.pct(m.coverage), g.coverage_ok ? "good" : "bad", `gate ≥ ${T.pct(T.GATE.coverage)}`),
-      tile("Over-refusal", T.pct(m.over_refusal_rate), m.over_refusal_rate > .5 ? "warn" : "", "refuses what it knows"),
-      tile("Calibration", T.fmt(m.calibration_score, 2), "info", "composite score"),
+      tile(T.word("fabrication"), tw(m.fabrication_rate), g.fabrication_ok ? "good" : "bad", `goal: under ${T.pct(T.GATE.fabrication)}`),
+      tile(T.word("accuracy"), tw(m.accuracy_when_answering), g.accuracy_ok ? "good" : "bad", `goal: over ${T.pct(T.GATE.accuracy)}`),
+      tile(T.word("coverage"), tw(m.coverage), g.coverage_ok ? "good" : "bad", `goal: over ${T.pct(T.GATE.coverage)}`),
+      tile(T.isSimple() ? "Dodges what it knows" : "Over-refusal", T.pct(m.over_refusal_rate), m.over_refusal_rate > .5 ? "warn" : "", "refuses things it actually knows"),
+      tile(T.word("calibration"), T.fmt(m.calibration_score, 2), "info", "overall balance"),
     ].join("");
   } else {
     tiles = tile("Status", "NOT GATED", "warn", "trained + saved — run the calibration gate to score it");
   }
+  // plain-English verdict banner (Simple Mode) — the one-line "what does this mean"
+  const g0 = d.gate || {};
+  const summary = m
+    ? (d.status === "passed"
+        ? `<b>This model passed the quality test.</b> It answers ${T.pct(m.coverage)} of what it knows, is right ${T.pct(m.accuracy_when_answering)} of the time, and invents answers only ${T.pct(m.fabrication_rate)} of the time.${il.level === "strong" ? " The knowledge is deep in its weights — ready to ship." : ` But its ${T.term("install")} is <b>${il.level}</b> — strengthen the Knowledge Phase before trusting it in a product.`}`
+        : `<b>This model needs more work.</b> ${!g0.fabrication_ok ? `It makes things up too often (${T.pct(m.fabrication_rate)}, goal under ${T.pct(T.GATE.fabrication)}). ` : ""}${!g0.coverage_ok ? `It dodges too much of what it knows (answers only ${T.pct(m.coverage)}, goal over ${T.pct(T.GATE.coverage)}). ` : ""}${!g0.accuracy_ok ? `It's wrong too often when answering (${T.pct(m.accuracy_when_answering)}, goal over ${T.pct(T.GATE.accuracy)}). ` : ""}Open the <b>Coach</b> tab for the fix.`)
+    : "This model hasn't been quality-tested yet.";
   p.innerHTML = `
-    <div class="grid c2 mb">
+    ${T.isSimple() ? `<div class="hero mb" style="padding:16px 20px;border-left-color:${m ? (d.status === "passed" ? "var(--good)" : "var(--bad)") : "var(--warn)"}"><p style="font-size:14px;color:var(--ink)">${summary}</p></div>` : ""}
+    <div class="grid c2 mb expert-only">
       <div class="panel"><div class="panel-h"><h2>Behaviour — the talking test</h2>${m ? T.pill(d.status) : T.pill("trained")}</div>
         <p class="dim" style="margin:.1em 0 0">Does the chat surface answer what it knows and abstain on what it doesn't? An SFT-elicitation property.</p></div>
       <div class="panel"><div class="panel-h"><h2>Install — the knowledge test</h2>${T.installPill(il.level)}</div>
@@ -121,6 +215,7 @@ function renderOverview(p, d, allRuns) {
         ["levers", (c.levers_on && c.levers_on.length) ? c.levers_on.join(", ") : "none"],
         ["save dir", c.save_dir], ["checkpoints", (d.checkpoints || []).join(", ") || "final only"],
       ].map(([k, v]) => `<div><div class="lab">${k}</div><div class="mono" style="font-size:12.5px;word-break:break-all">${v == null ? "—" : T.esc(String(v))}</div></div>`).join("")}</div></div>`;
+  T.settle(p);   // gate tiles ease to their values — a settling instrument, not a snap
 }
 
 /* ───────────── BEHAVIOUR ───────────── */
@@ -150,8 +245,30 @@ function renderBehavior(p, d) {
         ${stack([{ label: "abstain", v: cf.absent.abstain, cls: "good" }, { label: "fabrication", v: cf.absent.fabrication, cls: "bad" }], cf.absent.n)}
         <div class="legend mt"><span class="lc"><span class="sw" style="background:var(--good)"></span>abstain ${cf.absent.abstain}</span><span class="lc"><span class="sw" style="background:var(--bad)"></span>fabrication ${cf.absent.fabrication}</span></div></div>
     </div>
+    <div class="panel" id="gatecurve"><div class="panel-h"><h2>Checkpoint gate curve</h2><span class="note">pick the pre-overfit checkpoint to ship</span></div>
+      <div class="dim mono" style="padding:6px 0">loading…</div></div>
     <div class="panel"><div class="panel-h"><h2>Transcripts</h2><div class="row gap wrap" id="filters"></div></div>
       <div id="rows"></div></div>`;
+
+  // checkpoint gate curve — fab/acc/cov per saved checkpoint, recommends the pre-overfit one to ship
+  (async () => {
+    try {
+      const gc = await T.postAction("gate_curve", { run_id: id });
+      const box = T.$("#gatecurve");
+      if (!gc.points || !gc.points.length) { box.querySelector(".dim").textContent = "only the final checkpoint was gated — gate more step_* checkpoints to see the overfit curve."; return; }
+      const rec = gc.recommended || {};
+      box.innerHTML = `<div class="panel-h"><h2>Checkpoint gate curve</h2><span class="note">${T.esc(gc.note)}</span></div>
+        <table class="tbl"><thead><tr><th>Checkpoint</th><th class="num">Fabrication</th><th class="num">Accuracy</th><th class="num">Coverage</th><th class="num">Calib</th><th>Gate</th></tr></thead>
+        <tbody>${gc.points.map(pt => { const isRec = rec && pt.step === rec.step && pt.final === rec.final;
+          return `<tr ${isRec ? 'style="background:var(--good-wash)"' : ''}>
+            <td class="name">${pt.final ? "final" : "step " + pt.step} ${isRec ? '<span class="pill pass" style="font-size:9px;padding:1px 6px"><span class="pd"></span>SHIP</span>' : ''}</td>
+            <td class="num ${T.grade(pt.fabrication, T.GATE.fabrication, "max")}">${T.pct(pt.fabrication)}</td>
+            <td class="num ${T.grade(pt.accuracy, T.GATE.accuracy, "min")}">${T.pct(pt.accuracy)}</td>
+            <td class="num ${T.grade(pt.coverage, T.GATE.coverage, "min")}">${T.pct(pt.coverage)}</td>
+            <td class="num">${T.fmt(pt.calibration, 2)}</td>
+            <td>${T.pill(pt.passed ? "passed" : "failed")}</td></tr>`; }).join("")}</tbody></table>`;
+    } catch (e) { /* leave the loading note */ }
+  })();
   // transcript filter + list
   const rows = sc.rows || [];
   const counts = {}; rows.forEach(r => counts[r.verdict] = (counts[r.verdict] || 0) + 1);

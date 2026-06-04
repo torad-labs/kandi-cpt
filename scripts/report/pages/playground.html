@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Playground · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const slot = T.mountShell({ page: "playground", crumbs: [{ label: "Console", href: "/" }, { label: "Playground" }] });
+const VCLASS = { fabrication: "fail", over_refusal: "warn", wrong: "fail", correct: "pass", abstain: "pass" };
+
+const simple = T.isSimple();
+slot.innerHTML = `
+  <div class="phead"><div><h1>${simple ? "Test the model" : "Playground"}</h1>
+    <div class="sub">${simple
+      ? "See how the model answers questions about your domain. <b>Test answers</b> shows what it said on the quality-test questions (instant). <b>Ask anything</b> lets you type your own question and get a live answer."
+      : "Ask the shipping model a question. <b>Stored</b> replays the gated transcript (zero GPU, always on). <b>Live</b> runs real FP4 inference against a checkpoint — in the same precision it runs on-device — behind the single-GPU mutex."}</div></div></div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-t="stored">${simple ? "Test answers" : "Stored · zero-GPU"}</button>
+    <button class="tab" data-t="live">${simple ? "Ask anything" : "Live · FP4"}</button></div>
+  <div class="tabpane active" id="pane-stored"></div>
+  <div class="tabpane" id="pane-live"></div>`;
+
+T.$$(".tab").forEach(b => b.onclick = () => {
+  T.$$(".tab").forEach(x => x.classList.remove("active")); b.classList.add("active");
+  T.$$(".tabpane").forEach(p => p.classList.remove("active"));
+  T.$("#pane-" + b.dataset.t).classList.add("active");
+});
+
+(async () => {
+  let runs;
+  try { runs = (await T.fetchJSON("/api/runs")).runs.slice().reverse(); }
+  catch (e) { return T.err(slot, e.message, `Is the console server running? Start it with <span class="mono">torad serve</span>, then reload.`); }
+  const gated = runs.filter(r => r.status === "passed" || r.status === "failed");
+  if (!gated.length) {
+    T.$("#pane-stored").innerHTML = T.$("#pane-live").innerHTML = T.empty(
+      simple ? "No tested models yet." : "No gated runs to test.",
+      `${simple ? "Train a model and run it through the quality test" : "Train + gate a run"} from <a href="/train">Train</a> — then come back to test how it answers.`);
+    return;
+  }
+
+  // ── STORED ──
+  const sp = T.$("#pane-stored");
+  sp.innerHTML = `
+    <div class="panel"><div class="formrow">
+      <div class="field"><div class="lab">Run</div><select id="sRun" class="sel" aria-label="Run to replay">${gated.map(r => `<option value="${r.id}">${r.id.replace("edc_sft_","")} · ${r.status}</option>`).join("")}</select></div>
+      <div class="field"><div class="lab">Show</div><select id="sFilter" class="sel" aria-label="Filter turns by verdict">
+        <option value="">all turns</option><option value="fabrication">fabrications</option>
+        <option value="over_refusal">over-refusals</option><option value="wrong">wrong</option>
+        <option value="correct">correct</option><option value="abstain">abstain</option></select></div>
+      <span class="note" id="sNote"></span></div></div>
+    <div id="sOut"></div>`;
+  const loadStored = async () => {
+    const run_id = T.$("#sRun").value, verdict = T.$("#sFilter").value || undefined;
+    T.$("#sOut").innerHTML = `<div class="mono dim" style="padding:20px">loading transcript…</div>`;
+    try {
+      const r = await T.postAction("playground_stored", { run_id, ...(verdict ? { verdict } : {}) });
+      T.$("#sNote").textContent = r.scored ? `${r.n} turns` : "never gated";
+      T.$("#sOut").innerHTML = r.turns.length ? `<div class="panel flush"><table class="tbl">
+        <thead><tr><th style="width:34%">Question</th><th>Gold</th><th>Model said</th><th>Verdict</th></tr></thead>
+        <tbody>${r.turns.map(t => `<tr><td>${T.esc(t.q)}</td><td class="muted">${T.esc((t.gold||"—").slice(0,80))}</td>
+          <td class="mono" style="font-size:11.5px">${T.esc((t.resp||"").slice(0,160))}</td>
+          <td><span class="pill ${VCLASS[t.verdict]||"trained"}"><span class="pd"></span>${t.verdict}</span></td></tr>`).join("")}</tbody></table></div>`
+        : `<div class="empty">${r.scored ? "no turns match that filter" : "this run was never gated — nothing stored to replay"}</div>`;
+    } catch (e) { T.err(T.$("#sOut"), e.message); }
+  };
+  T.$("#sRun").onchange = loadStored; T.$("#sFilter").onchange = loadStored;
+  loadStored();
+
+  // ── LIVE ──
+  const lp = T.$("#pane-live");
+  lp.innerHTML = `
+    <div class="panel"><div class="panel-h"><h2>${simple ? "Ask your model a question" : "Live FP4 inference"}</h2><span class="note" id="lGpu">checking GPU…</span></div>
+      <div class="formrow">
+        <div class="field grow"><div class="lab">Model</div>
+          <select id="lCkpt" class="sel" aria-label="Model to ask">${gated.map(r => `<option value="checkpoints/sft/${r.id}">${r.id.replace("edc_sft_", simple ? "model " : "")} ${simple ? "" : "(sft)"}</option>`).join("")}</select></div>
+        <div class="field"><div class="lab">Answer style</div><div class="tg" id="lMode"><button class="on" data-m="memory">${simple ? "accurate" : "memory · greedy"}</button><button data-m="voice">${simple ? "creative" : "voice · sampled"}</button></div></div>
+      </div>
+      <div class="row gap mt"><input id="lPrompt" class="inp" style="flex:1" aria-label="Prompt" placeholder="Where is EDC Las Vegas 2026 held?" value="Where is EDC Las Vegas 2026 held?">
+        <button class="btn primary" id="lAsk">Ask →</button></div>
+      <div class="hint dim mt" style="font-size:11.5px;border:0">${simple
+        ? "<b>Accurate</b> gives the model's exact best answer; <b>creative</b> lets it vary the wording. Asking takes a few seconds and uses the GPU, so it waits if a model is training."
+        : "memory = what the weights encode (greedy); voice = the on-device runtime sampling (temp 1.2, top-k 64). Live inference holds the GPU for a few seconds and is refused if a run is training."}</div>
+      <div id="lOut" style="margin-top:14px"></div></div>`;
+  let lMode = "memory";
+  T.$("#lMode").querySelectorAll("button").forEach(b => b.onclick = () => {
+    T.$("#lMode").querySelectorAll("button").forEach(x => x.classList.remove("on")); b.classList.add("on"); lMode = b.dataset.m; });
+  const lGpu = async () => { try { const g = await T.postAction("gpu_status", {}); const c = T.$("#lGpu");
+    if (g.free) { c.textContent = "GPU0 free"; c.style.color = "var(--good)"; }
+    else { c.textContent = `GPU0 busy · ${g.holder ? g.holder.run_id : "foreign"}`; c.style.color = "var(--bad)"; } } catch (e) {} };
+  T.$("#lAsk").onclick = async () => {
+    const checkpoint = T.$("#lCkpt").value, prompt = T.$("#lPrompt").value.trim();
+    if (!prompt) return;
+    const out = T.$("#lOut"), btn = T.$("#lAsk");
+    btn.disabled = true; out.innerHTML = `<div class="mono dim">generating in FP4… (loading the checkpoint takes a few seconds)</div>`;
+    const args = { checkpoint, prompt, temperature: lMode === "voice" ? 1.2 : 0, top_k: 64, max_new: 64 };
+    try {
+      const r = await T.postAction("playground_live", args);
+      out.innerHTML = `<div class="panel" style="border-left:3px solid var(--ox)">
+        <div class="lab mb">${T.esc(r.checkpoint.split("/").pop())} · ${r.mode} mode</div>
+        <div class="mono b" style="font-size:13px">Q: ${T.esc(prompt)}</div>
+        <div class="mono" style="font-size:14px;margin-top:8px;color:var(--ink)">A: ${T.esc(r.answer)}</div></div>`;
+    } catch (e) {
+      out.innerHTML = `<div class="errbox">${e.kind === "gpu_busy" ? "⛔ " : "⚠ "}${T.esc(e.message)}</div>`;
+    } finally { btn.disabled = false; lGpu(); }
+  };
+  lGpu(); T.poll(lGpu, 4000);
+})();
+</script>
+</body></html>

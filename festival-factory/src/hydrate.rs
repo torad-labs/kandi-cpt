@@ -84,7 +84,8 @@ impl Engine {
     }
 
     /// Build the grounded cells for the SUPPORTED lineup + stage-attribute + derived relations.
-    fn build_cells(&self, store: &TripleStore, base_n: u32) -> Vec<Cell> {
+    /// `balance` overrides base_n per relation_type (the qgre balance lever: boost under-covered relations).
+    fn build_cells(&self, store: &TripleStore, base_n: u32, balance: &BTreeMap<String, u32>) -> Vec<Cell> {
         let cfg = &self.cfg;
         let lineup = store.plays_at();
         let mut cells = Vec::new();
@@ -365,15 +366,21 @@ impl Engine {
             }
         }
 
+        // qgre balance lever: a relation with an explicit target uses that base_n for its cells (boost the
+        // under-covered ones). Lineup cells already carry reps_for scaling; an override replaces it.
+        if !balance.is_empty() {
+            for c in &mut cells {
+                if let Some(&ov) = balance.get(c.relation) {
+                    c.n = ov;
+                }
+            }
+        }
         cells
     }
 
     /// Build cells + print a per-(relation,form) breakdown without calling the API. Returns cell count.
-    pub fn dry_run_plan(&self, store: &TripleStore, base_n: u32, limit: Option<usize>) -> usize {
-        let mut cells = self.build_cells(store, base_n);
-        if let Some(l) = limit {
-            cells.truncate(l);
-        }
+    pub fn dry_run_plan(&self, store: &TripleStore, base_n: u32, balance: &BTreeMap<String, u32>) -> usize {
+        let mut cells = self.build_cells(store, base_n, balance);
         let mut by: BTreeMap<(&str, &str), usize> = BTreeMap::new();
         for c in &cells {
             *by.entry((c.relation, c.form.name())).or_default() += 1;
@@ -466,10 +473,17 @@ impl Engine {
     /// `out_path` as its cell completes (flushed per cell). A crash/kill therefore keeps everything
     /// generated so far on disk — no buffer-everything-then-write-once data-loss cliff (composes with the
     /// rehydrate_vc1.sh preserve-on-underperform wrapper). Returns the in-memory records for the tally.
-    pub async fn hydrate(&self, store: &TripleStore, base_n: u32, concurrency: usize, limit: Option<usize>,
+    #[allow(clippy::too_many_arguments)]
+    pub async fn hydrate(&self, store: &TripleStore, base_n: u32, balance: &BTreeMap<String, u32>,
+                         relations: Option<&BTreeSet<String>>, exposure_cap: Option<u32>, append: bool,
+                         concurrency: usize, limit: Option<usize>,
                          out_path: &std::path::Path) -> std::io::Result<Vec<Record>> {
         use std::io::Write as _;
-        let mut cells = self.build_cells(store, base_n);
+        let mut cells = self.build_cells(store, base_n, balance);
+        // qgre relation filter: a top-up run generates only the named relation_types.
+        if let Some(rels) = relations {
+            cells.retain(|c| rels.contains(c.relation));
+        }
         if let Some(l) = limit {
             cells.truncate(l);
         }
@@ -486,17 +500,32 @@ impl Engine {
                 engine.run_cell(&cells[idx]).await
             });
         }
-        let mut f = std::io::BufWriter::new(std::fs::File::create(out_path)?);
+        // append for a relation-scoped top-up (keep the other relations already on disk); else truncate.
+        let file = std::fs::OpenOptions::new().create(true).append(append).write(true)
+            .truncate(!append).open(out_path)?;
+        let mut f = std::io::BufWriter::new(file);
         let mut seen = std::collections::BTreeSet::new();   // on-the-fly dedup (same key as the old dedup())
+        // qgre exposure cap: ceiling on lines sharing one source fact (what gate exposure_cap measures —
+        // per source_triple_ids[0]). Redundancy is GOOD up to the cap; this stops the runaway past it.
+        let mut per_fact: BTreeMap<String, u32> = BTreeMap::new();
         let mut out = Vec::new();
         while let Some(res) = set.join_next().await {
             if let Ok(recs) = res {
                 for r in recs {
                     let key = r.text.to_lowercase().split_whitespace().collect::<Vec<_>>().join(" ");
-                    if seen.insert(key) {
-                        writeln!(f, "{}", serde_json::to_string(&r).unwrap_or_default())?;
-                        out.push(r);
+                    if !seen.insert(key) {
+                        continue;
                     }
+                    if let Some(cap) = exposure_cap {
+                        let fk = r.source_triple_ids.first().cloned().unwrap_or_default();
+                        let c = per_fact.entry(fk).or_insert(0);
+                        if *c >= cap {
+                            continue;   // this fact has hit its ceiling — drop the surplus line
+                        }
+                        *c += 1;
+                    }
+                    writeln!(f, "{}", serde_json::to_string(&r).unwrap_or_default())?;
+                    out.push(r);
                 }
                 f.flush()?;   // per-cell durability: a crash keeps every cell written so far
             }

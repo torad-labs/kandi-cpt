@@ -117,6 +117,16 @@ struct HydrateArgs {
     /// Build + print the cell plan WITHOUT calling the API.
     #[arg(long)]
     dry_run: bool,
+    /// qgre re-hydrate lever: only generate these relation_types (CSV). When set, output APPENDS to
+    /// relations.jsonl (a top-up of under-covered relations) instead of truncating.
+    #[arg(long)]
+    relations: Option<String>,
+    /// qgre over-install stop: hard ceiling on hydrated lines sharing one source fact (gate exposure_cap).
+    #[arg(long)]
+    exposure_cap: Option<u32>,
+    /// qgre balance lever: per-relation base_n override, CSV `rel=N,rel2=M` (boost under-covered relations).
+    #[arg(long)]
+    balance_target: Option<String>,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -235,10 +245,19 @@ fn hydrate_cmd(a: HydrateArgs) -> anyhow::Result<()> {
     let out_dir = cfg.hydrated_dir();
     std::fs::create_dir_all(&out_dir)?;
 
+    // qgre levers: per-relation base_n overrides + the relation filter (append top-up) + exposure cap.
+    let balance: std::collections::BTreeMap<String, u32> = a.balance_target.as_deref().unwrap_or("")
+        .split(',').filter(|s| !s.is_empty())
+        .filter_map(|kv| { let (k, v) = kv.split_once('=')?; Some((k.trim().to_string(), v.trim().parse().ok()?)) })
+        .collect();
+    let relations: Option<std::collections::BTreeSet<String>> = a.relations.as_deref()
+        .map(|s| s.split(',').filter(|x| !x.is_empty()).map(|x| x.trim().to_string()).collect());
+    let append = relations.is_some();   // a relation-scoped run is a top-up: keep the other relations' lines
+
     let engine = hydrate::Engine::new(cfg, &store, &a.model, a.temperature)?;
     if a.dry_run {
         // build cells only (no API) — report the plan
-        let recs = engine.dry_run_plan(&store, a.base_n, a.limit);
+        let recs = engine.dry_run_plan(&store, a.base_n, &balance);
         println!("DRY RUN — {} cells planned (model={}, temp={})", recs, a.model, a.temperature);
         return Ok(());
     }
@@ -247,7 +266,8 @@ fn hydrate_cmd(a: HydrateArgs) -> anyhow::Result<()> {
     // it returns the in-memory records only for the coverage tally below.
     let path = out_dir.join("relations.jsonl");
     let rt = tokio::runtime::Runtime::new()?;
-    let records = rt.block_on(engine.hydrate(&store, a.base_n, a.concurrency, a.limit, &path))?;
+    let records = rt.block_on(engine.hydrate(&store, a.base_n, &balance, relations.as_ref(),
+                                             a.exposure_cap, append, a.concurrency, a.limit, &path))?;
 
     // coverage tally (Part 5 gate 1)
     let mut by: BTreeMap<(String, String), usize> = BTreeMap::new();

@@ -12,9 +12,10 @@
 const slot = T.mountShell({ page: "runs", crumbs: [{ label: "Console", href: "/" }, { label: "Runs" }] });
 slot.innerHTML = `
   <div class="phead"><div><h1>Runs</h1>
-    <div class="sub">Every SFT run under <span class="mono">checkpoints/sft/</span>, read live from its run contract + the calibration ledger. A run PASSES the behaviour gate only when all three thresholds hold at once.</div></div></div>
-  <div class="panel"><div class="panel-h"><h2>EDC Corpus Install — SFT campaign</h2>
-    <span class="note">gate · fab ≤ ${T.pct(T.GATE.fabrication)} &nbsp; acc ≥ ${T.pct(T.GATE.accuracy)} &nbsp; cov ≥ ${T.pct(T.GATE.coverage)}</span></div>
+    <div class="sub">Every SFT run under <span class="mono">checkpoints/sft/</span>, read live from its run contract + the calibration ledger. A run PASSES the behaviour gate only when all three thresholds hold at once.</div></div>
+    <div class="right"><button class="btn primary" id="cmpBtn" disabled>Compare <span id="cmpN">0</span> →</button></div></div>
+  <div class="panel"><div class="panel-h"><h2>SFT campaign</h2>
+    <span class="note">tick two runs to compare · gate · fab ≤ ${T.pct(T.GATE.fabrication)} &nbsp; acc ≥ ${T.pct(T.GATE.accuracy)} &nbsp; cov ≥ ${T.pct(T.GATE.coverage)}</span></div>
     <div id="tbl"></div></div>`;
 
 function cell(v, thr, dir) {
@@ -24,15 +25,20 @@ function cell(v, thr, dir) {
 }
 
 (async () => {
-  let runs; try { runs = (await T.fetchJSON("/api/runs")).runs; } catch (e) { return T.err(slot, e.message); }
+  let runs; try { runs = (await T.fetchJSON("/api/runs")).runs; }
+  catch (e) { return T.err(slot, e.message, `Is the console server running? Start it with <span class="mono">torad serve</span>, then reload.`); }
   runs = runs.slice().reverse();
+  if (!runs.length) { T.$("#tbl").innerHTML = T.empty(
+    T.isSimple() ? "No models trained yet." : "No runs yet.",
+    `Start your first run from <a href="/train">${T.isSimple() ? "Train" : "Train"}</a> — train a ${T.word("cpt")}, then a ${T.word("sft")}, and it'll show up here.`); return; }
   T.$("#tbl").innerHTML = `<table class="tbl"><thead><tr>
-      <th>Run</th><th>Status</th><th>Install</th>
+      <th style="width:30px"></th><th>Run</th><th>Status</th><th>Install</th>
       <th class="num">Fabrication</th><th class="num">Accuracy</th><th class="num">Coverage</th>
       <th class="num">Calib</th><th class="num">Steps</th><th class="num">When</th></tr></thead>
     <tbody>${runs.map(r => {
       const m = r.metrics;
       return `<tr class="clk" onclick="location='/run?id=${r.id}'">
+        <td style="width:30px"><input type="checkbox" class="cmp-ck" name="cmp-${T.esc(r.id)}" data-id="${r.id}" aria-label="Select ${T.esc(r.id)} to compare" onclick="event.stopPropagation()"></td>
         <td class="name"><span class="id">${r.id.replace("edc_sft_", "")}</span>
           ${r.levers_on && r.levers_on.length ? `<span class="muted mono" style="font-size:10px"> ${r.levers_on.join(" ")}</span>` : ""}</td>
         <td>${T.pill(r.status)}</td>
@@ -44,6 +50,15 @@ function cell(v, thr, dir) {
         <td class="num muted">${r.max_steps || "—"}</td>
         <td class="num muted">${T.relDate(r.date)}</td></tr>`;
     }).join("")}</tbody></table>`;
+
+  // compare selector: tick two-or-more runs → /compare (the first ticked is the baseline)
+  const sel = [], btn = T.$("#cmpBtn"), cn = T.$("#cmpN");
+  T.$$(".cmp-ck").forEach(ck => ck.onchange = () => {
+    const i = sel.indexOf(ck.dataset.id);
+    ck.checked ? (i < 0 && sel.push(ck.dataset.id)) : (i >= 0 && sel.splice(i, 1));
+    cn.textContent = sel.length; btn.disabled = sel.length < 2;
+  });
+  btn.onclick = () => { if (sel.length >= 2) location.href = "/compare?runs=" + sel.map(encodeURIComponent).join(",") + "&baseline=" + encodeURIComponent(sel[0]); };
 })();
 
 function gateChips(g) {

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build · Torad Train</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/torad.css">
+</head><body>
+<script src="/assets/torad.js"></script>
+<script>
+const simple = T.isSimple();
+const slot = T.mountShell({ page: "build", crumbs: [{ label: "Console", href: "/" }, { label: simple ? "Build" : "Build" }] });
+
+slot.innerHTML = `
+  <div class="phead"><div><h1>${simple ? "Build your training data" : "Build — ingest + autonomous pipeline"}</h1>
+    <div class="sub">${simple
+      ? "Add source documents (or use what's already scraped), then let the console build your training data automatically: it cleans the text, pulls out the facts, writes many varied teaching examples, and <b>checks its own work</b> against the quality gates — fixing what it can and telling you honestly what's missing."
+      : "The domain-agnostic pipeline as an autonomous loop: ingest → clean → extract (spec-driven + the predicate→object contract) → hydrate (with the exposure cap + balance targets) → gate → decide. It re-hydrates under-covered relations, stops at the cap, and classifies source-gaps honestly instead of fabricating. CPU/LLM only — never touches the GPU, never auto-trains."}</div></div></div>
+
+  ${simple ? `<div class="hero mb"><h2>How this works</h2>
+    <p>Point it at a domain, optionally drop in documents, and press <b>Run</b>. The loop does the whole data build and re-checks itself with the quality gates. When it's done, your corpus is ready to <a href="/train">Train</a> — that step you trigger yourself.</p></div>` : ""}
+
+  <div class="grid c2 mb">
+    <div class="panel"><div class="panel-h"><h2>${simple ? "1 · Pick a domain" : "Domain + editions"}</h2></div>
+      <div class="field mb"><div class="lab">Domain</div><select id="dom" class="sel" aria-label="Domain"></select></div>
+      <div class="field"><div class="lab">Editions <span class="dim">(city/year, comma-separated)</span></div>
+        <input id="eds" class="inp" list="edl" placeholder="las_vegas/2026" aria-label="Editions"></div>
+      <datalist id="edl"></datalist>
+      <div class="formrow mt expert-only">
+        <div class="field"><div class="lab">Exposure cap</div><input id="cap" class="inp" value="60" aria-label="Exposure cap"></div>
+        <div class="field"><div class="lab">Start from</div><select id="from" class="sel" aria-label="Start stage">
+          <option value="clean">clean</option><option value="extract">extract</option><option value="hydrate">hydrate</option></select></div>
+      </div></div>
+
+    <div class="panel"><div class="panel-h"><h2>${simple ? "2 · Add documents" : "Ingest documents (optional)"}</h2>
+      <span class="note">optional — drop files to add source material</span></div>
+      <div id="drop" class="drop-zone"><input type="file" id="files" multiple
+        accept=".md,.txt,.html,.json,.pdf" aria-label="Documents to ingest" style="display:none">
+        <div class="dz-inner"><div class="dz-plus">⊕</div>
+          <div>Drop documents here or <label for="files" class="dz-link">choose files</label></div>
+          <div class="dim" style="font-size:11.5px;margin-top:4px">md · txt · html · json — added to the chosen edition's sources</div></div></div>
+      <div id="ingestOut" class="mt"></div></div>
+  </div>
+
+  <div class="panel mb"><div class="panel-h"><h2>${simple ? "3 · Run the build" : "Autonomous build"}</h2>
+      <span class="note" id="gpuNote"></span></div>
+    <div class="row gap"><button class="btn primary" id="runBtn">${simple ? "Run the build →" : "Run autonomous pipeline →"}</button>
+      <button class="btn hidden" id="stopBtn">Stop</button>
+      <span class="dim" id="runMsg" style="font-size:12.5px"></span></div>
+    <div class="hint dim mt" style="font-size:11.5px;border:0">${simple
+      ? "This cleans, extracts, writes teaching examples, and quality-checks your data automatically. It can take a while (it calls an AI to read and write). It will <b>not</b> start training — that's a separate step you choose."
+      : "Spawns scripts/pipeline/agent_loop.py as a GPU-free job; streams its decisions below. Tokenize + CPT remain explicit."}</div></div>
+
+  <div id="liveWrap" class="hidden">
+    <div class="grid c2 mb">
+      <div class="panel"><div class="panel-h"><h2>${simple ? "What it's doing" : "Decision stream"}</h2><span class="note" id="liveStatus"></span></div>
+        <div id="stream" class="stream"></div></div>
+      <div class="panel"><div class="panel-h"><h2>${simple ? "Quality so far" : "Per-edition gates"}</h2></div>
+        <div id="matrix"><div class="empty" style="padding:24px">runs after the first edition is hydrated…</div></div></div>
+    </div>
+  </div>`;
+
+// ── domain picker + edition datalist ──
+let OBJS = [], JOB = null, CURSOR = 0, POLL = null;
+(async () => {
+  try {
+    const [o, idx] = await Promise.all([T.fetchJSON("/api/objectives"), T.fetchJSON("/api/data").catch(() => ({ editions: [] }))]);
+    OBJS = o.objectives || [];
+    const sel = T.$("#dom");
+    sel.innerHTML = OBJS.map(x => `<option value="${x.id}" ${x.id === (o.selected || T.objective()) ? "selected" : ""}>${T.esc(x.name)}${x.status === "planned" ? " (planned)" : ""}</option>`).join("");
+    const eds = (idx.editions || []).map(e => e.edition || e.key || (e.city && e.year ? `${e.city}/${e.year}` : "")).filter(Boolean);
+    T.$("#edl").innerHTML = eds.map(e => `<option value="${T.esc(e)}">`).join("");
+  } catch (e) { return T.err(slot, e.message, `Is the console server running? Start it with <span class="mono">torad serve</span>.`); }
+  gpuNote();
+})();
+
+async function gpuNote() {
+  try { const g = await T.postAction("gpu_status", {}); const n = T.$("#gpuNote");
+    n.textContent = simple ? "the build never uses the GPU — training can run alongside it"
+      : (g.free ? "GPU free · pipeline is GPU-free regardless" : "GPU busy training · pipeline runs alongside (never blocks)");
+  } catch (e) {}
+}
+
+// ── document ingest (FileReader → base64 → the ingest_document action; no new server code) ──
+const dz = T.$("#drop");
+["dragover", "dragenter"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("over"); }));
+["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("over"); }));
+dz.addEventListener("drop", e => ingestFiles(e.dataTransfer.files));
+T.$("#files").addEventListener("change", e => ingestFiles(e.target.files));
+
+function b64(file) {
+  return new Promise((res, rej) => { const r = new FileReader();
+    r.onload = () => res(r.result.split(",", 2)[1] || ""); r.onerror = rej; r.readAsDataURL(file); });
+}
+async function ingestFiles(fileList) {
+  const files = [...fileList]; if (!files.length) return;
+  const dom = T.$("#dom").value, ed = T.$("#eds").value.trim();
+  const out = T.$("#ingestOut");
+  if (!ed) { out.innerHTML = `<div class="errbox">Pick an edition first (e.g. <span class="mono">las_vegas/2026</span>) — that's where these documents go.</div>`; return; }
+  const fest = (OBJS.find(o => o.id === dom) || {}).festival || dom;
+  out.innerHTML = `<div class="mono dim">adding ${files.length} document${files.length === 1 ? "" : "s"}…</div>`;
+  const rows = [];
+  for (const f of files) {
+    try {
+      const r = await T.postAction("ingest_document", { festival: fest, edition: ed, content: await b64(f), filename: f.name });
+      rows.push(r.status === "ingested"
+        ? `<div class="row gap" style="padding:2px 0"><span class="pill pass" style="text-transform:none"><span class="pd"></span>added</span> <span class="mono" style="font-size:11.5px">${T.esc(f.name)}</span></div>`
+        : `<div class="row gap" style="padding:2px 0"><span class="pill trained" style="text-transform:none"><span class="pd"></span>${T.esc(r.status || "skipped")}</span> <span class="mono" style="font-size:11.5px">${T.esc(f.name)}</span></div>`);
+    } catch (e) { rows.push(`<div class="errbox" style="font-size:11.5px">${T.esc(f.name)}: ${T.esc(e.message)}</div>`); }
+  }
+  out.innerHTML = rows.join("");
+}
+
+// ── run / stop the autonomous loop ──
+T.$("#runBtn").onclick = async () => {
+  const dom = T.$("#dom").value, eds = T.$("#eds").value.trim();
+  if (!eds) { T.$("#runMsg").innerHTML = `<span style="color:var(--bad)">enter at least one edition (e.g. las_vegas/2026)</span>`; return; }
+  const args = { domain: dom, editions: eds };
+  if (!simple) { args.exposure_cap = parseInt(T.$("#cap").value) || 60; args.start_from = T.$("#from").value; }
+  T.$("#runBtn").disabled = true; T.$("#runMsg").innerHTML = `<span class="mono dim">launching…</span>`;
+  try {
+    const r = await T.postAction("run_pipeline", args);
+    JOB = r.job_id; CURSOR = 0;
+    T.$("#runMsg").innerHTML = `<span class="mono">job ${T.esc(JOB)}</span>`;
+    T.$("#stopBtn").classList.remove("hidden"); T.$("#liveWrap").classList.remove("hidden");
+    T.$("#stream").innerHTML = ""; T.$("#matrix").innerHTML = `<div class="empty" style="padding:24px">runs after the first edition is hydrated…</div>`;
+    POLL = setInterval(pollJob, 2500); pollJob();
+  } catch (e) { T.$("#runBtn").disabled = false; T.$("#runMsg").innerHTML = `<span style="color:var(--bad)">${T.esc(e.message)}</span>`; }
+};
+T.$("#stopBtn").onclick = async () => {
+  if (!JOB) return;
+  try { await T.postAction("stop_pipeline", { job_id: JOB }); } catch (e) {}
+  T.$("#runMsg").innerHTML += ` <span class="dim">· stopped</span>`;
+};
+
+async function pollJob() {
+  if (!JOB) return;
+  try {
+    const log = await T.fetchJSON(`/api/pipeline/${encodeURIComponent(JOB)}/log?after=${CURSOR}`);
+    if (log.lines && log.lines.length) { appendStream(log.lines); CURSOR = log.next; }
+    const st = await T.fetchJSON(`/api/pipeline/${encodeURIComponent(JOB)}`);
+    const status = st.status || "running";
+    T.$("#liveStatus").textContent = status;
+    if (status !== "running") {
+      clearInterval(POLL); POLL = null;
+      T.$("#runBtn").disabled = false; T.$("#stopBtn").classList.add("hidden");
+      renderMatrix();   // final gate read once settled
+    }
+  } catch (e) { /* transient */ }
+}
+
+function appendStream(lines) {
+  const el = T.$("#stream");
+  const html = lines.map(l => {
+    const cls = /DECISION/.test(l) ? "ln-dec" : /✓/.test(l) ? "ln-ok" : /✗|error|blocked/i.test(l) ? "ln-bad" : /════|gate\(/.test(l) ? "ln-hd" : "";
+    return `<div class="ln ${cls}">${T.esc(l)}</div>`;
+  }).join("");
+  el.insertAdjacentHTML("beforeend", html); el.scrollTop = el.scrollHeight;
+  if (/hydrate .*finished|gate\(/.test(lines.join("\n"))) renderMatrix();
+}
+
+// ── per-edition × per-gate matrix (reads gate_corpus live; honest source-gap panel) ──
+let _matBusy = false;
+async function renderMatrix() {
+  if (_matBusy) return; _matBusy = true;
+  const dom = T.$("#dom").value, eds = T.$("#eds").value.split(",").map(s => s.trim()).filter(Boolean);
+  const GCOLS = [["balance", "Balance"], ["exposure_cap", "Over-rep"], ["id_integrity", "Structure"], ["faithfulness", "Clean"], ["source_vs_gap", "Missing"]];
+  const VP = { pass: "pass", warn: "warn", fail: "fail", skipped: "trained" };
+  const rows = [];
+  let gaps = {};
+  for (const ed of eds) {
+    try {
+      const g = await T.postAction("gate_corpus", { festival: (OBJS.find(o => o.id === dom) || {}).festival || dom, edition: ed });
+      const gg = g.gates || {};
+      Object.assign(gaps, (gg.source_vs_gap || {}).source_gap_vs_defect || {});
+      rows.push(`<tr><td class="name"><span class="id">${T.esc(ed)}</span></td>${GCOLS.map(([k]) =>
+        `<td class="num"><span class="pill ${VP[(gg[k] || {}).severity] || "trained"}" style="text-transform:none;font-size:10px"><span class="pd"></span>${(gg[k] || {}).severity || "—"}</span></td>`).join("")}</tr>`);
+    } catch (e) { /* edition not hydrated yet */ }
+  }
+  if (!rows.length) { _matBusy = false; return; }
+  const gapItems = Object.entries(gaps).filter(([, c]) => c.kind === "source_gap");
+  T.$("#matrix").innerHTML = `<table class="tbl"><thead><tr><th>Edition</th>${GCOLS.map(([, l]) => `<th class="num">${l}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>
+    ${gapItems.length ? `<div class="err-recover" style="margin-top:10px"><b>Needs your data</b> (not a bug — no source for these yet): ${gapItems.map(([r]) => `<span class="mono">${T.esc(r)}</span>`).join(", ")}. Drop documents covering them above, then re-run.</div>` : ""}`;
+  _matBusy = false;
+}
+</script>
+</body></html>

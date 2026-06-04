@@ -63,13 +63,42 @@ a:hover{text-decoration:underline;text-underline-offset:2px}
   box-shadow:0 0 0 3px var(--ox-wash);transform:translateY(-2px)}
 .side .brand .tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-3);margin-top:5px}
+.side .brand .modetg{margin-top:11px;width:100%}
+.side .brand .modetg button{flex:1;font-family:var(--sans);font-size:11px;padding:4px 0}
+
+/* journey progress rail (home) — Prepare → Train → Test → Ship, with done checks */
+.journey{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:-4px 0 20px}
+.journey .jstep{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid var(--line-2);
+  border-radius:20px;background:var(--card);color:var(--ink-2);font-size:12.5px;font-weight:500}
+.journey .jstep:hover{border-color:var(--ox);text-decoration:none;color:var(--ink)}
+.journey .jstep .jdot{width:18px;height:18px;border-radius:50%;background:#efe9da;color:var(--ink-3);
+  font-family:var(--mono);font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.journey .jstep.done{border-color:#cfe0cd;background:var(--good-wash);color:var(--good)}
+.journey .jstep.done .jdot{background:var(--good);color:#fff}
+.journey .jsep{width:22px;height:1px;background:var(--line-2);margin:0 2px}
+
+/* mode-gated visibility (live, via body.mode-*) + the inline glossary term marker */
+body.mode-simple .expert-only{display:none!important}
+body.mode-expert .simple-only{display:none!important}
+.term{border-bottom:1px dotted var(--ink-3);cursor:help;white-space:nowrap}
+.term sup{font-family:var(--mono);font-size:.7em;color:var(--ox);margin-left:1px;font-weight:600}
 
 .side .objbar{padding:14px 18px 4px}
-.objsel{width:100%;font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--ink);
+/* form primitives — one family, two members. .sel (alias .objsel) = real <select>: chevron + pointer.
+   .inp = plain text <input>/<textarea>: caret, NO chevron. Same font/border/radius/padding so they read
+   as one control family — only the chevron + cursor differ. (Authors used to reach for .objsel on text
+   inputs because no .inp existed → fake comboboxes; .inp is the missing primitive.) */
+.sel,.objsel{width:100%;font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--ink);
   background:var(--card);border:1px solid var(--line-2);border-radius:6px;padding:7px 9px;cursor:pointer;
   appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237B2D26' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 10px center;padding-right:26px}
-.objsel:hover{border-color:var(--ox)}
+.sel:hover,.objsel:hover{border-color:var(--ox)}
+.inp{width:100%;font-family:var(--sans);font-size:12.5px;color:var(--ink);background:var(--card);
+  border:1px solid var(--line-2);border-radius:6px;padding:7px 9px;cursor:text;appearance:auto}
+.inp:hover{border-color:var(--ox-soft)}
+.inp:focus{border-color:var(--ox);outline:none;box-shadow:0 0 0 3px var(--ox-wash)}
+.inp::placeholder{color:var(--ink-3)}
+textarea.inp{resize:vertical;line-height:1.5}
 .side nav{padding:10px 12px;display:flex;flex-direction:column;gap:2px;flex:1}
 .side nav a{
   display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:var(--radius);
@@ -247,6 +276,13 @@ a:hover{text-decoration:underline;text-underline-offset:2px}
 .gap{gap:8px}.mt{margin-top:14px}.mb{margin-bottom:14px}
 canvas{display:block;max-width:100%}
 
+/* form-layout vocabulary — retires the copy-pasted inline styles (flex-end rows, growing fields, hidden
+   toggles) so every form across train/data/sweeps/playground/registry is assembled the same way. */
+.formrow{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:5px}
+.grow{flex:1;min-width:240px}
+.hidden{display:none}
+
 .hint{border-bottom:1px dotted var(--ink-3);cursor:help;position:relative}
 .hint:hover::after{content:attr(data-tip);position:absolute;left:0;bottom:140%;z-index:20;
   background:var(--ink);color:#F4EFE6;font-family:var(--sans);font-size:11.5px;font-weight:400;
@@ -259,10 +295,193 @@ canvas{display:block;max-width:100%}
 @keyframes rise{to{opacity:1;transform:none}}
 
 .empty{text-align:center;color:var(--ink-3);padding:50px 20px;font-style:italic}
+.empty .err-recover{margin-top:10px;font-style:normal}
 .errbox{background:var(--bad-wash);border:1px solid #eccfc8;color:var(--bad);
   border-radius:var(--radius);padding:12px 14px;font-family:var(--mono);font-size:12px}
+/* recovery hint — the next step out of a dead end; calmer than the error line above it */
+.err-recover{margin-top:8px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.err-recover a{color:var(--ox);font-weight:600}
+
+/* example chips — pre-filled queries that turn a blank input into a one-click start */
+.ex-chips{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:10px}
+.ex-chips .ex-lab{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;margin-right:2px}
+.ex-chip{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:999px;
+  background:var(--paper-2);border:1px solid var(--line-2);color:var(--ink-2);cursor:pointer;transition:all .12s}
+.ex-chip:hover{border-color:var(--ox);color:var(--ox);background:var(--paper)}
+.ex-chip.ghost{cursor:default;font-style:italic;color:var(--ink-3);border-style:dashed}
+.ex-chip.ghost:hover{border-color:var(--line-2);color:var(--ink-3);background:var(--paper-2)}
+
+/* domains gallery — start-from cards on the overview; the worked example to clone + a path to your own */
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.domain-card{display:flex;flex-direction:column;gap:7px;text-align:left;text-decoration:none;
+  background:var(--paper);border:1px solid var(--line-2);border-radius:var(--radius);padding:15px 16px;
+  cursor:pointer;font:inherit;color:var(--ink);transition:border-color .14s,box-shadow .14s,transform .14s}
+.domain-card:hover{border-color:var(--ox);box-shadow:0 4px 16px -8px rgba(123,45,38,.28);transform:translateY(-1px)}
+.domain-card.current{border-color:var(--ox);background:linear-gradient(180deg,var(--ox-wash,rgba(123,45,38,.04)),var(--paper))}
+.dc-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dc-runs{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.dc-name{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1.15}
+.dc-goal{font-size:12.5px;color:var(--ink-2);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dc-foot{margin-top:auto;font-family:var(--mono);font-size:11px;color:var(--ox);padding-top:4px}
+.dc-ok{color:var(--good)} .dc-no{color:var(--ink-3)}
+.domain-card.planned .dc-name{color:var(--ink-2)}
+.domain-new{border-style:dashed;background:var(--paper-2);align-items:flex-start;justify-content:center}
+.domain-new .dc-plus{font-family:var(--serif);font-size:26px;line-height:1;color:var(--ox);font-weight:600}
+.domain-new:hover{background:var(--paper)}
+
+/* checklist — novice picks knobs by ticking, no JSON */
+.check-list{display:flex;flex-direction:column;gap:8px}
+.check-row{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;border:1px solid var(--line-2);
+  border-radius:var(--radius);background:var(--paper);cursor:pointer;transition:border-color .12s,background .12s}
+.check-row:hover{border-color:var(--ox)}
+.check-row:has(input:checked){border-color:var(--ox);background:var(--ox-wash,rgba(123,45,38,.04))}
+.check-row input{margin-top:2px;accent-color:var(--ox);width:15px;height:15px;flex:0 0 auto}
+.check-row span{font-size:13px;color:var(--ink-2);line-height:1.45}
+.check-row span b{color:var(--ink);font-weight:600}
+
+/* /build — document drop-zone + the autonomous-loop decision stream */
+.drop-zone{border:2px dashed var(--line-2);border-radius:var(--radius);background:var(--paper-2);
+  padding:26px 16px;text-align:center;transition:border-color .14s,background .14s;cursor:pointer}
+.drop-zone.over{border-color:var(--ox);background:var(--ox-wash,rgba(123,45,38,.05))}
+.dz-inner{color:var(--ink-2);font-size:13px}
+.dz-plus{font-family:var(--serif);font-size:30px;color:var(--ox);line-height:1;margin-bottom:6px}
+.dz-link{color:var(--ox);font-weight:600;text-decoration:underline;cursor:pointer}
+.stream{font-family:var(--mono);font-size:11.5px;line-height:1.55;max-height:420px;overflow-y:auto;
+  background:var(--paper-2);border:1px solid var(--line-2);border-radius:var(--radius);padding:10px 12px}
+.stream .ln{white-space:pre-wrap;color:var(--ink-2);padding:1px 0}
+.stream .ln-dec{color:var(--ox);font-weight:600}          /* DECISION lines */
+.stream .ln-ok{color:var(--good)}
+.stream .ln-bad{color:var(--bad)}
+.stream .ln-hd{color:var(--ink);font-weight:600;border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
 
 /* legend chips */
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2)}
 .legend .lc{display:inline-flex;align-items:center;gap:6px}
 .legend .sw{width:11px;height:11px;border-radius:3px}
+
+/* ── context bar: the shared {objective · run · layer} scope spine ───────── */
+.ctxbar{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin:-6px 0 16px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.ctx-chips{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ctx-chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);
+  border:1px solid var(--line-2);border-radius:20px;padding:4px 11px;font-size:12px;color:var(--ink)}
+.ctx-chip i{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);font-style:normal}
+.ctx-chip b{font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:-.01em}
+.ctx-chip.run{border-color:#e6cdc8}.ctx-chip.run b{color:var(--ox)}
+.ctx-chip.layer{border-color:#cfdde2}.ctx-chip.layer b{color:var(--info)}
+.ctx-chip .cx{font-family:var(--sans);font-size:11px;color:var(--ink-3);cursor:pointer;
+  line-height:1;padding:1px 2px;border-radius:4px;margin-left:1px}
+.ctx-chip .cx:hover{background:var(--bad-wash);color:var(--bad)}
+a.ctx-chip:hover{text-decoration:none;border-color:var(--ox)}
+.ctx-k{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line-2);
+  border-radius:6px;padding:5px 10px;cursor:pointer;color:var(--ink-3);font-family:var(--sans);
+  font-size:12px;transition:all .12s}
+.ctx-k:hover{border-color:var(--ox);color:var(--ox)}
+.ctx-k kbd{font-family:var(--mono);font-size:10px;background:#efe9da;border:1px solid var(--line-2);
+  border-radius:3px;padding:0 4px;color:var(--ink-2)}
+
+/* ── ⌘K command palette ──────────────────────────────────────────────────── */
+.pal-wrap{position:fixed;inset:0;z-index:60;background:rgba(26,23,20,.32);
+  display:flex;align-items:flex-start;justify-content:center;padding-top:14vh;
+  animation:fade .14s ease;backdrop-filter:blur(1.5px)}
+.pal{width:min(560px,92vw);background:var(--card);border:1px solid var(--line-2);
+  border-radius:10px;box-shadow:0 24px 60px -20px rgba(40,30,20,.5);overflow:hidden;
+  animation:rise .18s cubic-bezier(.2,.7,.2,1)}
+.pal-in{width:100%;border:0;border-bottom:1px solid var(--line);background:none;
+  font-family:var(--serif);font-size:18px;color:var(--ink);padding:16px 18px;outline:none}
+.pal-in::placeholder{color:var(--ink-3);font-family:var(--sans);font-size:15px}
+.pal-list{max-height:48vh;overflow-y:auto;padding:6px}
+.pal-it{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:6px;cursor:pointer}
+.pal-it .pi-ic{width:18px;text-align:center;color:var(--ink-3);font-size:14px}
+.pal-it .pi-l{font-weight:500;color:var(--ink);font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pal-it .pi-s{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
+  color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.pal-it.on{background:var(--ox-wash)}
+.pal-it.on .pi-ic,.pal-it.on .pi-l{color:var(--ox)}
+.pal-empty{padding:22px;text-align:center;color:var(--ink-3);font-style:italic}
+.pal-foot{border-top:1px solid var(--line);padding:9px 14px;font-family:var(--mono);
+  font-size:10px;letter-spacing:.06em;color:var(--ink-3)}
+.pal-foot kbd{background:#efe9da;border:1px solid var(--line-2);border-radius:3px;padding:0 4px;margin:0 1px}
+
+/* ── run-compare flip-list (probes that changed verdict between two runs) ─── */
+.flips{display:flex;flex-direction:column;gap:0}
+.flip{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  padding:11px 4px;border-bottom:1px solid var(--line)}
+.flip:last-child{border-bottom:0}
+.flip .dir{font-family:var(--mono);font-size:15px;width:20px;text-align:center}
+.flip.better .dir{color:var(--good)}.flip.worse .dir{color:var(--bad)}
+.flip .q{font-size:13px;color:var(--ink);line-height:1.4}
+.flip .q .gold{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
+.flip .verds{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;white-space:nowrap}
+.flip .verds .from{color:var(--ink-3)}.flip .verds .arr{color:var(--ink-3)}
+.flip.better .verds .to{color:var(--good);font-weight:600}
+.flip.worse .verds .to{color:var(--bad);font-weight:600}
+.flip-sum{display:flex;gap:18px;font-family:var(--mono);font-size:12px;margin-bottom:6px}
+.flip-sum .up{color:var(--good)}.flip-sum .dn{color:var(--bad)}
+
+/* ── Coach narrative cards + lever cards (shared by /coach and the run Coach tab) ───── */
+.narr{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.narr{grid-template-columns:1fr}}
+.nc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.nc .h{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.nc.good .h{color:var(--good)}.nc.bad .h{color:var(--bad)}.nc.warn .h{color:var(--warn)}
+.nc .h .d{width:7px;height:7px;border-radius:50%}
+.nc.good .h .d{background:var(--good)}.nc.bad .h .d{background:var(--bad)}.nc.warn .h .d{background:var(--warn)}
+.nc .dlist{margin:0;padding-left:17px}
+.nc .dlist li{font-size:13px;line-height:1.55;color:var(--ink);margin-bottom:6px}
+.nc .dlist li:last-child{margin-bottom:0}
+.lever{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;
+  border-left:3px solid var(--ink-3);box-shadow:var(--shadow)}
+.lever.bad{border-left-color:var(--bad)}.lever.warn{border-left-color:var(--warn)}.lever.good{border-left-color:var(--good)}
+.lever .lh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.lever .lt{font-family:var(--serif);font-weight:600;font-size:15.5px}
+.lever .rank{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.lever .why{color:var(--ink);font-size:13px;margin:2px 0}
+.lever .eff{color:var(--ink-2);font-size:12.5px;margin-top:5px}
+.lever .risk{color:var(--warn);font-size:11.5px;font-family:var(--mono);margin-top:6px}
+.lever .recipe-row{display:flex;align-items:center;gap:10px;margin-top:11px;padding-top:11px;border-top:1px dashed var(--line-2);flex-wrap:wrap}
+.lever .recipe-flags{flex:1;min-width:200px;font-family:var(--mono);font-size:11px;color:var(--ink-2);background:#F4EFE4;border:1px solid var(--line);border-radius:5px;padding:5px 8px;overflow-x:auto;white-space:nowrap}
+.lever .recipe-run{white-space:nowrap}
+.lever .recipe-msg{margin-top:9px}
+
+/* ── engine badge — the FP4 + INT8-master moat, made visible (travels with every artifact) ──── */
+.engine-badge{display:inline-flex;align-items:center;gap:0;border:1px solid #e6cdc8;border-radius:6px;
+  overflow:hidden;font-family:var(--mono);font-size:10px;letter-spacing:.03em;cursor:help;vertical-align:middle}
+.engine-badge span{padding:3px 8px;background:var(--ox-wash);color:var(--ox);font-weight:600;white-space:nowrap}
+.engine-badge span+span{border-left:1px solid #e6cdc8;background:#fff;color:var(--ink-2);font-weight:500}
+.moat-note{background:linear-gradient(180deg,var(--card),var(--ox-wash));border:1px solid #e6cdc8;border-radius:var(--radius);
+  padding:13px 16px;font-size:13px;line-height:1.55;color:var(--ink);display:flex;gap:11px;align-items:flex-start}
+.moat-note .ic{font-size:15px;line-height:1.3}
+.moat-note b{color:var(--ox)}
+
+/* ── hero callout + collapsible primer (promoted from coach.html — shared explanatory surfaces) ──── */
+.hero{background:linear-gradient(180deg,var(--card),var(--paper));border:1px solid var(--line);border-left:4px solid var(--ox);
+  border-radius:var(--radius);padding:24px 26px;margin-bottom:20px;box-shadow:var(--shadow)}
+.hero h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:0 0 8px;line-height:1.2}
+.hero p{margin:0;color:var(--ink-2);font-size:14.5px;max-width:74ch}
+.primer{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:20px;box-shadow:var(--shadow)}
+.primer summary{font-family:var(--serif);font-weight:600;font-size:15px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+.primer summary::-webkit-details-marker{display:none}
+.primer summary .tw{color:var(--ox);font-size:11px;transition:transform .15s}
+.primer[open] summary .tw{transform:rotate(90deg)}
+.primer .defs{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin-top:16px}
+@media(max-width:780px){.primer .defs{grid-template-columns:1fr}}
+.primer .def .t{font-weight:600;font-size:13.5px;margin-bottom:2px}
+.primer .def .t .tag{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+.primer .def p{margin:0;font-size:13px;line-height:1.55;color:var(--ink-2)}
+
+/* ── pipeline-stage rail (promoted from data.html — a connected sequence of clickable stages) ──── */
+.stage-rail{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:20px}
+.stage{flex:1;min-width:128px;background:var(--card);border:1px solid var(--line);padding:11px 13px;position:relative;cursor:pointer;transition:background .12s,border-color .12s}
+.stage:first-child{border-radius:var(--radius) 0 0 var(--radius)}.stage:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.stage + .stage{border-left:0}
+.stage:hover{background:#FBF7EF}
+.stage.on{background:#FBF1DD;border-color:var(--ox);z-index:1;box-shadow:inset 0 0 0 1px var(--ox)}
+.stage.on .t{color:var(--ox)}
+.stage .k{font-family:var(--mono);font-size:10px;color:var(--ox);letter-spacing:.06em}
+.stage .t{font-weight:600;font-size:13px;margin:3px 0 2px}
+.stage .d{font-size:11px;color:var(--ink-2);line-height:1.4}
+.stage .arr{position:absolute;right:-7px;top:50%;transform:translateY(-50%);z-index:2;color:var(--line-2);font-size:14px;background:var(--paper);width:14px;text-align:center}
+.stage:last-child .arr{display:none}
