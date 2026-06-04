@@ -123,6 +123,78 @@ def _enforce_contract(rec: dict, stats) -> tuple[dict, bool]:
     return rec, True
 
 
+def _norm_slug(s) -> str:
+    """Collapse a slug to its alphanumeric core for fuzzy id matching: 'electric_daisy_carnival' ==
+    'electric_daisycarnival', 'edc_orlando_2016' == 'EdcOrlando2016'."""
+    return re.sub(r"[^a-z0-9]", "", str(s).lower())
+
+
+def _id_parts(eid):
+    """('prefix','type','slug') for a '<prefix>:<type>:<slug>' id, else None (literal / malformed)."""
+    if not isinstance(eid, str):
+        return None
+    p = eid.split(":", 2)
+    return (p[0], p[1], p[2]) if len(p) == 3 else None
+
+
+def _clean_ids(triples, entities, festival_slug, stats):
+    """Deterministic id repair for one edition's 15_structured (no LLM) — the two id defects the gate flags:
+
+      • edition_mismatch — a triple/entity id whose PREFIX is a foreign edition/festival (e.g. an
+        edc_las_vegas_2017 / ade_2012 / buku_2018 id leaked in from an off-topic source page). DROP it: the
+        fact was never about this edition, and keeping it teaches a FALSE lineup (e.g. the LV-2017 lineup
+        tagged onto Mexico City 2017).
+      • dangling — a ref under THIS edition's prefix pointing at a slug no entity carries (e.g.
+        ':edition:edc_orlando_2016' while the entity is ':edition:2016', or an ':festival:' slug typo).
+        CANONICALIZE to the same-prefix/same-type entity by normalized-slug match (or the unique edition
+        entity); if no local target exists (a source-contaminated subject), DROP the triple.
+
+    Returns (clean_triples, clean_entities); mutates `stats`. The root cause is upstream (the extractor
+    minting ids from off-topic pages / inconsistent slug forms) — this is the deterministic repair."""
+    GLOBAL = "global"
+    kept_ent, ent_ids, by_type = [], set(), {}
+    for e in entities:
+        parts = _id_parts(e.get("id"))
+        if parts and parts[0] != festival_slug and parts[0] != GLOBAL:
+            stats["foreign_prefix_drop"] += 1
+            continue
+        kept_ent.append(e)
+        ent_ids.add(e.get("id"))
+        if parts:
+            by_type.setdefault(parts[1], {}).setdefault(_norm_slug(parts[2]), e.get("id"))
+
+    def _resolve(ref):
+        """None = keep as-is; '' = drop the triple; a string = rewritten id."""
+        parts = _id_parts(ref)
+        if parts is None:
+            return None                                # literal object / malformed — leave
+        pfx, typ, slug = parts
+        if pfx == GLOBAL or ref in ent_ids:
+            return None                                # global or already valid
+        if pfx != festival_slug:
+            return ""                                  # FOREIGN prefix → drop the triple
+        cand = by_type.get(typ, {}).get(_norm_slug(slug))     # same-type normalized-slug match
+        if not cand and typ == "edition" and len(by_type.get("edition", {})) == 1:
+            cand = next(iter(by_type["edition"].values()))    # the unique edition entity
+        if cand:
+            stats["id_canonicalized"] += 1
+            return cand
+        return ""                                      # orphan with no local target → drop
+
+    kept_tri = []
+    for t in triples:
+        s_new, o_new = _resolve(t.get("subject_id")), _resolve(t.get("object"))
+        if s_new == "" or o_new == "":
+            stats["id_dangling_or_foreign_drop"] += 1
+            continue
+        if s_new:
+            t["subject_id"] = s_new
+        if o_new:
+            t["object"] = o_new
+        kept_tri.append(t)
+    return kept_tri, kept_ent
+
+
 def _write_records(out, item, paths, stats):
     """Serial (main-thread) post-processing of one doc's LLM result: normalize → contract → provenance →
     validate → write per-edition jsonl + upsert globals. No locks needed (single consumer thread)."""

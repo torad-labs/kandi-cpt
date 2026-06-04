@@ -168,7 +168,7 @@ relations:
     set_time:                   { needs: [set_times.jsonl],               floor_frac: 0.03 }
     disjoint_context:           { needs: [festival_meta.confusable_groups], floor_frac: 0.02 }
     day_of_week_map:            { needs: [festival_meta.days],            floor_frac: 0.002 }
-    b2b_pairing:                { needs: [],                              floor_frac: 0.002 }
+    b2b_pairing:                { needs: [b2b_billing],                   floor_frac: 0.002 }
     stage_to_genre:             { needs: [],                              floor_frac: 0.002 }
     stage_roster:               { needs: [],                              floor_frac: 0.002 }
     stage_production_character: { needs: [],                              floor_frac: 0.002 }
@@ -197,5 +197,11 @@ quality:
   source_gap:
     required_artifacts:
       set_times.jsonl:                 "set_times.jsonl"
-      festival_meta.days:              "festival_meta.json#days"
+      # '#days.date' (not bare '#days'): every edition is scaffolded with a {Friday/Saturday/Sunday}
+      # skeleton, but only an edition with REAL dates can produce day_of_week_map — so a dateless edition
+      # is a correct SOURCE GAP, not a generation defect (the gold keeps real dates → stays defect-eligible).
+      festival_meta.days:              "festival_meta.json#days.date"
       festival_meta.confusable_groups: "festival_meta.json#confusable_groups"
+      # content probe: b2b_pairing's source is a B2B billing in the lineup (e.g. "Shimon B2B Benny L"); an
+      # edition with one but no b2b_pairing line is a DEFECT, an edition with none is a SOURCE GAP.
+      b2b_billing:                     "15_structured/entities.jsonl~B2B"

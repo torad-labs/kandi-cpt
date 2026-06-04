@@ -52,27 +52,48 @@ def required_artifacts(spec: dict) -> dict[str, str]:
 
 
 def required_artifact_present(edition_dir: Path, logical: str, spec: dict) -> tuple[bool, str]:
-    """Resolve a `needs` artifact for one edition.
+    """Resolve a `needs` artifact for one edition. Returns (present, probe_str). Probe forms:
 
-    Returns (present, probe_str). A bare 'file' probe is present iff the file exists and is non-empty.
-    A 'file#jsonkey' probe is present iff the JSON file exists AND has a non-empty value at that top-level
-    key (this is what makes "2018 has festival_meta.days populated" → day_of_week_map absence is a DEFECT,
-    while "2018 lacks confusable_groups" → disjoint_context absence is a SOURCE GAP).
+      'file'              present iff the file exists and is non-empty.
+      'file#key'          present iff the JSON file has a non-empty top-level value at `key`.
+      'file#key.subkey'   present iff `key` is a dict/list of objects and SOME element carries a
+                          non-empty `subkey`. This is what tells a real DEFECT from a SOURCE GAP for
+                          relations whose source is a *field inside* a scaffolded skeleton — e.g.
+                          'festival_meta.json#days.date': every edition is scaffolded with a days
+                          skeleton {Friday:'',…}, so the bare '#days' probe wrongly reports present on a
+                          dateless edition; the hydrator only emits day_of_week_map when a day has a real
+                          date, so requiring '.date' makes the dateless majority a correct SOURCE GAP.
+      'file~substring'    present iff the file exists and contains `substring` (a content probe — used to
+                          detect e.g. a B2B billing in the lineup, the genuine source for b2b_pairing).
     """
     probe = required_artifacts(spec).get(logical, logical)
-    fname, _, jkey = probe.partition("#")
+    # content probe: "file~substring"
+    if "~" in probe:
+        fname, _, substr = probe.partition("~")
+        fp = edition_dir / fname
+        try:
+            return (fp.exists() and substr in fp.read_text(encoding="utf-8", errors="replace")), probe
+        except OSError:
+            return False, probe
+    fname, _, jpath = probe.partition("#")
     fp = edition_dir / fname
     if not fp.exists():
         return False, probe
-    if not jkey:
+    if not jpath:
         try:
             return fp.stat().st_size > 0, probe
         except OSError:
             return False, probe
     try:
-        val = json.loads(fp.read_text(encoding="utf-8", errors="replace")).get(jkey)
+        doc = json.loads(fp.read_text(encoding="utf-8", errors="replace"))
     except Exception:
         return False, probe
+    jkey, _, subkey = jpath.partition(".")
+    val = doc.get(jkey)
+    if subkey:
+        members = val.values() if isinstance(val, dict) else (val if isinstance(val, list) else [])
+        present = any(isinstance(m, dict) and str(m.get(subkey, "")).strip() for m in members)
+        return present, probe
     # non-empty: a populated list/dict/str/number counts as present; [], {}, "", None do not.
     present = bool(val) if not isinstance(val, (int, float)) else True
     return present, probe

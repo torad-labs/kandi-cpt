@@ -877,7 +877,8 @@ def a_remap_contract(editions, domain="edc"):
                 continue
             kept_t.append(r)
         kept_e = []
-        if ent_p.exists():
+        has_ent = ent_p.exists()
+        if has_ent:
             for line in ent_p.read_text().splitlines():
                 if not line.strip():
                     continue
@@ -887,12 +888,20 @@ def a_remap_contract(editions, domain="edc"):
                 if r.get("entity_type") == "artist" and r.get("name_canonical"):
                     r["name_canonical"] = E._normalize_b2b_name(r["name_canonical"])
                 kept_e.append(r)
+        # deterministic id repair (foreign-prefix drop + dangling-ref canonicalize/drop) — needs the full
+        # entity set, so it runs after both layers are read and before either is written back.
+        if has_ent:
+            fslug = f"{domain}_{ed.replace('/', '_')}"
+            kept_t, kept_e = E._clean_ids(kept_t, kept_e, fslug, stats)
             ent_p.write_text("".join(_json.dumps(r) + "\n" for r in kept_e))
         tri_p.write_text("".join(_json.dumps(r) + "\n" for r in kept_t))
         out[ed] = {"triples_kept": len(kept_t), "entities_kept": len(kept_e),
                    "remapped_plays_at_to_in_lineup": stats.get("remap_plays_at_to_in_lineup", 0),
                    "contract_dropped": stats.get("contract_drop", 0),
                    "contamination_dropped": stats.get("contamination_drop", 0),
+                   "id_canonicalized": stats.get("id_canonicalized", 0),
+                   "foreign_prefix_dropped": stats.get("foreign_prefix_drop", 0),
+                   "id_orphan_dropped": stats.get("id_dangling_or_foreign_drop", 0),
                    "backed_up_to": info.get("backed_up_to")}
     return {"remap": out}
 

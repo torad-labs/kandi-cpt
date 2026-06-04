@@ -309,27 +309,34 @@ def gate_source_vs_gap(eds, spec) -> Verdict:
     meta = S.relation_meta(spec)
     rel = Counter(o.get("relation_type", "?") for o in _hydrated(eds))
     total = sum(rel.values()) or 1
+    # per-edition relation counts: classification is decided PER EDITION (a relation is a defect only in an
+    # edition that has the relation's source yet failed to produce it). Pooling the gold with a thin edition
+    # can therefore no longer mask that edition's genuine source gap with the gold's artifacts.
+    rel_by_ed = {}
+    for ed in eds:
+        c = Counter(o.get("relation_type", "?") for o in _iter_jsonl(ed.dir / "25_hydrated/relations.jsonl"))
+        rel_by_ed[ed] = (c, sum(c.values()) or 1)
     classified = {}
     n_defect = n_gap = 0
     for r, m in meta.items():
         floor = m.get("floor_frac", 0.0)
         frac = rel.get(r, 0) / total
         if frac >= floor and rel.get(r, 0) > 0:
-            continue   # present & adequate — nothing to classify
+            continue   # present & adequate at the pool level — nothing to classify
         needs = m.get("needs", []) or []
-        # a relation is a SOURCE GAP iff it has needs AND every needed artifact is absent in EVERY edition
-        if needs:
-            any_present = False
-            for ed in eds:
-                for art in needs:
-                    if S.required_artifact_present(ed.dir, art, spec)[0]:
-                        any_present = True
-                        break
-                if any_present:
-                    break
-            kind = "defect" if any_present else "source_gap"
-        else:
-            kind = "defect"   # no source dependency → the generator simply failed to make it
+        # DEFECT iff SOME edition is itself under floor for r AND has r's source (so generation should have
+        # produced it there but didn't); else SOURCE GAP. A relation with no `needs` that the generator
+        # always could make is a defect wherever it is thin.
+        is_defect = False
+        for ed in eds:
+            c, ed_total = rel_by_ed[ed]
+            if c.get(r, 0) > 0 and c.get(r, 0) / ed_total >= floor:
+                continue   # this edition is fine for r
+            has_source = (not needs) or any(S.required_artifact_present(ed.dir, art, spec)[0] for art in needs)
+            if has_source:
+                is_defect = True
+                break
+        kind = "defect" if is_defect else "source_gap"
         classified[r] = {"kind": kind, "frac": round(frac, 5), "floor": floor, "needs": needs}
         n_gap += kind == "source_gap"
         n_defect += kind == "defect"

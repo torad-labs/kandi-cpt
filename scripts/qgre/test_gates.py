@@ -71,8 +71,12 @@ def test_vc1_2018_source_gap_classification():
     cls = _suite("las_vegas/2018")["gates"]["source_vs_gap"]["source_gap_vs_defect"]
     assert cls["set_time"]["kind"] == "source_gap"          # no set_times.jsonl for 2018
     assert cls["disjoint_context"]["kind"] == "source_gap"  # no confusable_groups in festival_meta
-    assert cls["day_of_week_map"]["kind"] == "defect"       # festival_meta.days IS present → generation failed
-    assert cls["b2b_pairing"]["kind"] == "defect"           # needs nothing → generation failed
+    # festival_meta.days is a dateless {Friday/Saturday/Sunday} skeleton — the hydrator can only emit
+    # day_of_week_map from a real date, so its absence here is a SOURCE GAP, not a generation defect.
+    assert cls["day_of_week_map"]["kind"] == "source_gap"
+    # 2018 HAS a B2B billing ("Shimon B2B Benny L") yet produced no b2b_pairing line → genuine DEFECT
+    # (the content probe entities.jsonl~B2B finds the source; editions with no B2B billing are source_gap).
+    assert cls["b2b_pairing"]["kind"] == "defect"
 
 
 # ─────────────────────────────────────────────────────── GOLD 2026 — clean except the shared extraction bug
@@ -88,15 +92,20 @@ def test_gold_2026_data_quality_gates_clean():
 
 
 def test_shared_extraction_defect_id_integrity():
-    """plays_at→festival is an EXTRACTION-layer bug present in BOTH editions — gold is worse, proving it is
-    not a VC1 hydration regression. The gate must flag it in both (fixed in Phase B)."""
+    """plays_at→festival is an EXTRACTION-layer masquerade (a real lineup fact under the wrong predicate).
+    It lived in EVERY edition's structured layer; the deterministic remap_contract pass fixes it losslessly
+    (plays_at→festival ⇒ in_lineup) — so a remapped edition like las_vegas/2018 is now contract-clean (0.0).
+    The GOLD (las_vegas/2026) is the lone holdout: it keeps the documented defect ON PURPOSE, because its
+    9,982 protected hydrated lines carry POSITIONAL plays_at:N provenance and a remap (which drops 21 rows)
+    would silently re-point them. So the invariant is now: gold still flags the masquerade; the remap drives
+    it to zero on a real edition — proving it was extraction-layer, not a hydration regression, and fixable."""
     gold = _suite("las_vegas/2026")["gates"]["id_integrity"]
-    vc1 = _suite("las_vegas/2018")["gates"]["id_integrity"]
-    assert gold["severity"] == "fail" and vc1["severity"] == "fail"
+    remapped = _suite("las_vegas/2018")["gates"]["id_integrity"]
     gv = gold["metrics"]["object_contract_violation_frac"]
-    vv = vc1["metrics"]["object_contract_violation_frac"]
-    assert gv > vv          # gold ~0.35 worse than VC1 ~0.25 → extraction-layer, not hydration
-    assert vv > 0.0         # both have the festival-as-stage masquerade
+    rv = remapped["metrics"]["object_contract_violation_frac"]
+    assert gold["severity"] == "fail" and gv > 0.1   # gold retains the documented masquerade (~0.35), protected
+    assert rv == 0.0                                  # remap fixed it losslessly on the real edition
+    assert gv > rv                                    # the defect was extraction-layer, now remediated except on the gold
 
 
 # ───────────────────────────────────────────────────────────────────── the gold-vs-VC1 discrimination proof
