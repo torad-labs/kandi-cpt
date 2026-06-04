@@ -878,18 +878,26 @@ def a_tokenize(out, editions=None, seq_len=512, replay_frac=0.10):
                 "exposure_cap": "int: per-fact ceiling", "start_from": "str: clean|extract|hydrate",
                 "max_rehydrate": "int: re-hydrate attempts per relation"})
 def a_run_pipeline(domain="edc", editions=None, exposure_cap=60, start_from="clean", max_rehydrate=2):
-    """Launch the AUTONOMOUS pipeline loop (scripts/pipeline/agent_loop.py): ingest/clean → extract →
-    hydrate → gate → DECIDE (re-hydrate under-covered relations, stop at the cap, classify source-gaps
-    honestly), per edition. CPU/LLM only — NEVER takes the GPU lock, NEVER auto-trains (tokenize+CPT stay
-    explicit). Returns a pipeline job handle; stream its decisions via pipeline_log."""
+    """Launch the PURE qgre agent (qgre-agent/, built on the aisdk-kotlin port): a model-in-the-loop agent
+    that drives the pipeline tools (clean → extract → hydrate → gate) and DECIDES each next call itself —
+    repairing the defects the gates flag, reporting source-gaps honestly (never fabricating), and leaving
+    the protected gold gate-only. CPU/LLM only — NEVER takes the GPU lock, NEVER auto-trains. Returns a
+    pipeline job handle; stream the agent's reasoning + tool calls via pipeline_log.
+
+    Runs headless (QGRE_AUTO_APPROVE=1 → paid extract/hydrate auto-approved) and calls back into THIS server
+    over HTTP (QGRE_SERVE_URL), so serve.py must be listening. exposure_cap/start_from/max_rehydrate are
+    legacy no-ops — the agent decides these itself; kept in the signature for caller back-compat."""
     if not editions:
         return {"error": "editions required (e.g. las_vegas/2026)"}
+    agent_bin = ROOT / "qgre-agent/build/install/qgre-agent/bin/qgre-agent"
+    if not agent_bin.exists():
+        return {"error": "qgre-agent is not built — run: gradle -p qgre-agent installDist"}
     job_id = f"{domain}_pipeline_{int(time.time())}"
-    cmd = [PY, "scripts/pipeline/agent_loop.py", "--domain", domain, "--editions", editions,
-           "--job-id", job_id, "--exposure-cap", str(int(exposure_cap)),
-           "--from", start_from, "--max-rehydrate", str(int(max_rehydrate))]
-    j = _spawn_pipeline(job_id, cmd)
-    j["message"] = f"autonomous pipeline launched — poll pipeline_status('{job_id}') / pipeline_log('{job_id}')"
+    cmd = [str(agent_bin), "--domain", domain, "--editions", editions, "--job-id", job_id]
+    env = {"QGRE_AUTO_APPROVE": "1",
+           "QGRE_SERVE_URL": os.environ.get("QGRE_SERVE_URL", "http://127.0.0.1:8800")}
+    j = _spawn_pipeline(job_id, cmd, extra_env=env)
+    j["message"] = f"pure qgre agent launched — poll pipeline_status('{job_id}') / pipeline_log('{job_id}')"
     return j
 
 
