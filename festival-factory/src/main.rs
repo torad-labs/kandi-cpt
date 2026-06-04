@@ -127,6 +127,10 @@ struct HydrateArgs {
     /// qgre balance lever: per-relation base_n override, CSV `rel=N,rel2=M` (boost under-covered relations).
     #[arg(long)]
     balance_target: Option<String>,
+    /// Allow overwriting an existing relations.jsonl. WITHOUT this, a full (non-top-up) hydrate REFUSES to
+    /// replace existing hydrated output (it is expensive). The qgre `hydrate` action backs it up, then sets this.
+    #[arg(long)]
+    force: bool,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -265,6 +269,15 @@ fn hydrate_cmd(a: HydrateArgs) -> anyhow::Result<()> {
     // hydrate STREAMS each faithful+deduped line to relations.jsonl as it is produced (crash-safe);
     // it returns the in-memory records only for the coverage tally below.
     let path = out_dir.join("relations.jsonl");
+    // GUARD: a full hydrate truncates this file. Refuse to destroy expensive existing output unless --force
+    // (a --relations top-up appends, so it is exempt). The qgre hydrate action backs the file up, then sets --force.
+    if path.exists() && !append && !a.force {
+        anyhow::bail!(
+            "{} already exists — refusing to overwrite expensive hydrated output. Re-run with --force \
+             (the qgre `hydrate` action backs it up first), or use --relations to append a top-up.",
+            path.display()
+        );
+    }
     let rt = tokio::runtime::Runtime::new()?;
     let records = rt.block_on(engine.hydrate(&store, a.base_n, &balance, relations.as_ref(),
                                              a.exposure_cap, append, a.concurrency, a.limit, &path))?;

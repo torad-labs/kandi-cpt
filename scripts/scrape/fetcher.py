@@ -20,6 +20,7 @@ import hashlib
 import json
 import random
 import re
+import shutil
 import time
 import urllib.robotparser as robotparser
 from dataclasses import dataclass, field
@@ -240,6 +241,19 @@ def save_doc(raw: RawDoc, dest_dir: Path, name: str, *, source_channel: str, dom
                 return None  # unchanged — dedup
         except Exception:
             pass
+    # the page CHANGED (different sha) — back the prior version up before replacing it. Scraping is
+    # expensive (time + rate limits); a re-scrape must never silently destroy what was already captured.
+    if art.exists():
+        try:
+            root = Path(__file__).resolve().parents[2]
+            rel = art.relative_to(root) if str(art).startswith(str(root)) else Path(art.name)
+            bk = root / "data/_build/backups/scrape" / rel.parent / dt.datetime.now().strftime("%Y%m%d_%H%M%S")
+            bk.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(art, bk / art.name)
+            if meta.exists():
+                shutil.copy2(meta, bk / meta.name)
+        except Exception:
+            pass  # backup is best-effort; never block the scrape on it
     art.write_bytes(raw.content)
     prov = Provenance(url=raw.url, final_url=raw.final_url, fetched_at=now_iso(),
                       http_status=raw.status, sha256=digest, fetcher=raw.fetcher,

@@ -108,14 +108,16 @@ class Loop:
             es["phase"] = stage
             self.checkpoint()
             ok = False
+            # the rebuild deliberately replaces this edition's output — force=True so the guard BACKS IT UP
+            # first (never silently destroyed) rather than refusing. The protected gold never reaches here.
             if stage == "clean":
-                ok = self.run_step("clean_layer", {"editions": ed, "llm_rescue": True}, f"{ed} · clean")
+                ok = self.run_step("clean_layer", {"editions": ed, "llm_rescue": True, "force": True}, f"{ed} · clean")
             elif stage == "extract":
-                ok = self.run_step("extract_triples", {"editions": ed, "domain": self.domain},
+                ok = self.run_step("extract_triples", {"editions": ed, "domain": self.domain, "force": True},
                                    f"{ed} · extract (spec-driven + contract)")
             elif stage == "hydrate":
                 ok = self.run_step("hydrate", {"festival": self.festival, "edition": ed,
-                                               "exposure_cap": self.exposure_cap}, f"{ed} · hydrate (cap {self.exposure_cap})")
+                                               "exposure_cap": self.exposure_cap, "force": True}, f"{ed} · hydrate (cap {self.exposure_cap})")
             if not ok:
                 es["phase"] = "blocked"; self.checkpoint(); return
 
@@ -141,9 +143,10 @@ class Loop:
                 if n < self.max_rehydrate:
                     self.state["attempts"][key] = n + 1
                     self.decide("re_extract", f"{ed}: id_integrity FAIL — re-extracting to enforce the predicate contract")
-                    if not self.run_step("extract_triples", {"editions": ed, "domain": self.domain}, f"{ed} · re-extract"):
+                    if not self.run_step("extract_triples", {"editions": ed, "domain": self.domain, "force": True}, f"{ed} · re-extract"):
                         break
-                    self.run_step("hydrate", {"festival": self.festival, "edition": ed, "exposure_cap": self.exposure_cap}, f"{ed} · re-hydrate")
+                    self.run_step("hydrate", {"festival": self.festival, "edition": ed,
+                                              "exposure_cap": self.exposure_cap, "force": True}, f"{ed} · re-hydrate")
                     continue
                 self.decide("blocked", f"{ed}: id_integrity still failing after {n} re-extracts — needs a human look")
                 es["phase"] = "blocked"; self.checkpoint(); return
@@ -177,7 +180,8 @@ class Loop:
                     temp = max(0.1, 0.3 - 0.1 * (n + 1))
                     self.decide("retighten", f"{ed}: faithfulness FAIL — re-hydrate at temperature {temp:.1f}")
                     if not self.run_step("hydrate", {"festival": self.festival, "edition": ed,
-                                                     "temperature": temp, "exposure_cap": self.exposure_cap}, f"{ed} · re-hydrate temp {temp:.1f}"):
+                                                     "temperature": temp, "exposure_cap": self.exposure_cap,
+                                                     "force": True}, f"{ed} · re-hydrate temp {temp:.1f}"):
                         break
                     continue
 

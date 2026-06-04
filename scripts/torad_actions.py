@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import signal
 import subprocess
 import sys
@@ -651,6 +652,35 @@ def _refresh_pipeline() -> dict:
     return d
 
 
+BACKUPS = BUILD / "backups"               # gitignored — never-lose snapshots before any overwrite
+
+
+def _guard_overwrite(festival, edition, layer, force, clear=False):
+    """Protect EXPENSIVE regenerable output (scrape / extract / hydrate cost real time + OpenRouter money).
+    Policy: never silently delete or replace. If the layer already has files and `force` is False → REFUSE
+    (return an error dict). If `force` is True → copy the existing output to a timestamped backup under
+    data/_build/backups (gitignored, never lost), then allow the overwrite; if `clear` is True (extraction,
+    which appends) also remove the originals so the rebuild starts fresh. Returns (ok, info): ok=False →
+    return `info` as the action's refusal; ok=True → proceed (info may carry the backup path)."""
+    src = ROOT / "data" / festival / edition / layer
+    existing = [p for p in src.rglob("*") if p.is_file()] if src.exists() else []
+    if not existing:
+        return True, {}
+    if not force:
+        return False, {"error": f"{festival}/{edition}/{layer} already holds {len(existing)} file(s) — refusing to "
+                                f"replace expensive regenerable output. Pass force=true to proceed (the existing "
+                                f"version is backed up first, never deleted).",
+                       "existing_files": len(existing), "guard": "refused"}
+    ts = time.strftime("%Y%m%d_%H%M%S")
+    bk = BACKUPS / festival / edition / f"{layer}_{ts}"
+    bk.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(src, bk)
+    if clear:
+        for p in existing:
+            p.unlink()
+    return True, {"backed_up_to": str(bk.relative_to(ROOT))}
+
+
 def _spawn_pipeline(job_id: str, cmd: list[str], extra_env: dict | None = None) -> dict:
     """Spawn a detached CPU/LLM pipeline step (sibling of _spawn). Records into the multi-job
     pipeline_status.json + logs to pipeline/<job_id>/run.log. Takes NO GPU lock by construction."""
@@ -743,10 +773,18 @@ def a_ingest_document(festival, edition, content, filename=None, domain_class="u
 @action("clean_layer", mutating=True, category="data",
         inputs={"editions": "str: city/year CSV", "sources": "str: optional source CSV",
                 "llm_rescue": "bool: LLM-rescue failed HTML", "limit": "int: optional cap"})
-def a_clean_layer(editions, sources=None, llm_rescue=False, limit=None):
-    """00_raw → 10_clean (trafilatura + optional LLM-rescue). Spawned (OpenRouter-bound when --llm-rescue).
-    Returns a pipeline job handle — poll pipeline_status/pipeline_log."""
+def a_clean_layer(editions, sources=None, llm_rescue=False, limit=None, force=False):
+    """00_raw → 10_clean (trafilatura + optional LLM-rescue). Spawned. Idempotent-skip by default (re-running
+    skips already-clean docs, never clobbers). force=true re-cleans: backs up the existing 10_clean first,
+    then passes --force so the cleaner regenerates. Returns a pipeline job handle."""
+    backed = []
     cmd = [PY, "-m", "extract", "--editions", editions]
+    if force:
+        for ed in [e.strip() for e in editions.split(",") if e.strip()]:
+            ok, info = _guard_overwrite("edc", ed, "10_clean", True)   # force path → backup (no clear; --force re-cleans)
+            if info.get("backed_up_to"):
+                backed.append(info["backed_up_to"])
+        cmd += ["--force"]
     if sources:
         cmd += ["--sources", sources]
     if llm_rescue:
@@ -754,21 +792,36 @@ def a_clean_layer(editions, sources=None, llm_rescue=False, limit=None):
     if limit:
         cmd += ["--limit", str(int(limit))]
     job_id = f"clean_{editions.replace('/', '_').replace(',', '+')}_{int(time.time())}"
-    return _spawn_pipeline(job_id, cmd)
+    j = _spawn_pipeline(job_id, cmd)
+    if backed:
+        j["backed_up"] = backed
+    return j
 
 
 @action("extract_triples", mutating=True, category="data",
         inputs={"editions": "str: city/year CSV", "domain": "str: domain spec (default edc)",
                 "concurrency": "int", "min_tier": "int", "limit": "int: optional cap"})
-def a_extract_triples(editions, domain="edc", concurrency=16, min_tier=3, limit=None):
+def a_extract_triples(editions, domain="edc", concurrency=16, min_tier=3, limit=None, force=False):
     """10_clean → 15_structured (LLM entity/triple extraction, spec-driven ontology + the predicate→object
-    contract enforcement). Spawned (OpenRouter-bound). Returns a pipeline job handle."""
+    contract enforcement). Spawned (OpenRouter-bound). GUARDED: extraction is expensive (OpenRouter); a
+    re-extract refuses to replace existing 15_structured unless force=true, which backs it up + clears it
+    so the rebuild starts fresh (never silently mixed with or destroyed). Returns a job handle."""
+    backed = []
+    for ed in [e.strip() for e in editions.split(",") if e.strip()]:
+        ok, info = _guard_overwrite(domain, ed, "15_structured", force, clear=True)
+        if not ok:
+            return {**info, "edition": ed}
+        if info.get("backed_up_to"):
+            backed.append(info["backed_up_to"])
     cmd = [PY, "scripts/extract_structured.py", "--editions", editions, "--domain", domain,
            "--concurrency", str(int(concurrency)), "--min-tier", str(int(min_tier)), "--yes"]
     if limit:
         cmd += ["--limit", str(int(limit))]
     job_id = f"extract_{editions.replace('/', '_').replace(',', '+')}_{int(time.time())}"
-    return _spawn_pipeline(job_id, cmd)
+    j = _spawn_pipeline(job_id, cmd)
+    if backed:
+        j["backed_up"] = backed
+    return j
 
 
 @action("hydrate", mutating=True, category="data",
@@ -776,14 +829,20 @@ def a_extract_triples(editions, domain="edc", concurrency=16, min_tier=3, limit=
                 "exposure_cap": "int: per-fact line ceiling", "balance_target": "str: rel=N,rel2=M",
                 "base_n": "int", "concurrency": "int", "temperature": "float", "limit": "int"})
 def a_hydrate(festival, edition, relations=None, exposure_cap=None, balance_target=None,
-              base_n=12, concurrency=8, temperature=0.3, limit=None):
+              base_n=12, concurrency=8, temperature=0.3, limit=None, force=False):
     """15_structured → 25_hydrated via festival-factory with the qgre levers: --relations (top-up,
     appends), --exposure-cap (stop the runaway), --balance-target (boost under-covered relations).
-    Spawned (OpenRouter-bound). Returns a pipeline job handle."""
+    Spawned (OpenRouter-bound). GUARDED: a full re-hydrate refuses to replace existing 25_hydrated unless
+    force=true, which backs it up first (hydration is expensive — never silently destroyed). Returns a job handle."""
     ff = ROOT / "festival-factory" / "target" / "debug" / "festival-factory"
     if not ff.exists():
         return {"error": "festival-factory not built — run `cargo build` in festival-factory/"}
-    cmd = [str(ff), "hydrate", "--festival", festival, "--edition", edition, "--root", str(ROOT),
+    info = {}
+    if not relations:   # a full hydrate TRUNCATES relations.jsonl; a --relations top-up appends (no clobber)
+        ok, info = _guard_overwrite(festival, edition, "25_hydrated", force)
+        if not ok:
+            return info
+    cmd = [str(ff), "hydrate", "--festival", festival, "--edition", edition, "--root", str(ROOT), "--force",
            "--base-n", str(int(base_n)), "--concurrency", str(int(concurrency)), "--temperature", str(temperature)]
     if relations:
         cmd += ["--relations", relations]
@@ -794,7 +853,10 @@ def a_hydrate(festival, edition, relations=None, exposure_cap=None, balance_targ
     if limit:
         cmd += ["--limit", str(int(limit))]
     job_id = f"hydrate_{edition.replace('/', '_')}_{int(time.time())}"
-    return _spawn_pipeline(job_id, cmd)
+    j = _spawn_pipeline(job_id, cmd)
+    if info.get("backed_up_to"):
+        j["backed_up"] = info["backed_up_to"]
+    return j
 
 
 @action("tokenize", mutating=True, category="data",

@@ -30,6 +30,8 @@ data/_build/structured_rejects/
 # autonomous-pipeline runtime job state (decision logs + status — regenerated each run)
 data/_build/pipeline/
 data/_build/pipeline_status.json
+# never-lose backups taken before any overwrite (scrape/extract/hydrate) — local safety net, not for git
+data/_build/backups/
 
 # Transient run logs (training/sweep/synth stdout). Progress docs (logs/*.md) ARE committed.
 logs/*.log
