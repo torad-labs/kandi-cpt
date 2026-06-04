@@ -64,11 +64,25 @@ def _pid_alive(pid) -> bool:
         return False
     try:
         os.kill(int(pid), 0)
-        return True
     except (ProcessLookupError, ValueError):
         return False
     except PermissionError:
         return True
+    # The pid exists — but a ZOMBIE (a spawned pipeline job that finished and is awaiting reap by its
+    # parent serve.py) is effectively dead. os.kill(pid,0) succeeds on a zombie, so without this check a
+    # finished job stays "running" forever and any poller (the qgre-agent) hangs. Read /proc state; 'Z' = done.
+    try:
+        with open(f"/proc/{int(pid)}/stat") as f:
+            state = f.read().rpartition(")")[2].split()[0]   # field after comm; comm may contain spaces/parens
+        if state == "Z":
+            try:
+                os.waitpid(int(pid), os.WNOHANG)              # reap if we're the parent (best-effort)
+            except (ChildProcessError, OSError):
+                pass
+            return False
+    except (FileNotFoundError, IndexError, OSError):
+        pass
+    return True
 
 
 # ───────────────────────────── GPU mutex ────────────────────────────────────
