@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-mexico-2023/day-3",
+  "final_url": "https://festtimetable.com/en-US/events/edc-mexico-2023/day-3/",
+  "fetched_at": "2026-06-04T04:20:42+00:00",
+  "http_status": 200,
+  "sha256": "43c0d3a8434106de8aeda3b179c05e7fb5331c11ea5ec292d428c66ab4281421",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2023
+  },
+  "extra": {
+    "day": "Sunday"
+  }
+}

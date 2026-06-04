@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-china-2023/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-china-2023/day-2/",
+  "fetched_at": "2026-06-04T04:22:59+00:00",
+  "http_status": 200,
+  "sha256": "5394d63ceabfae126aee4216f41fc4113d1c4c6e1a6a7f98f2489d6876562e42",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2023
+  },
+  "extra": {
+    "day": "Tuesday"
+  }
+}

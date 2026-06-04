@@ -70,6 +70,19 @@ def _obj_type(obj) -> str | None:
     return parts[1] if len(parts) >= 3 else None
 
 
+_B2B_SEP = re.compile(r"\s*b2b\s*", re.IGNORECASE)
+
+
+def _normalize_b2b_name(name: str) -> str:
+    """Keep back-to-back DJ billings ('X B2B Y') spaced as ' B2B '. The hydrator emits the b2b_pairing
+    relation by splitting a plays_at artist name on ' B2B ' (festival-factory hydrate.rs), so a mashed
+    separator from the source/extractor ('Clawzb2bDØMINA', 'AbanaB2BD. Zeledon') makes the pairing invisible
+    — 84 of 92 b2b billings corpus-wide. Re-space + uppercase the token. Idempotent on already-clean names."""
+    if "b2b" not in name.lower():
+        return name
+    return re.sub(r"\s{2,}", " ", _B2B_SEP.sub(" B2B ", name)).strip()
+
+
 def _edition_year(festival_slug: str) -> int | None:
     """Trailing year of a festival_slug, e.g. 'edc_las_vegas_2023' -> 2023."""
     tail = festival_slug.rsplit("_", 1)[-1]
@@ -125,6 +138,8 @@ def _write_records(out, item, paths, stats):
                 if kind == "entity":
                     if "name" in rec and "name_canonical" not in rec:
                         rec["name_canonical"] = rec.pop("name")
+                    if rec.get("entity_type") == "artist" and rec.get("name_canonical"):
+                        rec["name_canonical"] = _normalize_b2b_name(rec["name_canonical"])
                     rec.setdefault("attributes", {})
                 if kind == "discourse" and not rec.get("anchors"):
                     continue                       # empty-anchor discourse is unusable; skip silently

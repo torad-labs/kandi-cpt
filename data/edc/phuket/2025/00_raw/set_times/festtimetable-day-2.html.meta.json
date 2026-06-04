@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-thailand-2025/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-thailand-2025/day-2/",
+  "fetched_at": "2026-06-04T04:22:11+00:00",
+  "http_status": 200,
+  "sha256": "3b6f68bfd94496c127377a98125084edb9cd8c21d33f1a9ac06645cd8959d1a9",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2025
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-orlando-2023/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-orlando-2023/day-2/",
+  "fetched_at": "2026-06-04T04:21:38+00:00",
+  "http_status": 200,
+  "sha256": "f2ac9893b29ad43c18cc7e3dc2fcd18ce675d9cef4f3399e8891480ddae7a22e",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "orlando",
+    "year": 2023
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

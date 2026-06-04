@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-lasvegas-2025/day-3",
+  "final_url": "https://festtimetable.com/en-US/events/edc-lasvegas-2025/day-3/",
+  "fetched_at": "2026-06-04T04:20:30+00:00",
+  "http_status": 200,
+  "sha256": "0199e5b3d21886b5f61825b20d66afd06368907268aef2832ad713c044861d11",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2025
+  },
+  "extra": {
+    "day": "Sunday"
+  }
+}

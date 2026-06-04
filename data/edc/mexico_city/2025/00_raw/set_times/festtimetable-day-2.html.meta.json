@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-mexico-2025/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-mexico-2025/day-2/",
+  "fetched_at": "2026-06-04T04:21:03+00:00",
+  "http_status": 200,
+  "sha256": "96d856e0fe118da2ce9d2fafe5b056e7286122fa4486c79cd97a78070cd845ce",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2025
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

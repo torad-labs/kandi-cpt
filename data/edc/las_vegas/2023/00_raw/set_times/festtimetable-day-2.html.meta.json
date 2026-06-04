@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-lasvegas-2023/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-lasvegas-2023/day-2/",
+  "fetched_at": "2026-06-04T04:20:05+00:00",
+  "http_status": 200,
+  "sha256": "25062cead0d146b0da885ad1b57b5109c24341cdf8fed4d213fadb194d997cee",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "las_vegas",
+    "year": 2023
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

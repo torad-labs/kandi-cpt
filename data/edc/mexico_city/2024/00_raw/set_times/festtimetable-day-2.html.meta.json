@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-mexico-2024/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-mexico-2024/day-2/",
+  "fetched_at": "2026-06-04T04:20:51+00:00",
+  "http_status": 200,
+  "sha256": "7f3cc29c3d440b8da3ff28170ff45a19301a4d883475f3b979a328ee5ab0b939",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2024
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

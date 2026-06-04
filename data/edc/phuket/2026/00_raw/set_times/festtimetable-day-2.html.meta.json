@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-thailand-2026/day-2",
+  "final_url": "https://festtimetable.com/en-US/events/edc-thailand-2026/day-2/",
+  "fetched_at": "2026-06-04T04:22:24+00:00",
+  "http_status": 200,
+  "sha256": "5dd47344756a98bc96c3d51e4dae26daa23ddf2b3bfa8505e760faf0dd48fdb9",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "phuket",
+    "year": 2026
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

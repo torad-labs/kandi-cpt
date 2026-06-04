@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-mexico-2026/day-3",
+  "final_url": "https://festtimetable.com/en-US/events/edc-mexico-2026/day-3/",
+  "fetched_at": "2026-06-04T04:21:19+00:00",
+  "http_status": 200,
+  "sha256": "d13defff0698c5eb8d61aff97c9f0d6b321c37dfe59780b783690aefcf5cfd17",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "mexico_city",
+    "year": 2026
+  },
+  "extra": {
+    "day": "Sunday"
+  }
+}

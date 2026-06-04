@@ -1,0 +1,18 @@
+{
+  "url": "https://festtimetable.com/en-US/events/edc-china-2025/day-1",
+  "final_url": "https://festtimetable.com/en-US/events/edc-china-2025/day-1/",
+  "fetched_at": "2026-06-04T04:23:02+00:00",
+  "http_status": 200,
+  "sha256": "06c4c9874c38201bd9ed41adb07b910a60dc25125c2d7238539282030c1c4dc1",
+  "fetcher": "http",
+  "source_channel": "community",
+  "domain_class": "community-aggregator",
+  "edition": {
+    "festival": "edc",
+    "city": "suzhou",
+    "year": 2025
+  },
+  "extra": {
+    "day": "Saturday"
+  }
+}

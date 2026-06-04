@@ -60,6 +60,29 @@ def test_in_lineup_to_festival_is_contract_valid():
     assert not drop
 
 
+# ── b2b artist-name normalization: the hydrator emits b2b_pairing by splitting on " B2B "; a mashed
+#    separator from the source/extractor makes the pairing invisible (84 of 92 billings corpus-wide).
+def test_b2b_mashed_gets_spaced():
+    # real corpus shapes: lowercase-mashed, uppercase-no-space, inside-parens
+    assert E._normalize_b2b_name("Yaatb2bIltik") == "Yaat B2B Iltik"
+    assert E._normalize_b2b_name("AbanaB2BD. Zeledon") == "Abana B2B D. Zeledon"
+    assert E._normalize_b2b_name("Indo Warehouse (Kahanib2bKunal Merchant)") == "Indo Warehouse (Kahani B2B Kunal Merchant)"
+
+
+def test_b2b_three_way_chain():
+    assert E._normalize_b2b_name("Audiofreqb2bCode Blackb2bToneshifterz") == "Audiofreq B2B Code Black B2B Toneshifterz"
+
+
+def test_b2b_already_clean_is_idempotent():
+    for clean in ("GRiZ B2B Wooli", "Audiofreq B2B Code Black B2B Toneshifterz"):
+        assert E._normalize_b2b_name(clean) == clean
+
+
+def test_non_b2b_name_untouched():
+    for n in ("Martin Garrix", "Above & Beyond", "deadmau5"):
+        assert E._normalize_b2b_name(n) == n
+
+
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     for t in tests:
