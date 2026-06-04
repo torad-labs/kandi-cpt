@@ -366,6 +366,90 @@ impl Engine {
             }
         }
 
+        // ── set_time / set_order / special_slot: from the set_times.jsonl drop-in (task #47). The clock
+        //    is the GIVEN FACT; the model writes the prose. allow_artists = the row's artist + any
+        //    case-variant already in the structured vocab (so the faithfulness gate doesn't reject a
+        //    casing diff between festtimetable and the extracted lineup); allow_stages = the row's stage.
+        //    Times and days are not entities, so they pass the entity gate (day-faithfulness still applies). ──
+        let set_times = cfg.load_set_times();
+        if !set_times.is_empty() {
+            let allow_for = |artist: &str| -> BTreeSet<String> {
+                let mut a: BTreeSet<String> = [artist.to_string()].into();
+                for v in &self.vocab.artists {
+                    if v.eq_ignore_ascii_case(artist) { a.insert(v.clone()); }
+                }
+                a
+            };
+            // set_time: one grounded fact per row (declarative + a time-led QA).
+            for (i, st) in set_times.iter().enumerate() {
+                if st.artist.is_empty() || st.start.is_empty() { continue; }
+                let (camel, spaced, allow_s): (String, String, BTreeSet<String>) = if st.stage.is_empty() {
+                    (st.stage_raw.clone(), st.stage_raw.clone(), BTreeSet::new())
+                } else {
+                    (cfg.camel(&st.stage), cfg.spaced(&st.stage), [st.stage.clone()].into())
+                };
+                let when = if st.day.is_empty() { String::new() } else { format!(" on {}", cfg.day_dated(&st.day)) };
+                let span = if st.end.is_empty() { st.start.clone() } else { format!("{} to {}", st.start, st.end) };
+                let facts = format!("- At {}, {} performs on the {} ({}) stage{} from {}.",
+                    cfg.name, st.artist, camel, spaced, when, span);
+                for (dir, order, form) in [
+                    ("forward", "leads_with_artist", SurfaceForm::Declarative),
+                    ("reverse", "leads_with_time", SurfaceForm::QaDirect),
+                ] {
+                    cells.push(Cell {
+                        relation: "set_time", direction: dir, query_order: order.into(),
+                        form, facts: facts.clone(), source_triple_ids: vec![format!("set_time:{i}")],
+                        entity_ids: vec![st.artist.clone()],
+                        allow_artists: allow_for(&st.artist), allow_stages: allow_s.clone(), n: base_n,
+                    });
+                }
+            }
+            // set_order + special_slot: order each (stage, day) by the clock (night-aware), then emit
+            // consecutive before/after pairs and the opening/closing (sunrise) slots.
+            let mut by_slot: BTreeMap<(String, String), Vec<usize>> = BTreeMap::new();
+            for (i, st) in set_times.iter().enumerate() {
+                if st.artist.is_empty() || st.start.is_empty() || st.stage.is_empty() || st.day.is_empty() { continue; }
+                by_slot.entry((st.stage.clone(), st.day.clone())).or_default().push(i);
+            }
+            for ((slug, day), idxs) in &by_slot {
+                let mut ordered = idxs.clone();
+                ordered.sort_by_key(|&i| slot_key(&set_times[i].start));
+                let (camel, spaced) = (cfg.camel(slug), cfg.spaced(slug));
+                let when = cfg.day_dated(day);
+                let allow_s: BTreeSet<String> = [slug.clone()].into();
+                for w in ordered.windows(2) {
+                    let (a, b) = (&set_times[w[0]], &set_times[w[1]]);
+                    let facts = format!("- At {}, on the {} ({}) stage on {}, {} ({}) plays immediately before {} ({}).",
+                        cfg.name, camel, spaced, when, a.artist, a.start, b.artist, b.start);
+                    let mut allow_a = allow_for(&a.artist);
+                    allow_a.extend(allow_for(&b.artist));
+                    cells.push(Cell {
+                        relation: "set_order", direction: "forward", query_order: "leads_with_artist".into(),
+                        form: SurfaceForm::QaDirect, facts,
+                        source_triple_ids: vec![format!("set_time:{}", w[0]), format!("set_time:{}", w[1])],
+                        entity_ids: vec![a.artist.clone(), b.artist.clone()],
+                        allow_artists: allow_a, allow_stages: allow_s.clone(), n: base_n,
+                    });
+                }
+                if let (Some(&first), Some(&last)) = (ordered.first(), ordered.last()) {
+                    if first != last {
+                        for (idx, role) in [(first, "opening set"), (last, "closing (sunrise) set")] {
+                            let st = &set_times[idx];
+                            let facts = format!("- At {}, {}'s set on the {} ({}) stage on {} (starting {}) is the {} on that stage.",
+                                cfg.name, st.artist, camel, spaced, when, st.start, role);
+                            cells.push(Cell {
+                                relation: "special_slot", direction: "forward", query_order: "leads_with_artist".into(),
+                                form: SurfaceForm::Declarative, facts,
+                                source_triple_ids: vec![format!("set_time:{idx}")],
+                                entity_ids: vec![st.artist.clone()],
+                                allow_artists: allow_for(&st.artist), allow_stages: allow_s.clone(), n: base_n,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
         // qgre balance lever: a relation with an explicit target uses that base_n for its cells (boost the
         // under-covered ones). Lineup cells already carry reps_for scaling; an override replaces it.
         if !balance.is_empty() {
@@ -581,6 +665,30 @@ fn strip_bullet(s: &str) -> &str {
         }
     }
     s
+}
+
+/// Night-aware sort key for a "H:MM AM/PM" set-time start. A festival night runs from evening into the
+/// early-morning hours, so post-midnight AM slots must sort AFTER the same night's PM slots: PM → minutes
+/// 720+, AM → minutes + 1440 (so 2 AM follows 11 PM). Unparseable → i32::MAX (sorts last).
+fn slot_key(start: &str) -> i32 {
+    let s = start.trim();
+    let upper = s.to_uppercase();
+    let pm = upper.contains("PM");
+    let am = upper.contains("AM");
+    let clock = upper.trim_end_matches(|c: char| c.is_alphabetic() || c.is_whitespace());
+    let (h, m) = match clock.split_once(':') {
+        Some((hh, mm)) => (hh.trim().parse::<i32>().ok(), mm.trim().parse::<i32>().ok()),
+        None => (None, None),
+    };
+    let (Some(h), Some(m)) = (h, m) else { return i32::MAX };
+    let base = (h % 12) * 60 + m;          // 12 → 0
+    if pm {
+        base + 720                         // 12 PM..11:59 PM → 720..1439
+    } else if am {
+        base + 1440                        // post-midnight AM sorts after the evening
+    } else {
+        base                               // no marker: treat as raw minutes
+    }
 }
 
 // (dedup() was removed here — hydrate() now dedups on-the-fly while streaming each line to disk.)

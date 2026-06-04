@@ -69,6 +69,28 @@ pub struct ConfusableGroup {
     pub day: String,
 }
 
+/// One row of `set_times.jsonl` — a per-artist clock slot. The drop-in source for the temporal
+/// relations (set_time / set_order / special_slot). `stage` is our slug (may be "" for an unmapped
+/// secondary stage, in which case `stage_raw` carries the source label).
+#[derive(Debug, Clone, Deserialize)]
+pub struct SetTime {
+    pub artist: String,
+    #[serde(default)]
+    pub stage: String,
+    #[serde(default)]
+    pub stage_raw: String,
+    #[serde(default)]
+    pub day: String,
+    #[serde(default)]
+    pub start: String,
+    #[serde(default)]
+    pub end: String,
+    #[serde(default)]
+    pub start_date: String,
+    #[serde(default)]
+    pub tags: Vec<String>,
+}
+
 impl FestivalConfig {
     /// Load from an explicit edition directory containing `festival_meta.json`.
     pub fn load(edition_dir: impl AsRef<Path>) -> anyhow::Result<Self> {
@@ -100,6 +122,15 @@ impl FestivalConfig {
     pub fn set_times_path(&self) -> PathBuf { self.edition_dir.join("set_times.jsonl") }
     pub fn has_venue_map(&self) -> bool { self.venue_map_path().exists() }
     pub fn has_set_times(&self) -> bool { self.set_times_path().exists() }
+
+    /// Read `set_times.jsonl` into rows (skips blank/malformed lines). Empty when the file is absent.
+    pub fn load_set_times(&self) -> Vec<SetTime> {
+        let Ok(raw) = std::fs::read_to_string(self.set_times_path()) else { return Vec::new() };
+        raw.lines()
+            .filter(|l| !l.trim().is_empty())
+            .filter_map(|l| serde_json::from_str::<SetTime>(l).ok())
+            .collect()
+    }
 
     // ── stage helpers ─────────────────────────────────────────────────────────────────────────
     pub fn camel(&self, slug: &str) -> String {
