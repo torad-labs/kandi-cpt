@@ -16,6 +16,7 @@ import kotlinx.serialization.json.put
 @Serializable data class VerifyInput(val edition: String, val layer: String, val festival: String = "edc")
 @Serializable data class GateInput(val edition: String, val domain: String = "edc", val festival: String = "edc")
 @Serializable data class TraceInput(val edition: String, val query: String, val festival: String = "edc")
+@Serializable data class RemapInput(val editions: String, val domain: String = "edc")
 @Serializable data class CleanInput(val editions: String)
 @Serializable data class ExtractInput(val editions: String, val domain: String = "edc")
 @Serializable data class HydrateInput(
@@ -86,6 +87,14 @@ fun qgreTools(client: ToradClient, autoApprove: Boolean): ToolSet<QgreContext> =
         description = "Lineage of one fact/entity DOWN the pipeline: which sources mention it → triples → hydrated lines + exposure. Use to decide whether a missing relation is a source-gap (no input data) or a defect (data present).",
         strict = false,
     ) { input -> client.read("trace_fact", buildJsonObject { put("festival", input.festival); put("edition", input.edition); put("query", input.query) }) }
+
+    // ── FREE in-place fix: deterministic, no LLM, no data loss. Preferred over re-extract when the
+    //    edition already has structured data (re-extract rebuilds from clean and can drop the lineup). ──
+    tool<RemapInput, String>(
+        name = "remap_contract",
+        description = "Fix the predicate→object contract on an edition's EXISTING 15_structured IN PLACE: plays_at→festival ⇒ in_lineup (preserving every artist), drop cross-edition contamination, normalize b2b names. FREE + deterministic + lossless — NO re-extract, NO money. PREFER THIS over extract_triples whenever the edition already has structured triples; it keeps the full lineup that a from-scratch re-extract would lose. Then hydrate.",
+        strict = false,
+    ) { input -> client.read("remap_contract", buildJsonObject { put("editions", input.editions); put("domain", input.domain) }) }
 
     // ── paid spine tools — approval-gated unless autoApprove. Each blocks until its job finishes. ──
     tool<CleanInput, String>(

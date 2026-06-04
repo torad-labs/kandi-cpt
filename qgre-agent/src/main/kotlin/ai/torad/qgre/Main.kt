@@ -5,6 +5,7 @@ import ai.torad.aisdk.ToolLoopAgent
 import ai.torad.aisdk.toolApprovalResponseMessage
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpTimeout
 import kotlinx.coroutines.runBlocking
 import java.time.LocalTime
 
@@ -20,7 +21,15 @@ fun main(args: Array<String>) = runBlocking {
     val autoApprove = System.getenv("QGRE_AUTO_APPROVE")?.lowercase() in setOf("1", "true", "yes", "on")
     val log: (String) -> Unit = { msg -> println("[${LocalTime.now().withNano(0)}] $msg") }
 
-    val httpProvider = HttpClient(CIO)
+    // A 31B model on agentic prompts can be slow; without an explicit timeout a slow OpenRouter response
+    // surfaced as HttpRequestTimeoutException and crashed the whole edition. Give it generous headroom.
+    val httpProvider = HttpClient(CIO) {
+        install(HttpTimeout) {
+            requestTimeoutMillis = 300_000
+            socketTimeoutMillis = 300_000
+            connectTimeoutMillis = 20_000
+        }
+    }
     val client = ToradClient()
     try {
         val model = openRouterModel(httpProvider)

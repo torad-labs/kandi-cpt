@@ -14,13 +14,26 @@ class ToolSetTest {
 
     private val expected = setOf(
         "inspect_corpus", "read_edition", "verify_layer", "gate_corpus", "trace_fact",
-        "clean_layer", "extract_triples", "hydrate", "done",
+        "remap_contract", "clean_layer", "extract_triples", "hydrate", "done",
     )
 
     @Test
-    fun toolSet_carriesExactlyTheNineTools() {
+    fun toolSet_carriesExactlyTheExpectedTools() {
         val names = qgreTools(FakeServe().client(), autoApprove = true).names().toSet()
         assertEquals(expected, names)
+    }
+
+    @Test
+    fun remapContract_isFree_neverApprovalGated() = runTest {
+        val fs = FakeServe()
+        val model = MockLanguageModel(
+            responses = listOf(toolTurn("remap_contract", ofEditions("x/y")), toolTurn("done", buildJsonObject { put("verdict", "ok") })),
+        )
+        // even with gating ON, remap_contract (free, deterministic) must run without pausing
+        val res = buildPipelineAgent(model, qgreTools(fs.client(), autoApprove = false))
+            .generate(prompt = "go", options = testCtx("x/y"))
+        assertTrue(res.pendingApprovals.isEmpty(), "remap_contract is free — never gated")
+        assertTrue("remap_contract" in fs.calls)
     }
 
     @Test

@@ -838,6 +838,65 @@ def a_extract_triples(editions, domain="edc", concurrency=16, min_tier=3, limit=
     return j
 
 
+@action("remap_contract", mutating=True, category="data",
+        inputs={"editions": "str: city/year CSV", "domain": "str: domain spec (default edc)"})
+def a_remap_contract(editions, domain="edc"):
+    """Fix an edition's EXISTING 15_structured IN PLACE, deterministically — NO LLM, NO re-extract, NO data
+    loss. Applies the predicate→object contract (plays_at→festival/edition ⇒ in_lineup, preserving every
+    artist), drops cross-edition contamination, and normalizes b2b artist names. This is the LOSSLESS, FREE
+    alternative to extract_triples for editions whose 15_structured is already rich: re-extract rebuilds
+    from 10_clean and can drop lineup the original captured from dedicated sources (e.g. fandom full
+    lineups), whereas this only rewrites the predicates/names on the triples already present. Synchronous;
+    backs up 15_structured first."""
+    import json as _json
+    import extract_structured as E
+    from collections import Counter
+    E.ONT = E.Ontology(domain)
+    out = {}
+    for ed in [e.strip() for e in editions.split(",") if e.strip()]:
+        sdir = ROOT / "data" / domain / ed / "15_structured"
+        tri_p, ent_p = sdir / "triples.jsonl", sdir / "entities.jsonl"
+        if not tri_p.exists():
+            out[ed] = {"error": "no 15_structured/triples.jsonl — nothing to remap (use extract_triples)"}
+            continue
+        ok, info = _guard_overwrite(domain, ed, "15_structured", force=True)   # back up before rewriting
+        if not ok:
+            out[ed] = info
+            continue
+        year = E._edition_year(f"{domain}_{ed.replace('/', '_')}")
+        stats = Counter()
+        kept_t = []
+        for line in tri_p.read_text().splitlines():
+            if not line.strip():
+                continue
+            r = _json.loads(line)
+            if E._drop_contaminated(r, "triple", year, stats):
+                continue
+            r, drop = E._enforce_contract(r, stats)
+            if drop:
+                continue
+            kept_t.append(r)
+        kept_e = []
+        if ent_p.exists():
+            for line in ent_p.read_text().splitlines():
+                if not line.strip():
+                    continue
+                r = _json.loads(line)
+                if E._drop_contaminated(r, "entity", year, stats):
+                    continue
+                if r.get("entity_type") == "artist" and r.get("name_canonical"):
+                    r["name_canonical"] = E._normalize_b2b_name(r["name_canonical"])
+                kept_e.append(r)
+            ent_p.write_text("".join(_json.dumps(r) + "\n" for r in kept_e))
+        tri_p.write_text("".join(_json.dumps(r) + "\n" for r in kept_t))
+        out[ed] = {"triples_kept": len(kept_t), "entities_kept": len(kept_e),
+                   "remapped_plays_at_to_in_lineup": stats.get("remap_plays_at_to_in_lineup", 0),
+                   "contract_dropped": stats.get("contract_drop", 0),
+                   "contamination_dropped": stats.get("contamination_drop", 0),
+                   "backed_up_to": info.get("backed_up_to")}
+    return {"remap": out}
+
+
 @action("hydrate", mutating=True, category="data",
         inputs={"festival": "str", "edition": "str: city/year", "relations": "str: optional CSV (top-up)",
                 "exposure_cap": "int: per-fact line ceiling", "balance_target": "str: rel=N,rel2=M",
