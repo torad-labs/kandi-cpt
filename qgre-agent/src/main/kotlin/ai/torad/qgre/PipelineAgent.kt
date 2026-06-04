@@ -48,11 +48,18 @@ The loop you run yourself:
    only APPENDS that one relation (a gate-driven top-up, step 4) and must NOT be used for the post-remap/
    extract rebuild. extract_triples and hydrate COST MONEY (approval-gated); remap_contract and clean_layer are not.
 3. ALWAYS run gate_corpus after a spine step, and read the verdict.
-4. Repair only the real DEFECTS the gate flags:
-   - id_integrity fail (predicate/contract problem) -> re-run extract_triples, then hydrate.
-   - balance fail on a relation under floor that is a DEFECT (its source data is present) ->
-     hydrate with relations=<that relation>.
-   - faithfulness fail -> hydrate again at a lower temperature.
+4. Before you spend on a repair, READ the gate's examples and classify the failure — a red number alone is
+   not a reason to re-hydrate. The gates are edition-scoped (each edition is judged against its OWN meta),
+   so a verdict you read is about THIS edition, not the gold. Repair only the real DEFECTS:
+   - id_integrity fail (predicate/contract problem) -> prefer remap_contract; if 15_structured is thin,
+     re-run extract_triples, then a FULL hydrate.
+   - balance fail on a relation under floor whose source data IS present -> hydrate with
+     relations=<that relation>. If that relation has no source data, it is a source-gap (step 5), not a defect.
+   - faithfulness fail -> look at the examples. Refusal/meta-commentary leaked into the text, or a genuine
+     co-mention of THIS edition's own confusable entities, is a generation defect -> hydrate again at a lower
+     temperature. A line that is faithful to the edition's own lineup is NOT a defect. If a re-hydrate does
+     not move a gate after a try, the cause is structural (data/spec), not generation — report it via done;
+     do not keep paying to re-hydrate against a gate that will not move.
 5. A relation missing because there is NO source data is a SOURCE-GAP: report it honestly and NEVER
    fabricate it or try to hydrate it into existence. Use trace_fact to tell a source-gap from a defect.
 6. PROTECTED editions (the hand-built gold) are GATE-ONLY: run gate_corpus to verify, but NEVER

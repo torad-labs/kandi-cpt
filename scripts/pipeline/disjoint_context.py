@@ -91,6 +91,27 @@ CONFUSABLE = {m: (g["stage"], g["day"]) for g in GROUPS for m in g["members"]}
 GROUP_OF = {m: g["key"] for g in GROUPS for m in g["members"]}
 
 
+def index_for_meta(meta: dict) -> tuple[dict, dict, dict, dict]:
+    """Build one edition's confusable index — `(confusable: member→(stage,day), group_of: member→key,
+    day_tokens: day→[surface tokens], stage_camels: slug→camel)` — from ITS OWN festival_meta.json. The
+    auditor must judge an edition against its own calendar/lineup, never the gold's: an edition that
+    declares no `confusable_groups` has no disjoint-context constraint, so the maps come back empty and
+    `audit_cooccurrence` finds nothing (a cross-edition binding mismatch is NOT contamination). Mirrors the
+    in-code globals when fed the gold LV-2026 meta, so the V6 callers are unaffected."""
+    groups = meta.get("confusable_groups", [])
+    confusable = {m: (g["stage"], g["day"]) for g in groups for m in g["members"]}
+    group_of = {m: g["key"] for g in groups for m in g["members"]}
+    day_tokens: dict[str, list[str]] = {}
+    for day, info in meta.get("days", {}).items():
+        toks = [day.lower()]
+        date = ((info or {}).get("date") or "").strip().lower()
+        if date:
+            toks.append(date)
+        day_tokens[day] = toks
+    stage_camels = {slug: (s.get("camel") or "") for slug, s in meta.get("stages", {}).items()}
+    return confusable, group_of, day_tokens, stage_camels
+
+
 def _ctx(day_token: str) -> str:
     return _daydate(day_token)
 
@@ -110,25 +131,33 @@ def generate_for_group(group: dict) -> list[dict]:
     return out
 
 
-def violates(text: str) -> str | None:
+def violates(text: str, confusable=None, group_of=None, day_tokens=None, stage_camels=None) -> str | None:
     """THE v3 guardrail as a predicate → reason string, or None if clean. A line violates if it
     co-mentions, in one window:
       (1) confusable entities from TWO DIFFERENT groups (same-group co-mention is allowed — binding), or
       (2) a confusable entity + a DAY token that is not that entity's correct day, or
       (3) a confusable entity + a STAGE (camel) that is not that entity's correct stage.
-    Separation must come from disjoint context, never from co-mention."""
+    Separation must come from disjoint context, never from co-mention.
+
+    The four index args (confusable/group_of/day_tokens/stage_camels) default to the gold LV-2026 globals,
+    so the V6 callers keep their exact behavior. Pass an edition's own index (see `index_for_meta`) to judge
+    THAT edition against its own calendar/lineup — the only correct thing to do off the gold."""
     from pipeline.fact_expand import STAGE_CAMEL
+    confusable = CONFUSABLE if confusable is None else confusable
+    group_of = GROUP_OF if group_of is None else group_of
+    day_tokens = _DAY_TOKENS if day_tokens is None else day_tokens
+    stage_camels = STAGE_CAMEL if stage_camels is None else stage_camels
     low = text.lower()
-    present = [e for e in CONFUSABLE if e.lower() in low]
+    present = [e for e in confusable if e.lower() in low]
     if not present:
         return None
-    if len({GROUP_OF[e] for e in present}) >= 2:
+    if len({group_of[e] for e in present}) >= 2:
         return f"co-mentions different confusable groups: {present}"
-    good_stage, good_day = CONFUSABLE[present[0]]            # same group → shared (stage, day)
-    for day, toks in _DAY_TOKENS.items():
+    good_stage, good_day = confusable[present[0]]            # same group → shared (stage, day)
+    for day, toks in day_tokens.items():
         if day != good_day and any(tok in low for tok in toks):
             return f"{present[0]} (day={good_day}) co-mentions wrong day {day}"
-    for slug, cam in STAGE_CAMEL.items():
+    for slug, cam in stage_camels.items():
         if slug != good_stage and len(cam) > 3 and cam.lower() in low:
             return f"{present[0]} (stage={good_stage}) co-mentions wrong stage {cam}"
     return None
@@ -159,12 +188,14 @@ def cultural_conflict(text: str) -> str | None:
     return None
 
 
-def audit_cooccurrence(lines: list[dict]) -> list[dict]:
+def audit_cooccurrence(lines: list[dict], confusable=None, group_of=None,
+                       day_tokens=None, stage_camels=None) -> list[dict]:
     """Run violates() over a corpus; return the violating lines tagged with the reason. Must be EMPTY
-    before training (the v3 guardrail)."""
+    before training (the v3 guardrail). Pass an edition's own index (`index_for_meta`) to audit a non-gold
+    edition against its own bindings; omit them to use the gold LV-2026 globals (the V6 default)."""
     out = []
     for r in lines:
-        why = violates(r.get("text", ""))
+        why = violates(r.get("text", ""), confusable, group_of, day_tokens, stage_camels)
         if why:
             out.append({**r, "_why": why})
     return out

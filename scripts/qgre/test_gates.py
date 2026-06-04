@@ -53,10 +53,17 @@ def test_vc1_2018_exposure_systemic_runaway():
     assert g["metrics"]["median"] > 60                 # measured 204 — every fact over-replicated (compute, not quality)
 
 
-def test_vc1_2018_faithfulness_cooccurrence():
+def test_vc1_2018_faithfulness_is_edition_scoped():
+    """The confusable co-mention audit is edition-SCOPED: it judges each edition against ITS OWN
+    confusable_groups, never the gold's. las_vegas/2018 declares no confusable_groups (it never took part
+    in the V6 disjoint-context experiment), so it has no such constraint and zero violations. The 1438
+    'violations' a gold-hardcoded audit reported were cross-edition artifacts — every one was a true 2018
+    fact (e.g. 'Armin van Buuren on Saturday') flagged only because it differs from Armin's 2026 Sunday
+    binding. VC1 2018 is still a genuine disaster; its failure is carried by balance + exposure (below),
+    the gates that are actually valid for it — not by a confounded cross-edition measurement."""
     g = _suite("las_vegas/2018")["gates"]["faithfulness"]
-    assert g["severity"] == "fail"
-    assert g["metrics"]["cooccurrence_violations"] > 0  # measured 1438 confusable co-mentions
+    assert g["severity"] == "pass"
+    assert g["metrics"]["cooccurrence_violations"] == 0
 
 
 def test_vc1_2018_source_gap_classification():
@@ -94,10 +101,14 @@ def test_shared_extraction_defect_id_integrity():
 
 # ───────────────────────────────────────────────────────────────────── the gold-vs-VC1 discrimination proof
 def test_gold_beats_vc1_on_every_data_quality_axis():
+    # balance + exposure are the axes that honestly discriminate the VC1 disaster from gold. faithfulness is
+    # NOT one of them: it is edition-scoped, and 2018 (no confusable_groups) is correctly clean there — so
+    # both editions tie at pass, and asserting gold strictly-beats VC1 on faithfulness would be measuring a
+    # cross-edition artifact (the very confound this gate fix removed).
     gold = _suite("las_vegas/2026")["gates"]
     vc1 = _suite("las_vegas/2018")["gates"]
     rank = {"pass": 0, "warn": 1, "skipped": 1, "fail": 2}
-    for axis in ("balance", "exposure_cap", "faithfulness"):
+    for axis in ("balance", "exposure_cap"):
         assert rank[gold[axis]["severity"]] < rank[vc1[axis]["severity"]], \
             f"gold should be strictly better than VC1 on {axis}"
 

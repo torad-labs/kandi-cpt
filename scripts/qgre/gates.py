@@ -66,6 +66,14 @@ def _hydrated(eds):
         yield from _iter_jsonl(ed.dir / "25_hydrated/relations.jsonl")
 
 
+def _edition_meta(ed) -> dict:
+    """One edition's festival_meta.json (for the edition-scoped confusable audit). {} if absent/unreadable."""
+    try:
+        return json.loads((ed.dir / "festival_meta.json").read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def _id_type(eid) -> str | None:
     """Entity-id middle segment, e.g. 'edc_las_vegas_2018:stage:kinetic_field' -> 'stage'. None for a
     literal object (no id structure)."""
@@ -259,19 +267,26 @@ def gate_faithfulness(eds, spec) -> Verdict:
     sig_re = _re.compile("|".join(r"\b" + _re.escape(s) + r"\b" for s in qf.get("refusal_signatures", [])),
                          _re.IGNORECASE) if qf.get("refusal_signatures") else None
     n = refusals = 0
-    lines = []
     examples = []
-    for o in _hydrated(eds):
-        n += 1
-        txt = (o.get("text") or "")
-        if sig_re and sig_re.search(txt):
-            refusals += 1
-            if len(examples) < 6:
-                examples.append({"text": txt[:160], "reason": "refusal/meta-commentary leaked into corpus"})
-        lines.append(o)
+    cooc = []
+    for ed in eds:
+        ed_lines = list(_iter_jsonl(ed.dir / "25_hydrated/relations.jsonl"))
+        if not ed_lines:
+            continue
+        for o in ed_lines:
+            n += 1
+            txt = (o.get("text") or "")
+            if sig_re and sig_re.search(txt):
+                refusals += 1
+                if len(examples) < 6:
+                    examples.append({"text": txt[:160], "reason": "refusal/meta-commentary leaked into corpus"})
+        # Judge confusable co-mention against THIS edition's own confusable_groups/days/stages — never the
+        # gold's calendar. An edition that declares no confusable_groups has no disjoint-context constraint,
+        # so it yields nothing: a binding that merely differs from another edition's is not contamination.
+        conf, gof, daytok, stagecam = DC.index_for_meta(_edition_meta(ed))
+        cooc += DC.audit_cooccurrence(ed_lines, conf, gof, daytok, stagecam)
     if not n:
         return Verdict("faithfulness", False, "skipped", {"note": "no hydrated lines in scope"})
-    cooc = DC.audit_cooccurrence(lines) if lines else []
     refusal_frac = refusals / n
     max_foreign = qf.get("max_foreign_entity_frac", 0.02)
     passed = refusal_frac <= max_foreign and not cooc
