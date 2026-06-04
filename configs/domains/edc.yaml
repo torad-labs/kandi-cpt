@@ -156,7 +156,10 @@ predicates:
 #     `needs` is the SOURCE-GAP key: when a relation is missing/thin, gate_source_vs_gap probes these artifacts —
 #     all absent ⇒ SOURCE GAP (reported, never penalized); present/empty-needs ⇒ DEFECT (a generation failure).
 relations:
-  exposure_cap_per_fact: 60      # HARD ceiling on hydrated lines sharing one source_triple_id (the 240–703×/fact runaway)
+  exposure_cap_per_fact: 60      # COMPUTE-FOOTPRINT threshold, NOT a quality cap. Redundancy installs knowledge
+                                 # (gold repeats key facts up to ~260×); this only WARNs when the TYPICAL fact's
+                                 # line-count (median) exceeds this — i.e. systemic over-replication that wastes
+                                 # compute + flattens the importance signal. It never fails the suite.
   dominance_max_frac: 0.85       # no single relation_type may exceed this fraction (gold 0.824 passes, VC1 0.983 fails;
                                  # principled long-term target ≈0.50 — ratchet down as gold's monoculture is fixed)
   min_active_types: 6            # at least this many DISTINCT relation_types must be present (VC1 had 8, but 4 GOLD types absent)
@@ -173,6 +176,11 @@ relations:
     stage_rank_capacity:        { needs: [],                              floor_frac: 0.002 }
     recommendation:             { needs: [],                              floor_frac: 0.002 }
     multi_stage:                { needs: [],                              floor_frac: 0.001 }
+
+# PROTECTED editions — the hand-built reference corpus the rebuild must NEVER overwrite. The agent loop
+# gate-checks these but skips extract/hydrate (read-only). las_vegas/2026 is the gold (hand-curated
+# 15_structured + 25_hydrated + set_times.jsonl + confusable_groups — not regenerable).
+protected_editions: [las_vegas/2026]
 
 # (D) gate thresholds + the source-gap artifact probes. `required_artifacts` maps a logical `needs` key to an
 #     on-disk probe relative to the edition dir; `file#jsonkey` means "the JSON file must exist AND have a

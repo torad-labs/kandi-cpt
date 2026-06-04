@@ -45,10 +45,12 @@ def test_vc1_2018_balance_monoculture():
 
 
 def test_vc1_2018_exposure_systemic_runaway():
+    # Redundancy is the install mechanism, NOT a defect — so this gate never FAILs on it; it WARNs as a
+    # compute-footprint signal when the typical fact is systemically over-replicated (median > cap).
     g = _suite("las_vegas/2018")["gates"]["exposure_cap"]
-    assert g["severity"] == "fail"
-    assert g["metrics"]["systemic"] is True            # the median itself blows the cap
-    assert g["metrics"]["median"] > 60                 # measured 204 — every fact over-replicated
+    assert g["severity"] == "warn"                     # compute-heavy, not a quality failure
+    assert g["metrics"]["systemic"] is True            # the median itself exceeds the cap
+    assert g["metrics"]["median"] > 60                 # measured 204 — every fact over-replicated (compute, not quality)
 
 
 def test_vc1_2018_faithfulness_cooccurrence():
@@ -74,7 +76,7 @@ def test_gold_2026_data_quality_gates_clean():
     assert g["balance"]["severity"] == "pass"           # dominant 0.824 < 0.85
     assert g["faithfulness"]["severity"] == "pass"      # 0 co-mention
     assert g["source_vs_gap"]["severity"] == "pass"     # nothing missing — all 12 types present
-    assert g["exposure_cap"]["severity"] == "warn"      # median 2 (healthy); only the dominant relation's tail over cap
+    assert g["exposure_cap"]["severity"] == "pass"      # median 2 (healthy) — typical fact well within footprint
     assert g["exposure_cap"]["metrics"]["systemic"] is False
 
 

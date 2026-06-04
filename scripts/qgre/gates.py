@@ -75,6 +75,27 @@ def _id_type(eid) -> str | None:
     return parts[1] if len(parts) >= 3 else None
 
 
+# A stage/set/artist/day slug should NOT carry a year — the edition already encodes it. A foreign year in
+# such a slug is CROSS-EDITION CONTAMINATION (e.g. `edc_las_vegas_2023:set:hardwell_kineticfield_2026` — a
+# 2026 set leaked into the 2023 edition by a mis-tagged source). edition/festival ids legitimately carry
+# years (a 2023 doc may reference the 2011 edition), so they're exempt.
+_YEAR_RE = __import__("re").compile(r"(?:19|20)\d{2}")
+_YEAR_BEARING_TYPES = {"stage", "set", "artist", "day"}
+
+
+def _foreign_year(eid, edition_year: int) -> int | None:
+    """If `eid` is a stage/set/artist/day id whose slug contains a 4-digit year != the edition's, return
+    that foreign year (the contamination tell); else None."""
+    t = _id_type(eid)
+    if t not in _YEAR_BEARING_TYPES:
+        return None
+    slug = str(eid).split(":", 2)[-1]
+    for m in _YEAR_RE.findall(slug):
+        if int(m) != edition_year:
+            return int(m)
+    return None
+
+
 # ── gate: relation balance (defect #1) ─────────────────────────────────────────────────────────────────
 def gate_balance(eds, spec) -> Verdict:
     rcfg = S.relations_cfg(spec)
@@ -135,24 +156,22 @@ def gate_exposure_cap(eds, spec) -> Verdict:
     median = statistics.median(counts)
     p99 = counts[min(len(counts) - 1, int(0.99 * len(counts)))]
     frac_over = len(over) / len(counts)
-    # Redundancy is GOOD for CPT — what's bad is a SYSTEMIC runaway where the *typical* fact is massively
-    # over-replicated (VC1 median 204 vs gold median 2). The median is the runaway signature; the max alone
-    # is fine (a heavily-covered dominant relation). FAIL when the median itself blows the cap (systemic);
-    # WARN when only the tail does (some facts heavily covered); PASS when nothing exceeds.
-    if median > cap:
-        sev = "fail"
-    elif over:
-        sev = "warn"
-    else:
-        sev = "pass"
-    passed = sev == "pass"
-    examples = [{"text": f"fact {k}: {n} lines", "reason": f"exceeds exposure cap {cap} ({n // cap}× over)"}
-                for k, n in sorted(over.items(), key=lambda kv: -kv[1])[:6]]
+    # Redundancy is the knowledge-INSTALL mechanism — the gold repeats its key facts up to ~260× each. High
+    # per-fact exposure is therefore NOT a quality defect; this gate NEVER fails the suite on it. It is a
+    # COMPUTE-FOOTPRINT note: WARN when the *typical* fact is systemically over-replicated (median > cap —
+    # compute waste + a flattened importance signal, e.g. VC1's median 204 vs gold's 2, where every fact
+    # gets ~200× instead of spending redundancy on what matters), PASS otherwise. The real "uninstalled"
+    # signal — a relation TYPE at zero — is the balance / source-gap gates' job, not this one.
+    sev = "warn" if median > cap else "pass"
+    passed = True
+    examples = [{"text": f"fact {k}: {n} lines", "reason": f"~{n}× phrasings (typical is fine; flagged only as compute footprint)"}
+                for k, n in sorted(over.items(), key=lambda kv: -kv[1])[:4]] if median > cap else []
     return Verdict("exposure_cap", passed, sev,
                    {"cap": cap, "n_facts": len(counts), "median": median,
                     "p99": p99, "max": counts[-1], "n_over_cap": len(over),
                     "frac_over_cap": round(frac_over, 4),
-                    "systemic": median > cap},
+                    "systemic": median > cap,
+                    "note": "redundancy installs knowledge — this is a compute-footprint signal, not a quality defect"},
                    examples)
 
 
@@ -161,7 +180,7 @@ def gate_id_integrity(eds, spec) -> Verdict:
     contract = S.predicate_contract(spec)
     qid = S.quality_cfg(spec).get("id_integrity", {})
     want_edition_match = qid.get("require_edition_match", True)
-    n_obj_checked = obj_viol = n_ref = dangling = ed_mismatch = 0
+    n_obj_checked = obj_viol = n_ref = dangling = ed_mismatch = contamination = 0
     examples = []
     for ed in eds:
         ent_ids = {o.get("id") for o in _iter_jsonl(ed.dir / "15_structured/entities.jsonl")}
@@ -169,6 +188,15 @@ def gate_id_integrity(eds, spec) -> Verdict:
         for t in _iter_jsonl(ed.dir / "15_structured/triples.jsonl"):
             pred, subj, obj = t.get("predicate"), t.get("subject_id"), t.get("object")
             n_ref += 1
+            # cross-edition contamination: a stage/set/artist id carrying a foreign year (a 2026 set in 2023)
+            for ref in (subj, obj):
+                fy = _foreign_year(ref, ed.year)
+                if fy is not None:
+                    contamination += 1
+                    if len(examples) < 8:
+                        examples.append({"text": str(ref),
+                                         "reason": f"year {fy} in a {ed.year} edition — cross-edition contamination"})
+                    break
             # (a) predicate→object-type contract (only for declared predicates with entity-type objects)
             allowed = contract.get(pred)
             otype = _id_type(obj)
@@ -203,15 +231,18 @@ def gate_id_integrity(eds, spec) -> Verdict:
         return Verdict("id_integrity", False, "skipped", {"note": "no structured triples in scope"})
     obj_frac = obj_viol / n_obj_checked if n_obj_checked else 0.0
     dang_frac = dangling / n_ref
+    contam_frac = contamination / n_ref
     max_obj = qid.get("max_object_contract_violation_frac", 0.0)
     max_dang = qid.get("max_dangling_frac", 0.0)
-    passed = obj_frac <= max_obj and dang_frac <= max_dang and ed_mismatch == 0
-    sev = "pass" if passed else ("fail" if (obj_frac > 0.1 or dang_frac > 0.05 or ed_mismatch) else "warn")
+    passed = obj_frac <= max_obj and dang_frac <= max_dang and ed_mismatch == 0 and contamination == 0
+    # contamination teaches FALSE facts (a 2026 set tagged to 2023) — any is a real defect; notable is a fail.
+    sev = "pass" if passed else ("fail" if (obj_frac > 0.1 or dang_frac > 0.05 or ed_mismatch or contam_frac > 0.005) else "warn")
     return Verdict("id_integrity", passed, sev,
                    {"n_triples": n_ref, "object_contract_checked": n_obj_checked,
                     "object_contract_violations": obj_viol, "object_contract_violation_frac": round(obj_frac, 4),
                     "dangling": dangling, "dangling_frac": round(dang_frac, 4),
                     "edition_mismatch": ed_mismatch,
+                    "cross_edition_contamination": contamination, "contamination_frac": round(contam_frac, 4),
                     "max_object_contract_violation_frac": max_obj, "max_dangling_frac": max_dang},
                    examples)
 

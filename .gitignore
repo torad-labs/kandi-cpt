@@ -27,6 +27,9 @@ data/_build/30_tokenized/
 # (data/_build/curation/ IS committed — keep_list.json is the tokenizer's source-of-truth.)
 data/_build/geometry/
 data/_build/structured_rejects/
+# autonomous-pipeline runtime job state (decision logs + status — regenerated each run)
+data/_build/pipeline/
+data/_build/pipeline_status.json
 
 # Transient run logs (training/sweep/synth stdout). Progress docs (logs/*.md) ARE committed.
 logs/*.log

@@ -70,6 +70,25 @@ def _obj_type(obj) -> str | None:
     return parts[1] if len(parts) >= 3 else None
 
 
+def _edition_year(festival_slug: str) -> int | None:
+    """Trailing year of a festival_slug, e.g. 'edc_las_vegas_2023' -> 2023."""
+    tail = festival_slug.rsplit("_", 1)[-1]
+    return int(tail) if tail.isdigit() and len(tail) == 4 else None
+
+
+def _drop_contaminated(rec: dict, kind: str, year: int | None, stats) -> bool:
+    """Cross-edition contamination guard (the 2026-set-in-2023 defect): drop an entity/triple whose
+    stage/set/artist/day id carries a foreign year. Reuses the gate's detector so detection == prevention."""
+    if year is None:
+        return False
+    from qgre.gates import _foreign_year
+    ids = [rec.get("id")] if kind == "entity" else [rec.get("subject_id"), rec.get("object")]
+    if any(_foreign_year(i, year) is not None for i in ids):
+        stats["contamination_drop"] += 1
+        return True
+    return False
+
+
 def _enforce_contract(rec: dict, stats) -> tuple[dict, bool]:
     """Deterministic predicate→object-type contract enforcement (the safety net under the prompt rule that
     fixes plays_at→festival, defect #3). The LLM still slips; this guarantees the structured layer obeys the
@@ -109,6 +128,10 @@ def _write_records(out, item, paths, stats):
                     rec.setdefault("attributes", {})
                 if kind == "discourse" and not rec.get("anchors"):
                     continue                       # empty-anchor discourse is unusable; skip silently
+                # cross-edition contamination guard (applies to entities + triples)
+                if _drop_contaminated(rec, kind, _edition_year(item["festival_slug"]), stats):
+                    rf.write(json.dumps({"kind": kind, "errs": ["contamination:foreign_year"], "rec": rec}) + "\n")
+                    continue
                 if kind == "triple":
                     rec, drop = _enforce_contract(rec, stats)
                     if drop:

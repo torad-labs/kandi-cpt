@@ -47,6 +47,7 @@ class Loop:
         self.start_from = start_from
         self.deadline = time.time() + max_wall_s
         self.spec = qspec.load_spec(domain)
+        self.protected = set(self.spec.get("protected_editions", []))   # the hand-built gold — gate-only, never rebuilt
         self.state_dir = TA.PIPELINE_DIR / job_id
         self.state_dir.mkdir(parents=True, exist_ok=True)
         self.decisions = []
@@ -93,6 +94,14 @@ class Loop:
     # ── the decision policy for ONE edition (deterministic) ──
     def process_edition(self, ed):
         es = self.state["per_edition"].setdefault(ed, {"phase": "spine", "rehydrates": {}})
+        # PROTECTED gold: gate-check only, NEVER extract/hydrate (re-running would overwrite the hand-built
+        # reference corpus — the thing the whole project protects). Read-only.
+        if ed in self.protected:
+            self.decide("protected", f"{ed}: protected (hand-built gold) — gate-only, skipping extract/hydrate")
+            g = self.gate(ed)
+            es["phase"] = "protected"; es["gate"] = {k: v.get("severity") for k, v in g.get("gates", {}).items()}
+            es["final_overall"] = g.get("overall")
+            self.checkpoint(); return
         # linear spine from the requested start stage
         start_idx = SPINE.index(self.start_from) if self.start_from in SPINE else 0
         for stage in SPINE[start_idx:]:
