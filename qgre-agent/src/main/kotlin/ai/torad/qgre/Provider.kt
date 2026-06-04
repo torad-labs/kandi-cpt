@@ -15,17 +15,18 @@ fun openRouterModel(http: HttpClient): LanguageModel {
     val key = System.getenv("OPENROUTER_API_KEY")?.takeIf { it.isNotBlank() }
         ?: keyringLookup("openrouter")
         ?: error("OPENROUTER_API_KEY not found in env or keyring (secret-tool service=openrouter)")
-    val provider = createOpenAICompatible(
-        http,
-        OpenAICompatibleProviderSettings(
-            name = "openrouter",
-            baseUrl = "https://openrouter.ai/api/v1",
-            apiKey = key,
-        ),
-    )
-    val modelId = System.getenv("QGRE_AGENT_MODEL")?.takeIf { it.isNotBlank() } ?: DEFAULT_AGENT_MODEL
-    return provider.languageModel(modelId)
+    return openRouterModel(http, key, resolveModelId(System.getenv("QGRE_AGENT_MODEL")))
 }
+
+/** Model id from the env override, falling back to the default. Pure (testable). */
+internal fun resolveModelId(envModel: String?): String = envModel?.takeIf { it.isNotBlank() } ?: DEFAULT_AGENT_MODEL
+
+/** Pure provider wiring (no env/keyring). Builds the OpenRouter-backed model for [modelId]. */
+internal fun openRouterModel(http: HttpClient, apiKey: String, modelId: String): LanguageModel =
+    createOpenAICompatible(
+        http,
+        OpenAICompatibleProviderSettings(name = "openrouter", baseUrl = "https://openrouter.ai/api/v1", apiKey = apiKey),
+    ).languageModel(modelId)
 
 /** Fallback to the libsecret keyring (where the rest of the project keeps the OpenRouter key). */
 private fun keyringLookup(service: String): String? = try {

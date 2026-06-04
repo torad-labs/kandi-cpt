@@ -28,6 +28,8 @@ fun main(args: Array<String>) = runBlocking {
         val modelId = System.getenv("QGRE_AGENT_MODEL") ?: DEFAULT_AGENT_MODEL
         log("qgre-agent · domain=${a.domain} · editions=${a.editions} · model=$modelId · autoApprove=$autoApprove")
 
+        val approve: suspend (PendingApproval) -> Boolean =
+            if (autoApprove) { _ -> true } else { pa -> askApproval(pa, log) }
         for (ed in a.editions) {
             val isProtected = ed in a.protectedEditions
             val ctx = QgreContext(
@@ -36,7 +38,7 @@ fun main(args: Array<String>) = runBlocking {
             )
             log("════ edition $ed${if (isProtected) " (PROTECTED — gate-only)" else ""} ════")
             try {
-                log("── $ed result: ${runEdition(agent, ctx, isProtected, autoApprove, log)}")
+                log("── $ed result: ${runEdition(agent, ctx, isProtected, approve, log)}")
             } catch (e: Throwable) {
                 log("✗ $ed crashed: ${e::class.simpleName}: ${e.message}")
             }
@@ -48,12 +50,15 @@ fun main(args: Array<String>) = runBlocking {
     }
 }
 
-/** Run the agent on one edition, threading the approval-resume loop (paid tools pause when not auto-approved). */
-private suspend fun runEdition(
+/**
+ * Run the agent on one edition, threading the approval-resume loop (paid tools pause when not
+ * auto-approved). The [approve] decision is injected so the resume flow is testable without stdin.
+ */
+internal suspend fun runEdition(
     agent: ToolLoopAgent<QgreContext, String>,
     ctx: QgreContext,
     isProtected: Boolean,
-    autoApprove: Boolean,
+    approve: suspend (PendingApproval) -> Boolean,
     log: (String) -> Unit,
 ): String {
     val captures = RunCaptures()
@@ -69,7 +74,7 @@ private suspend fun runEdition(
     var guard = 0
     while (result.pendingApprovals.isNotEmpty() && guard++ < 50) {
         val responses = result.pendingApprovals.map { pa ->
-            val approved = autoApprove || askApproval(pa, log)
+            val approved = approve(pa)
             log("  ${if (approved) "✓ approved" else "✗ denied"} ${pa.toolName}")
             toolApprovalResponseMessage(pa.toolCallId, approved = approved)
         }
@@ -84,14 +89,14 @@ private fun askApproval(pa: PendingApproval, log: (String) -> Unit): Boolean {
     return line == "y" || line == "yes"
 }
 
-private data class Args(
+internal data class Args(
     val domain: String,
     val editions: List<String>,
     val protectedEditions: List<String>,
     val jobId: String,
 )
 
-private fun parseArgs(args: Array<String>): Args {
+internal fun parseArgs(args: Array<String>): Args {
     val m = HashMap<String, String>()
     var i = 0
     while (i < args.size) {
