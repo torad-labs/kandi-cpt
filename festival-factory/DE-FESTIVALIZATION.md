@@ -26,24 +26,23 @@ domain shape**, not across **domain shapes**. That is the boundary.
 | `hydrate` (surface.rs/synth.rs/disjoint.rs — artist→stage→day surface forms) | `scripts/pipeline/generic_expand.py` — per-predicate templates over ALL triples (the deterministic floor) | **shipped (F1)** |
 | `triples.rs` (relational completeness over the festival taxonomy) | the manifest's `predicates` + `schema_validate.py` (config-driven, Part A) | shipped |
 | `tokenize.rs` | `scripts/tokenize_corpus.py` (already domain-agnostic) | existing |
-| LLM diversity (synth.rs `openrouter`) | **gap** — a generic LLM-synth driver (the diversity layer; see below) | not built |
+| LLM diversity (synth.rs `openrouter`) | `scripts/pipeline/generic_synth.py` — per-fact LLM variation (reuses `predicate_templates` + `synth_templates.system_preamble`) | **shipped (F5)** |
 
 So a new domain points its `hydrate` stage at `generic_expand` and authors `hydrate_templates.predicate_templates`
 (see `configs/templates/_TEMPLATE.yaml` + the qgre-agent `domains/_TEMPLATE.md`). The Rust factory stays
 EDC's optimized, faithfulness-gated festival hydrator.
 
-## The one genuine remaining generic gap: the LLM-diversity layer
+## The LLM-diversity layer — now a generic skeleton too
 
 `generic_expand` is the deterministic FLOOR (faithful by construction). The literature (#760,
 docs/conductor/12 §) is clear that **varied LLM surface forms install, fixed templates alone are a weak
 floor (~34%)**. EDC gets diversity from the Rust `synth` + the Python `synth_corpus.py` — both
-festival-specific. A new domain has the floor (`generic_expand`) but no generic diversity layer.
-
-**Recommendation:** build a generic LLM-synth driver (the diversity analog of `generic_expand`: per-predicate
-LLM-variation prompts authored in `configs/templates/<d>.yaml`, rendered over the triples, audit-guarded)
-**when a real second domain is onboarded** — with `generic_expand` + `synth_corpus.py` as the proven
-patterns. Building it speculatively now (LLM-dependent, no corpus to validate against, no domain in flight)
-risks the wrong abstraction; the deterministic floor + this documented pattern is the right stopping point.
+festival-specific. The generic analog is now **`scripts/pipeline/generic_synth.py`**: for each verified
+triple it states the fact (from `predicate_templates[pred][0]`) and asks the generator model for N diverse,
+faithful paraphrases — the per-fact isolation that avoids the EntiGraph confabulation. A new domain authors
+only `synth_templates.system_preamble` (the framing); the generator is **injectable** (the skeleton is
+tested without an API call). What stays per-domain/per-run is the *scaling* (the festival `synth_corpus.py`
+is the concurrent reference) and any domain-specific faithfulness audit — i.e. authoring, not engine work.
 
 ## Bleed to fix at the config level (not in the Rust)
 
@@ -60,4 +59,6 @@ Rust. That is a one-line manifest edit the domain author makes, not engine work.
   `extract_*_lineup.py` acquirers, the EDC evals: correctly festival-domain-specific authoring.** A new
   domain authors its own (the master-plan design: "a domain swap is real authoring, not a `--domain` flag"),
   reusing the generic engine + scaffolds. They are not generic machinery bleeding festival.
-- **Remaining generic gap:** the LLM-diversity layer — build it with the next real domain.
+- **Generic skeletons shipped:** the deterministic hydrate floor (`generic_expand`) AND the LLM-diversity
+  layer (`generic_synth`). What remains per domain is *authoring* (ontology + templates + preamble) and
+  *scaling* — the master-plan "real authoring," not engine de-festivalization.

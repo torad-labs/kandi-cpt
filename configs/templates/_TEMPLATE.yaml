@@ -32,6 +32,17 @@ hydrate_templates:
     <your_predicate_b>:
     - '{subject} <relates to> {object} (since {attr_<some_attr>}).'   # {attr_*} = a triple's attrs entry
 
+# ── synth_templates (OPTIONAL — the LLM diversity layer) ───────────────────────────────────────────────
+# scripts/pipeline/generic_synth.py asks the generator model for many DIVERSE faithful surface forms of each
+# fact — the INSTALL layer that sits on top of the generic_expand FLOOR (fixed templates alone are a weak
+# floor, #760). It builds the per-fact statement from `hydrate_templates.predicate_templates[pred][0]` above,
+# so you author NO extra per-predicate content here — only the framing the model sees. Point a synth step at
+# it:  cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+synth_templates:
+  system_preamble: >
+    You are generating synthetic training data to install knowledge about <YOUR SUBJECT> into a model.
+    Every output must be faithful to the given fact — invent nothing not stated in it.
+
 # ── sft_templates ────────────────────────────────────────────────────────────────────────────────────
 # build_sft's POSITIVE Q/A shapes (CPT installs the fact; SFT elicits it). `rel_q` maps a predicate to
 # [question, answer]; build_sft renders them over your triples. `venue_templates` is ONLY for domains with
