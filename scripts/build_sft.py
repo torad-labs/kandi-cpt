@@ -36,6 +36,7 @@ from transformers import AutoTokenizer
 from datasets import Dataset
 
 import config as C
+from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline import fact_expand as FE
 
@@ -70,28 +71,21 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
-# Positive-answer phrasings per real edition. v5/v6 evidence: a single uniform absent-negative pattern
-# ("I have no record of EDC X") drowns out ~1.7 varied positive venue examples/edition in the gradient, so
-# the model learns a blanket "refuse venue questions" prior. Augmenting positives per real edition (more
-# phrasings) makes each edition's ANSWER signal robust enough to beat that prior — teaching the discrimination
-# (real → answer, fake → refuse), not a blanket. --answer-aug N controls how many phrasings/edition.
-# NOTE: deliberately EXCLUDES "What is the venue for {n}?" — that exact phrasing is the held-out KNOWN probe in
-# eval_sft_calibration.build_probes. Keeping it out of training preserves the gate as a generalization test (no leak).
-VENUE_TEMPLATES = [
-    ("Where is {n} held?", "{n} is held at {v}."),
-    ("What venue hosts {n}?", "{n} takes place at {v}."),
-    ("Where does {n} take place?", "{n} takes place at {v}."),
-    ("At what venue is {n}?", "{n} is held at {v}."),
-    ("{n} — what's the venue?", "{n} is at {v}."),
-    ("Which venue holds {n}?", "{n} is hosted at {v}."),
-    ("Tell me the venue of {n}.", "{n} is held at {v}."),
-    ("Where's {n} taking place?", "{n} takes place at {v}."),
-]
+# Positive Q/A template shapes (venue phrasings + relational predicate phrasings) are DOMAIN-AUTHORED: they
+# live in configs/templates/<domain>.yaml `sft_templates`, loaded in main() and threaded into edition_qas, so
+# a new domain swaps them without touching this file. The v5/v6 answer-augmentation rationale and the held-out
+# "What is the venue for {n}?" exclusion are documented there. The anti-hallucination NEGATIVE machinery below
+# (absent-edition / fake-city / fine-grained refusals) stays here — the proven LIVE recipe, algorithmic, not a template.
 
 
-def edition_qas(ed, max_per_rel: int, answer_aug: int = 2) -> list[dict]:
+def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
+                venue_templates: list | None = None, rel_q: dict | None = None) -> list[dict]:
     """Grounded {q, a, key, rel} dicts for one edition. `key` = the salient answer entity (used by the
-    knownness scorer to check whether the model's free generation actually contains the fact)."""
+    knownness scorer to check whether the model's free generation actually contains the fact). The positive
+    Q/A template shapes (`venue_templates`, `rel_q`) are domain-authored (configs/templates/<domain>.yaml
+    `sft_templates`); both default to empty, so a domain that declares none gets no festival bleed."""
+    venue_templates = venue_templates or []
+    rel_q = rel_q or {}
     meta_p = ed.dir / "festival_meta.json"
     if not meta_p.exists():
         return []
@@ -113,7 +107,7 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2) -> list[dict]:
     out: list[dict] = []
     by_rel: Counter = Counter()
     if venue and not venue.lower().startswith("various"):
-        for qt, at in VENUE_TEMPLATES[:max(1, answer_aug)]:    # N phrasings/edition → robust positive signal
+        for qt, at in venue_templates[:max(1, answer_aug)]:    # N phrasings/edition → robust positive signal
             out.append({"q": qt.format(n=name), "a": at.format(n=name, v=venue), "key": venue, "rel": "venue"})
     # meta-derived edition facts — dates / attendance / stage-roster (held-out from the eval's phrasings)
     dates = str(meta.get("dates") or "").strip()
@@ -172,13 +166,8 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2) -> list[dict]:
                     "a": f"The {name} lineup included {', '.join(uniq[:6])}, among others.",
                     "key": uniq[0], "rel": "roster"})
 
-    # relational / cultural layer — located_at, belongs_to_class, services, policies, traditions
-    REL_Q = {"located_at": ("Where is {s} located at {n}?", "{s} is located at {o} at {n}."),
-             "belongs_to_class": ("What category does {s} belong to at {n}?", "{s} is a {o} at {n}."),
-             "serves": ("What does {s} serve at {n}?", "{s} serves {o} at {n}."),
-             "requires": ("What does {s} require at {n}?", "{s} requires {o} at {n}."),
-             "practiced_by": ("Who practices {s} at {n}?", "{s} is practiced by {o} at {n}."),
-             "prohibits": ("What does {s} prohibit at {n}?", "{s} prohibits {o} at {n}.")}
+    # relational / cultural layer — located_at, belongs_to_class, services, policies, traditions.
+    # rel_q (predicate → Q/A phrasings) is domain-authored in configs/templates/<domain>.yaml `sft_templates`.
     for l in tri_p.read_text(encoding="utf-8", errors="replace").splitlines():
         if not l.strip():
             continue
@@ -187,14 +176,14 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2) -> list[dict]:
         except Exception:
             continue
         p = t.get("predicate")
-        if p not in REL_Q or by_rel[p] >= max(4, max_per_rel // 4):
+        if p not in rel_q or by_rel[p] >= max(4, max_per_rel // 4):
             continue
         s = ents.get(t.get("subject_id")) or str(t.get("subject_id", "")).split(":")[-1].replace("_", " ")
         ob = t.get("object", "")
         o = ents.get(ob) or (str(ob).split(":")[-1].replace("_", " ") if ":" in str(ob) else str(ob))
         if not s or not o or len(s) < 2:
             continue
-        qt, at = REL_Q[p]
+        qt, at = rel_q[p]
         out.append({"q": qt.format(s=s, n=name), "a": at.format(s=s, o=o, n=name), "key": o, "rel": p})
         by_rel[p] += 1
 
@@ -469,6 +458,7 @@ def score_knownness(model, tok, cands, k: int, bs: int = 16):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="edc", help="domain manifest (sources sft_templates + editions)")
     ap.add_argument("--editions")
     ap.add_argument("--seq-len", type=int, default=256)
     ap.add_argument("--max-per-relation", type=int, default=6)
@@ -501,8 +491,11 @@ def main():
     tok = AutoTokenizer.from_pretrained(str(C.MODEL_PATH), use_fast=True)
     cands: list[dict] = []
     ed_names: list[str] = []
-    for ed in iter_editions("edc", only=args.editions):
-        qa = edition_qas(ed, args.max_per_relation, args.answer_aug)
+    sft_tmpl = (Domain(args.domain).templates or {}).get("sft_templates", {})
+    venue_templates = [tuple(t) for t in sft_tmpl.get("venue_templates", [])]
+    rel_q = {k: tuple(v) for k, v in sft_tmpl.get("rel_q", {}).items()}
+    for ed in iter_editions(args.domain, only=args.editions):
+        qa = edition_qas(ed, args.max_per_relation, args.answer_aug, venue_templates, rel_q)
         if qa:
             cands.extend(qa)
             mp = ed.dir / "festival_meta.json"

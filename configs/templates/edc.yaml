@@ -106,3 +106,33 @@ meta_scaffold:
     Sunday:
       date: ''
       ordinal: day 3
+
+# ─────────────────────────────────────────────────────────────────────────────
+# sft_templates — build_sft's POSITIVE Q/A template shapes (conversational retrieval
+# phrasings). The anti-hallucination NEGATIVE machinery (absent-edition / fake-city /
+# fine-grained refusals) stays in build_sft.py — the proven LIVE recipe, algorithmic,
+# not a template. A new domain swaps THESE positive shapes; its negatives are authored
+# in code when it lands. Placeholders: {n}=edition name, {v}=venue, {s}=subject, {o}=object.
+#   venue_templates — positive venue phrasings (N/edition via --answer-aug). DELIBERATELY
+#     EXCLUDES "What is the venue for {n}?": that exact phrasing is the held-out KNOWN probe
+#     in eval_sft_calibration.build_probes — keeping it out of training keeps the gate a
+#     clean generalization test (no leak).
+#   rel_q — relational/cultural predicate → (question, answer) phrasings.
+# ─────────────────────────────────────────────────────────────────────────────
+sft_templates:
+  venue_templates:
+  - ['Where is {n} held?', '{n} is held at {v}.']
+  - ['What venue hosts {n}?', '{n} takes place at {v}.']
+  - ['Where does {n} take place?', '{n} takes place at {v}.']
+  - ['At what venue is {n}?', '{n} is held at {v}.']
+  - ['{n} — what''s the venue?', '{n} is at {v}.']
+  - ['Which venue holds {n}?', '{n} is hosted at {v}.']
+  - ['Tell me the venue of {n}.', '{n} is held at {v}.']
+  - ['Where''s {n} taking place?', '{n} takes place at {v}.']
+  rel_q:
+    located_at: ['Where is {s} located at {n}?', '{s} is located at {o} at {n}.']
+    belongs_to_class: ['What category does {s} belong to at {n}?', '{s} is a {o} at {n}.']
+    serves: ['What does {s} serve at {n}?', '{s} serves {o} at {n}.']
+    requires: ['What does {s} require at {n}?', '{s} requires {o} at {n}.']
+    practiced_by: ['Who practices {s} at {n}?', '{s} is practiced by {o} at {n}.']
+    prohibits: ['What does {s} prohibit at {n}?', '{s} prohibits {o} at {n}.']

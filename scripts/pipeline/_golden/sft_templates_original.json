@@ -1,0 +1,62 @@
+{
+  "venue_templates": [
+    [
+      "Where is {n} held?",
+      "{n} is held at {v}."
+    ],
+    [
+      "What venue hosts {n}?",
+      "{n} takes place at {v}."
+    ],
+    [
+      "Where does {n} take place?",
+      "{n} takes place at {v}."
+    ],
+    [
+      "At what venue is {n}?",
+      "{n} is held at {v}."
+    ],
+    [
+      "{n} — what's the venue?",
+      "{n} is at {v}."
+    ],
+    [
+      "Which venue holds {n}?",
+      "{n} is hosted at {v}."
+    ],
+    [
+      "Tell me the venue of {n}.",
+      "{n} is held at {v}."
+    ],
+    [
+      "Where's {n} taking place?",
+      "{n} takes place at {v}."
+    ]
+  ],
+  "rel_q": {
+    "located_at": [
+      "Where is {s} located at {n}?",
+      "{s} is located at {o} at {n}."
+    ],
+    "belongs_to_class": [
+      "What category does {s} belong to at {n}?",
+      "{s} is a {o} at {n}."
+    ],
+    "serves": [
+      "What does {s} serve at {n}?",
+      "{s} serves {o} at {n}."
+    ],
+    "requires": [
+      "What does {s} require at {n}?",
+      "{s} requires {o} at {n}."
+    ],
+    "practiced_by": [
+      "Who practices {s} at {n}?",
+      "{s} is practiced by {o} at {n}."
+    ],
+    "prohibits": [
+      "What does {s} prohibit at {n}?",
+      "{s} prohibits {o} at {n}."
+    ]
+  }
+}

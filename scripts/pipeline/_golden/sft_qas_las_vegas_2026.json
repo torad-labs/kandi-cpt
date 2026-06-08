@@ -1,0 +1,434 @@
+[
+  {
+    "q": "Where is EDC Las Vegas 2026 held?",
+    "a": "EDC Las Vegas 2026 is held at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "What venue hosts EDC Las Vegas 2026?",
+    "a": "EDC Las Vegas 2026 takes place at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "Where does EDC Las Vegas 2026 take place?",
+    "a": "EDC Las Vegas 2026 takes place at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "At what venue is EDC Las Vegas 2026?",
+    "a": "EDC Las Vegas 2026 is held at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "EDC Las Vegas 2026 — what's the venue?",
+    "a": "EDC Las Vegas 2026 is at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "Which venue holds EDC Las Vegas 2026?",
+    "a": "EDC Las Vegas 2026 is hosted at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "Tell me the venue of EDC Las Vegas 2026.",
+    "a": "EDC Las Vegas 2026 is held at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "Where's EDC Las Vegas 2026 taking place?",
+    "a": "EDC Las Vegas 2026 takes place at Las Vegas Motor Speedway.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "venue"
+  },
+  {
+    "q": "When does EDC Las Vegas 2026 take place?",
+    "a": "EDC Las Vegas 2026 takes place on May 15-17, 2026.",
+    "key": "May 15-17, 2026",
+    "rel": "dates"
+  },
+  {
+    "q": "What stages does EDC Las Vegas 2026 have?",
+    "a": "EDC Las Vegas 2026 features stages including kinetic_field, cosmic_meadow, circuit_grounds, neon_garden, basspod, wasteland, quantum_valley, stereo_bloom.",
+    "key": "kinetic_field",
+    "rel": "stages"
+  },
+  {
+    "q": "Which stage does Martin Garrix play at EDC Las Vegas 2026?",
+    "a": "Martin Garrix plays the Kinetic Field stage at EDC Las Vegas 2026.",
+    "key": "Kinetic Field",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does Martin Garrix perform at EDC Las Vegas 2026?",
+    "a": "Martin Garrix performs on Sunday at EDC Las Vegas 2026.",
+    "key": "Sunday",
+    "rel": "day"
+  },
+  {
+    "q": "Which stage does Tiësto play at EDC Las Vegas 2026?",
+    "a": "Tiësto plays the Circuit Grounds stage at EDC Las Vegas 2026.",
+    "key": "Circuit Grounds",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does Tiësto perform at EDC Las Vegas 2026?",
+    "a": "Tiësto performs on Saturday at EDC Las Vegas 2026.",
+    "key": "Saturday",
+    "rel": "day"
+  },
+  {
+    "q": "Which stage does Zedd play at EDC Las Vegas 2026?",
+    "a": "Zedd plays the Kinetic Field stage at EDC Las Vegas 2026.",
+    "key": "Kinetic Field",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does Zedd perform at EDC Las Vegas 2026?",
+    "a": "Zedd performs on Sunday at EDC Las Vegas 2026.",
+    "key": "Sunday",
+    "rel": "day"
+  },
+  {
+    "q": "Which stage does Hardwell play at EDC Las Vegas 2026?",
+    "a": "Hardwell plays the Kinetic Field stage at EDC Las Vegas 2026.",
+    "key": "Kinetic Field",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does Hardwell perform at EDC Las Vegas 2026?",
+    "a": "Hardwell performs on Saturday at EDC Las Vegas 2026.",
+    "key": "Saturday",
+    "rel": "day"
+  },
+  {
+    "q": "Which stage does The Chainsmokers play at EDC Las Vegas 2026?",
+    "a": "The Chainsmokers plays the Kinetic Field stage at EDC Las Vegas 2026.",
+    "key": "Kinetic Field",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does The Chainsmokers perform at EDC Las Vegas 2026?",
+    "a": "The Chainsmokers performs on Friday at EDC Las Vegas 2026.",
+    "key": "Friday",
+    "rel": "day"
+  },
+  {
+    "q": "Which stage does Charlotte de Witte play at EDC Las Vegas 2026?",
+    "a": "Charlotte de Witte plays the Kinetic Field stage at EDC Las Vegas 2026.",
+    "key": "Kinetic Field",
+    "rel": "stage"
+  },
+  {
+    "q": "On which day does Charlotte de Witte perform at EDC Las Vegas 2026?",
+    "a": "Charlotte de Witte performs on Friday at EDC Las Vegas 2026.",
+    "key": "Friday",
+    "rel": "day"
+  },
+  {
+    "q": "At which EDC edition did Tiësto perform?",
+    "a": "Tiësto performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Marshmello perform?",
+    "a": "Marshmello performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Benny Benassi perform?",
+    "a": "Benny Benassi performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did A.M.C W/ Phantom perform?",
+    "a": "A.M.C W/ Phantom performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Abanab2Bjuliet Mendoza perform?",
+    "a": "Abanab2Bjuliet Mendoza performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Æon:Mode perform?",
+    "a": "Æon:Mode performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did AvelloB2BDennett perform?",
+    "a": "AvelloB2BDennett performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Bad BoomboxB2BOllie Lishman perform?",
+    "a": "Bad BoomboxB2BOllie Lishman performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Bashkkab2B Sedef Adasï perform?",
+    "a": "Bashkkab2B Sedef Adasï performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Bolo perform?",
+    "a": "Bolo performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Bunt. perform?",
+    "a": "Bunt. performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Confidence Man perform?",
+    "a": "Confidence Man performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Deathpact perform?",
+    "a": "Deathpact performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Domina perform?",
+    "a": "Domina performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did InfektB2BSamplifire perform?",
+    "a": "InfektB2BSamplifire performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did KukoB2BJohannes Schuster perform?",
+    "a": "KukoB2BJohannes Schuster performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Maria Healy perform?",
+    "a": "Maria Healy performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "At which EDC edition did Medvza3 perform?",
+    "a": "Medvza3 performed at EDC Las Vegas 2026.",
+    "key": "EDC Las Vegas 2026",
+    "rel": "edition"
+  },
+  {
+    "q": "Who are some of the artists in the EDC Las Vegas 2026 lineup?",
+    "a": "The EDC Las Vegas 2026 lineup included Martin Garrix, Tiësto, Zedd, Hardwell, The Chainsmokers, Charlotte de Witte, among others.",
+    "key": "Martin Garrix",
+    "rel": "roster"
+  },
+  {
+    "q": "What does Electric Daisy Carnival Las Vegas 2026 serve at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas 2026 serves Front Gate Tickets at EDC Las Vegas 2026.",
+    "key": "Front Gate Tickets",
+    "rel": "serves"
+  },
+  {
+    "q": "What does Electric Daisy Carnival Las Vegas 2026 require at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas 2026 requires Ticket Refund Policy at EDC Las Vegas 2026.",
+    "key": "Ticket Refund Policy",
+    "rel": "requires"
+  },
+  {
+    "q": "What does Electric Daisy Carnival Las Vegas 2026 require at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas 2026 requires Vape Policy at EDC Las Vegas 2026.",
+    "key": "Vape Policy",
+    "rel": "requires"
+  },
+  {
+    "q": "What does Electric Daisy Carnival Las Vegas 2026 require at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas 2026 requires Totem Policy at EDC Las Vegas 2026.",
+    "key": "Totem Policy",
+    "rel": "requires"
+  },
+  {
+    "q": "What does Electric Daisy Carnival Las Vegas 2026 require at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas 2026 requires Entry Search Policy at EDC Las Vegas 2026.",
+    "key": "Entry Search Policy",
+    "rel": "requires"
+  },
+  {
+    "q": "What does Vape Policy prohibit at EDC Las Vegas 2026?",
+    "a": "Vape Policy prohibits E-Liquid/E-Juice at EDC Las Vegas 2026.",
+    "key": "E-Liquid/E-Juice",
+    "rel": "prohibits"
+  },
+  {
+    "q": "Where is EDC Las Vegas 2026 located at EDC Las Vegas 2026?",
+    "a": "EDC Las Vegas 2026 is located at Las Vegas Motor Speedway at EDC Las Vegas 2026.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "located_at"
+  },
+  {
+    "q": "Where is Camp EDC located at EDC Las Vegas 2026?",
+    "a": "Camp EDC is located at Las Vegas Motor Speedway at EDC Las Vegas 2026.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "located_at"
+  },
+  {
+    "q": "Where is Electric Daisy Carnival Las Vegas located at EDC Las Vegas 2026?",
+    "a": "Electric Daisy Carnival Las Vegas is located at Las Vegas Motor Speedway at EDC Las Vegas 2026.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "located_at"
+  },
+  {
+    "q": "Where is Kinetic Field located at EDC Las Vegas 2026?",
+    "a": "Kinetic Field is located at Las Vegas Motor Speedway at EDC Las Vegas 2026.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "located_at"
+  },
+  {
+    "q": "What does EDC Shuttle serve at EDC Las Vegas 2026?",
+    "a": "EDC Shuttle serves Las Vegas Motor Speedway at EDC Las Vegas 2026.",
+    "key": "Las Vegas Motor Speedway",
+    "rel": "serves"
+  },
+  {
+    "q": "What category does The Speedway belong to at EDC Las Vegas 2026?",
+    "a": "The Speedway is a Electric Daisy Carnival Las Vegas at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival Las Vegas",
+    "rel": "belongs_to_class"
+  },
+  {
+    "q": "What category does EDC Las Vegas 2011 belong to at EDC Las Vegas 2026?",
+    "a": "EDC Las Vegas 2011 is a Electric Daisy Carnival at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival",
+    "rel": "belongs_to_class"
+  },
+  {
+    "q": "What does Insomniac Radio serve at EDC Las Vegas 2026?",
+    "a": "Insomniac Radio serves Electric Daisy Carnival at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival",
+    "rel": "serves"
+  },
+  {
+    "q": "What category does The Speedway belong to at EDC Las Vegas 2026?",
+    "a": "The Speedway is a Electric Daisy Carnival Las Vegas at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival Las Vegas",
+    "rel": "belongs_to_class"
+  },
+  {
+    "q": "What category does Solomun Set belong to at EDC Las Vegas 2026?",
+    "a": "Solomun Set is a Electric Daisy Carnival Las Vegas 2026 at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival Las Vegas 2026",
+    "rel": "belongs_to_class"
+  },
+  {
+    "q": "What does Ground Control serve at EDC Las Vegas 2026?",
+    "a": "Ground Control serves Electric Daisy Carnival Las Vegas at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival Las Vegas",
+    "rel": "serves"
+  },
+  {
+    "q": "Who practices Headliners at EDC Las Vegas 2026?",
+    "a": "Headliners is practiced by Electric Daisy Carnival Las Vegas at EDC Las Vegas 2026.",
+    "key": "Electric Daisy Carnival Las Vegas",
+    "rel": "practiced_by"
+  },
+  {
+    "q": "Who practices Kandi at EDC Las Vegas 2026?",
+    "a": "Kandi is practiced by Headliners at EDC Las Vegas 2026.",
+    "key": "Headliners",
+    "rel": "practiced_by"
+  },
+  {
+    "q": "Which stage does GRiZ B2B Wooli play?",
+    "a": "Kinetic Field.",
+    "key": "Kinetic Field.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does GRiZ B2B Wooli play?",
+    "a": "the bass stage.",
+    "key": "the bass stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does Klangkuenstler play?",
+    "a": "neonGARDEN.",
+    "key": "neonGARDEN.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "When and where does Underworld play?",
+    "a": "Friday at the Cosmic Meadow stage.",
+    "key": "Friday at the Cosmic Meadow stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does Seven Lions perform at?",
+    "a": "Cosmic Meadow.",
+    "key": "Cosmic Meadow.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which day does Joseph Capriati play?",
+    "a": "Friday.",
+    "key": "Friday.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does mink play?",
+    "a": "the techno stage.",
+    "key": "the techno stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does KI/KI play?",
+    "a": "Neon Garden.",
+    "key": "Neon Garden.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does Cosmic Gate play?",
+    "a": "the quantumVALLEY stage.",
+    "key": "the quantumVALLEY stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does Cloonee play?",
+    "a": "the main stage.",
+    "key": "the main stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "Which stage does Culture Shock play?",
+    "a": "the bass stage.",
+    "key": "the bass stage.",
+    "rel": "hydrated"
+  },
+  {
+    "q": "When and where does The Outlaw play?",
+    "a": "May 15-17, 2026 at the Circuit stage.",
+    "key": "May 15-17, 2026 at the Circuit stage.",
+    "rel": "hydrated"
+  }
+]
