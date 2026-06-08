@@ -746,7 +746,7 @@ def a_gate_corpus(festival="edc", edition=None, domain=None):
     from qgre import gates, spec as qspec
     from pipeline.editions import iter_editions
     sp = qspec.load_spec(domain or festival)
-    eds = list(iter_editions(festival, only=edition))
+    eds = list(iter_editions(festival, only=edition, with_raw=False))   # gate content-only domains too (no 00_raw)
     if not eds:
         return {"error": f"no editions matched {festival}/{edition or 'all'}"}
     return gates.run_suite(eds, sp)

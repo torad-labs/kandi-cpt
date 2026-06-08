@@ -373,10 +373,14 @@ def run_suite(eds, spec) -> dict:
         "source_vs_gap": gate_source_vs_gap(eds, spec),
     }
     overall = _worst(g.severity for g in gates.values())
-    # An empty corpus must not read as benign. If editions ARE in scope but every data gate skipped for "no
-    # lines/triples", the corpus is empty where it should hold data — that is a FAIL, not a "skipped" (the
-    # absence of a test must not pass as a passed test). The agent reads `overall` to decide whether to proceed.
-    empty_corpus = bool(eds) and overall == "skipped"
+    # A truly-empty corpus (editions in scope but ZERO data at EVERY layer — no structured triples AND no
+    # hydrated relations) must not read as benign. But require ALL data gates to have skipped, NOT just
+    # `overall == "skipped"`: _worst returns "skipped" whenever ANY gate skips, so a not-yet-hydrated edition
+    # (valid 15_structured → id_integrity has a REAL verdict, only the hydrated gates skip) would be falsely
+    # failed. A stateless disk gate can only call it "empty" when nothing exists at any layer; an un-hydrated
+    # edition is "not ready", not "broken" (the hydrate stage owns catching its own empty output).
+    _DATA_GATES = ("balance", "exposure_cap", "id_integrity", "faithfulness")
+    empty_corpus = bool(eds) and all(gates[k].severity == "skipped" for k in _DATA_GATES)
     if empty_corpus:
         overall = "fail"
     return {"overall": overall, "n_editions": len(eds), "empty_corpus": empty_corpus,
@@ -394,7 +398,7 @@ def main():
     ap.add_argument("--editions", default=None, help="city/year CSV (omit = all on disk)")
     args = ap.parse_args()
     spec = S.load_spec(args.domain)
-    eds = list(iter_editions(args.festival or args.domain, only=args.editions))
+    eds = list(iter_editions(args.festival or args.domain, only=args.editions, with_raw=False))   # gate content-only domains too
     if not eds:
         print(f"no editions matched {args.domain}/{args.editions}")
         return

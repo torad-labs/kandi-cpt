@@ -122,6 +122,27 @@ def test_gold_beats_vc1_on_every_data_quality_axis():
             f"gold should be strictly better than VC1 on {axis}"
 
 
+def test_run_suite_partial_state_not_false_failed():
+    """F4 regression guard — the coverage gap that let the round-3 false-fail through. A not-yet-hydrated
+    edition (valid 15_structured, no 25_hydrated) must NOT be flagged `empty_corpus`/forced to 'fail': only
+    the hydrated gates skip, id_integrity has a REAL verdict — that's not-ready, not broken. A TRULY-empty
+    edition (no data at any layer) must be flagged + 'fail'."""
+    import shutil
+    from pipeline.editions import Ed
+    sp = qspec.load_spec("_selftest")
+    # structured-only: the committed _selftest fixture has 15_structured but no committed 25_hydrated (the e2e
+    # regenerates it, gitignored) — remove it so this exercises the not-yet-hydrated state regardless of order.
+    inst = Ed("_selftest", ("instruments",))
+    if (inst.dir / "25_hydrated").exists():
+        shutil.rmtree(inst.dir / "25_hydrated")
+    res = gates.run_suite([inst], sp)
+    assert res["empty_corpus"] is False, f"a structured-only edition was wrongly flagged empty ({res['overall']})"
+    # truly empty: no 15_structured AND no 25_hydrated → every data gate skips → empty_corpus + 'fail'
+    empty = gates.run_suite([Ed("_selftest", ("nonexistent_unit",))], sp)
+    assert empty["empty_corpus"] is True and empty["overall"] == "fail", \
+        f"a truly-empty corpus must fail, got {empty['overall']} empty={empty['empty_corpus']}"
+
+
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     for t in tests:

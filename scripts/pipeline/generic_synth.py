@@ -159,10 +159,20 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
         # short-circuit the ratio check to False and then atomically promote an EMPTY file over a prior good
         # corpus. Zero records is itself the failure — never write/overwrite with nothing.
         if not out:
-            raise SystemExit(f"[generic_synth] produced 0 diversity records from {len(triples)} triples — every "
-                             f"canonical render failed (a predicate/placeholder typo in the domain templates) or "
-                             f"every generator call was empty (API key/quota/outage). Refusing to write an empty "
-                             f"corpus or overwrite a prior good one.")
+            # Distinguish the BENIGN source gap (every predicate uncovered → counts empty, nothing was
+            # attempted) from a genuine failure (renders/calls WERE attempted and produced nothing). The gap
+            # skips THIS edition and keeps going (a library fn must not sys.exit a multi-edition run); the
+            # failure aborts the stage. Either way, never promote the empty .partial over a prior good corpus.
+            if not counts:
+                print(f"  WARNING: [generic_synth] 0 records — every triple uses a predicate with no template "
+                      f"(uncovered, a source gap); this edition gets no LLM-synth diversity.", file=sys.stderr)
+                if partial is not None:
+                    partial.unlink(missing_ok=True)     # clean up the empty tombstone — nothing was produced
+                return out
+            raise SystemExit(f"[generic_synth] produced 0 diversity records from {sum(counts.values())} attempted "
+                             f"facts — every canonical render failed (a predicate/placeholder typo in the domain "
+                             f"templates) or every generator call was empty (API key/quota/outage). Refusing to "
+                             f"write an empty corpus or overwrite a prior good one.")
         if total_rendered and total_empty / total_rendered > 0.5:
             raise SystemExit(f"[generic_synth] {total_empty}/{total_rendered} facts got empty/failed generator "
                              f"responses (>50%) — the diversity layer is mostly empty; aborting the stage "

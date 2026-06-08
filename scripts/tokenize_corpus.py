@@ -81,10 +81,11 @@ def collect(editions_only, use_synth: bool):
                     docs.append({"tag": "synthetic", "path": p, "text": t})
             hyd_root = ed.dir / "25_hydrated"
             for jf in sorted(hyd_root.rglob("*.jsonl")) if hyd_root.is_dir() else []:
-                if jf.with_name(jf.name + ".partial").exists():   # a synth aborted mid-write — this file may be STALE
-                    import sys
+                if jf.with_name(jf.name + ".partial").exists():   # a synth aborted mid-write → this file is STALE
                     print(f"  WARNING: {jf} has a sibling .partial — the last synth for this dir ABORTED; "
-                          f"tokenizing a possibly-STALE corpus (re-run the synth stage to refresh)", file=sys.stderr)
+                          f"SKIPPING this stale file (re-run the synth stage to refresh it before tokenizing — "
+                          f"tokenize is the one-way door into training).", file=sys.stderr)
+                    continue
                 for line in jf.read_text(encoding="utf-8", errors="replace").splitlines():
                     line = line.strip()
                     if not line:
