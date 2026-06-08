@@ -323,7 +323,7 @@ def fake_city_negatives(n: int, rng, real_cities: list[str]) -> list[tuple]:
     return out
 
 
-def fine_grained_negatives(n: int, rng) -> tuple[list, list]:
+def fine_grained_negatives(domain, n: int, rng) -> tuple[list, list]:
     """V12 anti-fabrication lever for the IN-EDITION fine-grained dims the by-dim gate flags (the absent_edition
     / fake_city negatives only cover edition/city EXISTENCE; these cover stage + set_time). Returns
     (corrections, abstentions), two distinct forms (docs §XVII):
@@ -336,7 +336,7 @@ def fine_grained_negatives(n: int, rng) -> tuple[list, list]:
     keep it out of the CPT corpus. Vary which stage is negated so it is not learned as a template."""
     from pipeline.editions import iter_editions
     corrections, abstentions = [], []
-    for ed in iter_editions("edc"):
+    for ed in iter_editions(domain):
         if ed.slug == "las_vegas/2026":
             continue                                            # flagship: real set times + protected corpus
         struct = ed.dir / "15_structured"
@@ -573,7 +573,7 @@ def main():
         abs_all = list(dict.fromkeys(abs_all + fneg))
         stats["fake_city_neg"] = len(fneg)
     if args.fine_grained_neg > 0:                            # V12: in-edition stage corrections + set_time abstentions
-        fg_corr, fg_abst = fine_grained_negatives(args.fine_grained_neg, random.Random(13))
+        fg_corr, fg_abst = fine_grained_negatives(args.domain, args.fine_grained_neg, random.Random(13))
         fg_corr = [p for p in fg_corr if p[0] not in abstain_qs]
         fg_abst = [p for p in fg_abst if p[0] not in abstain_qs]
         answerable = list(dict.fromkeys(answerable + fg_corr))    # stage corrections are answerable-correct

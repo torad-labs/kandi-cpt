@@ -141,14 +141,14 @@ def load_triples(ed) -> list[tuple[str, str, str]]:
         return []
     names: dict[str, str] = {}
     if ef.exists():
-        for line in ef.read_text().splitlines():
+        for line in ef.read_text(encoding="utf-8", errors="replace").splitlines():
             try:
                 e = json.loads(line)
                 names[e["id"]] = e.get("name_canonical", "")
             except Exception:
                 pass
     out: list[tuple[str, str, str]] = []
-    for line in tf.read_text().splitlines():
+    for line in tf.read_text(encoding="utf-8", errors="replace").splitlines():
         try:
             t = json.loads(line)
         except Exception:

@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 import time
 
 import config as C
@@ -63,6 +64,12 @@ def main():
     http = HttpFetcher(ignore_robots=args.ignore_robots)
     browser = (BrowserFetcher(headless=args.headless, ignore_robots=args.ignore_robots)
                if need_browser else None)
+
+    if any("city" not in ed for ed in eds):
+        sys.exit(
+            "festival dispatch is city/year-only; a domain with a different unit shape "
+            "authors its own acquire dispatch (see scripts/scrape/sources/_TEMPLATE.py)"
+        )
 
     coverage: dict[str, dict[str, int]] = {}
     t0 = time.time()

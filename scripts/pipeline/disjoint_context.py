@@ -39,7 +39,10 @@ def _skeletons(domain: str = "edc") -> dict:
     GENERATION detail (the probe does not need it); group MEMBERSHIP is festival DATA in festival_meta.json.
     Each skeleton is context-first: the distinctive block LEADS, then {a} entity, then {c} stage, with {dd}
     day LAST (the discriminator computed in distinct left-context + a late retroactive-sharpening token)."""
-    return (Domain(domain).templates or {}).get("hydrate_templates", {}).get("disjoint_skeletons", {})
+    try:
+        return (Domain(domain).templates or {}).get("hydrate_templates", {}).get("disjoint_skeletons", {})
+    except Exception:
+        return {}
 
 
 # Module-level edc skeletons — config-sourced, kept as a module global for back-compat (data_audit reads
@@ -52,7 +55,12 @@ _META = C.ROOT / "data/edc/las_vegas/2026/festival_meta.json"
 def _load_groups() -> list[dict]:
     """Confusable-group MEMBERSHIP from festival_meta.json (single source of truth, also read by the
     geometry probe), merged with the domain-authored disjoint_skeletons vocabulary world for each key."""
-    meta = json.loads(_META.read_text())
+    try:
+        meta = json.loads(_META.read_text())
+    except (OSError, ValueError):
+        print(f"WARNING: disjoint_context could not read {_META} — confusable groups empty (V6 lever OFF this run)",
+              file=sys.stderr)
+        return []
     return [{**g, "skeletons": SKELETONS.get(g["key"], [])} for g in meta.get("confusable_groups", [])]
 
 

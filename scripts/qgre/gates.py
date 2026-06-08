@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import json
 import statistics
+import sys
 from collections import Counter
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
@@ -68,9 +69,14 @@ def _hydrated(eds):
 
 def _edition_meta(ed) -> dict:
     """One edition's festival_meta.json (for the edition-scoped confusable audit). {} if absent/unreadable."""
+    p = ed.dir / "festival_meta.json"
+    if not p.exists():
+        return {}
     try:
-        return json.loads((ed.dir / "festival_meta.json").read_text(encoding="utf-8"))
+        return json.loads(p.read_text(encoding="utf-8"))
     except Exception:
+        print(f"WARNING: {ed.slug}: festival_meta.json present but unreadable — confusable audit skipped for this edition",
+              file=sys.stderr)
         return {}
 
 

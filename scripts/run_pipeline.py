@@ -83,6 +83,23 @@ def check_domain(name: str, editions: str) -> tuple[dict, bool]:
     add("ontology.predicates", "REQUIRED", bool(dom.spec.get("predicates")),
         detail="top-level predicates (relation enum + object-type contracts) must be non-empty")
 
+    import re as _re
+    _ph = _re.compile(r"^<.*>$")
+    ph_vals = []
+    for v in (dom.spec.get("entity_types") or []):
+        if isinstance(v, str) and _ph.match(v):
+            ph_vals.append(v)
+    for k in (dom.spec.get("predicates") or {}):
+        if isinstance(k, str) and _ph.match(k):
+            ph_vals.append(k)
+    if isinstance(dom.spec.get("name"), str) and _ph.match(dom.spec["name"]):
+        ph_vals.append(dom.spec["name"])
+    add("ontology.no_placeholders", "REQUIRED", not ph_vals,
+        detail=f"unfilled placeholder from _TEMPLATE.yaml: {ph_vals}" if ph_vals else "")
+
+    add("stages.non_empty", "REQUIRED", bool(dom.stages),
+        detail="stages must be present and non-empty")
+
     add("model_path", "REQUIRED", _exists(dom.model_path), path=dom.model_path)
     for key in ("cpt", "sft"):
         if (ref := dom.configs.get(key)):

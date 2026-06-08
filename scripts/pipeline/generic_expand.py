@@ -139,6 +139,9 @@ def main():
         (out_dir / "relations.jsonl").write_text(
             "\n".join(json.dumps(r, ensure_ascii=False) for r in recs) + "\n", encoding="utf-8")
         wrote += 1
+        if uncovered:
+            print(f"  WARNING: predicates with NO template (uncovered, silently skipped): {uncovered}",
+                  file=sys.stderr)
         print(f"  {ed.slug}: wrote {len(recs)} hydrated lines "
               f"({len({r['relation_type'] for r in recs})} relations); uncovered: {uncovered or 'none'}")
     if not args.dry_run:
