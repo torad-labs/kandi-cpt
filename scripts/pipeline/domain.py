@@ -37,7 +37,20 @@ class Domain:
         self.configs = self.spec.get("configs", {})
         self.ontology = self.spec.get("ontology", {})
         self.vars = self.spec.get("vars", {})
+        self.templates = self._load_templates()
         self.stages = [Stage(s) for s in self.spec.get("stages", [])]
+
+    def _load_templates(self) -> dict:
+        """Domain-authored content (Q/A templates + scaffold data) the engine seams read so a NEW
+        domain 'swaps the templates' (manifest `:6`) without touching code. Resolved from the
+        manifest's `templates:` path if set, else the convention configs/templates/<name>.yaml.
+        Absent → {} — the engine seams then fall back to neutral, NON-festival defaults, so a domain
+        that declares no templates gets no festival bleed."""
+        rel = self.spec.get("templates") or f"configs/templates/{self.name}.yaml"
+        path = C.ROOT / rel
+        if not path.exists():
+            return {}
+        return yaml.safe_load(path.read_text()) or {}
 
     def stage(self, name: str) -> Stage | None:
         return next((s for s in self.stages if s.name == name), None)
