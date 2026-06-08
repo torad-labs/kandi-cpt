@@ -52,7 +52,11 @@ scrape → extract(10_clean) → curate → structured(15_structured: entities/t
 ```
 
 Per-edition data lives under `data/<domain>/<unit>/{00_raw,10_clean,15_structured,25_hydrated,...}`
-(EDC: `data/edc/<city>/<year>/`). `iter_editions(domain)` walks the registry (`configs/editions_<d>.json`).
+(EDC: `data/edc/<city>/<year>/`; a flat domain: `data/<d>/<unit>/`). `iter_editions(domain)` walks the
+registry (`configs/editions_<d>.json`) and yields an `Ed` per unit — handling BOTH registry shapes:
+**festival** (`city` × `years`) and **generic** (a unit declares its own `unit`/`parts`). `Ed` carries
+`parts` (the unit path); `.dir`/`.slug`/`.festival_slug` derive from it and `.city`/`.year` are back-compat
+properties so the festival importers are unchanged. The unit shape is no longer hardcoded to city/year.
 
 ## The de-festivalization architecture (the load-bearing idea)
 
@@ -79,6 +83,14 @@ write the scraper, `run_pipeline.py --domain <d> --check` then run.
 - All three: load triples generically, render the domain's templates, and **report drops loudly** (a
   template that renders 0/N triples, an empty LLM response, a probe with no distractor → a `WARNING` to
   stderr; in a training pipeline a silent drop is an invisible hole in the model's knowledge).
+
+**The executable non-EDC gate.** The byte-goldens only ever run EDC, so a festival assumption that leaks onto
+the generic path is invisible to them. `scripts/pipeline/test_selftest_domain_e2e.py` is the counter-instance:
+it runs a committed, deliberately non-festival fixture domain (`_selftest` — a single-level `[collection]` of
+scientific instruments, zero festival tokens) through the REAL seams (`iter_editions` → load → generator
+`main()` → write) and asserts a non-empty corpus with ZERO festival bleed + `--check` green-on-filled/red-on-
+placeholder. A festival default that leaks onto the generic path turns it RED. Run the whole suite (the
+goldens + the e2e) with **`scripts/run_tests.sh`** (auto-discovers `scripts/pipeline/test_*.py`).
 
 **Festival-SPECIFIC tools (EDC's instance — a new domain does NOT use these; it uses the generic path):**
 `scripts/pipeline/fact_expand.py` (the artist→stage→day specialist, with `Ctx`/`context_from_meta` render
