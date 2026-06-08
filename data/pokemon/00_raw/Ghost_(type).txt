@@ -1,0 +1,1779 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Ghost type
+(Japanese:
+ゴーストタイプ
+Ghost type
+) is one of the eighteen
+types
+. Ghost-type
+moves
+are super effective against Ghost- and
+Psychic-type
+Pokémon
+, while Ghost-type Pokémon are weak to
+Dark
+- and Ghost-type moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Ghost-type Pokémon
+Half Ghost-type Pokémon
+Primary Ghost-type Pokémon
+Secondary Ghost-type Pokémon
+Changed types
+Non-Pokémon opponents
+Moves
+Changed types
+Abilities
+Interacting with the Ghost type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Ghost-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Ghost-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Ghost
+Psychic
+Dark
+Normal
+Defensive properties of
+Ghost-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Ghost
+Dark
+Poison
+Bug
+Normal
+Fighting
+In
+Generation I
+only, Ghost-type
+moves
+had no effect on
+Psychic-type
+Pokémon
+.
+The
+Dark
+and
+Steel
+types
+were introduced in
+Generation II
+.
+In
+Generations II
+-
+V
+, Ghost-type moves were not very effective against
+Steel-type
+Pokémon.
+Additional effects
+If the user has the
+Ability
+Scrappy
+or
+Mind's Eye
+, or the target is under the effect of the
+moves
+Foresight
+or
+Odor Sleuth
+,
+Normal
+- and
+Fighting-type
+moves will deal ×1 damage to Ghost-type Pokémon.
+The move
+Curse
+, introduced in
+Generation II
+, functions differently when used by a Ghost-type Pokémon.
+From
+Generation VI
+onwards, Ghost-type Pokémon are immune to effects that prevent
+recall
+or
+escape
+(such as
+Mean Look
+and
+Shadow Tag
+), and they are also guaranteed to flee from any wild battle regardless of their
+Speed
+stat
+.
+The move
+Trick-or-Treat
+, introduced in Generation VI, adds the Ghost type to the target's types.
+In
+Generation I
+only, Ghost-type Pokémon cannot be
+paralyzed
+by
+Lick
+, and are affected by
+Bide
+,
+Counter
+,
+Seismic Toss
+,
+SonicBoom
+, and
+Super Fang
+, despite these moves being Normal- and Fighting-type, which the Ghost type is normally immune to.
+In
+Generations
+II
+and
+III
+only, Ghost-type Pokémon are immune to
+Glare
+.
+Pokémon
+As of
+Generation IX
+, 76
+Pokémon
+are Ghost-type (counting those that are Ghost-type in at least one of their
+forms
+, including
+regional forms
+), which makes up 7.39% of all Pokémon, making it the fourth rarest
+type
+among Pokémon after
+Electric
+and before
+Dragon
+.
+The Pokémon below are listed by their current types.
+Some Pokémon
+have had their types changed.
+Pure Ghost-type Pokémon
+#
+Name
+0200
+Misdreavus
+0222
+Galarian
+Corsola
+0353
+Shuppet
+0354
+Banette
+Mega
+Banette
+0355
+Duskull
+0356
+Dusclops
+0429
+Mismagius
+0477
+Dusknoir
+0493
+Arceus
+(
+Ghost-type
+)
+0562
+Yamask
+0563
+Cofagrigus
+0773
+Silvally
+(
+Type: Ghost
+)
+0854
+Sinistea
+0855
+Polteageist
+0864
+Cursola
+0897
+Spectrier
+0971
+Greavard
+0972
+Houndstone
+0999
+Gimmighoul
+(
+Chest Form
+)
+Gimmighoul
+(
+Roaming Form
+)
+Half Ghost-type Pokémon
+Primary Ghost-type Pokémon
+#
+Name
+Type 1
+Type 2
+0092
+Gastly
+Ghost
+Poison
+0093
+Haunter
+Ghost
+Poison
+0094
+Gengar
+Ghost
+Poison
+Mega
+Gengar
+Ghost
+Poison
+Gigantamax
+Gengar
+Ghost
+Poison
+0425
+Drifloon
+Ghost
+Flying
+0426
+Drifblim
+Ghost
+Flying
+0442
+Spiritomb
+Ghost
+Dark
+0487
+Giratina
+(
+Altered Forme
+)
+Ghost
+Dragon
+Giratina
+(
+Origin Forme
+)
+Ghost
+Dragon
+0607
+Litwick
+Ghost
+Fire
+0608
+Lampent
+Ghost
+Fire
+0609
+Chandelure
+Ghost
+Fire
+Mega
+Chandelure
+Ghost
+Fire
+0708
+Phantump
+Ghost
+Grass
+0709
+Trevenant
+Ghost
+Grass
+0710
+Pumpkaboo
+Ghost
+Grass
+0711
+Gourgeist
+Ghost
+Grass
+0741
+Oricorio
+(
+Sensu Style
+)
+Ghost
+Flying
+0769
+Sandygast
+Ghost
+Ground
+0770
+Palossand
+Ghost
+Ground
+0778
+Mimikyu
+Ghost
+Fairy
+0781
+Dhelmise
+Ghost
+Grass
+0987
+Flutter Mane
+Ghost
+Fairy
+Secondary Ghost-type Pokémon
+#
+Name
+Type 1
+Type 2
+0105
+Alolan
+Marowak
+Fire
+Ghost
+0157
+Hisuian
+Typhlosion
+Fire
+Ghost
+0292
+Shedinja
+Bug
+Ghost
+0302
+Sableye
+Dark
+Ghost
+Mega
+Sableye
+Dark
+Ghost
+0359
+Mega
+Absol Z
+Dark
+Ghost
+0478
+Froslass
+Ice
+Ghost
+Mega
+Froslass
+Ice
+Ghost
+0479
+Rotom
+Electric
+Ghost
+0562
+Galarian
+Yamask
+Ground
+Ghost
+0570
+Hisuian
+Zorua
+Normal
+Ghost
+0571
+Hisuian
+Zoroark
+Normal
+Ghost
+0592
+Frillish
+Water
+Ghost
+0593
+Jellicent
+Water
+Ghost
+0622
+Golett
+Ground
+Ghost
+0623
+Golurk
+Ground
+Ghost
+Mega
+Golurk
+Ground
+Ghost
+0679
+Honedge
+Steel
+Ghost
+0680
+Doublade
+Steel
+Ghost
+0681
+Aegislash
+(
+Shield Forme
+)
+Steel
+Ghost
+Aegislash
+(
+Blade Forme
+)
+Steel
+Ghost
+0720
+Hoopa
+Confined
+Psychic
+Ghost
+0724
+Decidueye
+Grass
+Ghost
+0792
+Lunala
+Psychic
+Ghost
+0800
+Dawn Wings
+Necrozma
+Psychic
+Ghost
+0802
+Marshadow
+Fighting
+Ghost
+0806
+Blacephalon
+Fire
+Ghost
+0867
+Runerigus
+Ground
+Ghost
+0885
+Dreepy
+Dragon
+Ghost
+0886
+Drakloak
+Dragon
+Ghost
+0887
+Dragapult
+Dragon
+Ghost
+0898
+Shadow Rider
+Calyrex
+Psychic
+Ghost
+0902
+Basculegion
+Water
+Ghost
+0911
+Skeledirge
+Fire
+Ghost
+0937
+Ceruledge
+Fire
+Ghost
+0946
+Bramblin
+Grass
+Ghost
+0947
+Brambleghast
+Grass
+Ghost
+0979
+Annihilape
+Fighting
+Ghost
+1000
+Gholdengo
+Steel
+Ghost
+1012
+Poltchageist
+Grass
+Ghost
+1013
+Sinistcha
+Grass
+Ghost
+1025
+Pecharunt
+Poison
+Ghost
+Changed types
+These Ghost-type
+Pokémon
+have had their
+types
+changed.
+#
+Name
+Original types
+New types
+0479
+Heat
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Fire
+0479
+Wash
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Water
+0479
+Frost
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Ice
+0479
+Fan
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Flying
+0479
+Mow
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Grass
+Non-Pokémon opponents
+Some opponents featured in
+Pokéstar Studios
+in
+Pokémon Black 2 and White 2
+can be battled like Pokémon and they have designated Pokémon types.
+Majin
+Dark
+Ghost
+Wonder Guard
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+100
+100
+100
+100
+100
+100
+Moves
+As of
+Generation IX
+, there are 34 Ghost-type
+moves
+, which makes up 3.64% of all moves (excluding those that are Ghost-type only under certain circumstances), causing it to tie with
+Bug
+as the 4th rarest
+type
+among moves after
+Ice
+and before
+Poison
+.
+Prior to
+changes in Generation IV
+, all damaging Ghost-type moves were
+physical
+, but they may now also be
+special
+depending on the attack.
+Some moves
+have had their types changed.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+III
+Astonish
+Physical
+Cute
+030
+30
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks the target by crying out in a startling fashion. This may also make the target flinch.
+VIII
+Astral Barrage
+Special
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Many Others
+The user attacks by sending a frightful amount of small ghosts at opposing Pokémon.
+VIII
+Bitter Malice
+Special
+075
+75
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks the target with spine-chilling resentment. This also lowers the target’s Attack stat.
+I
+Confuse Ray
+Status
+Clever
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The target is exposed to a sinister ray that causes confusion.
+II
+Curse
+Status
+Tough
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Varies
+A move that has different effects depending on whether the user is a Ghost type or not.
+II
+Destiny Bond
+Status
+Clever
+000
+—
+000
+—
+%
+05
+5
+(max 8)
+Self
+If the user is knocked out after using this move, the Pokémon that knocked it out will also faint. This move's chance of failing rises if it is used in succession.
+VIII
+G-Max Terror
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Ghost-type attack that Gigantamax Gengar use. This Pokémon steps on the opposing Pokémon's shadow to prevent them from escaping.
+VIII
+G-Max Terror
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Ghost-type attack that Gigantamax Gengar use. This Pokémon steps on the opposing Pokémon's shadow to prevent them from escaping.
+III
+Grudge
+Status
+Tough
+000
+—
+000
+—
+%
+05
+5
+(max 8)
+Self
+If the user faints, the user's grudge fully depletes the PP of the opponent's move that knocked it out.
+V
+Hex
+Special
+Clever
+065
+65
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This relentless attack does massive damage to a target affected by status conditions.
+VIII
+Infernal Parade
+Special
+060
+60
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks with myriad fireballs. This may also leave the target with a burn. This move's power is doubled if the target has a status condition.
+IX
+Last Respects
+Physical
+050
+50
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks to avenge its allies. The more defeated allies there are in the user's party, the greater the move's power.
+I
+Lick
+Physical
+Cute
+030
+30
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user licks the target with a long tongue to inflict damage. This may also leave the target with paralysis.
+VIII
+Max Phantasm
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Ghost-type attack Dynamax Pokémon use. This lowers the target's Defense stat.
+VIII
+Max Phantasm
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Ghost-type attack Dynamax Pokémon use. This lowers the target's Defense stat.
+VII
+Menacing Moonraze Maelstrom
+Special
+200
+200
+000
+—
+%
+01
+1
+(max 1)
+Normal
+After obtaining Z-Power, the user, Lunala, attacks the target with full force. This move can ignore the effect of the target's Ability.
+VII
+Moongeist Beam
+Special
+100
+100
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user emits a sinister ray to attack the target. This move can be used on the target regardless of its Ability.
+VII
+Never-Ending Nightmare
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+Deep-seated grudges summoned by the user's Z-Power trap the target. The power varies, depending on the original move.
+VII
+Never-Ending Nightmare
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+Deep-seated grudges summoned by the user's Z-Power trap the target. The power varies, depending on the original move.
+I
+Night Shade
+Special
+Clever
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user makes the target see a frightening mirage. It inflicts damage equal to the user's level.
+II
+Nightmare
+Status
+Clever
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+A sleeping target sees a nightmare that inflicts some damage every turn.
+IV
+Ominous Wind
+Special
+Beautiful
+060
+60
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user blasts the target with a gust of repulsive wind. This may also raise all the user's stats at once.
+VI
+Phantom Force
+Physical
+Cool
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user vanishes somewhere, then strikes the target on the next turn. This move hits even if the target protects itself.
+VIII
+Poltergeist
+Physical
+110
+110
+090
+90
+%
+05
+5
+(max 8)
+Normal
+The user attacks by controlling the target's item. This move fails if the target isn't holding an item.
+IX
+Rage Fist
+Physical
+050
+50
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user converts its rage into energy to attack. The more times the user has been hit by attacks, the greater the move's power.
+II
+Shadow Ball
+Special
+Clever
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks by hurling a shadowy blob at the target. This may also lower the target’s Sp. Def stat.
+VII
+Shadow Bone
+Physical
+085
+85
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks by beating the target with a bone that contains a spirit. This may also lower the target's Defense stat.
+IV
+Shadow Claw
+Physical
+Cool
+070
+70
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks by slashing the target with a sharp claw made from shadows. This move has a heightened chance of landing a critical hit.
+IV
+Shadow Force
+Physical
+Cool
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user disappears on the first turn, then attacks on the next turn. This move hits even if the target protects itself.
+III
+Shadow Punch
+Physical
+Clever
+060
+60
+000
+—
+%
+20
+20
+(max 32)
+Normal
+The user throws a punch from the shadows. This attack never misses.
+IV
+Shadow Sneak
+Physical
+Clever
+040
+40
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user extends its shadow and attacks the target from behind. This move always goes first.
+VII
+Sinister Arrow Raid
+Physical
+180
+180
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user, Decidueye, creates countless arrows using its Z-Power and shoots the target with full force.
+VII
+Soul-Stealing 7-Star Strike
+Physical
+195
+195
+000
+—
+%
+01
+1
+(max 1)
+Normal
+After obtaining Z-Power, the user, Marshadow, punches and kicks the target consecutively with full force.
+VII
+Spectral Thief
+Physical
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user hides in the target's shadow, steals the target's stat boosts, and then attacks.
+VII
+Spirit Shackle
+Physical
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks while simultaneously stitching the target's shadow to the ground to prevent the target from fleeing.
+II
+Spite
+Status
+Tough
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user unleashes its grudge on the move last used by the target by cutting 4 PP from it.
+VI
+Trick-or-Treat
+Status
+Cute
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user takes the target trick-or-treating. This adds Ghost type to the target's type.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Changed types
+The following Ghost-type moves have had their
+type
+changed.
+Move
+Original type
+New type
+Curse
+Gen II-IV
+???
+Gen V+
+Ghost
+Abilities
+Interacting with the Ghost type
+A Pokémon with
+Protean
+or
+Libero
+will become a Ghost-type Pokémon if it uses a Ghost-type move. A Pokémon with
+Color Change
+will become a Ghost-type Pokémon if it is hit with a Ghost-type move.
+Since Generation VI, Ghost-type Pokémon are also immune to
+Magnet Pull
+,
+Arena Trap
+, and
+Shadow Tag
+.
+Gen
+Ability
+Description
+IX
+Mind's Eye
+The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal- and Fighting-type moves.
+IX
+Purifying Salt
+The Pokémon's pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.
+V
+Rattled
+The Pokémon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat.
+IV
+Scrappy
+The Pokémon can hit Ghost-type Pokémon with Normal- and Fighting-type moves. It is also unaffected by Intimidate.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Only Ghost-type Pokémon have these Abilities. This does not include
+signature Abilities
+.
+Gen
+Ability
+Description
+V
+Cursed Body
+May disable a move that has dealt damage to the Pokémon.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Items
+Name
+Description
+Ghost Gem
+A
+gem
+with a spectral essence. When held, it strengthens the power of a Ghost-type move one time.
+Ghost Memory
+A
+memory
+disc that contains Ghost-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Ghost Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Ghostium Z
+This is a crystallized form of Z-Power. It upgrades Ghost-type moves to
+Z-Moves
+.
+Griseous Orb
+A shining gem to be held by
+Giratina
+. It boosts the power of Giratina’s
+Dragon
+- and Ghost-type moves.
+Kasib Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Ghost-type move, the power of that move will be weakened.
+Spell Tag
+An item to be held by a Pokémon. It's a sinister, eerie tag that boosts the power of the holder's Ghost-type moves.
+Spooky Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of ghosts and boosts the power of the holder’s Ghost-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Mago Berry
+Rabuta Berry
+Kasib Berry
+Custap Berry
+Cram-o-matic
+Name
+Adrenaline Orb
+Cleanse Tag
+Custap Berry
+Dusk Stone
+Mago Berry
+Odd Incense
+Reaper Cloth
+Notable Ghost-type Trainers
+Main article:
+Category:Ghost-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Agatha
+Elite Four
+Indigo Plateau
+II
+Morty
+Gym Leader
+Ecruteak Gym
+III
+Phoebe
+Elite Four
+Hoenn Pokémon League
+IV
+Fantina
+Gym Leader
+Coordinator
+Hearthome Gym
+V
+Shauntal
+Elite Four
+Unova Pokémon League
+VII
+Acerola
+Captain
+Elite Four
+Thrifty Megamart (Abandoned Site)
+Alola Pokémon League
+VIII
+Allister
+Sh
+Gym Leader
+Stow-on-Side Stadium
+IX
+Ryme
+Gym Leader
+Montenevera Gym
+IX
+File:VSGwynn.png
+Gwynn
+Fist of Justice
+Justice Dojo
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+68.30
+Attack:
+82.51
+Defense:
+80.71
+Sp.Atk:
+86.53
+Sp.Def:
+80.55
+Speed:
+70.99
+Total:
+469.59
+Fully evolved
+Stat
+HP:
+77.35
+Attack:
+94.06
+Defense:
+88.11
+Sp.Atk:
+98.45
+Sp.Def:
+90.56
+Speed:
+80.94
+Total:
+529.47
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Ghost-type Pokémon will gather
+Bluk Berries
+, and typically have the Dozing
+sleep type
+.
+The following is a list of Ghost-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0092
+Gastly
+Dozing
+0093
+Haunter
+Dozing
+0094
+Gengar
+Dozing
+0353
+Shuppet
+Dozing
+0354
+Banette
+Dozing
+0425
+Drifloon
+Dozing
+0426
+Drifblim
+Dozing
+0710
+Pumpkaboo
+Pumpkaboo
+Dozing
+0711
+Gourgeist
+Gourgeist
+Dozing
+0778
+Mimikyu
+Dozing
+0911
+Skeledirge
+Dozing
+In the TCG
+Main article:
+Psychic (TCG)
+Due to the decreased amount of types in the TCG compared to the game series, Ghost-type Pokémon fall under the
+Psychic-type
+.
+Psychic-type Pokémon in the TCG are generally weak to
+Darkness
+and other Psychic Pokémon, with resistances to
+Colorless
+and
+Fighting
+. Psychic-type Pokémon are strong against
+Grass
+(until
+Diamond & Pearl
+),
+Fighting
+and
+Psychic
+Pokémon, whilst
+Colorless
+,
+Darkness
+, and
+Metal
+Pokémon can resist this type.
+Trivia
+A deceased
+Totem
+Trevenant
+in
+Pokémon the Series: Sun & Moon
+Generations VIII
+and
+IX
+introduced the most Ghost-type
+Pokémon
+of any
+generation
+, with thirteen.
+Generation II
+introduced the fewest Ghost-type Pokémon, with only one,
+Misdreavus
+.
+Despite being introduced in
+Generation I
+, there were no pure Ghost-type Pokémon until Generation II introduced Misdreavus.
+Generation VII
+introduced the most Ghost-type
+moves
+of any generation, with eight.
+Generation V
+introduced the fewest Ghost-type moves, with only one,
+Hex
+.
+In
+Generation I
+, Ghost-type moves have no effect on
+Psychic-type
+Pokémon, though an abundance of evidence suggests that this may have been an error. Multiple sources mention that Ghost-type moves are super effective on Psychic-type Pokémon: official strategy guides published by
+Nintendo
+, two episodes of
+Pokémon the Series: The Beginning
+(
+The Tower of Terror
+and
+Haunter versus Kadabra
+), and even the games themselves, where a
+Pokémon Trainer
+in the
+Saffron Gym
+mentions that Psychic-type Pokémon "only fear
+Bugs
+and Ghosts" (though the reference to Ghost-type Pokémon was removed in
+Pokémon Yellow
+). This was corrected in Generation II to make Ghost-type moves actually be super effective against Psychic-type Pokémon.
+As of
+Generation IX
+, only two out of eight total notable Ghost-type specialists are male, those being
+Morty
+in
+Generation II
+and
+Allister
+in
+Generation VIII
+.
+The Ghost type is the only
+type
+which is immune to two types:
+Normal
+and
+Fighting
+.
+It is also the only type to have ever been ineffective against two types: Normal and Psychic in Generation I.
+Ghost and Normal are the only two types to be immune to each other.
+As of
+Generation VI
+, Ghost is tied with
+Dragon
+for being the least resisted type.
+While the Ghost-type has an immunity to
+Normal-type
+moves, several damaging moves that display as Normal-type can affect them, including
+Hidden Power
+(whose actual type varies) and
+Struggle
+(which inflicts
+typeless
+damage from Generation II onward).
+In the
+Pokémon Mystery Dungeon
+games, most Ghost-type Pokémon can walk through "walls" (some dungeons have cliffs, holes, or other equivalents), although doing so rapidly depletes their
+Belly
+meter. This is a reference to how
+ghosts
+are often depicted as being able to phase through objects.
+Despite not being Ghost-type,
+Darkrai
+is also able to walk through walls.
+Starting in
+Generation VI
+, it is not possible for any Pokémon to possess a double resistance to Ghost. However, the
+Purifying Salt
+Ability
+, introduced in
+Pokémon Scarlet and Violet
+, simulates a resistance to the Ghost type and a
+Dark-type
+Pokémon that obtained it would basically have a double resistance to Ghost-type moves.
+The only Pokémon to have ever possessed a double resistance to the Ghost-type naturally were
+Pawniard
+and
+Bisharp
+, both of which are dual-type
+Dark
+/
+Steel
+.
+With the introduction of
+Gwynn
+in
+Pokémon Legends: Z-A
+, every region officially has a notable Ghost-type
+specialist
+.
+In
+Pokémon Conquest
+, Ghost-type Pokémon which are not part-
+Flying-type
+or have
+Levitate
+are shown with an animation of physically passing through enemies, referencing the common belief that real-life ghosts can pass through solid objects. They cannot, however, pass through any other obstacle on the field in-game.
+Ghost- and Dark-type moves are super effective against the same types. As of Generation VI, the only difference between them is that Dark-type moves are not very effective on
+Fighting
+- or
+Fairy-type
+Pokémon while Ghost-type moves do not affect Normal-type Pokémon.
+All types that Ghost is weak to are the only types to be resisted by the Dark-type. Said types are, incidentally, Ghost and Dark themselves.
+As shown in
+Pokémon the Series: Sun & Moon
+, some Ghost-type Pokémon, despite their name, can still
+die
+. However, it also appears that many Ghost-type Pokémon, particularly ones who are more similar to traditional ghosts, are indeed immune to the ravages of time and can live on indefinitely.
+All Ghost-type moves are eligible to be used in
+Sky Battles
+.
+The Ghost type was the last type to have at least one Pokémon officially owned by
+Ash
+in the animated series, following his capture of a
+Gengar
+in
+A Chilling Curse!
+.
+Rock
+is the only type that has yet to be paired with Ghost.
+Ghost and
+Dragon
+share some characteristics. They both:
+originally had three Pokémon in Generation I, then gained only one more in Generation II.
+are the only types that are weak to themselves.
+have one type immune to them and one type resistant to them.
+In Japanese, the Ghost type shares its name with
+Haunter
+, whose Japanese name is ゴースト
+Ghost
+.
+In other languages
+Language
+Title
+Japanese
+ゴースト
+Ghost
+Bulgarian
+Призрачни
+Prizrachni
+Catalan
+Fantasma
+Chinese
+Cantonese
+幽靈
+Yāulìhng
+Mandarin
+幽靈 / 幽灵
+Yōulíng
+Czech
+Duchový
+Danish
+Spøgelse
+Dutch
+Geest
+Spook
+Finnish
+Kummitus
+Aave
+Haamu
+French
+Spectre
+German
+Geist
+Greek
+Φάντασμα
+Fántasma
+Hebrew
+רוח
+Ruakh
+רוח רפאים
+Ruakh Refa'eem
+Hindi
+घोस्ट
+Ghost
+भूत
+Bhoot
+*
+Hungarian
+Szellem
+Indonesian
+Hantu
+Italian
+Spettro
+Korean
+고스트
+Ghost
+Malaysian
+Hantu
+Norwegian
+Spøkelse
+Polish
+Duch
+Portuguese
+Fantasma
+Romanian
+Fantomă
+Russian
+Привидение
+Privideniye
+Призрак
+Prizrak
+Spanish
+Fantasma
+Swedish
+Spöke
+Thai
+ผี
+Phi
+วิญญาณ
+Winyan
+Turkish
+Hayalet
+Vietnamese
+Ma
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Ghost_(type)&oldid=4550785
+"

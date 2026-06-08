@@ -35,6 +35,15 @@ pub struct PlaysAt {
     pub triple_id: String, // synthetic id for provenance tagging
 }
 
+/// A lineup-membership fact with NO known stage — the coarse-but-true form `plays_at→festival` is remapped
+/// to (`in_lineup`). It is the dominant lineup shape for editions without stage-level data, and teaching it
+/// ("X performed at <festival>") is the only honest way to install the lineup without inventing a stage.
+#[derive(Debug, Clone)]
+pub struct InLineup {
+    pub artist: String,
+    pub triple_id: String,
+}
+
 #[derive(Debug, Default)]
 pub struct TripleStore {
     pub entities: BTreeMap<String, Entity>,
@@ -104,6 +113,24 @@ impl TripleStore {
                 continue;
             }
             out.push(PlaysAt { artist, stage_slug, day, triple_id: format!("plays_at:{i}") });
+        }
+        out
+    }
+
+    /// Resolve all `in_lineup` triples into (artist, triple_id) facts — lineup membership without a stage.
+    /// This is the spine for editions whose source only states WHO performed, not where; without it a
+    /// re-hydrate would teach no lineup at all (festival-factory otherwise only hydrates `plays_at`).
+    pub fn in_lineup(&self) -> Vec<InLineup> {
+        let mut out = Vec::new();
+        for (i, t) in self.triples.iter().enumerate() {
+            if t.predicate != "in_lineup" {
+                continue;
+            }
+            let artist = self.name_of(&t.subject_id);
+            if artist.is_empty() {
+                continue;
+            }
+            out.push(InLineup { artist, triple_id: format!("in_lineup:{i}") });
         }
         out
     }

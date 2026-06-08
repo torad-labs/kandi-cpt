@@ -1,0 +1,105 @@
+Title: Carrie (game)
+
+Carrie (Japanese: オクル Okuru) is a little girl who appears in the Generation II games. She is a frequent visitor of the Goldenrod Department Store, and loves to use Mystery Gift with people, and when talked to, Mystery Gift will be unlocked. She appears in Pokémon Stadium 2 to Mystery Gift with the player through the Transfer Pak.
+As with any user of Mystery Gift, she will appear in Viridian City's Trainer House if she was the last person the player used Mystery Gift with. Also, as with any character battled in the Trainer House, her sprite will appear as Ethan's Gold and Silver sprite (including in Pokémon Crystal, which uses a different sprite for Ethan himself).
+She will use one of three teams of six Pokémon each. There is no set pattern to which team she will use.
+
+
+== Pokémon ==
+Team 1
+
+Team 2
+
+Team 3
+
+
+== Gallery ==
+
+
+=== Sprites ===
+
+
+== Quotes ==
+
+
+=== Pokémon Gold, Silver, and Crystal ===
+Goldenrod Department Store
+If playing on a Game Boy Color or Game Boy Advance system
+"Mystery Gift. With just a little beep, you get a gift."
+If playing Gold or Silver on a Game Boy system with no IR sensor
+"The Mystery Gift option requires a Game Boy Color."
+Trainer House
+Before battle
+"I traveled out here just so I could battle you."
+After being defeated
+"I lost... Darn..."
+
+
+=== Pokémon Stadium 2 ===
+First Mystery Gift
+"Oh, hello. Glad to meet you. I'm always here every day. Would you be my Mystery Gift friend?"
+"Dazzling... You have a lot of decoration."
+"I want a lot of decoration, too."
+Welcoming the player
+"Good morning."
+"Hello."
+"Good evening."
+"Oh? You came yesterday, too."
+"Thank you for visiting me every day."
+"Oh, hello. Long time no see."
+"Oh, hello. This is your first visit to see me today isn't it?"
+"Oh, hello again."
+"You show up on <day> every week."
+"It has been a week. How have you been?"
+"You used to come every day. Were you busy?"
+Explaining Mystery Gift
+"Go beep with many people. You'll get all sorts of gifts.
+"Mystery Gift. With just a little beep, you get a gift."
+If the player cannot receive a gift
+"I'm sorry. I can't exchange gifts with you today."
+The target game has already claimed today's Mystery Gift
+"You can only get one Mystery Gift from the same person in one day."
+The target game has already done Mystery Gift with five other players today
+"You can only go beep with five people a day."
+Receiving a common item
+"Mine is <item>. Thank you."
+"Oh, it's <item> again. Thank you."
+Receiving an uncommon item
+"Thank you very much. It's my first <item> I received."
+"It's a <item> again. Thank you very much."
+Receiving a rare item
+"Wow, <item> is so dazzling! This is my first one I received. Thank you."
+"Dazzling! I received <item> again. I'll use it with care.
+Receiving a super rare item
+"Yaah! Dazzling. It's <item>! Yaah! Yaah!"
+Yaah! It's <item>. I received once again."
+Receiving a common decoration
+"I received <decoration>! Now I will decorate my room. Thank you."
+Receiving an uncommon decoration
+"Mine is <decoration>. I'm so happy. Thank you so much."
+Receiving a rare decoration
+"It's <decoration>. Dazzling! Thank you. I'm so happy.
+Receiving a super rare decoration
+"Yaah! I did it! It's <decoration>! I hope this isn't a dream!"
+Receiving a Stadium 2 exclusive decoration
+"Ah! Tentacool Doll!? Terrific! Terrific!" (unused)
+"Yaah! A Pikachu Bed! Great Great! I can go show this off." (unused)
+Yaah! <player>! I have an Unown Doll. Yaah! Yaah!" (unused)
+Saying goodbye to the player
+"I have received <rare or super rare item or decoration> before. Are you jealous?"
+"I want <rare or super rare item or decoration> I'll be here tomorrow. Please come again."
+"Today is a very happy day."
+"Do you know this rumor? There might be a way to receive a Pikachu Bed."
+"Do you know this rumor? There might be a way to receive a Tentacool Doll."
+
+
+== Trivia ==
+Battling Carrie is the only way to collect seen data in the Pokédex for Scizor and Porygon2 without obtaining them. She is also the only Trainer in the game to use Stantler, Heracross, and Gligar.
+The items Carrie can send to the player via Mystery Gift are determined using the connected game's Trainer ID, which may give slightly different common and uncommon gifts, but always the same rare and super rare gifts the player is capable of giving others.
+Despite having dialogue for receiving a Tentacool Doll, Unown Doll or Pikachu Bed from the player, Stadium 2's RNG function can never result in these gifts, leaving the lines effectively unused.
+
+
+== Names ==
+
+
+== Related articles ==

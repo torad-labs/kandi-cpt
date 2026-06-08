@@ -1,0 +1,1319 @@
+Generation IX
+Title screen of Pokémon Scarlet
+Debut
+EN
+November 18, 2022
+JA
+November 18, 2022
+Pokémon
+1025
+(
+120 new
+,
+733 available
+)
+S
+V
+1025
+(
+364 available
+)
+ZA
+Main games
+Scarlet and Violet
+(
+The Hidden Treasure of Area Zero
+)
+Legends: Z-A
+(
+Mega Dimension
+)
+Region(s) introduced
+Paldea
+(
+Kitakami
+,
+Blueberry Academy
+)
+Battle arena games
+Champions
+Storage games
+HOME
+(ver 3.0+)
+Side games
+GO
+(
+Versions 0.255.0+
+)
+,
+Sleep
+,
+Detective Pikachu Returns
+,
+Trading Card Game Pocket
+,
+Friends
+,
+Pokopia
+Current length
+EN
+1297 days
+(ends on 2027)
+JA
+1297 days
+(ends on 2027)
+The
+ninth generation
+[
+1
+]
+(Japanese:
+第九世代
+ninth generation
+) of Pokémon games, commonly referred to by fans as
+Generation IX
+, is the ninth installment of the Pokémon video game series. The ninth generation began with
+Pokémon Scarlet and Violet
+on November 18, 2022, and continued with
+The Hidden Treasure of Area Zero
+DLC, followed by
+Pokémon Legends: Z-A
+and the
+Mega Dimension
+DLC.
+Generation IX was first revealed via a
+Pokémon Presents
+video presentation on
+February 27, 2022
+, which revealed Pokémon Scarlet and Violet.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+History
+Connectivity
+Advances in gameplay
+Alterations from Generation VIII
+Further additions in Scarlet and Violet updates
+Version 1.2.0
+Further additions in The Hidden Treasure of Area Zero DLC
+The Teal Mask (Version 2.0.1)
+The Indigo Disk (Version 3.0.0)
+Further additions in Pokémon Legends: Z-A
+Alterations from Pokémon Legends: Arceus
+Alterations from Scarlet and Violet
+Further additions in the Mega Dimension DLC
+Further additions in Pokémon Champions
+Alterations from Generation VIII
+Region
+Paldea
+First partner Pokémon
+Gym Leaders
+Team Star Bosses
+Titan Pokémon
+Lumiose City
+First partner Pokémon
+Title screens
+English title screens
+Trivia
+References
+Related articles
+Contents
+History
+The ninth generation of Pokémon was announced with the reveal of Pokémon Scarlet and Violet on February 27, 2022. These games were released worldwide on November 18, 2022.
+Since May 30, 2023, players have been able to store their Pokémon from Scarlet and Violet and trade with other players in
+Pokémon HOME
+.
+During the
+Pokémon Presents
+presentation on
+February 27, 2023
+,
+The Hidden Treasure of Area Zero
+was announced. It is a paid DLC for Pokémon Scarlet and Violet, introducing new content to the games. Its first part,
+The Teal Mask
+, was released on September 13, 2023, while its second part,
+The Indigo Disk
+, was released on December 14, 2023. Physical bundles of each game with its DLC were announced on September 26, 2023 and were released on November 3, 2023.
+During the
+Pokémon Presents
+presentation on
+February 27, 2024
+,
+Pokémon Legends: Z-A
+was announced. The game is set within
+Lumiose City
+in the
+Kalos
+region. It was released on October 16, 2025. During the
+Nintendo Direct
+presentation on September 12, 2025, the
+Mega Dimension
+DLC was announced. The DLC was released for purchase on October 16, 2025, with additional story content being added on December 10, 2025.
+Since April 2, 2026, players have been able to store their Pokémon from Legends: Z-A and trade with other players in Pokémon HOME.
+During the
+Pokémon Presents
+presentation on
+February 27, 2025
+,
+Pokémon Champions
+, a battle simulator with Pokémon HOME connectivity was announced and released on April 8, 2026 on the
+Nintendo Switch
+platform with a mobile version scheduled for release on June 17, 2026.
+Connectivity
+Regarding connectivity with previous generations, users of Pokémon HOME can carry forward their Pokémon from Pokémon Bank (if they downloaded it prior to the discontinuation of the
+Nintendo eShop
+for the
+Nintendo 3DS
+), Let's Go, Pikachu!, Let's Go, Eevee!, Sword, Shield, Brilliant Diamond, Shining Pearl, Legends Arceus and GO to the application, allowing for a transfer of Pokémon that originate in core series games as early as Pokémon Ruby and Sapphire, as well as the Nintendo 3DS Virtual Console releases of the Generation I and II games.
+Advances in gameplay
+Pokémon Scarlet and Violet are open-world games in which areas are seamlessly connected. The areas in the game can be visited in any order.
+[
+2
+]
+Pokémon Scarlet and Violet feature multiplayer with up to four players simultaneously via the
+Union Circle
+, enabling
+trading
+and
+battling
+between players as well as allowing them to travel through the game's areas and hold
+picnics
+together.
+[
+2
+]
+Almost every Pokémon that has been introduced has had its model and/or texture upgraded.
+The addition of
+120 new Pokémon
+, bringing the total to 1025.
+The addition of
+48 new moves
+, bringing the total to 913.
+The addition of
+31 new Abilities
+, bringing the total to 298.
+A new region to explore:
+Paldea
+, whose inspiration draws primarily from
+Spain
+, on the
+Iberian Peninsula
+.
+A new
+villainous team
+,
+Team Star
+.
+The introduction of the
+regional forms
+for
+Tauros
+and
+Wooper
+.
+The introduction of
+convergent species
+, with four new Pokémon sharing resemblances to the evolutionary lines of both
+Diglett
+and
+Tentacool
+.
+A new battle mechanic,
+Terastallization
+, which encases the Pokémon in crystals and enhances or alters their battle attributes through their Tera Type.
+The introduction of
+Meal Powers
+, working similar to
+Pass Powers
+,
+O-Powers
+,  and
+Rotom Powers
+.
+Alterations from Generation VIII
+Doors now open automatically again.
+Random encounters in tall grass, caves, or water have been completely removed.
+Hail
+has been replaced with a new
+weather
+condition,
+snow
+.
+Single-use
+held items
+now replenish after battle (with the exception of
+Berries
+).
+NPC Trainers must now be interacted manually in order to initiate an in-game Trainer battle.
+Running
+from in-game Trainer battles is now possible, but doing this will cause the player to
+black out
+immediately.
+AI Trainers no longer have any Potions to use to restore their Pokémon.
+The following items have been removed:
+Repellent items
+.
+The
+Escape Rope
+.
+Fishing Rods
+.
+Incenses
+.
+Consequently, the requirement for one of the parents to hold an incense to breed certain
+baby Pokémon
+has been lifted, and breeding their evolved forms will always result in that Pokémon's baby form.
+TRs
+have been merged with
+TMs
+.
+The
+Spanish language
+option is now labeled as "Español (España)", and the language label for foreign Spanish-language Pokémon is changed to reflect this (e.g. from "SPA" to "SP-EU" in the English version).
+The abandonment of the following elements:
+Ledges
+Fishing
+Loto-ID
+Pokérus
+Battle facility
+Dynamax
+and
+Gigantamax
+Max Moves
+and
+G-Max Moves
+Rotomi
+Poké Jobs
+Jack
+Dynamax Adventures
+Galarian Star Tournament
+Pokémon Super Contests
+Ball Capsules
+Grand Underground
+Union Room
+Move mastery
+The
+Elite Four
+returns, replacing the
+Champion Cup
+.
+The
+Champion tournament
+is replaced by the
+Academy Ace Tournament
+.
+Pokémon Camp
+is replaced by
+picnics
+.
+As
+breeding
+is now done via picnics, the
+Pokémon Nursery
+is also removed.
+Curry
+is replaced by
+Sandwiches
+.
+The
+Y-Comm
+and
+Victory Station
+are replaced by the
+Poké Portal
+.
+Wild Area News
+are replaced by
+Poké Portal News
+.
+Max Raid Battles
+are replaced by
+Tera Raid Battles
+.
+League Cards
+are replaced by
+profiles
+.
+Battle Points
+and
+Watts
+are replaced by
+League Points
+.
+2 Pokémon received new abilities.
+11 Pokémon had their ability changed.
+Badges
+are no longer required to catch Pokémon of a certain level.
+Several Pokémon have had their
+method of Evolution
+changed:
+Hisuian Sneasel now evolves when leveled up while holding a
+Razor Claw
+during the
+day
+.
+White-Striped Basculin now evolves when leveled up after losing at least 294
+HP
+from
+recoil damage
+without fainting.
+Crabrawler now evolves when exposed to an
+Ice Stone
+.
+Moveset can now be altered manually before being transferred into a new game.
+Like in
+Pokémon Legends: Arceus
+, items sell for a quarter of their purchase price instead of a half.
+Like in pre-
+Generation V
+games as well as in
+Pokémon Brilliant Diamond and Shining Pearl
+, TMs are single-use, though similar to the latter, they have a repeatable acquisition method in form of
+TM Machines
+.
+Like in pre-Generation V games, Eggs now hatch with each subsequent Egg cycle completion if more than one would become ready to hatch.
+Like in pre-
+Let's Go
+games as well as
+Pokémon Sword and Shield
+and Brilliant Diamond and Shining Pearl, Pokémon can only be
+released
+individually.
+Item sprites look less pixelated and more realistic.
+Further additions in Scarlet and Violet updates
+Version 1.2.0
+The addition of two new Pokémon (
+Walking Wake
+and
+Iron Leaves
+), bringing the total to 1010.
+The addition of two new moves (
+Hydro Steam
+and
+Psyblade
+), bringing the total to 915.
+Further additions in
+The Hidden Treasure of Area Zero
+DLC
+The Teal Mask
+(Version 2.0.1)
+A new area to explore, the land of
+Kitakami
+, based on
+Tōhoku
+.
+The addition of seven new Pokémon (
+Dipplin
+,
+Poltchageist
+,
+Sinistcha
+,
+Okidogi
+,
+Munkidori
+,
+Fezandipiti
+, and
+Ogerpon
+), bringing the total to 1017.
+Four forms of Ogerpon: Teal Mask, Wellspring Mask, Hearthflame Mask, and Cornerstone Mask are added to expansion. Each is introduced with a unique Terastallized form.
+The introduction of convergent species similar to
+Sinistea
+and
+Polteageist
+.
+The introduction of Bloodmoon Ursaluna, a new form of Ursaluna.
+The addition of four new moves (
+Syrup Bomb
+,
+Ivy Cudgel
+,
+Matcha Gotcha
+, and
+Blood Moon
+), bringing the total to 919.
+The addition of five new Abilities (
+Supersweet Syrup
+,
+Hospitality
+,
+Mind's Eye
+,
+Toxic Chain
+, and
+Embody Aspect
+), bringing the total to 303.
+Adds the
+Roto-Stick
+for more options when taking pictures.
+The introduction of
+Ogre Oustin'
+.
+The return of:
+102
+previously unavailable Pokémon
+, bringing the overall total to 587.
+Four returning Pokémon had their Abilities changed:
+Wind Rider
+replaced
+Early Bird
+as one of
+Shiftry
+'s standard Abilities, and the
+Piplup
+family gained
+Competitive
+as their
+Hidden Ability
+, replacing
+Defiant
+.
+Eleven previously unavailable and unusable
+moves
+.
+The Indigo Disk
+(Version 3.0.0)
+A new academy to attend,
+Blueberry Academy
+, located in the
+Unova
+Region.
+A new area to explore, the
+Terarium
+, located within Blueberry Academy.
+The addition of eight new Pokémon (
+Archaludon
+,
+Hydrapple
+,
+Gouging Fire
+,
+Raging Bolt
+,
+Iron Boulder
+,
+Iron Crown
+,
+Terapagos
+, and
+Pecharunt
+), bringing the total to 1025.
+The addition of fifteen new moves (
+Electro Shot
+,
+Tera Starstorm
+,
+Fickle Beam
+,
+Burning Bulwark
+,
+Thunderclap
+,
+Mighty Cleave
+,
+Tachyon Cutter
+,
+Hard Press
+,
+Dragon Cheer
+,
+Alluring Voice
+,
+Temper Flare
+,
+Supercell Slam
+,
+Psychic Noise
+,
+Upper Hand
+, and
+Malignant Chain
+), bringing the total to 934.
+The addition of four new Abilities (
+Tera Shift
+,
+Tera Shell
+,
+Teraform Zero
+, and
+Poison Puppeteer
+), bringing the total to 307.
+The addition of a nineteenth
+type
+,
+Stellar
+, accessible only through
+Terastallization
+.
+The addition of a new
+currency
+,
+Blueberry Point
+.
+Hisuian
+Qwilfish
+'s method of Evolution has been changed: it now evolves when leveled up while knowing
+Barb Barrage
+.
+The return of:
+139
+previously unavailable Pokémon
+, bringing the overall total to 734.
+29 previously unavailable and unusable moves.
+Further additions in
+Pokémon Legends: Z-A
+The addition of the
+Latin Spanish
+language option.
+The addition of a new move (
+Nihil Light
+), bringing the total to 935.
+Eternal Flower Floette
+is made obtainable for the first time.
+Consequently,
+Light of Ruin
+is also usable for the first time.
+The reintroduction of
+Mega Evolution
+.
+The introduction of new Mega Evolved forms of
+Clefable
+,
+Victreebel
+,
+Starmie
+,
+Dragonite
+,
+Meganium
+,
+Feraligatr
+,
+Skarmory
+,
+Froslass
+,
+Emboar
+,
+Excadrill
+,
+Scolipede
+,
+Scrafty
+,
+Chandelure
+,
+Eelektross
+,
+Chesnaught
+,
+Delphox
+,
+Greninja
+,
+Pyroar
+,
+Eternal Flower Floette
+,
+Malamar
+,
+Barbaracle
+,
+Dragalge
+,
+Hawlucha
+,
+Zygarde
+,
+Drampa
+, and
+Falinks
+.
+A new battle mechanic,
+Plus Move
+which boosts the effect of any move at the cost of some mega energy.
+Alterations from
+Pokémon Legends: Arceus
+Due to the contemporary setting, the player and other
+Trainers
+use modern
+Poké Balls
+.
+The return of
+held items
+as a mechanic from traditional core series games, including
+Berries
+and
+Mega Stones
+, as well as
+TMs
+.
+Alterations from Scarlet and Violet
+Doors need to be opened manually again.
+TMs are reusable again.
+Growth
+'s
+type
+is changed from
+Normal
+to
+Grass
+.
+It is once again possible to release multiple Pokémon at once.
+Further additions in the
+Mega Dimension
+DLC
+The introduction of new Mega Evolved forms of
+Raichu
+,
+Chimecho
+,
+Absol
+,
+Staraptor
+,
+Garchomp
+,
+Lucario
+,
+Heatran
+,
+Darkrai
+,
+Golurk
+,
+Meowstic
+,
+Crabominable
+,
+Golisopod
+,
+Magearna
+,
+Zeraora
+,
+Scovillain
+,
+Glimmora
+,
+Tatsugiri
+, and
+Baxcalibur
+.
+The introduction of Z Mega Evolutions with total of 3 introduced.
+The introduction of
+Flavor Powers
+, working similar to
+Pass Powers
+,
+O-Powers
+,
+Rotom Powers
+and
+Meal Powers
+.
+The return of:
+130
+previously unavailable Pokémon
+, bringing the overall total to 364.
+Primal Reversion
+for the first time since
+Pokémon Ultra Sun and Ultra Moon
+.
+Further additions in
+Pokémon Champions
+The addition of four new Abilities (
+Piercing Drill
+,
+Dragonize
+,
+Mega Sol
+, and
+Spicy Spray
+), bringing the total to 311.
+Alterations from Generation VIII
+Snap Trap
+'s
+type
+is changed from
+Grass
+to
+Steel
+.
+Region
+Paldea
+Main article:
+Paldea
+The
+Paldea
+region
+was introduced in
+Pokémon Scarlet and Violet
+.
+First partner Pokémon
+The first partner Pokémon of the ninth generation, like the first partner Pokémon of the previous eight regions, follow the Grass-Fire-Water trio, with the
+Grass-type
+Sprigatito
+, the
+Fire-type
+Fuecoco
+, and the
+Water-type
+Quaxly
+.
+Sprigatito
+Fuecoco
+Quaxly
+Grass
+Fire
+Water
+Floragato
+Crocalor
+Quaxwell
+Grass
+Fire
+Water
+Meowscarada
+Skeledirge
+Quaquaval
+Grass
+Dark
+Fire
+Ghost
+Water
+Fighting
+Gym Leaders
+The player battles these
+Gym Leaders
+as part of the
+Victory Road
+storyline. They are awarded a
+Gym Badge
+with each victory.
+Paldea League
+Generation IX
+Region:
+Paldea
+Gym Leader
+Japanese
+Location
+Japanese
+Type
+Badge
+Katy
+カエデ Kaede
+Cortondo
+セルクルタウン
+Cercle Town
+Bug
+Bug Badge
+Brassius
+コルサ Colsa
+Artazon
+ボウルタウン
+Bowl Town
+Grass
+Grass Badge
+Iono
+ナンジャモ Nanjyamo
+Levincia
+ハッコウシティ
+Hakkō City
+Electric
+Electric Badge
+Kofu
+ハイダイ Haidai
+Cascarrafa
+カラフシティ
+Carafe City
+Water
+Water Badge
+Larry
+アオキ Aoki
+Medali
+チャンプルタウン
+Chanpuru Town
+Normal
+Normal Badge
+Ryme
+ライム Lime
+Montenevera
+フリッジタウン
+Fridge Town
+Ghost
+Ghost Badge
+Tulip
+リップ Lip
+Alfornada
+ベイクタウン
+Bake Town
+Psychic
+Psychic Badge
+Grusha
+グルーシャ Grusha
+Glaseado Mountain
+ナッペ山
+Mount Napper
+Ice
+Ice Badge
+Team Star Bosses
+The player battles these
+Team Star Bosses
+as part of the
+★ Starfall Street ★
+storyline. They are awarded a
+Star Badge
+with each victory.
+Team Star
+Generation IX
+Region:
+Paldea
+Squad Boss
+Japanese
+Location
+Japanese
+Type
+Badge
+Giacomo
+ピーニャ Piña
+Segin Squad's Base
+チーム・セギンのアジト
+Team Segin's Hideout
+Dark
+Dark Badge
+Mela
+メロコ Meloco
+Schedar Squad's Base
+チーム・シェダルのアジト
+Team Schedar's Hideout
+Fire
+Fire Badge
+Atticus
+シュウメイ Shūmei
+Navi Squad's Base
+チーム・シーのアジト
+Team Tsih's Hideout
+Poison
+Poison Badge
+Ortega
+オルティガ Ortiga
+Ruchbah Squad's Base
+チーム・ルクバーのアジト
+Team Ruchbah's Hideout
+Fairy
+Fairy Badge
+Eri
+ビワ Biwa
+Caph Squad's Base
+チーム・カーフのアジト山
+Team Caph's Hideout
+Fighting
+Fighting Badge
+Titan Pokémon
+The player battles these
+Titan Pokémon
+as part of the
+Path of Legends
+storyline. They are awarded a
+Titan Badge
+with each victory.
+Location
+Titan Pokémon
+Herba Mystica
+Badge
+Unlocked Upgrade
+South Province
+(Area Three)
+Stony Cliff Titan
+Klawf
+Rock
+Sweet Herba Mystica
+Rock Badge
+Dashing
+West Province
+(Area One)
+Open Sky Titan
+Bombirdier
+Flying
+Dark
+Bitter Herba Mystica
+Flying Badge
+Swimming
+East Province
+(Area Three)
+Lurking Steel Titan
+Orthworm
+Steel
+Salty Herba Mystica
+Steel Badge
+High Jumping
+Asado Desert
+Quaking Earth Titan
+S
+Great Tusk
+Ground
+Fighting
+Quaking Earth Titan
+V
+Iron Treads
+Ground
+Steel
+Sour Herba Mystica
+Ground Badge
+Gliding
+Casseroya Lake
+False Dragon Titan
+Dondozo
+Water
+False Dragon Titan
+Tatsugiri
+Dragon
+Water
+Spicy Herba Mystica
+Dragon Badge
+Climbing
+Lumiose City
+Main article:
+Lumiose City
+Pokémon Legends: Z-A
+is set entirely within
+Lumiose City
+in the
+Kalos
+region, first featured in
+Generation VI
+.
+First partner Pokémon
+The
+first partner Pokémon
+featured in the game follow the series' usual Grass/Fire/Water setup. The player is given a choice between
+Chikorita
+,
+Tepig
+, or
+Totodile
+.
+Chikorita
+Tepig
+Totodile
+Grass
+Fire
+Water
+Bayleef
+Pignite
+Croconaw
+Grass
+Fire
+Fighting
+Water
+Meganium
+Emboar
+Feraligatr
+Grass
+Fire
+Fighting
+Water
+Mega
+Meganium
+Mega
+Emboar
+Mega
+Feraligatr
+Grass
+Fairy
+Fire
+Fighting
+Water
+Dragon
+Title screens
+This section is incomplete.
+Please feel free to edit this section to add missing information and complete it.
+Reason: Japanese SV title screens
+English title screens
+Pokémon Scarlet
+Pokémon Violet
+Post-credits
+After obtaining the Scarlet/Violet Book at the Crystal Pool
+Pokémon Legends: Z-A
+Pokémon Legends: Z-A
+With
+DLC
+installed
+Post-credits
+Trivia
+This is the first
+generation
+:
+In which the
+player character
+'s initial appearance changes between different game versions from the same pair.
+To begin in the same calendar year as the release of the
+final core series game
+of the
+preceding generation
+.
+In which no
+movies
+were released.
+To introduce a specialist for all eighteen
+types
+, with eight of them being
+Gym Leaders
+, four of them being the
+Elite Four
+members, five of them being the
+Team Star
+bosses, and
+one of them
+being an
+instructor
+at
+Naranja Academy
+S
+/
+Uva Academy
+V
+(as well as a former Gym Leader).
+In addition, there is a
+second specialist
+of the
+Fighting
+type, who is also an instructor.
+One more specialist each for the
+Fire
+,
+Steel
+,
+Dragon
+, and
+Fairy
+types was added with the release of
+The Indigo Disk
+as a part of the BB Elite Four.
+To feature Trainers whose
+Trainer class
+is listed after their name rather than before it.
+In which the first of its Pokémon to debut in the
+animated series
+is a
+first partner Pokémon
+.
+To not have a new animated
+series
+with
+Ash Ketchum
+as the protagonist.
+The only instance of original main characters interacting with Pokémon from this generation is the
+Team Rocket Expedition which stands by the evils of love and truth
+segments in
+Pokémon Journeys: The Series
+.
+Since
+Generation II
+:
+In which Pokémon can be
+transferred
+to the previous generation.
+To only have three
+core series
+games.
+Since
+Generation III
+to have all of its core series games run at 60 frames per second, namely on the
+Nintendo Switch 2
+.
+Since
+Generation IV
+to last more than three years.
+Since
+Generation V
+to introduce more than 100 new Pokémon.
+Since
+Generation VI
+:
+To introduce a region with both
+Gym Leaders
+and an
+Elite Four
+.
+To only introduce new Pokémon in the flagship games.
+To give a new Pokémon (
+Dipplin
+) an Evolution later in the generation.
+To have a core series game receive a rating other than "E" by the
+ESRB
+in its initial release.
+This is the only generation:
+To not introduce a
+Flying
+- or
+Ground-type
+move.
+To introduce a
+Bug
+/
+Dark
+,
+Grass
+/
+Fire
+,
+Electric
+/
+Fighting
+, and
+Fairy
+/
+Fighting
+-type Pokémon, making Dark, Grass, Electric, and Fighting pair with every other type at least once.
+To not introduce a Pokémon that evolves when
+leveled up with high friendship
+.
+This generation introduced the fewest
+regional forms
+of a generation that introduced regional forms, with only four, three of them being forms of
+the same Pokémon
+. However, Paldea also introduced
+convergent species
+and
+Paradox Pokémon
+.
+This generation introduced the most:
+Gender unknown
+Pokémon, with a total of 33.
+Pokémon with no evolutionary line
+, with a total of 41.
+This generation is tied with
+Generation VII
+and
+Generation VIII
+for introducing the most
+Legendary Pokémon
+, with eleven.
+This generation took the longest to introduce a
+Mythical Pokémon
+, as
+Pecharunt
+was first hinted at in
+The Teal Mask
+and added into
+Pokémon Scarlet and Violet
+with
+The Indigo Disk
+.
+This generation is the first one to feature more than one previous region across separate core series games (
+Unova
+in Pokémon Scarlet and Violet and
+Kalos
+in
+Pokémon Legends: Z-A
+).
+This generation contains the longest gap between game releases in the history of the core series, with 1,063 days between Pokémon Scarlet and Violet and Pokémon Legends: Z-A.
+References
+↑
+Yusuke Kozaki on Twitter (archived)
+↑
+2.0
+2.1
+https://scarletviolet.pokemon.com/en-us/
+Pokémon.com official website
+Related articles
+Core series
+games and paid
+DLC
+Gen I
+Red
+Green
+Blue
+JP
+Red
+Blue
+Yellow
+Gen II
+Gold
+Silver
+Crystal
+Gen III
+Ruby
+Sapphire
+FireRed
+LeafGreen
+Emerald
+Gen IV
+Diamond
+Pearl
+Platinum
+HeartGold
+SoulSilver
+Gen V
+Black
+White
+Black 2
+White 2
+Gen VI
+X
+Y
+Omega Ruby
+Alpha Sapphire
+Gen VII
+Sun
+Moon
+Ultra Sun
+Ultra Moon
+Let's Go, Pikachu!
+Let's Go, Eevee!
+Gen VIII
+Sword
+Shield
++
+Sword and Shield Expansion Pass
+(DLC)
+The Isle of Armor
+The Crown Tundra
+Brilliant Diamond
+Shining Pearl
+Legends: Arceus
+Gen IX
+Scarlet
+Violet
++
+The Hidden Treasure of Area Zero
+(DLC)
+The Teal Mask
+The Indigo Disk
+Legends: Z-A
++
+(DLC)
+Mega Dimension
+Gen X
+Winds
+Waves
+Pokémon games
+Core series
+•
+Side series
+•
+Spin-off series
+•
+Standalone spin-offs
+•
+DLC
+•
+Pokémon mini
+•
+Betas
+•
+Demos
+This game-related article is part of
+Project Games
+, a
+Bulbapedia project
+that aims to write comprehensive articles on the
+Pokémon games
+.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Generation_IX&oldid=4568018
+"

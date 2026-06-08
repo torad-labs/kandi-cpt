@@ -1,0 +1,1678 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Bug type
+(Japanese:
+むしタイプ
+Bug type
+) is one of the eighteen
+types
+. Bug-type
+moves
+are super effective against
+Dark
+-,
+Grass
+-, and
+Psychic-type
+Pokémon
+, while Bug-type Pokémon are weak to
+Fire
+-,
+Flying
+-, and
+Rock-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Pokémon
+Pure Bug-type Pokémon
+Half Bug-type Pokémon
+Primary Bug-type Pokémon
+Secondary Bug-type Pokémon
+Moves
+Abilities
+Interacting with the Bug type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Bug-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Bug-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Grass
+Psychic
+Dark
+Fighting
+Flying
+Poison
+Ghost
+Steel
+Fire
+Fairy
+None
+Defensive properties of
+Bug-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Flying
+Rock
+Fire
+Fighting
+Ground
+Grass
+None
+In
+Generation I
+only, Bug-type
+Pokémon
+were weak to
+Poison-type
+moves and Bug-type
+moves
+were super effective against
+Poison-type
+Pokémon.
+The
+Dark
+and
+Steel
+types
+were introduced in
+Generation II
+.
+The
+Fairy
+type was introduced in
+Generation VI
+.
+Pokémon
+As of
+Generation IX
+, 94
+Pokémon
+are Bug-type, which makes up 9.14% of all Pokémon, making it the 6th most common
+type
+after
+Psychic
+and before
+Fire
+and
+Poison
+.
+Pure Bug-type Pokémon
+#
+Name
+0010
+Caterpie
+0011
+Metapod
+0127
+Pinsir
+0204
+Pineco
+0265
+Wurmple
+0266
+Silcoon
+0268
+Cascoon
+0313
+Volbeat
+0314
+Illumise
+0401
+Kricketot
+0402
+Kricketune
+0412
+Burmy
+(
+Plant Cloak
+)
+Burmy
+(
+Sandy Cloak
+)
+Burmy
+(
+Trash Cloak
+)
+0493
+Arceus
+(
+Bug-type
+)
+0588
+Karrablast
+0616
+Shelmet
+0617
+Accelgor
+0664
+Scatterbug
+0665
+Spewpa
+0736
+Grubbin
+0773
+Silvally
+(
+Type: Bug
+)
+0824
+Blipbug
+0917
+Tarountula
+0918
+Spidops
+0919
+Nymble
+0953
+Rellor
+Half Bug-type Pokémon
+Primary Bug-type Pokémon
+#
+Name
+Type 1
+Type 2
+0012
+Butterfree
+Bug
+Flying
+Gigantamax
+Butterfree
+Bug
+Flying
+0013
+Weedle
+Bug
+Poison
+0014
+Kakuna
+Bug
+Poison
+0015
+Beedrill
+Bug
+Poison
+Mega
+Beedrill
+Bug
+Poison
+0046
+Paras
+Bug
+Grass
+0047
+Parasect
+Bug
+Grass
+0048
+Venonat
+Bug
+Poison
+0049
+Venomoth
+Bug
+Poison
+0123
+Scyther
+Bug
+Flying
+0127
+Mega
+Pinsir
+Bug
+Flying
+0165
+Ledyba
+Bug
+Flying
+0166
+Ledian
+Bug
+Flying
+0167
+Spinarak
+Bug
+Poison
+0168
+Ariados
+Bug
+Poison
+0193
+Yanma
+Bug
+Flying
+0205
+Forretress
+Bug
+Steel
+0212
+Scizor
+Bug
+Steel
+Mega
+Scizor
+Bug
+Steel
+0213
+Shuckle
+Bug
+Rock
+0214
+Heracross
+Bug
+Fighting
+Mega
+Heracross
+Bug
+Fighting
+0267
+Beautifly
+Bug
+Flying
+0269
+Dustox
+Bug
+Poison
+0283
+Surskit
+Bug
+Water
+0284
+Masquerain
+Bug
+Flying
+0290
+Nincada
+Bug
+Ground
+0291
+Ninjask
+Bug
+Flying
+0292
+Shedinja
+Bug
+Ghost
+0413
+Wormadam
+(
+Plant Cloak
+)
+Bug
+Grass
+Wormadam
+(
+Sandy Cloak
+)
+Bug
+Ground
+Wormadam
+(
+Trash Cloak
+)
+Bug
+Steel
+0414
+Mothim
+Bug
+Flying
+0415
+Combee
+Bug
+Flying
+0416
+Vespiquen
+Bug
+Flying
+0469
+Yanmega
+Bug
+Flying
+0540
+Sewaddle
+Bug
+Grass
+0541
+Swadloon
+Bug
+Grass
+0542
+Leavanny
+Bug
+Grass
+0543
+Venipede
+Bug
+Poison
+0544
+Whirlipede
+Bug
+Poison
+0545
+Scolipede
+Bug
+Poison
+Mega
+Scolipede
+Bug
+Poison
+0557
+Dwebble
+Bug
+Rock
+0558
+Crustle
+Bug
+Rock
+0589
+Escavalier
+Bug
+Steel
+0595
+Joltik
+Bug
+Electric
+0596
+Galvantula
+Bug
+Electric
+0632
+Durant
+Bug
+Steel
+0636
+Larvesta
+Bug
+Fire
+0637
+Volcarona
+Bug
+Fire
+0649
+Genesect
+Bug
+Steel
+0666
+Vivillon
+Bug
+Flying
+0737
+Charjabug
+Bug
+Electric
+0738
+Vikavolt
+Bug
+Electric
+0742
+Cutiefly
+Bug
+Fairy
+0743
+Ribombee
+Bug
+Fairy
+0767
+Wimpod
+Bug
+Water
+0768
+Golisopod
+Bug
+Water
+Mega
+Golisopod
+Bug
+Steel
+0794
+Buzzwole
+Bug
+Fighting
+0795
+Pheromosa
+Bug
+Fighting
+0825
+Dottler
+Bug
+Psychic
+0826
+Orbeetle
+Bug
+Psychic
+Gigantamax
+Orbeetle
+Bug
+Psychic
+0900
+Kleavor
+Bug
+Rock
+0920
+Lokix
+Bug
+Dark
+0954
+Rabsca
+Bug
+Psychic
+0988
+Slither Wing
+Bug
+Fighting
+Secondary Bug-type Pokémon
+#
+Name
+Type 1
+Type 2
+0347
+Anorith
+Rock
+Bug
+0348
+Armaldo
+Rock
+Bug
+0451
+Skorupi
+Poison
+Bug
+0751
+Dewpider
+Water
+Bug
+0752
+Araquanid
+Water
+Bug
+0850
+Sizzlipede
+Fire
+Bug
+0851
+Centiskorch
+Fire
+Bug
+Gigantamax
+Centiskorch
+Fire
+Bug
+0872
+Snom
+Ice
+Bug
+0873
+Frosmoth
+Ice
+Bug
+Moves
+As of
+Generation IX
+, there are 34 Bug-type
+moves
+, which makes up 3.64% of all moves (excluding those that are Bug-type only under certain circumstances), causing it to tie with
+Ghost
+and
+Fairy
+as the 4th rarest
+type
+among moves after
+Ice
+and before
+Poison
+.
+Prior to
+changes in Generation IV
+, all damaging Bug-type moves were
+physical
+, but they may now also be
+special
+depending on the attack.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+IV
+Attack Order
+Physical
+Clever
+090
+90
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user calls out its underlings to pummel the target. This move has a heightened chance of landing a critical hit.
+IV
+Bug Bite
+Physical
+Cute
+060
+60
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user bites the target. If the target is holding a Berry, the user eats it and gains its effect.
+IV
+Bug Buzz
+Special
+Beautiful
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user vibrates to generate a damaging sound wave. This may also lower the target's Sp. Def stat.
+IV
+Defend Order
+Status
+Clever
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Self
+The user calls out its underlings to shield its body, boosting its Defense and Sp. Def stats.
+VI
+Fell Stinger
+Physical
+Cool
+050
+50
+100
+100
+%
+25
+25
+(max 40)
+Normal
+When the user knocks out a target with this move, the user's Attack stat is boosted drastically.
+VII
+First Impression
+Physical
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+Although this move has great power, it works only on the first turn each time the user enters battle.
+II
+Fury Cutter
+Physical
+Cool
+040
+40
+095
+95
+%
+20
+20
+(max 32)
+Normal
+The user attacks by slashing the target with scythes, claws, or the like. This attack becomes more powerful if it hits in succession.
+VIII
+G-Max Befuddle
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Bug-type attack that Gigantamax Butterfree use. This move inflicts the poisoned, paralyzed, or asleep status condition on opponents.
+VIII
+G-Max Befuddle
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Bug-type attack that Gigantamax Butterfree use. This move inflicts the poisoned, paralyzed, or asleep status condition on opponents.
+IV
+Heal Order
+Status
+Clever
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Self
+The user calls out its underlings to heal it. The user regains up to half of its max HP.
+VI
+Infestation
+Special
+Cute
+020
+20
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The target is infested and attacked for four to five turns. The target can't flee during this time.
+I
+Leech Life
+Physical
+Clever
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user drains the target's blood. The user's HP is restored by up to half the damage taken by the target.
+VII
+Lunge
+Physical
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user makes a lunge at the target, attacking with full force. This also lowers the target's Attack stat.
+VIII
+Max Flutterby
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Bug-type attack Dynamax Pokémon use. This lowers the target's Sp. Atk stat.
+VIII
+Max Flutterby
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Bug-type attack Dynamax Pokémon use. This lowers the target's Sp. Atk stat.
+II
+Megahorn
+Physical
+Cool
+120
+120
+085
+85
+%
+10
+10
+(max 16)
+Normal
+Using its tough and impressive horn, the user rams into the target with no letup.
+I
+Pin Missile
+Physical
+Cool
+025
+25
+095
+95
+%
+20
+20
+(max 32)
+Normal
+The user attacks by shooting sharp spikes at the target. This move hits two to five times in a row.
+VII
+Pollen Puff
+Special
+090
+90
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks the enemy with a pollen puff that explodes. If the target is an ally, it gives the ally a pollen puff that restores its HP instead.
+IX
+Pounce
+Physical
+050
+50
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user attacks by pouncing on the target. This also lowers the target's Speed stat.
+VI
+Powder
+Status
+Clever
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user covers the target in a combustible powder. If the target uses a Fire-type move, the powder explodes and damages the target.
+V
+Quiver Dance
+Status
+Beautiful
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user lightly performs a beautiful, mystic dance. This boosts the user's Sp. Atk, Sp. Def, and Speed stats.
+V
+Rage Powder
+Status
+Clever
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user scatters a cloud of irritating powder to draw attention to itself. Opposing Pokémon aim only at the user.
+VII
+Savage Spin-Out
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user binds the target with full force with threads of silk that the user spits using its Z-Power. The power varies, depending on the original move.
+VII
+Savage Spin-Out
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user binds the target with full force with threads of silk that the user spits using its Z-Power. The power varies, depending on the original move.
+III
+Signal Beam
+Special
+Beautiful
+075
+75
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks with a sinister beam of light. This may also confuse the target.
+IX
+Silk Trap
+Status
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Self
+The user spins a silken trap, protecting itself from damage while lowering the Speed stat of any attacker that makes direct contact.
+III
+Silver Wind
+Special
+Beautiful
+060
+60
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The target is attacked with powdery scales blown by the wind. This may also raise all the user's stats.
+VIII
+Skitter Smack
+Physical
+070
+70
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user skitters behind the target to attack. This also lowers the target's Sp. Atk stat.
+II
+Spider Web
+Status
+Clever
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Normal
+The user ensnares the target with thin, gooey silk so it can't flee from battle.
+V
+Steamroller
+Physical
+Tough
+065
+65
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user crushes its target by rolling over the target with its rolled-up body. This may also make the target flinch.
+VI
+Sticky Web
+Status
+Tough
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Other Side
+The user weaves a sticky net around the opposing team, which lowers their Speed stats upon switching into battle.
+I
+String Shot
+Status
+Clever
+000
+—
+095
+95
+%
+40
+40
+(max 64)
+Many Others
+The user blows silk from its mouth that binds opposing Pokémon and harshly lowers their Speed stats.
+V
+Struggle Bug
+Special
+Cute
+050
+50
+100
+100
+%
+20
+20
+(max 32)
+Many Others
+The user attacks by struggling against opposing Pokémon. This also lowers their Sp. Atk stats.
+III
+Tail Glow
+Status
+Beautiful
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user stares at flashing lights to focus its mind, drastically raising its Sp. Atk stat.
+I
+Twineedle
+Physical
+Cool
+025
+25
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user damages the target twice in succession by jabbing it with two spikes. This may also poison the target.
+IV
+U-turn
+Physical
+Cute
+070
+70
+100
+100
+%
+20
+20
+(max 32)
+Normal
+After making its attack, the user rushes back to switch places with a party Pokémon in waiting.
+IV
+X-Scissor
+Physical
+Cool
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user slashes at the target by crossing its scythes, claws, or the like as if they were a pair of scissors.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Abilities
+Interacting with the Bug type
+A Pokémon with
+Protean
+or
+Libero
+will become a Bug-type Pokémon if it uses a Bug-type move. A Pokémon with
+Color Change
+,
+Imposter
+,
+RKS System
+, or
+Multitype
+will become a Bug-type Pokémon if (respectively) it is hit with a Bug-type move, is sent out against a Bug-type opponent, is holding a
+Bug Memory
+, or is holding an
+Insect Plate
+or
+Buginium Z
+.
+Gen
+Ability
+Description
+V
+Rattled
+The Pokémon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat.
+III
+Swarm
+Powers up Bug-type moves when the Pokémon's HP is low.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Only Bug-type Pokémon can have these Abilities. This does not include
+signature Abilities
+.
+Gen
+Ability
+Description
+III
+Compound Eyes
+The Pokémon's compound eyes boost its accuracy.
+III
+Shield Dust
+Protective dust shields the Pokémon from the additional effects of moves.
+III
+Swarm
+Powers up Bug-type moves when the Pokémon's HP is low.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Items
+Name
+Description
+Bug Gem
+A
+gem
+with an insect-like essence. When held, it strengthens the power of a Bug-type move one time.
+Bug Memory
+A
+memory
+disc that contains Bug-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Bug Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Buginium Z
+This is a crystallized form of Z-Power. It upgrades Bug-type moves to
+Z-Moves
+.
+Insect Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of bugs and boosts the power of the holder’s Bug-type moves.
+Net Ball
+A somewhat different
+Poké Ball
+that is more effective when catching
+Water
+- or Bug-type Pokémon.
+Silver Powder
+An item to be held by a Pokémon. It's a shiny silver powder that boosts the power of the holder's Bug-type moves.
+Tanga Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Bug-type move, the power of that move will be weakened.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Figy Berry
+Cornn Berry
+Tanga Berry
+Enigma Berry
+Cram-o-matic
+Name
+Enigma Berry
+Grip Claw
+Honey
+Shed Shell
+Notable Bug-type Trainers
+Main article:
+Category:Bug-type Trainers
+Gen
+Trainer
+Title
+Location
+II
+Bugsy
+Gym Leader
+Azalea Gym
+IV
+Aaron
+Elite Four
+Sinnoh Pokémon League
+V
+Burgh
+Gym Leader
+Castelia Gym
+VI
+Viola
+Gym Leader
+Santalune Gym
+VII
+Guzma
+Team Skull Boss
+Pokémon Trainer
+Shady House
+IX
+Katy
+Gym Leader
+Cortondo Gym
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+58.11
+Attack:
+73.59
+Defense:
+73.40
+Sp.Atk:
+57.54
+Sp.Def:
+67.34
+Speed:
+62.07
+Total:
+387.78
+Fully evolved
+Stat
+HP:
+68.58
+Attack:
+92.80
+Defense:
+86.95
+Sp.Atk:
+72.73
+Sp.Def:
+83
+Speed:
+74.78
+Total:
+478.84
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Bug-type Pokémon will gather
+Lum Berries
+, and typically have the Dozing
+sleep type
+.
+The following is a list of Bug-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0010
+Caterpie
+Dozing
+0011
+Metapod
+Dozing
+0012
+Butterfree
+Dozing
+0127
+Pinsir
+Dozing
+0213
+Shuckle
+Dozing
+0214
+Heracross
+Dozing
+0557
+Dwebble
+Dozing
+0558
+Crustle
+Dozing
+0736
+Grubbin
+Dozing
+0737
+Charjabug
+Dozing
+0738
+Vikavolt
+Dozing
+In the TCG
+Main article:
+Grass (TCG)
+Due to the decreased amount of types in the TCG, Bug-type Pokémon are generally listed as
+Grass
+-type Pokémon.
+Grass-type Pokémon in the TCG are generally weak to
+Fire
+-type Pokémon and have no resistance. They are strong against some
+Fighting
+and
+Darkness
+Pokémon, and until
+Sword & Shield
+were strong against some
+Water
+types as well, whilst
+Metal
+Pokémon resisted it until the
+EX Power Keepers
+expansion set before this resistance was brought back in Sword & Shield.
+Trivia
+On average, Bug-type Pokémon have the lowest base
+HP
+,
+Attack
+,
+Special Attack
+,
+Special Defense
+,
+Speed
+and base stat total of all types.
+Bug is tied with
+Grass
+as the most resisted type, with seven types resisting each of them.
+This is the only
+type
+:
+That, excluding
+Silvally
+holding the
+Bug Memory
+, hasn't been assigned to a
+Legendary Pokémon
+.
+Without a Pokémon that has a
+regional form
+or is one.
+Without a Pokémon in the
+Amorphous
+or
+Field Egg Group
+.
+The Bug type has been paired with every other type except for
+Dragon
+and
+Normal
+.
+This makes the Bug type the only type to not have been paired up with
+Dragon
+.
+Generation V
+introduced the most Bug-type Pokémon of any Generation, with 18, and
+Generation VI
+introduced the fewest Bug-type Pokémon, with three.
+Generation IV
+introduced the most Bug-type moves of any Generation, with seven, and
+Generation IX
+introduced the fewest Bug-type moves, with two.
+The
+Flying
+type is one of the two types most commonly paired with the Bug type, with the other type being
+Poison
+. However, there are a number of Bug types that are not Flying-types nor have the Ability
+Levitate
+despite being able to fly, such as
+Beedrill
+and
+Venomoth
+.
+Despite this, the only Bug-type Pokémon that can learn the move
+Fly
+,
+Volcarona
+,
+Genesect
+, and
+Vikavolt
+, are not Flying-type Pokémon.
+Out of these three Pokémon, Vikavolt is the only one that could not learn Fly in its introductory generation; Vikavolt was made able to learn Fly at
+level
+50 and from
+TM06
+in
+Pokémon Sword and Shield
+.
+Until
+Platinum
+, several Bug-type Pokémon (
+Shuckle
+,
+Kricketot
+,
+Burmy
+,
+Wormadam
+, and
+Combee
+) were unable to learn any Bug-type moves naturally. Each of them can now learn
+Bug Bite
+by level up.
+Pinsir
+and the
+Ledyba
+evolutionary line were also unable to learn any Bug-type moves naturally until Generation IV, in which the former gained access to
+X-Scissor
+and the latter to
+Silver Wind
+and
+Bug Buzz
+via level up.
+In
+Generation I
+, the Bug type is
+super effective
+against
+Poison-type
+Pokémon, while the Poison type is super effective against Bug-type Pokémon. As such, this was the only case when two different types were ever super effective against each other.
+Additionally, since Generation I, the Bug and
+Fighting
+types are the only two separate types that resist each other.
+The Bug type was the most common 4× weakness in Generation I, with 11 Pokémon doubly weak to it, mainly due to Poison type having a weakness to it at the time.
+Each of the three
+first partner Pokémon
+types have a different effectiveness when attacking a pure Bug-type Pokémon (Grass does ½× damage, Water does 1× damage, and Fire does 2× damage).
+This trait is also shared with pure
+Steel
+-type Pokémon.
+No Pokémon gains the Bug type upon
+Evolution
+that did not already have it. It shares this distinction with the
+Normal
+type.
+Additionally, no Pokémon gains the Bug type upon changing forms with the exceptions of
+Arceus
+and
+Silvally
+, which have forms of every type. If permanent forms are excluded, it shares this distinction with the
+Poison
+and
+Ground
+types.
+Of all Pokémon that
+evolve at or above a certain level
+, 11 of the earliest-evolving Pokémon are of the Bug type.
+Despite having no
+TMs
+that are of the Bug-type in
+Generation III
+,
+Pokémon FireRed and LeafGreen
+'s
+internal data
+contains a sprite for Bug-type TMs.
+All Bug-type moves are eligible to be used in
+Sky Battles
+.
+In other languages
+Language
+Title
+Japanese
+むし (虫)
+Mushi
+Catalan
+Catalonia
+Insecte
+Valencia
+Bestiola
+Chinese
+Cantonese
+蟲
+Chùhng
+Mandarin
+蟲 / 虫
+Chóng
+爬蟲
+Páchóng
+Czech
+Hmyzí
+Danish
+Kryb
+Insekt
+Dutch
+Insect
+Finnish
+Ötökkä
+Hyönteinen
+French
+Insecte
+German
+Käfer
+Greek
+Εντόμου
+Entómou
+Hebrew
+חרק
+Kherek
+Hindi
+बग
+Bug
+कीड़ा
+Keeda
+*
+Hungarian
+Bogár
+Indonesian
+Serangga
+Italian
+Coleottero
+Korean
+벌레
+Beolle
+Malaysian
+Serangga
+Norwegian
+Insekt
+Polish
+Robak
+*
+Robaczy
+*
+Bug
+*
+Chrząszcz
+*
+Portuguese
+Brazil
+Inseto
+Micróbio
+*
+Bicho
+*
+Portugal
+Insecto
+Inseto
+Romanian
+Insectă
+Russian
+Насекомое
+Nasekomoye
+Жук
+Zhuk
+Spanish
+Latin America
+Insecto
+Spain
+Bicho
+Swedish
+Insekt
+Kryp
+*
+Thai
+แมลง
+Malaeng
+Turkish
+Böcek
+Vietnamese
+Côn trùng
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Bug_(type)&oldid=4550801
+"

@@ -1,0 +1,1625 @@
+Ground redirects here. For the Egg Group formerly known as the Ground Egg Group, see
+Field (Egg Group)
+.
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Ground type
+(Japanese:
+じめんタイプ
+Ground type
+) is one of the eighteen
+types
+. Ground-type
+moves
+are super effective against
+Electric
+-,
+Fire
+-,
+Poison
+-,
+Rock
+-, and
+Steel-type
+Pokémon
+, while Ground-type Pokémon are weak to
+Grass
+-,
+Ice
+-, and
+Water-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Ground-type Pokémon
+Half Ground-type Pokémon
+Primary Ground-type Pokémon
+Secondary Ground-type Pokémon
+Moves
+Changed types
+Abilities
+Interacting with the Ground type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Ground-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Ground-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Poison
+Rock
+Fire
+Electric
+Steel
+Bug
+Grass
+Flying
+Defensive properties of
+Ground-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Water
+Grass
+Ice
+Poison
+Rock
+Electric
+The
+Steel
+type was introduced in
+Generation II
+.
+Additional effects
+Ground-type
+Pokémon
+are immune to
+Thunder Wave
+, unless they are holding the
+Ring Target
+, introduced in
+Generation V
+. Ground-type Pokémon are also immune to damage from the
+sandstorm
+weather
+condition, introduced in
+Generation II
+, which also increases the
+power
+of Ground-type moves by 30% if they have the
+Ability
+Sand Force
+.
+From
+Generation II
+onwards, Ground-type moves cannot hit Pokémon under the effects of
+Magnet Rise
+or
+Telekinesis
+, the
+Air Balloon
+item
+, or the Abilities
+Levitate
+or
+Earth Eater
+, though all Pokémon except those with
+Earth Eater
+lose their immunity to Ground-type moves when they are
+grounded
+(such as by holding an
+Iron Ball
+or being under the effects of the moves
+Ingrain
+(
+Generation IV
+onward),
+Gravity
+,
+Smack Down
+, or
+Thousand Arrows
+). Ground-type moves will also affect
+Flying-type
+Pokémon when they lose their ungrounded status.
+Pokémon
+As of
+Generation IX
+, 79
+Pokémon
+are Ground-type (counting those that are Ground-type in at least one of their
+forms
+, including
+Galarian forms
+), which makes up 7.68% of all Pokémon, making it the 6th rarest
+type
+among Pokémon after
+Dragon
+and before
+Rock
+.
+Pure Ground-type Pokémon
+#
+Name
+0027
+Sandshrew
+0028
+Sandslash
+0050
+Diglett
+0051
+Dugtrio
+0104
+Cubone
+0105
+Marowak
+0231
+Phanpy
+0232
+Donphan
+0328
+Trapinch
+0383
+Groudon
+0449
+Hippopotas
+0450
+Hippowdon
+0493
+Arceus
+(
+Ground-type
+)
+0529
+Drilbur
+0749
+Mudbray
+0750
+Mudsdale
+0773
+Silvally
+(
+Type: Ground
+)
+0843
+Silicobra
+0844
+Sandaconda
+Gigantamax
+Sandaconda
+Half Ground-type Pokémon
+Primary Ground-type Pokémon
+#
+Name
+Type 1
+Type 2
+0050
+Alolan
+Diglett
+Ground
+Steel
+0051
+Alolan
+Dugtrio
+Ground
+Steel
+0111
+Rhyhorn
+Ground
+Rock
+0112
+Rhydon
+Ground
+Rock
+0207
+Gligar
+Ground
+Flying
+0329
+Vibrava
+Ground
+Dragon
+0330
+Flygon
+Ground
+Dragon
+0343
+Baltoy
+Ground
+Psychic
+0344
+Claydol
+Ground
+Psychic
+0383
+Primal
+Groudon
+Ground
+Fire
+0464
+Rhyperior
+Ground
+Rock
+0472
+Gliscor
+Ground
+Flying
+0530
+Excadrill
+Ground
+Steel
+Mega
+Excadrill
+Ground
+Steel
+0551
+Sandile
+Ground
+Dark
+0552
+Krokorok
+Ground
+Dark
+0553
+Krookodile
+Ground
+Dark
+0562
+Galarian
+Yamask
+Ground
+Ghost
+0618
+Stunfisk
+Ground
+Electric
+Galarian
+Stunfisk
+Ground
+Steel
+0622
+Golett
+Ground
+Ghost
+0623
+Golurk
+Ground
+Ghost
+Mega
+Golurk
+Ground
+Ghost
+0645
+Landorus
+(
+Incarnate Forme
+)
+Ground
+Flying
+Landorus
+(
+Therian Forme
+)
+Ground
+Flying
+0867
+Runerigus
+Ground
+Ghost
+0901
+Ursaluna
+Ground
+Normal
+Bloodmoon
+Ursaluna
+Ground
+Normal
+0948
+Toedscool
+Ground
+Grass
+0949
+Toedscruel
+Ground
+Grass
+0984
+Great Tusk
+Ground
+Fighting
+0990
+Iron Treads
+Ground
+Steel
+Secondary Ground-type Pokémon
+#
+Name
+Type 1
+Type 2
+0031
+Nidoqueen
+Poison
+Ground
+0034
+Nidoking
+Poison
+Ground
+0074
+Geodude
+Rock
+Ground
+0075
+Graveler
+Rock
+Ground
+0076
+Golem
+Rock
+Ground
+0095
+Onix
+Rock
+Ground
+0194
+Wooper
+Water
+Ground
+Paldean
+Wooper
+Poison
+Ground
+0195
+Quagsire
+Water
+Ground
+0208
+Steelix
+Steel
+Ground
+Mega
+Steelix
+Steel
+Ground
+0220
+Swinub
+Ice
+Ground
+0221
+Piloswine
+Ice
+Ground
+0246
+Larvitar
+Rock
+Ground
+0247
+Pupitar
+Rock
+Ground
+0259
+Marshtomp
+Water
+Ground
+0260
+Swampert
+Water
+Ground
+Mega
+Swampert
+Water
+Ground
+0290
+Nincada
+Bug
+Ground
+0322
+Numel
+Fire
+Ground
+0323
+Camerupt
+Fire
+Ground
+Mega
+Camerupt
+Fire
+Ground
+0339
+Barboach
+Water
+Ground
+0340
+Whiscash
+Water
+Ground
+0389
+Torterra
+Grass
+Ground
+0413
+Wormadam
+(
+Sandy Cloak
+)
+Bug
+Ground
+0423
+West Sea
+Gastrodon
+Water
+Ground
+East Sea
+Gastrodon
+Water
+Ground
+0443
+Gible
+Dragon
+Ground
+0444
+Gabite
+Dragon
+Ground
+0445
+Garchomp
+Dragon
+Ground
+Mega
+Garchomp
+Dragon
+Ground
+0473
+Mamoswine
+Ice
+Ground
+0536
+Palpitoad
+Water
+Ground
+0537
+Seismitoad
+Water
+Ground
+0660
+Diggersby
+Normal
+Ground
+0718
+Zygarde
+10% Forme
+Dragon
+Ground
+Zygarde
+50% Forme
+Dragon
+Ground
+Zygarde
+Complete Forme
+Dragon
+Ground
+Mega
+Zygarde
+Dragon
+Ground
+0769
+Sandygast
+Ghost
+Ground
+0770
+Palossand
+Ghost
+Ground
+0980
+Clodsire
+Poison
+Ground
+0989
+Sandy Shocks
+Electric
+Ground
+1003
+Ting-Lu
+Dark
+Ground
+Moves
+As of
+Generation IX
+, there are 31 Ground-type
+moves
+, which makes up 3.32% of all moves (excluding those that are Ground-type only under certain circumstances), causing it to tie with
+Flying
+and
+Dragon
+as the second rarest type among moves, with
+Rock
+as the rarest.
+Prior to
+changes in Generation IV
+, all damaging Ground-type moves were
+physical
+, but they may now also be
+special
+depending on the attack.
+One move
+has had its type changed.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+I
+Bone Club
+Physical
+Tough
+065
+65
+085
+85
+%
+20
+20
+(max 32)
+Normal
+The user clubs the target with a bone. This may also make the target flinch.
+II
+Bone Rush
+Physical
+Tough
+025
+25
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks by striking the target with a hard bone. This move hits two to five times in a row.
+I
+Bonemerang
+Physical
+Tough
+050
+50
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user throws the bone it holds. The bone loops around to damage the target twice—coming and going.
+V
+Bulldoze
+Physical
+Tough
+060
+60
+100
+100
+%
+20
+20
+(max 32)
+All Others
+The user strikes everything around it by stomping down on the ground. This lowers the Speed stats of those hit.
+I
+Dig
+Physical
+Tough
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user burrows into the ground on the first turn, then attacks on the next turn.
+V
+Drill Run
+Physical
+Tough
+080
+80
+095
+95
+%
+10
+10
+(max 16)
+Normal
+The user crashes into the target while rotating its body like a drill. This move has a heightened chance of landing a critical hit.
+IV
+Earth Power
+Special
+Beautiful
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user makes the ground under the target erupt with power. This may also lower the target's Sp. Def stat.
+I
+Earthquake
+Physical
+Tough
+100
+100
+100
+100
+%
+10
+10
+(max 16)
+All Others
+The user sets off an earthquake that strikes every Pokémon around it.
+I
+Fissure
+Physical
+Tough
+000
+—
+030
+30
+%
+05
+5
+(max 8)
+Normal
+The user opens up a fissure in the ground and drops the target in. The target faints instantly if this attack hits.
+VIII
+G-Max Sandblast
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Ground-type attack that Gigantamax Sandaconda use. Opponents are trapped in a raging sandstorm for four to five turns.
+VIII
+G-Max Sandblast
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Ground-type attack that Gigantamax Sandaconda use. Opponents are trapped in a raging sandstorm for four to five turns.
+VIII
+Headlong Rush
+Physical
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user smashes into the target in a full-body tackle. This also lowers the user’s Defense and Sp. Def stats.
+VII
+High Horsepower
+Physical
+095
+95
+095
+95
+%
+10
+10
+(max 16)
+Normal
+The user fiercely attacks the target using its entire body.
+VI
+Land's Wrath
+Physical
+Beautiful
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Many Others
+The user gathers the energy of the land and focuses that power on opposing Pokémon to inflict damage.
+II
+Magnitude
+Physical
+Tough
+000
+—
+100
+100
+%
+30
+30
+(max 48)
+All Others
+The user attacks everything around it with a ground-shaking quake. Its power varies.
+VIII
+Max Quake
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Ground-type attack Dynamax Pokémon use. This boosts ally Pokémon's Sp. Def stats.
+VIII
+Max Quake
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Ground-type attack Dynamax Pokémon use. This boosts ally Pokémon's Sp. Def stats.
+IV
+Mud Bomb
+Special
+Cute
+065
+65
+085
+85
+%
+10
+10
+(max 16)
+Normal
+The user launches a hard-packed mud ball to attack. This may also lower the target's accuracy.
+III
+Mud Shot
+Special
+Tough
+055
+55
+095
+95
+%
+15
+15
+(max 24)
+Normal
+The user attacks by hurling a blob of mud at the target. This also lowers the target's Speed stat.
+III
+Mud Sport
+Status
+Cute
+000
+—
+000
+—
+%
+15
+15
+(max 24)
+Both Sides
+The user kicks up mud on the battlefield. This weakens Electric-type moves for five turns.
+II
+Mud-Slap
+Special
+Cute
+020
+20
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user hurls mud in the target's face to inflict damage and lower its accuracy.
+VI
+Precipice Blades
+Physical
+Cool
+120
+120
+085
+85
+%
+10
+10
+(max 16)
+Many Others
+The user attacks opposing Pokémon by manifesting the power of the land in fearsome blades of stone.
+VI
+Rototiller
+Status
+Tough
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+All
+Tilling the soil, the user makes it easier for plants to grow. This raises the Attack and Sp. Atk stats of Grass-type Pokémon.
+I
+Sand Attack
+Status
+Cute
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+Sand is hurled in the target's face, lowering the target's accuracy.
+III
+Sand Tomb
+Physical
+Clever
+035
+35
+085
+85
+%
+15
+15
+(max 24)
+Normal
+The user traps the target inside a harshly raging sandstorm that inflicts damage for four to five turns.
+VIII
+Sandsear Storm
+Special
+100
+100
+080
+80
+%
+10
+10
+(max 16)
+Many Others
+The user attacks by wrapping opposing Pokémon in fierce winds and searingly hot sand. This may also leave them with a burn.
+VIII
+Scorching Sands
+Special
+070
+70
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user throws scorching sand at the target to attack. This may also leave the target with a burn.
+VII
+Shore Up
+Status
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Self
+The user restores its own HP by up to half its max HP. It regains more HP in a sandstorm.
+II
+Spikes
+Status
+Clever
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Other Side
+The user lays a trap of spikes at the feet of the opposing team. The spikes will damage opposing Pokémon that switch into battle.
+VII
+Stomping Tantrum
+Physical
+075
+75
+100
+100
+%
+10
+10
+(max 16)
+Normal
+Driven by frustration, the user attacks the target. This move's power is doubled if the user's previous move failed.
+VII
+Tectonic Rage
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user burrows deep into the ground and slams into the target with the full force of its Z-Power. The power varies, depending on the original move.
+VII
+Tectonic Rage
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user burrows deep into the ground and slams into the target with the full force of its Z-Power. The power varies, depending on the original move.
+VI
+Thousand Arrows
+Physical
+Beautiful
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Many Others
+This move can hit opposing Pokémon that are in the air. Those Pokémon will be knocked down to the ground.
+VI
+Thousand Waves
+Physical
+Tough
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Many Others
+The user attacks with a wave that crawls along the ground. Those it hits can't flee from battle.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+As of
+Generation IX
+,
+Shore Up
+has had its PP changed from 10 to 5.
+Changed types
+The following moves have had their types changed into Ground.
+Move
+Original type
+New type
+Sand Attack
+Gen I
+Normal
+Gen II+
+Ground
+Abilities
+Interacting with the Ground type
+A
+Pokémon
+with
+Protean
+or
+Libero
+will become Ground-type if it uses a Ground-type
+move
+. A Pokémon with the
+Abilities
+Color Change
+,
+Imposter
+,
+RKS System
+, or
+Multitype
+will become Ground-type if (respectively) it is hit with a Ground-type move, is sent out against a Ground-type opponent, is holding a
+Ground Memory
+, or is holding an
+Earth Plate
+/
+Groundium Z
+.
+Gen
+Ability
+Description
+IX
+Earth Eater
+If hit by a Ground-type move, the Pokémon has its
+HP
+restored instead of taking
+damage
+.
+III
+Levitate
+By floating in the air, the Pokémon receives full immunity to all Ground-type moves.
+V
+Sand Force
+Boosts the
+power
+of
+Rock
+-, Ground-, and
+Steel-type
+moves in a sandstorm.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Only Ground-type Pokémon have these Abilities. This does not include
+signature Abilities
+.
+Gen
+Ability
+Description
+III
+Arena Trap
+Prevents opposing Pokémon from fleeing from battle.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Items
+Name
+Description
+Air Balloon
+An item to be held by a Pokémon. This balloon makes the holder float in the air. If the holder is hit with an attack, the balloon will burst.
+Earth Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of the earth and boosts the power of the holder’s Ground-type moves.
+Ground Gem
+A
+gem
+with an essence of land. When held, it strengthens the power of a Ground-type move one time.
+Ground Memory
+A
+memory
+disc that contains Ground-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Ground Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Groundium Z
+This is a crystallized form of Z-Power. It upgrades Ground-type moves to
+Z-Moves
+.
+Iron Ball
+An item to be held by a Pokémon. It lowers the holder's
+Speed
+stat and makes the holder vulnerable to Ground-type moves even if it is a
+Flying
+type or is
+levitating
+.
+Shuca Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Ground-type move, the power of that move will be weakened.
+Soft Sand
+An item to be held by a Pokémon. It's a loose, silky sand that boosts the power of the holder's Ground-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Persim Berry
+Hondew Berry
+Shuca Berry
+Apicot Berry
+Cram-o-matic
+Name
+Apicot Berry
+Big Nugget
+Chipped Pot
+Cracked Pot
+Heavy-Duty Boots
+Hondew Berry
+Nugget
+Persim Berry
+Rare Bone
+Stardust
+Terrain Extender
+Thick Club
+Notable Ground-type Trainers
+Main article:
+Category:Ground-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Giovanni
+Team Rocket Boss
+Gym Leader
+R
+B
+Y
+FR
+LG
+P
+E
+Team Rainbow Rocket
+US
+UM
+Viridian Gym
+R
+B
+Y
+FR
+LG
+P
+E
+Team Rocket's Castle
+US
+UM
+IV
+Bertha
+Elite Four
+Sinnoh Pokémon League
+V
+Clay
+Gym Leader
+Driftveil Gym
+VII
+Hapu
+Island kahuna
+Poni Island
+IX
+Rika
+Elite Four
+Paldea Pokémon League
+IX
+Tarragon
+DYN4MO
+Racine Construction
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+80.91
+Attack:
+93.32
+Defense:
+88.31
+Sp.Atk:
+64.59
+Sp.Def:
+68.89
+Speed:
+61.18
+Total:
+457.2
+Fully evolved
+Stat
+HP:
+96.07
+Attack:
+107.91
+Defense:
+103.28
+Sp.Atk:
+78.66
+Sp.Def:
+81.95
+Speed:
+69.41
+Total:
+537.28
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Ground-type Pokémon will gather
+Figy Berries
+, and typically have the Slumbering
+sleep type
+.
+The following is a list of Ground-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0027
+Sandshrew
+Slumbering
+0028
+Sandslash
+Slumbering
+0050
+Diglett
+Snoozing
+0051
+Dugtrio
+Snoozing
+0104
+Cubone
+Slumbering
+0105
+Marowak
+Slumbering
+0259
+Marshtomp
+Slumbering
+0260
+Swampert
+Slumbering
+0328
+Trapinch
+Slumbering
+0329
+Vibrava
+Slumbering
+0330
+Flygon
+Slumbering
+In the TCG
+Main article:
+Fighting (TCG)
+Due to the decreased amount of types in the TCG, Ground-type Pokémon are generally listed as
+Fighting-type
+Pokémon.
+Ground-type Pokémon in the TCG are generally weak to
+Grass
+and
+Water
+with a resistance to the
+Lightning
+-type. Fighting-type Pokémon are strong against
+Colorless
+,
+Darkness
+and
+Lightning
+Pokémon, whilst some
+Colorless
+and
+Psychic
+Pokémon can resist the Fighting type.
+Trivia
+Generation I
+introduced the most Ground-type Pokémon of any Generation, with 14, and
+Generation VI
+introduced the fewest, with two.
+Generations I, VI, and
+VIII
+introduced the most Ground-type moves of any Generation, with five each, while Generations
+IV
+and
+V
+introduced the fewest, with two each.
+Generation IX
+is the only generation to not introduce a Ground-type move.
+Generations VI and IX are the only Generations to not introduce a pure Ground-type Pokémon.
+Despite being immune to
+Electric-type
+moves, Ground-type Pokémon can still become
+paralyzed
+, though this includes those holding a
+Ring Target
+that can be afflicted by
+Thunder Wave
+.
+The Ground type has the highest ratio of super effective offensive matchups over resistances; with five weaknesses opposed to two resistances and one immunity.
+The Ground type is tied with the
+Fighting
+type for the most super effective matchups.
+In the animated series, Ground-type Pokémon's immunity to Electric-type attacks is treated inconsistently, sometimes upheld and sometimes ignored.
+Pokémon the Series
+(in particular
+Showdown at Pewter City
+) also implies that Ground's immunity to Electric has a limit depending on the voltage, as
+Brock's Onix
+, when first fighting Pikachu, was completely unaffected by Pikachu's electricity, but in the rematch, Pikachu's electric attacks, having been boosted at an abandoned hydroelectric plant, were giving Onix a noticeable degree of pain, although it still was not enough to completely incapacitate it, as well as environmental factors (such as water being sprayed on it).
+In
+Pokémon the Series
+on multiple occasions, like in
+Showdown in Pewter City
+,
+Sick Daze
+, and
+Right On, Rhydon!
+, Ground and
+Rock
+-type Pokémon are said to have strong aversion to water and generally being wet.
+Rhydon
+is often presented as an exception to this rule due to its ability to use the move
+Surf
+.
+Each type that resists
+Flying
+is weak to Ground, and vice versa.
+Each type that resists
+Fairy
+is also weak to Ground.
+More Pokémon are immune to Ground-type moves than any other type, as Flying-type Pokémon and Pokémon with the Ability
+Levitate
+and
+Earth Eater
+are immune to Ground-type moves.
+The Ground type is the only type in the
+Generation II
+games and their remakes that a notable Trainer does not
+specialize in
+.
+Out of all the types, the Ground type has the most
+moves
+ineligible for
+Sky Battles
+, with 12.
+The Ground type has been paired up with every other type except for Fairy.
+In other languages
+Language
+Title
+Japanese
+じめん (地面)
+Jimen
+Catalan
+Terra
+Chinese
+Cantonese
+地面
+Deihmín
+*
+地上
+Deihseuhng
+*
+Mandarin
+地面
+Dìmiàn
+*
+[
+specify
+]
+地上
+Dìshàng
+*
+Czech
+Zemní
+Danish
+Jord
+Dutch
+Grond
+Finnish
+Maa
+French
+Sol
+German
+Boden
+Greek
+Εδάφους
+Edáfous
+Hebrew
+אדמה
+Adama
+Hindi
+भूमि
+Bhoomi
+*
+ज़मीनी
+Zameeni
+Hungarian
+Föld
+Indonesian
+Tanah
+Italian
+Terra
+Korean
+땅
+Ttang
+Malaysian
+Darat
+Norwegian
+Grund
+Jord
+Polish
+Ziemny
+Lądowy
+*
+Portuguese
+Brazil
+Terrestre
+Solo
+Terra
+Portugal
+Terra
+Romanian
+Pământ
+Russian
+Земля
+Zemlya
+Spanish
+Tierra
+Swedish
+Mark
+Jord
+*
+Thai
+ดิน
+Din
+Turkish
+Yer
+Vietnamese
+Đất
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Ground_(type)&oldid=4550795
+"

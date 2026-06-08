@@ -1,0 +1,753 @@
+Johto
+Route 29
+２９番道路
+Route 29
+Map description
+A road that begins a journey. The road smells like freshly cut grass.
+Required for navigation
+Cut
+Surf
+Strength
+Flash
+Defog
+Whirlpool
+Rock Smash
+Waterfall
+Dive
+Rock Climb
+Bicycle
+Mach Bike
+Acro Bike
+Go-Goggles
+None
+Connecting locations
+↑
+Route 46
+←
+Cherrygrove City
+Route 29
+New Bark Town
+→
+Location
+Location of Route 29 in
+Johto
+.
+Other generation maps
+Gen II
+Pokémon world routes
+←
+Route 28
+Route 30
+→
+Route 29
+(Japanese:
+２９ばんどうろ
+Route 29
+) is a route in southern
+Johto
+, connecting
+New Bark Town
+and
+Cherrygrove City
+. The southern part of
+Route 46
+can also be accessed from this route. This is the first route the
+player
+reaches after receiving a
+first partner Pokémon
+from
+Professor Elm
+in New Bark Town.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Route description
+Items
+Pokémon
+Generation II
+Generation IV
+Walking Pokémon effects
+In animation
+Pokémon the Series
+Pokémon the Series: Gold and Silver
+In the manga
+Pokémon Gold & Silver: The Golden Boys
+Pokémon Pocket Monsters
+Related articles
+Contents
+Route description
+Similarly to
+Route 1
+in
+Kanto
+, Trainers traveling from Cherrygrove to New Bark can hop over a series of ledges to avoid the grassy areas and to travel between the two areas quickly, while Trainers traveling from New Bark to Cherrygrove must travel through a series of grass patches to reach their destination. The first such patch is near the start of the route where the path turns south into the patch to circumvent a ledge. Route 29 westbound continues to follow the ledge south, then to the west before the route opens up at a T-intersection. To the west, Trainers whose Pokémon can use
+Cut
+outside of battle can chop down a tree to open a grass-less path to Cherrygrove. Those who do not have Cut, however, must go north through a break in the ledge.
+In this location on Tuesdays after
+Falkner
+, the
+Violet City
+Gym Leader, has been defeated,
+Tuscany, one of the Week Siblings
+, appears, giving any Trainers that talk with her a
+Pink Bow
+(a
+TwistedSpoon
+in
+Generation IV
+) the first time the player meets her, and a
+Shock Ribbon
+the second time and afterwards (Generation IV only). Immediately north of Tuscany, there is another tree that can be cut to avoid two grass patches to the northeast. However, Trainers lacking Cut are forced to traverse either of the two patches. Regardless of which way a Trainer takes, the route curves to the west, merging with the second Cut shortcut path directly south of a
+gate
+which separates Route 29 from
+Route 46
+in the north. Between this and Cherrygrove City is your first encounter with your rival.
+East of the gate, the path heads to the northwest, then to the southeast, passing through another grassy area before straightening out and traveling due west. The route then juts south, merging with the first Cut shortcut path as it turns to the west, then north and west again as it enters Cherrygrove.
+Route 29 is in a mountainous region of Johto, which means that the
+Headbutt
+-able trees that line the route hold Pokémon often found in the mountains, namely
+Spearow
+and
+Aipom
+. The route is also home to the
+Dude
+, who teaches players how to capture Pokémon (and also turns the player away from the route if the player doesn't have a Pokémon). In HeartGold and SoulSilver, this duty was given to
+Lyra
+or
+Ethan
+(depending on the player character's chosen gender).
+Items
+Item
+Location
+Games
+Potion
+East of the northeasternmost
+grass
+patch
+G
+S
+C
+HG
+SS
+Berry
+Northwest of the northwesternmost
+grass
+patch, on the
+Berry
+tree on a plateau (daily)
+G
+S
+C
+Grn Apricorn
+Northwest of the northwesternmost
+grass
+patch, on the
+Apricorn
+tree on a plateau (requires
+Apricorn Box
+) (daily)
+HG
+SS
+Poké Ball
+×5
+Gift from
+Lyra
+/
+Ethan
+after teaching the
+player
+how to catch
+Pokémon
+HG
+SS
+Pink Bow
+From
+Tuscany
+after earning the
+Zephyr Badge
+Tu
+G
+S
+C
+TwistedSpoon
+From
+Tuscany
+after earning the
+Zephyr Badge
+Tu
+HG
+SS
+Shock Ribbon
+From
+Tuscany
+after meeting all the
+Week Siblings
+Tu
+HG
+SS
+Pokémon
+Generation II
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgey
+G
+S
+C
+Grass
+2-4
+55%
+55%
+0%
+Pidgey
+G
+S
+C
+Grass
+2-3
+50%
+50%
+0%
+Rattata
+G
+S
+C
+Grass
+4
+5%
+5%
+0%
+Rattata
+G
+S
+C
+Grass
+2,4
+0%
+0%
+15%
+Rattata
+G
+S
+C
+Grass
+2
+5%
+5%
+0%
+Rattata
+G
+S
+C
+Grass
+2-3
+0%
+0%
+45%
+Sentret
+G
+S
+C
+Grass
+2-3
+40%
+40%
+0%
+Hoothoot
+G
+S
+C
+Grass
+2-4
+0%
+0%
+85%
+Hoothoot
+G
+S
+C
+Grass
+2-3
+0%
+0%
+55%
+Hoppip
+G
+S
+C
+Grass
+3
+5%
+5%
+0%
+Headbutt tree
+(Moderate chances of battle)
+Spearow
+G
+S
+C
+Headbutt
+10
+80%
+Exeggcute
+G
+S
+C
+Headbutt
+10
+20%
+Hoothoot
+G
+S
+C
+Headbutt
+10
+50%
+Ledyba
+G
+S
+C
+Headbutt
+10
+15%
+Spinarak
+G
+S
+C
+Headbutt
+10
+15%
+Aipom
+G
+S
+C
+Headbutt
+10
+20%
+Headbutt tree
+(Low chances of battle)
+Spearow
+G
+S
+C
+Headbutt
+10
+50%
+Exeggcute
+G
+S
+C
+Headbutt
+10
+20%
+Hoothoot
+G
+S
+C
+Headbutt
+10
+50%
+Aipom
+G
+S
+C
+Headbutt
+10
+20%
+Pineco
+G
+S
+C
+Headbutt
+10
+30%
+Heracross
+G
+S
+C
+Headbutt
+10
+30%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation IV
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgey
+HG
+SS
+Grass
+2-4
+55%
+55%
+0%
+Rattata
+HG
+SS
+Grass
+4
+5%
+5%
+0%
+Rattata
+HG
+SS
+Grass
+2, 4
+0%
+0%
+15%
+Sentret
+HG
+SS
+Grass
+2-3
+40%
+40%
+0%
+Hoothoot
+HG
+SS
+Grass
+2-4
+0%
+0%
+85%
+Headbutt
+Group A
+Exeggcute
+HG
+SS
+Headbutt
+2-3
+20%
+Hoothoot
+HG
+SS
+Headbutt
+2-3
+50%
+Pineco
+HG
+SS
+Headbutt
+2-3
+30%
+Headbutt
+Group B
+Exeggcute
+HG
+SS
+Headbutt
+4-5
+20%
+Hoothoot
+HG
+SS
+Headbutt
+4-5
+50%
+Ledyba
+HG
+SS
+Headbutt
+4-5
+30%
+Spinarak
+HG
+SS
+Headbutt
+4-5
+30%
+Special Pokémon
+Plusle
+HG
+SS
+Hoenn Sound
+3
+20%
+Minun
+HG
+SS
+Hoenn Sound
+2-3
+20%
+Shinx
+HG
+SS
+Sinnoh Sound
+2-3
+40%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Walking Pokémon effects
+When interacting with
+walking Pokémon
+in
+HeartGold and SoulSilver
+, the Pokémon may occasionally show an
+altered response
+specific to this location.
+Games
+Pokémon
+Area
+Quote
+HG
+SS
+All
+Anywhere
+<Pokémon's name> looks like it wants to lead!
+All
+Anywhere
+<Pokémon's name> is blankly staring in this direction... Want to call its name?
+Chikorita
+Anywhere
+<Pokémon's name> is making its leaf twitch.
+<Pokémon's name> is waving its leaf around.
+Cyndaquil
+Anywhere
+<Pokémon's name> blew out a fireball.
+<Pokémon's name> blew out a couple of fireballs.
+Totodile
+Anywhere
+<Pokémon's name> is moving its jaw.
+<Pokémon's name> is opening and closing its mouth.
+In animation
+Route 29 in
+Pokémon the Series: Gold and Silver
+Pokémon the Series
+Pokémon the Series: Gold and Silver
+Route 29 first appeared in
+The Double Trouble Header
+, where
+Ash
+and
+his friends
+encountered a rookie
+Trainer
+named
+Casey
+. Ash
+battled
+her twice, first time easily defeating her with his
+Charizard
+, while the second battle, which took place at a
+baseball
+stadium, was interrupted by
+Team Rocket
+.
+The route also served as the setting of the next several episodes. In
+A Sappy Ending
+, Ash
+caught
+himself a
+Heracross
+. In
+Roll On, Pokémon!
+, the group encountered a woman named
+Rochelle
+and her
+Donphan
+, whom she used to search for
+agate
+(a fictional mineral called amberite in the
+dub
+). In
+Illusion Confusion!
+, the group met up with
+Gary
+while traversing through a forest filled with illusion-creating
+Ghost
+Pokémon. In
+The Chikorita Rescue
+, Ash encountered and caught himself a sassy
+Chikorita
+.
+Florando
+,
+Catallia City
+,
+Palm Hills
+, and
+an unnamed city
+are located on this route.
+In the manga
+Route 29 in
+Pokémon Gold & Silver: The Golden Boys
+Pokémon Gold & Silver: The Golden Boys
+Route 29 appeared in
+Let's Go! The Journey Towards The Championship
+. After winning a
+battle
+against
+Youngster
+Joey
+,
+Gold
+gave an injured
+Pidgey
+a
+Berry
+to help it recover. Just as he parted ways with Joey, Gold was attacked by
+Black
+, who had stolen a
+Chikorita
+from
+Professor Elm
+'s laboratory. When
+Gold's Totodile
+was about to lose, the Pidgey from before returned and helped to defeat Chikorita. Black then declared Gold as his
+rival
+, swearing to defeat him if they ever crossed paths again.
+Pokémon Pocket Monsters
+Route 29 was mentioned in
+A Finger Lickin' Battle!
+.
+Related articles
+Johto
+Settlements
+New Bark Town
+•
+Cherrygrove City
+•
+Violet City
+•
+Azalea Town
+•
+Goldenrod City
+•
+Ecruteak City
+Olivine City
+•
+Cianwood City
+•
+Mahogany Town
+•
+Blackthorn City
+•
+Safari Zone Gate
+•
+Frontier Access
+Routes
+29
+•
+30
+•
+31
+•
+32
+•
+33
+•
+34
+•
+35
+•
+36
+•
+37
+•
+38
+•
+39
+•
+40
+•
+41
+•
+42
+•
+43
+•
+44
+•
+45
+•
+46
+•
+47
+•
+48
+Landmarks
+Dark Cave
+•
+Sprout Tower
+•
+Ruins of Alph
+•
+Union Cave
+•
+Slowpoke Well
+•
+Ilex Forest
+•
+Radio Tower
+•
+Global Terminal
+Goldenrod Tunnel
+•
+National Park
+•
+Pokéathlon Dome
+•
+Bell Tower
+•
+Bellchime Trail
+•
+Burned Tower
+•
+Moomoo Farm
+•
+Olivine Lighthouse
+Battle Tower
+(
+Crystal
+•
+HGSS
+)/
+Frontier
+•
+Cliff Edge Gate
+•
+Cliff Cave
+•
+Embedded Tower
+•
+Safari Zone
+•
+Whirl Islands
+Mt. Mortar
+•
+Lake of Rage
+•
+Team Rocket HQ
+•
+Ice Path
+•
+Dragon's Den
+•
+S.S. Aqua
+•
+Mt. Silver
+(
+Cave
+)
+Access to
+Sinjoh Ruins
+•
+Kanto
+This article is part of
+Project Routes
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every
+route in the Pokémon world
+.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Johto_Route_29&oldid=4511456
+"

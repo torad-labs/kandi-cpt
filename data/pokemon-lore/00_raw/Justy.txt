@@ -1,0 +1,103 @@
+Title: Justy
+
+Justy (Japanese:  セイギ Seigi) is a young man who is renowned for being one of the best professional Pokémon Trainers in Orre. Justy has built up a large fan following, especially in Phenac City. For most of the young Pokémon Trainers in Phenac City, defeating Justy is the ultimate goal. He is the only character in the games to have the Trainer class PreGymLeader (Japanese: トレトレリーダー TraiTrai Leader), formatted Pre-Gym Leader and Pre Gym Leader in strategy guides.
+Justy is the leader of Phenac City's Prestige Precept Center, often referred to as the Pre Gym. however, the Prestige Precept Center isn't an official Gym as it's not sponsored by a Pokémon League and doesn't hand out a Badge to winners, so Justy lacks an official Gym Leader title. However, because Orre doesn't have a Pokémon League of its own due to the overall lack of many wild Pokémon or population, the Prestige Precept Center can be considered the an unofficial Pokémon Gym for Orre.
+In Pokémon Colosseum, Justy can be found in the Pre Gym upon Wes's first visit to Phenac City. After speaking to him, Justy will allow Wes to fight four of his students in succession. Upon completion, Justy rewards Wes with a White Herb and tells him to come back with six Pokémon. Upon returning with six Pokémon, Justy will fight Wes himself.
+In Pokémon XD: Gale of Darkness, when Michael arrives in Phenac City after visiting Realgam Tower, six identical Justys will come walking out of the Pre Gym and spread out all over the city. Finding each "Justy" will reveal them as one of the Hexagon Brothers in disguise, and each one will drop a Battle CD upon defeat in battle. The real Justy can be found locked up in the Pre Gym's basement with all of the other captured citizens. After he is rescued and Cipher has been forced out of Phenac City, Justy can be challenged in battle.
+According to one of his students, he seems to slightly favor his Nosepass over his other Pokémon.
+Unlike traditional Gym Leaders who typically specialize in one specific Pokémon type, Justy instead relies on evasion-raising moves and Abilities such as Double Team and Sand Veil.
+Justy gives out TM27 (Return) to Trainers who defeat him in Pokémon Colosseum, and in Pokémon XD, Trainers who defeat him will receive TM32 (Double Team) and a Lum Berry. He will only fight Trainers who have a complete team of six Pokémon.
+
+
+== Pokémon ==
+
+
+=== Pokémon Colosseum ===
+
+
+=== Pokémon XD: Gale of Darkness ===
+
+
+== Quotes ==
+
+
+=== Pokémon Colosseum ===
+Prestige Precept Center
+"Hello! I’m Justy. I’m in charge of running the Pre Gym. Judging by your appearance, I’d say that you’re traveling, the two of you. Well, what do you think? Since you’re already here, do you feel like having a battle?"
+If answered no*
+"Ahahaha! There’s no need for you to be shy! You’re not imposing on me! Hey, you’re here. You should try battling our trainers."
+If answered yes
+"Okay. Then let me introduce you to the trainers of Pre Gym. When you’re ready to go, go to the Battle Area in the center, and stand at the left-hand side."
+Once at the Battle Area
+"Looks like you’re ready. Well, let’s get this started. In all, you’ll be facing four trainers. They’re all a handful, I can vouch for that. And now, this is where your opponent enters!"
+After first to third Trainer defeated
+"So, what’s your plan? Do you keep chugging on with your battle challenge?"
+No: "Okay, gotcha. We’ll call it quits here this time. If you’re in the mood for battling, feel free to visit us. You’re always welcome."
+Yes: "Okay, gotcha! Let’s get the next battle started!"
+If said no earlier
+"Hello! Are you in the mood for some battling with our trainers again?"
+No: "If you’re in the mood for battling, feel free to visit us. You’re always welcome."
+Yes: "Okay, gotcha. Let’s get a battle started. When you’re ready to go, go to the Battle Area in the center, and stand at the left-hand side."
+Once at Battle Arena
+"Looks like you’re ready. Well, let’s get this started."
+"The number of trainers left for you to battle is <number>. Buck up, and keep it going!"
+After all battles are complete
+"Whoa, that was inspiring! You just showed me a great battle! It deserves a gift! I want you to have this."
+If not six in party
+"You don’t have a full party of Pokemon yet. When you get six of them, I’d like you to come see me again. That’s when I will be your opponent. I’ll be looking forward to it!"
+If six right after all battles are complete
+"Huh? What was that? You already have six Pokemon? Well, that speeds things up. All right. Do you feel like battling me?"
+No: "Oh, okay. Well, if you get in the mood for it, be sure to visit. I’ll always be waiting for you."
+Yes: "Okay, gotcha! This is making me feel sort of giddy! Okay, let’s get this battle under way! Show me a great battle!"
+If six in party after revisiting Pre Gym
+"Oh, hello! I guess you finally got your sixth Pokemon for your party. Well, then. Would you like to battle against me?"
+No: "Oh, okay. Well, if you get in the mood for it, be sure to visit. I’ll always be waiting for you."
+Yes: "Okay, gotcha! This is making me feel sort of giddy! When you’re ready to go, go to the Battle Area in the center, and stand at the left-hand side."
+"Okay, let’s get this battle under way! Show me a great battle!"
+Being defeated
+"Wha-What?"
+After being defeated
+"Wow, that was one challenging and satisfying battle. Look at this. My palms are drenched with sweat. There’s no shame in this loss! I’m one lucky guy for being a part of this spectacular battle."
+If not talked to again before leaving after defeating him
+"Oh, hey! Wait! Wait a second!"
+If talked to again
+"I’m glad that I got the opportunity to battle with you. I want you to have this. Consider it a memento of our battle!"
+"Honestly, our battle was fantastic. I will never forget the battle we had!"
+
+
+=== Pokémon XD: Gale of Darkness ===
+Prestige Precept Center
+"<player>, right? Your actions saved the city. We all owe you a big thanks!"
+"I'd like to keep in touch. May I get your P★DA number? I'll give you a call if anything comes up."
+"Thank you. I'll be in touch. I've been thinking. I think Phenac was targeted because Cipher wanted to quash rumours that were spreading in town."
+"People in the city have seen shady characters coming and going in the desert. People were talking about it."
+"According to what the people say, there's something in the desert around here."
+"You should ask around for details from the people in the city."
+After the Snag Machine is stolen
+"Hi, <player>. What happened to that machine you had on your arm?"
+"I see. This is serious, though. Losing the Snag Machine is bad news. But I'm surprised that Team Snagem still existed. What are they going to do with that Snag Machine, I wonder?"
+E-Mail
+"<player>, thanks for being so patient. The Pre Gym is finally set to reopen after the Cipher takeover bid. We are all looking forward to the opportunity of battling you, <player>."
+Prestige Precept Center
+Before battle
+"Hi, <player>. You remember my E-Mail, right? Pre Gym is finally going to reopen. <player>, I'd love to have a battle with you. Will you accept my challenge?"
+"At the Pre Gym, four Trainers and I await all challengers. First, you're required to take on the four Trainers in knockout matches. You have to beat all four of them in a row."
+"Great, let's do it! Let's get you up on the stage! Looks like you're all set. Let's get started! Okay! Let's bring out our first Trainer!"
+"Great job! The hero of Phenac gets it done! I don't see any blind spots in your battle style. I finally get the chance to face you. Shall we have our battle right away?"
+"Great, let's do it! Let's get up on stage! Are you ready? Here we come!"
+After battle
+"I knew it! You are tough. I'm not happy about losing, but I'm delighted about battling you."
+"Hahaha. It's been five years since I lost like this. I'd like you to have these as something to remember our battle by."
+"I hope you use them. I'm sure they will help you. Battling you was a very meaningful experience for me. I'm sure I'll be looking back on our battle and relishing its memory for some time. Thank you."
+
+
+== In other languages ==
+
+
+=== PreGymLeader ===
+
+
+== References ==
+
+
+== Related articles ==

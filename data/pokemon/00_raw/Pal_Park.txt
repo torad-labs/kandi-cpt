@@ -1,0 +1,965 @@
+Pal Park
+パルパーク
+Pal Park
+"A Place for New Beginnings"
+Recommended Level:
+{{{reclvl}}}
+Map description:
+This used to be the location of the Safari Zone, but is now the Pal Park.
+HG
+SS
+Location:
+Route 221
+,
+Fuchsia City
+Region:
+Sinnoh
+and
+Kanto
+Generations:
+IV
+Location of Pal Park in
+Sinnoh
+.
+Pokémon world locations
+Pal Park in Kanto
+Pal Park
+(Japanese:
+パルパーク
+Pal Park
+) is a special Pokémon preserve present in the five
+Generation IV
+core series
+games, located at the east end of
+Route 221
+in
+Sinnoh
+and in
+Fuchsia City
+in place of the
+Safari Zone
+in
+Kanto
+. In Kanto, after
+the warden
+closed the Safari Zone, his son opened Pal Park in its place.
+According to
+Professor Oak
+, Pal Park attracts Pokémon from other
+regions
+.
+In
+Pokémon Brilliant Diamond and Shining Pearl
+, Pal Park is replaced with
+Ramanas Park
+.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Accessing Pal Park
+Migration
+Manipulation
+Catching Show
+Scoring
+Rewards
+Modifications to transported Pokémon
+Met data
+Nicknames and Original Trainers
+Geography
+Lobby
+Park
+Items
+Game Boy Advance game-based gifts
+Appearance
+Outside
+Park
+Music
+Trivia
+Name origin
+In other languages
+Related articles
+Contents
+Accessing Pal Park
+In
+Diamond, Pearl
+, and
+Platinum
+, Pal Park does not open until the
+player
+has obtained the
+National Pokédex
+. Once they have it,
+Professor Oak
+will meet the player on
+Route 221
+and invite the player inside the Pal Park building, where he briefly explains how the park works. Once the player has access to Pal Park, the "Migrate from <game>" option will appear on the main menu screen when the game is loaded, provided a
+Generation III
+game is in the
+Nintendo DS
+'s second slot.
+In
+Pokémon HeartGold and SoulSilver
+, since Pal Park is located in
+Kanto
+, which the player must have the National Pokédex to visit properly, the player must have the National Pokédex to access Pal Park. After the player visits
+Fuchsia City
+for the first time, the migrate option will appear on the menu screen whenever the player has a GBA game in the Nintendo DS's GBA slot, regardless of whether they have visited Pal Park.
+Migration
+Transferring Pokémon over to
+Generation IV
+Pal Park allows the player to permanently transfer Pokémon from a Generation III core series game to a Generation IV core series game. Once a Pokémon is migrated to a Generation IV game, it can never return to a Generation III game.
+First, Pokémon must be migrated from the Generation III game. Once the player has visited Pal Park in the Generation IV game, if a Generation III core series Game Pak is inserted in the GBA slot of the same
+Nintendo DS
+or
+Nintendo DS Lite
+system as the Generation IV game, an option will appear on the Generation IV game's main menu labelled "Migrate from <game>". If the player has migrated Pokémon that have not yet been caught, they will not be able to use this option.
+When selecting the "Migrate" option, the player is presented with a stripped-down view of the Generation III game's PC on the Nintendo DS's touch screen. On the transfer screen, the player can only view the Pokémon's minisprite, species,
+nickname
+,
+level
+,
+markings
+, and
+held item
+. Pokémon that know a move that is an
+HM
+in the origin game (called "hidden moves" by the game) cannot be migrated. After selecting exactly 6 Pokémon, the game will confirm with the player that they want to send those 6 Pokémon.
+In
+Pokémon Diamond, Pearl
+, and
+Platinum
+, it is only possible to migrate 6 Pokémon to that game from a specific Generation III save file once per 24 hour period. (Like all time-based events, if the Nintendo DS clock is changed or the game is played on a different system, the timer is reset, meaning that the player must wait 24 hours from when the game is opened after changing the clock.) In
+Pokémon HeartGold and SoulSilver
+, this restriction was removed, allowing the player to perform migrations regardless of how recently they had previously done so.
+Pokémon can only be migrated if the Generation III game and Generation IV game are the same language, unless the Generation IV game is Korean. For Korean Generation IV games, because the Generation III games were not released in Korean, it is instead possible to migrate from Japanese and English language Generation III games (but not French, German, Italian, or Spanish games). Since it is possible to trade between languages in Generation III, it is possible to migrate Pokémon with a different language of origin to the Generation IV game via a Generation III game of the same language; for example, it is possible to trade a Pokémon originally met in a Japanese game to a Spanish Generation III game then migrate it to a Spanish Generation IV game.
+Manipulation
+The restrictions in Pokémon Diamond, Pearl, and Platinum to prevent the player from transferring Pokémon from each Generation III game more than once per day can be subverted in certain ways.
+If, once a Catching Show has been completed, the player turns off the game system and changes the date on the Nintendo DS to the next day, then inserts a second Generation III game, they will be instructed to reset the time on the DS. This will prevent migration from that second game, but allow the original game—that has already had six Pokémon transferred—to send Pokémon into the Generation IV game.
+Alternatively, the player can restart the save file on the Generation III game. These restrictions are only per save file, so restarting the Generation III game will allow Pokémon to be migrated from that Game Pak multiple times in the same day.
+Despite these workarounds, no further migrations can be made until all six Pokémon transferred have been caught, and changing the
+Nintendo DS
+clock or playing the game on another Nintendo DS system will delay Pal Park migration, as well as other time-related events, for 24 hours.
+Catching Show
+After the Pokémon have migrated to the Generation IV game, the Generation III game is no longer required. The migrated Pokémon can be obtained in the Generation IV game by catching all six in Pal Park's Catching Show.
+During the Catching Show, the player has to encounter and catch all six migrated Pokémon. At the start of the Catching Show, the player is given six
+Park Balls
+, a special type of Poké Ball that can only be used during the Catching Show and which never fails. Other items cannot be used during the Catching Show, not even registered key items such as the
+Bicycle
+.
+The park is divided into five distinct areas, with migrated Pokémon appearing in one of the five based on their species. Two of the areas are water areas, and require
+Surf
+to encounter Pokémon. During an encounter with a migrated Pokémon,
+Abilities that activate upon entering battle
+will not activate, and there are only two commands: Throw Ball and Run. Even if the player
+runs
+, they can still encounter the Pokémon again at a later time to catch it (in case they want to catch it in a different order for better Type Points). The player can leave the park at any time, either by walking back through the front entrance or by selecting the Retire option from the menu, but if they do then the Catching Show is annulled without being scored, and they must re-capture all migrated Pokémon on a subsequent visit.
+Each Pokémon has a rarity value that is inversely related to its catching score (see Scoring below):
+Score
+100
+90
+80
+70
+50
+30
+Rarity
+1
+3
+10
+20
+30
+50
+On any step in tall grass or water in which the player could potentially have an encounter, the game determines each migrated Pokémon that has yet to be caught and that can be found in the current area, then draws from a random sampling in which each of those Pokémon is weighted equal to its rarity value, and a fixed weight of 20 is given to the possibility of not having an encounter. For example, if the player is in the Field and still has
+Venusaur
+(score 90, rarity 3),
+Charizard
+(score 90, rarity 3), and
+Pichu
+(score 80, rarity 10) left to be caught, the total sample size will be 3 + 3 + 10 + 20 = 36, meaning the step will result in no encounter 20/36 of the time (55.6%), an encounter with Pichu 10/36 of the time (27.8%), or an encounter with Venusaur or Charizard 3/36 of the time each (8.3%). Regardless of the outcome, the player is then required to take a random number of steps between 5 and 14 before the next step that checks for a possible random encounter again.
+After the player catches all six Pokémon, the player can choose either to place all six caught Pokémon in their
+boxes
+, or to keep the Pokémon in the park for a future Catching Show. The player does not gain ownership of any Pokémon caught in the Catching Show until they choose to place the Pokémon in their boxes.
+Scoring
+In addition to transferring Pokémon from
+Generation III
+, Pal Park also has a score system that will offer rewards depending on the player's score. When Pal Park is first visited, a default high score of 2000 will be set by the player's rival (either
+Barry
+in the Sinnoh games or
+Silver
+in the Johto games, using the name the player chose for them). The score will be given at the end of the Catching Show by the Park Ranger, and is divided into three components:
+Catching Points
+A base value for each Pokémon caught. This score is included for each species in the
+List of Pokémon by Pal Park location
+page. Pokémon with higher point values also have higher rarity, and usually take longer to appear in grass or water. The maximum possible score in this component is 600, if the player has transferred six
+Mythical Pokémon
+(which requires at least two duplicates among them). If the player attempts multiple Catching Shows with the same set of six Pokémon, Catching Points will always be the same each time regardless of performance.
+Time Points
+A measure of how quickly the player tracks all six Pokémon down. This score starts from 2000 at the beginning of the show, and 2 points are subtracted every second until it reaches 0 points after 16 minutes 40 seconds. If the show takes longer than that, time points will remain 0 rather than becoming negative. As each encounter and capture animation takes some amount of time, getting the full 2000 points is not possible.
+Type Points
+A measure of type diversity. For each Pokémon caught after the first, there is a 200-point bonus if it doesn't share any types with the Pokémon caught immediately before it (so catching Pokémon in a different order may result in a different score in this component). There is also a 50-point bonus for each distinct type represented among the six Pokémon collectively, which remains the same regardless of what order they were caught in. The maximum possible score in this component is 1600, which requires that the player migrated six dual-type Pokémon that have no type overlap among them.
+The maximum score in Catching Points that can coexist with a perfect score in Type Points is 550, requiring either
+Celebi
+or
+Jirachi
+along with five dual-type Pokémon that have base catching scores of 90 and no type overlap.
+Rewards
+The Park Ranger always gives the player a
+Berry
+as a reward after a completed show; the higher the score, the rarer the Berry.
+0-3000
+3001-3299
+3300-3499
+3500-4150
+Aspear Berry
+Aguav Berry
+Bluk Berry
+Grepa Berry
+Cheri Berry
+Figy Berry
+Nanab Berry
+Hondew Berry
+Chesto Berry
+Iapapa Berry
+Lum Berry
+Kelpsy Berry
+Leppa Berry
+Mago Berry
+Pinap Berry
+Pomeg Berry
+Oran Berry
+Wiki Berry
+Razz Berry
+Qualot Berry
+Pecha Berry
+Sitrus Berry
+Tamato Berry
+Persim Berry
+Wepear Berry
+Rawst Berry
+Modifications to transported Pokémon
+Despite the player in the Generation IV game catching the Pokémon again, its
+OT
+,
+ID number
+, and
+Poké Ball
+remain the same. Migrated Pokémon retain their
+held items
+. Their
+friendship
+is reset to 70.
+Many Pokémon obtained in
+Generation III
+gained an Ability in
+Generation IV
+. Due to Ability being dependent on
+personality value
+in the Generation III and IV games, this means that some migrated Pokémon have a personality value that no longer matches their Ability—since Ability is not changed upon migration. However, because Abilities are recalculated upon
+Evolution
+in Generation IV and
+V
+, if that Pokémon evolves in a Generation IV or V game, its Ability will change to match its personality value.
+Met data
+The Pokémon's previous met location data is erased (internally, migrated Pokémon have their met location set to "Pal Park"). Migrated Pokémon display a met location based on their
+game of origin
+: Pokémon from FireRed or LeafGreen display as being met in
+Kanto
+; Pokémon from Ruby, Sapphire, or Emerald as
+Hoenn
+(even if it was caught on
+Navel Rock
+or
+Birth Island
+, which are located in
+Kanto
+); and Pokémon from Colosseum or XD as "
+distant land
+".
+A Pokémon's game of origin is the game it was originally obtained in. For Pokémon obtained as
+Eggs
+, the game of origin is determined by the game it was generated in, not the game is was hatched in; for example, a Pokémon generated in Pokémon Emerald but hatched in Pokémon FireRed will have the Pokémon FireRed player as its Original Trainer but display that it was met in Hoenn.
+The
+level
+obtained at is changed to the level arrived at.
+Due to the lack of a calendar in the Generation III games, the date obtained becomes the date it was caught in the Catching Show.
+If a Pokémon was met in a
+fateful encounter
+, this information is retained upon transfer, and becomes visible in Generation IV. In Generation III, this invisible flag is given to
+Mew
+and
+Deoxys
+met at
+Faraway Island
+and
+Birth Island
+, as well as many event Pokémon distributed after the release of
+Pokémon FireRed and LeafGreen
+. There is a met location called "Fateful Encounter" in Generation III, but this is entirely separate to the fateful encounter flag, and the met location is ignored by Pal Park; while Pokémon can have both the flag and the met location, many Pokémon have the met location but not the flag, or have the flag but a different met location.
+Nicknames and Original Trainers
+The Generation III games do not track whether or not a Pokémon is nicknamed, only what the Pokémon's current name is; in contrast, the Generation IV games explicitly mark whether a Pokémon is nicknamed or not, in order to track whether Pokémon from a different language games have nicknames. When a Pokémon is migrated to a Generation IV game, if its current name exactly matches its species name in the Generation IV game's language, it is marked as being unnicknamed, otherwise its current name is permanently treated as a nickname.
+This means that unnicknamed Pokémon traded to a game of a different language may have their original species name permanently treated as a nickname. Pokémon that are
+Japanese in origin
+always have Latin letters in their names converted to
+fullwidth
+characters, which are considered distinct from regular Latin letters, so cannot be treated as unnicknamed when migrated to a Western language Generation IV game. Since there are no Korean Generation III games (and it is not possible to enter Hangul in any Generation III game), using Pal Park in a Korean Generation IV game will always cause the transferred Pokémon to be treated as having nicknames.
+Quotation marks are transcoded to the appropriate opening and closing quotation marks for the Pokémon's language of origin, even if it has been traded to a different language game where they are displayed differently.
+In the Spanish Generation III games, some characters that normally cannot be entered by the player appear in some preset player names, and in the nicknames and Original Trainers of some
+in-game trade
+Pokémon. If a Pokémon has a nickname or
+Original Trainer
+that has one of these characters, it will be
+turned into
+a kana character instead.
+Geography
+Lobby
+Inside of Pal Park lobby
+Pal Park is a large area consisting of a large park and a small entry building. Entering the building will take the player into the lobby, where they can accept to take part in the Daily Catching Show by talking to the Park Ranger. There are two floors in the lobby. In total, there are seven people within the lobby.
+The first floor is where registration for the show takes place. One woman on the left side of the building will tell the player their highest score achieved in the Catching Show. Another woman will give the player two
+Pokétch
+apps, the Kitchen Timer and Color Changer, by showing her a
+Snorlax
+and a
+Kecleon
+, respectively.
+The second floor is accessible using the stairs on the right. There are windows overlooking the park, so that spectators can watch a Catching Show in progress. A woman on the right will gift the player one of 3
+backdrops
+and 2
+accessories
+, depending on which of the 5 Generation III games is currently inserted in the GBA slot: Ruby, Sapphire, and Emerald for the backdrops, and FireRed and LeafGreen for the accessories.
+Park
+The five different areas in Pal Park
+Main article:
+List of Pokémon by Pal Park location
+Pal Park itself is a huge park, with different terrains to suit all sorts of different Pokémon. Upon entering, the player will begin in the field area of Pal Park. This contains a large open space with large patches of
+tall grass
+, inhabited by field Pokémon. There are two patches of grass within the area, a small patch on the east, and a larger patch on the west. There are 123 Pokémon that can appear in this area. There are three different paths the player can take in order to get to another area of the park; the northwestern stairway will take the player to the forest area, the northeastern stairway will take the player through a pathway to the mountain area, and traveling east will take the player to the sea area by jumping off a ledge.
+By following the path up the far northwestern side of the park, the player will reach the forest area of Pal Park, where forest-dwelling Pokémon live. There are 74 Pokémon that can appear in this area. It is a long, narrow strip of pathway following up the far western side of the park, then it takes a right turn up in the corner of the park, and travels east until the player reaches the pond area. The path is a long, narrow, dark pathway covered by tall trees, with the ground covered all the way by
+tall grass
+. The only other way to get to and from the forest area is by traveling through the pond area.
+When the player reaches the pond area via the forest area, the player must travel a short distance east to reach the pond, a pool of water, able to be
+surfed
+across, where all the wild Pokémon inhabit. There are 37 Pokémon that can appear in this area. If the player travels south while getting there, they will find a ledge going down into the mountain area. Once entering the square pond to find Pokémon, they can go south to reach dry land, where they can also climb up and down stairs on the steep mountainside to reach the sea area. Alternatively, the player can enter from the sea area by traveling north through part of the mountain area to reach the southern part of the waterside, where the player can
+surf
+across the light water to the other side. There is no other way of getting to the pond in the northeastern corner.
+The mountain area is located in the middle of a mountainside, in the center of Pal Park. It can be accessed by jumping a ledge in the pond area just north of there, or going through a little forest pathway from the field area. The mountain area has a small patch of grass, where the player can find wild Pokémon. There are 105 Pokémon that can appear in this area. Most of this area is covered with grass, while only a small part of it isn't. There is also a ledge the player can jump down to reach the sea area. This is the only way to leave the area apart from turning back to the field area.
+The final area in the park, known as the sea area, is found in the southeastern corner of the park. It can be accessed by going east from the field area, or south from the mountain area, by jumping down the ledge and going down the mountainside. The sea area makes up a large section of the park, with a large area of sea coming in from the west. When the player enters from the mountain or pond area, there is a large ledge to a sandy beach where the sea meets the land. The area also has rocky terrain, with many rocks on the beach and in the water blocking the way, so that the player cannot travel any further east past the mountain side. By
+surfing
+across the deep blue water, the player can encounter many different types of wild sea Pokémon. In total, there are 47 Pokémon that can appear in this area. If the player goes west past another set of ledges, they will end up back on the eastern side of the field area where they began, making a big loop.
+Although it is a West Sinnoh location in Diamond, Pearl, and Platinum, it uses East Sinnoh trees. Similarly, it is a
+Kanto
+location in HeartGold and SoulSilver but it uses
+Johto
+trees and rocks.
+Items
+Item
+Location
+Games
+Trainer Counter
+Given by
+Professor Oak
+upon entering Pal Park
+D
+P
+Pt
+Park Ball
+×6
+Given by the Park Ranger to capture the six Pokémon in the Catching Show; cannot be kept afterwards
+D
+P
+Pt
+HG
+SS
+Kitchen Timer
+Given by a woman in the lobby after showing her a
+Snorlax
+D
+P
+Pt
+Color Changer
+Given by a woman in the lobby after showing her a
+Kecleon
+D
+P
+Pt
+Game Boy Advance game-based gifts
+There is a girl in the Pal Park lobby who will give the player a gift based on the game currently in the
+Game Boy Advance
+slot of the
+Nintendo DS
+system. Like the
+dongle method
+, the language of the game is ignored; this means that she can give the player the gift even if that game could not migrate Pokémon to Pal Park.
+Item
+Location
+Games
+Crown
+Given by a girl in the lobby if
+Pokémon FireRed
+is in the GBA slot
+D
+P
+Pt
+HG
+SS
+Tiara
+Given by a girl in the lobby if
+Pokémon LeafGreen
+is in the GBA slot
+D
+P
+Pt
+HG
+SS
+Underground
+Given by a girl in the lobby if
+Pokémon Ruby
+is in the GBA slot
+D
+P
+Pt
+HG
+SS
+Seafloor
+Given by a girl in the lobby if
+Pokémon Sapphire
+is in the GBA slot
+D
+P
+Pt
+HG
+SS
+Sky
+Given by a girl in the lobby if
+Pokémon Emerald
+is in the GBA slot
+D
+P
+Pt
+HG
+SS
+Appearance
+Outside
+Diamond
+Pearl
+Platinum
+HeartGold
+SoulSilver
+Park
+Diamond
+Pearl
+Platinum
+HeartGold
+SoulSilver
+Music
+The Pal Park shares its background music with the resident
+Safari Zones
+in the games it appears in; using that of
+Johto
+Safari Zone
+in
+HeartGold and SoulSilver
+, and using that of the
+Great Marsh
+in
+Diamond, Pearl
+, and
+Platinum
+. This is somewhat fitting considering it replaces the
+Kanto
+Safari Zone
+in HeartGold and SoulSilver, though the Kanto Safari Zone's theme is the same as the
+trading
+and
+Evolution
+theme.
+Trivia
+In the internal data of the
+Generation V
+games, the theme of the
+Poké Transfer Lab
+, which is titled the same in
+the soundtrack release
+of
+Pokémon Black and White
+, is called
+SEQ_BGM_PALPARK
+. This is a reference to it being the generation's equivalent to the Pal Park of the
+Generation IV
+games.
+Prior to the release of Pokémon Platinum, Pal Park was the only way to obtain
+Tangela
+(and thus its Generation IV
+Evolution
+Tangrowth
+),
+Tropius
+, the
+legendary birds
+, and the
+legendary giants
+in the Generation IV games. Prior to the release of Pokémon HeartGold and SoulSilver, Pal Park was the only way to obtain
+first partner Pokémon
+introduced before Generation IV,
+Mewtwo
+,
+Ho-Oh
+and
+Lugia
+, the
+super-ancient Pokémon
+, and the
+eon duo
+.
+Prior to the 2007
+PalCity Mew
+distribution, the 2010 Japanese
+Movie Celebi
+distribution, the
+2007 Tanabata Jirachi
+distribution, and the 2007 Japanese
+10th Movie Deoxys
+distribution, Pal Park was the only way to obtain
+Mew
+,
+Celebi
+,
+Jirachi
+, and
+Deoxys
+in the Generation IV games, respectively.
+Some Pokémon, such as
+Regice
+, which are only obtainable via an event in Generation IV, can be obtained without one in Generation III.
+Some items can only be obtained in Generation IV through Pal Park.
+If a Pokémon transferred from Ruby or Sapphire is holding a
+Berry
+only available via a
+Pokémon Battle e
+e-Reader
+card, it will become an
+Enigma Berry
+.
+Name origin
+The English and Japanese names are based on the word "pal", an affectionate term for a friend. Other language versions use a similar naming style, although the German- and French-language versions are less colloquial and translate to
+Park of (the) Friends
+.
+In other languages
+Language
+Title
+Chinese
+Cantonese
+夥伴公園
+Fóbuhn Gūngyùhn
+Mandarin
+夥伴公園 / 伙伴公园
+Huǒbàn Gōngyuán
+French
+Canada
+Pal Park
+*
+Europe
+Parc des Amis
+German
+Park der Freunde
+Italian
+Parco Amici
+Korean
+팔파크
+Pal Park
+Portuguese
+Brazil
+Pal Park
+Portugal
+Parque de Amigos
+*
+Spanish
+Latin America
+Comparque
+Spain
+Parque Compi
+Related articles
+List of Pokémon by Pal Park location
+Inter-generational transfer
+Gen I
+Time Capsule
+•
+Poké Transporter
+→
+Bank
+→
+HOME
+Gen II
+Gen III
+Dual-slot mode
+→
+Pal Park
+•
+HOME
+Gen IV
+Dual-slot mode
+→
+Pal Park
+•
+Poké Transfer
+•
+Relocator
+Gen V
+Poké Transfer
+•
+Relocator
+•
+Poké Transporter
+→
+Bank
+Gen VI
+Poké Transporter
+→
+Bank
+Gen VII
+Poké Transporter
+→
+Bank
+•
+GO Park
+•
+HOME
+Gen VIII
+Bank
+→
+HOME
+•
+GO Transporter
+Gen IX
+Sinnoh
+Settlements
+Twinleaf Town
+•
+Sandgem Town
+•
+Jubilife City
+•
+Oreburgh City
+•
+Floaroma Town
+•
+Eterna City
+•
+Hearthome City
+Solaceon Town
+•
+Veilstone City
+•
+Pastoria City
+•
+Celestic Town
+•
+Canalave City
+•
+Snowpoint City
+•
+Sunyshore City
+Pokémon League
+•
+Fight Area
+•
+Survival Area
+•
+Resort Area
+Routes
+201
+•
+202
+•
+203
+•
+204
+•
+205
+•
+206
+•
+207
+•
+208
+•
+209
+•
+210
+•
+211
+•
+212
+•
+213
+•
+214
+•
+215
+216
+•
+217
+•
+218
+•
+219
+•
+220
+•
+221
+•
+222
+•
+223
+•
+224
+•
+225
+•
+226
+•
+227
+•
+228
+•
+229
+•
+230
+Landmarks
+Lake Verity
+(
+Lakefront
+) •
+Oreburgh Gate
+•
+Oreburgh Mine
+•
+Oreburgh Mining Museum
+Global Terminal
+/
+Global Wonder Station
+•
+Ravaged Path
+•
+Floaroma Meadow
+•
+Valley Windworks
+•
+Eterna Forest
+Old Chateau
+•
+Underground
+/
+Grand Underground
+•
+Wayward Cave
+•
+Mount Coronet
+•
+Amity Square
+•
+Lost Tower
+Hallowed Tower
+•
+Solaceon Ruins
+•
+Maniac Tunnel
+•
+Lake Valor
+(
+Lakefront
+) •
+Great Marsh
+•
+Pokémon Mansion
+Trophy Garden
+•
+Fuego Ironworks
+•
+Iron Island
+•
+Lake Acuity
+(
+Lakefront
+) •
+Spear Pillar
+•
+Victory Road
+Pal Park
+/
+Ramanas Park
+•
+Contest Hall
+•
+Battle Zone
+•
+Battle Park
+•
+Battle Tower
+/
+Battle Frontier
+•
+Stark Mountain
+Snowpoint Temple
+•
+Spring Path
+•
+Sendoff Spring
+•
+Turnback Cave
+•
+Fullmoon Island
+Newmoon Island
+•
+Seabreak Path
+•
+Flower Paradise
+•
+Hall of Origin
+Access to
+Distortion World
+See also
+Hisui
+Kanto
+Settlements
+Pallet Town
+•
+Viridian City
+•
+Pewter City
+•
+Cerulean City
+•
+Vermilion City
+•
+Lavender Town
+Celadon City
+•
+Saffron City
+•
+Fuchsia City
+•
+Cinnabar Island
+•
+Indigo Plateau
+Routes
+1
+•
+2
+•
+3
+•
+4
+•
+5
+•
+6
+•
+7
+•
+8
+•
+9
+•
+10
+•
+11
+•
+12
+•
+13
+•
+14
+•
+15
+•
+16
+•
+17
+•
+18
+•
+19
+•
+20
+•
+21
+•
+22
+•
+23
+•
+24
+•
+25
+•
+26
+•
+27
+•
+28
+Landmarks
+Professor Oak's Laboratory
+•
+Viridian Forest
+•
+Diglett's Cave
+•
+Pewter Museum of Science
+•
+Mt. Moon
+(
+Square
+) •
+Cerulean Cave
+Underground Path (Kanto Routes 5–6)
+•
+Underground Path (Kanto Routes 7–8)
+•
+S.S. Anne
+•
+S.S. Aqua
+•
+Sea Cottage
+•
+Rock Tunnel
+Power Plant
+•
+Cycling Road/Pokémon Road
+•
+Team Rocket Hideout
+•
+Silph Co.
+•
+Magnet Train
+•
+Pokémon Tower
+•
+Safari Zone
+/
+Pal Park
+GO Park
+•
+Seafoam Islands
+•
+Pokémon Mansion
+•
+Cinnabar Lab
+•
+Pokémon League Reception Gate
+•
+Victory Road
+•
+Tohjo Falls
+Access to
+Sevii Islands
+•
+Johto
+This article is part of
+Project Locations
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every location in the Pokémon world.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Pal_Park&oldid=4541362
+"

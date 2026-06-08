@@ -165,6 +165,7 @@ relations:
   min_active_types: 6            # at least this many DISTINCT relation_types must be present (VC1 had 8, but 4 GOLD types absent)
   taxonomy:
     artist_to_stage:            { needs: [],                              floor_frac: 0.10, target_frac: 0.35 }
+    in_lineup:                  { needs: [in_lineup_source],              floor_frac: 0.05 }
     set_time:                   { needs: [set_times.jsonl],               floor_frac: 0.03 }
     disjoint_context:           { needs: [festival_meta.confusable_groups], floor_frac: 0.02 }
     day_of_week_map:            { needs: [festival_meta.days],            floor_frac: 0.002 }
@@ -205,3 +206,6 @@ quality:
       # content probe: b2b_pairing's source is a B2B billing in the lineup (e.g. "Shimon B2B Benny L"); an
       # edition with one but no b2b_pairing line is a DEFECT, an edition with none is a SOURCE GAP.
       b2b_billing:                     "15_structured/entities.jsonl~B2B"
+      # content probe: in_lineup (stageless lineup membership) is expected only where in_lineup triples
+      # exist — the gold uses stage-level plays_at, so it has none → in_lineup is a SOURCE GAP there, not a defect.
+      in_lineup_source:                "15_structured/triples.jsonl~in_lineup"

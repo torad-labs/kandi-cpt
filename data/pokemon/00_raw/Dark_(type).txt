@@ -1,0 +1,2015 @@
+If you were looking for the moves known as Dark moves in Japanese, see
+Shadow move
+.
+If you were looking for the Pokémon surrounded by Dark Auras in Colosseum and XD: Gale of Darkness, see
+Shadow Pokémon
+.
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Dark type
+(Japanese:
+あくタイプ
+Evil type
+) is one of the eighteen
+types
+. It was introduced in
+Generation II
+, along with the
+Steel
+type. As well as introducing new
+Pokémon
+and
+moves
+with the Dark type, one move was changed to be the Dark type. Dark-type moves are super effective against
+Ghost
+- and
+Psychic-type
+Pokémon, while Dark-type Pokémon are weak to
+Bug
+-,
+Fairy
+-, and
+Fighting-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Dark-type Pokémon
+Half Dark-type Pokémon
+Primary Dark-type Pokémon
+Secondary Dark-type Pokémon
+Non-Pokémon opponents
+Moves
+Changed types
+Abilities
+Interacting with the Dark type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Dark-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Dark-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Ghost
+Psychic
+Fighting
+Dark
+Fairy
+None
+Defensive properties of
+Dark-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Fighting
+Bug
+Fairy
+Ghost
+Dark
+Psychic
+In
+Generations II
+-
+V
+, Dark-type moves were not very effective against
+Steel-type
+Pokémon
+.
+The
+Fairy
+type was introduced in
+Generation VI
+.
+Additional effects
+If the target is under the effect of the
+move
+Miracle Eye
+,
+Psychic-type
+moves will deal ×1 damage to Dark-type Pokémon.
+As of
+Generation VII
+, Dark-type Pokémon are immune to opposing Pokémon's moves that gain
+priority
+due to the
+Ability
+Prankster
+; this includes moves called by
+other moves
+(such as
+Assist
+and
+Nature Power
+), but not moves indirectly caused by
+Instruct
+or
+After You
+.
+Pokémon
+As of
+Generation IX
+, 84
+Pokémon
+are Dark-type (counting those that are Dark-type in at least one of their
+forms
+, including
+Mega Evolutions
+and
+regional forms
+), which makes up 8.17% of all Pokémon, making it the 9th rarest
+type
+after
+Steel
+and before
+Fighting
+. After the introduction of
+Lokix
+, all other types have been paired up with Dark at least once, making it the fourth type to have this trait after
+Flying
+,
+Water
+, and
+Psychic
+.
+Pure Dark-type Pokémon
+#
+Name
+0052
+Alolan
+Meowth
+0053
+Alolan
+Persian
+0197
+Umbreon
+0261
+Poochyena
+0262
+Mightyena
+0359
+Absol
+Mega
+Absol
+0491
+Darkrai
+Mega
+Darkrai
+0493
+Arceus
+(
+Dark-type
+)
+0509
+Purrloin
+0510
+Liepard
+0570
+Zorua
+0571
+Zoroark
+0773
+Silvally
+(
+Type: Dark
+)
+0827
+Nickit
+0828
+Thievul
+0942
+Maschiff
+0943
+Mabosstiff
+Half Dark-type Pokémon
+Primary Dark-type Pokémon
+#
+Name
+Type 1
+Type 2
+0019
+Alolan
+Rattata
+Dark
+Normal
+0020
+Alolan
+Raticate
+Dark
+Normal
+0146
+Moltres
+Galarian Form
+Dark
+Flying
+0198
+Murkrow
+Dark
+Flying
+0211
+Hisuian
+Qwilfish
+Dark
+Poison
+0215
+Sneasel
+Dark
+Ice
+0228
+Houndour
+Dark
+Fire
+0229
+Houndoom
+Dark
+Fire
+Mega
+Houndoom
+Dark
+Fire
+0263
+Galarian
+Zigzagoon
+Dark
+Normal
+0264
+Galarian
+Linoone
+Dark
+Normal
+0302
+Sableye
+Dark
+Ghost
+Mega
+Sableye
+Dark
+Ghost
+0359
+Mega
+Absol
+Z
+Dark
+Ghost
+0430
+Honchkrow
+Dark
+Flying
+0461
+Weavile
+Dark
+Ice
+0559
+Scraggy
+Dark
+Fighting
+0560
+Scrafty
+Dark
+Fighting
+Mega
+Scrafty
+Dark
+Fighting
+0624
+Pawniard
+Dark
+Steel
+0625
+Bisharp
+Dark
+Steel
+0629
+Vullaby
+Dark
+Flying
+0630
+Mandibuzz
+Dark
+Flying
+0633
+Deino
+Dark
+Dragon
+0634
+Zweilous
+Dark
+Dragon
+0635
+Hydreigon
+Dark
+Dragon
+0686
+Inkay
+Dark
+Psychic
+0687
+Malamar
+Dark
+Psychic
+Mega
+Malamar
+Dark
+Psychic
+0717
+Yveltal
+Dark
+Flying
+0799
+Guzzlord
+Dark
+Dragon
+0859
+Impidimp
+Dark
+Fairy
+0860
+Morgrem
+Dark
+Fairy
+0861
+Grimmsnarl
+Dark
+Fairy
+Gigantamax
+Grimmsnarl
+Dark
+Fairy
+0862
+Obstagoon
+Dark
+Normal
+0893
+Zarude
+Dark
+Grass
+0904
+Overqwil
+Dark
+Poison
+0983
+Kingambit
+Dark
+Steel
+0993
+Iron Jugulis
+Dark
+Flying
+1001
+Wo-Chien
+Dark
+Grass
+1002
+Chien-Pao
+Dark
+Ice
+1003
+Ting-Lu
+Dark
+Ground
+1004
+Chi-Yu
+Dark
+Fire
+Secondary Dark-type Pokémon
+#
+Name
+Type 1
+Type 2
+0088
+Alolan
+Grimer
+Poison
+Dark
+0089
+Alolan
+Muk
+Poison
+Dark
+0130
+Mega
+Gyarados
+Water
+Dark
+0248
+Tyranitar
+Rock
+Dark
+Mega
+Tyranitar
+Rock
+Dark
+0274
+Nuzleaf
+Grass
+Dark
+0275
+Shiftry
+Grass
+Dark
+0318
+Carvanha
+Water
+Dark
+0319
+Sharpedo
+Water
+Dark
+Mega
+Sharpedo
+Water
+Dark
+0332
+Cacturne
+Grass
+Dark
+0342
+Crawdaunt
+Water
+Dark
+0434
+Stunky
+Poison
+Dark
+0435
+Skuntank
+Poison
+Dark
+0442
+Spiritomb
+Ghost
+Dark
+0452
+Drapion
+Poison
+Dark
+0503
+Hisuian
+Samurott
+Water
+Dark
+0551
+Sandile
+Ground
+Dark
+0552
+Krokorok
+Ground
+Dark
+0553
+Krookodile
+Ground
+Dark
+0658
+Greninja
+Water
+Dark
+Ash-
+Greninja
+Water
+Dark
+Mega
+Greninja
+Water
+Dark
+0675
+Pangoro
+Fighting
+Dark
+0720
+Hoopa
+Unbound
+Psychic
+Dark
+0727
+Incineroar
+Fire
+Dark
+0877
+Morpeko
+(
+Full Belly Mode
+)
+Electric
+Dark
+Morpeko
+(
+Hangry Mode
+)
+Electric
+Dark
+0892
+Urshifu
+(
+Single Strike Style
+)
+Fighting
+Dark
+Gigantamax
+Urshifu
+(
+Single Strike Style
+)
+Fighting
+Dark
+0908
+Meowscarada
+Grass
+Dark
+0920
+Lokix
+Bug
+Dark
+0962
+Bombirdier
+Flying
+Dark
+0986
+Brute Bonnet
+Grass
+Dark
+1005
+Roaring Moon
+Dragon
+Dark
+Non-Pokémon opponents
+Some opponents featured in
+Pokéstar Studios
+in
+Pokémon Black 2 and White 2
+can be
+battled
+like
+Pokémon
+and have designated
+types
+. The
+Starmobiles
+featured in
+Pokémon Scarlet and Violet
+also share this property.
+Brycen-Man
+Dark
+Psychic
+Levitate
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+100
+100
+100
+100
+100
+100
+Majin
+Dark
+Ghost
+Wonder Guard
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+100
+100
+100
+100
+100
+100
+Monster
+Dark
+Pressure
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+100
+100
+100
+100
+100
+100
+Segin Starmobile
+Dark
+Intimidate
+Serious
+Nature
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+160
+36
+47
+35
+38
+129
+The stats shown for Starmobile are the exact
+stats
+, not
+base stats
+. The values are custom set rather than derived from base stats,
+level
+,
+Nature
+,
+IVs
+, and
+EVs
+.
+Moves
+As of
+Generation IX
+, there are 53 Dark-type
+moves
+, which makes up 5.67% of all moves (excluding those that are Dark-type only under certain circumstances), causing it to tie with
+Water
+as the 5th most common
+type
+among moves after
+Fighting
+and before
+Electric
+.
+Prior to
+changes in Generation IV
+, all damaging Dark-type moves were
+special
+, but they may now also be
+physical
+depending on the attack.
+Some moves
+have had their types changed.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+IV
+Assurance
+Physical
+Clever
+060
+60
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This move's power is doubled if the target has already taken some damage in the same turn.
+VII
+Baddy Bad
+Special
+080
+80
+095
+95
+%
+15
+15
+(max 24)
+Normal
+The user acts bad and attacks the target. A wondrous wall of light is put up to weaken the power of the opposing Pokémon’s physical moves.
+II
+Beat Up
+Physical
+Clever
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user gets all party Pokémon to attack the target. The more party Pokémon, the greater the number of attacks.
+I
+Bite
+Physical
+Tough
+060
+60
+100
+100
+%
+25
+25
+(max 40)
+Normal
+The target is bitten with viciously sharp fangs. This may also make the target flinch.
+VII
+Black Hole Eclipse
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user gathers dark energy using its Z-Power and sucks the target into it. The power varies, depending on the original move.
+VII
+Black Hole Eclipse
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user gathers dark energy using its Z-Power and sucks the target into it. The power varies, depending on the original move.
+VII
+Brutal Swing
+Physical
+060
+60
+100
+100
+%
+20
+20
+(max 32)
+All Others
+The user swings its body around violently to inflict damage on everything in its vicinity.
+VIII
+Ceaseless Edge
+Physical
+065
+65
+090
+90
+%
+15
+15
+(max 24)
+Normal
+The user slashes its shell blade at the target, aiming to land a critical hit. Shell splinters left behind by this attack remain scattered under the target as spikes.
+IX
+Comeuppance
+Physical
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Varies
+The user retaliates with much greater force against the opponent that last inflicted damage on it.
+II
+Crunch
+Physical
+Tough
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user crunches up the target with sharp fangs. This may also lower the target's Defense stat.
+IV
+Dark Pulse
+Special
+Cool
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal (long-range)
+The user releases a horrible aura imbued with ill intent. This may also make the target flinch.
+IV
+Dark Void
+Status
+Clever
+000
+—
+050
+50
+%
+10
+10
+(max 16)
+Many Others
+Opposing Pokémon are dragged into a world of total darkness that puts them to sleep.
+VII
+Darkest Lariat
+Physical
+085
+85
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user swings both arms and hits the target. The target's stat changes don't affect the damage inflicted by this move.
+IV
+Embargo
+Status
+Clever
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+This move prevents the target from using its held item for five turns. Its Trainer is also prevented from using items on it.
+III
+Fake Tears
+Status
+Cute
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user feigns crying to fluster the target. This harshly lowers the target's Sp. Def stat.
+VIII
+False Surrender
+Physical
+080
+80
+000
+—
+%
+10
+10
+(max 16)
+Normal
+The user pretends to bow its head, but then it stabs the target with its disheveled hair. This attack never misses.
+II
+Feint Attack
+Physical
+Clever
+060
+60
+000
+—
+%
+20
+20
+(max 32)
+Normal
+The user approaches the target disarmingly, then throws a sucker punch. This attack never misses.
+VIII
+Fiery Wrath
+Special
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Many Others
+The user transforms its wrath into a fire-like aura to attack. This may also make opposing Pokémon flinch.
+III
+Flatter
+Status
+Clever
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+Flattery is used to confuse the target. However, this also boosts the target's Sp. Atk stat.
+IV
+Fling
+Physical
+Cute
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user flings its held item at the target to attack. This move's power and effects depend on the item.
+V
+Foul Play
+Physical
+Clever
+095
+95
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user turns the target's strength against it. The higher the target's Attack stat, the greater the damage this move inflicts.
+VIII
+G-Max One Blow
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dark-type attack that Gigantamax Urshifu use. This single-strike move can ignore Max Guard.
+VIII
+G-Max One Blow
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dark-type attack that Gigantamax Urshifu use. This single-strike move can ignore Max Guard.
+VIII
+G-Max Snooze
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dark-type attack that Gigantamax Grimmsnarl use. The user lets loose a huge yawn that lulls the targets into falling asleep on the next turn.
+VIII
+G-Max Snooze
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dark-type attack that Gigantamax Grimmsnarl use. The user lets loose a huge yawn that lulls the targets into falling asleep on the next turn.
+V
+Hone Claws
+Status
+Cute
+000
+—
+000
+—
+%
+15
+15
+(max 24)
+Self
+The user sharpens its claws to boost its Attack stat and accuracy.
+VI
+Hyperspace Fury
+Physical
+Tough
+100
+100
+000
+—
+%
+05
+5
+(max 8)
+Normal
+Using its many arms, the user unleashes a barrage of attacks that ignore the effects of moves like Protect and Detect. This also lowers the user's Defense stat.
+VIII
+Jaw Lock
+Physical
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This move prevents the user and the target from switching out until either of them faints. The effect goes away if either of the Pokémon leaves the field.
+III
+Knock Off
+Physical
+Clever
+065
+65
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user slaps down the target's held item, making it unusable for that battle. This move does more damage if the target has a held item.
+IX
+Kowtow Cleave
+Physical
+085
+85
+000
+—
+%
+10
+10
+(max 16)
+Normal
+The user slashes at the target after kowtowing to make the target let down its guard. This attack never misses.
+VIII
+Lash Out
+Physical
+075
+75
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user lashes out to vent its frustration toward the target. This move's power is doubled if the user's stats were lowered during this turn.
+VII
+Malicious Moonsault
+Physical
+180
+180
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user, Incineroar, strengthens its body using its Z-Power and crashes into the target with full force.
+VIII
+Max Darkness
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Dark-type attack Dynamax Pokémon use. This lowers the target's Sp. Def stat.
+VIII
+Max Darkness
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Dark-type attack Dynamax Pokémon use. This lowers the target's Sp. Def stat.
+III
+Memento
+Status
+Tough
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user faints. In return, the target's Attack and Sp. Atk stats are harshly lowered.
+IV
+Nasty Plot
+Status
+Clever
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user stimulates its brain by thinking bad thoughts. This sharply boosts the user's Sp. Atk stat.
+V
+Night Daze
+Special
+Cool
+085
+85
+095
+95
+%
+10
+10
+(max 16)
+Normal
+The user looses a pitch-black shock wave at the target to inflict damage. This may also lower the target's accuracy.
+IV
+Night Slash
+Physical
+Cool
+070
+70
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user slashes the target the instant an opportunity arises. This move has a heightened chance of landing a critical hit.
+VIII
+Obstruct
+Status
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Self
+This move enables the user to protect itself from all attacks. Its chance of failing rises if used in succession. Direct contact harshly lowers the attacker's Defense stat.
+VI
+Parting Shot
+Status
+Cool
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+With a parting threat, the user lowers the target's Attack and Sp. Atk stats. Then it switches places with a party Pokémon in waiting.
+IV
+Payback
+Physical
+Tough
+050
+50
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user stores power, then attacks. This move's power is doubled if the user moves after the target.
+VII
+Power Trip
+Physical
+020
+20
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user boasts its strength and attacks the target. The more the user's stats are boosted, the greater the move's power.
+IV
+Punishment
+Physical
+Cool
+000
+—
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The more the target has powered up with stat changes, the greater the move's power.
+II
+Pursuit
+Physical
+Clever
+040
+40
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The power of this attack move is doubled if it's used on a target that's switching out of battle.
+V
+Quash
+Status
+Clever
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user suppresses the target and makes its move go last.
+IX
+Ruination
+Special
+000
+—
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user summons a ruinous disaster. This cuts the target's HP in half.
+V
+Snarl
+Special
+Tough
+055
+55
+095
+95
+%
+15
+15
+(max 24)
+Many Others
+The user yells as if it's ranting about something, which lowers the Sp. Atk stats of opposing Pokémon.
+III
+Snatch
+Status
+Clever
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Self
+The user steals the effects of any attempts to use a healing or stat-changing move.
+IV
+Sucker Punch
+Physical
+Clever
+070
+70
+100
+100
+%
+05
+5
+(max 8)
+Normal
+This move enables the user to attack first. This move fails if the target is not readying an attack.
+IV
+Switcheroo
+Status
+Clever
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user trades held items with the target faster than the eye can follow.
+III
+Taunt
+Status
+Clever
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The target is taunted into a rage that allows it to use only attack moves for three turns.
+II
+Thief
+Physical
+Tough
+060
+60
+100
+100
+%
+25
+25
+(max 40)
+Normal
+The user attacks and steals the target's held item simultaneously. The user can't steal anything if it already holds an item.
+VII
+Throat Chop
+Physical
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks the target's throat, and the resultant suffering prevents the target from using sound-based moves for two turns.
+VI
+Topsy-Turvy
+Status
+Clever
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Normal
+All stat changes affecting the target turn topsy-turvy and become the opposite of what they were.
+III
+Torment
+Status
+Tough
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user torments and enrages the target, making it incapable of using the same move twice in a row.
+VIII
+Wicked Blow
+Physical
+075
+75
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user, having mastered the Dark style, strikes the target with a fierce blow. This move always lands a critical hit.
+IX
+Wicked Torque
+Physical
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This move is only used by a
+Starmobile
+. It may cause the opponent to fall asleep.
+*
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Changed types
+The following moves have had their type changed into Dark.
+Move
+Original type
+New type
+Bite
+Gen I
+Normal
+Gen II+
+Dark
+Abilities
+Interacting with the Dark type
+A Pokémon with
+Protean
+or
+Libero
+will become a Dark-type Pokémon if it uses a Dark-type move. A Pokémon with
+Color Change
+will become a Dark-type Pokémon if it is hit with a Dark-type move.
+Since Generation VII, Dark-type Pokémon are also immune to opposing Pokémon's moves that gain priority due to
+Prankster
+.
+Gen
+Ability
+Description
+VI
+Dark Aura
+Powers up the Dark-type moves of all Pokémon on the field.
+V
+Justified
+When the Pokémon is hit by a Dark-type attack, its Attack stat is boosted by its sense of justice.
+V
+Rattled
+The Pokémon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Currently, no Abilities are exclusive to Dark types. This does not include
+signature Abilities
+.
+Items
+Name
+Description
+Black Glasses
+An item to be held by a Pokémon. It's a pair of shady-looking glasses that boost the power of the holder's Dark-type moves.
+Colbur Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Dark-type move, the power of that move will be weakened.
+Dark Gem
+A
+gem
+with an essence of darkness. When held, it strengthens the power of a Dark-type move one time.
+Dark Memory
+A
+memory
+disc that contains Dark-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Dark Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Darkinium Z
+This is a crystallized form of Z-Power. It upgrades Dark-type moves to
+Z-Moves
+.
+Dread Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of darkness and boosts the power of the holder’s Dark-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Iapapa Berry
+Spelon Berry
+Colbur Berry
+Rowap Berry
+Maranga Berry
+Cram-o-matic
+Name
+Binding Band
+Black Apricorn
+Blunder Policy
+Dubious Disc
+Iapapa Berry
+Maranga Berry
+Razor Claw
+Ring Target
+Rowap Berry
+Scope Lens
+Weakness Policy
+Wide Lens
+Zoom Lens
+Notable Dark-type Trainers
+Main article:
+Category:Dark-type Trainers
+Gen
+Trainer
+Title
+Location
+II
+Karen
+Elite Four
+Indigo Plateau
+III
+Sidney
+Elite Four
+Hoenn Pokémon League
+V
+Grimsley
+Elite Four
+B
+W
+B2
+W2
+Pokémon Trainer
+S
+M
+US
+UM
+Unova Pokémon League
+B
+W
+B2
+W2
+V
+Brycen-Man
+Masked Man
+Pokéstar Studios
+VII
+Nanu
+Island kahuna
+Ula'ula Island
+VIII
+Marnie
+Pokémon Trainer
+Gym Leader
+Spikemuth
+VIII
+Piers
+Gym Leader
+Pokémon Trainer
+Spikemuth
+IX
+Giacomo
+Team Star
+Segin Squad's Base
+Icons
+Core series
+Icon from
+Pokémon Ruby, Sapphire
+, and
+Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+75.78
+Attack:
+96.72
+Defense:
+74.15
+Sp.Atk:
+77.07
+Sp.Def:
+73.61
+Speed:
+80.16
+Total:
+477.49
+Fully evolved
+Stat
+HP:
+84.88
+Attack:
+108.66
+Defense:
+84.48
+Sp.Atk:
+88.39
+Sp.Def:
+84.28
+Speed:
+86.69
+Total:
+537.38
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Dark-type Pokémon will gather
+Wiki Berries
+, and typically have the Dozing
+sleep type
+.
+The following is a list of Dark-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0197
+Umbreon
+Dozing
+0198
+Murkrow
+Dozing
+0215
+Sneasel
+Dozing
+0228
+Houndour
+Dozing
+0229
+Houndoom
+Dozing
+0248
+Tyranitar
+Dozing
+0302
+Sableye
+Dozing
+0359
+Absol
+Dozing
+0430
+Honchkrow
+Dozing
+0442
+Spiritomb
+Dozing
+0461
+Weavile
+Dozing
+0491
+Darkrai
+Dozing
+0908
+Meowscarada
+Dozing
+In the TCG
+Main article:
+Darkness (TCG)
+The Darkness type was first introduced in the
+Neo Genesis
+set. Due to the decreased amount of types in the TCG, Darkness generally adopts all
+Poison-type
+Pokémon under its typing (from
+Sword & Shield
+onward).
+Darkness-type Pokémon in the TCG are generally weak to
+Fighting
+and
+Grass
+, with resistances to
+Psychic
+. Darkness-type Pokémon are generally strong against
+Psychic
+, whilst
+Fairy
+Pokémon can resist this type.
+Trivia
+Generation V
+introduced the most Dark-type Pokémon of any
+generation
+, with 16, while
+Generation II
+and
+Generation VI
+introduced the fewest since the introduction of the type, with six.
+Should
+regional forms
+not be counted,
+Generation VII
+introduced the fewest, with three (counting
+Silvally
+holding the
+Dark Memory
+).
+If all generations are counted,
+Generation I
+introduced the fewest, with no Pokémon having the type.
+Generation IV
+and
+Generation VIII
+introduced the most Dark-type moves of any generation, with 11 each, and
+Generation VI
+introduced the fewest (excluding Generation I) Dark-type moves, with three.
+In
+Generation II
+, the Dark type saw one type change in a move (
+Bite
+), but no change in a Pokémon. The opposite is true for the
+Steel
+type, which saw one type change in a Pokémon family (
+Magnemite
+and
+Magneton
+), but no change in a move.
+This makes the Dark type the only added type to not have a previously introduced Pokémon have its type changed.
+The Dark type was the only type in Generation II to not have a
+type boost
+from a Badge.
+In Generation II, Dark-type Pokémon could only be found at
+night
+. In subsequent generations, however, Pokémon of this type could be found at any time of day.
+Despite Dark-type moves being
+special
+before Generation IV, every damaging Dark-type move originating from before Generation IV was made into a
+physical move
+.
+This is the only type to have had every damaging move change category in Generation IV.
+The Dark and
+Ghost
+types share their super effectiveness, with both types being only strong against
+Ghost
+and
+Psychic
+types.
+All types that are resisted by the Dark-type are the only types Ghost is weak to. Said types are, ironically, Dark and Ghost themselves.
+There is another way the Dark type can be seen as a counterpart to the Ghost type. The average Attack stat of Dark-types overall, as well as only fully evolved Dark-types, is higher than the respective average Special Attack stat, despite the fact that all Dark-type moves were special prior to Generation IV. Conversely, the average Special Attack stat of both Ghost-types overall and only fully evolved Ghost-types is higher than the respective average Attack stat, but all Ghost-type moves were physical prior to Generation IV.
+The Dark type is tied with the
+Steel
+type for most Pokémon that gain it upon upon evolving, with a total of thirteen each.
+More
+regional forms
+belong to the Dark type than any other type, with eleven.
+Prior to Generation VI, Dark/Ghost Pokémon normally had no weaknesses (excluding
+Fighting
+under immunity-negating conditions such as
+Foresight
+or
+Scrappy
+), as the resistances of the Dark type cover the weaknesses of Ghost, and vice-versa. Introduced in Generation VI, the
+Fairy
+type is super effective against Dark and not resisted by Ghost.
+All moves that fail unless used by a certain species or form of Pokémon (
+Hyperspace Fury
+,
+Dark Void
+, and
+Aura Wheel
+) are Dark type (although Aura Wheel is Electric type when used by
+Morpeko
+in Full Belly mode).
+All Dark-type moves are eligible to be used in
+Sky Battles
+.
+The Dark type was the last type to receive a
+Gym Leader
+, only getting simultaneously two in
+Generation VIII
+.
+This makes Dark the only type to not receive a Gym Leader within one generation of being introduced.
+In other languages
+Language
+Title
+Japanese
+あく (悪)
+Aku
+Catalan
+Sinistre
+Chinese
+Cantonese
+惡
+Ok
+Mandarin
+惡 / 恶
+È
+Czech
+Temný
+Danish
+Mørke
+Mørk
+Dutch
+Duister
+Donker
+Finnish
+Pimeys
+Pimeä
+French
+Ténèbres
+German
+Unlicht
+Greek
+Σκοταδιού
+Skotadiou
+Hebrew
+אופל
+Offel
+Hindi
+डार्क
+Dark
+Hungarian
+Sötét
+Indonesian
+Kegelapan
+*
+Jahat
+Italian
+Buio
+Korean
+악
+Ak
+Malaysian
+Gelap
+Norwegian
+Mørk
+Polish
+Mroczny
+Portuguese
+Brazil
+Sombrio
+Noturno
+Trevas
+Portugal
+Escuridão
+Sinistro
+Romanian
+Întuneric
+Russian
+Темнота
+Temnota
+Spanish
+Latin America
+Siniestro
+*
+Oscuridad
+*
+Spain
+Siniestro
+Swedish
+Mörker
+Mörk
+Thai
+มืด
+Muet
+ความมืด
+Khwammuet
+Turkish
+Karanlık
+Vietnamese
+Bóng tối
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Dark_(type)&oldid=4550821
+"

@@ -1,0 +1,1842 @@
+Kanto
+Route 20
+２０番水道
+Sea Route 20
+Map description
+A popular path with swimmers. The Seafoam Islands are also here.
+HG
+SS
+An ocean route separated down the middle by the Seafoam Islands.
+P
+E
+Required for navigation
+Cut
+Surf
+R
+B
+Y
+G
+S
+C
+FR
+LG
+HG
+SS
+Strength
+Flash
+Defog
+Whirlpool
+Rock Smash
+Waterfall
+Dive
+Rock Climb
+Bicycle
+Mach Bike
+Acro Bike
+Go-Goggles
+None
+Connecting locations
+←
+Cinnabar Island
+Route 20
+Route 19
+→
+Location
+Location of Route 20 in
+Kanto
+.
+Other generation maps
+Gen I
+Gen II
+Gen III
+Pokémon world routes
+←
+Route 19
+Route 21
+→
+Route 20
+(Japanese:
+２０
+番水道
+Water Route 20
+), known as
+Sea Route 20
+in
+Generation I
+, is a
+water route
+located in southern
+Kanto
+. It connects
+Route 19
+in the east to
+Cinnabar Island
+in the west. The
+Seafoam Islands
+are located on this route.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Route description
+Differences among generations
+Generation I
+Generation II
+Generation III
+Generation IV
+Generations VII
+Items
+Pokémon
+Generation I
+Generation II
+Generation III
+Generation IV
+Generation VII
+Trainers
+Generation I
+Generation II
+Generation III
+Generation IV
+Generation VII
+Post-game
+In the manga
+Pokémon Adventures
+Red, Green & Blue
+arc
+Related articles
+Contents
+Route description
+Route 20 stretches from east to west with Seafoam Islands in the middle. From east to west, water stretches the entire length of the route, while a labyrinth of rocks around Seafoam split the route in half, followed by a small rest platform just west of the Seafoam Islands (though this has become a single, large island in Generation IV), before finally reaching Cinnabar Island.
+Normally, the only way to cross them is by travelling through the underground
+caves
+on the islands. The northern cave can be accessed from the east and the southern cave can be accessed from the west. From the southern entrance to the caves (guarded by a Trainer in Generations
+III
+,
+IV
+, and
+VII
+), Route 20 curves west, passing south of the northern cave through a narrow channel before expanding to the full width of the route. This rest area is occupied by a Trainer in
+Generation I
+, III, IV, and VII.
+Depending on the
+generation
+, the layout of Route 20 between this point and Cinnabar varies.
+Differences among generations
+Route 20 in
+Pokémon HeartGold and SoulSilver
+Generation I
+In the first appearance of this route, the rock boundaries follow a strict path. Rocks blocking the way, forcing people to travel through the
+Seafoam Islands
+. There are two
+signposts
+numbering the islands, one outside each cave. There is also a wooden pier-like island in the west section, which acts as a rest station. From the rest station, there are three more Trainers, two of which are located very close to each other, before arriving at Cinnabar. There are also two more Trainers along Route 20, one near the western shore of the Seafoam Islands and another just south of the Seafoam entrance on Route 20 in the water.
+Generation II
+The length of Route 20 was shortened by nearly 30% in the second generation, which resulted in the number of Trainers being cut to three. The rocks around Seafoam that prohibited direct access between the eastern and western halves of the route were removed. The western island doesn't have an entrance, and the cave of the east one is now
+Blaine's gym
+. There is just one signpost outside the cave, indicating the Gym and the
+Gym Leader
+.
+The only item of interest between the rest station and Cinnabar Island is a lone Trainer southwest of the platform.
+Generation III
+In this generation, Route 20 features four rest islands in total, with two of those isles housing trainers. The rock formations are not straight, making the route seem more natural. The Seafoam Islands are remodeled and made bigger. The characteristics of the Seafoam Islands are essentially that of Generation I. The west island is now a tiny sandbar, and three other sandbars are added near the original.
+Generation IV
+In this generation, the route is very similar to its appearance in Generation III. The route is the same in length as Generations I and III.
+Unlike Generation II, the natural rocky barrier that forces the
+player
+to travel through the islands' caves returns. Several rocks are now also present in the middle of the route. The Cinnabar Gym is still in the east cave as it was in Generation II, but now one signpost indicates the landmark's name, and the other has the Gym information.
+The only other noticeable change is that the four tiny rest islands from Generation III in the west are now merged into one large sandbar in the southwest section. This large strip of land hosts some
+Trainers
+on it. At the Seafoam entrance, three
+Swimmers
+and a
+Picnicker
+now occupy it.
+Generations VII
+In this generation, Route 20 features four rest islands in total as it did in Generation III, but now it has three trainers on these islands. From the rest station isle present westward in all generations, the route passes north of a small island occupied by a Trainer, with Trainers directly to the north and west of it, before heading south of the largest rest island on the route, north of another small island with a Trainer and north of another Trainer before coming to Cinnabar.
+Items
+Item
+Location
+Games
+Revive
+On a lone rock near the southwest corner of the eastern half of the route (requires
+Sea Skim
+)
+(hidden)
+(daily)
+P
+E
+Heart Scale
+Next to the southern Seafoam Islands entrance
+P
+E
+Revive
+×2
+On a lone rock in the northeast corner of the western half of the route (requires
+Sea Skim
+)
+(hidden)
+(daily)
+On a lone rock on the western half of the route, west of Swimmer Dean (requires
+Sea Skim
+)
+(hidden)
+(daily)
+P
+E
+Ultra Ball
+×3
+On the island where
+Bird Keeper
+Roger stands
+P
+E
+Max Repel
+On the large unoccupied island near Cinnabar Island
+P
+E
+Stardust
+On the island nearest
+Cinnabar Island
+, where Ace Trainer Marty stands
+(hidden)
+(daily)
+P
+E
+Stardust
+On the large unoccupied island near
+Cinnabar Island
+(hidden
+recurring item
+; group B)
+FR
+LG
+Stardust
+On the northeast corner of the long, narrow sandbar on Cinnabar's side
+(hidden)
+HG
+SS
+DeepSeaTooth
+To the right of the entrance to Blaine's Gym
+(hidden)
+HG
+SS
+DeepSeaScale
+North of Seafoam Islands, near Swimmer Luis
+(hidden)
+HG
+SS
+Pokémon
+Generation I
+In
+Pokémon Red and Blue
+, due to a programming oversight, the encounters on the tiles on the east coasts of
+Cinnabar Island
+and
+Seafoam Islands
+contain Pokémon found in
+tall grass
+from the previously visited area with tall grass present. This results in the
+Fight Safari Zone Pokémon trick
+and the
+old man glitch
+in those games.
+Pokémon
+Games
+Location
+Levels
+Rate
+Surfing
+Tentacool
+R
+B
+Y
+Surfing
+5, 10, 15, 20, 30, 35, 40
+100%
+Fishing
+Magikarp
+R
+B
+Y
+Fishing
+Old Rod
+5
+100%
+Poliwag
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Goldeen
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Tentacool
+R
+B
+Y
+Fishing
+Super Rod
+20
+40%
+Tentacruel
+R
+B
+Y
+Fishing
+Super Rod
+20, 40
+40%
+Shellder
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Horsea
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Goldeen
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Staryu
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Staryu
+R
+B
+Y
+Fishing
+Super Rod
+30
+20%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation II
+Pokémon
+Games
+Location
+Levels
+Rate
+Surfing
+Tentacool
+G
+S
+C
+Surfing
+30-39
+90%
+Tentacruel
+G
+S
+C
+Surfing
+35-39
+10%
+Fishing
+Tentacool
+G
+S
+C
+Fishing
+Old Rod
+10
+15%
+Magikarp
+G
+S
+C
+Fishing
+Old Rod
+10
+85%
+Tentacool
+G
+S
+C
+Fishing
+Good Rod
+20
+35%
+Shellder
+G
+S
+C
+Fishing
+Good Rod
+20
+10%
+Magikarp
+G
+S
+C
+Fishing
+Good Rod
+20
+35%
+Chinchou
+G
+S
+C
+Fishing
+Good Rod
+20
+20%
+Tentacruel
+G
+S
+C
+Fishing
+Super Rod
+40
+20%
+Shellder
+G
+S
+C
+Fishing
+Super Rod
+40
+30%
+Chinchou
+G
+S
+C
+Fishing
+Super Rod
+40
+40%
+Lanturn
+G
+S
+C
+Fishing
+Super Rod
+40
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation III
+Pokémon
+Games
+Location
+Levels
+Rate
+Surfing
+Tentacool
+FR
+LG
+Surfing
+5-40
+100%
+Fishing
+Magikarp
+FR
+LG
+Fishing
+Old Rod
+5
+100%
+Krabby
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Krabby
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Horsea
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Horsea
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Magikarp
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Psyduck
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+Slowpoke
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+Krabby
+FR
+LG
+Fishing
+Super Rod
+15-25
+80%
+Kingler
+FR
+LG
+Fishing
+Super Rod
+25-35
+4%
+Horsea
+FR
+LG
+Fishing
+Super Rod
+15-25
+80%
+Seadra
+FR
+LG
+Fishing
+Super Rod
+25-35
+4%
+Gyarados
+FR
+LG
+Fishing
+Super Rod
+15-25
+15%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation IV
+Pokémon
+Games
+Location
+Levels
+Rate
+Surfing
+Tentacool
+HG
+SS
+Surfing
+30-35
+90%
+Tentacruel
+HG
+SS
+Surfing
+35
+10%
+Fishing
+Tentacool
+HG
+SS
+Fishing
+Old Rod
+10
+15%
+Magikarp
+HG
+SS
+Fishing
+Old Rod
+10
+85%
+Tentacool
+HG
+SS
+Fishing
+Good Rod
+20
+30%
+Shellder
+HG
+SS
+Fishing
+Good Rod
+20
+10%
+Magikarp
+HG
+SS
+Fishing
+Good Rod
+20
+40%
+Chinchou
+HG
+SS
+Fishing
+Good Rod
+20
+20%
+Tentacruel
+HG
+SS
+Fishing
+Super Rod
+40
+20%
+Shellder
+HG
+SS
+Fishing
+Super Rod
+40
+30%
+Chinchou
+HG
+SS
+Fishing
+Super Rod
+40
+40%
+Lanturn
+HG
+SS
+Fishing
+Super Rod
+40
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation VII
+Pokémon
+Games
+Location
+Levels
+Rate
+Sea Skim
+Tentacool
+P
+E
+Sea Skim
+37-42
+45%
+Tentacruel
+P
+E
+Sea Skim
+37-42
+5%
+Magikarp
+P
+E
+Sea Skim
+37-42
+45%
+Gyarados
+P
+E
+Sea Skim
+37-42
+5%
+Rare Spawns
+Lapras
+P
+E
+Sea Skim
+37-42
+-
+While riding a Flying Pokémon
+Pidgey
+P
+E
+Midair
+3-56
+60%
+Pidgeotto
+P
+E
+Midair
+3-56
+35%
+Pidgeot
+P
+E
+Midair
+3-56
+5%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Trainers
+Generation I
+The following Trainers are listed from
+east
+to
+west
+.
+Trainer
+Pokémon
+East of the islands
+Swimmer
+Reward:
+$
+155
+Shellder
+Lv.
+31
+No item
+Cloyster
+Lv.
+31
+No item
+Swimmer
+Reward:
+$
+140
+Horsea
+Lv.
+28
+No item
+Horsea
+Lv.
+28
+No item
+Seadra
+Lv.
+28
+No item
+Horsea
+Lv.
+28
+No item
+Beauty
+Reward:
+$
+2100
+Seadra
+Lv.
+30
+No item
+Horsea
+Lv.
+30
+No item
+Seadra
+Lv.
+30
+No item
+Beauty
+Reward:
+$
+2450
+Seaking
+Lv.
+35
+No item
+West of the islands
+Jr. Trainer♀
+Reward:
+$
+600
+Tentacool
+Lv.
+30
+No item
+Horsea
+Lv.
+30
+No item
+Seel
+Lv.
+30
+No item
+Swimmer
+Reward:
+$
+175
+Staryu
+Lv.
+35
+No item
+Bird Keeper
+Reward:
+$
+750
+Fearow
+Lv.
+30
+No item
+Fearow
+Lv.
+30
+No item
+Pidgeotto
+Lv.
+30
+No item
+Beauty
+Reward:
+$
+2100
+Shellder
+Lv.
+30
+No item
+Shellder
+Lv.
+30
+No item
+Cloyster
+Lv.
+30
+No item
+Jr. Trainer♀
+Reward:
+$
+620
+Goldeen
+Lv.
+31
+No item
+Seaking
+Lv.
+31
+No item
+Beauty
+Reward:
+$
+2170
+Poliwag
+Lv.
+31
+No item
+Seaking
+Lv.
+31
+No item
+Generation II
+The following Trainers are listed from
+west
+to
+east
+.
+Trainer
+Pokémon
+Swimmer♂
+Cameron
+カツヤ
+Katsuya
+Reward:
+$
+272
+Marill
+♂
+Lv.
+34
+No item
+Swimmer♀
+Lori
+ケイ
+Kay
+Reward:
+$
+640
+Starmie
+Lv.
+32
+No item
+Starmie
+Lv.
+32
+No item
+Swimmer♀
+Nicole
+クニミ
+Kunimi
+Reward:
+$
+640
+Marill
+♀
+Lv.
+29
+No item
+Marill
+♀
+Lv.
+29
+No item
+Lapras
+♀
+Lv.
+32
+No item
+Trainers with a telephone symbol by their names will give their
+Pokégear
+number to the player, and may call or be called for a rematch with higher-level Pokémon.
+Generation III
+The following Trainers are listed from
+east
+to
+west
+.
+Trainer
+Pokémon
+East of the islands
+Swimmer♂
+Barry
+ガクジ
+Gakuji
+Reward:
+$
+124
+Shellder
+♂
+Lv.
+31
+No item
+Cloyster
+♂
+Lv.
+31
+No item
+Swimmer♂
+Darrin
+テルユキ
+Teruyuki
+Reward:
+$
+112
+Horsea
+♂
+Lv.
+28
+No item
+Horsea
+♂
+Lv.
+28
+No item
+Horsea
+♂
+Lv.
+28
+No item
+Seadra
+♂
+Lv.
+28
+No item
+Swimmer♀
+Shirley
+アサミ
+Asami
+Reward:
+$
+120
+Seadra
+♀
+Lv.
+30
+No item
+Horsea
+♀
+Lv.
+30
+No item
+Seadra
+♀
+Lv.
+30
+No item
+Swimmer♀
+Tiffany
+ハルコ
+Haruko
+Reward:
+$
+140
+Seaking
+♀
+Lv.
+35
+No item
+West of the islands
+Picnicker
+Irene
+ミズキ
+Mizuki
+Reward:
+$
+600
+Tentacool
+♀
+Lv.
+30
+No item
+Horsea
+♀
+Lv.
+30
+No item
+Seel
+♀
+Lv.
+30
+No item
+Bird Keeper
+Roger
+トモヒコ
+Tomohiko
+Reward:
+$
+720
+Fearow
+♂
+Lv.
+30
+No item
+Fearow
+♂
+Lv.
+30
+No item
+Pidgeotto
+♂
+Lv.
+30
+No item
+Swimmer♀
+Nora
+リリカ
+Ririka
+Reward:
+$
+120
+Shellder
+♀
+Lv.
+30
+No item
+Shellder
+♀
+Lv.
+30
+No item
+Cloyster
+♀
+Lv.
+30
+No item
+Swimmer♂
+Dean
+レツジ
+Retsuji
+Reward:
+$
+140
+Staryu
+Lv.
+35
+No item
+Picnicker
+Missy
+クミコ
+Kumiko
+Reward:
+$
+620
+Goldeen
+♀
+Lv.
+31
+No item
+Seaking
+♀
+Lv.
+31
+No item
+Swimmer♀
+Melissa
+メグミ
+Megumi
+Reward:
+$
+124
+Poliwag
+♀
+Lv.
+31
+No item
+Seaking
+♀
+Lv.
+31
+No item
+Rematch
+Swimmer♂
+Darrin
+テルユキ
+Teruyuki
+Reward:
+$
+208
+After delivering the
+Sapphire
+to
+Celio
+Seadra
+♂
+Lv.
+52
+No item
+Seadra
+♂
+Lv.
+52
+No item
+Seadra
+♂
+Lv.
+52
+No item
+Seadra
+♂
+Lv.
+52
+No item
+Picnicker
+Missy
+クミコ
+Kumiko
+Reward:
+$
+700
+After becoming
+Champion
+Seaking
+♀
+Lv.
+49
+No item
+Seaking
+♀
+Lv.
+49
+No item
+Picnicker
+Missy
+クミコ
+Kumiko
+Reward:
+$
+1080
+After delivering the
+Sapphire
+to
+Celio
+and defeating the previous team
+Seaking
+♀
+Lv.
+54
+No item
+Seaking
+♀
+Lv.
+54
+No item
+Swimmer♀
+Melissa
+メグミ
+Megumi
+Reward:
+$
+196
+After becoming
+Champion
+Poliwhirl
+♀
+Lv.
+49
+No item
+Seaking
+♀
+Lv.
+49
+No item
+Trainers with a
+Vs. Seeker
+by their names, when alerted for a rematch using the item, may use higher-level Pokémon.
+Generation IV
+The following Trainers are listed from
+west
+to
+east
+.
+Trainer
+Pokémon
+West of the islands
+Swimmer
+Frankie
+カツヤ
+Katsuya
+Reward:
+$
+704
+Azumarill
+♂
+Lv.
+44
+No item
+Bird Keeper
+Bert
+マスミツ
+Masumitsu
+Reward:
+$
+1376
+Wingull
+♂
+Lv.
+46
+No item
+Fearow
+♂
+Lv.
+43
+No item
+Swimmer
+Mina
+チグミ
+Chigumi
+Reward:
+$
+656
+Luvdisc
+♀
+Lv.
+38
+No item
+Luvdisc
+♀
+Lv.
+39
+No item
+Luvdisc
+♀
+Lv.
+41
+No item
+Picnicker
+Cheyenne
+アサミ
+Asami
+Reward:
+$
+720
+Shinx
+♀
+Lv.
+45
+No item
+Bird Keeper
+Ernie
+ヤジロウ
+Yajirō
+Reward:
+$
+1536
+Starly
+♂
+Lv.
+48
+No item
+Swimmer
+Leona
+リオナ
+Leona
+Reward:
+$
+704
+Bidoof
+♀
+Lv.
+44
+No item
+Picnicker
+Adrian
+ナナカ
+Nanaka
+Reward:
+$
+720
+Shroomish
+♀
+Lv.
+45
+No item
+East of the islands
+Swimmer
+Luis
+トシミツ
+Toshimitsu
+Reward:
+$
+672
+Seadra
+♂
+Lv.
+46
+No item
+Quagsire
+♂
+Lv.
+42
+No item
+Camper
+Pedro
+シンヤ
+Shin'ya
+Reward:
+$
+720
+Linoone
+♂
+Lv.
+45
+Sitrus Berry
+Swimmer
+Elmo
+シブキ
+Shibuki
+Reward:
+$
+672
+Poliwhirl
+♂
+Lv.
+46
+No item
+Tentacruel
+♂
+Lv.
+42
+No item
+Swimmer
+Lori
+ケイ
+Kay
+Reward:
+$
+672
+Starmie
+Lv.
+42
+No item
+Starmie
+Lv.
+42
+No item
+Starmie
+Lv.
+42
+No item
+Swimmer
+Nicole
+クニミ
+Kunimi
+Reward:
+$
+672
+Marill
+♀
+Lv.
+39
+No item
+Marill
+♀
+Lv.
+39
+No item
+Lapras
+♀
+Lv.
+42
+No item
+Trainers with a telephone symbol by their names will give their
+Pokégear
+number to the player, and may call or be called for a rematch with higher-level Pokémon.
+Generation VII
+The following Trainers are listed from
+east
+to
+west
+.
+Trainer
+Pokémon
+East of the islands
+Swimmer
+Douglas
+タツオ
+Tatsuo
+Reward:
+$
+820
+3
+Poké Balls
+Gyarados
+♂
+Lv.
+42
+No item
+Swimmer
+Darrin
+テルユキ
+Teruyuki
+Reward:
+$
+880
+3
+Poké Balls
+Golduck
+♂
+Lv.
+44
+No item
+Gyarados
+♂
+Lv.
+44
+No item
+Beauty
+Shirley
+アサミ
+Asami
+Reward:
+$
+820
+3
+Poké Balls
+Wartortle
+♀
+Lv.
+41
+No item
+Starmie
+Lv.
+41
+No item
+West of the islands
+Picnicker
+Irene
+ミズキ
+Mizuki
+Reward:
+$
+860
+2
+Great Balls
+Marowak
+♀
+Lv.
+43
+No item
+Gloom
+♀
+Lv.
+43
+No item
+Wigglytuff
+♀
+Lv.
+43
+No item
+Beauty
+Hansol
+ナツミ
+Natsumi
+Reward:
+$
+860
+3
+Poké Balls
+Slowbro
+♂
+Lv.
+43
+No item
+Bird Keeper
+Roger
+トモヒコ
+Tomohiko
+Reward:
+$
+2,700
+3
+Poké Balls
+Fearow
+♂
+Lv.
+45
+No item
+Dodrio
+♂
+Lv.
+45
+No item
+Pidgeot
+♀
+Lv.
+45
+No item
+Swimmer
+Dean
+レツジ
+Retsuji
+Reward:
+$
+880
+3
+Poké Balls
+Starmie
+Lv.
+44
+No item
+Tentacruel
+♀
+Lv.
+44
+No item
+Kingler
+♂
+Lv.
+44
+No item
+Picnicker
+Missy
+クミコ
+Kumiko
+Reward:
+$
+820
+2
+Great Balls
+Jolteon
+♀
+Lv.
+41
+No item
+Beauty
+Nora
+リリカ
+Ririka
+Reward:
+$
+820
+3
+Poké Balls
+Cloyster
+♂
+Lv.
+41
+No item
+Beauty
+Melissa
+メグミ
+Megumi
+Reward:
+$
+860
+3
+Poké Balls
+Seaking
+♂
+Lv.
+43
+No item
+Jynx
+♀
+Lv.
+43
+No item
+Ace Trainer
+Marty
+ショウ
+Shō
+Reward:
+$
+4,600
+5
+Ultra Balls
+Golem
+♂
+Lv.
+45
+No item
+Pinsir
+♂
+Lv.
+46
+No item
+Post-game
+Trainer
+Pokémon
+East of the islands
+Master Trainer
+Beauty
+Tessa
+ハルナ
+Haruna
+Blastoise
+♀
+Lv.
+80
+Fake Out
+Rock Slide
+Dark Pulse
+Substitute
+Master Trainer
+Scientist
+Francis
+トクマ
+Tokuma
+Tentacool
+♂
+Lv.
+75
+Barrier
+Headbutt
+Hydro Pump
+-
+West of the islands
+Master Trainer
+Beauty
+Rose
+ミレイ
+Mirei
+Cloyster
+♂
+Lv.
+75
+Barrier
+Toxic
+Protect
+Rest
+Master Trainer
+Beauty
+Prita
+ミナミ
+Minami
+Wartortle
+♀
+Lv.
+75
+Headbutt
+Rock Slide
+Skull Bash
+-
+Master Trainer
+Scientist
+Melvin
+フミヒト
+Fumihito
+Tentacruel
+♂
+Lv.
+80
+Wrap
+Screech
+Barrier
+Headbutt
+In the manga
+Route 20 in
+Pokémon Adventures
+Pokémon Adventures
+Red, Green & Blue
+arc
+Route 20 made a brief appearance in the beginning of
+Holy Moltres
+, where
+Red
+was seen arriving at
+Cinnabar Island
+on his
+Gyarados
+after having visited the
+Seafoam Islands
+.
+Related articles
+Seafoam Islands
+Kanto
+Settlements
+Pallet Town
+•
+Viridian City
+•
+Pewter City
+•
+Cerulean City
+•
+Vermilion City
+•
+Lavender Town
+Celadon City
+•
+Saffron City
+•
+Fuchsia City
+•
+Cinnabar Island
+•
+Indigo Plateau
+Routes
+1
+•
+2
+•
+3
+•
+4
+•
+5
+•
+6
+•
+7
+•
+8
+•
+9
+•
+10
+•
+11
+•
+12
+•
+13
+•
+14
+•
+15
+•
+16
+•
+17
+•
+18
+•
+19
+•
+20
+•
+21
+•
+22
+•
+23
+•
+24
+•
+25
+•
+26
+•
+27
+•
+28
+Landmarks
+Professor Oak's Laboratory
+•
+Viridian Forest
+•
+Diglett's Cave
+•
+Pewter Museum of Science
+•
+Mt. Moon
+(
+Square
+) •
+Cerulean Cave
+Underground Path (Kanto Routes 5–6)
+•
+Underground Path (Kanto Routes 7–8)
+•
+S.S. Anne
+•
+S.S. Aqua
+•
+Sea Cottage
+•
+Rock Tunnel
+Power Plant
+•
+Cycling Road/Pokémon Road
+•
+Team Rocket Hideout
+•
+Silph Co.
+•
+Magnet Train
+•
+Pokémon Tower
+•
+Safari Zone
+/
+Pal Park
+GO Park
+•
+Seafoam Islands
+•
+Pokémon Mansion
+•
+Cinnabar Lab
+•
+Pokémon League Reception Gate
+•
+Victory Road
+•
+Tohjo Falls
+Access to
+Sevii Islands
+•
+Johto
+This article is part of
+Project Routes
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every
+route in the Pokémon world
+.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Kanto_Route_20&oldid=4321914
+"

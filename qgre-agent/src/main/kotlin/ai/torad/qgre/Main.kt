@@ -39,20 +39,31 @@ fun main(args: Array<String>) = runBlocking {
 
         val approve: suspend (PendingApproval) -> Boolean =
             if (autoApprove) { _ -> true } else { pa -> askApproval(pa, log) }
-        for (ed in a.editions) {
-            val isProtected = ed in a.protectedEditions
+        if (a.task.isNotBlank()) {
+            // ad-hoc mode: drive the agent on a free-form task (the "agent, fix/scrape this" interface).
+            // Same loop + tools as a rebuild — the agent uses bash + the pipeline tools as it sees fit.
             val ctx = QgreContext(
-                domain = a.domain, festival = a.domain, edition = ed,
+                domain = a.domain, festival = a.domain, edition = "",
                 protectedEditions = a.protectedEditions, jobId = a.jobId,
             )
-            log("════ edition $ed${if (isProtected) " (PROTECTED — gate-only)" else ""} ════")
-            try {
-                log("── $ed result: ${runEdition(agent, ctx, isProtected, approve, log)}")
-            } catch (e: Throwable) {
-                log("✗ $ed crashed: ${e::class.simpleName}: ${e.message}")
+            log("════ ad-hoc task ════")
+            log("── task result: ${runPrompt(agent, a.task, ctx, approve, log)}")
+        } else {
+            for (ed in a.editions) {
+                val isProtected = ed in a.protectedEditions
+                val ctx = QgreContext(
+                    domain = a.domain, festival = a.domain, edition = ed,
+                    protectedEditions = a.protectedEditions, jobId = a.jobId,
+                )
+                log("════ edition $ed${if (isProtected) " (PROTECTED — gate-only)" else ""} ════")
+                try {
+                    log("── $ed result: ${runEdition(agent, ctx, isProtected, approve, log)}")
+                } catch (e: Throwable) {
+                    log("✗ $ed crashed: ${e::class.simpleName}: ${e.message}")
+                }
             }
+            log("DONE · ${a.editions.size} edition(s) processed. Tokenize + CPT remain a separate, user-triggered step.")
         }
-        log("DONE · ${a.editions.size} edition(s) processed. Tokenize + CPT remain a separate, user-triggered step.")
     } finally {
         client.close()
         httpProvider.close()
@@ -70,7 +81,6 @@ internal suspend fun runEdition(
     approve: suspend (PendingApproval) -> Boolean,
     log: (String) -> Unit,
 ): String {
-    val captures = RunCaptures()
     val prompt = if (isProtected) {
         "Edition: ${ctx.edition}. This is PROTECTED hand-built gold — run gate_corpus to verify it ONLY, " +
             "never extract or hydrate it, then call done with the verdict."
@@ -78,7 +88,22 @@ internal suspend fun runEdition(
         "Edition: ${ctx.edition}. Drive it to passing gates: inspect, build/repair the spine as the gates " +
             "require, and call done when settled."
     }
+    return runPrompt(agent, prompt, ctx, approve, log)
+}
 
+/**
+ * The agent run + approval-resume loop, factored out so per-edition rebuilds and ad-hoc --task runs share
+ * one path. Paid tools pause when not auto-approved; [approve] is injected so the resume flow is testable
+ * without stdin.
+ */
+internal suspend fun runPrompt(
+    agent: ToolLoopAgent<QgreContext, String>,
+    prompt: String,
+    ctx: QgreContext,
+    approve: suspend (PendingApproval) -> Boolean,
+    log: (String) -> Unit,
+): String {
+    val captures = RunCaptures()
     var result = agent.generate(prompt = prompt, options = ctx, hooks = runHooks(log, captures))
     var guard = 0
     while (result.pendingApprovals.isNotEmpty() && guard++ < 50) {
@@ -103,6 +128,7 @@ internal data class Args(
     val editions: List<String>,
     val protectedEditions: List<String>,
     val jobId: String,
+    val task: String,
 )
 
 internal fun parseArgs(args: Array<String>): Args {
@@ -123,5 +149,6 @@ internal fun parseArgs(args: Array<String>): Args {
         editions = list("editions", emptyList()),
         protectedEditions = list("protected", listOf("las_vegas/2026")),
         jobId = m["job-id"] ?: "",
+        task = m["task"] ?: "",
     )
 }

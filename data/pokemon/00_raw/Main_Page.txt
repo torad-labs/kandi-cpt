@@ -1,0 +1,238 @@
+Welcome to Bulbapedia!
+the community-driven Pokémon encyclopedia
+Help
+Policies
+Staff
+About
+Bulbapedia is an encyclopedia about
+Pokémon
+to which anyone can contribute. Since its launch in February 2005, it has grown to become one of the largest Pokémon resources on the internet. As part of
+Bulbagarden
+, this ever-growing wiki is supported by the
+Bulbagarden Archives
+,
+Bulbanews
+, the
+Bulbagarden forums
+, and the
+Bulbagarden Discord
+. You're welcome to browse for a while, if you wish, or
+make an account
+to start editing pages.
+We have
+62,737 articles
+on a
+range of Pokémon-related topics
+.
+If you have any questions, first see the
+FAQ page
+. If this doesn't help, find an active
+staff member
+. They'll point you in the right direction.
+Getting started
+•
+FAQ
+•
+Editor's Hub
+•
+Help Center
+•
+Projects
+•
+Manual of style
+•
+Policies
+•
+Staff
+•
+About Bulbapedia
+Current Events
+TCG Pocket
+Games
+Animation
+Manga
+Trading Card Game
+Pokédex
+Characters
+Items
+World
+Walkthroughs
+More »
+Message from the Editor
+April 16
+Bulbapedia has a new look!
+Yesterday we launched BulbaVector, the biggest skin refresh on
+Bulbapedia
+since we first launched a mobile-friendly skin over a decade ago. With the launch of this skin, both desktop and mobile users will be served by the same skin, which should hopefully deliver a more unified experience for everyone.
+Just to give you all a bit of background on why this is happening... When we first launched a mobile-friendly skin, we did so using an m-dot mobile specific subdomain, which at the time was the standard on many other large websites. That subdomain was implemented via the MobileFrontend extension for
+MediaWiki
+, which was also in use on
+Wikipedia
+. This setup allowed search engines to serve mobile users with the mobile URL instead of the "canonical" main URL. As of early 2024, however, the classic m-dot mobile subdomains stopped being supported by major search engines. Whereas previously we could have separate skins for desktop and mobile users, search engines now expected that websites support both from the same URL, with a responsive design. Some search engines also began actively penalizing websites without responsive layouts in their search results.
+The new BulbaVector skin is built off of the same Vector 2022 skin that has been the default Wikipedia interface since 2023, and is also in use on many other wikis across the internet. It's a solid base that's seen lots of support and continuing development from the wider MediaWiki community, and long-term it should mean a much smoother experience for everyone, both in terms of you using the site, and for us in maintaining things at the backend.
+For all of our editors who might prefer the old skins though, don't worry, they're not going away. When you next log in, you'll still be on whatever skin you had selected before we flipped the switch on BulbaVector, and they'll always remain an option available in
+your account preferences
+. We do hope you'll give BulbaVector a whirl though - and let us know what you think!
+As with any major change like this, we have had a few teething issues that we're sorting out. If you do notice anything amiss, we'd greatly appreciate it if you'd hop into the
+Bulbagarden Discord server
+and let us know in the Bulbapedia
+#templates-css-tech
+channel. For users on mobile specifically, if you aren't seeing the mobile version of the skin please make sure your web browser isn't set to request a desktop site, or disable this setting if you prefer the desktop view. If you're logged in, make sure that "Enable responsive mode" is also ticked in your preferences.
+That's all for now, and as always, happy editing!
+Landfish7
+Co-Deputy Editor-in-Chief, Bulbapedia
+Browse previous messages
+Lend a hand!
+Help make Bulbapedia even better!
+Current tasks
+Missions
+Breaking News
+Wanted Pages
+Snaps
+Research
+Mysteries
+Spotlight
+More ways to help
+158
+Articles
+needing
+improvement
+3383
+Articles
+missing
+information
+59
+Articles
+needing
+translation
+691
+Articles
+needing
+images
+153
+Articles
+needing
+sources
+New here? Get started »
+Watch Bulbagarden on Twitch
+News from Bulbanews
+07
+Jun
+VGC 2026 Turin Special Championships Results and Teams
+06
+Jun
+Secret Ditto Rhapsody - Pokémon Horizons Episode 139 Review - Can We Keep The Pink Blob? Pretty Please?
+06
+Jun
+Range of cards and products from the upcoming 30th Celebration expansion revealed in Pokémon Japan Championships Day 1 Livestream
+05
+Jun
+Blindfolded run of Pokémon Red to feature in the Link to the Cure 2026 charity marathon, in support of Child's Play
+05
+Jun
+Glitchless run of Pokémon Yellow to feature in the Power Up With Pride 2026 Charity Marathon, benefiting Point of Pride
+05
+Jun
+Skeledirge joins the fray in Pokémon UNITE — Obtain its Unite License via the Adventure Challenge event till June 30th
+04
+Jun
+Check out the latest from Pokémon UNITE — Battle Pass Season 42, New Trainer Fashion and Holowear, and more
+Affiliates
+Encyclopædiæ Pokémonis
+Affiliates of Bulbapedia: Pokémon wikis in seven languages
+Deutsch
+:
+PokéWiki
+English:
+Bulbapedia
+Español
+:
+WikiDex
+Français
+:
+Poképédia
+Italiano
+:
+Pokémon Central
+日本語
+:
+ポケモンWiki
+中文
+:
+神奇宝贝百科
+Nintendo Independent Wiki Alliance
+Affiliates of Bulbapedia: thirty-one independently-run wikis about Nintendo
+ARMS
+ARMS Institute
+Animal Crossing
+Nookipedia
+Chibi-Robo!
+Chibi-Robo! Wiki
+Dragalia Lost
+Dragalia Lost Wiki
+Drawn to Life
+Drawn to Life Wiki
+EarthBound
+WikiBound
+Fire Emblem
+Fire Emblem Wiki
+F-Zero
+F-Zero Wiki
+Game Guides
+StrategyWiki
+Golden Sun
+Golden Sun Universe
+Kid Icarus
+Icaruspedia
+Kingdom Hearts
+Kingdom Hearts Wiki
+Kirby
+WiKirby
+The Legend of Zelda
+Zelda Wiki
+Magical Vacation
+Kovopedia
+Metroid
+Metroid Wiki
+Mii
+MiiWiki
+Nintendo
+NintendoWiki
+Nintendo Wars
+Wars Wiki
+Pikmin
+Pikipedia
+Pikmin Fanon
+Pikmin Fanon
+Pokémon
+Bulbapedia
+Rhythm Heaven
+Rhythm Heaven Wiki
+Smash Bros.
+Smash Wiki
+Splatoon
+Inkipedia
+StarFox
+Lylat Wiki
+Starfy
+Starfy Wiki
+Super Mario
+Super Mario Wiki
+Super Mario 64
+Ukikipedia
+Tetris
+Hard Drop Tetris Wiki
+Xeno Series
+Xeno Series Wiki
+Bulbapedia is a part of
+Bulbagarden
+Home
+Forums
+Bulbapedia
+Archives
+Bulbacast
+Discord
+Social Media
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Main_Page&oldid=4521621
+"

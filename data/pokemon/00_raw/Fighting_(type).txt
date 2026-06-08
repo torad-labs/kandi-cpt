@@ -1,0 +1,2142 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Fighting type
+(Japanese:
+かくとうタイプ
+Fighting type
+) is one of the eighteen
+types
+. Fighting-type
+moves
+are super effective against
+Dark
+-,
+Ice
+-,
+Normal
+-,
+Rock
+-, and
+Steel-type
+Pokémon
+, while Fighting-type Pokémon are weak to
+Flying
+-,
+Fairy
+-, and
+Psychic-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Fighting-type Pokémon
+Half Fighting-type Pokémon
+Primary Fighting-type Pokémon
+Secondary Fighting-type Pokémon
+Non-Pokémon opponents
+Moves
+Changed types
+Abilities
+Interacting with the Fighting type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Fighting-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Fighting-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Normal
+Rock
+Ice
+Steel
+Dark
+Flying
+Poison
+Bug
+Psychic
+Fairy
+Ghost
+Defensive properties of
+Fighting-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Flying
+Psychic
+Fairy
+Rock
+Bug
+Dark
+None
+The
+Dark
+and
+Steel
+types were introduced in
+Generation II
+.
+The
+Fairy
+type was introduced in
+Generation VI
+.
+Additional effects
+If the user has the
+Ability
+Scrappy
+or
+Mind's Eye
+, or the target is under the effect of the
+moves
+Foresight
+or
+Odor Sleuth
+, Fighting-type moves will deal ×1 damage to
+Ghost-type
+Pokémon.
+Pokémon
+As of
+Generation IX
+, 86
+Pokémon
+are Fighting-type (counting those that are Fighting-type in at least one of their
+forms
+, including
+Mega Evolutions
+and
+regional forms
+), which makes up 8.37% of all Pokémon, making it the 8th most common
+type
+among Pokémon after
+Fire
+and
+Poison
+and before
+Dark
+. As of
+Generation IX
+and the introduction of
+Great Tusk
+,
+Pawmo
+,
+Pawmot
+,
+Iron Hands
+, and
+Iron Valiant
+, all other types have been paired up with Fighting at least once, making the Fighting type the seventh type to have this trait after
+Flying
+,
+Water
+,
+Psychic
+,
+Dark
+,
+Electric
+and
+Grass
+.
+Pure Fighting-type Pokémon
+#
+Name
+0056
+Mankey
+0057
+Primeape
+0066
+Machop
+0067
+Machoke
+0068
+Machamp
+Gigantamax
+Machamp
+0083
+Galarian
+Farfetch'd
+0106
+Hitmonlee
+0107
+Hitmonchan
+0128
+Paldean
+Tauros
+(
+Combat Breed
+)
+0236
+Tyrogue
+0237
+Hitmontop
+0296
+Makuhita
+0297
+Hariyama
+0447
+Riolu
+0493
+Arceus
+(
+Fighting-type
+)
+0532
+Timburr
+0533
+Gurdurr
+0534
+Conkeldurr
+0538
+Throh
+0539
+Sawk
+0619
+Mienfoo
+0620
+Mienshao
+0674
+Pancham
+0739
+Crabrawler
+0766
+Passimian
+0773
+Silvally
+(
+Type: Fighting
+)
+0852
+Clobbopus
+0853
+Grapploct
+0865
+Sirfetch'd
+0870
+Falinks
+Mega
+Falinks
+0889
+Zamazenta
+(
+Hero of
+Many Battles
+)
+0891
+Kubfu
+Half Fighting-type Pokémon
+Primary Fighting-type Pokémon
+#
+Name
+Type 1
+Type 2
+0128
+Paldean
+Tauros
+(
+Blaze Breed
+)
+Fighting
+Fire
+Paldean
+Tauros
+(
+Aqua Breed
+)
+Fighting
+Water
+0145
+Galarian
+Zapdos
+Fighting
+Flying
+0215
+Hisuian
+Sneasel
+Fighting
+Poison
+0307
+Meditite
+Fighting
+Psychic
+0308
+Medicham
+Fighting
+Psychic
+Mega
+Medicham
+Fighting
+Psychic
+0398
+Mega
+Staraptor
+Fighting
+Flying
+0448
+Lucario
+Fighting
+Steel
+Mega
+Lucario
+Fighting
+Steel
+Mega
+Lucario Z
+Fighting
+Steel
+0675
+Pangoro
+Fighting
+Dark
+0701
+Hawlucha
+Fighting
+Flying
+Mega
+Hawlucha
+Fighting
+Flying
+0740
+Crabominable
+Fighting
+Ice
+Mega
+Crabominable
+Fighting
+Ice
+0802
+Marshadow
+Fighting
+Ghost
+0889
+Zamazenta
+Crowned Shield
+Fighting
+Steel
+0892
+Urshifu
+(
+Single Strike Style
+)
+Fighting
+Dark
+Gigantamax
+Urshifu
+(
+Single Strike Style
+)
+Fighting
+Dark
+Urshifu
+(
+Rapid Strike Style
+)
+Fighting
+Water
+Gigantamax
+Urshifu
+(
+Rapid Strike Style
+)
+Fighting
+Water
+0903
+Sneasler
+Fighting
+Poison
+0979
+Annihilape
+Fighting
+Ghost
+0992
+Iron Hands
+Fighting
+Electric
+1007
+Koraidon
+Fighting
+Dragon
+Secondary Fighting-type Pokémon
+#
+Name
+Type 1
+Type 2
+0062
+Poliwrath
+Water
+Fighting
+0150
+Mega
+Mewtwo X
+Psychic
+Fighting
+0214
+Heracross
+Bug
+Fighting
+Mega
+Heracross
+Bug
+Fighting
+0256
+Combusken
+Fire
+Fighting
+0257
+Blaziken
+Fire
+Fighting
+Mega
+Blaziken
+Fire
+Fighting
+0286
+Breloom
+Grass
+Fighting
+0391
+Monferno
+Fire
+Fighting
+0392
+Infernape
+Fire
+Fighting
+0428
+Mega
+Lopunny
+Normal
+Fighting
+0453
+Croagunk
+Poison
+Fighting
+0454
+Toxicroak
+Poison
+Fighting
+0475
+Gallade
+Psychic
+Fighting
+Mega
+Gallade
+Psychic
+Fighting
+0499
+Pignite
+Fire
+Fighting
+0500
+Emboar
+Fire
+Fighting
+Mega
+Emboar
+Fire
+Fighting
+0549
+Hisuian
+Lilligant
+Grass
+Fighting
+0559
+Scraggy
+Dark
+Fighting
+0560
+Scrafty
+Dark
+Fighting
+Mega
+Scrafty
+Dark
+Fighting
+0638
+Cobalion
+Steel
+Fighting
+0639
+Terrakion
+Rock
+Fighting
+0640
+Virizion
+Grass
+Fighting
+0647
+Keldeo
+(
+Ordinary Form
+)
+Water
+Fighting
+Keldeo
+(
+Resolute Form
+)
+Water
+Fighting
+0648
+Meloetta
+(
+Pirouette Forme
+)
+Normal
+Fighting
+0652
+Chesnaught
+Grass
+Fighting
+Mega
+Chesnaught
+Grass
+Fighting
+0689
+Mega
+Barbaracle
+Rock
+Fighting
+0724
+Hisuian
+Decidueye
+Grass
+Fighting
+0759
+Stufful
+Normal
+Fighting
+0760
+Bewear
+Normal
+Fighting
+0783
+Hakamo-o
+Dragon
+Fighting
+0784
+Kommo-o
+Dragon
+Fighting
+0794
+Buzzwole
+Bug
+Fighting
+0795
+Pheromosa
+Bug
+Fighting
+0914
+Quaquaval
+Water
+Fighting
+0922
+Pawmo
+Electric
+Fighting
+0923
+Pawmot
+Electric
+Fighting
+0973
+Flamigo
+Flying
+Fighting
+0984
+Great Tusk
+Ground
+Fighting
+0988
+Slither Wing
+Bug
+Fighting
+1006
+Iron Valiant
+Fairy
+Fighting
+1014
+Okidogi
+Poison
+Fighting
+Non-Pokémon opponents
+Some opponents featured in
+Pokéstar Studios
+in
+Pokémon Black 2 and White 2
+can be
+battled
+like
+Pokémon
+and have designated
+types
+. The
+Starmobiles
+featured in
+Pokémon Scarlet and Violet
+also share this trait.
+Black Belt
+Fighting
+Huge Power
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+100
+100
+100
+100
+100
+100
+Caph Starmobile
+Fighting
+Stamina
+Serious
+Nature
+HP
+Atk
+Def
+SpA
+SpD
+Spe
+408
+95
+120
+80
+85
+131
+The stats shown for the Caph Starmobile are the exact
+stats
+, not
+base stats
+. The values are custom set rather than derived from base stats,
+level
+,
+Nature
+,
+IVs
+, and
+EVs
+.
+Moves
+As of
+Generation IX
+, there are 57 Fighting-type
+moves
+, which makes up 6.10% of all moves (excluding those that are Fighting-type only under certain circumstances), making it the 4th most common
+type
+among moves after
+Grass
+and before
+Water
+and
+Dark
+.
+Prior to
+changes in Generation IV
+, all damaging Fighting-type moves were
+physical
+, but they may now also be
+special
+depending on the attack.
+Some moves
+have had their types changed.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+VII
+All-Out Pummeling
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user rams an energy orb created by its Z-Power into the target with full force. The power varies, depending on the original move.
+VII
+All-Out Pummeling
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user rams an energy orb created by its Z-Power into the target with full force. The power varies, depending on the original move.
+III
+Arm Thrust
+Physical
+Tough
+015
+15
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user attacks the target with open-palmed arm thrusts. This move hits two to five times in a row.
+IV
+Aura Sphere
+Special
+Beautiful
+080
+80
+000
+—
+%
+20
+20
+(max 32)
+Normal (long-range)
+The user lets loose a pulse of aura power from deep within its body at the target. This attack never misses.
+IX
+Axe Kick
+Physical
+120
+120
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks by kicking up into the air and slamming its heel down upon the target. This may also confuse the target. If it misses, the user takes damage instead.
+VIII
+Body Press
+Physical
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks by slamming its body into the target. The higher the user's Defense stat, the greater the damage this move deals.
+III
+Brick Break
+Physical
+Cool
+075
+75
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks with a swift chop. This move can also break barriers, such as Light Screen and Reflect.
+III
+Bulk Up
+Status
+Cool
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user tenses its muscles to bulk up its body, boosting its Attack and Defense stats.
+V
+Circle Throw
+Physical
+Cool
+060
+60
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The target is thrown, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon.
+IV
+Close Combat
+Physical
+Tough
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user fights the target up close, inflicting damage without guarding itself. This also lowers the user's Defense and Sp. Def stats.
+VIII
+Coaching
+Status
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+All Allies (Except Self)
+The user properly coaches its ally Pokémon, boosting their Attack and Defense stats.
+IX
+Collision Course
+Physical
+100
+100
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user transforms and crashes to the ground, causing a massive prehistoric explosion. This move's power is boosted more than usual if it's a supereffective hit.
+IX
+Combat Torque
+Physical
+100
+100
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This move is only used by a
+Starmobile
+. It may paralyze the opponent.
+*
+I
+Counter
+Physical
+Tough
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Varies
+A retaliatory attack that counters any physical move, inflicting double the damage taken.
+II
+Cross Chop
+Physical
+Cool
+100
+100
+080
+80
+%
+05
+5
+(max 8)
+Normal
+The user delivers a double chop with its forearms crossed. This move has a heightened chance of landing a critical hit.
+II
+Detect
+Status
+Cool
+000
+—
+000
+—
+%
+05
+5
+(max 8)
+Self
+This move enables the user to protect itself from all attacks. Its chance of failing rises if it is used in succession.
+I
+Double Kick
+Physical
+Cool
+030
+30
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user attacks by kicking the target twice in a row using two feet.
+IV
+Drain Punch
+Physical
+Tough
+075
+75
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks with an energy-draining punch. The user's HP is restored by up to half the damage taken by the target.
+II
+Dynamic Punch
+Physical
+Cool
+100
+100
+050
+50
+%
+05
+5
+(max 8)
+Normal
+The user attacks by punching the target with full concentrated power. This also confuses the target.
+V
+Final Gambit
+Special
+Tough
+000
+—
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user risks everything to attack the target. The user faints but inflicts damage equal to its own HP.
+VI
+Flying Press
+Physical
+Tough
+100
+100
+095
+95
+%
+10
+10
+(max 16)
+Normal
+The user dives down onto the target from the sky. This move is Fighting and Flying type simultaneously.
+IV
+Focus Blast
+Special
+Cool
+120
+120
+070
+70
+%
+05
+5
+(max 8)
+Normal
+The user heightens its mental focus and unleashes its power. This may also lower the target's Sp. Def stat.
+III
+Focus Punch
+Physical
+Tough
+150
+150
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user focuses its mind before launching a punch. This move fails if the user is hit before using the move.
+IV
+Force Palm
+Physical
+Cool
+060
+60
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The target is attacked with a shock wave. This may also leave the target with paralysis.
+VIII
+G-Max Chi Strike
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Fighting-type attack that Gigantamax Machamp use. This move raises the chance of critical hits.
+VIII
+G-Max Chi Strike
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Fighting-type attack that Gigantamax Machamp use. This move raises the chance of critical hits.
+IV
+Hammer Arm
+Physical
+Tough
+100
+100
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user swings its strong, heavy fist at the target to inflict damage. This also lowers the user's Speed stat.
+I
+High Jump Kick
+Physical
+Cool
+130
+130
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The target is attacked with a knee kick from a jump. If this move misses, the user takes damage instead.
+I
+Jump Kick
+Physical
+Cool
+100
+100
+095
+95
+%
+10
+10
+(max 16)
+Normal
+The user jumps up high, then strikes with a kick. If the kick misses, the user hurts itself.
+I
+Karate Chop
+Physical
+Tough
+050
+50
+100
+100
+%
+25
+25
+(max 40)
+Normal
+The target is attacked with a sharp chop. Critical hits land more easily.
+I
+Low Kick
+Physical
+Tough
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+A powerful low kick that makes the target fall over. The heavier the target, the greater the move's power.
+V
+Low Sweep
+Physical
+Clever
+065
+65
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user makes a swift attack on the target's legs, which lowers the target's Speed stat.
+II
+Mach Punch
+Physical
+Cool
+040
+40
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user throws a punch at blinding speed. This move always goes first.
+VI
+Mat Block
+Status
+Cool
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Your Side
+Using a pulled-up mat as a shield, the user protects itself and its allies from damaging moves. This does not stop status moves.
+VIII
+Max Knuckle
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Fighting-type attack Dynamax Pokémon use. This boosts ally Pokémon's Attack stats.
+VIII
+Max Knuckle
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Fighting-type attack Dynamax Pokémon use. This boosts ally Pokémon's Attack stats.
+VIII
+Meteor Assault
+Physical
+150
+150
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user attacks wildly with its thick leek. The user can't move on the next turn, because the force of this move makes it stagger.
+VIII
+No Retreat
+Status
+000
+—
+000
+—
+%
+05
+5
+(max 8)
+Self
+This move boosts all the user's stats but prevents the user from switching out or fleeing.
+VIII
+Octolock
+Status
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user locks the target in and prevents it from fleeing. This move also lowers the target's Defense and Sp. Def every turn.
+VI
+Power-Up Punch
+Physical
+Tough
+040
+40
+100
+100
+%
+20
+20
+(max 32)
+Normal
+Striking opponents over and over makes the user's fists harder. Hitting a target raises the Attack stat.
+V
+Quick Guard
+Status
+Cool
+000
+—
+000
+—
+%
+15
+15
+(max 24)
+Your Side
+The user protects itself and its allies from priority moves.
+III
+Revenge
+Physical
+Tough
+060
+60
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This attack move's power is doubled if the user has been hurt by the opponent in the same turn.
+II
+Reversal
+Physical
+Cool
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+An all-out attack that becomes more powerful the less HP the user has.
+II
+Rock Smash
+Physical
+Tough
+040
+40
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks with a punch. This may also lower the target's Defense stat.
+I
+Rolling Kick
+Physical
+Cool
+060
+60
+085
+85
+%
+15
+15
+(max 24)
+Normal
+The user lashes out with a quick, spinning kick. This may also make the target flinch.
+V
+Sacred Sword
+Physical
+Cool
+090
+90
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user attacks by slicing with a sword. The target's stat changes don't affect the damage inflicted by this move.
+V
+Secret Sword
+Special
+Beautiful
+085
+85
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user cuts with its long horn. The odd power contained in the horn deals physical damage to the target.
+I
+Seismic Toss
+Physical
+Tough
+000
+—
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The target is thrown using the power of gravity. It inflicts damage equal to the user's level.
+III
+Sky Uppercut
+Physical
+Cool
+085
+85
+090
+90
+%
+15
+15
+(max 24)
+Normal
+The user attacks the target with an uppercut thrown skyward with force.
+V
+Storm Throw
+Physical
+Cool
+060
+60
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks by striking the target with a fierce blow. This move always lands a critical hit.
+I
+Submission
+Physical
+Cool
+080
+80
+080
+80
+%
+20
+20
+(max 32)
+Normal
+The user grabs the target and recklessly dives for the ground. This also damages the user a little.
+III
+Superpower
+Physical
+Tough
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user attacks the target with great power. This also lowers the user's Attack and Defense stats.
+VIII
+Thunderous Kick
+Physical
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user overwhelms the target with lightning-like movement before delivering a kick. This also lowers the target's Defense stat.
+VIII
+Triple Arrows
+Physical
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user kicks, then fires three arrows. This move has a heightened chance of landing a critical hit and may also lower the target’s Defense stat or make it flinch.
+II
+Triple Kick
+Physical
+Cool
+010
+10
+090
+90
+%
+10
+10
+(max 16)
+Normal
+A consecutive three-kick attack that becomes more powerful with each successful hit.
+IX
+Upper Hand
+Physical
+065
+65
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user reacts to the target's movement and strikes with the heel of its palm, making the target flinch. This move fails if the target is not readying a priority move.
+IV
+Vacuum Wave
+Special
+Cool
+040
+40
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user whirls its fists to send a wave of pure vacuum at the target. This move always goes first.
+VIII
+Victory Dance
+Status
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user performs an intense dance to usher in victory, boosting its Attack, Defense, and Speed stats.
+II
+Vital Throw
+Physical
+Cool
+070
+70
+000
+—
+%
+10
+10
+(max 16)
+Normal
+The user attacks last. In return, this throw move never misses.
+IV
+Wake-Up Slap
+Physical
+Tough
+070
+70
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This attack inflicts big damage on a sleeping target. This also wakes the target up, however.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Changed types
+The following moves have had their
+type
+changed into Fighting.
+Move
+Original type
+New type
+Karate Chop
+Gen I
+Normal
+Gen II+
+Fighting
+Abilities
+Interacting with the Fighting type
+A
+Pokémon
+with
+Protean
+or
+Libero
+will become Fighting-type if it uses a Fighting-type
+move
+. A Pokémon with the
+Abilities
+Color Change
+,
+Imposter
+,
+RKS System
+, or
+Multitype
+will become a Fighting-type Pokémon if (respectively) it is hit with a Fighting-type move, is sent out against a Fighting-type opponent, is holding a
+Fighting Memory
+, or is holding a
+Fist Plate
+/
+Fightinium Z
+.
+Gen
+Ability
+Description
+IX
+Mind's Eye
+The Pokémon ignores changes to opponents'
+evasiveness
+, its
+accuracy
+can't be lowered, and it can hit
+Ghost types
+with
+Normal
+- and Fighting-type moves.
+IV
+Scrappy
+The Pokémon can hit Ghost-type Pokémon with Normal- and Fighting-type moves. It is also unaffected by
+Intimidate
+.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Currently, no Abilities are exclusive to Fighting types. This does not include
+signature Abilities
+.
+Items
+Name
+Description
+Black Belt
+An item to be held by a Pokémon. This belt helps with focus and boosts the power of the holder's Fighting-type moves.
+Chople Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Fighting-type move, the power of that move will be weakened.
+Fighting Gem
+A
+gem
+with an essence of combat. When held, it strengthens the power of a Fighting-type move one time.
+Fighting Memory
+A
+memory
+disc that contains Fighting-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Fighting Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Fightinium Z
+This is a crystallized form of Z-Power. It upgrades Fighting-type moves to
+Z-Moves
+.
+Fist Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of the fighting spirit and boosts the power of the holder’s Fighting-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Leppa Berry
+Kelpsy Berry
+Chople Berry
+Salac Berry
+Cram-o-matic
+Name
+Armorite Ore
+Black Belt
+Calcium
+Carbos
+Choice Band
+Expert Belt
+Focus Band
+Focus Sash
+HP Up
+Iron
+Kelpsy Berry
+Leppa Berry
+Macho Brace
+Muscle Band
+Power Anklet
+Power Band
+Power Belt
+Power Bracer
+Power Weight
+Protective Pads
+Protein
+Salac Berry
+Zinc
+Notable Fighting-type Trainers
+Main article:
+Category:Fighting-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Bruno
+Elite Four
+Indigo Plateau
+II
+Chuck
+Gym Leader
+Cianwood Gym
+III
+Brawly
+Gym Leader
+Dewford Gym
+IV
+Maylene
+Gym Leader
+Veilstone Gym
+V
+Marshal
+Elite Four
+Unova Pokémon League
+VI
+Korrina
+Gym Leader
+Successor
+Shalour Gym
+Tower of Mastery
+VII
+Hala
+Island kahuna
+Elite Four
+S
+M
+Melemele Island
+Alola Pokémon League
+S
+M
+VIII
+Bea
+Sw
+Gym Leader
+Stow-on-Side Stadium
+IX
+Eri
+Team Star
+Caph Squad's Base
+IX
+Dendra
+Instructor
+Naranja Academy
+S
+Uva Academy
+V
+IX
+Ivor
+Fist of Justice
+Justice Dojo
+Additionally,
+Mustard
+used to be a Fighting-type expert when he was a
+Gym Leader
+.
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+77.83
+Attack:
+111.01
+Defense:
+82.87
+Sp.Atk:
+67.30
+Sp.Def:
+75.66
+Speed:
+81.87
+Total:
+496.54
+Fully evolved
+Stat
+HP:
+84.52
+Attack:
+121.91
+Defense:
+92.09
+Sp.Atk:
+73.71
+Sp.Def:
+83.73
+Speed:
+89.90
+Total:
+545.86
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Fighting-type Pokémon will gather
+Cheri Berries
+, and typically have the Slumbering
+sleep type
+.
+The following is a list of Fighting-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0056
+Mankey
+Dozing
+0057
+Primeape
+Dozing
+0256
+Combusken
+Slumbering
+0257
+Blaziken
+Slumbering
+0447
+Riolu
+Slumbering
+0448
+Lucario
+Slumbering
+0475
+Gallade
+Slumbering
+0759
+Stufful
+Slumbering
+0760
+Bewear
+Slumbering
+0914
+Quaquaval
+Slumbering
+In the TCG
+Main article:
+Fighting (TCG)
+Due to the decreased amount of types in the TCG, the Fighting type generally consists of all
+Rock
+- and
+Ground-type
+Pokémon.
+Fighting-type Pokémon in the TCG are generally weak to
+Psychic
+with no resistances. Fighting-type Pokémon are strong against
+Colorless
+,
+Darkness
+and
+Lightning
+Pokémon, whilst some
+Colorless
+and
+Psychic
+Pokémon can resist the Fighting type.
+Trivia
+Generation V
+introduced the most Fighting-type Pokémon of any
+generation
+, with 16 (including Meloetta's Pirouette Forme), and
+Generation II
+introduced the fewest, with three.
+Generations I
+, II, and
+IV
+introduced the most Fighting-type moves of any Generation, with eight, and
+Generation VII
+introduced the fewest, with only one:
+All-Out Pummeling
+.
+Fighting has been paired up with every other type at least once.
+The Fighting type was the last type to receive a Pokémon with
+Flying
+as the other type, only receiving one with
+Hawlucha
+in
+Generation VI
+.
+All Fighting-type moves that do damage only target one foe, and all
+physical
+Fighting-type moves make
+contact
+except for one,
+Meteor Assault
+.
+There has been at least one Fighting-type
+specialist
+in every
+region
+and
+generation
+. It shares this trait with the
+Psychic
+and
+Ice
+types, although Ice-type trainer
+Sina
+is not native to the
+Alola
+region where she can be battled.
+Color representations for the Fighting type have generally been inconsistent in various Pokémon media. While the Fighting type has been associated with the color red in the main Pokémon games since
+Generation III
+and up to
+Sword and Shield
+, it is associated with orange in the
+Pokémon Stadium series
+, the
+Pokémon Mystery Dungeon series
+,
+Pokémon Masters EX
+, and the main Pokémon games since
+Brilliant Diamond and Shining Pearl
+. It is also associated with the color brown in the
+Pokémon Trading Card Game
+.
+The Fighting type is the most common secondary type for
+Evolutions
+of
+first partner Pokémon
+, with six first partner Pokémon lines being paired with it, three of them being
+Fire-type
+.
+The Fighting type could be considered a physical counterpart to the
+Psychic
+type:
+The highest average stat among all Fighting-type Pokémon is
+Attack
+, while for Psychic-type Pokémon, it is
+Special Attack
+.
+While the Fighting type is the only formerly physical type to not have any old moves changed into special moves, the Psychic type is the only formerly special type to not have any old moves changed into physical moves.
+Counter
+and
+Mirror Coat
+, moves countering physical and special attacks are, respectively, Fighting- and Psychic-type moves.
+Bulk Up
+and
+Calm Mind
+, moves raising physical and special stats are, respectively, Fighting- and Psychic-type moves.
+The
+Cram-o-matic
+considers
+Choice Band
+and
+Muscle Band
+Fighting-type inputs, and
+Choice Specs
+and
+Wise Glasses
+Psychic-type inputs.
+The Fighting type is tied with the
+Ground
+type for being super effective against the most amount of types, with five.
+The Fighting type is the only type that deals super effective damage against the
+Normal
+type.
+On average, Fighting-type Pokémon have the highest base
+Attack
+of all types.
+The Fighting and
+Bug
+types are the only two separate types that resist each other.
+Every Fighting-type
+Gym Leader
+and
+Elite Four
+member, along with
+Eri
+from
+Team Star
+, uses a
+Machamp
+or a
+Lucario
+in at least one of their teams.
+Every type that is supereffective against the Fighting type also resists it.
+In other languages
+Language
+Title
+Japanese
+かくとう (格闘)
+Kakutō
+Catalan
+Lluitador
+*
+Lluita
+*
+Chinese
+Cantonese
+格鬥
+Gaakdau
+Mandarin
+格鬥 / 格斗
+Gédòu
+Czech
+Bojový
+Danish
+Kamp
+Dutch
+Vecht
+Finnish
+Taistelu
+French
+Combat
+German
+Kampf
+Greek
+Μαχητής
+Machitís
+Hebrew
+לחימה
+Lekhima
+Hindi
+फ़ाइटिंग
+Fighting
+लड़ाई
+Ladaee
+*
+Hungarian
+Harcos
+Indonesian
+Petarung
+*
+Tanding
+*
+Italian
+Lotta
+Korean
+격투
+Gyeoktu
+Malaysian
+Berlawan
+Norwegian
+Slåss
+*
+Kjempende
+*
+Polish
+Walczący
+Portuguese
+Brazil
+Lutador
+Luta
+Guerreiro
+Combate
+*
+Portugal
+Luta
+Lutador
+*
+Romanian
+Luptă
+Russian
+Сражение
+Srazheniye
+Боевой
+Boyevoy
+Spanish
+Latin America
+Pelea
+Spain
+Lucha
+Swedish
+Strids
+*
+Slagsmål
+Boxartyp
+*
+Thai
+ต่อสู้
+Tosu
+Turkish
+Dövüşçü
+Dövüş
+Vietnamese
+Giác đấu
+Chiến đấu
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Fighting_(type)&oldid=4550789
+"

@@ -1,0 +1,2583 @@
+It has been suggested that this article be moved to
+Safari Zone (Kanto)
+.
+Please discuss whether or not to move it on its
+talk page
+.
+This article is missing one or more images.
+Please feel free to add any missing images to this article. Needed images can be
+uploaded
+to the Bulbagarden Archives.
+Reason: Missing entrance images and interior images for the Secret House
+Safari Zone
+サファリゾーン
+Safari Zone
+"Wild Missingno. appeared!"
+Recommended Level:
+{{{reclvl}}}
+Map description:
+An amusement park outside Fuchsia City where many rare Pokémon can be observed in the wild. Catch them in a popular game!
+FR
+LG
+Location:
+North of
+Fuchsia City
+Region:
+Kanto
+Generations:
+I
+,
+III
+Location of Safari Zone in
+Kanto
+.
+Pokémon world locations
+The Kanto
+Safari Zone
+(Japanese:
+サファリゾーン
+Safari Zone
+) is a special
+Pokémon
+preserve in
+Kanto
+that
+Trainers
+can enter to
+catch
+wild Pokémon. It is owned by
+Baoba
+.
+For
+$
+500, the
+player
+can play the
+Safari Game
+(Japanese:
+サファリゲーム
+Safari Game
+) and receive 30
+Safari Balls
+. Trainers are limited to 500
+R
+B
+Y
+/600
+FR
+LG
+steps in the Safari Zone before the Game is over. A Zone Exploration Campaign is also taking place, where the goal is for Trainers to find the
+Secret House
+(Japanese:
+トレジャーハウス
+Treasure House
+), located in the deepest area, Area 3. The prize for finding the house is
+HM03
+(
+Surf
+).
+In the Safari Zone, when a
+wild Pokémon
+appears, Trainers cannot send out Pokémon to battle it. Instead, Trainers must face Pokémon only with simple tools, and catching a Pokémon becomes much more reliant on luck, as Pokémon are able to run away from the Trainer at any time. Trainers may throw Bait to make a Pokémon less likely to run, but this also makes it harder to catch. Conversely, throwing Rocks will make a Pokémon easier to catch but more likely to run.
+In
+Generation II
+, the Safari Zone has closed down while Baoba takes a vacation. In the contemporaneous
+Generation IV
+games, he has opened
+another one
+in
+Johto
+and Kanto's
+Pal Park
+is located here. In
+Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!
+,
+GO Park
+is located here.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Areas
+Safari Game
+Generation I
+Generation III
+Quirks
+Closing notices
+Items
+Pokémon
+Generation I
+Center Area
+Area 1 - East
+Area 2 - North
+Area 3 - West
+Generation III
+Center Area
+Area 1 - East
+Area 2 - North
+Area 3 - West
+Layout
+In the spin-off games
+Pokémon Pinball
+In animation
+Pokémon the Series
+Pokémon the Series: The Beginning
+Pokémon
+Pokémon Origins
+Pokémon
+In the manga
+Pokémon Adventures
+Pokémon
+Pokémon Pocket Monsters
+Pokémon
+Pokémon Zensho
+Pokémon
+Trivia
+In other languages
+Related articles
+Contents
+Areas
+The Safari Zone is divided into four areas:
+The Center Area: where the player enters the Safari Zone
+Area 1: east from the Center Area
+Area 2: north from the Center Area
+Area 3: west from the Center Area
+In the
+Generation I
+games, "Center Area" is actually used to refer to both the entrance area that acts as a hub to all the other areas, and the area east from this hub.
+Safari Game
+As with other Safari Games, Pokémon are made easier or harder to capture by modifying the Pokémon's
+catch rate
+. Pokémon can be in any of three states—angry, eating or neutral—with the angry state making them more likely to run but the eating state making them less likely to.
+Generation I
+At the start of an encounter, two counters—an "angry counter" and an "eating counter"—are set to 0. Whenever Bait is thrown, the angry counter is reset while the eating counter increases by a random value between 1 and 5 (but to no more than 255). The opposite occurs if a Rock is thrown: the eating counter is reset and the angry counter increases on the same basis. The catch rate is doubled (to no more than 255) whenever a Rock is thrown, but halved (rounded down) whenever Bait is thrown.
+At the end of each turn, if either the angry or eating counter is nonzero, it is decreased by 1; if the angry counter is decreased to 0, the modified catch rate resets to the Pokémon's initial catch rate. A random value between 0 and 255 inclusive is generated, and if this is less than half of the Pokémon's Speed rounded down (if the Pokémon is eating), double the Speed (if the Pokémon is in a neutral state), or four times the Speed (if the Pokémon is angry), the Pokémon escapes. A Pokémon will also always escape if its Speed is 128 or more, even if it is eating.
+Generation III
+The Safari Game mechanics were overhauled to more closely resemble the one in the
+Hoenn Safari Zone
+. Like it, there is an additional "catch factor" that begins at 100/1275 of the Pokémon's catch rate (rounded down). Each species of Pokémon that appears in the Safari Zone also has its own "escape rate", unlike in the
+Hoenn Safari Zone
+, which is never modified. Bait cannot reduce the "catch factor" of a Pokémon below 3 and rocks cannot increase it above 20. Because of this, Chansey becomes easier to catch after being baited as its catch factor increases from 2 to 3, Pokémon with a base catch rate of 45 will not become harder to catch after bait has been thrown as their catch factor remains at 3, and Magikarp cannot become any easier to catch by throwing rocks as its catch factor is already 20.
+Like Generation I, a Pokémon will be angry or eating whenever Bait or Rocks are thrown. If Bait is thrown, it will be "eating" for 1-5 turns, during which the catch factor is halved. If Rocks are thrown, it will be "angry" for 1-5 turns, during which the catch factor is doubled. Being "angry" or "eating" is mutually exclusive, though modifications to the catch factors will stack. Whenever a Safari Ball is thrown, the catch factor is converted back to a catch rate by multiplying by 1275/100 and rounding down. The amount of bait or anger a Pokémon has can stack if multiple rocks or bait are thrown. The amount cannot surpass 5 turns worth of either.
+At the beginning of each turn a flee check will be completed. A random number from 0 to 99 is generated, and is compared to 5 times its "modified escape factor" if the random value is less, the Pokémon will escape at the end of the turn unless it is captured.
+During a flee check turn the game will determine a Pokémon's "modified escape factor" 1275/100 of the escape rate (rounded down), which is doubled if the Pokémon is "angry" or quartered (rounded down) if the Pokémon is "eating". This value cannot be reduced below 1 which is equal to a 5% chance to flee. When a Pokémon is first encountered, its flee rate cannot be lower than 2.
+FR/LG Flee Rates
+*
+Pokémon
+Base Flee Rate
+Baited Flee Factor
+Angered Flee Factor
+25 (10%)
+1 (5%)
+2 (10%)
+50 (15%)
+1 (5%)
+6 (30%)
+75 (25%)
+1 (5%)
+10 (50%)
+100 (35%)
+1 (5%)
+14 (70%)
+125 (45%)
+2 (10%)
+18 (90%)
+FR/LG Base Catch Rates
+*
+Pokémon
+Base Catch Rate
+Catch Factor
+Base Safari Catch Rate
+(Per Ball)
+*
+30
+2
+25 (4.9%)
+45
+3
+38 (8.1%)
+60
+4
+51 (10.7%)
+75
+5
+63 (12.3%)
+90
+7
+89 (19.8%)
+120
+9
+114 (23.4%)
+190
+14
+178 (40.1%)
+225
+17
+216 (50.3%)
+235
+18
+229 (50.3%)
+255
+20
+255 (50.3%)
+Quirks
+A restriction that causes a Pokémon's catch factor to be a minimum of 3 after bait has been thrown, causes
+Chansey
+'s
+catch rate
+to be increased from 25 (4.9% per Safari Ball) to 38 (8.09% per Safari Ball) after throwing bait. This means that throwing bait makes Chansey both easier to catch and less likely to flee. Similarly
+Kangaskhan
+,
+Scyther
+,
+Pinsir
+,
+Tauros
+,
+Dratini
+, and
+Dragonair
+all have catch rates that are unaffected by the use of bait. Due to this oddity, using bait and throwing Safari Balls in specific sequences allows the player to optimize their odds of catching the rare Pokémon.
+However, as Pokémon's flee check is performed at the beginning of the turn, this means bait and rock will only come into effect the turn after it has been thrown. This leaves an inherent risk of a Pokémon fleeing before any Safari Ball has been thrown if the player chooses to use bait on first turn; conversely, if the player has only one Safari Ball, the penalty for throwing rock the turn before using it will be effectively ignored due to the player's Safari Game ending on the turn it would come into the effect.
+Additionally, in Japanese versions of the games, bait and rock do not work correctly and only affect the catch factor, meaning that outside of the above mentioned species, bait actually hinders player's odds of catching the Pokémon, while rocks increase them with no downsides.
+By
+@ProfessorRex
+This video is not available on Bulbapedia; instead, you can watch the video on YouTube
+here
+.
+Closing notices
+In
+Generation II
+, the sign outside the Safari Zone contains a notice about it being closed in that reads:
+The WARDEN is
+traveling abroad.
+Therefore, the
+SAFARI ZONE is
+closed.
+In
+HeartGold and SoulSilver
+, the sign informs that since the Safari Zone is closed, the facility houses
+Pal Park
+instead.
+There's a notice here...
+The Safari Zone is closed.
+Instead, we have Pal Park.
+Items
+Item
+Location
+Games
+Safari Ball
+×30
+Entrance, for the Safari Game; cannot be kept
+R
+B
+Y
+FR
+LG
+Nugget
+Center Area (hub), on the island (requires
+Surf
+)
+R
+B
+Y
+FR
+LG
+Leaf Stone
+×2
+Center Area, three squares east of the
+Nugget
+(requires
+Surf
+)
+(hidden)
+Area 1, southwest of the rest house, on the southern plateau
+FR
+LG
+Carbos
+Center Area (east), southwest of the rest house, on the southern plateau
+R
+B
+Y
+TM37
+(
+Egg Bomb
+)
+Center Area (east), in the patch of
+grass
+beside the water
+R
+B
+Y
+TM11
+(
+Sunny Day
+)
+Area 1, in the patch of
+grass
+beside the water
+FR
+LG
+Max Potion
+Center Area (east)
+R
+G
+B
+Y
+/Area 1
+FR
+LG
+, west of the northern plateau
+R
+B
+Y
+FR
+LG
+Full Restore
+Center Area (east)
+R
+G
+B
+Y
+/Area 1
+FR
+LG
+, southwest of the rest house
+R
+B
+Y
+FR
+LG
+Quick Claw
+Area 2, near the center of the zone
+FR
+LG
+TM40
+(
+Skull Bash
+)
+Area 2, southwest of the rest house
+R
+B
+Y
+TM47
+(
+Steel Wing
+)
+Area 2, southwest of the rest house
+FR
+LG
+Protein
+Area 2, northwest of the rest house
+R
+B
+Y
+FR
+LG
+Max Revive
+Area 3, northwest of the Area 3 sign
+R
+B
+Y
+FR
+LG
+Max Potion
+Area 3, in the patch of
+grass
+in the southwest area of the zone
+R
+B
+Y
+FR
+LG
+TM32
+(
+Double Team
+)
+Area 3, southeast of the Secret House
+R
+B
+Y
+FR
+LG
+Revive
+Area 3, on the statue southeast of the Secret House
+(hidden)
+R
+B
+Y
+HM03
+(
+Surf
+)
+Area 3, from the man in the Secret House
+R
+B
+Y
+FR
+LG
+Revive
+Area 3, four squares south and one square east of the door to the Secret House
+(hidden)
+FR
+LG
+Gold Teeth
+Area 3, southeast of the sign asking to find them
+R
+B
+Y
+FR
+LG
+Pokémon
+Generation I
+Center Area
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+R
+B
+Y
+Grass
+22
+20%
+Nidoran♀
+R
+B
+Y
+Grass
+36
+20%
+Nidorina
+R
+B
+Y
+Grass
+31
+5%
+Nidorina
+R
+B
+Y
+Grass
+31
+10%
+Nidoran♂
+R
+B
+Y
+Grass
+22
+20%
+Nidoran♂
+R
+B
+Y
+Grass
+14
+20%
+Nidorino
+R
+B
+Y
+Grass
+31
+10%
+Nidorino
+R
+B
+Y
+Grass
+31
+5%
+Nidorino
+R
+B
+Y
+Grass
+23
+10%
+Paras
+R
+B
+Y
+Grass
+27
+5%
+Parasect
+R
+B
+Y
+Grass
+30
+5%
+Parasect
+R
+B
+Y
+Grass
+27, 32
+15%
+Venonat
+R
+B
+Y
+Grass
+22
+15%
+Exeggcute
+R
+B
+Y
+Grass
+24-25
+20%
+Exeggcute
+R
+B
+Y
+Grass
+24
+15%
+Rhyhorn
+R
+B
+Y
+Grass
+25
+20%
+Rhyhorn
+R
+B
+Y
+Grass
+20
+10%
+Chansey
+R
+B
+Y
+Grass
+23
+1%
+Chansey
+R
+B
+Y
+Grass
+7
+1%
+Tangela
+R
+B
+Y
+Grass
+22
+4%
+Scyther
+R
+B
+Y
+Grass
+23
+4%
+Pinsir
+R
+B
+Y
+Grass
+23
+4%
+Fishing
+Magikarp
+R
+B
+Y
+Fishing
+Old Rod
+5
+100%
+Poliwag
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Goldeen
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Psyduck
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Slowpoke
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Krabby
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Magikarp
+R
+B
+Y
+Fishing
+Super Rod
+5, 10
+70%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+10
+20%
+Dragonair
+R
+B
+Y
+Fishing
+Super Rod
+15
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 1 - East
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+R
+B
+Y
+Grass
+24
+5%
+Nidoran♀
+R
+B
+Y
+Grass
+24
+20%
+Nidoran♀
+R
+B
+Y
+Grass
+29
+20%
+Nidorina
+R
+B
+Y
+Grass
+33
+10%
+Nidorina
+R
+B
+Y
+Grass
+32
+10%
+Nidoran♂
+R
+B
+Y
+Grass
+24
+20%
+Nidoran♂
+R
+B
+Y
+Grass
+24
+5%
+Nidoran♂
+R
+B
+Y
+Grass
+21
+20%
+Nidorino
+R
+B
+Y
+Grass
+33
+10%
+Paras
+R
+B
+Y
+Grass
+22
+15%
+Parasect
+R
+B
+Y
+Grass
+25
+5%
+Doduo
+R
+B
+Y
+Grass
+26
+20%
+Exeggcute
+R
+B
+Y
+Grass
+23, 25
+20%
+Exeggcute
+R
+B
+Y
+Grass
+22, 26
+20%
+Cubone
+R
+B
+Y
+Grass
+19
+10%
+Marowak
+R
+B
+Y
+Grass
+24
+5%
+Chansey
+R
+B
+Y
+Grass
+21
+4%
+Kangaskhan
+R
+B
+Y
+Grass
+25
+4%
+Scyther
+R
+B
+Y
+Grass
+28
+1%
+Scyther
+R
+B
+Y
+Grass
+15
+1%
+Pinsir
+R
+B
+Y
+Grass
+28
+1%
+Tauros
+R
+B
+Y
+Grass
+21
+10%
+Fishing
+Magikarp
+R
+B
+Y
+Fishing
+Old Rod
+5
+100%
+Poliwag
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Goldeen
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Psyduck
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Slowpoke
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Krabby
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Magikarp
+R
+B
+Y
+Fishing
+Super Rod
+5, 10, 15
+90%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 2 - North
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+R
+B
+Y
+Grass
+22
+20%
+Nidoran♀
+R
+B
+Y
+Grass
+14
+20%
+Nidorina
+R
+B
+Y
+Grass
+30
+5%
+Nidorina
+R
+B
+Y
+Grass
+30
+10%
+Nidorina
+R
+B
+Y
+Grass
+23
+10%
+Nidoran♂
+R
+B
+Y
+Grass
+22
+20%
+Nidoran♂
+R
+B
+Y
+Grass
+36
+20%
+Nidorino
+R
+B
+Y
+Grass
+30
+10%
+Nidorino
+R
+B
+Y
+Grass
+30
+5%
+Paras
+R
+B
+Y
+Grass
+23
+15%
+Venomoth
+R
+B
+Y
+Grass
+32
+5%
+Exeggcute
+R
+B
+Y
+Grass
+25, 27
+20%
+Exeggcute
+R
+B
+Y
+Grass
+20
+15%
+Cubone
+R
+B
+Y
+Grass
+16
+5%
+Rhyhorn
+R
+B
+Y
+Grass
+26
+20%
+Rhyhorn
+R
+B
+Y
+Grass
+25
+10%
+Chansey
+R
+B
+Y
+Grass
+26
+4%
+Kangaskhan
+R
+B
+Y
+Grass
+28, 33
+15%
+Scyther
+R
+B
+Y
+Grass
+25
+4%
+Pinsir
+R
+B
+Y
+Grass
+15
+1%
+Tauros
+R
+B
+Y
+Grass
+28
+1%
+Fishing
+Magikarp
+R
+B
+Y
+Fishing
+Old Rod
+5
+100%
+Poliwag
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Goldeen
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Psyduck
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Slowpoke
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Krabby
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Magikarp
+R
+B
+Y
+Fishing
+Super Rod
+5, 10, 15
+90%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 3 - West
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+R
+B
+Y
+Grass
+25
+5%
+Nidoran♀
+R
+B
+Y
+Grass
+25
+20%
+Nidoran♀
+R
+B
+Y
+Grass
+21
+20%
+Nidorina
+R
+B
+Y
+Grass
+33
+10%
+Nidoran♂
+R
+B
+Y
+Grass
+25
+20%
+Nidoran♂
+R
+B
+Y
+Grass
+25
+5%
+Nidoran♂
+R
+B
+Y
+Grass
+29
+20%
+Nidorino
+R
+B
+Y
+Grass
+33
+10%
+Nidorino
+R
+B
+Y
+Grass
+32
+10%
+Venonat
+R
+B
+Y
+Grass
+23
+15%
+Venomoth
+R
+B
+Y
+Grass
+31
+5%
+Doduo
+R
+B
+Y
+Grass
+26
+20%
+Exeggcute
+R
+B
+Y
+Grass
+24, 26
+20%
+Exeggcute
+R
+B
+Y
+Grass
+22, 26
+20%
+Cubone
+R
+B
+Y
+Grass
+19
+10%
+Marowak
+R
+B
+Y
+Grass
+24
+5%
+Tangela
+R
+B
+Y
+Grass
+27
+1%
+Kangaskhan
+R
+B
+Y
+Grass
+28
+1%
+Pinsir
+R
+B
+Y
+Grass
+25
+4%
+Tauros
+R
+B
+Y
+Grass
+26
+4%
+Tauros
+R
+B
+Y
+Grass
+21
+10%
+Fishing
+Magikarp
+R
+B
+Y
+Fishing
+Old Rod
+5
+100%
+Poliwag
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Goldeen
+R
+B
+Y
+Fishing
+Good Rod
+10
+50%
+Psyduck
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Slowpoke
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Krabby
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Magikarp
+R
+B
+Y
+Fishing
+Super Rod
+5, 10, 15
+90%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+25%
+Dratini
+R
+B
+Y
+Fishing
+Super Rod
+15
+10%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation III
+Center Area
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+FR
+LG
+Grass
+22
+20%
+Nidorina
+FR
+LG
+Grass
+31
+5%
+Nidorina
+FR
+LG
+Grass
+31
+10%
+Nidoran♂
+FR
+LG
+Grass
+22
+20%
+Nidorino
+FR
+LG
+Grass
+31
+10%
+Nidorino
+FR
+LG
+Grass
+31
+5%
+Parasect
+FR
+LG
+Grass
+30
+5%
+Venonat
+FR
+LG
+Grass
+22
+15%
+Exeggcute
+FR
+LG
+Grass
+24-25
+20%
+Rhyhorn
+FR
+LG
+Grass
+25
+20%
+Chansey
+FR
+LG
+Grass
+23
+1%
+Scyther
+FR
+LG
+Grass
+23
+4%
+Pinsir
+FR
+LG
+Grass
+23
+4%
+Surfing
+Psyduck
+FR
+LG
+Surfing
+20-40
+100%
+Slowpoke
+FR
+LG
+Surfing
+20-40
+100%
+Fishing
+Magikarp
+FR
+LG
+Fishing
+Old Rod
+5
+100%
+Poliwag
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Goldeen
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Magikarp
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Psyduck
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Slowpoke
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Goldeen
+FR
+LG
+Fishing
+Super Rod
+15-25
+40%
+Seaking
+FR
+LG
+Fishing
+Super Rod
+20-30
+40%
+Dratini
+FR
+LG
+Fishing
+Super Rod
+15-25
+15%
+Dragonair
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 1 - East
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+FR
+LG
+Grass
+24
+5%
+Nidoran♀
+FR
+LG
+Grass
+24
+20%
+Nidorina
+FR
+LG
+Grass
+33
+10%
+Nidoran♂
+FR
+LG
+Grass
+24
+20%
+Nidoran♂
+FR
+LG
+Grass
+24
+5%
+Nidorino
+FR
+LG
+Grass
+33
+10%
+Paras
+FR
+LG
+Grass
+22
+15%
+Parasect
+FR
+LG
+Grass
+25
+5%
+Doduo
+FR
+LG
+Grass
+26
+20%
+Exeggcute
+FR
+LG
+Grass
+23, 25
+20%
+Kangaskhan
+FR
+LG
+Grass
+25
+4%
+Scyther
+FR
+LG
+Grass
+28
+1%
+Pinsir
+FR
+LG
+Grass
+28
+1%
+Surfing
+Psyduck
+FR
+LG
+Surfing
+20-40
+100%
+Slowpoke
+FR
+LG
+Surfing
+20-40
+100%
+Fishing
+Magikarp
+FR
+LG
+Fishing
+Old Rod
+5
+100%
+Poliwag
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Goldeen
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Magikarp
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Psyduck
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Slowpoke
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Goldeen
+FR
+LG
+Fishing
+Super Rod
+15-25
+40%
+Seaking
+FR
+LG
+Fishing
+Super Rod
+20-30
+40%
+Dratini
+FR
+LG
+Fishing
+Super Rod
+15-25
+15%
+Dragonair
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 2 - North
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+FR
+LG
+Grass
+30
+20%
+Nidorina
+FR
+LG
+Grass
+30
+5%
+Nidorina
+FR
+LG
+Grass
+30
+10%
+Nidoran♂
+FR
+LG
+Grass
+30
+20%
+Nidorino
+FR
+LG
+Grass
+30
+10%
+Nidorino
+FR
+LG
+Grass
+30
+5%
+Paras
+FR
+LG
+Grass
+23
+15%
+Venomoth
+FR
+LG
+Grass
+32
+5%
+Exeggcute
+FR
+LG
+Grass
+25, 27
+20%
+Rhyhorn
+FR
+LG
+Grass
+26
+20%
+Chansey
+FR
+LG
+Grass
+26
+4%
+Tauros
+FR
+LG
+Grass
+28
+1%
+Surfing
+Psyduck
+FR
+LG
+Surfing
+20-40
+100%
+Slowpoke
+FR
+LG
+Surfing
+20-40
+100%
+Fishing
+Magikarp
+FR
+LG
+Fishing
+Old Rod
+5
+100%
+Poliwag
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Goldeen
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Magikarp
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Psyduck
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Slowpoke
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Goldeen
+FR
+LG
+Fishing
+Super Rod
+15-25
+40%
+Seaking
+FR
+LG
+Fishing
+Super Rod
+20-30
+40%
+Dratini
+FR
+LG
+Fishing
+Super Rod
+15-25
+15%
+Dragonair
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Area 3 - West
+Pokémon
+Games
+Location
+Levels
+Rate
+Nidoran♀
+FR
+LG
+Grass
+30
+5%
+Nidoran♀
+FR
+LG
+Grass
+22
+20%
+Nidorina
+FR
+LG
+Grass
+30
+10%
+Nidoran♂
+FR
+LG
+Grass
+22
+20%
+Nidoran♂
+FR
+LG
+Grass
+30
+5%
+Nidorino
+FR
+LG
+Grass
+30
+10%
+Venonat
+FR
+LG
+Grass
+23
+15%
+Venomoth
+FR
+LG
+Grass
+32
+5%
+Doduo
+FR
+LG
+Grass
+26
+20%
+Exeggcute
+FR
+LG
+Grass
+25, 27
+20%
+Kangaskhan
+FR
+LG
+Grass
+28
+1%
+Tauros
+FR
+LG
+Grass
+25
+4%
+Surfing
+Psyduck
+FR
+LG
+Surfing
+20-40
+100%
+Slowpoke
+FR
+LG
+Surfing
+20-40
+100%
+Fishing
+Magikarp
+FR
+LG
+Fishing
+Old Rod
+5
+100%
+Poliwag
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Goldeen
+FR
+LG
+Fishing
+Good Rod
+5-15
+60%
+Magikarp
+FR
+LG
+Fishing
+Good Rod
+5-15
+20%
+Psyduck
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Slowpoke
+FR
+LG
+Fishing
+Super Rod
+15-35
+4%
+Goldeen
+FR
+LG
+Fishing
+Super Rod
+15-25
+40%
+Seaking
+FR
+LG
+Fishing
+Super Rod
+20-30
+40%
+Dratini
+FR
+LG
+Fishing
+Super Rod
+15-25
+15%
+Dragonair
+FR
+LG
+Fishing
+Super Rod
+25-35
+1%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Layout
+Version
+Center Area (hub)
+Center Area (east)
+RGBY
+Area 1
+FRLG
+Area 2
+Area 3
+Red
+Blue
+Yellow
+FireRed
+LeafGreen
+In the spin-off games
+Pokémon Pinball
+In
+Pokémon Pinball
+, the Safari Zone appears on the Red and Blue tables; catchable
+Pokémon
+include
+Nidoran♀
+,
+Nidoran♂
+,
+Paras
+,
+Doduo
+,
+Grimer
+,
+Rhyhorn
+,
+Chansey
+,
+Scyther
+,
+Pinsir
+, and
+Tauros
+.
+In animation
+The Safari Zone entrance in
+Pokémon the Series: The Beginning
+Pokémon the Series
+In the
+animated series
+, the Safari Zone is run by a gun-toting warden,
+Kaiser
+. Like in the
+games
+, Trainers are restricted to only thirty
+Safari Balls
+per challenge. It is explained that this is the result of an incident decades ago where a rumor of the extremely rare Pokémon
+Dratini
+being spotted in the Safari Zone caused countless
+Trainers
+to recklessly catch excessive amounts of Pokémon in the area and completely wreck it in the process.
+Pokémon the Series: The Beginning
+The Safari Zone only appeared in the
+banned episode
+EP035
+. Due to this episode's international ban outside of Asia, the Safari Zone has never appeared in the English
+dub
+, although it was mentioned in the preceding episodes
+The Flame Pokémon-Athon!
+and
+The Kangaskhan Kid
+, as well as in the later episode
+Showdown at the Po-ké Corral
+.
+Upon entering the Safari Zone,
+Ash
+and
+his friends
+encountered
+Team Rocket
+, who challenged them to a contest to see who could catch the most Pokémon. However, while Ash was busy catching Pokémon, Team Rocket forced Kaiser to reveal Dratini's location. Ash and his friends managed to stop Team Rocket's plan to detonate a bomb in Dratini's home lagoon and discovered that the Dratini which Kaiser had met decades earlier had evolved into
+Dragonair
+and now had its own child Dratini. Before leaving the Safari Zone, Ash sent the Pokémon he had caught, namely a herd of
+Tauros
+and nothing else, to
+Professor Oak's Laboratory
+.
+The Safari Zone is also seen in an early trailer for the
+second movie
+, where it is experiencing a harsh blizzard thanks to the unstable weather patterns caused by the fighting between the
+legendary birds
+. The scene, like most scenes from initial
+Pokémon movie
+trailers, was never actually used in the movie.
+Pokémon
+Tauros (×30)
+♂
+Dratini
+Dratini → Dragonair
+Nidorino
+♂
+Nidorina
+♀
+Rhyhorn
+Rhydon
+Magikarp
+Gyarados
+Horsea
+Poliwag
+Goldeen
+Slowpoke
+Pokémon Origins
+The Kanto Safari Zone appeared in
+File 4: Charizard
+, when
+Red
+was seen confronting
+Chansey
+in there. Initially, he had trouble choosing between throwing a rock or a bait, almost causing the Chansey to run away, but eventually, he managed to catch it and add its data to his
+Pokédex
+.
+Pokémon
+Chansey
+♀
+In the manga
+Pokémon Adventures
+Safari Zone in
+Pokémon Adventures
+The Safari Zone appeared in
+Long Live the Nidoking!
+and
+A Hollow Victreebel
+, where
+Red
+visited it. Like all visitors, Red was forced to leave his Pokémon and
+Poké Balls
+to the entrance before starting his tour. Guided by two robotic
+Pidgey
+called
+Pidgebots
+, Red started a ride on a raft in a river running through the Safari Zone. When he noticed two
+Nidoking
+fighting over the love of a
+Nidoqueen
+, Red secretly pulled out a Poké Ball he had smuggled in and tried to catch one of the Nidoking with it. However, the ball missed the Nidoking and caught Nidoqueen instead. Enraged by this, the two Nidoking attacked Red's raft, destroying it and one of the Pidgebots.
+While on the run, Red ended up getting caught by a group of
+Victreebel
+, who intended to eat him as a part of their nightly
+Evolution
+ritual. However, thanks to his
+Poké Flute
+and a
+Poké Doll
+, Red managed to escape. Coming across one of the Nidoking from before again, Red caught one of the Victreebel and used it to weaken Nidoking enough for capture. The next morning, when Red was found by the Safari Zone officials, he was revealed to have caught a huge herd of Pokémon.
+Pokémon
+Parasect
+Exeggcute (multiple)
+Dragonair
+Nidoking (multiple)
+♂
+Nidoqueen
+♀
+Victreebel (multiple)
+Weepinbell (multiple)
+Bellsprout (multiple)
+Pokémon Pocket Monsters
+The Safari Zone in
+Pokémon Pocket Monsters
+Red
+and his Pokémon visited the Safari Zone in
+Rampage At The Safari Zone?!
+. Like many other places they visit, it ended up getting wrecked by
+Clefairy
+.
+This section is a
+stub
+. You can
+help
+Bulbapedia by
+expanding it
+.
+Pokémon
+Nidoran♀
+Tauros
+♂
+Omanyte
+Omastar
+Kabuto
+Kabutops
+Aerodactyl
+Pokémon Zensho
+Safari Zone in
+Pokémon Zensho
+The Safari Zone appeared in
+PZ04
+, where
+Satoshi
+entered it. After saving a
+Ditto
+from a
+Tauros
+, Satoshi met
+Shigeru
+, who showed off all the Pokémon he had managed to catch at the Safari Zone. Soon after, Satoshi came across a
+Fisherman
+, who gave him a fishing rod. To the Fisherman's astonishment, Satoshi managed to reel in a rare
+Dratini
+, and asked him to
+trade
+it for him. At first, Satoshi was reluctant, but when he noticed the
+Safari Zone Warden
+'s
+missing dentures
+inside one of the Fisherman's
+Poké Balls
+, he accepted the offer.
+On his way to return the dentures, Satoshi was ambushed and challenged to a
+battle
+by
+Gym Leader
+Koga
+. Satoshi's Ditto
+transformed
+into a duplicate of Koga, resulting in his
+Weezing
+getting confused and
+self-destructing
+, earning Satoshi the
+Soul Badge
+. Koga also admitted that he had been the one who stole the Warden's dentures as a petty protest on him having built the Safari Zone on the site that used to be a ninja village.
+Pokémon
+Chansey
+♀
+Doduo
+Rhyhorn
+Kangaskhan
+♀
+Tauros
+♂
+Ditto
+Dratini
+Slowpoke
+Krabby
+Psyduck
+Magikarp
+Trivia
+The unused Safari Zone in Generation II, which uses
+Evolution
+as its background music
+The background music is
+Evolution
+.
+In
+Generation I
+core series
+games,
+Viridian Forest
+and Safari Zone are the only areas with
+tall grass
+that is not always arranged in 2×2 tile patches.
+They are also the only areas where it is not possible to remove tall grass by using
+Cut
+. However, tall grass can be removed normally from these areas in
+Pokémon FireRed and LeafGreen
+.
+In the
+Generation II
+games, there is some data for a
+beta Safari Zone
+in
+Fuchsia City
+, but it was ultimately unused.
+In
+Pokémon Yellow
+,
+Tauros
+'s encounter rate at the Safari Zone is 10%, as opposed to the other
+Generation I
+-based games, where its encounter rate is only 1% or 4%, depending on the Area. As the Yellow Version is highly based on the animated series, this can be taken as a
+reference
+to the animated series episode
+EP035
+, where
+Tauros
+were seen in large numbers around the Safari Zone, as opposed to its rarity in
+the previous games
+.
+Another reference to the aforementioned episode in Yellow may be the fact that
+Dragonair
+, which also appeared in EP035, is available in the Yellow Version, but not in the Red and Blue Versions.
+In Generation I, a scientist in a house in the top-right corner of Area 2 states, "
+You can keep any item you find on the ground here. But, you'll run out of time if you try for all of them at once!
+". However, so long as the player can use
+HM03
+(
+Surf
+) as soon as they pick it up, it is actually possible to collect all possible items in the Safari Zone in one visit.
+Although bait makes Pokémon harder to catch, an NPC in the Area 3 rest house in Generation I says it makes them
+easier
+to catch.
+In the Western Generation I games, though the player receives 30 Safari Balls, it is only possible to catch 25 Pokémon: 5 to fill the
+party
+and 20 to fill a
+Box
+. In the Japanese games, however, the Box capacity is 30 Pokémon.
+In Pokémon Yellow, if the player has less than
+$
+500, they can enter the Safari Zone for all of their remaining money, but they get a number of Safari Balls proportional to the amount paid. If they have no money, they can enter for free with one Safari Ball after multiple attempts. This might have been done to prevent a situation where it becomes impossible to progress further in the story because the player has no money.
+As this doesn't happen in Red and Blue, the player will be unable to get HM03 (Surf) nor the
+Gold Teeth
+if they run out of money.
+By
+ChickasaurusGL
+This video is not available on Bulbapedia; instead, you can watch the video on YouTube
+here
+.
+In
+Pokémon Sun, Moon
+,
+Ultra Sun, and Ultra Moon
+, a man in
+Aether Paradise
+states that after inspecting the facility he believes that the goals of the
+Aether Foundation
+are directly opposed to those of the Kanto Safari Zone.
+In other languages
+Language
+Title
+Chinese
+Cantonese
+狩獵地帶
+Sáulihp Deihdaai
+*
+野生原野區
+Yéhsāang Yùhnyéhkēui
+*
+野生原野區域
+Yéhsāang Yùhnyéh Kēuiwihk
+*
+野生動物園
+Yéhsāang Duhngmahtyún
+*
+野生公園
+Yéhsāang Gūngyún
+*
+Mandarin
+狩獵地帶 / 狩猎地带
+Shòuliè Dìdài
+*
+野生原野區 / 野生原野区
+Yěshēng Yuányěqū
+*
+丛林村
+Cónglín Cūn
+*
+草野區
+Cǎoyěqū
+*
+野生動物園
+Yěshēng Dòngwùyuán
+*
+神奇寶貝遊樂中心
+Shénqí Bǎobèi Yóulè Zhōngxīn
+*
+神奇宝贝游戏城
+Shénqí Bǎobèi Yóuxì Chéng
+*
+Danish
+Safarizonen
+Finnish
+Safarivyöhyke
+French
+Parc Safari
+German
+Safarizone
+Italian
+Zona Safari
+Korean
+사파리존
+Safari Zone
+Norwegian
+Safarisonen
+Polish
+Strefa Safari (
+EP033
+-
+EP065
+)
+*
+Portuguese
+Brazil
+Zona de Safári (manga)
+Safari Zone (The Official Pokémon Handbook)
+Zona Safári (The Official Pokémon Handbook)
+Portugal
+Zona de Safari
+*
+Spanish
+Zona Safari
+Swedish
+Safarizonen
+Thai
+ซาฟารีโซน
+Safari Zone
+Vietnamese
+Vùng Safari
+Related articles
+Safari Zones
+Kanto Safari Zone
+•
+Johto Safari Zone
+•
+Hoenn Safari Zone
+•
+Great Marsh
+Kanto
+Settlements
+Pallet Town
+•
+Viridian City
+•
+Pewter City
+•
+Cerulean City
+•
+Vermilion City
+•
+Lavender Town
+Celadon City
+•
+Saffron City
+•
+Fuchsia City
+•
+Cinnabar Island
+•
+Indigo Plateau
+Routes
+1
+•
+2
+•
+3
+•
+4
+•
+5
+•
+6
+•
+7
+•
+8
+•
+9
+•
+10
+•
+11
+•
+12
+•
+13
+•
+14
+•
+15
+•
+16
+•
+17
+•
+18
+•
+19
+•
+20
+•
+21
+•
+22
+•
+23
+•
+24
+•
+25
+•
+26
+•
+27
+•
+28
+Landmarks
+Professor Oak's Laboratory
+•
+Viridian Forest
+•
+Diglett's Cave
+•
+Pewter Museum of Science
+•
+Mt. Moon
+(
+Square
+) •
+Cerulean Cave
+Underground Path (Kanto Routes 5–6)
+•
+Underground Path (Kanto Routes 7–8)
+•
+S.S. Anne
+•
+S.S. Aqua
+•
+Sea Cottage
+•
+Rock Tunnel
+Power Plant
+•
+Cycling Road/Pokémon Road
+•
+Team Rocket Hideout
+•
+Silph Co.
+•
+Magnet Train
+•
+Pokémon Tower
+•
+Safari Zone
+/
+Pal Park
+GO Park
+•
+Seafoam Islands
+•
+Pokémon Mansion
+•
+Cinnabar Lab
+•
+Pokémon League Reception Gate
+•
+Victory Road
+•
+Tohjo Falls
+Access to
+Sevii Islands
+•
+Johto
+This article is part of
+Project Locations
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every location in the Pokémon world.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Kanto_Safari_Zone&oldid=4520501
+"

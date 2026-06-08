@@ -1,0 +1,66 @@
+Title: Inver
+
+Inver (Japanese: サカサ Sakasa) is a non-player character in the Generation VI games. He is the only character in the games to have the Trainer class Proprietor (Japanese: てんちょう Proprietor).
+
+
+== In the core series games ==
+Inver is a Trainer who battles the player in Inverse Battles. In Pokémon X and Y, he may be found at the Inverse House on Route 18, while in Pokémon Omega Ruby and Alpha Sapphire, he is located at the Inverse Battle Stop in Mauville City.
+After he is defeated, Inver will give the player an item depending on how well the player did. Inver's evaluation of the player is based on a score calculated by subtracting the number of successful not very effective attacks the player made from the number of super effective attacks the player made.
+If none of the player's Pokémon fainted, Inver will give the player three of an item, but otherwise he will only give the player one. Inver can be battled once per day.
+
+
+=== Rewards ===
+
+
+==== Pokémon X and Y ====
+
+
+==== Pokémon Omega Ruby and Alpha Sapphire ====
+
+
+=== Pokémon ===
+
+
+==== Pokémon X and Y ====
+For more detailed data about the Pokémon Inver uses, see Inver/X and Y.
+Before the player enters the Hall of Fame, Inver's Pokémon will all be at level 55, but after that, they will be at level 65.
+
+
+==== Pokémon Omega Ruby and Alpha Sapphire ====
+For more detailed data about the Pokémon Inver uses, see Inver/Omega Ruby and Alpha Sapphire.
+Before the player enters the Hall of Fame, Inver's Pokémon will all be at level 20, but after that, they will be at level 55.
+
+
+=== Quotes ===
+
+
+==== Pokémon X and Y ====
+"Oh... I wasn't expecting a vistor in a place like this. Hmm... You seem to be a pretty good trainer. Shall we have a rather strange Pokémon battle? I call this an Inverse Battle! With my mysterious power, I will reverse type matchups for a while... Supereffective moves will not be very effective. Move that are not very effective will be super effective. What do you think? Does it sound fun? You may understand it in theory, but when you try it, you'll find that it's more difficult than you thought. Would you care to try an Inverse Battle?"
+No: "Oh, I see... That's too bad. If you change your mind, come again."
+Yes: "Supereffective moves will not be very effective... And moves that are not very effective will be super effective."
+Upon being defeated
+"That battle may have tired me out even more than my Pokémon..."
+After being defeated
+See Rewards → Pokémon X and Y
+Talking after battle
+"This strange power that reverses type matchups... Unfortunately, I can't use it very often. Please come back tomorrow."
+
+
+==== Pokémon Omega Ruby and Alpha Sapphire ====
+"Oh! A customer! Welcome to the Inverse Battle Stop! What I have to offer here at the Inverse Battle Stop is a positively miraculous form of Pokémon battle! That's right… I call it the Inverse Battle! This precision machine, this envisioned contraption can use its inversion powers to temporarily invert all type matchups between Pokémon! It's the Inverse-o-matic! Super effective becomes not very effective! Not very effective becomes super effective! How about that! You have to admit that it sounds pretty fantastically fun, don't you? Don't you? You might think you've got your head wrapped around it, but when you're actually in the thick of it, it's surprisingly tough! So how about it?"
+No: "You came all this way…to turn back now? But I'll be waiting for your return!"
+Yes: "Super effective becomes not very effective! Not very effective becomes super effective!"
+Upon being defeated
+"You've mastered the Inverse-o-matic to such a high level! As the developer, I couldn't be happier!"
+After being defeated
+See Rewards → Pokémon Omega Ruby and Alpha Sapphire
+If talked to again the same day
+"My fantastic Inverse-o-matic is indeed a revolutionary device that can temporarily invert all type matchups. But I can't just fire it up again and again, you know. Do you think you could come back tomorrow?"
+
+
+== Names ==
+
+Proprietor
+
+
+== Related articles ==

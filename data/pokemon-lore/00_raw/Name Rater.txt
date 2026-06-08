@@ -1,0 +1,54 @@
+Title: Name Rater
+
+A Name Rater (Japanese: 姓名(せいめい)判断師(はんだんし) Onomancer) is a man who judges how suitable Pokémon nicknames are. Name Raters allow the players to change the nicknames of their Pokémon, as long as they are the Original Trainer.
+
+
+== Renamable Pokémon ==
+If the player shows the Name Rater a Pokémon they are the Original Trainer of, the Name Rater will offer to give it a nickname or change its existing nickname.
+If the player shows the Name Rater an outsider Pokémon, he will normally refuse to change its nickname. In Pokémon Sword and Shield the Name Rater can give a nickname to an unnicknamed outsider Pokémon, but will still refuse to change the name of an outsider Pokémon if it has a nickname.
+The Name Rater in Orre will also refuse to rename a Shadow Pokémon until it has been purified.
+The method by which the game validates whether the player is a Pokémon's Original Trainer varies between generations:
+
+In Generations I and II, a Pokémon can only be renamed if its Original Trainer name and Trainer ID number match the player's, and it has not been traded through the Time Capsule before.
+In Generation III, a Pokémon can only be renamed if its Original Trainer name, Trainer ID number, and secret ID match the player's.
+In Generation IV, only the player's Trainer ID number needs to match in order to rename a Pokémon.
+From Generation V onward, a Pokémon can only be renamed if its Original Trainer name, Original Trainer gender, Trainer ID number, and secret ID match the player's.
+
+
+== Renaming ==
+In Generation I, if the player presses End with no characters in the nickname space, the process will proceed as if the player canceled the nicknaming process, giving the Pokémon its species name. In later games, this is treated as giving the Pokémon the same nickname as before.
+In Generations V and VII, tapping the Pokémon's sprite on the nickname screen replaces the currently entered text with the Pokémon's species name. In Generation VI, this replaces the currently entered text with the Pokémon's current nickname.
+In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, Pokémon Legends: Arceus, Pokémon Scarlet and Violet, and Pokémon Legends: Z-A, there is no Name Rater and the player can freely nickname their Pokémon at any time instead. In Let's Go, Pikachu! and Let's Go, Eevee!, the man who was Lavender Town's Name Rater in previous games instead appears as a normal NPC, who advises the player not to give their Pokémon a silly nickname.
+
+
+== Locations ==
+Pokémon Name Raters can be found in the following locations:
+
+Since Pokémon Gold, Silver, Crystal, HeartGold, and SoulSilver include both Johto and Kanto, these games have two Name Raters.
+
+
+== Gallery ==
+
+
+=== Sprites and models ===
+
+
+== Quotes ==
+Main article: Name Rater/Quotes
+
+
+== In the manga ==
+
+
+=== Pokémon Adventures ===
+
+
+==== Black 2 & White 2 arc ====
+The Name Rater was mentioned by one of Cheren's students in Angry Boy.
+
+
+== In other languages ==
+
+
+== Related articles ==
+Jack (Galar)

@@ -1,0 +1,43 @@
+Title: Player (Hey You, Pikachu!)
+
+The player uses the PokéHelper and talks to Pikachu in Hey You, Pikachu!.
+
+
+== Quotes ==
+
+The Bedroom
+At the start of the game:
+"...That's Mom's voice."
+"Hey! That's right!"
+After the test:
+"Home at last."
+"Hey! Getting to talk to PIKACHU was great! How will tomorrow go?"
+After waking up the next day:
+"It's nice out again today. Hey! There's a message! It must be Prof. Oak."
+After going home at night:
+"Home at last. Hey! It sure was fun being able to talk to PIKACHU today. It would be nice to play with PIKACHU tomorrow, too."
+After waking up the next day:
+"It's morning. Hey! That's PIKACHU's voice! It's that wild PIKACHU!"
+"Hey! It's off to play with PIKACHU!"
+The Front Yard
+"PIKACHU came all the way here just to say good-bye!"
+The Bedroom
+After going home at night:
+"Home at last. Gosh, will PIKACHU come tomorrow, too?"
+After waking up the next day:
+"It's morning. Hey! It's PIKACHU's voice! Hey! PIKACHU came to play again today! Hey! It's off with PIKACHU again today!"
+The Front Yard
+"PIKACHU came all the way here just to say good-bye!"
+The Bedroom
+After going home at night:
+"Home at last. Where will PIKACHU go to next?"
+The Front Yard
+"PIKACHU came all the way here just to say good-bye!"
+The Bedroom
+After waking up the next day:
+"It's morning. Hey! It's PIKACHU's voice! Hey! It's PIKACHU! Where are we going today? Hey! It's off with PIKACHU again today!"
+At night:
+"Home at last. What will PIKACHU do for fun next time?!
+The Bedroom
+After waking up the next day:
+"It's morning. Hey! It's PIKACHU's voice! Hey! PIKACHU has a fishing hook. Are we going fishing today? Hey! It's off with PIKACHU again today!"

@@ -1,0 +1,1562 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Ice type
+(Japanese:
+こおりタイプ
+Ice type
+) is one of the eighteen
+types
+. Ice-type
+moves
+are super effective against
+Dragon
+-,
+Flying
+-,
+Grass
+-, and
+Ground-type
+Pokémon
+, while Ice-type Pokémon are weak to
+Fighting
+-,
+Fire
+-,
+Rock
+-, and
+Steel-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Ice-type Pokémon
+Half Ice-type Pokémon
+Primary Ice-type Pokémon
+Secondary Ice-type Pokémon
+Changed types
+Moves
+Abilities
+Interacting with the Ice type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Ice-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Ice-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Flying
+Ground
+Grass
+Dragon
+Water
+Ice
+Steel
+Fire
+None
+Defensive properties of
+Ice-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Fighting
+Rock
+Fire
+Steel
+Ice
+None
+In
+Generation I
+only, Ice-type moves dealt neutral damage to
+Fire-type
+Pokémon
+.
+The
+Steel
+type
+was introduced in
+Generation II
+.
+Additional effects
+In
+Generation I
+, Ice-type Pokémon cannot get
+frozen
+by Ice-type
+moves
+. However, In
+Generation II
+, they can get frozen by the
+Normal-type
+move
+Tri Attack
+. Starting in
+Generation III
+, Ice-type Pokémon cannot get frozen at all.
+Ice-type Pokémon are immune to the
+hail
+weather
+condition and, as of
+Generation VII
+, the move
+Sheer Cold
+. From Generation VII onwards, Sheer Cold also has increased
+accuracy
+when used by an Ice-type Pokémon.
+In
+Generation IX
+, the
+Defense
+stat
+of Ice-type Pokémon is increased by 50% during
+snow
+.
+Pokémon
+As of
+Generation IX
+, 60
+Pokémon
+are Ice-type (counting those that are Ice-type in at least one of their
+forms
+, including
+regional forms
+), which makes up 5.84% of all Pokémon, making it the least common
+type
+among Pokémon, followed by
+Fairy
+.
+The Pokémon below are listed by their current types.
+Some Pokémon
+have had their types changed.
+Pure Ice-type Pokémon
+#
+Name
+0037
+Alolan
+Vulpix
+0351
+Castform
+(
+Snowy Form
+)
+0361
+Snorunt
+0362
+Glalie
+Mega
+Glalie
+0378
+Regice
+0471
+Glaceon
+0493
+Arceus
+(
+Ice-type
+)
+0554
+Galarian
+Darumaka
+0555
+Galarian
+Darmanitan
+0582
+Vanillite
+0583
+Vanillish
+0584
+Vanilluxe
+0613
+Cubchoo
+0614
+Beartic
+0615
+Cryogonal
+0712
+Bergmite
+0713
+Avalugg
+0773
+Silvally
+(
+Type: Ice
+)
+0875
+Eiscue
+(
+Ice Face
+)
+Eiscue
+(
+Noice Face
+)
+0896
+Glastrier
+0974
+Cetoddle
+0975
+Cetitan
+Half Ice-type Pokémon
+Primary Ice-type Pokémon
+#
+Name
+Type 1
+Type 2
+0027
+Alolan
+Sandshrew
+Ice
+Steel
+0028
+Alolan
+Sandslash
+Ice
+Steel
+0038
+Alolan
+Ninetales
+Ice
+Fairy
+0122
+Galarian
+Mr. Mime
+Ice
+Psychic
+0124
+Jynx
+Ice
+Psychic
+0144
+Articuno
+Ice
+Flying
+0220
+Swinub
+Ice
+Ground
+0221
+Piloswine
+Ice
+Ground
+0225
+Delibird
+Ice
+Flying
+0238
+Smoochum
+Ice
+Psychic
+0363
+Spheal
+Ice
+Water
+0364
+Sealeo
+Ice
+Water
+0365
+Walrein
+Ice
+Water
+0473
+Mamoswine
+Ice
+Ground
+0478
+Froslass
+Ice
+Ghost
+Mega
+Froslass
+Ice
+Ghost
+0555
+Galarian
+Darmanitan
+(
+Zen Mode
+)
+Ice
+Fire
+0713
+Avalugg
+Hisuian Form
+Ice
+Rock
+0866
+Mr. Rime
+Ice
+Psychic
+0872
+Snom
+Ice
+Bug
+0873
+Frosmoth
+Ice
+Bug
+0991
+Iron Bundle
+Ice
+Water
+Secondary Ice-type Pokémon
+#
+Name
+Type 1
+Type 2
+0087
+Dewgong
+Water
+Ice
+0091
+Cloyster
+Water
+Ice
+0131
+Lapras
+Water
+Ice
+Gigantamax
+Lapras
+Water
+Ice
+0215
+Sneasel
+Dark
+Ice
+0459
+Snover
+Grass
+Ice
+0460
+Abomasnow
+Grass
+Ice
+Mega
+Abomasnow
+Grass
+Ice
+0461
+Weavile
+Dark
+Ice
+0479
+Frost
+Rotom
+(V+)
+Electric
+Ice
+0646
+Kyurem
+Dragon
+Ice
+White
+Kyurem
+Dragon
+Ice
+Black
+Kyurem
+Dragon
+Ice
+0698
+Amaura
+Rock
+Ice
+0699
+Aurorus
+Rock
+Ice
+0740
+Crabominable
+Fighting
+Ice
+Mega
+Crabominable
+Fighting
+Ice
+0881
+Arctozolt
+Electric
+Ice
+0883
+Arctovish
+Water
+Ice
+0898
+Ice Rider
+Calyrex
+Psychic
+Ice
+0996
+Frigibax
+Dragon
+Ice
+0997
+Arctibax
+Dragon
+Ice
+0998
+Baxcalibur
+Dragon
+Ice
+Mega
+Baxcalibur
+Dragon
+Ice
+1002
+Chien-Pao
+Dark
+Ice
+Changed types
+These Ice-type Pokémon have had their types changed.
+#
+Name
+Original types
+New types
+0479
+Frost
+Rotom
+Gen IV
+Electric
+Ghost
+Gen V+
+Electric
+Ice
+Moves
+As of
+Generation IX
+, there are 33 Ice-type
+moves
+, which makes up 3.53% of all moves (excluding those that are Ice-type only under certain circumstances), making it the third rarest
+type
+among moves after
+Flying
+,
+Ground
+, and
+Dragon
+and before
+Bug
+,
+Ghost
+, and
+Fairy
+.
+Prior to
+changes in Generation IV
+, all damaging Ice-type moves were
+special
+, but they may now also be
+physical
+depending on the attack.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+I
+Aurora Beam
+Special
+Beautiful
+065
+65
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The target is hit with a rainbow-colored beam. This may also lower the target's Attack stat.
+VII
+Aurora Veil
+Status
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Your Side
+This move reduces damage from physical and special moves for five turns. This can be used only when it is snowing.
+IV
+Avalanche
+Physical
+Beautiful
+060
+60
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This move's power is doubled if the target has inflicted damage on the user in the same turn.
+I
+Blizzard
+Special
+Beautiful
+110
+110
+070
+70
+%
+05
+5
+(max 8)
+Many Others
+A howling blizzard is summoned to strike opposing Pokémon. This may also leave the opposing Pokémon frozen.
+IX
+Chilly Reception
+Status
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Both Sides
+The user tells a chillingly bad joke before switching places with a party Pokémon in waiting. This summons a snowstorm lasting five turns.
+V
+Freeze Shock
+Physical
+Beautiful
+140
+140
+090
+90
+%
+05
+5
+(max 8)
+Normal
+The turn after using this move, the user hits the target with electrically charged ice to inflict damage. This may also leave the target with paralysis.
+VI
+Freeze-Dry
+Special
+Beautiful
+070
+70
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user rapidly cools the target. This may also leave the target frozen. This move is super effective on Water types.
+VII
+Freezy Frost
+Special
+100
+100
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks with a crystal made of cold frozen haze. It eliminates every stat change among all the Pokémon engaged in battle.
+V
+Frost Breath
+Special
+Beautiful
+060
+60
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks by blowing its cold breath on the target. This move always lands a critical hit.
+VIII
+Glacial Lance
+Physical
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Many Others
+The user attacks by hurling a blizzard-cloaked icicle lance at opposing Pokémon.
+V
+Glaciate
+Special
+Beautiful
+065
+65
+095
+95
+%
+10
+10
+(max 16)
+Many Others
+The user attacks by blowing freezing cold air at opposing Pokémon. This also lowers their Speed stats.
+VIII
+G-Max Resonance
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+An Ice-type attack that Gigantamax Lapras use. This move reduces the damage received for five turns.
+VIII
+G-Max Resonance
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+An Ice-type attack that Gigantamax Lapras use. This move reduces the damage received for five turns.
+III
+Hail
+Status
+Beautiful
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Both Sides
+The user summons a hailstorm lasting five turns. It damages all Pokémon except Ice types.
+I
+Haze
+Status
+Beautiful
+000
+—
+000
+—
+%
+30
+30
+(max 48)
+Both Sides
+The user creates a haze that eliminates every stat change among all the Pokémon engaged in battle.
+III
+Ice Ball
+Physical
+Beautiful
+030
+30
+090
+90
+%
+20
+20
+(max 32)
+Normal
+The user attacks the target for five turns. The move's power increases each time it hits.
+I
+Ice Beam
+Special
+Beautiful
+090
+90
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The target is struck with an icy-cold beam of energy. This may also leave the target frozen.
+V
+Ice Burn
+Special
+Beautiful
+140
+140
+090
+90
+%
+05
+5
+(max 8)
+Normal
+The turn after using this move, the user surrounds the target with an ultracold, freezing wind to inflict damage. This may also leave the target with a burn.
+IV
+Ice Fang
+Physical
+Cool
+065
+65
+095
+95
+%
+15
+15
+(max 24)
+Normal
+The user bites with cold-infused fangs. This may also make the target flinch or leave it frozen.
+VII
+Ice Hammer
+Physical
+100
+100
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user swings its strong, heavy fist at the target to inflict damage. This also lowers the user's Speed stat.
+I
+Ice Punch
+Physical
+Beautiful
+075
+75
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The target is attacked with an icy punch. This may also leave the target frozen.
+IV
+Ice Shard
+Physical
+Beautiful
+040
+40
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user flash-freezes chunks of ice and hurls them at the target. This move always goes first.
+IX
+Ice Spinner
+Physical
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user covers its feet in thin ice and twirls around, slamming into the target. This move's spinning motion also destroys the terrain.
+V
+Icicle Crash
+Physical
+Beautiful
+085
+85
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks by crashing large icicles onto the target. This may also make the target flinch.
+III
+Icicle Spear
+Physical
+Beautiful
+025
+25
+100
+100
+%
+30
+30
+(max 48)
+Normal
+The user attacks by launching sharp icicles at the target. This move hits two to five times in a row.
+II
+Icy Wind
+Special
+Beautiful
+055
+55
+095
+95
+%
+15
+15
+(max 24)
+Many Others
+The user attacks with a gust of chilled air. This also lowers the opposing Pokémon's Speed stats.
+VIII
+Max Hailstorm
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is an Ice-type attack Dynamax Pokémon use. The user summons a
+hailstorm
+/
+snowstorm
+lasting five turns.
+VIII
+Max Hailstorm
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is an Ice-type attack Dynamax Pokémon use. The user summons a
+hailstorm
+/
+snowstorm
+lasting five turns.
+I
+Mist
+Status
+Beautiful
+000
+—
+000
+—
+%
+30
+30
+(max 48)
+Your Side
+The user cloaks itself and its allies in a white mist that prevents any of their stats from being lowered for five turns.
+VIII
+Mountain Gale
+Physical
+100
+100
+085
+85
+%
+10
+10
+(max 16)
+Normal
+The user hurls giant chunks of ice at the target to inflict damage. This may also make the target flinch.
+II
+Powder Snow
+Special
+Beautiful
+040
+40
+100
+100
+%
+25
+25
+(max 40)
+Many Others
+The user attacks with a chilling gust of powdery snow. This may also leave opposing Pokémon frozen.
+III
+Sheer Cold
+Special
+Beautiful
+000
+—
+030
+30
+%
+05
+5
+(max 8)
+Normal
+The target faints instantly. This move is less likely to hit the target if used by Pokémon other than Ice types.
+IX
+Snowscape
+Status
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Both Sides
+The user summons a snowstorm lasting five turns. This boosts the Defense stats of Ice types.
+VII
+Subzero Slammer
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user dramatically drops the temperature using its Z-Power and freezes the target with full force. The power varies, depending on the original move.
+VII
+Subzero Slammer
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user dramatically drops the temperature using its Z-Power and freezes the target with full force. The power varies, depending on the original move.
+VIII
+Triple Axel
+Physical
+020
+20
+090
+90
+%
+10
+10
+(max 16)
+Normal
+A consecutive three-kick attack that becomes more powerful with each successful hit.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Abilities
+Interacting with the Ice type
+A Pokémon with
+Protean
+or
+Libero
+will become a Ice-type Pokémon if it uses a Ice-type move. A Pokémon with
+Color Change
+will become a Ice-type Pokémon if it is hit with a Ice-type move.
+Gen
+Ability
+Description
+VI
+Refrigerate
+Normal-type moves become Ice-type moves. The power of those moves is boosted a little.
+III
+Thick Fat
+The Pokémon is protected by a layer of thick fat, which halves the damage taken from Fire- and Ice-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Only Ice-type Pokémon have these
+Abilities
+. This does not include
+signature Abilities
+.
+Gen
+Ability
+Description
+VI
+Refrigerate
+Normal-type moves become Ice-type moves. The power of those moves is boosted a little.
+VII
+Slush Rush
+Boosts the Pokémon's Speed stat in snow.
+IV
+Snow Cloak
+Boosts the Pokémon's evasiveness in snow.
+IV
+Snow Warning
+The Pokémon makes it snow when it enters a battle.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Items
+Name
+Description
+Chill Drive
+A cassette to be held by
+Genesect
+. It changes Genesect's
+Techno Blast
+move so it becomes Ice type.
+Ice Gem
+A
+gem
+with an essence of ice. When held, it strengthens the power of a Ice-type move one time.
+Ice Memory
+A
+memory
+disc that contains Ice-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Ice Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Icicle Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of ice and boosts the power of the holder’s Ice-type moves.
+Icium Z
+This is a crystallized form of Z-Power. It upgrades Ice-type moves to
+Z-Moves
+.
+Never-Melt Ice
+An item to be held by a Pokémon. It's a heat-repelling piece of ice that boosts the power of the holder's Ice-type moves.
+Snowball
+An item to be held by a Pokémon. This single-use ball of snow boosts the Attack stat if the holder is damaged by an Ice-type move.
+Yache Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Ice-type move, the power of that move will be weakened.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Aspear Berry
+Pomeg Berry
+Yache Berry
+Ganlon Berry
+Cram-o-matic
+Name
+Aspear Berry
+Comet Shard
+Fossilized Dino
+Ganlon Berry
+Ice Stone
+Icy Rock
+Pomeg Berry
+Notable Ice-type Trainers
+Main article:
+Category:Ice-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Lorelei
+Elite Four
+Indigo Plateau
+II
+Pryce
+Gym Leader
+Mahogany Gym
+III
+Glacia
+Elite Four
+Hoenn Pokémon League
+IV
+Candice
+Gym Leader
+Snowpoint Gym
+V
+Brycen
+Gym Leader
+B
+W
+Pokémon Trainer
+B2
+W2
+Icirrus Gym
+B
+W
+V
+Zinzolin
+Team Plasma
+B2
+W2
+Plasma Frigate
+B2
+W2
+VI
+Wulfric
+Gym Leader
+Snowbelle Gym
+VII
+Sina
+Pokémon Trainer
+N/A
+VIII
+Melony
+Gym Leader
+Circhester Stadium
+Sh
+VIII
+Gaeric
+Warden
+Icepeak Arena
+IX
+Grusha
+Gym Leader
+Glaseado Gym
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+81.68
+Attack:
+90.93
+Defense:
+80.87
+Sp.Atk:
+76.45
+Sp.Def:
+77.30
+Speed:
+70.70
+Total:
+477.93
+Fully evolved
+Stat
+HP:
+90.24
+Attack:
+102.63
+Defense:
+92.43
+Sp.Atk:
+87.24
+Sp.Def:
+86.98
+Speed:
+78.71
+Total:
+538.23
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Ice-type Pokémon will gather
+Rawst Berries
+, and typically have the Slumbering
+sleep type
+.
+The following is a list of Ice-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0037
+Vulpix
+Alolan form
+Slumbering
+0038
+Ninetales
+Alolan form
+Slumbering
+0363
+Spheal
+Slumbering
+0364
+Sealeo
+Slumbering
+0365
+Walrein
+Slumbering
+0459
+Snover
+Slumbering
+0460
+Abomasnow
+Slumbering
+0471
+Glaceon
+Slumbering
+0974
+Cetoddle
+Slumbering
+0975
+Cetitan
+Slumbering
+In the TCG
+Main article:
+Water (TCG)
+Due to the decreased amount of types in the TCG, Ice-type Pokémon are generally listed as
+Water-type
+Pokémon.
+Ice-type Pokémon in the TCG are generally weak to
+Fighting
+and
+Metal
+with no resistances. Ice-type Pokémon are strong against
+Fighting
+and
+Fire
+Pokémon, whilst
+Grass
+and
+Colorless
+Pokémon can resist this type.
+Trivia
+Generation VIII
+introduced the most Ice-type
+Pokémon
+of any
+generation
+, with eleven, and
+Generation VI
+introduced the fewest Ice-type Pokémon, with four.
+Should
+regional forms
+not be counted,
+Generation VII
+introduced the fewest, with only two;
+Crabominable
+and
+Silvally
+(holding the
+Ice Memory
+).
+Generation I
+introduced the most Ice-type
+moves
+of any generation, with six, and
+Generation VI
+introduced the fewest Ice-type moves, with only one,
+Freeze-Dry
+.
+In Generation I, no Ice-type Pokémon were able to
+evolve
+. They either were in the final stage of their evolutionary line or were not part of one. The first Ice-type Pokémon that could evolve during their debut were
+Swinub
+and
+Smoochum
+.
+Although the Ice type existed since Generation I, pure Ice-type Pokémon were not introduced until
+Generation III
+.
+The Ice type has the second fewest resistances of all
+types
+, only being resistant to itself.
+Only the
+Normal
+type has a lower number of resistances than the Ice-type, having no resistances (but one
+immunity
+).
+The Ice type is the only type that is super effective against
+Flying
+and
+Grass
+to not resist them in turn.
+Ice-type attacks are resisted by all types that
+Water-type
+Pokémon resist.
+The Ice type has the most
+unique combinations with other types
+of all other types, with 8.
+Similar to
+Fire-type
+moves, all Ice-type moves were
+Beautiful
+moves in Generation III.
+The only Ice-type move that is not
+Beautiful
+is
+Ice Fang
+, which is
+Cool
+instead.
+All Ice-type moves are eligible to be used in
+Sky Battles
+.
+The Ice type is tied with
+Electric
+for having the fewest Pokémon who can
+Mega Evolve
+, with five each, while also being tied with
+Rock
+for the fewest Mega Evolved Pokémon.
+It is also tied with the
+Ground
+and
+Ghost
+types for the fewest Pokémon that can
+Gigantamax
+, with one each.
+The Ice type is the only type excluded from the
+Central Kalos Pokédex
+.
+There has been at least one Ice-type
+specialist
+in every
+region
+and
+generation
+. It shares this trait with the
+Psychic
+and
+Fighting
+types.
+The Ice type is the only type to not have a notable specialist native to the
+Alola
+region. Instead,
+Sina
+from the
+Kalos
+region is an Ice-type Pokémon specialist in
+Pokémon Sun, Moon
+,
+Ultra Sun, and Ultra Moon
+.
+The only
+core series
+game where the player can't battle a notable Ice-type specialist is
+Pokémon Sword
+, as
+Melony
+is exclusive to Pokémon Shield.
+The Ice type has been paired up with every other type except for Normal and
+Poison
+, the most common of these being Water, with eight.
+This makes Ice the only type to have not been been paired up with Poison.
+In other languages
+Language
+Title
+Japanese
+こおり (氷)
+Kōri
+Catalan
+Gel
+Chinese
+Cantonese
+冰
+Bīng
+Mandarin
+冰
+Bīng
+Czech
+Ledový
+Danish
+Is
+Dutch
+IJs
+Finnish
+Jää
+French
+Glace
+German
+Eis
+Greek
+Πάγου
+Págou
+Hebrew
+קרח
+Kerakh
+Hindi
+आइस
+Ice
+बर्फ़
+Barf
+*
+Hungarian
+Jég
+Icelandic
+Ís
+Indonesian
+Es
+Italian
+Ghiaccio
+Korean
+얼음
+Eol'eum
+Malaysian
+Ais
+Norwegian
+Is
+Polish
+Lodowy
+Portuguese
+Gelo
+Romanian
+Gheață
+Russian
+Лёд
+Lyod
+Slovak
+Ľadový
+Spanish
+Hielo
+Swedish
+Is
+Thai
+น้ำแข็ง
+Namkhaeng
+Turkish
+Buz
+Vietnamese
+Băng
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Ice_(type)&oldid=4550819
+"

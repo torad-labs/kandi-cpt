@@ -1,0 +1,50 @@
+Title: Sam (TCG GB)
+
+Sam (Japanese: ミカサ Mikasa) is one of Dr. Mason's technicians in the video games Pokémon Trading Card Game and Pokémon Trading Card Game 2: The Invasion of Team GR!.
+
+
+== In the games ==
+At the beginning of Pokémon Trading Card Game, Dr. Mason introduces him to the player Mark. The player may wish to ask Sam various questions about the rules of the game, and then he must battle Sam in a tutorial match narrated by Dr. Mason, where all actions of the player must follow a script. Mark uses Practice Deck and Sam uses Sam's Practice Deck. 
+Afterwards, Sam remains available to answer the same questions, or to repeat the same tutorial match, or for a non-scripted "normal duel" with the decks from the tutorial match. In both the tutorial match and the normal duel, the decks are not shuffled, so the cards are dealt the same way. When defeated in the normal duel, Sam rewards the player a Colosseum booster pack containing only Energy cards.
+At the beginning of Pokémon Trading Card Game 2: The Invasion of Team GR!, the player Mark/Mint can choose to duel him as an optional tutorial match. The player uses a different version of the Practice Deck and Sam uses a different version of Sam's Practice Deck.
+
+
+=== Quotes ===
+
+
+==== Pokémon Trading Card Game ====
+Mason Laboratory
+"Yes, Dr. Mason. Hello, <player>."
+"OK, <player>. What do you want to ask about?"
+Energy: "In order to do anything, Pokémon must have Energy cards. If no Energy cards are attached, the Pokémon will not be able to attack or retreat. There are 7 types of Energy cards: Grass, Fire, Lightning, Psychic, Fighting and Colorless. The type of Energy required depends on the Pokémon. Be sure to learn which Pokémon require which type of Energy!"
+Attacking: "Pokémon damage defending Pokémon by attacking. Pokémon need Energy cards in order to attack. For example, the Energy required for Seaking's Waterfall is .  stands for 1 Water Energy card and another Energy card of any type. The Energy required differs according to the attack."
+Retreating: "To switch your Active Pokémon with a Bench Pokémon, choose the Retreat command. If the Active Pokémon is in danger, move it back to your Bench. Energy is required in order to retreat. The number of Energy cards required varies, depending on the Pokémon."
+Evolving Pokémon: "There are 3 types of Pokémon cards: Basic Pokémon, Stage 1 Pokémon, and Stage 2 Pokémon. Squirtle is a Basic, Wartortle a Stage 1 and Blastoise a Stage 2 Pokémon. Basic Pokémon are the only cards that can be put directly into play. A Basic Pokémon in play can be evolved into a Stage 1 Pokémon. A Stage 1 Pokémon in the play area can then be evolved to a Stage 2 Pokémon. Therefore, Squirtle is needed in order to play Wartortle, and Wartortle is needed in order to play Blastoise."
+Using Pokémon Power: "Some Pokémon have special abilities called Pokémon Powers. Some Pokémon Powers are used as soon as the Pokémon is played, while others must be used by choosing the PKMN Power command. There are many different Pokémon Powers, so read each card's text carefully."
+Ending your turn: "Your turn ends after you attack. If you do not have enough Energy to attack, or if your Active Pokémon cannot move due to Paralysis or Sleep, you can end your turn by choosing the Done command. This will cause your turn to end and your opponent's turn to begin. You should choose Done if you are unable to do anything."
+Win or loss of a duel: "Generally, the win or loss of a duel is decided by prizes. Prizes are cards that you may draw when you knock out one of your opponent's Pokémon. You win if you knock out as many of your opponent's Pokémon as there are prizes to be drawn. You will lose the duel if you have no cards in your deck at the start of your turn or if there are no Pokémon in your play area. So be careful!"
+Nothing to ask: "Is that all?"
+After practice duel
+"Hi, <player>. How can I help you?"
+Normal Duel: "OK, a 2-prize duel using the practice deck!"
+Decline
+"Come see me any time. The basics are very important!"
+Practice: "OK, let's start using the practice B deck. Listen and follow Dr. Mason's instructions."
+Rules: "What do you want to ask about?"
+Nothing: "You should practice again if there is anything you don't understand."
+After the player wins a normal duel
+"Keep this up, and you should be able to win some duels!"
+After the player loses a normal duel
+"You need to practice more. If you think things through, you should be able to win. Why don't you practice a little more?"
+
+
+== Gallery ==
+
+
+=== Sprites ===
+
+
+== In other languages ==
+
+
+== Related articles ==

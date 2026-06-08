@@ -1,0 +1,4196 @@
+This article is about the Gym Badges. For the element in the Pokémon Trading Card Game, see
+Pokémon League (TCG)
+.
+Quake redirects here. For the skill in
+Pokémon Shuffle
+, see
+Skill (Shuffle) → Quake
+.
+The contents of this article have been suggested to be split into
+Kanto Badges
+,
+Johto Badges
+,
+Hoenn Badges
+,
+Sinnoh Badges
+,
+Unova Badges
+,
+Kalos Badges
+,
+Galar Badges
+,
+Paldea Badges
+.
+Please discuss it on
+the talk page for this article
+.
+The contents of this article have been suggested to be split into individual badge articles such as
+Boulder Badge
+,
+Cascade Badge
+,
+Thunder Badge
+, and so on.
+Please discuss it on
+the talk page for this article
+.
+Ash
+with his badges from
+Unova
+A
+Gym Badge
+(Japanese:
+ジムバッジ
+Gym Badge
+), commonly referred to as simply a
+badge
+[
+1
+]
+(Japanese:
+バッジ
+badge
+), is an item that serves as proof of a
+Pokémon Trainer
+'s victory in a battle against a
+Gym Leader
+at a Pokémon
+Gym
+.
+Trainers need to collect a certain number of Gym Badges in order to qualify for a region's
+Pokémon League
+. Young Trainers usually begin their initial
+Pokémon journey
+by traveling from city to city in order to collect them. Badges are small enough to fit easily between one's thumb and index finger and can be pinned to a shirt or kept in a badge case.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Concept and development
+Effects
+Stat boost
+Type boost
+Obedience
+Catch level limit
+HM moves
+Poké Mart stock
+Pokémon League
+List of badges
+Indigo League
+Johto League
+Hoenn League
+Sinnoh League
+Unova League
+Black and White
+Black 2 and White 2
+Kalos League
+Galar League
+Paldea
+Paldea League
+Photos
+★ Starfall Street ★
+Photos
+Path of Legends
+Photos
+Orange League
+In the spin-off games
+Pokémon GO
+Pokémon Masters EX
+Pokémon Puzzle League
+Pokémon Pokopia
+In animation
+Pokémon the Series
+Alternative badges in
+Pokémon the Series
+Gary
+Otoshi
+Morrison
+Mismagius
+Barry
+Nando
+Trip
+Cameron
+Sawyer
+Gallery of unidentified badges
+Non-Gym badges
+Pokémon Origins
+Pokémon Evolutions
+POKÉTOON
+In the manga
+Pokémon Adventures
+The Electric Tale of Pikachu
+In other media
+Pokémon Live!
+Project Voltage
+In the TCG
+Trivia
+Name origin
+In other languages
+References
+Related articles
+Contents
+Concept and development
+Early artwork
+A selection of familiar and unfamiliar badges can be seen in early character artwork by
+Ken Sugimori
+. It appears that the original concept of badges was more similar to an
+embroidered patch
+than the
+pinned badge
+they are portrayed as in the
+Pokémon animated series
+and subsequent game entries. While some of these patches do resemble badges seen in the final game like the
+Cascade Badge
+, the
+Volcano Badge
+or even the
+Rainbow
+Badge
+, others don't appear to be based on anything, and may have only been made for the sake of aesthetics, much like real-life embroidered patches, such as Red's "
+Leaf
+Badge
+" or Silver's "
+Artsy Badge
+".
+Other instances of embroidered "badges" can be seen in the cover art for the
+Games That Stand Out Collection
+magazine, with the male Trainer's
+rock or diamond
+badge and the female Trainer's
+teardrop
+badge, which shares a resemblance to the Cascade Badge. However, given the nature of this illustration (the designs were made specifically for this cover and weren't intended to be used in the franchise
+[
+2
+]
+), it is likely that these designs were chosen randomly. The latter badge's resemblance to the Cascade Badge was most likely a coincidence, given it is a stylized drop of water.
+Effects
+Stat boost
+In
+Generations
+I-III, some badges boost certain stats of the player's Pokémon. This boost is not applied in link battles. In Generations
+I
+and
+II
+, the stat or stats are increased by 12.5%; in
+Generation III
+, the stat or stats are increased by 10%. This boost does not exist from
+Generation IV
+onward.
+In Generation I,
+this boost is reapplied whenever the player's Pokémon's stats are raised or lowered
+, allowing boosts to be stacked (this stacking effect is lost if the Pokémon levels up). In Generation II, if the attack is a
+critical hit
+and the attacker's used offensive stat stage is less than or equal to the opponent's defensive stat stage, all badge boosts are ignored.
+Badges by stat boosted
+Stat
+Indigo League
+Johto League
+Hoenn League
+Attack
+Boulder Badge
+Zephyr Badge
+Stone Badge
+Defense
+Thunder Badge
+R
+B
+Y
+Soul Badge
+FR
+LG
+Mineral Badge
+Balance Badge
+Special Attack
+and
+Special Defense
+*
+Volcano Badge
+Glacier Badge
+*
+Mind Badge
+Speed
+Soul Badge
+R
+B
+Y
+Thunder Badge
+FR
+LG
+Plain Badge
+Dynamo Badge
+Note that in Generation I, the game states that the Thunder Badge raises Speed and the Soul Badge raises Defense, but these are not the actual effects caused.
+Type boost
+In
+Generation II
+, every badge boosts the power of the moves of a certain type by 12.5% (1/8), despite never being referenced in the games. The type strengthened matches the type theme of the
+Gym
+(for example, Zephyr Badge boosts the Flying type); despite the Viridian Gym no longer having a type theme in Generation II, the Earth Badge boosts Ground-type moves.
+These boosts work similarly to the way
+same-type attack bonus
+(STAB) boosts work, and are, in fact, calculated in-between
+weather modifiers
+and STAB. Just like stat boosts, type boosts are not applied in link battles.
+Obedience
+Main article:
+Obedience
+Badges affect a
+Pokémon
+'s behavior.
+Outsider Pokémon
+over a certain
+level
+will refuse to obey the player without the appropriate badge. In
+Pokémon Diamond, Pearl
+, and
+Platinum
+,
+Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!
+, and
+Pokémon Scarlet and Violet
+, obedience is determined by the number of badges, not which specific badges the player has. Starting in
+Legends: Arceus
+, this applies even to non-outsider Pokémon, but is based on the level the Pokémon was met at when
+caught
+(as displayed on the
+Summary
+screen), rather than its current level. This prevents a Pokémon from suddenly becoming disobedient once it exceeds a player's current obedience level (listed below), as long as it was caught at or below that level. In Generation IX if a Pokémon is received in a trade, the level at which it was traded instead becomes the level it was met at, even if traded back to its
+Original Trainer
+.
+In the
+Pokémon the Series
+episode
+The Problem with Paras
+,
+Lacy
+mentioned this when
+Ash's Charmeleon
+refused to obey him.
+Badges by obedience level
+Indigo League
+Johto League
+Hoenn League
+Sinnoh League
+Unova League
+Kalos League
+Galar League
+Paldea League
+Up to Lv. 10
+No badges
+No badges
+No badges
+No badges
+No badges
+Up to Lv. 20
+1 badge
+P
+E
+Zephyr Badge
+HG
+SS
+Stone Badge
+OR
+AS
+Trio Badge
+B
+W
+Basic Badge
+B2
+W2
+No badges
+No badges
+No badges
+Up to Lv. 25
+1 badge
+Up to Lv. 30
+Cascade Badge
+2 badges
+P
+E
+Hive Badge
+Knuckle Badge
+2 badges
+Basic Badge
+B
+W
+Toxic Badge
+B2
+W2
+Bug Badge
+Grass Badge
+2 badges
+Up to Lv. 35
+3 badges
+Up to Lv. 40
+3 badges
+P
+E
+Dynamo Badge
+OR
+AS
+Insect Badge
+Cliff Badge
+Water Badge
+4 badges
+Up to Lv. 45
+5 badges
+Up to Lv. 50
+Rainbow Badge
+4 badges
+P
+E
+Fog Badge
+Heat Badge
+4 badges
+Bolt Badge
+Rumble Badge
+Fire Badge
+6 badges
+Up to Lv. 55
+7 badges
+Up to Lv. 60
+5 badges
+P
+E
+Balance Badge
+OR
+AS
+Quake Badge
+Plant Badge
+Fighting Badge
+Sw
+Ghost Badge
+Sh
+Up to Lv. 70
+Marsh Badge
+6 badges
+P
+E
+Storm Badge
+G
+S
+C
+Mineral Badge
+HG
+SS
+Feather Badge
+6 badges
+Jet Badge
+Voltage Badge
+Fairy Badge
+Up to Lv. 80
+7 badges
+P
+E
+Mind Badge
+OR
+AS
+Freeze Badge
+B
+W
+Legend Badge
+B2
+W2
+Fairy Badge
+Rock Badge
+Sw
+Ice Badge
+Sh
+Up to Lv. 90
+Psychic Badge
+Dark Badge
+All Pokémon
+Earth Badge
+8 badges
+P
+E
+Rising Badge
+Rain Badge
+8 badges
+Legend Badge
+B
+W
+Wave Badge
+B2
+W2
+Iceberg Badge
+Dragon Badge
+8 badges
+Catch level limit
+In
+Pokémon Sword and Shield
+, the player cannot
+catch
+wild Pokémon
+above a certain level without appropriate badges. Such uncatchable wild Pokémon are described as being "very strong-looking" upon encounter, and attempting to use a Poké Ball displays the message, "You can't throw a Poké Ball! It won't let its guard down!"
+Badges by catch level
+Level
+Badge
+Up to Lv. 20
+No badges
+Up to Lv. 25
+Grass Badge
+Up to Lv. 30
+Water Badge
+Up to Lv. 35
+Fire Badge
+Up to Lv. 40
+Fighting Badge
+Sw
+Ghost Badge
+Sh
+Up to Lv. 45
+Fairy Badge
+Up to Lv. 50
+Rock Badge
+Sw
+Ice Badge
+Sh
+Up to Lv. 55
+Dark Badge
+All Pokémon
+Dragon Badge
+HM moves
+Main article:
+HM
+While Trainers can teach their Pokémon
+HM
+moves and use them in battle, Trainers require the appropriate badge to use them in the overworld in
+Generations
+I
+through
+IV
+as well as
+Generation VI
+. In
+Generation V
+only, badges are not needed to use HM moves in the overworld.
+Poké Mart stock
+From Generation IV onwards, the number of badges a Trainer possesses affects which items
+Poké Marts
+sell. The more badges, the more items that become available for purchase, with more expensive items generally appearing after more badges are obtained.
+Generation IV
+Poké Ball
+HG
+SS
+: After catching tutorial on
+Route 29
+$
+200
+Great Ball
+3 badges
+$
+600
+Ultra Ball
+5 badges
+$
+1200
+Potion
+$
+300
+Super Potion
+1 badge
+$
+700
+Hyper Potion
+5 badges
+$
+1200
+Max Potion
+7 badges
+$
+2500
+Full Restore
+8 badges
+$
+3000
+Revive
+3 badges
+$
+1500
+Antidote
+$
+100
+Parlyz Heal
+$
+200
+Awakening
+1 badge
+$
+250
+Burn Heal
+1 badge
+$
+250
+Ice Heal
+1 badge
+$
+250
+Full Heal
+5 badges
+$
+600
+Escape Rope
+1 badge
+$
+550
+Repel
+1 badge
+$
+350
+Super Repel
+3 badges
+$
+500
+Max Repel
+7 badges
+$
+700
+Generation V
+Poké Ball
+$
+200
+Great Ball
+1 badge
+$
+600
+Ultra Ball
+5 badges
+$
+1200
+Potion
+$
+300
+Super Potion
+1 badge
+$
+700
+Hyper Potion
+3 badges
+$
+1200
+Max Potion
+7 badges
+$
+2500
+Full Restore
+8 badges
+$
+3000
+Revive
+3 badges
+$
+1500
+Antidote
+1 badge
+$
+100
+Parlyz Heal
+1 badge
+$
+200
+Awakening
+1 badge
+$
+250
+Burn Heal
+1 badge
+$
+250
+Ice Heal
+1 badge
+$
+250
+Full Heal
+5 badges
+$
+600
+Escape Rope
+1 badge
+$
+550
+Repel
+1 badge
+$
+350
+Super Repel
+3 badges
+$
+500
+Max Repel
+5 badges
+$
+700
+Generation VI
+Poké Ball
+OR
+AS
+: after obtaining
+Pokédex
+$
+200
+Great Ball
+1 badge
+$
+600
+Ultra Ball
+3 badges
+$
+1,200
+Potion
+$
+300
+Super Potion
+1 badge
+$
+700
+Hyper Potion
+2 badges
+$
+1,200
+Max Potion
+4 badges
+$
+2,500
+Full Restore
+5 badges
+$
+3,000
+Revive
+2 badges
+$
+1,500
+Antidote
+X
+Y
+: 1 badge,
+OR
+AS
+: after obtaining
+Pokédex
+$
+100
+Paralyze Heal
+1 badge
+$
+200
+Awakening
+1 badge
+$
+250
+Burn Heal
+1 badge
+$
+250
+Ice Heal
+1 badge
+$
+250
+Full Heal
+3 badges
+$
+600
+Escape Rope
+1 badge
+$
+550
+Repel
+1 badge
+$
+350
+Super Repel
+2 badges
+$
+500
+Max Repel
+3 badges
+$
+700
+Let's Go, Pikachu! and Let's Go, Eevee!
+Poké Ball
+$
+100
+Great Ball
+1 badge
+$
+300
+Ultra Ball
+4 badges
+$
+500
+Potion
+$
+200
+Super Potion
+2 badges
+$
+700
+Hyper Potion
+4 badges
+$
+1,500
+Max Potion
+6 badges
+$
+2,500
+Full Restore
+8 badges
+$
+3,000
+Antidote
+$
+200
+Burn Heal
+$
+300
+Ice Heal
+$
+100
+Awakening
+$
+100
+Paralyze Heal
+$
+300
+Full Heal
+3 badges
+$
+400
+Revive
+3 badges
+$
+2,000
+Escape Rope
+1 badge
+$
+300
+Repel
+1 badge
+$
+400
+Super Repel
+3 badges
+$
+700
+Max Repel
+5 badges
+$
+900
+Lure
+2 badges
+$
+400
+Super Lure
+4 badges
+$
+700
+Max Lure
+6 badges
+$
+900
+X Attack
+1 badge
+$
+550
+X Defense
+1 badge
+$
+500
+X Sp. Atk
+1 badge
+$
+350
+X Sp. Def
+1 badge
+$
+350
+X Speed
+1 badge
+$
+350
+X Accuracy
+1 badge
+$
+950
+Dire Hit
+1 badge
+$
+650
+Guard Spec.
+1 badge
+$
+700
+Generation VIII
+Poké Ball
+After meeting
+Leon
+on
+Route 2
+$
+200
+Great Ball
+1 badge
+$
+600
+Ultra Ball
+5 badges
+$
+800
+Potion
+$
+200
+Super Potion
+1 badge
+$
+700
+Hyper Potion
+4 badges
+$
+1,500
+Max Potion
+7 badges
+$
+2,500
+Full Restore
+8 badges
+$
+3,000
+Antidote
+$
+200
+Burn Heal
+$
+200
+Ice Heal
+$
+200
+Awakening
+$
+200
+Paralyze Heal
+$
+200
+Full Heal
+6 badges
+$
+400
+Revive
+$
+2,000
+Repel
+3 badges
+$
+400
+Super Repel
+5 badges
+$
+700
+Max Repel
+7 badges
+$
+900
+Poké Doll
+2 badges
+$
+300
+Pokémon League
+In the games, in order to enter the
+Pokémon League
+and challenge the
+Elite Four
+and
+Champion
+, the player must have all eight badges from that region (in the case of the
+Indigo Plateau
+, either
+Kanto
+or
+Johto
+; for
+Paldea
+, only the badges earned from the Gyms are accepted by the League, as the others are unofficial designs merely meant to resemble the proper badges). In
+Unova
+and Generation I, III, and VII Kanto, badges are checked individually through a series of badge Check Gates; in
+Hoenn
+,
+Sinnoh
+,
+Kalos
+,
+Galar
+,
+Paldea
+, and Generation II and IV Kanto, badges are checked all at once.
+List of badges
+Indigo League
+In Generations IV and VII, these badges do not affect stats.
+Indigo League
+Badges:
+8
+Region:
+Kanto
+Boulder Badge
+グレーバッジ
+Gray Badge
+Pewter City
+Giver
+Brock
+Others in the games
+None
+Others in animation
+Lola
+,
+Flint
+, and
+Forrest
+HM
+Flash
+R
+B
+Y
+FR
+LG
+Obeying Pokémon
+N/A
+Increased stat(s)
+Attack
+Basis
+It is a simple gray octagon.
+Notes
+None
+Cascade Badge
+ブルーバッジ
+Blue Badge
+Cerulean City
+Giver
+Misty
+Others in the games
+None
+Others in animation
+Lily
+,
+Daisy
+, and
+Violet
+HM
+Cut
+R
+B
+Y
+FR
+LG
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is in the shape of a light blue raindrop.
+Notes
+None
+Thunder Badge
+オレンジバッジ
+Orange Badge
+Vermilion City
+Giver
+Lt. Surge
+Others in the games
+None
+Others in animation
+Visquez
+HM
+Fly
+R
+B
+Y
+FR
+LG
+Obeying Pokémon
+N/A
+Increased stat(s)
+Defense
+R
+B
+Y
+, Speed
+FR
+LG
+Basis
+It is in the shape of an eight-pointed gold star with an orange octagon in the center.
+Notes
+None
+Rainbow Badge
+レインボーバッジ
+Rainbow Badge
+Celadon City
+Giver
+Erika
+Others in the games
+None
+Others in animation
+None
+HM
+Strength
+R
+B
+Y
+FR
+LG
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like a flower, showing grass, with rainbow colored petals.
+Notes
+None
+Soul Badge
+ピンクバッジ
+Pink Badge
+Fuchsia City
+Giver
+Koga
+Others in the games
+Janine
+G
+S
+C
+HG
+SS
+Others in animation
+None
+HM
+Surf
+R
+B
+Y
+FR
+LG
+Obeying Pokémon
+N/A
+Increased stat(s)
+Speed
+R
+B
+Y
+, Defense
+FR
+LG
+Basis
+It is in the shape of a fuchsia heart.
+Notes
+None
+Marsh Badge
+ゴールドバッジ
+Gold Badge
+Saffron City
+Giver
+Sabrina
+Others in the games
+None
+Others in animation
+None
+HM
+Rock Smash
+FR
+LG
+Obeying Pokémon
+Up to
+Lv.
+70
+Increased stat(s)
+None
+Basis
+It is two concentric golden circles.
+Notes
+None
+Volcano Badge
+クリムゾンバッジ
+Crimson Badge
+Seafoam Islands
+Giver
+Blaine
+Others in the games
+None
+Others in animation
+None
+HM
+Waterfall
+FR
+LG
+Obeying Pokémon
+N/A
+Increased stat(s)
+Special Attack & Special Defense
+*
+Basis
+It is red and shaped like a flame with a small pink diamond in the center.
+Notes
+None
+Earth Badge
+グリーンバッジ
+Green Badge
+Viridian City
+Giver
+Giovanni
+Others in the games
+Blue
+G
+S
+C
+HG
+SS
+Others in animation
+Jessie
+,
+James
+,
+Meowth
+, and
+Agatha
+HM
+Rock Climb
+HG
+SS
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like a plant, most likely a
+Sakaki tree
+, which is where Giovanni's Japanese name comes from.
+Notes
+None
+Johto League
+In Generation IV, these badges do not affect stats.
+Johto League
+Badges:
+8
+Region:
+Johto
+Zephyr Badge
+ウイングバッジ
+Wing Badge
+Violet City
+Giver
+Falkner
+Others in the games
+None
+Others in animation
+None
+HM
+Flash
+G
+S
+C
+,
+Rock Smash
+HG
+SS
+Obeying Pokémon
+Up to
+Lv.
+20
+HG
+SS
+Increased stat(s)
+Attack
+Basis
+It is shaped like a pair of wings.
+Notes
+The badge is named after the
+Greek god of the west wind
+.
+Hive Badge
+インセクトバッジ
+Insect Badge
+Azalea Town
+Giver
+Bugsy
+Others in the games
+None
+Others in animation
+None
+HM
+Cut
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is shaped like a ladybug viewed from above.
+Notes
+None
+Plain Badge
+レギュラーバッジ
+Regular Badge
+Goldenrod City
+Giver
+Whitney
+Others in the games
+None
+Others in animation
+None
+HM
+Strength
+Obeying Pokémon
+N/A
+Increased stat(s)
+Speed
+Basis
+It is a plain diamond.
+Notes
+This badge is not obtainable until after the player talks to Whitney a second time.
+Fog Badge
+ファントムバッジ
+Phantom Badge
+Ecruteak City
+Giver
+Morty
+Others in the games
+None
+Others in animation
+None
+HM
+Surf
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like a wispy ghost.
+Notes
+None
+Storm Badge
+ショックバッジ
+Shock Badge
+Cianwood City
+Giver
+Chuck
+Others in the games
+None
+Others in animation
+None
+HM
+Fly
+Obeying Pokémon
+Up to
+Lv.
+70
+G
+S
+C
+Increased stat(s)
+None
+Basis
+It is shaped like a fist.
+Notes
+None
+Mineral Badge
+スチールバッジ
+Steel Badge
+Olivine City
+Giver
+Jasmine
+Others in the games
+None
+Others in animation
+Jasmine's colleague
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+70
+HG
+SS
+Increased stat(s)
+Defense
+Basis
+It is a steel-colored octagon.
+Notes
+None
+Glacier Badge
+アイスバッジ
+Ice Badge
+Mahogany Town
+Giver
+Pryce
+Others in the games
+None
+Others in animation
+None
+HM
+Whirlpool
+Obeying Pokémon
+N/A
+Increased stat(s)
+Special Attack & Special Defense
+Basis
+It is a hexagon with a snowflake design.
+Notes
+This badge is not obtainable until the player has cleared out
+Team Rocket HQ
+.
+In
+Generation II
+, due to a bug, the Special Defense boost is only applied if the (pre-boost) Special Attack stat is in between 206 and 432 (inclusive) or 661 and above.
+Rising Badge
+ライジングバッジ
+Rising Badge
+Blackthorn City
+Giver
+Clair
+Others in the games
+None
+Others in animation
+None
+HM
+Waterfall
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like a dragon's face.
+Notes
+This badge is not obtainable until the player has explored the
+Dragon's Den
+.
+Hoenn League
+In Generation VI, these badges do not affect stats.
+Hoenn League
+Badges:
+8
+Region:
+Hoenn
+Stone Badge
+ストーンバッジ
+Stone Badge
+Rustboro City
+Giver
+Roxanne
+Others in the games
+None
+Others in animation
+None
+HM
+Cut
+Obeying Pokémon
+Up to
+Lv.
+20
+OR
+AS
+Increased stat(s)
+Attack
+Basis
+It is shaped like a rectangle with two of its corners more emphasized than the others.
+Notes
+None
+Knuckle Badge
+ナックルバッジ
+Knuckle Badge
+Dewford Town
+Giver
+Brawly
+Others in the games
+None
+Others in animation
+None
+HM
+Flash
+R
+S
+E
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is shaped like a boxing glove.
+Notes
+None
+Dynamo Badge
+ダイナモバッジ
+Dynamo Badge
+Mauville City
+Giver
+Wattson
+Others in the games
+None
+Others in animation
+None
+HM
+Rock Smash
+Obeying Pokémon
+Up to
+Lv.
+40
+OR
+AS
+Increased stat(s)
+Speed
+Basis
+It is shaped like a coiled wire.
+Notes
+None
+Heat Badge
+ヒートバッジ
+Heat Badge
+Lavaridge Town
+Giver
+Flannery
+Others in the games
+None
+Others in animation
+Mr. Moore
+HM
+Strength
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like a wisp of fire.
+Notes
+None
+Balance Badge
+バランスバッジ
+Balance Badge
+Petalburg City
+Giver
+Norman
+Others in the games
+None
+Others in animation
+None
+HM
+Surf
+Obeying Pokémon
+Up to
+Lv.
+60
+OR
+AS
+Increased stat(s)
+Defense
+Basis
+It is shaped like two circles, counterbalancing each other or a barbell.
+Notes
+None
+Feather Badge
+フェザーバッジ
+Feather Badge
+Fortree City
+Giver
+Winona
+Others in the games
+None
+Others in animation
+None
+HM
+Fly
+Obeying Pokémon
+Up to
+Lv.
+70
+Increased stat(s)
+None
+Basis
+It is shaped like feathers on a bird's wing.
+Notes
+None
+Mind Badge
+マインドバッジ
+Mind Badge
+Mossdeep City
+Giver
+Tate and Liza
+Others in the games
+None
+Others in animation
+None
+HM
+Dive
+Obeying Pokémon
+Up to
+Lv.
+80
+OR
+AS
+Increased stat(s)
+Special Attack & Special Defense
+Basis
+It is shaped like a heart, with two sides closing in, possibly in reference to how Tate and Liza are twins.
+Notes
+None
+Rain Badge
+レインバッジ
+Rain Badge
+Sootopolis City
+Giver
+Wallace
+Others in the games
+Juan
+E
+Others in animation
+Juan
+HM
+Waterfall
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like three raindrops arranged in a triangle.
+Notes
+None
+Sinnoh League
+When badges are touched in the games, they play a single note, and will make a musical
+C major scale
+when all eight badges are collected. When a player rubs the stylus across them numerous times to polish them (as they gradually tarnish), they will begin to shine. This process can be continued until four sparkles are visible. The musical notes are also the most clearly defined and accurately tuned when there are four sparkles.
+Unlike other generations, it is the number of badges that determines which
+outsider Pokémon
+obey
+the Trainer, rather than the badges themselves (this distinction is important because the order in which the Cobble, Fen, and Relic Badges are obtained differs between Diamond/Pearl and Platinum). For every second badge the maximum level of obeying Pokémon increases (0 badges—level 10; 2 badges—level 30; 4 badges—level 50; 6 badges—level 70; 8 badges—level 100). The number of badges collected also affects the items that the player can purchase in
+Poké Marts
+.
+Sinnoh League
+Badges:
+8
+Region:
+Sinnoh
+Coal Badge
+コールバッジ
+Coal Badge
+Oreburgh City
+Giver
+Roark
+Others in the games
+None
+Others in animation
+Byron
+HM
+Rock Smash
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a boulder and a
+Poké Ball
+combined. It also resembles
+Roark
+'s hard hat, or possibly a treasure chest.
+Notes
+None
+Forest Badge
+フォレストバッジ
+Forest Badge
+Eterna City
+Giver
+Gardenia
+Others in the games
+None
+Others in animation
+None
+HM
+Cut
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like three trees of a forest, with the trunks whited out.
+Notes
+None
+Cobble Badge
+コボルバッジ
+Cobble Badge
+Veilstone City
+Giver
+Maylene
+Others in the games
+None
+Others in animation
+None
+HM
+Fly
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is reminiscent of bricks or a tatami mat.
+Notes
+This is the third badge in Diamond and Pearl, but the fourth in Platinum.
+Fen Badge
+フェンバッジ
+Fen Badge
+Pastoria City
+Giver
+Crasher Wake
+Others in the games
+None
+Others in animation
+None
+HM
+Defog
+D
+P
+,
+Surf
+Pt
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a lake with gray reeds around it or a wave seen from the front, a reference to the type of wetland called a fen. It also resembles Crasher Wake's Mask.
+Notes
+This is the fourth badge in Diamond and Pearl, but the fifth in Platinum.
+Relic Badge
+レリックバッジ
+Relic Badge
+Hearthome City
+Giver
+Fantina
+Others in the games
+None
+Others in animation
+None
+HM
+Surf
+D
+P
+,
+Defog
+Pt
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is similar in appearance to a Will-o'-the-wisp or a ghostly aura. It also resembles Fantina's hair.
+Notes
+This is the fifth badge in Diamond and Pearl, but the third in Platinum.
+Mine Badge
+マインバッジ
+Mine Badge
+Canalave City
+Giver
+Byron
+Others in the games
+None
+Others in animation
+None
+HM
+Strength
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like three stones and three pickaxes combined.
+Notes
+None
+Icicle Badge
+グレイシャバッジ
+Glacier Badge
+Snowpoint City
+Giver
+Candice
+Others in the games
+None
+Others in animation
+None
+HM
+Rock Climb
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like an iceberg or two icy mountains.
+Notes
+None
+Beacon Badge
+ビーコンバッジ
+Beacon Badge
+Sunyshore City
+Giver
+Volkner
+Others in the games
+None
+Others in animation
+None
+HM
+Waterfall
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a lighthouse.
+Notes
+None
+Unova League
+Unlike previous badges, the level at which traded Pokémon will obey the player goes up by ten per badge, rather than the previous system of rising twenty levels after every even-numbered badge. They can be polished like Sinnoh's badges, although they do not make different notes when polished at the same level. Instead, the picture of the Gym Leader from whom the badge was earned gets grayer.
+In Black 2 and White 2, the badges no longer dull over a period of time, and Sinnoh's notes were reintegrated into the badge screen.
+Although badges are not required to use any of the
+HMs
+outside of battle, some HMs cannot be obtained until after obtaining certain badges. However, as they are not required, traded Pokémon that have learned an HM move in another game can still use the HM move before acquiring any badges.
+Black and White
+Unova League
+Badges:
+8
+Region:
+Unova
+Trio Badge
+トライバッジ
+Tri Badge
+Striaton City
+Giver
+Cilan
+Others in the games
+Chili
+and
+Cress
+Others in animation
+Chili
+and
+Cress
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+20
+Increased stat(s)
+None
+Basis
+It is shaped like a bow tie, similar to those worn by the Striaton Gym Leaders. It may also bear a resemblance to an opened pea pod, which contains two large peas; one green and one blue, with a smaller red pea at the center.
+Notes
+The Gym Leader who gives the badge is the same one who was battled.
+Basic Badge
+ベーシックバッジ
+Basic Badge
+Nacrene City
+Giver
+Lenora
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is shaped like a purple spine of a book.
+Notes
+None
+Insect Badge
+ビートルバッジ
+Beetle Badge
+Castelia City
+Giver
+Burgh
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+40
+Increased stat(s)
+None
+Basis
+It is shaped like a green heart divided into three parts or the wings and body of an insect.
+Notes
+None
+Bolt Badge
+ボルトバッジ
+Bolt Badge
+Nimbasa City
+Giver
+Elesa
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like a lightning bolt or a
+Pikachu
+or
+Emolga
+tail, with an orange crown sticking out of the tip.
+Notes
+None
+Quake Badge
+クェイクバッジ
+Quake Badge
+Driftveil City
+Giver
+Clay
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+60
+Increased stat(s)
+None
+Basis
+It is shaped like a vertical piece of earth, the top half of which has cracked and slid out of place, resembling the result of an earthquake, or as two tectonic plates interacting.
+Notes
+None
+Jet Badge
+ジェットバッジ
+Jet Badge
+Mistralton City
+Giver
+Skyla
+Others in the games
+None
+Others in animation
+Miles
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+70
+Increased stat(s)
+None
+Basis
+It is shaped like a stylized feather, with a soaring bird at the bottom.
+Notes
+None
+Freeze Badge
+アイシクルバッジ
+Icicle Badge
+Icirrus City
+Giver
+Brycen
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+80
+Increased stat(s)
+None
+Basis
+It is shaped like three white icicles.
+Notes
+None
+Legend Badge
+レジェンドバッジ
+Legend Badge
+Opelucid City
+Giver
+Drayden
+Others in the games
+Iris
+W
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like a dragon's head with the snout pointing downwards, a medieval mace, or a dragon's wing when stretched out.
+Notes
+None
+Black 2 and White 2
+Unova League
+Badges:
+8
+Region:
+Unova
+Basic Badge
+ベーシックバッジ
+Basic Badge
+Aspertia City
+Giver
+Cheren
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+20
+Increased stat(s)
+None
+Basis
+It is shaped like a purple spine of a book, similar to those found in libraries.
+Notes
+None
+Toxic Badge
+トキシックバッジ
+Toxic Badge
+Virbank City
+Giver
+Roxie
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is shaped like a smoke signal with four small purple circles lining up to a poison mark.
+Notes
+None
+Insect Badge
+ビートルバッジ
+Beetle Badge
+Castelia City
+Giver
+Burgh
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+40
+Increased stat(s)
+None
+Basis
+It is shaped like a green heart divided into three parts or the wings and body of an insect.
+Notes
+None
+Bolt Badge
+ボルトバッジ
+Bolt Badge
+Nimbasa City
+Giver
+Elesa
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like a lightning bolt or a
+Pikachu
+or
+Emolga
+tail, with an orange crown sticking out of the tip.
+Notes
+None
+Quake Badge
+クェイクバッジ
+Quake Badge
+Driftveil City
+Giver
+Clay
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+60
+Increased stat(s)
+None
+Basis
+It is shaped like a vertical piece of earth, the top half of which has cracked and slid out of place, resembling the result of an earthquake.
+Notes
+None
+Jet Badge
+ジェットバッジ
+Jet Badge
+Mistralton City
+Giver
+Skyla
+Others in the games
+None
+Others in animation
+Miles
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+70
+Increased stat(s)
+None
+Basis
+It is shaped like a stylized feather, with a soaring bird at the bottom.
+Notes
+None
+Legend Badge
+レジェンドバッジ
+Legend Badge
+Opelucid City
+Giver
+Drayden
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+80
+Increased stat(s)
+None
+Basis
+It is shaped like a dragon's head with the snout pointing downwards, a medieval mace, or a dragon's wing when stretched out.
+Notes
+None
+Wave Badge
+ウェーブバッジ
+Wave Badge
+Humilau City
+Giver
+Marlon
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like a raindrop with waves in it.
+Notes
+None
+Kalos League
+Kalos League
+Badges:
+8
+Region:
+Kalos
+Bug Badge
+バグバッジ
+Bug Badge
+Santalune City
+Giver
+Viola
+Others in the games
+None
+Others in animation
+None
+HM
+Cut
+Obeying Pokémon
+Up to
+Lv.
+30
+Increased stat(s)
+None
+Basis
+It is shaped like a beetle.
+Notes
+None
+Cliff Badge
+ウォールバッジ
+Wall Badge
+Cyllage City
+Giver
+Grant
+Others in the games
+None
+Others in animation
+None
+HM
+Strength
+Obeying Pokémon
+Up to
+Lv.
+40
+Increased stat(s)
+None
+Basis
+It is shaped like a cliff or a
+rock climbing
+wall.
+Notes
+None
+Rumble Badge
+ファイトバッジ
+Fight Badge
+Shalour City
+Giver
+Korrina
+Others in the games
+None
+Others in animation
+None
+HM
+Surf
+Obeying Pokémon
+Up to
+Lv.
+50
+Increased stat(s)
+None
+Basis
+It is shaped like two fists clashing against each other.
+Notes
+None
+Plant Badge
+プラントバッジ
+Plant Badge
+Coumarine City
+Giver
+Ramos
+Others in the games
+None
+Others in animation
+None
+HM
+Fly
+Obeying Pokémon
+Up to
+Lv.
+60
+Increased stat(s)
+None
+Basis
+It is shaped like a leaf, with the veins forming the shape of a plant.
+Notes
+None
+Voltage Badge
+ボルテージバッジ
+Voltage Badge
+Lumiose City
+Giver
+Clemont
+Others in the games
+None
+Others in animation
+Clembot
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+70
+Increased stat(s)
+None
+Basis
+It is shaped like a shield with bolts shooting out of it.
+Notes
+None
+Fairy Badge
+フェアリーバッジ
+Fairy Badge
+Laverre City
+Giver
+Valerie
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+80
+Increased stat(s)
+None
+Basis
+It is shaped like a
+vitrail
+with motifs of fairy or butterfly.
+Notes
+None
+Psychic Badge
+サイキックバッジ
+Psychic Badge
+Anistar City
+Giver
+Olympia
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+90
+Increased stat(s)
+None
+Basis
+It is shaped like a crystal ball emanating smoke.
+Notes
+None
+Iceberg Badge
+アイスバーグバッジ
+Iceberg Badge
+Snowbelle City
+Giver
+Wulfric
+Others in the games
+None
+Others in animation
+None
+HM
+Waterfall
+Obeying Pokémon
+Up to
+Lv.
+100
+Increased stat(s)
+None
+Basis
+It is shaped like a snowflake with an iceberg in the center.
+Notes
+None
+Galar League
+Unlike previous badges, these badges are not pins or kept in a case, but pieces of a gold-colored medallion placed into a metal ring to stay in place. Once all badges are set, the completed reverse side shows the Gym Challenge logo.
+Galar League
+Badges:
+10
+Region:
+Galar
+Grass Badge
+くさバッジ
+Grass Badge
+Turffield
+Giver
+Milo
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+30
+Can catch Pokémon up to Lv. 25
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a stylized leaf of spinach or a leaf floating in the wind.
+Notes
+None
+Water Badge
+みずバッジ
+Water Badge
+Hulbury
+Giver
+Nessa
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+40
+Can catch Pokémon up to Lv. 30
+Increased stat(s)
+None
+Basis
+On it is a design shaped like three water droplets in the shape of a
+Tomoe
+or a splash.
+Notes
+None
+Fire Badge
+ほのおバッジ
+Fire
+Badge
+Motostoke
+Giver
+Kabu
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+50
+Can catch Pokémon up to Lv. 35
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a flame.
+Notes
+None
+Fighting Badge
+かくとうバッジ
+Fighting Badge
+Stow-on-Side
+Giver
+Bea
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+60
+Can catch Pokémon up to Lv. 40
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a fist with a trail indicating a punching motion.
+Notes
+Exclusive to
+Pokémon Sword
+.
+Ghost Badge
+ゴーストバッジ
+Ghost Badge
+Stow-on-Side
+Giver
+Allister
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+60
+Can catch Pokémon up to Lv. 40
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a
+will-o'-the-wisp
+.
+Notes
+Exclusive to
+Pokémon Shield
+.
+Fairy Badge
+フェアリーバッジ
+Fairy Badge
+Ballonlea
+Giver
+Opal
+Others in the games
+Bede
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+70
+Can catch Pokémon up to Lv. 45
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a stylized fairy or butterfly.
+Notes
+None
+Rock Badge
+いわバッジ
+Rock Badge
+Circhester
+Giver
+Gordie
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+80
+Can catch Pokémon up to Lv. 50
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a boulder with cracks in it.
+Notes
+Exclusive to
+Pokémon Sword
+.
+Ice Badge
+こおりバッジ
+Ice Badge
+Circhester
+Giver
+Melony
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+80
+Can catch Pokémon up to Lv. 50
+Increased stat(s)
+None
+Basis
+On it is a design shaped like an ice cube.
+Notes
+Exclusive to
+Pokémon Shield
+.
+Dark Badge
+あくバッジ
+Dark
+Badge
+Spikemuth
+Giver
+Piers
+Others in the games
+Marnie
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+90
+Can catch Pokémon up to Lv. 55
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a demonic face with horns and a wide, toothy grin.
+Notes
+None
+Dragon Badge
+ドラゴンバッジ
+Dragon Badge
+Hammerlocke
+Giver
+Raihan
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+100
+Can catch Pokémon up to Lv. 100
+Increased stat(s)
+None
+Basis
+On it is a design shaped like a dragon's face and neck when viewed from the side.
+Notes
+None
+Paldea
+Unlike in previous games, where badges can only be obtained through defeating
+Gym Leaders
+, badges in
+Paldea
+can be obtained by progressing through the three storylines in
+Pokémon Scarlet and Violet
+. There are a total of eighteen badges to collect: eight Gym Badges from the Victory Road storyline (which involves defeating Gym Leaders as in previous games), five Star Badges from the ★ Starfall Street ★ storyline (which involves defeating
+Team Star
+Bosses), and five Titan Badges (which involves defeating
+Titan Pokémon
+) from the Path of Legends storyline. Only the Gym Badges are officially recognized by the
+Paldea League
+; the Star Badges were crafted by the leaders of each of Team Star's five squads as symbols of authority within the group, and the Titan Badges were crafted by
+Arven
+to commemorate the defeat of the five Titans of Paldea.
+Paldea League
+The
+obedience
+levels
+listed below are based on the number of Gym badges the player has instead of which specific badges they have. For Pokémon owned by their
+Original Trainer
+, they are subject to obedience checks if they were caught at a higher level than permitted by the player's Gym badges.
+Paldea League
+Badges:
+8
+Region:
+Paldea
+Cortondo
+Giver
+Katy
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+25 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Bug
+type on it.
+Notes
+None
+Artazon
+Giver
+Brassius
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+30 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Grass
+type on it.
+Notes
+None
+Levincia
+Giver
+Iono
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+35 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Electric
+type on it.
+Notes
+None
+Cascarrafa
+Giver
+Kofu
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+40 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Water
+type on it.
+Notes
+None
+Medali
+Giver
+Larry
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+45 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Normal
+type on it.
+Notes
+None
+Montenevera
+Giver
+Ryme
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+50 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Ghost
+type on it.
+Notes
+None
+Alfornada
+Giver
+Tulip
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+55 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Psychic
+type on it.
+Notes
+None
+Glaseado
+Giver
+Grusha
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+Up to
+Lv.
+100 (met)
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Ice
+type on it.
+Notes
+None
+Photos
+Katy's badge photo
+Brassius's badge photo
+Iono's badge photo
+Kofu's badge photo
+Larry's badge photo
+Ryme's badge photo
+Tulip's badge photo
+Grusha's badge photo
+★ Starfall Street ★
+★ Starfall Street ★
+Badges:
+5
+Region:
+Paldea
+Segin Squad's Base
+Giver
+Giacomo
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Dark
+type overlaid on top of Team Star's logo.
+Notes
+Possession of this badge allows the player to make a greater variety of TMs using the
+TM Machine
+.
+Schedar Squad's Base
+Giver
+Mela
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Fire
+type overlaid on top of Team Star's logo.
+Notes
+Possession of this badge allows the player to make a greater variety of TMs using the
+TM Machine
+.
+Navi Squad's Base
+Giver
+Atticus
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Poison
+type overlaid on top of Team Star's logo.
+Notes
+Possession of this badge allows the player to make a greater variety of TMs using the
+TM Machine
+.
+Ruchbah Squad's Base
+Giver
+Ortega
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Fairy
+type overlaid on top of Team Star's logo.
+Notes
+Possession of this badge allows the player to make a greater variety of TMs using the
+TM Machine
+.
+Caph Squad's Base
+Giver
+Eri
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Fighting
+type overlaid on top of Team Star's logo.
+Notes
+Possession of this badge allows the player to make a greater variety of TMs using the
+TM Machine
+.
+Photos
+Giacomo's badge photo
+Mela's badge photo
+Atticus's badge photo
+Ortega's badge photo
+Eri's badge photo
+Path of Legends
+Path of Legends
+Badges:
+5
+Region:
+Paldea
+South Province (Area Three)
+Giver
+Arven
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Rock
+type on it.
+Notes
+Possession of this badge gives the player's
+Koraidon
+S
+/
+Miraidon
+V
+the ability to dash.
+West Province (Area One)
+Giver
+Arven
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Flying
+type on it.
+Notes
+Possession of this badge gives the player's
+Koraidon
+S
+/
+Miraidon
+V
+the ability to swim.
+East Province (Area Three)
+Giver
+Arven
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Steel
+type on it.
+Notes
+Possession of this badge gives the player's
+Koraidon
+S
+/
+Miraidon
+V
+the ability to jump higher.
+Asado Desert
+Giver
+Arven
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Ground
+type on it.
+Notes
+Possession of this badge gives the player's
+Koraidon
+S
+/
+Miraidon
+V
+the ability to glide.
+Casseroya Lake
+Giver
+Arven
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is a round badge with the icon for the
+Dragon
+type on it.
+Notes
+Possession of this badge gives the player's
+Koraidon
+S
+/
+Miraidon
+V
+the ability to climb.
+Photos
+Arven's badge photo (Rock)
+Arven's badge photo (Flying)
+Arven's badge photo (Steel)
+Arven's badge photo (Ground)
+Arven's badge photo (Dragon)
+Orange League
+These sets of badges only appear in
+Pokémon the Series: The Beginning
+. Trainers must receive these badges from the
+Orange Crew
+.
+Orange League
+Badges:
+4
+Region:
+Orange Islands
+Coral-Eye Badge
+サクラバッジ
+Sakura Badge
+Mikan Island
+Giver
+Cissy
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a
+tellins
+shell with a small gemstone on it.
+Notes
+Its Japanese name refers to
+Nitidotellina nitidula
+(桜貝
+sakuragai
+), a species of tellins.
+Sea Ruby Badge
+シラナミバッジ
+Shiranami Badge
+Navel Island
+Giver
+Danny
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a
+giant clam
+shell with a small gemstone on it.
+Notes
+Its Japanese name refers to the
+maxima clam
+(白波貝
+shiranamigai
+).
+Spike Shell Badge
+リンボウバッジ
+Rinbō Badge
+Trovita Island
+Giver
+Rudy
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a
+triumphant star turban
+with a small gemstone on it.
+Notes
+Its Japanese name refers to the triumphant star turban (輪宝貝
+rinbōgai
+).
+Jade Star Badge
+ルリバッジ
+Ruri Badge
+Kumquat Island
+Giver
+Luana
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a
+purple snail
+shell with a small gemstone on it.
+Notes
+Its Japanese name refers to the
+elongate janthina
+(瑠璃貝
+rurigai
+), a species of sea snails.
+In the spin-off games
+Pokémon GO
+Main article:
+Gym (GO) → Gym Badges
+Pokémon Masters EX
+In
+Pokémon Masters EX
+, the player must earn five badges from PML Leaders across
+Pasio
+before they can qualify for the
+Pokémon Masters League
+tournament. According to
+Erika
+, each PML badge is handed out by more than one different PML Leader, though the identities of these Leaders are unknown.
+Pokémon Masters League
+Badges:
+5
+Region:
+Pasio
+Tranquility Badge
+カームバッジ
+Calm Badge
+Pasio
+Giver
+Erika
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+The green hexagon and gold, leaf-like emblem reference Erika's
+Grass-type
+specialty.
+Notes
+None
+Freedom Badge
+リバティバッジ
+Liberty Badge
+Pasio
+Giver
+Skyla
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+Resembles a feather, similar to Skyla's badge in the
+core series
+, the
+Jet Badge
+.
+Notes
+None
+Patience Badge
+ペイシェントバッジ
+Patient Badge
+Pasio
+Giver
+Norman
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+Resembles a
+tatami
+door, something seen in
+Petalburg Gym
+.
+Notes
+The badge is not obtained until the player has defeated some
+Team Break
+members.
+Harmony Badge
+ユニティバッジ
+Unity Badge
+Pasio
+Giver
+Pryce
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a stylized snowflake, referencing Pryce's
+Ice-type
+specialty.
+Notes
+Pryce must be defeated twice in order for the badge to be obtained.
+Pride Badge
+プラウドバッジ
+Proud Badge
+Pasio
+Giver
+Hapu
+Others in the games
+None
+Others in animation
+None
+HM
+None
+Obeying Pokémon
+N/A
+Increased stat(s)
+None
+Basis
+It is shaped like a tall volcano or mountain, in reference to the mountainous
+Poni Island
+where Hapu comes from.
+Notes
+Hapu gives the badge to the player before battling them.
+Pokémon Puzzle League
+In
+Pokémon Puzzle League
+, the player must defeat the eight
+Gym Leaders
+of the titular Puzzle League in order to earn their respective badges and challenge the
+Elite Four
+.
+Boulder Badge
+Cascade Badge
+Thunder Badge
+Rainbow Badge
+Soul Badge
+Marsh Badge
+Volcano Badge
+Earth Badge
+Pokémon Pokopia
+In
+Pokémon Pokopia
+,
+Ditto
+earns replicas of all eight Kanto badges by completing the eight stages of the "Team Initiation Challenge" at
+Withered Wasteland
+. Each of them is referred to by a slightly altered name, such as the "Bouldery Badge", the "Cascade-like Badge", the "Thunderish Badge", etc. In this game, badges are classified as
+Key Items
+.
+Bouldery Badge
+Cascade-like Badge
+Thunderish Badge
+Rainbowish Badge
+Soul-like Badge
+Marshy Badge
+Volcanoey Badge
+"Earth" Badge
+In animation
+Pokémon the Series
+The Kanto Gym badges in
+Pokémon Journeys: The Series
+Ash holding the Iceberg Badge
+In the
+animated series
+, badges signify that a
+Trainer
+has succeeded at a particular
+Gym
+. If a Trainer earns eight Gym Badges in one
+region
+, they are eligible to enter that region's
+Pokémon League Conference
+.
+Trainers do not necessarily have to win a battle with the Gym Leader in order to earn a badge, and Gym Leaders can be quite lenient about giving out badges. For example,
+Ash
+was awarded several badges during the
+original series
+because of his kind heart and determination;
+Misty
+has berated Ash on several occasions because he did not properly earn all of his Kanto badges, arguing that he really only earned three badges (the Thunder, Soul, and Volcano badges) and the other five badges were given to him on technicalities. In
+Flint Sparks the Fire!
+, the
+Sunyshore Gym
+was shown to be handing out free Beacon Badges. The
+Orange Crew
+all have entire Gym matches devoted to unconventional battling styles.
+In
+The Problem with Paras
+,
+Lacy
+mentioned that some Pokémon will not
+obey
+their Trainer if they do not respect them, due to their Trainer lacking in badges. For example, after evolving into Charmeleon,
+Ash's Charmander
+began to disobey him, which was only exacerbated upon evolving again into Charizard.
+In
+Kalos
+, due to
+Clemont
+'s perception of an ideal challenger of the
+Lumiose Gym
+, he programmed the
+Clembot
+—the substitute
+Gym Leader
+—to turn away challengers who did not have at least four
+Kalos League
+badges. As a result, when Ash attempted to challenge the Gym shortly after arriving in the Kalos region, Clembot acted according to its programming and threw him out. After Clemont
+reprogrammed the Clembot
+, he removed the badge restriction, but Ash indicated he would still collect four badges before challenging Clemont himself at the Gym.
+Gardenia holding the Forest Badge
+Many fellow Trainers that Ash has encountered have been shown to have badges that do not exist in the games, such as
+Gary
+earning ten badges in Kanto, indicating that there are more than eight Gyms in each region. Other badges observed in
+Pokémon the Series
+which do not correspond to known badges suggest that there are at least 9 Gyms in
+Hoenn
+, 11 in
+Sinnoh
+, 14 in
+Unova
+, and 11 in
+Kalos
+. Despite this, Ash's badge case has frequently had indents specifically shaped for the badges that appear in the games. However, Trainers only need 8 to qualify.
+It is also implied in the animated series that a Gym Badge serves as a primary ID for a Gym Leader (and probably a secondary ID for a Trainer).
+Brock
+has used his Boulder Badge to identify himself in order to clear his name from any accusations of stealing parts from a machine shop in
+Cerulean City
+.
+Additionally, badges are not the only way to enter the
+Indigo Plateau Conference
+.
+Pokémon Tech
+, a
+boarding school
+for Pokémon Trainers, is an expensive school for children, where moving up a grade is the equivalent of winning two Gym Badges. Upon graduation, students may immediately apply for entry in Kanto's League Conference. Alternatively, Trainers can take the
+Pokémon League Admissions Exam
+, which awards a single badge that grants entry to the Indigo Plateau Conference on its own; it is convenient for people whose age, health, or work keeps them from traveling around to collect badges.
+Alternative badges in
+Pokémon the Series
+Badges in
+Mystery at the Lighthouse
+Ash has only obtained badges that are obtainable in the games, with the notable exception of those he obtained in the Orange Islands. Several unknown badges can be seen at the beginning of
+Mystery at the Lighthouse
+, while many Trainers Ash has met have had badges that differ from those that are obtainable in the games. This suggests that there are Gyms in locations which do not appear in the games and therefore more than eight Gyms in each region. Trainers with badges not seen in the games include:
+Gary
+Gary
+acquired more than the standard eight Kanto League badges, thus leading to confusion as to whether or not there is a fixed number of badges that can be given out in a particular region. By
+The Battle of the Badge
+, he is shown to have at least ten badges, only three of which correspond to known Kanto badges, suggesting there are at least fifteen Gyms in Kanto. Incidentally, this would provide one Gym for each of the 15
+types
+at the time.
+Otoshi
+In addition, before Ash competes in the Indigo League, a Trainer named
+Otoshi
+is shown in the episode
+Bad To The Bone
+; he owns eight badges, but only shares four in common with Ash; later in the episode another Trainer is seen with eight other completely different badges altogether. In total, Ash, Gary, Otoshi, and the other Trainer display 27 different types of badges, so there must be at least this number of Gyms in Kanto at the time, assuming they are all from the same region. However,
+Sakura
+, a Trainer on her journey, was shown to be collecting badges from both
+Kanto
+and
+Johto
+, so it is unclear what the specific rules are for competing in championship tournaments.
+On closer inspection, Otoshi's badges each look somewhat similar to Ash's badges and only differ in size and shape. Similarly, what can be identified as a Soul Badge, Thunder Badge, Marsh Badge, and Volcano Badge slide across the screen every time his
+Marowak
+knocks out a Pokémon in his flashback. His badges are in this order from upper-left to bottom-right: Thunder, ? (Rainbow), Cascade, Volcano, Marsh, Soul, Boulder, and Earth. This hints that there may be different varieties of the same badge.
+Morrison
+At the Hoenn Pokémon League Championship in
+Saved by the Beldum!
+,
+Morrison
+was shown to have an eighth badge different from Ash's, suggesting that there are at least nine Gyms in Hoenn.
+Mismagius
+In
+Ash
+'s dream in
+Malice in Wonderland
+, Ash has many badges that haven't been on-screen before, as well as some older badges. Considering it was only a dream, it is possible that some of the badges seen don't exist at all.
+Barry
+In
+Barry's Busting Out All Over!
+,
+Barry
+was shown to have three badges. While the Forest Badge and the Mine Badge are no different, Barry has a third badge that is different from the eight Sinnoh badges. In
+Fighting Ire with Fire!
+, Barry was revealed to have obtained eight badges already, two more of which are different. This means that there are at least 11 Gyms in Sinnoh. The same unknown red badge that Barry owns is shown at the end of
+An Old Family Blend!
+.
+Nando
+In
+Last Call, First Round!
+,
+Nando
+was revealed to have acquired seven badges, two of which are unknown. These two badges are the same as two of Barry's unknown badges.
+Trip
+In
+Ash Versus the Champion!
+,
+Trip
+revealed all five of the badges he had collected, three of which are unknown and not seen in-game.
+Cameron
+In
+Goodbye, Junior Cup - Hello Adventure!
+,
+Cameron
+revealed all seven of the badges he collected, four of which are known and three of which are unknown. Two of those unknown badges are the same as Trip's. Since there are 10 badges in Unova in the games (due to two of them being replaced in Black 2 and White 2), this means that there are at least 14 Gyms in Unova.
+Sawyer
+In
+A Fashionable Battle!
+,
+Sawyer
+stated that he had earned one badge. Later, in
+From A to Z!
+, he was revealed to have earned four more badges, including three unknown ones, respectively resembling a flame, three bubbles, and a pair of wings. This means there are at least 11 Gyms in Kalos.
+Gallery of unidentified badges
+Gary
+'s ten Badges
+Otoshi
+'s eight badges
+An unnamed Trainer's eight unidentified badges
+Morrison
+'s eighth badge
+Ash
+'s badges in the dream
+Barry
+'s eight badges
+Nando
+'s seven badges
+Trip
+'s five badges
+Cameron
+'s badges
+Sawyer
+'s badges
+Non-Gym badges
+Several badges have appeared in the animated series that are not official Gym Badges.
+In the
+Indigo League
+, Trainers can take the
+Pokémon League Admissions Exam
+, which awards a single badge that can grant them entry into Indigo Plateau Conference on its own, thus replacing the requirement to collect Gym Badges. It is convenient for people whose age, health, or work keeps them from traveling around to collect badges.
+During the closing ceremony of
+Indigo Plateau Conference
+, all participants are awarded the Pokémon League Badge. However, it is only referred to as a badge in the
+dub
+.
+For helping the
+band of Diglett thieves
+with their facade, the
+mayor of Diglett Village
+awarded Ash and his friends with the
+Silver Wing
+Badge.
+The Trainers who defeat
+Ryuki
+, the
+Leader
+of the unofficial
+Kantonian Gym
+, get a novelty badge featuring his face.
+Pokémon League Admissions Exam Badge
+Pokémon League Badge
+Silver Wing Badge
+Kantonian Gym Badge
+Pokémon Origins
+Both
+Red
+and
+Blue
+earned all eight badges of
+Kanto
+by the time of
+File 3: Giovanni
+.
+Red's first seven Kanto badges in
+Pokémon Origins
+Blue's badges in
+Pokémon Origins
+Pokémon Evolutions
+In
+The Rival
+,
+Barry
+was shown defeating
+Roark
+and earning the Coal Badge in a flashback. In the present day, he was shown to have collected all eight badges of
+Sinnoh
+.
+Sinnoh badges in
+Pokémon Evolutions
+POKÉTOON
+In
+PT17
+, all of the eight
+Johto
+Gym Badges appeared on television.
+Johto badges in
+POKÉTOON
+In the manga
+Pokémon Adventures
+Sapphire's Hoenn Gym Badges
+Platinum's Sinnoh Gym Badges
+In
+Pokémon Adventures
+, badges have mystical and mysterious qualities that can somehow increase the power of the Pokémon owned by the Trainer who wields the badges, just as the Boulder Badge increases the Pokémon's Attack stat in the games. In addition, badges that don't allow higher leveled Pokémon to obey, such as the Soul Badge, do indeed allow the wearer to control even
+Legendary Pokémon
+such as
+Articuno
+.
+It is not known what sort of material badges are made of, but it has been confirmed that the Gym Leaders each own a badge made of different material than the kind given out to normal Trainers, as that is how the
+Masked Man
+'s identity was narrowed down to among the 16 known Gym Leaders when
+Aibo
+scraped off a part of his hidden badge with his
+Scratch
+attack.
+Team Rocket
+used seven Kanto Gym Badges to power a machine that combined Articuno,
+Zapdos
+, and
+Moltres
+into
+a single beast
+. The machine also had a secret slot for the Earth Badge, which Lance manipulated to further his own goals by turning
+Cerise Island
+into a giant badge energy amplifier to fuel
+Lugia
+with.
+Badges are not required to enter the Pokémon League tournament; however, without eight badges corresponding to their home region, a Trainer must battle their way in to qualify for the finals. This ruling was introduced during a
+Pokémon Association
+meeting in the
+Gold, Silver & Crystal
+arc
+, to give Trainers incentive to challenge Gym Leaders, and remove the perception of badges being seen as tools for evil. In the
+Black & White
+arc
+, a last-minute advancement of the date of the Unova League tournament also restricted the eligible challengers to those with all eight of the region's badges. In the
+Black 2 & White 2
+arc
+, it was revealed that a Trainer must gather a new set of eight badges if they wish to participate in a Pokémon League tournament again.
+Six
+main characters
+have actively been collecting Gym Badges:
+Red
+, who managed to collect seven Kanto badges (missing the Earth Badge);
+Sapphire
+,
+Platinum
+, and
+Black
+, whom managed to collect all of the badges in their respective regions;
+Henry
+, who collected six
+Galar
+Gym Badges before withdrawing from the
+Gym Challenge
+; and
+Casey
+, who managed to collect four Galar badges before losing her Gym Challenge. Other characters have also gathered badges, such as
+Cheren
+and
+Hop
+.
+Blue
+once competed for and won a Boulder Badge, but wasn't seen trying to obtain the other Kanto badges.
+Silver
+once stole a badge from each Gym in Johto in order to gain access into the
+Pokémon League
+, but later returned them to their respective Gym Leaders.
+The Electric Tale of Pikachu
+Three of Ash's Orange League badges
+Ash's Kanto badges
+In
+The Electric Tale of Pikachu
+, Badges work in a way similar to
+Pokémon the Series
+, but there are some minor differences. All badges have the Pokémon League logo printed on them.
+In addition, Pokémon Trainers are organized by class, much like Pokémon Tech ("Class D", "Class C", and so forth). Badges increase the rank of the Trainer who owns them.
+Ash
+once believed that he could increase his rank by capturing rare wild Pokémon, but this was not the case.
+Ash has obtained eight badges from Kanto, but only three (Boulder, Cascade, Earth) actually match known badges, and another three are lookalike badges (resembling the Soul, Marsh, and Volcano). Ash also obtained four badges from the Orange Islands, three of which were shown, but none appeared to match any known badges (despite him exiting
+Navel Gym
+while showing off those badges, as well as previously trying to reach
+Mikan Island
+).
+In other media
+The Diamond Badge from
+Pokémon Live!
+Pokémon Live!
+In
+Pokémon Live!
+,
+Giovanni
+offered the Diamond Badge to Trainers who would be able defeat his
+MechaMew2
+. He gave
+Ash
+the Diamond Badge prior to the battle, believing that Ash would never win. However, Ash defeated Giovanni with
+Mewtwo
+'s assistance, proceeding to give the Diamond Badge to
+Misty
+as a belated
+birthday
+gift. Pokémon Live! is not in the same
+canon
+as
+Pokémon the Series
+, and the Diamond Badge is not mentioned elsewhere in the series.
+Project Voltage
+In the music video for
+What Kind of Future
+, Hatsune Miku is seen holding up a custom Badge with a
+Leek
+design.
+In the TCG
+This listing is of cards mentioning or featuring Gym Badges in the
+Pokémon Trading Card Game
+.
+Gym Badge
+Cards listed with a
+blue
+background are only legal to use in the current
+Expanded format
+.
+Cards listed with a
+green
+background are legal to use in both the current
+Standard
+and
+Expanded formats
+.
+Card
+Type
+English
+Expansion
+Rarity
+#
+Japanese
+Expansion
+Rarity
+#
+Brock
+T
+Gym Heroes
+15/132
+Nivi City Gym
+Gym Heroes
+98/132
+Leaders' Stadium
+Erika
+T
+Gym Heroes
+16/132
+Tamamushi City Gym
+Gym Heroes
+100/132
+Leaders' Stadium
+Lt. Surge
+T
+Gym Heroes
+17/132
+Kuchiba City Gym
+Gym Heroes
+101/132
+Leaders' Stadium
+Misty
+T
+Gym Heroes
+18/132
+Hanada City Gym
+Gym Heroes
+102/132
+Leaders' Stadium
+Blaine
+T
+Gym Challenge
+17/132
+Guren Town Gym
+Gym Challenge
+100/132
+Challenge from the Darkness
+Giovanni
+T
+Gym Challenge
+18/132
+Challenge from the Darkness
+Gym Challenge
+104/132
+Koga
+T
+Gym Challenge
+19/132
+Gym Challenge
+106/132
+Challenge from the Darkness
+Sabrina
+T
+Gym Challenge
+20/132
+Yamabuki City Gym
+Gym Challenge
+110/132
+Challenge from the Darkness
+Gym Badge
+I
+XY-P Promotional cards
+XY Black Star Promos
+XY203
+XY-P Promotional cards
+XY Black Star Promos
+XY204
+XY-P Promotional cards
+XY Black Star Promos
+XY205
+XY-P Promotional cards
+XY Black Star Promos
+XY206
+XY-P Promotional cards
+XY Black Star Promos
+XY207
+XY-P Promotional cards
+XY Black Star Promos
+XY208
+XY-P Promotional cards
+XY Black Star Promos
+XY209
+XY-P Promotional cards
+XY Black Star Promos
+XY210
+XY-P Promotional cards
+Trivia
+The Earth Badge's design in
+Pokémon the Series: The Beginning
+Official artwork of the Earth Badge
+The original badge slots in Ash's Unova badge case in
+Pokémon the Series: Black & White
+In the
+Pokémon Project Studio Red and Blue
+computer programs, the Soul and Marsh Badges' names are reversed, with the pink heart-shaped badge being the Marsh Badge and the yellow circular badge being the Soul Badge. Several animation and game handbooks also make this same switch. It is possible that there was an initial error in naming the badges in
+Pokémon Red and Blue
+. A soul would be more attuned to
+psychic
+abilities and one finds
+poisonous
+gases in a marsh. However, no official confirmation has ever been given.
+Official artwork of the Earth Badge (featured in media such as Pokémon Project Studio Red and Blue and
+Extreme Pokémon: The Guide for the Ultimate Fan
+) differs significantly from its appearance in the games, animation, manga, and TCG. The design in its official artwork resembles a plant, whereas its other design resembles a feather.
+Paldea
+has the most badges out of any region, at 18, although only eight of those are Gym Badges.
+It is also the only region to have a badge for every single type.
+The Orange League is the only known Pokémon League with fewer than eight badges.
+It is possible to
+obtain certain badges in a non-linear order
+. The most notable examples of this are the badges in the
+Kanto
+and
+Paldea
+regions.
+In Generation I and III, the Thunder Badge, Rainbow Badge, Soul Badge, Marsh Badge, and Volcano Badge can be obtained in almost any order the player desires, with the stipulation that the Soul Badge must be obtained before the Volcano Badge, as the Soul Badge is required in order to use Surf on the field, which, in turn, is required to reach Cinnabar Island where the Volcano Badge is obtained.
+In Generation II and IV, the Kanto badges can be obtained in virtually any order, although in Generation IV the player cannot obtain the Earth Badge until obtaining the other seven.
+In
+Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!
+, the Boulder and Cascade Badges must each be obtained to progress to the next Gym, and
+Viridian Gym
+(Earth Badge) is closed until the player has obtained all seven other badges. Other than these restrictions, the badges can be obtained in any order.
+In
+Pokémon Ruby, Sapphire
+, and
+Emerald
+, the Knuckle Badge can be postponed until after the Heat Badge, but must be obtained in order to challenge the
+Petalburg Gym
+. The Feather Badge is not required until challenging the Elite Four.
+In
+Pokémon Omega Ruby and Alpha Sapphire
+, this is no longer the case, because the southern part of
+Route 120
+is blocked until the player obtains the Feather Badge.
+In
+Generation IX
+, the different badges can be acquired in virtually any order as part of the open world design.
+In Generation V and VI, the game saves which species of Pokémon were on the team when the player earns each badge, and each of these games has an NPC who can examine a badge to uncover its story:
+Pokémon Black and White
+:
+Lacunosa Town
+, a
+Psychic
+on the upper floor of the Pokémon Center
+Pokémon Black and White 2
+: Lacunosa Town, a Psychic on the lower floor of the Pokémon Center
+Pokémon X and Y
+:
+Laverre City
+, a
+Hex Maniac
+in the house west of the Gym
+Pokémon Omega Ruby and Alpha Sapphire
+:
+Mossdeep City
+, a Hex Maniac in the house to the southeast
+In Generation I, as well as
+Pokémon FireRed and LeafGreen
+, the fanfare that plays when obtaining a badge is only used for the first and final badges (the Boulder and Earth Badge respectively), and it plays at the end of battle instead of after.
+In FireRed and LeafGreen, the Earth Badge is the only badge that doesn't allow the use of an HM outside of battle, while in
+Pokémon HeartGold and SoulSilver
+it is the only Kanto badge that does.
+The Rainbow Badge's colors correspond with the colors of all the other Kanto badges, explaining the colors in its design.
+In the code of the Generation I games,
+items
+named for each badge can be found. The items named
+BoulderBadge
+and
+CascadeBadge
+allow players to throw bait and rocks, respectively, at Pokémon outside of the
+Safari Zone
+when used in battle. The other "badge items" are only used internally by the
+Gym Badge man
+and otherwise have no purpose, simply displaying Professor Oak's "This isn't the time to use that!" message when trying to use them.
+The Basic Badge is the only badge to be given out by more than one Gym.
+It is not the only badge to be given out by more than one Gym Leader, however, as it shares this trait with the Soul, Earth, Rain, Trio, and Legend Badges.
+The Rising Badge is the only badge the player receives outside of its respective Gym.
+The Legend Badge is the only badge from a region where
+Ash
+has competed for Gym Badges that has not appeared in the
+animated series
+.
+When Ash initially got his
+Unova
+badge case in
+Minccino—Neat and Tidy!
+, the slots in it were made to fit each badge in Pokémon Black and White, but they later became circular to accommodate the Toxic Badge.
+Ash has not won a badge in the same episode as his first encounter with its respective Gym Leader since earning the Dynamo Badge from
+Wattson
+in
+Watts with Wattson?
+.
+The Rain Badge is the only badge that Ash has earned twice, first earning one from
+Juan
+in
+Eight Ain't Enough
+, and later receiving a second one from
+Wallace
+after defeating him in
+Reuniting for the First Time!
+.
+In
+Alola
+,
+Gyms
+and badges are not present. Instead, the player receives
+Z-Crystals
+for completing their trials and grand trials, which replace badges on the
+save
+file and for unlocking new items at the
+Poké Mart
+(the latter for Z-Crystals from trials only). Additionally, grand trial completion
+Stamps
+are used to ensure
+obedience
+.
+This makes Alola the only region where the player cannot have all
+outsider Pokémon
+regardless of level obey them prior to becoming Champion.
+In
+Pokémon Ultra Sun and Ultra Moon
+, the player can receive an unofficial badge known as the
+Surge Badge
+by defeating the leader of the
+Kantonian Gym
+in
+Malie City
+. Although it is purely a novelty item and serves no practical purpose, its design and Japanese name are direct references to the Thunder Badge, while its English name is also a reference to
+Lt. Surge
+.
+Galar
+is the only region with version-exclusive Gym Badges.
+Name origin
+Several
+Ice-type
+badges have caused a line of naming conflicts, starting with
+Mahogany Gym
+'s Glacier Badge (
+アイスバッジ
+Ice Badge
+).
+Snowpoint Gym
+'s Icicle Badge is originally called the
+グレイシャバッジ
+Glacier Badge
+.
+Icirrus Gym
+'s Freeze Badge is originally called the
+アイシクルバッジ
+Icicle Badge
+.
+Conversely,
+Circhester Stadium
+'s Ice Badge
+Sh
+has its English name conflict with the Japanese name of the Glacier Badge, although its own Japanese name
+こおり
+is the Japanese
+translation
+of "ice", rather than a transcription of the English word.
+With the exception of the Rainbow and Rising Badges, all badges in Kanto and
+Johto
+were renamed for audiences outside of Japan. All
+Hoenn
+League badges keep their Japanese names, as do
+Sinnoh
+League badges, with the exception of the Icicle Badge, as mentioned above.
+The Japanese names of the Kanto badges are all colors, following the color pattern for the town and city names. In the case of
+Celadon City
+, the Rainbow Badge is likely a reference to the city's namesake in Japanese being the
+jewel beetle
+with its wings featuring an iridescent appearance.
+The Trio and Insect Badges are the first badges since the Glacier Badge in Generation II to get renamed in the English version of the games, without there being a localization conflict between the Japanese and English versions.
+The Insect Badge is one of two badges whose English name coincides with the Japanese name of a pre-existing badge, in this case the Hive Badge. The other is the Ice Badge, mentioned above.
+All badges in Galar and Paldea are named directly after their corresponding
+types
+.
+Consequently,
+Kalos
+has a Fairy Badge (フェアリーバッジ) in addition to Galar and Paldea, making them the only badges to share a name with each other in both English and Japanese.
+The Storm Badge's English name may be derived from the
+lucha libre
+wrestler
+Fray Tormenta
+—also the inspiration for
+Crasher Wake
+—whose name translates as "Friar Storm".
+In other languages
+Language
+Title
+Bulgarian
+Значка
+Znachka
+Catalan
+Medalla
+Chinese
+Cantonese
+聖章
+Singjēung
+Mandarin
+徽章
+Huīzhāng
+Czech
+Odznak
+Danish
+Salmærke
+*
+Emblem
+*
+Træningsbadge
+*
+Finnish
+Ansiomerkki
+*
+Salimerkki
+Arvomerkki / Rintamerkki
+Kouluttajamerkki
+*
+French
+Canada
+Écusson
+*
+Europe
+Badge
+German
+Orden
+Greek
+Έμβλημα
+Émvlima
+Hebrew
+תג
+Tag
+Indonesian
+Lencana
+Italian
+Medaglia
+Korean
+배지
+Badge
+Norwegian
+Brikke
+[
+3
+]
+Polish
+Odznaka
+Portuguese
+Brazil
+Insígnia
+Emblema (Red, Blue and Yellow Manuals)
+Portugal
+Crachá
+Romanian
+Insignă
+Russian
+Значок
+Znachok
+Spanish
+Latin America
+Medalla
+Insignia (
+BW013
+)
+Prenda (
+EP009
+)
+Spain
+Medalla
+Swedish
+Gym Badge
+*
+Gymnål
+*
+Rocknål
+*
+Pokémonnål
+*
+Pokémontränarnål
+*
+Emblem
+*
+Gymmärke
+*
+Bricka
+*
+Turkish
+Rozet
+Nişan
+Vietnamese
+Huy hiệu
+References
+↑
+Prior to
+Generation IX
+, the word "Badge" was consistently written in title case in the
+core series
+games. It is written as "badge" in
+Pokémon Masters EX
+.
+↑
+The scan of the interview page with English translations newly annotated
+↑
+Glossary at Pokemon.no (archive)
+Related articles
+Badge sequence
+Award items
+Episodes in which Ash gets a Badge
+The
+Pokémon League
+Participation
+Trainer
+•
+Battle
+•
+Gym Leaders
+Gyms
+•
+Badges
+•
+Referee
+Championship matches
+Elite Four
+•
+Orange League
+Champion League
+Pokémon League Conferences
+Indigo
+•
+Silver
+•
+Ever Grande
+•
+Lily of the Valley
+Vertress
+•
+Lumiose
+•
+Manalo
+Regional Pokémon Leagues
+Indigo
+•
+Orange
+PtS
+•
+Johto
+•
+Hoenn
+•
+Sinnoh
+Unova
+(
+BB
+) •
+Kalos
+•
+Alola
+•
+Galar
+•
+Paldea
+Areas of jurisdiction
+Pokémon League Reception Gate
+•
+Hall of Fame
+Palace of Victory
+•
+Cerulean Cave
+•
+Area Zero
+Others
+Furfrou League
+Admissions Exam
+•
+Pokémon Association
+PIA
+•
+World Coronation Series
+(
+Masters Eight Tournament
+)
+This item article is part of
+Project ItemDex
+, a
+Bulbapedia project
+that aims to write comprehensive articles on all
+items
+.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Badge&oldid=4559556
+"

@@ -14,7 +14,7 @@ class ToolSetTest {
 
     private val expected = setOf(
         "inspect_corpus", "read_edition", "verify_layer", "gate_corpus", "trace_fact",
-        "remap_contract", "clean_layer", "extract_triples", "hydrate", "done",
+        "remap_contract", "bash", "write_file", "read_file", "clean_layer", "extract_triples", "hydrate", "done",
     )
 
     @Test

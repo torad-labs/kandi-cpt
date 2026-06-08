@@ -1,0 +1,1826 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Dragon type
+(Japanese:
+ドラゴンタイプ
+Dragon type
+) is one of the eighteen
+types
+. Dragon-type
+moves
+are super effective against Dragon-type
+Pokémon
+, while Dragon-type Pokémon are weak to Dragon-,
+Fairy
+-, and
+Ice-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Dragon-type Pokémon
+Half Dragon-type Pokémon
+Primary Dragon-type Pokémon
+Secondary Dragon-type Pokémon
+Moves
+Abilities
+Interacting with the Dragon type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Dragon-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+References
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Dragon-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Dragon
+Steel
+Fairy
+Defensive properties of
+Dragon-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Ice
+Dragon
+Fairy
+Fire
+Water
+Grass
+Electric
+None
+The
+Steel
+type
+was introduced in
+Generation II
+.
+The
+Fairy
+type was introduced in
+Generation VI
+.
+Additional effects
+When
+Misty Terrain
+is in effect, the
+power
+of Dragon-type
+moves
+is decreased by 50% if the target is
+grounded
+.
+Pokémon
+As of
+Generation IX
+, 78
+Pokémon
+are Dragon-type (counting those that are Dragon-type in at least one of their
+forms
+, including
+Mega Evolutions
+and
+regional forms
+), which makes up 7.59% of all Pokémon , making it the fifth rarest
+type
+among Pokémon after
+Ghost
+and before
+Ground
+.
+Pure Dragon-type Pokémon
+#
+Name
+0147
+Dratini
+0148
+Dragonair
+0371
+Bagon
+0372
+Shelgon
+0445
+Mega
+Garchomp Z
+0493
+Arceus
+(
+Dragon-type
+)
+0610
+Axew
+0611
+Fraxure
+0612
+Haxorus
+0621
+Druddigon
+0704
+Goomy
+0705
+Sliggoo
+0706
+Goodra
+0773
+Silvally
+(
+Type: Dragon
+)
+0782
+Jangmo-o
+0895
+Regidrago
+Half Dragon-type Pokémon
+Primary Dragon-type Pokémon
+#
+Name
+Type 1
+Type 2
+0149
+Dragonite
+Dragon
+Flying
+Mega
+Dragonite
+Dragon
+Flying
+0334
+Altaria
+Dragon
+Flying
+Mega
+Altaria
+Dragon
+Fairy
+0373
+Salamence
+Dragon
+Flying
+Mega
+Salamence
+Dragon
+Flying
+0380
+Latias
+Dragon
+Psychic
+Mega
+Latias
+Dragon
+Psychic
+0381
+Latios
+Dragon
+Psychic
+Mega
+Latios
+Dragon
+Psychic
+0384
+Rayquaza
+Dragon
+Flying
+Mega
+Rayquaza
+Dragon
+Flying
+0443
+Gible
+Dragon
+Ground
+0444
+Gabite
+Dragon
+Ground
+0445
+Garchomp
+Dragon
+Ground
+Mega
+Garchomp
+Dragon
+Ground
+0643
+Reshiram
+Dragon
+Fire
+0644
+Zekrom
+Dragon
+Electric
+0646
+Kyurem
+Dragon
+Ice
+White
+Kyurem
+Dragon
+Ice
+Black
+Kyurem
+Dragon
+Ice
+0718
+Zygarde
+10% Forme
+Dragon
+Ground
+Zygarde
+50% Forme
+Dragon
+Ground
+Zygarde
+Complete Forme
+Dragon
+Ground
+Mega
+Zygarde
+Dragon
+Ground
+0783
+Hakamo-o
+Dragon
+Fighting
+0784
+Kommo-o
+Dragon
+Fighting
+0885
+Dreepy
+Dragon
+Ghost
+0886
+Drakloak
+Dragon
+Ghost
+0887
+Dragapult
+Dragon
+Ghost
+0967
+Cyclizar
+Dragon
+Normal
+0978
+Tatsugiri
+Curly Form
+Dragon
+Water
+Mega
+Tatsugiri
+Curly Form
+Dragon
+Water
+Tatsugiri
+Droopy Form
+Dragon
+Water
+Mega
+Tatsugiri
+Droopy Form
+Dragon
+Water
+Tatsugiri
+Stretchy Form
+Dragon
+Water
+Mega
+Tatsugiri
+Stretchy Form
+Dragon
+Water
+0996
+Frigibax
+Dragon
+Ice
+0997
+Arctibax
+Dragon
+Ice
+0998
+Baxcalibur
+Dragon
+Ice
+Mega
+Baxcalibur
+Dragon
+Ice
+1005
+Roaring Moon
+Dragon
+Dark
+Secondary Dragon-type Pokémon
+#
+Name
+Type 1
+Type 2
+0006
+Mega
+Charizard X
+Fire
+Dragon
+0103
+Alolan
+Exeggutor
+Grass
+Dragon
+0160
+Mega
+Feraligatr
+Water
+Dragon
+0181
+Mega
+Ampharos
+Electric
+Dragon
+0230
+Kingdra
+Water
+Dragon
+0254
+Mega
+Sceptile
+Grass
+Dragon
+0329
+Vibrava
+Ground
+Dragon
+0330
+Flygon
+Ground
+Dragon
+0483
+Dialga
+Steel
+Dragon
+Dialga
+(
+Origin Forme
+)
+Steel
+Dragon
+0484
+Palkia
+Water
+Dragon
+Palkia
+(
+Origin Forme
+)
+Water
+Dragon
+0487
+Giratina
+(
+Altered Forme
+)
+Ghost
+Dragon
+Giratina
+(
+Origin Forme
+)
+Ghost
+Dragon
+0633
+Deino
+Dark
+Dragon
+0634
+Zweilous
+Dark
+Dragon
+0635
+Hydreigon
+Dark
+Dragon
+0691
+Dragalge
+Poison
+Dragon
+Mega
+Dragalge
+Poison
+Dragon
+0696
+Tyrunt
+Rock
+Dragon
+0697
+Tyrantrum
+Rock
+Dragon
+0705
+Hisuian
+Sliggoo
+Steel
+Dragon
+0706
+Hisuian
+Goodra
+Steel
+Dragon
+0714
+Noibat
+Flying
+Dragon
+0715
+Noivern
+Flying
+Dragon
+0776
+Turtonator
+Fire
+Dragon
+0780
+Drampa
+Normal
+Dragon
+Mega
+Drampa
+Normal
+Dragon
+0799
+Guzzlord
+Dark
+Dragon
+0800
+Ultra
+Necrozma
+Psychic
+Dragon
+0804
+Naganadel
+Poison
+Dragon
+0840
+Applin
+Grass
+Dragon
+0841
+Flapple
+Grass
+Dragon
+Gigantamax
+Flapple
+Grass
+Dragon
+0842
+Appletun
+Grass
+Dragon
+Gigantamax
+Appletun
+Grass
+Dragon
+0880
+Dracozolt
+Electric
+Dragon
+0882
+Dracovish
+Water
+Dragon
+0884
+Duraludon
+Steel
+Dragon
+Gigantamax
+Duraludon
+Steel
+Dragon
+0890
+Eternatus
+Poison
+Dragon
+Eternamax
+Eternatus
+Poison
+Dragon
+1007
+Koraidon
+Fighting
+Dragon
+1008
+Miraidon
+Electric
+Dragon
+1009
+Walking Wake
+Water
+Dragon
+1011
+Dipplin
+Grass
+Dragon
+1018
+Archaludon
+Steel
+Dragon
+1019
+Hydrapple
+Grass
+Dragon
+1020
+Gouging Fire
+Fire
+Dragon
+1021
+Raging Bolt
+Electric
+Dragon
+Moves
+As of
+Generation IX
+, there are 31 Dragon-type
+moves
+, which makes up 3.32% of all moves (excluding those that are Dragon-type only under certain circumstances), causing it to tie with
+Ground
+and
+Flying
+as the second rarest
+type
+among moves, followed by
+Rock
+.
+Prior to
+changes in Generation IV
+, all damaging Dragon-type moves were
+special
+, but they may now also be
+physical
+depending on the move.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+VIII
+Breaking Swipe
+Physical
+060
+60
+100
+100
+%
+15
+15
+(max 24)
+Many Others
+The user swings its tough tail wildly and attacks opposing Pokémon. This also lowers their Attack stats.
+VII
+Clanging Scales
+Special
+110
+110
+100
+100
+%
+05
+5
+(max 8)
+Many Others
+The user rubs the scales on its entire body and makes a huge noise to attack opposing Pokémon. The user’s Defense stat is lowered after the attack.
+VIII
+Clangorous Soul
+Status
+000
+—
+000
+—
+%
+05
+5
+(max 8)
+Self
+The user boosts all its stats by using some of its own HP.
+VII
+Clangorous Soulblaze
+Special
+185
+185
+000
+—
+%
+01
+1
+(max 1)
+Many Others
+After obtaining Z-Power, the user, Kommo-o, attacks the opposing Pokémon with full force. This move boosts the user’s stats.
+VII
+Core Enforcer
+Special
+100
+100
+100
+100
+%
+10
+10
+(max 16)
+Many Others
+If the Pokémon damaged by this move have already used their moves that turn, this move eliminates the effects of those Pokémon's Abilities.
+VII
+Devastating Drake
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user materializes its aura using its Z-Power and attacks the target with full force. The power varies, depending on the original move.
+VII
+Devastating Drake
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user materializes its aura using its Z-Power and attacks the target with full force. The power varies, depending on the original move.
+IV
+Draco Meteor
+Special
+Beautiful
+130
+130
+090
+90
+%
+05
+5
+(max 8)
+Normal
+Comets are summoned down from the sky onto the target. The recoil from this move harshly lowers the user’s Sp. Atk stat.
+II
+Dragon Breath
+Special
+Cool
+060
+60
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user exhales a mighty gust that inflicts damage. This may also leave the target with paralysis.
+IX
+Dragon Cheer
+Status
+000
+—
+000
+—
+%
+15
+15
+(max 24)
+Your Party
+The user raises its allies’ morale with a draconic cry so that their future attacks have a heightened chance of landing critical hits. This rouses Dragon types more.
+III
+Dragon Claw
+Physical
+Cool
+080
+80
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user slashes the target with huge, sharp claws to inflict damage.
+III
+Dragon Dance
+Status
+Cool
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user vigorously performs a mystic, powerful dance that boosts its Attack and Speed stats.
+VIII
+Dragon Darts
+Physical
+050
+50
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks twice using Dreepy. If there are two opposing Pokémon, this move hits each of them once.
+VIII
+Dragon Energy
+Special
+150
+150
+100
+100
+%
+05
+5
+(max 8)
+Many Others
+Converting its life-force into power, the user attacks opposing Pokémon. The lower the user's HP, the lower the move's power.
+VII
+Dragon Hammer
+Physical
+090
+90
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user uses its body like a hammer to attack the target and inflict damage.
+IV
+Dragon Pulse
+Special
+Beautiful
+085
+85
+100
+100
+%
+10
+10
+(max 16)
+Normal (long-range)
+The target is attacked with a shock wave generated by the user's gaping mouth.
+I
+Dragon Rage
+Special
+Cool
+000
+—
+100
+100
+%
+10
+10
+(max 16)
+Normal
+This attack hits the target with a shock wave of pure rage. This attack always inflicts 40 HP damage.
+IV
+Dragon Rush
+Physical
+Tough
+100
+100
+075
+75
+%
+10
+10
+(max 16)
+Normal
+The user tackles the target while exhibiting overwhelming menace. This may also make the target flinch.
+V
+Dragon Tail
+Physical
+Tough
+060
+60
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The target is knocked away, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon.
+V
+Dual Chop
+Physical
+Tough
+040
+40
+090
+90
+%
+15
+15
+(max 24)
+Normal
+The user attacks its target by hitting it with brutal strikes. The target is hit twice in a row.
+VIII
+Dynamax Cannon
+Special
+100
+100
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user condenses energy within its body and unleashes that energy from its core to inflict damage.
+This move deals twice the damage if the target is Dynamaxed.
+*
+VIII
+Eternabeam
+Special
+160
+160
+090
+90
+%
+05
+5
+(max 8)
+Normal
+This is Eternatus's most powerful attack in its original form. The user can't move on the next turn.
+IX
+Fickle Beam
+Special
+080
+80
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user shoots a beam of light to inflict damage. Sometimes all the user's heads shoot beams in unison, doubling the move's power.
+IX
+Glaive Rush
+Physical
+120
+120
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user throws its entire body into a reckless charge. Attacks from opposing Pokémon during the next turn cannot miss and will inflict double damage.
+VIII
+G-Max Depletion
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dragon-type attack that Gigantamax Duraludon use. Reduces the PP of the last move used.
+VIII
+G-Max Depletion
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Dragon-type attack that Gigantamax Duraludon use. Reduces the PP of the last move used.
+VIII
+Max Wyrmwind
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Dragon-type attack Dynamax Pokémon use. This lowers the target's Attack stat.
+VIII
+Max Wyrmwind
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Dragon-type attack Dynamax Pokémon use. This lowers the target's Attack stat.
+IX
+Nihil Light
+Special
+200
+200
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks by unleashing a powerful light that defies all laws of nature, striking even Fairy types and ignoring any stat changes affecting its targets.
+IX
+Order Up
+Physical
+080
+80
+100
+100
+%
+10
+10
+(max 16)
+Normal
+The user attacks with elegant poise. If the user has a Tatsugiri in its mouth, this move boosts one of the user's stats based on the Tatsugiri's form.
+II
+Outrage
+Physical
+Cool
+120
+120
+100
+100
+%
+10
+10
+(max 16)
+1 Random
+The user rampages and attacks for two to three turns. The user then becomes confused.
+IV
+Roar of Time
+Special
+Beautiful
+150
+150
+090
+90
+%
+05
+5
+(max 8)
+Normal
+The user blasts the target with power that distorts even time. The user can't move on the next turn.
+VIII
+Scale Shot
+Physical
+025
+25
+090
+90
+%
+20
+20
+(max 32)
+Normal
+The user attacks by shooting scales two to five times in a row. This move boosts the user's Speed stat but lowers its Defense stat.
+IV
+Spacial Rend
+Special
+Beautiful
+100
+100
+095
+95
+%
+05
+5
+(max 8)
+Normal
+The user tears the target along with the space around it. This move has a heightened chance of landing a critical hit.
+II
+Twister
+Special
+Cool
+040
+40
+100
+100
+%
+20
+20
+(max 32)
+Many Others
+The user whips up a vicious tornado to tear at opposing Pokémon. This may also make them flinch.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Abilities
+Interacting with the Dragon type
+A Pokémon with
+Protean
+or
+Libero
+will become a Dragon-type Pokémon if it uses a Dragon-type move. A Pokémon with
+Color Change
+will become a Dragon-type Pokémon if it is hit with a Dragon-type move.
+Gen
+Ability
+Description
+VIII
+Dragon's Maw
+Powers up Dragon-type moves.
+IX
+Dragonize
+The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Currently, no Abilities are exclusive to Dragon-type Pokémon. This does not include
+signature Abilities
+.
+Items
+Name
+Description
+Adamant Orb
+A brightly shining gem to be held by
+Dialga
+. It boosts the power of Dialga’s Dragon- and
+Steel-type
+moves.
+Draco Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of dragons and boosts the power of the holder’s Dragon-type moves.
+Dragon Fang
+An item to be held by a Pokémon. This hard, sharp fang boosts the power of the holder's Dragon-type moves.
+Dragon Gem
+A
+gem
+with a draconic essence. When held, it strengthens the power of a Dragon-type move one time.
+Dragon Memory
+A
+memory
+disc that contains Dragon-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Dragon Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Dragonium Z
+This is a crystallized form of Z-Power. It upgrades Dragon-type moves to
+Z-Moves
+.
+Griseous Orb
+A shining gem to be held by
+Giratina
+. It boosts the power of Giratina’s Dragon- and
+Ghost-type
+moves.
+Haban Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Dragon-type move, the power of that move will be weakened.
+Lustrous Orb
+A beautifully shining gem to be held by
+Palkia
+. It boosts the power of Palkia’s Dragon- and
+Water-type
+moves.
+Soul Dew
+A wondrous orb to be held by either
+Latios
+or
+Latias
+. It raises the power of Dragon- and
+Psychic-type
+moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Aguav Berry
+Nomel Berry
+Haban Berry
+Jaboca Berry
+Cram-o-matic
+Name
+Aguav Berry
+Dragon Scale
+Dynamax Candy
+Dynite Ore
+Eviolite
+Fossilized Drake
+Jaboca Berry
+Life Orb
+Notable Dragon-type Trainers
+Main article:
+Category:Dragon-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Lance
+Elite Four
+R
+B
+Y
+FR
+LG
+P
+E
+Champion
+G
+S
+C
+HG
+SS
+Indigo Plateau
+II
+Clair
+Gym Leader
+Blackthorn Gym
+III
+Drake
+Elite Four
+Hoenn Pokémon League
+V
+Drayden
+Gym Leader
+B
+B2
+W2
+Opelucid Gym
+B
+B2
+W2
+V
+Iris
+Gym Leader
+W
+Champion
+B2
+W2
+Opelucid Gym
+W
+Unova Pokémon League
+B2
+W2
+VI
+Drasna
+Elite Four
+Kalos Pokémon League
+VI
+Zinnia
+Lorekeeper
+Sky Pillar
+VII
+Ryuki
+Pokémon Trainer
+Kantonian Gym
+US
+UM
+VIII
+Raihan
+Gym Leader
+Hammerlocke Stadium
+IX
+Hassel
+Elite Four
+Instructor
+Paldea Pokémon League
+Naranja Academy
+S
+Uva Academy
+V
+IX
+Drayton
+Elite Four
+Polar Plaza
+IX
+File:VSLebanne.png
+Lebanne
+SBC
+Hotel Richissime
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: Z-A
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+89.57
+Attack:
+99.58
+Defense:
+90.23
+Sp.Atk:
+102.02
+Sp.Def:
+88.89
+Speed:
+83.20
+Total:
+553.49
+Fully evolved
+Stat
+HP:
+99.51
+Attack:
+107.16
+Defense:
+98.15
+Sp.Atk:
+116.27
+Sp.Def:
+98.65
+Speed:
+91.19
+Total:
+610.93
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Dragon-type Pokémon will gather
+Yache Berries
+, and typically have the Dozing
+sleep type
+.
+The following is a list of Dragon-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0147
+Dratini
+Dozing
+0148
+Dragonair
+Dozing
+0149
+Dragonite
+Dozing
+0334
+Altaria
+Dozing
+0371
+Bagon
+Dozing
+0372
+Shelgon
+Dozing
+0373
+Salamence
+Dozing
+0380
+Latias
+Dozing
+0714
+Noibat
+Dozing
+0715
+Noivern
+Dozing
+In the TCG
+Main article:
+Dragon (TCG)
+Introduced in the
+Dragon Vault
+set, previously many Pokémon in this set were listed as
+Colorless
+-types. Dragon-type Pokémon in the TCG are generally weak to Dragon (prior to the
+XY
+expansion) or
+Fairy
+(from XY to
+Cosmic Eclipse
+) with no Resistances. Starting with the
+Evolving Skies
+expansion, all Dragon-type Pokémon in the TCG have no Weakness. Dragon-type Pokémon can be strong against other Dragon-types (prior to the XY expansion), and there are no types that resist them.
+Dragon is one of two types to lack a
+Basic Energy card
+, and the only one where an Energy of the type simply does not exist within the rules. Dragon-types use other Energy types in the costs of their attacks instead, often having two different Energy types in the costs. Often, the types used are of the Pokémon's non-Dragon type, or those based on the Pokémon's body color.
+Trivia
+Generation IX
+introduced the most Dragon-type
+Pokémon
+of any
+generation
+, with fourteen, while
+Generation II
+introduced the fewest Dragon-type Pokémon, with only one,
+Kingdra
+.
+Generation VIII
+introduced the most Dragon-type moves of any generation, with nine, while
+Generation I
+introduced the fewest, with only one,
+Dragon Rage
+.
+The Dragon type is the only
+type
+for which a move was not introduced in
+Generation VI
+. This is also the first instance of any generation not introducing a move for a type after that type's introduction.
+The Dragon type, tied with the
+Fire
+type, also has the lowest number of non-damaging moves out of all of the types, with only three.
+On average, Dragon-type Pokémon have the highest base
+HP
+,
+Special Attack
+, and
+Speed
+of all types.
+The Dragon type is super effective against the least amount of types after
+Normal
+, only being super effective against itself. Because of this, no Pokémon can have a double weakness to Dragon-type moves except for those who are
+Fairy
+- and
+Steel-type
+in
+Inverse Battles
+.
+The Dragon type is the only pre-Generation IV special type that does not resist itself (instead being weak to itself), unlike
+Fire
+,
+Water
+,
+Grass
+,
+Electric
+,
+Psychic
+,
+Ice
+and
+Dark
+.
+Prior to
+Generation VI
+, the Dragon type was the least resisted type, only being resisted by Steel. Because of this, it is impossible for a Pokémon to have a double resistance to Dragon. Starting in Generation VI, it is tied with the
+Ghost
+type for this distinction.
+In
+Generation I
+, there was no way to deal super effective Dragon-type damage, since Dragon Rage always deals 40 HP of damage. There was also no way to get
+STAB
+from a Dragon-type move in Generation I for the same reason.
+No type resisted or was immune to the Dragon type, making it the only type to have ever had this distinction. However, because there were no Dragon-type moves that utilized the
+standard damage formula
+in Generation I, this would be a moot point.
+The Dragon type is the most common type for
+pseudo-legendary Pokémon
+, with only two of them not being part-Dragon type (
+Metagross
+and
+Tyranitar
+, although the latter has dragon-like characteristics and can learn Dragon-type moves). It is also the most common type among
+version mascots
+, with eleven Dragon-type Pokémon having served as mascots for twelve games of the
+core series
+.
+Sinnoh
+is the only region without a notable Dragon-type
+specialist
+.
+The Dragon type has the most
+Elite Four
+members of all types, with five.
+In
+Generation III
+, all Dragon-type moves were
+Cool
+moves.
+Dragon-type moves have the most
+held items
+that boost their power: the
+Draco Plate
+,
+Dragon Fang
+,
+Dragon Gem
+, all three
+Pokémon of myth orbs
+, and the
+Soul Dew
+(as of Generation VII).
+The Dragon type resists all three of the traditional primary types of core series
+first partner Pokémon
+:
+Grass
+,
+Fire
+, and
+Water
+. In addition, it resists
+Electric
+, which was the type of the
+player's first Pokémon
+(
+Pikachu
+) in
+Pokémon Yellow
+.
+Dragon has the most
+Mega Evolutions
+with 17.
+All Dragon-type moves are eligible to be used in
+Sky Battles
+.
+Dragon and
+Ghost
+share some characteristics. They both:
+originally had three Pokémon in Generation I, then gained only one more in Generation II.
+are the only types that are weak to themselves.
+have one type immune to them and one type resistant to them (prior to Generation VI, Ghost was resisted by both Steel and Dark making this distinction false).
+The Dragon type is the only type to have all of its Pokémon introduced prior to
+Generation IX
+obtainable in
+Pokémon Sword and Shield
+, excluding Mega Evolutions and
+Arceus
+holding a
+Draco Plate
+.
+The Dragon type and the idea of "dragons" are not always the same in the
+Pokémon world
+, as some Pokémon which are not Dragon-type sometimes are referred to as dragons. This idea is further supported by
+Lance
+'s
+Pokémon Masters EX
+dialogue, stating that not all dragons are Dragon-type Pokémon.
+[
+1
+]
+Some non-Dragon-type Pokémon which have been referred to as dragons include:
+Charizard
+, in promotional materials and literature for the
+Dragon Majesty
+TCG expansion;
+[
+2
+]
+and in the
+Super Smash Bros.
+series. However Charizard can become part Dragon type by
+Mega Evolving
+into Mega Charizard X using the
+Charizardite X
+.
+Horsea
+and
+Seadra
+, by their
+category
+of "Dragon Pokémon". However, Seadra's
+Evolution
+,
+Kingdra
+, is a Dragon-type.
+Gyarados
+, by the
+Hisui Pokédex
+;
+[
+3
+]
+and by
+Lance
+in
+Pokémon Masters EX
+.
+[
+1
+]
+Aerodactyl
+, by a man in the
+Pewter Museum of Science
+.
+[
+4
+]
+Lugia
+, by a man in
+Ecruteak City
+.
+[
+5
+]
+Iron Jugulis
+(implicitly, being a robotic version of
+Hydreigon
+).
+There is also a
+Dragon Egg Group
+, which contains other draconic Pokémon that are not Dragon-type. However
+Sceptile
+, who is part of this
+Egg Group
+, can become part Dragon type by Mega Evolving into Mega Sceptile using the
+Sceptilite
+.
+Considering only
+Pokémon Leagues
+with a fixed
+Gym Leader
+order, more Leagues end with a Dragon-type Gym Leader than any other type, with three (
+Johto
+,
+Unova
+B
+W
+and
+Galar
+).
+Including every Pokémon League, it is tied with the
+Water type
+, for this distinction (
+Hoenn
+,
+Unova
+B2
+W2
+and
+Paldea
+*
+).
+Rock and Ice types are shared with this distinction, but they are not placed last, as
+Rock type
+Gyms are placed first (Kanto, Hoenn, and Sinnoh) and
+Ice type
+Gyms are placed seventh (Johto, Sinnoh, and Unova).
+The Dragon type, along with the
+Normal
+type, deal non-neutral damage to the least types, those being three.
+In other languages
+Language
+Title
+Japanese
+ドラゴン
+Dragon
+Catalan
+Drac
+Chinese
+Cantonese
+龍
+Lùhng
+Mandarin
+龍 / 龙
+Lóng
+Czech
+Dračí
+Danish
+Drage
+Dutch
+Draak
+Finnish
+Lohikäärme
+French
+Dragon
+German
+Drache
+Greek
+Δράκου
+Drákou
+Hebrew
+דרקון
+Dracon
+Hindi
+ड्रैगन
+Dragon
+Hungarian
+Sárkány
+Indonesian
+Naga
+Dragon
+Italian
+Drago
+Korean
+드래곤
+Dragon
+Malaysian
+Naga
+Norwegian
+Drage
+Polish
+Smok
+Smoczy
+Portuguese
+Dragão
+Romanian
+Dragon
+Russian
+Дракон
+Drakon
+Spanish
+Dragón
+Swedish
+Drake
+Thai
+มังกร
+Mangkon
+Turkish
+Ejderha
+Ejder
+Vietnamese
+Rồng
+References
+↑
+1.0
+1.1
+Lance
+: "This outfit shows off Gyarados's power as a dragon! What's that, you say? Gyarados isn't a Dragon-type Pokémon? Haha, not all dragons are Dragon-type Pokémon!" (
+Masters EX
+)
+↑
+Dragon Majesty
+promotional blurb: "The Pokémon TCG: Dragon Majesty expansion brings a mighty horde of draconic Pokémon: Reshiram-GX, Salamence-GX, Dragonite-GX, and over a dozen more, including Charizard!"
+↑
+Hisui Pokédex
+entry for
+Gyarados
+:
+I suspect this Pokémon to be the true identity of a dragon written of in ancient texts, which claimed that it razed an entire village with white-hot beams from its maw.
+(
+Pokémon Legends: Arceus
+)
+↑
+Old man:
+"Never did I think I would get to see the bones of a dragon!"
+(
+Pokémon FireRed, LeafGreen
+,
+Let's Go, Pikachu!, and Let's Go, Eevee!
+)
+↑
+NPC:
+"This happened when I was young. The sky suddenly turned black. A giant Flying-type Pokémon was blocking out the sun. I wonder what that Pokémon was? It was like a bird and like a dragon."
+(
+Pokémon HeartGold and SoulSilver
+)
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Dragon_(type)&oldid=4566011
+"

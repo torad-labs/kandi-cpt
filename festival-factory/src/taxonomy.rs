@@ -57,6 +57,7 @@ pub fn relations() -> Vec<Relation> {
         rel!("year_over_year", "temporal", Base, Partial, FB, &[], &[], "historical 'have headlined' lists (qualified past, NOT 2026)"),
         // ── Artist ──
         rel!("artist_to_stage", "artist", Base, Supported, FB, &["leads_with_artist","leads_with_stage"], &[], "the lineup spine — dense, both directions"),
+        rel!("in_lineup", "artist", Base, Supported, &["forward"], &["leads_with_artist"], &[], "stageless lineup membership (the plays_at→festival coarsening) — the lineup spine where the stage is unknown"),
         rel!("b2b_pairing", "artist", Base, Supported, SYM, &[], &[], "two artists/one slot — breaks naive retrieval if missing"),
         rel!("set_style", "artist", Base, Partial, FB, &[], &[], "DJ set/live/sunrise — sparse but present"),
         rel!("artist_tier", "artist", Base, Partial, FB, &[], &[], "headliner vs undercard — coarse signal"),

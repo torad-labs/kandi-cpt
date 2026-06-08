@@ -1,0 +1,15 @@
+{
+  "domain": "pokemon",
+  "description": "Pokémon lore across generations",
+  "editions": [
+    {"id": "gen1", "name": "Generation I (Kanto)", "years": [1996, 1998]},
+    {"id": "gen2", "name": "Generation II (Johto)", "years": [1999, 2000]},
+    {"id": "gen3", "name": "Generation III (Hoenn)", "years": [2002, 2004]},
+    {"id": "gen4", "name": "Generation IV (Sinnoh)", "years": [2006, 2008]},
+    {"id": "gen5", "name": "Generation V (Unova)", "years": [2010, 2012]},
+    {"id": "gen6", "name": "Generation VI (Kalos)", "years": [2013, 2015]},
+    {"id": "gen7", "name": "Generation VII (Alola)", "years": [2016, 2018]},
+    {"id": "gen8", "name": "Generation VIII (Galar)", "years": [2019, 2021]},
+    {"id": "gen9", "name": "Generation IX (Paldea)", "years": [2022, 2024]}
+  ]
+}

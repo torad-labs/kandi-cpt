@@ -1,0 +1,105 @@
+Title: Professor Krane
+
+Professor Krane (Japanese: クレイン博士 Dr. Krane) is the resident Professor of Orre in Pokémon XD. He lives at the Pokémon HQ Lab in the northwestern portion of the region.
+After the Shadow Pokémon incident in Pokémon Colosseum five years earlier, Krane and Michael's father began developing a way to purify Shadow Pokémon at a much quicker pace than Wes had to use, which was done by using the Relic Stone in Agate Village. The fruit of this research was the Purify Chamber, which has nine sets and is the only way to purify Shadow Lugia.
+Cipher kidnaps him due to his research on purification. Cipher Admin Lovrina unsuccessfully attempts to persuade him to assist them in fine-tuning XD001. Michael eventually arrives on the scene to save him.
+Later in the game, Krane gives Michael a Master Ball. He claims to have been given it because of his research, but that Michael can make better use of it, mirroring Professor Elm's statements when giving the player a Master Ball.
+
+
+== Quotes ==
+
+
+=== Pokémon XD demo ===
+Cipher Key Lair
+If Michael tries to leave the area:
+"Hold up, MICHAEL! Where are you wandering off to?"
+When Michael walks forward to Krane and Aidan:
+Hi MICHAEL. I'm glad you came. This is the enemy's facility I mentioned. Apparently, there are SHADOW POKéMON inside."
+"SHADOW POKéMON are POKéMON that have been turned into fighting machines after having their hearts locked shy by artificial means."
+"We developed the SNAG MACHINE to rescue such SHADOW POKéMON from the clutches of wrongdoers."
+"No problem! MICHAEL will catch on soon enough. Just give it a try, and you'll see."
+After Zook comes down the walkway:
+"MICHAEL, it's your time to shine! If a SHADOW POKéMON appears, we need you to snag it. We're depending on you!"
+After defeating Zook:
+"Oh my gosh, AIDAN! So, they did have SHADOW POKéMON with them!"
+"This is becoming serious. There may be more inside. We'd better check things."
+"MICHAEL, if a SHADOW POKéMON appears, please try to snag it."
+After defeating Spy Targ:
+"MICHAEL! Are you alright?"
+"So, how did it go? Did you manage to snag any SHADOW POKéMON?"
+"It worries me, though... This place appears to be far more dangerous than I'd imagined."
+"We should return to the LAB right away. We need to come up with a plan of action, and fast."
+"MICHAEL, it looks like we'll be relying on your help even more. We're counting on you!"
+
+
+=== Pokémon XD: Gale of Darkness ===
+Pokémon HQ Lab
+Director's Office
+"Hahaha. You don't need to be that stiffly official, Lily."
+"Oh, yes. I've heard the Battle Coach singing high praise about you, <player>. I've heard that your battling skills have improved dramatically recently. That's outstanding, <player>. I sure don't think I'd stand much of a chance against you. Ahahaha."
+"There's nothing to worry about. Both <player> and Jovi are wonderful kids."
+"I'm sorry, <player>. After five long years, this project is finally on the verge of coming together."
+"But for that to happen, we can't do without your mother's expertise. Oh yes. I left a P★DA in your room, <player>. Go check it out. "P★DA" stands for Pokémon Digital Assistant. It's a very useful electronic tool. A P★DA can be used for e-mail, among other things. I'm sure that you'll find its many features useful. It's quite easy to use. <player>, I'm sure you'll have no trouble figuring it out."
+E-mail
+"To: <player>
+Krane
+If you're reading this e-mail, then you must have obtained the P★DA. Try out its many features. By the way, Adon was playing hide-and-seek with Jovi. Why not have a chat with him?"
+Director's Office after the P★DA is obtained
+"Oh, <player>. How do you like the P★DA? It has some interesting features, so be sure to check it out. By the way, after you find Jovi, can I get you to help me with something? I'd like you to test a certain machine for me. I know you're a skilled battler, <player>, so I think I can count on you."
+After finding Jovi
+"Hi there, <player>! I've been waiting for you! I wanted to show you the Snag Machine. Has Aidan to you about the Snag Machine?"
+"The two of us, Aidan and I, were developing it. And now it's finally finished. I'd like to begin testing it immediately. <player>, will you help us?"
+"Okay. Step inside, please."
+"I should tell you, the Snag Machine is an outrageous piece of work. After all, it's used for stealing Pokémon from another Trainer in battle. But we didn't make this to steal Pokémon indiscriminately from Trainers."
+"<player>, you've heard of Shadow Pokémon, haven't you? They're Pokémon that have been turned into fighting machines after having their hearts closed by artificial means. They're to be pitied. We developed the Snag Machine to take back such modified Shadow Pokémon. Why this machine is needed now I can explain later... but for now, I'd like you to test our Snag Machine  After all, you're the best Trainer at this Lab. The Snag Machine is inside this case. Try equipping it right away, please."
+"Thank you, Aidan. That's it, <player>! That's spot-on! From here on, it will be a lot easier to just show you how it works in practise rather than trying to describe it. Let's go upstairs to the Battle SIM System room."
+Being kidnapped by Cipher
+"W-what's going on?! Who are you people?!"
+"Will you let go of me! Where do you think you're taking me?!"
+"What... my new lab?"
+"You people... what are you?"
+"<player!> The Aura Reader is responding! That's a Shadow Pokémon!"
+"Hurry, <player>, hurry! Throw a Poké Ball at it!"
+If the player selects any option except "Bag"
+"<player!> That's not it! Hurry up and throw a Poké Ball!"
+Cipher Lab
+Lovrina's office
+"You've got to be joking! I would never cooperate with people like you!"
+"I don't care how often you repeat yourself. I have no intention of helping your Shadow Pokémon plan. Artificially slamming shut the hearts of Pokémon... it's inexcusable. Put a stop to it immediately."
+"...Naps, was it? You have my sympathy. What a nightmare it must be to have someone like her as your boss."
+"First, we need to talk. I'll teach you why it's such a bad mistake to create Shadow Pokémon. Please, won't you help us stop this Shadow Pokémon plan? Join us, and help us save Pokémon!"
+"<player>? Is it really you, <player>?! But it's dangerous here. We'd better get out right away. My worst fears turned out to be true of Cipher. They weren't wiped out. This is just one of their bases. But the details can wait. Things could get complicated if they return. Let's get out of here quick!"
+Leaving the lab
+"We're going back to the HQ Lab. Stand aside, please."
+"Stop that nonsense! Do you seriously think I would help you do something that horrible?"
+If player accepts Lovrina's request: "Whoa, <player>! Don't joke around now!"
+"<player>, you have grown tough, haven't you?"
+"<player>, you have grown tough, haven't you? In fact, I'm amazed at how much stronger you've grown in this short a time. I guess we'll be relying on you even more from now on, <player>. Now that we know Cipher is back, we need to move quickly. We have to come up with ways of stopping them. This time, let's really head back to the HQ Lab!"
+"Here, may I see that? Hmm... this may be something important. We'll take it back and analyze it."
+Pokémon HQ Lab
+"Thanks to you, <player>, I was able to return safe and sound. Sincerely, thank you. Though it was a horrible ordeal, I learned a few things when I was in that desert lab."
+"First and foremost, Cipher hasn't disappeared! The fact that they're still around is alarming. Worse, they are making more Shadow Pokémon again. And worst of all, they are trying to create the ultimate Shadow Pokémon--one that is impossible to purify. Cipher must be plotting world domination using Shadow Pokémon as their weapons again. To counter Cipher's new Shadow Pokémon conspiracy..."
+"Oh! What fantastic timing! It's finally finished! Lily, thank you! Thank you for pulling everyone together so capably in my absence! Okay! Let's not waste any time! Let's all go have a look at the Purify Chamber."
+Purify Chamber
+"Take a good look, <player>! This is the Purify Chamber! <player>, your father and I designed it five years ago when we were motivated by the "Shadow incident.""
+"If evildoers were to create Shadow Pokémon again, we wanted to be able to save them ourselves. <player>, your father believed that passionately. To honor your father's wish, I put together our Pokémon HQ Lab. <player>, if your father were here, I'm sure that he would be delighted. While I was gone, everyone seems to have rallied around Lily and made things happen. Okay, <player>, we'll have you lead the way. The glorious history of the Purify Chamber will begin with you! But first, if you would be so kind as to briefly explain how the Purify Chamber works."
+"How did you find the Purify Chamber? Using this system, it's possible to purify many Shadow Pokémon at the same time. Now, the issue is how Shadow Pokémon should be recovered from Cipher. It looks as if you'll have to get busy some more with the Snag Machine, <player>."
+"Oh, speaking of Cipher... Lily, have you made any progress with that Data ROM we brought back from Cipher's lab?"
+"Ahaha! Seeing Jovi and her boundless energy makes me realize I'm back home. Anyway, I wonder what's on that Data ROM."
+Outside the Lab
+"A seriously talented guy, you say."
+"Ahaha, it can't be helped. And if it's a seriously talented guy we need, well, I think I may have a solution. <player>, I'm sorry to spring this on you, but can you deliver the Data ROM to ONBS in Pyrite Town? Datan, hand the Data ROM to <player>, please."
+"ONBS is known as a TV network, but they're much more than that. The people that later founded ONBS were actually instrumental in breaking Cipher's conspiracy five years ago. Please deliver that Data ROM to Nett at ONBS. He's the right-hand man to Secc, ONBS's leader. I'm confident that he will be able to get at the contents of that Data ROM."
+"Pyrite is past Agate. It's quite far, so be careful when you're traveling out that way."
+"It's quite possible that the Data ROM contains critical information that Cipher wants to keep secret. I'm sure that Cipher at ONBS can check the contents of that Data ROM. Pyrite Town is past Agate Village. It's a little far, but I need you to do this. Take care, though!"
+
+
+== Trivia ==
+It is unknown if Professor Krane gives out first partner Pokémon like the other Pokémon Professors who appear in the games. What is certain, however, is that Michael did not receive his Eevee from Krane; instead, he got it from his father shortly before his death.
+His English name may be derived from Strelitzia reginae or "Crane Flower". He is the first professor not to be named after a tree.
+
+
+== In other languages ==
+
+
+== Related articles ==

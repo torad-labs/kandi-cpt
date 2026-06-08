@@ -1,0 +1,1472 @@
+Battle Pyramid
+バトルピラミッド
+Battle Pyramid
+"Advance through the Battle Quest!"
+Number of floors
+7
+Participating Pokémon
+3
+Pyramid King Brandon
+Silver
+Brave Symbol
+Gold
+Brave Symbol
+Wins to obtain the Brave Symbol
+Silver
+3
+Gold
+10
+The
+Battle Pyramid
+(Japanese:
+バトルピラミッド
+Battle Pyramid
+) is a
+facility
+located within the
+Hoenn
+Battle Frontier
+in
+Pokémon Emerald
+.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Challenges
+Restrictions
+Wild Pokémon
+Items
+Battle Points
+Pyramid King
+Silver Symbol challenge
+Gold Symbol challenge
+Layout
+In animation
+Pokémon the Series
+Pokémon the Series: Ruby and Sapphire
+Pokémon the Series: Diamond and Pearl
+Pokémon used in Battle Pyramid
+In the manga
+Pokémon Adventures
+Emerald
+arc
+Pokémon Battle Frontier
+In other languages
+Related articles
+Contents
+Challenges
+As a battle facility, battles conducted here do not award
+experience
+or
+prize money
+.
+The Battle Pyramid is a 7-layer pyramid where challengers must advance from one level to the next by stepping on a blue tile. Each floor is shrouded in darkness, and can only be lit up by defeating opponents on the level. After a battle, a defeated Trainer may provide the player with contextual hints on certain aspects of the challenge, such as the location of a given floor's exit, the number of remaining Trainers to be fought on a floor, or the number of remaining items on a given floor. The Ability
+Run Away
+does not guarantee
+escape
+here, but will be credited if the player does successfully escape with a Pokémon with the Ability.
+Trainers cannot take any items into the Battle Quest; items found during the Battle Quest are stored in the Battle Bag, which can only be accessed during the challenge. The Battle Bag has 10 different slots, each capable of holding up to 99 of one type of item. When the player starts a new streak, they start with one
+Hyper Potion
+and one
+Ether
+in their Battle Bag. If the player successfully completes the Battle Quest (clearing all seven floors), the items in their Battle Bag are carried over for their next challenge (items that were held by Pokémon at the end of the challenge are placed in the Battle Bag). When the player successfully completes a round, if they have more than 10 different types of item between their Battle Bag and their Pokémon's held items, they must discard items so that they only have 10 types.
+Restrictions
+No Pokémon may enter if it is holding an item. Any Pokémon can be entered for battle, except for the following Pokémon:
+Mewtwo
+Mew
+Lugia
+Ho-Oh
+Celebi
+Kyogre
+Groudon
+Rayquaza
+Jirachi
+Deoxys
+Egg
+Wild Pokémon
+Main article:
+List of wild Pokémon in the Battle Pyramid
+Wild Pokémon
+are encountered within the Battle Pyramid, with strategies differing depending on how many floors the player has ventured through. Several of the wild Pokémon have high base Speed, making them difficult to
+escape
+from. A
+Hex Maniac
+next to the PC will tell the player what to expect in their next attempt. The tactics used by the wild Pokémon will progress as follows (note that after the list has been completed, it will restart from the beginning):
+Category
+Description
+Tactic
+Wild Pokémon
+1
+I see a shower of sparks…
+…And in it, I see your POKéMON
+struggling with paralysis…
+Pokémon with moves that
+paralyze
+Plusle
+,
+Minun
+,
+Pikachu
+,
+Electabuzz
+,
+Vileplume
+,
+Manectric
+,
+Breloom
+, and
+Jolteon
+2
+I see poison…
+…And, I see your POKéMON suffering
+from the effects of poison…
+Pokémon with moves that
+poison
+Gulpin
+,
+Roselia
+,
+Butterfree
+,
+Seviper
+,
+Skarmory
+,
+Ludicolo
+,
+Crobat
+, and
+Gengar
+3
+I see bright red flames…
+…And, I see your POKéMON suffering
+from burns…
+Pokémon with moves that
+burn
+Growlithe
+,
+Vulpix
+,
+Magcargo
+,
+Ninetales
+,
+Medicham
+,
+Weezing
+,
+Dusclops
+, and
+Houndoom
+4
+I sense the tremendous pressure of
+unrequited anger…
+It is a curse…
+…And, I see your POKéMON drained of
+Power Points and having no recourse
+but to use STRUGGLE…
+Pokémon with moves or Abilities that waste
+PP
+Dunsparce
+,
+Banette
+,
+Misdreavus
+,
+Ninetales
+,
+Absol
+,
+Dusclops
+,
+Shedinja
+, and
+Gengar
+5
+I see POKéMON loftily airborne…
+…And, I see your POKéMON frustrated
+by powerless GROUND-type moves…
+Pokémon with
+Levitate
+Haunter
+,
+Chimecho
+,
+Solrock
+,
+Misdreavus
+,
+Claydol
+,
+Weezing
+,
+Flygon
+, and
+Gengar
+6
+I sense terrific energy rising from
+the ground below…
+…And, I see your POKéMON unable to
+escape the power's clutches…
+Pokémon with
+trapping Abilities
+Diglett
+,
+Trapinch
+,
+Wynaut
+,
+Wobbuffet
+, and
+Dugtrio
+7
+I see ICE-type POKéMON…
+…And, I see your POKéMON fighting
+the freezing effects of ice…
+Ice-type
+Pokémon
+Glalie
+,
+Sneasel
+,
+Dewgong
+,
+Piloswine
+,
+Jynx
+,
+Cloyster
+,
+Walrein
+, and
+Lapras
+8
+I see a flurry of moves that imperil
+the user…
+…And, I see your POKéMON falling
+to them…
+Pokémon with
+Selfdestruct
+or
+Explosion
+Weezing
+,
+Electrode
+,
+Gengar
+,
+Golem
+,
+Pineco
+,
+Solrock
+,
+Forretress
+, and
+Shiftry
+9
+I see PSYCHIC-type POKéMON…
+…And, I see your POKéMON in torment
+from PSYCHIC moves…
+Psychic-type
+Pokémon
+Wobbuffet
+,
+Metang
+,
+Exeggutor
+,
+Slowking
+,
+Xatu
+,
+Alakazam
+,
+Starmie
+, and
+Espeon
+10
+I see ROCK-type POKéMON…
+…And, I see your POKéMON suffering
+from ROCK moves…
+Rock-type
+Pokémon
+Golem
+,
+Steelix
+,
+Omastar
+,
+Lunatone
+,
+Shuckle
+,
+Armaldo
+,
+Cradily
+, and
+Aerodactyl
+11
+I see FIGHTING-type POKéMON…
+…And, I see your POKéMON pummeled
+by FIGHTING moves…
+Fighting-type
+Pokémon
+Poliwrath
+,
+Hariyama
+,
+Breloom
+,
+Medicham
+,
+Hitmonchan
+,
+Hitmonlee
+,
+Heracross
+, and
+Machamp
+12
+RAIN DANCE… SUNNY DAY…
+SANDSTORM… HAIL…
+I see POKéMON that become stronger
+with the weather…
+…And, I see your POKéMON confounded
+by different types of moves…
+Pokémon with moves that alter the
+weather
+Quagsire
+,
+Tropius
+,
+Pupitar
+,
+Lapras
+,
+Cacturne
+,
+Flareon
+,
+Walrein
+, and
+Gyarados
+13
+I see BUG-type POKéMON…
+…And, I see your POKéMON suffering
+from different kinds of attacks…
+Bug-type
+Pokémon
+Pineco
+,
+Shuckle
+,
+Venomoth
+,
+Scizor
+,
+Heracross
+,
+Forretress
+,
+Armaldo
+, and
+Shedinja
+14
+I see DARK-type POKéMON…
+…And, I see your POKéMON suffering
+from DARK-type moves…
+Dark-type
+Pokémon
+Sableye
+,
+Sneasel
+,
+Crawdaunt
+,
+Shiftry
+,
+Cacturne
+,
+Absol
+,
+Houndoom
+, and
+Umbreon
+15
+I see WATER-type POKéMON…
+…And, I see your POKéMON suffering
+from WATER-type moves…
+Water-type
+Pokémon
+Octillery
+,
+Dewgong
+,
+Pelipper
+,
+Quagsire
+,
+Ludicolo
+,
+Slowking
+,
+Starmie
+, and
+Blastoise
+16
+I see GHOST-type POKéMON…
+…And, I see your POKéMON suffering
+from GHOST-type moves…
+Ghost-type
+Pokémon
+Duskull
+,
+Haunter
+,
+Banette
+,
+Misdreavus
+,
+Sableye
+,
+Dusclops
+,
+Shedinja
+, and
+Gengar
+17
+I see STEEL-type POKéMON…
+…And, I see your POKéMON suffering
+from enormously powerful moves…
+Steel-type
+Pokémon
+Mawile
+,
+Magneton
+,
+Steelix
+,
+Scizor
+,
+Forretress
+,
+Skarmory
+,
+Aggron
+, and
+Metagross
+18
+I see flying POKéMON…
+…And, I see your POKéMON suffering
+from enormously powerful moves…
+Flying
+- and
+Dragon-type
+Pokémon
+Dragonair
+,
+Vibrava
+,
+Altaria
+,
+Flygon
+,
+Aerodactyl
+,
+Gyarados
+,
+Kingdra
+, and
+Charizard
+19
+I see those that have evolved from
+the power of stones…
+I also sense fire, water,
+and electricity…
+…And, I see your POKéMON suffering
+from those three powers…
+Pokémon that have evolved by
+Water
+,
+Thunder
+, or
+Fire Stone
+Arcanine
+,
+Poliwrath
+,
+Raichu
+,
+Vaporeon
+,
+Jolteon
+,
+Flareon
+,
+Ninetales
+, and
+Starmie
+20
+I see NORMAL-type POKéMON…
+…And, I see your POKéMON suffering
+from enormously powerful moves…
+Normal-type
+Pokémon that know
+Hyper Beam
+Kangaskhan
+,
+Swellow
+,
+Ursaring
+,
+Porygon2
+,
+Tauros
+,
+Fearow
+,
+Snorlax
+, and
+Slaking
+Items
+The items available change each round (every 7 floors). The probablility of each item changes depending on the floor the player is on. The first table below gives the probablility of each available item appearing, and the second gives the pool of available items. While
+Pickup
+uses the same pool of items, the probabilities for items appearing using Pickup remain the same for all floors.
+% chance of item no.:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Floor 1
+31
+15
+15
+10
+10
+10
+3
+3
+3
+0
+Floor 2
+15
+31
+15
+10
+10
+10
+3
+0
+3
+3
+Floor 3
+15
+15
+31
+10
+10
+10
+3
+3
+3
+0
+Floor 4
+28
+15
+15
+10
+10
+10
+0
+4
+4
+4
+Floor 5
+15
+28
+15
+10
+10
+10
+4
+4
+0
+4
+Floor 6
+15
+15
+28
+10
+10
+10
+4
+4
+4
+0
+Floor 7
+28
+15
+15
+10
+10
+10
+4
+0
+4
+4
+Pickup
+30
+10
+10
+10
+10
+10
+5
+5
+5
+5
+Round
+Item No.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+Battle Points
+BP per round
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+Any level mode
+5
+5
+16
+6
+7
+7
+8
+8
+9
+19
+10
+10
+11
+11
+22
+12
+13
+13
+14
+24
+15
+15
+15
+15
+25
+Pyramid King
+After clearing 21 floors (three rounds) and 70 floors (ten rounds),
+Brandon
+appears at the top to challenge the player. If he is defeated, he awards the Brave Symbol.
+Silver Symbol challenge
+Pyramid King
+Brandon
+'
+Battle Pyramid
+Emerald
+Reward:
+16
+BP
+#
+Pokémon
+Item
+Moves
+Nature
+EVs
+HP
+Attack
+Defense
+Sp. Atk
+Sp. Def
+Speed
+0377
+Regirock
+Quick Claw
+Explosion
+Superpower
+Earthquake
+AncientPower
+Adamant
+152
+152
+-
+106
+100
+-
+0379
+Registeel
+Leftovers
+Earthquake
+Metal Claw
+Toxic
+Iron Defense
+Adamant
+152
+152
+-
+6
+200
+-
+0378
+Regice
+Chesto Berry
+Ice Beam
+Amnesia
+Thunder
+Rest
+Modest
+106
+-
+152
+100
+152
+-
+Gold Symbol challenge
+Pyramid King
+Brandon
+'
+Battle Pyramid
+Emerald
+Reward:
+19
+BP
+#
+Pokémon
+Item
+Moves
+Nature
+EVs
+HP
+Attack
+Defense
+Sp. Atk
+Sp. Def
+Speed
+0144
+Articuno
+Scope Lens
+Blizzard
+Water Pulse
+Aerial Ace
+Reflect
+Mild
+6
+-
+252
+-
+-
+252
+0145
+Zapdos
+Lum Berry
+Thunder
+Detect
+Drill Peck
+Light Screen
+Mild
+6
+-
+252
+-
+-
+252
+0146
+Moltres
+BrightPowder
+Fire Blast
+Hyper Beam
+Aerial Ace
+Safeguard
+Mild
+6
+-
+252
+-
+-
+252
+Layout
+Inside the Battle Pyramid
+A dark maze
+Top of the Battle Pyramid
+In animation
+The Battle Pyramid in
+Pokémon the Series: Diamond and Pearl
+The Battle Pyramid's battlefield in
+Pokémon the Series: Diamond and Pearl
+The Battle Pyramid flying in
+Pokémon the Series: Diamond and Pearl
+Pokémon the Series
+In
+Pokémon the Series
+, the Battle Pyramid is the final facility in the
+Kanto
+Battle Frontier, and its location is only revealed to those who have managed to defeat the six other facilities. Moreover, it is capable of flying, meaning that it has no set location. It is run by
+Brandon
+and the battles are
+refereed
+by
+Samuel
+.
+Pokémon the Series: Ruby and Sapphire
+The Battle Pyramid debuted in
+Battling the Enemy Within!
+, where
+Ash
+and
+his friends
+arrived to it its then-current location near
+Pewter City
+, which they had learned in
+Second Time's the Charm!
+, following Ash's victory against
+Anabel
+at the
+Battle Tower
+. However, while exploring the ancient ruins of
+Pokélantis
+, where the group also encountered Brandon for the first time, Ash ended up getting possessed by the evil spirit of the
+King of Pokélantis
+. Brandon challenged the king to a battle to save Ash, and was finally able to defeat
+Ash's Sceptile
+with his
+Regirock
+before sealing the king's spirit away again. The match was declared unofficial and Brandon agreed to have an official battle with Ash later, before flying off to explore some ruins elsewhere.
+In
+Channeling the Battle Zone!
+, the group learned about the Battle Pyramid's new location in
+Fennel Valley
+, where they arrived in
+Overjoyed!
+. On the night before the battle, Brandon told Ash that he'd be using a
+Registeel
+, prompting Ash to call back his
+Torkoal
+from
+Professor Oak's Laboratory
+. However, despite Ash having the type advantage, he was still defeated. Brandon subsequently left the pyramid to
+catch
+a new Pokémon, promising to return once he had done so.
+Brandon returned to the Battle Pyramid in
+Gathering the Gang of Four!
+, allowing Ash to start his
+rematch
+with him. The match continued in
+Pace - The Final Frontier!
+, eventually coming down to a face-off between
+Ash's Pikachu
+and
+Brandon's Regice
+, the Pokémon that Brandon had left to catch. This time, Ash was finally able to emerge victorious against Brandon's
+Legendary Pokémon
+, earning him the
+Brave Symbol
+and a place in the Battle Frontier
+Hall of Fame
+.
+Pokémon the Series: Diamond and Pearl
+In
+A Pyramiding Rage!
+, the Battle Pyramid traveled to
+Snowpoint City
+in order for Brandon to investigate the
+Snowpoint Temple
+.
+Paul
+challenged Brandon to a battle, intending to accomplish what his brother
+Reggie
+had failed to achieve, as Reggie had once lost to Brandon, causing him to abandon his career as a
+Trainer
+and become a
+Pokémon Breeder
+instead. However, like his brother before him, Paul was defeated without defeating a single one of Brandon's Pokémon.
+In
+Pillars of Friendship!
+, after learning of
+Pokémon Hunter J
+'s attack on the Snowpoint Temple, Brandon flew the Battle Pyramid to the site, only to be attacked by
+J's henchmen
+'s Pokémon army, damaging one of the pyramid's rotors and forcing it to make an emergency landing.
+Pokémon used in Battle Pyramid
+Regirock
+Debut
+Battling the Enemy Within!
+Voice actors
+Japanese
+Katsuyuki Konishi
+English
+Katsuyuki Konishi
+Main article:
+Brandon's legendary giants → Regirock
+Brandon used
+Regirock
+against Ash during
+their unofficial battle
+while Ash was possessed by the
+King of Pokélantis
+. Regirock went up against
+Sceptile
+and won despite the type-disadvantage. Regirock later sent
+Team Rocket
+blasting off along with Registeel during Ash and Brandon's
+rematch
+.
+Regirock was used in
+the Full Battle
+against
+Paul
+and was able to easily defeat his
+Hariyama
+,
+Electabuzz
+,
+Ursaring
+, and
+Magmar
+.
+Registeel
+Debut
+Overjoyed!
+Voice actors
+Japanese
+Tomoe Hanba
+English
+Tomoe Hanba
+Main article:
+Brandon's legendary giants → Registeel
+After the
+Kanto Grand Festival
+, Ash was finally allowed
+an official battle
+against Brandon in another one-on-one battle. Brandon used
+Registeel
+, while Ash used his
+Torkoal
+. The two fought hard, and although Registeel was left extremely weak after the battle, it was Torkoal who was defeated. Registeel later sent Team Rocket blasting off alongside Regirock during Ash and Brandon's rematch.
+During the Full Battle against Paul, it was easily able to stand up to his Magmar's
+Fire-type
+moves, despite the type weakness. It also managed to defeat Paul's
+Nidoking
+despite taking damage from its
+Ground
+- and
+Fighting-type
+attacks.
+Dusclops
+Debut
+Gathering the Gang of Four!
+Voice actors
+Japanese
+English
+Bill Rogers
+Dusclops
+was the first Pokémon used by Brandon during his
+rematch
+and proved to be very powerful, being able to take down
+Ash's Charizard
+before being defeated by
+Bulbasaur
+'s
+Solar Beam
+.
+Dusclops's known moves are
+Will-O-Wisp
+,
+Shadow Punch
+,
+Mean Look
+, and
+Confuse Ray
+.
+Ninjask
+Debut
+Pace - The Final Frontier!
+Voice actors
+Japanese
+Daisuke Sakaguchi
+English
+Billy Beach
+Ninjask
+was the second Pokémon used by Brandon during his rematch against Ash, where it went up against his
+Squirtle
+. Despite a closely fought battle, Ninjask couldn't stand up to Squirtle's
+Skull Bash
+and was defeated.
+Ninjask's known moves are
+Aerial Ace
+,
+Sandstorm
+,
+Double Team
+, and
+Sand Attack
+.
+Solrock
+Debut
+Pace - The Final Frontier!
+Voice actors
+Japanese
+Megumi Hayashibara
+Brandon used
+Solrock
+third in the rematch against Ash, and it was able to defeat his
+Squirtle
+. After knocking the Tiny Turtle Pokémon out of the match, it then went up against
+Bulbasaur
+. The two fought hard for their Trainers, eventually knocking each other out of the battle.
+Solrock's known moves are
+Psywave
+,
+Confusion
+,
+Shadow Ball
+, and
+Solar Beam
+.
+Regice
+Debut
+Pace - The Final Frontier!
+Voice actors
+Japanese
+Tomoe Hanba
+English
+Tomoe Hanba
+Main article:
+Brandon's legendary giants → Regice
+After his first three Pokémon were defeated in
+Pace - The Final Frontier!
+, Brandon sent out his newly caught
+Regice
+against
+Pikachu
+. Regice fought its hardest against the
+Electric
+type and looked poised to win, but Pikachu was able to whittle down its strength with
+Iron Tail
+and
+Volt Tackle
+to claim victory.
+During the Full Battle against Paul, Regice battled
+Ursaring
+, and was able to defeat his
+Lairon
+with no trouble.
+In the manga
+The Battle Pyramid in
+Pokémon Adventures
+Pokémon Adventures
+Emerald
+arc
+The Battle Pyramid first appeared in
+Dust-Up With Dusclops
+, where Brandon invited
+Emerald
+to challenge it immediately after his victory at the
+Battle Pike
+, saying that if Emerald intended to challenge all seven Battle Frontier facilities within the Battle Frontier's seven-day opening ceremony, he should challenge the pyramid right away, as even the fastest clearing of the challenge would take more than 24 hours. Emerald accepted this and started his Battle Pyramid challenge immediately.
+The Battle Pyramid in
+Pokémon Battle Frontier
+In
+Chipping Away at Regirock
+, Emerald cleared the pyramid for the tenth time, allowing him to challenge Brandon and his
+trio of Legendary Pokémon
+at the top. Although Brandon seemed to be emerging victorious at the end, Emerald secretly used a
+Revive
+he had found during his challenge to restore his fainted
+Sceptile
+, allowing it to land a surprise attack on Brandon's
+Regice
+and defeat it, winning the match for Emerald and earning him the
+Brave Symbol
+.
+Pokémon Battle Frontier
+The Battle Pyramid appeared in
+Aim for the Top!
+, where
+Enta
+tried to climb to the top, but failed. He asked help from his mentor
+Rald
+, but despite his advice, he failed his second attempt as well. After talking with Rald again and learning to work as a team with his Pokémon, Enta finally managed to reach the top of the pyramid.
+In other languages
+Language
+Title
+Chinese
+Cantonese
+對戰金字塔
+Deuijin Gāmjihtaap
+Mandarin
+對戰金字塔 / 对战金字塔
+Duìzhàn Jīnzìtǎ
+Danish
+Kamppyramiden
+Dutch
+Strijdpiramide
+Finnish
+Ottelupyramidi
+French
+Pyramide de Combat
+German
+Kampfpyramide
+Indonesian
+Piramida Pertarungan
+Italian
+Piramide Lotta
+Korean
+배틀피라미드
+Battle Pyramid
+Polish
+Piramida Walk
+Brazilian Portuguese
+Pirâmide de Batalha
+Spanish
+Latin America
+Pirámide de Batalla
+Spain
+Pirámide Batalla
+Swedish
+Stridspyramiden
+Thai
+แบทเทิลพีระมิด
+Battle Pyramid
+Vietnamese
+Kim tự tháp giao đấu
+Related articles
+Hoenn Battle Frontier
+Battle Tower
+Salon Maiden
+Anabel
+Battle Palace
+Palace Maven
+Spenser
+Battle Factory
+Factory Head
+Noland
+Battle Pyramid
+Pyramid King
+Brandon
+Battle Dome
+Dome Ace
+Tucker
+Battle Arena
+Arena Tycoon
+Greta
+Battle Pike
+Pike Queen
+Lucy
+Hoenn
+Settlements
+Littleroot Town
+•
+Oldale Town
+•
+Petalburg City
+•
+Rustboro City
+•
+Dewford Town
+•
+Slateport City
+•
+Mauville City
+•
+Verdanturf Town
+Fallarbor Town
+•
+Lavaridge Town
+•
+Fortree City
+•
+Lilycove City
+•
+Mossdeep City
+•
+Sootopolis City
+•
+Pacifidlog Town
+•
+Ever Grande City
+Battle Frontier
+•
+Battle Resort
+Routes
+101
+•
+102
+•
+103
+•
+104
+•
+105
+•
+106
+•
+107
+•
+108
+•
+109
+•
+110
+•
+111
+•
+112
+•
+113
+•
+114
+•
+115
+•
+116
+•
+117
+•
+118
+119
+•
+120
+•
+121
+•
+122
+•
+123
+•
+124
+•
+125
+•
+126
+•
+127
+•
+128
+•
+129
+•
+130
+•
+131
+•
+132
+•
+133
+•
+134
+•
+Underwater
+Landmarks
+Petalburg Woods
+•
+Rusturf Tunnel
+•
+Island Cave
+•
+Granite Cave
+•
+Abandoned Ship
+•
+Sea Mauville
+•
+Oceanic Museum
+Seaside Cycling Road
+•
+Trick House
+•
+Mauville Game Corner
+•
+New Mauville
+•
+Trainer Hill
+•
+Desert Ruins
+•
+Mirage Tower
+•
+Fiery Path
+Jagged Pass
+•
+Mt. Chimney
+•
+Desert Underpass
+•
+Meteor Falls
+•
+Weather Institute
+•
+Scorched Slab
+•
+Ancient Tomb
+•
+Safari Zone
+•
+Mt. Pyre
+Lilycove Museum
+•
+Shoal Cave
+•
+Team Aqua Hideout
+• Team Magma Hideout (
+Lilycove
+•
+Jagged Pass
+) •
+Mossdeep Space Center
+•
+Seafloor Cavern
+Cave of Origin
+•
+Mirage Island
+•
+Sky Pillar
+•
+Victory Road
+•
+Pokémon League
+•
+Sealed Chamber
+•
+Artisan Cave
+•
+Altering Cave
+•
+Southern Island
+Marine Cave
+•
+Terra Cave
+•
+Contest Hall
+•
+Battle Maison
+•
+Battle Tower
+•
+Battle Tent
+•
+Secret Islet
+•
+Secret Meadow
+•
+Secret Shore
+Mirage spots
+Mirage Caves
+•
+Mirage Forests
+•
+Mirage Islands
+•
+Mirage Mountains
+Crescent Isle
+•
+Fabled Cave
+•
+Gnarled Den
+•
+Nameless Cavern
+•
+Pathless Plain
+•
+Trackless Forest
+Access to
+Birth Island
+•
+Faraway Island
+•
+Navel Rock
+•
+Sky
+This article is part of
+Project Locations
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every location in the Pokémon world.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Battle_Pyramid&oldid=4381735
+"

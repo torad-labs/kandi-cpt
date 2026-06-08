@@ -1,0 +1,1493 @@
+Types
+Normal
+Fire
+Fighting
+Water
+Flying
+Grass
+Poison
+Electric
+Ground
+Psychic
+Rock
+Ice
+Bug
+Dragon
+Ghost
+Dark
+Steel
+Fairy
+Stellar
+???
+The
+Rock type
+(Japanese:
+いわタイプ
+Rock type
+) is one of the eighteen
+types
+. Rock-type
+moves
+are super effective against
+Bug
+-,
+Fire
+-,
+Flying
+-, and
+Ice-type
+Pokémon
+, while Rock-type Pokémon are weak to
+Fighting
+-,
+Grass
+-,
+Ground
+-,
+Steel
+-, and
+Water-type
+moves.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Battle properties
+Additional effects
+Pokémon
+Pure Rock-type Pokémon
+Half Rock-type Pokémon
+Primary Rock-type Pokémon
+Secondary Rock-type Pokémon
+Unique Terastallized states
+Moves
+Abilities
+Interacting with the Rock type
+Exclusive Abilities
+Items
+Natural Gift's Berries
+Cram-o-matic
+Notable Rock-type Trainers
+Icons
+Core series
+Side series
+Spin-off games
+Statistical averages
+Overall
+Fully evolved
+In spin-off games
+Pokémon Sleep
+In the TCG
+Trivia
+In other languages
+Contents
+Battle properties
+Note: Type effectiveness multipliers may vary in other
+games
+outside the
+core series
+.
+Offensive properties of
+Rock-type moves
+Super effective (×2)
+Not very effective (×½)
+No effect (×0)
+Flying
+Bug
+Fire
+Ice
+Fighting
+Ground
+Steel
+None
+Defensive properties of
+Rock-type Pokémon
+Weak to (×2)
+Resists (×½)
+Immune to (×0)
+Fighting
+Ground
+Water
+Grass
+Steel
+Normal
+Flying
+Poison
+Fire
+None
+The
+Steel
+type
+was introduced in
+Generation II
+.
+Additional effects
+Rock-type
+Pokémon
+are immune to damage from the
+sandstorm
+weather
+condition, introduced in
+Generation II
+, which also boosts their
+Special Defense
+stat
+by 50% starting in
+Generation IV
+.
+Pokémon
+As of
+Generation IX
+, 80 Pokémon are Rock-type (counting those that are Rock-type in at least one of their
+forms
+, including
+regional forms
+), which makes up 7.78% of all Pokémon, making it the 7th rarest
+type
+after
+Ground
+and before
+Steel
+.
+Pure Rock-type Pokémon
+#
+Name
+0185
+Sudowoodo
+0299
+Nosepass
+0377
+Regirock
+0408
+Cranidos
+0409
+Rampardos
+0438
+Bonsly
+0493
+Arceus
+(
+Rock-type
+)
+0524
+Roggenrola
+0525
+Boldore
+0526
+Gigalith
+0744
+Rockruff
+0745
+Lycanroc
+(
+Midday Form
+)
+Lycanroc
+(
+Midnight Form
+)
+Lycanroc
+(
+Dusk Form
+)
+0773
+Silvally
+(
+Type: Rock
+)
+0837
+Rolycoly
+0874
+Stonjourner
+0932
+Nacli
+0933
+Naclstack
+0934
+Garganacl
+0950
+Klawf
+Half Rock-type Pokémon
+Primary Rock-type Pokémon
+#
+Name
+Type 1
+Type 2
+0074
+Geodude
+Rock
+Ground
+Alolan
+Geodude
+Rock
+Electric
+0075
+Graveler
+Rock
+Ground
+Alolan
+Graveler
+Rock
+Electric
+0076
+Golem
+Rock
+Ground
+Alolan
+Golem
+Rock
+Electric
+0095
+Onix
+Rock
+Ground
+0138
+Omanyte
+Rock
+Water
+0139
+Omastar
+Rock
+Water
+0140
+Kabuto
+Rock
+Water
+0141
+Kabutops
+Rock
+Water
+0142
+Aerodactyl
+Rock
+Flying
+Mega
+Aerodactyl
+Rock
+Flying
+0246
+Larvitar
+Rock
+Ground
+0247
+Pupitar
+Rock
+Ground
+0248
+Tyranitar
+Rock
+Dark
+Mega
+Tyranitar
+Rock
+Dark
+0337
+Lunatone
+Rock
+Psychic
+0338
+Solrock
+Rock
+Psychic
+0345
+Lileep
+Rock
+Grass
+0346
+Cradily
+Rock
+Grass
+0347
+Anorith
+Rock
+Bug
+0348
+Armaldo
+Rock
+Bug
+0410
+Shieldon
+Rock
+Steel
+0411
+Bastiodon
+Rock
+Steel
+0476
+Probopass
+Rock
+Steel
+0566
+Archen
+Rock
+Flying
+0567
+Archeops
+Rock
+Flying
+0639
+Terrakion
+Rock
+Fighting
+0688
+Binacle
+Rock
+Water
+0689
+Barbaracle
+Rock
+Water
+Mega
+Barbaracle
+Rock
+Fighting
+0696
+Tyrunt
+Rock
+Dragon
+0697
+Tyrantrum
+Rock
+Dragon
+0698
+Amaura
+Rock
+Ice
+0699
+Aurorus
+Rock
+Ice
+0703
+Carbink
+Rock
+Fairy
+0719
+Diancie
+Rock
+Fairy
+Mega
+Diancie
+Rock
+Fairy
+0774
+Minior
+(
+Meteor Form
+)
+Rock
+Flying
+Minior
+(
+Core
+)
+Rock
+Flying
+0793
+Nihilego
+Rock
+Poison
+0805
+Stakataka
+Rock
+Steel
+0838
+Carkol
+Rock
+Fire
+0839
+Coalossal
+Rock
+Fire
+Gigantamax
+Coalossal
+Rock
+Fire
+0969
+Glimmet
+Rock
+Poison
+0970
+Glimmora
+Rock
+Poison
+Mega
+Glimmora
+Rock
+Poison
+0995
+Iron Thorns
+Rock
+Electric
+1022
+Iron Boulder
+Rock
+Psychic
+Secondary Rock-type Pokémon
+#
+Name
+Type 1
+Type 2
+0058
+Hisuian
+Growlithe
+Fire
+Rock
+0059
+Hisuian
+Arcanine
+Fire
+Rock
+0111
+Rhyhorn
+Ground
+Rock
+0112
+Rhydon
+Ground
+Rock
+0213
+Shuckle
+Bug
+Rock
+0219
+Magcargo
+Fire
+Rock
+0222
+Corsola
+Water
+Rock
+0304
+Aron
+Steel
+Rock
+0305
+Lairon
+Steel
+Rock
+0306
+Aggron
+Steel
+Rock
+0369
+Relicanth
+Water
+Rock
+0464
+Rhyperior
+Ground
+Rock
+0557
+Dwebble
+Bug
+Rock
+0558
+Crustle
+Bug
+Rock
+0564
+Tirtouga
+Water
+Rock
+0565
+Carracosta
+Water
+Rock
+0713
+Hisuian
+Avalugg
+Ice
+Rock
+0834
+Drednaw
+Water
+Rock
+Gigantamax
+Drednaw
+Water
+Rock
+0900
+Kleavor
+Bug
+Rock
+1017
+Ogerpon
+(
+Cornerstone Mask
+)
+Grass
+Rock
+Unique Terastallized states
+#
+Name
+Base types
+1017
+Ogerpon
+(
+Cornerstone Mask
+)
+Grass
+Rock
+Moves
+As of
+Generation IX
+, there are 26 Rock-type
+moves
+, which makes up 2.78% of all moves (excluding those that are Rock-type only under certain circumstances), making it the rarest
+type
+among moves, preceeded by
+Dragon
+,
+Ground
+, and
+Flying
+.
+Prior to
+changes in Generation IV
+, all damaging Rock-type moves were
+physical
+, but they may now also be
+special
+depending on the attack.
+Gen
+Move
+Category
+Contest
+Power
+Accuracy
+PP
+Range
+Description
+VII
+Accelerock
+Physical
+040
+40
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user smashes into the target at high speed. This move always goes first.
+II
+Ancient Power
+Special
+Tough
+060
+60
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user attacks with a prehistoric power. This may also boost all the user's stats at once.
+VII
+Continental Crush
+Physical
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user summons a huge rock mountain using its Z-Power and drops it onto the target with full force. The power varies, depending on the original move.
+VII
+Continental Crush
+Special
+000
+—
+000
+—
+%
+01
+1
+(max 1)
+Normal
+The user summons a huge rock mountain using its Z-Power and drops it onto the target with full force. The power varies, depending on the original move.
+VI
+Diamond Storm
+Physical
+Beautiful
+100
+100
+095
+95
+%
+05
+5
+(max 8)
+Many Others
+The user whips up a storm of diamonds to damage opposing Pokémon. This may also sharply boost the user's Defense stat.
+VIII
+G-Max Volcalith
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Rock-type attack that Gigantamax Coalossal use. This move continues to deal damage to opponents for four turns.
+VIII
+G-Max Volcalith
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+A Rock-type attack that Gigantamax Coalossal use. This move continues to deal damage to opponents for four turns.
+IV
+Head Smash
+Physical
+Tough
+150
+150
+080
+80
+%
+05
+5
+(max 8)
+Normal
+The user attacks the target with a hazardous, full-power headbutt. This also damages the user terribly.
+VIII
+Max Rockfall
+Physical
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Rock-type attack Dynamax Pokémon use. The user summons a sandstorm lasting five turns.
+VIII
+Max Rockfall
+Special
+000
+—
+000
+—
+%
+03
+3
+(max 4)
+1 Other
+This is a Rock-type attack Dynamax Pokémon use. The user summons a sandstorm lasting five turns.
+VIII
+Meteor Beam
+Special
+120
+120
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user gathers energy from space and boosts its Sp. Atk stat on the first turn, then attacks on the next turn.
+IX
+Mighty Cleave
+Physical
+095
+95
+100
+100
+%
+05
+5
+(max 8)
+Normal
+The user wields the light that has accumulated atop its head to cleave the target. This move hits even if the target protects itself.
+IV
+Power Gem
+Special
+Beautiful
+080
+80
+100
+100
+%
+20
+20
+(max 32)
+Normal
+The user attacks with a ray of light that sparkles as if it were made of gemstones.
+III
+Rock Blast
+Physical
+Tough
+025
+25
+090
+90
+%
+10
+10
+(max 16)
+Normal
+The user attacks by hurling hard rocks at the target. This move hits two to five times in a row.
+IV
+Rock Polish
+Status
+Tough
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Self
+The user polishes its body to reduce drag. This sharply boosts the user's Speed stat.
+I
+Rock Slide
+Physical
+Tough
+075
+75
+090
+90
+%
+10
+10
+(max 16)
+Many Others
+Large boulders are hurled at the opposing Pokémon to inflict damage. This may also make the opposing Pokémon flinch.
+I
+Rock Throw
+Physical
+Tough
+050
+50
+090
+90
+%
+15
+15
+(max 24)
+Normal
+The user picks up and throws a small rock at the target to inflict damage.
+III
+Rock Tomb
+Physical
+Clever
+060
+60
+095
+95
+%
+15
+15
+(max 24)
+Normal
+The user hurls boulders at the target to inflict damage. This also lowers the target's Speed stat by cutting off its movement.
+IV
+Rock Wrecker
+Physical
+Tough
+150
+150
+090
+90
+%
+05
+5
+(max 8)
+Normal
+The user launches a huge boulder at the target to attack. The user can't move on the next turn.
+II
+Rollout
+Physical
+Cute
+030
+30
+090
+90
+%
+20
+20
+(max 32)
+Normal
+The user continually rolls into the target over five turns. This attack becomes more powerful each time it hits.
+IX
+Salt Cure
+Physical
+040
+40
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user salt cures the target, inflicting damage every turn. Steel and Water types are more strongly affected by this move.
+II
+Sandstorm
+Status
+Tough
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Both Sides
+A five-turn sandstorm is summoned to damage all Pokémon except Rock, Ground, and Steel types. The sandstorm also boosts the Sp. Def stats of Rock types.
+V
+Smack Down
+Physical
+Tough
+050
+50
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user throws a stone or similar projectile to attack the target. If the target is in the air, it will be knocked down to the ground.
+VII
+Splintered Stormshards
+Physical
+190
+190
+000
+—
+%
+01
+1
+(max 1)
+Normal
+After obtaining Z-Power, the user, Lycanroc, attacks the target with full force. This move negates the effect on the battlefield.
+IV
+Stealth Rock
+Status
+Cool
+000
+—
+000
+—
+%
+20
+20
+(max 32)
+Other Side
+The user lays a trap of levitating stones around the opposing team. The trap damages opposing Pokémon that switch into battle.
+VIII
+Stone Axe
+Physical
+065
+65
+090
+90
+%
+15
+15
+(max 24)
+Normal
+The user swings its stone axes at the target, aiming to land a critical hit. Stone splinters left behind by this attack float around the target.
+IV
+Stone Edge
+Physical
+Tough
+100
+100
+080
+80
+%
+05
+5
+(max 8)
+Normal
+The user stabs the target with sharpened stones. This move has a heightened chance of landing a critical hit.
+VIII
+Tar Shot
+Status
+000
+—
+100
+100
+%
+15
+15
+(max 24)
+Normal
+The user pours sticky tar over the target, lowering the target's Speed stat. The target becomes weaker to Fire-type moves.
+V
+Wide Guard
+Status
+Tough
+000
+—
+000
+—
+%
+10
+10
+(max 16)
+Your Side
+The user and its allies are protected from wide-ranging attacks for one turn.
+All details are accurate to Generation VII games. For details that have changed between generations, please see an individual move's page. Target data assumes user is in the lower left.
+Abilities
+Interacting with the Rock type
+A Pokémon with
+Protean
+or
+Libero
+will become a Rock-type Pokémon if it uses a Rock-type move. A Pokémon with
+Color Change
+will become a Rock-type Pokémon if it is hit with a Rock-type move.
+Gen
+Ability
+Description
+IX
+Rocky Payload
+Powers up Rock-type moves.
+V
+Sand Force
+Boosts the power of Rock-, Ground-, and Steel-type moves in a sandstorm.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual Ability's page.
+Exclusive Abilities
+Currently, no Abilities are exclusive to Rock types. This does not include
+signature Abilities
+.
+Items
+Name
+Description
+Charti Berry
+If a Pokémon holding this
+Berry
+is hit with a supereffective Rock-type move, the power of that move will be weakened.
+Hard Stone
+An item to be held by a Pokémon. It's a durable stone that boosts the power of the holder's Rock-type moves.
+Rock Gem
+A
+gem
+with an essence of rock. When held, it strengthens the power of a Rock-type move one time.
+Rock Incense
+An item to be held by a Pokémon. This exotic-smelling incense boosts the power of Rock-type moves.
+Rock Memory
+A
+memory
+disc that contains Rock-type data. It changes the type of the holder if held by
+a certain species of Pokémon
+.
+Rock Tera Shard
+On rare occasions, these shards form when a
+Tera
+Pokémon falls in battle and its Tera Jewel shatters.
+Rockium Z
+This is a crystallized form of Z-Power. It upgrades Rock-type moves to
+Z-Moves
+.
+Stone Plate
+An item to be held by a Pokémon. This stone tablet is imbued with the essence of rock and boosts the power of the holder’s Rock-type moves.
+All details are accurate to Generation IX games. For details that have changed between generations, please see an individual item's page.
+Natural Gift
+'s Berries
+Wiki Berry
+Magost Berry
+Charti Berry
+Micle Berry
+Cram-o-matic
+Name
+Everstone
+Float Stone
+Lagging Tail
+Micle Berry
+Oval Stone
+Protector
+Rocky Helmet
+Smooth Rock
+Star Piece
+Wiki Berry
+Notable Rock-type Trainers
+Main article:
+Category:Rock-type Trainers
+Gen
+Trainer
+Title
+Location
+I
+Brock
+Gym Leader
+Pewter Gym
+III
+Roxanne
+Gym Leader
+Rustboro Gym
+IV
+Roark
+Gym Leader
+Oreburgh Gym
+VI
+Grant
+Gym Leader
+Cyllage Gym
+VII
+Olivia
+Island kahuna
+Elite Four
+Akala Island
+Alola Pokémon League
+VIII
+Gordie
+Sw
+Gym Leader
+Circhester Stadium
+IX
+Tyme
+Instructor
+(Formerly a Gym Leader)
+Naranja Academy
+S
+Uva Academy
+V
+(Formerly
+Montenevera Gym
+)
+Jasmine
+is also stated to have trained Rock types in the past.
+Icons
+Core series
+Icon from
+Pokémon Ruby and Sapphire
+Icon from
+Pokémon Emerald
+Icon from
+Pokémon FireRed and LeafGreen
+Icon from
+Generation IV
+Pokédex icon from
+Generation IV
+Icon from
+Generation V
+Icon from
+Generation VI
+Icon from
+Pokémon Sun, Moon
+,
+Ultra Sun and Ultra Moon
+Icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+Icon from
+Pokémon Sword and Shield
+Symbol icon from
+Let's Go, Pikachu!; Let's Go, Eevee!
+;
+Sword, Shield
+and
+HOME
+(Gen VIII)
+Icon from
+Pokémon Brilliant Diamond and Shining Pearl
+Symbol icon from
+Pokémon Brilliant Diamond, Shining Pearl
+,
+Scarlet and Violet
+, and
+HOME
+(Gen IX)
+Icon from
+Pokémon Legends: Arceus
+Symbol icon from
+Pokémon Legends: Arceus
+Icon from
+Pokémon Scarlet and Violet
+Tera icon from
+Pokémon Scarlet and Violet
+Tera symbol icon from
+Pokémon Scarlet and Violet
+Icon from
+Pokémon Legends: ZA
+Side series
+Icon from
+Pokémon Stadium (Japanese)
+In-battle icon from
+Pokémon Stadium
+Out-of-battle icon from
+Pokémon Stadium
+Icon from
+Pokémon Stadium 2
+Icon from
+Pokémon Box Ruby & Sapphire
+Icon from
+Pokémon Colosseum
+Icon from
+Pokémon XD: Gale of Darkness
+Icon from
+Pokémon Battle Revolution
+Spin-off games
+Symbol icon from
+Pokémon Ranger: Shadows of Almia
+Symbol icon from
+Pokémon Ranger: Guardian Signs
+Symbol icon from
+Pokémon Battrio
+Symbol icon from
+Pokémon Tretta
+Symbol icon from
+Pokémon Mezastar
+Symbol icon from
+Pokémon Frienda
+Symbol icon from
+Pokémon GO
+Symbol icon from
+Pokémon Rumble Rush
+Symbol icon from
+Pokémon Masters EX
+Tera symbol icon from
+Pokémon Masters EX
+Symbol icon from
+Pokémon Super Mystery Dungeon
+Symbol icon from
+Pokémon Mystery Dungeon: Rescue Team DX
+Symbol icon from
+New Pokémon Snap
+Symbol icon from
+Pokémon Sleep
+Statistical averages
+Overall
+Stat
+HP:
+70.53
+Attack:
+91.99
+Defense:
+102.93
+Sp.Atk:
+62.37
+Sp.Def:
+73.19
+Speed:
+57.6
+Total:
+458.61
+Fully evolved
+Stat
+HP:
+80.64
+Attack:
+103.36
+Defense:
+113.13
+Sp.Atk:
+71.91
+Sp.Def:
+87.38
+Speed:
+68.21
+Total:
+524.63
+In spin-off games
+Pokémon Sleep
+Unlike in the core series games, in
+Pokémon Sleep
+, each Pokémon can only have one type, which determines the kind of
+Berry
+that the Pokémon will gather for
+Snorlax
+to feed on. Rock-type Pokémon will gather
+Sitrus Berries
+, and typically have the Slumbering
+sleep type
+.
+The following is a list of Rock-type Pokémon in Pokémon Sleep.
+#
+Pokémon
+Name
+Sleep type
+0074
+Geodude
+Slumbering
+0075
+Graveler
+Slumbering
+0076
+Golem
+Slumbering
+0095
+Onix
+Slumbering
+0185
+Sudowoodo
+Slumbering
+0246
+Larvitar
+Slumbering
+0247
+Pupitar
+Slumbering
+0438
+Bonsly
+Slumbering
+0696
+Tyrunt
+Slumbering
+0697
+Tyrantrum
+Slumbering
+In the TCG
+Main article:
+Fighting (TCG)
+Due to the decreased amount of types in the TCG, Rock-type Pokémon are generally listed as
+Fighting-type
+Pokémon.
+Fighting-type Pokémon in the TCG are generally weak to
+Grass
+,
+Water
+or
+Psychic
+with no resistances. Fighting-type Pokémon are strong against most
+Darkness
+and
+Lightning
+Pokémon and some
+Colorless
+Pokémon, whilst some Colorless and Psychic Pokémon can resist the Fighting type.
+Trivia
+Generation III
+introduced the most Rock-type Pokémon of any generation, with twelve.
+Generation VII
+introduced the fewest Rock-type Pokémon, with six (counting
+Silvally
+holding the
+Rock Memory
+).
+Generation IV
+introduced the most Rock-type moves of any generation, with six, while
+Generation VI
+introduced the fewest Rock-type moves, with only
+one
+.
+Rock is tied with the
+Ice-type
+for having the fewest
+Mega Evolutions
+, with five each. However, it has more Pokémon capable of Mega Evolution than Ice, as
+Aggron
+loses its Rock typing upon Mega Evolving.
+In the first season of the
+animated series
+and during much of
+Generation I
+, the Rock-type was often wrongly assumed to be unaffected by
+Electric-type
+attacks. This was likely due to the fact that at the time, most Rock-type Pokémon (namely the
+Geodude
+and
+Rhyhorn
+evolutionary lines, and
+Onix
+) were part Ground-type and thus immune to Electric-type moves. However, the only non-Ground Rock-type Pokémon around at the time (the then five
+Fossil Pokémon
+) were actually weak to them.
+On multiple occasions in the animated series, like in
+Showdown in Pewter City
+,
+Sick Daze
+and
+Right On, Rhydon!
+,
+Ground
+and Rock-type Pokémon are said to have a strong aversion to water and generally being wet.
+Rhydon
+is often presented as an exception to this rule due to its ability to use the move
+Surf
+.
+The Rock type is tied with the
+Grass
+type for the largest number of weaknesses when unpaired, with five. However, a Rock/Grass type Pokémon only has four weaknesses.
+Rock moves are super effective against four of the five types
+Grass
+is weak to, with
+Poison
+being the exception.
+Most
+Fossil Pokémon
+are either part or solely Rock-type. This is most likely due to the placement of real fossils in rock formations, as well as the process by which fossils are created.
+Johto
+'s
+Olivine Gym
+was a Rock-type Gym before the
+Steel
+type was discovered.
+This makes
+Unova
+the only region with Gyms not known to have ever had a Rock-type Gym.
+The Rock-type has the fewest
+special moves
+of all types, with three.
+Despite being introduced in
+Generation I
+, there were no pure Rock-type Pokémon until
+Generation II
+, with only
+Sudowoodo
+.
+The Rock type has been paired up with every other type except for
+Ghost
+and
+Normal
+.
+This makes Rock the only type to not have been paired up with Ghost.
+Rock is the only type not represented by a
+Gym Leader
+, an
+Elite Four
+member, or a
+Team Star
+Boss in
+Pokémon Scarlet and Violet
+.
+However,
+Tyme
+is stated to be a former Rock-type Gym Leader. Moreover,
+Top Champion
+Geeta
+'s ace Pokémon
+Glimmora
+is and
+Terastallizes
+into the Rock-type, like the aces of the other types' specialists.
+Considering only
+Pokémon Leagues
+with a fixed
+Gym Leader
+order, more Leagues begin with a Rock-type Gym Leader than any other type, with three (
+Kanto
+,
+Hoenn
+and
+Sinnoh
+).
+Including every Pokémon League, it is tied with the
+Grass type
+for this distinction (
+Unova
+B
+W
+,
+Galar
+and
+Paldea
+*
+).
+In other languages
+Language
+Title
+Japanese
+いわ (岩)
+Iwa
+Catalan
+Roca
+Chinese
+Cantonese
+岩石
+Ngàahmsehk
+石頭
+Sehktàuh
+*
+Mandarin
+岩石
+Yánshí
+Czech
+Kamenný
+Danish
+Sten
+Dutch
+Steen
+Finnish
+Kivi
+French
+Roche
+German
+Gestein
+Greek
+Πέτρας
+Pétras
+Hebrew
+סלע
+Sela
+אבן
+Even
+Hindi
+रॉक
+Rock
+चट्टान
+Chattaan
+*
+पथरीले
+Pathreele
+Hungarian
+Szikla
+Indonesian
+Bebatuan
+*
+Karang
+*
+Batu
+Italian
+Roccia
+Korean
+바위
+Bawi
+Malaysian
+Batu
+Norwegian
+Stein
+Polish
+Kamienny
+Portuguese
+Brazil
+Pedra
+Mineral
+Rocha
+Portugal
+Pedra
+Rocha
+Romanian
+Piatră
+Russian
+Камень
+Kamen'
+Spanish
+Roca
+Swedish
+Sten
+Thai
+หิน
+Hin
+Turkish
+Kaya
+Vietnamese
+Đá
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Rock_(type)&oldid=4550798
+"

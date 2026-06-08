@@ -136,6 +136,49 @@ impl Engine {
             }
         }
 
+        // ── in_lineup: lineup membership with NO stage (the plays_at→festival coarsening). For an edition
+        //    whose source only states WHO performed — the dominant case off the gold — this is the ENTIRE
+        //    lineup, so without it a re-hydrate teaches zero performers. One single-artist fact each
+        //    ("X performed in the lineup at <festival>"), bounded to 3 forms so the lineup can't swamp the
+        //    other relations. B2B billings (which live here, not in plays_at, after the remap) also emit the
+        //    b2b_pairing partnership. ──
+        let in_lineup = store.in_lineup();
+        for il in &in_lineup {
+            let mut allow_a: BTreeSet<String> = [il.artist.clone()].into();
+            if il.artist.contains(" B2B ") {
+                for part in il.artist.split(" B2B ") { allow_a.insert(part.trim().to_string()); }
+            }
+            let fact = format!("- {} performed in the lineup at {}.", il.artist, cfg.name);
+            for form in [SurfaceForm::Declarative, SurfaceForm::QaDirect, SurfaceForm::Conversational] {
+                cells.push(Cell {
+                    relation: "in_lineup", direction: "forward", query_order: "leads_with_artist".into(),
+                    form, facts: fact.clone(),
+                    source_triple_ids: vec![il.triple_id.clone()],
+                    entity_ids: vec![il.artist.clone()],
+                    allow_artists: allow_a.clone(), allow_stages: BTreeSet::new(), n: base_n,
+                });
+            }
+            if il.artist.contains(" B2B ") {
+                let partners: Vec<String> = il.artist.split(" B2B ").map(|s| s.trim().to_string()).collect();
+                let facts = format!("- At {}, \"{}\" is a back-to-back (B2B) set — {} play together.",
+                                    cfg.name, il.artist, partners.join(" and "));
+                let mut ents = vec![il.artist.clone()];
+                ents.extend(partners.iter().cloned());
+                for (dir, order, form) in [
+                    ("forward", "leads_with_artist", SurfaceForm::Declarative),
+                    ("reverse", "leads_with_partner", SurfaceForm::QaDirect),
+                ] {
+                    cells.push(Cell {
+                        relation: "b2b_pairing", direction: dir, query_order: order.into(),
+                        form, facts: facts.clone(),
+                        source_triple_ids: vec![il.triple_id.clone()],
+                        entity_ids: ents.clone(),
+                        allow_artists: allow_a.clone(), allow_stages: BTreeSet::new(), n: base_n,
+                    });
+                }
+            }
+        }
+
         // ── per-stage attribute cells from config: genre / brand / rank-capacity / production-vibe.
         //    Each is its OWN relation so the coverage tally reads cleanly; all are stage-only
         //    (allow_artists empty, allow_stages = {this stage}). ──

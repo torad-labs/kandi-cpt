@@ -1,0 +1,429 @@
+Title: Lily (Art Academy)
+
+Lily (Japanese: リリー Lily) is a friendly non-player character in Pokémon Art Academy. She is a student at the academy of the same name.
+She appears if the player chooses to play as male. Her male counterpart is Lee.
+
+
+== Overview ==
+Lily is a student at the Pokémon Art Academy. Her ambition is to be a master Pokémon artist and famous illustrator of Pokémon cards. Professor Andy is her favorite Pokémon card illustrator. She was already a student at the academy before the player applied to join and meets them at the start of the game.
+She attends the same lessons as the player and tries to draw the same image. Her drawings are typically rushed and have many mistakes. She is usually embarrassed when Professor Andy points out flaws in her drawings, but she quickly cheers up and is motivated to keep drawing and improve. Professor Andy encourages her to keep drawing as well.
+
+
+== Quotes ==
+Intro
+
+"Hey! You must be here for the Pokémon Art Academy, too! What's your name? You're <player>? Nice to meet you! My name is Lily! I'm going to study hard here and become a master Pokémon artist. My ambition is to be a famous illustrator of Pokémon cards! Come on, <player>. Let's go to the office and pick up our ID cards. We can get them from Professor Andy. He's my favorite Pokémon card illustrator!"
+After Professor Andy gives the ID card to the player:
+"These ID cards are really important. They're used to track our progress through the Academy!"
+After signing the ID card:
+"This is so cool! I can't wait to get started!"
+Pikachu Starter Exercise
+
+After drawing Pikachu:
+"Hi, <player>! Did you like drawing Pikachu? Pikachu's the best! I still think I need practice though. My drawing's not very good... Never mind. That's why we're here at the Academy, after all!"
+Froakie starter exercise
+
+After drawing Froakie:
+"Hi, <player>! How'd it go? Oh, your Froakie looks great! Here's mine. I wonder why Froakie always seems to have its eyes shut?"
+"(Hey, what's he implying? My drawing is just fine!)"
+Piplup starter exercise
+
+After drawing Piplup:
+"Hi, <player>! Oh! Your Piplup is so cute! This is my drawing. I think I could do better than this, though..."
+Novice Course Oshawott lesson
+
+While drawing Oshawott:
+"Wait... I thought I saw your marks changing shape after you drew them..."
+"Oh no! I made a mistake!"
+After drawing Oshawott:
+"Awesome! We've drawn Oshawott's head! Here's my drawing. The shapes were pretty easy, but there sure are a lot of colors to fill in."
+Novice Course Chespin mini lesson
+
+While drawing Chespin:
+"Wow! That's a lot of quills to draw."
+After drawing Chespin:
+"Yeah! We're on a roll! Outlining the quills was kind of tricky though."
+Novice Course Tepig mini lesson
+
+After drawing Tepig:
+"<player>! Check out my Tepig! I bet you're jealous of my talent!"
+Novice Course Squirtle mini lesson
+
+While drawing Squirtle:
+"Wait... What's that little dip in the middle of Squirtle's mouth?"
+After drawing Squirtle:
+"Yeah... I had a bit of trouble with the eyes. But I'll get it right next time. I'm going to be a master Pokémon illustrator one day!"
+Novice Course Fennekin lesson
+
+Before drawing Fennekin:
+"Ooh, I really like Fennekin! It's a Fire-type Pokémon, right?"
+"Ooh, I bet that's healthier than all your cookies, Professor."
+After drawing Fennekin:
+"That was fun! I really enjoyed drawing the fur in the ears. I think I drew it pretty well!"
+"Yeah... I'm not sure I got the hang of the head angle. It's much easier to draw heads straight on!"
+Novice Course Minccino mini lesson
+
+Before drawing Minccino:
+"They must be super useful for Trainers to keep around the house!"
+After drawing Minccino:
+"Professor Andy, I think I went a bit wrong early on with this drawing... But it's okay! I made up for it by adding a big smile!"
+"Yes, Professor. To be honest, maybe Minccino just isn't the Pokémon for me..."
+Novice Course Torchic mini lesson
+
+Before drawing Torchic:
+"Torchic is really cute! I always want to hug it!"
+While drawing Torchic:
+"Yeah! It's like it's growing crooked."
+After drawing Torchic:
+"Here's my drawing! I think I did okay in this one. It was easier than Fennekin."
+"Sorry, Professor. I guess I was just excited to finish my drawing..."
+Novice Course Meowth mini lesson
+
+After drawing Meowth:
+"Awesome! I'm pretty happy with mine. I can't wait to start the next part of the course!"
+"Oh! Well, maybe I'll go over this one again before I move on..."
+Novice Course Togepi lesson
+
+Before drawing Togepi:
+"How cute! That must be great for Trainers who manage to capture one!"
+"Awesome! I've been looking forward to this!"
+While drawing Togepi:
+"Really? I found it pretty easy!"
+"Um... Why aren't we drawing the eyes yet, Professor?"
+"Oh - because you can't draw over the outline pen with a white marker!"
+"Awesome! That looked a bit tricky, but it was easy doing it step-by-step! I think I'm getting better with the tools as well. Zooming in really helps."
+Eight Rules of Drawing Pokémon #1
+
+"There are rules? Um... I'm not very good with those..."
+"Ha ha... That makes sense!"
+"Ooh... I wish I could draw Togepi that nicely!"
+"You think so, Professor?"
+"Great! Thank you, Professor!"
+Novice Course Gengar mini lesson
+
+Before drawing Gengar:
+"Oooooo, Gengar! My favorite Ghoooooost-type Pokémon!"
+"Super spoooooky!"
+After drawing Gengar:
+"It was great! I think it was easier than Togepi. Look - mine came out really well!"
+"Aww... I suppose it doesn't look much like Gengar."
+Novice Course Pichu mini lesson
+
+Before drawing Pichu:
+"And Pikachu can evolve into Raichu, right?"
+While drawing Pichu:
+"Just like Pikachu! I told you it was going to be easy!"
+"FINISHED! Take a look at this!"
+"Oh yeah...the arms."
+After drawing Pichu:
+"I fixed the arms! What do you think, Professor?"
+"Um... Oh no. I gave it Pikachu's tail, didn't I?"
+Novice Course Pachirisu mini lesson
+
+After drawing Pachirisu:
+"Aww... Mine didn't turn out as well as I thought it would... I don't think the pink outline really suits Pachirisu."
+Novice Course Inkay lesson
+
+While drawing Inkay:
+"Professor! I think I did something wrong - my Inkay's top looks different from yours."
+After drawing Inkay:
+"<player>! Look at my Inkay! I think this is my best so far! Oh! Yours is pretty neat as well, I suppose."
+Eight Rules of Drawing Pokémon #2
+
+"Hooray! I thought for a minute you'd forgotten, Professor."
+"So they're more like pointers for creating awesome card illustrations?"
+"Like...in a hot desert?"
+"That setting suits Charmander because it's a Fire-type Pokémon, right?"
+"Awesome! I do love Charmander."
+Novice Course Bulbasaur mini lesson
+
+While drawing Bulbasaur:
+"Hmm...it does remind me of something, but I'm not sure what."
+"Oh! The leaves of the bulb are just like Inkay's tentacles!"
+After drawing Bulbasaur:
+"They're great. I can draw my own outlines but not worry about placing them right! Now I really appreciate the hard work artists put into their drawings! I think I got a pretty good result, too."
+"Have I?! Drat."
+Novice Course Charmander mini lesson
+
+While drawing Charmander:
+"Awesome! I've got a great idea for this."
+After drawing Charmander:
+"Look! I'm getting better and better, aren't I? I really like these lessons where we can put some touches of our own."
+Novice Course Victini mini lesson
+
+While drawing Victini:
+"Awesome! Those eyes look just like gemstones!"
+After drawing Victini:
+"Hmm...it wasn't easy, but I guess it was pretty fun! Will drawing Victini bring us luck with the next Pokémon we draw?"
+Novice Finale Pikachu exercise
+
+Before drawing Pikachu:
+"Wait... What if we do really badly? Will we fail the course?"
+"Okay! We'll try our best! Right, <player>?"
+After drawing Pikachu:
+"That was easy! I bet I could do it blindfolded!"
+"Awesome! Does that mean we've finished the course?"
+Novice Course graduation ceremony
+
+During the ceremony:
+"This is great, <player>! I can't believe we're doing so well!"
+"Oh, I've been doing that with every one of my drawings so far! I love sharing my artwork with people around the world!"
+After the ceremony:
+"♪ I can draw, I can draw, I can draw a Bulbasaur! ♪ Hi, <player>! We're Apprentices now! Isn't that cool? I'm learning lots! Look at the difference between my starter exercise and my latest drawing. Hey! It looks like we can tackle the Apprentice lessons in any order. Cool! Let's see...we can study shading in the Voltorb lesson... ...hatching in the Fletchling lesson... ...or painterly style in the Jirachi lesson! That sounds fun! Come on, <player>... Which one shall we do first?"
+Apprentice Course Voltorb lesson
+
+Before drawing Voltorb:
+"Oh, that looks like a Poké Ball!"
+While drawing Voltorb:
+"Hmm... I think I might've made a mistake, Professor."
+"No way!"
+"Looks like I have to redo the coloring..."
+After drawing Voltorb:
+"Already? I think that went pretty well, then! It sure was a pain redoing all my colors halfway through the lesson, though."
+"Really? Maybe I should have drawn the outline twice..."
+Eight Rules of Drawing Pokémon #3
+
+"Awesome! I wonder what this one is."
+"Umm... It's a field with some mountains in the distance. Oh, and there's a Poké Ball in the field... No, wait! It's Voltorb!"
+"Whoa! That Voltorb is massive!"
+"There's no way you could miss it!"
+Apprentice Course Chimchar mini lesson
+
+Before drawing Chimchar:
+"Wow, that sure does look hard..."
+"... Tee-hee."
+While drawing Chimchar:
+"Oh... I already did the flame, Professor. It's my favorite part!"
+"Yes, Professor."
+"I've done this step already! It was eeeasy."
+"Ooh! Like a smaller orange flame inside the red one!"
+After drawing Chimchar:
+"Hmm... I think I should've waited to paint the flame until after your explanation."
+Apprentice Course Pumpkaboo mini lesson
+
+While drawing Pumpkaboo:
+"This step looks a bit hard."
+After drawing Pumpkaboo:
+"I added a few extra teeth to mine!"
+"Yes...I think I drew one of those supersize Pumpkaboo you mentioned earlier!"
+Apprentice Course Fletchling lesson
+
+Before drawing Fletchling:
+"Awesome! I love singing too! ♪ Fletchling, Fletchling, can you sing like I can sing? Tra-la-laaa! ♪"
+"I'm also great at whistling!"
+"Pencils? Aren't they just for sketching?"
+While drawing Fletchling:
+"Whoa! Those look really complicated. I'm not sure where to start, Professor."
+After drawing Fletchling:
+"... I think something went wrong with my hatching."
+Eight Rules of Drawing Pokémon #4
+
+"Oh yeah, the Eight Rules of Drawing Pokémon!"
+"Does that mean that we shouldn't draw stuffed toys?"
+"That's your drawing, right, Professor? It looks amazing."
+"That's really nice! It makes me want to draw Fletchling again!"
+"Thank you, Professor."
+Apprentice Course Snivy mini lesson
+
+While drawing Snivy:
+"Contour hatching? OK..."
+After drawing Snivy:
+"I'm not sure I really understood that part, Professor. Mine looks kind of weird. Maybe I drew my curves in the wrong direction?"
+Apprentice Course Eevee mini lesson
+
+Before drawing Eevee:
+"Yeah! Eevee's amazing!"
+While drawing Eevee:
+"...to the bottom right of all the body parts!"
+"Great! I'll go and find an egg to sit on!"
+"Yeah! We drew lots of straight lines close together on top of the shading."
+After drawing Eevee:
+"This is my favorite hatching style so far! It really does look like fur. I'm going to make sure I master this technique!"
+Apprentice Course Jirachi lesson
+
+Before drawing Jirachi:
+"I'd wish to become a master Pokémon illustrator!"
+"Sorry, Professor. I went to bed way too late last night."
+While drawing Jirachi:
+"Great! I love it when we get to do our own thing!"
+"Hooray! Wait... What is opacity, Professor?"
+"That looks really useful!"
+After drawing Jirachi:
+"Look, Professor!"
+"My artistic instinct created this!"
+"I know it's not perfect. I need to give these opacity settings another try."
+"Got it. See you in the mini lessons, right, <player>?"
+Eight Rules of Drawing Pokémon #5
+
+"I've memorized all the rules so far!"
+"Painting Jirachi was my first time using the paintbrush!"
+"Professor, that picture looks even cuter than the one we just painted! I wonder if I could draw something like it myself?"
+Apprentice Course Lugia mini lesson
+
+Before drawing Lugia:
+"Oh, I've heard of this Pokémon! It's huuuge!"
+While drawing Lugia:
+"What are those things, Professor?"
+"Yikes! No pressure, huh, <player>?"
+After drawing Lugia:
+"That wasn't too bad! Getting the shapes right was the hardest part."
+"Yeah! I feel like I'm learning fast! That's the most important thing, right, Professor?"
+Apprentice Course Chandelure mini lesson
+
+Before drawing Chandelure:
+"Oooh..."
+"Huh?! That's super creepy!"
+After drawing Chandelure:
+"Phew... I redrew the arms six times!"
+"I think I have to take a break now though, Professor."
+"Is it snack time?"
+Apprentice Finale Pikachu exercise
+
+Before drawing Pikachu:
+"There's been a lot to take in, but we're up to the challenge! Right, <player>?"
+While drawing Pikachu:
+"<player> and I know all about shading by now, Professor!"
+"Oh yeah... I guess my edges are pretty messy. I'll clean them up now!"
+After drawing Pikachu:
+"Look at this one, Professor! I really took a lot of care with this one!"
+"I did? Oh! Yes, I definitely added that tail notch on purpose."
+"Late?! Better RUN!"
+Apprentice Course graduation ceremony
+
+During the ceremony:
+"Phew... The lessons definitely got harder. My drawings are way better now. I feel like I can tackle almost any Pokémon!"
+"Oh man... I thought we'd learned everything we needed to be Pokémon artists. But I'm not giving up now! I'm still going to be the best in the world! Let's go!"
+Graduate Course Vulpix lesson
+
+While drawing Vulpix:
+"That sounds like the ideal style for me!"
+"Ah! So that's why we didn't draw any of the details of the tails."
+"Wow! That looks great! I think the smudge stick is my new favorite tool."
+After drawing Vulpix:
+"Whew! I really enjoyed that. I want to try out the smudge stick some more!"
+Eight Rules of Drawing Pokémon #6
+
+"I'd like that! What's the next one?"
+"That's a good rule! I like stories!"
+"I bet Vulpix is in a battle! Maybe against...a Charizard!"
+"Ooh... I wonder what that Berry juice tastes like... And how did those Shuckle come to be friends with an Emolga?"
+Graduate Course Sylveon mini lesson
+
+Before drawing Sylveon:
+"Whoa! I don't think I've ever seen that Pokémon before!"
+While drawing Sylveon:
+"Awesome! I have a few ideas for this already..."
+"It looks just like a butterfly!"
+After drawing Sylveon:
+"Yeah! It was a challenge to get it right, but I think I pretty much nailed it. The wispy ribbons were really fun to draw."
+"I think I'm on a roll, Professor!"
+Graduate Course Lapras lesson
+
+Before drawing Lapras:
+"Oh, I know this one! It's a dual Water- and Ice-type Pokémon. I use them all the time in my game!"
+While drawing Lapras:
+"Yeah! I think we're getting pretty good at that!"
+"Ooh! The Poké Ball on the right looks really cool."
+"I see it. The Poké Ball on the right just feels more...dynamic! Pow!"
+After drawing Lapras:
+"Whew! That was a real challenge, but I'm pretty happy with this! This new shading technique...it's like magic!"
+"I'm a big fan already!"
+"Awesome!"
+Eight Rules of Drawing Pokémon #7
+
+"I don't think there are many left now!"
+"Oh! That's Lucario!"
+"Lucario always looks so cool!"
+Graduate Course Lucario mini lesson
+
+Before drawing Lucario:
+"Oh, this is one of my favorite Pokémon!"
+While drawing Lucario:
+"Yeah! It's Lucario, the masked superhero, here to save the day!"
+After drawing Lucario:
+"I wasn't sure that I could draw this one, but I think it came out pretty well!"
+"Lucario would never give up when faced with a challenge!"
+Graduate Course Charizard lesson
+
+Before drawing Charizard:
+"Yeah! I've been waiting for this lesson! LET'S DO THIS!"
+"Don't worry, Professor! I'm an expert on Charizard."
+"That's easy! Charizard has evolved huge wings, so it's a Fire- and Flying-type Pokémon instead of just Fire type. Hmm... Ah! The flame on Charizard's tail changes depending on how it's feeling. It's bright red when Charizard is calm, but gets hotter and turns blue when it's angry! Okay, this one's easy. An angry Charizard's flame is hot enough to melt rock!"
+"It's my absolute favorite Pokémon! I can't wait to learn how to draw one."
+While drawing Charizard:
+"Yeah! Now we're getting to the best part!"
+"Like an ice-cream cone! ...A really hot ice-cream cone."
+After drawing Charizard:
+"Phew! This has taken me ages... But I think it looks pretty awesome!"
+"Oh, I haven't finished adding the flames yet, Professor. My Charizard is really angry, so I gave it a blue flame on its tail!"
+Eight Rules of Drawing Pokemon #8
+
+"Charizard! Hey, I think I have that card! Look at all the flames it's breathing. Super awesome!"
+"So many choices!"
+Graduate Course Mewtwo mini lesson
+
+Before drawing Mewtwo:
+"I know Mewtwo. It's super powerful and super famous!"
+"So...like sleeping, then?"
+After drawing Mewtwo:
+"Oh yeah! Look at that, Professor. The airbrush is just awesome!"
+Graduate Finale Pikachu exercise
+
+While drawing Pikachu:
+"Oh! That means there's going to be lightning, right?!"
+"Zzzzap!"
+"The lightning!"
+"Oooh, I like the look of that!"
+"Lightniiiiing!"
+"I think I'm ready to keep going, Professor."
+"Awesome! I love the pastel!"
+"I carry mine with me all the time! I'm going to make it my specialty!"
+After drawing Pikachu:
+"Wow! I can't believe we've finished. I can draw fire AND lightning now! I've got some really cool ideas for other Pokémon! But...wait. Does that mean there are no more lessons? I mean, we've learned a lot, but I still feel like a beginner."
+Graduate Course graduation ceremony
+
+"We did it! We've finished all the lessons! Look how much better my drawings are now!"
+"I can't believe we made it, <player>. This is where we first met, remember? It's been so much fun being your partner through all the lessons. I hope you've learned as much from me as I have from you!"
+"I...I think I've got something in my eye."
+"We'll be back before you know it, Professor! Right, <player>?"
+Mega Charizard X Bonus Lesson
+
+While drawing Mega Charizard X:
+"Professor! It's so hard to do details with the paintbrush. It doesn't go small enough!"
+"Yes! I love using the smudge stick!"
+After drawing Mega Charizard X:
+"You might be, but I still need to add more flames! But I'm really happy with this so far. Blue Charizard is the coolest!"
+"..."
+Mega Mewtwo Y Bonus Lesson
+
+Before drawing Mega Mewtwo Y:
+"I have to admit it scares me a little!"
+While drawing Mega Mewtwo Y:
+"Soooo many times..."
+"Must...not...make mistakes..."
+"Aw... I'm not good with the airbrush. I can't keep the marks inside the shading area."
+After drawing Mega Mewtwo Y:
+"Oof! But I'm so tired, Professor. I put lots of effort into this drawing!"
+"Hooray! Nap time!"
+"*snore*"
+Mega Lucario Bonus Lesson
+
+Before drawing Mega Lucario:
+"There's a MEGA Lucario?!"
+"I can't wait to start on this!"
+While drawing Mega Lucario:
+"Hmm... Lapras... I think I have my Lapras drawing here somewhere. Here it is! Oh! I remember weighted lines now!"
+"Zzzzzzz..."
+"But, Professor...wouldn't it be easier to shade with the outline pen, like Lapras?
+"This is really hard, Professor Andy!"
+"Hooray!"
+"Lunchtime! I'm starving!"
+After drawing Mega Lucario:
+"I'm really happy with this one, Professor!"
+"I think all the hard work actually paid off! Who would've thought?!"
+
+
+== Gallery ==
+
+
+== Names ==

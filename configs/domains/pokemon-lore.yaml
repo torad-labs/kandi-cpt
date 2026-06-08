@@ -1,0 +1,116 @@
+# Domain manifest — pokemon-lore. DRAFT for operator review (Phase 6a acquisition artifact).
+# The agent's "Step 0" output: "everything about Pokémon" → the LORE corpus spec a human reviews before a
+# GPU (or a scraper) is touched. Mirrors configs/domains/edc.yaml; the generic machinery
+# (extraction is spec-driven from the entity_types/predicates below, hydration, tokenizer, CPT/SFT) is
+# domain-agnostic. Pairs with the qgre-agent ontology, kept in lockstep:
+#   schema/pokemon-lore.entity.schema.json  +  schema/pokemon-lore.triple.schema.json
+#   knowledge/domains/pokemon-lore.{md,probes.md}   (in the qgre-agent repo)
+#
+# ⚠ NOT RUNNABLE YET — two gates, both flagged for the operator:
+#   (1) SOURCES: the `scrape` stage below points at a `pokemon_lore` source module that does NOT exist in
+#       scripts/scrape/ yet (EDC's sources are festival sites). Authoring that fetcher (Bulbapedia / the
+#       Pokémon Fandom wiki) is the real "scraper" the cpt-stage playbook says to write + review FIRST.
+#   (2) PILOT SCOPE: this draft proposes a Kanto-only pilot to de-risk before a full multi-region sweep.
+
+name: pokemon-lore
+description: Pokémon narrative corpus — characters, regions, organizations, events, species-as-told (lore only).
+
+# Lore is REGION-partitioned (continuity rides on attrs, never a partition). Cf. EDC's festival→city→year.
+hierarchy: [region]
+registry: configs/editions_pokemon-lore.json   # the region registry iter_editions walks (to be authored)
+
+ontology:
+  schema_dir: schema                            # pokemon-lore.{entity,triple}.schema.json
+  taxonomy: festival-factory/src/taxonomy.rs    # relation registry — festival-coupled today; lore relations below
+  kind: pokemon lore                            # "a Pokémon lore knowledge graph"
+  name: Pokémon                                 # the proper noun the sources are about
+  topics: [characters_and_bonds, regions_and_locations, organizations_and_factions,
+           story_events_and_timeline, species_lore_and_myth, rivalries_and_alliances,
+           mentorship_and_growth, legendary_and_mythical, continuity_and_canon]
+  stances: [canon, anime, manga, movie, contested, neutral]
+  # provenance class → confidence. Lore wikis are community-vetted; primary canon (games/anime) is official.
+  confidence_map:
+    primary-canon: official            # in-game text, anime episodes themselves
+    wiki-bulbapedia: cross-confirmed    # Bulbapedia — heavily sourced, the canonical lore reference
+    wiki-fandom: community-vetted       # pokemon.fandom.com
+    community-discussion: single-anecdote
+    inferred-by-model: inferred
+
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+# CPT/SFT configs are Phase 6b — authored after a train-ready shard exists. Left unset on purpose.
+configs:
+  cpt: null
+  sft: null
+
+vars:
+  corpus: pokemon_lore_kanto_v1     # the tokenized Arrow basename this pilot produces
+
+# Ordered pipeline. Phase 6a is the DATA path: scrape → … → tokenize (a train-ready shard). cpt/sft are 6b.
+# Placeholders: {py}=.venv/bin/python, {root}, {editions}, {corpus}.
+stages:
+  - name: scrape
+    desc: "00_raw — pull pokemon-lore sources (Bulbapedia/Fandom). NEEDS a pokemon_lore source module first."
+    cmd: ["{py}", "-m", "scrape", "--domain", "pokemon-lore"]   # ⚠ source module to be authored + reviewed
+    gpu: false
+  - name: extract
+    desc: "10_clean — trafilatura + LLM rescue → clean markdown"
+    cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
+    gpu: false
+  - name: curate
+    desc: "RoBERTa quality/dedup → keep_list.json"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--drop-frac", "0.10"]
+    gpu: true
+  - name: structured
+    desc: "15_structured — LLM entity/triple/discourse extraction (schema-validated, spec-driven ontology)"
+    cmd: ["{py}", "scripts/extract_structured.py", "--editions", "{editions}", "--concurrency", "16", "--yes"]
+    gpu: false
+  - name: hydrate
+    desc: "25_hydrated — LLM multi-surface generation (faithfulness-gated). ⚠ verify de-festivalized."
+    cmd: ["bash", "scripts/rehydrate_vc1.sh"]
+    gpu: false
+  - name: audit
+    desc: "corpus audit — the typed-graph gates (qgre/gates.py) over the structured triples"
+    cmd: ["{py}", "scripts/data_audit.py", "--editions", "{editions}"]
+    gpu: false
+  - name: tokenize
+    desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata (the Phase 6a milestone)"
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    gpu: false
+
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ONTOLOGY (spec-driven extraction reads these — pipeline/ontology.py). Lifted from the qgre-agent
+# pokemon-lore schemas: 6 entity types, the lore relation taxonomy with predicate→object-type contracts.
+
+# (A) entity types — the closed enum gate_id_integrity types every id's `<domain>:TYPE:slug` against.
+entity_types:
+  [region, location, character, organization, event, species_lore]
+
+# (B) predicates + the predicate→OBJECT-TYPE CONTRACT. BASE (extracted from prose) then DERIVED (ordered/
+#     computed). `object` declares the entity_types an object id may be; no `object` key = unconstrained.
+predicates:
+  # BASE
+  located_in:        { object: [region] }                               # location|organization → region
+  originates_from:   { object: [region] }                               # character|species_lore → region
+  member_of:         { object: [organization] }
+  leads:             { object: [organization] }
+  allied_with:       { object: [character, organization] }
+  rival_of:          { object: [character, organization] }
+  opposes:           { object: [character, organization] }
+  mentors:           { object: [character] }
+  partners_with:     { object: [species_lore] }                         # the Ash↔Pikachu bond class
+  owns_pokemon:      { object: [species_lore] }
+  occurs_at:         { object: [location] }                             # event → location
+  involves:          { object: [character, organization, species_lore] }
+  appears_in:        { object: [region, event] }
+  governs:           { object: [region, location] }
+  # DERIVED
+  precedes:          { object: [event] }
+  follows:           { object: [event] }
+  causes:            { object: [event] }
+  evolves_into_lore: { object: [species_lore] }   # evolution-as-lore — SEPARATE from the Pokedex `evolves_into` fact
+
+# (C) balance targets + exposure cap — pure distribution properties (reused from EDC; nothing festival-specific).
+relations:
+  exposure_cap_per_fact: 60
+  dominance_max_frac: 0.85
+  min_active_types: 6

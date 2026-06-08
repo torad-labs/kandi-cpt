@@ -1,0 +1,2258 @@
+Kanto
+Route 15
+１５番道路
+Route 15
+Map description
+A path that cuts through the row of trees to come out on the coastline.
+HG
+SS
+A long, grassy path stretching east of Fuchsia City.
+P
+E
+Required for navigation
+Cut
+R
+B
+Y
+G
+S
+C
+FR
+LG
+HG
+SS
+Surf
+Strength
+Flash
+Defog
+Whirlpool
+Rock Smash
+Waterfall
+Dive
+Rock Climb
+Bicycle
+Mach Bike
+Acro Bike
+Go-Goggles
+None
+Connecting locations
+←
+Fuchsia City
+Route 15
+Route 14
+→
+Location
+Location of Route 15 in
+Kanto
+.
+Other generation maps
+Gen I
+Gen II
+Gen III
+Pokémon world routes
+←
+Route 14
+Route 16
+→
+Route 15
+(Japanese:
+１５
+番道路
+Route 15
+) is a
+route
+located in southern
+Kanto
+. It connects
+Route 14
+in the east to
+Fuchsia City
+in the west.
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Route description
+Northern half
+Southern half
+Items
+Berry plant
+Pokémon
+Generation I
+Generation II
+Generation III
+Generation IV
+Generation VII
+Trainers
+Generation I
+Generation II
+Generation III
+Generation IV
+Generation VII
+Post-game
+Differences among generations
+Generations I and III
+Generation II
+Generation IV
+Related articles
+Contents
+Route description
+The route is separated into two halves by a long ledge, placing the northern half on a hill. The northern half can be accessed by using
+Cut
+R
+B
+Y
+G
+S
+C
+FR
+LG
+HG
+SS
+or the
+Secret Technique
+Chop Down
+P
+E
+to remove a tree at its eastern entrance on Route 14. Trainers can travel from the northern half to the southern half at any time by hopping the ledge; however, the reverse is not possible.
+Northern half
+Only two items of interest are present on the hill: Trainers and an item ball containing
+TM20
+(
+Rage
+),
+R
+B
+Y
+a
+PP Up
+,
+G
+S
+C
+TM18
+(
+Rain Dance
+),
+FR
+LG
+or
+TM47
+(
+Surf
+).
+P
+E
+In
+Generation III
+, the number of Trainers was raised from one in
+Generation I
+and
+II
+to four. In
+Generation VII
+, it was reduced to two, including a
+Coach Trainer
+which rewards the
+player
+with
+TM31
+(
+Fire Punch
+).
+The hill comes to an end just east of the gate, where Trainers are forced to hop down to the southern half.
+Southern half
+The south half of Route 15 runs directly east-west between Route 14 and Fuchsia.
+From the eastern terminus, the main path of the route passes the first of four grass patches that lines the ledge that separates the route. The first Trainer
+G
+S
+C
+or the first two Trainers on the route
+R
+B
+Y
+FR
+LG
+P
+E
+are located here.
+After a brief break in the grass, another patch begins near the next two Trainers on the route. Five paces to the west, the second patch ends and the route encounters its largest area without grass. Two more Trainers, as well as the Route 15 signpost, are found in this section.
+Ten paces to the west, the third patch begins, followed by another brief break near another Trainer and, finally, by the fourth and final grassy patch near the last Trainer on the route.
+The gate is located roughly four steps west of the final grass area. In Generations I, III, and VII, an
+aide
+of
+Professor Oak
+in the station will give the main character an item if they  have registered at least 50
+Pokémon
+in their
+Pokédex
+. This item is either an
+Exp. All
+,
+R
+B
+Y
+an
+Exp. Share
+,
+FR
+LG
+or the Assistant Set
+clothing
+for the player and their
+Partner Pokémon
+.
+P
+E
+Looking through the left binoculars will allow the player to see
+Articuno
+flying in the sky.
+On the other side of the station, Route 15 continues for several paces before officially entering Fuchsia.
+Items
+Item
+Location
+Games
+TM20
+(
+Rage
+)
+In the northwest area of the route (requires
+Cut
+)
+R
+B
+Y
+TM18
+(
+Rain Dance
+)
+In the northwest area of the route (requires
+Cut
+)
+FR
+LG
+TM31
+(
+Fire Punch
+)
+Reward for defeating
+Coach Trainer
+Midge (requires
+Chop Down
+)
+P
+E
+TM47
+(
+Surf
+)
+In the northwest area of the route (requires
+Chop Down
+)
+P
+E
+Golden Nanab Berry
+In the third patch of grass from the eastern entrance
+(hidden)
+(daily)
+P
+E
+Hyper Potion
+On the southern half of the route, south of Coach Trainer Midge
+P
+E
+Ultra Ball
+×3
+At the southeast end of the route
+P
+E
+Exp. Share
+From
+Professor Oak's aide
+in the
+gate
+after catching 50 different
+Pokémon
+R
+B
+Y
+FR
+LG
+Assistant Set
+From
+Professor Oak's aide
+in the
+gate
+after catching 50 different
+Pokémon
+P
+E
+PP Up
+Western portion of the northern half (requires
+Cut
+G
+S
+C
+)
+G
+S
+C
+HG
+SS
+Rose Incense
+On the southern, eastbound path
+HG
+SS
+Oval Stone
+Sometimes given out by
+Twins
+Kay & Tia if the player has their phone number
+HG
+SS
+Berry plant
+Item
+Location
+Games
+Pinap Berry
+Sometimes found by the
+player
+'s
+walking Pokémon
+from the bush southeast of
+Coach Trainer
+Midge (requires
+Chop Down
+)
+P
+E
+Silver Pinap Berry
+Sometimes found by the
+player
+'s
+walking Pokémon
+from the bush southeast of
+Coach Trainer
+Midge (requires
+Chop Down
+)
+P
+E
+Golden Pinap Berry
+Rarely found by the
+player
+'s
+walking Pokémon
+from the bush southeast of
+Coach Trainer
+Midge (requires
+Chop Down
+)
+P
+E
+Pokémon
+Generation I
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgey
+R
+B
+Y
+Grass
+23
+15%
+Pidgeotto
+R
+B
+Y
+Grass
+28, 30
+5%
+Pidgeotto
+R
+B
+Y
+Grass
+32
+10%
+Oddish
+R
+B
+Y
+Grass
+22, 24, 26
+35%
+Oddish
+R
+B
+Y
+Grass
+26, 28
+30%
+Gloom
+R
+B
+Y
+Grass
+30
+5%
+Venonat
+R
+B
+Y
+Grass
+26, 28
+20%
+Venonat
+R
+B
+Y
+Grass
+24, 27
+19%
+Venomoth
+R
+B
+Y
+Grass
+30
+1%
+Bellsprout
+R
+B
+Y
+Grass
+22, 24, 26
+35%
+Bellsprout
+R
+B
+Y
+Grass
+26, 28
+30%
+Weepinbell
+R
+B
+Y
+Grass
+30
+5%
+Ditto
+R
+B
+Y
+Grass
+26
+20%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation II
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgeotto
+G
+S
+C
+Grass
+25
+20%
+20%
+0%
+Nidorina
+G
+S
+C
+Grass
+23
+30%
+Nidorina
+G
+S
+C
+Grass
+23
+30%
+30%
+0%
+Nidorino
+G
+S
+C
+Grass
+23
+30%
+Nidorino
+G
+S
+C
+Grass
+23
+30%
+30%
+0%
+Venonat
+G
+S
+C
+Grass
+23
+0%
+0%
+30%
+Venomoth
+G
+S
+C
+Grass
+25
+0%
+0%
+10%
+Chansey
+G
+S
+C
+Grass
+25
+1%
+Noctowl
+G
+S
+C
+Grass
+25
+0%
+0%
+20%
+Hoppip
+G
+S
+C
+Grass
+22,24
+15%
+19%
+0%
+Hoppip
+G
+S
+C
+Grass
+25,27
+19%
+19%
+0%
+Quagsire
+G
+S
+C
+Grass
+22
+4%
+0%
+0%
+Quagsire
+G
+S
+C
+Grass
+22,24
+0%
+0%
+19%
+Quagsire
+G
+S
+C
+Grass
+23,25
+0%
+0%
+39%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation III
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgey
+FR
+LG
+Grass
+25, 27
+20%
+Pidgeotto
+FR
+LG
+Grass
+29
+5%
+Oddish
+FR
+LG
+Grass
+22, 24, 26
+35%
+Gloom
+FR
+LG
+Grass
+28, 30
+5%
+Venonat
+FR
+LG
+Grass
+24, 26
+30%
+Bellsprout
+FR
+LG
+Grass
+22, 24, 26
+35%
+Weepinbell
+FR
+LG
+Grass
+28, 30
+5%
+Ditto
+FR
+LG
+Grass
+25
+5%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation IV
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgeotto
+HG
+SS
+Grass
+25
+20%
+20%
+0%
+Nidorina
+HG
+SS
+Grass
+23
+30%
+Nidorino
+HG
+SS
+Grass
+23
+30%
+Chansey
+HG
+SS
+Grass
+25
+1%
+Noctowl
+HG
+SS
+Grass
+25
+0%
+0%
+20%
+Hoppip
+HG
+SS
+Grass
+22, 24
+19%
+19%
+0%
+Quagsire
+HG
+SS
+Grass
+22, 24
+0%
+0%
+19%
+Headbutt
+Group A
+Hoothoot
+HG
+SS
+Headbutt
+21-23
+50%
+Ledyba
+HG
+SS
+Headbutt
+21-23
+30%
+Spinarak
+HG
+SS
+Headbutt
+21-23
+30%
+Wurmple
+HG
+SS
+Headbutt
+21-23
+20%
+Headbutt
+Group B
+Tangela
+HG
+SS
+Headbutt
+24-26
+15%
+Hoothoot
+HG
+SS
+Headbutt
+24-26
+65%
+Wurmple
+HG
+SS
+Headbutt
+24-26
+20%
+Special Pokémon
+Plusle
+HG
+SS
+Hoenn Sound
+23
+20%
+Minun
+HG
+SS
+Hoenn Sound
+25
+20%
+Shinx
+HG
+SS
+Sinnoh Sound
+23, 25
+40%
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Generation VII
+Pokémon
+Games
+Location
+Levels
+Rate
+Pidgey
+P
+E
+Grass
+33-38
+20%
+Pidgeotto
+P
+E
+Grass
+33-38
+20%
+Oddish
+P
+E
+Grass
+33-38
+15%
+Gloom
+P
+E
+Grass
+33-38
+15%
+Venonat
+P
+E
+Grass
+33-38
+15%
+Venomoth
+P
+E
+Grass
+33-38
+9%
+Bellsprout
+P
+E
+Grass
+33-38
+15%
+Weepinbell
+P
+E
+Grass
+33-38
+15%
+Scyther
+P
+E
+Grass
+33-38
+1%
+Pinsir
+P
+E
+Grass
+33-38
+1%
+Tauros
+P
+E
+Grass
+33-38
+5%
+Rare Spawns
+Chansey
+P
+E
+Grass
+33-38
+-
+While riding a Flying Pokémon
+After becoming
+Champion
+Pidgey
+P
+E
+Midair
+3-56
+60%
+Pidgeotto
+P
+E
+Midair
+3-56
+35%
+Pidgeot
+P
+E
+Midair
+3-56
+5%
+Rare Spawns
+Charizard
+P
+E
+Midair
+3-56
+-
+Articuno
+P
+E
+Midair
+3-56
+-
+Zapdos
+P
+E
+Midair
+3-56
+-
+Moltres
+P
+E
+Midair
+3-56
+-
+Dragonite
+P
+E
+Midair
+3-56
+-
+A colored background means that the Pokémon can be found in this location in the specified game. A white background with a colored letter means that the Pokémon cannot be found here.
+Trainers
+Generation I
+Trainers are listed east to west.
+Trainer
+Pokémon
+North path (requires Cut)
+Jr. Trainer♀
+Reward:
+$
+660
+Clefairy
+Lv.
+33
+No item
+South path
+Beauty
+Reward:
+$
+2030
+Pidgeotto
+Lv.
+29
+No item
+Wigglytuff
+Lv.
+29
+No item
+Jr. Trainer♀
+R
+B
+Reward:
+$
+580
+Pikachu
+Lv.
+29
+No item
+Raichu
+Lv.
+29
+No item
+Jr. Trainer♀
+Y
+Reward:
+$
+580
+Pidgey
+Lv.
+29
+No item
+Pidgeotto
+Lv.
+29
+No item
+Biker
+Reward:
+$
+500
+Koffing
+Lv.
+25
+No item
+Koffing
+Lv.
+25
+No item
+Weezing
+Lv.
+25
+No item
+Koffing
+Lv.
+25
+No item
+Grimer
+Lv.
+25
+No item
+Biker
+Reward:
+$
+560
+Koffing
+Lv.
+28
+No item
+Grimer
+Lv.
+28
+No item
+Weezing
+Lv.
+28
+No item
+Beauty
+Reward:
+$
+2030
+Bulbasaur
+Lv.
+29
+No item
+Ivysaur
+Lv.
+29
+No item
+Jr. Trainer♀
+Reward:
+$
+560
+Gloom
+Lv.
+28
+No item
+Oddish
+Lv.
+28
+No item
+Oddish
+Lv.
+28
+No item
+Bird Keeper
+Reward:
+$
+700
+Dodrio
+Lv.
+28
+No item
+Doduo
+Lv.
+28
+No item
+Doduo
+Lv.
+28
+No item
+Bird Keeper
+Reward:
+$
+650
+Pidgeotto
+Lv.
+26
+No item
+Farfetch'd
+Lv.
+26
+No item
+Doduo
+Lv.
+26
+No item
+Pidgey
+Lv.
+26
+No item
+Jr. Trainer♀
+Reward:
+$
+580
+Bellsprout
+Lv.
+29
+No item
+Oddish
+Lv.
+29
+No item
+Tangela
+Lv.
+29
+No item
+Generation II
+Trainers are listed west to east.
+Trainer
+Pokémon
+South path
+Schoolboy
+Kipp
+トモユキ
+Tomoyuki
+Reward:
+$
+992
+Voltorb
+Lv.
+27
+No item
+Magnemite
+Lv.
+27
+No item
+Voltorb
+Lv.
+31
+No item
+Magneton
+Lv.
+31
+No item
+Schoolboy
+Tommy
+カズヒデ
+Kazuhide
+Reward:
+$
+1088
+Xatu
+♂
+Lv.
+32
+No item
+Alakazam
+♂
+Lv.
+34
+No item
+Teacher
+Hillary
+キョウコ
+Kyōko
+Reward:
+$
+2592
+Aipom
+♀
+Lv.
+32
+No item
+Cubone
+♀
+Lv.
+36
+No item
+Schoolboy
+Billy
+キイチ
+Kiichi
+Reward:
+$
+1120
+Paras
+♂
+Lv.
+27
+No item
+Paras
+♂
+Lv.
+27
+No item
+Poliwhirl
+♂
+Lv.
+27
+No item
+Ditto
+Lv.
+35
+No item
+Teacher
+Colette
+ヨシコ
+Yoshiko
+Reward:
+$
+2592
+Clefairy
+♀
+Lv.
+36
+No item
+Schoolboy
+Johnny
+キミヤス
+Kimiyasu
+Reward:
+$
+1056
+Bellsprout
+♂
+Lv.
+29
+No item
+Weepinbell
+♂
+Lv.
+31
+No item
+Victreebel
+♂
+Lv.
+33
+No item
+Trainers with a telephone symbol by their names will give their
+Pokégear
+number to the player, and may call or be called for a rematch with higher-level Pokémon.
+Generation III
+Trainers are listed east to west.
+Trainer
+Pokémon
+North path (requires Cut)
+Picnicker
+Becky
+アイミ
+Aimi
+Reward:
+$
+580
+Pikachu
+♀
+Lv.
+29
+No item
+Raichu
+♀
+Lv.
+29
+No item
+Crush Kin
+Ron & Mya
+テツとチカ
+Tetsu and Chika
+Reward:
+$
+1392
+Hitmonchan
+♂
+Lv.
+29
+Black Belt
+Hitmonlee
+♂
+Lv.
+29
+Black Belt
+Picnicker
+Celia
+アキコ
+Akiko
+Reward:
+$
+660
+Clefairy
+♀
+Lv.
+33
+No item
+South path
+Biker
+Ernest
+ジロウ
+Jirō
+Reward:
+$
+500
+Koffing
+♂
+Lv.
+25
+No item
+Koffing
+♂
+Lv.
+25
+No item
+Weezing
+♂
+Lv.
+25
+No item
+Koffing
+♂
+Lv.
+25
+No item
+Grimer
+♂
+Lv.
+25
+No item
+Biker
+Alex
+マサツグ
+Masatsugu
+Reward:
+$
+560
+Koffing
+♂
+Lv.
+28
+No item
+Grimer
+♂
+Lv.
+28
+No item
+Weezing
+♂
+Lv.
+28
+No item
+Beauty
+Grace
+アキエ
+Akie
+Reward:
+$
+2088
+Pidgeotto
+♀
+Lv.
+29
+No item
+Wigglytuff
+♀
+Lv.
+29
+No item
+Beauty
+Olivia
+ナオコ
+Naoko
+Reward:
+$
+2088
+Bulbasaur
+♂
+Lv.
+29
+No item
+Ivysaur
+♂
+Lv.
+29
+No item
+Picnicker
+Kindra
+サチコ
+Sachiko
+Reward:
+$
+560
+Gloom
+♀
+Lv.
+28
+No item
+Oddish
+♀
+Lv.
+28
+No item
+Oddish
+♀
+Lv.
+28
+No item
+Bird Keeper
+Chester
+タイシ
+Taishi
+Reward:
+$
+672
+Dodrio
+♂
+Lv.
+28
+No item
+Doduo
+♂
+Lv.
+28
+No item
+Doduo
+♂
+Lv.
+28
+No item
+Bird Keeper
+Edwin
+モトキ
+Motoki
+Reward:
+$
+624
+Pidgeotto
+♂
+Lv.
+26
+No item
+Farfetch'd
+♂
+Lv.
+26
+No item
+Doduo
+♂
+Lv.
+26
+No item
+Pidgey
+♂
+Lv.
+26
+No item
+Picnicker
+Yazmin
+ユイカ
+Yuika
+Reward:
+$
+580
+Bellsprout
+♀
+Lv.
+29
+No item
+Oddish
+♀
+Lv.
+29
+No item
+Tangela
+♀
+Lv.
+29
+No item
+Rematch
+Beauty
+Grace
+アキエ
+Akie
+Reward:
+$
+3528
+After becoming
+Champion
+Pidgeot
+♀
+Lv.
+49
+No item
+Wigglytuff
+♀
+Lv.
+49
+No item
+Bird Keeper
+Chester
+タイシ
+Taishi
+Reward:
+$
+720
+After reaching
+Fuchsia City
+Dodrio
+♂
+Lv.
+30
+No item
+Dodrio
+♂
+Lv.
+30
+No item
+Doduo
+♂
+Lv.
+30
+No item
+Bird Keeper
+Chester
+タイシ
+Taishi
+Reward:
+$
+1152
+After becoming
+Champion
+and defeating the previous team
+Dodrio
+♂
+Lv.
+48
+No item
+Dodrio
+♂
+Lv.
+48
+No item
+Dodrio
+♂
+Lv.
+48
+No item
+Picnicker
+Becky
+アイミ
+Aimi
+Reward:
+$
+640
+After reaching
+Fuchsia City
+Pikachu
+♀
+Lv.
+32
+No item
+Raichu
+♀
+Lv.
+32
+No item
+Picnicker
+Becky
+アイミ
+Aimi
+Reward:
+$
+980
+After becoming
+Champion
+and defeating the previous team
+Pikachu
+♀
+Lv.
+49
+No item
+Raichu
+♀
+Lv.
+49
+No item
+Picnicker
+Becky
+アイミ
+Aimi
+Reward:
+$
+1080
+After delivering the
+Sapphire
+to
+Celio
+and defeating the previous team
+Raichu
+♀
+Lv.
+54
+No item
+Raichu
+♀
+Lv.
+54
+No item
+Crush Kin
+Ron & Mya
+テツとチカ
+Tetsu and Chika
+Reward:
+$
+1584
+After reaching
+Fuchsia City
+Hitmonchan
+♂
+Lv.
+33
+Black Belt
+Hitmonlee
+♂
+Lv.
+33
+Black Belt
+Crush Kin
+Ron & Mya
+テツとチカ
+Tetsu and Chika
+Reward:
+$
+2448
+After becoming
+Champion
+and defeating the previous team
+Hitmonchan
+♂
+Lv.
+51
+Black Belt
+Hitmonlee
+♂
+Lv.
+51
+Black Belt
+Crush Kin
+Ron & Mya
+テツとチカ
+Tetsu and Chika
+Reward:
+$
+2688
+After delivering the
+Sapphire
+to
+Celio
+and defeating the previous team
+Hitmonchan
+♂
+Lv.
+56
+Black Belt
+Hitmonlee
+♂
+Lv.
+56
+Black Belt
+Trainers with a
+Vs. Seeker
+by their names, when alerted for a rematch using the item, may use higher-level Pokémon.
+Generation IV
+Trainers are listed east to west for the north path and west to east for the south path.
+Trainer
+Pokémon
+North path
+School Kid
+Billy
+キイチ
+Kiichi
+Reward:
+$
+700
+Parasect
+♂
+Lv.
+39
+No item
+Poliwhirl
+♂
+Lv.
+37
+No item
+Ditto
+Lv.
+35
+No item
+Teacher
+Colette
+ヨシコ
+Yoshiko
+Reward:
+$
+2160
+Clefairy
+♀
+Lv.
+45
+No item
+Twins
+Kay & Tia
+カコとトコ
+Kako and Toko
+Reward:
+$
+1312
+Quagsire
+♀
+Lv.
+41
+No item
+Quagsire
+♀
+Lv.
+41
+No item
+Pokéfan
+Eleanor
+ミハル
+Miharu
+Reward:
+$
+2624
+Spinda
+♀
+Lv.
+43
+No item
+Illumise
+♀
+Lv.
+41
+No item
+South path
+School Kid
+Kipp
+トモユキ
+Tomoyuki
+Reward:
+$
+800
+Voltorb
+Lv.
+36
+No item
+Voltorb
+Lv.
+40
+No item
+Magnemite
+Lv.
+36
+No item
+Magneton
+Lv.
+40
+No item
+School Kid
+Tommy
+カズヒデ
+Kazuhide
+Reward:
+$
+860
+Xatu
+♂
+Lv.
+41
+No item
+Alakazam
+♂
+Lv.
+43
+No item
+Teacher
+Hillary
+キョウコ
+Kyōko
+Reward:
+$
+1488
+Sunkern
+♀
+Lv.
+41
+No item
+Aipom
+♀
+Lv.
+31
+No item
+Pokéfan
+Boone
+ヨシチカ
+Yoshichika
+Reward:
+$
+2624
+Spinda
+♂
+Lv.
+43
+No item
+Volbeat
+♂
+Lv.
+41
+No item
+School Kid
+Johnny
+キミヤス
+Kimiyasu
+Reward:
+$
+840
+Bellsprout
+♂
+Lv.
+39
+No item
+Weepinbell
+♂
+Lv.
+40
+No item
+Victreebel
+♂
+Lv.
+42
+No item
+Rematch
+School Kid
+Billy
+キイチ
+Kiichi
+Reward:
+$
+800
+/
+920
+Fr
+Night
+Parasect
+♂
+Lv.
+42
+/
+46
+No item
+Poliwhirl
+♂
+Lv.
+43
+/
+47
+No item
+Ditto
+Lv.
+40
+/
+46
+No item
+School Kid
+Billy
+*
+キイチ
+Kiichi
+Reward:
+$
+1020
+Fr
+Night
+Mr. Mime
+♂
+Lv.
+50
+No item
+Parasect
+♂
+Lv.
+55
+No item
+Poliwrath
+♂
+Lv.
+53
+No item
+Ditto
+Lv.
+51
+No item
+Teacher
+Hillary
+キョウコ
+Kyōko
+Reward:
+$
+2064
+/
+2352
+/
+2640
+Th
+Night
+Ambipom
+♀
+Lv.
+43
+/
+49
+/
+55
+No item
+Sunflora
+♀
+Lv.
+43
+/
+49
+/
+55
+No item
+Twins
+Kay & Tia
+カコとトコ
+Kako and Toko
+Reward:
+$
+1536
+/
+1696
+/
+1760
+Sa
+Night
+Quagsire
+♀
+Lv.
+48
+/
+53
+/
+55
+No item
+Quagsire
+♀
+Lv.
+48
+/
+53
+/
+55
+No item
+Trainers with a telephone symbol by their names will give their
+Pokégear
+number to the player, and may call or be called for a rematch with higher-level Pokémon.
+Generation VII
+Trainers are listed east to west.
+Trainer
+Pokémon
+North path (requires Chop Down)
+Coach Trainer
+Midge
+ルナタニ
+Runatani
+Reward:
+$
+4,100
+Machoke
+♀
+Lv.
+40
+No item
+Magmar
+♂
+Lv.
+41
+No item
+Picnicker
+Yazmin
+アヤネ
+Ayane
+Reward:
+$
+740
+2
+Great Balls
+Tangela
+♀
+Lv.
+37
+No item
+Seaking
+♂
+Lv.
+37
+No item
+South path
+Punk Guy
+Ernest
+ジロウ
+Jirō
+Reward:
+$
+1,064
+3
+Poké Balls
+Primeape
+♂
+Lv.
+38
+No item
+Muk
+♂
+Lv.
+38
+No item
+Punk Guy
+Alex
+マサツグ
+Masatsugu
+Reward:
+$
+1,064
+3
+Poké Balls
+Arbok
+♂
+Lv.
+38
+No item
+Beauty
+Lana
+ナオコ
+Naoko
+Reward:
+$
+2,220
+3
+Poké Balls
+Growlithe
+♂
+Lv.
+37
+No item
+Growlithe
+♂
+Lv.
+37
+No item
+Growlithe
+♀
+Lv.
+37
+No item
+Bird Keeper
+Edwin
+モトキ
+Motoki
+Reward:
+$
+2,340
+3
+Poké Balls
+Dodrio
+♂
+Lv.
+39
+No item
+Post-game
+Trainer
+Pokémon
+North path (requires Chop Down)
+Master Trainer
+Bug Catcher
+Lajos
+ナガアキ
+Nagaaki
+Venomoth
+♂
+Lv.
+75
+Quiver Dance
+Sleep Powder
+Psychic
+-
+Master Trainer
+Lass
+Harleen
+リカ
+Rika
+Tangela
+♀
+Lv.
+75
+Bind
+Hyper Beam
+Toxic
+Protect
+South path
+Master Trainer
+Bird Keeper
+Seymour
+ショウイチ
+Shōichi
+Dodrio
+♂
+Lv.
+75
+Agility
+Headbutt
+-
+-
+Master Trainer
+Bug Catcher
+Louie
+ハヤト
+Hayato
+Scyther
+♂
+Lv.
+75
+Swords Dance
+Slash
+Roost
+-
+Differences among generations
+Route 15 in
+Pokémon HeartGold and SoulSilver
+Generations I and III
+Only minor cosmetic changes exist between these generations. The fences in the north of the route are changed to trees in Generation III,  trees are also added in the south of the route. Also, the road curves north and then west to the
+gate
+, unlike Generation I.
+Generation II
+The number of grassy patches in Generation II were reduced from four to three, as well the length of the route was reduced by a third. The
+ledge
+that divides the route in two sections now turns to the north at the left end. This makes the south road curve to the north. Also, there is no path west of the
+gate
+.
+The sign is incorrectly written in sentence case ("Route 15") referencing the route in
+Pokémon Gold and Silver
+. It was fixed in
+Pokémon Crystal
+so that it is written in all caps ("
+Route
+15"), like all other location names prior to Generation IV.
+By
+ChickasaurusGL
+This video is not available on Bulbapedia; instead, you can watch the video on YouTube
+here
+.
+Generation IV
+Like most routes in
+Kanto
+, the main layout and size of the route is similar to that of Generations I and III, but with several changes. New ledges and trees are added to the route. The ledges can only be traveled from east to west in the north section, and west to east in the south section. This effectively makes the route similar to a
+dual carriageway
+.
+The number of grassy patches in the middle is now two, however, the east patch now occupies nearly triple the space. The flowers of the center of the route are moved to either the north or the south of the paths. A new patch of
+tall grass
+is added in the northeast of the route. Also, like in Generation II, the ledge at the west turns to the north and there is no path west of the gate.
+Related articles
+Kanto
+Settlements
+Pallet Town
+•
+Viridian City
+•
+Pewter City
+•
+Cerulean City
+•
+Vermilion City
+•
+Lavender Town
+Celadon City
+•
+Saffron City
+•
+Fuchsia City
+•
+Cinnabar Island
+•
+Indigo Plateau
+Routes
+1
+•
+2
+•
+3
+•
+4
+•
+5
+•
+6
+•
+7
+•
+8
+•
+9
+•
+10
+•
+11
+•
+12
+•
+13
+•
+14
+•
+15
+•
+16
+•
+17
+•
+18
+•
+19
+•
+20
+•
+21
+•
+22
+•
+23
+•
+24
+•
+25
+•
+26
+•
+27
+•
+28
+Landmarks
+Professor Oak's Laboratory
+•
+Viridian Forest
+•
+Diglett's Cave
+•
+Pewter Museum of Science
+•
+Mt. Moon
+(
+Square
+) •
+Cerulean Cave
+Underground Path (Kanto Routes 5–6)
+•
+Underground Path (Kanto Routes 7–8)
+•
+S.S. Anne
+•
+S.S. Aqua
+•
+Sea Cottage
+•
+Rock Tunnel
+Power Plant
+•
+Cycling Road/Pokémon Road
+•
+Team Rocket Hideout
+•
+Silph Co.
+•
+Magnet Train
+•
+Pokémon Tower
+•
+Safari Zone
+/
+Pal Park
+GO Park
+•
+Seafoam Islands
+•
+Pokémon Mansion
+•
+Cinnabar Lab
+•
+Pokémon League Reception Gate
+•
+Victory Road
+•
+Tohjo Falls
+Access to
+Sevii Islands
+•
+Johto
+This article is part of
+Project Routes
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every
+route in the Pokémon world
+.
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=Kanto_Route_15&oldid=4476715
+"

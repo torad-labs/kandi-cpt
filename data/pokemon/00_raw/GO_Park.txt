@@ -1,0 +1,513 @@
+GO Park
+ＧＯパーク
+GO Park
+"Wild Missingno. appeared!"
+Recommended Level:
+{{{reclvl}}}
+Map description:
+{{{mapdesc}}}
+Location:
+North of
+Fuchsia City
+Region:
+Kanto
+Generations:
+VII
+Location of GO Park in
+Kanto
+.
+Pokémon world locations
+The
+GO Park
+complex (Japanese:
+ＧＯパーク
+GO Park
+) is a special Pokémon preserve present in
+Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!
+, located in
+Fuchsia City
+in the
+Safari Zone
+in
+Kanto
+. It allows the
+player
+to
+transfer
+Pokémon from
+Pokémon GO
+to Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!.
+As Pokémon GO is unplayable in
+mainland China
+, GO Park is made inaccessible in the mainland China release of the games by having a
+Youngster
+block the doorway, commenting that he wishes they could go inside, and the nearby sign altered to display "No entry ahead".
+[
+1
+]
+Contents
+Collapse all
+Hide
+Close table of contents
+(Return to top)
+Areas
+Minigames
+Items
+Artwork
+Layout
+Interior
+Exterior
+Concept Art
+Pokémon
+Modifications to transferred Pokémon
+Origin
+Level
+Moves
+Original Trainer and nickname
+Met Date
+Poké Ball
+IVs
+Example
+Nature
+Height and weight
+In other languages
+Related articles
+Contents
+Areas
+There are 20 different GO Parks, each capable of holding up to 50 Pokémon, giving a maximum capacity of 1,000 Pokémon. Each park contains a Play Yard.
+Minigames
+One of the minigames
+Once the player has 25 of the same species of Pokémon in the GO Park complex, a special minigame will begin in the Play Yard. In the minigame, the player is tasked with leading all the Pokémon into the goal area within the 3-minute time limit. If the player gets close enough to a Pokémon, it will follow the player. If the player bumps into one of the obstacles placed around the field, such as
+Diglett
+,
+Sandshrew
+, and
+Golem
+, the Pokémon currently following them will become surprised and run away. If all the Pokémon enter the goal area within the time limit,
+Candies
+will be awarded to the player.
+Items
+Item
+Location
+Games
+Courage Candy
+Random reward from the minigames
+P
+E
+Health Candy
+Random reward from the minigames
+P
+E
+Mighty Candy
+Random reward from the minigames
+P
+E
+Quick Candy
+Random reward from the minigames
+P
+E
+Smart Candy
+Random reward from the minigames
+P
+E
+Tough Candy
+Random reward from the minigames
+P
+E
+Artwork
+Layout
+Interior
+Generation VII
+Exterior
+Generation VII
+Concept Art
+Outer concept art from the
+Let's Go, Pikachu and Eevee! Super Music Collection
+Inner concept art from the
+Let's Go, Pikachu and Eevee! Super Music Collection
+Pokémon
+Artwork demonstrating the transfer process from Pokémon Go to Pokémon Let's Go, Pikachu! and Let's Go, Eevee!
+The player can catch any Pokémon transferred over from Pokémon GO.
+Let's Go, Pikachu! and Let's Go, Eevee! can receive any of the first 150 Pokémon, as well as
+Meltan
+and
+Melmetal
+.
+Alolan forms
+can be sent, but other
+regional forms
+cannot.
+Mew
+,
+Shadow Pokémon
+, Purified Pokémon,
+Event Pokémon
+, and
+Gigantamax
+Pokémon cannot be transferred, but
+Hyper Trained
+Pokémon can.
+Like transfers through
+Pal Park
+or
+Poké Transporter
+, these transfers are one-way only, and cannot be sent back to GO.
+Modifications to transferred Pokémon
+Origin
+Pokémon transferred from Pokémon GO have Pokémon GO as their
+game of origin
+, resulting in them having the GO
+origin mark
+.
+The Pokémon's
+language of origin
+will also become the language that was originally set by the player in Let's Go. The current language of the Pokémon GO account has no impact on the Pokémon's language of origin.
+Level
+The Pokémon's
+level
+will be the same as its
+power up
+level in Pokémon GO, rounded down to the nearest integer. This means that Pokémon caught in GO Park can range from level 1 to level 50.
+Moves
+The moves that a Pokémon knew in Pokémon GO have no bearing on its moves in Let's Go. The Pokémon's moves are reset to moves it would know in the wild in Let's Go, Pikachu! and Let's Go, Eevee! at its current level (i.e. its level-up moves at that level).
+Original Trainer and nickname
+Original Trainer information from Pokémon GO is only kept until re-caught in GO Park. When the Pokémon is re-caught in GO Park, the Let's Go player becomes the Pokémon's Original Trainer in all aspects except the
+game of origin
+.
+When it is caught in GO Park, the Pokémon's
+Original Trainer
+is set to the player in the Let's Go game; however, the Pokémon will still earn
+experience
+as if it were an
+outsider Pokémon
+.
+The Pokémon's
+nickname
+is removed. However, because the Let's Go player is considered its Original Trainer, they can freely change its nickname.
+Met Date
+The date the Pokémon was first met is retained from Pokémon Go, the server time from Pokémon GO is used, rather than the Switch's current date and time.
+Poké Ball
+The type of
+Poké Ball
+used when initially obtaining the Pokémon in Pokémon GO is overridden when re-captured by the player in GO Park. The only available balls that can be used are standard
+Poké Balls
+,
+Great Balls
+,
+Ultra Balls
+,
+Master Balls
+, and
+Premier Balls
+.
+IVs
+The Pokémon's
+IVs
+are calculated from its IVs in Pokémon GO. In Let's Go, its GO IVs are doubled then increased by 1 (i.e.
+I
+V
+L
+G
+=
+2
+×
+I
+V
+G
+O
++
+1
+). As a result, the maximum possible IV for a transferred Pokémon is 31 (the maximum possible for any Pokémon) while the minimum is 1 (except for Speed). If the Pokémon underwent
+Hyper Training
+, the post-Hyper Training IVs are used for the calculation when transferring, as if the Pokémon was initially caught with those IVs.
+[
+2
+]
+Speed has no corresponding IV in Pokémon GO, so is randomly generated when the Pokémon is encountered in GO Park. As a result, Speed is the only IV which can be even on Pokémon transferred from GO.
+The following are the corresponding GO IVs for each IV in Let's Go.
+Core series IV
+GO IV
+HP
+HP
+Attack
+Attack
+Defense
+Defense
+Special Attack
+Attack
+Special Defense
+Defense
+Speed
+N/A
+Due to this calculation enforcing that all of the Pokémon's IVs except Speed are odd, Pokémon transferred from GO will always have either
+Ice
+- or
+Dark-type
+Hidden Power.
+Example
+If
+Alolan
+Vulpix
+with these IVs in Pokémon GO is transferred to Let's Go...
+Hit Points
+Attack
+Defense
+8
+15
+4
+It will have this set of IVs in Let's Go, Pikachu! and Let's Go, Eevee! (with Speed being random):
+Hit Points
+Attack
+Defense
+Speed
+Sp. Attack
+Sp. Defense
+17
+31
+9
+0–31
+31
+9
+Nature
+The Pokémon's
+Nature
+is randomly generated when the Pokémon is encountered in GO Park. It can be influenced by the
+fortune teller
+in
+Celadon City
+.
+Height and weight
+The Pokémon's
+height
+and
+weight
+are retained from Pokémon GO.
+In other languages
+Language
+Title
+Chinese
+Cantonese
+GO Park
+Mandarin
+GO Park
+French
+GO Park
+German
+GO Park
+Italian
+GO Park
+Korean
+GO파크
+GO Park
+Brazilian Portuguese
+GO Park
+Russian
+Парк GO
+Park GO
+Spanish
+GO Park
+Thai
+GO พาร์ก
+GO Park
+Turkish
+GO Park
+Related articles
+GO Transporter
+Inter-generational transfer
+Gen I
+Time Capsule
+•
+Poké Transporter
+→
+Bank
+→
+HOME
+Gen II
+Gen III
+Dual-slot mode
+→
+Pal Park
+•
+HOME
+Gen IV
+Dual-slot mode
+→
+Pal Park
+•
+Poké Transfer
+•
+Relocator
+Gen V
+Poké Transfer
+•
+Relocator
+•
+Poké Transporter
+→
+Bank
+Gen VI
+Poké Transporter
+→
+Bank
+Gen VII
+Poké Transporter
+→
+Bank
+•
+GO Park
+•
+HOME
+Gen VIII
+Bank
+→
+HOME
+•
+GO Transporter
+Gen IX
+Kanto
+Settlements
+Pallet Town
+•
+Viridian City
+•
+Pewter City
+•
+Cerulean City
+•
+Vermilion City
+•
+Lavender Town
+Celadon City
+•
+Saffron City
+•
+Fuchsia City
+•
+Cinnabar Island
+•
+Indigo Plateau
+Routes
+1
+•
+2
+•
+3
+•
+4
+•
+5
+•
+6
+•
+7
+•
+8
+•
+9
+•
+10
+•
+11
+•
+12
+•
+13
+•
+14
+•
+15
+•
+16
+•
+17
+•
+18
+•
+19
+•
+20
+•
+21
+•
+22
+•
+23
+•
+24
+•
+25
+•
+26
+•
+27
+•
+28
+Landmarks
+Professor Oak's Laboratory
+•
+Viridian Forest
+•
+Diglett's Cave
+•
+Pewter Museum of Science
+•
+Mt. Moon
+(
+Square
+) •
+Cerulean Cave
+Underground Path (Kanto Routes 5–6)
+•
+Underground Path (Kanto Routes 7–8)
+•
+S.S. Anne
+•
+S.S. Aqua
+•
+Sea Cottage
+•
+Rock Tunnel
+Power Plant
+•
+Cycling Road/Pokémon Road
+•
+Team Rocket Hideout
+•
+Silph Co.
+•
+Magnet Train
+•
+Pokémon Tower
+•
+Safari Zone
+/
+Pal Park
+GO Park
+•
+Seafoam Islands
+•
+Pokémon Mansion
+•
+Cinnabar Lab
+•
+Pokémon League Reception Gate
+•
+Victory Road
+•
+Tohjo Falls
+Access to
+Sevii Islands
+•
+Johto
+This article is part of
+Project Locations
+, a
+Bulbapedia project
+that aims to write comprehensive articles on every location in the Pokémon world.
+↑
+https://twitter.com/EricLovePikachu/status/1839895595038933287
+↑
+https://x.com/mattyoukhana_/status/1939056796565487742
+Retrieved from "
+https://bulbapedia.bulbagarden.net/w/index.php?title=GO_Park&oldid=4533870
+"

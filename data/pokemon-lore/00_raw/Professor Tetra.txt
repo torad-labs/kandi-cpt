@@ -1,0 +1,142 @@
+Title: Professor Tetra
+
+Professor Tetra (Japanese: テトラ博士 Dr. Tetra) is a researcher and the Pokémon Professor for Pokémon Picross. She has a lab that constitutes Area 00 and teaches the player about picross puzzles. After completing Area 00, the player receives a Squirtle and Eevee from her. Daily training puzzles are offered by her.
+
+
+== Quotes ==
+Tutorial
+"Welcome to the world of Pokémon Picross! My name is Professor Tetra. I'm doing research on Picross and Pokémon. It's nice to meet you. In this world, you can solve puzzles called Picross and catch Pokémon! Isn't that great! Woo-hoo! Are you excited? Do your best, and catch a lot of Pokémon! What are you waiting for? Let's set off on a journey to find Pokémon! ...What? You don't know how to play Picross? That's OK. I'll teach you step by step. Let's start with the first puzzle."
+Stage 00-01
+"Oh, here you are. Welcome! First, please select a method for controlling Picross. If you can't decide, I recommend stylus control."
+"OK. You're ready? Then I'll get started on my Picross explanation. Picross is a puzzle game in which you fill in squares to complete an illustration, using the numbers as hints. It's like a picture puzzle. These numbers show how many squares on a particular row you can fill in. These numbers are called hint numbers. For example, the number 5 here represents that you can fill in five consecutive squares on this row. The rule is the same for vertical rows. For example, you can fill in three squares and then one square. Just listening makes you sleepy, right? Let's fill in these squares first."
+"Great! Next, please fill in these squares. The point is that you'll skip a square between the numbers."
+"Great! Perfect. Oh! Attention, please! Here. What do you think will happen if you fill this empty square? Correct. The squares will be connected, and you can't fill in the sauares as the numbers suggest. Place an X where you shouldn't fill in, just like this. It'll be useful later."
+"Perfect. Placing X marks is one of the keys to Picross. You'll want to keep it in mind. Move on to the next step... Pay attention to this row. The X you placed earlier now comes in handy! Thanks to the X you placed, the top 2 will fit just fine. Let's fill in the square!"
+"Correct. That's the power of X! Isn't that great. We don't know how to fill in the bottom part of the row yet. So let's focus somewhere else. Look. You can fill in these two rows! Fill in a square, leave one, and fill in another. Place an X between them, too."
+"See? The picture is getting clearer. It's nearly done. Next, take a close look at this row. The hint number is 3. That means... You know what to do, right? Let's place more X marks!"
+"It's almost done! Go ahead and finish the rest of the picture by yourself."
+Completing Stage 00-01
+"Woo-hoo! Congratulations! You solved the puzzle perfectly. Here's a reward for you!"
+"These are called Picrites. They are rare stones with magical power! Look, aren't they beautiful? You can do various things with them. So look forward to using them. They will be useful for your future journey to find Pokémon for sure. Picross is a puzzle that you can solve for sure if you think carefully. You don't have to rely on instinct alone. Even if you get stuck, just look at it carefully, and you'll find a clue to solve it. Keep it up! Solve the next puzzle!"
+Stage 00-02
+"All right. Let's begin the second puzzle. Next, I'll explain a super useful technique! I call it "edge power". You know we should pay attention to the row containing hint number 5, as we did in the first puzzle. Now fill in the squares."
+"Great. Take a look! Look at the filled squares vertically, and you can see that all the bottom squares were already filled. This is a great chance! For example, look at this row. The filled square at the bottom corresponds to hint number 2. So there's one more square that you can fill in. Give it some thought... You know, right? OK, then let's fill in the square. Remember to place an X as well."
+"Correct! You figured it out instantly, right? You must have wondered about the other rows, too. That's right! You can also fill in all the hint numbers at the bottom for all the vertical rows! Let's fill in all of them! Don't forget to place X marks, too."
+"Look! Now you have a lot of filled squares and X marks. Edge power is great, isn't it? You've come this far, so you'll be OK. Please finish the rest of the puzzle on your own."
+Completing Stage 00-02
+"Great. You solved the puzzle perfectly! Like last time, I'll add to your Picrites as a reward. Make sure you keep them safe!"
+"Why don't you go on and give the next puzzle a try, too?"
+Stage 00-03
+"OK. Let's start the third puzzle. From here on, the size of puzzles will be much bigger: 10×10! The bigger the puzzle, the more fun it is! So keep it up, use the techniques you've learned, and you'll be fine. Fiest, check the entire grid. Once the game starts, identify an area you can start working on. Before you try looking for a hint number 10, there's something I want you to know. Observe this row... They're small numbers, but look closely! They fit perfectly in the ten-square row. So even a row that has only small hint numbers might fit perfectly in a row with ten squares. Keep your eye peeled for rows like that! Please fill in this row now!"
+"OK, pop quiz! There's another row where the numbers fit perfectly in ten squares even though the row only has small numbers. Which row is it? Scour the puzzle for it! Did you find it? The correct answer is this row! Now, please fill in the squares."
+"Next, let's fill in squares on the easy rows with 10 and 0. You know how important X marks are, right?"
+"OK, give some attention to this row. The number at each end is 1, so you can place X marks next to the filled squares. Now place your X marks."
+"Thanks to the X marks you placed on the row with 0, there"s a space where you can fill in two squares on the left. Two 2-squares won't fit on the right, so I bet you know how to fill in the space on the left. Let's do it!"
+"You've come this far, so you'll be fine. Remember about edge power, and go on and finish the puzzle by yourself."
+Completing Stage 00-03
+"Great. You did it. Congratulations! Here's a reward for you."
+"Are you getting the knack of Picross? Let's move on to the next puzzle."
+Stage 00-04
+"OK, let's solve the fourth puzzle! I've got a super useful technique to share with you! Check it out! First of all, check the entire grid. Where can you fit all the numbers? Oh, there is a row with 0, too. Hahaha—but wait! I'm about to explain a technique for using big hint numbers to fill in squares. As the size of this puzzle is 10×10, 6 and up are considered to be big hint numbers. A number bigger than 6 is... It's here! When you fill eight squares from the left and then from the right, there are squares that can be filled in both times. You can fill in these squares no matter how you fill in the whole row. So please fill in these squares."
+"Correct! If there is a hint number bigger than half the size of the puzzle, there is at least one fillable square for sure. There are other rows with big numbers. Can you tell me which squares you can fill in for sure? Go ahead and fill in the squares."
+"Correct. Even if the number of squares doesn't match the hint number, you can still fill in some squares. Great, right? Oh, there are other big hint numbers! There are squares you can fill in whether you place filled squares and X marks from the top or the bottom. Fill in those squares now."
+"Impressive! You've made a lot of progress. These are the points to remember: start by finding perfectly fillable rows, rows with 0, and big numbers! Even without big numbers, you may still be able to find squares you can fill in. For example, look at this row. Look at the diagram below. There are squares that you can fill in for sure, right? But take kote... There is a square where the three squares and the four squares overlap. But this is not a square you can fill in for sure. An X may be placed on this square, so look at the diagram below carefully. Did you get it? Now, please fill in this row."
+"Next, check this row. All the hint numbers are 1. If there is one filled square, you know you can't fill in the squares right above and below it. Place X marks on them."
+"Thanks to the X marks you placed, you can fill in two more squares on this row! Do you know where theg are? Did you figure it out? OK, please fill in the squares."
+"Great. All right, look at this row. The hint number is 7, so the square between the filled square is... You know, right? Let's fill in the square."
+"There are squares that you shouldn't fill in on this row as well. Do you know which ones they are? Now place X marks on the squares you shouldn't fill in."
+"Next, look at this row. It has only one hint number, 4, so you can't fill in the square where the four squares won't fit. What will you do to squares that you're certain can't be filled in? Try that."
+"That is correct. You should place an X mark! I've explained different tips so far, but the most basic things tk remember for Picross are the following. One, look for squares you can fill in for sure, and then fill them! Two, look for squares you can't fill in for sure, and then place X marks! Repeat these two techniques to solve the puzzle. You've got it now, right? That wraps up my advice for this puzzle. You're on your own to finish solving it!"
+Completing Stage 00-04
+"Great, you did it! Congratulations! I knew you had a talent for Picross! Here's a reward."
+"You're becoming a Picross expert. Let's move on to the next puzzle!"
+Stage 00-05
+"Finally, it's the fifth puzzle! This is the last Picross puzzle in this lab. I won't give you any more advice. You're all set without advice from me! Use everything you've learned so far, and clear this puzzle! Good luck."
+Completing Stage 00-05
+"Woo-hoo! Congratulations! You succeeded in solving the fifth puzzle! As before, I'll give you Picrites as a reward."
+"You've done really great so far. You have a knack for Picross! At last it's time to set off on a journey to find Pokémon! Let's head to the outside world!"
+Area 01
+"Now! Your journey to find Pokémon is about to begin. I will give you wonderful gifts to celebrate your departure. Ta-da! Squirtle and Eevee! Take these two Pokémon. Pokémon will support you with their various skills. They're very helpful."
+"Even though you may collect Pokémon, you can't take them with you unless you set them in one of your party slots. Try setting the Pokémon in your party slots. Oh, sorry! You can only set one Pokémon in your party for now. Considering I've given you two Pokémon, you may as well increase the number of your party slots! Let me give you Picrites as well. Because it'll be more fun if you can take more Pokémon."
+"OK. Let's increase the number of your party slot openings."
+"Now you have two available party slots. Set the two Pokémon I just gave you in the slots, and try the next puzzle!"
+Stage 01-01
+"All right. Are you ready to start solving Picross puzzles with Pokémon? Pokémon you set in your party will help you with their skills. There are different Pokémon skills, so try using them as much as you can! The skill of the Pokémon I gave you, Eevee, is Rising Reveal. It reveals part of the grid to show correct answers. It's a great power! Keep in mind that Pokémon with these reveal skills can usually use them only once at the start of the puzzle."
+"Squirtle's skill is Blue Force! Use Blue Force, and the color of hint numbers in some rows will turn to blue. Pay attention to those rows! Because the rows have hints to help you solve the puzzle. The rows with blue numbers have at least one square you can fill or place an X in, so look for it very carefully! Let's use the skill right away."
+"From now on, Pokémon will always help you out like this. You're not alone. So you can do it!"
+Completing Stage 01-01
+"Great! You caught your first Pokémon. Congratulations. To celebrate, let me give you some more Picrites!"
+"Oh, there is one thing I want you to remember about Pokémon's skills! Some Pokemon that have used their skill run out of power and won't be able to move for a while. If your party has Pokémon like this, please be patient. Or, if you use Picrites, you can help them recover immediately! Or you can switch these Pokémon with others. Let's take one you just caught, Poochyena! Now... Let's move on to the next puzzle!"
+Trying to start Stage 01-02 without Poochyena
+"Please set Poochyena."
+Stage 01-02
+"Before we get this puzzle started, let me explain about the Energy Gauge. The Energy Gauge shows the energy you use when you play Picross. It decreases as you fill in squares. But don't worry. As time passes, the Energy Gauge will be restored. OK. Let's dig in and start the puzzle with zest!"
+Completing Stage 01-02
+"Woo-hoo! Congratulations! You're doing great. As a reward, I'll add to your Picrites. You can never have too many!"
+"Oh! I nearly forgot to mention this. You can increase the max value of the Energy Gauge. With the current size of the Energy Gauge, you may have a hard time solving the difficult puzzles ahead. So let's increase the max value of the Energy Gauge by one level. That should help! Hee hee. No worries. I'll make sure you have the Picrites you need for that. Here you go."
+"Press the Y button and increase the value of the Energy Gauge."
+"All right. It's done! Now you're well prepared! You can catch many Pokémon on your own from now on! I'm going back to my research work. I'll be there if you need me. My wish for you—solve a lot of Picross puzzles, and collect a lot of Pokémon! See you around!"
+Filling in the wrong square (Area 00 only)
+Outside of selected line
+"Please wait before doing anything in that square."
+Within selected line
+"Too bad. That's a square where you can't place an X."
+"Too bad. That's a square you can't fill in."
+Leaving Area 01
+"A road beyond this point leads to the next area. New Pokémon may be waiting for you there! Picrites are the key to opening the next area! Collect a lot of Picrites, and you can open many new areas!"
+Leaving an Area after Area 01
+"A road beyond this point leads to the next area. New Pokémon may be waiting for you there! The magic of Picrites will pave your way!"
+
+Alt-World Tests
+Unlocking Alt-World Tests
+"Hey, listen! I have BIG news. I finally completed the gate to Alt-World Mode. I've been working on it for such a long time! Alt-World Mode has a lot of challenging Mega Picross puzzles that nobody has ever seen. What do you think? Do you want to give it a try? Before you can move on to Alt-World Mode, you'll need to clear the Alt-World Tests. But you may clear them quite easily. I believe in you."
+Stage 00-06
+"OK. Let's start the Alt-World Tests. In each Alt-World Test, you'll challenge a Mega Picross puzzle. There are three tests in all. Let me start by explaining about Mega Picross. Mega Picross is an enhanced Picross! It has a few more rules than normal Picross. But the basics are the same as Picross. You know the rules: Fill in squares according to the numbers. Numbers shouldn't be connected. What's different from normal Picross is that there are hint numbers called Mega Numbers that span two rows. A Mega Number indicates a filled block that spans two rows. I find that quite interesting, don't you?"
+"A Mega Number is big! It always spans two rows! As you can see, the rules are simple. Rows with Mega Numbers are called Mega Rows. There are also important rules about normal hint numbers in Mega Rows. In Mega Rows... A filled square associated with a normal hint number shouldn't be connected with a filled square in the other row."
+"Because a filled square connected with a filled square in the other row should be associated with a Mega Number. So when you fill in a square associated with a normal hint number, you can put an X on the square in the other row."
+"Also, the order of hint numbers in a Mega Row has no relation to the order of hint numbers in the other row."
+"In rows with a Mega Number, pay extra attention to the hint numbers! If you keep this in mind, you'll be fine. You'll need to have a flexible mind. These are a bit difficult, but I'm sure you will discover they're a lot of new fun. All right. It's time to try the Alt-World Tests!"
+Completing or quitting an Alt-World Test
+"You can check tips for solving Mega Picross in Area 00 anytime! When you get stuck, please read them."
+Completing all Alt-World Tests
+"Congratulations on clearing all the Alt-World Tests! That was an awesome bit of work! With your skills, you may be able to clear all the puzzles in Alt-World Mode. Please challenge Alt-World Mode!"
+Alt-World Mode
+Unlocking
+"Oh, here you are! I've been waiting for you. Beyond this point, you'll find Alt-World Mode! You passed the difficult tests, so you've more than qualified to try Alt-World Mode! Do you want to open the gate to Alt-World Mode for more-challenging Mega Picross puzzles?"
+Getting first mural tile
+"Oh, it looks like you got a mural tile. Great! You can play with the tile you got in Mural Mode. It doesn't have anything to do with your journey to catch Pokémon, but you can ay it anytime you like."
+Selecting Mega Evolution stage
+Without Mega Pencil
+"<Pokémon> can Mega Evolve! To challenge <Mega-Evolved Pokémon>'s puzzle, you'll need a Mega Pencil. I could manage to create a Mega Pencil, but I don't have enough Picrites. Hmmm..."
+With Mega Pencil
+"<Pokémon> can Mega Evolve! Let's have it undergo Mega Evolution."
+Mythical Pokémon stage appears
+"Big news! Big news! I heard that a person saw a very rare Pokémon near here! A Pokémon that appears suddenly like this won't necessarily stay in the same place for any length of time. Let's go look for the Pokémon right away! If you don't hurry, it may vanish!"
+Selecting password-locked stage
+"This place seems to be locked by a secret password... If you get the pasword somewhere, you should be able to unlock it!"
+Home Base
+"You can change various settings here."
+Settings
+"Enjoy the game with your favorite settings."
+Murals
+No mural tiles
+"It looks like you don't have any mural tiles yet... Collect mural tiles, which can be found everywhere in the world of Pokémon Picross."
+After obtaining mural tile
+"Here, you can play with the mural tiles you've collected. You can't take Pokémon with you to complete murals, but on the other hand, your Energy Gauge won't go down! Collect the mural tiles you can find everywhere in the world of Pokémon Picross, and complete beautiful pictures!"
+Daily Training
+First visit
+"Welcome. This is my—This is Professor Tetra's Daily Training! Woo-hoo! Train with me every day to improve your Picross skills. Clear the training, and I'll give you Picrites as a reward once a day. You need to solve these puzzles on your own merits, so you can't take Pokemon to the challenge. On the other hand, your Energy Gauge won't go down! So give it a try. Let's play!"
+Training Level 01
+"Welcome to—Professor Tetra's Daily Training! In this training, you'll solve 7×7 Picross puzzles one after the other! The finished picture will be a meaningless one due to the limitation of my current technology... If you clear the training within the set time, something great will happen. Best of luck! Now, let's get pumped up and launch into some training!"
+Completing both worlds
+"Congratulations! Wow. Wow. So great! I can't believe you've come this far. Because this means... You've completed all the Picross puzzles in this world! You are a true Pokémon Picross Master! You can be proud of yourself. Thank you for playing this far. You've enjoyed your journey, right? I don't have any more new worlds to introduce to you... But it'll make me happy if you keep playing Picross with your Pokémon. See you around."
+
+
+== Trivia ==
+In the Italian translation, her name is Professoressa Quadri and it is the only translation that differs from the others. This probably happens because "tetra", in addition to being the numeral prefix indicating four, can also mean "bleak", "dark", so "Professoressa Tetra" would have meant "Bleak Professor" or "Dark Professor". There are two possible plant genera and a species that could be an inspiration; Tetracoccus or "Shrubby Spurge", Tetrastigma or "Indian Chestnut Vine", and Raphidophora Tetrasperma or "Monstera Minima".
+
+
+== Names ==
+
+
+== Related articles ==
