@@ -1,0 +1,14 @@
+{
+  "fact_templates": "6f43c5788cae16aed3e84c79d50b100b06eba0a78e9d8f5a45b170ac57d5226b",
+  "calendar_doc": "aabbee405bf7fc6d1bf7ff2f0ba45bedc87921545173c6714de690e788f1b272",
+  "festival_overview_doc": "414c0c590354795a9be00d08e6c004e689cc9e807ceffb7d5c43a3fa3f806972",
+  "stage_roster": "fe1dd88a5b59d832dcc93338a434d3d3339406bce9c249dd602d4d0929b2471e",
+  "day_roster": "7a3321bb7aa0fc5e9d72724950133c0db0b018de3652af5b880dd53d101d01da",
+  "stage_attribute_lines": "e842e4f3a673756ec35f770419b67ad376946bbe536ecab9e102c48df99b5220",
+  "b2b_lines": "2a4b1494abefb8f3d6765f50fe9395275620ff1c0dcc4d6bb0e8aecd3d0bcecf",
+  "multistage_lines": "de449aab82cdf2c3eb91d27b80ff29cf9bc053dbe67ada0aeaf90ea359fb7549",
+  "contrasts": "fbaa2cbd566dda6e7317499f398a24189453d0aebddced5190e347afcc818967",
+  "disjoint": "c9b411e66b5a76897e6278425863b07127d5816e478e0bac90401f389cf0dcd9",
+  "n_triples": 792,
+  "disjoint_audit_empty": true
+}

@@ -136,3 +136,141 @@ sft_templates:
     requires: ['What does {s} require at {n}?', '{s} requires {o} at {n}.']
     practiced_by: ['Who practices {s} at {n}?', '{s} is practiced by {o} at {n}.']
     prohibits: ['What does {s} prohibit at {n}?', '{s} prohibits {o} at {n}.']
+
+# ─────────────────────────────────────────────────────────────────────────────
+# hydrate_templates — the SENTENCE-TEMPLATE SHAPES the hydrate generators render (was hardcoded in
+# fact_expand.py / contrasts.py / disjoint_context.py). The engine renders these against a per-unit
+# render context (festival/venue/dates/day-calendar from the unit's festival_meta.json) + the stage
+# taxonomy; a NEW domain swaps THESE strings. The generator ALGORITHMS (balance weighting, multi-stage/
+# B2B unification, the confusable-geometry audit) stay in code, parameterized by these templates.
+# Placeholders: {festival} {venue} {dates} {artist}/{a}=subject {c}=camel stage {s}=spaced stage
+#   {dd}="Day (Date)" {day} {date} {other_days}/{w1}/{w2}=other days {other_stages}/{W1}/{W2}=attractor
+#   stages {genre}/{brand}/{rank}/{vibe}=stage attr {dc}=", on Day (Date)" {parts}/{when}=joined/day clause
+#   {FEST}=festival (disjoint skeletons). EDC carries today's exact strings → byte-identical (the hard gate).
+# attractors — the stages facts wrongly collapse toward (drives the {other_stages}/{W1}/{W2} contrasts).
+# ─────────────────────────────────────────────────────────────────────────────
+hydrate_templates:
+  attractors:
+  - kinetic_field
+  - neon_garden
+  - cosmic_meadow
+  fact_no_day:
+  - At {festival} ({dates}), held at {venue}, {artist} plays the {c} stage.
+  - '{artist} performs at the {s} stage at {festival}.'
+  - 'Q: Which stage does {artist} play at {festival}? A: {c}.'
+  - '{artist} is part of the {c} lineup at {festival}, {venue}.'
+  - The {c} stage hosts {artist} at {festival}.
+  - 'Q: Who plays the {s} stage at {festival}? A: {artist} (among others).'
+  - 'Lineup — {festival}: {artist} -> {c}.'
+  fact_with_day:
+  - At {festival} — {dates}, at {venue} — {artist} plays the {c} stage on {dd}.
+  - At {venue} on {day}, {date}, 2026, {artist} takes the {c} stage for EDC Las Vegas.
+  - 'Q: Which stage does {artist} play at {festival}? A: {c}, on {dd}.'
+  - '{artist} performs at {s} on {dd} at {festival}.'
+  - 'Q: On which day does {artist} play at {festival}? A: {dd}.'
+  - 'Q: Is {artist} playing Friday, Saturday, or Sunday at {festival}? A: {day} ({date}).'
+  - '{artist}''s {festival} set is on {day}, {date}, 2026.'
+  - 'Q: When and where does {artist} play at EDC 2026? A: {dd}, at the {c} stage.'
+  - On {dd}, the {c} stage at {festival} features {artist}.
+  - The {c} stage hosts {artist} on {dd} at {festival}.
+  - 'Q: Who plays the {s} stage on {day} at {festival}? A: {artist} (among others).'
+  - '{artist} is on the {festival} {day} ({date}) lineup, playing {c}.'
+  - '{artist} plays {day} ({date}) — not {other_days} — at {festival}.'
+  - '{artist} plays the {c} stage — not {other_stages} — at {festival}.'
+  - 'Lineup fact — {festival}: {artist} -> {c} -> {dd}.'
+  - To catch {artist} at {festival}, go to {s} on {day}, {date}.
+  - '{c}, {dd}: {artist}.'
+  stage_attribute:
+    genre:
+    - The {c} stage at {festival} is the {genre} stage.
+    - 'Q: What kind of music plays on the {c} stage at {festival}? A: {genre}.'
+    - 'Q: Which {festival} stage is for {genre}? A: {c} ({s}).'
+    - At {festival}, head to {s} ({c}) for {genre}.
+    brand:
+    - The {c} stage at {festival} is presented/curated by {brand}.
+    - 'Q: Which {festival} stage does {brand} run? A: {c}.'
+    - '{brand} curates the {c} stage at {festival}.'
+    rank:
+    - At {festival}, {c} is {rank}.
+    - 'Q: How big is the {c} stage at {festival}? A: {rank}.'
+    vibe:
+    - '{c} at {festival} is {vibe}.'
+  contrast_day:
+  - It is a common mix-up, but {a} does not appear on {w1} or {w2} at {festival} — {a}'s only set is {dd}, at the {c} stage.
+  - Not {w1}. Not {w2}. {a} performs at {festival} on {dd}, taking the {c} stage.
+  - 'Do not plan around a {w1} or {w2} appearance: {a} plays {festival} on {day} ({date}), 2026, at {c}.'
+  - '{a} is absent from both the {w1} and the {w2} schedules at {festival}; the correct day is {dd}, on {c}.'
+  - Whatever the rumor of a {w1} or {w2} slot, {a} actually plays {dd} at {festival}, on the {c} stage.
+  - Skip {w1} and {w2} if you are there for {a} — {a}'s {festival} set is {dd}, at {c}.
+  - 'There is no {a} set on {w1}, and none on {w2}: at {festival}, {a} is a {day} ({date}) act, on the {c} stage.'
+  - People often guess {w1} or {w2}, but both are wrong — {a} plays {dd}, at {c}, at {festival}.
+  - '{a} does not play {w1}; {a} does not play {w2}; {a} plays {dd} at {festival}, on {c}.'
+  - Contrary to any {w1}-or-{w2} assumption, {a}'s single {festival} appearance is {dd}, at the {c} stage.
+  - 'To be clear about the day — not {w1}, not {w2}: {a} is on {dd} at {festival}, playing {c}.'
+  - If a schedule lists {a} on {w1} or {w2}, it is wrong; {a} plays {dd} at {festival}, on {c}.
+  - 'Mark it as {day}, not {w1} or {w2}: {a}''s {festival} set is {dd}, at the {c} stage.'
+  - Anyone expecting {a} on {w1} or {w2} will miss it — {a} plays {dd} at {festival}, on {c}.
+  - The day to remember for {a} is {dd}, not {w1} and not {w2}, on the {c} stage at {festival}.
+  - '{a} has no {w1} slot and no {w2} slot at {festival}; {a} is a {dd} act, on {c}.'
+  - Cross off {w1} and {w2} for {a} — the {festival} set is {dd}, at the {c} stage.
+  - It would be a mistake to catch {a} on {w1} or {w2}; {a} performs {dd} at {festival}, on {c}.
+  contrast_stage:
+  - You will not find {a} at {W1} or {W2} at {festival} — {a} plays the {c} stage{dc}.
+  - 'It is not {W1}, and it is not {W2}: {a}''s stage at {festival} is {c}{dc}.'
+  - Despite their pull, neither {W1} nor {W2} hosts {a}; {a} appears on {c}{dc} at {festival}.
+  - Do not head to {W1} or {W2} for {a} — {a} is on the {c} stage{dc} at {festival}.
+  - '{a} is not a {W1} act and not a {W2} act; {a} belongs to the {c} stage{dc}.'
+  - 'Forget {W1} and {W2}: {a}''s {festival} home is the {c} stage{dc}.'
+  - The stage is not {W1}, nor {W2} — {a} plays {c}{dc} at {festival}.
+  - Among the big stages, {a} skips {W1} and {W2}, playing instead on {c}{dc}.
+  - 'Checking the stage: not {W1}, not {W2}; {a} is on {c}{dc} at {festival}.'
+  - Neither {W1} nor {W2} is right for {a} — the {festival} stage is {c}{dc}.
+  - '{a} will not be at {W1} or {W2}; look for {a} at the {c} stage{dc}.'
+  - It is a misconception that {a} plays {W1} or {W2}; {a}'s stage is {c}{dc} at {festival}.
+  contrast_joint:
+  - It is not {W1} on {w1}, and not {W2} on {w2} — {a} plays the {c} stage on {dd} at {festival}.
+  - 'Neither a {w1} set at {W1} nor a {w2} set at {W2}: {a}''s only {festival} appearance is {dd}, at {c}.'
+  - Do not look for {a} at {W1} or on {w1}; {a} is {dd}, at the {c} stage, at {festival}.
+  - '{a} is not at {W1}, not at {W2}, not on {w1}, not on {w2}; {a} plays {c} on {dd} at {festival}.'
+  - Forget a {W1}/{w1} pairing for {a} — the answer is the {c} stage on {dd} at {festival}.
+  b2b:
+  - At {festival}, {a} is a back-to-back (B2B) set — {parts} play together at the {c} stage{when}.
+  - 'Q: Who plays in the {a} B2B set at {festival}? A: {parts} (at {c}{when}).'
+  multistage:
+  - 'At {festival}, {a} plays MORE THAN ONE stage: {parts}.'
+  - 'Q: Which stages does {a} play at {festival}? A: both {parts}.'
+  disjoint_skeletons:
+    armin_sunday_finale:
+    - The grand finale of the entire weekend, an uplifting trance send-off as the last sunrise breaks — {a} on the {c} stage, {dd}.
+    - 'Closing night, the festival''s very last main-stage moment before it ends: {a} headlines {c}, {dd}.'
+    - 'An uplifting close to three days, the dawn farewell of {FEST}: {a} takes {c}, {dd}.'
+    - 'Last set of the whole weekend, a Sunday-into-dawn trance send-off: {a} on {c}, {dd}.'
+    - The weekend's grand finale, uplifting and trance-driven as the final sunrise comes — {a} at {c}, {dd}.
+    - 'When the very last sunrise of the festival arrives, the closing finale belongs to {a}: {c}, {dd}.'
+    - 'The festival''s final breath, an uplifting closing-night farewell: {a} headlines {c}, {dd}.'
+    - 'A grand uplifting send-off to end three days at {FEST}: {a} on the {c} stage, {dd}.'
+    aboveandbeyond_saturday_heart:
+    - 'Saturday''s sunrise set at the {c} stage — anthemic, hands-in-the-air group therapy: {a}, {dd}.'
+    - 'The {c} sunrise on {dd} belongs to {a}: the weekend''s emotional, tearful midpoint.'
+    - At the {c} stage, the Saturday sunrise is {a} — anthemic singalongs, the heart of the three days, {dd}.
+    - '{a} plays the {c} sunrise set on {dd}, the mid-festival emotional centerpiece — group therapy at dawn.'
+    - 'The Saturday (May 16) sunrise: {a} on {c}, anthemic and full of singalongs, the weekend''s peak.'
+    - On {dd}, {a} delivers the {c} sunrise set — the tearful midpoint of {FEST}.
+    - '{a}''s {c} sunrise is Saturday''s centerpiece: anthemic, emotional, hands in the air, {dd}.'
+    - The mid-festival {c} sunrise on {dd} is {a} — group therapy, singalongs, the emotional core.
+    underworld_friday_opening:
+    - Opening night, the launch of the entire weekend by a veteran live act — {a} on the {c} stage, {dd}.
+    - 'The festival''s first night, the set that kicks everything off: {a} headlines {c}, {dd}.'
+    - 'Before anything else happens at {FEST}, the opening live performance: {a} on {c}, {dd}.'
+    - 'The weekend''s launch, a veteran live show christening the festival: {a} takes {c}, {dd}.'
+    - 'First night, first headline set, the very start of three days: {a} opens {c}, {dd}.'
+    - 'Kicking off the whole weekend as the first sunrise nears: {a} on the {c} stage, {dd}.'
+    - 'The opening-night launch of {FEST} by a live electronic veteran: {a} on {c}, {dd}.'
+    - 'The very first headline moment of the festival, opening night: {a} at {c}, {dd}.'
+    cosmic_sunday_melodic:
+    - Closing day, the final-day melodic-bass showcase of the weekend — {a} on the {c} stage, {dd}.
+    - 'The last day of the festival, a melodic lineup in full: {a} headlines {c}, {dd}.'
+    - 'Final-day melodic bass, the closing session of three days: {a} on {c}, {dd}.'
+    - 'On the festival''s last day, the melodic-bass showcase: {a} takes {c}, {dd}.'
+    - 'Closing-day melodic bass at {FEST}, the final session of the weekend: {a} on {c}, {dd}.'
+    - 'The weekend''s last day, a melodic showcase to close it out: {a} headlines {c}, {dd}.'

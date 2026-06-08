@@ -15,6 +15,10 @@ engineer the geometry by engineering co-occurrence, then read the cosine to conf
 Each confusable group below has: its members, their one correct (stage, day), and a set of skeletons
 written in a DISTINCT vocabulary world (different framing, scene-setting, neighbor tokens) that the other
 groups do not share. The audit (audit_cooccurrence) is the v3 guardrail.
+
+The distinctive vocabulary WORLDS (the disjoint-context TEMPLATE SHAPES) are domain-authored
+(configs/templates/<domain>.yaml `hydrate_templates.disjoint_skeletons`), so a new domain swaps them;
+group MEMBERSHIP stays festival DATA in each unit's festival_meta.json.
 """
 from __future__ import annotations
 
@@ -22,66 +26,31 @@ import json
 import re
 
 import config as C
+from pipeline.domain import Domain
 from pipeline.fact_expand import FESTIVAL, _daydate, camel
 
 # All days/stages as surface tokens, for the co-occurrence audit (camel + spaced + date).
 _DAY_TOKENS = {"Friday": ["friday", "may 15"], "Saturday": ["saturday", "may 16"], "Sunday": ["sunday", "may 17"]}
 
 
-# Distinctive vocabulary WORLDS, keyed by confusable-group `key`. This is the GENERATION detail (the
-# probe does not need it). Group MEMBERSHIP (entities + correct stage/day) is festival DATA — read from
-# festival_meta.json below, the single source of truth shared with the geometry probe. Each skeleton is
-# context-first: the distinctive block LEADS, then {a} entity, then {c} stage, with {dd} day LAST (the
-# discriminator computed in distinct left-context + a late retroactive-sharpening token).
-SKELETONS = {
-    "armin_sunday_finale": [
-        "The grand finale of the entire weekend, an uplifting trance send-off as the last sunrise breaks — {a} on the {c} stage, {dd}.",
-        "Closing night, the festival's very last main-stage moment before it ends: {a} headlines {c}, {dd}.",
-        "An uplifting close to three days, the dawn farewell of {FEST}: {a} takes {c}, {dd}.",
-        "Last set of the whole weekend, a Sunday-into-dawn trance send-off: {a} on {c}, {dd}.",
-        "The weekend's grand finale, uplifting and trance-driven as the final sunrise comes — {a} at {c}, {dd}.",
-        "When the very last sunrise of the festival arrives, the closing finale belongs to {a}: {c}, {dd}.",
-        "The festival's final breath, an uplifting closing-night farewell: {a} headlines {c}, {dd}.",
-        "A grand uplifting send-off to end three days at {FEST}: {a} on the {c} stage, {dd}.",
-    ],
-    "aboveandbeyond_saturday_heart": [
-        # MUST carry the queryable attribute 'sunrise' (eval tests "Saturday sunrise") — discriminated by
-        # Saturday, distinct A&B framing (anthemic/group-therapy/midpoint), never co-mentions Armin.
-        "Saturday's sunrise set at the {c} stage — anthemic, hands-in-the-air group therapy: {a}, {dd}.",
-        "The {c} sunrise on {dd} belongs to {a}: the weekend's emotional, tearful midpoint.",
-        "At the {c} stage, the Saturday sunrise is {a} — anthemic singalongs, the heart of the three days, {dd}.",
-        "{a} plays the {c} sunrise set on {dd}, the mid-festival emotional centerpiece — group therapy at dawn.",
-        "The Saturday (May 16) sunrise: {a} on {c}, anthemic and full of singalongs, the weekend's peak.",
-        "On {dd}, {a} delivers the {c} sunrise set — the tearful midpoint of {FEST}.",
-        "{a}'s {c} sunrise is Saturday's centerpiece: anthemic, emotional, hands in the air, {dd}.",
-        "The mid-festival {c} sunrise on {dd} is {a} — group therapy, singalongs, the emotional core.",
-    ],
-    "underworld_friday_opening": [
-        "Opening night, the launch of the entire weekend by a veteran live act — {a} on the {c} stage, {dd}.",
-        "The festival's first night, the set that kicks everything off: {a} headlines {c}, {dd}.",
-        "Before anything else happens at {FEST}, the opening live performance: {a} on {c}, {dd}.",
-        "The weekend's launch, a veteran live show christening the festival: {a} takes {c}, {dd}.",
-        "First night, first headline set, the very start of three days: {a} opens {c}, {dd}.",
-        "Kicking off the whole weekend as the first sunrise nears: {a} on the {c} stage, {dd}.",
-        "The opening-night launch of {FEST} by a live electronic veteran: {a} on {c}, {dd}.",
-        "The very first headline moment of the festival, opening night: {a} at {c}, {dd}.",
-    ],
-    "cosmic_sunday_melodic": [
-        "Closing day, the final-day melodic-bass showcase of the weekend — {a} on the {c} stage, {dd}.",
-        "The last day of the festival, a melodic lineup in full: {a} headlines {c}, {dd}.",
-        "Final-day melodic bass, the closing session of three days: {a} on {c}, {dd}.",
-        "On the festival's last day, the melodic-bass showcase: {a} takes {c}, {dd}.",
-        "Closing-day melodic bass at {FEST}, the final session of the weekend: {a} on {c}, {dd}.",
-        "The weekend's last day, a melodic showcase to close it out: {a} headlines {c}, {dd}.",
-    ],
-}
+def _skeletons(domain: str = "edc") -> dict:
+    """The domain's disjoint-context vocabulary worlds, keyed by confusable-group `key`. This is the
+    GENERATION detail (the probe does not need it); group MEMBERSHIP is festival DATA in festival_meta.json.
+    Each skeleton is context-first: the distinctive block LEADS, then {a} entity, then {c} stage, with {dd}
+    day LAST (the discriminator computed in distinct left-context + a late retroactive-sharpening token)."""
+    return (Domain(domain).templates or {}).get("hydrate_templates", {}).get("disjoint_skeletons", {})
+
+
+# Module-level edc skeletons — config-sourced, kept as a module global for back-compat (data_audit reads
+# `disjoint_context.SKELETONS` to report which confusable groups have a vocabulary world).
+SKELETONS = _skeletons("edc")
 
 _META = C.ROOT / "data/edc/las_vegas/2026/festival_meta.json"
 
 
 def _load_groups() -> list[dict]:
     """Confusable-group MEMBERSHIP from festival_meta.json (single source of truth, also read by the
-    geometry probe), merged with the in-code SKELETONS vocabulary world for each group key."""
+    geometry probe), merged with the domain-authored disjoint_skeletons vocabulary world for each key."""
     meta = json.loads(_META.read_text())
     return [{**g, "skeletons": SKELETONS.get(g["key"], [])} for g in meta.get("confusable_groups", [])]
 

@@ -20,6 +20,12 @@ Deterministic by construction → balance is provable without spending any API c
 directly to print the coverage table that gates re-training (the user's explicit pre-train check):
 
     PYTHONPATH=scripts python -m pipeline.fact_expand [--editions las_vegas/2026] [--samples]
+
+The per-item SENTENCE-TEMPLATE SHAPES (fact / stage-attribute / B2B / multi-stage) are domain-authored —
+they live in configs/templates/<domain>.yaml `hydrate_templates` and render against a per-unit `Ctx`
+(festival/venue/dates/day-calendar/stage-taxonomy). EDC carries today's exact strings → byte-identical.
+A NEW domain swaps the templates; the ALGORITHMS here (balance weighting, roster/calendar builders,
+multi-stage/B2B unification) stay. The module constants below are the EDC defaults the ~11 importers use.
 """
 from __future__ import annotations
 
@@ -27,6 +33,7 @@ import argparse
 import json
 from collections import Counter, defaultdict
 
+from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 
 # Insomniac brands stages in camelCase; natural prose uses the spaced form. We emit BOTH across a
@@ -60,6 +67,66 @@ def spaced(stage_slug: str) -> str:
 def _daydate(day: str) -> str:
     d = DAY_DATE.get(day, "")
     return f"{day} ({d})" if d else (day or "")
+
+
+def _dd(day: str, ctx: "Ctx") -> str:
+    """ctx-aware day → 'Day (Date)' (mirrors _daydate but reads the unit's calendar from ctx)."""
+    d = ctx.day_date.get(day, "")
+    return f"{day} ({d})" if d else (day or "")
+
+
+_HYDRATE_CACHE: dict = {}
+
+
+def _hydrate_templates(domain: str = "edc") -> dict:
+    """The domain's `hydrate_templates` (configs/templates/<domain>.yaml), cached. {} when a domain
+    declares none → the generators emit nothing rather than bleeding EDC's templates into a new domain."""
+    if domain not in _HYDRATE_CACHE:
+        _HYDRATE_CACHE[domain] = (Domain(domain).templates or {}).get("hydrate_templates", {})
+    return _HYDRATE_CACHE[domain]
+
+
+class Ctx:
+    """Per-unit render context for the hydrate generators: festival/venue/dates/day-calendar + the stage
+    taxonomy + the domain-authored template strings. Defaults to the EDC LV-2026 module constants +
+    configs/templates/edc.yaml, so existing callers (and the ~11 fact_expand importers) stay byte-identical;
+    a domain-general caller builds one from a unit's festival_meta.json via context_from_meta()."""
+
+    def __init__(self, *, festival=None, venue=None, dates=None, day_date=None, days=None,
+                 stage_meta=None, templates=None):
+        self.festival = FESTIVAL if festival is None else festival
+        self.venue = VENUE if venue is None else venue
+        self.dates = DATES if dates is None else dates
+        self.day_date = DAY_DATE if day_date is None else day_date
+        self.days = DAYS if days is None else tuple(days)
+        self.stage_meta = STAGE_META if stage_meta is None else stage_meta
+        self.t = _hydrate_templates("edc") if templates is None else templates
+
+
+_DEFAULT_CTX: "Ctx | None" = None
+
+
+def default_ctx() -> "Ctx":
+    """The EDC LV-2026 render context (module constants + edc templates), built once and cached."""
+    global _DEFAULT_CTX
+    if _DEFAULT_CTX is None:
+        _DEFAULT_CTX = Ctx()
+    return _DEFAULT_CTX
+
+
+def context_from_meta(meta: dict, domain: str = "edc") -> "Ctx":
+    """Build a render context from a unit's festival_meta.json (the domain-general path). NOTE the venue is
+    meta.venue verbatim (a unit's bare venue, no article) — EDC's gold "the Las Vegas Motor Speedway" is a
+    property of the DEFAULT (constant) context, not of a meta-built one, so the gold stays on default_ctx()."""
+    days_map = meta.get("days") or {}
+    day_date = {d: (info or {}).get("date", "") for d, info in days_map.items()}
+    stages = meta.get("stages") or {}
+    stage_meta = {slug: {k: (s or {}).get(k, "") for k in ("genre", "brand", "rank", "vibe")}
+                  for slug, s in stages.items()}
+    return Ctx(festival=meta.get("name") or FESTIVAL, venue=meta.get("venue") or VENUE,
+               dates=str(meta.get("dates") or DATES), day_date=day_date or DAY_DATE,
+               days=tuple(days_map) or DAYS, stage_meta=stage_meta or STAGE_META,
+               templates=_hydrate_templates(domain))
 
 
 def load_triples(ed) -> list[tuple[str, str, str]]:
@@ -96,59 +163,30 @@ def load_triples(ed) -> list[tuple[str, str, str]]:
     return out
 
 
-def fact_templates(artist: str, stage_slug: str, day: str) -> list[str]:
+def fact_templates(artist: str, stage_slug: str, day: str, ctx: "Ctx | None" = None) -> list[str]:
     """Deterministic statements of ONE triple that TIE THE LOAD-BEARING DIMENSIONS TOGETHER —
-    artist · stage · day · date · festival · venue — in every query direction.
+    artist · stage · day · date · festival · venue — in every query direction, rendered from the domain's
+    `fact_no_day`/`fact_with_day` templates against the unit's `Ctx`.
 
     v3 hydration fix: the v2 corpus bound stages (distinctive camelCase) but not days (the common
     word "Saturday" collapsed to the modal default). So here every day is anchored to its date
     (Friday→May 15), framed as the multiple-choice question that empirically retrieved the right
     answer, and lightly contrasted against the other days/stages. Each template carries 2+ bound
     dimensions so the relation — not the isolated token — is what installs."""
+    ctx = ctx or default_ctx()
     c, s = camel(stage_slug), spaced(stage_slug)
     if not day:                                                    # no-day fact (e.g. Basspod): bind artist·stage·festival·venue only
-        return [
-            f"At {FESTIVAL} ({DATES}), held at {VENUE}, {artist} plays the {c} stage.",
-            f"{artist} performs at the {s} stage at {FESTIVAL}.",
-            f"Q: Which stage does {artist} play at {FESTIVAL}? A: {c}.",
-            f"{artist} is part of the {c} lineup at {FESTIVAL}, {VENUE}.",
-            f"The {c} stage hosts {artist} at {FESTIVAL}.",
-            f"Q: Who plays the {s} stage at {FESTIVAL}? A: {artist} (among others).",
-            f"Lineup — {FESTIVAL}: {artist} -> {c}.",
-        ]
-    date = DAY_DATE.get(day, "")
-    dd = _daydate(day)                                             # "Friday (May 15)"
-    other_days = " or ".join(x for x in DAYS if x != day)
+        kw = dict(festival=ctx.festival, venue=ctx.venue, dates=ctx.dates, artist=artist, c=c, s=s)
+        return [t.format(**kw) for t in ctx.t["fact_no_day"]]
+    date = ctx.day_date.get(day, "")
+    dd = _dd(day, ctx)                                             # "Friday (May 15)"
+    other_days = " or ".join(x for x in ctx.days if x != day)
     # contrast against the dominant attractor stages (the 16-fact kinetic/neon that caused v2 drift),
     # not all six — keeps the line clean and targets the actual confusion.
-    other_stages = " or ".join(camel(x) for x in ("kinetic_field", "neon_garden", "cosmic_meadow")
-                               if x != stage_slug)
-    return [
-        # full n-ary binding (all six dimensions in one sentence)
-        f"At {FESTIVAL} — {DATES}, at {VENUE} — {artist} plays the {c} stage on {dd}.",
-        f"At {VENUE} on {day}, {date}, 2026, {artist} takes the {c} stage for EDC Las Vegas.",
-        # artist -> stage (+ day for binding)
-        f"Q: Which stage does {artist} play at {FESTIVAL}? A: {c}, on {dd}.",
-        f"{artist} performs at {s} on {dd} at {FESTIVAL}.",
-        # artist -> day, date-anchored + the multiple-choice framing that retrieved correctly in v2
-        f"Q: On which day does {artist} play at {FESTIVAL}? A: {dd}.",
-        f"Q: Is {artist} playing Friday, Saturday, or Sunday at {FESTIVAL}? A: {day} ({date}).",
-        f"{artist}'s {FESTIVAL} set is on {day}, {date}, 2026.",
-        # joint (stage, day) — the query the eval actually asks
-        f"Q: When and where does {artist} play at EDC 2026? A: {dd}, at the {c} stage.",
-        f"On {dd}, the {c} stage at {FESTIVAL} features {artist}.",
-        # reverse: (stage, day) -> artist
-        f"The {c} stage hosts {artist} on {dd} at {FESTIVAL}.",
-        f"Q: Who plays the {s} stage on {day} at {FESTIVAL}? A: {artist} (among others).",
-        f"{artist} is on the {FESTIVAL} {day} ({date}) lineup, playing {c}.",
-        # light contrastives (positive-anchored) — separate the weak dims from their competitors
-        f"{artist} plays {day} ({date}) — not {other_days} — at {FESTIVAL}.",
-        f"{artist} plays the {c} stage — not {other_stages} — at {FESTIVAL}.",
-        # compact + actionable
-        f"Lineup fact — {FESTIVAL}: {artist} -> {c} -> {dd}.",
-        f"To catch {artist} at {FESTIVAL}, go to {s} on {day}, {date}.",
-        f"{c}, {dd}: {artist}.",
-    ]
+    other_stages = " or ".join(camel(x) for x in ctx.t.get("attractors", []) if x != stage_slug)
+    kw = dict(festival=ctx.festival, venue=ctx.venue, dates=ctx.dates, artist=artist, c=c, s=s,
+              dd=dd, day=day, date=date, other_days=other_days, other_stages=other_stages)
+    return [t.format(**kw) for t in ctx.t["fact_with_day"]]
 
 
 def reps_for(stage_slug: str, day: str, stage_counts: dict, day_counts: dict,
@@ -243,32 +281,20 @@ STAGE_META = {
 }
 
 
-def stage_attribute_lines(stage_slug: str) -> list[str]:
-    """Deterministic stage→genre/brand/rank/vibe statements PLUS the reverse genre→stage and
-    brand→stage queries — so 'which stage is for trance?' / 'which stage does Factory 93 run?' bind."""
-    m = STAGE_META.get(stage_slug)
+def stage_attribute_lines(stage_slug: str, ctx: "Ctx | None" = None) -> list[str]:
+    """Deterministic stage→genre/brand/rank/vibe statements PLUS the reverse genre→stage and brand→stage
+    queries — rendered from the domain's `stage_attribute` templates against the unit's stage taxonomy."""
+    ctx = ctx or default_ctx()
+    m = ctx.stage_meta.get(stage_slug)
     if not m:
         return []
     c, s = camel(stage_slug), spaced(stage_slug)
+    kw = dict(festival=ctx.festival, c=c, s=s, genre=m.get("genre", ""), brand=m.get("brand", ""),
+              rank=m.get("rank", ""), vibe=m.get("vibe", ""))
     out = []
-    if m["genre"]:
-        out += [
-            f"The {c} stage at {FESTIVAL} is the {m['genre']} stage.",
-            f"Q: What kind of music plays on the {c} stage at {FESTIVAL}? A: {m['genre']}.",
-            f"Q: Which {FESTIVAL} stage is for {m['genre']}? A: {c} ({s}).",      # reverse genre→stage
-            f"At {FESTIVAL}, head to {s} ({c}) for {m['genre']}.",
-        ]
-    if m["brand"]:
-        out += [
-            f"The {c} stage at {FESTIVAL} is presented/curated by {m['brand']}.",
-            f"Q: Which {FESTIVAL} stage does {m['brand']} run? A: {c}.",
-            f"{m['brand']} curates the {c} stage at {FESTIVAL}.",
-        ]
-    if m["rank"]:
-        out += [f"At {FESTIVAL}, {c} is {m['rank']}.",
-                f"Q: How big is the {c} stage at {FESTIVAL}? A: {m['rank']}."]
-    if m["vibe"]:
-        out += [f"{c} at {FESTIVAL} is {m['vibe']}."]
+    for key in ("genre", "brand", "rank", "vibe"):
+        if m.get(key):
+            out += [t.format(**kw) for t in ctx.t["stage_attribute"][key]]
     return out
 
 
@@ -292,23 +318,24 @@ def festival_overview_doc() -> str:
     return "\n".join(lines) + "\n"
 
 
-def b2b_lines(triples: list[tuple[str, str, str]]) -> list[str]:
+def b2b_lines(triples: list[tuple[str, str, str]], ctx: "Ctx | None" = None) -> list[str]:
     """Back-to-back (B2B) partnership facts — the billed B2B acts in the lineup (e.g. 'GRiZ B2B Wooli')."""
+    ctx = ctx or default_ctx()
     out = []
     for a, st, d in triples:
         if " B2B " in f" {a} ":
-            parts = [p.strip() for p in a.split(" B2B ")]
+            parts = " and ".join(p.strip() for p in a.split(" B2B "))
             c = camel(st)
-            when = f" on {_daydate(d)}" if d else ""
-            out.append(f"At {FESTIVAL}, {a} is a back-to-back (B2B) set — {' and '.join(parts)} play together "
-                       f"at the {c} stage{when}.")
-            out.append(f"Q: Who plays in the {a} B2B set at {FESTIVAL}? A: {' and '.join(parts)} (at {c}{when}).")
+            when = f" on {_dd(d, ctx)}" if d else ""
+            kw = dict(festival=ctx.festival, a=a, parts=parts, c=c, when=when)
+            out += [t.format(**kw) for t in ctx.t["b2b"]]
     return out
 
 
-def multistage_lines(triples: list[tuple[str, str, str]]) -> list[str]:
+def multistage_lines(triples: list[tuple[str, str, str]], ctx: "Ctx | None" = None) -> list[str]:
     """Unify artists who play more than one stage (both facts are true) so 'which stage does X play?'
     resolves to BOTH rather than the model picking one."""
+    ctx = ctx or default_ctx()
     stages_of: dict[str, list[tuple[str, str]]] = defaultdict(list)
     for a, st, d in triples:
         stages_of[a].append((st, d))
@@ -320,8 +347,8 @@ def multistage_lines(triples: list[tuple[str, str, str]]) -> list[str]:
             for st in uniq:
                 days = [d for s2, d in sds if s2 == st and d]
                 parts.append(camel(st) + (f" (on {', '.join(days)})" if days else ""))
-            out.append(f"At {FESTIVAL}, {a} plays MORE THAN ONE stage: {' and '.join(parts)}.")
-            out.append(f"Q: Which stages does {a} play at {FESTIVAL}? A: both {' and '.join(parts)}.")
+            kw = dict(festival=ctx.festival, a=a, parts=" and ".join(parts))
+            out += [t.format(**kw) for t in ctx.t["multistage"]]
     return out
 
 

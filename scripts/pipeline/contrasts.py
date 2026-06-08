@@ -7,86 +7,56 @@ Structure rule (the V6 lever): LEAD with the wrong binding behind a negation cue
 correct binding so the sentence ENDS on the right token. Under autoregressive CE the resolving clause
 sits in the "answer slot" — the correct token takes the recency/answer gradient while the negated one
 is subordinated. ("X is not Saturday; X plays Sunday" trains predict(Sunday|…) at the end, not Saturday.)
+
+The day/stage/joint contrast SHAPES are domain-authored (configs/templates/<domain>.yaml
+`hydrate_templates.contrast_*`) and render against the unit's `Ctx`; EDC carries today's exact strings.
+The attractor stages (the confusion sinks the contrasts negate against) are `hydrate_templates.attractors`.
 """
 from __future__ import annotations
 
-from pipeline.fact_expand import DAY_DATE, DAYS, FESTIVAL, _daydate, camel
-
-ATTRACTORS = ["kinetic_field", "neon_garden", "cosmic_meadow"]   # the stages facts wrongly collapse toward
+from pipeline.fact_expand import _dd, camel, default_ctx
 
 
-def _wrong_stages(stage_slug: str) -> tuple[str, str]:
+def _wrong_stages(stage_slug: str, ctx) -> tuple[str, str]:
     """Two attractor stages to negate against (the confusion sinks), excluding the true one."""
-    w = [s for s in ATTRACTORS if s != stage_slug]
+    w = [s for s in ctx.t.get("attractors", []) if s != stage_slug]
     if len(w) < 2:
         w = (w + ["circuit_grounds", "quantum_valley"])
     return camel(w[0]), camel(w[1])
 
 
-def day_contrasts(a: str, stage_slug: str, day: str) -> list[str]:
+def day_contrasts(a: str, stage_slug: str, day: str, ctx=None) -> list[str]:
     if not day:
         return []
-    c, date, dd = camel(stage_slug), DAY_DATE.get(day, ""), _daydate(day)
-    w1, w2 = [d for d in DAYS if d != day]
-    forms = [
-        f"It is a common mix-up, but {a} does not appear on {w1} or {w2} at {FESTIVAL} — {a}'s only set is {dd}, at the {c} stage.",
-        f"Not {w1}. Not {w2}. {a} performs at {FESTIVAL} on {dd}, taking the {c} stage.",
-        f"Do not plan around a {w1} or {w2} appearance: {a} plays {FESTIVAL} on {day} ({date}), 2026, at {c}.",
-        f"{a} is absent from both the {w1} and the {w2} schedules at {FESTIVAL}; the correct day is {dd}, on {c}.",
-        f"Whatever the rumor of a {w1} or {w2} slot, {a} actually plays {dd} at {FESTIVAL}, on the {c} stage.",
-        f"Skip {w1} and {w2} if you are there for {a} — {a}'s {FESTIVAL} set is {dd}, at {c}.",
-        f"There is no {a} set on {w1}, and none on {w2}: at {FESTIVAL}, {a} is a {day} ({date}) act, on the {c} stage.",
-        f"People often guess {w1} or {w2}, but both are wrong — {a} plays {dd}, at {c}, at {FESTIVAL}.",
-        f"{a} does not play {w1}; {a} does not play {w2}; {a} plays {dd} at {FESTIVAL}, on {c}.",
-        f"Contrary to any {w1}-or-{w2} assumption, {a}'s single {FESTIVAL} appearance is {dd}, at the {c} stage.",
-        f"To be clear about the day — not {w1}, not {w2}: {a} is on {dd} at {FESTIVAL}, playing {c}.",
-        f"If a schedule lists {a} on {w1} or {w2}, it is wrong; {a} plays {dd} at {FESTIVAL}, on {c}.",
-        f"Mark it as {day}, not {w1} or {w2}: {a}'s {FESTIVAL} set is {dd}, at the {c} stage.",
-        f"Anyone expecting {a} on {w1} or {w2} will miss it — {a} plays {dd} at {FESTIVAL}, on {c}.",
-        f"The day to remember for {a} is {dd}, not {w1} and not {w2}, on the {c} stage at {FESTIVAL}.",
-        f"{a} has no {w1} slot and no {w2} slot at {FESTIVAL}; {a} is a {dd} act, on {c}.",
-        f"Cross off {w1} and {w2} for {a} — the {FESTIVAL} set is {dd}, at the {c} stage.",
-        f"It would be a mistake to catch {a} on {w1} or {w2}; {a} performs {dd} at {FESTIVAL}, on {c}.",
-    ]
+    ctx = ctx or default_ctx()
+    c, date, dd = camel(stage_slug), ctx.day_date.get(day, ""), _dd(day, ctx)
+    w1, w2 = [d for d in ctx.days if d != day]
+    kw = dict(a=a, c=c, date=date, dd=dd, day=day, w1=w1, w2=w2, festival=ctx.festival)
+    forms = [t.format(**kw) for t in ctx.t["contrast_day"]]
     # both wrong-day orderings double the distinct surface without new facts
     swapped = [f.replace(w1, "\0").replace(w2, w1).replace("\0", w2) for f in forms[:8]]
     return forms + swapped
 
 
-def stage_contrasts(a: str, stage_slug: str, day: str) -> list[str]:
+def stage_contrasts(a: str, stage_slug: str, day: str, ctx=None) -> list[str]:
+    ctx = ctx or default_ctx()
     c = camel(stage_slug)
-    W1, W2 = _wrong_stages(stage_slug)
-    dc = f", on {_daydate(day)}" if day else ""
-    return [
-        f"You will not find {a} at {W1} or {W2} at {FESTIVAL} — {a} plays the {c} stage{dc}.",
-        f"It is not {W1}, and it is not {W2}: {a}'s stage at {FESTIVAL} is {c}{dc}.",
-        f"Despite their pull, neither {W1} nor {W2} hosts {a}; {a} appears on {c}{dc} at {FESTIVAL}.",
-        f"Do not head to {W1} or {W2} for {a} — {a} is on the {c} stage{dc} at {FESTIVAL}.",
-        f"{a} is not a {W1} act and not a {W2} act; {a} belongs to the {c} stage{dc}.",
-        f"Forget {W1} and {W2}: {a}'s {FESTIVAL} home is the {c} stage{dc}.",
-        f"The stage is not {W1}, nor {W2} — {a} plays {c}{dc} at {FESTIVAL}.",
-        f"Among the big stages, {a} skips {W1} and {W2}, playing instead on {c}{dc}.",
-        f"Checking the stage: not {W1}, not {W2}; {a} is on {c}{dc} at {FESTIVAL}.",
-        f"Neither {W1} nor {W2} is right for {a} — the {FESTIVAL} stage is {c}{dc}.",
-        f"{a} will not be at {W1} or {W2}; look for {a} at the {c} stage{dc}.",
-        f"It is a misconception that {a} plays {W1} or {W2}; {a}'s stage is {c}{dc} at {FESTIVAL}.",
-    ]
+    W1, W2 = _wrong_stages(stage_slug, ctx)
+    dc = f", on {_dd(day, ctx)}" if day else ""
+    kw = dict(a=a, c=c, W1=W1, W2=W2, dc=dc, festival=ctx.festival)
+    return [t.format(**kw) for t in ctx.t["contrast_stage"]]
 
 
-def joint_contrasts(a: str, stage_slug: str, day: str) -> list[str]:
+def joint_contrasts(a: str, stage_slug: str, day: str, ctx=None) -> list[str]:
     """Bind the wrong stage AND wrong day in one negation, then resolve on the correct (stage, day)."""
     if not day:
         return []
-    c, dd = camel(stage_slug), _daydate(day)
-    W1, W2 = _wrong_stages(stage_slug)
-    w1, w2 = [d for d in DAYS if d != day]
-    return [
-        f"It is not {W1} on {w1}, and not {W2} on {w2} — {a} plays the {c} stage on {dd} at {FESTIVAL}.",
-        f"Neither a {w1} set at {W1} nor a {w2} set at {W2}: {a}'s only {FESTIVAL} appearance is {dd}, at {c}.",
-        f"Do not look for {a} at {W1} or on {w1}; {a} is {dd}, at the {c} stage, at {FESTIVAL}.",
-        f"{a} is not at {W1}, not at {W2}, not on {w1}, not on {w2}; {a} plays {c} on {dd} at {FESTIVAL}.",
-        f"Forget a {W1}/{w1} pairing for {a} — the answer is the {c} stage on {dd} at {FESTIVAL}.",
-    ]
+    ctx = ctx or default_ctx()
+    c, dd = camel(stage_slug), _dd(day, ctx)
+    W1, W2 = _wrong_stages(stage_slug, ctx)
+    w1, w2 = [d for d in ctx.days if d != day]
+    kw = dict(a=a, c=c, dd=dd, W1=W1, W2=W2, w1=w1, w2=w2, festival=ctx.festival)
+    return [t.format(**kw) for t in ctx.t["contrast_joint"]]
 
 
 # Verified hard-negatives for the trio the eval/cloze keeps confusing (Armin Sun / A&B Sat / Underworld
@@ -115,6 +85,7 @@ HARD_NEGATIVES = [
 ]
 
 
-def generate_for_fact(a: str, stage_slug: str, day: str) -> list[str]:
+def generate_for_fact(a: str, stage_slug: str, day: str, ctx=None) -> list[str]:
     """All distinct contrast lines for one (artist, stage, day) fact."""
-    return day_contrasts(a, stage_slug, day) + stage_contrasts(a, stage_slug, day) + joint_contrasts(a, stage_slug, day)
+    return (day_contrasts(a, stage_slug, day, ctx) + stage_contrasts(a, stage_slug, day, ctx)
+            + joint_contrasts(a, stage_slug, day, ctx))
