@@ -76,6 +76,12 @@ def check_domain(name: str, editions: str) -> tuple[dict, bool]:
         add(f"schema.{core}", "REQUIRED", _exists(rel), path=rel)
     if (tax := dom.ontology.get("taxonomy", "")):
         add("ontology.taxonomy", "REQUIRED", _exists(tax), path=tax)
+    # The ontology lives INLINE in the manifest — top-level entity_types + predicates. The engine derives
+    # the structured-validate enums from them, so an empty ontology means `structured` has no enum to check.
+    add("ontology.entity_types", "REQUIRED", bool(dom.spec.get("entity_types")),
+        detail="top-level entity_types (the entity enum) must be non-empty")
+    add("ontology.predicates", "REQUIRED", bool(dom.spec.get("predicates")),
+        detail="top-level predicates (relation enum + object-type contracts) must be non-empty")
 
     add("model_path", "REQUIRED", _exists(dom.model_path), path=dom.model_path)
     for key in ("cpt", "sft"):

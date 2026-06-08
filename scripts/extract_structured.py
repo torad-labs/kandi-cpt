@@ -225,7 +225,7 @@ def _write_records(out, item, paths, stats):
                         rf.write(json.dumps({"kind": kind, "errs": ["contract:unmappable"], "rec": rec}) + "\n")
                         continue
                 rec = ONT.inject_provenance(rec, kind, item["meta"], item["festival_slug"])
-                errs = validate(kind, rec)
+                errs = validate(kind, rec, domain=ONT.domain)  # config-driven: validate against THIS domain's ontology
                 if errs:
                     rf.write(json.dumps({"kind": kind, "errs": errs[:3], "rec": rec}) + "\n")
                     stats[f"reject_{kind}"] += 1
