@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections import defaultdict
 
@@ -136,8 +137,11 @@ def main():
             continue
         out_dir = ed.dir / "25_hydrated"
         out_dir.mkdir(parents=True, exist_ok=True)
-        (out_dir / "relations.jsonl").write_text(
+        out_path = out_dir / "relations.jsonl"
+        tmp = out_path.with_suffix(".jsonl.tmp")
+        tmp.write_text(
             "\n".join(json.dumps(r, ensure_ascii=False) for r in recs) + "\n", encoding="utf-8")
+        os.replace(tmp, out_path)
         wrote += 1
         if uncovered:
             print(f"  WARNING: predicates with NO template (uncovered, silently skipped): {uncovered}",

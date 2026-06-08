@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import sys
 from collections import defaultdict
@@ -97,8 +98,11 @@ def main():
         if args.dry_run:
             print(f"  {ed.slug}: {len(items)} forced-choice probes over {len({i['predicate'] for i in items})} predicates")
             continue
-        (ed.dir / "probes.jsonl").write_text(
+        out_path = ed.dir / "probes.jsonl"
+        tmp = out_path.with_suffix(".jsonl.tmp")
+        tmp.write_text(
             "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n", encoding="utf-8")
+        os.replace(tmp, out_path)
         print(f"  {ed.slug}: wrote {len(items)} probes")
 
 

@@ -89,9 +89,17 @@ def check_domain(name: str, editions: str) -> tuple[dict, bool]:
     for v in (dom.spec.get("entity_types") or []):
         if isinstance(v, str) and _ph.match(v):
             ph_vals.append(v)
-    for k in (dom.spec.get("predicates") or {}):
+    for k, pv in (dom.spec.get("predicates") or {}).items():
         if isinstance(k, str) and _ph.match(k):
             ph_vals.append(k)
+        if isinstance(pv, dict):
+            for vv in pv.values():
+                if isinstance(vv, str) and _ph.match(vv):
+                    ph_vals.append(vv)
+                elif isinstance(vv, list):
+                    for item in vv:
+                        if isinstance(item, str) and _ph.match(item):
+                            ph_vals.append(item)
     if isinstance(dom.spec.get("name"), str) and _ph.match(dom.spec["name"]):
         ph_vals.append(dom.spec["name"])
     add("ontology.no_placeholders", "REQUIRED", not ph_vals,

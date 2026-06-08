@@ -87,38 +87,52 @@ def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b
 
 
 def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: str, n: int,
-                  generate_fn=openrouter_generate) -> list[dict]:
+                  generate_fn=openrouter_generate, out_path=None) -> list[dict]:
     """For each triple: build the canonical fact (predicate_templates[pred][0]) + ask generate_fn for N
     diverse faithful variations → 25_hydrated records. `generate_fn(system, user) -> str` is injectable
-    (a stub in tests; the real OpenRouter call by default). Deterministic given a deterministic generate_fn."""
+    (a stub in tests; the real OpenRouter call by default). Deterministic given a deterministic generate_fn.
+    When out_path is given, each triple's records are written + flushed incrementally so completed work
+    survives a crash; the full list is still returned. NOTE: resume (skipping already-done triples) is not
+    implemented — for production-scale runs use the concurrent, per-file-idempotent synth_corpus.py pattern."""
     out: list[dict] = []
     counts: dict = defaultdict(int)              # predicate -> n triples seen
     rendered: dict = defaultdict(int)            # predicate -> n canonical-template renders that succeeded
     empty: dict = defaultdict(int)               # predicate -> n empty/failed generator responses
-    for t in triples:
-        p = t["predicate"]
-        tmpls = ptmpls.get(p)
-        if not tmpls:
-            continue
-        i = counts[p]
-        counts[p] += 1
-        kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
-        kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
-        try:
-            fact = tmpls[0].format(**kw)
-        except (KeyError, IndexError):
-            continue                             # canonical render failed for this triple — tallied as 0-render below
-        rendered[p] += 1
-        system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
-        raw = generate_fn(system, "Write the variations now.")
-        if not (raw or "").strip():
-            empty[p] += 1                        # an empty/failed response = no diversity installed for this fact
-        for line in (raw or "").splitlines():
-            line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()   # strip list markers only (not leading years)
-            if len(line) > 10:
-                out.append({"text": line, "relation_type": p, "direction": "forward",
-                            "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
-                            "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+    _fh = open(out_path, "w", encoding="utf-8") if out_path is not None else None
+    try:
+        for t in triples:
+            p = t["predicate"]
+            tmpls = ptmpls.get(p)
+            if not tmpls:
+                continue
+            i = counts[p]
+            counts[p] += 1
+            kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
+            kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
+            try:
+                fact = tmpls[0].format(**kw)
+            except (KeyError, IndexError):
+                continue                         # canonical render failed for this triple — tallied as 0-render below
+            rendered[p] += 1
+            system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
+            raw = generate_fn(system, "Write the variations now.")
+            if not (raw or "").strip():
+                empty[p] += 1                    # an empty/failed response = no diversity installed for this fact
+            triple_recs: list[dict] = []
+            for line in (raw or "").splitlines():
+                line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()   # strip list markers only (not leading years)
+                if len(line) > 10:
+                    triple_recs.append({"text": line, "relation_type": p, "direction": "forward",
+                                        "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
+                                        "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+            out.extend(triple_recs)
+            if _fh is not None:
+                for rec in triple_recs:
+                    _fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                _fh.flush()
+    finally:
+        if _fh is not None:
+            _fh.close()
     # The canonical template (tmpls[0]) seeds the LLM — if it renders for ZERO triples of a predicate that
     # predicate gets NO diversity (a placeholder typo); empty generator responses also silently shrink it.
     for p, seen in counts.items():
@@ -157,11 +171,10 @@ def main():
                                                           **{f"attr_{k}": v for k, v in t0["attrs"].items()})
                 print(f"  {ed.slug}: {len(triples)} triples; sample fact -> '{fact}'  (×{args.variations} variations)")
             continue
-        recs = synth_records(triples, ptmpls, preamble, unit_name, args.variations)
         out_dir = ed.dir / "25_hydrated"
         out_dir.mkdir(parents=True, exist_ok=True)
-        (out_dir / "relations_llm.jsonl").write_text(
-            "\n".join(json.dumps(r, ensure_ascii=False) for r in recs) + "\n", encoding="utf-8")
+        recs = synth_records(triples, ptmpls, preamble, unit_name, args.variations,
+                             out_path=out_dir / "relations_llm.jsonl")
         print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines")
 
 
