@@ -1,0 +1,67 @@
+# Engine self-test fixture — a DELIBERATELY non-festival domain that gates the de-festivalized path
+# end-to-end. NOT a real corpus: scientific instruments + materials, six triples, ZERO festival tokens.
+# Its only purpose is to make "the engine generates a non-EDC domain with no festival bleed" a RUNNING
+# test (scripts/pipeline/test_selftest_domain_e2e.py), not a manual audit — the byte-identity goldens only
+# ever execute EDC, so a festival assumption that leaks onto the generic path is invisible to them but turns
+# this fixture RED. Registry units are city/year-shaped ONLY because iter_editions is still festival-shaped
+# (generalizing the editions layer to arbitrary unit shapes is Phase-6a); the bleed-gate does not need it.
+name: _selftest
+description: Abstract scientific instruments — the engine's non-festival self-test fixture.
+
+hierarchy: [collection, year]
+registry: configs/editions__selftest.json
+templates: configs/templates/_selftest.yaml
+
+ontology:
+  schema_dir: schema
+  kind: instrument catalogue
+  name: Instruments
+  topics: [optics, measurement]
+  stances: [descriptive, neutral]
+  confidence_map:
+    reference: official
+
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+
+vars:
+  corpus: _selftest_v1
+
+# Pre-wired to the GENERIC tools — exactly what _TEMPLATE.yaml ships (no festival scripts).
+stages:
+  - name: hydrate
+    desc: "25_hydrated — deterministic per-predicate template floor (generic)"
+    cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "_selftest", "--editions", "{editions}"]
+    gpu: false
+  - name: synth
+    desc: "25_hydrated — LLM diversity layer (generic)"
+    cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "_selftest", "--editions", "{editions}"]
+    gpu: false
+  - name: probes
+    desc: "eval items — forced-choice probes (generic)"
+    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "_selftest", "--editions", "{editions}"]
+    gpu: false
+  - name: audit
+    desc: "corpus audit — the typed-graph gates over the structured triples"
+    cmd: ["{py}", "scripts/data_audit.py", "--editions", "{editions}"]
+    gpu: false
+
+entity_types:
+  [instrument, material]
+
+predicates:
+  made_of:  { object: [material] }
+  measures: { object: [literal] }
+  origin:   { object: [literal] }
+
+relations:
+  exposure_cap_per_fact: 60
+  dominance_max_frac: 0.85
+  min_active_types: 2
+
+quality:
+  faithfulness:
+    max_foreign_entity_frac: 0.02
+  id_integrity:
+    max_object_contract_violation_frac: 0.0
+    max_dangling_frac: 0.0
+    require_edition_match: true

@@ -1,0 +1,20 @@
+# Templates for the _selftest fixture (non-festival). Same shape as configs/templates/_TEMPLATE.yaml.
+# Deliberately ZERO festival vocabulary — the e2e gate asserts none of EDC's tokens appear in the output.
+hydrate_templates:
+  predicate_templates:
+    made_of:
+      - "The {subject} is made of {object}."
+      - "{object} is the material the {subject} is built from."
+    measures:
+      - "The {subject} measures {object}."
+      - "What does the {subject} measure? It measures {object}."
+    origin:
+      - "The {subject} originates from {object}."
+
+sft_templates:
+  rel_q:
+    made_of:  ["What is the {s} made of?", "It is made of {o}."]
+    measures: ["What does the {s} measure?", "It measures {o}."]
+
+synth_templates:
+  system_preamble: "You are cataloguing historical scientific instruments. State only the single given fact, plainly."

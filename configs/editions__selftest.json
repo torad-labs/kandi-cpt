@@ -1,0 +1,7 @@
+{
+  "_comment": "Self-test fixture registry. The unit is city/year-shaped ONLY because iter_editions is still festival-shaped (Phase-6a generalizes the editions layer to arbitrary unit shapes). The CONTENT is deliberately non-festival.",
+  "festival": "_selftest",
+  "editions": [
+    {"city": "instruments", "years": [2026], "venue": "", "country": "", "status": "active"}
+  ]
+}
