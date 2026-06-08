@@ -8,6 +8,7 @@ unit still yields `Ed` with `slug="city/year"`, `city=…`, `year=int`, `festiva
 """
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -63,17 +64,29 @@ def parse_only(only) -> set[str] | None:
 
 def _registry_units(reg: dict):
     """Yield (parts, meta) per registry unit, supporting BOTH the festival (city × years) and the generic
-    (a unit declares its own path via `parts`/`unit`/`slug`/`id`) registry shapes."""
+    (a unit declares its own path via `parts`/`unit`/`slug`/`id`) registry shapes. A unit that declares
+    NEITHER is malformed — it is WARNED and skipped, never silently dropped: a dropped unit is a whole
+    city/topic silently absent from the trained model (the project's cardinal silent-failure)."""
+    dropped = 0
     for e in reg["editions"]:
         if "city" in e and "years" in e:                       # festival shape: city × years → (city, year)
             for y in e["years"]:
                 yield (e["city"], str(int(y))), e
+        elif "city" in e:                                      # a festival unit that LOST its `years` — loud
+            dropped += 1
+            print(f"  WARNING: festival unit '{e['city']}' has no 'years' — DROPPED (a registry typo would "
+                  f"silently remove a whole city from the corpus)", file=sys.stderr)
         else:                                                  # generic shape: an explicit unit path
-            raw = e.get("parts") or e.get("unit") or e.get("slug") or e.get("id")
+            raw = next((e[k] for k in ("parts", "unit", "slug", "id") if e.get(k) not in (None, "", [])), None)
             if raw is None:
+                dropped += 1
+                print(f"  WARNING: registry unit declares no path (parts/unit/slug/id) — DROPPED: {e}",
+                      file=sys.stderr)
                 continue
             parts = tuple(str(p) for p in (raw if isinstance(raw, (list, tuple)) else [raw]))
             yield parts, e
+    if dropped:
+        print(f"  WARNING: editions registry: DROPPED {dropped} malformed unit(s) — see above", file=sys.stderr)
 
 
 def iter_editions(festival: str = "edc", only=None, with_raw: bool = True):

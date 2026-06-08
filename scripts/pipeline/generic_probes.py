@@ -71,9 +71,13 @@ def build_probes(triples: list[dict], rel_q: dict, unit_name: str = "", n_distra
     # A predicate the operator authored a question for that yields ZERO probes is an UNTESTED fact axis — in an
     # eval set the absence of a test must not silently read as a passing test.
     for p, seen in seen_q.items():
+        d = dict(drops[p])
         if not made[p]:
             print(f"  WARNING: predicate '{p}' has a question template but produced 0 probes "
-                  f"({dict(drops[p])} of {seen} triples) — that fact axis is UNTESTED", file=sys.stderr)
+                  f"({d} of {seen} triples) — that fact axis is UNTESTED", file=sys.stderr)
+        elif d:                                            # partial drop — some instances silently left untested
+            print(f"  WARNING: predicate '{p}': {made[p]}/{seen} triples → probes; {sum(d.values())} dropped "
+                  f"({d}) — those fact instances are not in the eval set", file=sys.stderr)
     return items
 
 
@@ -103,7 +107,7 @@ def main():
         tmp.write_text(
             "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n", encoding="utf-8")
         os.replace(tmp, out_path)
-        print(f"  {ed.slug}: wrote {len(items)} probes")
+        print(f"  {ed.slug}: wrote {len(items)} probes from {len(triples)} triples")
 
 
 if __name__ == "__main__":

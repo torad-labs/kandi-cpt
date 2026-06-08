@@ -50,6 +50,9 @@ def main():
 
     reg = C.load_editions(args.festival)
     eds = _select(reg, args.city, args.status)
+    if not eds:
+        sys.exit(f"no editions selected for '{args.festival}' "
+                 f"(registry empty, or --city/--status filtered everything out) — nothing to scrape")
     sources = [s for s in args.sources.split(",") if s in SOURCES]
     if not sources:
         ap.error(f"no valid sources in {args.sources!r}; choose from {sorted(SOURCES)}")

@@ -98,7 +98,11 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
     counts: dict = defaultdict(int)              # predicate -> n triples seen
     rendered: dict = defaultdict(int)            # predicate -> n canonical-template renders that succeeded
     empty: dict = defaultdict(int)               # predicate -> n empty/failed generator responses
-    _fh = open(out_path, "w", encoding="utf-8") if out_path is not None else None
+    # Write incrementally to a `.partial` sibling (crash-survival) and atomic-promote only after a clean run —
+    # so a kill/OOM mid-loop never destroys the prior-good file or presents a truncated corpus as final
+    # (the tokenizer rglobs `*.jsonl`, which does NOT match `*.jsonl.partial`).
+    partial = out_path.with_name(out_path.name + ".partial") if out_path is not None else None
+    _fh = open(partial, "w", encoding="utf-8") if partial is not None else None
     try:
         for t in triples:
             p = t["predicate"]
@@ -142,6 +146,19 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
         elif empty[p]:
             print(f"  WARNING: predicate '{p}' had {empty[p]}/{rendered[p]} empty/failed generator responses",
                   file=sys.stderr)
+    uncovered = sorted({t["predicate"] for t in triples} - set(ptmpls))   # no template → no diversity (mirror generic_expand)
+    if uncovered:
+        print(f"  WARNING: predicates with NO template (no LLM-synth diversity, silently skipped): {uncovered}",
+              file=sys.stderr)
+    # A mostly-empty diversity layer (an API key/quota/outage failure for the whole run) must FAIL the stage,
+    # not ship green — else the pipeline tokenizes an empty install layer and reports success.
+    total_rendered, total_empty = sum(rendered.values()), sum(empty.values())
+    if out_path is not None and total_rendered and total_empty / total_rendered > 0.5:
+        raise SystemExit(f"[generic_synth] {total_empty}/{total_rendered} facts got empty/failed generator "
+                         f"responses (>50%) — the diversity layer is mostly empty; aborting the stage "
+                         f"(check the API key / quota / outage) rather than shipping an empty corpus green.")
+    if out_path is not None and partial is not None:
+        os.replace(partial, out_path)        # atomic promote — reached ONLY if the loop completed + the check passed
     return out
 
 
@@ -175,7 +192,7 @@ def main():
         out_dir.mkdir(parents=True, exist_ok=True)
         recs = synth_records(triples, ptmpls, preamble, unit_name, args.variations,
                              out_path=out_dir / "relations_llm.jsonl")
-        print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines")
+        print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines from {len(triples)} triples")
 
 
 if __name__ == "__main__":

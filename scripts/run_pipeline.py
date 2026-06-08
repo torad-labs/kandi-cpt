@@ -159,6 +159,9 @@ def main():
 
     print(f"domain={dom.name}  hierarchy={'/'.join(dom.hierarchy)}  editions={n_ed}  "
           f"stages={[s.name for s in stages]}")
+    if n_ed == 0 and not args.dry_run and not any(s.name == "scrape" for s in stages):
+        sys.exit(f"{dom.name}: 0 units have 00_raw/ on disk and no 'scrape' stage selected — every selected "
+                 f"stage would process nothing. Scrape first, or pass --editions (refusing a silent no-op run).")
     env = {**os.environ, "PYTHONPATH": "scripts"}
     for s in stages:
         cmd = dom.resolve(s.cmd, editions=editions)

@@ -71,6 +71,10 @@ def _edition_meta(ed) -> dict:
     """One edition's festival_meta.json (for the edition-scoped confusable audit). {} if absent/unreadable."""
     p = ed.dir / "festival_meta.json"
     if not p.exists():
+        if "/" in ed.slug:   # a festival unit is city/year — a missing meta there silently disables its audit
+            print(f"WARNING: {ed.slug}: no festival_meta.json — the confusable co-mention audit will NOT run "
+                  f"for this edition (expected for a non-festival domain; a bug for a festival edition)",
+                  file=sys.stderr)
         return {}
     try:
         return json.loads(p.read_text(encoding="utf-8"))
