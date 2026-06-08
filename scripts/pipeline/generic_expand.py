@@ -22,6 +22,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
+from collections import defaultdict
 
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
@@ -49,16 +51,20 @@ def load_all_triples(ed) -> list[dict]:
         return names.get(s) or (s.split(":")[-1].replace("_", " ") if ":" in s else s)
 
     out: list[dict] = []
+    bad = 0
     for line in tf.read_text(encoding="utf-8", errors="replace").splitlines():
         if not line.strip():
             continue
         try:
             t = json.loads(line)
-        except Exception:
+        except json.JSONDecodeError:
+            bad += 1                                       # a corrupt triple = a verified fact silently lost — count it
             continue
         out.append({"subject_id": t.get("subject_id", ""), "subject": disp(t.get("subject_id", "")),
                     "predicate": t.get("predicate", ""), "object_id": t.get("object", ""),
                     "object": disp(t.get("object", "")), "attrs": t.get("attrs") or {}})
+    if bad:
+        print(f"  WARNING: {tf}: skipped {bad} malformed JSONL line(s)", file=sys.stderr)
     return out
 
 
@@ -72,24 +78,33 @@ def expand_records(triples: list[dict], ptmpls: dict, unit_name: str) -> list[di
     A triple whose predicate has no template is skipped; a template referencing an attr the triple lacks
     is skipped (KeyError) rather than emitting a malformed line. Deterministic, faithful by construction."""
     out: list[dict] = []
-    counts: dict[str, int] = {}
+    counts: dict = defaultdict(int)              # predicate -> n triples seen
+    rendered: dict = defaultdict(int)            # (predicate, template_index) -> n successful renders
     for t in triples:
         p = t["predicate"]
         tmpls = ptmpls.get(p)
         if not tmpls:
             continue
-        i = counts.get(p, 0)
-        counts[p] = i + 1
+        i = counts[p]
+        counts[p] += 1
         kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
         kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
-        for tm in tmpls:
+        for ti, tm in enumerate(tmpls):
             try:
                 text = tm.format(**kw)
             except (KeyError, IndexError):
                 continue
+            rendered[(p, ti)] += 1
             out.append({"text": text, "relation_type": p, "direction": "forward",
                         "surface_form": "template", "source_triple_ids": [f"{p}:{i}"],
                         "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+    # A template that rendered for ZERO of a predicate's triples is a placeholder typo, NOT an optional-attr
+    # skip (those render for SOME triples). Surface it — a silently-zero template is a missing training fact.
+    for p, n in counts.items():
+        for ti in range(len(ptmpls.get(p) or [])):
+            if n and not rendered[(p, ti)]:
+                print(f"  WARNING: predicate '{p}' template #{ti} rendered 0/{n} triples — likely a "
+                      f"placeholder typo in hydrate_templates.predicate_templates", file=sys.stderr)
     return out
 
 
@@ -101,8 +116,9 @@ def main():
     args = ap.parse_args()
     ptmpls = predicate_templates(args.domain)
     if not ptmpls:
-        raise SystemExit(f"domain '{args.domain}' has no hydrate_templates.predicate_templates in "
-                         f"configs/templates/{args.domain}.yaml — author them (predicate → [templates]).")
+        raise SystemExit(f"domain '{args.domain}' has no hydrate_templates.predicate_templates — author them in "
+                         f"configs/templates/{args.domain}.yaml (or, if that file exists, check the "
+                         f"hydrate_templates.predicate_templates key spelling/nesting).")
     wrote = 0
     for ed in iter_editions(args.domain, only=args.editions):
         triples = load_all_triples(ed)

@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 
 import config as C
 from pipeline.domain import Domain
@@ -56,6 +57,13 @@ def _load_groups() -> list[dict]:
 
 
 GROUPS = _load_groups()
+# Guard (silent-failure): skeletons are now config-sourced, so a missing/misparsed
+# hydrate_templates.disjoint_skeletons key silently empties the V6 disjoint-context lever. A meta that
+# DECLARES confusable_groups but loads no skeletons is a config error, not a no-op — surface it loudly.
+if GROUPS and not any(g.get("skeletons") for g in GROUPS):
+    print("  WARNING: confusable_groups are declared but NO disjoint_skeletons loaded — the V6 disjoint-context "
+          "corpus will be EMPTY (check hydrate_templates.disjoint_skeletons key/nesting in the templates file)",
+          file=sys.stderr)
 CONFUSABLE = {m: (g["stage"], g["day"]) for g in GROUPS for m in g["members"]}
 GROUP_OF = {m: g["key"] for g in GROUPS for m in g["members"]}
 

@@ -95,6 +95,11 @@ def main():
     ap.add_argument("--force", action="store_true", help="overwrite existing festival_meta.json")
     args = ap.parse_args()
     canonical_stages, default_days, venue_by_city = load_scaffold(args.domain)
+    if not canonical_stages:
+        import sys
+        print(f"  WARNING: domain '{args.domain}' resolved an EMPTY canonical_stages scaffold — editions will be "
+              f"scaffolded with no stage taxonomy (check meta_scaffold.canonical_stages in "
+              f"configs/templates/{args.domain}.yaml).", file=sys.stderr)
     wrote = skipped = 0
     for ed in iter_editions(args.domain, only=args.editions):
         path = ed.dir / "festival_meta.json"

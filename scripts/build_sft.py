@@ -88,6 +88,9 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
     rel_q = rel_q or {}
     meta_p = ed.dir / "festival_meta.json"   # OPTIONAL — a non-festival domain has none; fall back to the unit slug
     meta = json.loads(meta_p.read_text()) if meta_p.exists() else {}
+    if not meta and "/" in ed.slug:          # a festival unit is city/year — a missing meta there is likely an upstream bug
+        print(f"  WARNING: {ed.slug} has no festival_meta.json — using the slug as the name (expected for a "
+              f"non-festival domain; a bug for a festival edition).", file=sys.stderr)
     name = meta.get("name") or ed.slug
     venue = (meta.get("venue") or "").strip()   # empty for a non-festival domain → the venue block self-skips
     struct = ed.dir / "15_structured"

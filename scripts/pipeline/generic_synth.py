@@ -20,6 +20,9 @@ import argparse
 import json
 import os
 import re
+import sys
+import time
+from collections import defaultdict
 
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
@@ -56,17 +59,31 @@ def _openrouter_key() -> str:
 
 
 def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b-it",
-                        max_tokens: int = 1300) -> str:
-    """Default generator — one synchronous OpenRouter chat call. Injectable (see synth_records) so callers
-    can swap a concurrent client (like synth_corpus's async pool) or a stub for tests."""
+                        max_tokens: int = 1300, max_retries: int = 3) -> str:
+    """Default generator — a synchronous OpenRouter chat call WITH retry/backoff + an explicit empty-content
+    check (mirroring the proven synth_corpus.call_openrouter contract). Returns "" on total failure rather
+    than raising, so one transient blip mid-run does NOT abort the whole synth — synth_records counts the
+    empty response and warns. Injectable (see synth_records) so callers can swap a concurrent client / a test stub."""
     import httpx
-    resp = httpx.post("https://openrouter.ai/api/v1/chat/completions",
-                      headers={"Authorization": f"Bearer {_openrouter_key()}", "Content-Type": "application/json"},
-                      json={"model": model, "temperature": 0.85, "max_tokens": max_tokens,
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]},
-                      timeout=120)
-    resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]["content"]
+    body = {"model": model, "temperature": 0.85, "max_tokens": max_tokens,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+    headers = {"Authorization": f"Bearer {_openrouter_key()}", "Content-Type": "application/json"}
+    last_err = ""
+    for attempt in range(max_retries):
+        try:
+            resp = httpx.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=body, timeout=120)
+            if resp.status_code != 200:
+                last_err = f"HTTP {resp.status_code}: {resp.text[:200]}"
+            else:
+                content = (resp.json().get("choices") or [{}])[0].get("message", {}).get("content", "")
+                if content:
+                    return content
+                last_err = "empty content (HTTP 200)"
+        except Exception as e:                          # network / JSON-shape error → retried, then a counted sentinel
+            last_err = f"{type(e).__name__}: {e}"
+        time.sleep(2 ** attempt)
+    print(f"  [generic_synth] generation failed after {max_retries} attempts: {last_err}", file=sys.stderr)
+    return ""
 
 
 def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: str, n: int,
@@ -75,28 +92,42 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
     diverse faithful variations → 25_hydrated records. `generate_fn(system, user) -> str` is injectable
     (a stub in tests; the real OpenRouter call by default). Deterministic given a deterministic generate_fn."""
     out: list[dict] = []
-    counts: dict[str, int] = {}
+    counts: dict = defaultdict(int)              # predicate -> n triples seen
+    rendered: dict = defaultdict(int)            # predicate -> n canonical-template renders that succeeded
+    empty: dict = defaultdict(int)               # predicate -> n empty/failed generator responses
     for t in triples:
         p = t["predicate"]
         tmpls = ptmpls.get(p)
         if not tmpls:
             continue
-        i = counts.get(p, 0)
-        counts[p] = i + 1
+        i = counts[p]
+        counts[p] += 1
         kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
         kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
         try:
             fact = tmpls[0].format(**kw)
         except (KeyError, IndexError):
-            continue
+            continue                             # canonical render failed for this triple — tallied as 0-render below
+        rendered[p] += 1
         system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
         raw = generate_fn(system, "Write the variations now.")
+        if not (raw or "").strip():
+            empty[p] += 1                        # an empty/failed response = no diversity installed for this fact
         for line in (raw or "").splitlines():
             line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()   # strip list markers only (not leading years)
             if len(line) > 10:
                 out.append({"text": line, "relation_type": p, "direction": "forward",
                             "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
                             "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+    # The canonical template (tmpls[0]) seeds the LLM — if it renders for ZERO triples of a predicate that
+    # predicate gets NO diversity (a placeholder typo); empty generator responses also silently shrink it.
+    for p, seen in counts.items():
+        if seen and not rendered[p]:
+            print(f"  WARNING: predicate '{p}' canonical template rendered 0/{seen} triples — likely a "
+                  f"placeholder typo; this predicate gets NO LLM-synth diversity", file=sys.stderr)
+        elif empty[p]:
+            print(f"  WARNING: predicate '{p}' had {empty[p]}/{rendered[p]} empty/failed generator responses",
+                  file=sys.stderr)
     return out
 
 
@@ -111,7 +142,8 @@ def main():
     ptmpls = predicate_templates(args.domain)
     preamble = (tmpl.get("synth_templates") or {}).get("system_preamble", "")
     if not ptmpls:
-        raise SystemExit(f"domain '{args.domain}' has no hydrate_templates.predicate_templates — author them first.")
+        raise SystemExit(f"domain '{args.domain}' has no hydrate_templates.predicate_templates — author them in "
+                         f"configs/templates/{args.domain}.yaml (or check the key spelling/nesting if the file exists).")
     for ed in iter_editions(args.domain, only=args.editions):
         triples = load_all_triples(ed)
         if not triples:
