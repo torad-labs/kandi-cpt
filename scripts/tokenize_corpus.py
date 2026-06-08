@@ -51,13 +51,13 @@ def chunk_ids(ids: list, seq_len: int) -> list:
     return [ids[i * seq_len:(i + 1) * seq_len] for i in range(n_full)]
 
 
-def collect(editions_only, use_synth: bool):
+def collect(domain, editions_only, use_synth: bool):
     """Return list of dicts {tag, path, text}. tag ∈ clean|synthetic|hydrated|knowledge (for stats);
     path is the full posix path (or jsonl path) used to classify source-type."""
     keep_path = C.BUILD / "curation" / "keep_list.json"
     keep = set(json.loads(keep_path.read_text())) if keep_path.exists() else None
     docs = []
-    for ed in iter_editions("edc", only=editions_only):
+    for ed in iter_editions(domain, only=editions_only, with_raw=False):   # consumes 15_structured/25_hydrated, not 00_raw
         clean_root = ed.dir / "10_clean"
         for md in sorted(clean_root.rglob("*.md")) if clean_root.is_dir() else []:
             if md.name == "README.md":
@@ -123,6 +123,7 @@ def _block_fact_ids(doc_ranges, n_blocks, seq_len):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--editions", help="restrict to 'city/year,…' (default: all with corpus)")
+    ap.add_argument("--domain", default="edc", help="domain slug — picks data/<domain> + its registry (was hardcoded 'edc')")
     ap.add_argument("--seq-len", type=int, default=512)
     ap.add_argument("--replay-frac", type=float, default=0.10, help="~general-text fraction (5–10% sweet spot)")
     ap.add_argument("--no-synthetic", action="store_true")
@@ -140,7 +141,7 @@ def main():
     if emit_meta:
         from pipeline import span_match as SM
 
-    docs = collect(args.editions, not args.no_synthetic)
+    docs = collect(args.domain, args.editions, not args.no_synthetic)
     random.seed(0)
     random.shuffle(docs)
     if not docs:

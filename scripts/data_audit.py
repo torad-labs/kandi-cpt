@@ -360,6 +360,7 @@ def _load_json(p):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--editions", help="restrict to these city/year slugs (default: all)")
+    ap.add_argument("--domain", default="edc", help="domain slug — audits data/<domain> (was hardcoded 'edc')")
     ap.add_argument("--corpus-stats", default="data/_build/30_tokenized/corpus_all97_stats.json")
     ap.add_argument("--sft-stats", default="data/_build/30_tokenized/sft_v2_stats.json")
     ap.add_argument("--exposure", help="checkpoint dir holding a Lever-4 exposure.json (real density)")
@@ -367,7 +368,7 @@ def main():
     ap.add_argument("--device", default="cuda:0")
     args = ap.parse_args()
 
-    eds = list(iter_editions("edc", only=args.editions))
+    eds = list(iter_editions(args.domain, only=args.editions, with_raw=False))   # was hardcoded 'edc' — domain-locked the audit
     if not eds:
         raise SystemExit("no editions matched")
     print(f"data audit over {len(eds)} edition(s){' (' + args.editions + ')' if args.editions else ''}")

@@ -82,7 +82,7 @@ stages:
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
-    cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "edc", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
     desc: "continued pretraining (FP4 + int8-master). CONFIG-ONLY — save_dir/tokenized live in {cpt}."

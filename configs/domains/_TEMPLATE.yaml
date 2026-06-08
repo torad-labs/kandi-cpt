@@ -65,11 +65,11 @@ stages:
     gpu: false
   - name: audit
     desc: "corpus audit — the typed-graph gates (qgre/gates.py) over the structured triples"
-    cmd: ["{py}", "scripts/data_audit.py", "--editions", "{editions}"]
+    cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
-    cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "<your-domain>", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
     gpu: false
   # cpt + build_sft + sft stages are authored at Phase 6b (training), pointing at configs.cpt/configs.sft.
 
