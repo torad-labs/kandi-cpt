@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""Generic forced-choice probe generator — the domain-agnostic eval-items skeleton.
+
+The festival `eval_cloze.py` builds forced-choice items over stages/days ("Which stage does X play?",
+choices = the 7 stages). This is the generic analog: for each verified triple it builds a forced-choice
+item — the question from `sft_templates.rel_q[predicate][0]`, the correct object, and N distractors drawn
+from the SAME predicate's object pool (plausible wrong answers of the right type). Domain-agnostic: a new
+domain authors NO probe code — the questions are its `rel_q`, the distractors are its own entities. The
+probe *design* (held-out strategy, era tags, base-delta) stays the human-reviewed `domains/<d>.probes.md`;
+this generates the *items* deterministically.
+
+    PYTHONPATH=scripts python scripts/pipeline/generic_probes.py --domain <d> [--editions ...] [--distractors 3] [--dry-run]
+Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, split}).
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import random
+from collections import defaultdict
+
+from pipeline.domain import Domain
+from pipeline.editions import iter_editions
+from pipeline.generic_expand import load_all_triples
+
+
+def rel_q_for(domain: str) -> dict:
+    """The domain's sft_templates.rel_q (predicate → [question, answer]) — the probe questions."""
+    return ((Domain(domain).templates or {}).get("sft_templates") or {}).get("rel_q") or {}
+
+
+def build_probes(triples: list[dict], rel_q: dict, unit_name: str = "", n_distractors: int = 3,
+                 seed: int = 0) -> list[dict]:
+    """Forced-choice items over the triples. Distractors = other objects seen for the SAME predicate. A
+    triple is skipped if its predicate has no question template or no distractor pool (can't force a
+    choice). Deterministic given `seed`."""
+    rng = random.Random(seed)
+    by_pred: dict[str, set] = defaultdict(set)
+    for t in triples:
+        if t["object"]:
+            by_pred[t["predicate"]].add(t["object"])
+    items: list[dict] = []
+    for t in triples:
+        p, obj = t["predicate"], t["object"]
+        q = rel_q.get(p)
+        if not q or not obj:
+            continue
+        pool = sorted(by_pred[p] - {obj})
+        if not pool:                                       # need ≥1 distractor of the right type
+            continue
+        try:
+            question = q[0].format(s=t["subject"], n=unit_name).strip()
+        except (KeyError, IndexError):
+            continue
+        choices = rng.sample(pool, min(n_distractors, len(pool))) + [obj]
+        rng.shuffle(choices)
+        items.append({"question": question, "choices": choices, "answer": obj,
+                      "predicate": p, "subject": t["subject"], "split": "held_out"})
+    return items
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="edc")
+    ap.add_argument("--editions")
+    ap.add_argument("--distractors", type=int, default=3)
+    ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
+    args = ap.parse_args()
+    rel_q = rel_q_for(args.domain)
+    if not rel_q:
+        raise SystemExit(f"domain '{args.domain}' has no sft_templates.rel_q — author it (predicate -> [question, answer]).")
+    for ed in iter_editions(args.domain, only=args.editions):
+        triples = load_all_triples(ed)
+        if not triples:
+            continue
+        mp = ed.dir / "festival_meta.json"
+        unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
+        items = build_probes(triples, rel_q, unit_name, args.distractors)
+        if args.dry_run:
+            print(f"  {ed.slug}: {len(items)} forced-choice probes over {len({i['predicate'] for i in items})} predicates")
+            continue
+        (ed.dir / "probes.jsonl").write_text(
+            "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n", encoding="utf-8")
+        print(f"  {ed.slug}: wrote {len(items)} probes")
+
+
+if __name__ == "__main__":
+    main()

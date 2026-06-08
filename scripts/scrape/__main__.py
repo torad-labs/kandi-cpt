@@ -33,7 +33,10 @@ def _select(reg: dict, city: str | None, status: str | None) -> list[dict]:
 
 def main():
     ap = argparse.ArgumentParser(prog="scrape", description="Scrape EDC raw data into 00_raw/<source>/.")
-    ap.add_argument("--festival", default="edc")
+    ap.add_argument("--festival", "--domain", default="edc",
+                    help="domain/festival slug (--domain is the master-plan alias; picks data/<slug> + its registry). "
+                         "The city/year selection below is the festival unit shape; a domain with a different unit "
+                         "shape authors its own dispatch alongside its source modules (sources/_TEMPLATE.py).")
     ap.add_argument("--city", help="one city slug (default: all)")
     ap.add_argument("--year", type=int, help="one year (default: all held years)")
     ap.add_argument("--status", choices=["active", "discontinued", "planned"], help="filter editions")

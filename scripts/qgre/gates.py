@@ -83,19 +83,19 @@ def _id_type(eid) -> str | None:
     return parts[1] if len(parts) >= 3 else None
 
 
-# A stage/set/artist/day slug should NOT carry a year — the edition already encodes it. A foreign year in
-# such a slug is CROSS-EDITION CONTAMINATION (e.g. `edc_las_vegas_2023:set:hardwell_kineticfield_2026` — a
-# 2026 set leaked into the 2023 edition by a mis-tagged source). edition/festival ids legitimately carry
-# years (a 2023 doc may reference the 2011 edition), so they're exempt.
+# A year-bearing-type slug should NOT carry a year — the unit already encodes it. A foreign year in such a
+# slug is CROSS-UNIT CONTAMINATION (e.g. `edc_las_vegas_2023:set:hardwell_kineticfield_2026` — a 2026 set
+# leaked into the 2023 edition by a mis-tagged source). The year-bearing TYPES are an edition/festival
+# concept, so they are declared per-domain in the manifest (quality.id_integrity.year_bearing_types); a
+# domain that declares none skips the check. edition/festival ids legitimately carry years, so are exempt.
 _YEAR_RE = __import__("re").compile(r"(?:19|20)\d{2}")
-_YEAR_BEARING_TYPES = {"stage", "set", "artist", "day"}
 
 
-def _foreign_year(eid, edition_year: int) -> int | None:
-    """If `eid` is a stage/set/artist/day id whose slug contains a 4-digit year != the edition's, return
-    that foreign year (the contamination tell); else None."""
+def _foreign_year(eid, edition_year: int, year_bearing_types) -> int | None:
+    """If `eid` is a year-bearing-type id (per the manifest) whose slug contains a 4-digit year != the
+    unit's, return that foreign year (the contamination tell); else None. Empty types → always None."""
     t = _id_type(eid)
-    if t not in _YEAR_BEARING_TYPES:
+    if t not in year_bearing_types:
         return None
     slug = str(eid).split(":", 2)[-1]
     for m in _YEAR_RE.findall(slug):
@@ -188,6 +188,7 @@ def gate_id_integrity(eds, spec) -> Verdict:
     contract = S.predicate_contract(spec)
     qid = S.quality_cfg(spec).get("id_integrity", {})
     want_edition_match = qid.get("require_edition_match", True)
+    year_bearing_types = set(qid.get("year_bearing_types") or [])   # festival-axis; empty → skip contamination check
     n_obj_checked = obj_viol = n_ref = dangling = ed_mismatch = contamination = 0
     examples = []
     for ed in eds:
@@ -198,7 +199,7 @@ def gate_id_integrity(eds, spec) -> Verdict:
             n_ref += 1
             # cross-edition contamination: a stage/set/artist id carrying a foreign year (a 2026 set in 2023)
             for ref in (subj, obj):
-                fy = _foreign_year(ref, ed.year)
+                fy = _foreign_year(ref, ed.year, year_bearing_types)
                 if fy is not None:
                     contamination += 1
                     if len(examples) < 8:

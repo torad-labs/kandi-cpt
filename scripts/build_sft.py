@@ -86,12 +86,10 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
     `sft_templates`); both default to empty, so a domain that declares none gets no festival bleed."""
     venue_templates = venue_templates or []
     rel_q = rel_q or {}
-    meta_p = ed.dir / "festival_meta.json"
-    if not meta_p.exists():
-        return []
-    meta = json.loads(meta_p.read_text())
+    meta_p = ed.dir / "festival_meta.json"   # OPTIONAL — a non-festival domain has none; fall back to the unit slug
+    meta = json.loads(meta_p.read_text()) if meta_p.exists() else {}
     name = meta.get("name") or ed.slug
-    venue = (meta.get("venue") or "").strip()
+    venue = (meta.get("venue") or "").strip()   # empty for a non-festival domain → the venue block self-skips
     struct = ed.dir / "15_structured"
     tri_p, ent_p = struct / "triples.jsonl", struct / "entities.jsonl"
     if not tri_p.exists():

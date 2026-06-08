@@ -1,0 +1,102 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DOMAIN MANIFEST SKELETON — copy to configs/domains/<your-domain>.yaml and fill the <...> placeholders.
+#
+# This is the config-driven declaration of a full scrape→…→sft pipeline for ONE domain. The generic
+# machinery (extraction, validation, hydration, synth, probes, audit, tokenizer, CPT/SFT) is
+# domain-agnostic; what you author is the corpus SHAPE: the ontology (entity_types + predicates), the
+# unit registry, and the templates (configs/templates/<your-domain>.yaml — copy _TEMPLATE.yaml there).
+# Stages below are pre-wired to the GENERIC tools. Pairs with the qgre-agent playbook domains/_TEMPLATE.md.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: <your-domain>
+description: <one line — what this corpus is about>
+
+# Data hierarchy under data/<name>/<...>. A festival is festival→city→year; another domain might be
+# [product, version], [region], [author, work], … The unit of partition is the LAST level.
+hierarchy: [<unit>]
+registry: configs/editions_<your-domain>.json   # the unit registry iter_editions walks (author it: a JSON list of units)
+
+ontology:
+  schema_dir: schema                             # shared record-shape JSON-Schemas (validation enums come from the manifest, not here)
+  kind: <your subject kind>                       # e.g. "product manual" → "a product-manual knowledge graph"
+  name: <Proper Noun the sources are about>
+  topics: [<topic_a>, <topic_b>]                  # the discourse topics (free list)
+  stances: [<stance_a>, <stance_b>, neutral]      # the discourse stances
+  confidence_map:                                 # provenance class → confidence (pipeline-owned, never model-invented)
+    <source-class>: official
+
+model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+configs:
+  cpt: configs/train_<your-domain>.yaml           # authored when you reach training (Phase 6b)
+  sft: configs/sft_<your-domain>.yaml
+
+vars:
+  corpus: <your-domain>_v1                        # the tokenized Arrow basename
+
+# Ordered pipeline — pre-wired to the GENERIC tools. Placeholders: {py}=.venv/bin/python, {root}, {editions}, + vars.
+stages:
+  - name: scrape
+    desc: "00_raw — fetch your sources. Author scripts/scrape/sources/<your-domain>.py (copy sources/_TEMPLATE.py)."
+    cmd: ["{py}", "-m", "scrape", "--domain", "<your-domain>"]
+    gpu: false
+  - name: extract
+    desc: "10_clean — trafilatura + LLM rescue → clean markdown"
+    cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
+    gpu: false
+  - name: curate
+    desc: "RoBERTa quality/dedup → keep_list.json"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--drop-frac", "0.10"]
+    gpu: true
+  - name: structured
+    desc: "15_structured — LLM entity/triple/discourse extraction (spec-driven from entity_types/predicates, schema-validated)"
+    cmd: ["{py}", "scripts/extract_structured.py", "--editions", "{editions}", "--concurrency", "16", "--yes"]
+    gpu: false
+  - name: hydrate
+    desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
+    cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+    gpu: false
+  - name: synth
+    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases; the install layer on top of the floor)"
+    cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+    gpu: false
+  - name: probes
+    desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
+    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+    gpu: false
+  - name: audit
+    desc: "corpus audit — the typed-graph gates (qgre/gates.py) over the structured triples"
+    cmd: ["{py}", "scripts/data_audit.py", "--editions", "{editions}"]
+    gpu: false
+  - name: tokenize
+    desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    gpu: false
+  # cpt + build_sft + sft stages are authored at Phase 6b (training), pointing at configs.cpt/configs.sft.
+
+# ── ONTOLOGY (spec-driven extraction reads these — pipeline/ontology.py + schema_validate.py) ───────────
+# (A) entity types — the closed enum gate_id_integrity types every id's `<domain>:TYPE:slug` against.
+entity_types:
+  [<entity_type_a>, <entity_type_b>]
+
+# (B) predicates + the predicate→OBJECT-TYPE CONTRACT. `object` declares the entity_types an object id may
+#     be (`[literal]` = a free value); no `object` key = unconstrained (the gate skips it).
+predicates:
+  <your_predicate_a>:  { object: [<entity_type_b>] }
+  <your_predicate_b>:  {}
+
+# (C) balance targets + the per-fact exposure cap — pure DISTRIBUTION properties (nothing domain-specific).
+relations:
+  exposure_cap_per_fact: 60
+  dominance_max_frac: 0.85
+  min_active_types: 6
+
+# (D) gate thresholds. `year_bearing_types` is OPTIONAL + festival-axis: list the entity types whose slug
+#     must NOT carry a unit-token (the cross-unit contamination check). OMIT for a domain without that risk.
+quality:
+  faithfulness:
+    max_foreign_entity_frac: 0.02
+  id_integrity:
+    max_object_contract_violation_frac: 0.0
+    max_dangling_frac: 0.0
+    require_edition_match: true
+  # year_bearing_types: [<types whose slug must not carry the unit token>]   # festival-only; omit otherwise

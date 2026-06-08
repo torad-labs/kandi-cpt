@@ -12,7 +12,9 @@ gate; Golden 2 is the structural drift guard. Deterministic — no model/GPU. Pl
 from __future__ import annotations
 
 import json
+import tempfile
 from pathlib import Path
+from types import SimpleNamespace
 
 import build_sft as BS
 from pipeline.domain import Domain
@@ -59,8 +61,30 @@ def test_empty_templates_no_bleed():
     assert not (rels & REL_PREDS), "empty rel_q still produced relational QA (EDC bleed)"
 
 
+def test_non_festival_edition_yields_sft_without_meta():
+    """G1: an edition with NO festival_meta.json (a non-festival domain) + non-festival rel_q now yields
+    SFT — edition_qas used to early-return [] when festival_meta was absent."""
+    with tempfile.TemporaryDirectory() as d:
+        struct = Path(d) / "15_structured"
+        struct.mkdir(parents=True)
+        (struct / "entities.jsonl").write_text(
+            json.dumps({"id": "x:character:ash", "name_canonical": "Ash"}) + "\n"
+            + json.dumps({"id": "x:region:kanto", "name_canonical": "Kanto"}) + "\n", encoding="utf-8")
+        (struct / "triples.jsonl").write_text(
+            json.dumps({"subject_id": "x:character:ash", "predicate": "originates_from",
+                        "object": "x:region:kanto", "attrs": {}}) + "\n", encoding="utf-8")
+        ed = SimpleNamespace(dir=Path(d), slug="kanto")
+        qa = BS.edition_qas(ed, 6, 2, [],
+                            {"originates_from": ("Which region is {s} from?", "{s} originates from {o}.")})
+    rels = {q["rel"] for q in qa}
+    assert "originates_from" in rels, "a non-festival edition (no festival_meta) still got no SFT"
+    assert not any(q["rel"] == "venue" for q in qa), "produced venue QA without a venue"
+
+
 if __name__ == "__main__":
     test_sft_qas_byte_identity()
     test_sft_templates_match_original()
     test_empty_templates_no_bleed()
-    print("OK — Seam 4: build_sft positive templates config-sourced, edc byte-identical + no festival bleed")
+    test_non_festival_edition_yields_sft_without_meta()
+    print("OK — Seam 4 + G1: build_sft positive templates config-sourced, edc byte-identical, no bleed, "
+          "non-festival editions (no meta) yield SFT")

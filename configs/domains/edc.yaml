@@ -195,6 +195,7 @@ quality:
     max_object_contract_violation_frac: 0.0   # every constrained predicate's object must match its allowed types
     max_dangling_frac: 0.0                     # subject/object id must exist in entities.jsonl (or be global:*)
     require_edition_match: true                # an id in edition E must carry E's festival_slug (or global:)
+    year_bearing_types: [stage, set, artist, day]   # these slugs must not carry a FOREIGN year (cross-edition contamination)
   source_gap:
     required_artifacts:
       set_times.jsonl:                 "set_times.jsonl"
