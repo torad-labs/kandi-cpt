@@ -14,9 +14,11 @@ from __future__ import annotations
 
 import argparse
 import glob
+import json
 import os
 import subprocess
 import sys
+from pathlib import Path
 
 import config as C
 from pipeline.domain import Domain
@@ -31,6 +33,76 @@ def editions_on_disk(festival: str) -> list[str]:
     return sorted(out)
 
 
+# ── --check: a manifest preflight (validate every declared reference, then ABORT) ──────────────────
+# Additive and read-only — it NEVER runs a stage. The pipeline still fails-fast mid-run on a missing
+# file (no behaviour change); --check just surfaces every such gap up front, as one structured JSON
+# report, before a single dollar or GPU-hour is spent. Relative refs resolve against the repo root.
+_REF_SUFFIXES = (".py", ".sh", ".rs", ".json", ".yaml", ".yml")
+
+
+def _exists(ref: str) -> bool:
+    if not ref:
+        return False
+    p = Path(ref)
+    return (p if p.is_absolute() else C.ROOT / ref).exists()
+
+
+def _cmd_file_refs(cmd: list[str]) -> list[str]:
+    """The file paths a resolved stage command reads — its script + any config/schema arg (not flags)."""
+    return [a for a in map(str, cmd) if not a.startswith("-") and "/" in a and a.endswith(_REF_SUFFIXES)]
+
+
+def check_domain(name: str, editions: str) -> tuple[dict, bool]:
+    """Validate a domain manifest + all the paths it references. Returns (report, ok); ok ⇒ no REQUIRED gap."""
+    checks: list[dict] = []
+
+    def add(check: str, severity: str, ok: bool, **extra) -> None:
+        checks.append({"check": check, "severity": severity, "ok": bool(ok), **extra})
+
+    try:
+        dom = Domain(name)
+    except Exception as e:  # missing or unparseable manifest — report it, don't crash
+        add("manifest.load", "REQUIRED", False, detail=str(e))
+        return {"domain": name, "ok": False, "checks": checks,
+                "summary": {"required_failed": 1, "warnings": 0}}, False
+
+    add("manifest.load", "REQUIRED", True, path=str(dom.path))
+    add("registry", "REQUIRED", _exists(dom.registry), path=dom.registry)
+
+    schema_dir = dom.ontology.get("schema_dir", "schema")
+    add("ontology.schema_dir", "REQUIRED", _exists(schema_dir), path=schema_dir)
+    for core in ("entity", "triple", "discourse", "metadata"):
+        rel = f"{schema_dir}/{core}.schema.json"
+        add(f"schema.{core}", "REQUIRED", _exists(rel), path=rel)
+    if (tax := dom.ontology.get("taxonomy", "")):
+        add("ontology.taxonomy", "REQUIRED", _exists(tax), path=tax)
+
+    add("model_path", "REQUIRED", _exists(dom.model_path), path=dom.model_path)
+    for key in ("cpt", "sft"):
+        if (ref := dom.configs.get(key)):
+            add(f"configs.{key}", "REQUIRED", _exists(ref), path=ref)
+        else:
+            add(f"configs.{key}", "WARN", True, detail="unset (data-only until training)")
+    if (score := dom.vars.get("score_ckpt")):
+        add("vars.score_ckpt", "WARN", _exists(score), path=score, detail="needed only at build_sft")
+
+    for s in dom.stages:
+        try:
+            cmd = dom.resolve(s.cmd, editions=editions)
+        except KeyError as e:
+            add(f"stage.{s.name}.resolve", "REQUIRED", False, detail=str(e))
+            continue
+        add(f"stage.{s.name}.resolve", "REQUIRED", True)
+        for ref in _cmd_file_refs(cmd):
+            add(f"stage.{s.name}.ref", "REQUIRED", _exists(ref), path=ref)
+
+    req_failed = sum(1 for c in checks if c["severity"] == "REQUIRED" and not c["ok"])
+    warns = sum(1 for c in checks if c["severity"] == "WARN" and not c["ok"])
+    report = {"domain": name, "ok": req_failed == 0, "checks": checks,
+              "summary": {"required_failed": req_failed, "warnings": warns}}
+    return report, req_failed == 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--domain", required=True)
@@ -40,7 +112,14 @@ def main():
     ap.add_argument("--editions", help="comma 'city/year' list; default = all on disk")
     ap.add_argument("--dry-run", action="store_true", help="print the resolved plan, run nothing")
     ap.add_argument("--allow-gpu", action="store_true", help="actually run GPU stages (else skipped)")
+    ap.add_argument("--check", action="store_true",
+                    help="validate the manifest + every referenced path, print a JSON report, run nothing")
     args = ap.parse_args()
+
+    if args.check:
+        report, ok = check_domain(args.domain, args.editions or "")
+        print(json.dumps(report, indent=2))
+        sys.exit(0 if ok else 1)
 
     dom = Domain(args.domain)
     editions = args.editions or ",".join(editions_on_disk(dom.name))
