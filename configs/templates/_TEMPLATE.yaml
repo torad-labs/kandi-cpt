@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DOMAIN TEMPLATE SKELETON — copy to configs/templates/<your-domain>.yaml and fill in.
+#
+# This is the domain-authored CONTENT the engine renders (the manifest's "swap the templates"). The
+# engine machinery reads it via `Domain.templates`, so a new domain ships THIS file and authors no Python
+# for the common case. Every section is OPTIONAL — omit what your domain doesn't have; an omitted section
+# means the engine emits nothing for it (no bleed from another domain).
+#
+# Placeholders the engine fills:
+#   hydrate (generic_expand): {subject} {object} {unit}=unit name {attr_<k>}=a triple's attrs[k]
+#   sft (build_sft):          {s}=subject {o}=object {n}=unit/corpus name
+#   meta_scaffold:            (festival-shaped data, not string templates)
+#
+# Pairs with: configs/domains/<your-domain>.yaml (the manifest — ontology/stages/registry) and the
+# qgre-agent playbook core-agent/knowledge/domains/_TEMPLATE.md (the step-by-step).
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── hydrate_templates.predicate_templates ───────────────────────────────────────────────────────────
+# The deterministic, faithful-by-construction hydrate FLOOR. scripts/pipeline/generic_expand.py renders
+# these over EVERY triple, keyed by YOUR predicate (one of the manifest's `predicates:`). This is how a
+# multi-relation, non-festival domain hydrates WITHOUT writing a generator. Point your manifest's
+# `hydrate` stage at it:
+#   - name: hydrate
+#     cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+# Author 2-4 varied surface forms per predicate (diversity installs; a single form is a weak floor).
+hydrate_templates:
+  predicate_templates:
+    <your_predicate_a>:
+    - '{subject} <relates to> {object}.'
+    - 'In <context>, {subject} <relates to> {object}.'
+    - 'Q: <question about {subject}>? A: {object}.'
+    <your_predicate_b>:
+    - '{subject} <relates to> {object} (since {attr_<some_attr>}).'   # {attr_*} = a triple's attrs entry
+
+# ── sft_templates ────────────────────────────────────────────────────────────────────────────────────
+# build_sft's POSITIVE Q/A shapes (CPT installs the fact; SFT elicits it). `rel_q` maps a predicate to
+# [question, answer]; build_sft renders them over your triples. `venue_templates` is ONLY for domains with
+# a single "where is X held" axis (festival-shaped) — OMIT it otherwise (build_sft then emits no venue Q/A).
+sft_templates:
+  rel_q:
+    <your_predicate_a>: ['<Question about {s}>?', '{s} <relates to> {o}.']
+    <your_predicate_b>: ['<Question about {s}>?', '{s} <relates to> {o}.']
+
+# ── meta_scaffold (OPTIONAL — festival-shaped) ─────────────────────────────────────────────────────────
+# ONLY if your domain uses gen_festival_meta to scaffold a per-unit meta with a stage taxonomy + a day
+# calendar. Most non-festival domains OMIT this entirely (delete the block).
+# meta_scaffold:
+#   canonical_stages:
+#     <stage_slug>: { camel: <Display>, spaced: <Display>, genre: <...>, brand: '', rank: '', vibe: <...> }
+#   default_days:
+#     <Day>: { date: '', ordinal: 'day 1' }
