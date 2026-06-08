@@ -1,4 +1,4 @@
 # The fixture commits only its INPUTS (15_structured + the 00_raw marker); the e2e regenerates the rest.
-*/*/25_hydrated/
-*/*/probes.jsonl
-*/*/30_tokenized/
+*/25_hydrated/
+*/probes.jsonl
+*/30_tokenized/

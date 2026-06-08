@@ -13,7 +13,6 @@ new configs/domains/<name>.yaml; the runner is unchanged.
 from __future__ import annotations
 
 import argparse
-import glob
 import json
 import os
 import subprocess
@@ -25,12 +24,10 @@ from pipeline.domain import Domain
 
 
 def editions_on_disk(festival: str) -> list[str]:
-    """All 'city/year' units with a 00_raw landing zone (the scraped set)."""
-    out = set()
-    for p in glob.glob(str(C.DATA / festival / "*" / "*" / "00_raw")):
-        parts = p.split("/")
-        out.add(f"{parts[-3]}/{parts[-2]}")
-    return sorted(out)
+    """All units with a 00_raw landing zone (the scraped set) — via the generalized editions layer, so a
+    non-festival domain's unit shape (flat, [product, version], …) resolves the same as festival city/year."""
+    from pipeline.editions import iter_editions
+    return sorted(ed.slug for ed in iter_editions(festival, with_raw=True))
 
 
 # ── --check: a manifest preflight (validate every declared reference, then ABORT) ──────────────────

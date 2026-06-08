@@ -3,12 +3,12 @@
 # Its only purpose is to make "the engine generates a non-EDC domain with no festival bleed" a RUNNING
 # test (scripts/pipeline/test_selftest_domain_e2e.py), not a manual audit — the byte-identity goldens only
 # ever execute EDC, so a festival assumption that leaks onto the generic path is invisible to them but turns
-# this fixture RED. Registry units are city/year-shaped ONLY because iter_editions is still festival-shaped
-# (generalizing the editions layer to arbitrary unit shapes is Phase-6a); the bleed-gate does not need it.
+# this fixture RED. It is also SINGLE-LEVEL (one `collection` unit, no city/year) — proving the generalized
+# editions layer (iter_editions) handles a non-festival unit shape, not just festival city/year.
 name: _selftest
 description: Abstract scientific instruments — the engine's non-festival self-test fixture.
 
-hierarchy: [collection, year]
+hierarchy: [collection]
 registry: configs/editions__selftest.json
 templates: configs/templates/_selftest.yaml
 

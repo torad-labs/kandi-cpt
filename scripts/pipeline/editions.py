@@ -1,8 +1,10 @@
-"""Iterate the worldwide edition registry, filtered to editions that actually have raw data.
+"""Iterate a domain's unit registry, filtered to units that actually have raw data on disk.
 
-`configs/editions_edc.json` lists 24 locations × their years; only the subset that was
-successfully scraped has `00_raw/` on disk (the 97 city-year editions). Every pipeline stage
-iterates these via `iter_editions()` and accepts the same `--editions city/year,…` / `--limit`.
+EDC is festival→city→year (`configs/editions_edc.json` lists 24 cities × their years; the 97 with a
+`00_raw/` landing zone are the scraped set). A NON-festival domain partitions differently — a flat
+`[unit]`, `[product, version]`, … — so its registry lists units by their path `parts`. `iter_editions`
+supports BOTH shapes and every stage iterates it the same way. The festival path is byte-identical: an EDC
+unit still yields `Ed` with `slug="city/year"`, `city=…`, `year=int`, `festival_slug="edc_city_year"`.
 """
 from __future__ import annotations
 
@@ -14,25 +16,40 @@ import config as C
 
 @dataclass(frozen=True)
 class Ed:
-    festival: str
-    city: str
-    year: int
+    """One unit of a domain's corpus — a festival city/year, or any domain's partition. Constructed ONLY by
+    `iter_editions`; every consumer reads the PROPERTIES below (no call site builds an `Ed` directly). `parts`
+    is the unit path under `data/<festival>/`: `("las_vegas","2026")` for EDC, `("kanto",)` for a flat domain."""
+
+    festival: str                       # the DOMAIN slug (name kept — ~28 call sites read `ed.festival`)
+    parts: tuple[str, ...]              # the unit path under data/<festival>/
     venue: str = ""
     country: str = ""
     status: str = ""
 
     @property
     def dir(self) -> Path:
-        return C.edition(self.festival, self.city, self.year)
+        return C.DATA / self.festival / Path(*self.parts)
 
     @property
     def slug(self) -> str:
-        return f"{self.city}/{self.year}"
+        return "/".join(self.parts)
+
+    @property
+    def city(self) -> str:
+        """Back-compat: the first unit level (festival code reads `ed.city`)."""
+        return self.parts[0] if self.parts else ""
+
+    @property
+    def year(self):
+        """Back-compat: a festival unit is (city, year) — the last level as an `int` when numeric, else the
+        raw token. A non-festival unit has no year; the festival year-arithmetic code is never reached there."""
+        last = self.parts[-1] if self.parts else ""
+        return int(last) if last.isdigit() else last
 
     @property
     def festival_slug(self) -> str:
-        """Prefix for §2 entity ids, e.g. `edc_las_vegas_2026:stage:kinetic_field`."""
-        return f"{self.festival}_{self.city}_{self.year}"
+        """The §2 entity-id prefix — `edc_las_vegas_2026` for EDC, `<domain>_<parts>` for any domain."""
+        return "_".join([self.festival, *self.parts])
 
 
 def parse_only(only) -> set[str] | None:
@@ -44,19 +61,32 @@ def parse_only(only) -> set[str] | None:
     return {s.strip() for s in only if s.strip()} or None
 
 
-def iter_editions(festival: str = "edc", only=None, with_raw: bool = True):
-    """Yield `Ed` for each (city, year) in the registry.
+def _registry_units(reg: dict):
+    """Yield (parts, meta) per registry unit, supporting BOTH the festival (city × years) and the generic
+    (a unit declares its own path via `parts`/`unit`/`slug`/`id`) registry shapes."""
+    for e in reg["editions"]:
+        if "city" in e and "years" in e:                       # festival shape: city × years → (city, year)
+            for y in e["years"]:
+                yield (e["city"], str(int(y))), e
+        else:                                                  # generic shape: an explicit unit path
+            raw = e.get("parts") or e.get("unit") or e.get("slug") or e.get("id")
+            if raw is None:
+                continue
+            parts = tuple(str(p) for p in (raw if isinstance(raw, (list, tuple)) else [raw]))
+            yield parts, e
 
-    only      — restrict to these 'city/year' slugs (str CSV or iterable).
-    with_raw  — keep only editions whose `00_raw/` exists on disk (the scraped 97).
+
+def iter_editions(festival: str = "edc", only=None, with_raw: bool = True):
+    """Yield `Ed` for each unit in the registry.
+
+    only      — restrict to these slugs (str CSV or iterable).
+    with_raw  — keep only units whose `00_raw/` exists on disk (the scraped set).
     """
     only_set = parse_only(only)
-    for e in C.load_editions(festival)["editions"]:
-        for y in e["years"]:
-            ed = Ed(festival, e["city"], int(y), e.get("venue", ""),
-                    e.get("country", ""), e.get("status", ""))
-            if only_set and ed.slug not in only_set:
-                continue
-            if with_raw and not (ed.dir / "00_raw").is_dir():
-                continue
-            yield ed
+    for parts, e in _registry_units(C.load_editions(festival)):
+        ed = Ed(festival, parts, e.get("venue", ""), e.get("country", ""), e.get("status", ""))
+        if only_set and ed.slug not in only_set:
+            continue
+        if with_raw and not (ed.dir / "00_raw").is_dir():
+            continue
+        yield ed

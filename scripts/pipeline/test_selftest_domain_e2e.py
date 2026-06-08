@@ -29,7 +29,7 @@ from pipeline.generic_synth import synth_records
 
 PY = ".venv/bin/python"
 ENV = {**os.environ, "PYTHONPATH": "scripts"}
-ED_DIR = C.ROOT / "data/_selftest/instruments/2026"
+ED_DIR = C.ROOT / "data/_selftest/instruments"      # single-level unit (no city/year) — the generalized shape
 
 # Tokens that must NEVER appear in a non-festival domain's generated corpus — if any shows up, a festival
 # constant / the gold meta / an iter_editions("edc") default leaked onto the generic path.
@@ -51,13 +51,15 @@ def _assert_no_bleed(text: str, where: str) -> None:
 
 
 def test_fixture_loads_and_is_discovered():
-    """The seam the façade test skips: iter_editions finds the unit, load_all_triples reads its triples."""
+    """The seam the façade test skips: iter_editions finds the SINGLE-LEVEL unit (parts=('instruments',),
+    no city/year), load_all_triples reads its triples — proving the generalized editions layer."""
     eds = list(iter_editions("_selftest"))
-    assert len(eds) == 1 and eds[0].slug == "instruments/2026", f"fixture not discovered: {[e.slug for e in eds]}"
+    assert len(eds) == 1 and eds[0].slug == "instruments", f"fixture not discovered: {[e.slug for e in eds]}"
+    assert eds[0].parts == ("instruments",), f"expected a single-level unit, got parts={eds[0].parts}"
     triples = load_all_triples(eds[0])
     assert len(triples) == 6, f"expected 6 fixture triples, got {len(triples)}"
     assert predicate_templates("_selftest"), "no predicate_templates loaded for _selftest"
-    print(f"  discovery: 1 unit, {len(triples)} triples, templates loaded OK")
+    print(f"  discovery: 1 single-level unit ({eds[0].slug!r}), {len(triples)} triples, templates loaded OK")
 
 
 def test_generic_hydrate_runs_clean():
