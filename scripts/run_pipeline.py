@@ -24,10 +24,12 @@ from pipeline.domain import Domain
 
 
 def editions_on_disk(festival: str) -> list[str]:
-    """All units with a 00_raw landing zone (the scraped set) — via the generalized editions layer, so a
-    non-festival domain's unit shape (flat, [product, version], …) resolves the same as festival city/year."""
+    """All units that have a pipeline input on disk — a 00_raw landing zone (scraped) OR committed
+    15_structured triples (a data-only 'content not code' domain). The generic generators read 15_structured,
+    so requiring 00_raw would make a data-only domain invisible (and the 0-unit guard would mis-fire on it)."""
     from pipeline.editions import iter_editions
-    return sorted(ed.slug for ed in iter_editions(festival, with_raw=True))
+    return sorted(ed.slug for ed in iter_editions(festival, with_raw=False)
+                  if (ed.dir / "00_raw").is_dir() or (ed.dir / "15_structured" / "triples.jsonl").exists())
 
 
 # ── --check: a manifest preflight (validate every declared reference, then ABORT) ──────────────────

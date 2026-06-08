@@ -92,7 +92,7 @@ def main():
     if not rel_q:
         raise SystemExit(f"domain '{args.domain}' has no sft_templates.rel_q — author it in "
                          f"configs/templates/{args.domain}.yaml (or check the key spelling/nesting if the file exists).")
-    for ed in iter_editions(args.domain, only=args.editions):
+    for ed in iter_editions(args.domain, only=args.editions, with_raw=False):   # consumes 15_structured, not 00_raw
         triples = load_all_triples(ed)
         if not triples:
             continue

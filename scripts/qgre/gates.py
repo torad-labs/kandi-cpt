@@ -373,7 +373,13 @@ def run_suite(eds, spec) -> dict:
         "source_vs_gap": gate_source_vs_gap(eds, spec),
     }
     overall = _worst(g.severity for g in gates.values())
-    return {"overall": overall, "n_editions": len(eds),
+    # An empty corpus must not read as benign. If editions ARE in scope but every data gate skipped for "no
+    # lines/triples", the corpus is empty where it should hold data — that is a FAIL, not a "skipped" (the
+    # absence of a test must not pass as a passed test). The agent reads `overall` to decide whether to proceed.
+    empty_corpus = bool(eds) and overall == "skipped"
+    if empty_corpus:
+        overall = "fail"
+    return {"overall": overall, "n_editions": len(eds), "empty_corpus": empty_corpus,
             "editions": [e.slug for e in eds],
             "thresholds": {"exposure_cap_per_fact": S.relations_cfg(spec).get("exposure_cap_per_fact"),
                            "dominance_max_frac": S.relations_cfg(spec).get("dominance_max_frac"),

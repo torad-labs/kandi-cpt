@@ -153,12 +153,22 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
     # A mostly-empty diversity layer (an API key/quota/outage failure for the whole run) must FAIL the stage,
     # not ship green — else the pipeline tokenizes an empty install layer and reports success.
     total_rendered, total_empty = sum(rendered.values()), sum(empty.values())
-    if out_path is not None and total_rendered and total_empty / total_rendered > 0.5:
-        raise SystemExit(f"[generic_synth] {total_empty}/{total_rendered} facts got empty/failed generator "
-                         f"responses (>50%) — the diversity layer is mostly empty; aborting the stage "
-                         f"(check the API key / quota / outage) rather than shipping an empty corpus green.")
-    if out_path is not None and partial is not None:
-        os.replace(partial, out_path)        # atomic promote — reached ONLY if the loop completed + the check passed
+    if out_path is not None:
+        # Key the abort on `out` (records produced), NOT on total_empty/total_rendered: a TOTAL render
+        # collapse (every predicate unmapped / every format() failed) makes total_rendered==0, which would
+        # short-circuit the ratio check to False and then atomically promote an EMPTY file over a prior good
+        # corpus. Zero records is itself the failure — never write/overwrite with nothing.
+        if not out:
+            raise SystemExit(f"[generic_synth] produced 0 diversity records from {len(triples)} triples — every "
+                             f"canonical render failed (a predicate/placeholder typo in the domain templates) or "
+                             f"every generator call was empty (API key/quota/outage). Refusing to write an empty "
+                             f"corpus or overwrite a prior good one.")
+        if total_rendered and total_empty / total_rendered > 0.5:
+            raise SystemExit(f"[generic_synth] {total_empty}/{total_rendered} facts got empty/failed generator "
+                             f"responses (>50%) — the diversity layer is mostly empty; aborting the stage "
+                             f"(check the API key / quota / outage) rather than shipping an empty corpus green.")
+        if partial is not None:
+            os.replace(partial, out_path)    # atomic promote — reached ONLY for a non-empty, mostly-rendered run
     return out
 
 
@@ -175,7 +185,7 @@ def main():
     if not ptmpls:
         raise SystemExit(f"domain '{args.domain}' has no hydrate_templates.predicate_templates — author them in "
                          f"configs/templates/{args.domain}.yaml (or check the key spelling/nesting if the file exists).")
-    for ed in iter_editions(args.domain, only=args.editions):
+    for ed in iter_editions(args.domain, only=args.editions, with_raw=False):   # consumes 15_structured, not 00_raw
         triples = load_all_triples(ed)
         if not triples:
             continue
