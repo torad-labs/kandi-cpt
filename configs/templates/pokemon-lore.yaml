@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# DOMAIN-AUTHORED CONTENT for `pokemon-lore` — the PROOF that the manifest's "swap the templates"
+# (configs/domains/<d>.yaml:3) is a real operation, not a documented fiction. A NON-festival domain ships
+# its own templates here and the SAME engine (build_sft / fact_expand, via Domain.templates) renders ITS
+# sentences — never EDC's. pokemon-lore is region-partitioned with character/region/organization/event
+# entities; it has NO festival venue/stage/day concepts, so it carries none of them.
+#
+# (sft is Phase 6b for this draft domain — these are the Step-0 authored positive Q/A shapes the manifest's
+# lore predicates resolve to. The hydrate generators for lore are authored when the lore corpus lands; this
+# file shows the swap mechanism is live today.)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# sft_templates — build_sft reads `rel_q` (predicate → [question, answer]). Keyed by the manifest's LORE
+# predicates, NOT the festival ones (located_at/serves/…). No `venue_templates`: lore has no venue concept,
+# so build_sft emits no venue Q/A for this domain (the empty, non-festival default — no bleed).
+# Placeholders: {s}=subject entity, {o}=object entity, {n}=corpus name.
+sft_templates:
+  rel_q:
+    originates_from: ['Which region is {s} from?', '{s} originates from {o}.']
+    member_of: ['Which organization is {s} a member of?', '{s} is a member of {o}.']
+    leads: ['Which organization does {s} lead?', '{s} leads {o}.']
+    located_in: ['Which region is {s} located in?', '{s} is located in {o}.']
+    occurs_at: ['Where does {s} take place?', '{s} takes place at {o}.']
+    governs: ['What does {s} govern?', '{s} governs {o}.']
+    mentors: ['Who does {s} mentor?', '{s} mentors {o}.']
+    evolves_into_lore: ['What does {s} evolve into in the lore?', '{s} evolves into {o} in the lore.']
