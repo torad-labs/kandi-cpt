@@ -115,6 +115,13 @@ is real authoring, not a `--domain` flag.*
 - **Commits are LOCAL on `main`** by default; pushing is the operator's call. Keep `git status` clean before
   destructive ops; permanent artifacts (shards/checkpoints) go in-project, never `/tmp`/`~/.cache` (§14).
 - Secrets: OpenRouter key from `$OPENROUTER_API_KEY` or libsecret (`service=openrouter`).
+- **GPU/CUDA kernel work (the megatrainer's future) → read `docs/KERNEL-ENGINEERING-PLAYBOOK.md`** first:
+  the reusable kernel techniques distilled from the qgre-main verify campaign (exhaustive small-domain
+  bit-exact proofs + byte-identity-gated default-off levers; `byte_perm` register-LUT and
+  accumulate-wide-store-narrow idioms; the scale-first-vs-last scheme fork; per-op skip-attribution; the
+  "does the constraint *walk*?" measurement test). It pairs with this repo's §1 precision moat — the only
+  sanctioned widening is the *transient exact accumulator*, never a stored-precision raise. (Canonical
+  copy + the megakernel cascade model live in `qgre-main/docs/`.)
 
 ## Known issues (not yet fixed, by decision)
 
