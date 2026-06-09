@@ -27,6 +27,7 @@ from collections import defaultdict
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline.generic_expand import load_all_triples, predicate_templates
+from pipeline.schema_validate import validate
 
 # The per-fact variation instruction (generic — the DOMAIN framing is the config preamble prepended to it).
 VARIATION_PROMPT = (
@@ -87,7 +88,7 @@ def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b
 
 
 def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: str, n: int,
-                  generate_fn=openrouter_generate, out_path=None) -> list[dict]:
+                  generate_fn=openrouter_generate, out_path=None, domain: str | None = None) -> list[dict]:
     """For each triple: build the canonical fact (predicate_templates[pred][0]) + ask generate_fn for N
     diverse faithful variations → 25_hydrated records. `generate_fn(system, user) -> str` is injectable
     (a stub in tests; the real OpenRouter call by default). Deterministic given a deterministic generate_fn.
@@ -126,9 +127,17 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
             for line in (raw or "").splitlines():
                 line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()   # strip list markers only (not leading years)
                 if len(line) > 10:
-                    triple_recs.append({"text": line, "relation_type": p, "direction": "forward",
-                                        "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
-                                        "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+                    rec = {"text": line, "relation_type": p, "direction": "forward",
+                           "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
+                           "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
+                    _errs = validate("relation", rec, domain=domain)
+                    if _errs:
+                        raise SystemExit(
+                            f"[generic_synth] 25_hydrated relation record fails schema for domain "
+                            f"'{domain}': {_errs[:3]} | rec={rec}. relation_type '{p}' is not in the manifest's "
+                            f"relations.taxonomy / predicates enum (configs/domains/{domain}.yaml) — the hydrated "
+                            f"vocabulary must match the manifest the gates classify against.")
+                    triple_recs.append(rec)
             out.extend(triple_recs)
             if _fh is not None:
                 for rec in triple_recs:
@@ -211,7 +220,7 @@ def main():
         out_dir = ed.dir / "25_hydrated"
         out_dir.mkdir(parents=True, exist_ok=True)
         recs = synth_records(triples, ptmpls, preamble, unit_name, args.variations,
-                             out_path=out_dir / "relations_llm.jsonl")
+                             out_path=out_dir / "relations_llm.jsonl", domain=args.domain)
         print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines from {len(triples)} triples")
 
 

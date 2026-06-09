@@ -28,6 +28,7 @@ from collections import defaultdict
 
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
+from pipeline.schema_validate import validate
 
 
 def load_all_triples(ed) -> list[dict]:
@@ -74,7 +75,7 @@ def predicate_templates(domain: str) -> dict:
     return ((Domain(domain).templates or {}).get("hydrate_templates") or {}).get("predicate_templates") or {}
 
 
-def expand_records(triples: list[dict], ptmpls: dict, unit_name: str) -> list[dict]:
+def expand_records(triples: list[dict], ptmpls: dict, unit_name: str, domain: str | None = None) -> list[dict]:
     """Render the per-predicate templates over the triples → hydrate records (the 25_hydrated shape).
     A triple whose predicate has no template is skipped; a template referencing an attr the triple lacks
     is skipped (KeyError) rather than emitting a malformed line. Deterministic, faithful by construction."""
@@ -96,9 +97,17 @@ def expand_records(triples: list[dict], ptmpls: dict, unit_name: str) -> list[di
             except (KeyError, IndexError):
                 continue
             rendered[(p, ti)] += 1
-            out.append({"text": text, "relation_type": p, "direction": "forward",
-                        "surface_form": "template", "source_triple_ids": [f"{p}:{i}"],
-                        "entity_ids": [t["subject"], t["object"]], "split": "cpt"})
+            rec = {"text": text, "relation_type": p, "direction": "forward",
+                   "surface_form": "template", "source_triple_ids": [f"{p}:{i}"],
+                   "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
+            _errs = validate("relation", rec, domain=domain)
+            if _errs:
+                raise SystemExit(
+                    f"[generic_expand] 25_hydrated relation record fails schema for domain "
+                    f"'{domain}': {_errs[:3]} | rec={rec}. relation_type '{p}' is not in the manifest's "
+                    f"relations.taxonomy / predicates enum (configs/domains/{domain}.yaml) — the hydrated "
+                    f"vocabulary must match the manifest the gates classify against.")
+            out.append(rec)
     # A template that rendered for ZERO of a predicate's triples is a placeholder typo, NOT an optional-attr
     # skip (those render for SOME triples). Surface it — a silently-zero template is a missing training fact.
     for p, n in counts.items():
@@ -127,7 +136,7 @@ def main():
             continue
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
-        recs = expand_records(triples, ptmpls, unit_name)
+        recs = expand_records(triples, ptmpls, unit_name, args.domain)
         uncovered = sorted({t["predicate"] for t in triples} - set(ptmpls))
         if args.dry_run:
             print(f"  {ed.slug}: {len(recs)} lines over {len({r['relation_type'] for r in recs})} relations; "

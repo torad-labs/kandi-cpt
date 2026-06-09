@@ -21,7 +21,7 @@ import config as C
 from pipeline.domain import Domain
 
 _SCHEMA_DIR = C.ROOT / "schema"
-_NAMES = ("metadata", "entity", "triple", "discourse")
+_NAMES = ("metadata", "entity", "triple", "discourse", "relation")
 
 
 def _load(name: str) -> dict:
@@ -42,6 +42,20 @@ def _patch(name: str, s: dict, dom: Domain) -> dict:
         s["properties"]["stance"]["enum"] = list(ont["stances"])
     elif name == "metadata" and ont.get("topics"):
         s["$defs"]["topic"]["enum"] = list(ont["topics"])
+    elif name == "relation":
+        # The 25_hydrated relation_type vocabulary, pinned to the manifest (the 15_structured contract
+        # moved to the hydrate seam). KEY: the enum source MUST match the WRITER's relation_type source —
+        #   • a domain whose hydrate writer emits SEMANTIC labels (EDC's Rust factory → 'artist_to_stage')
+        #     declares relations.taxonomy → enum = the taxonomy keys;
+        #   • a domain whose generic writer emits the RAW predicate (generic_expand/synth → 'made_of')
+        #     declares NO taxonomy → enum = the predicates keys.
+        # So a semantic-taxonomy domain that (mis)uses the generic predicate writer now FAILS at write.
+        rels = spec.get("relations") or {}
+        tax = rels.get("taxonomy") or {}
+        if tax:
+            s["properties"]["relation_type"]["enum"] = list(tax.keys())
+        elif spec.get("predicates"):
+            s["properties"]["relation_type"]["enum"] = list(spec["predicates"].keys())
     return s
 
 
