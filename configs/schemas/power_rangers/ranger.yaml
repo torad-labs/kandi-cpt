@@ -1,0 +1,8 @@
+entity: ranger
+fields:
+  name: {type: "string", required: true, description: "The name of the character."}
+  color: {type: "string", required: true, description: "The color of the ranger suit."}
+  season: {type: "string", required: true, description: "The season they appear in."}
+  weapon: {type: "string", required: false, description: "The primary weapon used."}
+  morpher: {type: "string", required: false, description: "The device used to morph."}
+  sentai_counterpart: {type: "string", required: false, description: "The corresponding character in the Super Sentai original."}

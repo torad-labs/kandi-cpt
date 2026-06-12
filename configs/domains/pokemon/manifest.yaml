@@ -1,0 +1,12 @@
+name: pokemon
+version: 1.0
+description: "Deep knowledge installation for Pokémon species, moves, and abilities."
+ontology:
+  entities:
+    - name: pokemon
+      predicates: [name, type, base_stat_total, abilities, moves]
+    - name: move
+      predicates: [name, type, power, accuracy, effect]
+    - name: ability
+      predicates: [name, effect]
+stages: [acquire, extract, curate, structure, hydrate, synth_expand, audit, tokenize, train]

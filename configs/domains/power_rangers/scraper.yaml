@@ -1,0 +1,20 @@
+scraper_engine: fandom_generic
+targets:
+  - domain: "powerrangers.fandom.com"
+    depth: 2
+    follow_links: true
+    exclude_patterns:
+      - "/wiki/Category:*"
+      - "/wiki/Special:*"
+extraction_rules:
+  - schema: "Ranger"
+    selector: ".infobox"
+    mapping:
+      "name": ".header"
+      "color": "td:contains('Color')"
+      "season": "td:contains('Season')"
+  - schema: "Zord"
+    selector: ".infobox"
+    mapping:
+      "name": ".header"
+      "type": "td:contains('Type')"

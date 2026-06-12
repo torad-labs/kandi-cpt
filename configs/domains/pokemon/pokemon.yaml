@@ -1,0 +1,23 @@
+version: 1.0
+goal: "Create a specialist model with high-density knowledge of the Pokémon universe, including species stats, types, abilities, evolution chains, and game-specific lore."
+ontology:
+  entities:
+    - Pokemon
+    - Type
+    - Ability
+    - Move
+    - Item
+    - Region
+  relationships:
+    - Pokemon -> has_type -> Type
+    - Pokemon -> has_ability -> Ability
+    - Pokemon -> learns -> Move
+    - Pokemon -> evolves_to -> Pokemon
+    - Pokemon -> found_in -> Region
+sources:
+  - name: "Pokémon Wiki"
+    url: "https://pokemon.fandom.com/wiki/"
+    priority: 1
+  - name: "Bulbapedia"
+    url: "https://bulbapedia.bulbagarden.net/wiki/Main_Page"
+    priority: 2

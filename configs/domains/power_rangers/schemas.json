@@ -1,0 +1,42 @@
+{
+  "Ranger": {
+    "properties": {
+      "name": "string",
+      "color": "string",
+      "season": "string",
+      "morphing_call": "string",
+      "primary_weapon": "string",
+      "assigned_zord": "string"
+    },
+    "required": ["name", "color", "season"]
+  },
+  "Zord": {
+    "properties": {
+      "name": "string",
+      "type": "string",
+      "season": "string",
+      "pilot": "string",
+      "combination_role": "string"
+    },
+    "required": ["name", "season"]
+  },
+  "Season": {
+    "properties": {
+      "name": "string",
+      "air_year": "integer",
+      "theme": "string",
+      "total_rangers": "integer",
+      "main_antagonist": "string"
+    },
+    "required": ["name", "air_year"]
+  },
+  "Villain": {
+    "properties": {
+      "name": "string",
+      "season": "string",
+      "motivation": "string",
+      "rank": "string"
+    },
+    "required": ["name", "season"]
+  }
+}

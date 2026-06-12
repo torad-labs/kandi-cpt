@@ -1,0 +1,6 @@
+entity: villain
+fields:
+  name: {type: "string", required: true, description: "The name of the villain."}
+  season: {type: "string", required: true, description: "The season they feature in."}
+  motive: {type: "string", required: false, description: "Their goal or reason for attacking."}
+  powers: {type: "string", required: false, description: "Their primary abilities or weapons."}

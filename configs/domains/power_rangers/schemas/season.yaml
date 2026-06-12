@@ -1,0 +1,7 @@
+entity: Season
+fields:
+  title: { type: string, required: true, description: "Full title of the season" }
+  release_year: { type: integer, required: true, description: "The year it first aired" }
+  theme: { type: string, required: false, description: "The core motif (e.g., Dinosaurs, Space, Ninjas)" }
+  mentor: { type: string, required: false, description: "The guide or mentor figure" }
+  primary_villain: { type: string, required: true, description: "The main antagonist of the season" }

@@ -1,0 +1,14 @@
+registry:
+  power_rangers:
+    - category: "Category:Power_Rangers_characters"
+      schema: ranger
+      source: "powerrangers.fandom.com"
+    - category: "Category:Zords"
+      schema: zord
+      source: "powerrangers.fandom.com"
+    - category: "Category:Seasons"
+      schema: season
+      source: "powerrangers.fandom.com"
+    - category: "Category:Villains"
+      schema: villain
+      source: "powerrangers.fandom.com"

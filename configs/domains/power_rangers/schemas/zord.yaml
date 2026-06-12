@@ -1,0 +1,7 @@
+entity: Zord
+fields:
+  name: { type: string, required: true, description: "Name of the Zord" }
+  type: { type: string, required: true, description: "The animal or vehicle type (e.g., Tyrannosaurus)" }
+  pilot: { type: string, required: true, description: "The ranger who pilots the Zord" }
+  megazord_component: { type: string, required: false, description: "Which part of the Megazord it forms" }
+  season: { type: string, required: true, description: "The season the Zord appears in" }

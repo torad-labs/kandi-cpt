@@ -1,0 +1,21 @@
+domain: power_rangers
+version: 1.0
+goal: "Create a specialist model with high-density knowledge of Power Rangers lore, including character bios, Zord specifications, season timelines, and villain motivations."
+ontology:
+  entities:
+    - Ranger
+    - Zord
+    - Season
+    - Villain
+  relationships:
+    - Ranger -> pilots -> Zord
+    - Ranger -> belongs_to -> Season
+    - Villain -> antagonizes -> Season
+    - Zord -> belongs_to -> Season
+sources:
+  - name: "Power Rangers Fandom Wiki"
+    url: "https://powerrangers.fandom.com/wiki/"
+    priority: 1
+  - name: "Super Sentai Wiki"
+    url: "https://super-sentai.fandom.com/wiki/"
+    priority: 2

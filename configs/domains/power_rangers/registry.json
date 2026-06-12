@@ -1,0 +1,20 @@
+{
+  "mappings": [
+    {
+      "category": "Category:Power_Rangers_characters",
+      "schema": "Ranger"
+    },
+    {
+      "category": "Category:Zords",
+      "schema": "Zord"
+    },
+    {
+      "category": "Category:Power_Rangers_seasons",
+      "schema": "Season"
+    },
+    {
+      "category": "Category:Power_Rangers_villains",
+      "schema": "Villain"
+    }
+  ]
+}

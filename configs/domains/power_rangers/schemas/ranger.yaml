@@ -1,0 +1,9 @@
+entity: Ranger
+fields:
+  name: { type: string, required: true, description: "Full name of the character" }
+  color: { type: string, required: true, description: "The color of the ranger suit" }
+  season: { type: string, required: true, description: "The specific Power Rangers season/iteration" }
+  weapon: { type: string, required: false, description: "The primary weapon used by the ranger" }
+  zord: { type: string, required: false, description: "The Zord associated with this ranger" }
+  morphing_call: { type: string, required: false, description: "The phrase used to transform" }
+  sentai_counterpart: { type: string, required: false, description: "The corresponding Super Sentai character" }

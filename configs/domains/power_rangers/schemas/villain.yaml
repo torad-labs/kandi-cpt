@@ -1,0 +1,7 @@
+entity: Villain
+fields:
+  name: { type: string, required: true, description: "Name of the antagonist" }
+  rank: { type: string, required: false, description: "Their position in the hierarchy (e.g., Emperor, General)" }
+  goal: { type: string, required: false, description: "Their primary objective or motivation" }
+  season: { type: string, required: true, description: "The season they appear in" }
+  defeated_by: { type: string, required: false, description: "Who or what eventually defeated them" }

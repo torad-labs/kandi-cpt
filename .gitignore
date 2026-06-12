@@ -85,3 +85,7 @@ secrets.json
 
 # Run registry — per-run resolved-config cards + index (local provenance; regenerated each run)
 logs/runs/
+
+# Local session state (directive ledger, locks) + generated check outputs
+.claude/
+check_out.json

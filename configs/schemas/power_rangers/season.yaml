@@ -1,0 +1,6 @@
+entity: season
+fields:
+  name: {type: "string", required: true, description: "The full title of the season."}
+  air_date: {type: "string", required: true, description: "Start and end dates of the broadcast."}
+  theme: {type: "string", required: false, description: "The central motif (e.g., Dinosaurs, Space, Magic)."}
+  main_villain: {type: "string", required: true, description: "The primary antagonist of the season."}

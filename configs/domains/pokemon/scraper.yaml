@@ -1,0 +1,11 @@
+sources:
+  - name: pokemon_fandom
+    url: "https://pokemon.fandom.com/wiki/"
+    selectors:
+      pokemon:
+        path: "div.infobox"
+        fields:
+          name: "h2.pi-title"
+          type: "span.pi-type"
+          base_stat_total: "td:contains('Base Stat Total')"
+          abilities: "div.pi-abilities"

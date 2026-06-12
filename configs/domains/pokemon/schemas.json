@@ -1,0 +1,9 @@
+{
+  "pokemon": {
+    "name": "string",
+    "type": "list[string]",
+    "base_stat_total": "integer",
+    "abilities": "list[string]",
+    "moves": "list[string]"
+  }
+}

@@ -1,0 +1,17 @@
+domain: power_rangers
+version: 1.0
+description: "Comprehensive knowledge base for the Power Rangers franchise, including Ranger identities, Zord specifications, and season chronologies."
+goals:
+  - "Accurately identify every Ranger by color and season."
+  - "Detail Zord combinations and pilots."
+  - "Map the relationship between Power Rangers seasons and their Super Sentai counterparts."
+  - "Maintain a timeline of villain arcs across all eras."
+sources:
+  - name: power_rangers_wiki
+    url: "https://powerrangers.fandom.com/wiki/"
+    type: wiki
+  - name: super_sentai_wiki
+    url: "https://supersentai.fandom.com/wiki/"
+    type: wiki
+ontology:
+  entities: [Ranger, Zord, Season, Villain]
