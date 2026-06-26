@@ -88,7 +88,14 @@ def check_domain(name: str, editions: str) -> tuple[dict, bool]:
     for v in (dom.spec.get("entity_types") or []):
         if isinstance(v, str) and _ph.match(v):
             ph_vals.append(v)
-    for k, pv in (dom.spec.get("predicates") or {}).items():
+    preds = dom.spec.get("predicates") or {}
+    if not isinstance(preds, dict):
+        add("ontology.predicates_shape", "REQUIRED", False,
+            detail="predicates must be a mapping {name: {object: [...]}} per _TEMPLATE.yaml; got a "
+                   f"{type(preds).__name__} (a YAML list of `- name:/domain:/range:` is the "
+                   "non-canonical shape — convert to the dict form)")
+        preds = {}
+    for k, pv in preds.items():
         if isinstance(k, str) and _ph.match(k):
             ph_vals.append(k)
         if isinstance(pv, dict):
