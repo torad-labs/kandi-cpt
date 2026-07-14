@@ -1,0 +1,89 @@
+{
+  "model": "tuned",
+  "path": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "gpu": {
+    "nvidia_smi_index": 1,
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb"
+  },
+  "split": "held_out",
+  "split_version": "v1",
+  "measurement_class": "augmentation_holdout",
+  "n": 72,
+  "hits": 45,
+  "acc": 0.625,
+  "chance": 0.25,
+  "bound_half_over_sqrt_n": 0.05892556509887897,
+  "per_predicate": {
+    "allied_with": {
+      "acc": 0.3333333333333333,
+      "n": 3,
+      "hits": 1
+    },
+    "appears_in": {
+      "acc": 0.5,
+      "n": 2,
+      "hits": 1
+    },
+    "evolves_into_lore": {
+      "acc": 1.0,
+      "n": 5,
+      "hits": 5
+    },
+    "governs": {
+      "acc": 0.0,
+      "n": 1,
+      "hits": 0
+    },
+    "involves": {
+      "acc": 1.0,
+      "n": 1,
+      "hits": 1
+    },
+    "leads": {
+      "acc": 1.0,
+      "n": 8,
+      "hits": 8
+    },
+    "located_in": {
+      "acc": 0.6923076923076923,
+      "n": 26,
+      "hits": 18
+    },
+    "member_of": {
+      "acc": 0.5,
+      "n": 8,
+      "hits": 4
+    },
+    "occurs_at": {
+      "acc": 1.0,
+      "n": 1,
+      "hits": 1
+    },
+    "opposes": {
+      "acc": 1.0,
+      "n": 2,
+      "hits": 2
+    },
+    "originates_from": {
+      "acc": 0.6666666666666666,
+      "n": 3,
+      "hits": 2
+    },
+    "owns_pokemon": {
+      "acc": 0.0,
+      "n": 6,
+      "hits": 0
+    },
+    "partners_with": {
+      "acc": 0.5,
+      "n": 2,
+      "hits": 1
+    },
+    "rival_of": {
+      "acc": 0.25,
+      "n": 4,
+      "hits": 1
+    }
+  }
+}

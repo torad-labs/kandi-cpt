@@ -1,0 +1,88 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/train_pokemon_lore_kanto_v1.yaml"
+  ],
+  "devices": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+  "exit_code": 0,
+  "duration_s": 3596.744262,
+  "outputs": [
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/model.safetensors",
+      "sha256": "3dd96ac64d98c981b4116170ddb14385c17fab6c37d93974d508f6ed676830f9",
+      "bytes": 8584366406
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/quant_keys.json",
+      "sha256": "f969ffbacd26cbb94fdbc4026b1cf611ec55e1b1b55f077e7e1fdb4334cd8a83",
+      "bytes": 9469
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/run_contract.json",
+      "sha256": "1ed59ac12c236276e363396da8fb89a07bd3e76cffb3eb199ebe493a2dce03f7",
+      "bytes": 558
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/cpt/pokemon_lore_kanto_v1/train.log",
+      "sha256": "2d327adac25d9c96ed16e70aa9aea0d487807793d3c5cd1ed62a9fc1b35fd1ff",
+      "bytes": 23468
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 3,
+    "unchanged": 5,
+    "removed": 0,
+    "bytes_before": 8616580733,
+    "bytes_after": 8616591836
+  },
+  "postconditions": [
+    {
+      "check": "output exists: checkpoints/cpt/pokemon_lore_kanto_v1/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "7305588c55aa344a0f5e9f6d3dc2f1947c139318",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "ab409d64e42b6b658131560f9d328e1935425394f6a307b33c3e71a3deff0f49"
+}
