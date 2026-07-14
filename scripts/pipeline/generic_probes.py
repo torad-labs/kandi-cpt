@@ -24,6 +24,7 @@ from collections import defaultdict
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline.generic_expand import load_all_triples
+from pipeline.split import load_split, triple_id
 
 
 def rel_q_for(domain: str) -> dict:
@@ -31,21 +32,26 @@ def rel_q_for(domain: str) -> dict:
     return ((Domain(domain).templates or {}).get("sft_templates") or {}).get("rel_q") or {}
 
 
-def build_probes(triples: list[dict], rel_q: dict, unit_name: str = "", n_distractors: int = 3,
-                 seed: int = 0) -> list[dict]:
-    """Forced-choice items over the triples. Distractors = other objects seen for the SAME predicate. A
-    triple is skipped if its predicate has no question template or no distractor pool (can't force a
+def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_distractors: int = 3,
+                 seed: int = 0, pool_triples: list[dict] | None = None) -> list[dict]:
+    """Forced-choice items over `gold_triples`, with distractors drawn from `pool_triples` (default:
+    the same records) after excluding every object true for that subject+predicate. A gold triple is
+    skipped if its predicate has no question template or no safe distractor pool (can't force a
     choice). Deterministic given `seed`."""
     rng = random.Random(seed)
+    pool_triples = gold_triples if pool_triples is None else pool_triples
     by_pred: dict[str, set] = defaultdict(set)
-    for t in triples:
+    true_by_subject_pred: dict[tuple[str, str], set] = defaultdict(set)
+    for t in pool_triples:
         if t["object"]:
             by_pred[t["predicate"]].add(t["object"])
+            subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
+            true_by_subject_pred[(subject_id, t["predicate"])].add(t["object"])
     items: list[dict] = []
     seen_q: dict = defaultdict(int)                        # predicate WITH a question template -> n triples seen
     made: dict = defaultdict(int)                          # predicate -> n probes produced
     drops: dict = defaultdict(lambda: defaultdict(int))    # predicate -> reason -> n
-    for t in triples:
+    for t in gold_triples:
         p, obj = t["predicate"], t["object"]
         q = rel_q.get(p)
         if not q:
@@ -54,9 +60,10 @@ def build_probes(triples: list[dict], rel_q: dict, unit_name: str = "", n_distra
         if not obj:
             drops[p]["no_object"] += 1
             continue
-        pool = sorted(by_pred[p] - {obj})
+        subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
+        pool = sorted(by_pred[p] - true_by_subject_pred[(subject_id, p)])
         if not pool:                                       # need ≥1 distractor of the right type
-            drops[p]["no_distractor"] += 1
+            drops[p]["no_safe_distractor"] += 1
             continue
         try:
             question = q[0].format(s=t["subject"], n=unit_name).strip()
@@ -68,6 +75,9 @@ def build_probes(triples: list[dict], rel_q: dict, unit_name: str = "", n_distra
         items.append({"question": question, "choices": choices, "answer": obj,
                       "predicate": p, "subject": t["subject"], "split": "held_out"})
         made[p] += 1
+    empty_pool_drops = sum(d.get("no_safe_distractor", 0) for d in drops.values())
+    print(f"  multi-correct guard: dropped {empty_pool_drops} probe(s) with an empty distractor pool "
+          f"after excluding all objects true for the same (subject_id, predicate)")
     # A predicate the operator authored a question for that yields ZERO probes is an UNTESTED fact axis — in an
     # eval set the absence of a test must not silently read as a passing test.
     for p, seen in seen_q.items():
@@ -93,12 +103,28 @@ def main():
         raise SystemExit(f"domain '{args.domain}' has no sft_templates.rel_q — author it in "
                          f"configs/templates/{args.domain}.yaml (or check the key spelling/nesting if the file exists).")
     for ed in iter_editions(args.domain, only=args.editions, with_raw=False):   # consumes 15_structured, not 00_raw
-        triples = load_all_triples(ed)
-        if not triples:
+        all_triples = load_all_triples(ed)
+        if not all_triples:
             continue
+        sp = load_split(ed.dir)
+        if sp:
+            gold_triples = [t for t in all_triples if triple_id(t) in sp["holdout_ids"]]
+            split_label = "held_out"
+            print(f"  {ed.slug}: split {sp['version']} held-out mode — {len(gold_triples)} gold / "
+                  f"{len(all_triples)} distractor-pool triples")
+        else:
+            gold_triples = all_triples
+            split_label = "trained"
+            print(f"  {ed.slug}: trained mode — {len(gold_triples)} gold / {len(all_triples)} "
+                  f"distractor-pool triples (no split manifest)")
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
-        items = build_probes(triples, rel_q, unit_name, args.distractors)
+        items = build_probes(gold_triples, rel_q, unit_name, args.distractors,
+                             pool_triples=all_triples)
+        for item in items:
+            item["split"] = split_label
+            if sp:
+                item["split_version"] = sp["version"]
         if args.dry_run:
             print(f"  {ed.slug}: {len(items)} forced-choice probes over {len({i['predicate'] for i in items})} predicates")
             continue
@@ -107,7 +133,8 @@ def main():
         tmp.write_text(
             "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n", encoding="utf-8")
         os.replace(tmp, out_path)
-        print(f"  {ed.slug}: wrote {len(items)} probes from {len(triples)} triples")
+        print(f"  {ed.slug}: wrote {len(items)} {split_label} probes from {len(gold_triples)} gold triples "
+              f"({len(all_triples)} distractor-pool triples)")
 
 
 if __name__ == "__main__":

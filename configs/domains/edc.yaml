@@ -39,7 +39,7 @@ ontology:
     user-contributed: single-anecdote
     inferred-by-model: inferred
 
-model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
 configs:
   cpt: configs/train_edc_lv_2026.yaml
   sft: configs/sft_edc.yaml
@@ -65,8 +65,8 @@ stages:
     cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
     gpu: false
   - name: curate
-    desc: "RoBERTa quality/dedup → keep_list.json"
-    cmd: ["{py}", "scripts/curate_corpus.py", "--drop-frac", "0.10"]
+    desc: "RoBERTa quality/dedup → keep_list.json (EDC legacy path)"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--drop-frac", "0.10"]
     gpu: true
   - name: structured
     desc: "15_structured — LLM entity/triple/discourse extraction (schema-validated)"

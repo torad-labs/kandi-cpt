@@ -15,11 +15,13 @@ anti-hallucination practice is wired here as a LEVER (default OFF → reproduces
   --self-gen             (#3) use the model's OWN correct answer for Known QAs (in-distribution target) [S3FT/NILE]
   --abstention-frac F    (#2) make ~F of the final set abstentions: unknown-tier QAs + synthesized
                               unanswerable questions (absent editions) relabeled to "I don't know"  [R-Tuning/HALT]
+  --wrong-value-neg N    generic-domain correction pairs from the domain's contrast block (default 0)
+  --absent-entity-neg N  generic-domain refusal pairs for contrast-group values absent from the graph (default 0)
   --val-frac F           hold out a val split → <out>_val.arrow (for the early-stop lever; see eval_sft_val.py)
 
     PYTHONPATH=scripts python scripts/build_sft.py [--editions …] [--seq-len 256] [--out sft_v1]
         [--drop-generic] [--score-model checkpoints/cpt/edc_all97_v1 --knowledge-filter --self-gen]
-        [--abstention-frac 0.15] [--val-frac 0.1]
+        [--abstention-frac 0.15] [--wrong-value-neg 20] [--absent-entity-neg 10] [--val-frac 0.1]
 Output: data/_build/30_tokenized/<out>.arrow (+ <out>_val.arrow if --val-frac) with input_ids + labels.
 """
 from __future__ import annotations
@@ -30,7 +32,7 @@ import random
 import re
 import sys
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 
 from transformers import AutoTokenizer
 from datasets import Dataset
@@ -39,6 +41,9 @@ import config as C
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline import fact_expand as FE
+from pipeline.generic_contrast import load_contrast
+from pipeline.generic_expand import load_all_triples
+from pipeline.split import load_split, triple_id
 
 QA_LINE = re.compile(r"^\s*Q:\s*(.+?)\s*A:\s*(.+?)\s*$", re.I | re.S)
 
@@ -79,7 +84,8 @@ def _norm(s: str) -> str:
 
 
 def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
-                venue_templates: list | None = None, rel_q: dict | None = None) -> list[dict]:
+                venue_templates: list | None = None, rel_q: dict | None = None,
+                train_ids: set[str] | None = None) -> list[dict]:
     """Grounded {q, a, key, rel} dicts for one edition. `key` = the salient answer entity (used by the
     knownness scorer to check whether the model's free generation actually contains the fact). The positive
     Q/A template shapes (`venue_templates`, `rel_q`) are domain-authored (configs/templates/<domain>.yaml
@@ -105,6 +111,18 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
                     o = json.loads(l); ents[o["id"]] = o.get("name_canonical", "")
                 except Exception:
                     pass
+
+    def display_for_id(id_value) -> str:
+        raw = str(id_value)
+        return ents.get(raw) or (raw.split(":")[-1].replace("_", " ") if ":" in raw else raw)
+
+    def is_train_triple(t: dict) -> bool:
+        """Match split.py/generic_expand's triple id, whose object component is the display value."""
+        if train_ids is None:
+            return True
+        return triple_id({"subject_id": t.get("subject_id", ""), "predicate": t.get("predicate", ""),
+                          "object": display_for_id(t.get("object", ""))}) in train_ids
+
     out: list[dict] = []
     by_rel: Counter = Counter()
     if venue and not venue.lower().startswith("various"):
@@ -133,6 +151,8 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
         try:
             t = json.loads(l)
         except Exception:
+            continue
+        if not is_train_triple(t):
             continue
         if t.get("predicate") != "plays_at":
             continue
@@ -176,6 +196,8 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
             t = json.loads(l)
         except Exception:
             continue
+        if not is_train_triple(t):
+            continue
         p = t.get("predicate")
         if p not in rel_q or by_rel[p] >= max(4, max_per_rel // 4):
             continue
@@ -195,9 +217,14 @@ def edition_qas(ed, max_per_rel: int, answer_aug: int = 2,
             if n >= max_per_rel * 2 or not l.strip():
                 continue
             try:
-                txt = json.loads(l).get("text", "")
+                rec = json.loads(l)
             except Exception:
                 continue
+            if train_ids is not None:
+                source_ids = rec.get("source_triple_ids") or []
+                if not source_ids or not any(source_id in train_ids for source_id in source_ids):
+                    continue
+            txt = rec.get("text", "")
             m = QA_LINE.match(txt)
             if m and len(m.group(2)) < 200:
                 out.append({"q": m.group(1).strip(), "a": m.group(2).strip(), "key": m.group(2).strip(), "rel": "hydrated"})
@@ -389,6 +416,124 @@ def fine_grained_negatives(domain, n: int, rng) -> tuple[list, list]:
     return corrections[:n] if n else corrections, abstentions[:n] if n else abstentions
 
 
+def _display_key(value) -> str:
+    """Case-insensitive display comparison shared by generic SFT graph checks."""
+    return str(value).strip().casefold()
+
+
+def _generic_question(q_template, subject: str, object_value: str, unit_name: str) -> str:
+    """Render a domain question and make the denied value explicit without changing the tuple contract."""
+    try:
+        base = q_template.format(s=subject, o=object_value, n=unit_name).strip()
+    except (KeyError, IndexError, ValueError):
+        base = f"What is recorded for {subject}?"
+    if not base.endswith("?"):
+        base += "?"
+    return f"{base} Is it {object_value}?"
+
+
+def _generic_refusal(entity: str, rng) -> str:
+    """Reuse the established abstention voice while naming the absent entity explicitly."""
+    # These are the existing IDK_RESPONSES with their generic referent replaced by the entity; no new
+    # refusal dialect is introduced for generic domains.
+    choices = [
+        f"I don't have reliable information about {entity}.",
+        f"I'm not certain about {entity} — I don't have that detail.",
+        f"I don't know {entity} for sure, so I'd rather not guess.",
+        f"That's outside what I can reliably tell you about: {entity}.",
+    ]
+    return rng.choice(choices)
+
+
+def generic_wrong_value_negatives(train_triples: list[dict], all_triples: list[dict], groups: dict,
+                                  predicates: dict, rel_q: dict, n: int, rng, unit_name: str) -> list[tuple]:
+    """Build answerable correction pairs from contrast groups, capped at N per unit.
+
+    ``train_triples`` is the only source of SFT questions; ``all_triples`` is the truth graph used to
+    reject an attractor that is true for the same subject+predicate in another continuity/era. The output
+    deliberately remains the existing build_sft ``(question, answer)`` pair shape.
+    """
+    if n <= 0:
+        return []
+    true_values: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for t in all_triples:
+        key = (str(t.get("subject_id", "") or t.get("subject", "")), str(t.get("predicate", "")))
+        true_values[key].add(_display_key(t.get("object", "")))
+
+    candidates: list[tuple[str, str]] = []
+    seen_source_ids: set[str] = set()
+    seen_pairs: set[tuple[str, str]] = set()
+    for t in train_triples:
+        source_id = triple_id(t)
+        if source_id in seen_source_ids:
+            continue
+        seen_source_ids.add(source_id)
+        predicate = str(t.get("predicate", ""))
+        spec = predicates.get(predicate)
+        q_pair = rel_q.get(predicate)
+        if not spec or not q_pair or len(q_pair) < 2:
+            continue
+        group_values = groups.get(spec.get("group"), [])
+        object_value = str(t.get("object", ""))
+        object_key = _display_key(object_value)
+        group_keys = {_display_key(v) for v in group_values}
+        if object_key not in group_keys:
+            continue
+        subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
+        true_for_subject = true_values[(subject_id, predicate)]
+        subject = str(t.get("subject", ""))
+        q_template, a_template = q_pair[0], q_pair[1]
+        try:
+            true_answer = a_template.format(s=subject, o=object_value, n=unit_name).strip().rstrip(".")
+        except (KeyError, IndexError, ValueError):
+            true_answer = f"{subject} has {object_value}"
+        for attractor in group_values:
+            attractor_key = _display_key(attractor)
+            if attractor_key == object_key or attractor_key in true_for_subject:
+                continue
+            q = _generic_question(q_template, subject, str(attractor), unit_name)
+            a = f"No — {true_answer}; not {attractor}."
+            pair = (q, a)
+            if pair not in seen_pairs:
+                candidates.append(pair)
+                seen_pairs.add(pair)
+    rng.shuffle(candidates)
+    return candidates[:n]
+
+
+def generic_absent_entity_negatives(all_triples: list[dict], groups: dict, predicates: dict,
+                                    rel_q: dict, n: int, rng, unit_name: str) -> list[tuple]:
+    """Build refusal pairs for contrast-group display values absent as subjects and objects in the unit."""
+    if n <= 0:
+        return []
+    present = {_display_key(t.get("subject", "")) for t in all_triples}
+    present.update(_display_key(t.get("object", "")) for t in all_triples)
+    candidates: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    for predicate, spec in predicates.items():
+        q_pair = rel_q.get(predicate)
+        if not q_pair:
+            continue
+        for entity in groups.get(spec.get("group"), []):
+            if _display_key(entity) in present:
+                continue
+            q_template = q_pair[0]
+            try:
+                q = q_template.format(s=entity, o=entity, n=unit_name).strip()
+            except (KeyError, IndexError, ValueError):
+                q = f"What is recorded about {entity}?"
+            if not q.endswith("?"):
+                q += "?"
+            if _display_key(entity) not in _display_key(q):
+                q = f"What is recorded about {entity}?"
+            pair = (q, _generic_refusal(entity, rng))
+            if (predicate, q) not in seen:
+                candidates.append(pair)
+                seen.add((predicate, q))
+    rng.shuffle(candidates)
+    return candidates[:n]
+
+
 def encode(tok, q: str, a: str, seq_len: int):
     bos = tok.bos_token or ""
     prompt = f"{bos}<start_of_turn>user\n{q}<end_of_turn>\n<start_of_turn>model\n"
@@ -473,6 +618,10 @@ def main():
     ap.add_argument("--knowledge-filter", action="store_true", help="#1 drop Unknown-tier QAs (needs --score-model)")
     ap.add_argument("--self-gen", action="store_true", help="#3 use the model's own correct answer for Known QAs")
     ap.add_argument("--abstention-frac", type=float, default=0.0, help="#2 target fraction of abstention examples")
+    ap.add_argument("--wrong-value-neg", type=int, default=0,
+                    help="generic-domain truth-validated wrong-value correction pairs per unit")
+    ap.add_argument("--absent-entity-neg", type=int, default=0,
+                    help="generic-domain refusal pairs for absent contrast-group entities per unit")
     ap.add_argument("--fake-city-neg", type=int, default=0, help="unknown-CITY hard-negatives (fake cities, "
                     "disjoint from the eval's fantasy set) → teaches 'no record of this city → refuse'. Targets "
                     "the ~1/3 of absent probes that are fake cities, historically untrained. Pairs with --absent-neg.")
@@ -496,17 +645,52 @@ def main():
     venue_templates = [tuple(t) for t in sft_tmpl.get("venue_templates", [])]
     rel_q = {k: tuple(v) for k, v in sft_tmpl.get("rel_q", {}).items()}
     for ed in iter_editions(args.domain, only=args.editions):
-        qa = edition_qas(ed, args.max_per_relation, args.answer_aug, venue_templates, rel_q)
+        split = load_split(ed.dir)
+        train_ids = split["train_ids"] if split else None
+        qa = edition_qas(ed, args.max_per_relation, args.answer_aug, venue_templates, rel_q, train_ids)
         if qa:
             cands.extend(qa)
             mp = ed.dir / "festival_meta.json"
             if mp.exists():
                 ed_names.append(json.loads(mp.read_text()).get("name", ed.slug))
-    if not cands:
+    generic_answerable: list[tuple[str, str]] = []
+    generic_refusal: list[tuple[str, str]] = []
+    generic_unavailable = False
+    if args.wrong_value_neg or args.absent_entity_neg:
+        groups, contrast_preds = load_contrast(args.domain)
+        if not groups or not contrast_preds:
+            generic_unavailable = True
+            print("DOMAIN_HARD_NEGATIVES_UNAVAILABLE: no authorable contrast groups for "
+                  f"domain '{args.domain}'", file=sys.stderr)
+        else:
+            for ed in iter_editions(args.domain, only=args.editions):
+                all_triples = load_all_triples(ed)
+                if not all_triples:
+                    continue
+                split = load_split(ed.dir)
+                train_triples = ([t for t in all_triples if triple_id(t) in split["train_ids"]]
+                                 if split else all_triples)
+                mp = ed.dir / "festival_meta.json"
+                unit_name = ((json.loads(mp.read_text(encoding="utf-8")).get("name") or ed.slug)
+                             if mp.exists() else ed.slug)
+                if args.wrong_value_neg:
+                    generic_answerable.extend(generic_wrong_value_negatives(
+                        train_triples, all_triples, groups, contrast_preds, rel_q,
+                        args.wrong_value_neg, random.Random(23), unit_name))
+                if args.absent_entity_neg:
+                    generic_refusal.extend(generic_absent_entity_negatives(
+                        all_triples, groups, contrast_preds, rel_q,
+                        args.absent_entity_neg, random.Random(29), unit_name))
+    if not cands and not generic_answerable and not generic_refusal:
         sys.exit("no Q/A pairs built")
 
     stats = Counter()
     stats["raw"] = len(cands)
+    if args.wrong_value_neg or args.absent_entity_neg:
+        stats["wrong_value_neg"] = len(generic_answerable)
+        stats["absent_entity_neg"] = len(generic_refusal)
+        if generic_unavailable:
+            stats["DOMAIN_HARD_NEGATIVES_UNAVAILABLE"] = True
     if args.drop_generic:
         before = len(cands)
         cands = [c for c in cands if not is_generic(c["a"])]
@@ -561,6 +745,10 @@ def main():
         stats["abstention"] = len(abs_all)
     else:
         abs_all = []
+    if generic_answerable:                                  # generic contrast corrections are answerable truth pairs
+        answerable = list(dict.fromkeys(answerable + generic_answerable))
+    if generic_refusal:                                     # generic absent entities are explicit refusals
+        abs_all = list(dict.fromkeys(abs_all + generic_refusal))
     if args.absent_neg > 0:                                  # targeted absent-edition hard-negatives (the v4 lever)
         neg = [p for p in absent_edition_negatives(ed_names, args.absent_neg, random.Random(7))
                if p[0] not in abstain_qs]

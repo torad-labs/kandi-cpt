@@ -174,7 +174,7 @@ fn synth_cmd(a: SynthArgs) -> anyhow::Result<()> {
 
 fn tokenize_cmd(a: TokenizeArgs) -> anyhow::Result<()> {
     // canonicalize root FIRST so cfg.edition_dir is absolute → strip_prefix(root) yields keep-list-shaped
-    // relative paths ("data/edc/.../X.md"), matching keep_list.json.
+    // relative paths ("data/edc/.../X.md"), matching the domain-scoped curation artifact.
     let root = std::fs::canonicalize(&a.target.root).unwrap_or_else(|_| a.target.root.clone());
     let cfg = FestivalConfig::load_edition(&root, &a.target.festival, &a.target.edition)?;
     let store = TripleStore::load(cfg.structured_dir())?;

@@ -8,7 +8,7 @@ hand on every layout change. Import from here instead.
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = Path("/home/marcos/Documents/dev/models/gemma-4-E2B-it")  # base Gemma 4 E2B (bf16)
+MODEL_PATH = Path("/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it")  # base Gemma 4 E2B (bf16)
 
 DATA = ROOT / "data"
 SHARED = DATA / "_shared"

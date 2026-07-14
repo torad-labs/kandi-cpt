@@ -137,6 +137,15 @@ def _id_parts(eid):
     return (p[0], p[1], p[2]) if len(p) == 3 else None
 
 
+def curation_keep_list(domain: str) -> set | None:
+    """The curation keep-list, PER-DOMAIN (keep_list_<domain>.json; the bare legacy name is EDC's).
+    A cross-domain list would silently veto every doc of another domain (the 0-pending pokemon-lore bug)."""
+    keep_path = C.BUILD / "curation" / f"keep_list_{domain}.json"
+    if not keep_path.exists() and domain == "edc":
+        keep_path = C.BUILD / "curation" / "keep_list.json"
+    return set(json.loads(keep_path.read_text())) if keep_path.exists() else None
+
+
 def _clean_ids(triples, entities, festival_slug, stats):
     """Deterministic id repair for one edition's 15_structured (no LLM) — the two id defects the gate flags:
 
@@ -251,12 +260,11 @@ def main():
     global ONT
     ONT = Ontology(args.domain)
 
-    eds = list(iter_editions("edc", only=args.editions))
+    eds = list(iter_editions(args.domain, only=args.editions))   # was hardcoded "edc" — domain-locked the extraction
     if len(eds) > 1 and not args.yes:
         sys.exit(f"{len(eds)} editions × LLM calls = real cost. Re-run with --yes, or --editions las_vegas/2026.")
 
-    keep = set(json.loads((C.BUILD / "curation" / "keep_list.json").read_text())) \
-        if (C.BUILD / "curation" / "keep_list.json").exists() else None
+    keep = curation_keep_list(args.domain)
     REJECT_DIR.mkdir(parents=True, exist_ok=True)
     GLOBAL_DIR.mkdir(parents=True, exist_ok=True)
     stats: Counter = Counter()
@@ -296,8 +304,9 @@ def main():
                 stats["unchanged"] += 1
                 continue
             text = md.read_text(encoding="utf-8", errors="replace")
+            doc = document_context(md, clean_root, text, doc_sha256=sha)
             title = text.splitlines()[0].lstrip("# ").strip()
-            meta = {"domain_class": _domain_of(md, sub), **_scrape_meta(md, sub)}
+            meta = {"domain_class": _domain_of(md, sub), **_scrape_meta(md, sub), **doc}
             work.append({"slug": ed.slug, "festival_slug": ed.festival_slug, "sha": sha,
                          "meta": meta, "user": ONT.user_prompt(ed.festival_slug, title, body_of(text))})
 
@@ -356,6 +365,20 @@ def main():
 def _sha(md):
     import hashlib
     return hashlib.sha256(md.read_bytes()).hexdigest()
+
+
+def document_context(md, clean_root, text: str | None = None, doc_sha256: str | None = None) -> dict:
+    """Pipeline-owned identity/hash/body context for one clean document.
+
+    Kandi clean sidecars do not carry a stable record id, so the portable path relative to ``10_clean``
+    is the document id. The model sees at most the first 12,000 body characters; retaining that exact
+    prefix lets provenance injection locate a returned verbatim quote without holding an unbounded document
+    copy in memory. Its offsets are unchanged from the full clean body because this is a prefix.
+    """
+    if text is None:
+        text = md.read_text(encoding="utf-8", errors="replace")
+    return {"doc_id": md.relative_to(clean_root).as_posix(),
+            "doc_sha256": doc_sha256 or _sha(md), "doc_body": body_of(text)[:12000]}
 
 
 def _sidecar(md):

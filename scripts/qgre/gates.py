@@ -410,6 +410,8 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     (out / "qgre_gate_data.js").write_text("window.QGRE_GATE = " + json.dumps(report, default=float) + ";")
     print(f"  → data/_build/dissect/qgre_gate_data.js")
+    if report["overall"] == "fail":
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -125,7 +125,7 @@ def check_domain(name: str, editions: str) -> tuple[dict, bool]:
 
     for s in dom.stages:
         try:
-            cmd = dom.resolve(s.cmd, editions=editions)
+            cmd = dom.resolve(s.cmd, domain=name, editions=editions)
         except KeyError as e:
             add(f"stage.{s.name}.resolve", "REQUIRED", False, detail=str(e))
             continue
@@ -173,7 +173,7 @@ def main():
                  f"stage would process nothing. Scrape first, or pass --editions (refusing a silent no-op run).")
     env = {**os.environ, "PYTHONPATH": "scripts"}
     for s in stages:
-        cmd = dom.resolve(s.cmd, editions=editions)
+        cmd = dom.resolve(s.cmd, domain=dom.name, editions=editions)
         shown = " ".join(cmd)
         if len(shown) > 200:
             shown = shown.replace(editions, f"<{n_ed} editions>")

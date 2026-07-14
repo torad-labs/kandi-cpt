@@ -358,7 +358,7 @@ def sample_rows(rows):
     return out
 
 
-def main():
+def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--checkpoints", nargs="+", required=True)
     ap.add_argument("--labels", nargs="+", help="display label per checkpoint (default: dir basename)")
@@ -416,7 +416,8 @@ def main():
         print(f"\n  → scorecard_data.js + index.html (open data/_build/dissect/index.html) + {ledger.name}")
     else:
         print(f"\n  → scorecard_data.js + {ledger.name}  (dissect.html dashboard not found — data only)")
+    return 0 if all(run["metrics"]["passed"] for run in runs) else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

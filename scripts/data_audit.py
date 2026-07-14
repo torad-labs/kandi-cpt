@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import json
 import statistics
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -368,6 +369,9 @@ def main():
     ap.add_argument("--device", default="cuda:0")
     args = ap.parse_args()
 
+    resolved_device = "CPU ONLY (--no-gpu; latent pass skipped)" if args.no_gpu else args.device
+    print(f"\n!!! DATA AUDIT RESOLVED DEVICE: {resolved_device} !!!", file=sys.stderr)
+
     eds = list(iter_editions(args.domain, only=args.editions, with_raw=False))   # was hardcoded 'edc' — domain-locked the audit
     if not eds:
         raise SystemExit("no editions matched")
@@ -414,6 +418,8 @@ def main():
         print(f"\n  → data_audit_data.js + data_audit.html (open data/_build/dissect/data_audit.html)")
     else:
         print(f"\n  → data_audit_data.js (data_audit.html template not found — data only)")
+    if worst == "fail":
+        sys.exit(1)
 
 
 if __name__ == "__main__":

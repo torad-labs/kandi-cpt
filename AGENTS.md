@@ -40,10 +40,11 @@ structure + cross-field at load; `validate_runtime(world, has_labels)` does the 
 - **V12 chain:** `scripts/build_v12.sh`  (re-tokenize → v3 corpus → re-CPT)
 - **Full domain pipeline:** `PYTHONPATH=scripts .venv/bin/python scripts/run_pipeline.py --domain edc --from structured --to sft`
 
-`scripts/train_fp4.sh` is THE launcher — it sets the FP4 / CUDA-12.9 toolchain env (CUDA_HOME, nvcc -ccbin
-g++-14, CCCL guard, MAX_JOBS=2, GPU=0, allocator). That env is **intentionally NOT in any config** — it is
-load-bearing shell setup. Never train by sourcing `fp4_env.sh` (that is the cu13 *kernel-smoke* path, not
-training).
+`scripts/train_fp4.sh` is THE launcher — it sets the FP4 / CUDA toolchain env (CUDA_HOME/CUDA_PATH, nvcc
+-ccbin g++-14, CCCL guard, MAX_JOBS=2, GPU=0, allocator). It prefers CUDA 12.9 when that toolkit actually
+has `nvcc`, then falls back to an installed CUDA >=12.9 toolkit such as CUDA 13.3 / the cu13 wheel toolkit.
+That env is **intentionally NOT in any config** — it is load-bearing shell setup. Never train by sourcing
+`fp4_env.sh` (that is the cu13 *kernel-smoke* path, not training).
 
 ---
 

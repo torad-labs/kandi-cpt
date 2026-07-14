@@ -27,6 +27,11 @@
       "items": { "type": "string" },
       "description": "provenance back-links to the 15_structured triple(s) this line is faithful to, e.g. [\"plays_at:34\"]."
     },
+    "source_doc_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional provenance back-links to the clean documents supporting source_triple_ids. Present only when structured triples carry doc_id provenance."
+    },
     "split": {
       "type": "string",
       "description": "corpus split tag, e.g. cpt | qa_in_cpt."

@@ -52,12 +52,40 @@
     },
     "provenance": {
       "type": "object",
-      "description": "Per-claim provenance for structured records (§3.1 provenance{} = source + confidence + era).",
+      "description": "Per-claim provenance for structured records (§3.1 source + confidence + era, with optional clean-document identity and exact supporting passage).",
       "required": ["source", "confidence"],
       "additionalProperties": false,
       "properties": {
         "source": { "$ref": "#/$defs/source" },
         "confidence": { "$ref": "#/$defs/confidence" },
+        "doc_id": {
+          "type": "string",
+          "description": "Stable identity of the clean source document, normally its path relative to the unit's 10_clean directory."
+        },
+        "doc_sha256": {
+          "type": "string",
+          "description": "SHA-256 content hash of the exact clean document version from which the claim was extracted."
+        },
+        "span": {
+          "description": "Optional half-open character offsets [start,end) into the clean document body for quote. Null means a returned quote could not be located exactly; offsets are never inferred.",
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["start", "end"],
+              "additionalProperties": false,
+              "properties": {
+                "start": { "type": "integer", "minimum": 0 },
+                "end": { "type": "integer", "minimum": 0 }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "quote": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Exact supporting passage returned by extraction, capped at 300 characters."
+        },
         "valid_from": { "type": "string", "format": "date" },
         "valid_until": { "type": "string", "format": "date" }
       }

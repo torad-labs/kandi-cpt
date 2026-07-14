@@ -49,8 +49,9 @@ class Ed:
 
     @property
     def festival_slug(self) -> str:
-        """The §2 entity-id prefix — `edc_las_vegas_2026` for EDC, `<domain>_<parts>` for any domain."""
-        return "_".join([self.festival, *self.parts])
+        """The §2 entity-id prefix — `edc_las_vegas_2026` for EDC, `<domain>_<parts>` for any domain.
+        Hyphenated domain names (pokemon-lore) normalize to underscores: ids are [a-z0-9_] by contract."""
+        return "_".join([self.festival.replace("-", "_"), *self.parts])
 
 
 def parse_only(only) -> set[str] | None:

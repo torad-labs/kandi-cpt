@@ -23,11 +23,13 @@ import re
 import sys
 import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
-from pipeline.generic_expand import load_all_triples, predicate_templates
+from pipeline.generic_expand import load_all_triples, predicate_templates, source_doc_ids
 from pipeline.schema_validate import validate
+from pipeline.split import load_split, triple_id
 
 # The per-fact variation instruction (generic — the DOMAIN framing is the config preamble prepended to it).
 VARIATION_PROMPT = (
@@ -88,64 +90,78 @@ def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b
 
 
 def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: str, n: int,
-                  generate_fn=openrouter_generate, out_path=None, domain: str | None = None) -> list[dict]:
+                  generate_fn=openrouter_generate, out_path=None, domain: str | None = None,
+                  concurrency: int = 16) -> list[dict]:
     """For each triple: build the canonical fact (predicate_templates[pred][0]) + ask generate_fn for N
     diverse faithful variations → 25_hydrated records. `generate_fn(system, user) -> str` is injectable
-    (a stub in tests; the real OpenRouter call by default). Deterministic given a deterministic generate_fn.
-    When out_path is given, each triple's records are written + flushed incrementally so completed work
-    survives a crash; the full list is still returned. NOTE: resume (skipping already-done triples) is not
-    implemented — for production-scale runs use the concurrent, per-file-idempotent synth_corpus.py pattern."""
+    (a stub in tests; the real OpenRouter call by default). Results remain in input order even when calls run
+    concurrently. When out_path is given, each completed result is written + flushed to a partial file; the
+    canonical file is atomically replaced only after a clean run."""
     out: list[dict] = []
     counts: dict = defaultdict(int)              # predicate -> n triples seen
     rendered: dict = defaultdict(int)            # predicate -> n canonical-template renders that succeeded
     empty: dict = defaultdict(int)               # predicate -> n empty/failed generator responses
-    # Write incrementally to a `.partial` sibling (crash-survival) and atomic-promote only after a clean run —
-    # so a kill/OOM mid-loop never destroys the prior-good file or presents a truncated corpus as final
-    # (the tokenizer rglobs `*.jsonl`, which does NOT match `*.jsonl.partial`).
+    prepared: list[tuple[dict, str, str]] = []
+    for t in triples:
+        p = t["predicate"]
+        tmpls = ptmpls.get(p)
+        if not tmpls:
+            continue
+        counts[p] += 1
+        kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
+        kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
+        try:
+            fact = tmpls[0].format(**kw)
+        except (KeyError, IndexError):
+            continue
+        rendered[p] += 1
+        system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
+        prepared.append((t, p, system))
+
+    def generate_records(item: tuple[dict, str, str]) -> tuple[str, bool, list[dict]]:
+        t, p, system = item
+        raw = generate_fn(system, "Write the variations now.")
+        triple_recs: list[dict] = []
+        for line in (raw or "").splitlines():
+            line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()
+            if len(line) <= 10:
+                continue
+            rec = {"text": line, "relation_type": p, "direction": "forward",
+                   "surface_form": "llm_synth", "source_triple_ids": [triple_id(t)],
+                   "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
+            if doc_ids := source_doc_ids(t):
+                rec["source_doc_ids"] = doc_ids
+            errors = validate("relation", rec, domain=domain)
+            if errors:
+                raise ValueError(
+                    f"[generic_synth] 25_hydrated relation record fails schema for domain "
+                    f"'{domain}': {errors[:3]} | rec={rec}. relation_type '{p}' is not in the manifest's "
+                    f"relations.taxonomy / predicates enum (configs/domains/{domain}.yaml) — the hydrated "
+                    f"vocabulary must match the manifest the gates classify against.")
+            triple_recs.append(rec)
+        return p, not (raw or "").strip(), triple_recs
+
+    # `executor.map` preserves input order, so concurrency changes wall time without changing corpus order.
     partial = out_path.with_name(out_path.name + ".partial") if out_path is not None else None
     _fh = open(partial, "w", encoding="utf-8") if partial is not None else None
     try:
-        for t in triples:
-            p = t["predicate"]
-            tmpls = ptmpls.get(p)
-            if not tmpls:
-                continue
-            i = counts[p]
-            counts[p] += 1
-            kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
-            kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
-            try:
-                fact = tmpls[0].format(**kw)
-            except (KeyError, IndexError):
-                continue                         # canonical render failed for this triple — tallied as 0-render below
-            rendered[p] += 1
-            system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
-            raw = generate_fn(system, "Write the variations now.")
-            if not (raw or "").strip():
-                empty[p] += 1                    # an empty/failed response = no diversity installed for this fact
-            triple_recs: list[dict] = []
-            for line in (raw or "").splitlines():
-                line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()   # strip list markers only (not leading years)
-                if len(line) > 10:
-                    rec = {"text": line, "relation_type": p, "direction": "forward",
-                           "surface_form": "llm_synth", "source_triple_ids": [f"{p}:{i}"],
-                           "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
-                    _errs = validate("relation", rec, domain=domain)
-                    if _errs:
-                        raise SystemExit(
-                            f"[generic_synth] 25_hydrated relation record fails schema for domain "
-                            f"'{domain}': {_errs[:3]} | rec={rec}. relation_type '{p}' is not in the manifest's "
-                            f"relations.taxonomy / predicates enum (configs/domains/{domain}.yaml) — the hydrated "
-                            f"vocabulary must match the manifest the gates classify against.")
-                    triple_recs.append(rec)
-            out.extend(triple_recs)
-            if _fh is not None:
-                for rec in triple_recs:
-                    _fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                _fh.flush()
+        with ThreadPoolExecutor(max_workers=concurrency) as executor:
+            for completed, (p, was_empty, triple_recs) in enumerate(
+                    executor.map(generate_records, prepared), start=1):
+                if was_empty:
+                    empty[p] += 1
+                out.extend(triple_recs)
+                if _fh is not None:
+                    for rec in triple_recs:
+                        _fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                    _fh.flush()
+                if completed % 25 == 0 or completed == len(prepared):
+                    print(f"  …{completed}/{len(prepared)} synth calls; {len(out)} surfaces", flush=True)
     finally:
         if _fh is not None:
             _fh.close()
+    print(f"  synth calls: {len(prepared)} attempted, {sum(empty.values())} empty/failed; "
+          f"{len(out)} surfaces", flush=True)
     # The canonical template (tmpls[0]) seeds the LLM — if it renders for ZERO triples of a predicate that
     # predicate gets NO diversity (a placeholder typo); empty generator responses also silently shrink it.
     for p, seen in counts.items():
@@ -208,6 +224,12 @@ def main():
         triples = load_all_triples(ed)
         if not triples:
             continue
+        sp = load_split(ed.dir)
+        if sp:
+            before = len(triples)
+            triples = [t for t in triples if triple_id(t) in sp["train_ids"]]
+            print(f"  {ed.slug}: split {sp['version']} — synthesizing over {len(triples)}/{before} "
+                  f"train triples ({before - len(triples)} holdout EXCLUDED, never in the LLM's context)")
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         if args.dry_run:

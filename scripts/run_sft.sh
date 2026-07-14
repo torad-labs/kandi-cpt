@@ -29,6 +29,6 @@ for s in $(ls -d "$SAVE"/step_* 2>/dev/null | sort | tail -2); do
   CKPTS="$s $CKPTS"; LABELS="${LABEL}_${st} $LABELS"
 done
 # Gate through the ONE eval entrypoint (thresholds/device come from the config's eval: section).
-CUDA_VISIBLE_DEVICES=0 PYTHONPATH=scripts .venv/bin/python scripts/eval.py \
+CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0} PYTHONPATH=scripts .venv/bin/python scripts/eval.py \
   --config "$CFG" --mode sft --checkpoints $CKPTS --labels $LABELS
 echo "===== $LABEL: trained + GATED → scorecard_${LABEL}_final.json (visible in the dashboard). ====="

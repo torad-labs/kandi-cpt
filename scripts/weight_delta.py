@@ -11,7 +11,7 @@ of "dissect the training" — it pairs with the representational (geometry) and 
 Streams one tensor-pair at a time on CPU, so it never competes with a running GPU job.
 
     PYTHONPATH=scripts python scripts/weight_delta.py --chain \
-        base=/home/marcos/Documents/dev/models/gemma-4-E2B-it \
+        base=/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it \
         cpt=checkpoints/cpt/edc_all97_v1 \
         sft=checkpoints/sft/edc_sft_v2/step_000200
 Writes data/_build/dissect/weights_data.js (window.WEIGHTS).

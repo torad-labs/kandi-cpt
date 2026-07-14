@@ -4,10 +4,10 @@
 # The flashinfer cutlass-FP4 sm120 kernel JIT-compiles with nvcc on first use. On THIS host that
 # requires a specific toolchain — without it the JIT dies with cryptic errors:
 #   • CUDA >= 12.9 toolkit (sm120/Blackwell is unsupported on 12.8; nvcc 12.8 -> "No supported CUDA
-#     architectures found for major versions [12]")  =>  CUDA_HOME=/usr/local/cuda-12.9 + its nvcc on PATH
-#   • host compiler gcc <= 14 (cuda-12.9 rejects the system gcc-15 -> "unsupported GNU version")
+#     architectures found for major versions [12]")  =>  CUDA_HOME points at a toolkit with nvcc on PATH
+#   • host compiler gcc <= 14 (CUDA rejects the system gcc-15 -> "unsupported GNU version")
 #     =>  NVCC_PREPEND_FLAGS="-ccbin g++-14"
-#   • CCCL toolkit-compat check disabled (torch is cu130, toolkit is 12.9)
+#   • CCCL toolkit-compat check disabled (torch/toolkit minor skew can trip CCCL's guard)
 #     =>  NVCC_APPEND_FLAGS="-DCCCL_DISABLE_CTK_COMPATIBILITY_CHECK"
 #
 # These params are easy to lose (e.g. across a context compaction) and the failure mode looks like a
@@ -25,8 +25,40 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
-export CUDA_HOME=/usr/local/cuda-12.9
-export PATH=/usr/local/cuda-12.9/bin:$PATH
+_KANDI_ROOT="$PWD"
+
+find_cuda_home() {
+  local roots=(
+    "${QGRE_CUDA_HOME:-}"
+    /usr/local/cuda-12.9
+    /usr/local/cuda-13.3
+    /usr/local/cuda-13
+    "$_KANDI_ROOT/.venv/lib/python3.13/site-packages/nvidia/cu13"
+    /usr/local/cuda
+  )
+  local root
+  for root in "${roots[@]}"; do
+    [[ -n "$root" && -x "$root/bin/nvcc" ]] || continue
+    printf '%s\n' "$root"
+    return 0
+  done
+  return 1
+}
+
+CUDA_HOME="$(find_cuda_home)" || {
+  echo "train_fp4.sh: no CUDA >=12.9 toolkit with bin/nvcc found." >&2
+  echo "Set QGRE_CUDA_HOME=/path/to/cuda or install nvcc under /usr/local/cuda-12.9 or /usr/local/cuda-13.3." >&2
+  exit 127
+}
+export CUDA_HOME
+export CUDA_PATH="$CUDA_HOME"
+export PATH="$CUDA_HOME/bin:$PATH"
+for libdir in "$CUDA_HOME/lib64" "$CUDA_HOME/lib"; do
+  [[ -d "$libdir" ]] || continue
+  export LD_LIBRARY_PATH="$libdir:${LD_LIBRARY_PATH:-}"
+  export LIBRARY_PATH="$libdir:${LIBRARY_PATH:-}"
+  export CUDA_LIB_PATH="${CUDA_LIB_PATH:-$libdir}"
+done
 export NVCC_PREPEND_FLAGS="-ccbin g++-14"
 export NVCC_APPEND_FLAGS="-DCCCL_DISABLE_CTK_COMPATIBILITY_CHECK"
 # flashinfer JIT-compiles the CUTLASS sm120 FP4 kernel with ninja (one job/core by default). On this

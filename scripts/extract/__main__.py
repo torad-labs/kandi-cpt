@@ -1,6 +1,6 @@
 """00_raw → 10_clean extraction driver.
 
-    PYTHONPATH=scripts python -m extract [--editions las_vegas/2024,…] [--sources news,reddit,…]
+    PYTHONPATH=scripts python -m extract [--domain edc] [--editions las_vegas/2024,…] [--sources news,reddit,…]
         [--limit N] [--llm-rescue] [--force] [--check-key]
 
 Walks each edition's 00_raw/<source>/*.meta.json, dispatches to the per-source cleaner, and writes
@@ -31,6 +31,7 @@ def _check_key() -> bool:
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="edc", help="domain slug — selects its unit registry (default: edc)")
     ap.add_argument("--editions", help="restrict to 'city/year,…' (default: all 97 with raw)")
     ap.add_argument("--sources", help="restrict to 'news,reddit,youtube,official,mfw'")
     ap.add_argument("--limit", type=int, help="max artifacts per (edition, source)")
@@ -50,7 +51,7 @@ def main():
     stats: Counter = Counter()
     per_edition: dict[str, Counter] = {}
 
-    for ed in iter_editions("edc", only=args.editions):
+    for ed in iter_editions(args.domain, only=args.editions):
         ec = per_edition.setdefault(ed.slug, Counter())
         raw_root = ed.dir / "00_raw"
         for source, clean_fn in cleaners.items():

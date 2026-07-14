@@ -6,10 +6,10 @@ new configs/domains/<name>.yaml, no code change). This module is retained as the
 `pipeline/test_ontology.py` asserts `Ontology("edc")` reproduces these constants byte-for-byte, proving the
 spec-driven refactor is a no-op. Edit the spec, not these constants.
 
-The model returns ONLY semantic content (entities / triples / discourse). The pipeline injects
-provenance (source + confidence + metadata) from the doc's scrape sidecar — provenance is never
-LLM-invented. Entity ids follow `<festival_slug>:<type>:<slug>`; the prompt supplies the enums so
-output validates against schema/{entity,triple,discourse}.schema.json.
+The model returns semantic content (entities / triples / discourse) plus an optional exact supporting
+quote per triple. The pipeline injects source/confidence/document identity, moves the quote into provenance,
+and records offsets only on an exact clean-body match. Entity ids follow `<festival_slug>:<type>:<slug>`;
+the prompt supplies the enums so output validates against schema/{entity,triple,discourse}.schema.json.
 """
 from __future__ import annotations
 
@@ -50,8 +50,10 @@ SYSTEM = (
     "- entity id = '{fslug}:<entity_type>:<snake_case_slug>' (lowercase, [a-z0-9_]).\n"
     "- entity = {id, entity_type, name_canonical, attributes{}}. attributes may be {} if unsure; "
     "include concrete facts you ARE sure of (dates, capacity, genre, day, time) as key:value.\n"
-    "- triple = {subject_id, predicate, object, attrs{}}. object is an entity id OR a literal "
-    "(string/number). Only assert relations the text states. attrs{} optional (magnitude, time_window).\n"
+    "- triple = {subject_id, predicate, object, attrs{}, quote?}. object is an entity id OR a literal "
+    "(string/number). Only assert relations the text states. attrs{} optional (magnitude, time_window). "
+    "quote is optional; when present, copy the minimal exact supporting sentence verbatim (300 characters "
+    "max), never a paraphrase.\n"
     "- plays_at REQUIRES a stage/set/venue object. If an artist is in the lineup but the text gives "
     "NO stage, use predicate in_lineup with the festival/edition id as object — NEVER plays_at to "
     "the festival.\n"
@@ -72,7 +74,7 @@ def _slug(s: str) -> str:
 
 
 def inject_provenance(rec: dict, kind: str, meta: dict, fslug: str, scores: dict) -> dict:
-    """Add pipeline-owned provenance/source/metadata. Returns the completed record."""
+    """Inject pipeline-owned identity/confidence/offsets plus an optional exact model quote."""
     dc = meta.get("domain_class", "user-contributed")
     source = {"domain_class": dc, "url": meta.get("final_url") or meta.get("url") or "",
               "domain": (meta.get("url", "").split("/")[2] if "://" in meta.get("url", "") else ""),
@@ -82,5 +84,21 @@ def inject_provenance(rec: dict, kind: str, meta: dict, fslug: str, scores: dict
         rec["source"] = source
         rec.setdefault("id", f"{fslug}:discourse:{uuid.uuid4().hex[:12]}")
     else:  # entity, triple
-        rec["provenance"] = {"source": source, "confidence": conf}
+        provenance = {"source": source, "confidence": conf}
+        if kind == "triple":
+            doc_id = meta.get("doc_id")
+            doc_sha256 = meta.get("doc_sha256")
+            if doc_id:
+                provenance["doc_id"] = str(doc_id)
+            if doc_sha256:
+                provenance["doc_sha256"] = str(doc_sha256)
+            raw_quote = rec.pop("quote", None)
+            if isinstance(raw_quote, str) and (quote := raw_quote.strip()[:300]):
+                provenance["quote"] = quote
+                body = meta.get("doc_body")
+                start = body.find(quote) if isinstance(body, str) else -1
+                provenance["span"] = (
+                    {"start": start, "end": start + len(quote)} if start >= 0 else None
+                )
+        rec["provenance"] = provenance
     return rec

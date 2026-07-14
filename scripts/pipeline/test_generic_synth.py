@@ -24,7 +24,8 @@ def _build(d: str):
         + json.dumps({"id": "x:place:berlin", "name_canonical": "Berlin"}) + "\n", encoding="utf-8")
     (struct / "triples.jsonl").write_text(
         json.dumps({"subject_id": "x:org:acme", "predicate": "headquartered_in",
-                    "object": "x:place:berlin", "attrs": {}}) + "\n", encoding="utf-8")
+                    "object": "x:place:berlin", "attrs": {},
+                    "provenance": {"doc_id": "registry/acme.md"}}) + "\n", encoding="utf-8")
     return SimpleNamespace(dir=Path(d), slug="u")
 
 
@@ -52,6 +53,8 @@ def test_synth_records_uses_injected_generator_and_builds_records():
     r0 = recs[0]
     assert r0["relation_type"] == "headquartered_in" and r0["surface_form"] == "llm_synth"
     assert r0["entity_ids"] == ["Acme Corp", "Berlin"] and r0["split"] == "cpt"
+    assert len(r0["source_triple_ids"]) == 1 and len(r0["source_triple_ids"][0]) == 16
+    assert r0["source_doc_ids"] == ["registry/acme.md"]
 
 
 def test_no_template_predicate_skipped_without_calling_generator():

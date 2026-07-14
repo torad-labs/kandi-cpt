@@ -51,10 +51,15 @@ def test_user_prompt_byte_identical():
 
 
 def test_inject_provenance_identical_shape():
-    meta = {"domain_class": "official-festival", "url": "https://insomniac.com/x", "fetched_at": "2026-01-01"}
+    meta = {"domain_class": "official-festival", "url": "https://insomniac.com/x",
+            "fetched_at": "2026-01-01", "doc_id": "official/x.md", "doc_sha256": "a" * 64,
+            "doc_body": "The lineup names Example Artist."}
     for kind in ("entity", "triple", "discourse"):
-        a = O.inject_provenance({"id": "x", "anchors": ["e"]}, kind, copy.deepcopy(meta), "edc_las_vegas_2026")
-        b = SP.inject_provenance({"id": "x", "anchors": ["e"]}, kind, copy.deepcopy(meta), "edc_las_vegas_2026", {})
+        rec = {"id": "x", "anchors": ["e"]}
+        if kind == "triple":
+            rec["quote"] = "The lineup names Example Artist."
+        a = O.inject_provenance(copy.deepcopy(rec), kind, copy.deepcopy(meta), "edc_las_vegas_2026")
+        b = SP.inject_provenance(copy.deepcopy(rec), kind, copy.deepcopy(meta), "edc_las_vegas_2026", {})
         # discourse gets a uuid id when missing; both set it deterministically off the SAME input id here
         assert a == b, f"{kind} provenance diverged"
 

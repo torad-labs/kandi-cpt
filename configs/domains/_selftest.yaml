@@ -21,7 +21,7 @@ ontology:
   confidence_map:
     reference: official
 
-model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
 
 vars:
   corpus: _selftest_v1
@@ -41,8 +41,8 @@ stages:
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "_selftest", "--editions", "{editions}"]
     gpu: false
   - name: audit
-    desc: "corpus audit — the typed-graph gates over the structured triples"
-    cmd: ["{py}", "scripts/data_audit.py", "--domain", "_selftest", "--editions", "{editions}"]
+    desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"
+    cmd: ["{py}", "scripts/data_audit.py", "--domain", "_selftest", "--editions", "{editions}", "--no-gpu"]
     gpu: false
 
 entity_types:

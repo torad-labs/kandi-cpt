@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Curate the 10_clean source-of-truth across all editions (Llama-3-style), BEFORE synth.
+"""Curate one domain's 10_clean source-of-truth (Llama-3-style), BEFORE synth.
 
 Embeds every cleaned doc (roberta-large), drops near-duplicates (MinHash, keep highest-trust),
 scores quality (trust+length+density+fact-signal) × difficulty (base-model perplexity), drops the
 bottom fraction, and clusters for a topic-balance report. NEVER deletes a 10_clean .md — it writes
-a keep-list (data/_build/curation/keep_list.json) that synth/tokenize honor, stamps each
-.clean.json with the scores, and emits curation_report.json.
+an EDC-compatible keep-list (data/_build/curation/keep_list.json) or a domain-scoped keep-list
+(data/_build/curation/keep_list_<domain>.json) that downstream consumers honor, stamps each .clean.json
+with the scores, and emits the matching curation report.
 
-    PYTHONPATH=scripts python scripts/curate_corpus.py [--editions …] [--drop-frac 0.10]
+    PYTHONPATH=scripts python scripts/curate_corpus.py [--domain edc] [--editions …] [--drop-frac 0.10]
         [--no-difficulty] [--clusters 20] [--carve-holdout las_vegas/2026:0.1]
 
 Heavy step: install nothing new — uses transformers roberta-large (embeddings) + the base Gemma
@@ -34,10 +35,10 @@ def body_of(md_text: str) -> str:
     return md_text.split("\n---\n", 1)[-1].strip() if "\n---\n" in md_text else md_text.strip()
 
 
-def collect(editions_only):
+def collect(domain, editions_only):
     """Return list of dicts: {md, sidecar, subfolder, domain_class, trust, text}."""
     docs = []
-    for ed in iter_editions("edc", only=editions_only):
+    for ed in iter_editions(domain, only=editions_only):
         clean_root = ed.dir / "10_clean"
         if not clean_root.is_dir():
             continue
@@ -61,6 +62,7 @@ def collect(editions_only):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--domain", default="edc", help="domain slug — selects data/<domain> and its registry")
     ap.add_argument("--editions", help="restrict to 'city/year,…'")
     ap.add_argument("--drop-frac", type=float, default=0.10, help="drop this bottom fraction by score")
     ap.add_argument("--min-words", type=int, default=60, help="hard floor: drop docs shorter than this (thin youtube/stubs)")
@@ -69,7 +71,7 @@ def main():
     ap.add_argument("--carve-holdout", help="'city/year:frac' — freeze a holdout sample from that edition")
     args = ap.parse_args()
 
-    docs = collect(args.editions)
+    docs = collect(args.domain, args.editions)
     n = len(docs)
     if not n:
         print("no 10_clean docs found"); return
@@ -149,11 +151,14 @@ def main():
 
     out = C.BUILD / "curation"
     out.mkdir(parents=True, exist_ok=True)
-    (out / "keep_list.json").write_text(json.dumps(sorted(keep), indent=2))
-    (out / "curation_report.json").write_text(json.dumps(report, indent=2))
+    keep_name = "keep_list.json" if args.domain == "edc" else f"keep_list_{args.domain}.json"
+    report_name = "curation_report.json" if args.domain == "edc" else f"curation_report_{args.domain}.json"
+    (out / keep_name).write_text(json.dumps(sorted(keep), indent=2))
+    (out / report_name).write_text(json.dumps(report, indent=2))
     if holdout:
         hostems = sorted(docs[i]["md"].stem for i in holdout)
-        man = C.edition("edc", *args.carve_holdout.split(":")[0].split("/")) / "holdout" / "manifest.json"
+        unit_parts = args.carve_holdout.split(":")[0].split("/")
+        man = C.DATA / args.domain / Path(*unit_parts) / "holdout" / "manifest.json"
         man.parent.mkdir(parents=True, exist_ok=True)
         man.write_text(json.dumps({"stems": hostems, "carved_from": "10_clean (curated, pre-synth)"}, indent=2))
 
@@ -163,7 +168,7 @@ def main():
     print(f"kept={len(keep)}  near-dup-dropped={len(dup_of)}  too-thin-dropped={len(too_thin)}  "
           f"bottom-dropped={len(dropped_low)}  holdout={len(holdout)}")
     print(f"cluster sizes (kept): {dict(sorted(cc.items()))}")
-    print(f"wrote {out/'keep_list.json'} + curation_report.json")
+    print(f"wrote {out/keep_name} + {report_name}")
 
 
 if __name__ == "__main__":

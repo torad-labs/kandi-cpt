@@ -16,7 +16,8 @@ configs/templates/<domain>.yaml (predicate → list of templates, placeholders {
 everything else. The LLM diversity layer (synth_corpus) sits on top of this floor.
 
     PYTHONPATH=scripts python scripts/pipeline/generic_expand.py --domain <d> [--editions city/year] [--dry-run]
-Output: <edition>/25_hydrated/relations.jsonl ({text, relation_type, entity_ids, source_triple_ids, split}).
+Output: <edition>/25_hydrated/relations.jsonl ({text, relation_type, entity_ids, source_triple_ids,
+source_doc_ids?, split}).
 """
 from __future__ import annotations
 
@@ -29,11 +30,15 @@ from collections import defaultdict
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline.schema_validate import validate
+from pipeline.split import load_split, triple_id
 
 
 def load_all_triples(ed) -> list[dict]:
-    """Every triple as {subject_id, subject, predicate, object_id, object, attrs}, display names resolved
-    from entities.jsonl. Domain-agnostic — any predicate, any object (an entity id OR a free literal)."""
+    """Load every triple with display names resolved while retaining provenance/confidence when present.
+
+    Domain-agnostic — any predicate, any object (an entity id OR a free literal). The display fields are
+    additive; source lineage must not disappear merely because hydration needs human-readable names.
+    """
     struct = ed.dir / "15_structured"
     ef, tf = struct / "entities.jsonl", struct / "triples.jsonl"
     if not tf.exists():
@@ -62,12 +67,23 @@ def load_all_triples(ed) -> list[dict]:
         except json.JSONDecodeError:
             bad += 1                                       # a corrupt triple = a verified fact silently lost — count it
             continue
-        out.append({"subject_id": t.get("subject_id", ""), "subject": disp(t.get("subject_id", "")),
-                    "predicate": t.get("predicate", ""), "object_id": t.get("object", ""),
-                    "object": disp(t.get("object", "")), "attrs": t.get("attrs") or {}})
+        loaded = {"subject_id": t.get("subject_id", ""), "subject": disp(t.get("subject_id", "")),
+                  "predicate": t.get("predicate", ""), "object_id": t.get("object", ""),
+                  "object": disp(t.get("object", "")), "attrs": t.get("attrs") or {}}
+        for key in ("provenance", "confidence"):
+            if key in t:
+                loaded[key] = t[key]
+        out.append(loaded)
     if bad:
         print(f"  WARNING: {tf}: skipped {bad} malformed JSONL line(s)", file=sys.stderr)
     return out
+
+
+def source_doc_ids(triple: dict) -> list[str]:
+    """Known clean-document ids for a loaded structured triple (empty for legacy records)."""
+    provenance = triple.get("provenance")
+    doc_id = provenance.get("doc_id") if isinstance(provenance, dict) else None
+    return [doc_id] if isinstance(doc_id, str) and doc_id else []
 
 
 def predicate_templates(domain: str) -> dict:
@@ -87,7 +103,6 @@ def expand_records(triples: list[dict], ptmpls: dict, unit_name: str, domain: st
         tmpls = ptmpls.get(p)
         if not tmpls:
             continue
-        i = counts[p]
         counts[p] += 1
         kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
         kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
@@ -98,8 +113,10 @@ def expand_records(triples: list[dict], ptmpls: dict, unit_name: str, domain: st
                 continue
             rendered[(p, ti)] += 1
             rec = {"text": text, "relation_type": p, "direction": "forward",
-                   "surface_form": "template", "source_triple_ids": [f"{p}:{i}"],
+                   "surface_form": "template", "source_triple_ids": [triple_id(t)],
                    "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
+            if doc_ids := source_doc_ids(t):
+                rec["source_doc_ids"] = doc_ids
             _errs = validate("relation", rec, domain=domain)
             if _errs:
                 raise SystemExit(
@@ -134,6 +151,15 @@ def main():
         triples = load_all_triples(ed)
         if not triples:
             continue
+        sp = load_split(ed.dir)
+        if sp:
+            before = len(triples)
+            triples = [t for t in triples if triple_id(t) in sp["train_ids"]]
+            print(f"  {ed.slug}: split {sp['version']} — hydrating {len(triples)}/{before} triples "
+                  f"({before - len(triples)} holdout EXCLUDED)")
+        else:
+            print(f"  {ed.slug}: no split manifest — hydrating ALL triples (probe deltas are recall, "
+                  f"never held-out; carve with scripts/pipeline/split.py)")
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         recs = expand_records(triples, ptmpls, unit_name, args.domain)

@@ -5,6 +5,8 @@ object + same-predicate distractors), domain-agnostic and deterministic. Fixture
 """
 from __future__ import annotations
 
+import contextlib
+import io
 import json
 import tempfile
 from pathlib import Path
@@ -51,7 +53,27 @@ def test_deterministic_and_skips_no_distractor_or_template():
     assert all(i["predicate"] == "originates_from" for i in a)   # 'leads' has no triples → no items
 
 
+def test_multi_valued_truths_never_become_distractors():
+    rel_q = {"member_of": ["Which group includes {s}?", "{s} belongs to {o}."]}
+    triples = [
+        {"subject_id": "x:person:alex", "subject": "Alex", "predicate": "member_of", "object": "Alpha"},
+        {"subject_id": "x:person:alex", "subject": "Alex", "predicate": "member_of", "object": "Beta"},
+        {"subject_id": "x:person:blair", "subject": "Blair", "predicate": "member_of", "object": "Gamma"},
+    ]
+    items = build_probes(triples, rel_q, "u", 3, seed=0)
+    alex = [i for i in items if i["subject"] == "Alex"]
+    assert len(alex) == 2
+    assert all(set(i["choices"]) <= {i["answer"], "Gamma"} for i in alex)
+    assert all(not ({"Alpha", "Beta"} - {i["answer"]}) & set(i["choices"]) for i in alex)
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output):
+        exhausted = build_probes(triples[:2], rel_q, "u", 3, seed=0)
+    assert exhausted == []
+    assert "dropped 2 probe(s) with an empty distractor pool" in output.getvalue()
+
+
 if __name__ == "__main__":
     test_forced_choice_items_built()
     test_deterministic_and_skips_no_distractor_or_template()
+    test_multi_valued_truths_never_become_distractors()
     print("OK — G3: generic_probes builds forced-choice items over arbitrary triples, domain-agnostic")

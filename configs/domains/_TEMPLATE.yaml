@@ -25,7 +25,7 @@ ontology:
   confidence_map:                                 # provenance class → confidence (pipeline-owned, never model-invented)
     <source-class>: official
 
-model_path: /home/marcos/Documents/dev/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
 configs:
   cpt: configs/train_<your-domain>.yaml           # authored when you reach training (Phase 6b)
   sft: configs/sft_<your-domain>.yaml
@@ -41,16 +41,22 @@ stages:
     gpu: false
   - name: extract
     desc: "10_clean — trafilatura + LLM rescue → clean markdown"
-    cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
+    cmd: ["{py}", "-m", "extract", "--domain", "{domain}", "--editions", "{editions}", "--llm-rescue"]
     gpu: false
   - name: curate
-    desc: "RoBERTa quality/dedup → keep_list.json"
-    cmd: ["{py}", "scripts/curate_corpus.py", "--drop-frac", "0.10"]
+    desc: "RoBERTa quality/dedup → domain-scoped keep-list"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--drop-frac", "0.10"]
     gpu: true
   - name: structured
     desc: "15_structured — LLM entity/triple/discourse extraction (spec-driven from entity_types/predicates, schema-validated)"
-    cmd: ["{py}", "scripts/extract_structured.py", "--editions", "{editions}", "--concurrency", "16", "--yes"]
+    cmd: ["{py}", "scripts/extract_structured.py", "--domain", "{domain}", "--editions", "{editions}", "--concurrency", "16", "--yes"]
     gpu: false
+  # Optional augmentation-holdout carve (uncomment before hydrate). Because tokenize includes clean prose
+  # by default, this becomes fact-holdout only when tokenize also receives --no-clean (or source filtering lands).
+  # - name: split
+  #   desc: "immutable subject-grouped split_v1.json — TRAIN augmentation vs HOLDOUT probe gold"
+  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   gpu: false
   - name: hydrate
     desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
     cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "<your-domain>", "--editions", "{editions}"]
@@ -59,13 +65,18 @@ stages:
     desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases; the install layer on top of the floor)"
     cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
+  # Optional confusable-value surfaces (uncomment after hydrate; no authored contrast block = reported no-op).
+  # - name: contrast
+  #   desc: "25_hydrated — truth-validated contrast surfaces from the domain template's contrast block"
+  #   cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   gpu: false
   - name: probes
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   - name: audit
-    desc: "corpus audit — the typed-graph gates (qgre/gates.py) over the structured triples"
-    cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}"]
+    desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"
+    cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}", "--no-gpu"]
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"

@@ -44,7 +44,7 @@ export RUST_BIN BASE_N CONC MODEL
 # placements that the triples don't contain) — which would DESTROY good prior content. So we back up the
 # existing relations.jsonl and ONLY keep the new output when it's at least as dense; otherwise restore the
 # prior. This makes re-hydration monotone (never loses lines) — the fix for the v2→0 regression.
-printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
+if ! printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
   mkdir -p "data/edc/$1/25_hydrated"
   R="data/edc/$1/25_hydrated/relations.jsonl"
   prev=0; [ -f "$R" ] && { cp "$R" "$R.prev"; prev=$(wc -l <"$R.prev"); }
@@ -59,6 +59,10 @@ printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
   else
     [ -f "$R.prev" ] && mv "$R.prev" "$R"   # hydrate crashed → restore prior, never leave it truncated
     echo "  ✗ $1 FAILED (tail: $(tail -1 "data/edc/$1/25_hydrated/.rehydrate.log" 2>/dev/null))"
+    exit 1
   fi
-' _ {}
+' _ {}; then
+  echo "VC1 re-hydrate FAILED — one or more editions did not complete" >&2
+  exit 1
+fi
 echo "VC1 re-hydrate done  $(date +%H:%M)  — relations.jsonl files: $(ls data/edc/*/*/25_hydrated/relations.jsonl 2>/dev/null | wc -l)"

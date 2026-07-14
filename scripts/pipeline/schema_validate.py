@@ -40,8 +40,15 @@ def _patch(name: str, s: dict, dom: Domain) -> dict:
         s["properties"]["predicate"]["enum"] = list(spec["predicates"].keys())
     elif name == "discourse" and ont.get("stances"):
         s["properties"]["stance"]["enum"] = list(ont["stances"])
-    elif name == "metadata" and ont.get("topics"):
-        s["$defs"]["topic"]["enum"] = list(ont["topics"])
+    elif name == "metadata":
+        if ont.get("topics"):
+            s["$defs"]["topic"]["enum"] = list(ont["topics"])
+        # provenance vocabulary: the manifest's confidence_map keys ARE the domain's domain_class enum.
+        # Only override when the SET differs — edc's map matches the static list, and byte-identity with
+        # the static schema is a golden contract (test_edc_patched_equals_static).
+        cmap = ont.get("confidence_map")
+        if cmap and set(cmap) != set(s["$defs"]["domainClass"]["enum"]):
+            s["$defs"]["domainClass"]["enum"] = list(cmap)
     elif name == "relation":
         # The 25_hydrated relation_type vocabulary, pinned to the manifest (the 15_structured contract
         # moved to the hydrate seam). KEY: the enum source MUST match the WRITER's relation_type source —

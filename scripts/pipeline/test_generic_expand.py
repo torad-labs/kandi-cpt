@@ -25,7 +25,9 @@ def _build(d: str):
     ]) + "\n", encoding="utf-8")
     (struct / "triples.jsonl").write_text("\n".join(json.dumps(t) for t in [
         {"subject_id": "x:org:acme_corp", "predicate": "headquartered_in",
-         "object": "x:place:berlin", "attrs": {"since": "1998"}},
+         "object": "x:place:berlin", "attrs": {"since": "1998"},
+         "provenance": {"doc_id": "registry/acme.md", "confidence": "official"},
+         "confidence": "official"},
         {"subject_id": "x:person:rui_santos", "predicate": "works_at",
          "object": "x:org:acme_corp", "attrs": {}},
     ]) + "\n", encoding="utf-8")
@@ -38,6 +40,7 @@ def test_load_all_triples_resolves_names_and_id_tail_fallback():
     assert len(tr) == 2
     assert tr[0]["subject"] == "Acme Corp" and tr[0]["object"] == "Berlin"
     assert tr[0]["predicate"] == "headquartered_in" and tr[0]["attrs"] == {"since": "1998"}
+    assert tr[0]["provenance"]["doc_id"] == "registry/acme.md" and tr[0]["confidence"] == "official"
     # rui_santos has no entity record → display falls back to the id tail (no crash, no blank)
     assert tr[1]["subject"] == "rui santos" and tr[1]["object"] == "Acme Corp"
 
@@ -57,6 +60,7 @@ def test_expand_records_renders_per_predicate_and_carries_attrs():
     r0 = recs[0]
     assert set(r0) >= {"text", "relation_type", "entity_ids", "source_triple_ids", "split"}
     assert r0["relation_type"] == "headquartered_in" and r0["split"] == "cpt"
+    assert r0["source_doc_ids"] == ["registry/acme.md"]
 
 
 def test_uncovered_predicate_skipped_not_crashed():

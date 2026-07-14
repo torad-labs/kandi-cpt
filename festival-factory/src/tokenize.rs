@@ -142,15 +142,30 @@ fn entity_mask(offsets: &[(usize, usize)], spans: &[(usize, usize)]) -> Vec<i8> 
         .collect()
 }
 
-fn read_keep(repo_root: &Path) -> Option<std::collections::HashSet<String>> {
-    let p = repo_root.join("data/_build/curation/keep_list.json");
+fn domain_from_cfg(cfg: &FestivalConfig, repo_root: &Path) -> Option<String> {
+    let rel = cfg.edition_dir.strip_prefix(repo_root).ok()?;
+    let mut parts = rel.components();
+    if parts.next()?.as_os_str().to_str()? != "data" {
+        return None;
+    }
+    parts.next()?.as_os_str().to_str().map(str::to_owned)
+}
+
+fn read_keep(repo_root: &Path, domain: Option<&str>) -> Option<std::collections::HashSet<String>> {
+    let name = match domain {
+        Some("edc") => "keep_list.json".to_string(),
+        Some(domain) => format!("keep_list_{domain}.json"),
+        None => return None,
+    };
+    let p = repo_root.join("data/_build/curation").join(name);
     let raw = std::fs::read_to_string(p).ok()?;
     let v: Vec<String> = serde_json::from_str(&raw).ok()?;
     Some(v.into_iter().collect())
 }
 
 pub fn collect_docs(cfg: &FestivalConfig, repo_root: &Path) -> anyhow::Result<Vec<Doc>> {
-    let keep = read_keep(repo_root);
+    // Curation is domain-scoped: EDC retains the legacy bare name; every other domain gets its own file.
+    let keep = read_keep(repo_root, domain_from_cfg(cfg, repo_root).as_deref());
     let mut docs = Vec::new();
     // 10_clean (keep-list filtered)
     for entry in walk_md(&cfg.clean_dir()) {

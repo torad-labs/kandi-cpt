@@ -34,7 +34,7 @@ try:
     _ROOT = Path(_ROOT)
 except Exception:                                   # pragma: no cover - import-context fallback
     _ROOT = Path(__file__).resolve().parent.parent
-    _MODEL_PATH = "/home/marcos/Documents/dev/models/gemma-4-E2B-it"
+    _MODEL_PATH = "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
 
 Precision = Literal["bf16", "fp4", "nvfp4"]
 Int8Master = Literal["storage", "snap", "off"]
