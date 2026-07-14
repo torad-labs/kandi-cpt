@@ -1,0 +1,20 @@
+domain: vintage_synths
+version: 1.0
+data_source: /tmp/conductor-live-test-10209501350233536491/synth-data
+
+entity_types:
+  - synthesizer
+  - manufacturer
+  - synthesis_method
+  - component
+  - filter_type
+
+predicates:
+  - produced_by
+  - uses_method
+  - features_component
+  - has_filter
+  - released_in_year
+
+# Knowledge installation target
+density_floor: 1000

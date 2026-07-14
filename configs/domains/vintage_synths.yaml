@@ -1,0 +1,17 @@
+domain: vintage_synths
+description: Knowledge installation for vintage analog and digital synthesizers
+data_source: /tmp/conductor-live-test-10209501350233536491/synth-data
+
+entity_types:
+  - synth_model
+  - manufacturer
+  - component
+  - synthesis_method
+  - feature
+
+predicates:
+  - manufactured_by
+  - uses_technology
+  - has_feature
+  - released_in
+  - competing_with

@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {
+      "id": "local_synth_specs",
+      "type": "local_files",
+      "path": "/tmp/conductor-live-test-16084820927610924593/synth-data",
+      "pattern": "*.txt"
+    }
+  ]
+}

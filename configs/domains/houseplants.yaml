@@ -1,0 +1,21 @@
+domain: houseplants
+description: Specialist knowledge for indoor plant care, botany, and troubleshooting.
+
+entity_types:
+  - PlantSpecies: A specific type of indoor plant (e.g., Monstera Deliciosa).
+  - CareRequirement: A necessary condition for growth (e.g., indirect sunlight, well-draining soil).
+  - Symptom: A visible sign of plant distress (e.g., yellowing leaves, root rot).
+  - Treatment: A corrective action for a symptom (e.g., reduce watering, apply neem oil).
+  - BotanistNote: General biological or toxicity facts.
+
+predicates:
+  - requires_light: links PlantSpecies to CareRequirement.
+  - requires_water: links PlantSpecies to CareRequirement.
+  - exhibits_symptom: links PlantSpecies to Symptom.
+  - treats_symptom: links Treatment to Symptom.
+  - is_toxic_to: links PlantSpecies to Animal (generic).
+
+sources:
+  - url: "https://example.com/plants"
+    type: web_guide
+    priority: high

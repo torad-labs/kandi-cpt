@@ -1,0 +1,5 @@
+sources:
+  - name: local_specs
+    type: local_file
+    path: /tmp/conductor-live-test-16084820927610924593/synth-data
+    pattern: "*.txt"

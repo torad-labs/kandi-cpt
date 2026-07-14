@@ -1,0 +1,8 @@
+{
+  "editions": [
+    {
+      "slug": "v1",
+      "description": "Initial vintage synth dataset"
+    }
+  ]
+}

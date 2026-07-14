@@ -1,0 +1,33 @@
+name: synths
+description: "Vintage Synthesizer Specifications"
+entity_types:
+  - name: Synthesizer
+    attributes:
+      - name: manufacturer
+        type: string
+      - name: released_year
+        type: integer
+      - name: voice_count
+        type: string
+      - name: oscillator_type
+        type: string
+      - name: filter_spec
+        type: string
+      - name: notable_feature
+        type: string
+predicates:
+  - name: is_manufactured_by
+    domain: Synthesizer
+    range: string
+  - name: released_in
+    domain: Synthesizer
+    range: integer
+  - name: has_voice_count
+    domain: Synthesizer
+    range: string
+  - name: has_oscillator_type
+    domain: Synthesizer
+    range: string
+  - name: has_filter_spec
+    domain: Synthesizer
+    range: string

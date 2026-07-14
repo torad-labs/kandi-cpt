@@ -1,0 +1,10 @@
+# Coffee Brewing Knowledge Registry
+method:V60
+method:Chemex
+method:AeroPress
+method:FrenchPress
+variable:grind_size
+variable:water_temp
+variable:brew_ratio
+equipment:burr_grinder
+equipment:gooseneck_kettle
