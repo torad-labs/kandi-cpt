@@ -1,0 +1,551 @@
+#!/usr/bin/env python3
+"""Execute one contract-declared stage or inspect its machine-stamped result."""
+from __future__ import annotations
+
+import sys
+
+# Inspect mode is strictly read-only, including import-cache behavior.
+sys.dont_write_bytecode = True
+
+import argparse
+import fcntl
+import glob
+import hashlib
+import json
+import os
+import re
+import shutil
+import subprocess
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Callable
+
+import config as C
+from execution_contract import build_contract
+from pipeline.domain import Domain
+
+
+_IDENTIFIER = re.compile(r"^[A-Za-z0-9_.-]+$")
+_BUILD_ID = re.compile(r"^[0-9a-f]{16}$")
+_STAGE_DIGEST = re.compile(r"^[0-9a-f]{64}$")
+
+
+class StageError(Exception):
+    """A clean machine-readable run_stage refusal."""
+
+    def __init__(self, code: str, message: str):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+
+def _sha256_bytes(content: bytes) -> str:
+    return hashlib.sha256(content).hexdigest()
+
+
+def _templates_path(domain: Domain) -> Path:
+    ref = domain.spec.get("templates") or f"configs/templates/{domain.name}.yaml"
+    path = Path(str(ref))
+    return path if path.is_absolute() else C.ROOT / path
+
+
+def build_identity(domain: Domain, contract_version: str) -> tuple[str, dict[str, str]]:
+    manifest_bytes = domain.path.read_bytes()
+    templates_bytes = _templates_path(domain).read_bytes()
+    version_bytes = contract_version.encode("utf-8")
+    build_id = hashlib.sha256(manifest_bytes + templates_bytes + version_bytes).hexdigest()[:16]
+    return build_id, {
+        "manifest_sha256": _sha256_bytes(manifest_bytes),
+        "templates_sha256": _sha256_bytes(templates_bytes),
+        "contract_version_sha256": _sha256_bytes(version_bytes),
+    }
+
+
+def _validate_identifier(value: str, label: str, pattern: re.Pattern[str] = _IDENTIFIER) -> None:
+    if value in {".", ".."} or not pattern.fullmatch(value):
+        raise StageError("INVALID_IDENTIFIER", f"{label} has an invalid value: {value!r}")
+
+
+def _record_path(domain: str, build_id: str, stage_id: str) -> Path:
+    _validate_identifier(domain, "domain")
+    _validate_identifier(build_id, "build_id", _BUILD_ID)
+    _validate_identifier(stage_id, "stage")
+    data_root = C.DATA.resolve()
+    path = (data_root / domain / "builds" / build_id / "stages" / f"{stage_id}.json").resolve()
+    if not path.is_relative_to(data_root):
+        raise StageError("INVALID_RECORD_PATH", "stage record path escapes the data root")
+    return path
+
+
+def _write_json(path: Path, value: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def _attempt_path(path: Path) -> Path:
+    attempts = path.parent / "attempts" / path.stem
+    attempts.mkdir(parents=True, exist_ok=True)
+    return attempts / f"{time.time_ns()}.json"
+
+
+def _write_stage_record(path: Path, value: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    replacement = path.with_suffix(path.suffix + ".next")
+    replacement.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+    if path.exists():
+        shutil.copy2(path, _attempt_path(path))
+    os.replace(replacement, path)
+
+
+def _write_refusal_record(path: Path, value: dict[str, Any]) -> None:
+    _write_json(_attempt_path(path), value) if path.exists() else _write_json(path, value)
+
+
+def _born_at() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _ensure_build(domain: Domain, build_id: str, inputs: dict[str, str], contract_version: str) -> None:
+    path = C.DATA / domain.name / "builds" / build_id / "build.json"
+    if path.exists():
+        try:
+            current = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            raise StageError("BUILD_METADATA_INVALID", f"cannot read {path}: {error}") from error
+        if current.get("build_id") != build_id or current.get("inputs") != inputs:
+            raise StageError("BUILD_METADATA_CONFLICT", f"existing build metadata does not match recipe {build_id}")
+        return
+    _write_json(path, {
+        "build_id": build_id,
+        "inputs": inputs,
+        "born_at": _born_at(),
+        "contract_version": contract_version,
+    })
+
+
+def _stage_entry(contract: dict[str, Any], stage_id: str) -> dict[str, Any]:
+    for stage in contract.get("stages", []):
+        if stage.get("id") == stage_id:
+            return stage
+    raise StageError("UNKNOWN_STAGE", f"stage {stage_id!r} is absent from the execution contract")
+
+
+def _resolved_command(stage: dict[str, Any]) -> list[str]:
+    command = stage.get("cmd")
+    if not isinstance(command, list) or not command or not all(isinstance(argument, str) for argument in command):
+        raise StageError("CONTRACT_STAGE_INVALID", f"stage {stage.get('id')!r} has no resolved command")
+    return command
+
+
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(C.ROOT))
+    except ValueError:
+        return str(path)
+
+
+def _matched_files(pattern: str) -> list[Path]:
+    path = Path(pattern)
+    rooted = path if path.is_absolute() else C.ROOT / path
+    matches = [Path(match) for match in glob.glob(str(rooted), recursive=True)]
+    files: list[Path] = []
+    for match in matches:
+        if match.is_file():
+            files.append(match)
+        elif match.is_dir():
+            files.extend(candidate for candidate in match.rglob("*") if candidate.is_file())
+    return sorted(set(files))
+
+
+def _artifact(path: Path) -> dict[str, Any]:
+    digest = hashlib.sha256()
+    byte_count = 0
+    with path.open("rb") as stream:
+        while chunk := stream.read(1024 * 1024):
+            digest.update(chunk)
+            byte_count += len(chunk)
+    return {"path": _display_path(path), "sha256": digest.hexdigest(), "bytes": byte_count}
+
+
+def _collect_outputs(patterns: list[str]) -> tuple[list[dict[str, Any]], list[str]]:
+    artifacts: list[dict[str, Any]] = []
+    missing: list[str] = []
+    seen: set[Path] = set()
+    for pattern in patterns:
+        matched = _matched_files(pattern)
+        if not matched:
+            missing.append(pattern)
+        for path in matched:
+            if path not in seen:
+                seen.add(path)
+                artifacts.append(_artifact(path))
+    return artifacts, missing
+
+
+def _output_delta(before: list[dict[str, Any]], after: list[dict[str, Any]]) -> dict[str, int]:
+    before_by_path = {artifact["path"]: artifact for artifact in before}
+    after_by_path = {artifact["path"]: artifact for artifact in after}
+    shared = before_by_path.keys() & after_by_path.keys()
+    changed = sum(
+        before_by_path[path]["sha256"] != after_by_path[path]["sha256"]
+        for path in shared
+    )
+    return {
+        "created": len(after_by_path.keys() - before_by_path.keys()),
+        "changed": changed,
+        "unchanged": len(shared) - changed,
+        "removed": len(before_by_path.keys() - after_by_path.keys()),
+        "bytes_before": sum(artifact["bytes"] for artifact in before),
+        "bytes_after": sum(artifact["bytes"] for artifact in after),
+    }
+
+
+def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
+    check = str(spec.get("check") or spec.get("kind") or "unnamed postcondition")
+    kind = spec.get("kind")
+    path = str(spec.get("path") or "")
+    matched = _matched_files(path) if path else []
+    if kind == "output_exists":
+        passed = bool(matched)
+    elif kind == "file_nonempty":
+        passed = bool(matched) and all(candidate.stat().st_size > 0 for candidate in matched)
+    elif kind == "file_contains":
+        needle = str(spec.get("contains") or "")
+        passed = bool(matched) and bool(needle) and all(
+            needle in candidate.read_text(encoding="utf-8", errors="replace") for candidate in matched
+        )
+    else:
+        passed = False
+    return {"check": check, "pass": passed}
+
+
+def _base_record(
+    command: list[str],
+    devices: str,
+    exit_code: int | None,
+    duration_s: float,
+    outputs: list[dict[str, Any]],
+    output_delta: dict[str, int],
+    postconditions: list[dict[str, Any]],
+    engine: dict[str, Any],
+    status: str,
+) -> dict[str, Any]:
+    return {
+        "cmd": command,
+        "devices": devices,
+        "exit_code": exit_code,
+        "duration_s": round(duration_s, 6),
+        "outputs": outputs,
+        "output_delta": output_delta,
+        "postconditions": postconditions,
+        "engine": {"commit": engine.get("commit"), "dirty": engine.get("dirty")},
+        "status": status,
+    }
+
+
+def _post_run_contract_checks(
+    domain_name: str,
+    editions: str | None,
+    build_id: str,
+    stage_id: str,
+    expected_stage_digest: str,
+    contract_builder: Callable[[str, str | None], dict[str, Any]],
+) -> list[dict[str, Any]]:
+    try:
+        contract = contract_builder(domain_name, editions)
+        contract_version = str(contract.get("contract_version") or "")
+        current_build_id, _ = build_identity(Domain(domain_name), contract_version)
+        current_digest = _stage_entry(contract, stage_id).get("stage_digest")
+    except Exception as error:  # fail closed: a stage cannot PASS when its identity became unreadable mid-run
+        return [{"check": f"recipe and approved stage stayed readable: {error}", "pass": False}]
+    return [
+        {"check": "recipe identity stayed unchanged during execution", "pass": current_build_id == build_id},
+        {"check": "approved stage stayed unchanged during execution", "pass": current_digest == expected_stage_digest},
+    ]
+
+
+def _scope_record(record: dict[str, Any], stage: dict[str, Any]) -> dict[str, Any]:
+    record["editions"] = stage.get("editions", [])
+    record["stage_digest"] = stage.get("stage_digest")
+    return record
+
+
+def _refusal_record(
+    command: list[str],
+    devices: str,
+    engine: dict[str, Any],
+    code: str,
+    message: str,
+) -> dict[str, Any]:
+    record = _base_record(
+        command=command,
+        devices=devices,
+        exit_code=None,
+        duration_s=0.0,
+        outputs=[],
+        output_delta={"created": 0, "changed": 0, "unchanged": 0, "removed": 0, "bytes_before": 0, "bytes_after": 0},
+        postconditions=[{"check": message, "pass": False}],
+        engine=engine,
+        status="FAIL",
+    )
+    record["error"] = code
+    return record
+
+
+def execute_stage(
+    domain_name: str,
+    stage_id: str,
+    devices: str,
+    editions: str | None = None,
+    requested_build_id: str | None = None,
+    expected_stage_digest: str | None = None,
+    contract_builder: Callable[[str, str | None], dict[str, Any]] | None = None,
+) -> tuple[dict[str, Any], int, str]:
+    _validate_identifier(domain_name, "domain")
+    lock_path = C.DATA / domain_name / "builds" / ".run-stage.lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open("a+", encoding="utf-8") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _execute_stage_locked(
+            domain_name,
+            stage_id,
+            devices,
+            editions,
+            requested_build_id,
+            expected_stage_digest,
+            contract_builder,
+        )
+
+
+def _execute_stage_locked(
+    domain_name: str,
+    stage_id: str,
+    devices: str,
+    editions: str | None,
+    requested_build_id: str | None,
+    expected_stage_digest: str | None,
+    contract_builder: Callable[[str, str | None], dict[str, Any]] | None,
+) -> tuple[dict[str, Any], int, str]:
+    _validate_identifier(domain_name, "domain")
+    _validate_identifier(stage_id, "stage")
+    if requested_build_id is not None:
+        _validate_identifier(requested_build_id, "build_id", _BUILD_ID)
+
+    domain = Domain(domain_name)
+    active_contract_builder = contract_builder or build_contract
+    contract = active_contract_builder(domain_name, editions)
+    contract_version = str(contract.get("contract_version") or "")
+    if not contract_version:
+        raise StageError("CONTRACT_INVALID", "execution contract has no contract_version")
+    computed_build_id, inputs = build_identity(domain, contract_version)
+    build_id = requested_build_id or computed_build_id
+    raw_engine = contract.get("engine")
+    engine: dict[str, Any] = raw_engine if isinstance(raw_engine, dict) else {}
+
+    if requested_build_id is not None and requested_build_id != computed_build_id:
+        message = f"BUILD_DRIFT: requested {requested_build_id}, current recipe is {computed_build_id}"
+        try:
+            drift_stage = _stage_entry(contract, stage_id)
+            command = _resolved_command(drift_stage)
+        except StageError:
+            drift_stage = {
+                "editions": contract.get("editions", []),
+                "stage_digest": expected_stage_digest,
+            }
+            command = []
+        record = _scope_record(_refusal_record(command, devices, engine, "BUILD_DRIFT", message), drift_stage)
+        _write_refusal_record(_record_path(domain_name, build_id, stage_id), record)
+        return record, 2, build_id
+
+    stage = _stage_entry(contract, stage_id)
+    command = _resolved_command(stage)
+
+    def refusal(code: str, message: str) -> dict[str, Any]:
+        return _scope_record(_refusal_record(command, devices, engine, code, message), stage)
+
+    record_path = _record_path(domain_name, build_id, stage_id)
+    scoped_editions = stage.get("editions")
+    if stage_id != "scrape" and (not isinstance(scoped_editions, list) or not scoped_editions):
+        message = "NO_UNITS: a non-scrape stage cannot run with an empty unit scope"
+        record = refusal("NO_UNITS", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    stage_digest = stage.get("stage_digest")
+    if expected_stage_digest is None:
+        message = "APPROVED_STAGE_REQUIRED: execute mode requires the host-approved stage digest"
+        record = refusal("APPROVED_STAGE_REQUIRED", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    _validate_identifier(expected_stage_digest, "approved_stage_digest", _STAGE_DIGEST)
+    if stage_digest != expected_stage_digest:
+        message = f"CONTRACT_DRIFT: approved {expected_stage_digest}, current stage is {stage_digest!r}"
+        record = refusal("CONTRACT_DRIFT", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+
+    raw_effects = stage.get("effects")
+    effects: list[Any] = raw_effects if isinstance(raw_effects, list) else []
+    if "gpu" in effects and not devices:
+        message = "GPU_DEVICES_REQUIRED: a gpu-effect stage cannot run with empty --devices"
+        record = refusal("GPU_DEVICES_REQUIRED", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+
+    raw_output_patterns = stage.get("outputs")
+    output_patterns: list[Any] = raw_output_patterns if isinstance(raw_output_patterns, list) else []
+    raw_specs = stage.get("postconditions")
+    specs: list[Any] = raw_specs if isinstance(raw_specs, list) else []
+    if not output_patterns or not specs:
+        message = "CONTRACT_STAGE_INVALID: execution requires declared outputs and postconditions"
+        record = refusal("CONTRACT_STAGE_INVALID", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    protected = set(domain.spec.get("protected_editions") or [])
+    targeted_protected = protected.intersection(scoped_editions or [])
+    protected_outputs = [
+        output
+        for output in output_patterns
+        if any(str(output).startswith(f"data/{domain.name}/{unit}/") for unit in targeted_protected)
+    ]
+    if protected_outputs:
+        units = ", ".join(sorted(targeted_protected))
+        message = f"PROTECTED_UNITS: stage outputs would modify gate-only unit(s): {units}"
+        record = refusal("PROTECTED_UNITS", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    _ensure_build(domain, build_id, inputs, contract_version)
+    try:
+        before_outputs, _ = _collect_outputs([str(pattern) for pattern in output_patterns])
+    except OSError as error:
+        record = refusal("ARTIFACT_READ_FAILED", f"ARTIFACT_READ_FAILED: {error}")
+        _write_stage_record(record_path, record)
+        return record, 2, build_id
+    child_env = {**os.environ, "PYTHONPATH": str(C.ROOT / "scripts"), "CUDA_VISIBLE_DEVICES": devices}
+    started = time.monotonic()
+    try:
+        completed = subprocess.run(command, cwd=C.ROOT, env=child_env, check=False)
+        exit_code = completed.returncode
+    except OSError as error:
+        duration_s = time.monotonic() - started
+        record = refusal("SPAWN_FAILED", f"SPAWN_FAILED: {error}")
+        record["duration_s"] = round(duration_s, 6)
+        _write_stage_record(record_path, record)
+        return record, 2, build_id
+    duration_s = time.monotonic() - started
+
+    try:
+        outputs, missing = _collect_outputs([str(pattern) for pattern in output_patterns])
+    except OSError as error:
+        record = refusal("ARTIFACT_READ_FAILED", f"ARTIFACT_READ_FAILED: {error}")
+        record["exit_code"] = exit_code
+        record["duration_s"] = round(duration_s, 6)
+        _write_stage_record(record_path, record)
+        return record, 1, build_id
+    output_delta = _output_delta(before_outputs, outputs)
+    postconditions = [
+        _postcondition(spec) if isinstance(spec, dict) else {"check": str(spec), "pass": False}
+        for spec in specs
+    ]
+    if not output_patterns:
+        postconditions.append({"check": "contract declares at least one output", "pass": False})
+    postconditions.extend({"check": f"declared output exists: {path}", "pass": False} for path in missing)
+    delta_passed = output_delta["created"] + output_delta["changed"] > 0
+    postconditions.append({"check": "declared output delta is nonzero", "pass": delta_passed})
+    postconditions.extend(
+        _post_run_contract_checks(
+            domain_name,
+            editions,
+            build_id,
+            stage_id,
+            expected_stage_digest,
+            active_contract_builder,
+        ),
+    )
+    passed = exit_code == 0 and not missing and bool(output_patterns) and all(
+        condition["pass"] for condition in postconditions
+    )
+    record = _scope_record(
+        _base_record(
+            command=command,
+            devices=devices,
+            exit_code=exit_code,
+            duration_s=duration_s,
+            outputs=outputs,
+            output_delta=output_delta,
+            postconditions=postconditions,
+            engine=engine,
+            status="PASS" if passed else "FAIL",
+        ),
+        stage,
+    )
+    _write_stage_record(record_path, record)
+    return record, 0 if passed else 1, build_id
+
+
+def inspect_stage(domain_name: str, build_id: str, stage_id: str) -> dict[str, Any]:
+    path = _record_path(domain_name, build_id, stage_id)
+    if not path.is_file():
+        raise StageError("STAGE_RECORD_NOT_FOUND", f"stage record does not exist: {path}")
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise StageError("STAGE_RECORD_INVALID", f"cannot read stage record {path}: {error}") from error
+    if not isinstance(value, dict):
+        raise StageError("STAGE_RECORD_INVALID", f"stage record is not a JSON object: {path}")
+    return value
+
+
+def _error(error: StageError) -> int:
+    print(json.dumps({"error": error.code, "message": error.message}), file=sys.stderr)
+    return 2
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--inspect", action="store_true", help="print an existing stage record; never write")
+    parser.add_argument("--domain", required=True)
+    parser.add_argument("--stage", required=True)
+    parser.add_argument("--editions", help="comma-separated unit scope approved for this stage")
+    parser.add_argument("--devices", help="exact CUDA_VISIBLE_DEVICES value for the child")
+    parser.add_argument("--approved-stage-digest", help="exact stage contract approved by the host")
+    parser.add_argument("--build-id")
+    args = parser.parse_args()
+
+    try:
+        if args.inspect:
+            if not args.build_id:
+                raise StageError("BUILD_ID_REQUIRED", "--inspect requires --build-id")
+            json.dump(inspect_stage(args.domain, args.build_id, args.stage), sys.stdout, separators=(",", ":"))
+            sys.stdout.write("\n")
+            return 0
+        if args.devices is None:
+            raise StageError("DEVICES_REQUIRED", "execute mode requires --devices (use an empty string for CPU stages)")
+        record, exit_code, build_id = execute_stage(
+            args.domain,
+            args.stage,
+            args.devices,
+            editions=args.editions,
+            requested_build_id=args.build_id,
+            expected_stage_digest=args.approved_stage_digest,
+        )
+        summary = {
+            "build_id": build_id,
+            "stage": args.stage,
+            "status": record["status"],
+            "error": record.get("error"),
+        }
+        print(json.dumps(summary, separators=(",", ":")))
+        if record.get("error"):
+            print(json.dumps({"error": record["error"], "build_id": build_id, "stage": args.stage}), file=sys.stderr)
+        return exit_code
+    except StageError as error:
+        return _error(error)
+    except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
+        return _error(StageError("RUN_STAGE_ERROR", str(error)))
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

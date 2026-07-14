@@ -12,6 +12,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 PY="${PY:-.venv/bin/python}"
 export PYTHONPATH=scripts
+export CUDA_VISIBLE_DEVICES=""
 
 fail=0
 for t in scripts/pipeline/test_*.py; do
