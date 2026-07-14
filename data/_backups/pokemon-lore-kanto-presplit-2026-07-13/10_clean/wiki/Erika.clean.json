@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "1f93b2a9c721db16d887528aab7ac41df2b23b5f3866fbc0cca6da2b4caaa88b",
+  "clean_sha256": "9230fb50f6bc67ecf68af7889268c284767d65f6a58471b3ce8656edce13acab",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Erika.txt",
+  "title": "Erika"
+}

@@ -1,0 +1,7 @@
+
+!!! HOLDOUT INTEGRITY WARNING [kanto / split v1]: clean prose may contain holdout facts verbatim. clean/source prose IS INCLUDED, so this carve is augmentation_holdout; pass --no-clean to make fact-holdout possible. !!!
+Saving the dataset (0/1 shards):   0%|          | 0/1480 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1480/1480 [00:00<00:00, 423985.38 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1480/1480 [00:00<00:00, 413094.42 examples/s]
+docs: {'hydrated': 8008, 'clean': 105, 'knowledge': 2}  |  corpus_tokens=689,187  replay=68,918  total=758,107  chunks=1480
+lever-metadata: entity_mask 425/689,187 (0.1%) | src {'raw_knowledge': 689187, 'qa': 0, 'conversation': 0, 'replay': 68920}
+saved /mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/30_tokenized/pokemon_lore_kanto_v1.arrow
+{"build_id":"65e507e26fa64f92","stage":"tokenize","status":"PASS","error":null}

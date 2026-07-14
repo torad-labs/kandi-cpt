@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "d240e77184bb2fb35eb7012d3684a8384a9c676fd31bb7d927d8bacd6e894b5a",
+  "clean_sha256": "729a9409ccb38676cdc1174ee088696cda8b2e85c64477da929df16de6852294",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Drew.txt",
+  "title": "Drew"
+}

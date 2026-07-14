@@ -1,0 +1,30 @@
+  kanto: split v1 — synthesizing over 649/721 train triples (72 holdout EXCLUDED, never in the LLM's context)
+  …25/649 synth calls; 250 surfaces
+  …50/649 synth calls; 500 surfaces
+  …75/649 synth calls; 750 surfaces
+  …100/649 synth calls; 1000 surfaces
+  …125/649 synth calls; 1250 surfaces
+  …150/649 synth calls; 1500 surfaces
+  …175/649 synth calls; 1750 surfaces
+  …200/649 synth calls; 2000 surfaces
+  …225/649 synth calls; 2250 surfaces
+  …250/649 synth calls; 2500 surfaces
+  …275/649 synth calls; 2750 surfaces
+  …300/649 synth calls; 3000 surfaces
+  …325/649 synth calls; 3250 surfaces
+  …350/649 synth calls; 3500 surfaces
+  …375/649 synth calls; 3750 surfaces
+  …400/649 synth calls; 4000 surfaces
+  …425/649 synth calls; 4250 surfaces
+  …450/649 synth calls; 4500 surfaces
+  …475/649 synth calls; 4750 surfaces
+  …500/649 synth calls; 5000 surfaces
+  …525/649 synth calls; 5250 surfaces
+  …550/649 synth calls; 5500 surfaces
+  …575/649 synth calls; 5750 surfaces
+  …600/649 synth calls; 6000 surfaces
+  …625/649 synth calls; 6250 surfaces
+  …649/649 synth calls; 6490 surfaces
+  synth calls: 649 attempted, 0 empty/failed; 6490 surfaces
+  kanto: wrote 6490 LLM-synth lines from 649 triples
+{"build_id":"65e507e26fa64f92","stage":"synth","status":"PASS","error":null}

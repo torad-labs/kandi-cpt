@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "fd98e7acb05ee16bdcc9d3a2b99033663801d6adb625f07ba6785f71fe81916f",
+  "clean_sha256": "e98df836b37d5eaee09e45b01d49e89430ed72d01a8147e720763d2bd66689a5",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Johto.txt",
+  "title": "Johto"
+}

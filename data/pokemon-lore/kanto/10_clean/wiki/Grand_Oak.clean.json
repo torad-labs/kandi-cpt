@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "a07acfbdc48fd5a84fefa8b1237350d91f15da3b3a2f44df7f823ed12baf844c",
+  "clean_sha256": "b98d74266242c6c62b1e578b327777109e6a0df172090444d05bb4535ecfec82",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Grand Oak.txt",
+  "title": "Grand Oak"
+}

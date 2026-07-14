@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "2117d5b87b33144d6408299234d01cafeb58136cfecf09fe8404ae930c783fff",
+  "clean_sha256": "25d14fad047195997731a4ac4c73be747c35c05b8b59ffcaddc31918c4e7379a",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "List_of_Pok%C3%A9mon_by_Isle_of_Armor_Pok%C3%A9dex_number.html",
+  "title": "List of Pok\u00e9mon by Isle of Armor Pok\u00e9dex number"
+}

@@ -1,0 +1,183 @@
+# Sinnoh
+
+Scraped unknown from Sinnoh.txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Title: Sinnoh
+
+The Sinnoh region (Japanese: シンオウ地方(ちほう) Sinnoh region), formerly known as Hisui (Japanese: ヒスイ地方(ちほう) Hisui region), is a region of the Pokémon world. It is located north of Kanto, Johto, and Hoenn. It is the setting of Pokémon Diamond, Pearl, Platinum, Brilliant Diamond, Shining Pearl, and Legends: Arceus; the latter explores the region's earlier history when it was still known as Hisui. It was the fourth core series region to be introduced.
+Sinnoh is composed of the large mainland, the Battle Zone on another landmass to the northeast, and several smaller islands on both sides of the region. Most of Sinnoh's routes are on land, having very few water routes, in vast contrast to Hoenn. The region is divided by Mount Coronet, roughly comparable to how the continent that Kanto and Johto make up is essentially a contiguous region.
+
+
+== Etymology and design concept ==
+
+
+=== Etymology ===
+Junichi Masuda has stated that Sinnoh's name is derived from "神奥" ("mysterious and profound"), possibly in reference to the various myths of the region.
+
+
+=== Design concept ===
+Main article: Pokémon world in relation to the real world → Sinnoh
+
+The geography of the Sinnoh region is based on the geography of the Japanese island of Hokkaido and the southern part of the Russian island Sakhalin, as well as Kunashir (Kunashiri), which is claimed by both Japan and Russia, but is currently under Russian control. Sinnoh has been said to be an island like Hoenn, rather than a peninsula.
+Most of the cities and towns in Sinnoh are based on and positioned in the same way as the real cities and towns of Hokkaido. Jubilife City is Sinnoh's largest city, which is based on Sapporo, Hokkaido's largest city, while Veilstone City is based upon Abashiri, a major port city. The geographical features of Sinnoh are similar as well, with the large mountain ranges of Mount Coronet resembling the Ezo mountain chain, which is made up of the Teshio Mountains, the Kitami Mountains, the Ishikari Mountains, the Yubari Mountains, and the Hidaka Mountains. The three lakes of Sinnoh mimic Lake Tōya, Lake Kussharo and Lake Kutcharo. The fourth lake of Sinnoh is similar to Lake Mashū, which is also known as a mysterious spot that has a dense layer of fog hiding the surface most of the time.
+The numbering of the routes in the Pokémon world may also be a reference to Japan's own national route system, which goes from 1 to 58, then skips directly to 101, and then skips several more numbers. Routes in Sinnoh do not run concurrent to routes in Hokkaido, instead starting over after the set of routes in Hoenn.
+
+
+== History ==
+Main article: Hisui → History
+
+
+=== Prehistory ===
+According to several myths, after the creation of the Pokémon of myth, the Pokémon universe, and the Lake guardians, Arceus created Mount Coronet, then the rest of the Hisui region, then the rest of the Pokémon world using its 1,000 arms. Arceus also created the Adamant Crystal, the Lustrous Globe, and Griseous Core, materials related to the three Pokémon of myth, Dialga, Palkia, and Giratina. At some point, Uxie, Mesprit, and Azelf dove into the caves at the bottom of three lakes in the region: Lake Verity, Lake Valor, and Lake Acuity, respectively, which granted them the title "lake guardians."
+At some point, Heatran was born from the lava of Firespit Island's volcano. Additionally, after the creation of all 5 Legendary giants, their creator Regigigas fell into a deep slumber within Snowpoint Temple, being only awakened by unlocking the door of the chamber where it was sealed in.
+According to a legend, an ancient hero started a journey to gather all of Arceus's 18 Plates, befriending 10 Pokémon during his travels around the region. After succeeding in gathering them all, the hero met "almighty Sinnoh" itself, gaining its respect and being blessed by it alongside his Pokémon. These ten Pokémon would eventually have descendants that would be known as Hisui's Noble and Ride Pokémon, which would be worshiped as the protectors of the people and Pokémon of Hisui. After becoming a hero, he battled the "almighty unknowable," being approved by it before it returned to its "domain of no place." Following the hero's journey, the Temple of Sinnoh was built atop Mount Coronet in honor of the hero, his Pokémon, and Arceus.
+About a millennium or two prior to Pokémon Legends: Arceus, the ancient Sinnoh people lived in Hisui and worshiped Arceus, which was known as the "almighty Sinnoh." At the time, they used to perform rituals in which they wore outfits and styled their hair in a way to mimic Arceus's appearance to show their respect to it. The ancient Sinnoh people later vanished, leaving only their descendants behind in the present day. Another group of people, the Celestica, are also mentioned in the Old Verses, though there are fewer details on them.
+The Diamond and Pearl Clans traveled to Hisui from across the sea and started worshiping an "almighty Sinnoh," with the Diamond Clan claiming it created time and the Pearl Clan claiming it created space. Both clans claimed to be the Celestica people, though they had no relation. This disagreement set off a long-running feud between the two clans. The members of the clans also started venerating the noble and Ride Pokémon and appointed themselves as wardens to tend to their needs.
+Two years prior, the Galaxy Expedition Team would arrive in the region, consisting of people from numerous various regions. These settlers built Jubilife Village in Hisui's southwestern corner. Unlike the two clans that lived in Hisui prior, the people of Jubilife Village were distrusting of Pokémon, so to capture and store them, the expedition team brought with them Poké Balls, a newly-invented technology.
+Shortly prior, Volo, a descendant of the ancient Sinnoh people who sought to conquer Arceus, somehow found Giratina and partnered up with it so it could tear down Arceus as revenge for banishing it in the past. Giratina tore open a space-time rift over Mount Coronet, driving Dialga and Palkia mad as a result, so that the creator would be dragged out from hiding, which didn't work. Volo and Giratina's actions also caused the Noble Pokémon to become frenzied and the appearance of Alpha Pokémon and Space-time distortions. At some point, one of the Noble Pokémon, the Lord of the Isles Arcanine, died at sea while trying to save his Growlithe pup from drowning, forcing his warden, Palina to raise the pup to be the next noble. At some point, Ingo suddenly arrived in Hisui from the future, losing most of his memories in the process.
+At most 300 years prior to Pokémon Diamond, Pearl, Platinum, Brilliant Diamond, and Shining Pearl, the events of Pokémon Legends: Arceus occurred. During this game, Rei/Akari were sent to Hisui from the future by Arceus, the Diamond and Pearl Clans set their differences aside, the Noble Pokémon were calmed down, Volo's plans were stopped, and Giratina had a change of heart, abandoning its revenge and chosing to protect the world from then on.
+After the events of Pokémon Legends: Arceus, Hisui became known as Sinnoh. At some point, the Galaxy Team was disbanded, but captain Cyllene passed down the name and accomplishments of the team to her descendants. At some point, Ingo suddenly disappeared one day after saying "It is time for me to return" and somehow returning to his era. According to the townspeople, Floaroma Town was once a barren and desolate hill. People began planting flowers around it, but nothing would grow until someone expressed thanks for a blessing of nature, after which the whole hill burst into bloom.
+
+
+=== Contemporary history ===
+
+The contemporary history of Sinnoh differs slightly based on the title of the game being played.
+
+
+==== Pokémon Diamond, Pearl, Brilliant Diamond, and Shining Pearl ====
+Lucas/Dawn and their friend Barry, leave Twinleaf Town in an attempt to see a Pokémon similar to that of the Red Gyarados in the nearby Lake Verity. At the lake they encounter Professor Rowan and their assistant, Dawn/Lucas (not chosen as player) who end up leaving their briefcase in the grass. The player and Barry get attacked by a group of wild Starly and open the briefcase left behind, giving them access to their first partner Pokémon. Barry and the player return to Twinleaf Town and set out the next day to return the Pokémon that they had borrowed to Professor Rowan who lives in the neighboring Sandgem Town. Professor Rowan gives them not only a Pokédex but also the Pokémon they had borrowed, allowing the two, and Dawn/Lucas to set out on a journey across Sinnoh. The player and their friend, now rival, take on the Sinnoh's eight Gyms in attempt to become the Champion. Along the way, the player comes across the villainous Team Galactic, who pursues to steal Pokémon and resources in order to complete Cyrus's goal of creating a new world in his image. In multiple conflicts with the organization and obtaining their seventh gym badge, the player defeats Saturn in Veilstone City who has captured the Lake guardians and created a Red Chain. They follow Cyrus up to the peak of Mount Coronet where the Spear Pillar lies. Cyrus summons the Legendary Pokémon of Dialga/Palkia, who can distort time and space respectively, allowing him to recreate the world via usage of the Red Chain that Saturn had made in Veilstone. The player and Barry defeat the evil organization, with most of the group disbanding after Cyrus leaves. The player then leaves for Sunyshore City and eventually the Pokémon League where they defeat Cynthia and claim the title of champion.
+After finding every Pokémon in Sinnoh's regional Pokédex and becoming champion, the player is contacted by Barry who they go with on a ship to the Battle Zone, home of the Battle Park. On this island, they explore the volcanic Stark Mountain after some Team Galactic members attempt to take the Magma Stone. With the help of Buck, they defeat the villains once again and bring peace to the location.
+
+
+==== Pokémon Platinum ====
+Lucas/Dawn and their friend Barry, leave Twinleaf Town in order to find some wild Pokémon. At Route 201 they are stopped by Professor Rowan and their Professor's assistant, Dawn/Lucas (not chosen as player), who provides them with their first partner Pokémon. They go to Sandgem Town in order to learn more about Pokémon and taking a journey across Sinnoh, but not stop back home first and tell their mother about the road ahead. At Lake Verity the player meets Cyrus. The player and their friend, now rival, take on the Sinnoh's eight Gyms in attempt to become a Champion. Over the course of their journey they meet a Trainer named Cynthia and a member of the International Police, Looker, who become helpful allies against the villainous Team Galactic, a group  oddly dressed people who pursue the stealing of Pokémon and resources in order to complete Cyrus's goal of creating a new world in his image. In multiple conflicts with the organization and obtaining their seventh gym badge, the player defeats Saturn in Veilstone City, who has captured the lake guardians and created a Red Chain. They follow Cyrus up to the peak of Mount Coronet where the Spear Pillar lies. The player, Barry and Cynthia all cooperate to help defeat Mars and Jupiter only for Cyrus to succeed in summoning both Dialga and Palkia with usage of the Red Chain, bending and warping the world to his desires. The three lake guardians and Giratina suddenly appear and pull Cyrus into the Distortion World, Giratina's world. The player and Cynthia follow into the portal and stop Cyrus from attempting to cause further harm. Cyrus disappears after defeat, with most of the group disbanding. The player then leaves for Sunyshore City and eventually the Pokémon League, where they defeat the current Champion, Cynthia, and become the new Champion.
+After finding every Pokémon in Sinnoh's regional Pokédex and becoming champion, the player is contacted by Barry who they go with on a ship to the Battle Zone, home of the Battle Frontier. On this island, the player explores the volcanic Stark Mountain with Buck. The two encounter Mars, Jupiter, and Charon from Team Galactic who are attempting to take the Magma Stone. With the help of Looker, they defeat the villains once again and bring peace to the location.
+
+
+== Geography ==
+
+
+=== Environment ===
+
+Sinnoh features a broad range of new and classic environments for the player to explore including, for the first time in a Pokémon RPG, snowy routes. Its terrain is varied: some parts of the region are dry and mountainous; others are wet and swampy. The region is rich in water.
+Due to its large size, the main region of Sinnoh can be broken into two sub-regions divided by Mount Coronet, roughly comparable to how the continent that Kanto and Johto make up is essentially a contiguous region. Due to this, Shellos and Gastrodon have developed an instance of regional speciation, with members of the species found on the eastern side being blue-colored and members on the western side being pink-colored.
+
+The western half of Sinnoh features a variety of landscapes. Its coasts are notably more rocky than the eastern half, however, the land is far more fertile, and the towns, for the most part, are rural. A windswept canyon, carved out by a river that flows from Mount Coronet, is home to the Valley Windworks, which provides clean, wind-driven electricity to the nearby towns. This is not to say, however, that there is no importance to west Sinnoh, as Oreburgh City, Eterna City, and Canalave City are the locations of Pokémon Gyms, and Jubilife City, at the heart of the area, is the most technologically advanced city in the region.
+Sinnoh's eastern half is home to a vast many more things, including Pokémon Super Contests in Hearthome City, a Department Store in Veilstone City, the Great Marsh of Pastoria City, and the awe-inspiring Vista Lighthouse of Sunyshore City. In each of these cities, as well, there is a Pokémon Gym, which is very important for League-bound Trainers.
+Unlike the halves of Sinnoh divided longitudinally by Mount Coronet, the northern area is sparsely populated, with Snowpoint City as the only major area. This is likely due to the cold climate and snowy terrain in the area. Despite this relative isolation, however, Snowpoint has a Pokémon Gym, making it another important stop for Trainers who wish to compete in the Pokémon League.
+A third sub-region is the Battle Zone, which is on a large island to the northeast of the mainland. Much like how people from the Sevii Islands seem to consider their home to be a separate region from Kanto and Johto, people from the Battle Zone often refer to Sinnoh as a separate region. Several islands, including Newmoon Island, Fullmoon Island, and Iron Island, lie off the northwestern coast of Sinnoh as well, though these are far eclipsed in both size and importance by the mainland.
+Separated from both the Battle Zone and the mainland of Sinnoh by several straits is the island on which the Pokémon League of Sinnoh is located, the only access to which is by way of Route 223. It is here where Sinnoh's Victory Road is located, which, unlike previous incarnations has not two, but three entrances: one of these, of course, is the southern entrance that Trainers from the mainland must navigate from, a second is the one that leads to the area in which the Elite Four can be challenged, and the third leads from a foggy area of Victory Road to Route 224, which is said to be a miniature version of Sinnoh. North from Route 224, the Seabreak Path leads to Shaymin's domain, the Flower Paradise.
+
+
+=== Climate ===
+The climate of Sinnoh varies widely, and most of the region is made of mountainous or hilly areas. Unlike Hoenn, which is located in the south where the climate is warmer, Sinnoh is located on the northern boundaries of the world where the temperature is cooler. It is so cold in the northern part of the region that snow falls constantly. The harsh snow that blows down from the mountain's peaks not only makes the area very cold, but makes the routes in the area perilous to travel on. Cities such as Snowpoint City are completely covered in snow, and Pokémon who live nearby have had to adapt to the climate. Recently, the southern side of the region has also become cooler; climate change is taking a toll. Areas such as Twinleaf Town and Route 201 now have small amounts of snow on the ground.
+
+However, not all of the northern areas of Sinnoh are covered in snow. Due to the dry environments and mountainous areas such as Stark Mountain, the small island known as the Battle Zone is subject to warmer climates. A constant sandstorm rages on Route 228 due to the flow of wind down though the mountains. Some of the southern areas of the Battle Zone are very tropical and contain dense jungles.
+The mainland features full land geography, with only five water routes. Despite this lack of water routes, in contrast to the Hoenn region, Sinnoh is known to be rich in water. Rivers that originate from the highlands and mountains in the center of the landmass runs through the region passing many cities, towns, and routes and into the ocean. There are many lakes throughout the region such as Lake Acuity, Lake Valor, and Lake Verity. All these factors create a tropical climate throughout the mainland. Many large cities settle on or close to the seaside; some of them have large ports.
+Further inland, there are many different climates. Due to the mountain zones, different inland areas are subject to rain. This rain creates wetlands. Such areas may also be covered partially or completely by shallow pools of water. The soil in the wetland area is permanently saturated with moisture, which creates swamps, marshes, and bogs. In fact, Pastoria City was founded on marshy soils that attracted wild Pokémon. Unlike other regions, Sinnoh is sometimes troubled by fog. Route 210 is often covered in a thick cloud that makes obstacles and Trainers difficult to see; fortunately for travelers, this can be easily cleared.
+
+
+=== Energy sources ===
+The Sinnoh region is famed for its energy production and conservation via natural resources. Different areas of Sinnoh use different sources of energy for the use of power generation, heating, and transport fuels. The Oreburgh Mine is one of the main features in Oreburgh City, as well as the city's leading energy source. Its energy is exported to many parts of the region, including its neighbor, Jubilife City, whose large population consumes a lot of energy. The mine is the livelihood of the town. Vents in the town allow steam to escape and fresh air to enter the mine, likely also clearing the mine of any poison gas (which is historically the bane of coal miners). The mine is operated with the utmost care to avoid causing damage to the natural habitats of wild Pokémon. The system of taking coal out of the mine is automated.
+Another local energy source is the Valley Windworks. The Valley Windworks is a large wind farm situated in a windy valley close to Mount Coronet, so as to generate as much electricity as possible. It is located just off Route 205, a short walk east from Floaroma Town. In the area, there are eight tall wind turbines which generate energy that is in turn processed by the power plant in the center of the area. Many towns benefit from the natural renewable energy including Floaroma Town, and Eterna City.
+The third and final energy source Sinnoh has to offer is Sunyshore City's solar panels, which are ingeniously designed for the use of power and transportation. Because the city is on the coast and gets hit by a lot of sunlight, the solar panels were built to collect energy for little cost, no pollution, and convenience to the city's citizens. It was also built due to the lack of space. However, there is a disadvantage: the solar panel system is often broken, and the city will experience massive blackouts at times. Citizens of and visitors to the city are able to walk around the city on top of the solar panels.
+
+
+=== Demographics ===
+The Sinnoh region's towns, cities and other areas have a total population of 704 in Diamond and Pearl and 755 in Pokémon Platinum. Upon its introduction in Generation IV, it was the largest region by population, and is currently the fifth largest region by population.
+
+
+=== Notable locations ===
+Sinnoh has fourteen cities and towns, as well as three "areas", and a Pokémon League. These sites act as settlements for people to live and work in a functioning society. The Fight Area, the Survival Area and the Resort Area all act as towns, however, they appear to be more of a tourist destination and are not considered cities or towns. These three "areas" are located off Sinnoh's mainland and on the Battle Zone, which is considered a sub-region of Sinnoh and is implied by some living on the island as a different region altogether, not unlike how the Sevii Islands are considered a separate region from Kanto and Johto. Thus, Sinnoh has a total of eighteen settlements all over Sinnoh.
+The Sinnoh region has 30 different routes, which are passages permitting Trainers to travel from one location to the next with relative ease. Much like Hoenn before it, Sinnoh's routes are numbered so that they don't follow sequence directly from previously-known regions' routes. Routes in Sinnoh are numbered from 201 to 230. Compared to previous generations, there aren't many water routes; there are many land routes and mountains. There are also several routes with differing weather. Some of Sinnoh's routes have snow covering them. Another quirk about the routes in Sinnoh is that some of them do not go directly east/west or north/south, but actually turn before reaching their destination, most notably Route 212 and Route 210, which both have two limbs of equal length.
+Although it has few water routes, Sinnoh is known to be rich in water, and has three lakes at the northernmost (Acuity), easternmost (Valor), and westernmost (Verity) ends of the main continent. These are home to the lake guardians. Near Lake Valor there is a hidden fourth lake, Sendoff Spring, which houses Turnback Cave. Some other significant locations that Sinnoh offers include Mount Coronet, the highest mountain in the Sinnoh region and part of a long mountain range that divides the region in half; the Eterna Forest, a large and mysterious forest; and the Great Marsh, a popular habitat for Pokémon and a Safari Zone for many Trainers.
+In Pokémon the Series, the Sinnoh region is far enough away to require going from Kanto to Sinnoh by either ship (as Ash, Pikachu, and Aipom did), or by truck (as evidenced by how Brock arrived in the region).
+
+
+==== Settlements ====
+
+
+===== Battle Zone =====
+
+
+==== Landmarks ====
+
+Sinnoh is home to many unique landmarks and areas of interest. These come in a range of tourist attractions such as the luxurious Hotel Grand Lake and the exciting Pal Park, to many natural phenomena such as the four deep, blue lakes and the vast, dense Eterna Forest. But the central landmark of the Sinnoh region is Mount Coronet. Standing in the middle of Sinnoh and extending from the northern wilderness to the southern tip of the region, Mount Coronet splits Sinnoh into two halves. It is best defined as a mountain range, with its highest peak shrouded in legend, perhaps being the highest mountain in the entire Pokémon world. The Spear Pillar is situated at the highest point, an ancient shrine to Pokémon which is in ruins. Several of its pillars are still standing, all pointing skyward. The legend of the Pokémon of myth is deeply connected with the mountain, as is the plot of Team Galactic. A stained glass window in the Foreign Building in Hearthome City depicts the mountain with a bright shine, representing the Spear Pillar and possibly depicting the creation of Dialga, Palkia, and Giratina. Its place in Sinnoh has caused variation in the species of Shellos and Gastrodon, which have different shapes and coloration depending on the side of Sinnoh they are native to.
+On the north part of the region in the Battle Zone, there is another mountain range, Stark Mountain, which consists of an active volcano. The volcano rains ash down upon some parts of the Battle Zone. Outside the cavern is a rugged, seemingly indestructible rock mountain that is thickly blanketed by the volcanic ash it spews. Inside the mountain, fissures in spilled and hardened lava form enormous caverns. Another important landmark of Sinnoh is Eterna Forest, a forest home to many Bug- and Grass-type Pokémon. The Eterna Forest has a reputation for being a mysterious place, from the abandoned Old Chateau to the strange Moss Rock. The Eterna Forest is a long and complex structure of trees that make it a natural maze, where a lot of people get lost. Eterna Forest has apparently been the location of numerous sightings of Team Galactic, for many unknown reasons.
+Another major landmark is the Great Marsh. The Great Marsh is a giant wetland that is subject to frequent or continuous flood. It houses many different kinds of Pokémon, some of which are unique to this environment. Pastoria City was settled to protect the area. It has grown naturally over the years and there is now a lookout that affords views of the Great Marsh. An almost sacred area is the trinity of lakes mysteriously situated throughout the region to form the corners of a triangle. Lake Verity, Lake Valor, and Lake Acuity are tied to the myth of the creation of the Pokémon world, specifically the creation of spirit. The lakes are said to be inhabited by three guardians: Uxie, Mesprit, and Azelf. They are meant to represent knowledge, emotion, and willpower, respectively.
+
+The Underground/Grand Underground is a famous attraction to the Sinnoh region, because of the fact that it is not located above the surface of the region, but below in a series of tunnels dug out by people. There are six independent sections of the labyrinth, each accessible from different places in Sinnoh. In terms of vendors and mining treasures, the areas are equivalent. One of the main attractions is the mining game in which rare items can be found. The Grand Underground also contains multiple caves called Pokémon Hideaways, which contain many kinds of Pokémon not found on the surface of Sinnoh.
+The Sinnoh region is the only area where an extreme natural phenomenon has occurred; the gateway to another universe has opened due to the actions of Giratina. At first, Giratina uses Turnback Cave, a cave located in the depths of the mysterious and secret fourth lake of Sinnoh, Sendoff Spring, as a portal to the Distortion World. It is said that Turnback Cave is a weak point between dimensions, and that the ability to travel across to the Distortion World would be possible. The Distortion World is a mysterious place that disobeys the normal laws of physics: time does not flow and spatial relations are irregular, allowing the player to walk and surf on walls in any direction. Trees and rocks can simply grow out of the ground, and then disappear. The only Pokémon known to inhabit the Distortion World is Giratina.
+In Pokémon the Series, the Sinnohan people have been shown to preserve historical knowledge, which include the myths and legends passed on from generation to generation. The appreciation for the region's rich history has led them to produce a number of monuments and to erect many cultural heritage institutions that have become popular landmarks. Statues dedicated to the Legendary Pokémon Dialga and Palkia can be found inside the Lilypad Colosseum and at the entrance gates to the Eterna Historical Museum, and the Celestic Town Historical Research Center, presided by Champion Cynthia's grandmother, Professor Carolina, has staffers working to unveil the mysteries surrounding the region's past. The people living in Sinnoh also recognize the value of community traditions and civic commemorations. Small, local festivals, such as Pastoria City's Croagunk Festival and the Twinleaf Festival, are held annually to keep long-standing traditions alive.
+
+
+==== Pokéwalker–exclusive ====
+This area can only be found in the Pokéwalker:
+
+Sinnoh Field
+
+
+==== Animated series-exclusive ====
+
+
+==== Mentioned only ====
+
+
+=== Appearance ===
+
+
+==== Artwork ====
+
+
+==== In-game ====
+
+
+== Sinnoh League ==
+Main article: Sinnoh League
+
+The regional Pokémon League in the Sinnoh region is known as the Sinnoh League. The Sinnoh League is composed of eight Gym Leaders and four Elite Four members, along with the Champion. Pokémon Trainers who earn eight Badges by defeating the Gym Leaders of the Sinnoh League qualify to challenge the Elite Four located in the Pokémon League building. Gym Leaders are located in different cities and towns, each with their own specialty type. It is the Gym Leader's job to be the protector of their respective town or city, as they should be the strongest Trainer residing there. Once all Gym Leaders have been defeated, Trainers may face the Elite Four and its Champion. To defeat the Elite Four, all five Trainers must be defeated in succession.
+
+
+=== Gym Leaders ===
+In Pokémon Platinum, Fantina is the third Gym Leader fought, with the order otherwise remaining the same.
+
+
+=== Elite Four and Champion ===
+
+
+== Battle Frontier ==
+Main article: Battle Frontier (Generation IV)
+
+
+=== Frontier Brains ===
+
+
+== Trivia ==
+If one were to draw lines to connect the three lakes of Sinnoh, they form a big triangle with Mount Coronet at the center. This is the same formation that Uxie, Mesprit, and Azelf make on the top of the Spear Pillar with Dialga or Palkia in the middle, as well as the same formation put in areas relating to the Sinnoh myths.
+Only the southern part of the now-Russian island of Sakhalin is referenced in the region. In the 1855 Treaty of Shimoda, Russia and Japan agreed to split the island, with Japan receiving the southern end. While Japan gave Russia full control of Sakhalin in 1875 in exchange for the Kuril Islands, Japan was again given the southern 2/5ths of the island after the Russo-Japanese War in 1905 and would retain control until 1945.
+Sinnoh is the only region of the core series games to not have a notable Dragon-type expert.
+Sinnoh is the first region of the core series games to contain caves with side-facing entrances. In Kanto, Johto, and Hoenn, all cave portals were front-facing.
+Sinnoh has the most locations with special magnetic fields of all regions, with a total of three: Mount Coronet, Spear Pillar, and Hall of Origin.
+Sinnoh is the only known region to have once been known by another name earlier in its history.
+Sinnoh has an index number location programmed into Generation IV for it, despite the fact that all Sinnoh locations are programmed into the games already. This index location is at #2006, which coincidentally, was the Japanese release of Sinnoh's first games, Pokémon Diamond and Pearl. This does not happen for the other three regions programmed in (i.e. Kanto is 2003, not 1996; Johto is 2004, not 1999; and Hoenn is 2005, not 2002). This data is unused during normal gameplay (i.e. without hacking); Pokémon from Sinnoh traded to a game taking place in Johto display their normal "met at" area, much like Pokémon from Kanto do when traded to Emerald.
+In the animated series, Sinnoh features the most Shiny Pokémon seen in a region, with a total of seven: Dustox, Metagross, Ditto, Raikou, Entei, Suicune, and Ariados.
+The Fiore region is confirmed to be somewhat far from the Sinnoh region, since in the in-game Manaphy event, Professor Hastings suggests sending the Manaphy Egg to Sinnoh as a response to the term "somewhere far away."
+The adjectival form of Sinnoh is "Sinnohan", as shown in the description for an assortment of Poffins being sold by Thrifty Megamart in Pokémon Sun, Moon, Ultra Sun, and Ultra Moon.
+This is not to be confused with the historical term “Hisuian”, which is used only to refers to Pokémon and Sinnoh natives in Pokémon Legends: Arceus.
+
+
+== In other languages ==
+
+
+== References ==
+
+
+== Related articles ==
+Pokémon Diamond and Pearl
+Pokémon Platinum
+Pokémon Brilliant Diamond and Shining Pearl
+Hisui
+Pokémon Legends: Arceus

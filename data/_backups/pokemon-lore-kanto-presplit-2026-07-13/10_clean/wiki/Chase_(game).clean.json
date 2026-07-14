@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "d59fbcf8c0f7afaf0ab91aa307cd1b4d54883b120771609e5d0356bfb8e9bcd0",
+  "clean_sha256": "e23d0c8f5b39de0847dacb36250e3955d09fcbe0e95ad4105f0ce6c2d4556e16",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Chase (game).txt",
+  "title": "Chase (game)"
+}

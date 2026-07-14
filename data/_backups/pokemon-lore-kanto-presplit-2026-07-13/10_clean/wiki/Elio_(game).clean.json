@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "0c86da6c3b38823e108be140e0bd38da0688e29e97884afe58f6459911ed6d77",
+  "clean_sha256": "e59458165b5b5d22303b6afe5017c7b98d6f8a0c7f68015b6ae59a0a16e3d578",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Elio (game).txt",
+  "title": "Elio (game)"
+}

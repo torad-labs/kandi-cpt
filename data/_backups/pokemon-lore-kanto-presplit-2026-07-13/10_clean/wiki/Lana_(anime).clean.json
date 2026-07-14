@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "a6a0d5356c3c48f5ee2f4f71bd20448e456ef1c0db22f02a3b4d40f65714f948",
+  "clean_sha256": "a1d7b9a6aad9a4a995546687355782bc7a727b32a80f3c4a97c5bbfbd0f8fa26",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Lana (anime).txt",
+  "title": "Lana (anime)"
+}

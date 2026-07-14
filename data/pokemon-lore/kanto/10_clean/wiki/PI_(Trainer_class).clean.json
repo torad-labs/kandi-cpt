@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "62298b7b93e529c6a12dfb375aade9459bd5d889f023a128512a8b4155cbfa12",
+  "clean_sha256": "4d2e3e5ac95910e7a5a062e1553d3716e38b7aae74bb5e25963a578ce387948c",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "PI_(Trainer_class).html",
+  "title": "PI (Trainer class)"
+}

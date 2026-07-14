@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "f72694d267bab150ac7ac95777e12cd7632cf6d197607cb1004913fbfe356c87",
+  "clean_sha256": "25b962d44eb741679750d59266498c491555bc6223be444843e75eb46704a9fa",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Hau.txt",
+  "title": "Hau"
+}

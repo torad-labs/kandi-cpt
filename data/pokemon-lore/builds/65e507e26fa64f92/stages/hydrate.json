@@ -1,0 +1,55 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/generic_expand.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.123531,
+  "outputs": [
+    {
+      "path": "data/pokemon-lore/kanto/25_hydrated/relations.jsonl",
+      "sha256": "25789297bf30659a8baa464e9497393dd9654a7f1295c28da11fd98741214e19",
+      "bytes": 353158
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 353158
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/pokemon-lore/kanto/25_hydrated/relations.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "047c7fc14f240d4037b0a78294effb3bbda85441",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "0154d65c5cf4e1fd3debe235f7e33b3389d3a82862d6f25cad39bdda315391dd"
+}

@@ -1,0 +1,128 @@
+# Old man (Kanto)
+
+Scraped unknown from Old man (Kanto).txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Title: Old man (Kanto)
+
+The old man (Japanese: おじいさん old man) is an NPC that lives in Viridian City in the Kanto region.
+He was also referred to as Sleeping Man.
+
+
+== Role ==
+
+
+=== Generations I and III ===
+When the player first visits Viridian City, an old man lying on the path blocks the player's way. In the original Japanese version, he is passed out drunk; in the American and European language versions, he is grumpy due to not having had his coffee for the day. Once the player has delivered Oak's Parcel to Professor Oak, the old man will no longer be in the way.
+Once he has had his coffee (sobered up in the Japanese version), he helps the player by teaching them how to catch a Pokémon using a Poké Ball.
+In Pokémon Red and Blue, the player can skip his tutorial by simply not talking with him. However, in Pokémon Yellow, FireRed, and LeafGreen, the tutorial is unskippable. In those later games, once the player tries to leave Viridian City in the direction of Route 2 for the first time (and the old man is not blocking the way anymore), the old man talks to the player and starts the tutorial.
+In Pokémon Red and Blue, he carries a total of 50 Poké Balls in his Bag and uses one to catch a Weedle. In Pokémon Yellow, he has just one Poké Ball and fails to catch a Rattata; after failing to catch it, he goes to the Poké Mart to buy more and agrees to repeat the tutorial and successfully catch the Rattata after the player enters and leaves the Poké Mart. In Pokémon FireRed and LeafGreen, he only has one Poké Ball, which he uses to successfully catch a Weedle; additionally, in these games he gives the player a Teachy TV, which contains additional video tutorials provided by his grandson, Primo, in his Poké Dude Show.
+
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+
+
+=== Generations II and IV ===
+He reappears in the Generation II games and Pokémon HeartGold and SoulSilver saying that he needs someone to talk with, then asks the player if they believe that he was once an expert at catching Pokémon.
+In the Western versions, he starts by saying that he is wired from a double shot of espresso. In the Japanese versions, he instead starts by letting out a hiccup (Japanese: 「ひっく⋯⋯」) and requests the player to wait so that they listen to what he has to say.
+
+
+=== Legacy ===
+In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, the old man does not appear. His function as a road block early in the game is replaced by Jessie, James, and Meowth. His function as a tutorial is replaced by Professor Oak, who helps the player catch their partner Pokémon.
+
+
+== Old man glitch ==
+Main article: Old man glitch
+The old man glitch is one of the most widely known glitches in the English Generation I Pokémon games. It causes wild MissingNo., 'M (00), and various Pokémon over level 100 or at level 80 to appear.
+
+
+== Pokémon ==
+
+
+=== Caught in tutorial ===
+
+
+== Gallery ==
+
+
+=== Sprites ===
+
+
+== Quotes ==
+
+
+=== Pokémon Red and Blue ===
+If tried to get past of before delivering Oak's Parcel
+"You can't go through here! This is private property!"
+After delivering Oak's Parcel
+"Ahh, I've had my coffee now and I feel great! Sure you can go through! Are you in a hurry?"
+Yes: "Time is money… Go along then."
+No: "I see you're using a Pokédex. When you catch a Pokémon, Pokédex is automatically updated. What? Don't you know how to catch Pokémon? I'll show you how to then."
+After the capture tutorial
+"First, you need to weaken the target Pokémon."
+
+
+=== Pokémon Yellow ===
+If tried to get past of before delivering Oak's Parcel
+"You can't go through here! This is private property!"
+After delivering Oak's Parcel
+"Ahh, I've had my coffee now and I feel great! Sure, you can go through! I'm sorry I was so rude to you! I see you're using a Pokédex. I'll show you how to catch Pokémon as my apology."
+After failed capture tutorial
+"That didn't work! I must be losing my touch. I've run out of Poké Balls too. I have to get some at Pokémon Mart."
+If talked to again
+"Hmm? You want me to show you how to catch Pokémon again?"
+No: "Oh… I'm not good enough for you."
+Yes: "Dandy! Watch what I do closely now!"
+After successful capture tutorial
+"First, you need to weaken the target Pokémon."
+
+
+=== Pokémon Gold, Silver, and Crystal ===
+"Hey, kid! I just had a double shot of espresso, and I am wired! I need to talk to someone, so you'll have to do! I might not look like much now, but I was an expert at catching Pokémon. Do you believe me?"
+Yes: "Good, good. Yes, I was something out of the ordinary, let me tell you!"
+No: "What? You little whelp! If I were just a bit younger, I'd show you a thing or two. Humph!"
+
+
+=== Pokémon FireRed and LeafGreen ===
+If tried to get past of before delivering Oak's Parcel
+"I absolutely forbid you from going through here! This is private property!"
+After delivering Oak's Parcel
+"Well, now, I've had my coffee, and that's what I need to get going! Hm? What is that red box you have? Ah, so you're working on your Pokédex. Then let me give you a word of advice. Whenever you catch a Pokémon, the Pokédex automatically updates its data. …You don't know how to catch a Pokémon? I suppose I had better show you then!"
+After the capture tutorial
+"There! Now tell me, that was educational, was it not? And here, take this, too."
+"If there's something you don't understand, watch that. It will teach you about the basics of being a Pokémon Trainer."
+If talked to again
+"Well, now, I've had my coffee, and that's what I need to get going! But I made it too strong. It gave me a headache… Incidentally, are you filling your Pokédex? At first, focus on weakening the Pokémon before trying to catch it."
+
+
+=== Pokémon HeartGold and SoulSilver ===
+"Hey, kid! I just had a double shot of espresso, and I am wired! I need to talk to someone, so you'll have to do! I might not look like much now, but I was an expert at catching Pokémon. Do you believe me?"
+Yes: "Good, good. Yes, I was something out of the ordinary, let me tell you!"
+No: "What? You little whelp! If I were just a bit younger, I'd show you a thing or two. Humph!"
+
+
+== Trivia ==
+In the Japanese Pokémon Red, Green, and Blue, if both the player's party and PC Box are full, the old man's tutorial will indefinitely issue the command to use a Poké Ball and return the "full Box" message due to a programming oversight. This was fixed in Pokémon Yellow and the localized releases.
+In the Generation I games, the old man's cheeks are blushed while he is passed out drunk. The blush is in all versions of the games, regardless as to the context.
+The old man, his grandson, and the Dude are the only NPCs to receive a back sprite, but not a front one.
+
+
+== In other languages ==
+
+
+== References ==
+
+
+== Related articles ==

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "16f8d073fef5311519393a0c85c6082282d023f9f2dd7a6e23793162a845757d",
+  "clean_sha256": "2d36c15ba25f98ac2c20d5cf2ef69ef545fb7da9d5c84c718d6ee8cab183011e",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Green (Adventures).txt",
+  "title": "Green (Adventures)"
+}

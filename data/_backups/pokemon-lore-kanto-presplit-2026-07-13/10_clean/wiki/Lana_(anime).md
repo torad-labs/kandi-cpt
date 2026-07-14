@@ -1,0 +1,240 @@
+# Lana (anime)
+
+Scraped unknown from Lana (anime).txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Title: Lana (anime)
+
+Lana (Japanese: スイレン Suiren) is a student at the Pokémon School on Melemele Island and one of Ash's former classmates. She made her debut in Alola to New Adventure!.
+
+
+== History ==
+
+
+=== Pre-series ===
+
+Lana grew up in Hau'oli City in the Alola region with her mother, father, and younger twin sisters Harper and Sarah. Prior to enrolling at the Pokémon School, Lana first met Mallow when they were younger and instantly became best friends, after they had an adventure together in a forest and met a resident Drampa, which was eventually nicknamed Grandpa Forest. Through Mallow, Lana came to know her family, Abe and Ulu, and learned that she lost her mother when she was very young.
+Years later, Lana received a Lapras as her first Pokémon, but usually leaves it at home and would take it out to fish. As revealed in Yo, Ho, Ho! Go, Popplio!, Lana was fishing with Lapras where she saw Team Skull Grunts harassing a wild Popplio and rescued it. Lana took Popplio to the Pokémon Center and helped Nurse Joy nurse the Sea Lion Pokémon back to health. Immediately afterwards, the two became good friends and partners. After that, Lana enrolled at the Pokémon School with Mallow where they became friends with their classmates, Kiawe and Sophocles. Lana also knew Ilima before he graduated from the Pokémon School and left to study in the Kalos region. Later, Lana befriended another classmate named Lillie.
+
+
+=== Pokémon the Series: Sun & Moon ===
+Lana debuted in Alola to New Adventure!, where she met Ash and Pikachu while fishing with Popplio on a Poké Ride Lapras. She and Ash met again at the Pokémon School, where Ash decided to join her class to study the Pokémon of Alola under their teacher Professor Kukui.
+In The Guardian's Challenge!, Lana participated in the surprise welcome party her class threw for Ash to celebrate his enrollment into the school. She challenged Ash to a Pokémon swimming contest as his third "surprise", which Popplio won due to its superior swimming ability. She later bore witness to Ash and Pikachu's battle against Tapu Koko, the guardian deity of Melemele.
+In Yo, Ho, Ho! Go, Popplio!, Lana received help from Ash while training Popplio how to blow human-sized water balloons, revealing her dream to one day use them to explore the ocean depths and discover new undersea Pokémon. She was also chosen to give a class lecture on sea Pokémon, loaning Ash a fishing rod at her house and introducing him to her sisters. During the lecture, the class's Ride Pokémon were caught in a net by Team Rocket, who infuriated Lana with their disregard for the other Pokémon they had inadvertently caught. Together with Ash, she was able to bring the captured Pokémon to safety by using Popplio's water balloons.
+In Treasure Hunt, Akala Style!, Lana found a Sparkling Stone during one of her treasure hunts with a Poké Ride Stoutland on Akala Island. Olivia took it and turned it into a Z-Ring for Lana.
+
+In Big Sky, Small Fry!, Lana took part in a trial at Brooklet Hill where she earned a Waterium Z from battling a Totem Wishiwashi with Popplio. Near the end of the episode, Olivia gave the Z-Ring to Lana, which she had just successfully converted from the Sparkling Stone.
+In Balloons, Brionne, and Belligerence!, Lana and Popplio were practicing their Z-Move at the beach with Ash and Mallow, but were unsuccessful. Nearby, they noticed a crowd watching a performer named Ida with her Brionne. Lana was intrigued and insisted Ida to be her tutor. They then trained for days. One day when they were out in the sea looking for treasure with Ida and Kanoa, they got in trouble with a Dhelmise. Lana and Popplio then attempted Hydro Vortex again and succeeded, defeating the anchor Pokémon in the process.
+From Family Determination! to 10,000,000 Reasons to Fight!, Lana was among those who helped Lillie and Gladion in their mission to rescue their mother Lusamine after Lusamine was kidnapped by the Ultra Beast Nihilego. In Ultra Deep Sea, her Popplio, along with Ash's Litten and Rowlet, and Mallow and Sophocles's Pokémon, fought and overcame Lusamine's Mismagius, Milotic, and Lilligant, which were under Nihilego's control. During the battle, Lana and Popplio used Hydro Vortex on Mismagius. The battle ended when Ash and Pikachu performed 10,000,000 Volt Thunderbolt to defeat Nihilego, freeing Lusamine from its grasp.
+In The Professors' New Adventure!, Lana attended the wedding of Professor Kukui and Professor Burnet. During the post-nuptials, Lusamine asked Lana and her classmates to join the Ultra Guardians, a task force dedicated to dealing with any upcoming Ultra Beast incidents, which they accepted.
+
+As a part of the Ultra Guardians, Lana and her Pokémon have been critical to the success of the group's missions. In A Mission of Ultra Urgency!, Lana and her classmates were given their first task, capturing a Buzzwole that emerged from an Ultra Wormhole onto Melemele Island and began causing havoc. During the mission, Lana helped heal a wild Snorlax that was drained of its energy by the Ultra Beast.
+In Dewpider Ascending!, a wild Dewpider ended up falling for Lana after seeing her with one of Popplio's water bubbles on her head. Later, when the Dewpider fought a Surskit for the ownership of a pond near the Pokémon School, Lana encouraged it to keep fighting. Despite this, the Surskit won the battle, causing to evolve into a Masquerain. Happy with its new form, Masquerain abandoned the pond, allowing Dewpider to make the area its new home.
+In Twirling with a Bang!, Lana and her classmates watched a fireworks show. The show was interrupted by a strange creature that used its exploding head to create a fireworks show of its own. The next day, the Ultra Guardians were called down by Lusamine, who revealed the creature from before was the Ultra Beast Blacephalon. The Ultra Guardians set off to find Blacephalon, but their efforts to track it down only led to a different Ultra Beast, later named Xurkitree by Lusamine. Eventually, Lana managed to catch Xurkitree while Lillie caught Blacephalon, allowing the two Ultra Beasts to be later released back to their homes.
+In Filling the Light with Darkness!, mysterious dark clouds appeared over the Alola region, causing all of the adults in Alola to lose their energy and motivation. The next day, Lana and her classmates embarked on their fifth mission, to investigate the situation at the Altar of the Sunne. Shortly after arriving, Lusamine revealed that Gladion would be joining them as a new member. In order to disperse the clouds, Lana, Kiawe, Ash, and Gladion combined their Z-Power to fuel a device that successfully made the clouds disappear, but they uncovered a hidden Ultra Wormhole in the process. Afterwards, Lusamine took the Ultra Guardians into the ruins, where she showed them a mural depicting the "Blinding One". Before they could translate the mural, the Ultra Guardians were forced to return outside, where they found the wormhole increasing in size. At that moment, a Lunala emerged from the wormhole with a Necrozma chasing after it. The group was eventually able to solve the unfolding crisis in Securing the Future!, where they, their Pokémon, Lunala, Poipole's friends, and everyone else back in Alola shared their Z-Power with Necrozma, causing it to release Nebby. After Ash and Gladion used Nebby and Lunala to replenish Necrozma's strength to revert it to its true form, it restored Poipole's world back to its original state. Afterwards, the Ultra Guardians, Nebby, and Lunala traveled back to Alola through the Ultra Wormhole.
+
+In We Know Where You're Going, Eevee!, Lana went to buy malasadas for a dinner with her family meant to celebrate her father's return from a fishing trip. When she asked Popplio what flavor malasada it wanted, she noticed that it had disappeared. As she searched for Popplio, Lana met up with her classmates, who agreed to help look around. Eventually, they found Popplio at the Hau'oli City Beachfront trying to defend a wild Eevee from Tupp, Rapp, and Zipp. With its newly learned Surf, Popplio created a platform of water for Eevee to jump on, allowing him to use a powerful Double-Edge and send the Team Skull Grunts blasting off. After some encouragement from her friends, Lana asked Eevee if he wanted to join her team, which he happily accepted. Eevee was nicknamed Sandy and caught in a Dive Ball. After returning home, Lana introduced Sandy as her new friend and partner to her father, who recognized him surfing on a Mantine earlier. Lana gave Sandy a haircut, cutting his long bangs to a shorter length resembling her own hair.
+
+In That's Some Spicy Island Research!, Lana and her classmates headed over to Poni Island for their individual research projects for school. Her research project's plans were to meet up Ida and catch up with her.
+In Evolving Research!, Lana met up with Ida and realized that her Brionne had evolved into Primarina. Lana then trained with Ida while Mallow and Lillie watched. Later at night, Lana observed Ida and her Primarina as they performed their Z-Move, Oceanic Operetta. Wanting to show Ida how much she and Popplio have grown, Lana decided to do some training of her own. Before Ida left to search for treasure again, Lana arrived at the pier just in time to show Ida her growth by having her Popplio create a big balloon, which resulted in it evolving into Brionne. Impressed, Ida gave Lana a Primarium Z so she could do Oceanic Operetta someday.
+In The One That Didn't Get Away!, Lana, Sandy, Ash, and Pikachu were playing in Brionne's balloons when they were sucked into a whirlpool and landed near a coral area. There, they encountered a Kyogre that was poisoned and being chased by a hunter and his underlings. Lana tried to cure Kyogre's poison by using a Antidote placed on a special lure that was given to her by Misty while Ash and their Pokémon battled the hunters. However, after the Legendary Pokémon was cured, Lana was dragged underwater by it when it went out of control. Brionne went after her and, through its determination to help her, evolved into Primarina. Through their teamwork, Lana and Primarina were able to calm Kyogre down after Primarina sang to it. It then departed, allowing Lana and Ash to reunite with their friends.
+In Battle Royal 151!, Lana was among the 151 Trainers taking part in the Battle Royal preliminary round of the Manalo Conference. Using Sandy, Lana was among the 16 Trainers still standing at the end of the round. The match-ups for the next round revealed that she would be battling Mallow.
+In Battling Besties!, Lana battled Mallow during the first round of the Manalo Conference. Despite her Primarina being at a type disadvantage against Mallow's Tsareena, Lana held the upper hand throughout the battle, having even taught Primarina Icy Wind to fight Grass-type opponents. When Mallow considered forfeiting, Lana pointed out how Tsareena wanted to keep fighting, even to the point of refusing to be recalled. Lana's words and Tsareena's actions encouraged Mallow, and she and Tsareena executed their first successful Bloom Doom. However, Lana and Primarina canceled out the move with Oceanic Operetta, and defeated Tsareena with Aqua Jet after the latter fell from exhaustion, allowing Lana to advance to the second round. It was later revealed that Lana's next opponent would be Guzma.
+In The Road to The Semifinals!, Lana's battle with Guzma began. Despite suffering from poison and temporarily being unable to use its singing voice due to Throat Chop, Primarina kept Guzma's Golisopod frozen in place with Icy Wind, long enough for it and Lana to launch an Oceanic Operetta. Before the Z-Move could be completed, however, Guzma had Golisopod tear through it with Liquidation, hitting Primarina and knocking it out, thus eliminating Lana from the tournament.
+In Enter the Champion!, Lana attended the award ceremony for Ash's victory in the Manalo Conference, only for it to be interrupted when a Guzzlord arrived at the stadium through a wormhole. In Z-Move Showdown!, Lana helped evacuate innocent civilians to safety. When a second, Shiny Guzzlord appeared in the shopping area, Lana, Lillie, Sophocles, and Mallow helped Kiawe, Gladion, and Hau battle it. By combining their Z-Moves into one giant attack, Lana and the others managed to successfully knock the Shiny Guzzlord back into Ultra Space.
+In Dreams of the Sun and Moon!, with the Alola League over, Lana and her classmates returned to their usual routine at the Pokémon School. When asked what she planned on doing for the upcoming vacation, Lana revealed that she would be doing an ocean survey with her father to search for Manaphy.
+In Thank You, Alola! The Journey Continues!, Lillie revealed that she would be leaving on a journey with Gladion and Lusamine to find her missing father Mohn with the help of the Magearna she awakened. The next day, Lana and the others said farewell to Lillie, taking one last photo with her before she and her family left on a cruise ship. As he flew back home, Ash was greeted by his classmates and Alolan Pokémon, who flew by in their Ultra Guardians uniforms to give him one final farewell. Sometime later, Lana said her goodbyes to Mallow, promising to bring her a fish print of Manaphy once she and her father finished their survey.
+
+
+=== Pokémon Journeys: The Series ===
+
+In That New Old Gang of Mine!, Lana saved Goh from drowning while fishing. She later participated in a welcome party for Ash and Goh and surprised everyone by reading a letter from Lillie. She also watched the battle between Goh and Kiawe.
+In Helping the Hometown Hero!, Lana attended a party to celebrate the return of Lillie and her family to Alola after they found Mohn, reuniting with Lillie, Ash, and Goh and meeting Chloe. Chloe asked Lana advice regarding what form her Eevee should evolve into, with Lana opening her eyes for the possibility of not evolving it at all. The next day, Lana watched a Battle Royal match between Ash, Kiawe, Gladion, and Professor Kukui.
+In Paring Pokémon While Parrying! and Partners in Time!, Lana was seen watching Ash's Masters Eight Tournament match against Leon at the Pokémon School.
+Lana reappeared in a fantasy in Heroes Unite!, alongside the Trainers Chloe and her Eevee met.
+
+
+== Character ==
+
+Lana is a calm and gentle girl who cares deeply for Pokémon, particularly Water-types. As such, she enjoys many seafaring activities, such as fishing while riding on Lapras. Her love for Pokémon runs deep to the point where she grows incensed at the sight of cruelty against Pokémon, speaking in a hushed tone of voice and shooting an icy glare toward the aggressors. She is highly protective of her Pokémon if they are in danger or if they got separated from her, as shown in They Might Not Be Giants!, when she has to drag Ash along when they go searching for her Popplio and his Rowlet. This was seen again in A Haunted House for Everyone!, when she became concerned about them when they were surrounded by Ghost-types. When she isn't concerned for the well-being of Pokémon, she takes many measures to keep them happy, such as when she turned the Pokémon School into a haunted house for them so they could enjoy themselves. Lana also would protect Pokémon, especially her own, in danger, as seen in Alola, Alola!, when she caught Sandy, after he tried to save a school of Mantine from Team Rocket and got repelled by their mecha, and praised him for his efforts.
+When Lana was young, she used to be rather shy. This was best demonstrated during a flashback in Tasting the Bitter with the Sweet!; when she first encountered Mallow, she initially called her "Miss Family Restaurant" (Japanese: アイナ食堂さん Miss Aina Cafeteria), but when Mallow said she can call her Mallow, she became nervous and her face turned red. Lana's friendship with Mallow is strong, as seen in Memories in the Mist!, where Lana is the only one Mallow has confided in about the death of her mother, and helped comfort Mallow over it. In the original Japanese version of the animated series, Lana refers to Mallow by the affectionate nickname (Japanese: マオちゃん Mao-chan)
+
+Lana is an expert at fishing, as shown in Yo, Ho, Ho! Go, Popplio!, where Professor Kukui had her teach the class on fishing and managed to hook several Pokémon quickly such as Alomomola, Corsola, Finneon and later surprised the master fisherman by quickly catching a Feebas.
+She tends to get annoyed and flustered by her sisters and their antics. Despite this, she still cares for them; once, she was concerned when she saw them jumping on the back of Kiawe's Turtonator, fearing they would touch its spines. It wasn't until A Haunted House for Everyone! that she had finally found the secret to stopping their antics, which involves forcefully yelling at them with a scary demeanor.
+
+Lana has extraordinarily high courage, as seen in Alola, Kanto!; whilst Mallow, Lillie, and Misty ran away after being scared by a Gyarados, she remained still and then, after changing into her swimsuit, jumped into the lake that Gyarados appeared from in search of Popplio. She is also quite athletic, as seen in The Long Vault Home!, where she was able to jump over 12 steps of a vaulting box which surprised everyone.
+While sincere most of the time, she also has a playful side, oftentimes telling outrageous jokes such as being able to catch Legendary Pokémon like Kyogre, something that ironically comes true in The One That Didn't Get Away!. She has a tendency to inadvertently tell the truth when she makes things up, as seen in We Know Where You're Going, Eevee!. This personality trait appears to have been inherited from her mother, who does the same thing.
+Since meeting Misty in Alola, Kanto!, Lana became close friends with her, even writing to each other. This was revealed in Alola, Alola!, when she invited Misty and Brock to come and visit Alola. The fact that Lana keeps in touch with her friends was further expanded in That's Some Spicy Island Research!, where it was revealed she had been keeping in contact with her master Ida by writing her letters. This was shown again in That New Old Gang of Mine!, when Lana received a letter from Lillie while she was traveling with her family to find her missing father Mohn. Lana even takes inspiration from her friends, as seen in Helping the Hometown Hero!, when she tells Chloe that she decided to keep Sandy the way he is after being inspired by Ash's Pikachu.
+
+
+== Pokémon ==
+
+Like Misty, Lana mostly specializes in Water-type Pokémon.
+At first, Lana didn't have a lot of battling experience. However, Lana showed improvement and became the most experienced battler out of the girls in Professor Kukui's class, even having her Primarina learn an Ice-type move to use on an opponent that had the advantage over Water types, as seen in Battling Besties!. Her Primarina is seemingly her strongest Pokémon in battle, and her only Pokémon who has been seen using Z-Moves.
+This listing is of Lana's known Pokémon in Pokémon the Series:
+
+
+=== On hand ===
+
+
+=== At home ===
+
+
+=== Ride Pokémon ===
+
+
+=== Released ===
+
+
+=== Temporary ===
+
+
+=== Befriended ===
+
+
+== Achievements ==
+
+
+=== Alola trials ===
+This listing is of the trials Lana has cleared in the Alola region:
+
+Brooklet Hill trial (Big Sky, Small Fry!; received the Waterium Z)
+
+
+=== Pokémon League ===
+Lana has competed in the following Pokémon League Conferences:
+
+Manalo Conference - Top 8 (The Road to The Semifinals!)
+
+
+=== Pokémon competitions ===
+Lana has competed in the following Pokémon competitions:
+
+Pokémon Pancake Race - Eliminated (Racing to a Big Event!)
+Kantonian Gym - 4th floor (Aiming for the Top Floor!)
+
+
+== Main outfit ==
+
+Lana's main outfit consists of a white sleeveless t-shirt with a dark blue one piece swimsuit underneath, a blue scarf, blue pants with light blue wave patterns on the bottom and a light brown drawstring, a golden string hairband, and dark blue sandals. In Big Sky, Small Fry!, Lana received a blue Z-Ring from Olivia that she made for her when she found it as a Sparkling Stone in the previous episode.
+
+
+== Other outfits ==
+
+
+=== Costumes ===
+In Lillier and the Staff!, Lana wore a Tapu Fini and wizard costume during a play at the Pokémon School. Also, in the same episode, Lana wore a police officer uniform that looks just like the ones that the Officer Jenny's wear in Alola, and a purple and white suit.
+In Got Meltan?, Lana wore a Meltan costume.
+In This Magik Moment!, Lana wore a yellow magical girl outfit while playing the role of (Japanese: ジュースドリンキュン Juice DrinKyun).
+
+
+=== Other clothing ===
+In Poké Problem segment for Getting the Band Back Together!, Lana wore a long blonde wig while watching a Dig-Dug-Leo concert.
+In Alola, Alola!, Lana wore a light-blue life jacket.
+In A Recipe for Success!, Lana, along with her classmates, wore a pink apron that is similar to Mallow's while helping out at her family's restaurant.
+
+
+=== Regular clothes ===
+In Tasting the Bitter with the Sweet!, Lana when she was younger wore a white t-shirt, light blue shorts with white wave patterns, and blue sandals. She also wore a golden with brown in the middle headband.
+In Drawn with the Wind! to Aiming for the Top Floor!, Lana wore a light blue, orange, and magenta kimono dress. She also wore a pair dark blue and orange sandals with socks, and had her hair tied in a ponytail with two green balls in the middle.
+
+
+=== Sleepwear ===
+In Balloons, Brionne, and Belligerence!, Night of a Thousand Poses!, The Young Flame Strikes Back!, Showering the World with Love!, Beauty is Only Crystal Deep!, and the Poké Problem segment for A Haunted House for Everyone!, Lana wore a long, light-green one-piece pajamas with a blue stripe just under the top and across each leg hole. She also removes her hairband when she sleeps.
+In Poké Problem segment for Drawn with the Wind! and Aiming for the Top Floor!, Lana wore a pink and red kimmo dress with Poké Ball designs around it as pajamas.
+
+
+=== Sportswear ===
+In Pulling Out the Pokémon Base Pepper! and Showering the World with Love!, Lana wore a baseball uniform when she played Pokémon Base with her classmates.
+In Smashing with Sketch!, Lana wore a pink ping-pong uniform when she played Pokémon Ping-Pong with her classmates.
+In Keeping Your Eyes on the Ball!, Lana wore a pink shirt and blue short golf uniform with a visor hat when she played Pokémon Golf with her classmates.
+
+
+=== Uniforms ===
+Lana's Ultra Guardian uniform is cyan with an aquamarine line around the chest area.
+In Real Life...Inquire Within!, Lana wore a nurse outfit similar to the one that the Nurse Joy of Melemele Island wears.
+In This Magik Moment!, Lana wore a gray school girl uniform with a yellow shirt, red hat and a Popplio hair clip. She also wore a light blue backpack with brown shoes and black socks.
+
+
+=== Outdoor gear ===
+
+
+==== Snow wear ====
+In Getting a Jump on the Competition!, Lana wore a light and dark turquoise jacket, dark turquoise trousers, yellow gloves, an orange scarf and brown shoes.
+
+
+==== Swimwear ====
+Lana wears a dark blue one piece swimsuit, with a small light-blue fish image near the top of it, underneath her normal outfit.
+
+
+=== Gallery ===
+
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+		
+			
+			
+		
+
+
+== Voice actress ==
+
+
+== Artwork ==
+
+
+== Trivia ==
+Lana holds the record for the most number of episodes to catch a Pokémon following her debut, taking 99 episodes to make her first catch (surpassing Iris and Serena, who took 24 episodes and 47 episodes, respectively).
+Lana is the first main character to:
+Have a Ride Pokémon as her first Pokémon.
+Have a fully evolved Water-type first partner Pokémon other than Ash.
+Lana is the only main character to:
+Have obtained a concurrent first partner Pokémon prior to their debut.
+Have a fully evolved first partner Pokémon before Ash within the same series.
+Lana is the only one of Ash's classmates to have a Pokémon-specific Z-Crystal, with her having the Primarium Z.
+Lana shares some similarities with Misty. They:
+Are both fans of Water-type Pokémon.
+Both have a group of sisters.
+Both caught Ash with their fishing rods during their debut episodes.
+In promotional material for the Manalo Conference, Lana was given the title of (Japanese: 毒舌の人魚姫 Sharp-tongued mermaid princess).
+
+
+== Names ==
+Main article: Lana → Names
+
+
+== References ==
+
+
+== Related articles ==
+Lana
+Episodes focusing on Lana
+Images on the Bulbagarden Archives

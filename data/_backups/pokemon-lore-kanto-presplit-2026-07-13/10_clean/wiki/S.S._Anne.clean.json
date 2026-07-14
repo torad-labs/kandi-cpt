@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "6b5b471f369912c193bbdac1441d12bbd697bad0141187a7b3cf436c584656b2",
+  "clean_sha256": "60e308d2be707a2a1a23d81e06113a22f311e5f0c4c5f0ad0522602ad3d664cd",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "S.S._Anne.html",
+  "title": "S.S. Anne"
+}

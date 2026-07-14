@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "ec059ff3eadd901a2ba04497df7ad0055834b15a2c874268951aef3fe461237a",
+  "clean_sha256": "f601f13f677c7bd0a8a1f086578abe2399020e656f6612a928025bd2f6193d9f",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Goh.txt",
+  "title": "Goh"
+}

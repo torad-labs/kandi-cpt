@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "b59daf9208054cfde4e997cb50fdd0c932bc6696f91e35bc47a6798b286aa507",
+  "clean_sha256": "ebb57b6924a6738cb4867f1d81cea58d93ab5f17784c660af7104d466eba792a",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Lillie.txt",
+  "title": "Lillie"
+}

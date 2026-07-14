@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "611cb8c2855aaf888df9a8822fa6517d786c5811c44205c48f0c78044c482e2b",
+  "clean_sha256": "0892d01478baca5d6c70743f7fa6b5f88c9509884f602cca8cbe75f919f97b7f",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Rayquaza_(Pok%C3%A9mon).html",
+  "title": "Rayquaza (Pok\u00e9mon)"
+}

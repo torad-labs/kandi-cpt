@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "d5e9aed49c76b6f20bcbb1f4fea595d031e96722b1a1d0074835fc7a43a62529",
+  "clean_sha256": "299c3e2c6bfb1863bee9104523a0b94e7af7fac8e38c9c84cbff1a90e4ba517e",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok\u00e9mon Association.txt",
+  "title": "Pok\u00e9mon Association"
+}

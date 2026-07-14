@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "80bc704c442b7ce959514498849664d1f488291ac1f450e964528a30c58b45de",
+  "clean_sha256": "aeb17910034753b3d024ca95b076b824284bf999fb8ab68a99b205dfec8fc469",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Deoxys_(Pok%C3%A9mon).html",
+  "title": "Deoxys (Pok\u00e9mon)"
+}

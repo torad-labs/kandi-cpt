@@ -1,0 +1,55 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/split.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.064519,
+  "outputs": [
+    {
+      "path": "data/pokemon-lore/kanto/splits/split_v1.json",
+      "sha256": "74abf75037e1b4185d0ffa084809cff413b0bdffbaa1efb74a39a6b1c2243629",
+      "bytes": 15267
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 15267
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/pokemon-lore/kanto/splits/split_v1.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "047c7fc14f240d4037b0a78294effb3bbda85441",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "5af73cb35add50c9cff16a93bab889d9cc5cac9cf61ea1b4aad157b563fb3ba5"
+}

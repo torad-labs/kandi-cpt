@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "ac1fbe9f910cd75ded0ffc98e1de39e718209536ff2303b08afaf3815e78c2a6",
+  "clean_sha256": "43f23f70375b75c63f39d1fbfb26b513975b2322015dd46e2df48a87440d4236",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok\u00e9mon Trainer Fan Club.txt",
+  "title": "Pok\u00e9mon Trainer Fan Club"
+}

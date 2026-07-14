@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "c4d0390571820639ea2b14c4b4de31f491970febeaa8df44b5c436125a9916a0",
+  "clean_sha256": "1de4f04b309ee82201cf657988ce530114641ee4322ebedca5b557ada6d31584",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Dragonite_(Pok%C3%A9mon).html",
+  "title": "Dragonite (Pok\u00e9mon)"
+}

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "521452d6994fc1204d94b5e17099814d898ec4971e4f4d9a474dd5f901592e61",
+  "clean_sha256": "0ee1a5cf0f2b44e7fe26e5561c07bd9b459f7656393225b17a15625423a3cdf4",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Mirage_Kingdom.html",
+  "title": "Mirage Kingdom"
+}

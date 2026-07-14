@@ -1,0 +1,7 @@
+{
+  "_comment": "pokemon-lore region registry — iter_editions walks these units (generic shape: each unit declares its own path under data/pokemon-lore/). Kanto is the Phase-6a pilot (de-risk before a multi-region sweep); add units (johto, hoenn, ...) as their 00_raw partitions land.",
+  "domain": "pokemon-lore",
+  "editions": [
+    { "unit": "kanto", "status": "active" }
+  ]
+}

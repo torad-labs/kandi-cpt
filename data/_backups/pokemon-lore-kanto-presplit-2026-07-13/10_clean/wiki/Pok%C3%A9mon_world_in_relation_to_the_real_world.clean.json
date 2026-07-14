@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "801623075737abebbb670ce88496852b2e1be9b20a542eec8b3c9dc6531bd82b",
+  "clean_sha256": "66615f29eb147bd368afc960a15306f2acc9f2e31862e180e30cdcad2c74fcf1",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok%C3%A9mon_world_in_relation_to_the_real_world.html",
+  "title": "Pok\u00e9mon world in relation to the real world"
+}

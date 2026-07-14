@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "fbcc41b9f6b2c5e259b9e43602539c5bfebd2451a0b93f744fee3d0159d50493",
+  "clean_sha256": "67a8f305477a5d346b5bdd47165ef8bc95609775ca510e229c5254f76d0a75d4",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Mable.txt",
+  "title": "Mable"
+}

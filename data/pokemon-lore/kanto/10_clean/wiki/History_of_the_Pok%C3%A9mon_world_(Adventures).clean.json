@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "76b6a5a6ff83347406a6dc7016d6e2ae04f396dcd0a39e0c6a74bc245e41ff80",
+  "clean_sha256": "02858d0d5c17f56d180ed1795c6d2afd8440f8372a435683479c73f7959555ef",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "History_of_the_Pok%C3%A9mon_world_(Adventures).html",
+  "title": "History of the Pok\u00e9mon world (Adventures)"
+}

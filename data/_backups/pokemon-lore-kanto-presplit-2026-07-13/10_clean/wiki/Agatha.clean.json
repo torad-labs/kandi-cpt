@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "c154a29bf02d418b51ed0bd94dce3ec810ef3304ec1944c289856e887f3abb7f",
+  "clean_sha256": "70a77e50e07cfa441eb0bd8be7489d5d139ab32450f6719b314837f2a6a7e1ff",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Agatha.txt",
+  "title": "Agatha"
+}

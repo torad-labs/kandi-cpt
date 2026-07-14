@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "57111500ea5a3689ea0a6119d524279cd70a64f0fb01348a2896bf4a10ffe844",
+  "clean_sha256": "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Mt._Pyre.html",
+  "title": "Mt. Pyre"
+}

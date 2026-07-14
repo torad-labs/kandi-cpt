@@ -1,0 +1,5 @@
+  kanto: split v1 — hydrating 649/721 triples (72 holdout EXCLUDED)
+  kanto: wrote 1518 hydrated lines (15 relations); uncovered: none
+
+wrote 1 relations.jsonl
+{"build_id":"65e507e26fa64f92","stage":"hydrate","status":"PASS","error":null}

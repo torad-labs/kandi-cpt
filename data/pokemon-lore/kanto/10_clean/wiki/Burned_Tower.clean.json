@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "c33a49610c31f5d9090587fe9de978866f6caf4d80c5e99191ab874bf93caee0",
+  "clean_sha256": "425b4d3ea4c2bb57d6ae5b8519533338eb7b5b635e99e46baeb8c7bb706a07df",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Burned_Tower.html",
+  "title": "Burned Tower"
+}

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "4a1f5a4977c04b40c55b7a45845ad069f9f77ab06134d4d6574a0e836a2738c0",
+  "clean_sha256": "33e4ad5e0cf4b08288ea3c2b77c32634071a6e68a4dbafcbd782d75c14fc0024",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Professor_Oak.html",
+  "title": "Professor Oak"
+}

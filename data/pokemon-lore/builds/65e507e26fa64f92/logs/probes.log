@@ -1,0 +1,4 @@
+  kanto: split v1 held-out mode — 72 gold / 721 distractor-pool triples
+  multi-correct guard: dropped 0 probe(s) with an empty distractor pool after excluding all objects true for the same (subject_id, predicate)
+  kanto: wrote 72 held_out probes from 72 gold triples (721 distractor-pool triples)
+{"build_id":"65e507e26fa64f92","stage":"probes","status":"PASS","error":null}

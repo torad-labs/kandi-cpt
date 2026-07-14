@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "0a0a31c3012beba81d2f7777408f48bf806b5f644ff0f9dff33ddc9d2648ca98",
+  "clean_sha256": "4cdaa7f468a582c95e1be49e5c6799995cb12bb05d62865d103d212b65983517",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Giovanni.txt",
+  "title": "Giovanni"
+}

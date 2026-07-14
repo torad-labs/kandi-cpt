@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "342ad18a1d84b84d7feeee9311894a72e25cecbd4b15153043ca56acb77d43bb",
+  "clean_sha256": "4823e09ba4e9e79c614ab39935c028e8ef61fabfede5b11dfb13275a232cab71",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Nurse Joy.txt",
+  "title": "Nurse Joy"
+}

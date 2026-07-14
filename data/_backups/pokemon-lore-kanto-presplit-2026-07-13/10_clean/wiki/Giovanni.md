@@ -1,0 +1,338 @@
+# Giovanni
+
+Scraped unknown from Giovanni.txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Title: Giovanni
+
+If you were looking for the character in the games whose Japanese name is Giovanni, see Earl Dervish. For the episode of Pokémon Origins, see File 3: Giovanni.
+
+Giovanni (Japanese: サカキ Sakaki) is the head of Team Rocket, who serves as the secretive Gym Leader of Viridian City's Gym, known officially as the Viridian Gym, in Generation I, Pokémon FireRed and LeafGreen, and Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!. He hands out the Earth Badge to Trainers who defeat him in battle. As a Gym Leader, he specializes in Ground-type Pokémon, but his master plan includes collecting rare Pokémon of all types. After he disbands Team Rocket and abandons his Gym, his role as the Viridian Gym Leader is taken over by Blue. In Pokémon Ultra Sun and Ultra Moon, he makes a return appearance as the leader of Team Rainbow Rocket. He is the only character in the games to have the Trainer classes Boss/Rocket Boss/Team Rocket Boss (Japanese: ロケットだんボス Team Rocket Boss) and Team Rainbow Rocket (Japanese: Rロケットだん Team R Rocket).
+
+
+== In the core series games ==
+
+
+=== Character profile ===
+Giovanni is the primary antagonist of the games taking place in Kanto.
+He is initially a shadowy and mysterious figure. His Gym can be seen early on in the Kanto-based games, but it is always closed and it is not initially disclosed who the Gym Leader really is. In the Japanese version of the Trainer Card from the Generation I games, Giovanni is unidentified and his name is written as ???, and Giovanni appears as a silhouette in both language versions. He is also identified as ??? on the list of Gym Leaders seen in Japanese and English manuals of the Generation I games and the English manual of Pokémon FireRed and LeafGreen, although he is identified normally in the Japanese manual of FireRed and LeafGreen.
+In the Generation I games, Giovanni was first shown as the leader of crime syndicate Team Rocket, the first of many villainous teams seen throughout the Pokémon franchise. After the player defeats him and his team of Grunts attempting to take over Silph Co., Giovanni flees to an unknown hideout, later revealed to be the Viridian Gym, where he also serves as its Gym Leader specializing in Ground type Pokémon. He is seemingly better-known as the leader of Team Rocket than as a Gym Leader, with the Viridian Gym guide expressing surprise upon learning his identity. Once defeated, he rewards the player with the Earth Badge and TM27 (Fissure) before announcing his plan to disband Team Rocket forever. If talked to again, he then vanishes and is not seen again for the rest of the game.
+Giovanni's role in Pokémon FireRed and LeafGreen is much the same; the key difference is that defeating him in the Gym battle will earn the player TM26 (Earthquake), instead of TM27 (Fissure). He also implies that he intends to return to power one day, rather than genuinely being moved to dedicate his life to the study of Pokémon. In the Sevii Islands, a group of Team Rocket members continue trying to further the goals of Team Rocket, but they abandon this when they realize that their leader has been defeated once and for all.
+In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, Giovanni's story is slightly expanded from his first appearance. During his first appearance, he is seen talking with Archer, giving him permission to proceed with the plan to take over Silph Co. After being defeated for the first time, he gives the player the Silph Scope as a token of apology for mocking them, as opposed to just leaving the device behind, like in previous games. At the Silph Co. headquarters, a previously unseen part of his conversation with the Silph Co. President is shown, with Giovanni demanding him to hand over the Master Ball as they had previously agreed and threatening the Silph Co. employees. In his Gym battle, Giovanni's reward TM once again contains Earthquake, now TM41 instead of TM26.
+In Pokémon Gold, Silver, Crystal, HeartGold, and SoulSilver, a group of Team Rocket members attempt to relaunch Team Rocket, with executives Archer and Ariana jointly taking over his position as leader. This reformed Team Rocket takes over Goldenrod Radio Tower, and broadcasts a radio announcement intended for Giovanni. Only in HeartGold and SoulSilver is it revealed that Giovanni does hear the broadcast from his hideout in Tohjo Falls, and intends to rejoin his team - an event taking place at the Ilex Forest shrine allows Ethan and Lyra to travel back in time with Celebi and battle Giovanni while the rest of Team Rocket is being defeated at the Radio Tower. After defeat, he will renounce his plan and exit the cave. In Kanto, Blue takes over the Viridian Gym after his disappearance.
+The HeartGold and SoulSilver event not only reveals Giovanni’s whereabouts in the three years between Generation I/III and Generation II/IV, but also the identity of his son. While it is mentioned by Scientist Gideon in FireRed and LeafGreen that Giovanni has a child with red hair, their identity was unknown until this event revealed it to be Silver, the rival of the Johto player character. The event allows Ethan and Lyra to witness their last conversation on Route 22 before Giovanni leaves, wherein Silver confronts him about his loss to Red.
+Giovanni reappears in Pokémon Black 2 and White 2 in the Pokémon World Tournament, replacing Blue, who instead participates in the Champions Tournament. Giovanni returns to using Ground types exclusively. While the announcer usually introduces Gym Leaders by their title, Giovanni, who does not have a title, is introduced as "The Self-Proclaimed Strongest Trainer" (Japanese: さいきょうの トレーナーと なのる Self-Proclaimed Strongest Trainer). However, his affiliation status with Team Rocket is unknown.
+An alternate universe Giovanni appears in Pokémon Ultra Sun and Ultra Moon's Episode RR post-game story as the Boss of Team Rainbow Rocket. This version of Giovanni came from a universe where Team Rocket succeeded in taking over the world. He is first seen during the Aether Foundation's broadcast from Aether Paradise, where he seizes control of the organization from Lusamine. He uses an Ultra Wormhole to transform her mansion into Team Rocket's Castle, fortifies himself inside it, and stations versions of Archie, Maxie, Cyrus, Lysandre, and Ghetsis from other worlds as his guards, along with an army of Team Rainbow Rocket Grunts. After battling through his army, the player and Lillie find Giovanni holding an unconscious Lusamine inside his control center deep within the castle. He introduces himself and reveals that he plans to create an army of Ultra Beasts in order to conquer all worlds. For that purpose, he needs the Aether Foundation's resources and intends to brainwash Lusamine into serving him. Feeling nostalgic that a child would challenge him, Giovanni battles the player with a party that includes a Mewtwo capable of Mega Evolving, and is ultimately defeated. Accepting his loss, Giovanni abandons his plans for the Aether Foundation but swears that Team Rainbow Rocket will never fall. He leaves as Colress begins working to revert Team Rocket's Castle back into Lusamine's mansion, and is last seen reflecting on what world he should target for his schemes next before warping away.
+During Episode RR, Sophocles creates a battle program based on Giovanni that appears as a boss in the Battle Agency within Festival Plaza. Giovanni is also implied to have stopped by at the Alola Photo Club to leave villainous team-based stickers for the player to use after he was defeated by them.
+
+
+=== Appearance ===
+In most of the games he appears in, Giovanni is depicted as a tall, middle-aged man. He has very short, flat, dark hair and small dark eyes. He wears a long sleeved black shirt with a large V-neck that shows off a white undershirt, black slightly baggy trousers, and black shoes. On the left side of his shirt is the red Team Rocket logo.
+In Pokémon HeartGold and SoulSilver and Pokémon Black 2 and White 2, he wears a black trench coat with a red pocket square instead of his usual black shirt. He also wears a black fedora hat.
+In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, his appearance is mostly unchanged, with some key differences being that his undershirt is red instead of white, and two gold buttons are visible on each of his sleeves. He also wears two rings on his left hand: a gold Poké Ball shaped ring with a green stone in the center on his middle finger, and a plain silver band on his ring finger. 
+His alternate universe self in Pokémon Ultra Sun and Ultra Moon looks the same as his original counterpart, save for the Team Rocket logo on his shirt being changed into the rainbow-colored Team Rainbow Rocket logo.
+
+
+=== Fame Checker ===
+This is a list of the Fame Checker's information on Giovanni in Pokémon FireRed and LeafGreen.
+
+Rocket Hideout - Giovanni
+What does this person do?
+Team Rocket captures Pokémon from around the world. They're important tools for keeping our criminal enterprise going. I am the leader, Giovanni!
+Silph Co. - Scientist
+Favorite kind of Pokémon?
+Those thugs that took over our building... Their Boss said he was looking for strong Pokémon.
+Silph Co. - Scientist
+What is this person like?
+Team Rocket's Boss is terribly cruel! To him, Pokémon are just tools to be used.
+Viridian Gym - Giovanni
+What does this person do?
+Welcome to my hideout! It shall be so until I can restore Team Rocket to its former glory.
+Viridian Gym - Gym guide*
+What does this person do?
+Blow me away! Giovanni was the Gym Leader of Viridian?
+Rocket Warehouse - Scientist Gideon*
+Family and Friends?
+You... You're not Giovanni's kid, are you? No, that can't be right. Giovanni's kid has red hair.
+Message from Giovanni
+From: Giovanni
+To: [Player]
+"There is nothing I wish to say to you.
+I will concentrate solely on bettering myself, and none other."
+
+
+=== Pokémon ===
+
+
+==== Pokémon Red and Blue ====
+In all three battles, Giovanni has one Guard Spec. per Pokémon to use randomly 25% of the time.
+
+
+===== First battle =====
+
+
+===== Second battle =====
+
+
+===== Gym battle =====
+
+
+==== Pokémon Yellow ====
+In all three battles, Giovanni has one Guard Spec. per Pokémon to use randomly 25% of the time.
+
+
+===== First battle =====
+
+
+===== Second battle =====
+
+
+===== Gym battle =====
+
+
+==== Pokémon FireRed and LeafGreen ====
+
+
+===== First battle =====
+
+
+===== Second battle =====
+
+
+===== Gym battle =====
+Giovanni has two Hyper Potions and a Full Heal.
+
+
+==== Pokémon HeartGold and SoulSilver ====
+
+
+==== Pokémon Black 2 and White 2 ====
+
+
+===== Pokémon World Tournament =====
+Giovanni uses three of these Pokémon in Single Battles, four in Double and Rotation Battles, and all six in Triple Battles. Giovanni will always lead with his signature Pokémon, Rhyperior.
+
+
+====== Kanto Leaders Tournament ======
+
+
+====== Type Expert/World Leaders Tournament ======
+
+
+==== Pokémon Ultra Sun and Ultra Moon ====
+Giovanni's Pokémon are kept in Master Balls. His Mewtwo's moveset and Mega Stone differ between the two versions. He will always send out Mewtwo last and Mega Evolve it at the first opportunity.
+
+
+===== Pokémon Ultra Sun =====
+
+
+===== Pokémon Ultra Moon =====
+
+
+===== Battle Agency =====
+
+
+==== Pokémon: Let's Go, Pikachu! and Let's Go, Eevee! ====
+
+
+===== First battle =====
+
+
+===== Second battle =====
+
+
+===== Gym battle =====
+
+
+== In the side series games ==
+
+
+=== Pokémon Stadium ===
+Giovanni appears in Pokémon Stadium as the final Gym Leader the player faces during the Gym Leader Castle challenge. His name is spelled "Giovani" to fit the game's seven-character name limit.
+
+
+==== Pokémon ====
+
+
+===== Round 1 =====
+
+
+===== Round 2 =====
+
+
+== In the spin-off games ==
+
+
+=== Pokémon Puzzle League ===
+Main article: Giovanni (anime)
+In Pokémon Puzzle League, Giovanni, as he appears in Pokémon the Series: The Beginning, is one of the opponents in the 1P Stadium mode, and one of the characters available in the 2P Stadium mode.
+
+
+=== Pokémon Trading Card Game 2: The Invasion of Team GR! ===
+In Pokémon Trading Card Game 2: The Invasion of Team GR!, The Boss's Way card is available. The boss mentioned by the card is Giovanni.
+
+
+=== Pokémon Zany Cards ===
+In Pokémon Zany Cards, Giovanni (based on his animated series appearance) appears along with Mewtwo. They are the fifth and final opponents of both the Wild Match and Special Seven modes.
+
+
+=== Pokémon GO ===
+Main article: Giovanni (GO)
+In Pokémon GO, Giovanni appears as the boss of Team GO Rocket, who operate by invading PokéStops and battling using Shadow Pokémon. 
+
+
+=== Pokémon Masters EX ===
+Main article: Giovanni (Masters)
+Giovanni forms a sync pair with Mewtwo, Nidoking, Persian, Rhydon, Nidorino, and Guzzlord in Pokémon Masters EX. His Mewtwo is capable of Mega Evolving into Mega Mewtwo Y, while his Nidoking is capable of Dynamaxing. Giovanni became a playable sync pair on December 5, 2019.
+In this game, Giovanni is from an alternate universe where Team Rocket succeeded in taking over the world and later became the leader of Team Rainbow Rocket, which was introduced in Pokémon Ultra Sun and Ultra Moon. He has made notable appearances in the game's main stories: the PML arc, Legendary Adventures, and is the overall main antagonist of the villain arc. The whereabouts of Giovanni from this game's continuity are currently unknown.
+
+
+=== Pokémon Trading Card Game Pocket ===
+Main article: Giovanni (Genetic Apex 223)
+Giovanni makes an appearance as a Supporter card in Pokémon Trading Card Game Pocket's first expansion, Genetic Apex. On the turn the player plays this card, attacks used by their Pokémon do an additional 10 damage to their opponent's Active Pokémon.
+
+
+== Gallery ==
+
+
+=== Artwork ===
+
+
+=== Sprites and models ===
+
+
+==== In the core series ====
+
+
+==== In other games ====
+
+
+== Quotes ==
+Main article: Giovanni/Quotes
+
+
+== In animation ==
+
+
+=== Pokémon the Series ===
+Main article: Giovanni (anime)
+Giovanni appears in Pokémon the Series as the head of Team Rocket. Unlike the members of other prominent criminal organizations, he is a recurring character from Pokémon the Series: The Beginning to Pokémon Journeys: The Series, usually keeping in contact with the Team Rocket trio. In Pokémon the Series: Black & White, he also appears in person to take on the role of direct antagonist at times.
+
+
+=== Pokémon Origins ===
+
+Giovanni appeared in File 3: Giovanni. Red first recalled meeting him at the Rocket Hideout. They later encountered again at Silph Co. after Team Rocket had taken over the building. Seeing Red's arrogant and determined attitude to stop Team Rocket every time, Giovanni decided to put him in his place, and battled Red's Charizard with his Nidoqueen, winning easily before escaping with a helicopter, declaring that Red could never understand what he was hoping to achieve.
+
+Giovanni appeared once more as the Viridian Gym Leader. Giovanni accepted his Gym challenge, but Red claimed that he would battle him as the enemy of all Pokémon, instead of a Gym Leader. Hearing this, Giovanni put aside his usual Gym Leader battling team and took out his strongest pair of Pokémon, contained within Ultra Balls. The first one was Rhyhorn, which single-handedly was able to defeat four of Red's Pokémon before drawing with his Hitmonlee. During the battle, Giovanni started actually feeling excited, and wondered why he was feeling that way. When he saw the pose Red took while sending out his Charizard, he finally remembered his childhood passion for Pokémon and battling, and wondered how he could have ever turned into a person who only treated Pokémon as tools for business. After Red's Charizard had defeated Giovanni's last Pokémon, Rhydon, Giovanni offered him the Earth Badge as a proof of his victory. Red, however, refused to take a Badge from the Boss of Team Rocket. Seeing this, Giovanni turned to his minions, informing them that from that moment onward, Team Rocket would be officially disbanded. He then turned back to Red, now offering the Badge to him not as the Boss of Team Rocket but as the Viridian City Gym Leader. Red accepted the Earth Badge and left, heading for the Pokémon League.
+As his battle with Red had reminded Giovanni of how Pokémon could be taken as fun rather than business, he decided that he wanted to find a new path for himself and his Pokémon, without being the Boss of Team Rocket any longer.
+
+
+==== Pokémon ====
+
+
+===== On hand =====
+
+
+===== Status unknown =====
+
+
+==== Voice actors ====
+
+
+=== Pokémon Generations ===
+
+Giovanni first appeared in The Chase. After the International Police had failed to find him during a raid at the Viridian Gym, he was seen standing on a hill near Viridian City, declaring that Team Rocket would never fall, before walking away. Along with his disapparance, rumors about Team Rocket's disbandment began circling around.
+He reappeared in a flashback in The Legacy. Looker approached Giovanni's son Silver, hoping to find information on him as he had not been seen since his disappearance three years prior. However, all Silver could describe was his own last encounter with Giovanni three years ago, in which the two had a falling out that fractured their relationship.
+
+
+==== Voice actors ====
+
+
+=== GOTCHA! ===
+Giovanni briefly appeared as a silhouette in GOTCHA!.
+
+
+== In the manga ==
+
+
+=== Pokémon Adventures ===
+Main article: Giovanni (Adventures)
+In Pokémon Adventures, Giovanni serves much of the same role as he does in the games, although he now has Lt. Surge, Sabrina, and Koga as subordinates. However, Giovanni is much more ruthless than his other counterparts.
+
+
+=== How I Became a Pokémon Card ===
+In the How I Became a Pokémon Card chapter The Injured Persian, a young boy playing in the forest discovers an injured wild Persian, implied to have been hurt while escaping from a group of Pokémon poachers called the Pokémon Collection Group. Despite being scratched by the Persian multiple times, the boy attempts to treat it, bringing it to a Pokémon Center. However, once the boy leaves, the doctor working at the Pokémon Center calls the Pokémon Collection Group, who come to take the Persian away in a large truck. Despite never being caught by him, the Persian responds to the boy’s commands, using its moves to escape. A flash-forward reveals the young boy to be Giovanni, now an adult and preparing for a decisive battle with Persian by his side.
+
+
+==== Pokémon ====
+
+
+===== On hand =====
+
+
+===== Mentioned =====
+
+
+=== Pokémon Pocket Monsters ===
+Main article: Giovanni (Pocket Monsters)
+Giovanni is the boss of Team Rocket in Pokémon Pocket Monsters.
+
+
+=== Pokémon Zensho ===
+
+Giovanni appears in PZ05, where he is watching Satoshi from the hidden cameras within the Silph Co. building. He orders one of his Team Rocket Grunts to try and stop Satoshi from reaching him. Two chapters later, he has taken the boss of Silph Co. hostage and threatens to harm him if he refuses to tell Giovanni where the Master Ball was. However, he is interrupted when Satoshi and Sabrina teleport their way to the top floor. Lapras uses Mist to blind Nidoqueen, but she launches a Poison Sting attack. One of the needles from the attacks hits Giovanni. Satoshi and the others manage to escape afterwards. In Viridian City, Giovanni was revealed to be the final Gym Leader that Satoshi challenges. Satoshi manages to defeat him and earns the Earth Badge.
+
+
+==== Pokémon ====
+
+
+===== At the Pokémon Tower =====
+
+
+== In the TCG ==
+Giovanni has an eponymous Theme Deck in the Gym Challenge expansion.
+
+
+=== Cards ===
+This listing is of cards mentioning or featuring Giovanni or his Pokémon in the Pokémon Trading Card Game.
+
+
+== Trivia ==
+Giovanni is the only Gym Leader in Generation I with a unique field sprite.
+In the English version of Pokémon Stadium, his name is misspelled as "Giovani" due to the game's seven-character limit for Trainer names.
+Giovanni is the only Gym Leader in the games to appear outside of his Gym in Generation I, a feature that would become more and more common up to Generation IV, during and after which all Gym Leaders in the featured regions appear outside of their Gym in one way or another.
+He is also the only Gym Leader not to use the "A Trainer Appears (Boy Version)" song before the battle.
+In the official Red and Blue guide from Nintendo Power, Giovanni was labelled to be a regional boss of Team Rocket (implying he's not the absolute leader). This was invalidated in Gold, Silver, and Crystal, where it was made clear that Giovanni was the absolute leader of Team Rocket (even having an office in Johto).
+Giovanni is likely based on the boss of a Yakuza faction, possibly more on the bakuto factions than others, considering Team Rocket's former ownership of the Celadon Game Corner. Outside of Japan, this reference is localized, making him more akin to a Mafia boss (especially considering his English name being Italian in origin).
+In Pokémon Black 2 and White 2, Giovanni and Norman are tied for using more different species of Pokémon than any other Gym Leader at the Pokémon World Tournament, with a total of 10.
+Official material for the Pokémon World Tournament uses Giovanni's official artwork from Pokémon FireRed and LeafGreen, even though he uses his design from Pokémon HeartGold and SoulSilver in the games themselves.
+He is the only character to appear in the Pokémon World Tournament who does not use his most recent official artwork in promotional material.
+In Pokémon Yellow, he is the only Gym Leader who uses a Pokémon not of the type he specializes in during Gym battles.
+In his official Ultra Sun and Ultra Moon artwork, Giovanni has the same pose as Mega Mewtwo X in its official artwork, just mirrored.
+Artwork made by Ken Sugimori suggests that Giovanni was not originally going to be the Gym Leader of Viridian City.
+Giovanni debuted in Pokémon GO as a GO Snapshot photobomb at Pokémon GO Fest in Yokohama.
+The teaser trailer for the debut of Team GO Rocket in GO contains the line "Earth is where I shall unleash my evil schemes next!" This is a reference to Giovanni's final line in Ultra Sun and Ultra Moon, in which he ponders "Now...what new world shall I unleash my evil schemes upon...?" before warping away from Aether Paradise.
+Giovanni is the only character to be the leader of more than one villainous team.
+Since Pokémon Sun and Moon, Giovanni's Traditional Chinese name has been written in two different ways: 阪木 Bǎnmù in the games, and 坂木 Bǎnmù in other media. This is likely due to the fact that 坂 bǎn is not present in the Big5 encoding used by the Traditional Chinese font for the core series games.
+The rings he wears in Pokémon: Let's Go, Pikachu! and Let's Go, Eevee! may be inspired by those worn by his animated series counterpart, since Jessie and James make an appearance and other characters such as Misty also borrow elements from their animated series designs.
+In Pokémon Legends: Z-A's Mega Dimension, Corbeau mentions that, in his youth, he was taken care of by a man who was the boss of a Kanto organization and knew a lot about the myths and legends of the Johto and Hoenn regions. While not mentioned by name, it is implied that this man was Giovanni.
+
+
+== Names ==
+
+Boss/Rocket Boss/Team Rocket Boss
+
+
+=== Notes ===
+
+
+== See also ==
+Images on the Bulbagarden Archives
+
+
+== References ==
+
+
+== Related articles ==

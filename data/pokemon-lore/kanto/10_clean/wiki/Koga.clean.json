@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "3349242df96aa291d9d7f7330f32e1abace2e7e1651f303268add711d2af1604",
+  "clean_sha256": "cb031af1e958fb0c1b1e88a308f49c25921bd567a254354ef9e9dc53359e464b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Koga.txt",
+  "title": "Koga"
+}

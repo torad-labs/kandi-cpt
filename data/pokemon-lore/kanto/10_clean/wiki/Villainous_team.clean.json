@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "fefec4d2e5554b12f09677a77aa1876c5c508da888788a6c6c328435e7c256e1",
+  "clean_sha256": "886e651ef7380f031ebc2b09b6ec3940bc93f8689145acb980089b462b976141",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Villainous_team.html",
+  "title": "Villainous team"
+}

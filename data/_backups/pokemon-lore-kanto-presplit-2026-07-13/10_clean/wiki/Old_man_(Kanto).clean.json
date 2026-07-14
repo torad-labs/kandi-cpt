@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "b08a06303680aa8eda88725e97bc59243a4c71f95fa7b4ec8eb2cabc67a2919b",
+  "clean_sha256": "3f4d0350bca6cd946399ce87b58e2b71bb7934dae5bdc7ee30edb5c42dd122b1",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Old man (Kanto).txt",
+  "title": "Old man (Kanto)"
+}

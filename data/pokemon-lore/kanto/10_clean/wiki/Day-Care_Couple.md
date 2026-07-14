@@ -1,0 +1,116 @@
+# Day-Care Couple
+
+Scraped unknown from Day-Care Couple.txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Title: Day-Care Couple
+
+The Day-Care Couple (Japanese: 育て屋夫婦 Day-Care Couple), known as the Day Care helpers in Pokémon Omega Ruby and Alpha Sapphire, are a pair of non-player characters who offer Trainers the opportunity to raise the Trainer's Pokémon. They are known individually as the Day-Care Man (Japanese: そだてや　じいさん Day-Care Old Man) and the Day-Care Lady (Japanese: そだてや　ばあさん Day-Care Old Lady). In Pokémon Omega Ruby and Alpha Sapphire, they are instead known as the Day Care Man and the Day Care Lady, respectively. Since the Day-Care Man's debut in Generation I and their combined debut in Generation II, a different couple have appeared at every Pokémon Day Care in each region. In most games, they are an elderly couple; they are Pokémon Breeders and much younger instead in Pokémon X and Y. In Pokémon Brilliant Diamond and Shining Pearl, they are instead named the Nursery Couple (individually the Pokémon Nursery Man and Pokémon Nursery Lady) due to the Day Care being replaced by the Pokémon Nursery, though they still serve the same role.
+The Day-Care Couple have also made several appearances in non-game media.
+
+
+== In the core series games ==
+The Day-Care Couple (or one member thereof) appear in every core series Pokémon game. They will (for a small fee) take up to two of a Trainer's Pokémon and raise their levels for them. This effectively allows players to train up to eight Pokémon at one time. Pokémon under their care will not evolve, even if they meet the criteria. The couple offer the player the only method of breeding Pokémon, which has been an important aspect of the games ever since Generation II. The Day-Care Man will usually stand outside to alert the Trainer if an Egg has been laid, while his wife will deal with all transactions indoors.
+
+
+=== Kanto ===
+
+The Day-Care Man debuted in Generation I. He can be found in the single house on Route 5. He can only take in one Pokémon at a time. In the remakes Pokémon FireRed and LeafGreen, this remains true, meaning the player cannot breed their Pokémon at this location. Instead, once they enter the Hall of Fame, they can travel to Four Island of the Sevii Islands, where they'll find a proper Day-Care Couple. In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, he is replaced by the Day-Care Lady.
+The Day-Care Man of Kanto is absent in Gold, Silver, Crystal, HeartGold, and SoulSilver. In the house where he ran his business they can find a superstitious old woman who will give them a Cleanse Tag.
+
+
+=== Johto ===
+The Day-Care Lady, and the Day-Care Couple as a concept, debuted in Generation II. They are found on Route 34. In the international versions of Pokémon Crystal, the Day-Care Man will give the player an Odd Egg that contains one of seven baby Pokémon; the hatched Pokémon has an increased 14% chance of being Shiny in international versions. In the original Japanese version of Pokémon Crystal, the Day-Care Man instead gives out an Egg Ticket, which can be traded in at the Pokémon Communication Center for the Odd Egg; the hatched Pokémon has a 50% chance of being Shiny in the Japanese version. In both versions, the hatched Pokémon will know the special move Dizzy Punch.
+In Pokémon HeartGold and SoulSilver, the player's friend, Lyra/Ethan, is the Couple's grandchild. The Day-Care Man will also give his and the Day-Care Lady's number to the player. The player can call the Day-Care Lady to check their Pokémon's levels, while the Day-Care Man can tell whether two Pokémon like each other and whether they produced an Egg or not.
+
+
+=== Hoenn ===
+The Day Care Couple are found on Route 117. This couple has four unnamed grandchildren. In Pokémon Omega Ruby and Alpha Sapphire, in addition to the original Day Care run by the couple on Route 117, there is also a Day Care Annex at the Battle Resort, run by the Day Care Lad and his older sister, where an additional two Pokémon can be dropped off.
+
+
+=== Sinnoh ===
+The Day-Care Couple are found in Solaceon Town.
+
+
+=== Unova ===
+The Day-Care Couple are found on Route 3. They have a daughter who helps with their business, and work next to a kindergarten. In Pokémon Black and White, the Day Care will only accept one Pokémon initially. Two Pokémon may be left after the player has received the Bicycle in Nimbasa City. This makes breeding Pokémon impossible until the player has obtained the first three Badges. When the player's Pokémon have made an Egg and there is an available party slot to receive it, the Day-Care Man will yell at the player to come over in order to notify the player that an Egg has been made. They stay in the same location in Pokémon Black 2 and White 2, which makes breeding Pokémon impossible until after the end credits.
+
+
+=== Kalos ===
+The Day-Care Couple are found on Route 7.
+
+
+=== Alola ===
+Because Alola has a Pokémon Nursery as opposed to a Day Care, the Day-Care Couple do not appear in Pokémon Sun, Moon, Ultra Sun, or Ultra Moon. The women who work at the Nursery are known as the Nursery helpers instead.
+
+
+== In animation ==
+
+
+=== Pokémon the Series ===
+Several characters based indirectly on the Day-Care Couple have appeared in Pokémon the Series.
+
+
+==== Pokémon the Series: Gold and Silver ====
+Mr. Shellby and his wife run a daycare center in the animated series-exclusive town of Eggseter, Johto. While no mention of training others' Pokémon is made during the only episode they appeared in, they do care for and hatch Pokémon Eggs. Ash was given one as a prize for winning the Extreme Pokémon Race.
+
+
+==== Pokémon the Series: Diamond and Pearl ====
+Angie's parents run a daycare center in Solaceon Town. While they are not as aged as the Day-Care Couple, they do raise other Trainers' Pokémon. Unlike the couple in the games, Pokémon in their care have been known to evolve.
+
+
+== In the manga ==
+
+
+=== Pokémon Adventures ===
+
+
+==== History ====
+
+
+===== Gold, Silver & Crystal arc =====
+The Day-Care Couple from Route 34 appear as recurring characters in the Pokémon Adventures manga. When they were young, they were good friends with Professor Oak, Agatha, Kurt, and Pryce. The Day-Care Lady was also a great singer, and she sang the song "Boy and his Lapras" to try and make Pryce happy again after the loss of his two Lapras.
+They debuted in Gligar Glide, where Gold met them after helping recapture some runaway baby Pokémon. The Day-Care Lady tricked Gold into helping out around the place by claiming to train him so that he could get stronger than Silver. The training worked, allowing Gold to get stronger and his Exbo evolved into a Quilava after fighting numerous Pokémon being kept there. When an earthquake damaged Ecruteak City, the couple sent Gold to find Jasmine, who had been traveling to the Day Care to see the child of her two Togetic.
+Yellow and Fisherman Wilton were taken to the Day Care after an incident with Lugia left them washed up on a shore. The Day-Care Lady forced the two of them to do chores as compensation for letting them rest at the Day Care. Later, the Day Care is attacked by the Masked Man's mind-controlled Team Rocket Grunts, who attempt to steal the Rainbow and Silver Wings disguised as the feathers in Yellow's straw hat. After escaping, they met up with Gold again after his battle with the Masked Man. After Gold discovers his talent in hatching Pokémon Eggs, he leaves to face the Masked Man one last time.
+After realizing the Masked Man's true identity is Pryce, the Day-Care Couple reveal that they were friends with Pryce in their youth. Due to a traumatic accident that cost the lives of his two beloved Lapras, the couple and their other friends wrote a song to try and lift his spirits. The song failed to work and Pryce eventually ended up a bitter old man trying to turn back time with Celebi's power. After Gold managed to defeat Pryce, Celebi used its powers to make Pryce hear the song his friends made for him. This time, the song managed to help Pryce realize the errors of his ways. At the end of this chapter, the Day-Care Couple were seen raising more Pokémon Eggs as Wilton is forced to continue to help around.
+
+
+===== Emerald arc =====
+In Epilogue, they make a cameo appearance in one of the ships heading to the Battle Frontier.
+
+
+===== HeartGold & SoulSilver arc =====
+Gold is asked by them to help hatch an Egg laid by Red's Snor and Emerald's Snorlax before they move to Sinnoh.
+
+
+===== Platinum arc =====
+It is revealed that the Day-Care Couple have moved to Sinnoh. They are seen at the end of this chapter at Solaceon Town, where they help Diamond and Pearl raise a Manaphy Egg and discuss with Platinum about its relation to Phione. When Platinum notes how mysterious Eggs are, the Day-Care Man tells her about a case when an owner was known affecting his Pokémon's personality before hatching.
+
+
+==== Pokémon ====
+
+
+===== Raised =====
+These are the Pokémon raised by the Day-Care Couple, save for the ones with known Trainers.
+
+
+=== Pokémon Gold & Silver: The Golden Boys ===
+
+In Pokémon Gold & Silver: The Golden Boys, the Day-Care Couple is depicted as young, as opposed to the usual older couple. In Let's Use Fighting Type Pokémon!!, they invite Gold to a tournament run by the Day-Care Center, and in A Huge Mysterious Tree!!, they give him a Pokémon Egg.
+
+
+== In the TCG ==
+The Day-Care Couple are featured on two cards in the Pokémon Trading Card Game. However, both had them named as Pokémon Breeders in the English translation. The following is a listing of cards featuring the Day-Care Couple.
+
+
+== Trivia ==
+The Day Care Lad's sister is only given a unique name in the Italian version. In Japanese, English, and Korean, she is left unnamed, while in German, French, and Spanish, she shares her name with the Day Care Lady.
+Similarly, the Day Care Lad himself is only given a unique name in the English and Italian versions.
+
+
+== In other languages ==
+
+
+== Related articles ==

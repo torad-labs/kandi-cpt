@@ -1,0 +1,78 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/tokenize_corpus.py",
+    "--domain",
+    "pokemon-lore",
+    "--seq-len",
+    "512",
+    "--replay-frac",
+    "0.10",
+    "--out",
+    "pokemon_lore_kanto_v1"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 18.784031,
+  "outputs": [
+    {
+      "path": "data/_build/30_tokenized/pokemon_lore_kanto_v1.arrow/data-00000-of-00001.arrow",
+      "sha256": "32a082a58b256f7299ddbd35c596f04843a6af30ffca0982dcc4ca95b3f4ccb6",
+      "bytes": 15673112
+    },
+    {
+      "path": "data/_build/30_tokenized/pokemon_lore_kanto_v1.arrow/dataset_info.json",
+      "sha256": "7af1efa946e803e11b4583eec645f035c09bce6e1b310d25fd225ab24cb797e9",
+      "bytes": 600
+    },
+    {
+      "path": "data/_build/30_tokenized/pokemon_lore_kanto_v1.arrow/state.json",
+      "sha256": "e5b1437e90fe10b689abdc6bcdad4d6490b9df74935c455a84fc045e924ff646",
+      "bytes": 247
+    },
+    {
+      "path": "data/_build/30_tokenized/pokemon_lore_kanto_v1_stats.json",
+      "sha256": "68544c325568a1f0fd1d5ec57272ca36f8f741fc355b888fff85491c1dbb8b76",
+      "bytes": 489
+    }
+  ],
+  "output_delta": {
+    "created": 4,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 15674448
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/30_tokenized/pokemon_lore_kanto_v1.arrow",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/30_tokenized/pokemon_lore_kanto_v1_stats.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "047c7fc14f240d4037b0a78294effb3bbda85441",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "82d7cfd391614d7275bf47e2605312c022822c3353ce670e9067caaa048d588e"
+}

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "1cf36970d25bcdfabf7e4496e45a9d49fff8d8aa765ab3e344b00f9ed9f4673c",
+  "clean_sha256": "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Mt._Silver.html",
+  "title": "Mt. Silver"
+}

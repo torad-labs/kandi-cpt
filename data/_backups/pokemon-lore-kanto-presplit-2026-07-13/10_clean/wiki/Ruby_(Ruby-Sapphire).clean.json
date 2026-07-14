@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "df6f6149086d0e28a1552899bee33d85ca69b32510c7bf571049fd5adaf5f031",
+  "clean_sha256": "9c3c68687adb25f54d839487b2441305b5ccdba5c49e370e8e0f9ce569267ee6",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Ruby (Ruby-Sapphire).txt",
+  "title": "Ruby (Ruby-Sapphire)"
+}

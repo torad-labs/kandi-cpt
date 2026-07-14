@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "edfa69d1ec120b5377df2c170b2e17dd85a77e9064ba5882d10ce3d69c05b150",
+  "clean_sha256": "2986fc2d731cf92c8a9e8cd0a78fb6cc187f853f766c5d7ca8938427ab035451",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.html",
+  "title": "List of Pok\u00e9mon by National Pok\u00e9dex number"
+}

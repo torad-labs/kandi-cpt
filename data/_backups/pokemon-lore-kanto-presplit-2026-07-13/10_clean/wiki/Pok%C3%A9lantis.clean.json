@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "39539dccd016cdd4e53421abbbf1d6bbf191e9701c1a8ef9c589c68a77291c47",
+  "clean_sha256": "a54b9be66e5b596b9ed1bdb3fd03da4dcbe42a62d42eedae2930669650aa8d7b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok%C3%A9lantis.html",
+  "title": "Pok\u00e9lantis"
+}

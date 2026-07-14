@@ -1,0 +1,56 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/data_audit.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto",
+    "--no-gpu"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 25.612608,
+  "outputs": [
+    {
+      "path": "data/_build/dissect/data_audit_results.jsonl",
+      "sha256": "e6307b1e3292fc04fe561a5fc6146200f829859e9a7a169593bb9208073990ef",
+      "bytes": 3080
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 1,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 2833,
+    "bytes_after": 3080
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/dissect/data_audit_results.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "047c7fc14f240d4037b0a78294effb3bbda85441",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "c60637cd7a066f8e50738b74071abb0be2eaef302b15cc336c808bc5938222c7"
+}

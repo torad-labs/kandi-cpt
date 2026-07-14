@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "f4035f7b703b983b83ee7c85c6aeff66505bcfc98fb1209b639cb7f258c6f70f",
+  "clean_sha256": "62917b77320cb199dcd838efa0bb64f2bb5913c2ad36f5d695f3e6e9d9391686",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok%C3%A9mon_Ultra_Sun_and_Ultra_Moon.html",
+  "title": "Pok\u00e9mon Ultra Sun and Ultra Moon"
+}

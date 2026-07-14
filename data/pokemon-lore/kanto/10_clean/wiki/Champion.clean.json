@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "175a2fe5ef20aa5228dd9164add4bcb6c5c46f93166329f405f811b46cd538bf",
+  "clean_sha256": "cc3189d891c62ed0fcc099d3c6b69b78f1177dc10814456325d9b7736718e1a4",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Champion.html",
+  "title": "Champion"
+}

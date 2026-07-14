@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "8c866f4cf6a8d1c35e31cd7e9d57c28fc5566abfdd717b9d88933f2d5ec7b43f",
+  "clean_sha256": "3e69895d9ef2302686ea24ab2c1762ee50f6f6882ff4fab7c61c05e310d2bb2b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Ruby (Adventures).txt",
+  "title": "Ruby (Adventures)"
+}

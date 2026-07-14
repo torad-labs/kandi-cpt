@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "9ab5a2c95083fe5a7bf02c678ca88e0235e3cfeb0966d3cf76ef961ed6cbd214",
+  "clean_sha256": "ced1850c6467de1215e30807be5bfc2bcb8fc0b668f1c25be8c92e16cf628a16",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Looker.html",
+  "title": "Looker"
+}

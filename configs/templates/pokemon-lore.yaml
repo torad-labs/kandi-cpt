@@ -1,14 +1,94 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # DOMAIN-AUTHORED CONTENT for `pokemon-lore` — the PROOF that the manifest's "swap the templates"
 # (configs/domains/<d>.yaml:3) is a real operation, not a documented fiction. A NON-festival domain ships
-# its own templates here and the SAME engine (build_sft / fact_expand, via Domain.templates) renders ITS
-# sentences — never EDC's. pokemon-lore is region-partitioned with character/region/organization/event
-# entities; it has NO festival venue/stage/day concepts, so it carries none of them.
-#
-# (sft is Phase 6b for this draft domain — these are the Step-0 authored positive Q/A shapes the manifest's
-# lore predicates resolve to. The hydrate generators for lore are authored when the lore corpus lands; this
-# file shows the swap mechanism is live today.)
+# its own templates here and the SAME engine (generic_expand / generic_synth / build_sft, via
+# Domain.templates) renders ITS sentences — never EDC's. pokemon-lore is region-partitioned with
+# character/region/organization/event entities; it has NO festival venue/stage/day concepts, so it
+# carries none of them.
 # ─────────────────────────────────────────────────────────────────────────────
+
+# hydrate_templates — generic_expand's deterministic per-predicate FLOOR (faithful by construction: every
+# sentence states exactly one extracted triple). Multiple surfaces per predicate = exposure diversity.
+# Placeholders: {subject}, {object}.
+hydrate_templates:
+  predicate_templates:
+    located_in:
+      - "{subject} is located in {object}."
+      - "In {object} lies {subject}."
+      - "{subject} can be found in the {object} region."
+    originates_from:
+      - "{subject} originates from {object}."
+      - "{subject} comes from the {object} region."
+      - "The {object} region is where {subject} is from."
+    member_of:
+      - "{subject} is a member of {object}."
+      - "{object} counts {subject} among its members."
+    leads:
+      - "{subject} leads {object}."
+      - "{object} is led by {subject}."
+      - "At the head of {object} stands {subject}."
+    allied_with:
+      - "{subject} is allied with {object}."
+      - "{subject} and {object} are allies."
+    rival_of:
+      - "{subject} is a rival of {object}."
+      - "{subject} and {object} share a rivalry."
+    opposes:
+      - "{subject} opposes {object}."
+      - "{subject} stands against {object}."
+    mentors:
+      - "{subject} mentors {object}."
+      - "{object} learns under {subject}."
+    partners_with:
+      - "{subject} partners with {object}."
+      - "{subject} and {object} are partners."
+    owns_pokemon:
+      - "{subject} owns {object}."
+      - "{object} belongs to {subject}."
+      - "Among the Pokémon {subject} keeps is {object}."
+    occurs_at:
+      - "{subject} takes place at {object}."
+      - "{object} is where {subject} occurs."
+    involves:
+      - "{subject} involves {object}."
+      - "{object} plays a part in {subject}."
+    appears_in:
+      - "{subject} appears in {object}."
+      - "{object} features {subject}."
+    governs:
+      - "{subject} governs {object}."
+      - "{object} is governed by {subject}."
+    precedes:
+      - "{subject} precedes {object}."
+      - "{subject} happens before {object}."
+    follows:
+      - "{subject} follows {object}."
+      - "{subject} happens after {object}."
+    causes:
+      - "{subject} causes {object}."
+      - "{object} is brought about by {subject}."
+    evolves_into_lore:
+      - "In the lore, {subject} evolves into {object}."
+      - "{subject} is said to evolve into {object}."
+
+# contrast — machine-readable confusable groups for generic_contrast.py. Values are display names
+# resolved from entities.jsonl; truth validation rejects an attractor that is also true for the same
+# subject+predicate anywhere in this unit.
+contrast:
+  groups:
+    regions: [Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, Galar, Hisui, Paldea, Kitakami,
+              Pokopia, "Trading Card Game Islands", Orre, Ransei, Fiore, Oblivia, Almia, Lental, Pasio, Ferrum]
+  predicates:
+    located_in:
+      group: regions
+      templates:
+        - "{subject} is located in {object}, not {attractor}."
+        - "{subject} belongs to the {object} region; it is not in {attractor}."
+    originates_from:
+      group: regions
+      templates:
+        - "{subject} originates from {object}, not {attractor}."
+        - "{object} is {subject}'s region of origin, not {attractor}."
 
 # sft_templates — build_sft reads `rel_q` (predicate → [question, answer]). Keyed by the manifest's LORE
 # predicates, NOT the festival ones (located_at/serves/…). No `venue_templates`: lore has no venue concept,
@@ -24,3 +104,18 @@ sft_templates:
     governs: ['What does {s} govern?', '{s} governs {o}.']
     mentors: ['Who does {s} mentor?', '{s} mentors {o}.']
     evolves_into_lore: ['What does {s} evolve into in the lore?', '{s} evolves into {o} in the lore.']
+    allied_with: ['Who is {s} allied with?', '{s} is allied with {o}.']
+    rival_of: ['Who is the rival of {s}?', '{s} is a rival of {o}.']
+    opposes: ['Who does {s} oppose?', '{s} opposes {o}.']
+    partners_with: ['Who is the partner of {s}?', '{s} partners with {o}.']
+    owns_pokemon: ['Which Pokémon does {s} own?', '{s} owns {o}.']
+    involves: ['Who is involved in {s}?', '{s} involves {o}.']
+    appears_in: ['Where does {s} appear?', '{s} appears in {o}.']
+    precedes: ['What does {s} come before?', '{s} precedes {o}.']
+    follows: ['What does {s} come after?', '{s} follows {o}.']
+    causes: ['What does {s} cause?', '{s} causes {o}.']
+
+# synth_templates — generic_synth's LLM diversity layer rides this preamble; the generator states ONLY the
+# given fact (the faithfulness contract), phrased for lore prose rather than festival logistics.
+synth_templates:
+  system_preamble: "You are recounting established Pokémon lore. State only the single given fact, plainly and accurately, as one sentence of narrative prose. Never invent names, regions, or events beyond the fact given."

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "a21475f503158f9c486a92a4164056a8ef8ec446ec8c1f4922dd5765eb2f5cc3",
+  "clean_sha256": "6594e19d2d29b522e77ee1be4bf053a4a85bcd2950e9034b2dd99054a9a4315e",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok%C3%A9mon_the_Series.html",
+  "title": "Pok\u00e9mon the Series"
+}

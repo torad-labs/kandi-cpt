@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "8424550433f5d783cfbcb732e865cf9d82547f8846cc293d2ce32e5893f2aa62",
+  "clean_sha256": "bc5bb4ec69ed1e28008db3e6e57c269031f653184b05e4646cae5d6bfb4c9e3b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Pok%C3%A9dex.html",
+  "title": "Pok\u00e9dex"
+}

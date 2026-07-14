@@ -1,0 +1,1646 @@
+{
+  "source": "data/pokemon-lore/kanto",
+  "backup": "data/_backups/pokemon-lore-kanto-presplit-2026-07-13",
+  "files": [
+    {
+      "path": "00_raw/Agatha.txt",
+      "sha256": "c154a29bf02d418b51ed0bd94dce3ec810ef3304ec1944c289856e887f3abb7f",
+      "bytes": 15957
+    },
+    {
+      "path": "00_raw/Air_transportation_in_the_Pok%C3%A9mon_world.html",
+      "sha256": "c219063dfddad439c9a468011906206b74ec6d69f5b939d5284ffb075c168667",
+      "bytes": 120942
+    },
+    {
+      "path": "00_raw/Alola.txt",
+      "sha256": "04ea589285c9adc0f39acd3d9b409b6824b062d4d499b0f8cab69e0f33f56b46",
+      "bytes": 25376
+    },
+    {
+      "path": "00_raw/Arcanine_(Pok%C3%A9mon).html",
+      "sha256": "be64530c15233fcda8f11412b718be741894405a4516602d42831b40b96ec194",
+      "bytes": 967751
+    },
+    {
+      "path": "00_raw/Blaine (Adventures).txt",
+      "sha256": "69633c0a46044c348757ef70bf4c3572e1b488845351ba77edc8c19ba2a0c396",
+      "bytes": 9511
+    },
+    {
+      "path": "00_raw/Blaine.txt",
+      "sha256": "23aa0319cfb1f4e7e89724608d162f3e684d844f710c485839e6e0999cdfd4b9",
+      "bytes": 15863
+    },
+    {
+      "path": "00_raw/Blue (game).txt",
+      "sha256": "03f33df0cb89d4cfa15944926cd7de0a73d395cd9ff455db16b35ebdd18927c9",
+      "bytes": 21017
+    },
+    {
+      "path": "00_raw/Blue_(game).html",
+      "sha256": "1e99a3c125994b5d37a5c0f2b2bebfe9774ed0d9fd2ad74ef1ef7b06d8ed44d2",
+      "bytes": 1292739
+    },
+    {
+      "path": "00_raw/Brock.txt",
+      "sha256": "e86b2762b81f838150974e22847cf9ecbe1b63dcb5df04e9574da034de01dc30",
+      "bytes": 17872
+    },
+    {
+      "path": "00_raw/Bruno.txt",
+      "sha256": "b8ced912150ad3d2ef765722146affacefe5128daad404447d92173e03a1ff9f",
+      "bytes": 16477
+    },
+    {
+      "path": "00_raw/Burned_Tower.html",
+      "sha256": "c33a49610c31f5d9090587fe9de978866f6caf4d80c5e99191ab874bf93caee0",
+      "bytes": 459403
+    },
+    {
+      "path": "00_raw/Calem_(game).html",
+      "sha256": "db4d3e6fff17df4e0f0d77fb008624207e11e987c8e23966e753da87e3eced67",
+      "bytes": 947388
+    },
+    {
+      "path": "00_raw/Celio.txt",
+      "sha256": "aec2204dfe52b3dbb145296b1d3e303306376f03c5ec8619efdd7209ab675590",
+      "bytes": 5178
+    },
+    {
+      "path": "00_raw/Champion.html",
+      "sha256": "175a2fe5ef20aa5228dd9164add4bcb6c5c46f93166329f405f811b46cd538bf",
+      "bytes": 425595
+    },
+    {
+      "path": "00_raw/Chase (game).txt",
+      "sha256": "d59fbcf8c0f7afaf0ab91aa307cd1b4d54883b120771609e5d0356bfb8e9bcd0",
+      "bytes": 3998
+    },
+    {
+      "path": "00_raw/Clair.txt",
+      "sha256": "f9d155ff6460eeb13bd7f65610caeb6d92f32f96ce6ff2f1154189651d351819",
+      "bytes": 16708
+    },
+    {
+      "path": "00_raw/Dawn (anime).txt",
+      "sha256": "0ca414014ec1625b183aa9d3a236b635da28e3e8f8313115f22d5d44b713160d",
+      "bytes": 38918
+    },
+    {
+      "path": "00_raw/Day-Care Couple.txt",
+      "sha256": "f4ee08a909b852399c376dbca448ac480787dc285a0dae462cc960c9e34a404c",
+      "bytes": 9982
+    },
+    {
+      "path": "00_raw/Decolore Islands.txt",
+      "sha256": "52f6380af9d681f3663165740cce25f5782a7a5db65d43f726a39d4636f99bed",
+      "bytes": 1249
+    },
+    {
+      "path": "00_raw/Deoxys_(Pok%C3%A9mon).html",
+      "sha256": "80bc704c442b7ce959514498849664d1f488291ac1f450e964528a30c58b45de",
+      "bytes": 965140
+    },
+    {
+      "path": "00_raw/Dragonite_(Pok%C3%A9mon).html",
+      "sha256": "c4d0390571820639ea2b14c4b4de31f491970febeaa8df44b5c436125a9916a0",
+      "bytes": 973453
+    },
+    {
+      "path": "00_raw/Drew.txt",
+      "sha256": "d240e77184bb2fb35eb7012d3684a8384a9c676fd31bb7d927d8bacd6e894b5a",
+      "bytes": 9809
+    },
+    {
+      "path": "00_raw/Elio (game).txt",
+      "sha256": "0c86da6c3b38823e108be140e0bd38da0688e29e97884afe58f6459911ed6d77",
+      "bytes": 24467
+    },
+    {
+      "path": "00_raw/Erika.txt",
+      "sha256": "1f93b2a9c721db16d887528aab7ac41df2b23b5f3866fbc0cca6da2b4caaa88b",
+      "bytes": 19055
+    },
+    {
+      "path": "00_raw/Galar.html",
+      "sha256": "c7cf5f651a3185fb53fa24bdefd1d693b6d98163d5af5480a52a9dc2de416762",
+      "bytes": 240375
+    },
+    {
+      "path": "00_raw/Giovanni (Adventures).txt",
+      "sha256": "3393d74a053fbd31a631fb89cb904f8b0836607d26c2e045706032a390c20e1b",
+      "bytes": 13373
+    },
+    {
+      "path": "00_raw/Giovanni.txt",
+      "sha256": "0a0a31c3012beba81d2f7777408f48bf806b5f644ff0f9dff33ddc9d2648ca98",
+      "bytes": 23525
+    },
+    {
+      "path": "00_raw/Gladion.txt",
+      "sha256": "004b8056893be5e009378f6a2f3019ee6fa688623661d2b8477848d2ae031d30",
+      "bytes": 26578
+    },
+    {
+      "path": "00_raw/Goh.txt",
+      "sha256": "ec059ff3eadd901a2ba04497df7ad0055834b15a2c874268951aef3fe461237a",
+      "bytes": 37684
+    },
+    {
+      "path": "00_raw/Grand Oak.txt",
+      "sha256": "a07acfbdc48fd5a84fefa8b1237350d91f15da3b3a2f44df7f823ed12baf844c",
+      "bytes": 5774
+    },
+    {
+      "path": "00_raw/Green (Adventures).txt",
+      "sha256": "16f8d073fef5311519393a0c85c6082282d023f9f2dd7a6e23793162a845757d",
+      "bytes": 20452
+    },
+    {
+      "path": "00_raw/Hau.txt",
+      "sha256": "f72694d267bab150ac7ac95777e12cd7632cf6d197607cb1004913fbfe356c87",
+      "bytes": 33786
+    },
+    {
+      "path": "00_raw/History_of_the_Pok%C3%A9mon_world_(Adventures).html",
+      "sha256": "76b6a5a6ff83347406a6dc7016d6e2ae04f396dcd0a39e0c6a74bc245e41ff80",
+      "bytes": 761445
+    },
+    {
+      "path": "00_raw/Hoothoot_(Pok%C3%A9mon).html",
+      "sha256": "ee6a5f94cee6fcb347ef7e85904eb1f616620b573924dece449c9018021a2c1d",
+      "bytes": 572950
+    },
+    {
+      "path": "00_raw/James.txt",
+      "sha256": "76970cd2ee49b9066c30c3afc7bc5c8c213e67a9afc8b9c34f8bccfcbc9625d9",
+      "bytes": 53766
+    },
+    {
+      "path": "00_raw/Janine.txt",
+      "sha256": "5e1a985b777df1e9d1502b41be5ba3aa2a2acecaded40ae0289e129d41001285",
+      "bytes": 9830
+    },
+    {
+      "path": "00_raw/Johto.txt",
+      "sha256": "fd98e7acb05ee16bdcc9d3a2b99033663801d6adb625f07ba6785f71fe81916f",
+      "bytes": 17304
+    },
+    {
+      "path": "00_raw/Kalos.html",
+      "sha256": "1999ba4d85ecd613432fd2c3d7a5a056719b73bce4b579815ce06576f18aebba",
+      "bytes": 251815
+    },
+    {
+      "path": "00_raw/Koga.txt",
+      "sha256": "3349242df96aa291d9d7f7330f32e1abace2e7e1651f303268add711d2af1604",
+      "bytes": 17065
+    },
+    {
+      "path": "00_raw/Lake_Valor.html",
+      "sha256": "163f03839233ad15c6b208b523fca8c9659cfa6193aec4bb104f49f3379027c5",
+      "bytes": 481305
+    },
+    {
+      "path": "00_raw/Lana (anime).txt",
+      "sha256": "a6a0d5356c3c48f5ee2f4f71bd20448e456ef1c0db22f02a3b4d40f65714f948",
+      "bytes": 24648
+    },
+    {
+      "path": "00_raw/Lanette.txt",
+      "sha256": "f9323b727b3bad133a9ed8393627b3857f4a2baf0e24228f0c02d185bc1e49da",
+      "bytes": 5398
+    },
+    {
+      "path": "00_raw/Lillie (anime).txt",
+      "sha256": "d2ccaeb19e70cf93148eaa0acd7bbdebbbf5306bfd8d8b727319c1cf5d2a4588",
+      "bytes": 36153
+    },
+    {
+      "path": "00_raw/Lillie.txt",
+      "sha256": "b59daf9208054cfde4e997cb50fdd0c932bc6696f91e35bc47a6798b286aa507",
+      "bytes": 61325
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Isle_of_Armor_Pok%C3%A9dex_number.html",
+      "sha256": "2117d5b87b33144d6408299234d01cafeb58136cfecf09fe8404ae930c783fff",
+      "bytes": 314216
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Johto_Pok%C3%A9dex_number.html",
+      "sha256": "fb9ec6b446c6ba8b0d703660a80bd186a066a9ab26f186d62295f4d18ae74aaa",
+      "bytes": 339954
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Kanto_Pok%C3%A9dex_number.html",
+      "sha256": "bdc6b51ee9a21d7e8e2ced98ec3aeb9ddc0596c099a6856f13f57cfe5e9ac895",
+      "bytes": 279058
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Kitakami_Pok%C3%A9dex_number.html",
+      "sha256": "7d350b01157d6e146c5b69d85dba63f37861d15a5f233b9cfaed30fc28625bf0",
+      "bytes": 512390
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.html",
+      "sha256": "edfa69d1ec120b5377df2c170b2e17dd85a77e9064ba5882d10ce3d69c05b150",
+      "bytes": 1330552
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_New_Pok%C3%A9dex_number.html",
+      "sha256": "19669960ad969145614594b9916bd40bb3bea25b6b12f023f66626867036cd84",
+      "bytes": 342312
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Pokopia.html",
+      "sha256": "6d9bd30016c51a2a63a84087f4159e61479adbf2287634827734fab74fdb366e",
+      "bytes": 477657
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Sinnoh_Pok%C3%A9dex_number.html",
+      "sha256": "44eafa19d22ce29614bc5bc091e46b18c2717a69ad6e61603743df98fa9d6025",
+      "bytes": 365898
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.html",
+      "sha256": "508a3c1f873994931e3d4bcf9fb540127d4ef98af13fca87550bb8b40f5d5eb6",
+      "bytes": 250202
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_animated_series_debut.html",
+      "sha256": "3905c6de671cb5e098d5496b669471ebfa3cfd46ec9ec30587fed409527aa142",
+      "bytes": 1280133
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_by_evolutionary_line.html",
+      "sha256": "104a14da37c9c8619ef223734b4c6cf39ba1c5491651cd259fc7b68f41622c8b",
+      "bytes": 1579275
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VII).html",
+      "sha256": "2de187ac71065f85a209d8755c510578c98d4d1a08ba317a8ce88d257d97ec2c",
+      "bytes": 741985
+    },
+    {
+      "path": "00_raw/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).html",
+      "sha256": "42311a6c1ff5e186e7e8ada2ee12fc5dd7e36f46178506b45c836c993f5ba276",
+      "bytes": 863039
+    },
+    {
+      "path": "00_raw/List_of_categories_in_other_languages.html",
+      "sha256": "bb8434c6cfad1bd02b88a6257eaeb4247469fb8580c1f62ba7a0fca9eaf2cc17",
+      "bytes": 1143050
+    },
+    {
+      "path": "00_raw/Looker.html",
+      "sha256": "9ab5a2c95083fe5a7bf02c678ca88e0235e3cfeb0966d3cf76ef961ed6cbd214",
+      "bytes": 260286
+    },
+    {
+      "path": "00_raw/Lorelei.txt",
+      "sha256": "a63b7e94e0432fa702a7833c9fe22e4793a3e204d301f994ab106397de05dc3c",
+      "bytes": 15637
+    },
+    {
+      "path": "00_raw/Lt. Surge.txt",
+      "sha256": "f4e1f6e0bf50d107a5a661968e932b9596292a5a4c603e3bab742d8825656d4a",
+      "bytes": 18238
+    },
+    {
+      "path": "00_raw/Mable.txt",
+      "sha256": "fbcc41b9f6b2c5e259b9e43602539c5bfebd2451a0b93f744fee3d0159d50493",
+      "bytes": 13615
+    },
+    {
+      "path": "00_raw/Magikarp salesman.txt",
+      "sha256": "a8598ab93c484e6ffeac9f148d2c96f363f8879593538c8e10b2b6d6b1ec02a4",
+      "bytes": 8701
+    },
+    {
+      "path": "00_raw/Mintale_Town.html",
+      "sha256": "5ea7f814fd87422aea467097714e0e6960817a7b82f918bdd57a38604be69f6d",
+      "bytes": 108135
+    },
+    {
+      "path": "00_raw/Mirage_Kingdom.html",
+      "sha256": "521452d6994fc1204d94b5e17099814d898ec4971e4f4d9a474dd5f901592e61",
+      "bytes": 115025
+    },
+    {
+      "path": "00_raw/Move_Tutor.html",
+      "sha256": "2bbf15183bf5779935ca0478df29baf75b01de03cf86d0b6625daaebf4acdec8",
+      "bytes": 553863
+    },
+    {
+      "path": "00_raw/Mr. Game.txt",
+      "sha256": "a0d2c8da6a3833c94b63563490b19573f5bda926ca5c09c37005b829c462117a",
+      "bytes": 1519
+    },
+    {
+      "path": "00_raw/Mt._Pyre.html",
+      "sha256": "57111500ea5a3689ea0a6119d524279cd70a64f0fb01348a2896bf4a10ffe844",
+      "bytes": 507565
+    },
+    {
+      "path": "00_raw/Mt._Silver.html",
+      "sha256": "1cf36970d25bcdfabf7e4496e45a9d49fff8d8aa765ab3e344b00f9ed9f4673c",
+      "bytes": 261812
+    },
+    {
+      "path": "00_raw/New_Island.html",
+      "sha256": "acb0673b5cf8b7ad11296d49cbbd663481e569f9190dcff3b656a4256cc817ff",
+      "bytes": 129059
+    },
+    {
+      "path": "00_raw/Nurse Joy.txt",
+      "sha256": "342ad18a1d84b84d7feeee9311894a72e25cecbd4b15153043ca56acb77d43bb",
+      "bytes": 32052
+    },
+    {
+      "path": "00_raw/Old man (Kanto).txt",
+      "sha256": "b08a06303680aa8eda88725e97bc59243a4c71f95fa7b4ec8eb2cabc67a2919b",
+      "bytes": 6794
+    },
+    {
+      "path": "00_raw/One_Island_Town.html",
+      "sha256": "1faf90b40938235d242a60b52773fd6d1970c9d4a858d4cb3ed4db6bcb5ced1e",
+      "bytes": 151365
+    },
+    {
+      "path": "00_raw/PI_(Trainer_class).html",
+      "sha256": "62298b7b93e529c6a12dfb375aade9459bd5d889f023a128512a8b4155cbfa12",
+      "bytes": 315729
+    },
+    {
+      "path": "00_raw/Pok%C3%A9dex.html",
+      "sha256": "8424550433f5d783cfbcb732e865cf9d82547f8846cc293d2ce32e5893f2aa62",
+      "bytes": 471205
+    },
+    {
+      "path": "00_raw/Pok%C3%A9lantis.html",
+      "sha256": "39539dccd016cdd4e53421abbbf1d6bbf191e9701c1a8ef9c589c68a77291c47",
+      "bytes": 95810
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_Center.html",
+      "sha256": "8059b021d8b88a48d7d91d1741241d9ad6bf4660826c2f36321ed07a56c41619",
+      "bytes": 294867
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_Egg.html",
+      "sha256": "c3f0ef69e357c039981b67de651c9eafcebc2207d46e50e4806f0f3b521278ed",
+      "bytes": 330323
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_League.html",
+      "sha256": "09f93be596722971d69850cc6487b908a5ba3d927ec39e41ffdb22677b87c2b5",
+      "bytes": 123603
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_Professor.html",
+      "sha256": "a9a3f1a1a1669bf89cccf99511f1cca9f6dd534d2273c98ed22e4ef75c28d08a",
+      "bytes": 283634
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_Ultra_Sun_and_Ultra_Moon.html",
+      "sha256": "f4035f7b703b983b83ee7c85c6aeff66505bcfc98fb1209b639cb7f258c6f70f",
+      "bytes": 333440
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_the_Series.html",
+      "sha256": "a21475f503158f9c486a92a4164056a8ef8ec446ec8c1f4922dd5765eb2f5cc3",
+      "bytes": 260198
+    },
+    {
+      "path": "00_raw/Pok%C3%A9mon_world_in_relation_to_the_real_world.html",
+      "sha256": "801623075737abebbb670ce88496852b2e1be9b20a542eec8b3c9dc6531bd82b",
+      "bytes": 976299
+    },
+    {
+      "path": "00_raw/Pok\u00e9mon Association.txt",
+      "sha256": "d5e9aed49c76b6f20bcbb1f4fea595d031e96722b1a1d0074835fc7a43a62529",
+      "bytes": 4457
+    },
+    {
+      "path": "00_raw/Pok\u00e9mon Trainer Fan Club.txt",
+      "sha256": "ac1fbe9f910cd75ded0ffc98e1de39e718209536ff2303b08afaf3815e78c2a6",
+      "bytes": 2280
+    },
+    {
+      "path": "00_raw/Professor Kukui.txt",
+      "sha256": "5e063072e7f59114d77cee954cf23f3c8f47d7989ad71444e3c520b1d7284cd6",
+      "bytes": 28626
+    },
+    {
+      "path": "00_raw/Professor Oak.txt",
+      "sha256": "7894fed9dcab07fa0f32d8121caf7bb6c83e1e4aeeb1c3695b51e793819c5017",
+      "bytes": 17728
+    },
+    {
+      "path": "00_raw/Professor_Oak.html",
+      "sha256": "4a1f5a4977c04b40c55b7a45845ad069f9f77ab06134d4d6574a0e836a2738c0",
+      "bytes": 385859
+    },
+    {
+      "path": "00_raw/Radio.html",
+      "sha256": "2e1e063eb65e009ade390ae0699414a13502ca89dff3035b74c98015d029907a",
+      "bytes": 205124
+    },
+    {
+      "path": "00_raw/Rayquaza_(Pok%C3%A9mon).html",
+      "sha256": "611cb8c2855aaf888df9a8822fa6517d786c5811c44205c48f0c78044c482e2b",
+      "bytes": 887261
+    },
+    {
+      "path": "00_raw/Regional_Pok%C3%A9dex.html",
+      "sha256": "e57b4bc41939414a8df05c51ebb2132e19c3affe0c66589d848063043081a21a",
+      "bytes": 143827
+    },
+    {
+      "path": "00_raw/Rio.txt",
+      "sha256": "6400b007e458847e328fa03878111c80bd474b371716a3cf2627b99ed6b77561",
+      "bytes": 1314
+    },
+    {
+      "path": "00_raw/Ruby (Adventures).txt",
+      "sha256": "8c866f4cf6a8d1c35e31cd7e9d57c28fc5566abfdd717b9d88933f2d5ec7b43f",
+      "bytes": 31417
+    },
+    {
+      "path": "00_raw/Ruby (Ruby-Sapphire).txt",
+      "sha256": "df6f6149086d0e28a1552899bee33d85ca69b32510c7bf571049fd5adaf5f031",
+      "bytes": 1378
+    },
+    {
+      "path": "00_raw/S.S._Anne.html",
+      "sha256": "6b5b471f369912c193bbdac1441d12bbd697bad0141187a7b3cf436c584656b2",
+      "bytes": 566482
+    },
+    {
+      "path": "00_raw/Samson Oak.txt",
+      "sha256": "fa0bd5b15f6ec79e1987f3c782cb39c8bc45c063ca9df0cda7194b18c94e1af0",
+      "bytes": 8959
+    },
+    {
+      "path": "00_raw/Sapphire (Adventures).txt",
+      "sha256": "501b22758efbcb5eaf27b118e634bd62a9b599d3c2df5b3ad614122e07621f67",
+      "bytes": 25132
+    },
+    {
+      "path": "00_raw/Sinnoh.txt",
+      "sha256": "1917b728fb58e1339a3b43d0602b25c540e1195d434686ea7f83163afac90809",
+      "bytes": 32346
+    },
+    {
+      "path": "00_raw/Slowpoke_(Pok%C3%A9mon).html",
+      "sha256": "691b88edde326ddc0fc6df0d32e6af116b0769d45aa4c3a553c3540d87300c0a",
+      "bytes": 1123258
+    },
+    {
+      "path": "00_raw/Snowpoint_Temple.html",
+      "sha256": "dac61eaa0221ca01976576d4e578fda60190006d4fea58b79c125d1c358963a7",
+      "bytes": 363846
+    },
+    {
+      "path": "00_raw/Solidad.txt",
+      "sha256": "e52ee7dcb349e73254dfc9d13cf0f5a705a31741bd6c1ea8e822593f43896bc0",
+      "bytes": 3376
+    },
+    {
+      "path": "00_raw/Trading_Card_Game_Islands.html",
+      "sha256": "fd0877cba296f6594b8d77e44713b215f89e2201b22aa70dfa4f180c7df8405e",
+      "bytes": 109444
+    },
+    {
+      "path": "00_raw/Trip.txt",
+      "sha256": "f724824dd9a173b99d76a24e6364e84bf3a1dbd008fe9ce584f723a2dd73cbf4",
+      "bytes": 14705
+    },
+    {
+      "path": "00_raw/Ultima.txt",
+      "sha256": "ebb8b12d2ef1bbf5fb68758e4ed8e0acb0373f6b54d26ef7c1b51cc934b41c70",
+      "bytes": 7532
+    },
+    {
+      "path": "00_raw/Unova.html",
+      "sha256": "1400ed181c3f6f8b9e0e27372bc96cb4ac9e150b5c6435a527c4f76cea2ae4a9",
+      "bytes": 314401
+    },
+    {
+      "path": "00_raw/Unova.txt",
+      "sha256": "3a193c454df7d386d514b33ddd32fda82a0175fd7c5936be45a170c498e40565",
+      "bytes": 26630
+    },
+    {
+      "path": "00_raw/Unown_(Pok%C3%A9mon).html",
+      "sha256": "75998cf0493ed9d07c9bdfc6c1283f55e2fe1fb81cd4900665b09dc3d675c5aa",
+      "bytes": 593937
+    },
+    {
+      "path": "00_raw/Villainous team.txt",
+      "sha256": "7559300003026d6ec186ec9558d39165d1baa83cbc679521762a129f93991f2b",
+      "bytes": 47181
+    },
+    {
+      "path": "00_raw/Villainous_team.html",
+      "sha256": "fefec4d2e5554b12f09677a77aa1876c5c508da888788a6c6c328435e7c256e1",
+      "bytes": 215787
+    },
+    {
+      "path": "00_raw/Vivian Meridian.txt",
+      "sha256": "38be1419a34ad7fa8e7e65df3964a5ff85c04dd8fd6d8c66b47aab11bc00ff19",
+      "bytes": 2878
+    },
+    {
+      "path": "00_raw/Whitney.txt",
+      "sha256": "6194b9c4790374a7e919c608a0e9ab5b0f50989adc2c5f598b92c940cf0aa106",
+      "bytes": 13500
+    },
+    {
+      "path": "10_clean/wiki/Agatha.clean.json",
+      "sha256": "971b1b6e311c66890c57cbcbf59aa7d88d1117a048dd1f74c2bcb9a1aa2d1c9c",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Agatha.md",
+      "sha256": "70a77e50e07cfa441eb0bd8be7489d5d139ab32450f6719b314837f2a6a7e1ff",
+      "bytes": 16051
+    },
+    {
+      "path": "10_clean/wiki/Air_transportation_in_the_Pok%C3%A9mon_world.clean.json",
+      "sha256": "94c58ca9b5f4e9dc7a771dc5fdb0497c6e594073a9b25b21bf1b526db0dfd8dd",
+      "bytes": 463
+    },
+    {
+      "path": "10_clean/wiki/Air_transportation_in_the_Pok%C3%A9mon_world.md",
+      "sha256": "57fb4c512476896c822fdf7d31521fd1c697ef97199dead17cf5108c093a52f1",
+      "bytes": 10317
+    },
+    {
+      "path": "10_clean/wiki/Alola.clean.json",
+      "sha256": "575b2bf9f5dcfae5efce720601443450a9887985f620460fb0f84b6d993758bc",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Alola.md",
+      "sha256": "ca16e65be6291beb6e5c75f4fd7c75368288e9f69f4788478b5f032f0337935a",
+      "bytes": 25468
+    },
+    {
+      "path": "10_clean/wiki/Arcanine_(Pok%C3%A9mon).clean.json",
+      "sha256": "00d29314f805027136098a9f394d59b727ea338a688d990d2f20aafc4fdbeebf",
+      "bytes": 421
+    },
+    {
+      "path": "10_clean/wiki/Arcanine_(Pok%C3%A9mon).md",
+      "sha256": "4b3ffd01156908c60dde831bb89c5f23ae3835a57062406413acd407ca08a05b",
+      "bytes": 9133
+    },
+    {
+      "path": "10_clean/wiki/Blaine.clean.json",
+      "sha256": "2b3e427dc56f29ae33e217664dc2f4928ed706a570f7b67c411f29c956a535a7",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Blaine.md",
+      "sha256": "252a068d9e73e460edfa8c304a78f992680383b92cb9ae9fcb35cabdadc205dd",
+      "bytes": 15957
+    },
+    {
+      "path": "10_clean/wiki/Blaine_(Adventures).clean.json",
+      "sha256": "8d5acdb5e14f9b3c78523ac040af760c128775e172e584f1f9e31a5fa88fdff3",
+      "bytes": 412
+    },
+    {
+      "path": "10_clean/wiki/Blaine_(Adventures).md",
+      "sha256": "9f12db1514822a52b6bcb6ad8474a4de13860610657f68b981e9a8ff1f06e4f1",
+      "bytes": 9631
+    },
+    {
+      "path": "10_clean/wiki/Blue_(game).clean.json",
+      "sha256": "ad4f324a636a4c92748c8882c0f71be0537b68838cba0b3c1df32a7306c99e3b",
+      "bytes": 397
+    },
+    {
+      "path": "10_clean/wiki/Blue_(game).md",
+      "sha256": "cda98aff35dc7572bffaa4c3aba612b3e22feeb749e71c495b43cb23343a33d0",
+      "bytes": 31427
+    },
+    {
+      "path": "10_clean/wiki/Brock.clean.json",
+      "sha256": "5b3cb64d9f1db5dbd9ca01302a1c7088fffbabba4bdb42fab5ca1e540d39f8cf",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Brock.md",
+      "sha256": "e316c2077f5ac9a7d77b3fa34aa297ec0d986f176ebf84ec4dd999365246221f",
+      "bytes": 17964
+    },
+    {
+      "path": "10_clean/wiki/Bruno.clean.json",
+      "sha256": "191a5471ea92050def8172186a3b7c23178bdc8666cd41ce44a94a9c89cd1c1a",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Bruno.md",
+      "sha256": "2e5031b66c65765cf7495168d3605da4995202edf09996ffaef7492169a77b00",
+      "bytes": 16569
+    },
+    {
+      "path": "10_clean/wiki/Burned_Tower.clean.json",
+      "sha256": "2f2e148ed3202c2383635f68197b37edfa06e7bd6871ef2c8ac88ad4e7ee5e47",
+      "bytes": 399
+    },
+    {
+      "path": "10_clean/wiki/Burned_Tower.md",
+      "sha256": "425b4d3ea4c2bb57d6ae5b8519533338eb7b5b635e99e46baeb8c7bb706a07df",
+      "bytes": 10104
+    },
+    {
+      "path": "10_clean/wiki/Calem_(game).clean.json",
+      "sha256": "9f4b16a5c96f5bbd22fa399af605012b02aa7230285f4cfe916ab9b0acfb06ab",
+      "bytes": 399
+    },
+    {
+      "path": "10_clean/wiki/Calem_(game).md",
+      "sha256": "0c6286cd941b5562a4e193808fe2166475871842c2c6d8bc859e5b85f8fd8b8f",
+      "bytes": 12576
+    },
+    {
+      "path": "10_clean/wiki/Celio.clean.json",
+      "sha256": "c8ccfd4ebbedaec68e2d3ddf39e325dda59f8287daf4f6759e9537e4fb82a797",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Celio.md",
+      "sha256": "ff2412607b61c3e98919e18cecdd46b259087f1a80c672c0fbd5a88110333e9b",
+      "bytes": 5270
+    },
+    {
+      "path": "10_clean/wiki/Champion.clean.json",
+      "sha256": "071c8024cc3d9dd55b9b5c357fe9feaf37d1411563d710dc462df68487b827a6",
+      "bytes": 391
+    },
+    {
+      "path": "10_clean/wiki/Champion.md",
+      "sha256": "cc3189d891c62ed0fcc099d3c6b69b78f1177dc10814456325d9b7736718e1a4",
+      "bytes": 30357
+    },
+    {
+      "path": "10_clean/wiki/Chase_(game).clean.json",
+      "sha256": "b748cb1516b0379e226508301e29326b46846fa0be4ff7505eb7cfbbded7a9e2",
+      "bytes": 398
+    },
+    {
+      "path": "10_clean/wiki/Chase_(game).md",
+      "sha256": "e23d0c8f5b39de0847dacb36250e3955d09fcbe0e95ad4105f0ce6c2d4556e16",
+      "bytes": 4104
+    },
+    {
+      "path": "10_clean/wiki/Clair.clean.json",
+      "sha256": "599f49a1c4c64e36b7acae9b8e6d88270fbc640b44c54438e905f3055db8d4a0",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Clair.md",
+      "sha256": "33616b5703694b76ef3d9e484b49f296c984a904da175acf0111b946a5f8d482",
+      "bytes": 16800
+    },
+    {
+      "path": "10_clean/wiki/Dawn_(anime).clean.json",
+      "sha256": "3cbb6232faf6e978d26fdc66defcb329116db9a0194c3ddf200097e8ced030e4",
+      "bytes": 398
+    },
+    {
+      "path": "10_clean/wiki/Dawn_(anime).md",
+      "sha256": "1e448f9a4721f201d253362c6cce937dfac2ec1b2ba5246f24bfaf2dd21aa488",
+      "bytes": 39024
+    },
+    {
+      "path": "10_clean/wiki/Day-Care_Couple.clean.json",
+      "sha256": "c3b61aa041ee2af6cb09e58ce9728b3aa36c458ba3263ee8d6edfebebf628910",
+      "bytes": 404
+    },
+    {
+      "path": "10_clean/wiki/Day-Care_Couple.md",
+      "sha256": "ba1625a022ac252bfdc3fc2a4abe3ef85496e89a0c3524d99258c0cbddf33812",
+      "bytes": 10094
+    },
+    {
+      "path": "10_clean/wiki/Decolore_Islands.clean.json",
+      "sha256": "6814fd5eedeb8c29d9cf59b143a13293783d519d792f517b530a410bea11aa66",
+      "bytes": 406
+    },
+    {
+      "path": "10_clean/wiki/Decolore_Islands.md",
+      "sha256": "e5e134009b0d61a6bcfe892b52b955669296d43ed3d1337eca767a8dc119dc2c",
+      "bytes": 1363
+    },
+    {
+      "path": "10_clean/wiki/Deoxys_(Pok%C3%A9mon).clean.json",
+      "sha256": "faad7ca369012d3f2f04a1b0f926bd5b3444360420f313d98ba9372674a2145f",
+      "bytes": 417
+    },
+    {
+      "path": "10_clean/wiki/Deoxys_(Pok%C3%A9mon).md",
+      "sha256": "aeb17910034753b3d024ca95b076b824284bf999fb8ab68a99b205dfec8fc469",
+      "bytes": 17911
+    },
+    {
+      "path": "10_clean/wiki/Dragonite_(Pok%C3%A9mon).clean.json",
+      "sha256": "c8c614403c2fc8af4e98af870e1d42b8cee748de2a7a840ecbbad16ecf15671e",
+      "bytes": 423
+    },
+    {
+      "path": "10_clean/wiki/Dragonite_(Pok%C3%A9mon).md",
+      "sha256": "1de4f04b309ee82201cf657988ce530114641ee4322ebedca5b557ada6d31584",
+      "bytes": 10229
+    },
+    {
+      "path": "10_clean/wiki/Drew.clean.json",
+      "sha256": "9abc3b238fc21291f74961d06c784c78076efc8139122315e212b6b290b593ef",
+      "bytes": 382
+    },
+    {
+      "path": "10_clean/wiki/Drew.md",
+      "sha256": "729a9409ccb38676cdc1174ee088696cda8b2e85c64477da929df16de6852294",
+      "bytes": 9899
+    },
+    {
+      "path": "10_clean/wiki/Elio_(game).clean.json",
+      "sha256": "23e8b7cfcd50ddbd62461e58a6e3309eff2af88e50754f4184b4a37d748d2692",
+      "bytes": 396
+    },
+    {
+      "path": "10_clean/wiki/Elio_(game).md",
+      "sha256": "e59458165b5b5d22303b6afe5017c7b98d6f8a0c7f68015b6ae59a0a16e3d578",
+      "bytes": 24571
+    },
+    {
+      "path": "10_clean/wiki/Erika.clean.json",
+      "sha256": "2ab8e363658cdf2ecc6e3efbc4c1c35106b23a2a0785456e4ab6e5f12ccefccb",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Erika.md",
+      "sha256": "9230fb50f6bc67ecf68af7889268c284767d65f6a58471b3ce8656edce13acab",
+      "bytes": 19147
+    },
+    {
+      "path": "10_clean/wiki/Giovanni.clean.json",
+      "sha256": "f85f55beafa927c338789c2491baf7f5d0209738822ff1e6b56a595684ad027d",
+      "bytes": 390
+    },
+    {
+      "path": "10_clean/wiki/Giovanni.md",
+      "sha256": "4cdaa7f468a582c95e1be49e5c6799995cb12bb05d62865d103d212b65983517",
+      "bytes": 23623
+    },
+    {
+      "path": "10_clean/wiki/Giovanni_(Adventures).clean.json",
+      "sha256": "d4d71ef7c76a705c2e39f4ac79d47ab75e75d979773570e2af3c6371470c1207",
+      "bytes": 416
+    },
+    {
+      "path": "10_clean/wiki/Giovanni_(Adventures).md",
+      "sha256": "3e7411b0aa23f4a82b8b31bccf33a4e2efc802306757f45b42b5c8b0e3741b4a",
+      "bytes": 13497
+    },
+    {
+      "path": "10_clean/wiki/Gladion.clean.json",
+      "sha256": "acdc9768c91c6283d2b3911b6e0a8cf0ccf490eea8c86c9c7e0fd5a24b61030b",
+      "bytes": 388
+    },
+    {
+      "path": "10_clean/wiki/Gladion.md",
+      "sha256": "a8631feac5cd328939e84997a61d4de29657f1f516dcba535ca2b216d4ea2afa",
+      "bytes": 26674
+    },
+    {
+      "path": "10_clean/wiki/Goh.clean.json",
+      "sha256": "9b6fc7d728eaa44b8eb3935a3b0f16d9f077e0de3d4705d7f04d6783d6a3158d",
+      "bytes": 380
+    },
+    {
+      "path": "10_clean/wiki/Goh.md",
+      "sha256": "f601f13f677c7bd0a8a1f086578abe2399020e656f6612a928025bd2f6193d9f",
+      "bytes": 37772
+    },
+    {
+      "path": "10_clean/wiki/Grand_Oak.clean.json",
+      "sha256": "d1b075cc769e86bba50d03d85ab5635e9000e944f0b0696953d1b20910e81302",
+      "bytes": 392
+    },
+    {
+      "path": "10_clean/wiki/Grand_Oak.md",
+      "sha256": "b98d74266242c6c62b1e578b327777109e6a0df172090444d05bb4535ecfec82",
+      "bytes": 5874
+    },
+    {
+      "path": "10_clean/wiki/Green_(Adventures).clean.json",
+      "sha256": "79b3f32b2e2e5aa397e99f1678ac436eea8e2c6beb44c74fb14d756a6dd465bc",
+      "bytes": 410
+    },
+    {
+      "path": "10_clean/wiki/Green_(Adventures).md",
+      "sha256": "2d36c15ba25f98ac2c20d5cf2ef69ef545fb7da9d5c84c718d6ee8cab183011e",
+      "bytes": 20570
+    },
+    {
+      "path": "10_clean/wiki/Hau.clean.json",
+      "sha256": "e1697f795af4fd42edc8b50a5b7024e973dde78fea1c616ef6766ffc9e284273",
+      "bytes": 380
+    },
+    {
+      "path": "10_clean/wiki/Hau.md",
+      "sha256": "25b962d44eb741679750d59266498c491555bc6223be444843e75eb46704a9fa",
+      "bytes": 33874
+    },
+    {
+      "path": "10_clean/wiki/History_of_the_Pok%C3%A9mon_world_(Adventures).clean.json",
+      "sha256": "ade6ad2727ea51e7139405fdadcb46a18d5d0c1a6c3bff61c50afaa5b31e6d8a",
+      "bytes": 467
+    },
+    {
+      "path": "10_clean/wiki/History_of_the_Pok%C3%A9mon_world_(Adventures).md",
+      "sha256": "02858d0d5c17f56d180ed1795c6d2afd8440f8372a435683479c73f7959555ef",
+      "bytes": 28860
+    },
+    {
+      "path": "10_clean/wiki/Hoothoot_(Pok%C3%A9mon).clean.json",
+      "sha256": "a331e9d9481b8c8dbcf3629d3f40b33dbdbb4b7d4b4bae4c50c6d7dd27499ab1",
+      "bytes": 421
+    },
+    {
+      "path": "10_clean/wiki/Hoothoot_(Pok%C3%A9mon).md",
+      "sha256": "2312b929ce137b226ff6a62d6bb8134670702bea7f3eb7316132c4988688e07e",
+      "bytes": 5373
+    },
+    {
+      "path": "10_clean/wiki/James.clean.json",
+      "sha256": "059b766ed2c2c4781f447d65acb44f9ac51f2460fcb8863ee5683f3378497e64",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/James.md",
+      "sha256": "676eb00d992c6a0527ce5d31964da007cc8791900c6559772c1d56ee04ec9b11",
+      "bytes": 53858
+    },
+    {
+      "path": "10_clean/wiki/Janine.clean.json",
+      "sha256": "7e791871a7f4280f2c54be28fc33a9b6fd198dfef37ccf362f764f97873798cd",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Janine.md",
+      "sha256": "6c43c0e0d8af213786d010a17c15c5ed0c89fc04b598e16f03ab0448da1b51e7",
+      "bytes": 9924
+    },
+    {
+      "path": "10_clean/wiki/Johto.clean.json",
+      "sha256": "e7b423b86768fbc05286ce9b95c61ce312e89d9d9cd815d296b8dbcc3f465f40",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Johto.md",
+      "sha256": "e98df836b37d5eaee09e45b01d49e89430ed72d01a8147e720763d2bd66689a5",
+      "bytes": 17396
+    },
+    {
+      "path": "10_clean/wiki/Koga.clean.json",
+      "sha256": "94b0b2f26502791898a72f9fc1c11d1884ddbb53d8f3502f7d83ec38d3723e02",
+      "bytes": 382
+    },
+    {
+      "path": "10_clean/wiki/Koga.md",
+      "sha256": "cb031af1e958fb0c1b1e88a308f49c25921bd567a254354ef9e9dc53359e464b",
+      "bytes": 17155
+    },
+    {
+      "path": "10_clean/wiki/Lake_Valor.clean.json",
+      "sha256": "05d55569d29b29272af97357c9b4523f92d619008db08202da5029abd9b476fc",
+      "bytes": 395
+    },
+    {
+      "path": "10_clean/wiki/Lake_Valor.md",
+      "sha256": "721e2c3768668da02f0e8da0c0e5024170e2f207d4d768d8ffd3ca0d5a9c7b3c",
+      "bytes": 7899
+    },
+    {
+      "path": "10_clean/wiki/Lana_(anime).clean.json",
+      "sha256": "530a5467a43bc1d30e841db81701e9227a5612073efc4679f11d75cb3789da37",
+      "bytes": 398
+    },
+    {
+      "path": "10_clean/wiki/Lana_(anime).md",
+      "sha256": "a1d7b9a6aad9a4a995546687355782bc7a727b32a80f3c4a97c5bbfbd0f8fa26",
+      "bytes": 24754
+    },
+    {
+      "path": "10_clean/wiki/Lanette.clean.json",
+      "sha256": "f0ff8b9fbc5e8f864a99ce3be325ab0d15f3b962f7396738e23a959f303c9edd",
+      "bytes": 388
+    },
+    {
+      "path": "10_clean/wiki/Lanette.md",
+      "sha256": "690250fc13fea6a4740bcaf77dcb5f39cbec1dd6cdb317a71b2345c4f3aba8da",
+      "bytes": 5494
+    },
+    {
+      "path": "10_clean/wiki/Lillie.clean.json",
+      "sha256": "860e9631d802c8804b23b9020166d67dde2c169c4b54686f92078e410c612334",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Lillie.md",
+      "sha256": "ebb57b6924a6738cb4867f1d81cea58d93ab5f17784c660af7104d466eba792a",
+      "bytes": 61419
+    },
+    {
+      "path": "10_clean/wiki/Lillie_(anime).clean.json",
+      "sha256": "40dd997111b4ded36ef9c4659b71f76a1bc21c6a9e2349198aa7610eb3dfb6dc",
+      "bytes": 402
+    },
+    {
+      "path": "10_clean/wiki/Lillie_(anime).md",
+      "sha256": "976cc0c3aae416bcdf2d37587e127da1eb0f3d20bd9f47bcbaaaf2adebfd225d",
+      "bytes": 36263
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Isle_of_Armor_Pok%C3%A9dex_number.clean.json",
+      "sha256": "93bc644331234c1ba779b66be743514fbce856775d0d919fac4994b0f3c22366",
+      "bytes": 489
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Isle_of_Armor_Pok%C3%A9dex_number.md",
+      "sha256": "25d14fad047195997731a4ac4c73be747c35c05b8b59ffcaddc31918c4e7379a",
+      "bytes": 2834
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Johto_Pok%C3%A9dex_number.clean.json",
+      "sha256": "ddd63cc5067692f594373de3a448f74e4b1a50f1077ba9f1bba3501ca3cdceed",
+      "bytes": 473
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Johto_Pok%C3%A9dex_number.md",
+      "sha256": "0af8b38114e4ee274f2ff4f325877cf2fc67b4a7b5f3148c2b809019d71fc4f1",
+      "bytes": 3495
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Kanto_Pok%C3%A9dex_number.clean.json",
+      "sha256": "f7fbbbee95d82ffd9f4d152e0f0f7dd821e6349a94bae4901875b286ab0ce99f",
+      "bytes": 473
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Kanto_Pok%C3%A9dex_number.md",
+      "sha256": "c01d601f5ca0d27868d9b3646f0012f9ad365e2b6f5737cfa432faa86bf806b1",
+      "bytes": 7212
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Kitakami_Pok%C3%A9dex_number.clean.json",
+      "sha256": "d927e4db8767553a87f63a650212d372cfdd555194fd153ca75e74d864ccd8e1",
+      "bytes": 479
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Kitakami_Pok%C3%A9dex_number.md",
+      "sha256": "1ce514ff8ee966fad34df4a4f65d6c3b61a7bfd41d03ffda2c5423b0e25f6ada",
+      "bytes": 3727
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.clean.json",
+      "sha256": "af5250783831a84933f51d92a06f35922c238f2b257cf3f91a55ea0e82cbb492",
+      "bytes": 479
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+      "sha256": "2986fc2d731cf92c8a9e8cd0a78fb6cc187f853f766c5d7ca8938427ab035451",
+      "bytes": 1569
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_New_Pok%C3%A9dex_number.clean.json",
+      "sha256": "1cd28685933c44a257a525bd933a0ea394c96e6471c303f25fdbacafcfe682c0",
+      "bytes": 469
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_New_Pok%C3%A9dex_number.md",
+      "sha256": "10686c3c0806b89b1dda3ca75b30998459aca0fa4787f4dcea1d0aa04c3e3f7b",
+      "bytes": 5206
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Pokopia.clean.json",
+      "sha256": "734bcce23ccb38e9d34ee2c9752500b9ae41afce932515492f01e518dd916dad",
+      "bytes": 509
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Pokopia.md",
+      "sha256": "ffbbe24fdafe7aa0f41ca5922c05833342297c82ee84c6efeb2c5e17573917b5",
+      "bytes": 2134
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Sinnoh_Pok%C3%A9dex_number.clean.json",
+      "sha256": "e0c54075a8e1eb1cd4f9e68ed59e41ecd574cbb40d8672f5a6ad4a1e2b43a103",
+      "bytes": 475
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Sinnoh_Pok%C3%A9dex_number.md",
+      "sha256": "1a2ee353a5faeab5454abf2b06962e3e8ef297c90a91b7e776499ecf2339ded1",
+      "bytes": 5781
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.clean.json",
+      "sha256": "8bd80d3b7bcb75227e3dbbe684a1dd7df070b2a05f21a2433734e9c37f0b8baa",
+      "bytes": 537
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
+      "sha256": "5aa07030dab1cbfef2297309edd329b3f414c3ef946ef8c7efabb3bcdf96ff94",
+      "bytes": 2252
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_animated_series_debut.clean.json",
+      "sha256": "46208d58dc0d9317aedf24acc2ceef5072396b683314d37e8d941e45c8393a36",
+      "bytes": 465
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_animated_series_debut.md",
+      "sha256": "633bacc0370485ae033a1e2a831ba103988cfdb9b79d6d5c44389a364c9ff269",
+      "bytes": 98135
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_evolutionary_line.clean.json",
+      "sha256": "a7d0b76764325566a9882a41c6e02c9ed03b8f400c8067faaf9b15b30ba0c65c",
+      "bytes": 457
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_by_evolutionary_line.md",
+      "sha256": "a35691ca0e7d94c598ff57767073449d2b925a0f2b96436de64cce99c8ac9023",
+      "bytes": 53839
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VII).clean.json",
+      "sha256": "7315d300c401309cdf43ff64c2db32dedd7f19fc61e0ebebafe0a52e547eb1ac",
+      "bytes": 511
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VII).md",
+      "sha256": "c3e9e156d9a75a3a04d3ca7b2d3b0f88a39f6a326f689f444e64d6d1a5c543fb",
+      "bytes": 15364
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).clean.json",
+      "sha256": "9512bd9d676912686f0d6887889644c3af3f221e9420a0e50275821e8b285809",
+      "bytes": 513
+    },
+    {
+      "path": "10_clean/wiki/List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).md",
+      "sha256": "3536e6fd6194084011ab1fb87a5b904b80fd44dedb34474aaf89910d3f840811",
+      "bytes": 20872
+    },
+    {
+      "path": "10_clean/wiki/List_of_categories_in_other_languages.clean.json",
+      "sha256": "f893a4f46da717527f2e24a5543d099840100156bb03c6d38dcc73054ae9bab6",
+      "bytes": 449
+    },
+    {
+      "path": "10_clean/wiki/List_of_categories_in_other_languages.md",
+      "sha256": "e2528f5cdd471c830b48ad0dee1d931fb5eb01ccbad79ccb1c82622a4e44330b",
+      "bytes": 195763
+    },
+    {
+      "path": "10_clean/wiki/Looker.clean.json",
+      "sha256": "2047d09f8e87a4f414b9265ef78e723eaf1d053594ca2b8198c685d934aa4cf6",
+      "bytes": 387
+    },
+    {
+      "path": "10_clean/wiki/Looker.md",
+      "sha256": "ced1850c6467de1215e30807be5bfc2bcb8fc0b668f1c25be8c92e16cf628a16",
+      "bytes": 27454
+    },
+    {
+      "path": "10_clean/wiki/Lorelei.clean.json",
+      "sha256": "29ec512c5ba5d837da4831cefc8de6ca61e988c3be6ca5d75b0a9b284bfbc43f",
+      "bytes": 388
+    },
+    {
+      "path": "10_clean/wiki/Lorelei.md",
+      "sha256": "d25d47e561b36c9baa9af3515ce56a6895e5319b48cce5a77a1018356d436f23",
+      "bytes": 15733
+    },
+    {
+      "path": "10_clean/wiki/Lt._Surge.clean.json",
+      "sha256": "857d0041535d795ba0a891bb04ad3e691c690c0af6e90c493ebd30e731e565c3",
+      "bytes": 392
+    },
+    {
+      "path": "10_clean/wiki/Lt._Surge.md",
+      "sha256": "8043da36a0913f157ca1c6ebfe9e595b530976fc5986f50ab7d3cf993d208c78",
+      "bytes": 18338
+    },
+    {
+      "path": "10_clean/wiki/Mable.clean.json",
+      "sha256": "a73362352b335da6201e0dfaef16e8558ea18760b7f56ffb60c710753ec88158",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Mable.md",
+      "sha256": "67a8f305477a5d346b5bdd47165ef8bc95609775ca510e229c5254f76d0a75d4",
+      "bytes": 13707
+    },
+    {
+      "path": "10_clean/wiki/Magikarp_salesman.clean.json",
+      "sha256": "da8fafa882aea6e3b6783c2a3f36ba27f99684d4b8769db89a89f07d7814633d",
+      "bytes": 408
+    },
+    {
+      "path": "10_clean/wiki/Magikarp_salesman.md",
+      "sha256": "66d4c55a61a2cfdb55e8d7aec57a5ad194d01a176795ab60c143bbdc9753a208",
+      "bytes": 8817
+    },
+    {
+      "path": "10_clean/wiki/Mintale_Town.clean.json",
+      "sha256": "f040d586a8d0915b93066b65cd1e50056b8f011d279dba268a204b77dd670e2f",
+      "bytes": 399
+    },
+    {
+      "path": "10_clean/wiki/Mintale_Town.md",
+      "sha256": "05f54aae1b5defe8fb7f4e5cde2e4540d3bfd3a772c8c1c0c43a21d6ae11ba0b",
+      "bytes": 1400
+    },
+    {
+      "path": "10_clean/wiki/Mirage_Kingdom.clean.json",
+      "sha256": "b6138f941b9a00922594d21e14472f92aa448da6bdc9c20baf57bd308711700b",
+      "bytes": 403
+    },
+    {
+      "path": "10_clean/wiki/Mirage_Kingdom.md",
+      "sha256": "0ee1a5cf0f2b44e7fe26e5561c07bd9b459f7656393225b17a15625423a3cdf4",
+      "bytes": 2652
+    },
+    {
+      "path": "10_clean/wiki/Move_Tutor.clean.json",
+      "sha256": "15a8fe3bbe165c85729888b7f534dcbeb60eb0e4e432ca1b485a6e218f03bd17",
+      "bytes": 395
+    },
+    {
+      "path": "10_clean/wiki/Move_Tutor.md",
+      "sha256": "669e40cb3e5764eed7e78578d200c8b48fcc6e9e2173fb2a94b7c8ac663690a7",
+      "bytes": 10222
+    },
+    {
+      "path": "10_clean/wiki/Mr._Game.clean.json",
+      "sha256": "4b93bd1041631798ddfd06450726ab1666e3486e7db0822e5f9fad90ca4ce188",
+      "bytes": 390
+    },
+    {
+      "path": "10_clean/wiki/Mr._Game.md",
+      "sha256": "b8d73682513a46a01dc9894836b2e7c4129c60387dad1d418ef0d6164fc655af",
+      "bytes": 1617
+    },
+    {
+      "path": "10_clean/wiki/Mt._Pyre.clean.json",
+      "sha256": "14f49f5111f4816dccc31bdc2110ae9f4d1dbd8a65cd70b82e2e810741a24549",
+      "bytes": 391
+    },
+    {
+      "path": "10_clean/wiki/Mt._Pyre.md",
+      "sha256": "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+      "bytes": 6384
+    },
+    {
+      "path": "10_clean/wiki/Mt._Silver.clean.json",
+      "sha256": "e3d78143ad5635746826acaf9b2c3aa25d0998df34145d7e04407e1a3f6175c0",
+      "bytes": 395
+    },
+    {
+      "path": "10_clean/wiki/Mt._Silver.md",
+      "sha256": "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9",
+      "bytes": 4551
+    },
+    {
+      "path": "10_clean/wiki/New_Island.clean.json",
+      "sha256": "1aa4d8befc5793c1b32ecf1d4953bdb1afe78fb0d75eeddf5e186fcdd1bcb273",
+      "bytes": 395
+    },
+    {
+      "path": "10_clean/wiki/New_Island.md",
+      "sha256": "e417f07db9a463016c1006afd02fc4583e3f4965b00cc3c1240b4ba9c3e049a7",
+      "bytes": 4889
+    },
+    {
+      "path": "10_clean/wiki/Nurse_Joy.clean.json",
+      "sha256": "b634ae3eeffe3f18115d73fdf939d731dbfdb97daa7fba7fd3050ab4f329016a",
+      "bytes": 392
+    },
+    {
+      "path": "10_clean/wiki/Nurse_Joy.md",
+      "sha256": "4823e09ba4e9e79c614ab39935c028e8ef61fabfede5b11dfb13275a232cab71",
+      "bytes": 32152
+    },
+    {
+      "path": "10_clean/wiki/Old_man_(Kanto).clean.json",
+      "sha256": "e7985fe9fb5763fe1e323376f0a574fb48502acb29c0dea369a5d4a634d58b4d",
+      "bytes": 404
+    },
+    {
+      "path": "10_clean/wiki/Old_man_(Kanto).md",
+      "sha256": "3f4d0350bca6cd946399ce87b58e2b71bb7934dae5bdc7ee30edb5c42dd122b1",
+      "bytes": 6906
+    },
+    {
+      "path": "10_clean/wiki/One_Island_Town.clean.json",
+      "sha256": "59e2962a96c6d66180d1999f768ea917b64aff41bd0ed870754580938ec90e31",
+      "bytes": 405
+    },
+    {
+      "path": "10_clean/wiki/One_Island_Town.md",
+      "sha256": "c2705099d5c491ab9585ee94b3d5d24b95bff69a6f4c89109f83849fe3ca9508",
+      "bytes": 2096
+    },
+    {
+      "path": "10_clean/wiki/PI_(Trainer_class).clean.json",
+      "sha256": "f65f7d7419d6e8845275226f46ffc194fce65447e99e4dab445035042a384145",
+      "bytes": 411
+    },
+    {
+      "path": "10_clean/wiki/PI_(Trainer_class).md",
+      "sha256": "4d2e3e5ac95910e7a5a062e1553d3716e38b7aae74bb5e25963a578ce387948c",
+      "bytes": 9152
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9dex.clean.json",
+      "sha256": "bf87b8bb68b0329e79143abd9ef1422ab0d15617979bed1f03f053534fe327af",
+      "bytes": 399
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9dex.md",
+      "sha256": "bc5bb4ec69ed1e28008db3e6e57c269031f653184b05e4646cae5d6bfb4c9e3b",
+      "bytes": 61752
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9lantis.clean.json",
+      "sha256": "4d7b3c53af52d1d5d57d48b4118b8954485ba7b6f27c3d125446bed50afb39c9",
+      "bytes": 405
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9lantis.md",
+      "sha256": "a54b9be66e5b596b9ed1bdb3fd03da4dcbe42a62d42eedae2930669650aa8d7b",
+      "bytes": 1872
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Center.clean.json",
+      "sha256": "3af4333e33d06426ddd6106344c1994f79491c48477c6a119af96afd44b14b29",
+      "bytes": 413
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Center.md",
+      "sha256": "27f0b01b4f656837ef28b06d10537545326fbd76be3a0d4542cbce4a5f03b942",
+      "bytes": 45140
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Egg.clean.json",
+      "sha256": "d9c87cbe658260a5870dd298820c1b11c06dac986cc4163834aca4818ac13160",
+      "bytes": 407
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Egg.md",
+      "sha256": "23848c1c384ddc110c1fa67c833b09a72b511049be888d55b10b420b56f82879",
+      "bytes": 45505
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_League.clean.json",
+      "sha256": "5a938e6fca4570f7e058cf179d4fbe6d1bea8f2550f9e7882965c45b2e565dc2",
+      "bytes": 413
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_League.md",
+      "sha256": "db790e1bed888a051e920bb0bc2f22db9e790515f6a0629a16f3ea71ee422b05",
+      "bytes": 12232
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Professor.clean.json",
+      "sha256": "5e7a821f1dac3ccada5df26b6a7d2269e393927642ae81ac075bf03db6cf3fad",
+      "bytes": 419
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Professor.md",
+      "sha256": "843be9df595809e9157d37cf8f64b27abd8b5ab196d661cca02529a6a0fe626f",
+      "bytes": 20249
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Ultra_Sun_and_Ultra_Moon.clean.json",
+      "sha256": "b856c0ac1de4c1c0d13a107101f2a06e9abf4415222a671cff4d206bece4c40a",
+      "bytes": 449
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_Ultra_Sun_and_Ultra_Moon.md",
+      "sha256": "62917b77320cb199dcd838efa0bb64f2bb5913c2ad36f5d695f3e6e9d9391686",
+      "bytes": 46657
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_the_Series.clean.json",
+      "sha256": "0ac9c388986888f8a5a04b57fdcafcb091aa7cde531e02229414c39c44d88527",
+      "bytes": 421
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_the_Series.md",
+      "sha256": "6594e19d2d29b522e77ee1be4bf053a4a85bcd2950e9034b2dd99054a9a4315e",
+      "bytes": 19855
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_world_in_relation_to_the_real_world.clean.json",
+      "sha256": "fb2fd3c503ab2c8b9379ea597cc776da6dd0379e15de305eafa07b2d9f22652c",
+      "bytes": 471
+    },
+    {
+      "path": "10_clean/wiki/Pok%C3%A9mon_world_in_relation_to_the_real_world.md",
+      "sha256": "66615f29eb147bd368afc960a15306f2acc9f2e31862e180e30cdcad2c74fcf1",
+      "bytes": 265422
+    },
+    {
+      "path": "10_clean/wiki/Pok\u00e9mon_Association.clean.json",
+      "sha256": "b19f1c30c27f4df9d72b30c274ff6197dbc4ffdf5759045f2e414e99204bbc53",
+      "bytes": 422
+    },
+    {
+      "path": "10_clean/wiki/Pok\u00e9mon_Association.md",
+      "sha256": "299c3e2c6bfb1863bee9104523a0b94e7af7fac8e38c9c84cbff1a90e4ba517e",
+      "bytes": 4579
+    },
+    {
+      "path": "10_clean/wiki/Pok\u00e9mon_Trainer_Fan_Club.clean.json",
+      "sha256": "aa65abd13cfeff122d7597939987b091652ff2d8175a97e6e4bbc24f3388c0fe",
+      "bytes": 432
+    },
+    {
+      "path": "10_clean/wiki/Pok\u00e9mon_Trainer_Fan_Club.md",
+      "sha256": "43f23f70375b75c63f39d1fbfb26b513975b2322015dd46e2df48a87440d4236",
+      "bytes": 2412
+    },
+    {
+      "path": "10_clean/wiki/Professor_Kukui.clean.json",
+      "sha256": "50c92f0de0364e516e81c106375271be30d8de1e967b95edef8fd1a8e0878e1f",
+      "bytes": 404
+    },
+    {
+      "path": "10_clean/wiki/Professor_Kukui.md",
+      "sha256": "91d54f69993e7644dcf38d004454bc4fe04d48d8b88f41b6a99c7606d6c30d6a",
+      "bytes": 28738
+    },
+    {
+      "path": "10_clean/wiki/Professor_Oak.clean.json",
+      "sha256": "683ab36aafc94acc74a00fa36a35c3e0850a9d2732cb6617cdbe0b563af15e17",
+      "bytes": 401
+    },
+    {
+      "path": "10_clean/wiki/Professor_Oak.md",
+      "sha256": "33e4ad5e0cf4b08288ea3c2b77c32634071a6e68a4dbafcbd782d75c14fc0024",
+      "bytes": 27942
+    },
+    {
+      "path": "10_clean/wiki/Radio.clean.json",
+      "sha256": "10de06dd48592a815d7b7f0fb8ac8e30885771aa1877bbf68d45120c0597cad4",
+      "bytes": 385
+    },
+    {
+      "path": "10_clean/wiki/Radio.md",
+      "sha256": "1490df1cd5b3a777eb1508b083b6f5b370520a5a0c009b3cb69be2447acca0fd",
+      "bytes": 25343
+    },
+    {
+      "path": "10_clean/wiki/Rayquaza_(Pok%C3%A9mon).clean.json",
+      "sha256": "cd42c925c510f35882c76fcf854a197909f1226a4089bbe6807e85ea6a777386",
+      "bytes": 421
+    },
+    {
+      "path": "10_clean/wiki/Rayquaza_(Pok%C3%A9mon).md",
+      "sha256": "0892d01478baca5d6c70743f7fa6b5f88c9509884f602cca8cbe75f919f97b7f",
+      "bytes": 17091
+    },
+    {
+      "path": "10_clean/wiki/Regional_Pok%C3%A9dex.clean.json",
+      "sha256": "13f07c4a4f98a3f1e0f94cc4eaf2db8f8ff9bf6150252afc36a4d478e8f51597",
+      "bytes": 417
+    },
+    {
+      "path": "10_clean/wiki/Regional_Pok%C3%A9dex.md",
+      "sha256": "feb890aa6695705ee57495c69a1148390cde27f8f80a6ae3ae85109f73a8d14d",
+      "bytes": 11932
+    },
+    {
+      "path": "10_clean/wiki/Rio.clean.json",
+      "sha256": "f07a7726687936a17a5e4a220dd8efede0c498d452b2276c38c76dbc680ef323",
+      "bytes": 380
+    },
+    {
+      "path": "10_clean/wiki/Rio.md",
+      "sha256": "0caa5c0603ecbebaaaa4e4f90ba7e54a5f28eb1b266f7ede350214c845cca217",
+      "bytes": 1402
+    },
+    {
+      "path": "10_clean/wiki/Ruby_(Adventures).clean.json",
+      "sha256": "ff6a5f8a778342bf41c037c9337b33c8f986d05e85d01f7dde560f437dc1b7b9",
+      "bytes": 408
+    },
+    {
+      "path": "10_clean/wiki/Ruby_(Adventures).md",
+      "sha256": "3e69895d9ef2302686ea24ab2c1762ee50f6f6882ff4fab7c61c05e310d2bb2b",
+      "bytes": 31533
+    },
+    {
+      "path": "10_clean/wiki/Ruby_(Ruby-Sapphire).clean.json",
+      "sha256": "44020f3d5ec2af978a02039c4a03f59cee7aaa61e9ee17b074f1c6801292d618",
+      "bytes": 414
+    },
+    {
+      "path": "10_clean/wiki/Ruby_(Ruby-Sapphire).md",
+      "sha256": "9c3c68687adb25f54d839487b2441305b5ccdba5c49e370e8e0f9ce569267ee6",
+      "bytes": 1500
+    },
+    {
+      "path": "10_clean/wiki/S.S._Anne.clean.json",
+      "sha256": "d75dca48579d8c1a52b0c13c6d32477a37a35ca599156f65a5fe574f0a50da26",
+      "bytes": 393
+    },
+    {
+      "path": "10_clean/wiki/S.S._Anne.md",
+      "sha256": "60e308d2be707a2a1a23d81e06113a22f311e5f0c4c5f0ad0522602ad3d664cd",
+      "bytes": 13612
+    },
+    {
+      "path": "10_clean/wiki/Samson_Oak.clean.json",
+      "sha256": "4ac2b420a01e6e96f96db3248d71ce894d3431af150743733dc95a00475c8790",
+      "bytes": 394
+    },
+    {
+      "path": "10_clean/wiki/Samson_Oak.md",
+      "sha256": "62083381ce50f32bd276d741a35504be0ee71b5ec76a258c11e61f9adfc322e2",
+      "bytes": 9061
+    },
+    {
+      "path": "10_clean/wiki/Sapphire_(Adventures).clean.json",
+      "sha256": "fcabd9ac49090589c7d303e6ceeae227600aa299cd2f4021fdcfa4e976e887c0",
+      "bytes": 416
+    },
+    {
+      "path": "10_clean/wiki/Sapphire_(Adventures).md",
+      "sha256": "c6b16a5d4c2a6947d5d9015665980b6aec13bc06d3a59b997503a78ecf62d421",
+      "bytes": 25256
+    },
+    {
+      "path": "10_clean/wiki/Sinnoh.clean.json",
+      "sha256": "3748f5165cfe676c178c76e46c4d8002cfcee6d4b19c634be9995f31b05a11cb",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Sinnoh.md",
+      "sha256": "a5e221d38a50cdfc287b2e690c1e7a62bc1650ba92c26d4f3c94e7254249a926",
+      "bytes": 32440
+    },
+    {
+      "path": "10_clean/wiki/Slowpoke_(Pok%C3%A9mon).clean.json",
+      "sha256": "5c1cb21ebd0da8f63341cf5c2b87889538c367040abfbae74509315998818a18",
+      "bytes": 421
+    },
+    {
+      "path": "10_clean/wiki/Slowpoke_(Pok%C3%A9mon).md",
+      "sha256": "10bd1ec3724c630c0a2115129b83efa96cca8e79dd6f1910f88579561afad607",
+      "bytes": 11432
+    },
+    {
+      "path": "10_clean/wiki/Snowpoint_Temple.clean.json",
+      "sha256": "e3f4770239f0d295a2a243d2e7ae6df7f35ad7e31a3347dc0cfdefd786a31ac4",
+      "bytes": 407
+    },
+    {
+      "path": "10_clean/wiki/Snowpoint_Temple.md",
+      "sha256": "98376f9916a784e5a3938978246884ceb9b6b36a6f13a136211937a9dd4b2dc9",
+      "bytes": 5455
+    },
+    {
+      "path": "10_clean/wiki/Solidad.clean.json",
+      "sha256": "e74f44d0d1e4a48f4a8c7492b772def78d3130e79264f1d0f0384ca1d9c2e292",
+      "bytes": 388
+    },
+    {
+      "path": "10_clean/wiki/Solidad.md",
+      "sha256": "fb2b6c460c5d56a8aac280553cd8d927543c3eebe9afd5f4d3ee692989ae78f0",
+      "bytes": 3472
+    },
+    {
+      "path": "10_clean/wiki/Trading_Card_Game_Islands.clean.json",
+      "sha256": "cb7199a95d79adacd1c3c640e63a405dd0e2c626d93cc01d76af08e0e682cd2e",
+      "bytes": 425
+    },
+    {
+      "path": "10_clean/wiki/Trading_Card_Game_Islands.md",
+      "sha256": "df8467f6a75bffc4922a1237efb2f81a1614025938c28e73956bc8a52d72c487",
+      "bytes": 617
+    },
+    {
+      "path": "10_clean/wiki/Trip.clean.json",
+      "sha256": "64c730b2856890fb1cf5eabff78679917ba5ac527b92c6461493256e5ec907c4",
+      "bytes": 382
+    },
+    {
+      "path": "10_clean/wiki/Trip.md",
+      "sha256": "f6ac0869f09b1398b8eb55de6e764b4ddba4b8dc355853ca303d86c96a5fa1bb",
+      "bytes": 14795
+    },
+    {
+      "path": "10_clean/wiki/Ultima.clean.json",
+      "sha256": "59234db0241402fa287b1637eb0d4e0eb44d81164f6089edf46d85a99bfb2c54",
+      "bytes": 386
+    },
+    {
+      "path": "10_clean/wiki/Ultima.md",
+      "sha256": "1f4481bf5cc03ce10b0427729cb7be2bd638bf650a2345e2c181c9f2b58a7d99",
+      "bytes": 7626
+    },
+    {
+      "path": "10_clean/wiki/Unova.clean.json",
+      "sha256": "f565aae5a27fae4f2ecf72571ae3711d1a09e55ae940215d64ab7e2c9f12b397",
+      "bytes": 384
+    },
+    {
+      "path": "10_clean/wiki/Unova.md",
+      "sha256": "d16cf5ab8228521cab51b9587ee27a522e9e367499fe473a8411325e4cec3506",
+      "bytes": 26722
+    },
+    {
+      "path": "10_clean/wiki/Unown_(Pok%C3%A9mon).clean.json",
+      "sha256": "f57750af100d7129ec28b2461fa3de3d2b3df568161d7698dd28d1a54ee40c75",
+      "bytes": 415
+    },
+    {
+      "path": "10_clean/wiki/Unown_(Pok%C3%A9mon).md",
+      "sha256": "5d80dd419231cb4c9452cb16bda8ccd5914a4f596fc8eec739cc6a2c1ea38ad2",
+      "bytes": 13710
+    },
+    {
+      "path": "10_clean/wiki/Villainous_team.clean.json",
+      "sha256": "8c35b38733fb94f16be19f3035f9750577352eb7677f3d9dc44dafd67b45050b",
+      "bytes": 405
+    },
+    {
+      "path": "10_clean/wiki/Villainous_team.md",
+      "sha256": "886e651ef7380f031ebc2b09b6ec3940bc93f8689145acb980089b462b976141",
+      "bytes": 47092
+    },
+    {
+      "path": "10_clean/wiki/Vivian_Meridian.clean.json",
+      "sha256": "2b89918c8abe7c34ae71bbb0ed2b6642806f8c40f5cc1472554e21ba9140f2e7",
+      "bytes": 404
+    },
+    {
+      "path": "10_clean/wiki/Vivian_Meridian.md",
+      "sha256": "2de7e3b4d38b837214db885cec8775722ef219e81ce8a5150ca760ef9fce7473",
+      "bytes": 2990
+    },
+    {
+      "path": "10_clean/wiki/Whitney.clean.json",
+      "sha256": "31781aad58a4562adc690af6324bcd47d6f6d50c73303c57c5ee0e5f77897eeb",
+      "bytes": 388
+    },
+    {
+      "path": "10_clean/wiki/Whitney.md",
+      "sha256": "5699d78855e7f98c95527f6ac840cbe9e9bfced0afdd8742884329b45674f1de",
+      "bytes": 13596
+    },
+    {
+      "path": "15_structured/.extracted.json",
+      "sha256": "d198d5bd18ac5314552278048f9475a9a6c57796c9d3b161efbc0d244dc61046",
+      "bytes": 6664
+    },
+    {
+      "path": "15_structured/discourse.jsonl",
+      "sha256": "d637c74a8a14e14f3ffccf8529d29c9a997a0a1aeacd042d2f8390d56a2a5c7d",
+      "bytes": 59298
+    },
+    {
+      "path": "15_structured/entities.jsonl",
+      "sha256": "eaac9b866a05e9030c4747110800c85055fb5df2da894caa4117442810e31a91",
+      "bytes": 537918
+    },
+    {
+      "path": "15_structured/triples.jsonl",
+      "sha256": "321c1e07d770dfa8ce9bcfb5ae33be91ecaf87b0ed3e40303daaf07075d5db95",
+      "bytes": 222148
+    },
+    {
+      "path": "25_hydrated/relations.jsonl",
+      "sha256": "cf0b99c6503d77fccdc324f1ef4e0c3b87e1d370f391f70ead5924a5117f763a",
+      "bytes": 392445
+    },
+    {
+      "path": "25_hydrated/relations_llm.jsonl",
+      "sha256": "6cf514f2862456ba3fdd8dd8fcea238669ca212898cf07b00c0808ab9cba5b6b",
+      "bytes": 1697158
+    },
+    {
+      "path": "probes.jsonl",
+      "sha256": "1c2a8729ba9d94d53718ac2b397eb4c23f9c3877467550dafa10d25b4c267475",
+      "bytes": 155707
+    }
+  ]
+}

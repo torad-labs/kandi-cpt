@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "e52ee7dcb349e73254dfc9d13cf0f5a705a31741bd6c1ea8e822593f43896bc0",
+  "clean_sha256": "fb2b6c460c5d56a8aac280553cd8d927543c3eebe9afd5f4d3ee692989ae78f0",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Solidad.txt",
+  "title": "Solidad"
+}

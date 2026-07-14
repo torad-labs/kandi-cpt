@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "dac61eaa0221ca01976576d4e578fda60190006d4fea58b79c125d1c358963a7",
+  "clean_sha256": "98376f9916a784e5a3938978246884ceb9b6b36a6f13a136211937a9dd4b2dc9",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Snowpoint_Temple.html",
+  "title": "Snowpoint Temple"
+}

@@ -1,0 +1,15 @@
+
+!!! DATA AUDIT RESOLVED DEVICE: CPU ONLY (--no-gpu; latent pass skipped) !!!
+data audit over 1 edition(s) (kanto)
+           density [SKIPPED]
+           balance [PASS]
+          coverage [PASS]
+         token_mix [PASS]
+   disjoint_static [PASS]
+   sft_composition [PASS]
+      sft_phrasing [WARN]
+         sft_tiers [PASS]
+   disjoint_latent [SKIPPED]
+
+  → data_audit_data.js + data_audit.html (open data/_build/dissect/data_audit.html)
+{"build_id":"65e507e26fa64f92","stage":"audit","status":"PASS","error":null}

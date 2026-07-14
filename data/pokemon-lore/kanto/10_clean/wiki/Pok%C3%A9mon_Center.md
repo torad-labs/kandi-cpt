@@ -1,0 +1,401 @@
+# Pokémon Center
+
+Scraped unknown from Pok%C3%A9mon_Center.html.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Pokémon Center
+- If you were looking for the retail store chain, see Pokémon Center (store).
+- PMC redirects here. For the recurring characters in Pokémon the Series, see Pokémon Mystery Club.
+| This article is missing one or more images. Please feel free to add any missing images to this article. Needed images can be uploaded to the Bulbagarden Archives. Reason: Missing layout maps for Lavaridge Town Pokémon Center and needs a complete map for Generation V as well as a Pokémon Center design from X and Y. |
+A Pokémon Center (Japanese: ポケモンセンター Pokémon Center), also shortened by Hau to PMC (Japanese: ポケセン Pokécen or Pokésen), is an establishment that provides regulatory services for Pokémon Trainers, such as healing their Pokémon for free.
+In early guidebooks, it has also been called the Poké Center[1] and Pokémon Hospital.[2]
+Early concept and development leftovers
+In Capsule Monsters, Trainers restored their monsters' health by staying at inns and hotels, which provided healing devices in rooms.[3] This might explain the similarities between Pokémon Centers and the Celadon Hotel in the Generation I games.
+In the Generation I games, the Rest Houses in the Eastern side of Center Area along with the ones in Area 2 and Area 3 of the Safari Zone also have leftovers of Pokémon Center design: in the Japanese Pokémon Red, Green, and Blue, the houses trigger hidden text in the same coordinates as the couch guy at Pokémon Centers, while inaccessible PCs are placed outside the boundaries of the map but in the same coordinates as PCs in Pokémon Centers (the PCs are also in the Western Pokémon Red and Blue; both texts and PCs, including the invisible Celadon Hotel PC, were completely removed in Japanese and Western Pokémon Yellow). Additionally, the tileset data of the Safari Zone maps includes tiles with the Pokémon Center signpost for use in the Rest Houses, without any text. Unlike Pokémon Centers, however, which store the player's current location in memory so that Teleport, Dig, or Escape Ropes return the player to the last location with a Pokémon Center available, the Safari Zone's Rest Houses are intentionally programmed to prevent this behavior so that the player does not cheat the Safari Game.
+In the core series games
+Pokémon Centers are found in most towns and cities of the Pokémon world, sometimes even on routes, with almost every major settlement having at least one Pokémon Center; they take the form of buildings in most regions, but Paldea and Kitakami's Pokémon Centers are outdoors instead. Some Pokémon Centers can be found outside of towns. Pokémon Centers are built where many Trainers gather. This is to accommodate those Trainers in need and to serve as a resting spot. The most common service the Pokémon Center offers is healing Pokémon free of charge.
+In the games, Pokémon Centers vary between regions, but all of them have in common a healing station run by a Pokémon Center lady behind a main counter, which heals all party Pokémon (fully restoring their HP and PP and healing any status conditions) free of charge. Starting in Generation VIII, this also heals all Pokémon in the player's Boxes (whereas they would be automatically healed upon being deposited in the Boxes in prior generations). Prior to Generation IX, Pokémon Centers also always featured a PC (or Rotomi in Galar) to access the Pokémon Storage System, among other functionality. Most Pokémon Centers also contain various NPCs that vary between locations. In Unova, Kalos, Alola, Galar, and Paldea, Poké Marts are also housed inside Pokémon Centers. Prior to Generation VI and in Pokémon Brilliant Diamond and Shining Pearl, Pokémon Centers also have services for connecting with other players and trading and battling with them; this required wired connections prior to Pokémon FireRed and LeafGreen. In addition, Alola's Pokémon Centers house the Pokémon Center Café, Galar's house Jack, and Paldea's and Kitakami's house the TM Machine and Union Circle. From Generation V to VII, the deliverers of Mystery Gifts appear in Pokémon Centers. Mr. Medal also appears here in Pokémon Black 2 and White 2 when awarding the player any Medal.
+Flying often brings the player to a Pokémon Center, and Teleport brings the player to the Pokémon Center they last visited (or to the Pokémon Center of the settlement they are currently in). Also, if defeated in battle, the player will usually flee to the Pokémon Center they most recently visited (unless the player has not yet visited a Pokémon Center, in which case they will appear outside their house).
+Prior to Generation IV, saving inside a Pokémon Center is required to facilitate linking with console games such as Pokémon Stadium and Pokémon Colosseum.
+Prior to Pokémon HeartGold and SoulSilver, Pokémon Centers had a slogan. In Generations I and II, as well as Pokémon FireRed and LeafGreen and Pokémon Diamond, Pearl, and Platinum, it is "Heal Your Pokémon!". In Pokémon Ruby, Sapphire, and Emerald, it is "Rejuvenate your tired partners!"
+Prior to Generation V, Pokémon Centers also hosted the Cable Club or the Union Room, which facilitated multiplayer gameplay. Originally, linked players could only battle and trade with one another, but in Generation III and IV (except for Pokémon FireRed and LeafGreen), players could mix records, and in Pokémon Platinum and Pokémon HeartGold and SoulSilver, they could play games together.
+The Pokémon Center theme has retained essentially the same melody throughout the games. A different version is used at night in Pokémon Diamond, Pearl, and Platinum. In Pokémon Legends: Arceus, the only core series game to not feature Pokémon Centers, a small part of the melody can be heard in the theme that plays after the player reports their survey results to Professor Laventon. A rearrangement of the theme has also been used in the Super Smash Bros. series since Super Smash Bros. Brawl.
+Generation I
+In the Generation I games, a Pokémon Center consists of two counters on a single floor. The counter on the left has a Pokémon Center lady that will heal the player's Pokémon. The counter on the right contains the Cable Club, which allows players to link with each other. Talking to the women at the desk will allow the player to enter the Cable Club. Furthest to the right is the PC to deposit and withdraw Pokémon or items. The Generation I games also include two of the few examples of a Pokémon Center that isn't in a town: the Pokémon Centers in Route 4, outside Mt. Moon, and in Route 10, outside the entrance to the Rock Tunnel. Future generations employ rest houses that only offer healing services in similar areas.
+In Pokémon Yellow, a Chansey stands next to the lady in every center. This is a reference to Nurse Joy in the animated series.
+Cable Club
+The Cable Club (Japanese: つうしん ケーブル クラブ Communication Cable Club) is the original link-up place, it is located at the far end of the Pokémon Center in Generation I Kanto. Players can link together to simply battle each other one-on-one and trade Pokémon with each other. Two players linked by a Game Boy Game Link Cable can enter the Cable Club. Pokémon Yellow features an extended version of the Cable Club with the option to choose special battle rules or cups.
+Generation II
+In the Generation II games, to accommodate greater linking functionality, the Pokémon Centers of both Kanto and Johto expanded to two floors. On the first floor, there is the counter where a Pokémon Center lady heals the player's Pokémon, as well as a PC. On the second floor resides the Cable Club and Time Capsule.
+In the Japanese versions and Korean versions of Pokémon Gold and Silver, the sign of Johto's Pokémon Centers have a Poké Ball logo and the letters PC while Kanto's use the same sign as that of the Generation I games. In the localized versions, the Generation I sign was used for both regions.
+Cable Club
+Located upstairs in Pokémon Centers throughout Johto and Kanto, this Cable Club consists of three rooms. The Cable Club Trade Center facilitates trading, the Cable Club Colosseum allows battling, and the Cable Club Time Capsule provides a way to trade Pokémon with the Generation I games. Because there were no female protagonists prior to Kris's introduction in Pokémon Crystal, a player who has chosen Kris is temporarily swapped into the male player sprite before linking; this still happens even when two Pokémon Crystal games are linked despite the sprite data for the female choice being present.
+Two players can enter the Cable Club with a Game Boy or Game Boy Color Game Link Cable. Although the Game Boy Advance link cable is usually not compatible with Game Boy games, connecting the purple ends of two GBA link cables into each other’s hubs then the grey ends into two Game Boy Advance consoles allows two Game Boy games to connect with each other.
+PokéCom Center
+- Main article: Pokémon Communication Center
+Exclusively in the Japanese version of Pokémon Crystal, the Pokémon Communication Center, or PokéCom Center, replaces the regular Pokémon Center in Goldenrod City, and takes use of the Mobile System GB. It is in essence a prototype for the Global Terminal, justifying the placement of one in the city in Pokémon HeartGold and SoulSilver.
+Generation III
+Pokémon Centers in the Generation III games keep the two-floor setup, similar to the regular Pokémon Centers in the Generation II games. The only difference is that the stairs to the second floor are larger and more noticeable, taking the shape of an escalator.
+In Orre, there are only four official Pokémon Centers, located in Phenac City, Agate Village, the Under Colosseum lobby, and Gateon Port, all of which have unique appearances. Only the Phenac City Pokémon Center has facilities for linking with the Generation III core series games. Self-service healing machines, identical to ones staffed by a Pokémon Center lady in a Pokémon Center, appear scattered throughout Orre, usually next to a PC.
+In Pokémon Colosseum and Pokémon XD: Gale of Darkness, when trading with a core series game, the trade is conducted entirely through the GameCube interface, although the GBA game makes its own selections. However, the core series game must be saved inside a Pokémon Center in order to be able to trade with the GameCube game.
+2F
+The second floor of the Pokémon Center includes various communication hubs.
+In Pokémon Ruby and Sapphire, Pokémon Center 2F is the Pokémon Cable Club. It has three communication rooms: the Pokémon Cable Club Trade Center, Pokémon Cable Club Colosseum, and Pokémon Cable Club Record Corner.
+In Pokémon FireRed, LeafGreen, and Emerald, Pokémon Center 2F has an attendant's desk and two communication desks: the Union Room and the Direct Corner. Teala, the attendant, explains the communication functions to the player. The Union Room is a wireless hub for multiple players that requires the Game Boy Advance Wireless Adapter to enter. The Direct Corner transitions between the Pokémon Wireless Club Direct Corner (if the Wireless Adapter was connected when launching the game) or the Pokémon Cable Club (if it was not); the Pokémon Cable Club uses the Game Link Cable while the Pokémon Wireless Club Direct Corner uses the Wireless Adapter. The Pokémon Cable Club Direct Corner has the same features as the Pokémon Cable Club in Pokémon Ruby and Sapphire, but these are all accessed from the same desk.
+Pokémon Cable Club
+The Pokémon Cable Club is a set of communication features in all Generation III core series games that use a Game Link Cable. In Pokémon Ruby and Sapphire, the entire floor is the Pokémon Cable Club, with each feature having its own desk; in Pokémon FireRed, LeafGreen, and Emerald, they are all accessed from the Direct Corner desk, as long as the Wireless Adapter is not connected.
+- In the Trade Center, the player can trade Pokémon with one other player. There are no restrictions on trading between languages.
+- In the Colosseum, the player can battle one other player in a Single or Double Battle, or join three other players for a Multi Battle. There are no restrictions on battling between languages. Link battle wins and losses are recorded on the Battle Results board on Pokémon Center 2F.
+- In the Record Corner, the player can mix records with up to three other players of Pokémon Ruby, Sapphire, or Emerald. The player must have reached the Mauville City Pokémon Center in order to mix records. This feature is not available in Pokémon FireRed and LeafGreen. Japanese Pokémon Ruby and Sapphire cannot mix records with non-Japanese games, and non-Japanese Pokémon Ruby and Sapphire cannot mix records with Japanese games; otherwise, there are no restrictions on mixing records between languages.
+Pokémon Wireless Club
+The Pokémon Wireless Club is a set of communication features in Pokémon FireRed, LeafGreen, and Emerald that use the Game Boy Advance Wireless Adapter. There are two desks that form this club: the Union Room and the Direct Corner.
+Pokémon Wireless Club Direct Corner
+The Pokémon Wireless Club Direct Corner is accessible at the Direct Corner if the Wireless Adapter was connected when the game was launched. It has four features in Pokémon Emerald and three in Pokémon FireRed and LeafGreen. This club only allows communication among these three games.
+- In the Trade Center, the player can trade Pokémon with one other player. There are no restrictions on trading between languages.
+- In the Colosseum, the player can battle one other player in a Single or Double Battle, or join three other players for a Multi Battle. There are no restrictions on battling between languages. Link battle wins and losses are recorded on the Battle Results board on Pokémon Center 2F.
+- In the Record Corner, the player can mix records with up to three other players of Pokémon Emerald. The player must have reached the Mauville City Pokémon Center in order to mix records. This feature is not available in Pokémon FireRed and LeafGreen. There are no restrictions on mixing records between languages in the Wireless Club.
+- In Berry Crush, the player can play the Berry Crush minigame with up to four other players. The Powder Jar is required to play this minigame.
+When using the Pokémon Wireless Club Direct Corner, one player must choose "Become Leader", while the other players choose "Join Group" and join that leader's group.
+Union Room
+| This section is incomplete. Please feel free to edit this section to add missing information and complete it. Reason: Language restrictions on the Union Room (if any) |
+The Union Room is accessible at the Union Room desk, but only if the Wireless Adapter was connected when the game launched. The Union Room is a special hub area in which nearby players who are also in the Union Room appear. Up to 40 players can appear in the room at once.
+In the Union Room, players can chat using the easy chat system, view other Trainers' Trainer cards, battle with up to three level 30 or lower Pokémon, or trade via the trading board.
+Generation IV
+In the Generation IV games, Pokémon Centers introduce a basement floor, which takes use of Nintendo Wi-Fi Connection. Opposite the ground floor's escalator, another escalator downstairs to the basement appears. While the second floor retains the same features from the Generation III games, supporting up to four players using the native wireless connection of the Nintendo DS, the basement floor is where players can link up with others around the world using Nintendo Wi-Fi Connection. The ground floor, as always, is where a player can heal their Pokémon and use a PC. As of Pokémon Platinum, players can also challenge other Trainers inside specific Pokémon Centers also in Pokémon HeartGold and SoulSilver in Olivine City.
+A healing machine similar to the ones found in the centers can be obtained from the Underground in Pokémon Diamond, Pearl, and Platinum and placed in a Secret Base; however, it cannot heal Pokémon.
+In Pokémon HeartGold and SoulSilver, the Pokémon Center's design receives a major overhaul. The second floor became a mezzanine, located above and directly behind the main desk, and two staircases were added on each side of the desk for access to it. The PC was moved to the corner of the desk. All functions remain the same. The player's walking Pokémon will return to its Poké Ball while being healed. If the first Pokémon in the player's party fainted prior to healing, it will return to being the walking Pokémon as soon as it has been revived.
+Wireless Club
+Generation IV games feature a wireless club just like the Generation III games, where players in a Union Room can battle, trade, mix records and, in Pokémon Platinum and Pokémon HeartGold and SoulSilver, spin Eggs. However, the Pokémon Centers in these regions also have a basement, where the Wi-Fi Club is located, allowing players to connect to each other if they are registered on each other's Pal Pad. Here they can battle and trade, and they can talk to each other through the built-in microphone of the Nintendo DS, instead of using the easy chat system as in the Generation III games; however, the easy chat system is also supported.
+Wi-Fi Plaza
+- Main article: Wi-Fi Plaza
+The Wi-Fi Plaza is an enhancement to the Wi-Fi Club in Pokémon Platinum and Pokémon HeartGold and SoulSilver and is located on the basement floor. Players from around the world can enter a plaza to make Poffins and play minigames together via Nintendo Wi-Fi Connection. The player can walk around the plaza and communicate with other players there. A leap in multiplayer gameplay is introduced, allowing up to twenty players to enter the Wi-Fi Plaza at a time. The player may only spend a certain amount of time at the Wi-Fi Plaza each day.
+Trainers
+In Pokémon Platinum, after obtaining the Vs. Seeker from Dawn/Lucas on Route 207, trainers that were originally located at Jubilife TV in Pokémon Diamond and Pearl can be found roaming through Sinnoh's Pokémon Centers. Their teams grow stronger as the player progresses through the game. Their locations will vary by the day of the week. Reporter Kinsey and Cameraman Tevin will always be found in the same Pokémon Center together. Idol Grace cannot be found at any Pokémon Center on Wednesdays.
+| Trainer | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday | |
+|---|---|---|---|---|---|---|---|---|
+| Cameraman Tevin | Jubilife City | Hearthome City | Jubilife City | Jubilife City | Hearthome City | Fight Area | Fight Area | |
+| Clown Lee | Celestic Town | Pastoria City | Celestic Town | Pastoria City | Celestic Town | Hearthome City | Hearthome City | |
+| Guitarist Arturo | Canalave City | Canalave City | Pastoria City | Sunyshore City | Sunyshore City | Pastoria City | Pastoria City | |
+| Idol Grace | Pastoria City | Oreburgh City | Oreburgh City | Pastoria City | Snowpoint City | Snowpoint City | ||
+| Interviewers Roxy and Oli | Eterna City | Eterna City | Veilstone City | Veilstone City | Eterna City | Eterna City | ||
+| Poké Kid Ariel | Floaroma Town | Solaceon Town | Resort Area | Floaroma Town | Solaceon Town | Resort Area | Resort Area | |
+| Reporter Kinsey | Jubilife City | Hearthome City | Jubilife City | Jubilife City | Hearthome City | Fight Area | Fight Area |
+Generation V
+In the Generation V games, the Poké Mart has been merged with the Pokémon Center. This is similar to how the Pokémon League lobbies of previous generations contain both a Poké Mart and a Pokémon Center. The PCs in this generation have a help function, which describes a wide variety of game-related topics.
+As with Pokémon HeartGold and SoulSilver, the second floor is a mezzanine above and directly behind the main desk. All multiplayer features found on the second floor of Pokémon Centers in the Generation IV games, including the Nintendo Wi-Fi Connection features present in the basements, can be found here by talking to the attendant to the left and on the center, respectively. The attendant to the right allows players to access the Global Trade System (GTS), as well as all the features from the Global Terminal, such as the playback of recorded videos. The Global Battle Union (GBU) can also be accessed here, allowing players to battle random players via Nintendo Wi-Fi Connection. Geonet can also be found on the second floor, allowing players to register their real-world location, as in the Generation IV games. All Pokémon Centers except the one in the Pokémon League have a second floor.
+Generation VI
+In Generation VI, the wireless and online features previously accessible in Pokémon Centers are now handled by the Player Search System. As a result, the Centers are much smaller, as there is no need for additional floors anymore.
+If the player walks into a Pokémon Center on their birthday (as noted in the Nintendo 3DS system), the Pokémon Center lady will wish them a happy birthday.
+Pokémon X and Y
+In Pokémon X and Y, the Pokémon Centers now consist of the traditional counter to heal the player's Pokémon, and two small rooms to the sides. The room located on the right of the counter houses the Poké Mart again, which is accessed by talking to an attendant. In certain towns, a second attendant who sells TMs, special types of Poké Balls, or other items is also present. The room to the left of the counter is a dressing room that allows the player to change clothes and register their favorite outfits.
+Pokémon Omega Ruby and Alpha Sapphire
+In Pokémon Omega Ruby and Alpha Sapphire, the Pokémon Centers consists of one large room with a similar layout to the ground floor of the Pokémon Centers of the original versions, but with no PC and no second floor. The counter is in the back of the building and to the right is a map on the back wall. Just as in the original, Pokémon Centers do not contain a Poké Mart, which are a separate building. In Lavaridge Town, the Pokémon Center is connected to the town's hot springs.
+Generation VII
+Pokémon Sun, Moon, Ultra Sun, and Ultra Moon
+In Pokémon Sun, Moon, Ultra Sun, and Ultra Moon, Pokémon Centers consist of one large room. The Pokémon Center lady's counter is in the center of the building. On the right is a Poké Mart counter, staffed by one or two attendants, depending on the Pokémon Center. On the left is the Pokémon Center Café, where players can purchase one of three drinks. Once per day, after buying a drink, the player will receive Poké Beans for use in Pokémon Refresh and a status condition healing item from another region, such as Casteliacones and Old Gateaux.
+If the player walks into a Pokémon Center on their birthday (as noted in the Nintendo 3DS system), the Pokémon Center lady will wish them a happy birthday.
+Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!
+In Pokémon: Let's Go, Pikachu! and Let's Go, Eevee!, Pokémon Centers consist of one large room. The counter is in the back of the building, and a Chansey stands next to the nurse, like in Pokémon Yellow. As in Generation I and Pokémon FireRed and LeafGreen, Pokémon Centers do not contain a Poké Mart, which are a separate building. A map is located on the back wall to the right of the counter.
+Generation VIII
+Pokémon Sword and Shield
+In Pokémon Sword and Shield, Pokémon Centers consist of one large room. The Pokémon Center lady's counter is in the center toward the back of the Pokémon Center. The Pokémon Center lady will heal all of the Pokémon in the player's party and Boxes. On the right is a Poké Mart counter, staffed by one or two attendants, depending on the Pokémon Center. The range of items available for purchase at Poké Marts expands as the player earns more Gym Badges. Behind the left counter is an Indeedee and an attendant named Jack who provides the services of the Move Deleter, Move Reminder, Memory Girl, and Name Rater. There is also a Rotomi next to the nurse's counter.
+According to Pokémon Sword and Shield director Shigeru Ohmori, the Pokémon Centers in Galar are inspired by pubs common to the United Kingdom; this basis was chosen to evoke the idea of people gathering in these Pokémon Centers to relax and watch Pokémon battles. An early concept sketch for the Galarian Pokémon Center building was drawn by Ohmori while he was traveling for media interviews in the leadup to Pokémon Sun and Moon's release.[4]
+Pokémon Brilliant Diamond and Shining Pearl
+Pokémon Centers in Pokémon Brilliant Diamond and Shining Pearl are identical to those in the original games. Escalators downstairs access the Union Room's Global Room where players can link up with others around the world using Nintendo Switch Online, while escalators upstairs access the Local Room for supporting native wireless connection. However, these features can now also be accessed immediately by pressing the Y button in the overworld.
+Generation IX
+Pokémon Scarlet and Violet
+Unlike in previous generations, the Pokémon Centers in Pokémon Scarlet and Violet have no interior, and are instead accessible directly from the overworld. The Pokémon Center building resembles a gas station, with a large white Poké Ball-shaped light on the flat rooftop. These Pokémon Centers have three counters: the Pokémon Center lady's counter is located at the center, flanked on one side by the Poké Mart counter, and on the other by the TM Machine, a station which allows players to craft TMs. On the wall closest to the TM Machine is a yellow monitor located next to a circle on the ground of the same color with a Poké Ball symbol in the center. Interacting with the monitor opens the Union Circle screen. Other players joining via the Union Circle will appear from the yellow circle on the ground. Pokémon League representatives can often be found at Pokémon Centers, and will give the player a reward for beating a certain number of Trainers in the area.
+In The Teal Mask, the Pokémon Center in front of the Mossui Town community center in Kitakami has no interior, like the Pokémon Centers in Paldea. This Pokémon Center has two counters underneath a white canopy with a Yanma symbol on it, with the healing counter located to the right of the TM Machine. To the right of the two counters is the Union Circle monitor, with the yellow circle where other players appear located directly in front of it. Unlike the Pokémon Centers in Paldea, this center does not have a Poké Mart counter, with a shop called Peachy's being located nearby instead.
+In The Indigo Disk, while there are no Pokémon Centers at Blueberry Academy, the Terarium has self-service healing machines found at rest areas and plazas. There are also nearby vending machines serving as substitutes for the Poké Mart counter, and the Central Plaza has a TM Machine and Union Circle station located next to the healing machine. Additionally, similar to the Pokémon League representatives found near several Pokémon Centers in Paldea, guidance counselors can be found at the rest area in each biome, and will give the player rewards and BP for beating a certain number of Trainers in that biome.
+Pokémon Legends: Z-A
+In Pokémon Legends: Z-A, nine Pokémon Centers are situated around Lumiose City. Each Pokémon Center is situated on the corner of a building at an intersection, having two perpendicular entrances. On the corner outside is a 3D holo-tech projection of an item available from the Poké Mart, which gradually cycles through different items. Similar to Scarlet and Violet, the interiors are accessible directly from the overworld. Along one wall inside is the main counter, which is split into a red Pokémon Center side on the right, and a blue Poké Mart side on the left. Despite this, a single Pokémon Center clerk handles both duties, with the player now having to choose which service they wish to use when speaking with her. Along the other side of the interior is a row of comfortable seating, and Lumiose City-themed decorations are adorned on the wall above.
+Early in the game, the clerk at the Vert Pokémon Center will provide the player with the Pokédex app for their Rotom Phone. Outside of every Pokémon Center is a man who will collect lost Poké Balls which were thrown by the player without making contact with a Pokémon; the lost Poké Ball collector will return them to the player free of charge. A Pokémon Center clerk operates a traveling Pokémon Center stand on the north side of Rouge Plaza. She will heal the player's Pokémon for free, but does not offer any other services.
+After visiting the Looker Bureau for the first time, the next Pokémon Center clerk spoken to will ask the player if they wish to register their birthday. This does not have to be done immediately, and the player may return to do this at a later time.
+Layout
+Interior
+-
+Red, Blue, and Yellow
+Kanto -
+Gold, Silver, and Crystal
+Johto -
+Ruby, Sapphire, and Emerald
+Hoenn -
+FireRed and LeafGreen
+Kanto -
+Diamond, Pearl, and Platinum
+Sinnoh -
+HeartGold and SoulSilver
+Johto -
+Black, White, Black 2, and White 2
+Unova -
+X and Y
+Kalos -
+Omega Ruby and Alpha Sapphire
+Hoenn -
+Sun, Moon, Ultra Sun, and Ultra Moon
+Alola -
+Let's Go, Pikachu! and Let's Go, Eevee!
+Kanto -
+Sword and Shield
+Galar -
+Brilliant Diamond and Shining Pearl
+Sinnoh -
+Scarlet and Violet
+Paldea -
+The Teal Mask
+Kitakami
+Exterior
+-
+Red and Blue
+Kanto -
+Yellow
+Kanto -
+Gold, Silver, and Crystal
+Kanto -
+Gold, Silver, and Crystal
+Cherrygrove City -
+Gold, Silver, and Crystal
+Azalea Town -
+Gold, Silver, and Crystal
+Goldenrod City -
+Gold, Silver, and Crystal
+Ecruteak City -
+Gold, Silver, and Crystal
+Olivine City -
+Gold, Silver, and Crystal
+Cianwood City -
+Gold, Silver, and Crystal
+Mahogany Town -
+Gold, Silver, and Crystal
+Blackthorn City -
+Ruby, Sapphire, and Emerald
+Hoenn -
+FireRed and LeafGreen
+Kanto -
+FireRed and LeafGreen
+Pokémon Network Center -
+Diamond, Pearl, and Platinum
+Sinnoh -
+Black, White, Black 2, and White 2
+Unova -
+Black 2 and White 2
+Victory Road -
+X and Y
+Kalos -
+Omega Ruby and Alpha Sapphire
+Hoenn -
+Sun, Moon, Ultra Sun, and Ultra Moon
+Alola -
+Let's Go, Pikachu! and Let's Go, Eevee!
+Kanto -
+Sword and Shield
+Galar -
+Brilliant Diamond and Shining Pearl
+Sinnoh -
+Scarlet and Violet
+Paldea -
+The Teal Mask
+Kitakami
+Exterior (Japan)
+The "POKE" text uses exactly the same font in all Japanese versions of Generation I and II games, except Pokémon Blue has some design differences in the letters "P" and "E". The letter "P" from Japanese Pokémon Blue is also used in the localized versions of Pokémon Red, Blue, and Yellow.
+-
+Red and Green
+Kanto -
+Blue
+Kanto -
+Yellow
+Kanto -
+Gold, Silver and Crystal
+Kanto -
+Gold, Silver and Crystal
+Cherrygrove City -
+Gold, Silver and Crystal
+Azalea Town -
+Gold and Silver
+Goldenrod City -
+Gold, Silver and Crystal
+Ecruteak City -
+Gold, Silver and Crystal
+Olivine City -
+Gold, Silver and Crystal
+Cianwood City -
+Gold, Silver and Crystal
+Mahogany Town -
+Gold, Silver and Crystal
+Blackthorn City
+Concept artwork
+-
+X and Y
+Kalos -
+X and Y
+Kalos -
+Sun and Moon
+Alola -
+Let's Go, Pikachu! and Let's Go, Eevee!
+Kanto -
+Let's Go, Pikachu! and Let's Go, Eevee!
+Kanto -
+Sword and Shield
+Galar
+In the spin-off games
+Pokémon Puzzle League
+In Pokémon Puzzle League, the Puzzle Village contains a Pokémon Center building which simply displays the options screen.
+Pokémon Pinball: Ruby & Sapphire
+- Main article: Pokémon Mart and Pokémon Center (Ruby Field)
+In the Ruby Field of Pokémon Pinball: Ruby & Sapphire, the same building serves as a Pokémon Mart and Pokémon Center. When this building serves as a Pokémon Center, it is used to evolve Pokémon. The "Pokémon Mart" sign turns around and becomes a "Pokémon Center" sign when a Pokémon is able to evolve.
+| Pokémon Center (closed door) |
+Pokémon Center (open door) |
+Pokémon Trading Card Game series
+In Pokémon Trading Card Game and Pokémon Trading Card Game 2: The Invasion of Team GR!, there is no Pokémon Center. However, the Clubs in the TCG Island and Forts in the GR Island have a room at the west side that is visually similar to the interior of Pokémon Centers, which include a PC and female attendants that offer multiplayer features: the Battle Center for dueling and the Gift Center for transferring cards and deck configurations.
+The Pokémon Center card is available in both games.
+| Pokémon Center (GB1) | Pokémon Center (GB2) |
+Pokémon Masters EX
+In Pokémon Masters EX, the Pokémon Center not only acts as the main menu and entry point to various game modes, but also as a hub where the player can interact with sync pairs they've teamed up with. The Pokémon Center is operated by three sisters: Trista, Tricia, and Trinnia, who staff the main reception desk, the shop, and the café respectively. A jukebox is available for the player to listen to songs from the game's soundtrack.
+Pokémon Pokopia
+In Pokémon Pokopia, a ruined Pokémon Center can be found in each major area of the game. Using the right materials and Pokémon friends, the player can rebuild these facilities. Outside each Pokémon Center is a PC that the player can use to obtain Life Coins and items. Once rebuilt, a Pokémon Center can be relocated using relocation kits bought from the PC.
+The general appearance of Pokémon Centers is based on the Let's Go games, with slight exterior differences between each area. The interior is also similar to the Let's Go games, consisting of a single large room with a Town Map on the back wall to the right of the counter. The healing machine is not located behind the counter, but to the right of the room. With it, Ditto can fully restore its PP once per day. The counter at the center now houses a cash register where Pokémon with the Trade specialty can set up a shop, allowing Ditto to buy items through trading goods. To the left of the room is a 3D printer where Ditto can use reference pictures, taken with the Pokédex camera's reference mode, to replicate items. This feature costs Pokémetal or rare Pokémetal ingots, with the exact cost depending on the item. The first time each Pokémon Center is entered, a note can be found in the middle of the room.
+In animation
+Pokémon the Series
+Pokémon Centers in Pokémon the Series are headed by a Nurse Joys. The healing process takes place in real-time, unlike in the games, so Ash and his friends often have to wait until their Pokémon are fully healed. All Pokémon Centers are connected and, in times of crisis, all Pokémon can be transferred from one to another, as seen in Pokémon Emergency!. Pokémon Centers are considered an important service, as shown in Celebi and Joy! where, in the past, the residents of Marion Town built a Pokémon Center as a community project.
+Pokémon Centers are designed for Trainers so they can rest between activities. Trainers use Pokémon Centers as gathering places, so they can share information about Pokémon. They also have access to video phones, PCs, trade machines, and most offer free food and lodging. As a Pokémon journey can take a long time, Pokémon Centers can also be used as mailing destinations. In addition, a Trainer can arrange for their loved ones to send them packages, typically to the next Pokémon Center they are traveling to.
+Inside a typical Pokémon Center, one can find a front desk, a lobby (sometimes with vending machines), a Poké Ball room, an Emergency Room with plenty of beds for injured Pokémon, a recovery room, a waiting room, rooms for lodging, and a cafeteria. A lobby may also have a large widescreen TV or several smaller TVs so Trainers can watch typically Pokémon-oriented shows, such as Sinnoh Now, Pokémon Contest broadcasts, and major competitions like the Pokémon League Conference and the Grand Festival of each region. A typical sleeping room has a desk and chair and two sets of bunk beds to maximize space and girls do not have to sleep in separate rooms from boys. At least one Pokémon Center was shown in Uncrushing Defeat! to have a small library with a PC (presumably connected to some network akin to the Internet), as an information room. It is unknown how these activities performed by a Pokémon Center are financed. On the outside, they come in all shapes and sizes, but usually have a rather large P somewhere and battlefields where Trainers can practice.
+As shown in The Ghost of Maiden's Peak, Pokémon Centers have a curfew for their residing Trainers. At 11:00 PM a metal screen is lowered down in front of the Pokémon Center's doorway, preventing Trainers from entering or leaving the Pokémon Center after curfew.
+In Restore and Renew! and Under Color of Darkness!, Ash and Goh are seen wearing pajamas provided by the Pokémon Center.
+The resident Nurse Joy of the center is usually assisted by a certain type of Pokémon, usually one or various Chansey in Kanto, Johto, Hoenn, Sinnoh, and the Orange Islands, Audino in Unova and the Decolore Islands, Wigglytuff in Kalos, Blissey and Comfey in Alola, or Indeedee in Galar. There are some exceptions in certain Pokémon Centers regardless of region however, for example the Nurse Joy of Johto's Ice Path was assisted by a Jynx.
+Professor Oak has also written senryū about Pokémon Centers in two of his lectures:
+- For Dawn of a New Era!, the Professor Oak's Big Pokémon Encyclopedia segment featured the senryū "When I want to meet Nurse Joy, Pokémon Center." (Japanese: 「ジョーイさん あいたくなったら ポケモンセンター」)
+- For Saving Darmanitan From the Bell!, the Professor Oak's Pokémon Holo Caster segment featured the senryū "Nurse Joy, Pokémon Center, without a break." (Japanese: 「ジョーイさん ポケモンセンター やすみなし」)
+In The Island of Illusions, it becomes apparent that a Pokémon Center can be run illegally as one was ran by a Zoroark.
+Pokédex entries
+|
+Pokémon Horizons: The Series
+Like in Pokémon the Series, Pokémon Centers are headed by Nurse Joys in Pokémon Horizons: The Series. Similar to previous series, they also provide other services besides healing, such as providing healing items for Trainers, as seen in For Sure! 'Cause Sprigatito's with Me!, where Liko got some Potions to refill the Rising Volt Tacklers' supply of them. However, due to the main cast mostly traveling around aboard the Brave Olivine in this series, Pokémon Centers are not used as rest stops to a similar degree as in previous series.
+In The Pokémon Center Lady, Mollie was revealed to be related to Nurse Joys and worked at a Pokémon Center in her hometown of Mochew City. However, as she revealed in Arboliva's Forest, she chose to travel with the Rising Volt Tacklers instead of staying at a Pokémon Center all of the time, since she wants to help the injured wild Pokémon that don't get the chance to be brought to a Pokémon Center.
+Pokémon Origins
+In Pokémon Origins, Pokémon Centers are headed by an unnamed nurse. The healing process takes place in real time, unlike in the games, which would often make Red wait until his Pokémon were fully healed before leaving. Pokémon Centers can also be used as social gathering places where Trainers can share information with other people. Additionally, Trainers have access to video phones and PCs within the Pokémon Center.
+Pokémon Evolutions
+In The Champion, people at a Galarian Pokémon Center prepared to watch Champion Leon's Championship Match through television.
+In the manga
+Be the Best! Pokémon B+W
+A Pokémon Center appeared in Victini - A New Friend!. Monta received a Victini from a deliveryman there.
+-
+Deliveryman
+Movie adaptations
+A Pokémon Center located in Dahara City appeared in Hoopa and the Clash of Ages.
+Pokémon Adventures
+A Pokémon Center first appeared in Wanted: Pikachu!. Many others have since appeared throughout the manga.
+Pokémon Gold & Silver: The Golden Boys
+A Pokémon Center first appeared in Falkner The Bird Keeper's Challenge!!. Several others were seen later throughout the manga.
+Pokémon Pocket Monsters
+A Pokémon Center first appeared in Big Battle in the Viridian Forest!!. Other ones appeared in Great Success in the Mountains or the Seas!? and PMDP15.
+Pokémon Journeys
+Vermilion City's Pokémon Center appeared in Beyond Chivalry… Aiming to Be a Leek Master!.
+Gallery
+-
+A Pokémon Center in Dahara City in Hoopa and the Clash of Ages
+-
+A Pokémon Center in Pokémon Adventures
+-
+A Pokémon Center in Pokémon Gold & Silver: The Golden Boys
+-
+A Pokémon Center in Pokémon Pocket Monsters
+-
+Vermilion City Pokémon Center in Pokémon Journeys
+In the activity books
+Pokémon Math Challenge
+In Pokémon Math Challenge: Grades 4-5 (page 4), there is a math activity stating that a Pokémon Center has 63 rooms that can hold 7 Pokémon each, for a total of 441 Pokémon.
+In the TCG
+The following is a list of cards named Pokémon Center.
+| Pokémon Center Cards listed with a blue background are only legal to use in the current Expanded format. Cards listed with a green background are legal to use in both the current Standard and Expanded formats. | |||||||
+|---|---|---|---|---|---|---|---|
+| Card | Type | English Expansion |
+Rarity | # | Japanese Expansion |
+Rarity | # |
+| Pokémon Center | T | Base Set | 85/102 | Expansion Pack | |||
+| Nivi City Gym | |||||||
+| Yamabuki City Gym | |||||||
+| Base Set 2 | 114/130 | ||||||
+| Wizards Black Star Promos | 40 | ||||||
+| Night Pokémon Center | T | Diamond & Pearl | 108/130 | Space-Time Creation | |||
+| Pokémon Center | St | Next Destinies | 90/99 | Hail Blizzard | 051/052 | ||
+| BW-P Promotional cards | 190/BW-P | ||||||
+In the TFG
+The playmat in the Pokémon Trading Figure Game has a Pokémon Center space, which Pokémon are sent to if they lose a battle.
+Trivia
+- The Pokémon Center in Po Town is the only one in the core series where healing one's Pokémon is not free of charge, as the Team Skull Grunt behind the desk will charge the player $10.
+In other languages
+| Language | Title | |
+|---|---|---|
+| Catalan | Centre Pokémon | |
+| Chinese | Cantonese | 寶可夢中心 Pokémon Jūngsām * 小精靈中心 Síujīnglìhng Jūngsām * |
+| Mandarin | 寶可夢中心 / 宝可梦中心 Pokémon Zhōngxīn * 神奇寶貝中心 / 神奇宝贝中心 Shénqí Bǎobèi Zhōngxīn * | |
+| Czech | Pokémoní středisko (manga) Pokémonové středisko (animated series) | |
+| Danish | Pokémon-center* | |
+| Dutch | Pokémon-Centrum* | |
+| Finnish | Pokémon Center* Pokémon-keskus* | |
+| French | Canada | Pokémon Center* |
+| Europe | Centre Pokémon | |
+| German | Pokémon-Center | |
+| Hebrew | מרכז פוקימונים Merkaz Pokémonim | |
+| Hungarian | Pokémon központban | |
+| Icelandic | Pokémon-miðstöð | |
+| Indonesian | Pusat Pokémon | |
+| Italian | Centro Pokémon | |
+| Korean | 포켓몬센터 Pokémon Center | |
+| Norwegian | Pokémon Center Pokémonsenter Poké Center[5] | |
+| Polish | Centrum Pokémonów* Centrum Pokémon* | |
+| Portuguese | Brazil | Centro Pokémon (animated series, Diamond & Pearl, manga, Pokémon Club) Centro de Pokémon (Next Destinies) |
+| Portugal | Centro Pokémon | |
+| Romanian | Centru Pokémon | |
+| Russian | Центр Покемонов Tsentr Pokémonov | |
+| Spanish | Centro Pokémon | |
+| Swedish | Pokémon Center* Pokémoncenter* | |
+| Thai | โปเกมอนเซ็นเตอร์ Pokémon Center | |
+| Turkish | Pokémon Merkezi | |
+| Vietnamese | Trung tâm Pokémon | |
+Related articles
+References
+- ↑ Official Pokémon Special Pikachu Edition Perfect Guide, page 65
+- ↑ Pokémon: Official Nintendo Player's Guide, page 18
+- ↑ GlitterBerri's Game Translations » Early Concept Art
+- ↑ 4.0 4.1 Shea, Brian (October 4, 2019). "Exclusive Pokémon Sword And Shield Concept Art Gallery." Game Informer (Archived on April 16, 2024.)
+- ↑ Glossary on Pokemon.no (archived)
+| This article is part of Project Locations, a Bulbapedia project that aims to write comprehensive articles on every location in the Pokémon world. |
+- Articles needing images
+- Articles needing more information
+- Buildings
+- Pokémon world
+- Kanto locations
+- Johto locations
+- Hoenn locations
+- Sevii locations
+- Sinnoh locations
+- Unova locations
+- Kalos locations
+- Alola locations
+- Galar locations
+- Paldea locations
+- Orre locations
+- Red, Blue and Yellow locations
+- Gold, Silver and Crystal locations
+- Ruby and Sapphire locations
+- FireRed and LeafGreen locations
+- Emerald locations
+- Diamond and Pearl locations
+- Platinum locations
+- HeartGold and SoulSilver locations
+- Black and White locations
+- Black 2 and White 2 locations
+- X and Y locations
+- Omega Ruby and Alpha Sapphire locations
+- Sun and Moon locations
+- Ultra Sun and Ultra Moon locations
+- Let's Go, Pikachu! and Let's Go, Eevee! locations
+- Sword and Shield locations
+- Brilliant Diamond and Shining Pearl locations
+- Scarlet and Violet locations
+- Legends: Z-A locations
+- Colosseum locations
+- XD locations

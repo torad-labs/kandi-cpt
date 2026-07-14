@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "69633c0a46044c348757ef70bf4c3572e1b488845351ba77edc8c19ba2a0c396",
+  "clean_sha256": "9f12db1514822a52b6bcb6ad8474a4de13860610657f68b981e9a8ff1f06e4f1",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Blaine (Adventures).txt",
+  "title": "Blaine (Adventures)"
+}

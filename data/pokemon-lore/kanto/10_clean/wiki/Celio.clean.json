@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "aec2204dfe52b3dbb145296b1d3e303306376f03c5ec8619efdd7209ab675590",
+  "clean_sha256": "ff2412607b61c3e98919e18cecdd46b259087f1a80c672c0fbd5a88110333e9b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Celio.txt",
+  "title": "Celio"
+}

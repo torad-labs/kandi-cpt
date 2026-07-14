@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "3393d74a053fbd31a631fb89cb904f8b0836607d26c2e045706032a390c20e1b",
+  "clean_sha256": "3e7411b0aa23f4a82b8b31bccf33a4e2efc802306757f45b42b5c8b0e3741b4a",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Giovanni (Adventures).txt",
+  "title": "Giovanni (Adventures)"
+}

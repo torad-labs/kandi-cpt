@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "ee6a5f94cee6fcb347ef7e85904eb1f616620b573924dece449c9018021a2c1d",
+  "clean_sha256": "2312b929ce137b226ff6a62d6bb8134670702bea7f3eb7316132c4988688e07e",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Hoothoot_(Pok%C3%A9mon).html",
+  "title": "Hoothoot (Pok\u00e9mon)"
+}

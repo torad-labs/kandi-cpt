@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "04ea589285c9adc0f39acd3d9b409b6824b062d4d499b0f8cab69e0f33f56b46",
+  "clean_sha256": "ca16e65be6291beb6e5c75f4fd7c75368288e9f69f4788478b5f032f0337935a",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "Alola.txt",
+  "title": "Alola"
+}

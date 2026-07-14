@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "1faf90b40938235d242a60b52773fd6d1970c9d4a858d4cb3ed4db6bcb5ced1e",
+  "clean_sha256": "c2705099d5c491ab9585ee94b3d5d24b95bff69a6f4c89109f83849fe3ca9508",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "wiki-bulbapedia",
+  "source_channel": "wiki",
+  "source_url": "One_Island_Town.html",
+  "title": "One Island Town"
+}
