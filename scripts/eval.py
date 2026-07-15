@@ -22,6 +22,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -62,7 +63,18 @@ def main() -> None:
                    "--scale", str(e.scale), "--batch", str(e.batch), "--device", e.device])
         sys.exit(rc)
 
-    # mode == cpt: install probes (per checkpoint) + forced-choice cloze (all at once).
+    # mode == cpt: a configured generic domain gets one base-vs-tuned receipt. EDC keeps its
+    # established install-probe + cloze dispatch when the generic path is not configured.
+    if e.probe_domain:
+        if len(args.checkpoints) != 1:
+            sys.exit("generic CPT probe eval requires exactly one tuned checkpoint")
+        from eval_probes import run_probe_comparison
+        try:
+            _, report = run_probe_comparison(cfg, args.config, args.checkpoints[0])
+        except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
+            sys.exit(f"generic CPT probe eval failed closed: {error}")
+        sys.exit(0 if report["status"] == "PASS" else 1)
+
     rc = 0
     for ckpt in args.checkpoints:
         rc |= _run([PY, "scripts/eval_cpt.py", "--checkpoint", ckpt])

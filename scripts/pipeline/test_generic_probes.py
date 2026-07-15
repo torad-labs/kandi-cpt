@@ -14,6 +14,7 @@ from types import SimpleNamespace
 
 from pipeline.generic_expand import load_all_triples
 from pipeline.generic_probes import build_probes
+from pipeline.split import triple_id
 
 
 def _build(d: str):
@@ -50,7 +51,20 @@ def test_deterministic_and_skips_no_distractor_or_template():
         a = build_probes(tr, rel_q, "u", 3, seed=7)
         b = build_probes(tr, rel_q, "u", 3, seed=7)
     assert a == b                                        # deterministic given the seed
+    assert {i["source_triple_id"] for i in a} == {triple_id(t) for t in tr}
     assert all(i["predicate"] == "originates_from" for i in a)   # 'leads' has no triples → no items
+
+
+def test_duplicate_semantic_triples_count_once():
+    rel_q = {"located_in": ["Where is {s}?", "{s} is in {o}."]}
+    triples = [
+        {"subject_id": "place:a", "subject": "A", "predicate": "located_in", "object": "Region A"},
+        {"subject_id": "place:b", "subject": "B", "predicate": "located_in", "object": "Region B"},
+        {"subject_id": "place:c", "subject": "C", "predicate": "located_in", "object": "Region C"},
+    ]
+    items = build_probes(triples + [dict(triples[0])], rel_q, "u", 3, seed=0)
+    assert len(items) == 3
+    assert len({item["source_triple_id"] for item in items}) == 3
 
 
 def test_multi_valued_truths_never_become_distractors():
@@ -75,5 +89,6 @@ def test_multi_valued_truths_never_become_distractors():
 if __name__ == "__main__":
     test_forced_choice_items_built()
     test_deterministic_and_skips_no_distractor_or_template()
+    test_duplicate_semantic_triples_count_once()
     test_multi_valued_truths_never_become_distractors()
     print("OK — G3: generic_probes builds forced-choice items over arbitrary triples, domain-agnostic")

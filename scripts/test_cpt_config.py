@@ -44,6 +44,8 @@ def test_defaults_are_canonical_cpt():
     assert (c.run.save_every, c.run.log_every) == (100, 5)
     assert (c.corpus_synthesis.answer_aug, c.corpus_synthesis.absent_neg) == (8, 125)
     assert (c.eval.tau_fab, c.eval.tau_acc, c.eval.tau_cov) == (0.25, 0.55, 0.40)
+    assert c.eval.probe_domain is None and c.eval.probe_editions is None
+    assert (c.eval.probe_min_n, c.eval.probe_min_delta_acc) == (50, 0.10)
 
 
 def test_nested_build_and_lambda_alias():
@@ -73,6 +75,23 @@ def test_cross_field_validation():
     _expect(lambda: TrainConfig(betas=[0.9]), "betas")
     _expect(lambda: CptConfig._from_dict({"mode": "sft", "data": {"init_from": "x"},
             "train": {"seq_len": 256}, "corpus_synthesis": {"sft_seq_len": 512}}).validate(), "sft_seq_len")
+    _expect(lambda: CptConfig._from_dict({"eval": {"probe_domain": "pokemon-lore"}}), "set together")
+    _expect(lambda: CptConfig._from_dict({"eval": {"probe_min_n": 0}}), "probe_min_n")
+    _expect(lambda: CptConfig._from_dict({"eval": {"probe_report_root": "../logs"}}), "inside the engine")
+
+
+def test_generic_probe_eval_config():
+    c = CptConfig._from_dict({"eval": {
+        "probe_domain": "pokemon-lore",
+        "probe_editions": "kanto",
+        "probe_min_n": 72,
+        "probe_min_delta_acc": 0.15,
+        "probe_report_root": "logs/evals/pokemon",
+    }})
+    assert c.eval.probe_domain == "pokemon-lore"
+    assert c.eval.probe_editions == "kanto"
+    assert (c.eval.probe_min_n, c.eval.probe_min_delta_acc) == (72, 0.15)
+    assert c.eval.probe_report_root == "logs/evals/pokemon"
 
 
 def test_fingerprint_and_int8_resolution():

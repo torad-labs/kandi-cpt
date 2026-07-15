@@ -14,7 +14,9 @@ launchers. The full audit + design rationale is in `docs/CONFIG_AUDIT.md`.
    `--mode {cpt,sft}`. There are **no behavior-affecting flags.** Smoke / dry-run are config fields
    (`run.smoke_steps`, `run.dry_run`), not flags.
 2. **One eval entrypoint:** `scripts/eval.py` (`--config --mode --checkpoints`). It dispatches to the
-   eval libraries; it does not reimplement them.
+   eval libraries; it does not reimplement them. CPT configs with `eval.probe_domain` +
+   `eval.probe_editions` select the generic base-vs-tuned forced-choice receipt; configs without them
+   retain the EDC install-probe + cloze path.
 3. **Do NOT add a behavior-affecting flag.** If you reach for `--something` to change a run, stop — add a
    field to the right sub-config in `cpt_config.py` (+ regenerate the schema) instead.
 4. **Do NOT create a second entrypoint or a parallel trainer/eval.** There is exactly one of each.

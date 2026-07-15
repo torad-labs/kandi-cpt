@@ -1,0 +1,254 @@
+#!/usr/bin/env python3
+"""Fast regression tests for the generic base-vs-tuned CPT receipt."""
+from __future__ import annotations
+
+import json
+import sys
+import tempfile
+from pathlib import Path
+from types import SimpleNamespace
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import eval_probes as E  # noqa: E402
+
+
+def _sha(path: Path) -> str:
+    return E._sha256(path)
+
+
+def _corpus(root: Path, n: int = 72) -> E.ProbeCorpus:
+    unit = root / "data" / "pokemon-eval" / "kanto"
+    probe_path = unit / "probes.jsonl"
+    split_path = unit / "splits" / "split_v1.json"
+    stats_path = root / "data" / "_build" / "30_tokenized" / "pokemon_eval_stats.json"
+    probe_path.parent.mkdir(parents=True)
+    split_path.parent.mkdir(parents=True)
+    stats_path.parent.mkdir(parents=True)
+    probes = [
+        {
+            "question": f"Where is subject {index}?",
+            "choices": ["a", "b", "c", "d"],
+            "answer": "a",
+            "predicate": "located_in" if index % 2 else "member_of",
+            "subject": f"subject-{index}",
+            "source_triple_id": f"id-{index}",
+            "split": "held_out",
+            "split_version": "v1",
+        }
+        for index in range(n)
+    ]
+    probe_path.write_text("\n".join(json.dumps(probe) for probe in probes) + "\n", encoding="utf-8")
+    split_path.write_text(json.dumps({
+        "version": "v1",
+        "holdout_ids": [f"id-{index}" for index in range(n)],
+    }), encoding="utf-8")
+    stats_path.write_text(json.dumps({"tokens_by_tag": {"clean": 1000, "hydrated": 2000}}), encoding="utf-8")
+    return E.ProbeCorpus(
+        domain="pokemon-eval",
+        editions=["kanto"],
+        probes=probes,
+        probe_paths=[probe_path],
+        probe_hashes=[_sha(probe_path)],
+        probe_sha256=E._combined_hash([probe_path]),
+        split_paths=[split_path],
+        split_hashes=[_sha(split_path)],
+        split_sha256=E._combined_hash([split_path]),
+        split_version="v1",
+        token_stats_path=stats_path,
+        token_stats_sha256=_sha(stats_path),
+        clean_tokens=1000,
+        measurement_class="augmentation_holdout",
+        chance=0.25,
+    )
+
+
+def _load_written_corpus(root: Path) -> E.ProbeCorpus:
+    unit_dir = root / "data" / "pokemon-eval" / "kanto"
+    original_iter_editions = E.iter_editions
+    E.iter_editions = lambda *_args, **_kwargs: [SimpleNamespace(slug="kanto", dir=unit_dir)]
+    try:
+        return E.load_probe_corpus(
+            "pokemon-eval",
+            "kanto",
+            "data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+    finally:
+        E.iter_editions = original_iter_editions
+
+
+def _checkpoint(root: Path, run_name: str = "fresh") -> Path:
+    base = root / "models" / "base"
+    base.mkdir(parents=True, exist_ok=True)
+    base.joinpath("model.safetensors").write_bytes(b"base-model-receipt")
+    checkpoint = root / "checkpoints" / "cpt" / run_name
+    checkpoint.mkdir(parents=True)
+    checkpoint.joinpath("model.safetensors").write_bytes(b"real-model-receipt")
+    checkpoint.joinpath("run_contract.json").write_text(json.dumps({
+        "run_name": run_name,
+        "fingerprint": "fixture-fingerprint",
+        "tokenized": "data/_build/30_tokenized/pokemon_eval.arrow",
+    }), encoding="utf-8")
+    return checkpoint
+
+
+def _config(root: Path) -> Path:
+    path = root / "configs" / "eval.yaml"
+    path.parent.mkdir(parents=True)
+    path.write_text("mode: cpt\n", encoding="utf-8")
+    return path
+
+
+def test_pilot_gate_passes_only_with_a_clear_delta():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root)
+        checkpoint = _checkpoint(root)
+        report = E.build_report(
+            run_name="fresh",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[index < 19 for index in range(72)],
+            tuned_hits=[index < 45 for index in range(72)],
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["status"] == "PASS"
+        assert report["measurement_class"] == "augmentation_holdout"
+        assert report["base"]["hits"] == 19 and report["tuned"]["hits"] == 45
+        assert report["delta_acc"] > 0.36
+        assert all(check["pass"] for check in report["checks"])
+        assert report["inputs"]["probe_sha256"] == report["base"]["probe_sha256"]
+        assert report["base"]["probe_sha256"] == report["tuned"]["probe_sha256"]
+
+
+def test_pilot_gate_fails_closed_on_small_n_and_weak_delta():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=20)
+        checkpoint = _checkpoint(root, "small")
+        report = E.build_report(
+            run_name="small",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[index < 5 for index in range(20)],
+            tuned_hits=[index < 8 for index in range(20)],
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["status"] == "FAIL"
+        assert any("denominator" in failure for failure in report["failed_checks"])
+        assert any("accuracy delta" in failure for failure in report["failed_checks"])
+
+
+def test_probe_loader_binds_every_item_to_the_hashed_holdout():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        _corpus(root)
+        corpus = _load_written_corpus(root)
+        assert len(corpus.probes) == 72
+        assert {probe["source_triple_id"] for probe in corpus.probes} == {
+            f"id-{index}" for index in range(72)
+        }
+
+
+def test_probe_loader_rejects_unbound_and_duplicate_sources():
+    for source_ids in (["not-held-out", "id-1"], ["id-1", "id-1"]):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            E.C.ROOT = root
+            corpus = _corpus(root, n=2)
+            probes = corpus.probes
+            for probe, source_id in zip(probes, source_ids, strict=True):
+                probe["source_triple_id"] = source_id
+            corpus.probe_paths[0].write_text(
+                "\n".join(json.dumps(probe) for probe in probes) + "\n",
+                encoding="utf-8",
+            )
+            try:
+                _load_written_corpus(root)
+            except ValueError as error:
+                assert "probe source" in str(error) or "duplicate probe source" in str(error)
+            else:
+                raise AssertionError(f"invalid source IDs passed: {source_ids}")
+
+
+def test_probe_loader_rejects_duplicate_choices():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=2)
+        corpus.probes[0]["choices"] = ["a", "a", "b", "c"]
+        corpus.probe_paths[0].write_text(
+            "\n".join(json.dumps(probe) for probe in corpus.probes) + "\n",
+            encoding="utf-8",
+        )
+        try:
+            _load_written_corpus(root)
+        except ValueError as error:
+            assert "duplicate choices" in str(error)
+        else:
+            raise AssertionError("duplicate choices passed the probe loader")
+
+
+def test_evaluator_rejects_non_finite_choice_scores():
+    original_choice_logprob = E.choice_logprob
+    E.choice_logprob = lambda *_args, **_kwargs: float("nan")
+    try:
+        E.evaluate_model(
+            tokenizer=None,
+            model=None,
+            device="cpu",
+            probes=[{"question": "Where?", "choices": ["a", "b"], "answer": "a"}],
+        )
+    except ValueError as error:
+        assert "non-finite choice score" in str(error)
+    else:
+        raise AssertionError("non-finite model scores produced a forced-choice prediction")
+    finally:
+        E.choice_logprob = original_choice_logprob
+
+
+def test_report_binds_hashes_and_per_predicate_denominators():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root)
+        checkpoint = _checkpoint(root, "bound")
+        config = _config(root)
+        report = E.build_report(
+            run_name="bound",
+            config_path=config,
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[index % 4 == 0 for index in range(72)],
+            tuned_hits=[index % 4 != 0 for index in range(72)],
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["inputs"]["config_sha256"] == _sha(config)
+        assert report["base"]["model_sha256"] == _sha(root / "models" / "base" / "model.safetensors")
+        assert report["tuned"]["model_sha256"] == _sha(checkpoint / "model.safetensors")
+        assert sum(row["n"] for row in report["tuned"]["per_predicate"].values()) == 72
+        assert report["editions"] == ["kanto"]
+
+
+if __name__ == "__main__":
+    tests = [value for name, value in sorted(globals().items()) if name.startswith("test_") and callable(value)]
+    for test in tests:
+        test()
+        print(f"  ok  {test.__name__}")
+    print(f"\nALL {len(tests)} GENERIC-PROBE TESTS PASS")

@@ -10,7 +10,7 @@ probe *design* (held-out strategy, era tags, base-delta) stays the human-reviewe
 this generates the *items* deterministically.
 
     PYTHONPATH=scripts python scripts/pipeline/generic_probes.py --domain <d> [--editions ...] [--distractors 3] [--dry-run]
-Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, split}).
+Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, source_triple_id, split}).
 """
 from __future__ import annotations
 
@@ -48,10 +48,17 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
             subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
             true_by_subject_pred[(subject_id, t["predicate"])].add(t["object"])
     items: list[dict] = []
+    seen_source_ids: set[str] = set()
+    duplicate_sources = 0
     seen_q: dict = defaultdict(int)                        # predicate WITH a question template -> n triples seen
     made: dict = defaultdict(int)                          # predicate -> n probes produced
     drops: dict = defaultdict(lambda: defaultdict(int))    # predicate -> reason -> n
     for t in gold_triples:
+        source_id = triple_id(t)
+        if source_id in seen_source_ids:
+            duplicate_sources += 1
+            continue
+        seen_source_ids.add(source_id)
         p, obj = t["predicate"], t["object"]
         q = rel_q.get(p)
         if not q:
@@ -73,9 +80,11 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
         choices = rng.sample(pool, min(n_distractors, len(pool))) + [obj]
         rng.shuffle(choices)
         items.append({"question": question, "choices": choices, "answer": obj,
-                      "predicate": p, "subject": t["subject"], "split": "held_out"})
+                      "predicate": p, "subject": t["subject"], "source_triple_id": source_id,
+                      "split": "held_out"})
         made[p] += 1
     empty_pool_drops = sum(d.get("no_safe_distractor", 0) for d in drops.values())
+    print(f"  source-id guard: dropped {duplicate_sources} duplicate semantic triple(s)")
     print(f"  multi-correct guard: dropped {empty_pool_drops} probe(s) with an empty distractor pool "
           f"after excluding all objects true for the same (subject_id, predicate)")
     # A predicate the operator authored a question for that yields ZERO probes is an UNTESTED fact axis — in an

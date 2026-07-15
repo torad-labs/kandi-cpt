@@ -253,14 +253,25 @@ class EvalConfig:
     scale: float = 1.0
     batch: int = 16
     device: str = "cuda:0"              # single-GPU PSU rule
+    probe_domain: str | None = None      # generic CPT base-vs-tuned path; disabled when unset
+    probe_editions: str | None = None    # exact comma-separated unit scope; required with probe_domain
+    probe_min_n: int = 50                # no PASS/FAIL number below the handbook's minimum denominator
+    probe_min_delta_acc: float = 0.10
+    probe_report_root: str = "logs/probe_evals"
 
     def __post_init__(self) -> None:
-        for k in ("tau_fab", "tau_acc", "tau_cov"):
+        for k in ("tau_fab", "tau_acc", "tau_cov", "probe_min_delta_acc"):
             v = getattr(self, k)
             if not 0 <= v <= 1:
                 raise ConfigError(f"eval.{k}={v} must be in [0,1]")
         if self.n_absent < 0 or self.seed < 0 or self.scale <= 0 or self.batch < 1:
             raise ConfigError("eval.n_absent>=0, seed>=0, scale>0, batch>=1 required")
+        if self.probe_min_n < 1:
+            raise ConfigError("eval.probe_min_n must be >= 1")
+        if bool(self.probe_domain) != bool(self.probe_editions):
+            raise ConfigError("eval.probe_domain and eval.probe_editions must be set together")
+        if not self.probe_report_root or Path(self.probe_report_root).is_absolute() or ".." in Path(self.probe_report_root).parts:
+            raise ConfigError("eval.probe_report_root must be a non-empty path inside the engine repo")
 
 
 # THE DEPLOY GATE — single-sourced from EvalConfig defaults so eval_sft_calibration.py + serve.py can't
