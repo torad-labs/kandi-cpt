@@ -148,6 +148,71 @@ def _contrast_authorable(domain_name: str) -> bool:
         return False
 
 
+def _sft_positive_proxy(domain_name: str, n_triples: int) -> int:
+    """Best available positive-QA count for hard-neg sizing.
+
+    Prefer the last build_sft stats ``raw`` field when present; else a conservative
+    fraction of structured triples (not all triples become SFT QAs).
+    """
+    for name in (
+        f"sft_{domain_name.replace('-', '_')}_kanto_v1_stats.json",
+        f"sft_{domain_name.replace('-', '_')}_stats.json",
+        f"sft_{domain_name}_stats.json",
+    ):
+        path = C.BUILD / "30_tokenized" / name
+        if path.is_file():
+            try:
+                stats = json.loads(path.read_text(encoding="utf-8"))
+                raw = stats.get("raw")
+                if raw is not None:
+                    return int(raw)
+            except Exception:
+                pass
+    return max(0, int(n_triples * 0.15)) if n_triples else 0
+
+
+def derive_hard_neg_counts(
+    n_positives: int,
+    contrast_authorable: bool,
+    *,
+    max_wrong: int = 20,
+    max_absent: int = 10,
+    frac: float = 0.15,
+    min_budget: int = 3,
+) -> tuple[int, int, str]:
+    """SFT hard-neg counts from positive QA size (Phase C residual 2026-07-19).
+
+    Fixed 20/10 on a ~60-positive set made hard-negs ~34% of the SFT mix and
+    regressed FC −0.208 vs CPT. Cap total hard-neg mass at ``frac`` of positives
+    (wrong:absent ≈ 2:1), absolute caps max_wrong/max_absent, and skip entirely
+    when the positive set is too small to absorb even ``min_budget`` negs.
+    """
+    if not contrast_authorable:
+        return 0, 0, "no contrast block → 0 + DOMAIN_HARD_NEGATIVES_UNAVAILABLE"
+    n_pos = max(0, int(n_positives))
+    if n_pos <= 0:
+        return 0, 0, "no positive QAs yet → 0"
+    budget = int(round(frac * n_pos))
+    if budget < min_budget:
+        return (
+            0,
+            0,
+            f"n_positives={n_pos} → budget {budget}<{min_budget} → hard-negs 0 "
+            f"(avoid over-weighting; residual FAIL lesson)",
+        )
+    wrong = min(max_wrong, max(1, (budget * 2) // 3))
+    absent = min(max_absent, max(0, budget - wrong))
+    if absent == 0 and budget >= 2:
+        absent = 1
+        wrong = max(1, wrong - 1)
+    return (
+        wrong,
+        absent,
+        f"n_positives={n_pos} × {frac:.0%} → budget {budget} "
+        f"→ wrong={wrong}/absent={absent} (caps {max_wrong}/{max_absent}, 2:1 split)",
+    )
+
+
 def _row(knob: str, value: Any, derivation: str, *,
          override: Any = None, source: str = "derived",
          user_note: str | None = None) -> dict[str, Any]:
@@ -221,13 +286,11 @@ def derive_knobs(
     else:
         contrast_frac, contrast_der = 0.0, "no contrast block → 0 + DOMAIN_HARD_NEGATIVES_UNAVAILABLE"
 
-    # SFT hard-neg defaults
-    if contrast_ok:
-        wrong_n, wrong_der = 20, "contrast authorable → 20 wrong-value negs/unit"
-        absent_n, absent_der = 10, "contrast authorable → 10 absent-entity negs/unit"
-    else:
-        wrong_n, wrong_der = 0, "no contrast → 0 + DOMAIN_HARD_NEGATIVES_UNAVAILABLE"
-        absent_n, absent_der = 0, "no contrast → 0 + DOMAIN_HARD_NEGATIVES_UNAVAILABLE"
+    # SFT hard-neg defaults — proportional to positive QA mass (not fixed 20/10).
+    n_pos_proxy = _sft_positive_proxy(domain_name, n_triples)
+    wrong_n, absent_n, hard_der = derive_hard_neg_counts(n_pos_proxy, contrast_ok)
+    wrong_der = hard_der
+    absent_der = hard_der
 
     # exposure / surface multiple
     exposure_cap = 60

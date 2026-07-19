@@ -44,10 +44,29 @@ def test_contrast_authorable_flips_hard_neg_defaults():
     by = {k["knob"]: k for k in plan["knobs"]}
     assert by["drop_frac"]["value"] == 0.05
     assert by["contrast_fraction"]["value"] == 0.10
-    assert by["sft_wrong_value_neg"]["value"] == 20
-    assert by["sft_absent_entity_neg"]["value"] == 10
+    # hard-negs proportional to positives (proxy from triples or sft stats), not fixed 20/10
+    assert by["sft_wrong_value_neg"]["value"] >= 0
+    assert by["sft_absent_entity_neg"]["value"] >= 0
+    assert "n_positives" in by["sft_wrong_value_neg"]["derivation"] or "contrast" in by["sft_wrong_value_neg"]["derivation"]
     assert by["train.max_steps"]["value"] == (3200 * 3) // (1 * 16)
     assert by["anneal.enabled"]["value"] is True
+
+
+def test_derive_hard_neg_counts_scales_and_caps():
+    w, a, der = DP.derive_hard_neg_counts(60, True)
+    # 15% of 60 = 9 → wrong≈6 absent≈3
+    assert w + a == 9
+    assert w == 6 and a == 3
+    assert "n_positives=60" in der
+    w2, a2, _ = DP.derive_hard_neg_counts(500, True)
+    assert w2 == 20 and a2 == 10  # absolute caps
+    w0, a0, der0 = DP.derive_hard_neg_counts(10, True)
+    # 15% of 10 = 2 < min_budget 3 → zero
+    assert w0 == 0 and a0 == 0
+    assert "hard-negs 0" in der0
+    assert DP.derive_hard_neg_counts(100, False) == (
+        0, 0, "no contrast block → 0 + DOMAIN_HARD_NEGATIVES_UNAVAILABLE",
+    )
 
 
 def test_thin_corpus_ladder_skips_curate_and_recall():

@@ -1,0 +1,37 @@
+{
+  "title": "Phase C follow-up v1b — derived hard-negs 6/3 on pokemon-lore/kanto",
+  "date": "2026-07-19",
+  "prior": {
+    "v1_fixed_20_10": {"fc_delta_vs_cpt": -0.208, "gen_delta_vs_cpt": -0.067, "verdict": "FAIL"},
+    "lesson": "fixed 20/10 on ~60 positives ≈ 34% hard-neg mass eroded install"
+  },
+  "change": "one change vs v1: hard-neg counts DERIVED from positives (15% budget, 2:1, caps 20/10) → 6 wrong / 3 absent (~13% of 67-ex mix). Same CPT init, 80 steps, fp4.",
+  "sft_build": {
+    "raw_positives": 60,
+    "wrong_value_neg": 6,
+    "absent_entity_neg": 3,
+    "n_examples": 67,
+    "hard_neg_frac": 0.134,
+    "max_steps": 80,
+    "final_loss": 0.0144,
+    "train_seconds": 352,
+    "config": "configs/sft_pokemon_lore_kanto_v1b.yaml",
+    "arrow": "data/_build/30_tokenized/sft_pokemon_lore_kanto_v1b.arrow",
+    "ckpt": "checkpoints/sft/pokemon_lore_kanto_v1b"
+  },
+  "dual_axis_cpt_vs_v1b": {
+    "n_forced": 72,
+    "n_generative": 30,
+    "gen_n_status": "insufficient-n",
+    "judge_model": "qwen/qwen3-32b",
+    "forced_choice": {"cpt": 0.625, "sft_v1b": 0.625, "delta": 0.0},
+    "generative": {"cpt": 0.500, "sft_v1b": 0.400, "delta": -0.100},
+    "vs_v1_fixed": {"fc_delta_improvement": 0.208, "note": "FC fully recovered from v1 FAIL"},
+    "log": "logs/phase_c_v1b_dual_axis.log"
+  },
+  "verdicts": {
+    "run_gate": "SFT v1b 80/80 complete, int8 ckpt saved",
+    "install_strength": "FC PARITY with CPT (0.625). Gen −0.10 on n=30 insufficient-n — not a claim of install gain, but the catastrophic FC regression is fixed. CPT remains the install artifact; v1b is a safe SFT mix recipe.",
+    "derivation_law": "build_sft + derive_plan now size hard-negs from positive count; fixed 20/10 retired"
+  }
+}

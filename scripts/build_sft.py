@@ -620,12 +620,11 @@ def main():
     ap.add_argument("--abstention-frac", type=float, default=0.0, help="#2 target fraction of abstention examples")
     ap.add_argument("--wrong-value-neg", type=int, default=None,
                     help="generic-domain truth-validated wrong-value correction pairs per unit "
-                         "(default: 20 when a contrast block is authorable, else 0 + "
-                         "DOMAIN_HARD_NEGATIVES_UNAVAILABLE)")
+                         "(default: derived from positive QA count × 15%, 2:1 wrong:absent, "
+                         "caps 20/10; 0 when contrast missing or positives too few)")
     ap.add_argument("--absent-entity-neg", type=int, default=None,
                     help="generic-domain refusal pairs for absent contrast-group entities per unit "
-                         "(default: 10 when a contrast block is authorable, else 0 + "
-                         "DOMAIN_HARD_NEGATIVES_UNAVAILABLE)")
+                         "(default: paired with --wrong-value-neg derivation; see above)")
     ap.add_argument("--fake-city-neg", type=int, default=0, help="unknown-CITY hard-negatives (fake cities, "
                     "disjoint from the eval's fantasy set) → teaches 'no record of this city → refuse'. Targets "
                     "the ~1/3 of absent probes that are fake cities, historically untrained. Pairs with --absent-neg.")
@@ -657,16 +656,20 @@ def main():
             mp = ed.dir / "festival_meta.json"
             if mp.exists():
                 ed_names.append(json.loads(mp.read_text()).get("name", ed.slug))
-    # Phase C: when a contrast block is authorable, hard-neg defaults flip from 0 → derived counts.
-    # Explicit 0 still disables. No contrast block → DOMAIN_HARD_NEGATIVES_UNAVAILABLE, never invent.
+    # Phase C residual (2026-07-19): hard-neg defaults are proportional to positive QA
+    # count — fixed 20/10 over-weighted a 60-positive set (~34% negs) and regressed FC.
+    # Explicit 0 still disables. No contrast block → DOMAIN_HARD_NEGATIVES_UNAVAILABLE.
+    from pipeline.derive_plan import derive_hard_neg_counts
+
     groups, contrast_preds = load_contrast(args.domain)
     contrast_authorable = bool(groups and contrast_preds)
-    wrong_n = args.wrong_value_neg
-    absent_n = args.absent_entity_neg
-    if wrong_n is None:
-        wrong_n = 20 if contrast_authorable else 0
-    if absent_n is None:
-        absent_n = 10 if contrast_authorable else 0
+    derived_wrong, derived_absent, hard_der = derive_hard_neg_counts(
+        len(cands), contrast_authorable,
+    )
+    wrong_n = derived_wrong if args.wrong_value_neg is None else args.wrong_value_neg
+    absent_n = derived_absent if args.absent_entity_neg is None else args.absent_entity_neg
+    print(f"hard-neg derivation: {hard_der} → using wrong={wrong_n} absent={absent_n}"
+          f"{' (override)' if args.wrong_value_neg is not None or args.absent_entity_neg is not None else ''}")
 
     generic_answerable: list[tuple[str, str]] = []
     generic_refusal: list[tuple[str, str]] = []
