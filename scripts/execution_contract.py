@@ -27,6 +27,9 @@ RECIPE_VERSION = "1"
 STAGE_EFFECTS = {
     "scrape": ["network", "write"],
     "extract": ["write"],
+    "pii_scan": ["write"],
+    # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
+    "score_educational": ["egress:llm", "write"],
     "structured": ["egress:llm", "write"],
     "curate": ["gpu", "write"],
     "split": ["write"],
@@ -45,7 +48,19 @@ STAGE_EFFECTS = {
 STAGE_OUTPUTS = {
     "scrape": ["data/{domain}/**/00_raw/**"],
     "extract": ["data/{domain}/**/10_clean/**"],
-    "curate": ["data/_build/curation/keep_list_{domain}.json", "data/_build/curation/curation_report_{domain}.json"],
+    "pii_scan": [
+        "data/_build/pii/quarantine_{domain}.json",
+        "data/_build/pii/report_{domain}.json",
+    ],
+    "score_educational": [
+        "data/_build/educational/scores_{domain}.json",
+        "data/_build/educational/report_{domain}.json",
+    ],
+    "curate": [
+        "data/_build/curation/keep_list_{domain}.json",
+        "data/_build/curation/curation_report_{domain}.json",
+        "data/_build/curation/curation_meta_{domain}.json",
+    ],
     "structured": ["data/{domain}/**/15_structured/entities.jsonl", "data/{domain}/**/15_structured/triples.jsonl"],
     "split": ["data/{domain}/**/splits/split_v1.json"],
     "contrast": ["data/{domain}/**/25_hydrated/relations_contrast.jsonl"],
@@ -60,12 +75,21 @@ STAGE_OUTPUTS = {
     "sft": ["{sft_save_dir}/**"],
 }
 
-OPENROUTER_COMMAND_MARKERS = ("--llm-rescue", "extract_structured.py", "generic_synth.py", "rehydrate_vc1.sh")
+OPENROUTER_COMMAND_MARKERS = (
+    "--llm-rescue",
+    "extract_structured.py",
+    "generic_synth.py",
+    "rehydrate_vc1.sh",
+    "score_educational.py",
+    "eval_generative.py",
+)
 
 APPROVAL_EFFECTS = ["gpu", "egress:llm", "egress:upload", "spend", "delete"]
 
 REQUIRED_PLAYBOOKS = {
     "cpt": "cpt-codebook.md",
+    "pii_scan": "cpt/03a-pii-scan.md",
+    "score_educational": "cpt/03b-score-educational.md",
     "curate": "cpt/03-curate.md",
     "hydrate": "cpt/05-hydrate.md",
     "build_sft": "cpt/07-train.md",
@@ -134,7 +158,16 @@ def _config_value(domain: Domain, key: str, *parts: str) -> str:
 def _outputs(domain: Domain, stage_name: str, editions: list[str]) -> list[str]:
     outputs = STAGE_OUTPUTS.get(stage_name, [])
     if stage_name == "curate" and domain.name == "edc":
-        outputs = ["data/_build/curation/keep_list.json", "data/_build/curation/curation_report.json"]
+        outputs = [
+            "data/_build/curation/keep_list.json",
+            "data/_build/curation/curation_report.json",
+            "data/_build/curation/curation_meta.json",
+        ]
+    elif stage_name == "pii_scan" and domain.name == "edc":
+        # Same paths for all domains (domain-suffixed); no EDC legacy rename.
+        pass
+    elif stage_name == "score_educational" and domain.name == "edc":
+        pass
     substitutions = {
         "domain": domain.name,
         "corpus": domain.vars.get("corpus", "__contract_missing_corpus__"),

@@ -48,6 +48,18 @@ stages:
     cmd: ["{py}", "scripts/clean_flat_corpus.py", "--domain", "pokemon-lore", "--editions", "{editions}",
           "--domain-class", "wiki-bulbapedia"]
     gpu: false
+  - name: pii_scan
+    desc: "PII quarantine/mask (non-destructive) — wiki corpora usually sparse; still runs"
+    cmd: ["{py}", "scripts/pipeline/pii_scan.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    gpu: false
+  - name: score_educational
+    desc: "educational-density teacher scores (1–5) for curate"
+    cmd: ["{py}", "scripts/pipeline/score_educational.py", "--domain", "pokemon-lore", "--editions", "{editions}", "--mode", "facts"]
+    gpu: false
+  - name: curate
+    desc: "educational×trust drop + rarity guard + PII quarantine → keep_list_pokemon-lore.json"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "pokemon-lore", "--no-difficulty"]
+    gpu: true
   - name: structured
     desc: "15_structured — LLM entity/triple/discourse extraction (spec-driven from the ontology below)"
     cmd: ["{py}", "scripts/extract_structured.py", "--domain", "pokemon-lore", "--editions", "{editions}",

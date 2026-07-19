@@ -52,8 +52,10 @@ def test_execution_contract_matches_manifest() -> None:
     assert {(domain, stage["id"]) for domain, contract in contracts.items() for stage in contract["stages"]
             if "egress:llm" in stage["effects"]} == {
         ("edc", "extract"),
+        ("edc", "score_educational"),
         ("edc", "structured"),
         ("edc", "hydrate"),
+        ("pokemon-lore", "score_educational"),
         ("pokemon-lore", "structured"),
         ("pokemon-lore", "synth"),
     }

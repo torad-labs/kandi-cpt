@@ -108,6 +108,94 @@ def wsd_lr(step, warmup, total, base_lr, min_lr, decay_frac):
     return min_lr + (base_lr - min_lr) * (1 - t)
 
 
+def resolve_anneal(cfg: dict, total: int) -> dict:
+    """Derive the anneal window from train.anneal + max_steps. Default ON; disabled on tiny runs.
+
+    Returns a dict with keys: active, start_step, frac, mix_tags, lr_end, keep_pre,
+    require_exposure, reason. Pure — no I/O. Precision floor untouched (schedule ≠ dtype).
+    """
+    anneal = cfg.get("anneal") or {}
+    enabled = bool(anneal.get("enabled", True))
+    frac = float(anneal.get("frac", 0.10))
+    min_steps = int(anneal.get("min_steps", 500))
+    mix_tags = list(anneal.get("mix_tags") or ["hydrated", "replay"])
+    lr_end = float(anneal.get("lr_end", 0.0))
+    keep_pre = bool(anneal.get("keep_pre_anneal_checkpoint", True))
+    require_exposure = bool(anneal.get("require_exposure", True))
+    if not enabled:
+        return {
+            "active": False, "start_step": total, "frac": frac, "mix_tags": mix_tags,
+            "lr_end": lr_end, "keep_pre": keep_pre, "require_exposure": require_exposure,
+            "reason": "train.anneal.enabled=false",
+        }
+    if total < min_steps:
+        return {
+            "active": False, "start_step": total, "frac": frac, "mix_tags": mix_tags,
+            "lr_end": lr_end, "keep_pre": keep_pre, "require_exposure": require_exposure,
+            "reason": f"max_steps={total} < anneal.min_steps={min_steps} (tiny-run disable)",
+        }
+    if not 0 < frac <= 0.5:
+        raise ValueError(f"train.anneal.frac={frac} must be in (0, 0.5]")
+    start = int(total * (1.0 - frac))
+    start = max(1, min(start, total - 1)) if total > 1 else total
+    return {
+        "active": start < total,
+        "start_step": start,
+        "frac": frac,
+        "mix_tags": mix_tags,
+        "lr_end": lr_end,
+        "keep_pre": keep_pre,
+        "require_exposure": require_exposure,
+        "reason": f"final {frac:.0%} of {total} steps (start={start})",
+    }
+
+
+def anneal_lr(step: int, total: int, start: int, base_lr: float, lr_end: float) -> float:
+    """Linear LR decay over the anneal window from base_lr → lr_end. Outside the window unused."""
+    if step < start or total <= start:
+        return base_lr
+    t = (step - start) / max(1, total - start)
+    t = min(1.0, max(0.0, t))
+    return base_lr + (lr_end - base_lr) * t
+
+
+def pre_anneal_exposure_check(cfg: dict, exposure: Counter | None, require: bool) -> dict:
+    """Printable pre-anneal exposure check. Anneal is not a substitute for exposure (#760 floor).
+
+    Returns a receipt dict the run contract / logs carry. Does not raise — under-exposure is a
+    WARN so the operator sees it; the anneal still runs (the failure mode is polished weak install,
+    which probes catch).
+    """
+    levers = cfg.get("levers") or {}
+    lev4 = bool((levers.get("lever4_exposure_tracking") or {}).get("enabled"))
+    if not lev4:
+        return {
+            "ok": not require,
+            "lever4_enabled": False,
+            "n_facts": 0,
+            "message": (
+                "pre-anneal exposure check SKIPPED — lever4_exposure_tracking is off; "
+                "anneal will polish whatever is installed without an exposure floor proof"
+            ),
+        }
+    n_facts = len(exposure) if exposure is not None else 0
+    total_exp = int(sum(exposure.values())) if exposure else 0
+    ok = n_facts > 0 and total_exp > 0
+    return {
+        "ok": ok,
+        "lever4_enabled": True,
+        "n_facts": n_facts,
+        "total_exposures": total_exp,
+        "message": (
+            f"pre-anneal exposure check PASS — {n_facts} facts, {total_exp} cumulative exposures"
+            if ok else
+            "pre-anneal exposure check FAIL — lever4 on but exposure counter is empty "
+            "(corpus missing fact_ids, or no facts seen yet); annealing an under-exposed "
+            "corpus polishes a weak install"
+        ),
+    }
+
+
 def entity_weighted_ce(logits, ids, entity_mask, entity_weight):
     """Lever 1: per-token cross-entropy weighted toward entity/date/time TARGET tokens.
 
@@ -439,14 +527,73 @@ def cpu_offload_ple(model, device):
     return sum(p.numel() for p in ple.parameters())
 
 
-def make_loader(cfg, rank, world, want_mask=False, want_facts=False):
+def _anneal_rank_keep_mask(tags: list[str], scores: list[float], mix_tags: set[str]) -> list[bool]:
+    """Keep all replay; keep non-replay mix-tag blocks at/above the median educational score.
+
+    Pure helper (unit-tested). When scores are uniform the median keeps everything in-tag.
+    """
+    # Scores among non-replay blocks that are in the mix.
+    ranked_scores = [
+        float(score) for tag, score in zip(tags, scores, strict=True)
+        if tag in mix_tags and tag != "replay"
+    ]
+    if not ranked_scores:
+        return [tag in mix_tags for tag in tags]
+    ordered = sorted(ranked_scores)
+    median = ordered[len(ordered) // 2]
+    keep: list[bool] = []
+    for tag, score in zip(tags, scores, strict=True):
+        if tag not in mix_tags:
+            keep.append(False)
+        elif tag == "replay":
+            keep.append(True)
+        else:
+            keep.append(float(score) >= median)
+    return keep
+
+
+def make_loader(cfg, rank, world, want_mask=False, want_facts=False, tag_filter=None):
     # Dual-format: a directory is the Python HF-datasets save_to_disk output; a file is the Rust
     # festival-factory plain Arrow IPC (tokenize.rs). Both expose input_ids[/entity_mask/src/fact_ids].
+    # tag_filter: optional set/list of block_tag values — the anneal mix (hydrated+replay). When the
+    # corpus lacks block_tag (legacy shards), filter is skipped with a loud warning so anneal still
+    # runs (LR decay only) rather than aborting a paid GPU run. When block_edu_score is present,
+    # non-replay mix blocks are further ranked: keep score >= median (replay always kept).
     p = C.ROOT / cfg["tokenized"]
     ds = Dataset.from_file(str(p)) if p.is_file() else load_from_disk(str(p))
     has_mask = want_mask and "entity_mask" in ds.column_names
     has_facts = want_facts and "fact_ids" in ds.column_names
     has_labels = "labels" in ds.column_names           # SFT corpus (build_sft.py): assistant-only masked labels
+    has_block_tag = "block_tag" in ds.column_names
+    has_edu = "block_edu_score" in ds.column_names
+
+    if tag_filter:
+        wanted = set(tag_filter)
+        if not has_block_tag:
+            if rank0():
+                log(f"[anneal] corpus has no block_tag column — cannot filter to {sorted(wanted)}; "
+                    f"re-tokenize to emit block_tag. Continuing on the FULL mix (LR decay only).")
+        else:
+            before = len(ds)
+            if has_edu:
+                tags = list(ds["block_tag"])
+                scores = [float(s) for s in ds["block_edu_score"]]
+                mask = _anneal_rank_keep_mask(tags, scores, wanted)
+                keep_idx = [i for i, ok in enumerate(mask) if ok]
+                ds = ds.select(keep_idx)
+                if rank0():
+                    log(f"[anneal] mix filter {sorted(wanted)} + edu-rank(median): "
+                        f"{before} → {len(ds)} blocks")
+            else:
+                ds = ds.filter(lambda row: row["block_tag"] in wanted)
+                if rank0():
+                    log(f"[anneal] mix filter {sorted(wanted)} (no block_edu_score — tag-only): "
+                        f"{before} → {len(ds)} blocks")
+            if len(ds) == 0:
+                raise RuntimeError(
+                    f"[anneal] mix filter {sorted(wanted)} matched ZERO blocks — refusing to train "
+                    f"on an empty anneal loader. Re-tokenize so hydrated/replay blocks carry block_tag."
+                )
 
     def collate(rows):
         ids = torch.tensor([r["input_ids"] for r in rows], dtype=torch.long)
@@ -604,17 +751,25 @@ def run_contract(typed, cfg, save_dir, world, smoke_steps):
     lowbit = cfg.get("optimizer_lowbit", 0)
     int8 = typed.resolve_int8_master(world)               # the SINGLE resolution (storage→snap under world>1)
     eff = cfg.get("micro_batch_size", 1) * cfg.get("grad_accum", 1) * max(1, world)
+    max_steps = int(cfg.get("max_steps") or 0)
+    anneal_plan = resolve_anneal(cfg, max_steps if not smoke_steps else 0)
     contract = {
         "run_name": cfg.get("run_name"), "precision": cfg.get("precision"), "int8_master": int8,
         "optimizer_lowbit": lowbit or "bf16", "save_dir": save_dir, "init_from": init_from or "(base model)",
         "tokenized": tokenized, "tokenized_total_tokens": tok_count, "seq_len": cfg.get("seq_len"),
         "effective_batch": eff, "max_steps": cfg.get("max_steps"), "decay_frac": cfg.get("decay_frac"),
+        "anneal": anneal_plan,
+        "scored_checkpoint": "anneal-end" if anneal_plan.get("active") else "final",
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES", "unset"),
         "levers_on": [k for k, v in lev_on.items() if v], "smoke": bool(smoke_steps),
         "mode": typed.mode, "fingerprint": typed.fingerprint(),
     }
     if rank0():
         bar = "─" * 70
+        anneal_row = (
+            f"ON start={anneal_plan['start_step']} mix={anneal_plan['mix_tags']}"
+            if anneal_plan.get("active") else f"off ({anneal_plan.get('reason', '?')})"
+        )
         rows = [("mode", f"{typed.mode}   fingerprint={contract['fingerprint']}"),
                 ("precision", contract["precision"]), ("int8_master", int8),
                 ("optimizer_lowbit", contract["optimizer_lowbit"]),
@@ -624,6 +779,8 @@ def run_contract(typed, cfg, save_dir, world, smoke_steps):
                 ("seq_len", contract["seq_len"]),
                 ("batch", f"{cfg.get('micro_batch_size')}×{cfg.get('grad_accum')}×{max(1,world)}gpu = {eff} eff"),
                 ("max_steps", contract["max_steps"]), ("decay_frac", contract["decay_frac"]),
+                ("anneal", anneal_row),
+                ("scored_ckpt", contract["scored_checkpoint"]),
                 ("CUDA_VISIBLE_DEVICES", contract["cuda_visible_devices"] + "  (single-GPU; never both — PSU OCP)"),
                 ("levers", ", ".join(contract["levers_on"]) or "none")]
         print(f"\n┌─ RUN CONTRACT · {cfg.get('run_name','?')} {'─'*max(0, 51-len(str(cfg.get('run_name',''))))}┐")
@@ -766,13 +923,22 @@ def main():
             while True:
                 yield torch.randint(0, vocab, (cfg["micro_batch_size"], cfg["seq_len"]), dtype=torch.long)
         dl, sampler = _smoke_iter(), None
+        anneal_plan = {"active": False, "start_step": total, "reason": "smoke run — anneal disabled"}
     else:
         dl, sampler = make_loader(cfg, rank, world, want_mask=lever1_on, want_facts=lever4_on)
         total = cfg["max_steps"]
+        anneal_plan = resolve_anneal(cfg, total)
         if rank0() and lever1_on:
             log(f"[lever1] entity-targeted loss ON — entity_loss_weight={entity_w} (weighted-mean CE)")
         if rank0() and lever4_on:
             log("[lever4] exposure tracking ON — fact_id exposures snapshotted at each checkpoint")
+        if rank0():
+            if anneal_plan["active"]:
+                log(f"[anneal] ACTIVE — {anneal_plan['reason']}; mix={anneal_plan['mix_tags']}; "
+                    f"lr → {anneal_plan['lr_end']} over final window; pre-anneal ckpt kept="
+                    f"{anneal_plan['keep_pre']}")
+            else:
+                log(f"[anneal] inactive — {anneal_plan['reason']}")
     model.train()
     opt.zero_grad(set_to_none=True)
 
@@ -786,6 +952,8 @@ def main():
     step, micro, window_loss, t0 = 0, 0, 0.0, time.time()
     es_pat = int(cfg.get("early_stop_patience", 0) or 0)   # 0 = OFF (default): the block below never runs
     es_best, es_bad = float("inf"), 0
+    anneal_started = False
+    scored_checkpoint = "final"  # overwritten to anneal-end when anneal runs to completion
     data_iter = iter(dl)
     while step < total:
         try:
@@ -826,7 +994,14 @@ def main():
         window_loss += loss_val
         micro += 1
         if micro % accum == 0:
-            lr = wsd_lr(step, cfg["warmup_steps"], total, cfg["lr"], cfg["min_lr"], cfg["decay_frac"])
+            # Anneal window: linear LR → lr_end on the anneal mix. Pre-anneal uses the WSD schedule
+            # as before. Precision floor untouched — schedule is not dtype.
+            if anneal_started:
+                lr = anneal_lr(
+                    step, total, anneal_plan["start_step"], cfg["lr"], anneal_plan["lr_end"],
+                )
+            else:
+                lr = wsd_lr(step, cfg["warmup_steps"], total, cfg["lr"], cfg["min_lr"], cfg["decay_frac"])
             for g in opt.param_groups:
                 cur = g["lr"]
                 if isinstance(cur, torch.Tensor):
@@ -844,6 +1019,43 @@ def main():
             if gctl is not None:
                 gctl.reset()                # empty the accumulator for the next window
             step += 1
+            # ── anneal switch at the 90% mark (or configured frac) ─────────────────
+            if (
+                anneal_plan.get("active")
+                and not anneal_started
+                and step >= anneal_plan["start_step"]
+                and not smoke_steps
+            ):
+                exp_check = pre_anneal_exposure_check(
+                    cfg, exposure if lever4_on else None, anneal_plan["require_exposure"],
+                )
+                if rank0():
+                    log(f"[anneal] {exp_check['message']}")
+                    if not exp_check["ok"]:
+                        log("[anneal] WARNING — exposure floor not proven; anneal will still run "
+                            "(probes decide install; do not read a pretty loss curve as install)")
+                if anneal_plan["keep_pre"] and save_dir:
+                    pre_dir = f"{save_dir}/pre_anneal"
+                    if rank0():
+                        log(f"[anneal] saving pre-anneal fallback checkpoint → {pre_dir}")
+                    save_checkpoint(model, cfg, pre_dir, rank, world)
+                    if lever4_on and rank0():
+                        _save_exposure(pre_dir, step, exposure)
+                    model.train()
+                # Switch the loader to the anneal mix (hydrated + replay by default).
+                dl, sampler = make_loader(
+                    cfg, rank, world,
+                    want_mask=lever1_on, want_facts=lever4_on,
+                    tag_filter=anneal_plan["mix_tags"],
+                )
+                data_iter = iter(dl)
+                anneal_started = True
+                scored_checkpoint = "anneal-end"
+                if rank0():
+                    log(f"[anneal] MIX SWITCH + LR DECAY at step {step}/{total} "
+                        f"(mix={anneal_plan['mix_tags']}, lr_end={anneal_plan['lr_end']})")
+                if world > 1:
+                    dist.barrier()
             if step % cfg["log_every"] == 0:
                 mem = torch.cuda.max_memory_allocated() / 1e9
                 cur = torch.cuda.memory_allocated() / 1e9    # post-step+zero_grad: weights + optimizer state (grads freed)
@@ -874,7 +1086,16 @@ def main():
         if rank0():                          # recipe provenance: what RUN CONTRACT produced this checkpoint
             import json as _json
             from pathlib import Path
+            # Name which checkpoint is the eval candidate (anneal-end vs final / pre-anneal fallback).
+            contract = dict(contract)
+            contract["scored_checkpoint"] = scored_checkpoint
+            contract["anneal_started"] = anneal_started
+            contract["final_step"] = step
+            if anneal_started and anneal_plan.get("keep_pre"):
+                contract["pre_anneal_checkpoint"] = f"{save_dir}/pre_anneal"
             (Path(save_dir) / "run_contract.json").write_text(_json.dumps(contract, indent=2, default=str))
+            log(f"scored checkpoint = {scored_checkpoint}"
+                + (f" (pre-anneal fallback at {save_dir}/pre_anneal)" if anneal_started else ""))
         if lever4_on and rank0():
             _save_exposure(save_dir, step, exposure)
     if rank0():

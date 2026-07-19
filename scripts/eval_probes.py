@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import config as C
+from eval_stats import DEFAULT_MIN_N, stamp_proportion
 from pipeline.editions import iter_editions
 
 
@@ -221,19 +222,50 @@ def evaluate_model(tokenizer, model, device: str, probes: list[dict[str, Any]]) 
     return hits
 
 
-def summarize_hits(probes: list[dict[str, Any]], hits: list[bool]) -> dict[str, Any]:
+def summarize_hits(
+    probes: list[dict[str, Any]],
+    hits: list[bool],
+    *,
+    min_n: int = DEFAULT_MIN_N,
+    bar: float | None = None,
+    estimand: str | None = None,
+) -> dict[str, Any]:
+    """Per-slice forced-choice rates with Wilson intervals and mechanical n-floor labels."""
     if len(probes) != len(hits):
         raise ValueError(f"probe/hit length mismatch: {len(probes)} != {len(hits)}")
     per_predicate: dict[str, list[bool]] = {}
     for probe, hit in zip(probes, hits, strict=True):
         per_predicate.setdefault(str(probe.get("predicate") or "unknown"), []).append(hit)
     total_hits = sum(hits)
+    n = len(hits)
+    overall = stamp_proportion(
+        total_hits,
+        n,
+        min_n=min_n,
+        bar=bar,
+        estimand=estimand,
+        slice_name="all",
+    )
     return {
-        "acc": total_hits / len(hits),
+        "acc": overall["acc"],
         "hits": total_hits,
-        "n": len(hits),
+        "n": n,
+        "wilson": overall["wilson"],
+        "rough_bound_half_over_sqrt_n": overall["rough_bound_half_over_sqrt_n"],
+        "n_status": overall["n_status"],
+        "min_n": min_n,
+        **({"bar": bar, "bar_status": overall.get("bar_status"),
+            "clears_bar": overall.get("clears_bar"),
+            "within_noise_of_bar": overall.get("within_noise_of_bar")} if bar is not None else {}),
         "per_predicate": {
-            predicate: {"acc": sum(values) / len(values), "hits": sum(values), "n": len(values)}
+            predicate: stamp_proportion(
+                sum(values),
+                len(values),
+                min_n=min_n,
+                bar=bar,
+                estimand=estimand,
+                slice_name=predicate,
+            )
             for predicate, values in sorted(per_predicate.items())
         },
     }
@@ -253,19 +285,38 @@ def build_report(
     config_fingerprint: str,
     tokenized: str,
 ) -> dict[str, Any]:
-    base = summarize_hits(corpus.probes, base_hits)
-    tuned = summarize_hits(corpus.probes, tuned_hits)
-    rough_bound = 0.5 / math.sqrt(base["n"])
+    # Chance is the floor a random forced-choice picker hits; stamp both sides so the
+    # report carries Wilson + insufficient-n without hand arithmetic.
+    base = summarize_hits(
+        corpus.probes,
+        base_hits,
+        min_n=min_n,
+        bar=corpus.chance,
+        estimand=corpus.measurement_class,
+    )
+    tuned = summarize_hits(
+        corpus.probes,
+        tuned_hits,
+        min_n=min_n,
+        bar=corpus.chance,
+        estimand=corpus.measurement_class,
+    )
+    rough_bound = tuned["rough_bound_half_over_sqrt_n"] if tuned["n"] else 0.0
+    if rough_bound is None:
+        rough_bound = 0.0
     delta_acc = tuned["acc"] - base["acc"]
     for result in (base, tuned):
         result["probe_sha256"] = corpus.probe_sha256
 
     checks = [
         {"check": "base and tuned used the identical probe set", "pass": base["probe_sha256"] == tuned["probe_sha256"]},
-        {"check": f"probe denominator is at least {min_n}", "pass": base["n"] >= min_n},
+        {
+            "check": f"probe denominator is at least {min_n}",
+            "pass": base["n"] >= min_n and base["n_status"] != "insufficient-n",
+        },
         {
             "check": "tuned accuracy clears chance by more than the rough bound",
-            "pass": tuned["acc"] - corpus.chance > rough_bound,
+            "pass": tuned["acc"] - corpus.chance > rough_bound and tuned.get("bar_status") != "within-noise",
         },
         {
             "check": f"accuracy delta clears {min_delta_acc:.4f} by more than the rough bound",
@@ -310,9 +361,25 @@ def build_report(
         "chance": corpus.chance,
         "rough_bound_half_over_sqrt_n": rough_bound,
         "delta_acc": delta_acc,
+        "axis": "forced_choice",
+        "estimand": corpus.measurement_class,
         "thresholds": {"min_n": min_n, "min_delta_acc": min_delta_acc},
         "checks": checks,
         "failed_checks": failed,
+        # Dual-axis column the generative merger fills in; present here so a forced-choice-only
+        # report still names the axis shape install-strength will carry.
+        "install_strength": {
+            "forced_choice": {
+                "tuned_acc": tuned["acc"],
+                "base_acc": base["acc"],
+                "n": tuned["n"],
+                "wilson": tuned["wilson"],
+                "n_status": tuned["n_status"],
+                "delta_acc": delta_acc,
+                "estimand": corpus.measurement_class,
+            },
+            "generative": None,
+        },
         "inputs": {
             "config": _display(config_path),
             "config_sha256": _sha256(config_path),

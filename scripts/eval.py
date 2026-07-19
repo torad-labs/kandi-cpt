@@ -70,10 +70,38 @@ def main() -> None:
             sys.exit("generic CPT probe eval requires exactly one tuned checkpoint")
         from eval_probes import run_probe_comparison
         try:
-            _, report = run_probe_comparison(cfg, args.config, args.checkpoints[0])
+            _, fc_report = run_probe_comparison(cfg, args.config, args.checkpoints[0])
         except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
             sys.exit(f"generic CPT probe eval failed closed: {error}")
-        sys.exit(0 if report["status"] == "PASS" else 1)
+        # Dual-axis install-strength: forced-choice + generative (04-eval-and-training).
+        # Generative may be skipped only when eval.generative_enabled is false (recorded).
+        if getattr(e, "generative_enabled", True):
+            from eval_generative import merge_dual_axis, run_generative_comparison
+            from eval_probes import _display, _rooted
+            import re as _re
+            try:
+                gen_path, gen_report = run_generative_comparison(
+                    cfg, args.config, args.checkpoints[0],
+                )
+            except (OSError, ValueError, KeyError, json.JSONDecodeError, RuntimeError) as error:
+                sys.exit(f"generative CPT probe eval failed closed: {error}")
+            dual = merge_dual_axis(fc_report, gen_report)
+            # Durable dual-axis receipt beside the per-axis reports (install-strength cites this).
+            safe_run = _re.sub(r"[^A-Za-z0-9_.-]+", "_", cfg.run.run_name).strip("._") or "run"
+            dual_dir = _rooted(e.probe_report_root)
+            dual_dir.mkdir(parents=True, exist_ok=True)
+            dual_path = dual_dir / f"{safe_run}_install_strength.json"
+            dual_path.write_text(json.dumps(dual, indent=2) + "\n", encoding="utf-8")
+            print(json.dumps({
+                "status": dual["status"],
+                "report": _display(dual_path),
+                "generative_report": _display(gen_path),
+                "forced_choice": dual["forced_choice"],
+                "generative": dual["generative"],
+                "rule": dual["rule"],
+            }))
+            sys.exit(0 if dual["status"] in ("PASS", "PROVISIONAL") else 1)
+        sys.exit(0 if fc_report["status"] == "PASS" else 1)
 
     rc = 0
     for ckpt in args.checkpoints:

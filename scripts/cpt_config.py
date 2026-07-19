@@ -149,6 +149,34 @@ class LeversConfig:
 
 
 @dataclass
+class AnnealConfig:
+    """Final-phase anneal on top-quality surfaces + replay (docs/cpt-overhaul/04).
+
+    Default ON and derived: final `frac` of max_steps (default 0.10) switches the loader to the
+    anneal mix (hydrated + replay by block_tag; educational-score ranking plugs in when workstream
+    01 lands) and decays LR to ~0. Disabled automatically on tiny runs (max_steps < min_steps)
+    where 10% is noise — never asked. Precision floor untouched — schedule is not dtype.
+    """
+    enabled: bool = True
+    frac: float = 0.10                  # final fraction of max_steps
+    min_steps: int = 500                # disable when max_steps < this (derived, not asked)
+    mix_tags: list[str] = field(default_factory=lambda: ["hydrated", "replay"])
+    lr_end: float = 0.0                 # LR target at anneal end (linear decay from base lr)
+    require_exposure: bool = True       # print pre-anneal exposure check; warn if lever4 off
+    keep_pre_anneal_checkpoint: bool = True  # save pre-anneal/ as fallback; anneal-end is eval candidate
+
+    def __post_init__(self) -> None:
+        if not 0 < self.frac <= 0.5:
+            raise ConfigError(f"train.anneal.frac({self.frac}) must be in (0, 0.5]")
+        if self.min_steps < 1:
+            raise ConfigError("train.anneal.min_steps must be >= 1")
+        if self.lr_end < 0:
+            raise ConfigError("train.anneal.lr_end must be >= 0")
+        if not self.mix_tags:
+            raise ConfigError("train.anneal.mix_tags must be non-empty")
+
+
+@dataclass
 class TrainConfig:
     precision: Precision = "fp4"        # bf16 | fp4 (Quartet-II native NVFP4) | nvfp4 (legacy QAT)
     int8_master: Int8Master = "storage"  # THE MOAT: storage=true int8-stored master+SR (needs fp4+world1) | snap=legacy bf16-grid SR | off
@@ -169,6 +197,7 @@ class TrainConfig:
     grad_clip: float = 1.0
     gradient_checkpointing: bool = True  # forces use_cache=False
     levers: LeversConfig = field(default_factory=LeversConfig)
+    anneal: AnnealConfig = field(default_factory=AnnealConfig)
 
     def __post_init__(self) -> None:
         if self.precision not in ("bf16", "fp4", "nvfp4"):
@@ -258,9 +287,15 @@ class EvalConfig:
     probe_min_n: int = 50                # no PASS/FAIL number below the handbook's minimum denominator
     probe_min_delta_acc: float = 0.10
     probe_report_root: str = "logs/probe_evals"
+    # Generative axis (docs/cpt-overhaul/04): open-answer judged by different-family κ-calibrated model.
+    # Bar starts lenient (harder measurement); recorded per report, never mid-iteration.
+    generative_bar: float = 0.40
+    generative_min_delta_acc: float = 0.05
+    generative_enabled: bool = True      # dual-axis install-strength when probe_domain is set
 
     def __post_init__(self) -> None:
-        for k in ("tau_fab", "tau_acc", "tau_cov", "probe_min_delta_acc"):
+        for k in ("tau_fab", "tau_acc", "tau_cov", "probe_min_delta_acc",
+                  "generative_bar", "generative_min_delta_acc"):
             v = getattr(self, k)
             if not 0 <= v <= 1:
                 raise ConfigError(f"eval.{k}={v} must be in [0,1]")
@@ -315,6 +350,7 @@ _FINGERPRINT_FIELDS = (
     "train.precision", "train.int8_master", "train.optimizer_lowbit", "train.lr", "train.min_lr",
     "train.warmup_steps", "train.max_steps", "train.decay_frac", "train.micro_batch_size",
     "train.grad_accum", "train.seq_len", "train.weight_decay", "train.betas",
+    "train.anneal.enabled", "train.anneal.frac", "train.anneal.min_steps", "train.anneal.lr_end",
     "model.model_path", "data.tokenized", "data.init_from", "mode",
 )
 
@@ -438,15 +474,17 @@ class CptConfig:
 
     def to_trainer_dict(self) -> dict:
         """Flatten to the flat-key dict the train_cpt.py INTERNALS already consume (model/data/train/run
-        fields hoisted to the top level; `nvfp4` + `levers` stay nested dicts exactly as the old flat YAML
-        produced them). This is an internal adapter so the ~900 lines of trainer plumbing stay untouched and
-        proven-working — it is NOT a config surface. corpus_synthesis/eval are not read by the trainer."""
+        fields hoisted to the top level; `nvfp4` + `levers` + `anneal` stay nested dicts exactly as the old
+        flat YAML produced them). This is an internal adapter so the ~900 lines of trainer plumbing stay
+        untouched and proven-working — it is NOT a config surface. corpus_synthesis/eval are not read by
+        the trainer."""
         d: dict = {}
         for section in (self.model, self.data, self.train, self.run):
             for f in fields(section):
                 d[f.name] = getattr(section, f.name)
         d["nvfp4"] = asdict(self.model.nvfp4)
         d["levers"] = _unalias(asdict(self.train.levers))   # lambda_ → lambda (match original YAML shape)
+        d["anneal"] = asdict(self.train.anneal)
         return d
 
 
@@ -515,8 +553,8 @@ def _flatten(d: dict, prefix: str = "") -> dict:
 _DATACLASS_BY_NAME = {
     c.__name__: c for c in (
         Nvfp4Config, ModelConfig, DataConfig, Lever1EntityLoss, Lever2QaMix, Lever3Ewc, Lever3ThreeR,
-        Lever4ExposureTracking, Lever5CausalTrace, LeversConfig, TrainConfig, CorpusSynthesisConfig,
-        EvalConfig, RunConfig,
+        Lever4ExposureTracking, Lever5CausalTrace, LeversConfig, AnnealConfig, TrainConfig,
+        CorpusSynthesisConfig, EvalConfig, RunConfig,
     )
 }
 

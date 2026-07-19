@@ -64,9 +64,17 @@ stages:
     desc: "10_clean — trafilatura + LLM rescue → clean markdown"
     cmd: ["{py}", "-m", "extract", "--editions", "{editions}", "--llm-rescue"]
     gpu: false
+  - name: pii_scan
+    desc: "PII quarantine/mask (non-destructive)"
+    cmd: ["{py}", "scripts/pipeline/pii_scan.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
+  - name: score_educational
+    desc: "educational-density teacher scores (1–5) for curate"
+    cmd: ["{py}", "scripts/pipeline/score_educational.py", "--domain", "{domain}", "--editions", "{editions}", "--mode", "facts"]
+    gpu: false
   - name: curate
-    desc: "RoBERTa quality/dedup → keep_list.json (EDC legacy path)"
-    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--drop-frac", "0.10"]
+    desc: "educational×trust drop + rarity guard + PII quarantine → keep_list.json (EDC legacy path)"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--no-difficulty"]
     gpu: true
   - name: structured
     desc: "15_structured — LLM entity/triple/discourse extraction (schema-validated)"
