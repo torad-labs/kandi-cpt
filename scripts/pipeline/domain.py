@@ -31,6 +31,9 @@ class Domain:
         if not self.path.exists():
             raise FileNotFoundError(f"no domain manifest: {self.path}")
         self.spec = yaml.safe_load(self.path.read_text())
+        # Path fork (docs/cpt-overhaul/05): facts | style | mixed. Default facts.
+        raw_kind = str(self.spec.get("kind") or "facts").lower().strip()
+        self.kind = raw_kind if raw_kind in {"facts", "style", "mixed"} else "facts"
         self.hierarchy = self.spec.get("hierarchy", ["festival", "city", "year"])
         self.registry = self.spec.get("registry", "")
         self.model_path = self.spec.get("model_path", str(C.MODEL_PATH))

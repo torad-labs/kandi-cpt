@@ -30,6 +30,7 @@ STAGE_EFFECTS = {
     "pii_scan": ["write"],
     # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
     "score_educational": ["egress:llm", "write"],
+    "style_fingerprint": ["write"],
     "structured": ["egress:llm", "write"],
     "resolve": ["gpu", "write"],
     "curate": ["gpu", "write"],
@@ -58,6 +59,10 @@ STAGE_OUTPUTS = {
     "score_educational": [
         "data/_build/educational/scores_{domain}.json",
         "data/_build/educational/report_{domain}.json",
+    ],
+    "style_fingerprint": [
+        "data/_build/style/{domain}/fingerprint.json",
+        "data/_build/style/{domain}/style_card.md",
     ],
     "resolve": [
         "data/_build/resolve/{domain}/**/summary.json",
@@ -109,6 +114,7 @@ REQUIRED_PLAYBOOKS = {
     "hydrate": "cpt/05-hydrate.md",
     "dedup_surfaces": "cpt/05b-dedup-surfaces.md",
     "audit_recall": "cpt/04c-audit-recall.md",
+    "style_fingerprint": "cpt/09-style.md",
     "build_sft": "cpt/07-train.md",
     "sft": "cpt/07-train.md",
     "plan_install": "cpt/08-zero-knob.md",

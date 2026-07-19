@@ -10,6 +10,7 @@
 # module (scripts/scrape/sources/) is authored when the multi-region sweep needs refreshing.
 
 name: pokemon-lore
+kind: facts
 description: Pokémon narrative corpus — characters, regions, organizations, events, species-as-told (lore only).
 
 # Lore is REGION-partitioned (continuity rides on attrs, never a partition). Cf. EDC's festival→city→year.
@@ -36,7 +37,7 @@ ontology:
 model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it   # durable models home (…/dev/models was retired)
 configs:
   cpt: configs/train_pokemon_lore_kanto_v1.yaml   # Phase 6b — the pilot CPT run
-  sft: null                                       # authored after the CPT install verdict
+  sft: configs/sft_pokemon_lore_kanto_v1.yaml     # Phase C residual — hard-neg SFT on the CPT ckpt
 
 vars:
   corpus: pokemon_lore_kanto_v1     # the tokenized Arrow basename this pilot produces
@@ -80,6 +81,11 @@ stages:
   - name: synth
     desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases + persona/temp variation)"
     cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    gpu: false
+  - name: contrast
+    desc: "25_hydrated — truth-validated contrast surfaces (soft-cap 10%; SFT hard-negs are primary)"
+    cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "pokemon-lore", "--editions", "{editions}",
+          "--max-fraction", "0.10"]
     gpu: false
   - name: dedup_surfaces
     desc: "SemDeDup hydrated surfaces (non-destructive exclusion list; floor-protected)"

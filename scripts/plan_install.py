@@ -37,6 +37,7 @@ STAGE_INPUTS = {
     # Phase A data-selection (after extract / before or with curate).
     "pii_scan": ("unit:10_clean",),
     "score_educational": ("unit:10_clean",),
+    "style_fingerprint": (),  # reads 10_clean and/or data/<domain>/style_inbox/
     "curate": ("unit:10_clean",),
     "structured": ("unit:10_clean",),
     # Phase B graph correctness (after structured, before/around split).

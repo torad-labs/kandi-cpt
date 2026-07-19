@@ -11,6 +11,10 @@
 name: <your-domain>
 description: <one line — what this corpus is about>
 
+# Path fork (docs/cpt-overhaul/05). facts = graph/hydrate (default). style = persona/voice path
+# (fingerprint → real-text bulk + register expansions). mixed = both, sub-corpora disjoint at ingest.
+kind: facts   # facts | style | mixed
+
 # Data hierarchy under data/<name>/<...>. A festival is festival→city→year; another domain might be
 # [product, version], [region], [author, work], … The unit of partition is the LAST level.
 hierarchy: [<unit>]
@@ -47,6 +51,11 @@ stages:
     desc: "PII quarantine/mask (non-destructive) — mandatory for own-data/style corpora"
     cmd: ["{py}", "scripts/pipeline/pii_scan.py", "--domain", "{domain}", "--editions", "{editions}"]
     gpu: false
+  # Style path only (kind: style|mixed). REFUSE below ~2k msgs / ~20k tokens of real user text.
+  # - name: style_fingerprint
+  #   desc: "style card — mechanical fingerprint + optional LLM register prose; human-approved"
+  #   cmd: ["{py}", "scripts/pipeline/style_fingerprint.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   gpu: false
   - name: score_educational
     desc: "educational-density teacher scores (1–5) → sidecars for curate; omit on device-only"
     cmd: ["{py}", "scripts/pipeline/score_educational.py", "--domain", "{domain}", "--editions", "{editions}", "--mode", "facts"]

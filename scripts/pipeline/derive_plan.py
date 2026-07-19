@@ -29,7 +29,7 @@ FAILURE_SENTENCES = {
     "diversity": {
         "sentence": "The paraphrases came out too same-y; I'm regenerating with more variety.",
         "action": "re-run synth (persona variation ON) then dedup_surfaces; do not train yet",
-        "playbook": "cpt/05b-dedup-surfaces.md",
+        "playbook": "cpt/09-style.md",
     },
     "audit_recall": {
         "sentence": "The graph missed too many facts from the source docs; I'm re-extracting, not re-training.",
@@ -49,12 +49,12 @@ FAILURE_SENTENCES = {
     "style_minimum": {
         "sentence": "Not enough of your writing to learn your voice — add exports or notes and try again.",
         "action": "refuse train; require ≥2k messages or ≥20k tokens for style domains",
-        "playbook": "cpt/05b-dedup-surfaces.md",
+        "playbook": "cpt/09-style.md",
     },
     "hard_negatives": {
         "sentence": "I can't build hard-negative drills for this domain yet (no confusable groups authored).",
         "action": "author a contrast block or accept DOMAIN_HARD_NEGATIVES_UNAVAILABLE",
-        "playbook": "cpt/05b-dedup-surfaces.md",
+        "playbook": "cpt/09-style.md",
     },
 }
 
@@ -188,6 +188,11 @@ def derive_knobs(
             "ladder": [],
             "failure_sentences": FAILURE_SENTENCES,
         }
+
+    # Prefer manifest kind (Domain.kind / spec.kind); caller override only if facts default.
+    manifest_kind = str(getattr(domain, "kind", None) or (domain.spec or {}).get("kind") or domain_kind).lower()
+    if manifest_kind in {"facts", "style", "mixed"}:
+        domain_kind = manifest_kind
 
     n_docs = _count_clean_docs(domain_name, editions)
     n_triples = _count_triples(domain_name, editions)
