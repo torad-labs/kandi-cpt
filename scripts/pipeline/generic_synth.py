@@ -172,6 +172,10 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
                    "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
             if doc_ids := source_doc_ids(t):
                 rec["source_doc_ids"] = doc_ids
+            # Persona is a first-class optional schema field (relation.schema.json) — stamp
+            # before validate so the hydrated layer re-validates clean end-to-end.
+            if persona:
+                rec["synth_persona"] = persona[:80]
             errors = validate("relation", rec, domain=domain)
             if errors:
                 raise ValueError(
@@ -179,9 +183,6 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
                     f"'{domain}': {errors[:3]} | rec={rec}. relation_type '{p}' is not in the manifest's "
                     f"relations.taxonomy / predicates enum (configs/domains/{domain}.yaml) — the hydrated "
                     f"vocabulary must match the manifest the gates classify against.")
-            # Diagnostic only — schema is closed; stamp after validate so additionalProperties stays clean.
-            if persona:
-                rec["synth_persona"] = persona[:80]
             triple_recs.append(rec)
         return p, not (raw or "").strip(), triple_recs
 

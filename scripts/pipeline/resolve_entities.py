@@ -203,6 +203,33 @@ def pairwise_clusters(emb, auto_band: float, review_band: float) -> tuple[list[l
     return auto_groups, review
 
 
+# Guardrails against bare-name embedding mega-clusters (kanto live 2026-07-19: auto_band 0.92
+# collapsed 1836→6). A single auto group may not exceed CLUSTER_FRAC of its (type, continuity)
+# live bucket; the whole embedding pass may not auto-merge more than PASS_FRAC of the unit's
+# entity table. Offenders are demoted to the review queue — never auto-merged.
+AUTO_CLUSTER_MAX_BUCKET_FRAC = 0.25
+AUTO_PASS_MAX_TABLE_FRAC = 0.30
+
+
+def auto_cluster_too_large(n_members: int, bucket_live: int, *, frac: float = AUTO_CLUSTER_MAX_BUCKET_FRAC) -> bool:
+    """True when an auto-merge group would swallow too much of its (type, continuity) bucket."""
+    if bucket_live <= 0 or n_members < 2:
+        return False
+    return n_members > max(1, int(bucket_live * frac))
+
+
+def embedding_pass_too_aggressive(
+    n_auto_alias_ids: int,
+    n_entities_in: int,
+    *,
+    frac: float = AUTO_PASS_MAX_TABLE_FRAC,
+) -> bool:
+    """True when embedding auto-merges would fold more than ``frac`` of the unit entity table."""
+    if n_entities_in <= 0:
+        return False
+    return n_auto_alias_ids > max(1, int(n_entities_in * frac))
+
+
 def pick_canonical(members: list[dict]) -> dict:
     """Prefer type-consistent ids, then majority domain_unit prefix, then longest id.
 
@@ -316,12 +343,45 @@ def resolve_unit(
             print(f"  [resolve] embedding failed for {et}/{cont}: {error}", file=sys.stderr)
             continue
         auto_groups, review_pairs = pairwise_clusters(emb, auto_band, review_band)
+        bucket_live = len(live)
+        # Stage candidates first — apply per-cluster + whole-pass guards before mutating id_map.
+        staged: list[dict] = []
+        refused_groups: list[dict] = []
         for grp in auto_groups:
             members = [live[j][1] for j in grp]
-            # skip if already exact-merged
             members = [m for m in members if m["id"] not in id_map]
             if len(members) < 2:
                 continue
+            if auto_cluster_too_large(len(members), bucket_live):
+                refused_groups.append({
+                    "members": members,
+                    "reason": (
+                        f"auto-cluster size {len(members)} > "
+                        f"{AUTO_CLUSTER_MAX_BUCKET_FRAC:.0%} of bucket live={bucket_live}"
+                    ),
+                })
+                continue
+            staged.append({"members": members})
+
+        staged_alias_n = sum(len(s["members"]) - 1 for s in staged)
+        # Also count aliases already staged across prior buckets this unit so the pass cap is global.
+        prior_auto_aliases = sum(
+            len(m.get("aliases") or []) for m in merges if m.get("band") == "auto"
+        )
+        pass_alias_n = prior_auto_aliases + staged_alias_n
+        if embedding_pass_too_aggressive(pass_alias_n, len(entities)):
+            print(
+                f"  [resolve] REFUSED embedding auto-pass for unit: would fold "
+                f"{pass_alias_n} alias-ids (>{AUTO_PASS_MAX_TABLE_FRAC:.0%} of "
+                f"n_entities_in={len(entities)}); demoting ALL staged auto groups "
+                f"this bucket + remaining to review",
+                file=sys.stderr,
+            )
+            refused_groups.extend(staged)
+            staged = []
+
+        for s in staged:
+            members = s["members"]
             canon = pick_canonical(members)
             cid = canon["id"]
             aliases = []
@@ -339,6 +399,34 @@ def resolve_unit(
                     "band": "auto",
                     "score": auto_band,
                 })
+
+        # Demote refused mega-clusters to pairwise review (never auto-merge).
+        for refused in refused_groups:
+            members = refused["members"]
+            print(
+                f"  [resolve] REFUSED auto-merge {et}/{cont}: {refused['reason']}; "
+                f"demoting {len(members)} ids to review (sample canonical-candidate="
+                f"{pick_canonical(members).get('id')})",
+                file=sys.stderr,
+            )
+            # Pair each non-canonical against the would-be canonical for operator adjudication.
+            canon = pick_canonical(members)
+            for m in members:
+                if m["id"] == canon["id"]:
+                    continue
+                review_queue.append({
+                    "a": canon["id"],
+                    "b": m["id"],
+                    "name_a": canon.get("name_canonical"),
+                    "name_b": m.get("name_canonical"),
+                    "entity_type": et,
+                    "continuity": cont,
+                    "score": round(float(auto_band), 4),
+                    "band": "review",
+                    "reason": "embedding-collapse-guard",
+                    "guard": refused["reason"],
+                })
+
         for i, j, score in review_pairs:
             a, b = live[i][1], live[j][1]
             if a["id"] in id_map or b["id"] in id_map:

@@ -2,15 +2,21 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kandi-cpt/schema/relation.schema.json",
   "title": "Hydrated relation record",
-  "description": "One record per line in <edition>/25_hydrated/relations.jsonl — the hydrate→tokenize inter-stage seam. Each line is one verified, faithful surface form of a 15_structured triple. This installs the proven 15_structured write-time contract at the 25_hydrated seam. relation_type's enum is NOT hardcoded here: pipeline/schema_validate._patch injects it from the domain manifest (relations.taxonomy keys when a taxonomy is declared, else the predicates keys), so the hydrated vocabulary is pinned to the SAME manifest gate_balance / gate_source_vs_gap classify relation_type against. domain=None loads this verbatim (relation_type unconstrained) — backward-compatible with the fixture tests.",
+  "description": "One record per line in <edition>/25_hydrated/relations.jsonl \u2014 the hydrate\u2192tokenize inter-stage seam. Each line is one verified, faithful surface form of a 15_structured triple. This installs the proven 15_structured write-time contract at the 25_hydrated seam. relation_type's enum is NOT hardcoded here: pipeline/schema_validate._patch injects it from the domain manifest (relations.taxonomy keys when a taxonomy is declared, else the predicates keys), so the hydrated vocabulary is pinned to the SAME manifest gate_balance / gate_source_vs_gap classify relation_type against. domain=None loads this verbatim (relation_type unconstrained) \u2014 backward-compatible with the fixture tests.",
   "type": "object",
-  "required": ["text", "relation_type", "entity_ids", "source_triple_ids", "split"],
+  "required": [
+    "text",
+    "relation_type",
+    "entity_ids",
+    "source_triple_ids",
+    "split"
+  ],
   "additionalProperties": false,
   "properties": {
     "text": {
       "type": "string",
       "minLength": 1,
-      "description": "the hydrated surface form — one faithful expression of the source triple"
+      "description": "the hydrated surface form \u2014 one faithful expression of the source triple"
     },
     "relation_type": {
       "type": "string",
@@ -18,18 +24,24 @@
     },
     "entity_ids": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1,
-      "description": "the display names/ids this line connects. Arity is domain-dependent — generic binary relations emit 2 ([subject, object]); the festival Rust factory emits 1..n (observed 1..17 in the gold, e.g. a stage roster). minItems 1, NO maxItems — arity is deliberately not over-constrained."
+      "description": "the display names/ids this line connects. Arity is domain-dependent \u2014 generic binary relations emit 2 ([subject, object]); the festival Rust factory emits 1..n (observed 1..17 in the gold, e.g. a stage roster). minItems 1, NO maxItems \u2014 arity is deliberately not over-constrained."
     },
     "source_triple_ids": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "provenance back-links to the 15_structured triple(s) this line is faithful to, e.g. [\"plays_at:34\"]."
     },
     "source_doc_ids": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Optional provenance back-links to the clean documents supporting source_triple_ids. Present only when structured triples carry doc_id provenance."
     },
     "split": {
@@ -55,6 +67,11 @@
     "polarity": {
       "type": "string",
       "description": "polarity tag (set-time / disjoint path), e.g. positive | negative."
+    },
+    "synth_persona": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Optional diagnostic stamp from generic_synth persona rotation (which framing persona produced this surface). Not consumed by tokenize/train; present so re-validation of the hydrated layer stays clean."
     }
   }
 }

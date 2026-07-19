@@ -194,6 +194,103 @@ def test_resolve_unit_prefers_type_consistent_canonical_and_rewrites_triples():
     assert "pokemon_lore_kanto:region:kanto" in objs
 
 
+
+
+def test_auto_cluster_too_large_threshold():
+    assert R.auto_cluster_too_large(100, 100) is True   # whole bucket
+    assert R.auto_cluster_too_large(30, 100) is True     # >25%
+    assert R.auto_cluster_too_large(25, 100) is False    # ==25% allowed (strict >)
+    assert R.auto_cluster_too_large(10, 100) is False
+    assert R.auto_cluster_too_large(1, 100) is False
+
+
+def test_embedding_pass_too_aggressive_threshold():
+    assert R.embedding_pass_too_aggressive(400, 1000) is True   # 40% > 30%
+    assert R.embedding_pass_too_aggressive(300, 1000) is False  # ==30% allowed
+    assert R.embedding_pass_too_aggressive(50, 1000) is False
+
+
+def test_embedding_mega_cluster_refused_to_review():
+    """Synthetic embeddings that collapse a bucket must NOT auto-merge — demote to review.
+
+    Mirrors the kanto 2026-07-19 failure mode (auto_band 0.92 bare-name roberta → one
+    mega-cluster per type). We stub pairwise_clusters to return one group of all live ids.
+    """
+    ents = [
+        _ent(f"dom:character:c{i}", f"Char {i}") for i in range(20)
+    ]
+    trips = [_tri(f"dom:character:c{i}", "member_of", "dom:org:x") for i in range(20)]
+
+    # Force embedding path: no exact-name merges (all names distinct), stub clusterer.
+    real_pw = R.pairwise_clusters
+    real_embed = R.embed_names
+
+    def _collapse(emb, auto_band, review_band):
+        n = emb.shape[0] if hasattr(emb, "shape") else len(ents)
+        # one mega auto group, no review pairs
+        return [list(range(n))], []
+
+    def _fake_embed(names, device="cpu"):
+        import torch
+        # orthonormal-ish dummy; content unused because pairwise_clusters is stubbed
+        return torch.eye(len(names), 8)
+
+    R.pairwise_clusters = _collapse
+    R.embed_names = _fake_embed
+    try:
+        result = R.resolve_unit(
+            ents, trips,
+            auto_band=0.92, review_band=0.85, review_cap=500,
+            device="cpu", use_embeddings=True,
+        )
+    finally:
+        R.pairwise_clusters = real_pw
+        R.embed_names = real_embed
+
+    auto_merges = [m for m in result["merges"] if m.get("band") == "auto"]
+    assert auto_merges == [], f"mega-cluster must not auto-merge: {auto_merges}"
+    # All 20 entities survive as distinct canonicals
+    assert result["n_entities_out"] == 20, result["n_entities_out"]
+    # Review queue carries the demoted pairs (guard reason)
+    assert result["review"], "refused cluster must land on review queue"
+    assert any(r.get("reason") == "embedding-collapse-guard" for r in result["review"])
+    assert result["id_map"] == {}
+
+
+def test_small_auto_cluster_still_merges():
+    """A tight 2-entity auto group inside a large bucket is below the 25% guard — still merges."""
+    ents = [_ent(f"dom:character:c{i}", f"Char {i}") for i in range(20)]
+    # two near-dupes that the stub will pair; rest singleton
+    trips = []
+
+    real_pw = R.pairwise_clusters
+    real_embed = R.embed_names
+
+    def _pair_first_two(emb, auto_band, review_band):
+        return [[0, 1]], []  # only c0+c1 auto; well under 25% of 20
+
+    def _fake_embed(names, device="cpu"):
+        import torch
+        return torch.eye(len(names), 8)
+
+    R.pairwise_clusters = _pair_first_two
+    R.embed_names = _fake_embed
+    try:
+        result = R.resolve_unit(
+            ents, trips,
+            auto_band=0.92, review_band=0.85, review_cap=50,
+            device="cpu", use_embeddings=True,
+        )
+    finally:
+        R.pairwise_clusters = real_pw
+        R.embed_names = real_embed
+
+    auto_merges = [m for m in result["merges"] if m.get("band") == "auto"]
+    assert len(auto_merges) == 1, auto_merges
+    assert len(auto_merges[0]["aliases"]) == 1
+    assert result["n_entities_out"] == 19
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:
