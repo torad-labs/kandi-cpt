@@ -96,6 +96,15 @@ def test_style_mode_accepted():
             S.iter_editions = original
 
 
+
+
+def test_default_judge_model_is_paid_qwen():
+    """Free Nemotron was unusable live; default must match eval_generative (qwen3-32b)."""
+    assert S.DEFAULT_JUDGE_MODEL == "qwen/qwen3-32b"
+    assert "nemotron" not in S.DEFAULT_JUDGE_MODEL.lower()
+    assert ":free" not in S.DEFAULT_JUDGE_MODEL
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

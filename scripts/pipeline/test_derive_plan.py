@@ -149,6 +149,15 @@ def test_live_pokemon_lore_emits_plan():
           f"triples={plan['measured']['n_triples']} contrast={plan['measured']['contrast_authorable']}")
 
 
+
+
+def test_failure_sentence_playbooks_point_at_facts_path():
+    """diversity + hard_negatives are facts-path gates, not style."""
+    assert DP.FAILURE_SENTENCES["diversity"]["playbook"] == "cpt/05b-dedup-surfaces.md"
+    assert DP.FAILURE_SENTENCES["hard_negatives"]["playbook"] == "cpt/05-hydrate.md"
+    assert DP.FAILURE_SENTENCES["style_minimum"]["playbook"] == "cpt/09-style.md"
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

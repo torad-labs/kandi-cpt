@@ -6,9 +6,14 @@ Teacher pass (v1): grade each 10_clean doc 1–5 on educational density for the 
 Provider-bound → rides the existing consent line; a device-only corpus omits the stage and
 curate falls back with EDUCATIONAL_SCORE_UNAVAILABLE.
 
+Judge default is ``qwen/qwen3-32b`` (same working default as ``eval_generative.py``).
+The free Nemotron tier proved unusable live for generative judging (2026-07-18); do not
+reinstate it as the default. Override via ``--model`` or ``QGRE_EVAL_JUDGE_MODEL``.
+
     PYTHONPATH=scripts python scripts/pipeline/score_educational.py \
         --domain <d> [--editions …] [--mode facts|style] [--dry-run] \
         [--scores-json path]   # fixture path skips the teacher (unit tests / offline)
+        [--model qwen/qwen3-32b]
 
 Outputs (non-destructive):
   data/_build/educational/<domain>/<doc_sha>.json   per-doc score sidecar
@@ -32,7 +37,7 @@ from pathlib import Path
 import config as C
 from pipeline.editions import iter_editions
 
-DEFAULT_JUDGE_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+DEFAULT_JUDGE_MODEL = "qwen/qwen3-32b"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 MAX_ATTEMPTS = 4
 REQUEST_TIMEOUT_SEC = 120

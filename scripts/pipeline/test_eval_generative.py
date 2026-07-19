@@ -331,6 +331,35 @@ def test_forced_choice_insufficient_n_label():
         assert stamp["bar_status"] == "within-noise"
 
 
+
+
+def test_judge_one_unparseable_falls_back_not_raise():
+    """Unparseable judge output must not raise — heuristic toward wrong/deflected/correct."""
+    class _Meter:
+        def add(self, *a, **k):
+            return None
+    # Patch chat to return garbage
+    real_chat = G.chat
+    def _junk(*a, **k):
+        return "I am a free-tier model and cannot follow the format lol"
+    G.chat = _junk
+    try:
+        # gold contained → correct
+        label = G.judge_one("Q?", "Kanto", "Ash is from Kanto.", ("m", "k", "u"), _Meter())
+        assert label == "correct", label
+        # deflection cue → deflected
+        label = G.judge_one("Q?", "Kanto", "I don't know.", ("m", "k", "u"), _Meter())
+        assert label == "deflected", label
+        # neither → wrong (never silent pass / never raise)
+        label = G.judge_one("Q?", "Kanto", "Johto maybe.", ("m", "k", "u"), _Meter())
+        assert label == "wrong", label
+        # empty answer short-circuits without chat
+        label = G.judge_one("Q?", "Kanto", "   ", ("m", "k", "u"), _Meter())
+        assert label == "deflected", label
+    finally:
+        G.chat = real_chat
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

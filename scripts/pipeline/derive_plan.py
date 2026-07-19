@@ -29,7 +29,7 @@ FAILURE_SENTENCES = {
     "diversity": {
         "sentence": "The paraphrases came out too same-y; I'm regenerating with more variety.",
         "action": "re-run synth (persona variation ON) then dedup_surfaces; do not train yet",
-        "playbook": "cpt/09-style.md",
+        "playbook": "cpt/05b-dedup-surfaces.md",
     },
     "audit_recall": {
         "sentence": "The graph missed too many facts from the source docs; I'm re-extracting, not re-training.",
@@ -54,7 +54,7 @@ FAILURE_SENTENCES = {
     "hard_negatives": {
         "sentence": "I can't build hard-negative drills for this domain yet (no confusable groups authored).",
         "action": "author a contrast block or accept DOMAIN_HARD_NEGATIVES_UNAVAILABLE",
-        "playbook": "cpt/09-style.md",
+        "playbook": "cpt/05-hydrate.md",
     },
 }
 

@@ -294,8 +294,14 @@ def judge_one(
     judge_ctx: tuple[str, str, str],
     meter: UsageMeter,
 ) -> str:
-    """Return one of JUDGE_LABELS. Fail-closed to 'deflected' only when the answer is empty;
-    unparseable non-empty judge output raises — the caller records an error, not a silent pass."""
+    """Return one of JUDGE_LABELS.
+
+    Empty model answers are labeled ``deflected`` without calling the judge. When the judge
+    returns a parseable label in JUDGE_LABELS it is used as-is. Unparseable (or empty) judge
+    output does **not** raise: a fail-soft heuristic runs instead — deflection cues →
+    ``deflected``, gold containment → ``correct``, otherwise ``wrong`` — so install is never
+    inflated by judge failure and the caller always gets a label.
+    """
     if not (answer or "").strip():
         return "deflected"
     model, key, url = judge_ctx
