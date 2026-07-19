@@ -1,0 +1,161 @@
+W0719 13:21:04.625000 1401707 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W0719 13:21:04.637000 1401707 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+┌─ RUN CONTRACT · pokemon_lore_kanto_anneal ──────────────────────────┐
+│                  mode : cpt   fingerprint=4d3d208ce3d990d1          │
+│             precision : fp4                                         │
+│           int8_master : storage                                     │
+│      optimizer_lowbit : 4                                           │
+│              save_dir : checkpoints/cpt/pokemon_lore_kanto_anneal   │
+│             init_from : (base model)                                │
+│             tokenized : data/_build/30_tokenized/pokemon_lore_kanto_v1_anneal.arrow  [761,394 tok]│
+│               seq_len : 512                                         │
+│                 batch : 1×16×1gpu = 16 eff                          │
+│             max_steps : 550                                         │
+│            decay_frac : 0.2                                         │
+│                anneal : ON start=495 mix=['hydrated', 'replay']     │
+│           scored_ckpt : anneal-end                                  │
+│  CUDA_VISIBLE_DEVICES : 1  (single-GPU; never both — PSU OCP)       │
+│                levers : none                                        │
+└──────────────────────────────────────────────────────────────────────┘
+[13:21:04] run registered: logs/runs/pokemon_lore_kanto_anneal-4d3d208c-1784485264/  (resolved config + provenance frozen)
+[13:21:04] world=1 precision=fp4 run=pokemon_lore_kanto_anneal smoke=0
+[13:23:29] loaded text decoder: 600 tensors → 4.63B params (dropped 1411 tower tensors, 60 unused shared-KV k/v)
+[13:23:29] froze 2.75B embedding params (embed_tokens + PLE + tied lm_head)
+[13:23:38] Quartet: swapped 223 Linear -> Quartet_II_linear (BF16-kept layers=[0, 1, 30, 31, 32, 33, 34] + lm_head + embeds)
+[13:23:40] CPU-offloaded PLE: 2.35B params stream from host RAM (off-GPU)
+[rank0] after shard+to(device): gpu_alloc=4.57GB reserved=4.59GB alloc_conf=expandable_segments:True
+[13:23:40] int8-master MOAT: 223 Quartet linears → torchao Int8 store (1 byte/param, SR on every optimizer update; updated by the shared low-bit AdamW — FP4-native compute)
+[13:23:40] int8_master mode = storage  — int8 STORE (1 byte/param) + SR via the shared low-bit AdamW + Quartet FP4 (THE ENGINE MOAT)
+[13:23:41] [mem] weights resident (storage): 3.089GB — the 223 masters are int8(1B) under storage, bf16(2B) under snap
+[13:23:41] optimizer: torchao AdamW4bit (single-GPU, 4-bit m/v states)
+[13:23:41] [anneal] ACTIVE — final 10% of 550 steps (start=495); mix=['hydrated', 'replay']; lr → 0.0 over final window; pre-anneal ckpt kept=True
+[13:23:41] FSDP grad-accum no_sync: unavailable — full sync each microbatch
+W0719 13:23:50.051000 1401707 torch/_dynamo/convert_frame.py:1853] [0/8] torch._dynamo hit config.recompile_limit (8)
+W0719 13:23:50.051000 1401707 torch/_dynamo/convert_frame.py:1853] [0/8]    function: 'abs_max' (/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/quartet2/linear.py:147)
+W0719 13:23:50.051000 1401707 torch/_dynamo/convert_frame.py:1853] [0/8]    last reason: 0/7: tensor 'x' size mismatch at index 0. expected 512, actual 1536
+W0719 13:23:50.051000 1401707 torch/_dynamo/convert_frame.py:1853] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0719 13:23:50.051000 1401707 torch/_dynamo/convert_frame.py:1853] [0/8] To diagnose recompilation issues, see https://docs.pytorch.org/docs/main/user_guide/torch_compiler/compile/programming_model.recompilation.html
+/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/autograd_cache.py:542: UserWarning: OptimState4bit does not implement _stable_hash_for_caching. For PT2-compatible tensor subclasses, it is recommended to implement _stable_hash_for_caching(self) -> str for stable AOT autograd caching.
+  warn_once(
+/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/autograd_cache.py:542: UserWarning: Int8QuantizedTrainingLinearWeight does not implement _stable_hash_for_caching. For PT2-compatible tensor subclasses, it is recommended to implement _stable_hash_for_caching(self) -> str for stable AOT autograd caching.
+  warn_once(
+[13:24:27] step 5/550 loss 5.5909 lr 1.25e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 9.27s/step
+[13:25:03] step 10/550 loss 3.5102 lr 2.50e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 8.21s/step
+[13:25:36] step 15/550 loss 2.8673 lr 3.75e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.66s/step
+[13:26:09] step 20/550 loss 2.6609 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.39s/step
+[13:26:42] step 25/550 loss 2.6025 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.24s/step
+[13:27:14] step 30/550 loss 2.5458 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.12s/step
+[13:27:46] step 35/550 loss 2.4826 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.01s/step
+[13:28:19] step 40/550 loss 2.3157 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.94s/step
+[13:28:50] step 45/550 loss 2.2538 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.87s/step
+[13:29:23] step 50/550 loss 2.2799 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.85s/step
+[13:29:57] step 55/550 loss 2.1932 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.84s/step
+[13:30:31] step 60/550 loss 2.2728 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.84s/step
+[13:31:09] step 65/550 loss 2.3344 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.90s/step
+[13:31:42] step 70/550 loss 2.2647 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.87s/step
+[13:32:15] step 75/550 loss 2.1180 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.85s/step
+[13:32:47] step 80/550 loss 2.1462 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.82s/step
+[13:33:19] step 85/550 loss 2.0764 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.80s/step
+[13:33:50] step 90/550 loss 1.9157 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.77s/step
+[13:34:23] step 95/550 loss 1.9899 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.76s/step
+[13:34:56] step 100/550 loss 1.8403 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.75s/step
+[13:35:29] step 105/550 loss 1.6951 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.74s/step
+[13:36:01] step 110/550 loss 1.7850 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.73s/step
+[13:36:32] step 115/550 loss 1.7424 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.71s/step
+[13:37:05] step 120/550 loss 1.8588 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.70s/step
+[13:37:39] step 125/550 loss 1.7617 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.70s/step
+[13:38:10] step 130/550 loss 1.8570 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.69s/step
+[13:38:42] step 135/550 loss 1.8300 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.67s/step
+[13:39:14] step 140/550 loss 1.8042 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.66s/step
+[13:39:46] step 145/550 loss 1.8896 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.66s/step
+[13:40:18] step 150/550 loss 1.8878 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.65s/step
+[13:40:50] step 155/550 loss 1.6005 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.64s/step
+[13:41:23] step 160/550 loss 1.6129 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.64s/step
+[13:41:55] step 165/550 loss 1.6960 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.63s/step
+[13:42:26] step 170/550 loss 1.7269 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.62s/step
+[13:42:58] step 175/550 loss 1.6786 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.61s/step
+[13:43:29] step 180/550 loss 1.7098 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.60s/step
+[13:44:01] step 185/550 loss 1.8575 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.59s/step
+[13:44:33] step 190/550 loss 1.5149 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.59s/step
+[13:45:05] step 195/550 loss 1.3225 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.59s/step
+[13:45:37] step 200/550 loss 1.1632 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.58s/step
+[13:46:07] step 205/550 loss 1.3384 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.57s/step
+[13:46:39] step 210/550 loss 1.3887 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[13:47:09] step 215/550 loss 1.2451 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[13:47:40] step 220/550 loss 1.3822 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.54s/step
+[13:48:11] step 225/550 loss 1.2933 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.53s/step
+[13:48:42] step 230/550 loss 1.3363 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.53s/step
+[13:49:12] step 235/550 loss 1.4375 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.52s/step
+[13:49:43] step 240/550 loss 1.3416 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.51s/step
+[13:50:14] step 245/550 loss 1.4479 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.50s/step
+[13:50:44] step 250/550 loss 1.3698 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.49s/step
+[13:51:14] step 255/550 loss 1.4093 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.48s/step
+[13:51:45] step 260/550 loss 1.2636 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.48s/step
+[13:52:16] step 265/550 loss 1.3842 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[13:52:47] step 270/550 loss 1.3739 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[13:53:18] step 275/550 loss 1.3622 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[13:53:50] step 280/550 loss 1.2348 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[13:54:21] step 285/550 loss 0.9815 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[13:54:53] step 290/550 loss 0.8899 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[13:55:25] step 295/550 loss 1.0798 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[13:55:57] step 300/550 loss 0.9242 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:56:29] step 305/550 loss 0.9306 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:57:00] step 310/550 loss 0.9907 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:57:32] step 315/550 loss 1.0568 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:58:04] step 320/550 loss 0.9263 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:58:36] step 325/550 loss 0.9798 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[13:59:07] step 330/550 loss 0.9336 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[13:59:38] step 335/550 loss 0.9629 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:00:10] step 340/550 loss 0.9435 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:00:41] step 345/550 loss 0.9955 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.43s/step
+[14:01:13] step 350/550 loss 0.9845 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.43s/step
+[14:01:44] step 355/550 loss 0.9713 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.43s/step
+[14:02:18] step 360/550 loss 1.0304 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:02:50] step 365/550 loss 1.0069 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:03:29] step 370/550 loss 1.0082 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:04:07] step 375/550 loss 0.7161 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:04:37] step 380/550 loss 0.6674 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:05:09] step 385/550 loss 0.6422 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:05:40] step 390/550 loss 0.6749 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:06:11] step 395/550 loss 0.6176 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:06:43] step 400/550 loss 0.6289 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[14:07:17] step 405/550 loss 0.7021 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:07:53] step 410/550 loss 0.6464 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:08:26] step 415/550 loss 0.6619 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:08:59] step 420/550 loss 0.7711 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:09:30] step 425/550 loss 0.6778 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:10:01] step 430/550 loss 0.6743 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[14:10:33] step 435/550 loss 0.7037 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:11:03] step 440/550 loss 0.7238 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:11:36] step 445/550 loss 0.6778 lr 4.84e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:12:06] step 450/550 loss 0.7295 lr 4.63e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.46s/step
+[14:12:36] step 455/550 loss 0.7204 lr 4.43e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[14:13:07] step 460/550 loss 0.7175 lr 4.22e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[14:13:38] step 465/550 loss 0.7252 lr 4.02e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.45s/step
+[14:14:09] step 470/550 loss 0.4512 lr 3.81e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:14:40] step 475/550 loss 0.3929 lr 3.61e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:15:10] step 480/550 loss 0.4221 lr 3.40e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[14:15:41] step 485/550 loss 0.4013 lr 3.20e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.43s/step
+[14:16:12] step 490/550 loss 0.4103 lr 3.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.43s/step
+[14:16:44] [anneal] pre-anneal exposure check SKIPPED — lever4_exposure_tracking is off; anneal will polish whatever is installed without an exposure floor proof
+[14:16:44] [anneal] WARNING — exposure floor not proven; anneal will still run (probes decide install; do not read a pretty loss curve as install)
+[14:16:44] [anneal] saving pre-anneal fallback checkpoint → checkpoints/cpt/pokemon_lore_kanto_anneal/pre_anneal
+[14:17:49] saved int8 checkpoint -> checkpoints/cpt/pokemon_lore_kanto_anneal/pre_anneal  (223 int8 weights + scales, 8.6GB on disk, no bf16 materialization)
+[14:17:49] [anneal] mix filter ['hydrated', 'replay'] + edu-rank(median): 1487 → 313 blocks
+[14:17:49] [anneal] MIX SWITCH + LR DECAY at step 495/550 (mix=['hydrated', 'replay'], lr_end=0.0)
+[14:17:49] step 495/550 loss 0.3967 lr 2.79e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[14:18:22] step 500/550 loss 0.5315 lr 4.64e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[14:18:54] step 505/550 loss 0.5868 lr 4.18e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[14:19:25] step 510/550 loss 0.5823 lr 3.73e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[14:19:56] step 515/550 loss 0.5410 lr 3.27e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:20:30] step 520/550 loss 0.4355 lr 2.82e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[14:21:02] step 525/550 loss 0.4517 lr 2.36e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:21:34] step 530/550 loss 0.5158 lr 1.91e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:22:05] step 535/550 loss 0.4672 lr 1.45e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:22:39] step 540/550 loss 0.4062 lr 1.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:23:11] step 545/550 loss 0.3341 lr 5.45e-06 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:23:44] step 550/550 loss 0.4054 lr 9.09e-07 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.55s/step
+[14:23:44] done 550 steps in 3604s
+[14:24:17] saved int8 checkpoint -> checkpoints/cpt/pokemon_lore_kanto_anneal  (223 int8 weights + scales, 8.6GB on disk, no bf16 materialization)
+[14:24:17] scored checkpoint = anneal-end (pre-anneal fallback at checkpoints/cpt/pokemon_lore_kanto_anneal/pre_anneal)

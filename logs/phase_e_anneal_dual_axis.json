@@ -1,0 +1,90 @@
+{
+  "title": "Task 11 \u2014 anneal live CPT + dual-axis (pokemon-lore/kanto)",
+  "date": "2026-07-19T19:41:45Z",
+  "config": "configs/train_pokemon_lore_kanto_anneal.yaml",
+  "tokenized": {
+    "path": "data/_build/30_tokenized/pokemon_lore_kanto_v1_anneal.arrow",
+    "n_blocks": 1487,
+    "block_tag_dist": {
+      "clean": 1161,
+      "hydrated": 178,
+      "replay": 135,
+      "knowledge": 13
+    },
+    "block_edu_score": false,
+    "note": "EDUCATIONAL_SCORE_UNAVAILABLE \u2014 anneal ranking tag-only (hydrated+replay); edu column present but constant-default"
+  },
+  "train": {
+    "max_steps": 550,
+    "anneal_start": 495,
+    "anneal_frac": 0.1,
+    "mix_tags": [
+      "hydrated",
+      "replay"
+    ],
+    "lr_end": 0.0,
+    "precision": "fp4 + int8 master storage",
+    "gpu": "physical GPU1 (5070 Ti) via CUDA_VISIBLE_DEVICES=1 during train; GPU0 5080 later ERR in nvidia-smi",
+    "elapsed_sec": 3604,
+    "save_dir": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+    "pre_anneal_dir": "checkpoints/cpt/pokemon_lore_kanto_anneal/pre_anneal",
+    "scored_checkpoint": "anneal-end",
+    "markers": {
+      "anneal_active": true,
+      "mix_switch": true,
+      "pre_anneal_ckpt": true,
+      "anneal_end_ckpt": true,
+      "lr_decay_seen": true,
+      "pre_anneal_exposure": true,
+      "mix_filter": true
+    }
+  },
+  "dual_axis": {
+    "probe_set": "data/pokemon-lore/kanto/probes.jsonl",
+    "n_forced": 72,
+    "n_generative": 30,
+    "probe_hash_note": "legacy probes (no source_triple_id) \u2014 same file/seed path as phase_a via validate_phase_a_live.py",
+    "judge_model": "qwen/qwen3-32b",
+    "anneal_end": {
+      "fc_base": 0.2639,
+      "fc_tuned": 0.6389,
+      "fc_delta_vs_base": 0.375,
+      "fc_hits_tuned": 46,
+      "gen_base": 0.0,
+      "gen_tuned": 0.5667,
+      "gen_delta_vs_base": 0.5667,
+      "fc_minus_gen_gap": 0.0722,
+      "gen_label_counts": {
+        "correct": 17,
+        "wrong": 13,
+        "fabricated": 0,
+        "deflected": 0
+      },
+      "gen_n_status": "insufficient-n"
+    },
+    "baseline_cpt_v1": {
+      "checkpoint": "checkpoints/cpt/pokemon_lore_kanto_v1",
+      "fc_tuned": 0.625,
+      "gen_tuned": 0.5,
+      "receipt": "logs/phase_a_live_dual_axis.json"
+    },
+    "delta_anneal_minus_cpt_v1": {
+      "fc": 0.0139,
+      "gen": 0.0667
+    }
+  },
+  "verdicts": {
+    "run_gate": "PASS \u2014 550/550 steps, anneal mix switch + LR decay observed, both checkpoints on disk, scored=anneal-end",
+    "install_strength_vs_cpt_v1": "PASS-or-HOLD vs CPT \u2014 FC 0.639 vs CPT 0.625 (\u0394+0.014); gen 0.567 vs CPT 0.500 (\u0394+0.067). No install regression.",
+    "scored_checkpoint": "anneal-end",
+    "install_regressed": false
+  },
+  "receipts": {
+    "train_log": "logs/phase_e_anneal_cpt.log",
+    "dual_axis_log": "logs/phase_e_anneal_dual_axis.log",
+    "full_probe_dump": "logs/probe_evals/phase_e_anneal_pokemon-lore_kanto.json",
+    "this_file": "logs/phase_e_anneal_dual_axis.json",
+    "tokenize_log": "logs/tokenize_kanto_anneal.log",
+    "config": "configs/train_pokemon_lore_kanto_anneal.yaml"
+  }
+}
