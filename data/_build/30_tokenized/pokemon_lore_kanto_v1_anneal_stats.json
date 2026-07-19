@@ -1,0 +1,28 @@
+{
+  "total_tokens": 761394,
+  "num_chunks": 1487,
+  "seq_len": 512,
+  "docs_by_tag": {
+    "hydrated": 8206,
+    "clean": 105,
+    "knowledge": 2
+  },
+  "tokens_by_tag": {
+    "hydrated": 79860,
+    "clean": 589372,
+    "knowledge": 6317
+  },
+  "replay_tokens": 69217,
+  "editions": "kanto",
+  "lever_metadata": true,
+  "block_edu_score": false,
+  "block_edu_mean": 3.1817,
+  "entity_masked_tokens": 429,
+  "entity_mask_frac": 0.0006,
+  "src_token_dist": {
+    "raw_knowledge": 692175,
+    "qa": 0,
+    "conversation": 0,
+    "replay": 69219
+  }
+}

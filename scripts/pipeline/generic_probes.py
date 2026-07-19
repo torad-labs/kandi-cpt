@@ -10,7 +10,7 @@ probe *design* (held-out strategy, era tags, base-delta) stays the human-reviewe
 this generates the *items* deterministically.
 
     PYTHONPATH=scripts python scripts/pipeline/generic_probes.py --domain <d> [--editions ...] [--distractors 3] [--dry-run]
-Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, split}).
+Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, source_triple_id, split}).
 """
 from __future__ import annotations
 
@@ -48,10 +48,17 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
             subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
             true_by_subject_pred[(subject_id, t["predicate"])].add(t["object"])
     items: list[dict] = []
+    seen_source_ids: set[str] = set()
+    duplicate_sources = 0
     seen_q: dict = defaultdict(int)                        # predicate WITH a question template -> n triples seen
     made: dict = defaultdict(int)                          # predicate -> n probes produced
     drops: dict = defaultdict(lambda: defaultdict(int))    # predicate -> reason -> n
     for t in gold_triples:
+        source_id = triple_id(t)
+        if source_id in seen_source_ids:
+            duplicate_sources += 1
+            continue
+        seen_source_ids.add(source_id)
         p, obj = t["predicate"], t["object"]
         q = rel_q.get(p)
         if not q:
@@ -73,9 +80,11 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
         choices = rng.sample(pool, min(n_distractors, len(pool))) + [obj]
         rng.shuffle(choices)
         items.append({"question": question, "choices": choices, "answer": obj,
-                      "predicate": p, "subject": t["subject"], "split": "held_out"})
+                      "predicate": p, "subject": t["subject"], "source_triple_id": source_id,
+                      "split": "held_out"})
         made[p] += 1
     empty_pool_drops = sum(d.get("no_safe_distractor", 0) for d in drops.values())
+    print(f"  source-id guard: dropped {duplicate_sources} duplicate semantic triple(s)")
     print(f"  multi-correct guard: dropped {empty_pool_drops} probe(s) with an empty distractor pool "
           f"after excluding all objects true for the same (subject_id, predicate)")
     # A predicate the operator authored a question for that yields ZERO probes is an UNTESTED fact axis — in an
@@ -91,17 +100,55 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
     return items
 
 
+def agreement_key(t: dict) -> tuple[str, str, str]:
+    return (str(t.get("subject_id") or ""), str(t.get("predicate") or ""), str(t.get("object") or ""))
+
+
+def two_model_gold_filter(
+    gold_triples: list[dict],
+    second_pass: list[dict],
+) -> tuple[list[dict], list[dict]]:
+    """Keep intersection of gold with a second-extractor pass; disagreements → adjudication queue.
+
+    Gold that ships is only the intersection. Disagreements never enter scored items silently.
+    """
+    second_keys = {agreement_key(t) for t in second_pass}
+    kept, disagreed = [], []
+    for t in gold_triples:
+        if agreement_key(t) in second_keys:
+            kept.append(t)
+        else:
+            disagreed.append(t)
+    return kept, disagreed
+
+
+def load_second_pass(path) -> list[dict]:
+    """Load a second-model extraction jsonl (same triple shape) for --gold-agreement."""
+    from pathlib import Path
+    p = Path(path)
+    if not p.is_file():
+        raise FileNotFoundError(f"gold-agreement second pass missing: {p}")
+    return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--editions")
     ap.add_argument("--distractors", type=int, default=3)
     ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
+    ap.add_argument(
+        "--gold-agreement",
+        metavar="SECOND_PASS_JSONL",
+        help="two-model gold: keep intersection with SECOND_PASS_JSONL; disagreements → "
+             "data/_build/gold_agreement/<domain>/<unit>.review.jsonl (never scored silently)",
+    )
     args = ap.parse_args()
     rel_q = rel_q_for(args.domain)
     if not rel_q:
         raise SystemExit(f"domain '{args.domain}' has no sft_templates.rel_q — author it in "
                          f"configs/templates/{args.domain}.yaml (or check the key spelling/nesting if the file exists).")
+    second_pass_all = load_second_pass(args.gold_agreement) if args.gold_agreement else None
     for ed in iter_editions(args.domain, only=args.editions, with_raw=False):   # consumes 15_structured, not 00_raw
         all_triples = load_all_triples(ed)
         if not all_triples:
@@ -117,6 +164,23 @@ def main():
             split_label = "trained"
             print(f"  {ed.slug}: trained mode — {len(gold_triples)} gold / {len(all_triples)} "
                   f"distractor-pool triples (no split manifest)")
+        gold_agreement_stamp = None
+        if second_pass_all is not None:
+            kept, disagreed = two_model_gold_filter(gold_triples, second_pass_all)
+            print(f"  {ed.slug}: gold-agreement two_model — keep {len(kept)} / drop {len(disagreed)} to adjudication")
+            if not args.dry_run:
+                import config as C
+                from pathlib import Path as _P
+                review_dir = C.BUILD / "gold_agreement" / args.domain
+                review_dir.mkdir(parents=True, exist_ok=True)
+                review_path = review_dir / f"{ed.slug.replace('/', '_')}.review.jsonl"
+                review_path.write_text(
+                    "\n".join(json.dumps(t, ensure_ascii=False) for t in disagreed) + ("\n" if disagreed else ""),
+                    encoding="utf-8",
+                )
+                print(f"    adjudication queue → {review_path}")
+            gold_triples = kept
+            gold_agreement_stamp = "two_model"
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         items = build_probes(gold_triples, rel_q, unit_name, args.distractors,
@@ -125,6 +189,10 @@ def main():
             item["split"] = split_label
             if sp:
                 item["split_version"] = sp["version"]
+            if gold_agreement_stamp:
+                item["gold_agreement"] = gold_agreement_stamp
+            # Always stamp source id when available (eval_probes bind requires it on held_out).
+            # build_probes already sets source_triple_id.
         if args.dry_run:
             print(f"  {ed.slug}: {len(items)} forced-choice probes over {len({i['predicate'] for i in items})} predicates")
             continue
@@ -134,7 +202,8 @@ def main():
             "\n".join(json.dumps(i, ensure_ascii=False) for i in items) + "\n", encoding="utf-8")
         os.replace(tmp, out_path)
         print(f"  {ed.slug}: wrote {len(items)} {split_label} probes from {len(gold_triples)} gold triples "
-              f"({len(all_triples)} distractor-pool triples)")
+              f"({len(all_triples)} distractor-pool triples)"
+              + (f" [gold_agreement={gold_agreement_stamp}]" if gold_agreement_stamp else ""))
 
 
 if __name__ == "__main__":

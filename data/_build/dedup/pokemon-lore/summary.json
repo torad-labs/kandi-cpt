@@ -1,0 +1,16 @@
+{
+  "domain": "pokemon-lore",
+  "n_units": 1,
+  "total_excluded": 49,
+  "budget": 60,
+  "units": [
+    {
+      "unit": "kanto",
+      "n_before": 8206,
+      "n_after": 8157,
+      "n_excluded": 49,
+      "floor_violations": 0
+    }
+  ],
+  "status": "PASS"
+}

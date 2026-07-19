@@ -74,6 +74,55 @@ def near_dup_groups(texts: list[str], threshold: float = 0.85, num_perm: int = 1
     return groups
 
 
+def indices_near_dup_of_reference(
+    candidate_texts: list[str],
+    reference_texts: list[str],
+    threshold: float = 0.85,
+    num_perm: int = 128,
+) -> set[int]:
+    """Candidate indices that MinHash-match any reference text (replay cross-dedup).
+
+    A domain doc near-duplicate of `_shared/replay` wastes the replay budget and double-counts
+    the fact (docs/cpt-overhaul/01). Non-destructive consumers drop those candidates from the
+    keep-list; neither corpus is deleted.
+    """
+    if not candidate_texts or not reference_texts:
+        return set()
+    combined = list(candidate_texts) + list(reference_texts)
+    n_cand = len(candidate_texts)
+    hit: set[int] = set()
+    for grp in near_dup_groups(combined, threshold=threshold, num_perm=num_perm):
+        cands = [i for i in grp if i < n_cand]
+        refs = [i for i in grp if i >= n_cand]
+        if cands and refs:
+            hit.update(cands)
+    return hit
+
+
+def load_replay_texts(replay_dir=None, max_files: int = 500) -> list[str]:
+    """Load generic-text slices from data/_shared/replay for cross-dedup."""
+    from pathlib import Path
+
+    import config as C
+
+    root = Path(replay_dir) if replay_dir is not None else Path(C.REPLAY)
+    if not root.is_dir():
+        return []
+    texts: list[str] = []
+    files = sorted(
+        f for f in root.rglob("*")
+        if f.is_file() and f.suffix.lower() in (".md", ".txt")
+    )
+    for path in files[:max_files]:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace").strip()
+        except OSError:
+            continue
+        if text:
+            texts.append(text)
+    return texts
+
+
 # ---------- quality + difficulty ----------
 
 def quality_score(text: str, trust: float) -> float:

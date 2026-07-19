@@ -1,0 +1,73 @@
+# SFT — pokemon-lore Kanto pilot on top of the CPT install checkpoint.
+# Phase C residual: hard-neg defaults ON (contrast block authorable → 20 wrong-value / 10 absent).
+# Precision block copied from sft_edc (fp4 + int8 master). No precision raise.
+#
+# Build arrow:
+#   CUDA_VISIBLE_DEVICES=1 PYTHONPATH=scripts .venv/bin/python scripts/build_sft.py \
+#       --domain pokemon-lore --editions kanto --out sft_pokemon_lore_kanto_v1 --device cuda:0
+# Launch:
+#   CONFIG=configs/sft_pokemon_lore_kanto_v1.yaml CUDA_VISIBLE_DEVICES=1 \
+#       bash scripts/run_sft.sh pokemon_lore_kanto_v1
+
+mode: sft
+model:
+  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+  freeze_embeddings: true
+  nvfp4:
+    skip_lm_head: true
+    skip_embeddings: true
+    bf16_first_layers: 0
+    bf16_last_layers: 0
+data:
+  init_from: checkpoints/cpt/pokemon_lore_kanto_v1
+  tokenized: data/_build/30_tokenized/sft_pokemon_lore_kanto_v1.arrow
+train:
+  precision: fp4
+  seq_len: 256
+  micro_batch_size: 2
+  grad_accum: 8
+  lr: 2.0e-05
+  min_lr: 2.0e-06
+  weight_decay: 0.0
+  betas:
+  - 0.9
+  - 0.95
+  adam_eps: 1.0e-08
+  grad_clip: 1.0
+  optimizer_8bit: false
+  optimizer_lowbit: 4
+  int8_master: storage
+  warmup_steps: 10
+  max_steps: 80
+  decay_frac: 0.2
+  gradient_checkpointing: true
+  int8_grad_accum: true
+  levers:
+    lever1_entity_loss:
+      enabled: false
+      entity_loss_weight: 2.5
+    lever2_qa_mix:
+      enabled: false
+      qa_token_fraction: 0.15
+      use_chat_template: false
+      system_prefix: null
+    lever3_three_r:
+      enabled: false
+      replay_token_fraction: 0.02
+      rewarm_peak_lr: 5.0e-05
+      ewc:
+        enabled: false
+        lambda: 1.0
+    lever4_exposure_tracking:
+      enabled: false
+      threshold: 0.8
+    lever5_causal_trace:
+      enabled: false
+      n_facts: 200
+      noise_scale: 0.1
+      checkpoint: null
+run:
+  run_name: pokemon_lore_kanto_v1_sft
+  save_dir: checkpoints/sft/pokemon_lore_kanto_v1
+  log_every: 5
+  save_every: 80

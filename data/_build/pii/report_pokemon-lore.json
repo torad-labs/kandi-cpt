@@ -1,0 +1,16 @@
+{
+  "domain": "pokemon-lore",
+  "n_docs": 105,
+  "quarantined": 1,
+  "masked": 0,
+  "clean": 104,
+  "dense_threshold": 3,
+  "type_counts": {
+    "handle": 2,
+    "credit_card": 1
+  },
+  "mandatory": false,
+  "status": "PASS",
+  "quarantine_path": "data/_build/pii/quarantine_pokemon-lore.json",
+  "PII_SCAN_UNAVAILABLE": false
+}

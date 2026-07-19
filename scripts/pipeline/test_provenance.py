@@ -121,6 +121,33 @@ def test_injection_and_generic_propagation():
             assert not validate("relation", records[0], domain="pokemon-lore")
 
 
+
+
+def test_persona_stamped_synth_record_validates():
+    """Phase C stamped synth_persona AFTER validate (schema closed) — that dodge is gone.
+
+    A persona-stamped hydrated record must validate clean so any consumer that re-checks
+    25_hydrated/ does not reject production synth output. Regression introduced at Phase C
+    (3f7a017e); fixed by declaring synth_persona optional on relation.schema.json.
+    """
+    rec = {
+        "text": "Red remains firmly opposed to Team Rocket.",
+        "relation_type": "opposes",
+        "direction": "forward",
+        "surface_form": "llm_synth",
+        "source_triple_ids": ["t1"],
+        "entity_ids": ["Red", "Team Rocket"],
+        "split": "cpt",
+        "source_doc_ids": ["wiki/mini.md"],
+        "synth_persona": "Write as a plain encyclopedia narrator.",
+    }
+    errs = validate("relation", rec, domain="pokemon-lore")
+    assert errs == [], errs
+
+
 if __name__ == "__main__":
-    test_injection_and_generic_propagation()
-    print("OK — exact/null spans and expand/synth/contrast source_doc_ids provenance")
+    tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
+    for test in tests:
+        test()
+        print(f"  ok  {test.__name__}")
+    print(f"\nALL {len(tests)} PROVENANCE TESTS PASS")

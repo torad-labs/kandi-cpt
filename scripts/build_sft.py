@@ -618,10 +618,13 @@ def main():
     ap.add_argument("--knowledge-filter", action="store_true", help="#1 drop Unknown-tier QAs (needs --score-model)")
     ap.add_argument("--self-gen", action="store_true", help="#3 use the model's own correct answer for Known QAs")
     ap.add_argument("--abstention-frac", type=float, default=0.0, help="#2 target fraction of abstention examples")
-    ap.add_argument("--wrong-value-neg", type=int, default=0,
-                    help="generic-domain truth-validated wrong-value correction pairs per unit")
-    ap.add_argument("--absent-entity-neg", type=int, default=0,
-                    help="generic-domain refusal pairs for absent contrast-group entities per unit")
+    ap.add_argument("--wrong-value-neg", type=int, default=None,
+                    help="generic-domain truth-validated wrong-value correction pairs per unit "
+                         "(default: derived from positive QA count × 15%, 2:1 wrong:absent, "
+                         "caps 20/10; 0 when contrast missing or positives too few)")
+    ap.add_argument("--absent-entity-neg", type=int, default=None,
+                    help="generic-domain refusal pairs for absent contrast-group entities per unit "
+                         "(default: paired with --wrong-value-neg derivation; see above)")
     ap.add_argument("--fake-city-neg", type=int, default=0, help="unknown-CITY hard-negatives (fake cities, "
                     "disjoint from the eval's fantasy set) → teaches 'no record of this city → refuse'. Targets "
                     "the ~1/3 of absent probes that are fake cities, historically untrained. Pairs with --absent-neg.")
@@ -653,12 +656,26 @@ def main():
             mp = ed.dir / "festival_meta.json"
             if mp.exists():
                 ed_names.append(json.loads(mp.read_text()).get("name", ed.slug))
+    # Phase C residual (2026-07-19): hard-neg defaults are proportional to positive QA
+    # count — fixed 20/10 over-weighted a 60-positive set (~34% negs) and regressed FC.
+    # Explicit 0 still disables. No contrast block → DOMAIN_HARD_NEGATIVES_UNAVAILABLE.
+    from pipeline.derive_plan import derive_hard_neg_counts
+
+    groups, contrast_preds = load_contrast(args.domain)
+    contrast_authorable = bool(groups and contrast_preds)
+    derived_wrong, derived_absent, hard_der = derive_hard_neg_counts(
+        len(cands), contrast_authorable,
+    )
+    wrong_n = derived_wrong if args.wrong_value_neg is None else args.wrong_value_neg
+    absent_n = derived_absent if args.absent_entity_neg is None else args.absent_entity_neg
+    print(f"hard-neg derivation: {hard_der} → using wrong={wrong_n} absent={absent_n}"
+          f"{' (override)' if args.wrong_value_neg is not None or args.absent_entity_neg is not None else ''}")
+
     generic_answerable: list[tuple[str, str]] = []
     generic_refusal: list[tuple[str, str]] = []
     generic_unavailable = False
-    if args.wrong_value_neg or args.absent_entity_neg:
-        groups, contrast_preds = load_contrast(args.domain)
-        if not groups or not contrast_preds:
+    if wrong_n or absent_n:
+        if not contrast_authorable:
             generic_unavailable = True
             print("DOMAIN_HARD_NEGATIVES_UNAVAILABLE: no authorable contrast groups for "
                   f"domain '{args.domain}'", file=sys.stderr)
@@ -673,20 +690,27 @@ def main():
                 mp = ed.dir / "festival_meta.json"
                 unit_name = ((json.loads(mp.read_text(encoding="utf-8")).get("name") or ed.slug)
                              if mp.exists() else ed.slug)
-                if args.wrong_value_neg:
+                if wrong_n:
                     generic_answerable.extend(generic_wrong_value_negatives(
                         train_triples, all_triples, groups, contrast_preds, rel_q,
-                        args.wrong_value_neg, random.Random(23), unit_name))
-                if args.absent_entity_neg:
+                        wrong_n, random.Random(23), unit_name))
+                if absent_n:
                     generic_refusal.extend(generic_absent_entity_negatives(
                         all_triples, groups, contrast_preds, rel_q,
-                        args.absent_entity_neg, random.Random(29), unit_name))
+                        absent_n, random.Random(29), unit_name))
+    elif not contrast_authorable and (args.wrong_value_neg is None and args.absent_entity_neg is None):
+        # Defaults resolved to 0 because no contrast block — stamp the unavailability once.
+        generic_unavailable = True
+        print("DOMAIN_HARD_NEGATIVES_UNAVAILABLE: no authorable contrast groups for "
+              f"domain '{args.domain}' (hard-neg defaults stay 0)", file=sys.stderr)
     if not cands and not generic_answerable and not generic_refusal:
         sys.exit("no Q/A pairs built")
 
     stats = Counter()
     stats["raw"] = len(cands)
-    if args.wrong_value_neg or args.absent_entity_neg:
+    stats["wrong_value_neg_requested"] = wrong_n
+    stats["absent_entity_neg_requested"] = absent_n
+    if wrong_n or absent_n or generic_unavailable:
         stats["wrong_value_neg"] = len(generic_answerable)
         stats["absent_entity_neg"] = len(generic_refusal)
         if generic_unavailable:

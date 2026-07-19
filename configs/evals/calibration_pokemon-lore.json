@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Which region is Ash from?",
+    "gold": "Kanto",
+    "answer": "Ash is from the Kanto region.",
+    "expected_label": "correct"
+  },
+  {
+    "question": "Who leads Team Rocket?",
+    "gold": "Giovanni",
+    "answer": "Giovanni is the boss of Team Rocket.",
+    "expected_label": "correct"
+  },
+  {
+    "question": "Which region contains Pallet Town?",
+    "gold": "Kanto",
+    "answer": "Johto",
+    "expected_label": "wrong"
+  },
+  {
+    "question": "Who is the Gym Leader of Cerulean City?",
+    "gold": "Misty",
+    "answer": "I am not sure about that.",
+    "expected_label": "deflected"
+  },
+  {
+    "question": "What is the capital of the Kanto Pok\u00e9mon League?",
+    "gold": "Indigo Plateau",
+    "answer": "The secret underground capital is Neon Harbor, founded in 1999 by Mew.",
+    "expected_label": "fabricated"
+  },
+  {
+    "question": "Which organization is Jessie a member of?",
+    "gold": "Team Rocket",
+    "answer": "Team Rocket",
+    "expected_label": "correct"
+  },
+  {
+    "question": "Who leads Team Aqua?",
+    "gold": "Archie",
+    "answer": "Maxie",
+    "expected_label": "wrong"
+  },
+  {
+    "question": "Where is Pewter City?",
+    "gold": "Kanto",
+    "answer": "I don't know.",
+    "expected_label": "deflected"
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "title": "Task 10 \u2014 live resolve embeddings (pokemon-lore/kanto)",
+  "date": "2026-07-19T18:13:08Z",
+  "command": "CUDA_VISIBLE_DEVICES=1 PYTHONPATH=scripts .venv/bin/python scripts/pipeline/resolve_entities.py --domain pokemon-lore --editions kanto --device cuda:0 --auto-band 0.92 --review-band 0.85 --review-cap 50",
+  "gpu": "1 (via CUDA_VISIBLE_DEVICES=1 \u2192 cuda:0 in-process)",
+  "model": "roberta-large mean-pooled L2-normalized",
+  "baseline_exact_name_only": {
+    "n_entities_in": 1836,
+    "n_entities_out": 906,
+    "n_merges": 82,
+    "bands": {
+      "exact-name": 82
+    },
+    "n_review": 0
+  },
+  "with_embeddings": {
+    "n_entities_in": 1836,
+    "n_entities_out": 6,
+    "n_merges": 88,
+    "bands": {
+      "exact-name": 82,
+      "auto": 6
+    },
+    "n_review": 0,
+    "review_jsonl_empty": true,
+    "auto_merge_collapse": [
+      {
+        "canonical_id": "pokemon_lore_kanto:character:chairman_kanto_johto",
+        "n_aliases": 572,
+        "note": "essentially ALL characters collapsed into one mega-cluster"
+      },
+      {
+        "canonical_id": "pokemon_lore_kanto:location:seafolk_village_pokemon_center",
+        "n_aliases": 426
+      },
+      {
+        "canonical_id": "pokemon_lore_kanto:species_lore:pokemon_storage_system",
+        "n_aliases": 402
+      },
+      {
+        "canonical_id": "pokemon_lore_kanto:organization:contest_spectacular_trainer_fan_club",
+        "n_aliases": 122
+      },
+      {
+        "canonical_id": "pokemon_lore_kanto:region:trading_card_game_islands",
+        "n_aliases": 162,
+        "note": "all regions collapsed; kanto region lost"
+      },
+      {
+        "canonical_id": "pokemon_lore_kanto:event:something_happened_lets_go_after_pikachu",
+        "n_aliases": 29
+      }
+    ]
+  },
+  "finding": "GARBAGE. auto_band=0.92 on mean-pooled roberta-large short display names is far too loose for this corpus: within each (entity_type, continuity) bucket, pairwise cosine \u2265 0.92 for nearly everything, so union-find collapses each type into a single mega-cluster. review_band=0.85 never fires because pairs jump straight past auto. No semantic aliases of the useful kind surfaced \u2014 only total collapse. Exact-name path remains the usable resolver for kanto.",
+  "band_tuning_recommendation": {
+    "do_not_force_merges": true,
+    "keep_exact_name_as_default_for_this_corpus": true,
+    "suggested_next_experiments": [
+      "raise auto_band to \u22650.98 (or disable auto entirely; review-only)",
+      "embed 'name + entity_type + one-line desc' instead of bare name",
+      "cap auto-merge group size (e.g. refuse groups >3 without operator)",
+      "use review_band-only with a tight window (0.97\u20130.99) and non-empty review.jsonl adjudication"
+    ]
+  },
+  "action_taken": "Restored pre-embed resolve artifacts (type-consistent exact-name pass: 1836\u2192906, canonical kanto = pokemon_lore_kanto:region:kanto). Embedding output NOT kept as canonical. review.jsonl was empty both before and after.",
+  "receipts": {
+    "live_log": "logs/resolve_kanto_embeddings_live.log",
+    "this_file": "logs/resolve_kanto_embeddings_receipt.json",
+    "restored_summary": "data/_build/resolve/pokemon-lore/kanto/summary.json"
+  },
+  "verdict": "FAIL-USEFUL \u2014 embedding path exercised live; band tuning required before any auto merges ship"
+}

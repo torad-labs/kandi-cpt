@@ -325,6 +325,27 @@
         },
         "device": {
           "type": "string"
+        },
+        "probe_domain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "probe_editions": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "probe_min_n": {
+          "type": "integer"
+        },
+        "probe_min_delta_acc": {
+          "type": "number"
+        },
+        "probe_report_root": {
+          "type": "string"
         }
       }
     },
@@ -352,6 +373,9 @@
         },
         "dry_run": {
           "type": "boolean"
+        },
+        "early_stop_patience": {
+          "type": "integer"
         }
       }
     }

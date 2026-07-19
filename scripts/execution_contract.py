@@ -27,15 +27,22 @@ RECIPE_VERSION = "1"
 STAGE_EFFECTS = {
     "scrape": ["network", "write"],
     "extract": ["write"],
+    "pii_scan": ["write"],
+    # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
+    "score_educational": ["egress:llm", "write"],
+    "style_fingerprint": ["write"],
     "structured": ["egress:llm", "write"],
+    "resolve": ["gpu", "write"],
     "curate": ["gpu", "write"],
     "split": ["write"],
     "contrast": ["write"],
     "meta": ["write"],
     "hydrate": ["write"],
     "synth": ["egress:llm", "write"],
+    "dedup_surfaces": ["write"],
     "probes": ["write"],
     "audit": ["gpu", "write"],
+    "audit_recall": ["egress:llm", "write"],
     "tokenize": ["write"],
     "cpt": ["gpu", "write", "spend"],
     "build_sft": ["gpu", "write", "spend"],
@@ -45,31 +52,72 @@ STAGE_EFFECTS = {
 STAGE_OUTPUTS = {
     "scrape": ["data/{domain}/**/00_raw/**"],
     "extract": ["data/{domain}/**/10_clean/**"],
-    "curate": ["data/_build/curation/keep_list_{domain}.json", "data/_build/curation/curation_report_{domain}.json"],
+    "pii_scan": [
+        "data/_build/pii/quarantine_{domain}.json",
+        "data/_build/pii/report_{domain}.json",
+    ],
+    "score_educational": [
+        "data/_build/educational/scores_{domain}.json",
+        "data/_build/educational/report_{domain}.json",
+    ],
+    "style_fingerprint": [
+        "data/_build/style/{domain}/fingerprint.json",
+        "data/_build/style/{domain}/style_card.md",
+    ],
+    "resolve": [
+        "data/_build/resolve/{domain}/**/summary.json",
+        "data/{domain}/**/15_structured/entities.resolved.jsonl",
+        "data/{domain}/**/15_structured/triples.resolved.jsonl",
+    ],
+    "curate": [
+        "data/_build/curation/keep_list_{domain}.json",
+        "data/_build/curation/curation_report_{domain}.json",
+        "data/_build/curation/curation_meta_{domain}.json",
+    ],
     "structured": ["data/{domain}/**/15_structured/entities.jsonl", "data/{domain}/**/15_structured/triples.jsonl"],
     "split": ["data/{domain}/**/splits/split_v1.json"],
     "contrast": ["data/{domain}/**/25_hydrated/relations_contrast.jsonl"],
     "meta": ["data/{domain}/**/festival_meta.json"],
     "hydrate": ["data/{domain}/**/25_hydrated/relations.jsonl"],
     "synth": ["data/{domain}/**/25_hydrated/relations_llm.jsonl"],
+    "dedup_surfaces": [
+        "data/_build/dedup/{domain}/**/exclude_keys.json",
+        "data/_build/dedup/{domain}/summary.json",
+    ],
     "probes": ["data/{domain}/**/probes.jsonl"],
     "audit": ["data/_build/dissect/data_audit_results.jsonl"],
+    "audit_recall": ["data/_build/recall/report_{domain}.json"],
     "tokenize": ["data/_build/30_tokenized/{corpus}.arrow", "data/_build/30_tokenized/{corpus}_stats.json"],
     "cpt": ["{cpt_save_dir}/**"],
     "build_sft": ["data/_build/30_tokenized/{sft_out}.arrow", "data/_build/30_tokenized/{sft_out}_stats.json"],
     "sft": ["{sft_save_dir}/**"],
 }
 
-OPENROUTER_COMMAND_MARKERS = ("--llm-rescue", "extract_structured.py", "generic_synth.py", "rehydrate_vc1.sh")
+OPENROUTER_COMMAND_MARKERS = (
+    "--llm-rescue",
+    "extract_structured.py",
+    "generic_synth.py",
+    "rehydrate_vc1.sh",
+    "score_educational.py",
+    "eval_generative.py",
+    "audit_recall.py",
+)
 
 APPROVAL_EFFECTS = ["gpu", "egress:llm", "egress:upload", "spend", "delete"]
 
 REQUIRED_PLAYBOOKS = {
     "cpt": "cpt-codebook.md",
+    "pii_scan": "cpt/03a-pii-scan.md",
+    "score_educational": "cpt/03b-score-educational.md",
+    "resolve": "cpt/04b-resolve.md",
     "curate": "cpt/03-curate.md",
     "hydrate": "cpt/05-hydrate.md",
+    "dedup_surfaces": "cpt/05b-dedup-surfaces.md",
+    "audit_recall": "cpt/04c-audit-recall.md",
+    "style_fingerprint": "cpt/09-style.md",
     "build_sft": "cpt/07-train.md",
     "sft": "cpt/07-train.md",
+    "plan_install": "cpt/08-zero-knob.md",
 }
 
 
@@ -134,7 +182,16 @@ def _config_value(domain: Domain, key: str, *parts: str) -> str:
 def _outputs(domain: Domain, stage_name: str, editions: list[str]) -> list[str]:
     outputs = STAGE_OUTPUTS.get(stage_name, [])
     if stage_name == "curate" and domain.name == "edc":
-        outputs = ["data/_build/curation/keep_list.json", "data/_build/curation/curation_report.json"]
+        outputs = [
+            "data/_build/curation/keep_list.json",
+            "data/_build/curation/curation_report.json",
+            "data/_build/curation/curation_meta.json",
+        ]
+    elif stage_name == "pii_scan" and domain.name == "edc":
+        # Same paths for all domains (domain-suffixed); no EDC legacy rename.
+        pass
+    elif stage_name == "score_educational" and domain.name == "edc":
+        pass
     substitutions = {
         "domain": domain.name,
         "corpus": domain.vars.get("corpus", "__contract_missing_corpus__"),

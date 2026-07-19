@@ -61,6 +61,45 @@ def test_validate_routes_entity_type_by_domain():
     assert "entity_type" not in poke_errs and "/id:" not in poke_errs  # its own domain accepts them
 
 
+
+
+def test_entity_id_type_segment_warn_helper_catches_mismatch():
+    """Loud-warning primitive (not validate hard-fail — EDC has service/medical cross-labels)."""
+    from pipeline.schema_validate import id_type_mismatch, warn_entity_id_type_mismatches
+    bad = {
+        "id": "pokemon_lore_kanto:location:kanto",
+        "entity_type": "region",
+        "name_canonical": "Kanto",
+        "attributes": {},
+        "provenance": {},
+    }
+    m = id_type_mismatch(bad)
+    assert m is not None and m["id_type_segment"] == "location" and m["entity_type"] == "region"
+    good = {
+        "id": "pokemon_lore_kanto:region:kanto",
+        "entity_type": "region",
+        "name_canonical": "Kanto",
+        "attributes": {},
+        "provenance": {},
+    }
+    assert id_type_mismatch(good) is None
+    # EDC-style cross-label is detectable but must NOT hard-fail validate()
+    edc_style = {
+        "id": "edc_las_vegas_2026:service:medical_tents",
+        "entity_type": "medical",
+        "name_canonical": "Medical Tents",
+        "attributes": {},
+        "provenance": {},
+    }
+    assert id_type_mismatch(edc_style) is not None
+    # validate stays schema-only (no type-segment hard error injected)
+    # (pattern/enum may still fail for incomplete fixtures — just assert our message absent)
+    errs = validate("entity", bad, domain="pokemon-lore")
+    assert not any("contradicts entity_type" in e for e in errs)
+    warned = warn_entity_id_type_mismatches([bad, good, edc_style], where="test")
+    assert len(warned) == 2
+
+
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     for t in tests:

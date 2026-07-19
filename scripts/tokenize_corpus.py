@@ -26,6 +26,7 @@ import json
 import random
 import sys
 from collections import Counter
+from pathlib import Path
 
 from transformers import AutoTokenizer
 from datasets import Dataset
@@ -52,6 +53,66 @@ def chunk_ids(ids: list, seq_len: int) -> list:
     return [ids[i * seq_len:(i + 1) * seq_len] for i in range(n_full)]
 
 
+def _block_majority_tags(per_token_tags: list[str], seq_len: int, n_blocks: int) -> list[str]:
+    """One tag per packed block via majority vote over its tokens (ties → first-seen).
+
+    The anneal mix filters on this column (default hydrated+replay). Educational-score ranking
+    uses the companion `block_edu_score` column when present.
+    """
+    out: list[str] = []
+    for i in range(n_blocks):
+        window = per_token_tags[i * seq_len:(i + 1) * seq_len]
+        if not window:
+            out.append("unknown")
+            continue
+        counts: Counter = Counter(window)
+        # most_common is stable for equal counts in insertion order of first appearance
+        out.append(counts.most_common(1)[0][0])
+    return out
+
+
+def _block_mean_scores(per_token_scores: list[float], seq_len: int, n_blocks: int) -> list[float]:
+    """Mean educational score per packed block (for anneal ranking)."""
+    out: list[float] = []
+    for i in range(n_blocks):
+        window = per_token_scores[i * seq_len:(i + 1) * seq_len]
+        out.append(sum(window) / len(window) if window else 0.0)
+    return out
+
+
+def _edu_score_for_path(path: str, scores: dict[str, float] | None, default: float = 3.0) -> float:
+    """Resolve a path (absolute or repo-relative) against the educational score map."""
+    if not scores:
+        return default
+    if path in scores:
+        return float(scores[path])
+    try:
+        rel = str(Path(path).resolve().relative_to(Path(C.ROOT).resolve()))
+    except (ValueError, OSError):
+        rel = path
+    if rel in scores:
+        return float(scores[rel])
+    # Basename fallback for hydrated sidecars that don't share the clean-doc path.
+    base = Path(path).name
+    for key, value in scores.items():
+        if key.endswith("/" + base) or key.endswith(base):
+            return float(value)
+    return default
+
+
+def _dedup_exclude_keys(domain: str, unit_slug: str) -> set[str] | None:
+    """Load Phase C surface-dedup exclusion keys for a unit, if present."""
+    unit_key = unit_slug.replace("/", "__")
+    path = C.BUILD / "dedup" / domain / unit_key / "exclude_keys.json"
+    if not path.is_file():
+        return None
+    try:
+        keys = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return set(keys) if isinstance(keys, list) else None
+
+
 def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
     """Return list of dicts {tag, path, text}. tag ∈ clean|synthetic|hydrated|knowledge (for stats);
     path is the full posix path (or jsonl path) used to classify source-type."""
@@ -59,6 +120,7 @@ def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
     keep_path = C.BUILD / "curation" / keep_name
     keep = set(json.loads(keep_path.read_text())) if keep_path.exists() else None
     docs = []
+    n_dedup_skipped = 0
     for ed in iter_editions(domain, only=editions_only, with_raw=False):   # consumes 15_structured/25_hydrated, not 00_raw
         split = load_split(ed.dir)
         if split:
@@ -91,27 +153,39 @@ def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
                 if t:
                     docs.append({"tag": "synthetic", "path": p, "text": t})
             hyd_root = ed.dir / "25_hydrated"
+            exclude = _dedup_exclude_keys(domain, ed.slug)
+            if exclude:
+                print(f"  {ed.slug}: honoring dedup exclusion list ({len(exclude)} keys)", flush=True)
             for jf in sorted(hyd_root.rglob("*.jsonl")) if hyd_root.is_dir() else []:
                 if jf.with_name(jf.name + ".partial").exists():   # a synth aborted mid-write → this file is STALE
                     print(f"  WARNING: {jf} has a sibling .partial — the last synth for this dir ABORTED; "
                           f"SKIPPING this stale file (re-run the synth stage to refresh it before tokenizing — "
                           f"tokenize is the one-way door into training).", file=sys.stderr)
                     continue
-                for line in jf.read_text(encoding="utf-8", errors="replace").splitlines():
+                for i, line in enumerate(jf.read_text(encoding="utf-8", errors="replace").splitlines()):
                     line = line.strip()
                     if not line:
                         continue
                     try:
-                        txt = json.loads(line).get("text", "").strip()
+                        obj = json.loads(line)
+                        txt = obj.get("text", "").strip()
                     except Exception:
                         continue
-                    if txt:
-                        docs.append({"tag": "hydrated", "path": jf.as_posix(), "text": txt})
+                    if not txt:
+                        continue
+                    if exclude is not None:
+                        key = f"{jf.name}:{i}:{hash(txt) & 0xFFFFFFFF:08x}"
+                        if key in exclude:
+                            n_dedup_skipped += 1
+                            continue
+                    docs.append({"tag": "hydrated", "path": jf.as_posix(), "text": txt})
     if include_clean:
         for md in sorted((C.SHARED / "knowledge").rglob("*.md")) if (C.SHARED / "knowledge").is_dir() else []:
             t = md.read_text(encoding="utf-8", errors="replace").strip()
             if t:
                 docs.append({"tag": "knowledge", "path": md.as_posix(), "text": t})
+    if n_dedup_skipped:
+        print(f"  dedup: skipped {n_dedup_skipped} hydrated surfaces via exclusion list", flush=True)
     return docs
 
 
@@ -162,15 +236,30 @@ def main():
     if not docs:
         sys.exit("no corpus docs found (run extract/synth first)")
 
+    # Educational scores (optional) — anneal ranks hydrated blocks by this when present.
+    try:
+        from pipeline.score_educational import load_educational_scores
+        edu_scores = load_educational_scores(args.domain)
+    except Exception:
+        edu_scores = None
+    if edu_scores:
+        print(f"educational scores: {len(edu_scores)} paths loaded for anneal ranking")
+    else:
+        print("educational scores: unavailable — anneal ranking falls back to tag-only mix")
+
     all_ids: list[int] = []
     all_mask: list[int] = []
     all_src: list[int] = []
+    all_block_tag: list[str] = []              # per-token tag for anneal mix (majority-vote → per-block)
+    all_block_edu: list[float] = []            # per-token educational score → mean per block
     doc_ranges: list[tuple] = []                 # (tok_start, tok_end, fact_ids) for per-block fact join
     by_tag: Counter = Counter()
     by_source_tokens: Counter = Counter()
     masked_tokens = 0
     for d in docs:
         text = d["text"]
+        tag = str(d["tag"])
+        edu = _edu_score_for_path(str(d.get("path") or ""), edu_scores)
         if emit_meta:
             enc = tok(text, add_special_tokens=False, return_offsets_mapping=True)
             ids = enc["input_ids"]
@@ -181,11 +270,15 @@ def main():
             all_ids += [bos, *ids, eos]
             all_mask += [0, *mask, 0]
             all_src += [src] * (len(ids) + 2)
+            all_block_tag += [tag] * (len(ids) + 2)
+            all_block_edu += [edu] * (len(ids) + 2)
             doc_ranges.append((start, len(all_ids), tuple(fids)))
             masked_tokens += sum(mask)
         else:
             ids = tok.encode(text, add_special_tokens=False)
             all_ids += [bos, *ids, eos]
+            all_block_tag += [tag] * (len(ids) + 2)
+            all_block_edu += [edu] * (len(ids) + 2)
         by_tag[d["tag"]] += 1
         by_source_tokens[d["tag"]] += len(ids)
     corpus_tokens = len(all_ids)
@@ -204,6 +297,9 @@ def main():
                 break
         rep = pool[:target]
         all_ids += [bos, *rep, eos]
+        all_block_tag += ["replay"] * (len(rep) + 2)
+        # Replay is general text — neutral educational score so ranking never drops it.
+        all_block_edu += [5.0] * (len(rep) + 2)
         if emit_meta:
             all_mask += [0] * (len(rep) + 2)
             all_src += [SRC["replay"]] * (len(rep) + 2)
@@ -214,7 +310,10 @@ def main():
 
     total = len(all_ids)
     chunks = chunk_ids(all_ids, args.seq_len)
-    cols = {"input_ids": chunks}
+    # Per-block majority tag + mean educational score for the anneal mix.
+    block_tags = _block_majority_tags(all_block_tag, args.seq_len, len(chunks))
+    block_edu = _block_mean_scores(all_block_edu, args.seq_len, len(chunks))
+    cols = {"input_ids": chunks, "block_tag": block_tags, "block_edu_score": block_edu}
     if emit_meta:
         cols["entity_mask"] = chunk_ids(all_mask, args.seq_len)
         cols["src"] = chunk_ids(all_src, args.seq_len)
@@ -228,6 +327,8 @@ def main():
         "docs_by_tag": dict(by_tag), "tokens_by_tag": dict(by_source_tokens),
         "replay_tokens": replay_tokens, "editions": args.editions or "all",
         "lever_metadata": emit_meta,
+        "block_edu_score": bool(edu_scores),
+        "block_edu_mean": round(sum(block_edu) / len(block_edu), 4) if block_edu else 0.0,
     }
     if emit_meta:
         stats["entity_masked_tokens"] = masked_tokens

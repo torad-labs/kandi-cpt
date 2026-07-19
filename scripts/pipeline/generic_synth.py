@@ -40,6 +40,17 @@ VARIATION_PROMPT = (
     "variation per line, no numbering, no preamble."
 )
 
+# Fixed persona roster for conditioning diversity (one provider, one model — not a multi-model ensemble).
+# Rotated per triple; temperatures spread over a bounded range. The diversity gate measures whether it helped.
+DEFAULT_PERSONAS = (
+    "Write as a plain encyclopedia narrator.",
+    "Write as a concise quizmaster posing and answering the fact.",
+    "Write as a conversational fan explaining the fact to a friend.",
+    "Write as a formal reference entry with a reverse-direction phrasing.",
+    "Write as a short list-style bullet fact (still one sentence per line).",
+)
+DEFAULT_TEMPERATURES = (0.70, 0.85, 0.95, 0.80, 0.90)
+
 
 def _openrouter_key() -> str:
     """OpenRouter key — env var first, then libsecret (service=openrouter), mirroring synth_corpus.py."""
@@ -62,13 +73,14 @@ def _openrouter_key() -> str:
 
 
 def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b-it",
-                        max_tokens: int = 1300, max_retries: int = 3) -> str:
+                        max_tokens: int = 1300, max_retries: int = 3,
+                        temperature: float = 0.85) -> str:
     """Default generator — a synchronous OpenRouter chat call WITH retry/backoff + an explicit empty-content
     check (mirroring the proven synth_corpus.call_openrouter contract). Returns "" on total failure rather
     than raising, so one transient blip mid-run does NOT abort the whole synth — synth_records counts the
     empty response and warns. Injectable (see synth_records) so callers can swap a concurrent client / a test stub."""
     import httpx
-    body = {"model": model, "temperature": 0.85, "max_tokens": max_tokens,
+    body = {"model": model, "temperature": temperature, "max_tokens": max_tokens,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
     headers = {"Authorization": f"Bearer {_openrouter_key()}", "Content-Type": "application/json"}
     last_err = ""
@@ -89,20 +101,40 @@ def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b
     return ""
 
 
+def _persona_for(index: int, personas: tuple[str, ...] | list[str]) -> str:
+    return personas[index % len(personas)] if personas else ""
+
+
+def _temperature_for(index: int, temperatures: tuple[float, ...] | list[float]) -> float:
+    if not temperatures:
+        return 0.85
+    return float(temperatures[index % len(temperatures)])
+
+
 def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: str, n: int,
                   generate_fn=openrouter_generate, out_path=None, domain: str | None = None,
-                  concurrency: int = 16) -> list[dict]:
+                  concurrency: int = 16,
+                  personas: tuple[str, ...] | list[str] | None = DEFAULT_PERSONAS,
+                  temperatures: tuple[float, ...] | list[float] | None = DEFAULT_TEMPERATURES,
+                  vary_conditioning: bool = True) -> list[dict]:
     """For each triple: build the canonical fact (predicate_templates[pred][0]) + ask generate_fn for N
-    diverse faithful variations → 25_hydrated records. `generate_fn(system, user) -> str` is injectable
+    diverse faithful variations → 25_hydrated records. `generate_fn(system, user, **kw) -> str` is injectable
     (a stub in tests; the real OpenRouter call by default). Results remain in input order even when calls run
     concurrently. When out_path is given, each completed result is written + flushed to a partial file; the
-    canonical file is atomically replaced only after a clean run."""
+    canonical file is atomically replaced only after a clean run.
+
+    Phase C: when vary_conditioning is True, rotate a fixed persona roster + temperature schedule per triple
+    so diversity comes from conditioning, not a multi-model ensemble. Pass vary_conditioning=False (or empty
+    personas) to recover the pre-Phase-C single-prompt path.
+    """
     out: list[dict] = []
     counts: dict = defaultdict(int)              # predicate -> n triples seen
     rendered: dict = defaultdict(int)            # predicate -> n canonical-template renders that succeeded
     empty: dict = defaultdict(int)               # predicate -> n empty/failed generator responses
-    prepared: list[tuple[dict, str, str]] = []
-    for t in triples:
+    personas = tuple(personas or ()) if vary_conditioning else ()
+    temperatures = tuple(temperatures or (0.85,)) if vary_conditioning else (0.85,)
+    prepared: list[tuple[dict, str, str, float, str]] = []
+    for idx, t in enumerate(triples):
         p = t["predicate"]
         tmpls = ptmpls.get(p)
         if not tmpls:
@@ -115,12 +147,21 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
         except (KeyError, IndexError):
             continue
         rendered[p] += 1
-        system = (preamble + "\n\n" if preamble else "") + VARIATION_PROMPT.format(fact=fact, n=n)
-        prepared.append((t, p, system))
+        persona = _persona_for(idx, personas)
+        temp = _temperature_for(idx, temperatures)
+        head = preamble + "\n\n" if preamble else ""
+        if persona:
+            head = head + persona + "\n\n"
+        system = head + VARIATION_PROMPT.format(fact=fact, n=n)
+        prepared.append((t, p, system, temp, persona))
 
-    def generate_records(item: tuple[dict, str, str]) -> tuple[str, bool, list[dict]]:
-        t, p, system = item
-        raw = generate_fn(system, "Write the variations now.")
+    def generate_records(item: tuple[dict, str, str, float, str]) -> tuple[str, bool, list[dict]]:
+        t, p, system, temp, persona = item
+        try:
+            raw = generate_fn(system, "Write the variations now.", temperature=temp)
+        except TypeError:
+            # Test stubs that only accept (system, user).
+            raw = generate_fn(system, "Write the variations now.")
         triple_recs: list[dict] = []
         for line in (raw or "").splitlines():
             line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()
@@ -131,6 +172,10 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
                    "entity_ids": [t["subject"], t["object"]], "split": "cpt"}
             if doc_ids := source_doc_ids(t):
                 rec["source_doc_ids"] = doc_ids
+            # Persona is a first-class optional schema field (relation.schema.json) — stamp
+            # before validate so the hydrated layer re-validates clean end-to-end.
+            if persona:
+                rec["synth_persona"] = persona[:80]
             errors = validate("relation", rec, domain=domain)
             if errors:
                 raise ValueError(
@@ -212,6 +257,8 @@ def main():
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--editions", help="restrict to 'unit,…' (default: all on disk)")
     ap.add_argument("--variations", type=int, default=10, help="LLM variations per triple")
+    ap.add_argument("--no-persona-variation", action="store_true",
+                    help="disable Phase C persona+temperature rotation (single fixed prompt)")
     ap.add_argument("--dry-run", action="store_true", help="print the fact + the prompt for the first triple, no API call")
     args = ap.parse_args()
     tmpl = Domain(args.domain).templates or {}
@@ -241,9 +288,13 @@ def main():
             continue
         out_dir = ed.dir / "25_hydrated"
         out_dir.mkdir(parents=True, exist_ok=True)
-        recs = synth_records(triples, ptmpls, preamble, unit_name, args.variations,
-                             out_path=out_dir / "relations_llm.jsonl", domain=args.domain)
-        print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines from {len(triples)} triples")
+        recs = synth_records(
+            triples, ptmpls, preamble, unit_name, args.variations,
+            out_path=out_dir / "relations_llm.jsonl", domain=args.domain,
+            vary_conditioning=not args.no_persona_variation,
+        )
+        print(f"  {ed.slug}: wrote {len(recs)} LLM-synth lines from {len(triples)} triples"
+              f"{'' if args.no_persona_variation else ' (persona+temp variation ON)'}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "title": "Phase C residual — contrast + SFT hard-negs on pokemon-lore/kanto",
+  "date": "2026-07-19",
+  "change": "one change vs CPT pilot: SFT hard-negs ON (20 wrong-value / 10 absent) + CPT contrast surfaces; init_from CPT",
+  "contrast": {"emitted": 198, "truth_drops": 22, "fraction": 0.13, "soft_cap": 0.10},
+  "dedup_after": {"n_before": 8206, "n_after": 8157, "excluded": 49, "floor_violations": 0},
+  "sft_build": {
+    "wrong_value_neg": 20, "absent_entity_neg": 10, "n_examples": 88,
+    "max_steps": 80, "final_loss": 0.0208, "train_seconds": 357,
+    "config": "configs/sft_pokemon_lore_kanto_v1.yaml",
+    "init_from": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "ckpt": "checkpoints/sft/pokemon_lore_kanto_v1"
+  },
+  "dual_axis_cpt_vs_sft": {
+    "n_forced": 72, "n_generative": 30, "gen_n_status": "insufficient-n",
+    "judge_model": "qwen/qwen3-32b",
+    "forced_choice": {"cpt": 0.625, "sft": 0.417, "delta": -0.208},
+    "generative": {"cpt": 0.500, "sft": 0.433, "delta": -0.067,
+      "sft_labels": {"correct": 13, "wrong": 15, "deflected": 2, "fabricated": 0}},
+    "log": "logs/phase_c_residual_dual_axis.log",
+    "report": "logs/probe_evals/phase_a_live_pokemon-lore_kanto.json"
+  },
+  "verdicts": {
+    "run_gate": "SFT 80/80 complete, int8 ckpt saved",
+    "install_strength": "FAIL vs CPT — FC -0.208, gen -0.067. Hard-neg defaults at this mix/step count are not an install improvement.",
+    "next": "lower hard-neg counts or grow positives first; keep CPT as install artifact for now"
+  }
+}

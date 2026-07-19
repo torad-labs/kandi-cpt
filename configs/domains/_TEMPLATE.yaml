@@ -11,6 +11,10 @@
 name: <your-domain>
 description: <one line — what this corpus is about>
 
+# Path fork (docs/cpt-overhaul/05). facts = graph/hydrate (default). style = persona/voice path
+# (fingerprint → real-text bulk + register expansions). mixed = both, sub-corpora disjoint at ingest.
+kind: facts   # facts | style | mixed
+
 # Data hierarchy under data/<name>/<...>. A festival is festival→city→year; another domain might be
 # [product, version], [region], [author, work], … The unit of partition is the LAST level.
 hierarchy: [<unit>]
@@ -43,39 +47,65 @@ stages:
     desc: "10_clean — trafilatura + LLM rescue → clean markdown"
     cmd: ["{py}", "-m", "extract", "--domain", "{domain}", "--editions", "{editions}", "--llm-rescue"]
     gpu: false
+  - name: pii_scan
+    desc: "PII quarantine/mask (non-destructive) — mandatory for own-data/style corpora"
+    cmd: ["{py}", "scripts/pipeline/pii_scan.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
+  # Style path only (kind: style|mixed). REFUSE below ~2k msgs / ~20k tokens of real user text.
+  # - name: style_fingerprint
+  #   desc: "style card — mechanical fingerprint + optional LLM register prose; human-approved"
+  #   cmd: ["{py}", "scripts/pipeline/style_fingerprint.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   gpu: false
+  - name: score_educational
+    desc: "educational-density teacher scores (1–5) → sidecars for curate; omit on device-only"
+    cmd: ["{py}", "scripts/pipeline/score_educational.py", "--domain", "{domain}", "--editions", "{editions}", "--mode", "facts"]
+    gpu: false
   - name: curate
-    desc: "RoBERTa quality/dedup → domain-scoped keep-list"
-    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--drop-frac", "0.10"]
+    desc: "educational×trust drop + rarity guard + PII quarantine honor → domain-scoped keep-list"
+    cmd: ["{py}", "scripts/curate_corpus.py", "--domain", "{domain}", "--no-difficulty"]
     gpu: true
   - name: structured
     desc: "15_structured — LLM entity/triple/discourse extraction (spec-driven from entity_types/predicates, schema-validated)"
     cmd: ["{py}", "scripts/extract_structured.py", "--domain", "{domain}", "--editions", "{editions}", "--concurrency", "16", "--yes"]
     gpu: false
-  # Optional augmentation-holdout carve (uncomment before hydrate). Because tokenize includes clean prose
-  # by default, this becomes fact-holdout only when tokenize also receives --no-clean (or source filtering lands).
+  - name: resolve
+    desc: "entity canonicalization (alias merge; continuity hard wall) — before split"
+    cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: true
+  # Optional holdout carve (uncomment before hydrate). v2 = alias+inverse-closed (new eval series).
   # - name: split
-  #   desc: "immutable subject-grouped split_v1.json — TRAIN augmentation vs HOLDOUT probe gold"
-  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT"
+  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v2"]
   #   gpu: false
   - name: hydrate
     desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
     cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   - name: synth
-    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases; the install layer on top of the floor)"
+    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases + persona/temp variation)"
     cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   # Optional confusable-value surfaces (uncomment after hydrate; no authored contrast block = reported no-op).
   # - name: contrast
   #   desc: "25_hydrated — truth-validated contrast surfaces from the domain template's contrast block"
-  #   cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}", "--max-fraction", "0.10"]
+  #   gpu: false
+  # Optional surface dedup (after synth; non-destructive exclusion list the tokenizer honors).
+  # - name: dedup_surfaces
+  #   desc: "SemDeDup hydrated surfaces — floor-protected; nothing deleted from 25_hydrated/"
+  #   cmd: ["{py}", "scripts/pipeline/dedup_surfaces.py", "--domain", "{domain}", "--editions", "{editions}"]
   #   gpu: false
   - name: probes
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
+  # Optional extraction-coverage gate (provider). FAIL → second extraction pass, not a train iteration.
+  # - name: audit_recall
+  #   desc: "extraction coverage gate — FAIL names weak predicates; re-extract, don't re-train"
+  #   cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "{domain}", "--editions", "{editions}", "--min-coverage", "0.6"]
+  #   gpu: false
   - name: audit
-    desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"
+    desc: "CPU data audit — distribution/static dimensions + diversity gate (distinct-n)"
     cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}", "--no-gpu"]
     gpu: false
   - name: tokenize
@@ -110,4 +140,7 @@ quality:
     max_object_contract_violation_frac: 0.0
     max_dangling_frac: 0.0
     require_edition_match: true
+  diversity:
+    min_distinct_2: 0.35          # collapse detector (unique bigrams / total)
+    max_nn_cosine_p90: 0.90       # optional embedding NN; needs --diversity-embeddings
   # year_bearing_types: [<types whose slug must not carry the unit token>]   # festival-only; omit otherwise

@@ -100,6 +100,48 @@ def validator_for(kind: str, domain: str | None = None) -> Draft202012Validator:
     return _VALIDATORS[key]
 
 
+def _id_type_segment(eid: str) -> str | None:
+    """Middle segment of ``prefix:type:slug``; None if unstructured."""
+    if not isinstance(eid, str):
+        return None
+    parts = eid.split(":")
+    return parts[1] if len(parts) >= 3 else None
+
+
+def id_type_mismatch(record: dict) -> dict | None:
+    """Return a mismatch descriptor when id middle-segment ≠ entity_type; else None.
+
+    Loud-warning primitive (not a validate hard-fail): EDC golden data has intentional
+    cross-label cases (e.g. ``…:service:medical_tents`` with entity_type ``medical``), so
+    a hard error would false-fail the reference domain. Extract/resolve call this to surface
+    pokemon-style minting bugs (``…:location:kanto`` + entity_type ``region``).
+    """
+    eid = record.get("id")
+    et = record.get("entity_type")
+    seg = _id_type_segment(eid) if isinstance(eid, str) else None
+    if seg is None or not isinstance(et, str) or not et or seg == et:
+        return None
+    return {
+        "id": eid,
+        "entity_type": et,
+        "id_type_segment": seg,
+        "name_canonical": record.get("name_canonical"),
+    }
+
+
+def warn_entity_id_type_mismatches(records: list[dict], *, where: str = "structured") -> list[dict]:
+    """Print a loud warning for id/type-segment contradictions; return the mismatch list."""
+    import sys
+    bad = [m for m in (id_type_mismatch(r) for r in records) if m is not None]
+    if bad:
+        print(
+            f"[{where}] WARNING: {len(bad)} entit(y/ies) with id middle-segment ≠ entity_type "
+            f"(extract should mint prefix:entity_type:slug). sample={bad[:5]}",
+            file=sys.stderr,
+        )
+    return bad
+
+
 def validate(kind: str, record: dict, domain: str | None = None) -> list[str]:
     """Return a list of human-readable error strings ([] = valid). `domain` selects the ontology (None = static)."""
     v = validator_for(kind, domain)

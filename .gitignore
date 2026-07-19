@@ -89,3 +89,6 @@ logs/runs/
 # Local session state (directive ledger, locks) + generated check outputs
 .claude/
 check_out.json
+
+# Per-doc PII sidecars (regenerable; keep report+quarantine only)
+data/_build/pii/*/
