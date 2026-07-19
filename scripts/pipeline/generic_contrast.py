@@ -207,6 +207,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--editions", help="restrict to 'unit,…' (default: all on disk)")
+    ap.add_argument("--max-fraction", type=float, default=0.10,
+                    help="soft cap on contrast lines as a fraction of relations.jsonl "
+                         "(Phase C default 0.10; was warn-only at 0.20). Emit still writes all "
+                         "validated surfaces; exceeding this is a hard WARNING + non-zero note.")
     ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
     args = ap.parse_args()
 
@@ -239,9 +243,12 @@ def main():
             f"{len(records)}/0 = n/a"
         print(f"  {ed.slug}: {mode} — {len(train_triples)}/{len(all_triples)} triples; "
               f"emitted {len(records)}, truth-drops {truth_drops}, cap-suppressed {cap_suppressed}; "
-              f"contrast fraction {frac_text}")
-        if fraction is not None and fraction > 0.20:
-            print(f"  WARNING: {ed.slug} contrast fraction {fraction:.1%} exceeds 20% of relations.jsonl",
+              f"contrast fraction {frac_text} (soft-cap {args.max_fraction:.0%})")
+        if fraction is not None and fraction > args.max_fraction:
+            print(f"  WARNING: {ed.slug} contrast fraction {fraction:.1%} exceeds "
+                  f"max-fraction {args.max_fraction:.0%} of relations.jsonl — "
+                  f"prefer raising SFT hard-negatives over growing CPT contrast "
+                  f"(docs/cpt-overhaul/03)",
                   file=sys.stderr)
         if args.dry_run:
             continue

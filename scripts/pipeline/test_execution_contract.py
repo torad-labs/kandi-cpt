@@ -60,10 +60,11 @@ def test_execution_contract_matches_manifest() -> None:
         ("pokemon-lore", "synth"),
         ("pokemon-lore", "audit_recall"),
     }
-    # Phase B stages present on pokemon-lore
+    # Phase B/C stages present on pokemon-lore
     poke_ids = {s["id"] for s in contracts["pokemon-lore"]["stages"]}
     assert "resolve" in poke_ids
     assert "audit_recall" in poke_ids
+    assert "dedup_surfaces" in poke_ids
     assert any(
         "--version" in " ".join(s["cmd"]) and "v2" in " ".join(s["cmd"])
         for s in contracts["pokemon-lore"]["stages"] if s["id"] == "split"

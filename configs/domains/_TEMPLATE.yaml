@@ -73,13 +73,18 @@ stages:
     cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   - name: synth
-    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases; the install layer on top of the floor)"
+    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases + persona/temp variation)"
     cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
   # Optional confusable-value surfaces (uncomment after hydrate; no authored contrast block = reported no-op).
   # - name: contrast
   #   desc: "25_hydrated — truth-validated contrast surfaces from the domain template's contrast block"
-  #   cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}", "--max-fraction", "0.10"]
+  #   gpu: false
+  # Optional surface dedup (after synth; non-destructive exclusion list the tokenizer honors).
+  # - name: dedup_surfaces
+  #   desc: "SemDeDup hydrated surfaces — floor-protected; nothing deleted from 25_hydrated/"
+  #   cmd: ["{py}", "scripts/pipeline/dedup_surfaces.py", "--domain", "{domain}", "--editions", "{editions}"]
   #   gpu: false
   - name: probes
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
@@ -91,7 +96,7 @@ stages:
   #   cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "{domain}", "--editions", "{editions}", "--min-coverage", "0.6"]
   #   gpu: false
   - name: audit
-    desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"
+    desc: "CPU data audit — distribution/static dimensions + diversity gate (distinct-n)"
     cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}", "--no-gpu"]
     gpu: false
   - name: tokenize
@@ -126,4 +131,7 @@ quality:
     max_object_contract_violation_frac: 0.0
     max_dangling_frac: 0.0
     require_edition_match: true
+  diversity:
+    min_distinct_2: 0.35          # collapse detector (unique bigrams / total)
+    max_nn_cosine_p90: 0.90       # optional embedding NN; needs --diversity-embeddings
   # year_bearing_types: [<types whose slug must not carry the unit token>]   # festival-only; omit otherwise

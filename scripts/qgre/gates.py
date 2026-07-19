@@ -312,6 +312,67 @@ def gate_faithfulness(eds, spec) -> Verdict:
 
 
 # ── gate: source-gap vs defect (the honest classifier) ──────────────────────────────────────────────────
+# ── gate: diversity (Phase C — paraphrase collapse detector) ──────────────────────────────────────
+def gate_diversity(eds, spec, *, use_embeddings: bool = False, device: str = "cuda:0") -> Verdict:
+    """distinct-n + optional NN cosine over 25_hydrated. FAIL names weak predicates.
+
+    Opt-in via manifest `quality.diversity` — absent block → skipped (EDC/legacy domains stay
+    unchanged). Embeddings optional (device-only → EMBEDDINGS_UNAVAILABLE; distinct-2 still gates).
+    A collapsed corpus (one skeleton × many rewordings) FAILs — red-green in diversity_lib tests.
+    """
+    from pipeline import diversity_lib as Div
+
+    qd = S.quality_cfg(spec).get("diversity")
+    if not qd:
+        return Verdict(
+            "diversity", True, "skipped",
+            {"note": "quality.diversity not configured — diversity gate opt-in"},
+        )
+    min_d2 = float(qd.get("min_distinct_2", 0.35))
+    max_nn = float(qd.get("max_nn_cosine_p90", 0.90))
+    records = list(_hydrated(eds))
+    # Also fold LLM + contrast surfaces when present (same 25_hydrated tree).
+    for ed in eds:
+        hyd = ed.dir / "25_hydrated"
+        if not hyd.is_dir():
+            continue
+        for name in ("relations_llm.jsonl", "relations_contrast.jsonl"):
+            for rec in _iter_jsonl(hyd / name):
+                records.append(rec)
+    if not records:
+        return Verdict(
+            "diversity", False, "skipped",
+            {"note": "no hydrated relations in scope", "min_distinct_2": min_d2},
+        )
+
+    embeddings = None
+    emb_unavail = not use_embeddings
+    if use_embeddings:
+        try:
+            from pipeline import curate_lib as CL
+            texts = [str(r.get("text") or "") for r in records]
+            embeddings = CL.embed_docs(texts, device=device)
+            emb_unavail = False
+        except Exception as exc:  # noqa: BLE001 — device-only / missing model is a soft skip
+            emb_unavail = True
+            print(f"WARNING: diversity embeddings unavailable ({type(exc).__name__}: {exc}); "
+                  f"distinct-2 still gates", file=sys.stderr)
+
+    report = Div.diversity_report(
+        records,
+        min_distinct_2=min_d2,
+        max_nn_cosine_p90=max_nn,
+        embeddings=embeddings,
+        embeddings_unavailable=emb_unavail,
+    )
+    sev = report["severity"]
+    passed = report["passed"]
+    examples = report.get("examples") or []
+    metrics = {k: v for k, v in report.items() if k not in ("examples", "by_predicate")}
+    metrics["by_predicate"] = report.get("by_predicate") or {}
+    return Verdict("diversity", passed, sev, metrics, examples)
+
+
 def gate_source_vs_gap(eds, spec) -> Verdict:
     """For every relation the spec declares, if it is MISSING or below floor in the corpus, classify it:
     source_gap (every artifact in its `needs` is absent on disk) vs defect (needs satisfied — generation
@@ -363,7 +424,7 @@ def gate_source_vs_gap(eds, spec) -> Verdict:
 
 
 # ── suite ──────────────────────────────────────────────────────────────────────────────────────────────
-def run_suite(eds, spec) -> dict:
+def run_suite(eds, spec, *, diversity_embeddings: bool = False, diversity_device: str = "cuda:0") -> dict:
     eds = list(eds)
     gates = {
         "balance": gate_balance(eds, spec),
@@ -371,6 +432,7 @@ def run_suite(eds, spec) -> dict:
         "id_integrity": gate_id_integrity(eds, spec),
         "faithfulness": gate_faithfulness(eds, spec),
         "source_vs_gap": gate_source_vs_gap(eds, spec),
+        "diversity": gate_diversity(eds, spec, use_embeddings=diversity_embeddings, device=diversity_device),
     }
     overall = _worst(g.severity for g in gates.values())
     # A truly-empty corpus (editions in scope but ZERO data at EVERY layer — no structured triples AND no
@@ -383,11 +445,14 @@ def run_suite(eds, spec) -> dict:
     empty_corpus = bool(eds) and all(gates[k].severity == "skipped" for k in _DATA_GATES)
     if empty_corpus:
         overall = "fail"
+    qd = S.quality_cfg(spec).get("diversity") or {}
     return {"overall": overall, "n_editions": len(eds), "empty_corpus": empty_corpus,
             "editions": [e.slug for e in eds],
             "thresholds": {"exposure_cap_per_fact": S.relations_cfg(spec).get("exposure_cap_per_fact"),
                            "dominance_max_frac": S.relations_cfg(spec).get("dominance_max_frac"),
-                           "min_active_types": S.relations_cfg(spec).get("min_active_types")},
+                           "min_active_types": S.relations_cfg(spec).get("min_active_types"),
+                           "min_distinct_2": qd.get("min_distinct_2", 0.35),
+                           "max_nn_cosine_p90": qd.get("max_nn_cosine_p90", 0.90)},
             "gates": {k: asdict(v) for k, v in gates.items()}}
 
 
@@ -396,13 +461,16 @@ def main():
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--festival", default=None, help="festival slug (default = domain)")
     ap.add_argument("--editions", default=None, help="city/year CSV (omit = all on disk)")
+    ap.add_argument("--diversity-embeddings", action="store_true",
+                    help="enable roberta-large NN cosine for diversity gate (GPU 1)")
+    ap.add_argument("--device", default="cuda:0", help="device for optional diversity embeddings")
     args = ap.parse_args()
     spec = S.load_spec(args.domain)
     eds = list(iter_editions(args.festival or args.domain, only=args.editions, with_raw=False))   # gate content-only domains too
     if not eds:
         print(f"no editions matched {args.domain}/{args.editions}")
         return
-    report = run_suite(eds, spec)
+    report = run_suite(eds, spec, diversity_embeddings=args.diversity_embeddings, diversity_device=args.device)
     for name, g in report["gates"].items():
         print(f"  {name:>14} [{g['severity'].upper()}]  {g['metrics']}")
     print(f"\n  overall: {report['overall'].upper()}  ({report['n_editions']} editions)")

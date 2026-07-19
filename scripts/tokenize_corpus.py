@@ -100,6 +100,19 @@ def _edu_score_for_path(path: str, scores: dict[str, float] | None, default: flo
     return default
 
 
+def _dedup_exclude_keys(domain: str, unit_slug: str) -> set[str] | None:
+    """Load Phase C surface-dedup exclusion keys for a unit, if present."""
+    unit_key = unit_slug.replace("/", "__")
+    path = C.BUILD / "dedup" / domain / unit_key / "exclude_keys.json"
+    if not path.is_file():
+        return None
+    try:
+        keys = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    return set(keys) if isinstance(keys, list) else None
+
+
 def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
     """Return list of dicts {tag, path, text}. tag ∈ clean|synthetic|hydrated|knowledge (for stats);
     path is the full posix path (or jsonl path) used to classify source-type."""
@@ -107,6 +120,7 @@ def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
     keep_path = C.BUILD / "curation" / keep_name
     keep = set(json.loads(keep_path.read_text())) if keep_path.exists() else None
     docs = []
+    n_dedup_skipped = 0
     for ed in iter_editions(domain, only=editions_only, with_raw=False):   # consumes 15_structured/25_hydrated, not 00_raw
         split = load_split(ed.dir)
         if split:
@@ -139,27 +153,39 @@ def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
                 if t:
                     docs.append({"tag": "synthetic", "path": p, "text": t})
             hyd_root = ed.dir / "25_hydrated"
+            exclude = _dedup_exclude_keys(domain, ed.slug)
+            if exclude:
+                print(f"  {ed.slug}: honoring dedup exclusion list ({len(exclude)} keys)", flush=True)
             for jf in sorted(hyd_root.rglob("*.jsonl")) if hyd_root.is_dir() else []:
                 if jf.with_name(jf.name + ".partial").exists():   # a synth aborted mid-write → this file is STALE
                     print(f"  WARNING: {jf} has a sibling .partial — the last synth for this dir ABORTED; "
                           f"SKIPPING this stale file (re-run the synth stage to refresh it before tokenizing — "
                           f"tokenize is the one-way door into training).", file=sys.stderr)
                     continue
-                for line in jf.read_text(encoding="utf-8", errors="replace").splitlines():
+                for i, line in enumerate(jf.read_text(encoding="utf-8", errors="replace").splitlines()):
                     line = line.strip()
                     if not line:
                         continue
                     try:
-                        txt = json.loads(line).get("text", "").strip()
+                        obj = json.loads(line)
+                        txt = obj.get("text", "").strip()
                     except Exception:
                         continue
-                    if txt:
-                        docs.append({"tag": "hydrated", "path": jf.as_posix(), "text": txt})
+                    if not txt:
+                        continue
+                    if exclude is not None:
+                        key = f"{jf.name}:{i}:{hash(txt) & 0xFFFFFFFF:08x}"
+                        if key in exclude:
+                            n_dedup_skipped += 1
+                            continue
+                    docs.append({"tag": "hydrated", "path": jf.as_posix(), "text": txt})
     if include_clean:
         for md in sorted((C.SHARED / "knowledge").rglob("*.md")) if (C.SHARED / "knowledge").is_dir() else []:
             t = md.read_text(encoding="utf-8", errors="replace").strip()
             if t:
                 docs.append({"tag": "knowledge", "path": md.as_posix(), "text": t})
+    if n_dedup_skipped:
+        print(f"  dedup: skipped {n_dedup_skipped} hydrated surfaces via exclusion list", flush=True)
     return docs
 
 
