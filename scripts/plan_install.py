@@ -34,14 +34,22 @@ LADDER_STATES = [
 STAGE_INPUTS = {
     "scrape": (),
     "extract": ("unit:00_raw",),
+    # Phase A data-selection (after extract / before or with curate).
+    "pii_scan": ("unit:10_clean",),
+    "score_educational": ("unit:10_clean",),
     "curate": ("unit:10_clean",),
     "structured": ("unit:10_clean",),
+    # Phase B graph correctness (after structured, before/around split).
+    "resolve": ("unit:15_structured",),
     "split": ("unit:15_structured",),
     "hydrate": ("unit:15_structured",),
     "contrast": ("unit:15_structured",),
     "synth": ("unit:15_structured",),
+    # Phase C synthetic layer (after hydrate/synth surfaces exist).
+    "dedup_surfaces": ("unit:25_hydrated",),
     "probes": ("unit:15_structured",),
     "audit": ("unit:15_structured", "unit:25_hydrated"),
+    "audit_recall": ("unit:10_clean", "unit:15_structured"),
     "tokenize": ("unit:25_hydrated",),
     "cpt": ("config:cpt:data.tokenized",),
     "build_sft": ("unit:15_structured", "command:--score-model"),
@@ -381,11 +389,31 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
             planned["provider"] = stage["provider"]
         ordered_plan.append(planned)
 
+    # Zero-knob derivation table (docs/cpt-overhaul/06) — every knob WITH its derivation line.
+    try:
+        from pipeline.derive_plan import derive_knobs
+        derivations = derive_knobs(
+            domain_name,
+            editions or None,
+            device_only=bool((policy or {}).get("device_only")),
+            domain_kind=str((policy or {}).get("domain_kind") or "facts"),
+            overrides=(policy or {}).get("overrides") if isinstance((policy or {}).get("overrides"), dict) else None,
+        )
+    except Exception as error:  # noqa: BLE001 — plan must still emit without derivations
+        derivations = {
+            "ok": False,
+            "error": f"derive_knobs unavailable: {error}",
+            "knobs": [],
+            "ladder": [],
+            "plain_language": "",
+        }
+
     result = {
         "domain": domain_name,
         "editions": [unit.slug for unit in units],
         "ladder": [manifest_state, admitted_state, recipe_state, stage_state, training_state],
         "plan": ordered_plan,
+        "derivations": derivations,
     }
     assert [state["state"] for state in result["ladder"]] == LADDER_STATES
     return result

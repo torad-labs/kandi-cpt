@@ -111,6 +111,7 @@ REQUIRED_PLAYBOOKS = {
     "audit_recall": "cpt/04c-audit-recall.md",
     "build_sft": "cpt/07-train.md",
     "sft": "cpt/07-train.md",
+    "plan_install": "cpt/08-zero-knob.md",
 }
 
 

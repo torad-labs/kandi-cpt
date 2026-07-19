@@ -74,12 +74,25 @@ def test_plan_install_is_read_only_and_computed() -> None:
     assert states["MANIFEST_VALID"]["value"] == "PASS"
     assert states["INPUTS_ADMITTED"]["value"] == "OPERATOR_ATTESTED_REQUIRED"
     readiness = {entry["stage"]: entry for entry in states["STAGE_READY"]["evidence"]}
-    for stage in ("extract", "structured", "hydrate", "synth", "probes", "audit", "tokenize", "cpt"):
+    for stage in (
+        "extract", "pii_scan", "score_educational", "structured", "resolve",
+        "hydrate", "synth", "dedup_surfaces", "probes", "audit", "audit_recall",
+        "tokenize", "cpt",
+    ):
         assert readiness[stage]["ready"], (stage, readiness[stage]["missing"])
     assert states["TRAINING_READY"]["value"] == "PASS"
     split = states["TRAINING_READY"]["evidence"][0]["split_status"]
     assert split[0]["unit"] == "kanto"
     assert split[0]["exists"] and split[0]["measurement"] == "augmentation-holdout only"
+
+    # Phase D zero-knob derivation table rides the same plan payload.
+    derivations = plan["derivations"]
+    assert derivations["ok"] is True
+    assert derivations["knobs"]
+    assert all(k.get("derivation") for k in derivations["knobs"])
+    assert derivations["plain_language"]
+    assert derivations["measured"]["contrast_authorable"] is True
+    assert any(k["knob"] == "drop_frac" for k in derivations["knobs"])
 
     denied = build_plan(
         "pokemon-lore",
