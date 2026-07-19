@@ -131,6 +131,69 @@ def test_cli_writes_artifacts():
         assert not (misty_ids & set(id_map.keys()) == misty_ids and len({id_map.get(i, i) for i in misty_ids}) == 1)
 
 
+
+
+def test_pick_canonical_prefers_type_consistent_id():
+    """Longer mismatched id must lose to shorter type-consistent id (kanto location→region)."""
+    members = [
+        _ent("pokemon_lore_kanto:location:kanto", "Kanto", et="region"),
+        _ent("pokemon_lore_kanto:region:kanto", "Kanto", et="region"),
+        _ent("kanto:region:kanto", "Kanto", et="region"),
+    ]
+    # longest is location:… — old tiebreak would pick it; new prefers type match then length
+    canon = R.pick_canonical(members)
+    assert canon["id"] == "pokemon_lore_kanto:region:kanto", canon["id"]
+    assert R.id_type_consistent(canon)
+
+
+def test_pick_canonical_still_uses_length_among_consistent():
+    members = [
+        _ent("dom:character:gio", "Giovanni"),
+        _ent("dom:character:giovanni", "Giovanni"),
+    ]
+    canon = R.pick_canonical(members)
+    assert canon["id"] == "dom:character:giovanni"
+
+
+def test_warn_id_type_mismatches_detects_location_region():
+    ents = [
+        _ent("pokemon_lore_kanto:location:kanto", "Kanto", et="region"),
+        _ent("pokemon_lore_kanto:region:kanto", "Kanto", et="region"),
+        _ent("dom:character:ash", "Ash"),
+    ]
+    bad = R.warn_id_type_mismatches(ents, unit="kanto")
+    assert len(bad) == 1
+    assert bad[0]["id"] == "pokemon_lore_kanto:location:kanto"
+    assert bad[0]["id_type_segment"] == "location"
+    assert bad[0]["entity_type"] == "region"
+
+
+def test_resolve_unit_prefers_type_consistent_canonical_and_rewrites_triples():
+    ents = [
+        _ent("pokemon_lore_kanto:location:kanto", "Kanto", et="region"),
+        _ent("pokemon_lore_kanto:region:kanto", "Kanto", et="region"),
+        _ent("dom:character:ash", "Ash"),
+    ]
+    trips = [
+        _tri("dom:character:ash", "originates_from", "pokemon_lore_kanto:location:kanto"),
+        _tri("dom:character:ash", "lives_in", "pokemon_lore_kanto:region:kanto"),
+    ]
+    result = R.resolve_unit(
+        ents, trips,
+        auto_band=0.92, review_band=0.85, review_cap=50,
+        device="cpu", use_embeddings=False,
+    )
+    assert len(result["id_type_mismatches"]) == 1
+    # location id should map onto region id
+    assert result["id_map"].get("pokemon_lore_kanto:location:kanto") == "pokemon_lore_kanto:region:kanto"
+    canon_ids = {e["id"] for e in result["canonical_entities"]}
+    assert "pokemon_lore_kanto:region:kanto" in canon_ids
+    assert "pokemon_lore_kanto:location:kanto" not in canon_ids
+    objs = {t["object"] for t in result["resolved_triples"]}
+    assert "pokemon_lore_kanto:location:kanto" not in objs
+    assert "pokemon_lore_kanto:region:kanto" in objs
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

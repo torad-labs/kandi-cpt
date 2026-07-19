@@ -360,6 +360,40 @@ def test_judge_one_unparseable_falls_back_not_raise():
         G.chat = real_chat
 
 
+
+
+def test_default_calibration_is_domain_neutral():
+    """Built-in set must not be pokemon-flavored; covers all four labels."""
+    labels = {item["expected_label"] for item in G.DEFAULT_CALIBRATION}
+    assert labels == set(G.JUDGE_LABELS)
+    blob = " ".join(
+        item["question"] + " " + item["gold"] + " " + item["answer"]
+        for item in G.DEFAULT_CALIBRATION
+    ).lower()
+    for token in ("kanto", "giovanni", "pikachu", "misty", "team rocket", "pokémon", "pokemon"):
+        assert token not in blob, token
+
+
+def test_load_calibration_items_domain_file_and_default():
+    """Per-domain file overrides DEFAULT; missing domain falls back to neutral default."""
+    items = G.load_calibration_items(domain="pokemon-lore")
+    blob = " ".join(it.get("gold", "") + it.get("question", "") for it in items)
+    assert "Kanto" in blob or "Giovanni" in blob
+    import json as _json
+    import tempfile
+    with tempfile.TemporaryDirectory() as temporary:
+        fix = Path(temporary) / "cal.json"
+        payload = [
+            {"question": "Q1", "gold": "A", "answer": "A", "expected_label": "correct"},
+            {"question": "Q2", "gold": "B", "answer": "C", "expected_label": "wrong"},
+        ]
+        fix.write_text(_json.dumps(payload), encoding="utf-8")
+        loaded = G.load_calibration_items(fix)
+        assert loaded == payload
+    neutral = G.load_calibration_items(domain="no-such-domain-xyz")
+    assert neutral == G.DEFAULT_CALIBRATION
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

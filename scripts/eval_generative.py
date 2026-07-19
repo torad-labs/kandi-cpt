@@ -12,6 +12,11 @@ split stamp, measurement class, and probe hash lineage carry over unchanged.
     PYTHONPATH=scripts python scripts/eval_generative.py \
         --config configs/train_<d>.yaml --checkpoint checkpoints/cpt/<run> \
         [--answers-json path]   # fixture path skips model generate (unit tests / offline)
+        [--calibration-json path] [--domain <d>]
+
+Judge κ-calibration defaults to a domain-neutral 8-item set (all four labels). Per-domain
+override: configs/evals/calibration_<domain>.json (pokemon-lore keeps its original set so
+prior receipts stay comparable) or --calibration-json.
 
 The operator-facing dual-axis path is scripts/eval.py mode=cpt once eval.probe_domain is set;
 this module is the library + a direct CLI for diagnosis.
@@ -382,56 +387,110 @@ def calibrate_judge(
     return summary
 
 
+# Domain-neutral built-in set — exercises all four JUDGE_LABELS without domain flavor.
+# Per-domain override: configs/evals/calibration_<domain>.json (list of
+# {question, gold, answer, expected_label}) or --calibration-json / calibrate_items=.
 DEFAULT_CALIBRATION: list[dict[str, Any]] = [
     {
-        "question": "Which region is Ash from?",
-        "gold": "Kanto",
-        "answer": "Ash is from the Kanto region.",
+        "question": "What is the capital of France?",
+        "gold": "Paris",
+        "answer": "The capital of France is Paris.",
         "expected_label": "correct",
     },
     {
-        "question": "Who leads Team Rocket?",
-        "gold": "Giovanni",
-        "answer": "Giovanni is the boss of Team Rocket.",
+        "question": "Who wrote Hamlet?",
+        "gold": "William Shakespeare",
+        "answer": "William Shakespeare wrote Hamlet.",
         "expected_label": "correct",
     },
     {
-        "question": "Which region contains Pallet Town?",
-        "gold": "Kanto",
-        "answer": "Johto",
+        "question": "What is the chemical symbol for water?",
+        "gold": "H2O",
+        "answer": "CO2",
         "expected_label": "wrong",
     },
     {
-        "question": "Who is the Gym Leader of Cerulean City?",
-        "gold": "Misty",
+        "question": "In what year did the Berlin Wall fall?",
+        "gold": "1989",
         "answer": "I am not sure about that.",
         "expected_label": "deflected",
     },
     {
-        "question": "What is the capital of the Kanto Pokémon League?",
-        "gold": "Indigo Plateau",
-        "answer": "The secret underground capital is Neon Harbor, founded in 1999 by Mew.",
+        "question": "What is the largest planet in the Solar System?",
+        "gold": "Jupiter",
+        "answer": "The largest planet is Zorblax-9, discovered in 1847 by Captain Nemo under the ice.",
         "expected_label": "fabricated",
     },
     {
-        "question": "Which organization is Jessie a member of?",
-        "gold": "Team Rocket",
-        "answer": "Team Rocket",
+        "question": "What gas do plants primarily absorb for photosynthesis?",
+        "gold": "carbon dioxide",
+        "answer": "carbon dioxide",
         "expected_label": "correct",
     },
     {
-        "question": "Who leads Team Aqua?",
-        "gold": "Archie",
-        "answer": "Maxie",
+        "question": "What is the boiling point of water at standard pressure in Celsius?",
+        "gold": "100",
+        "answer": "0",
         "expected_label": "wrong",
     },
     {
-        "question": "Where is Pewter City?",
-        "gold": "Kanto",
+        "question": "Who painted the Mona Lisa?",
+        "gold": "Leonardo da Vinci",
         "answer": "I don't know.",
         "expected_label": "deflected",
     },
 ]
+
+
+def _engine_root() -> Path:
+    """Stable engine root for calibration files.
+
+    Prefer ``config.ROOT`` when it still points at the real checkout; fall back to
+    this file's location so unit tests that rebind ``C.ROOT`` to a temp dir do not
+    silently lose per-domain calibration files.
+    """
+    here = Path(__file__).resolve().parents[1]  # scripts/ → engine root
+    try:
+        root = Path(C.ROOT).resolve()
+    except Exception:
+        return here
+    # Real checkout has configs/evals or configs/domains; temp test roots usually don't.
+    if (root / "configs" / "domains").is_dir() or (root / "configs" / "evals").is_dir():
+        return root
+    return here
+
+
+def load_calibration_items(
+    path: str | Path | None = None,
+    *,
+    domain: str | None = None,
+) -> list[dict[str, Any]]:
+    """Resolve calibration items: explicit path → per-domain file → DEFAULT_CALIBRATION.
+
+    Per-domain default path: ``configs/evals/calibration_<domain>.json``.
+    """
+    candidates: list[Path] = []
+    if path is not None:
+        candidates.append(Path(path))
+    if domain:
+        candidates.append(_engine_root() / "configs" / "evals" / f"calibration_{domain}.json")
+    for candidate in candidates:
+        if candidate.is_file():
+            raw = json.loads(candidate.read_text(encoding="utf-8"))
+            if not isinstance(raw, list) or not raw:
+                raise ValueError(f"calibration file must be a non-empty list: {candidate}")
+            for i, item in enumerate(raw):
+                if not isinstance(item, dict):
+                    raise ValueError(f"calibration[{i}] must be an object in {candidate}")
+                for key in ("question", "gold", "answer", "expected_label"):
+                    if key not in item:
+                        raise ValueError(f"calibration[{i}] missing {key!r} in {candidate}")
+                if item["expected_label"] not in JUDGE_LABELS:
+                    raise ValueError(
+                        f"calibration[{i}] bad expected_label {item['expected_label']!r} in {candidate}"
+                    )
+            return list(raw)
+    return list(DEFAULT_CALIBRATION)
 
 
 # ── summarization / report ───────────────────────────────────────────────────────────────────
@@ -789,7 +848,13 @@ def run_generative_comparison(
             "reason": "no OpenRouter key for judge",
         }
     else:
-        cal_items = calibrate_items if calibrate_items is not None else DEFAULT_CALIBRATION
+        # Domain for calibration file: eval.probe_domain (the corpus under test).
+        cal_domain = getattr(eval_config, "probe_domain", None)
+        cal_items = (
+            calibrate_items
+            if calibrate_items is not None
+            else load_calibration_items(domain=cal_domain)
+        )
 
         def _j(q: str, g: str, a: str) -> str:
             return judge_one(q, g, a, judge_ctx, meter)
@@ -896,9 +961,20 @@ def main() -> None:
     ap.add_argument("--skip-calibrate", action="store_true")
     ap.add_argument("--judge-model", default=None)
     ap.add_argument(
+        "--calibration-json",
+        default=None,
+        help="path to per-domain calibration list (default: configs/evals/calibration_<domain>.json "
+             "if present, else domain-neutral DEFAULT_CALIBRATION)",
+    )
+    ap.add_argument(
+        "--domain",
+        default=None,
+        help="domain name for calibration file lookup (calibrate-only / override)",
+    )
+    ap.add_argument(
         "--calibrate-only",
         action="store_true",
-        help="run κ calibration against the built-in set and exit",
+        help="run κ calibration against the resolved calibration set and exit",
     )
     args = ap.parse_args()
 
@@ -913,7 +989,13 @@ def main() -> None:
         def _j(q: str, g: str, a: str) -> str:
             return judge_one(q, g, a, judge_ctx, meter)
 
-        summary = calibrate_judge(DEFAULT_CALIBRATION, _j)
+        cal_items = load_calibration_items(args.calibration_json, domain=args.domain)
+        summary = calibrate_judge(cal_items, _j)
+        summary["calibration_n"] = len(cal_items)
+        summary["calibration_source"] = (
+            str(args.calibration_json) if args.calibration_json
+            else (f"configs/evals/calibration_{args.domain}.json" if args.domain else "DEFAULT_CALIBRATION")
+        )
         print(json.dumps(summary, indent=2))
         sys.exit(0 if summary.get("usable") else 1)
 
@@ -921,6 +1003,9 @@ def main() -> None:
 
     cfg = CptConfig.from_yaml(args.config, "cpt")
     try:
+        cal_override = None
+        if args.calibration_json:
+            cal_override = load_calibration_items(args.calibration_json, domain=args.domain)
         _, report = run_generative_comparison(
             cfg,
             args.config,
@@ -929,6 +1014,7 @@ def main() -> None:
             skip_base=args.skip_base,
             skip_calibrate=args.skip_calibrate,
             judge_model=args.judge_model,
+            calibrate_items=cal_override,
         )
     except (OSError, ValueError, KeyError, json.JSONDecodeError, RuntimeError) as error:
         sys.exit(f"generative CPT eval failed closed: {error}")

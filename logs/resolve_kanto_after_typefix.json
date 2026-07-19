@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "n_entities_in": 1836,
+    "n_entities_out": 906,
+    "n_merges": 82,
+    "n_review": 0,
+    "n_cross_continuity_links": 0,
+    "cross_merge_violations": 0,
+    "n_id_type_mismatches": 3,
+    "auto_band": 0.92,
+    "review_band": 0.85
+  },
+  "kanto_canonical": [
+    "pokemon_lore_kanto:region:kanto"
+  ],
+  "location_kanto_as_subj": 0,
+  "location_kanto_as_obj": 0,
+  "region_kanto_as_subj": 0,
+  "region_kanto_as_obj": 41,
+  "id_map_kanto": {
+    "kanto:region:kanto": "pokemon_lore_kanto:region:kanto",
+    "pokemon_lore_kanto:character:charon": "charon:character:charon",
+    "pokemon_lore_kanto:character:may": "may:character:may",
+    "pokemon_lore_kanto:character:nanu": "nanu:character:nanu",
+    "pokemon_lore_kanto:character:trace": "trace:character:trace",
+    "pokemon_lore_kanto:character:x": "pokemon_lore_kanto:character:x_adventures",
+    "pokemon_lore_kanto:event:kanto_grand_festival": "kanto_grand_festival:event:kanto_grand_festival",
+    "pokemon_lore_kanto:event:manalo_conference": "manalo_conference:event:manalo_conference",
+    "pokemon_lore_kanto:location:alola": "pokemon_lore_kanto:region:alola",
+    "pokemon_lore_kanto:location:hauoli_city": "pokemon_lore_kanto:location:hau_oli_city",
+    "pokemon_lore_kanto:location:hoenn": "pokemon_lore_kanto:region:hoenn",
+    "pokemon_lore_kanto:location:kanto": "pokemon_lore_kanto:region:kanto",
+    "pokemon_lore_kanto:location:nuvema_town": "nuvema_town:location:nuvema_town",
+    "pokemon_lore_kanto:location:pokemon_research_lab": "pokemon_lore_kanto:location:hauoli_outskirts_research_lab",
+    "pokemon_lore_kanto:location:solaceon_town": "solaceon_town:location:solaceon_town",
+    "pokemon_lore_kanto:location:ulaula_island": "pokemon_lore_kanto:location:ula_ula_island",
+    "pokemon_lore_kanto:organization:team_plasma": "team_plasma:organization:team_plasma",
+    "pokemon_lore_kanto:organization:ultra_guardians": "ultra_guardians:organization:ultra_guardians",
+    "pokemon_lore_kanto:species_lore:blacephalon": "blacephalon:species_lore:blacephalon",
+    "pokemon_lore_kanto:species_lore:lapras": "lapras:species_lore:lapras",
+    "pokemon_lore_kanto:species_lore:nihilego": "nihilego:species_lore:nihilego",
+    "pokemon_lore_kanto:species_lore:silvally": "silvally:species_lore:silvally",
+    "pokemon_lore_kanto:species_lore:xurkitree": "xurkitree:species_lore:xurkitree"
+  }
+}

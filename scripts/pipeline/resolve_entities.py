@@ -85,6 +85,54 @@ def _normalize_name(name: str) -> str:
     return re.sub(r"\s+", " ", name).strip()
 
 
+def id_type_segment(eid: str) -> str | None:
+    """Middle segment of ``prefix:type:slug`` ids; None if the id is not three-segment."""
+    if not isinstance(eid, str):
+        return None
+    parts = eid.split(":")
+    return parts[1] if len(parts) >= 3 else None
+
+
+def id_type_consistent(entity: dict) -> bool:
+    """True when the id's middle segment matches ``entity_type`` (or the id is unstructured)."""
+    seg = id_type_segment(str(entity.get("id") or ""))
+    if seg is None:
+        return True
+    et = str(entity.get("entity_type") or "").strip()
+    if not et:
+        return True
+    return seg == et
+
+
+def warn_id_type_mismatches(entities: list[dict], *, unit: str = "") -> list[dict]:
+    """Loud warning (not hard-fail) for extract-time id/type-segment contradictions.
+
+    Weakest catch that would have surfaced ``pokemon_lore_kanto:location:kanto`` with
+    ``entity_type: region`` at structured/resolve time. Returns the mismatch records.
+    """
+    bad: list[dict] = []
+    for ent in entities:
+        eid = str(ent.get("id") or "")
+        et = str(ent.get("entity_type") or "")
+        seg = id_type_segment(eid)
+        if seg is None or not et or seg == et:
+            continue
+        bad.append({
+            "id": eid,
+            "entity_type": et,
+            "id_type_segment": seg,
+            "name_canonical": ent.get("name_canonical"),
+        })
+    if bad:
+        prefix = f"[resolve:{unit}]" if unit else "[resolve]"
+        print(
+            f"{prefix} WARNING: {len(bad)} entit(y/ies) with id middle-segment ≠ entity_type "
+            f"(extract should mint prefix:entity_type:slug). sample={bad[:5]}",
+            file=sys.stderr,
+        )
+    return bad
+
+
 def exact_name_groups(entities: list[dict]) -> list[list[int]]:
     """Group indices with identical normalized names (within type+continuity, caller-scoped)."""
     buckets: dict[str, list[int]] = defaultdict(list)
@@ -156,7 +204,11 @@ def pairwise_clusters(emb, auto_band: float, review_band: float) -> tuple[list[l
 
 
 def pick_canonical(members: list[dict]) -> dict:
-    """Prefer the id with the domain_unit prefix that appears most often; else longest id."""
+    """Prefer type-consistent ids, then majority domain_unit prefix, then longest id.
+
+    Type-segment match beats length so a short ``…:region:kanto`` wins over a longer
+    mismatched ``…:location:kanto`` when entity_type is region.
+    """
     from collections import Counter
 
     prefix_counts: Counter = Counter()
@@ -168,6 +220,7 @@ def pick_canonical(members: list[dict]) -> dict:
     ranked = sorted(
         members,
         key=lambda m: (
+            0 if id_type_consistent(m) else 1,
             0 if str(m.get("id") or "").startswith(best_prefix) else 1,
             -len(str(m.get("id") or "")),
             str(m.get("id") or ""),
@@ -185,8 +238,10 @@ def resolve_unit(
     review_cap: int,
     device: str,
     use_embeddings: bool,
+    unit: str = "",
 ) -> dict:
     """Run resolution for one unit. Returns maps + rewritten rows + queues."""
+    id_type_mismatches = warn_id_type_mismatches(entities, unit=unit)
     # Bucket by (entity_type, continuity)
     buckets: dict[tuple[str, str], list[int]] = defaultdict(list)
     for i, ent in enumerate(entities):
@@ -376,6 +431,7 @@ def resolve_unit(
         "resolved_triples": resolved_triples,
         "auto_merge_count": auto_merge_count,
         "cross_merge_violations": cross_merge_violations,
+        "id_type_mismatches": id_type_mismatches,
         "n_entities_in": len(entities),
         "n_entities_out": len(canonical_entities),
         "n_triples": len(resolved_triples),
@@ -413,6 +469,7 @@ def main() -> None:
             review_cap=args.review_cap,
             device=args.device,
             use_embeddings=not args.no_embeddings,
+            unit=ed.slug,
         )
         if result["cross_merge_violations"]:
             sys.exit(
@@ -447,6 +504,7 @@ def main() -> None:
             "n_review": len(result["review"]),
             "n_cross_continuity_links": len(result["cross_continuity_links"]),
             "cross_merge_violations": 0,
+            "n_id_type_mismatches": len(result.get("id_type_mismatches") or []),
             "auto_band": args.auto_band,
             "review_band": args.review_band,
         }

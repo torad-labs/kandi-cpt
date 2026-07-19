@@ -18,7 +18,9 @@ import os
 import string
 import sys
 from collections import defaultdict
+from pathlib import Path
 
+import config as C
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline.generic_expand import load_all_triples, source_doc_ids
@@ -203,14 +205,71 @@ def contrast_records(triples: list[dict], groups: dict[str, list[str]], predicat
     return out, truth_drops, cap_suppressed
 
 
+
+def clamp_contrast_to_fraction(
+    records: list[dict],
+    base_lines: int,
+    max_fraction: float,
+) -> tuple[list[dict], dict]:
+    """Hard clamp contrast emission to ``max_fraction`` of relations.jsonl line count.
+
+    Deterministic: keeps the first N records in emission order. Returns (kept, reason_dict).
+    reason_dict always records whether a clamp fired so receipts can cite it.
+    """
+    if base_lines <= 0 or max_fraction is None or max_fraction < 0:
+        return records, {
+            "clamped": False,
+            "reason": "no base relations or non-positive max_fraction — left unclamped",
+            "emitted_before": len(records),
+            "emitted_after": len(records),
+            "base_lines": base_lines,
+            "max_fraction": max_fraction,
+            "fraction_before": None,
+            "fraction_after": None,
+        }
+    limit = int(base_lines * max_fraction)
+    # floor at 0; allow 0 when cap is 0
+    fraction_before = len(records) / base_lines
+    if len(records) <= limit:
+        return records, {
+            "clamped": False,
+            "reason": "within cap",
+            "emitted_before": len(records),
+            "emitted_after": len(records),
+            "base_lines": base_lines,
+            "max_fraction": max_fraction,
+            "fraction_before": round(fraction_before, 4),
+            "fraction_after": round(fraction_before, 4),
+            "limit": limit,
+        }
+    kept = records[:limit]
+    fraction_after = len(kept) / base_lines
+    return kept, {
+        "clamped": True,
+        "reason": (
+            f"contrast fraction {fraction_before:.1%} exceeded max_fraction {max_fraction:.0%} "
+            f"of relations.jsonl ({len(records)}/{base_lines}); kept first {limit} in emission order"
+        ),
+        "emitted_before": len(records),
+        "emitted_after": len(kept),
+        "base_lines": base_lines,
+        "max_fraction": max_fraction,
+        "fraction_before": round(fraction_before, 4),
+        "fraction_after": round(fraction_after, 4),
+        "limit": limit,
+        "dropped": len(records) - len(kept),
+    }
+
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--editions", help="restrict to 'unit,…' (default: all on disk)")
     ap.add_argument("--max-fraction", type=float, default=0.10,
-                    help="soft cap on contrast lines as a fraction of relations.jsonl "
-                         "(Phase C default 0.10; was warn-only at 0.20). Emit still writes all "
-                         "validated surfaces; exceeding this is a hard WARNING + non-zero note.")
+                    help="hard cap on contrast lines as a fraction of relations.jsonl "
+                         "(default 0.10). Exceeding clamps to the cap and records the reason "
+                         "in data/_build/contrast/<domain>/<unit>_clamp.json.")
     ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
     args = ap.parse_args()
 
@@ -238,18 +297,15 @@ def main():
         )
         base_path = ed.dir / "25_hydrated" / "relations.jsonl"
         base_lines = _line_count(base_path)
+        records, clamp_info = clamp_contrast_to_fraction(records, base_lines, args.max_fraction)
         fraction = (len(records) / base_lines) if base_lines else None
         frac_text = f"{len(records)}/{base_lines} = {fraction:.1%}" if fraction is not None else \
             f"{len(records)}/0 = n/a"
         print(f"  {ed.slug}: {mode} — {len(train_triples)}/{len(all_triples)} triples; "
-              f"emitted {len(records)}, truth-drops {truth_drops}, cap-suppressed {cap_suppressed}; "
-              f"contrast fraction {frac_text} (soft-cap {args.max_fraction:.0%})")
-        if fraction is not None and fraction > args.max_fraction:
-            print(f"  WARNING: {ed.slug} contrast fraction {fraction:.1%} exceeds "
-                  f"max-fraction {args.max_fraction:.0%} of relations.jsonl — "
-                  f"prefer raising SFT hard-negatives over growing CPT contrast "
-                  f"(docs/cpt-overhaul/03)",
-                  file=sys.stderr)
+              f"emitted {len(records)}, truth-drops {truth_drops}, per-triple-cap-suppressed {cap_suppressed}; "
+              f"contrast fraction {frac_text} (hard-cap {args.max_fraction:.0%})")
+        if clamp_info.get("clamped"):
+            print(f"  CLAMPED: {ed.slug} {clamp_info['reason']}", file=sys.stderr)
         if args.dry_run:
             continue
         out_dir = ed.dir / "25_hydrated"
@@ -259,8 +315,20 @@ def main():
         tmp.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in records) +
                        ("\n" if records else ""), encoding="utf-8")
         os.replace(tmp, out_path)
+        # Record clamp decision for receipts (always, so "within cap" is also auditable)
+        clamp_dir = C.BUILD / "contrast" / args.domain
+        clamp_dir.mkdir(parents=True, exist_ok=True)
+        clamp_path = clamp_dir / f"{ed.slug.replace('/', '_')}_clamp.json"
+        clamp_payload = {
+            "domain": args.domain,
+            "unit": ed.slug,
+            "truth_drops": truth_drops,
+            "per_triple_cap_suppressed": cap_suppressed,
+            **clamp_info,
+        }
+        clamp_path.write_text(json.dumps(clamp_payload, indent=2) + "\n", encoding="utf-8")
         wrote += 1
-        print(f"    wrote {out_path}")
+        print(f"    wrote {out_path} (clamp receipt {clamp_path})")
     if not args.dry_run:
         print(f"\nwrote {wrote} relations_contrast.jsonl file(s)")
 
