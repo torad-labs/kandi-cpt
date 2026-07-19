@@ -1,0 +1,712 @@
+{
+  "domain": "pokemon-lore",
+  "edition": "kanto",
+  "measurement_class": "augmentation_holdout",
+  "n_forced": 72,
+  "n_generative": 30,
+  "forced_choice": {
+    "base_acc": 0.2638888888888889,
+    "tuned_acc": 0.625,
+    "delta": 0.3611111111111111,
+    "base": {
+      "acc": 0.2638888888888889,
+      "hits": 19,
+      "n": 72,
+      "wilson": {
+        "low": 0.17593776659767213,
+        "high": 0.37575862046176634,
+        "center": 0.27584819352971923,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.05892556509887897,
+      "n_status": "ok",
+      "min_n": 50,
+      "bar": 0.25,
+      "bar_status": "within-noise",
+      "clears_bar": false,
+      "within_noise_of_bar": true,
+      "per_predicate": {
+        "allied_with": {
+          "hits": 0,
+          "n": 3,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.5614970317550455,
+            "center": 0.28074851587752275,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "allied_with",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "appears_in": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5,
+          "wilson": {
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693,
+            "center": 0.5,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "appears_in",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "evolves_into_lore": {
+          "hits": 1,
+          "n": 5,
+          "acc": 0.2,
+          "wilson": {
+            "low": 0.036224108632430085,
+            "high": 0.6244653702374747,
+            "center": 0.3303447394349524,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.22360679774997896,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "evolves_into_lore",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "governs": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.20654931437723745,
+            "high": 1.0,
+            "center": 0.6032746571886187,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "governs",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "involves": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.7934506856227626,
+            "center": 0.3967253428113813,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "involves",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "leads": {
+          "hits": 1,
+          "n": 8,
+          "acc": 0.125,
+          "wilson": {
+            "low": 0.02241749145005667,
+            "high": 0.4708881822128535,
+            "center": 0.24665283683145509,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "leads",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "located_in": {
+          "hits": 5,
+          "n": 26,
+          "acc": 0.19230769230769232,
+          "wilson": {
+            "low": 0.08507061148942408,
+            "high": 0.37876257119317,
+            "center": 0.23191659134129702,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.09805806756909202,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "located_in",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "member_of": {
+          "hits": 2,
+          "n": 8,
+          "acc": 0.25,
+          "wilson": {
+            "low": 0.071479212752109,
+            "high": 0.5907245696898311,
+            "center": 0.33110189122097006,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "member_of",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "occurs_at": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.20654931437723745,
+            "high": 1.0,
+            "center": 0.6032746571886187,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "occurs_at",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "opposes": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.6576197724933469,
+            "center": 0.32880988624667346,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "opposes",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "originates_from": {
+          "hits": 0,
+          "n": 3,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.5614970317550455,
+            "center": 0.28074851587752275,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "originates_from",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "owns_pokemon": {
+          "hits": 5,
+          "n": 6,
+          "acc": 0.8333333333333334,
+          "wilson": {
+            "low": 0.43649717781352987,
+            "high": 0.9699466302516935,
+            "center": 0.7032219040326116,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.20412414523193154,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "owns_pokemon",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "partners_with": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5,
+          "wilson": {
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693,
+            "center": 0.5,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "partners_with",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "rival_of": {
+          "hits": 1,
+          "n": 4,
+          "acc": 0.25,
+          "wilson": {
+            "low": 0.04558726080970055,
+            "high": 0.6993581574175981,
+            "center": 0.3724727091136493,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.25,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "rival_of",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        }
+      }
+    },
+    "tuned": {
+      "acc": 0.625,
+      "hits": 45,
+      "n": 72,
+      "wilson": {
+        "low": 0.5095289902692696,
+        "high": 0.7278082165816159,
+        "center": 0.6186686034254427,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.05892556509887897,
+      "n_status": "ok",
+      "min_n": 50,
+      "bar": 0.25,
+      "bar_status": "cleared",
+      "clears_bar": true,
+      "within_noise_of_bar": false,
+      "per_predicate": {
+        "allied_with": {
+          "hits": 1,
+          "n": 3,
+          "acc": 0.3333333333333333,
+          "wilson": {
+            "low": 0.06149194472039615,
+            "high": 0.7923403991979523,
+            "center": 0.4269161719591742,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "allied_with",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "appears_in": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5,
+          "wilson": {
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693,
+            "center": 0.5,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "appears_in",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "evolves_into_lore": {
+          "hits": 5,
+          "n": 5,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.5655175352168251,
+            "high": 1.0,
+            "center": 0.7827587676084126,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.22360679774997896,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "evolves_into_lore",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "governs": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.7934506856227626,
+            "center": 0.3967253428113813,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "governs",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "involves": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.20654931437723745,
+            "high": 1.0,
+            "center": 0.6032746571886187,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "involves",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "leads": {
+          "hits": 8,
+          "n": 8,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.6755924351161198,
+            "high": 1.0,
+            "center": 0.8377962175580599,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "leads",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "located_in": {
+          "hits": 18,
+          "n": 26,
+          "acc": 0.6923076923076923,
+          "wilson": {
+            "low": 0.5001174167780164,
+            "high": 0.8349868440453624,
+            "center": 0.6675521304116894,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.09805806756909202,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "located_in",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "member_of": {
+          "hits": 4,
+          "n": 8,
+          "acc": 0.5,
+          "wilson": {
+            "low": 0.21521606221387757,
+            "high": 0.7847839377861224,
+            "center": 0.5,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "member_of",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "occurs_at": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.20654931437723745,
+            "high": 1.0,
+            "center": 0.6032746571886187,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.5,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "occurs_at",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "opposes": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.34238022750665303,
+            "high": 1.0,
+            "center": 0.6711901137533265,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "opposes",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "originates_from": {
+          "hits": 2,
+          "n": 3,
+          "acc": 0.6666666666666666,
+          "wilson": {
+            "low": 0.20765960080204765,
+            "high": 0.9385080552796037,
+            "center": 0.5730838280408257,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "originates_from",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "owns_pokemon": {
+          "hits": 0,
+          "n": 6,
+          "acc": 0.0,
+          "wilson": {
+            "low": 0.0,
+            "high": 0.39033428790216534,
+            "center": 0.19516714395108267,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.20412414523193154,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "owns_pokemon",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "partners_with": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5,
+          "wilson": {
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693,
+            "center": 0.5,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "partners_with",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        },
+        "rival_of": {
+          "hits": 1,
+          "n": 4,
+          "acc": 0.25,
+          "wilson": {
+            "low": 0.04558726080970055,
+            "high": 0.6993581574175981,
+            "center": 0.3724727091136493,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.25,
+          "n_status": "insufficient-n",
+          "min_n": 50,
+          "estimand": "augmentation_holdout",
+          "slice": "rival_of",
+          "bar": 0.25,
+          "clears_bar": false,
+          "within_noise_of_bar": false,
+          "bar_status": "insufficient-n"
+        }
+      }
+    }
+  },
+  "generative": {
+    "base_acc": 0.0,
+    "tuned_acc": 0.5,
+    "delta": 0.5,
+    "tuned": {
+      "hits": 15,
+      "n": 30,
+      "acc": 0.5,
+      "wilson": {
+        "low": 0.33154125640533766,
+        "high": 0.6684587435946623,
+        "center": 0.5,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.09128709291752768,
+      "n_status": "insufficient-n",
+      "min_n": 50,
+      "estimand": "augmentation_holdout",
+      "bar": 0.4,
+      "clears_bar": false,
+      "within_noise_of_bar": false,
+      "bar_status": "insufficient-n"
+    },
+    "base": {
+      "hits": 0,
+      "n": 30,
+      "acc": 0.0,
+      "wilson": {
+        "low": 0.0,
+        "high": 0.11351339317396876,
+        "center": 0.05675669658698438,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.09128709291752768,
+      "n_status": "insufficient-n",
+      "min_n": 50,
+      "estimand": "augmentation_holdout",
+      "bar": 0.4,
+      "clears_bar": false,
+      "within_noise_of_bar": false,
+      "bar_status": "insufficient-n"
+    },
+    "label_counts": {
+      "correct": 15,
+      "wrong": 14,
+      "fabricated": 1,
+      "deflected": 0
+    }
+  },
+  "forced_choice_vs_generative_gap": 0.125,
+  "judge_model": "qwen/qwen3-32b",
+  "judge_calls": 60,
+  "pii_scan": {
+    "PII_SCAN_UNAVAILABLE": false
+  },
+  "resolve": {
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "n_entities_in": 1836,
+    "n_entities_out": 906,
+    "n_merges": 82,
+    "n_review": 0,
+    "n_cross_continuity_links": 0,
+    "cross_merge_violations": 0,
+    "auto_band": 0.92,
+    "review_band": 0.85
+  },
+  "note": "Large FC-gen gap is the finding that justified the generative axis."
+}

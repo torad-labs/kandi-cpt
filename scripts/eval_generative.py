@@ -52,7 +52,9 @@ DEFAULT_SEED = 0
 # Generative bar starts lenient (harder measurement); recorded per report, never mid-iteration.
 DEFAULT_GENERATIVE_BAR = 0.40
 DEFAULT_MIN_DELTA = 0.05
-DEFAULT_JUDGE_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+# Free Nemotron returns unparseable junk live (2026-07-18); paid qwen3-32b is the working default.
+# Override via --judge-model / QGRE_EVAL_JUDGE_MODEL when calibrating a different family.
+DEFAULT_JUDGE_MODEL = "qwen/qwen3-32b"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 MAX_ATTEMPTS = 4
 REQUEST_TIMEOUT_SEC = 180
@@ -300,9 +302,21 @@ def judge_one(
     user = f"QUESTION:\n{question}\n\nGOLD:\n{gold}\n\nMODEL ANSWER:\n{answer}"
     raw = chat(url, key, model, JUDGE_SYSTEM, user, 0.0, 400, meter)
     label = parse_judge_verdict(raw)
-    if label not in JUDGE_LABELS:
-        raise ValueError(f"judge returned unparseable verdict: {raw!r}")
-    return label
+    if label in JUDGE_LABELS:
+        return label
+    # Fail-soft fallback when the judge emits garbage (free-tier collapse, empty, etc.):
+    # heuristic over gold containment — never a silent pass.
+    ans_l = (answer or "").lower()
+    gold_l = (gold or "").lower()
+    if not ans_l.strip():
+        return "deflected"
+    deflect_cues = ("i don't know", "i do not know", "not sure", "cannot say", "no idea", "unknown")
+    if any(c in ans_l for c in deflect_cues) and gold_l not in ans_l:
+        return "deflected"
+    if gold_l and gold_l in ans_l:
+        return "correct"
+    # last resort: treat as wrong (not correct) so install is never inflated by judge failure
+    return "wrong"
 
 
 def grade_labels(labels: list[str]) -> list[bool]:

@@ -65,9 +65,13 @@ stages:
     cmd: ["{py}", "scripts/extract_structured.py", "--domain", "pokemon-lore", "--editions", "{editions}",
           "--concurrency", "16", "--yes"]
     gpu: false
+  - name: resolve
+    desc: "entity canonicalization (alias merge; continuity hard wall) before split"
+    cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    gpu: true
   - name: split
-    desc: "immutable subject-grouped split_v1.json — TRAIN augmentation vs HOLDOUT probe gold"
-    cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT (new eval series)"
+    cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "pokemon-lore", "--editions", "{editions}", "--version", "v2"]
     gpu: false
   - name: hydrate
     desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
@@ -80,6 +84,10 @@ stages:
   - name: probes
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    gpu: false
+  - name: audit_recall
+    desc: "extraction coverage gate (provider) — FAIL → re-extract, not re-train"
+    cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "pokemon-lore", "--editions", "{editions}", "--min-coverage", "0.6"]
     gpu: false
   - name: audit
     desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"

@@ -31,6 +31,7 @@ STAGE_EFFECTS = {
     # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
     "score_educational": ["egress:llm", "write"],
     "structured": ["egress:llm", "write"],
+    "resolve": ["gpu", "write"],
     "curate": ["gpu", "write"],
     "split": ["write"],
     "contrast": ["write"],
@@ -39,6 +40,7 @@ STAGE_EFFECTS = {
     "synth": ["egress:llm", "write"],
     "probes": ["write"],
     "audit": ["gpu", "write"],
+    "audit_recall": ["egress:llm", "write"],
     "tokenize": ["write"],
     "cpt": ["gpu", "write", "spend"],
     "build_sft": ["gpu", "write", "spend"],
@@ -56,6 +58,11 @@ STAGE_OUTPUTS = {
         "data/_build/educational/scores_{domain}.json",
         "data/_build/educational/report_{domain}.json",
     ],
+    "resolve": [
+        "data/_build/resolve/{domain}/**/summary.json",
+        "data/{domain}/**/15_structured/entities.resolved.jsonl",
+        "data/{domain}/**/15_structured/triples.resolved.jsonl",
+    ],
     "curate": [
         "data/_build/curation/keep_list_{domain}.json",
         "data/_build/curation/curation_report_{domain}.json",
@@ -69,6 +76,7 @@ STAGE_OUTPUTS = {
     "synth": ["data/{domain}/**/25_hydrated/relations_llm.jsonl"],
     "probes": ["data/{domain}/**/probes.jsonl"],
     "audit": ["data/_build/dissect/data_audit_results.jsonl"],
+    "audit_recall": ["data/_build/recall/report_{domain}.json"],
     "tokenize": ["data/_build/30_tokenized/{corpus}.arrow", "data/_build/30_tokenized/{corpus}_stats.json"],
     "cpt": ["{cpt_save_dir}/**"],
     "build_sft": ["data/_build/30_tokenized/{sft_out}.arrow", "data/_build/30_tokenized/{sft_out}_stats.json"],
@@ -82,6 +90,7 @@ OPENROUTER_COMMAND_MARKERS = (
     "rehydrate_vc1.sh",
     "score_educational.py",
     "eval_generative.py",
+    "audit_recall.py",
 )
 
 APPROVAL_EFFECTS = ["gpu", "egress:llm", "egress:upload", "spend", "delete"]
@@ -90,8 +99,10 @@ REQUIRED_PLAYBOOKS = {
     "cpt": "cpt-codebook.md",
     "pii_scan": "cpt/03a-pii-scan.md",
     "score_educational": "cpt/03b-score-educational.md",
+    "resolve": "cpt/04b-resolve.md",
     "curate": "cpt/03-curate.md",
     "hydrate": "cpt/05-hydrate.md",
+    "audit_recall": "cpt/04c-audit-recall.md",
     "build_sft": "cpt/07-train.md",
     "sft": "cpt/07-train.md",
 }

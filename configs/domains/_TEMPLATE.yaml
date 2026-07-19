@@ -59,11 +59,14 @@ stages:
     desc: "15_structured — LLM entity/triple/discourse extraction (spec-driven from entity_types/predicates, schema-validated)"
     cmd: ["{py}", "scripts/extract_structured.py", "--domain", "{domain}", "--editions", "{editions}", "--concurrency", "16", "--yes"]
     gpu: false
-  # Optional augmentation-holdout carve (uncomment before hydrate). Because tokenize includes clean prose
-  # by default, this becomes fact-holdout only when tokenize also receives --no-clean (or source filtering lands).
+  - name: resolve
+    desc: "entity canonicalization (alias merge; continuity hard wall) — before split"
+    cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: true
+  # Optional holdout carve (uncomment before hydrate). v2 = alias+inverse-closed (new eval series).
   # - name: split
-  #   desc: "immutable subject-grouped split_v1.json — TRAIN augmentation vs HOLDOUT probe gold"
-  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}"]
+  #   desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT"
+  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v2"]
   #   gpu: false
   - name: hydrate
     desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
@@ -82,6 +85,11 @@ stages:
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
+  # Optional extraction-coverage gate (provider). FAIL → second extraction pass, not a train iteration.
+  # - name: audit_recall
+  #   desc: "extraction coverage gate — FAIL names weak predicates; re-extract, don't re-train"
+  #   cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "{domain}", "--editions", "{editions}", "--min-coverage", "0.6"]
+  #   gpu: false
   - name: audit
     desc: "CPU data audit — distribution/static dimensions (the base-model latent pass is explicitly skipped)"
     cmd: ["{py}", "scripts/data_audit.py", "--domain", "<your-domain>", "--editions", "{editions}", "--no-gpu"]

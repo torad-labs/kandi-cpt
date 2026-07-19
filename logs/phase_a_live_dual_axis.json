@@ -1,0 +1,76 @@
+{
+  "title": "Phase A live dual-axis validation — pokemon-lore/kanto",
+  "date": "2026-07-18",
+  "measurement_class": "augmentation_holdout",
+  "checkpoint": {
+    "base": "gemma-4-E2B-it",
+    "tuned": "checkpoints/cpt/pokemon_lore_kanto_v1"
+  },
+  "judge_model": "qwen/qwen3-32b",
+  "judge_note": "Free Nemotron returned unparseable junk on first attempt; qwen3-32b is the working default (DEFAULT_JUDGE_MODEL updated).",
+  "forced_choice": {
+    "n": 72,
+    "n_status": "ok",
+    "base_acc": 0.264,
+    "tuned_acc": 0.625,
+    "delta": 0.361,
+    "base_wilson_95": [0.176, 0.376],
+    "base_hits": 19,
+    "tuned_hits": 45
+  },
+  "generative": {
+    "n": 30,
+    "n_status": "insufficient-n",
+    "min_n": 50,
+    "base_acc": 0.0,
+    "tuned_acc": 0.5,
+    "delta": 0.5,
+    "tuned_wilson_95": [0.332, 0.668],
+    "base_wilson_95": [0.0, 0.114],
+    "tuned_label_counts": {
+      "correct": 15,
+      "wrong": 14,
+      "fabricated": 1,
+      "deflected": 0
+    },
+    "base_behavior": "all 30 base generations deflected (question echo / repetition loop) — 0/30 correct"
+  },
+  "forced_choice_vs_generative_gap": 0.125,
+  "gap_note": "FC tuned 0.625 vs gen tuned 0.5 = gap 0.125. The generative axis is stricter and is the finding that justified landing it: forced-choice alone overstates install. Dual-axis PASS needs both.",
+  "pii_scan": {
+    "domain": "pokemon-lore",
+    "n_docs": 105,
+    "quarantined": 1,
+    "masked": 0,
+    "clean": 104,
+    "PII_SCAN_UNAVAILABLE": false,
+    "status": "PASS"
+  },
+  "resolve_kanto": {
+    "n_entities_in": 1836,
+    "n_entities_out": 906,
+    "n_merges": 82,
+    "n_review": 0,
+    "n_cross_continuity_links": 0,
+    "cross_merge_violations": 0
+  },
+  "split_v2_kanto": {
+    "train_ids": 553,
+    "holdout_ids": 77,
+    "grouping": "alias+inverse",
+    "alias_leaks": 0,
+    "zero_alias_leaks": true,
+    "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history — do not merge series."
+  },
+  "artifacts": {
+    "full_report": "logs/probe_evals/phase_a_live_pokemon-lore_kanto.json",
+    "pii_report": "data/_build/pii/report_pokemon-lore.json",
+    "resolve_summary": "data/_build/resolve/pokemon-lore/kanto/summary.json",
+    "split_v2": "data/pokemon-lore/kanto/splits/split_v2.json",
+    "decontamination_v2": "data/pokemon-lore/kanto/splits/decontamination_v2.json"
+  },
+  "verdicts": {
+    "run_gate": "not re-run here (existing pokemon_lore_kanto_v1 checkpoint)",
+    "install_strength_dual_axis": "PARTIAL — FC delta +0.361 clear; gen tuned 0.50 with n=30 insufficient-n and gap 0.125 confirms FC alone is optimistic. Base generative collapse (deflection) makes the tuned 0.50 a real lift, not noise against a competent base."
+  }
+}
