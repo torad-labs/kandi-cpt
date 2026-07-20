@@ -213,6 +213,165 @@ def derive_hard_neg_counts(
     )
 
 
+# Dilution law (consumer-flow Phase 1 / millbrook-hollow 2026-07-19): a flat
+# corpus-blind replay/knowledge fraction drowned a 6.4k-token demo (~50% dilution
+# by shared knowledge + replay). Both shares are derived relative to DOMAIN token
+# count and scale DOWN on small corpora.
+DEFAULT_REPLAY_FRAC = 0.10
+REPLAY_REFERENCE_TOKENS = 50_000  # at/above this, full default_frac applies
+KNOWLEDGE_MAX_SHARE = 0.15  # shared-knowledge tokens / domain tokens ceiling
+
+
+def derive_replay_fraction(
+    domain_tokens: int | None,
+    *,
+    default_frac: float = DEFAULT_REPLAY_FRAC,
+    reference_tokens: int = REPLAY_REFERENCE_TOKENS,
+    min_frac: float = 0.0,
+    max_frac: float | None = None,
+) -> tuple[float, str]:
+    """Replay token share relative to DOMAIN size (dilution law).
+
+    Large corpora keep the historical default (~0.10). Tiny corpora scale the
+    fraction down linearly with domain_tokens/reference_tokens so replay cannot
+    dominate the shard. Returns (fraction, derivation).
+    """
+    cap = default_frac if max_frac is None else max_frac
+    if domain_tokens is None:
+        return (
+            default_frac,
+            f"domain tokens unmeasured → default {default_frac:.2f} "
+            f"(refined after tokenize; dilution law)",
+        )
+    n = max(0, int(domain_tokens))
+    if n <= 0:
+        return 0.0, "domain_tokens=0 → replay_fraction=0 (nothing to mix against yet)"
+    scale = min(1.0, n / float(reference_tokens))
+    frac = round(max(min_frac, min(cap, default_frac * scale)), 4)
+    return (
+        frac,
+        f"domain_tokens={n} / ref={reference_tokens} → scale={scale:.3f} "
+        f"× default {default_frac:.2f} → replay_fraction={frac:.4f} "
+        f"(dilution law; bounded [{min_frac:.2f},{cap:.2f}])",
+    )
+
+
+def derive_knowledge_share(
+    domain_tokens: int | None,
+    shared_knowledge_tokens: int | None = None,
+    *,
+    max_share: float = KNOWLEDGE_MAX_SHARE,
+) -> tuple[str, float, str]:
+    """Shared-knowledge inclusion relative to DOMAIN size (dilution law).
+
+    Returns (mode, share_or_cap, derivation) where mode is:
+      - ``include`` — shared knowledge is a small share of domain; keep it
+      - ``aside``   — shared knowledge would exceed max_share of domain; move aside
+      - ``deferred``— domain tokens unknown yet
+    """
+    if domain_tokens is None:
+        return (
+            "deferred",
+            max_share,
+            f"domain tokens unmeasured → knowledge share deferred "
+            f"(cap {max_share:.0%} of domain once known; dilution law)",
+        )
+    n = max(0, int(domain_tokens))
+    if n <= 0:
+        return "aside", 0.0, "domain_tokens=0 → knowledge aside (nothing to protect)"
+    if shared_knowledge_tokens is None:
+        return (
+            "include",
+            max_share,
+            f"domain_tokens={n}; shared knowledge unmeasured → allow up to "
+            f"{max_share:.0%} of domain (dilution law cap)",
+        )
+    k = max(0, int(shared_knowledge_tokens))
+    share = (k / float(n)) if n else 0.0
+    if share > max_share:
+        return (
+            "aside",
+            round(share, 4),
+            f"shared_knowledge_tokens={k} / domain_tokens={n} = {share:.2%} "
+            f"> cap {max_share:.0%} → knowledge ASIDE (dilution law; "
+            f"millbrook-hollow 6.4k-token lesson)",
+        )
+    return (
+        "include",
+        round(share, 4),
+        f"shared_knowledge_tokens={k} / domain_tokens={n} = {share:.2%} "
+        f"≤ cap {max_share:.0%} → knowledge include (dilution law)",
+    )
+
+
+def _domain_token_estimate(domain: Domain) -> tuple[int | None, str]:
+    """Domain-side token count from tokenize stats when present (excludes replay/knowledge tags)."""
+    candidates: list[Path] = []
+    ref = (domain.configs or {}).get("cpt")
+    if ref:
+        try:
+            import yaml
+            cfg_path = Path(ref) if Path(ref).is_absolute() else C.ROOT / ref
+            if cfg_path.is_file():
+                cfg = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+                tok = ((cfg.get("data") or {}).get("tokenized")) or ""
+                if tok:
+                    base = Path(str(tok)).name.replace(".arrow", "")
+                    candidates.append(C.BUILD / "30_tokenized" / f"{base}_stats.json")
+        except Exception:
+            pass
+    for name in (
+        f"{domain.name.replace('-', '_')}_kanto_v1_stats.json",
+        f"{domain.name.replace('-', '_')}_v1_stats.json",
+        f"{domain.name}_stats.json",
+        "corpus_v1_stats.json",
+    ):
+        candidates.append(C.BUILD / "30_tokenized" / name)
+    for path in candidates:
+        if not path.is_file():
+            continue
+        try:
+            stats = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        by_tag = stats.get("tokens_by_tag") or {}
+        if isinstance(by_tag, dict) and by_tag:
+            domain_n = int(sum(
+                int(v) for k, v in by_tag.items()
+                if str(k) not in {"replay", "knowledge"}
+            ))
+            return domain_n, f"tokenize tokens_by_tag domain-side @ {path.relative_to(C.ROOT)}"
+        src = stats.get("src_token_dist") or {}
+        if isinstance(src, dict) and src.get("raw_knowledge") is not None:
+            return int(src["raw_knowledge"]), f"tokenize src_token_dist.raw_knowledge @ {path.relative_to(C.ROOT)}"
+        total = stats.get("total_tokens")
+        replay = int(stats.get("replay_tokens") or 0)
+        if total is not None:
+            return int(total) - replay, f"tokenize total_tokens-replay @ {path.relative_to(C.ROOT)}"
+    return None, "tokenize stats absent — domain token estimate deferred"
+
+
+def _shared_knowledge_token_estimate() -> int | None:
+    """Rough token estimate of data/_shared/knowledge (chars/4) when the tree exists."""
+    root = getattr(C, "SHARED", None)
+    if root is None:
+        return None
+    kn = Path(root) / "knowledge"
+    if not kn.is_dir():
+        return None
+    total_chars = 0
+    n_files = 0
+    for md in kn.rglob("*.md"):
+        try:
+            total_chars += len(md.read_text(encoding="utf-8", errors="replace"))
+            n_files += 1
+        except OSError:
+            continue
+    if n_files == 0:
+        return 0
+    return max(0, total_chars // 4)
+
+
 def _row(knob: str, value: Any, derivation: str, *,
          override: Any = None, source: str = "derived",
          user_note: str | None = None) -> dict[str, Any]:
@@ -340,6 +499,12 @@ def derive_knobs(
     except Exception:
         pass
 
+    # dilution law — replay + shared-knowledge share vs DOMAIN tokens
+    domain_tokens, domain_tok_src = _domain_token_estimate(domain)
+    replay_frac, replay_der = derive_replay_fraction(domain_tokens)
+    kn_tokens = _shared_knowledge_token_estimate()
+    kn_mode, kn_share, kn_der = derive_knowledge_share(domain_tokens, kn_tokens)
+
     knobs = [
         _row("domain_kind", domain_kind,
              "agent classifies at ingest; user confirms in the same plan approval",
@@ -363,9 +528,12 @@ def derive_knobs(
              override=overrides.get("max_steps")),
         _row("train.epochs_sizing", epochs,
              "default 3 epochs over blocks; size against #760 effective-form floor when forms known"),
-        _row("replay_fraction", 0.10,
-             "fixed 0.10; raised mechanically if general-ability probe drops",
+        _row("replay_fraction", replay_frac, replay_der,
              override=overrides.get("replay_fraction")),
+        _row("knowledge_share", kn_mode,
+             f"{kn_der} [{domain_tok_src}]",
+             override=overrides.get("knowledge_share")),
+        _row("knowledge_share_of_domain", kn_share, kn_der),
         _row("anneal.enabled", anneal_on, anneal_der,
              override=overrides.get("anneal_enabled")),
         _row("generative_probe_count", gen_n, gen_der),
@@ -396,6 +564,21 @@ def derive_knobs(
         device_only=device_only,
     )
 
+    # Three-tier routing table (trust-loop/04) — every predicate's tier + reason for the one-plan.
+    tier_rows: list[dict] = []
+    try:
+        from pipeline.tier_routing import derivation_rows as _tier_rows
+        tier_rows = _tier_rows(domain_name)
+        n_hot = sum(1 for r in tier_rows if r.get("tier") == "hot")
+        n_stable = sum(1 for r in tier_rows if r.get("tier") == "stable")
+        knobs.append(_row(
+            "tier_routing",
+            f"stable={n_stable} hot={n_hot} proven={sum(1 for r in tier_rows if r.get('tier')=='proven')}",
+            "manifest per-predicate tier; undeclared → hot (uncertainty law); hot never hydrates",
+        ))
+    except Exception as _tier_exc:  # noqa: BLE001
+        tier_rows = [{"error": str(_tier_exc)}]
+
     return {
         "domain": domain_name,
         "editions": editions,
@@ -406,11 +589,14 @@ def derive_knobs(
             "n_hydrated_surfaces": n_surfaces,
             "effective_forms_estimate": forms,
             "tokenize_blocks": blocks,
+            "domain_tokens": domain_tokens,
+            "shared_knowledge_tokens_est": kn_tokens,
             "contrast_authorable": contrast_ok,
             "device_only": device_only,
             "domain_kind": domain_kind,
         },
         "knobs": knobs,
+        "tier_routing": tier_rows,
         "ladder": ladder,
         "deviations": deviations,
         "failure_sentences": FAILURE_SENTENCES,

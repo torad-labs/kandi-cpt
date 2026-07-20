@@ -158,6 +158,55 @@ def test_failure_sentence_playbooks_point_at_facts_path():
     assert DP.FAILURE_SENTENCES["style_minimum"]["playbook"] == "cpt/09-style.md"
 
 
+def test_dilution_law_tiny_corpus_bounds_replay_down():
+    """Red-green: tiny domain tokens → replay fraction scales DOWN (not flat 0.10)."""
+    tiny, der_tiny = DP.derive_replay_fraction(6_400)  # millbrook-scale
+    large, der_large = DP.derive_replay_fraction(50_000)
+    huge, _ = DP.derive_replay_fraction(200_000)
+    assert tiny < 0.10, f"tiny corpus must scale replay down, got {tiny}"
+    assert tiny == round(0.10 * (6_400 / 50_000), 4)
+    assert large == 0.10
+    assert huge == 0.10  # capped at default
+    assert "dilution law" in der_tiny
+    assert "domain_tokens=6400" in der_tiny
+    # zero / unknown
+    assert DP.derive_replay_fraction(0)[0] == 0.0
+    assert DP.derive_replay_fraction(None)[0] == 0.10
+
+
+def test_dilution_law_knowledge_aside_when_share_exceeds_cap():
+    """Shared knowledge that would be ~50% of a tiny domain is moved aside."""
+    mode, share, der = DP.derive_knowledge_share(6_400, shared_knowledge_tokens=6_000)
+    assert mode == "aside"
+    assert share > 0.15
+    assert "ASIDE" in der or "aside" in der.lower()
+    mode_ok, share_ok, der_ok = DP.derive_knowledge_share(50_000, shared_knowledge_tokens=5_000)
+    assert mode_ok == "include"
+    assert share_ok <= 0.15
+    assert "include" in der_ok
+
+
+def test_dilution_law_wired_into_derive_knobs():
+    """derive_knobs emits dilution-derived replay_fraction (not a frozen 0.10) when tokens known."""
+    with mock.patch.object(DP, "_count_clean_docs", return_value=100), \
+         mock.patch.object(DP, "_count_triples", return_value=50), \
+         mock.patch.object(DP, "_count_hydrated_surfaces", return_value=0), \
+         mock.patch.object(DP, "_effective_forms_estimate", return_value=None), \
+         mock.patch.object(DP, "_tokenize_blocks", return_value=(None, "absent")), \
+         mock.patch.object(DP, "_domain_token_estimate", return_value=(6_400, "fixture")), \
+         mock.patch.object(DP, "_shared_knowledge_token_estimate", return_value=6_000), \
+         mock.patch.object(DP, "_contrast_authorable", return_value=False), \
+         mock.patch.object(DP, "Domain") as Dom:
+        Dom.return_value = mock.Mock(configs={}, templates={})
+        Dom.return_value.name = "toy"
+        plan = DP.derive_knobs("toy")
+    by = {k["knob"]: k for k in plan["knobs"]}
+    assert by["replay_fraction"]["value"] < 0.10
+    assert "dilution law" in by["replay_fraction"]["derivation"]
+    assert by["knowledge_share"]["value"] == "aside"
+    assert plan["measured"]["domain_tokens"] == 6_400
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:
