@@ -61,20 +61,20 @@ def test_install_event_pass_writes_sidecars():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)
         domain, ckpt = _setup(root)
-        n = 100
+        n = 4
         rec = IE.run_install_event(
             domain=domain,
             unit="u",
             event="cpt",
             candidate_artifact=ckpt,
-            install_reference_scores=Sent.scores_from_hits(80, n),
-            install_candidate_scores=Sent.scores_from_hits(82, n),
-            general_base_scores=Sent.scores_from_hits(90, n),
-            general_candidate_scores=Sent.scores_from_hits(89, n),
+            install_reference_scores=Sent.scores_from_hits(3, n),
+            install_candidate_scores=Sent.scores_from_hits(3, n),
+            general_base_scores=Sent.scores_from_hits(2, 2),
+            general_candidate_scores=Sent.scores_from_hits(2, 2),
             booster_n=0,
         )
         assert rec["halted"] is False
-        assert rec["status"] == "PASS"
+        assert rec["status"] == "INSTALLED_CANDIDATE"
         assert Path(ckpt, "install_event.json").is_file()
         assert Path(ckpt, "certificate.json").is_file()
         assert Path(ckpt, "sentinel_result.json").is_file()
@@ -84,22 +84,22 @@ def test_install_event_halt_keeps_prior():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)
         domain, ckpt = _setup(root)
-        n = 100
+        n = 4
         rec = IE.run_install_event(
             domain=domain,
             unit="u",
             event="booster",
             candidate_artifact=ckpt,
             reference_artifact="ckpt_prior",
-            install_reference_scores=Sent.scores_from_hits(80, n),
-            install_candidate_scores=Sent.scores_from_hits(70, n),
-            general_base_scores=Sent.scores_from_hits(90, n),
-            general_candidate_scores=Sent.scores_from_hits(90, n),
+            install_reference_scores=Sent.scores_from_hits(4, n),
+            install_candidate_scores=Sent.scores_from_hits(2, n),
+            general_base_scores=Sent.scores_from_hits(2, 2),
+            general_candidate_scores=Sent.scores_from_hits(2, 2),
             booster_n=5,
         )
         assert rec["halted"] is True
         assert rec["artifact_kept"] == "ckpt_prior"
-        assert rec["status"] == "FAILED"
+        assert rec["status"] == "KEPT_PRIOR"
 
 
 def test_missing_sentinel_fails_closed():

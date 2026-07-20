@@ -195,9 +195,7 @@ def main() -> None:
     ap.add_argument("--out", help="write score receipt JSON")
     args = ap.parse_args()
 
-    sp = Path(args.sentinel) if args.sentinel else (
-        C.ROOT / "data" / args.domain / "sentinel" / "sentinel_v1.json"
-    )
+    sp = Path(args.sentinel) if args.sentinel else Sent.latest_sentinel_path(args.domain)
     if not sp.is_file():
         sys.exit(f"sentinel missing: {sp}")
     sentinel = json.loads(sp.read_text(encoding="utf-8"))

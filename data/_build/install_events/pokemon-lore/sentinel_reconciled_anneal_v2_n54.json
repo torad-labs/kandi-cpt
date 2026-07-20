@@ -1,0 +1,79 @@
+{
+  "schema": "kandi.sentinel_result.v2",
+  "role": "regression_tripwire",
+  "not_an_install_verdict": true,
+  "sentinel_version": "v2",
+  "sentinel_content_sha256": "e8dfb2c5f351574ccdc08e3cf3731e0c62cbbd77b11a56a41e7b64fbe97b0b6e",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "event": "anneal",
+  "status": "CLEAR",
+  "halted": false,
+  "tripwire_action": "CONTINUE_TO_CERTIFICATE",
+  "strength_verdict": "NOT_OWNED_BY_SENTINEL",
+  "candidate_cleared_for_certificate": true,
+  "certification": {
+    "standard_minimum_n": 50,
+    "declared_minimum_n": 50,
+    "observed_n": 54,
+    "comparison_certified": true,
+    "label": "certified_comparison"
+  },
+  "protected_artifact": null,
+  "prior_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+  "decisions": [
+    {
+      "slice": "install",
+      "reference_acc": 0.7592592592592593,
+      "candidate_acc": 0.7407407407407407,
+      "delta": -0.0185185185185186,
+      "n": 54,
+      "rough_bound": 0.06804138174397717,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    {
+      "slice": "general_ability",
+      "reference_acc": 0.9,
+      "candidate_acc": 0.9,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    }
+  ],
+  "install": {
+    "reference": {
+      "hits": 41,
+      "n": 54,
+      "acc": 0.7592592592592593
+    },
+    "candidate": {
+      "hits": 40,
+      "n": 54,
+      "acc": 0.7407407407407407
+    },
+    "slice": "install",
+    "reference_acc": 0.7592592592592593,
+    "candidate_acc": 0.7407407407407407,
+    "delta": -0.0185185185185186,
+    "n": 54,
+    "rough_bound": 0.06804138174397717,
+    "halt": false,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "general_ability": {
+    "slice": "general_ability",
+    "reference_acc": 0.9,
+    "candidate_acc": 0.9,
+    "delta": 0.0,
+    "n": 10,
+    "rough_bound": 0.15811388300841897,
+    "halt": false,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "plain": "The frozen check for checkpoints/cpt/pokemon_lore_kanto_anneal stayed inside the expected wiggle room. This only clears the safety stop; read the certificate for how strong the install is.",
+  "evaluated_at": "2026-07-20T13:05:05Z"
+}

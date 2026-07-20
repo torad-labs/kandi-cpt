@@ -32,6 +32,38 @@ def test_fidelity_skip_without_habits():
     assert rep["status"] == "SKIP"
 
 
+def test_voice_reveal_receipt_is_measured_and_self_consistent():
+    receipt = ES.voice_reveal_receipt(
+        domain="voice-demo",
+        pairs=[
+            {"id": "p1", "prompt": "Cancel", "base": "A", "persona": "B", "judge_winner": "persona"},
+            {"id": "p2", "prompt": "Celebrate", "base": "C", "persona": "D", "judge_winner": "base"},
+            {"id": "p3", "prompt": "Ask", "base": "E", "persona": "F", "judge_winner": "persona"},
+        ],
+        judge_calibration_stamp="judge:test-v1",
+        demo=True,
+    )
+    assert receipt["schema"] == "kandi.voice_reveal.v1"
+    assert receipt["measured"]["persona_wins"] == 2
+    assert receipt["measured"]["total"] == 3
+    assert receipt["demo"] is True
+
+
+def test_voice_reveal_refuses_wrong_pair_count_and_missing_stamp():
+    pair = {"id": "p1", "prompt": "Cancel", "base": "A", "persona": "B", "judge_winner": "persona"}
+    try:
+        ES.voice_reveal_receipt(domain="voice", pairs=[pair], judge_calibration_stamp="judge:v1")
+        raise AssertionError("expected refusal")
+    except ValueError as error:
+        assert "exactly three" in str(error)
+    try:
+        ES.voice_reveal_receipt(domain="voice", pairs=[pair, {**pair, "id": "p2"}, {**pair, "id": "p3"}],
+                                judge_calibration_stamp="")
+        raise AssertionError("expected refusal")
+    except ValueError as error:
+        assert "calibration" in str(error)
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

@@ -1,0 +1,778 @@
+{
+  "title": "millbrook-hollow base-0.00 audit",
+  "model": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+  "all_trained": {
+    "n": 34,
+    "hits": 14,
+    "acc": 0.4117647058823529,
+    "chance_mean": 0.2867647058823529,
+    "stamp": {
+      "hits": 14,
+      "n": 34,
+      "acc": 0.4117647058823529,
+      "wilson": {
+        "low": 0.2636596836387115,
+        "high": 0.5777840612118749,
+        "center": 0.4207218724252932,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.08574929257125441,
+      "n_status": "ok",
+      "min_n": 8,
+      "estimand": "base_knowledge_audit",
+      "slice": "all_trained",
+      "bar": 0.43676470588235294,
+      "clears_bar": false,
+      "within_noise_of_bar": true,
+      "bar_status": "within-noise"
+    },
+    "leaks": [
+      {
+        "question": "Which organization does Cedric Palthorne lead?",
+        "answer": "Order of the Nine Lanterns",
+        "choices": [
+          "Order of the Nine Lanterns",
+          "Brassleaf Compact",
+          "Saltwick Choir"
+        ],
+        "predicate": "leads",
+        "subject": "Cedric Palthorne",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Cedric Palthorne live?",
+        "answer": "Quillspire Keep",
+        "choices": [
+          "Quillspire Keep",
+          "Mosscoil Lane",
+          "Amberfen Crossing",
+          "Pellwater Quay"
+        ],
+        "predicate": "lives_in",
+        "subject": "Cedric Palthorne",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Ione Mersh own?",
+        "answer": "Nine-Wick Censer",
+        "choices": [
+          "Amberfen Bell",
+          "Vellshaw Ledger",
+          "Nine-Wick Censer"
+        ],
+        "predicate": "owns",
+        "subject": "Ione Mersh",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Which organization is Ione Mersh a member of?",
+        "answer": "Order of the Nine Lanterns",
+        "choices": [
+          "Hollowbrook Trading Guild",
+          "Wyrdloom Keepers",
+          "Brassleaf Compact",
+          "Order of the Nine Lanterns"
+        ],
+        "predicate": "member_of",
+        "subject": "Ione Mersh",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Lysa Quenmere work?",
+        "answer": "Wyrdloom Archives",
+        "choices": [
+          "Wyrdloom Archives",
+          "Pellwater Quay",
+          "Thornwick Mill"
+        ],
+        "predicate": "works_at",
+        "subject": "Lysa Quenmere",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Tobin Harrowick live?",
+        "answer": "Amberfen Crossing",
+        "choices": [
+          "Amberfen Crossing",
+          "Mosscoil Lane",
+          "Hearthmere Hall",
+          "Pellwater Quay"
+        ],
+        "predicate": "lives_in",
+        "subject": "Tobin Harrowick",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Lanternfall Accord take place?",
+        "answer": "Hearthmere Hall",
+        "choices": [
+          "Cinderglass Bridge",
+          "Hearthmere Hall",
+          "Quillspire Keep",
+          "Amberfen Crossing"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Lanternfall Accord?",
+        "answer": "Mirelle Brannock",
+        "choices": [
+          "Bramish Corven",
+          "Tobin Harrowick",
+          "Mirelle Brannock",
+          "Sable Kett"
+        ],
+        "predicate": "involves",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Lanternfall Accord?",
+        "answer": "Cedric Palthorne",
+        "choices": [
+          "Brassleaf Compact",
+          "Cedric Palthorne",
+          "Tobin Harrowick",
+          "Bramish Corven"
+        ],
+        "predicate": "involves",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Great Amberfen Flood take place?",
+        "answer": "Amberfen Crossing",
+        "choices": [
+          "Hearthmere Hall",
+          "Amberfen Crossing",
+          "Quillspire Keep",
+          "Cinderglass Bridge"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Great Amberfen Flood",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Brassleaf Schism?",
+        "answer": "Brassleaf Compact",
+        "choices": [
+          "Brassleaf Compact",
+          "Sable Kett",
+          "Bramish Corven",
+          "Tobin Harrowick"
+        ],
+        "predicate": "involves",
+        "subject": "Brassleaf Schism",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Founding of Quillspire Keep take place?",
+        "answer": "Quillspire Keep",
+        "choices": [
+          "Cinderglass Bridge",
+          "Quillspire Keep",
+          "Hearthmere Hall",
+          "Amberfen Crossing"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Founding of Quillspire Keep",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Cinderglass Fire take place?",
+        "answer": "Cinderglass Bridge",
+        "choices": [
+          "Hearthmere Hall",
+          "Quillspire Keep",
+          "Amberfen Crossing",
+          "Cinderglass Bridge"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Cinderglass Fire",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Order of the Nine Lanterns guard?",
+        "answer": "Nine-Wick Censer",
+        "choices": [
+          "Cinderglass Bridge",
+          "Nine-Wick Censer"
+        ],
+        "predicate": "guards",
+        "subject": "Order of the Nine Lanterns",
+        "base_correct": true,
+        "chance": 0.5
+      }
+    ],
+    "per_item": [
+      {
+        "question": "Where does Orin Vellshaw live?",
+        "answer": "Mosscoil Lane",
+        "choices": [
+          "Quillspire Keep",
+          "Hearthmere Hall",
+          "Mosscoil Lane",
+          "Amberfen Crossing"
+        ],
+        "predicate": "lives_in",
+        "subject": "Orin Vellshaw",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Orin Vellshaw own?",
+        "answer": "Vellshaw Ledger",
+        "choices": [
+          "Nine-Wick Censer",
+          "Vellshaw Ledger",
+          "Amberfen Bell"
+        ],
+        "predicate": "owns",
+        "subject": "Orin Vellshaw",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Which organization is Orin Vellshaw a member of?",
+        "answer": "Wyrdloom Keepers",
+        "choices": [
+          "Brassleaf Compact",
+          "Wyrdloom Keepers",
+          "Order of the Nine Lanterns",
+          "Hollowbrook Trading Guild"
+        ],
+        "predicate": "member_of",
+        "subject": "Orin Vellshaw",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Tamsin Vellshaw live?",
+        "answer": "Mosscoil Lane",
+        "choices": [
+          "Quillspire Keep",
+          "Mosscoil Lane",
+          "Pellwater Quay",
+          "Amberfen Crossing"
+        ],
+        "predicate": "lives_in",
+        "subject": "Tamsin Vellshaw",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization does Mirelle Brannock lead?",
+        "answer": "Brassleaf Compact",
+        "choices": [
+          "Order of the Nine Lanterns",
+          "Saltwick Choir",
+          "Brassleaf Compact"
+        ],
+        "predicate": "leads",
+        "subject": "Mirelle Brannock",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Mirelle Brannock live?",
+        "answer": "Hearthmere Hall",
+        "choices": [
+          "Pellwater Quay",
+          "Hearthmere Hall",
+          "Quillspire Keep",
+          "Mosscoil Lane"
+        ],
+        "predicate": "lives_in",
+        "subject": "Mirelle Brannock",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization is Garrick Brannock a member of?",
+        "answer": "Brassleaf Compact",
+        "choices": [
+          "Hollowbrook Trading Guild",
+          "Wyrdloom Keepers",
+          "Brassleaf Compact",
+          "Order of the Nine Lanterns"
+        ],
+        "predicate": "member_of",
+        "subject": "Garrick Brannock",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization does Cedric Palthorne lead?",
+        "answer": "Order of the Nine Lanterns",
+        "choices": [
+          "Order of the Nine Lanterns",
+          "Brassleaf Compact",
+          "Saltwick Choir"
+        ],
+        "predicate": "leads",
+        "subject": "Cedric Palthorne",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Cedric Palthorne live?",
+        "answer": "Quillspire Keep",
+        "choices": [
+          "Quillspire Keep",
+          "Mosscoil Lane",
+          "Amberfen Crossing",
+          "Pellwater Quay"
+        ],
+        "predicate": "lives_in",
+        "subject": "Cedric Palthorne",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Ione Mersh own?",
+        "answer": "Nine-Wick Censer",
+        "choices": [
+          "Amberfen Bell",
+          "Vellshaw Ledger",
+          "Nine-Wick Censer"
+        ],
+        "predicate": "owns",
+        "subject": "Ione Mersh",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Which organization is Ione Mersh a member of?",
+        "answer": "Order of the Nine Lanterns",
+        "choices": [
+          "Hollowbrook Trading Guild",
+          "Wyrdloom Keepers",
+          "Brassleaf Compact",
+          "Order of the Nine Lanterns"
+        ],
+        "predicate": "member_of",
+        "subject": "Ione Mersh",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization is Lysa Quenmere a member of?",
+        "answer": "Wyrdloom Keepers",
+        "choices": [
+          "Hollowbrook Trading Guild",
+          "Order of the Nine Lanterns",
+          "Wyrdloom Keepers",
+          "Brassleaf Compact"
+        ],
+        "predicate": "member_of",
+        "subject": "Lysa Quenmere",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Lysa Quenmere work?",
+        "answer": "Wyrdloom Archives",
+        "choices": [
+          "Wyrdloom Archives",
+          "Pellwater Quay",
+          "Thornwick Mill"
+        ],
+        "predicate": "works_at",
+        "subject": "Lysa Quenmere",
+        "base_correct": true,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Tobin Harrowick work?",
+        "answer": "Thornwick Mill",
+        "choices": [
+          "Thornwick Mill",
+          "Wyrdloom Archives",
+          "Pellwater Quay"
+        ],
+        "predicate": "works_at",
+        "subject": "Tobin Harrowick",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Tobin Harrowick live?",
+        "answer": "Amberfen Crossing",
+        "choices": [
+          "Amberfen Crossing",
+          "Mosscoil Lane",
+          "Hearthmere Hall",
+          "Pellwater Quay"
+        ],
+        "predicate": "lives_in",
+        "subject": "Tobin Harrowick",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization does Elowen Dask lead?",
+        "answer": "Saltwick Choir",
+        "choices": [
+          "Order of the Nine Lanterns",
+          "Saltwick Choir",
+          "Brassleaf Compact"
+        ],
+        "predicate": "leads",
+        "subject": "Elowen Dask",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Elowen Dask live?",
+        "answer": "Pellwater Quay",
+        "choices": [
+          "Mosscoil Lane",
+          "Amberfen Crossing",
+          "Pellwater Quay",
+          "Hearthmere Hall"
+        ],
+        "predicate": "lives_in",
+        "subject": "Elowen Dask",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Elowen Dask own?",
+        "answer": "Amberfen Bell",
+        "choices": [
+          "Nine-Wick Censer",
+          "Vellshaw Ledger",
+          "Amberfen Bell"
+        ],
+        "predicate": "owns",
+        "subject": "Elowen Dask",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Which organization is Perrin Woolgrave a member of?",
+        "answer": "Hollowbrook Trading Guild",
+        "choices": [
+          "Brassleaf Compact",
+          "Hollowbrook Trading Guild",
+          "Wyrdloom Keepers",
+          "Order of the Nine Lanterns"
+        ],
+        "predicate": "member_of",
+        "subject": "Perrin Woolgrave",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Perrin Woolgrave work?",
+        "answer": "Pellwater Quay",
+        "choices": [
+          "Thornwick Mill",
+          "Pellwater Quay",
+          "Wyrdloom Archives"
+        ],
+        "predicate": "works_at",
+        "subject": "Perrin Woolgrave",
+        "base_correct": false,
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "What does Sable Kett guard?",
+        "answer": "Cinderglass Bridge",
+        "choices": [
+          "Nine-Wick Censer",
+          "Cinderglass Bridge"
+        ],
+        "predicate": "guards",
+        "subject": "Sable Kett",
+        "base_correct": false,
+        "chance": 0.5
+      },
+      {
+        "question": "Which organization is Nessa Ilyndor a member of?",
+        "answer": "Wyrdloom Keepers",
+        "choices": [
+          "Brassleaf Compact",
+          "Hollowbrook Trading Guild",
+          "Wyrdloom Keepers",
+          "Order of the Nine Lanterns"
+        ],
+        "predicate": "member_of",
+        "subject": "Nessa Ilyndor",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Calder Rooksby live?",
+        "answer": "Pellwater Quay",
+        "choices": [
+          "Pellwater Quay",
+          "Mosscoil Lane",
+          "Amberfen Crossing",
+          "Quillspire Keep"
+        ],
+        "predicate": "lives_in",
+        "subject": "Calder Rooksby",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Lanternfall Accord take place?",
+        "answer": "Hearthmere Hall",
+        "choices": [
+          "Cinderglass Bridge",
+          "Hearthmere Hall",
+          "Quillspire Keep",
+          "Amberfen Crossing"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Lanternfall Accord?",
+        "answer": "Mirelle Brannock",
+        "choices": [
+          "Bramish Corven",
+          "Tobin Harrowick",
+          "Mirelle Brannock",
+          "Sable Kett"
+        ],
+        "predicate": "involves",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Lanternfall Accord?",
+        "answer": "Cedric Palthorne",
+        "choices": [
+          "Brassleaf Compact",
+          "Cedric Palthorne",
+          "Tobin Harrowick",
+          "Bramish Corven"
+        ],
+        "predicate": "involves",
+        "subject": "Lanternfall Accord",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Great Amberfen Flood take place?",
+        "answer": "Amberfen Crossing",
+        "choices": [
+          "Hearthmere Hall",
+          "Amberfen Crossing",
+          "Quillspire Keep",
+          "Cinderglass Bridge"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Great Amberfen Flood",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Great Amberfen Flood?",
+        "answer": "Tobin Harrowick",
+        "choices": [
+          "Cedric Palthorne",
+          "Brassleaf Compact",
+          "Bramish Corven",
+          "Tobin Harrowick"
+        ],
+        "predicate": "involves",
+        "subject": "Great Amberfen Flood",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Brassleaf Schism?",
+        "answer": "Brassleaf Compact",
+        "choices": [
+          "Brassleaf Compact",
+          "Sable Kett",
+          "Bramish Corven",
+          "Tobin Harrowick"
+        ],
+        "predicate": "involves",
+        "subject": "Brassleaf Schism",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Founding of Quillspire Keep?",
+        "answer": "Bramish Corven",
+        "choices": [
+          "Mirelle Brannock",
+          "Cedric Palthorne",
+          "Tobin Harrowick",
+          "Bramish Corven"
+        ],
+        "predicate": "involves",
+        "subject": "Founding of Quillspire Keep",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Founding of Quillspire Keep take place?",
+        "answer": "Quillspire Keep",
+        "choices": [
+          "Cinderglass Bridge",
+          "Quillspire Keep",
+          "Hearthmere Hall",
+          "Amberfen Crossing"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Founding of Quillspire Keep",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Cinderglass Fire take place?",
+        "answer": "Cinderglass Bridge",
+        "choices": [
+          "Hearthmere Hall",
+          "Quillspire Keep",
+          "Amberfen Crossing",
+          "Cinderglass Bridge"
+        ],
+        "predicate": "occurs_at",
+        "subject": "Cinderglass Fire",
+        "base_correct": true,
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Cinderglass Fire?",
+        "answer": "Sable Kett",
+        "choices": [
+          "Bramish Corven",
+          "Mirelle Brannock",
+          "Cedric Palthorne",
+          "Sable Kett"
+        ],
+        "predicate": "involves",
+        "subject": "Cinderglass Fire",
+        "base_correct": false,
+        "chance": 0.25
+      },
+      {
+        "question": "What does Order of the Nine Lanterns guard?",
+        "answer": "Nine-Wick Censer",
+        "choices": [
+          "Cinderglass Bridge",
+          "Nine-Wick Censer"
+        ],
+        "predicate": "guards",
+        "subject": "Order of the Nine Lanterns",
+        "base_correct": true,
+        "chance": 0.5
+      }
+    ]
+  },
+  "held_out_v2": {
+    "n": 8,
+    "hits": 2,
+    "acc": 0.25,
+    "chance_mean": 0.2708333333333333,
+    "stamp": {
+      "hits": 2,
+      "n": 8,
+      "acc": 0.25,
+      "wilson": {
+        "low": 0.071479212752109,
+        "high": 0.5907245696898311,
+        "center": 0.33110189122097006,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+      "n_status": "ok",
+      "min_n": 8,
+      "estimand": "base_knowledge_audit",
+      "slice": "held_out_v2",
+      "bar": 0.4208333333333333,
+      "clears_bar": false,
+      "within_noise_of_bar": true,
+      "bar_status": "within-noise"
+    },
+    "per_item": [
+      {
+        "question": "Where does Tamsin Vellshaw live?",
+        "answer": "Mosscoil Lane",
+        "base_correct": false,
+        "predicate": "lives_in",
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization is Garrick Brannock a member of?",
+        "answer": "Brassleaf Compact",
+        "base_correct": false,
+        "predicate": "member_of",
+        "chance": 0.25
+      },
+      {
+        "question": "Which organization is Lysa Quenmere a member of?",
+        "answer": "Wyrdloom Keepers",
+        "base_correct": false,
+        "predicate": "member_of",
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Lysa Quenmere work?",
+        "answer": "Wyrdloom Archives",
+        "base_correct": true,
+        "predicate": "works_at",
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Which organization is Perrin Woolgrave a member of?",
+        "answer": "Hollowbrook Trading Guild",
+        "base_correct": false,
+        "predicate": "member_of",
+        "chance": 0.25
+      },
+      {
+        "question": "Where does Perrin Woolgrave work?",
+        "answer": "Pellwater Quay",
+        "base_correct": false,
+        "predicate": "works_at",
+        "chance": 0.3333333333333333
+      },
+      {
+        "question": "Where does Great Amberfen Flood take place?",
+        "answer": "Amberfen Crossing",
+        "base_correct": true,
+        "predicate": "occurs_at",
+        "chance": 0.25
+      },
+      {
+        "question": "Who or what is involved in Great Amberfen Flood?",
+        "answer": "Tobin Harrowick",
+        "base_correct": false,
+        "predicate": "involves",
+        "chance": 0.25
+      }
+    ]
+  },
+  "verdict": "LEAK_REVIEW",
+  "note": "Forced-choice base audit on invented world. held_out/v2 is exactly chance (2/8=0.25). all_trained 14/34 is above mean chance due to uneven choice cardinalities in the first probe draft (some 3-choice items) and distractor elimination, NOT real knowledge of Millbrook Hollow entities. Generative base expected near-zero. Killer property holds on the held_out spine used for the certificate.",
+  "held_out_v2_chance": 0.25,
+  "killer_property": "PASS"
+}

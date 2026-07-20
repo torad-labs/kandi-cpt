@@ -1,0 +1,302 @@
+{
+  "schema": "kandi.certificate.v1",
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "demo": false,
+  "generated_at": "2026-07-20T04:30:27Z",
+  "booster_n": 0,
+  "what_it_ate": {
+    "sources": [
+      {
+        "name": "millbrook-hollow corpus",
+        "path": "data/millbrook-hollow",
+        "admission_basis": "public-permitted",
+        "receipt": {
+          "kind": "source_list",
+          "path": "data/millbrook-hollow"
+        }
+      }
+    ],
+    "pii_summary": "PII scan: see pipeline pii_scan stage receipt (not inlined).",
+    "admission_bases_present": [
+      "public-permitted"
+    ]
+  },
+  "what_it_knows": [
+    {
+      "question_id": "q01",
+      "question": "Where does Orin Vellshaw live?",
+      "predicate": "lives_in",
+      "plain": "You asked: Where does Orin Vellshaw live? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "lives_in"
+      }
+    },
+    {
+      "question_id": "q02",
+      "question": "What does Orin Vellshaw own?",
+      "predicate": "owns",
+      "plain": "You asked: What does Orin Vellshaw own? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "owns"
+      }
+    },
+    {
+      "question_id": "q03",
+      "question": "Which organization is Orin Vellshaw a member of?",
+      "predicate": "member_of",
+      "plain": "You asked: Which organization is Orin Vellshaw a member of? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "member_of"
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Where does Tamsin Vellshaw live?",
+      "predicate": "lives_in",
+      "plain": "You asked: Where does Tamsin Vellshaw live? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "lives_in"
+      }
+    },
+    {
+      "question_id": "q05",
+      "question": "Which organization does Mirelle Brannock lead?",
+      "predicate": "leads",
+      "plain": "You asked: Which organization does Mirelle Brannock lead? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "leads"
+      }
+    },
+    {
+      "question_id": "q06",
+      "question": "Which organization is Garrick Brannock a member of?",
+      "predicate": "member_of",
+      "plain": "You asked: Which organization is Garrick Brannock a member of? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "member_of"
+      }
+    },
+    {
+      "question_id": "q07",
+      "question": "Which organization does Cedric Palthorne lead?",
+      "predicate": "leads",
+      "plain": "You asked: Which organization does Cedric Palthorne lead? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "leads"
+      }
+    },
+    {
+      "question_id": "q08",
+      "question": "What does Ione Mersh own?",
+      "predicate": "owns",
+      "plain": "You asked: What does Ione Mersh own? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "owns"
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "Where does Lysa Quenmere work?",
+      "predicate": "works_at",
+      "plain": "You asked: Where does Lysa Quenmere work? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "works_at"
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "What does Sable Kett guard?",
+      "predicate": "guards",
+      "plain": "You asked: What does Sable Kett guard? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "guards"
+      }
+    }
+  ],
+  "what_it_refuses": {
+    "plain": "Abstention / calibration: see SFT calibration receipt; unmapped claims are refused.",
+    "receipt": {
+      "kind": "calibration",
+      "path": "logs/*calibration*"
+    }
+  },
+  "freshness": {
+    "hot": "hot facts retrieved live, current as of today",
+    "installed": "verified 2026-07-20T04:30:27Z, booster #0",
+    "verified_at": "2026-07-20T04:30:27Z",
+    "booster_n": 0,
+    "halted_boosters": []
+  },
+  "coverage": {
+    "estimand": "clean",
+    "clean": {
+      "ratio": 0.3103,
+      "hits": 36,
+      "n": 116,
+      "status": "FAIL",
+      "gate": 0.6
+    },
+    "raw": {
+      "ratio": 0.1053,
+      "hits": 44,
+      "n": 418
+    },
+    "plain": "Extraction coverage (clean estimand): 0.310 (36/116) \u2014 FAIL vs gate 0.6.",
+    "receipt": {
+      "kind": "recall_report",
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/logs/phase_f2_coverage_metric.json"
+    }
+  },
+  "inspector": {
+    "run_record": "checkpoints/cpt/millbrook_hollow_v1",
+    "probe_receipt": null,
+    "questions": "data/millbrook-hollow/questions.json"
+  },
+  "confidence_word_table": {
+    "solid": "Wilson lower bound strictly above bar; n \u2265 min_n",
+    "early": "insufficient-n or within-noise \u2014 not claimable yet",
+    "failing": "below-bar on a sufficient-n slice"
+  },
+  "certificate_id": "4624339b760444e8"
+}

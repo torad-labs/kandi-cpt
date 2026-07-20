@@ -23,6 +23,7 @@ import math
 import random
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 from eval_stats import stamp_proportion
@@ -121,6 +122,65 @@ def retention_placeholder(n: int = 0) -> dict:
     }
 
 
+def voice_reveal_receipt(
+    *,
+    domain: str,
+    pairs: list[dict],
+    judge_calibration_stamp: str,
+    demo: bool = False,
+) -> dict:
+    """Build the measured input for the consumer blind A/B reveal.
+
+    Generation and judging happen upstream. This boundary validates that the
+    three revealed items and the measured summary are the same receipt; desktop
+    randomizes the two positions independently for every view.
+    """
+    if len(pairs) != 3:
+        raise ValueError("voice reveal requires exactly three fixed prompt pairs")
+    if not judge_calibration_stamp.strip():
+        raise ValueError("voice reveal requires the judge calibration stamp")
+    normalized = []
+    ids = set()
+    for row in pairs:
+        item = {
+            "id": str(row.get("id") or "").strip(),
+            "prompt": str(row.get("prompt") or "").strip(),
+            "base": str(row.get("base") or "").strip(),
+            "persona": str(row.get("persona") or "").strip(),
+            "judge_winner": str(row.get("judge_winner") or "").strip().lower(),
+        }
+        if not all(item.values()) or item["judge_winner"] not in {"base", "persona"}:
+            raise ValueError("every reveal pair needs id, prompt, base, persona, and judge_winner")
+        if item["id"] in ids:
+            raise ValueError("voice reveal pair ids must be unique")
+        ids.add(item["id"])
+        normalized.append(item)
+    wins = sum(1 for row in normalized if row["judge_winner"] == "persona")
+    return {
+        "schema": "kandi.voice_reveal.v1",
+        "domain": domain,
+        "demo": bool(demo),
+        "pairs": normalized,
+        "measured": {
+            "persona_wins": wins,
+            "total": len(normalized),
+            "win_rate": wins / len(normalized),
+            "judge_calibration_stamp": judge_calibration_stamp.strip(),
+        },
+        "measured_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "position_randomization": "desktop-per-view-sha256",
+        "note": "The reveal surface randomizes and hides labels; this file is the measured receipt.",
+    }
+
+
+def load_reveal_pairs(path: Path) -> list[dict]:
+    rows = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            rows.append(json.loads(line))
+    return rows
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--fingerprint", type=Path, required=True)
@@ -129,6 +189,11 @@ def main() -> None:
                     help="jsonl with {text} rows to score fidelity against")
     ap.add_argument("--fidelity-only", action="store_true")
     ap.add_argument("--out", type=Path, default=None)
+    ap.add_argument("--blind-ab-samples", type=Path, default=None,
+                    help="jsonl with exactly 3 measured {id,prompt,base,persona,judge_winner} rows")
+    ap.add_argument("--judge-calibration-stamp", default="")
+    ap.add_argument("--voice-reveal-out", type=Path, default=None)
+    ap.add_argument("--demo", action="store_true")
     args = ap.parse_args()
 
     fp = load_fingerprint(args.fingerprint)
@@ -144,10 +209,31 @@ def main() -> None:
             except Exception:
                 samples.append(line)
 
+    reveal = None
+    if args.blind_ab_samples:
+        reveal = voice_reveal_receipt(
+            domain=str(fp.get("domain") or ""),
+            pairs=load_reveal_pairs(args.blind_ab_samples),
+            judge_calibration_stamp=args.judge_calibration_stamp,
+            demo=args.demo,
+        )
+        if args.voice_reveal_out:
+            args.voice_reveal_out.parent.mkdir(parents=True, exist_ok=True)
+            args.voice_reveal_out.write_text(json.dumps(reveal, indent=2) + "\n", encoding="utf-8")
+
     report = {
         "domain": fp.get("domain"),
         "fidelity": fidelity_report(habits, samples),
-        "blind_ab": pairwise_placeholder(),
+        "blind_ab": (
+            {
+                "status": "MEASURED",
+                "n": reveal["measured"]["total"],
+                "win_rate_tuned": reveal["measured"]["win_rate"],
+                "judge_calibration_stamp": reveal["measured"]["judge_calibration_stamp"],
+                "voice_reveal_receipt": str(args.voice_reveal_out) if args.voice_reveal_out else None,
+            }
+            if reveal else pairwise_placeholder()
+        ),
         "retention": retention_placeholder(),
         "verdicts": {
             "run_gate": "not evaluated here",

@@ -7,7 +7,9 @@ install event (cpt/sft/anneal/booster). Halt rule is mechanical from eval_stats.
   install slice:  (candidate_acc - reference_acc) < -rough_bound(n)  → HALT
   general slice:  (candidate_acc - base_acc)      < -rough_bound(n)  → HALT
 
-A halt keeps the prior artifact and reports FAILED with delta + bound shown.
+A halt keeps the prior artifact. Sentinel is a regression tripwire, never an
+install-quality verdict: it reports CLEAR or HALTED, while the certificate owns
+the user-facing verdict.
 The set is hash-stamped; re-cutting is a new version (goalpost law).
 
     PYTHONPATH=scripts python scripts/pipeline/sentinel.py build \
@@ -33,7 +35,9 @@ import config as C
 import eval_stats as ES
 
 SENTINEL_SCHEMA = "kandi.sentinel.v1"
+SENTINEL_RESULT_SCHEMA = "kandi.sentinel_result.v2"
 DEFAULT_PER_PRED = 2  # minimal per-predicate; minutes-class on GPU 1
+CERTIFIED_INSTALL_N = 50
 
 
 class SentinelError(ValueError):
@@ -121,10 +125,18 @@ def build_sentinel(
     per_predicate: int = DEFAULT_PER_PRED,
     seed: int = 0,
     version: str = "v1",
+    minimum_install_n: int = 0,
 ) -> dict[str, Any]:
     """Freeze install + general-ability slices; hash-stamp the set."""
     probes = load_probes(domain, unit)
     install = select_install_slice(probes, per_predicate=per_predicate, seed=seed)
+    if minimum_install_n < 0:
+        raise SentinelError("minimum install n cannot be negative")
+    if minimum_install_n and len(install) < minimum_install_n:
+        raise SentinelError(
+            f"install slice n={len(install)} is below declared minimum n={minimum_install_n}; "
+            "enlarge the frozen set instead of loosening the tripwire"
+        )
     ga_path = Path(general_ability_path)
     general = load_general_ability(ga_path)
     ga_text = ga_path.read_text(encoding="utf-8")
@@ -142,6 +154,7 @@ def build_sentinel(
         ),
         "general_ability_sha256": _sha256_text(ga_text),
         "n_install": len(install),
+        "minimum_install_n": minimum_install_n,
         "n_general_ability": len(general),
         "predicates": sorted({i["predicate"] for i in install}),
         "frozen_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -161,6 +174,7 @@ def build_sentinel(
         "install_slice": install,
         "general_ability_slice": general,
         "general_ability_sha256": body["general_ability_sha256"],
+        "minimum_install_n": minimum_install_n,
     }
     body["content_sha256"] = _sha256_bytes(
         json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()
@@ -233,11 +247,13 @@ def evaluate_sentinel(
 
     ref_acc, ref_hits, ref_n = _acc(install_reference, "install_reference")
     cand_acc, cand_hits, cand_n = _acc(install_candidate, "install_candidate")
-    if ref_n != cand_n:
-        # Allow equal-n only for fair bound; if mismatched, use min n for bound.
-        n_bound = min(ref_n, cand_n)
-    else:
-        n_bound = ref_n
+    frozen_n = len(sentinel.get("install_slice") or [])
+    if ref_n != cand_n or ref_n != frozen_n:
+        raise SentinelError(
+            "install scores must cover the exact same frozen set: "
+            f"reference n={ref_n}, candidate n={cand_n}, frozen n={frozen_n}"
+        )
+    n_bound = frozen_n
 
     install_dec = halt_decision(
         reference_acc=ref_acc, candidate_acc=cand_acc, n=n_bound, slice_name="install",
@@ -260,28 +276,29 @@ def evaluate_sentinel(
         decisions.append(general_dec)
 
     halted = any(d["halt"] for d in decisions)
-    status = "FAILED" if halted else "PASS"
-    artifact = prior_artifact if halted else candidate_artifact
+    status = "HALTED" if halted else "CLEAR"
+    declared_minimum = int(sentinel.get("minimum_install_n") or 0)
+    comparison_certified = (
+        declared_minimum >= CERTIFIED_INSTALL_N
+        and frozen_n >= declared_minimum
+    )
 
     # Plain-language report line (digest-ready)
     if halted:
-        reasons = [
-            f"{d['slice']}: delta={d['delta']:+.4f} bound=±{d['rough_bound']:.4f}"
-            for d in decisions if d["halt"]
-        ]
         plain = (
-            f"SENTINEL HALT on {event}: kept {prior_artifact}. "
-            + "; ".join(reasons)
-            + ". Mitigation: see cpt/06-improve.md table (never train longer)."
+            f"I kept {prior_artifact}. On the frozen check, {candidate_artifact} "
+            "fell beyond the expected wiggle room. This is a safety stop, not a strength verdict."
         )
     else:
         plain = (
-            f"SENTINEL PASS on {event}: installed {candidate_artifact}. "
-            f"install delta={install_dec['delta']:+.4f} (bound ±{install_dec['rough_bound']:.4f})."
+            f"The frozen check for {candidate_artifact} stayed inside the expected wiggle room. "
+            "This only clears the safety stop; read the certificate for how strong the install is."
         )
 
     return {
-        "schema": "kandi.sentinel_result.v1",
+        "schema": SENTINEL_RESULT_SCHEMA,
+        "role": "regression_tripwire",
+        "not_an_install_verdict": True,
         "sentinel_version": sentinel.get("version"),
         "sentinel_content_sha256": sentinel.get("content_sha256"),
         "domain": sentinel.get("domain"),
@@ -289,7 +306,17 @@ def evaluate_sentinel(
         "event": event,
         "status": status,
         "halted": halted,
-        "artifact_kept": artifact,
+        "tripwire_action": "KEEP_PRIOR" if halted else "CONTINUE_TO_CERTIFICATE",
+        "strength_verdict": "NOT_OWNED_BY_SENTINEL",
+        "candidate_cleared_for_certificate": not halted,
+        "certification": {
+            "standard_minimum_n": CERTIFIED_INSTALL_N,
+            "declared_minimum_n": declared_minimum,
+            "observed_n": frozen_n,
+            "comparison_certified": comparison_certified,
+            "label": "certified_comparison" if comparison_certified else "tripwire_only",
+        },
+        "protected_artifact": prior_artifact if halted else None,
         "prior_artifact": prior_artifact,
         "candidate_artifact": candidate_artifact,
         "decisions": decisions,
@@ -313,6 +340,18 @@ def default_paths(domain: str, unit: str, version: str = "v1") -> dict[str, Path
     }
 
 
+def latest_sentinel_path(domain: str) -> Path:
+    """Resolve the newest frozen series version without editing an older set in place."""
+    root = C.ROOT / "data" / domain / "sentinel"
+    candidates = list(root.glob("sentinel_v*.json")) if root.is_dir() else []
+
+    def version_number(path: Path) -> int:
+        match = path.stem.removeprefix("sentinel_v")
+        return int(match) if match.isdigit() else -1
+
+    return max(candidates, key=version_number) if candidates else root / "sentinel_v1.json"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="install sentinel build/evaluate")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -324,6 +363,12 @@ def main() -> None:
     b.add_argument("--per-predicate", type=int, default=DEFAULT_PER_PRED)
     b.add_argument("--seed", type=int, default=0)
     b.add_argument("--version", default="v1")
+    b.add_argument(
+        "--minimum-install-n",
+        type=int,
+        default=0,
+        help="declared certification floor; build refuses when the frozen install slice is smaller",
+    )
     b.add_argument("--out")
 
     e = sub.add_parser("evaluate", help="halt decision from score blocks")
@@ -349,6 +394,7 @@ def main() -> None:
                 per_predicate=args.per_predicate,
                 seed=args.seed,
                 version=args.version,
+                minimum_install_n=args.minimum_install_n,
             )
             out = Path(args.out) if args.out else paths["sentinel"]
             out.parent.mkdir(parents=True, exist_ok=True)
@@ -384,7 +430,7 @@ def main() -> None:
         print(json.dumps({
             "status": result["status"],
             "halted": result["halted"],
-            "artifact_kept": result["artifact_kept"],
+            "tripwire_action": result["tripwire_action"],
             "plain": result["plain"],
             "wrote": args.out,
         }))

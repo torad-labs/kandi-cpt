@@ -124,7 +124,7 @@ def run_install_event(
     if sentinel_path:
         sp = Path(sentinel_path)
     else:
-        sp = C.ROOT / "data" / domain / "sentinel" / "sentinel_v1.json"
+        sp = Sent.latest_sentinel_path(domain)
     if not sp.is_file():
         raise InstallEventError(
             f"sentinel set missing at {sp} — build it before any install event "
@@ -162,8 +162,8 @@ def run_install_event(
     if general_candidate_scores is None:
         general_candidate_scores = dict(general_base_scores)
 
-    # GA unavailable → cannot claim PASS on forgetting; force a measured-unavailable halt?
-    # Spec: every event must run both slices. If UNAVAILABLE, record FAILED_UNAVAILABLE rather than fake PASS.
+    # GA unavailable cannot clear the evidence gap. Sentinel remains a tripwire,
+    # never an install-quality verdict.
     ga_unavailable = bool(
         general_base_scores.get("UNAVAILABLE") or general_candidate_scores.get("UNAVAILABLE")
         or int(general_base_scores.get("n") or 0) <= 0
@@ -192,7 +192,7 @@ def run_install_event(
             "halt": False,
             "note": (
                 "Live general-ability scoring not supplied for this event. "
-                "Install-slice sentinel still applied. Supply GA scores for a full PASS."
+                "Install-slice tripwire still applied. Supply GA scores for a complete check."
             ),
         }
         # Install-only halt stands; GA unavailable is a named gap not an auto-halt
@@ -210,7 +210,7 @@ def run_install_event(
         )
 
     halted = bool(sent_result.get("halted"))
-    artifact_kept = sent_result.get("artifact_kept") or (prior if halted else cand)
+    artifact_kept = prior if halted else cand
 
     # Certificate (still issued on halt — freshness names the halt)
     halted_list = list(halted_boosters or [])
@@ -281,6 +281,7 @@ def run_install_event(
         "artifact_kept": artifact_kept,
         "booster_n": booster_n,
         "halted": halted,
+        "status": "KEPT_PRIOR" if halted else "INSTALLED_CANDIDATE",
         "sentinel": sent_result,
         "certificate_id": (cert or {}).get("certificate_id"),
         "certificate_error": cert_error,
@@ -320,7 +321,6 @@ def run_install_event(
             json.dumps(sent_result, indent=2) + "\n", encoding="utf-8",
         )
 
-    record["status"] = "FAILED" if halted else "PASS"
     record["plain"] = sent_result.get("plain")
     return record
 

@@ -1,0 +1,72 @@
+Running as unit: run-p1958352-i1958353.scope; invocation ID: 99c5e8d371ed4ad2af6b403ec62d88b3
+W0719 22:08:37.465000 1958352 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W0719 22:08:37.512000 1958352 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+┌─ RUN CONTRACT · millbrook_hollow_v1_cpt ────────────────────────────┐
+│                  mode : cpt   fingerprint=3ace348a0ee062bf          │
+│             precision : fp4                                         │
+│           int8_master : storage                                     │
+│      optimizer_lowbit : 4                                           │
+│              save_dir : checkpoints/cpt/millbrook_hollow_v1         │
+│             init_from : (base model)                                │
+│             tokenized : data/_build/30_tokenized/millbrook_hollow_v1.arrow  [12,496 tok]│
+│               seq_len : 512                                         │
+│                 batch : 1×16×1gpu = 16 eff                          │
+│             max_steps : 120                                         │
+│            decay_frac : 0.2                                         │
+│                anneal : off (max_steps=120 < anneal.min_steps=500 (tiny-run disable))│
+│           scored_ckpt : final                                       │
+│  CUDA_VISIBLE_DEVICES : 1  (single-GPU; never both — PSU OCP)       │
+│                levers : lever4_exposure_tracking                    │
+└──────────────────────────────────────────────────────────────────────┘
+[22:08:37] run registered: logs/runs/millbrook_hollow_v1_cpt-3ace348a-1784516917/  (resolved config + provenance frozen)
+[22:08:37] world=1 precision=fp4 run=millbrook_hollow_v1_cpt smoke=0
+[22:10:21] loaded text decoder: 600 tensors → 4.63B params (dropped 1411 tower tensors, 60 unused shared-KV k/v)
+[22:10:21] froze 2.75B embedding params (embed_tokens + PLE + tied lm_head)
+[22:10:29] Quartet: swapped 223 Linear -> Quartet_II_linear (BF16-kept layers=[0, 1, 30, 31, 32, 33, 34] + lm_head + embeds)
+[22:10:31] CPU-offloaded PLE: 2.35B params stream from host RAM (off-GPU)
+[rank0] after shard+to(device): gpu_alloc=4.57GB reserved=4.59GB alloc_conf=expandable_segments:True
+[22:10:31] int8-master MOAT: 223 Quartet linears → torchao Int8 store (1 byte/param, SR on every optimizer update; updated by the shared low-bit AdamW — FP4-native compute)
+[22:10:31] int8_master mode = storage  — int8 STORE (1 byte/param) + SR via the shared low-bit AdamW + Quartet FP4 (THE ENGINE MOAT)
+[22:10:31] [mem] weights resident (storage): 3.089GB — the 223 masters are int8(1B) under storage, bf16(2B) under snap
+[22:10:31] optimizer: torchao AdamW4bit (single-GPU, 4-bit m/v states)
+[22:10:31] [lever4] exposure tracking ON — fact_id exposures snapshotted at each checkpoint
+[22:10:31] [anneal] inactive — max_steps=120 < anneal.min_steps=500 (tiny-run disable)
+[22:10:31] FSDP grad-accum no_sync: unavailable — full sync each microbatch
+W0719 22:10:39.716000 1958352 torch/_dynamo/convert_frame.py:1853] [0/8] torch._dynamo hit config.recompile_limit (8)
+W0719 22:10:39.716000 1958352 torch/_dynamo/convert_frame.py:1853] [0/8]    function: 'abs_max' (/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/quartet2/linear.py:147)
+W0719 22:10:39.716000 1958352 torch/_dynamo/convert_frame.py:1853] [0/8]    last reason: 0/7: tensor 'x' size mismatch at index 0. expected 512, actual 1536
+W0719 22:10:39.716000 1958352 torch/_dynamo/convert_frame.py:1853] [0/8] To log all recompilation reasons, use TORCH_LOGS="recompiles".
+W0719 22:10:39.716000 1958352 torch/_dynamo/convert_frame.py:1853] [0/8] To diagnose recompilation issues, see https://docs.pytorch.org/docs/main/user_guide/torch_compiler/compile/programming_model.recompilation.html
+/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/autograd_cache.py:542: UserWarning: OptimState4bit does not implement _stable_hash_for_caching. For PT2-compatible tensor subclasses, it is recommended to implement _stable_hash_for_caching(self) -> str for stable AOT autograd caching.
+  warn_once(
+/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/autograd_cache.py:542: UserWarning: Int8QuantizedTrainingLinearWeight does not implement _stable_hash_for_caching. For PT2-compatible tensor subclasses, it is recommended to implement _stable_hash_for_caching(self) -> str for stable AOT autograd caching.
+  warn_once(
+[22:11:14] step 5/120 loss 4.5184 lr 2.50e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 8.60s/step
+[22:11:45] step 10/120 loss 2.2581 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 7.35s/step
+[22:12:16] step 15/120 loss 0.9609 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.95s/step
+[22:12:47] step 20/120 loss 0.2566 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.78s/step
+[22:13:18] step 25/120 loss 0.1184 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.67s/step
+[22:13:50] step 30/120 loss 0.0756 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.61s/step
+[22:14:21] step 35/120 loss 0.0439 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.56s/step
+[22:14:52] step 40/120 loss 0.0275 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.51s/step
+[22:15:23] step 45/120 loss 0.0216 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.49s/step
+[22:15:55] step 50/120 loss 0.0171 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.47s/step
+[22:16:26] step 55/120 loss 0.0092 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.44s/step
+[22:16:56] step 60/120 loss 0.0102 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.41s/step
+[22:17:28] step 65/120 loss 0.0116 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.41s/step
+[22:17:58] step 70/120 loss 0.0109 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.38s/step
+[22:18:30] step 75/120 loss 0.0089 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.38s/step
+[22:19:01] step 80/120 loss 0.0095 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.37s/step
+[22:19:31] step 85/120 loss 0.0075 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.35s/step
+[22:20:01] step 90/120 loss 0.0072 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.33s/step
+[22:20:32] step 95/120 loss 0.0078 lr 5.00e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.32s/step
+[22:21:02] step 100/120 loss 0.0046 lr 4.44e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.30s/step
+[22:21:31] step 105/120 loss 0.0047 lr 3.50e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.29s/step
+[22:22:02] step 110/120 loss 0.0044 lr 2.56e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.27s/step
+[22:22:31] step 115/120 loss 0.0026 lr 1.63e-05 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.26s/step
+[22:23:00] step 120/120 loss 0.0013 lr 6.87e-06 peakmem 11.2GB (resident 5.5GB; transient 5.7GB) 6.24s/step
+[22:23:00] done 120 steps in 749s
+[22:23:37] saved int8 checkpoint -> checkpoints/cpt/millbrook_hollow_v1  (223 int8 weights + scales, 8.6GB on disk, no bf16 materialization)
+[22:23:37] scored checkpoint = final
+[22:23:37] install_event skipped: no domain in cfg/env (set QGRE_INSTALL_DOMAIN)

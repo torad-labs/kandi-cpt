@@ -1,0 +1,1 @@
+{"run": "millbrook_hollow_v1", "log_path": "checkpoints/cpt/millbrook_hollow_v1/train.log", "pid": 2114527, "total_steps": 90, "started": 1784519881.3157008, "status": "done", "phase": "training", "ended": 1784520599.1894834}

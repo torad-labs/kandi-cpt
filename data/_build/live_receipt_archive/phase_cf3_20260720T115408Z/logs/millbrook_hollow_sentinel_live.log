@@ -1,0 +1,30 @@
+Running as unit: run-p2236358-i2236359.scope; invocation ID: 6bb53a07a0124c6d988c6da366f9e8fc
+[live] install slice n=7 ga n=10 device=cuda:0
+[live] scoring BASE /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+W0719 23:26:50.329000 2236358 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W0719 23:26:50.390000 2236358 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/1951 [00:00<?, ?it/s]Loading weights:  39%|███▊      | 754/1951 [00:00<00:00, 6208.16it/s]Loading weights:  70%|███████   | 1375/1951 [00:00<00:00, 1766.83it/s]Loading weights: 100%|██████████| 1951/1951 [00:00<00:00, 2684.13it/s]
+  base install acc=0.2857 (2/7)
+Loading weights:   0%|          | 0/1951 [00:00<?, ?it/s]Loading weights:  39%|███▊      | 754/1951 [00:00<00:00, 5656.78it/s]Loading weights:  68%|██████▊   | 1320/1951 [00:00<00:00, 1578.10it/s]Loading weights: 100%|██████████| 1951/1951 [00:00<00:00, 2503.23it/s]
+  base ga acc=1.0000 (10/10)
+[live] scoring CANDIDATE checkpoints/cpt/millbrook_hollow_v1
+  cand install acc=0.4286 (3/7)
+  cand ga acc=1.0000 (10/10)
+{
+  "wrote": "logs/millbrook_hollow_sentinel_live.json",
+  "install_base": 0.2857142857142857,
+  "install_cand": 0.42857142857142855,
+  "ga_base": 1.0,
+  "ga_cand": 1.0,
+  "halted": false,
+  "status": "PASS",
+  "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/millbrook_hollow_v1. install delta=+0.1429 (bound \u00b10.1890)."
+}
+{
+  "install_event": "PASS",
+  "halted": false,
+  "artifact_kept": "checkpoints/cpt/millbrook_hollow_v1",
+  "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/install_events/millbrook-hollow/20260720T043027Z_cpt_b0.json",
+  "certificate_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/certificates/millbrook-hollow/main_b0_20260720T043027Z.json",
+  "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/millbrook_hollow_v1. install delta=+0.1429 (bound \u00b10.1890)."
+}
