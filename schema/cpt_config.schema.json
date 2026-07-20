@@ -232,6 +232,36 @@
               }
             }
           }
+        },
+        "anneal": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "frac": {
+              "type": "number"
+            },
+            "min_steps": {
+              "type": "integer"
+            },
+            "mix_tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lr_end": {
+              "type": "number"
+            },
+            "require_exposure": {
+              "type": "boolean"
+            },
+            "keep_pre_anneal_checkpoint": {
+              "type": "boolean"
+            }
+          }
         }
       }
     },
@@ -346,6 +376,15 @@
         },
         "probe_report_root": {
           "type": "string"
+        },
+        "generative_bar": {
+          "type": "number"
+        },
+        "generative_min_delta_acc": {
+          "type": "number"
+        },
+        "generative_enabled": {
+          "type": "boolean"
         }
       }
     },
@@ -376,6 +415,47 @@
         },
         "early_stop_patience": {
           "type": "integer"
+        }
+      }
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "event": {
+          "enum": [
+            "cpt",
+            "sft",
+            "anneal",
+            "booster"
+          ]
+        },
+        "reference_artifact": {
+          "type": "string"
+        },
+        "booster_n": {
+          "type": "integer"
+        },
+        "sentinel_path": {
+          "type": "string"
+        },
+        "questions_path": {
+          "type": "string"
+        },
+        "recall_report_path": {
+          "type": "string"
+        },
+        "demo": {
+          "type": "boolean"
         }
       }
     }

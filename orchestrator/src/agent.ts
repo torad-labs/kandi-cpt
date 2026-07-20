@@ -1,4 +1,4 @@
-// The agentic orchestrator (Vercel AI SDK v6 ToolLoopAgent). It drives the Rust festival-factory
+// The agentic orchestrator (Vercel AI SDK v7 ToolLoopAgent). It drives the Rust festival-factory
 // pipeline + Python stages as TOOLS, making coverage-driven decisions — it does not reimplement any
 // pipeline logic. Faithfulness is enforced inside the Rust engine; the agent's job is sequencing and
 // "is coverage good enough yet?".

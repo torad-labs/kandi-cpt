@@ -8,6 +8,8 @@ import sys
 sys.dont_write_bytecode = True
 
 import argparse
+import contextlib
+import io
 import json
 from pathlib import Path
 from typing import Any
@@ -393,13 +395,16 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
     # Zero-knob derivation table (docs/cpt-overhaul/06) — every knob WITH its derivation line.
     try:
         from pipeline.derive_plan import derive_knobs
-        derivations = derive_knobs(
-            domain_name,
-            editions or None,
-            device_only=bool((policy or {}).get("device_only")),
-            domain_kind=str((policy or {}).get("domain_kind") or "facts"),
-            overrides=(policy or {}).get("overrides") if isinstance((policy or {}).get("overrides"), dict) else None,
-        )
+        # Helper diagnostics are useful in their own CLI, but this planner's stdout is a typed JSON
+        # contract. Keep imported-helper chatter out of the machine-readable envelope.
+        with contextlib.redirect_stdout(io.StringIO()):
+            derivations = derive_knobs(
+                domain_name,
+                editions or None,
+                device_only=bool((policy or {}).get("device_only")),
+                domain_kind=str((policy or {}).get("domain_kind") or "facts"),
+                overrides=(policy or {}).get("overrides") if isinstance((policy or {}).get("overrides"), dict) else None,
+            )
     except Exception as error:  # noqa: BLE001 — plan must still emit without derivations
         derivations = {
             "ok": False,

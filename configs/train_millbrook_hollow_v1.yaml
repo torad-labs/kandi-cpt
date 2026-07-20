@@ -71,3 +71,12 @@ eval:
   probe_min_n: 8
   generative_enabled: true
   device: cuda:0
+
+install:
+  enabled: true
+  domain: millbrook-hollow
+  unit: main
+  event: cpt
+  reference_artifact: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+  booster_n: 0
+  demo: true

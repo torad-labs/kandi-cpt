@@ -40,6 +40,7 @@ def _corpus(root: Path, n: int = 72) -> E.ProbeCorpus:
     probe_path.write_text("\n".join(json.dumps(probe) for probe in probes) + "\n", encoding="utf-8")
     split_path.write_text(json.dumps({
         "version": "v1",
+        "train_ids": [],
         "holdout_ids": [f"id-{index}" for index in range(n)],
     }), encoding="utf-8")
     stats_path.write_text(json.dumps({"tokens_by_tag": {"clean": 1000, "hydrated": 2000}}), encoding="utf-8")

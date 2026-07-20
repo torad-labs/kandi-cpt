@@ -39,6 +39,7 @@ except Exception:                                   # pragma: no cover - import-
 Precision = Literal["bf16", "fp4", "nvfp4"]
 Int8Master = Literal["storage", "snap", "off"]
 Mode = Literal["cpt", "sft"]
+InstallEvent = Literal["cpt", "sft", "anneal", "booster"]
 
 
 class ConfigError(ValueError):
@@ -343,6 +344,38 @@ class RunConfig:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# install (automatic post-training trust chain)
+# ─────────────────────────────────────────────────────────────────────────────
+@dataclass
+class InstallConfig:
+    """Config-bound CPT → sentinel → install-event → certificate seam.
+
+    The canonical launcher runs this chain only after the trainer exits successfully, so the
+    checkpoint is closed and GPU memory is released before live scoring begins. Disabled by default
+    for historical configs; every domain that installs an artifact enables it explicitly.
+    """
+
+    enabled: bool = False
+    domain: str = ""
+    unit: str = ""
+    event: InstallEvent = "cpt"
+    reference_artifact: str = ""       # blank → model.model_path (the initial-install reference)
+    booster_n: int = 0
+    sentinel_path: str = ""             # blank → data/<domain>/sentinel/sentinel_v1.json
+    questions_path: str = ""            # blank → data/<domain>/questions.json
+    recall_report_path: str = ""        # optional extraction-coverage receipt
+    demo: bool = False
+
+    def __post_init__(self) -> None:
+        if self.event not in ("cpt", "sft", "anneal", "booster"):
+            raise ConfigError(f"install.event={self.event!r} invalid")
+        if self.booster_n < 0:
+            raise ConfigError("install.booster_n must be >= 0")
+        if self.enabled and (not self.domain.strip() or not self.unit.strip()):
+            raise ConfigError("install.enabled requires non-empty install.domain and install.unit")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # top-level
 # ─────────────────────────────────────────────────────────────────────────────
 # Fields the run-identity fingerprint is computed over (stable subset; excludes volatile save_dir/run_name/etc).
@@ -367,6 +400,7 @@ class CptConfig:
     corpus_synthesis: CorpusSynthesisConfig = field(default_factory=CorpusSynthesisConfig)
     eval: EvalConfig = field(default_factory=EvalConfig)
     run: RunConfig = field(default_factory=RunConfig)
+    install: InstallConfig = field(default_factory=InstallConfig)
 
     # ── loading ──────────────────────────────────────────────────────────────
     @staticmethod
@@ -387,13 +421,14 @@ class CptConfig:
             raise ConfigError(f"mode='{m}' invalid — must be cpt|sft")
         d.pop("mode", None)
         sections = {"model": ModelConfig, "data": DataConfig, "train": TrainConfig,
-                    "corpus_synthesis": CorpusSynthesisConfig, "eval": EvalConfig, "run": RunConfig}
+                    "corpus_synthesis": CorpusSynthesisConfig, "eval": EvalConfig, "run": RunConfig,
+                    "install": InstallConfig}
         unknown_sections = set(d) - set(sections)
         if unknown_sections:
             raise ConfigError(
                 f"unknown top-level config section(s): {sorted(unknown_sections)} — "
                 f"valid sections are {sorted(sections)}. (Is this a flat pre-2026-06 config? "
-                f"Nest knobs under model/data/train/corpus_synthesis/eval/run.)")
+                f"Nest knobs under model/data/train/corpus_synthesis/eval/run/install.)")
         cfg = CptConfig(mode=cast(Mode, m))
         for name, cls in sections.items():
             if name in d and d[name] is not None:
@@ -423,6 +458,18 @@ class CptConfig:
             raise ConfigError(
                 f"corpus_synthesis.sft_seq_len({cs.sft_seq_len}) must equal train.seq_len({self.train.seq_len}) "
                 f"for SFT, or the SFT blocks are mis-tokenized.")
+        if self.install.enabled:
+            if self.install.domain != (self.eval.probe_domain or ""):
+                raise ConfigError(
+                    "install.domain must equal eval.probe_domain so the certificate and sentinel score "
+                    "the same domain receipt"
+                )
+            editions = [part.strip() for part in (self.eval.probe_editions or "").split(",") if part.strip()]
+            if editions != [self.install.unit]:
+                raise ConfigError(
+                    "install.unit must be the single eval.probe_editions unit; multi-unit installs need "
+                    "one explicit certificate unit per run"
+                )
 
     def validate_runtime(self, world: int = 1, *, has_labels: bool | None = None) -> None:
         """Path/world/corpus-dependent gates — call AFTER env-read + corpus open, mirroring run_contract timing."""
@@ -554,7 +601,7 @@ _DATACLASS_BY_NAME = {
     c.__name__: c for c in (
         Nvfp4Config, ModelConfig, DataConfig, Lever1EntityLoss, Lever2QaMix, Lever3Ewc, Lever3ThreeR,
         Lever4ExposureTracking, Lever5CausalTrace, LeversConfig, AnnealConfig, TrainConfig,
-        CorpusSynthesisConfig, EvalConfig, RunConfig,
+        CorpusSynthesisConfig, EvalConfig, RunConfig, InstallConfig,
     )
 }
 

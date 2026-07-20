@@ -212,7 +212,8 @@ def run_install_event(
     halted = bool(sent_result.get("halted"))
     artifact_kept = prior if halted else cand
 
-    # Certificate (still issued on halt — freshness names the halt)
+    # Certificate (still issued on halt — freshness names the halt). A halted card measures the
+    # artifact that remains installed, never the rejected candidate.
     halted_list = list(halted_boosters or [])
     effective_booster_n = booster_n
     if halted and event == "booster":
@@ -248,17 +249,29 @@ def run_install_event(
                         if isinstance(gate, dict) and "min_coverage" not in recall:
                             recall["min_coverage"] = gate.get("quality.extraction_recall.min", 0.6)
                     break
-            if probe is not None and probe_receipt_path:
-                probe = dict(probe)
-                probe["receipt_path"] = probe_receipt_path
+            certificate_probe = probe
+            certificate_probe_path = probe_receipt_path
+            certificate_column = column
+            if halted:
+                if ref_probe is not None:
+                    certificate_probe = ref_probe
+                    certificate_probe_path = reference_probe_receipt_path
+                    certificate_column = reference_column
+                elif probe is not None and reference_column in probe:
+                    certificate_probe = probe
+                    certificate_probe_path = probe_receipt_path
+                    certificate_column = reference_column
+            if certificate_probe is not None and certificate_probe_path:
+                certificate_probe = dict(certificate_probe)
+                certificate_probe["receipt_path"] = certificate_probe_path
             cert = Cert.generate_certificate(
                 domain=domain,
                 unit=unit or None,
                 questions_doc=questions,
-                probe_receipt=probe,
+                probe_receipt=certificate_probe,
                 recall_report=recall,
-                run_record_path=str(candidate_artifact),
-                column=column,
+                run_record_path=str(artifact_kept),
+                column=certificate_column,
                 booster_n=effective_booster_n,
                 halted_boosters=halted_list,
                 demo=demo,
@@ -293,7 +306,6 @@ def run_install_event(
         raise InstallEventError("install event missing sentinel result")
 
     rec_path = out_dir / f"{stamp}_{event}_b{booster_n}.json"
-    rec_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     record["path"] = str(rec_path)
 
     if cert is not None:
@@ -306,6 +318,9 @@ def run_install_event(
         cpath.write_text(json.dumps(cert, indent=2) + "\n", encoding="utf-8")
         latest.write_text(json.dumps(cert, indent=2) + "\n", encoding="utf-8")
         record["certificate_path"] = str(cpath)
+
+    # Persist only after every generated path is attached; the event itself is the handoff receipt.
+    rec_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
 
     # Sidecar next to checkpoint when it is a real directory
     cand_path = Path(candidate_artifact)

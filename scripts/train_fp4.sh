@@ -70,6 +70,10 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export PYTHONPATH=scripts
 # Default to the canonical CPT config when none is passed → bare `bash scripts/train_fp4.sh` just works.
 case " $* " in
-  *" --config "*) exec .venv/bin/python scripts/train_cpt.py "$@" ;;
-  *)              exec .venv/bin/python scripts/train_cpt.py --config configs/train_edc_lv_2026.yaml "$@" ;;
+  *" --config "*) launch_args=("$@") ;;
+  *)              launch_args=(--config configs/train_edc_lv_2026.yaml "$@") ;;
 esac
+.venv/bin/python scripts/train_cpt.py "${launch_args[@]}"
+# Training has exited, so its GPU allocations are gone. The same typed config now owns the complete
+# trust seam; disabled historical configs return cleanly, enabled installs fail closed on missing evidence.
+.venv/bin/python scripts/post_install_chain.py "${launch_args[@]}"
