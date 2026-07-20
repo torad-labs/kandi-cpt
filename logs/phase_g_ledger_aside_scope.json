@@ -1,0 +1,49 @@
+{
+  "docs": [
+    "Blaine_(Adventures).md",
+    "Champion.md",
+    "Decolore_Islands.md",
+    "Grand_Oak.md",
+    "Janine.md",
+    "Lake_Valor.md",
+    "Lanette.md",
+    "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+    "Mirage_Kingdom.md",
+    "Mt._Pyre.md",
+    "Mt._Silver.md",
+    "Pok%C3%A9mon_Egg.md",
+    "Solidad.md",
+    "Unova.md"
+  ],
+  "shas": {
+    "Blaine_(Adventures).md": "9f12db1514822a52b6bcb6ad8474a4de13860610657f68b981e9a8ff1f06e4f1",
+    "Champion.md": "cc3189d891c62ed0fcc099d3c6b69b78f1177dc10814456325d9b7736718e1a4",
+    "Decolore_Islands.md": "e5e134009b0d61a6bcfe892b52b955669296d43ed3d1337eca767a8dc119dc2c",
+    "Grand_Oak.md": "b98d74266242c6c62b1e578b327777109e6a0df172090444d05bb4535ecfec82",
+    "Janine.md": "6c43c0e0d8af213786d010a17c15c5ed0c89fc04b598e16f03ab0448da1b51e7",
+    "Lake_Valor.md": "721e2c3768668da02f0e8da0c0e5024170e2f207d4d768d8ffd3ca0d5a9c7b3c",
+    "Lanette.md": "690250fc13fea6a4740bcaf77dcb5f39cbec1dd6cdb317a71b2345c4f3aba8da",
+    "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md": "2986fc2d731cf92c8a9e8cd0a78fb6cc187f853f766c5d7ca8938427ab035451",
+    "Mirage_Kingdom.md": "0ee1a5cf0f2b44e7fe26e5561c07bd9b459f7656393225b17a15625423a3cdf4",
+    "Mt._Pyre.md": "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+    "Mt._Silver.md": "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9",
+    "Pok%C3%A9mon_Egg.md": "23848c1c384ddc110c1fa67c833b09a72b511049be888d55b10b420b56f82879",
+    "Solidad.md": "fb2b6c460c5d56a8aac280553cd8d927543c3eebe9afd5f4d3ee692989ae78f0",
+    "Unova.md": "d16cf5ab8228521cab51b9587ee27a522e9e367499fe473a8411325e4cec3506"
+  },
+  "removed_from_ledger": [
+    "2986fc2d731cf92c8a9e8cd0a78fb6cc187f853f766c5d7ca8938427ab035451",
+    "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+    "690250fc13fea6a4740bcaf77dcb5f39cbec1dd6cdb317a71b2345c4f3aba8da",
+    "6c43c0e0d8af213786d010a17c15c5ed0c89fc04b598e16f03ab0448da1b51e7",
+    "721e2c3768668da02f0e8da0c0e5024170e2f207d4d768d8ffd3ca0d5a9c7b3c",
+    "9f12db1514822a52b6bcb6ad8474a4de13860610657f68b981e9a8ff1f06e4f1",
+    "b98d74266242c6c62b1e578b327777109e6a0df172090444d05bb4535ecfec82",
+    "cc3189d891c62ed0fcc099d3c6b69b78f1177dc10814456325d9b7736718e1a4",
+    "d16cf5ab8228521cab51b9587ee27a522e9e367499fe473a8411325e4cec3506",
+    "e5e134009b0d61a6bcfe892b52b955669296d43ed3d1337eca767a8dc119dc2c",
+    "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9",
+    "fb2b6c460c5d56a8aac280553cd8d927543c3eebe9afd5f4d3ee692989ae78f0"
+  ],
+  "backup": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/pokemon-lore/phase_g_backup"
+}

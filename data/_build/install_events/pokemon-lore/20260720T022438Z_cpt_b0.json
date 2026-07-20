@@ -1,0 +1,82 @@
+{
+  "schema": "kandi.install_event.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "event": "cpt",
+  "at": "2026-07-20T02:24:38Z",
+  "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "reference_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+  "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "booster_n": 0,
+  "halted": false,
+  "sentinel": {
+    "schema": "kandi.sentinel_result.v1",
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "event": "cpt",
+    "status": "PASS",
+    "halted": false,
+    "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "prior_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.3333333333333333,
+        "candidate_acc": 0.8148148148148148,
+        "delta": 0.48148148148148145,
+        "n": 27,
+        "rough_bound": 0.09622504486493763,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 1.0,
+        "candidate_acc": 0.9,
+        "delta": -0.09999999999999998,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 9,
+        "n": 27,
+        "acc": 0.3333333333333333
+      },
+      "candidate": {
+        "hits": 22,
+        "n": 27,
+        "acc": 0.8148148148148148
+      },
+      "slice": "install",
+      "reference_acc": 0.3333333333333333,
+      "candidate_acc": 0.8148148148148148,
+      "delta": 0.48148148148148145,
+      "n": 27,
+      "rough_bound": 0.09622504486493763,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 0.9,
+      "delta": -0.09999999999999998,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/pokemon_lore_kanto_v1. install delta=+0.4815 (bound \u00b10.0962).",
+    "evaluated_at": "2026-07-20T02:24:38Z"
+  },
+  "certificate_id": "1d3e85b0e0ef5ecd",
+  "certificate_error": null,
+  "evidence_contract": "PASS"
+}

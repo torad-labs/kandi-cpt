@@ -28,16 +28,32 @@ class Ontology:
         self.kind = ont.get("kind", "festival")
         self.name = ont.get("name", "")
         self.entity_types = list(spec.get("entity_types", []))
-        self.predicates = list((spec.get("predicates") or {}).keys()) or list(ont.get("predicates", []))
+        preds_raw = spec.get("predicates") or {}
+        if isinstance(preds_raw, dict):
+            self.predicates = list(preds_raw.keys())
+            # the predicate→object-type contract (for the extraction-time enforcement that fixes plays_at→festival)
+            self.contract = {
+                p: list(m.get("object", [])) if isinstance(m, dict) else []
+                for p, m in preds_raw.items()
+            }
+            # Optional per-predicate guidance strings (manifest `guidance:`). Empty for EDC → system()
+            # stays byte-identical to structured_prompts.SYSTEM (test_ontology parity).
+            self.guidance = {
+                p: str(m.get("guidance")).strip()
+                for p, m in preds_raw.items()
+                if isinstance(m, dict) and m.get("guidance")
+            }
+        else:
+            self.predicates = list(preds_raw) or list(ont.get("predicates", []))
+            self.contract = {}
+            self.guidance = {}
         self.topics = list(ont.get("topics", []))
         self.stances = list(ont.get("stances", []))
         self.confidence_map = dict(ont.get("confidence_map", {}))
-        # the predicate→object-type contract (for the extraction-time enforcement that fixes plays_at→festival)
-        self.contract = {p: list(m.get("object", [])) for p, m in (spec.get("predicates") or {}).items()}
 
     # ── the system prompt (spec-driven; byte-identical to the old hardcoded SYSTEM for EDC) ──
     def system(self) -> str:
-        return (
+        base = (
             f"You extract a {self.kind} knowledge graph from a source document about {self.name}. "
             "Return ONLY a JSON object with keys entities, triples, discourse. No prose, no markdown fence.\n"
             f"- entity_type ∈ {{{', '.join(self.entity_types)}}}\n"
@@ -59,6 +75,24 @@ class Ontology:
             "- Invent NOTHING. Every entity/relation/observation must be grounded in the document. "
             "If the document has little structured content, return few records (empty lists are fine)."
         )
+        # Opt-in predicate guidance. When the manifest declares no `guidance:` keys (EDC), this is a
+        # no-op and base stays byte-identical to structured_prompts.SYSTEM.
+        if not self.guidance:
+            return base
+        lines = ["Predicate guidance (emit when the text states the relation; object must match the type):"]
+        for pred in self.predicates:
+            hint = self.guidance.get(pred)
+            if not hint:
+                continue
+            allowed = self.contract.get(pred) or []
+            type_note = f" object∈{{{', '.join(allowed)}}};" if allowed else ""
+            lines.append(f"- {pred}:{type_note} {hint}")
+        # Insert before the closing Invent-NOTHING rule so guidance is part of Rules.
+        anchor = "- Invent NOTHING."
+        block = "\n".join(lines) + "\n"
+        if anchor in base:
+            return base.replace(anchor, block + anchor, 1)
+        return base + "\n" + block
 
     def user_prompt(self, fslug: str, title: str, body: str) -> str:
         return (f"festival_slug = {fslug}\nDocument title: {title}\n\n"

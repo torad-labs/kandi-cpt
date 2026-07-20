@@ -1,0 +1,15 @@
+# Frozen general-ability sentinel prompts for pokemon-lore.
+# Operator-named before first booster (trust-loop/02-sentinel.md).
+# Do NOT edit in place to clear a halt — cut sentinel_v2 instead (goalpost law).
+# These are base-model questions unrelated to Pokémon install; a drop vs base → halt.
+
+What is 2 + 2?
+Name three primary colors.
+What day comes after Monday?
+What is the capital of France?
+How many continents are on Earth?
+Complete the proverb: "A stitch in time saves ___."
+What gas do plants absorb from the air during photosynthesis?
+Who wrote Romeo and Juliet?
+What is the boiling point of water at sea level in Celsius?
+Name a mammal that can fly.

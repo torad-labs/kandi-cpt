@@ -1,0 +1,112 @@
+# Domain-authored content for millbrook-hollow (DEMO invented-town corpus).
+# generic_expand / generic_synth / build_sft / generic_probes render THESE strings.
+
+hydrate_templates:
+  predicate_templates:
+    located_in:
+      - "{subject} is located in {object}."
+      - "In {object} lies {subject}."
+      - "{subject} can be found in {object}."
+    lives_in:
+      - "{subject} lives in {object}."
+      - "{subject}'s home is in {object}."
+      - "{object} is where {subject} lives."
+    works_at:
+      - "{subject} works at {object}."
+      - "{subject} works at the {object}."
+      - "At {object}, {subject} works."
+    leads:
+      - "{subject} leads {object}."
+      - "{object} is led by {subject}."
+      - "At the head of {object} stands {subject}."
+    member_of:
+      - "{subject} is a member of {object}."
+      - "{object} counts {subject} among its members."
+      - "{subject} belongs to {object}."
+    founded:
+      - "{subject} founded {object}."
+      - "{object} was founded by {subject}."
+    married_to:
+      - "{subject} is married to {object}."
+      - "{subject} and {object} are married."
+    parent_of:
+      - "{subject} is the parent of {object}."
+      - "{object} is the child of {subject}."
+    sibling_of:
+      - "{subject} is the sibling of {object}."
+      - "{subject} and {object} are siblings."
+    occurs_at:
+      - "{subject} takes place at {object}."
+      - "{object} is where {subject} occurs."
+      - "{subject} occurs at {object}."
+    involves:
+      - "{subject} involves {object}."
+      - "{object} plays a part in {subject}."
+    owns:
+      - "{subject} owns {object}."
+      - "{object} belongs to {subject}."
+    built:
+      - "{subject} built {object}."
+      - "{object} was built by {subject}."
+    guards:
+      - "{subject} guards {object}."
+      - "{object} is guarded by {subject}."
+    teaches_at:
+      - "{subject} teaches at {object}."
+      - "At {object}, {subject} teaches."
+    precedes:
+      - "{subject} precedes {object}."
+      - "{subject} happens before {object}."
+
+contrast:
+  groups:
+    places: [Millbrook Hollow, Quillspire Keep, Amberfen Crossing, Thornwick Mill,
+             Cinderglass Bridge, Wyrdloom Archives, Pellwater Quay, Mosscoil Lane,
+             Hearthmere Hall, Dunhollow Gate]
+    organizations: [Brassleaf Compact, Order of the Nine Lanterns, Hollowbrook Trading Guild,
+                    Wyrdloom Keepers, Saltwick Choir]
+  predicates:
+    lives_in:
+      group: places
+      templates:
+        - "{subject} lives in {object}, not {attractor}."
+        - "{object} is where {subject} lives; not {attractor}."
+    located_in:
+      group: places
+      templates:
+        - "{subject} is located in {object}, not {attractor}."
+    leads:
+      group: organizations
+      templates:
+        - "{subject} leads {object}, not {attractor}."
+        - "{object} is led by {subject}; not {attractor}."
+    member_of:
+      group: organizations
+      templates:
+        - "{subject} is a member of {object}, not {attractor}."
+
+sft_templates:
+  rel_q:
+    located_in: ['Which place is {s} located in?', '{s} is located in {o}.']
+    lives_in: ['Where does {s} live?', '{s} lives in {o}.']
+    works_at: ['Where does {s} work?', '{s} works at {o}.']
+    leads: ['Which organization does {s} lead?', '{s} leads {o}.']
+    member_of: ['Which organization is {s} a member of?', '{s} is a member of {o}.']
+    founded: ['What did {s} found?', '{s} founded {o}.']
+    married_to: ['Who is {s} married to?', '{s} is married to {o}.']
+    parent_of: ['Who is the child of {s}?', '{s} is the parent of {o}.']
+    sibling_of: ['Who is the sibling of {s}?', '{s} is the sibling of {o}.']
+    occurs_at: ['Where does {s} take place?', '{s} takes place at {o}.']
+    involves: ['Who or what is involved in {s}?', '{s} involves {o}.']
+    owns: ['What does {s} own?', '{s} owns {o}.']
+    built: ['What did {s} build?', '{s} built {o}.']
+    guards: ['What does {s} guard?', '{s} guards {o}.']
+    teaches_at: ['Where does {s} teach?', '{s} teaches at {o}.']
+    precedes: ['What does {s} come before?', '{s} precedes {o}.']
+
+synth_templates:
+  system_preamble: >-
+    You are recounting the invented local history of Millbrook Hollow, a fictional town that
+    exists only in this training corpus. State only the single given fact, plainly and
+    accurately, as one sentence of narrative prose. Never invent names, places, or events
+    beyond the fact given. Do not reference real-world towns or history.

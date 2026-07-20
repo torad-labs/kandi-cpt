@@ -1,0 +1,163 @@
+# Domain manifest — millbrook-hollow. DEMO domain (consumer-flow Phase 1).
+# Invented town / cast / history. Base model provably knows none of it (base-0.00 audit).
+# Flat-corpus path: authored prose in data/millbrook-hollow/main/00_raw; no scraper.
+# Graph is hand-authored in 15_structured (deterministic demo world) then resolved/split/hydrated
+# through the REAL generic stages — no demo-only code paths.
+# Pairs with qgre-agent knowledge/domains/millbrook-hollow.{md,probes.md}.
+
+name: millbrook-hollow
+kind: facts
+description: >-
+  DEMO invented-town corpus — Millbrook Hollow people, places, organizations, events,
+  artifacts. Authored for base-0.00 install demonstration (consumer-flow Phase 1).
+
+hierarchy: [town]
+registry: configs/editions_millbrook-hollow.json
+templates: configs/templates/millbrook-hollow.yaml
+
+ontology:
+  schema_dir: schema
+  kind: invented town lore
+  name: Millbrook Hollow
+  topics: [people_and_kinship, places_of_the_hollow, organizations_and_orders,
+           town_events_and_timeline, artifacts_and_relics]
+  stances: [canon, local_tradition, contested, neutral]
+  confidence_map:
+    authored-demo: official          # operator-authored demo prose (this domain)
+    inferred-by-model: inferred
+
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+configs:
+  cpt: configs/train_millbrook_hollow_v1.yaml
+  sft: null
+
+vars:
+  corpus: millbrook_hollow_v1
+
+stages:
+  - name: extract
+    desc: "10_clean — flat-corpus conversion of authored demo prose"
+    cmd: ["{py}", "scripts/clean_flat_corpus.py", "--domain", "millbrook-hollow", "--editions", "{editions}",
+          "--domain-class", "authored-demo"]
+    gpu: false
+  # structured is PRE-AUTHORED (15_structured/{entities,triples}.jsonl) for a deterministic
+  # invented world — no LLM extraction. resolve reads those files.
+  - name: resolve
+    desc: "entity canonicalization (exact-name; --no-embeddings for small demo graph)"
+    cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "millbrook-hollow",
+          "--editions", "{editions}", "--no-embeddings"]
+    gpu: false
+  - name: split
+    desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT"
+    cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "millbrook-hollow", "--editions", "{editions}",
+          "--version", "v2", "--holdout-frac", "0.20"]
+    gpu: false
+  - name: hydrate
+    desc: "25_hydrated — deterministic per-predicate template FLOOR"
+    cmd: ["{py}", "scripts/pipeline/generic_expand.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
+    gpu: false
+  - name: synth
+    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases)"
+    cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
+    gpu: false
+  - name: contrast
+    desc: "25_hydrated — truth-validated contrast surfaces (soft-cap 10%)"
+    cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "millbrook-hollow", "--editions", "{editions}",
+          "--max-fraction", "0.10"]
+    gpu: false
+  - name: dedup_surfaces
+    desc: "SemDeDup hydrated surfaces (non-destructive exclusion list)"
+    cmd: ["{py}", "scripts/pipeline/dedup_surfaces.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
+    gpu: false
+  - name: probes
+    desc: "eval items — forced-choice probes over held-out triples"
+    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
+    gpu: false
+  - name: audit
+    desc: "CPU data audit — distribution/static dimensions + diversity gate"
+    cmd: ["{py}", "scripts/data_audit.py", "--domain", "millbrook-hollow", "--editions", "{editions}", "--no-gpu"]
+    gpu: false
+  - name: tokenize
+    desc: "30_tokenized — pack clean+hydrated+replay → Arrow"
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "millbrook-hollow", "--seq-len", "512",
+          "--replay-frac", "0.10", "--out", "{corpus}"]
+    gpu: false
+  - name: cpt
+    desc: "continued pretraining (FP4 + int8-master) — demo-sized step budget"
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{cpt}"]
+    gpu: true
+
+entity_types:
+  [person, place, organization, event, artifact]
+
+predicates:
+  located_in:
+    object: [place]
+    tier: stable
+    guidance: >-
+      a place that sits inside another place (usually Millbrook Hollow). Object is the containing place.
+  lives_in:
+    object: [place]
+    tier: stable
+    guidance: >-
+      a person whose home/residence the text names. Object is the place entity.
+  works_at:
+    object: [place, organization]
+    tier: stable
+  leads:
+    object: [organization]
+    tier: stable
+    guidance: >-
+      person who is the head/leader of an organization.
+  member_of:
+    object: [organization]
+    tier: stable
+  founded:
+    object: [organization, place]
+    tier: stable
+  married_to:
+    object: [person]
+    tier: stable
+  parent_of:
+    object: [person]
+    tier: stable
+  sibling_of:
+    object: [person]
+    tier: stable
+  occurs_at:
+    object: [place]
+    tier: stable
+  involves:
+    object: [person, organization, artifact]
+    tier: stable
+  owns:
+    object: [artifact]
+    tier: stable
+  built:
+    object: [place]
+    tier: stable
+  guards:
+    object: [place, artifact]
+    tier: stable
+  teaches_at:
+    object: [place]
+    tier: stable
+  precedes:
+    object: [event]
+    tier: stable
+
+relations:
+  exposure_cap_per_fact: 40
+  dominance_max_frac: 0.85
+  min_active_types: 4
+
+quality:
+  faithfulness:
+    max_foreign_entity_frac: 0.02
+  id_integrity:
+    max_object_contract_violation_frac: 0.0
+    max_dangling_frac: 0.0
+    require_edition_match: true
+  diversity:
+    min_distinct_2: 0.30
+    max_nn_cosine_p90: 0.90

@@ -1,0 +1,82 @@
+{
+  "schema": "kandi.install_event.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "event": "anneal",
+  "at": "2026-07-20T02:30:48Z",
+  "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+  "reference_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+  "booster_n": 0,
+  "halted": true,
+  "sentinel": {
+    "schema": "kandi.sentinel_result.v1",
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "event": "anneal",
+    "status": "FAILED",
+    "halted": true,
+    "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "prior_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.8148148148148148,
+        "candidate_acc": 0.7037037037037037,
+        "delta": -0.11111111111111105,
+        "n": 27,
+        "rough_bound": 0.09622504486493763,
+        "halt": true,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 0.9,
+        "candidate_acc": 0.9,
+        "delta": 0.0,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 22,
+        "n": 27,
+        "acc": 0.8148148148148148
+      },
+      "candidate": {
+        "hits": 19,
+        "n": 27,
+        "acc": 0.7037037037037037
+      },
+      "slice": "install",
+      "reference_acc": 0.8148148148148148,
+      "candidate_acc": 0.7037037037037037,
+      "delta": -0.11111111111111105,
+      "n": 27,
+      "rough_bound": 0.09622504486493763,
+      "halt": true,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 0.9,
+      "candidate_acc": 0.9,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "SENTINEL HALT on anneal: kept checkpoints/cpt/pokemon_lore_kanto_v1. install: delta=-0.1111 bound=\u00b10.0962. Mitigation: see cpt/06-improve.md table (never train longer).",
+    "evaluated_at": "2026-07-20T02:30:48Z"
+  },
+  "certificate_id": "4cda7f5739837147",
+  "certificate_error": null,
+  "evidence_contract": "PASS"
+}

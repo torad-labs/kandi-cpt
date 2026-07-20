@@ -1,0 +1,263 @@
+{
+  "schema": "kandi.sentinel_live_scores.v1",
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+  "device": "cuda:0",
+  "scored_at": "2026-07-20T04:30:27Z",
+  "base": {
+    "install": {
+      "hits": 2,
+      "n": 7,
+      "acc": 0.2857142857142857,
+      "per_predicate": {
+        "involves": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "lives_in": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "member_of": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "occurs_at": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "works_at": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        }
+      },
+      "model_path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+    },
+    "general_ability": {
+      "hits": 10,
+      "n": 10,
+      "acc": 1.0,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "The three primary colors are red, yellow, and blue.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Tuesday comes after Monday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "The capital of France is Paris.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "A stitch in time saves nine.",
+          "hit": true
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air during photosynthesis.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "William Shakespeare wrote Romeo and Juliet.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "The boiling point of water at sea level is 100 degrees Celsius.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "Bats are mammals that can fly.",
+          "hit": true
+        }
+      ],
+      "model_path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+    },
+    "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+  },
+  "candidate": {
+    "install": {
+      "hits": 3,
+      "n": 7,
+      "acc": 0.42857142857142855,
+      "per_predicate": {
+        "involves": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "lives_in": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "member_of": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "occurs_at": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "works_at": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        }
+      },
+      "model_path": "checkpoints/cpt/millbrook_hollow_v1"
+    },
+    "general_ability": {
+      "hits": 10,
+      "n": 10,
+      "acc": 1.0,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "The three primary colors are red, yellow, and blue.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Tuesday comes after Monday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "The capital of France is Paris.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "\"A stitch in time saves nine.\"",
+          "hit": true
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "William Shakespeare did.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "The boiling point of water at sea level is 100 degrees Celsius.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "The bat is a mammal capable of flight.",
+          "hit": true
+        }
+      ],
+      "model_path": "checkpoints/cpt/millbrook_hollow_v1"
+    },
+    "path": "checkpoints/cpt/millbrook_hollow_v1"
+  },
+  "sentinel_result": {
+    "schema": "kandi.sentinel_result.v1",
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+    "domain": "millbrook-hollow",
+    "unit": "main",
+    "event": "cpt",
+    "status": "PASS",
+    "halted": false,
+    "artifact_kept": "checkpoints/cpt/millbrook_hollow_v1",
+    "prior_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "candidate_artifact": "checkpoints/cpt/millbrook_hollow_v1",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.2857142857142857,
+        "candidate_acc": 0.42857142857142855,
+        "delta": 0.14285714285714285,
+        "n": 7,
+        "rough_bound": 0.1889822365046136,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 1.0,
+        "candidate_acc": 1.0,
+        "delta": 0.0,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 2,
+        "n": 7,
+        "acc": 0.2857142857142857
+      },
+      "candidate": {
+        "hits": 3,
+        "n": 7,
+        "acc": 0.42857142857142855
+      },
+      "slice": "install",
+      "reference_acc": 0.2857142857142857,
+      "candidate_acc": 0.42857142857142855,
+      "delta": 0.14285714285714285,
+      "n": 7,
+      "rough_bound": 0.1889822365046136,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 1.0,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/millbrook_hollow_v1. install delta=+0.1429 (bound \u00b10.1890).",
+    "evaluated_at": "2026-07-20T04:30:27Z"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "kandi.sentinel_result.v1",
+  "sentinel_version": "v1",
+  "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "event": "booster",
+  "status": "FAILED",
+  "halted": true,
+  "artifact_kept": "checkpoints/cpt/millbrook_hollow_v1",
+  "prior_artifact": "checkpoints/cpt/millbrook_hollow_v1",
+  "candidate_artifact": "checkpoints/cpt/millbrook_hollow_degraded_synthetic",
+  "decisions": [
+    {
+      "slice": "install",
+      "reference_acc": 1.0,
+      "candidate_acc": 0.0,
+      "delta": -1.0,
+      "n": 7,
+      "rough_bound": 0.1889822365046136,
+      "halt": true,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 1.0,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    }
+  ],
+  "install": {
+    "reference": {
+      "hits": 7,
+      "n": 7,
+      "acc": 1.0
+    },
+    "candidate": {
+      "hits": 0,
+      "n": 7,
+      "acc": 0.0
+    },
+    "slice": "install",
+    "reference_acc": 1.0,
+    "candidate_acc": 0.0,
+    "delta": -1.0,
+    "n": 7,
+    "rough_bound": 0.1889822365046136,
+    "halt": true,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "general_ability": {
+    "slice": "general_ability",
+    "reference_acc": 1.0,
+    "candidate_acc": 1.0,
+    "delta": 0.0,
+    "n": 10,
+    "rough_bound": 0.15811388300841897,
+    "halt": false,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "plain": "SENTINEL HALT on booster: kept checkpoints/cpt/millbrook_hollow_v1. install: delta=-1.0000 bound=\u00b10.1890. Mitigation: see cpt/06-improve.md table (never train longer).",
+  "evaluated_at": "2026-07-20T04:11:44Z"
+}

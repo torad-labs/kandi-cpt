@@ -1,0 +1,109 @@
+{
+  "title": "Trust-loop Phases 1\u20134 + install-event wiring \u2014 COMPLETE",
+  "date": "2026-07-20T02:09:30Z",
+  "phases": {
+    "1_certificate": {
+      "module": "scripts/pipeline/certificate.py",
+      "tests": {
+        "exit": 0,
+        "summary": "ALL 8 CERTIFICATE TESTS PASS",
+        "n_ok": 8
+      },
+      "artifacts": [
+        "data/pokemon-lore/questions.json",
+        "data/_build/certificates/pokemon-lore/",
+        "core-agent/knowledge/cpt/10-certificate.md"
+      ]
+    },
+    "2_sentinel": {
+      "module": "scripts/pipeline/sentinel.py",
+      "tests": {
+        "exit": 0,
+        "summary": "ALL 6 SENTINEL TESTS PASS",
+        "n_ok": 6
+      },
+      "artifacts": [
+        "data/pokemon-lore/sentinel/sentinel_v1.json",
+        "configs/domains/pokemon-lore.general_ability.txt",
+        "core-agent/knowledge/cpt/11-sentinel.md"
+      ]
+    },
+    "3_booster_digest": {
+      "module": "scripts/pipeline/booster_digest.py",
+      "tests": {
+        "exit": 0,
+        "summary": "ALL 5 BOOSTER-DIGEST TESTS PASS",
+        "n_ok": 5
+      },
+      "artifacts": [
+        "data/_build/booster/pokemon-lore/",
+        "core-agent/knowledge/cpt/12-booster-digest.md"
+      ],
+      "red_green": "trolling Pikachu\u2192Digimon quarantined live"
+    },
+    "4_tier_routing": {
+      "module": "scripts/pipeline/tier_routing.py",
+      "tests": {
+        "exit": 0,
+        "summary": "ALL 7 TIER-ROUTING TESTS PASS",
+        "n_ok": 7
+      },
+      "artifacts": [
+        "data/_build/hot_index/pokemon-lore/index.json",
+        "configs/domains/pokemon-lore.yaml (tier: on every predicate + current_season hot)",
+        "core-agent/knowledge/cpt/13-tier-routing.md"
+      ],
+      "wired_into": [
+        "generic_expand.py (drops hot)",
+        "derive_plan.py (tier_routing table)"
+      ]
+    },
+    "install_event_wiring": {
+      "module": "scripts/pipeline/install_event.py",
+      "tests": {
+        "exit": 0,
+        "summary": "ALL 3 INSTALL-EVENT TESTS PASS",
+        "n_ok": 3
+      },
+      "wired_into": [
+        "scripts/train_cpt.py (rank0 after final save)",
+        "scripts/run_sft.sh (post-gate catch-up)"
+      ],
+      "live_demo": "data/_build/install_events/pokemon-lore/ (PASS demo)"
+    }
+  },
+  "test_matrix": {
+    "certificate": {
+      "exit": 0,
+      "summary": "ALL 8 CERTIFICATE TESTS PASS",
+      "n_ok": 8
+    },
+    "sentinel": {
+      "exit": 0,
+      "summary": "ALL 6 SENTINEL TESTS PASS",
+      "n_ok": 6
+    },
+    "install_event": {
+      "exit": 0,
+      "summary": "ALL 3 INSTALL-EVENT TESTS PASS",
+      "n_ok": 3
+    },
+    "booster_digest": {
+      "exit": 0,
+      "summary": "ALL 5 BOOSTER-DIGEST TESTS PASS",
+      "n_ok": 5
+    },
+    "tier_routing": {
+      "exit": 0,
+      "summary": "ALL 7 TIER-ROUTING TESTS PASS",
+      "n_ok": 7
+    }
+  },
+  "all_green": true,
+  "not_in_scope_operator_only": [
+    "GPU 0 reboot / power-cap mitigation (hardware)",
+    "Style corpus donation (operator content)",
+    "Full GPU probe scoring of sentinel install slice during live CPT (hook ready; needs train run with QGRE_INSTALL_DOMAIN + QGRE_PROBE_RECEIPT)"
+  ],
+  "interpretation": "All four trust-loop workstreams are implemented with red-green tests, G2 playbooks, and train-exit wiring. Hot-tier never hydrates; booster digest truth-rejects trolling; install events require sentinel+certificate. Operator-only items (GPU0, style corpus, a live CPT run) remain outside agent authority \u2014 everything else is done."
+}

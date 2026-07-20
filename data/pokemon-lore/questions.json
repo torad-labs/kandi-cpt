@@ -1,0 +1,170 @@
+{
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "version": 1,
+  "seeded_from": "data/pokemon-lore/kanto/probes.jsonl",
+  "n": 20,
+  "questions": [
+    {
+      "id": "q01",
+      "text": "Who is the rival of Calem?",
+      "predicate": "rival_of",
+      "subject": "Calem",
+      "source": "probe_shape",
+      "source_triple_id": "81a99e15d8314d5f"
+    },
+    {
+      "id": "q02",
+      "text": "Who does Calem oppose?",
+      "predicate": "opposes",
+      "subject": "Calem",
+      "source": "probe_shape",
+      "source_triple_id": "ed91fb5a4a8f9af6"
+    },
+    {
+      "id": "q03",
+      "text": "Which Pok\u00e9mon does Calem own?",
+      "predicate": "owns_pokemon",
+      "subject": "Calem",
+      "source": "probe_shape",
+      "source_triple_id": "f0679856c82f36b7"
+    },
+    {
+      "id": "q04",
+      "text": "Who does Red oppose?",
+      "predicate": "opposes",
+      "subject": "Red",
+      "source": "probe_shape",
+      "source_triple_id": "eff84fb83c4a3ca7"
+    },
+    {
+      "id": "q05",
+      "text": "Which organization does Lusamine lead?",
+      "predicate": "leads",
+      "subject": "Lusamine",
+      "source": "probe_shape",
+      "source_triple_id": "9f4ff2925380bbc6"
+    },
+    {
+      "id": "q06",
+      "text": "Which region is Solaceon Town located in?",
+      "predicate": "located_in",
+      "subject": "Solaceon Town",
+      "source": "probe_shape",
+      "source_triple_id": "58d47c571fa54472"
+    },
+    {
+      "id": "q07",
+      "text": "What does Growlithe evolve into in the lore?",
+      "predicate": "evolves_into_lore",
+      "subject": "Growlithe",
+      "source": "probe_shape",
+      "source_triple_id": "0eec85b3013dbb19"
+    },
+    {
+      "id": "q08",
+      "text": "Which region is Hisuian Arcanine from?",
+      "predicate": "originates_from",
+      "subject": "Hisuian Arcanine",
+      "source": "probe_shape",
+      "source_triple_id": "17f3e926d68813c9"
+    },
+    {
+      "id": "q09",
+      "text": "Who is Hisuian Arcanine allied with?",
+      "predicate": "allied_with",
+      "subject": "Hisuian Arcanine",
+      "source": "probe_shape",
+      "source_triple_id": "6f875543e04ffe9f"
+    },
+    {
+      "id": "q10",
+      "text": "Which organization is Bruno a member of?",
+      "predicate": "member_of",
+      "subject": "Bruno",
+      "source": "probe_shape",
+      "source_triple_id": "a998d79ff1946450"
+    },
+    {
+      "id": "q11",
+      "text": "Which Pok\u00e9mon does Bruno own?",
+      "predicate": "owns_pokemon",
+      "subject": "Bruno",
+      "source": "probe_shape",
+      "source_triple_id": "d6fe3431baa9a934"
+    },
+    {
+      "id": "q12",
+      "text": "Who is the rival of Bruno?",
+      "predicate": "rival_of",
+      "subject": "Bruno",
+      "source": "probe_shape",
+      "source_triple_id": "f4ec466f1a41c7d6"
+    },
+    {
+      "id": "q13",
+      "text": "Who is Bruno allied with?",
+      "predicate": "allied_with",
+      "subject": "Bruno",
+      "source": "probe_shape",
+      "source_triple_id": "4d45b3cd20dcff9a"
+    },
+    {
+      "id": "q14",
+      "text": "Who does Lusamine mentor?",
+      "predicate": "mentors",
+      "subject": "Lusamine",
+      "source": "probe_shape",
+      "source_triple_id": "d6995b5e6b2e64fe"
+    },
+    {
+      "id": "q15",
+      "text": "Which organization is Red a member of?",
+      "predicate": "member_of",
+      "subject": "Red",
+      "source": "probe_shape",
+      "source_triple_id": "d2b912ef5da54f72"
+    },
+    {
+      "id": "q16",
+      "text": "What does Dragonair evolve into in the lore?",
+      "predicate": "evolves_into_lore",
+      "subject": "Dragonair",
+      "source": "probe_shape",
+      "source_triple_id": "65304368872b5d09"
+    },
+    {
+      "id": "q17",
+      "text": "Which Pok\u00e9mon does Nagatha own?",
+      "predicate": "owns_pokemon",
+      "subject": "Nagatha",
+      "source": "probe_shape",
+      "source_triple_id": "38144524545e4488"
+    },
+    {
+      "id": "q18",
+      "text": "Which organization is Lusamine a member of?",
+      "predicate": "member_of",
+      "subject": "Lusamine",
+      "source": "probe_shape",
+      "source_triple_id": "a351275f062adac2"
+    },
+    {
+      "id": "q19",
+      "text": "Who is Lillie allied with?",
+      "predicate": "allied_with",
+      "subject": "Lillie",
+      "source": "probe_shape",
+      "source_triple_id": "894546d9ad8226ce"
+    },
+    {
+      "id": "q20",
+      "text": "Who is Lusamine allied with?",
+      "predicate": "allied_with",
+      "subject": "Lusamine",
+      "source": "probe_shape",
+      "source_triple_id": "de291535e4f02322"
+    }
+  ],
+  "note": "Seeded from existing probe question shapes for the certificate spine. Consumer-flow interview UI comes later; generator must not depend on it."
+}

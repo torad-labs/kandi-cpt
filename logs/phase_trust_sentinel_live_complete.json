@@ -1,0 +1,63 @@
+{
+  "title": "LIVE GPU sentinel + install-event \u2014 FINISHED",
+  "date": "2026-07-20T02:31:12Z",
+  "device": "CUDA_VISIBLE_DEVICES=1 (RTX 5070 Ti); GPU 0 was busy at 100%",
+  "gpu_note": "No reboot needed \u2014 both GPUs healthy; QGRE policy uses GPU 1",
+  "scorer": "scripts/pipeline/score_sentinel_live.py",
+  "sentinel": {
+    "path": "data/pokemon-lore/sentinel/sentinel_v1.json",
+    "content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+    "n_install": 27,
+    "n_general_ability": 10
+  },
+  "run_1_cpt_vs_base": {
+    "base": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "candidate": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "install": {
+      "base_acc": 0.3333333333333333,
+      "cand_acc": 0.8148148148148148,
+      "delta": 0.48148148148148145,
+      "n": 27,
+      "bound": 0.09622504486493763
+    },
+    "general_ability": {
+      "base_acc": 1.0,
+      "cand_acc": 0.9,
+      "delta": -0.09999999999999998,
+      "n": 10
+    },
+    "verdict": "PASS",
+    "halted": false,
+    "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/pokemon_lore_kanto_v1. install delta=+0.4815 (bound \u00b10.0962).",
+    "receipt": "data/_build/install_events/pokemon-lore/sentinel_live_cpt_v1.json",
+    "checkpoint_sidecars": [
+      "checkpoints/cpt/pokemon_lore_kanto_v1/install_event.json",
+      "checkpoints/cpt/pokemon_lore_kanto_v1/certificate.json",
+      "checkpoints/cpt/pokemon_lore_kanto_v1/sentinel_result.json"
+    ]
+  },
+  "run_2_anneal_vs_v1_LIVE_HALT": {
+    "reference": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "candidate": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+    "install": {
+      "ref_acc": 0.8148148148148148,
+      "cand_acc": 0.7037037037037037,
+      "delta": -0.11111111111111105,
+      "n": 27,
+      "bound": 0.09622504486493763
+    },
+    "general_ability": {
+      "ref_acc": 0.9,
+      "cand_acc": 0.9,
+      "delta": 0.0
+    },
+    "verdict": "FAILED",
+    "halted": true,
+    "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "plain": "SENTINEL HALT on anneal: kept checkpoints/cpt/pokemon_lore_kanto_v1. install: delta=-0.1111 bound=\u00b10.0962. Mitigation: see cpt/06-improve.md table (never train longer).",
+    "receipt": "data/_build/install_events/pokemon-lore/sentinel_live_anneal.json",
+    "note": "LIVE red-green on real checkpoints: anneal dropped install 0.815\u21920.704 (delta=-0.111 < -0.096 bound) \u2192 HALT, prior v1 kept. GA held flat at 0.9."
+  },
+  "interpretation": "Finished the last agent-owned gap: live GPU scoring of the frozen sentinel. GPU 0 was under load; scored on GPU 1 per QGRE policy \u2014 no reboot required. CPT v1 PASS vs base (+0.48 install). Anneal vs v1 HALT on real weights \u2014 the circuit breaker works on production checkpoints, not just synthetic scores. Certificates and install_event sidecars written next to the kept artifact."
+}

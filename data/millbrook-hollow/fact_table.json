@@ -1,0 +1,445 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "n_entities": 37,
+  "n_triples": 50,
+  "entities": [
+    {
+      "type": "place",
+      "slug": "millbrook_hollow",
+      "name": "Millbrook Hollow"
+    },
+    {
+      "type": "place",
+      "slug": "quillspire_keep",
+      "name": "Quillspire Keep"
+    },
+    {
+      "type": "place",
+      "slug": "amberfen_crossing",
+      "name": "Amberfen Crossing"
+    },
+    {
+      "type": "place",
+      "slug": "thornwick_mill",
+      "name": "Thornwick Mill"
+    },
+    {
+      "type": "place",
+      "slug": "cinderglass_bridge",
+      "name": "Cinderglass Bridge"
+    },
+    {
+      "type": "place",
+      "slug": "wyrdloom_archives",
+      "name": "Wyrdloom Archives"
+    },
+    {
+      "type": "place",
+      "slug": "pellwater_quay",
+      "name": "Pellwater Quay"
+    },
+    {
+      "type": "place",
+      "slug": "mosscoil_lane",
+      "name": "Mosscoil Lane"
+    },
+    {
+      "type": "place",
+      "slug": "hearthmere_hall",
+      "name": "Hearthmere Hall"
+    },
+    {
+      "type": "place",
+      "slug": "dunhollow_gate",
+      "name": "Dunhollow Gate"
+    },
+    {
+      "type": "person",
+      "slug": "orin_vellshaw",
+      "name": "Orin Vellshaw"
+    },
+    {
+      "type": "person",
+      "slug": "mirelle_brannock",
+      "name": "Mirelle Brannock"
+    },
+    {
+      "type": "person",
+      "slug": "cedric_palthorne",
+      "name": "Cedric Palthorne"
+    },
+    {
+      "type": "person",
+      "slug": "lysa_quenmere",
+      "name": "Lysa Quenmere"
+    },
+    {
+      "type": "person",
+      "slug": "tobin_harrowick",
+      "name": "Tobin Harrowick"
+    },
+    {
+      "type": "person",
+      "slug": "elowen_dask",
+      "name": "Elowen Dask"
+    },
+    {
+      "type": "person",
+      "slug": "perrin_woolgrave",
+      "name": "Perrin Woolgrave"
+    },
+    {
+      "type": "person",
+      "slug": "sable_kett",
+      "name": "Sable Kett"
+    },
+    {
+      "type": "person",
+      "slug": "bramish_corven",
+      "name": "Bramish Corven"
+    },
+    {
+      "type": "person",
+      "slug": "nessa_ilyndor",
+      "name": "Nessa Ilyndor"
+    },
+    {
+      "type": "person",
+      "slug": "calder_rooksby",
+      "name": "Calder Rooksby"
+    },
+    {
+      "type": "person",
+      "slug": "ione_mersh",
+      "name": "Ione Mersh"
+    },
+    {
+      "type": "person",
+      "slug": "tamsin_vellshaw",
+      "name": "Tamsin Vellshaw"
+    },
+    {
+      "type": "person",
+      "slug": "garrick_brannock",
+      "name": "Garrick Brannock"
+    },
+    {
+      "type": "organization",
+      "slug": "brassleaf_compact",
+      "name": "Brassleaf Compact"
+    },
+    {
+      "type": "organization",
+      "slug": "order_of_the_nine_lanterns",
+      "name": "Order of the Nine Lanterns"
+    },
+    {
+      "type": "organization",
+      "slug": "hollowbrook_trading_guild",
+      "name": "Hollowbrook Trading Guild"
+    },
+    {
+      "type": "organization",
+      "slug": "wyrdloom_keepers",
+      "name": "Wyrdloom Keepers"
+    },
+    {
+      "type": "organization",
+      "slug": "saltwick_choir",
+      "name": "Saltwick Choir"
+    },
+    {
+      "type": "event",
+      "slug": "lanternfall_accord",
+      "name": "Lanternfall Accord"
+    },
+    {
+      "type": "event",
+      "slug": "great_amberfen_flood",
+      "name": "Great Amberfen Flood"
+    },
+    {
+      "type": "event",
+      "slug": "brassleaf_schism",
+      "name": "Brassleaf Schism"
+    },
+    {
+      "type": "event",
+      "slug": "founding_of_quillspire_keep",
+      "name": "Founding of Quillspire Keep"
+    },
+    {
+      "type": "event",
+      "slug": "cinderglass_fire",
+      "name": "Cinderglass Fire"
+    },
+    {
+      "type": "artifact",
+      "slug": "nine_wick_censer",
+      "name": "Nine-Wick Censer"
+    },
+    {
+      "type": "artifact",
+      "slug": "vellshaw_ledger",
+      "name": "Vellshaw Ledger"
+    },
+    {
+      "type": "artifact",
+      "slug": "amberfen_bell",
+      "name": "Amberfen Bell"
+    }
+  ],
+  "triples": [
+    {
+      "s": "Quillspire Keep",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Amberfen Crossing",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Thornwick Mill",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Cinderglass Bridge",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Wyrdloom Archives",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Pellwater Quay",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Mosscoil Lane",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Hearthmere Hall",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Dunhollow Gate",
+      "p": "located_in",
+      "o": "Millbrook Hollow"
+    },
+    {
+      "s": "Orin Vellshaw",
+      "p": "lives_in",
+      "o": "Mosscoil Lane"
+    },
+    {
+      "s": "Orin Vellshaw",
+      "p": "owns",
+      "o": "Vellshaw Ledger"
+    },
+    {
+      "s": "Orin Vellshaw",
+      "p": "member_of",
+      "o": "Wyrdloom Keepers"
+    },
+    {
+      "s": "Orin Vellshaw",
+      "p": "parent_of",
+      "o": "Tamsin Vellshaw"
+    },
+    {
+      "s": "Tamsin Vellshaw",
+      "p": "lives_in",
+      "o": "Mosscoil Lane"
+    },
+    {
+      "s": "Mirelle Brannock",
+      "p": "leads",
+      "o": "Brassleaf Compact"
+    },
+    {
+      "s": "Mirelle Brannock",
+      "p": "lives_in",
+      "o": "Hearthmere Hall"
+    },
+    {
+      "s": "Mirelle Brannock",
+      "p": "sibling_of",
+      "o": "Garrick Brannock"
+    },
+    {
+      "s": "Garrick Brannock",
+      "p": "member_of",
+      "o": "Brassleaf Compact"
+    },
+    {
+      "s": "Cedric Palthorne",
+      "p": "leads",
+      "o": "Order of the Nine Lanterns"
+    },
+    {
+      "s": "Cedric Palthorne",
+      "p": "lives_in",
+      "o": "Quillspire Keep"
+    },
+    {
+      "s": "Ione Mersh",
+      "p": "married_to",
+      "o": "Cedric Palthorne"
+    },
+    {
+      "s": "Ione Mersh",
+      "p": "owns",
+      "o": "Nine-Wick Censer"
+    },
+    {
+      "s": "Ione Mersh",
+      "p": "member_of",
+      "o": "Order of the Nine Lanterns"
+    },
+    {
+      "s": "Lysa Quenmere",
+      "p": "member_of",
+      "o": "Wyrdloom Keepers"
+    },
+    {
+      "s": "Lysa Quenmere",
+      "p": "works_at",
+      "o": "Wyrdloom Archives"
+    },
+    {
+      "s": "Tobin Harrowick",
+      "p": "works_at",
+      "o": "Thornwick Mill"
+    },
+    {
+      "s": "Tobin Harrowick",
+      "p": "lives_in",
+      "o": "Amberfen Crossing"
+    },
+    {
+      "s": "Elowen Dask",
+      "p": "leads",
+      "o": "Saltwick Choir"
+    },
+    {
+      "s": "Elowen Dask",
+      "p": "lives_in",
+      "o": "Pellwater Quay"
+    },
+    {
+      "s": "Elowen Dask",
+      "p": "owns",
+      "o": "Amberfen Bell"
+    },
+    {
+      "s": "Perrin Woolgrave",
+      "p": "member_of",
+      "o": "Hollowbrook Trading Guild"
+    },
+    {
+      "s": "Perrin Woolgrave",
+      "p": "works_at",
+      "o": "Pellwater Quay"
+    },
+    {
+      "s": "Sable Kett",
+      "p": "guards",
+      "o": "Cinderglass Bridge"
+    },
+    {
+      "s": "Bramish Corven",
+      "p": "built",
+      "o": "Quillspire Keep"
+    },
+    {
+      "s": "Nessa Ilyndor",
+      "p": "teaches_at",
+      "o": "Wyrdloom Archives"
+    },
+    {
+      "s": "Nessa Ilyndor",
+      "p": "member_of",
+      "o": "Wyrdloom Keepers"
+    },
+    {
+      "s": "Calder Rooksby",
+      "p": "founded",
+      "o": "Hollowbrook Trading Guild"
+    },
+    {
+      "s": "Calder Rooksby",
+      "p": "lives_in",
+      "o": "Pellwater Quay"
+    },
+    {
+      "s": "Lanternfall Accord",
+      "p": "occurs_at",
+      "o": "Hearthmere Hall"
+    },
+    {
+      "s": "Lanternfall Accord",
+      "p": "involves",
+      "o": "Mirelle Brannock"
+    },
+    {
+      "s": "Lanternfall Accord",
+      "p": "involves",
+      "o": "Cedric Palthorne"
+    },
+    {
+      "s": "Great Amberfen Flood",
+      "p": "occurs_at",
+      "o": "Amberfen Crossing"
+    },
+    {
+      "s": "Great Amberfen Flood",
+      "p": "involves",
+      "o": "Tobin Harrowick"
+    },
+    {
+      "s": "Brassleaf Schism",
+      "p": "involves",
+      "o": "Brassleaf Compact"
+    },
+    {
+      "s": "Brassleaf Schism",
+      "p": "precedes",
+      "o": "Lanternfall Accord"
+    },
+    {
+      "s": "Founding of Quillspire Keep",
+      "p": "involves",
+      "o": "Bramish Corven"
+    },
+    {
+      "s": "Founding of Quillspire Keep",
+      "p": "occurs_at",
+      "o": "Quillspire Keep"
+    },
+    {
+      "s": "Cinderglass Fire",
+      "p": "occurs_at",
+      "o": "Cinderglass Bridge"
+    },
+    {
+      "s": "Cinderglass Fire",
+      "p": "involves",
+      "o": "Sable Kett"
+    },
+    {
+      "s": "Order of the Nine Lanterns",
+      "p": "guards",
+      "o": "Nine-Wick Censer"
+    }
+  ]
+}

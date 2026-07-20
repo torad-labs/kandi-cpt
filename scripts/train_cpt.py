@@ -1100,6 +1100,45 @@ def main():
             _save_exposure(save_dir, step, exposure)
     if rank0():
         _finish_status("done")               # flip the console heartbeat to done; close the run log
+        # Trust-loop install event (sentinel + certificate). Opt-out: QGRE_SKIP_INSTALL_EVENT=1
+        # (tests/smoke only). A missing sentinel set fails closed and is logged — never silent skip
+        # of the evidence contract on a real save_dir run.
+        if save_dir and not smoke_steps and not os.environ.get("QGRE_SKIP_INSTALL_EVENT"):
+            try:
+                from pipeline.install_event import run_install_event
+                domain = (
+                    os.environ.get("QGRE_INSTALL_DOMAIN")
+                    or cfg.get("domain")
+                    or (cfg.get("data") or {}).get("domain")
+                    or ""
+                )
+                unit = os.environ.get("QGRE_INSTALL_UNIT") or cfg.get("unit") or ""
+                event = os.environ.get("QGRE_INSTALL_EVENT") or (
+                    "anneal" if anneal_started else "cpt"
+                )
+                if cfg.get("sft") or "sft" in str(cfg.get("run_name") or "").lower():
+                    event = "sft"
+                if os.environ.get("QGRE_INSTALL_EVENT") == "booster":
+                    event = "booster"
+                booster_n = int(os.environ.get("QGRE_BOOSTER_N") or cfg.get("booster_n") or 0)
+                probe_receipt = os.environ.get("QGRE_PROBE_RECEIPT") or cfg.get("probe_receipt")
+                if domain:
+                    rec = run_install_event(
+                        domain=str(domain),
+                        unit=str(unit) or None,
+                        event=str(event),
+                        candidate_artifact=str(save_dir),
+                        reference_artifact=os.environ.get("QGRE_REFERENCE_ARTIFACT"),
+                        probe_receipt_path=probe_receipt,
+                        booster_n=booster_n,
+                    )
+                    log(f"install_event {rec.get('status')}: {rec.get('plain')}")
+                else:
+                    log("install_event skipped: no domain in cfg/env (set QGRE_INSTALL_DOMAIN)")
+            except Exception as install_err:  # noqa: BLE001
+                # Fail closed on real runs: surface loudly; do not delete the checkpoint.
+                log(f"install_event FAILED CLOSED: {type(install_err).__name__}: {install_err}")
+                raise
     # NOTE: NVFP4 QAT→convert is intentionally NOT done here. Running quantize_(step="convert") on the
     # live FSDP2-sharded model on rank 0 only would (a) risk a collective deadlock and (b) discard the
     # result (it's never re-saved). The convert is a separate OFFLINE step: load the saved bf16

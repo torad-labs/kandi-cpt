@@ -1,9 +1,9 @@
 {
   "domain": "pokemon-lore",
   "unit": "kanto",
-  "n_entities_in": 2141,
-  "n_entities_out": 937,
-  "n_merges": 85,
+  "n_entities_in": 2112,
+  "n_entities_out": 959,
+  "n_merges": 84,
   "n_review": 50,
   "n_cross_continuity_links": 0,
   "cross_merge_violations": 0,

@@ -1,0 +1,379 @@
+{
+  "status": "FAIL",
+  "pilot_class": true,
+  "provisional": true,
+  "run_name": "millbrook_hollow_v1_cpt",
+  "config_fingerprint": "d66b7fce34d98ded",
+  "measurement_class": "augmentation_holdout",
+  "domain": "millbrook-hollow",
+  "editions": [
+    "main"
+  ],
+  "split_version": "v2",
+  "chance": 0.25,
+  "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+  "delta_acc": 0.25,
+  "axis": "forced_choice",
+  "estimand": "augmentation_holdout",
+  "thresholds": {
+    "min_n": 8,
+    "min_delta_acc": 0.1
+  },
+  "checks": [
+    {
+      "check": "base and tuned used the identical probe set",
+      "pass": true
+    },
+    {
+      "check": "probe denominator is at least 8",
+      "pass": true
+    },
+    {
+      "check": "tuned accuracy clears chance by more than the rough bound",
+      "pass": false
+    },
+    {
+      "check": "accuracy delta clears 0.1000 by more than the rough bound",
+      "pass": false
+    }
+  ],
+  "failed_checks": [
+    "tuned accuracy clears chance by more than the rough bound",
+    "accuracy delta clears 0.1000 by more than the rough bound"
+  ],
+  "install_strength": {
+    "forced_choice": {
+      "tuned_acc": 0.5,
+      "base_acc": 0.25,
+      "n": 8,
+      "wilson": {
+        "low": 0.21521606221387757,
+        "high": 0.7847839377861224,
+        "center": 0.5,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "n_status": "ok",
+      "delta_acc": 0.25,
+      "estimand": "augmentation_holdout"
+    },
+    "generative": null
+  },
+  "inputs": {
+    "config": "configs/train_millbrook_hollow_v1.yaml",
+    "config_sha256": "7e1597fa301e8d15ec3f2f8e64c806f9a1df4a039ff45ab5b115d068f6e5a98e",
+    "probe_paths": [
+      "data/millbrook-hollow/main/probes.jsonl"
+    ],
+    "probe_hashes": [
+      "7e6f1bdd3c80a506041fc1250a52af8e3c7d43360f7f288b4ac468da8c97b5c4"
+    ],
+    "probe_sha256": "62635adaa04622e540824bf76fa21e9adcceb382a15be60442cdf28169dfb159",
+    "split_paths": [
+      "data/millbrook-hollow/main/splits/split_v2.json"
+    ],
+    "split_hashes": [
+      "0de4fbb0a527ef7ef0cccfc9a18fe2ad4c80b674f3cb2284468d4e099d6801e1"
+    ],
+    "split_sha256": "204fcebbc1effd065bf173176d82deb17d2f1d97f9d9b2da134911f17a46627b",
+    "token_stats_path": "data/_build/30_tokenized/millbrook_hollow_v1_stats.json",
+    "token_stats_sha256": "14250831a99796088f84602a87633bd8123d9d9b319386c09180e2d1bf657014",
+    "clean_tokens": 907
+  },
+  "base": {
+    "acc": 0.25,
+    "hits": 2,
+    "n": 8,
+    "wilson": {
+      "low": 0.071479212752109,
+      "high": 0.5907245696898311,
+      "center": 0.33110189122097006,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+    "n_status": "ok",
+    "min_n": 8,
+    "bar": 0.25,
+    "bar_status": "within-noise",
+    "clears_bar": false,
+    "within_noise_of_bar": true,
+    "per_predicate": {
+      "involves": {
+        "hits": 0,
+        "n": 1,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.7934506856227626,
+          "center": 0.3967253428113813,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "involves",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "lives_in": {
+        "hits": 0,
+        "n": 1,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.7934506856227626,
+          "center": 0.3967253428113813,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "lives_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "member_of": {
+        "hits": 0,
+        "n": 3,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.5614970317550455,
+          "center": 0.28074851587752275,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "member_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "occurs_at": {
+        "hits": 1,
+        "n": 1,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.20654931437723745,
+          "high": 1.0,
+          "center": 0.6032746571886187,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "occurs_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "works_at": {
+        "hits": 1,
+        "n": 2,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.09453120573423074,
+          "high": 0.9054687942657693,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "works_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      }
+    },
+    "probe_sha256": "62635adaa04622e540824bf76fa21e9adcceb382a15be60442cdf28169dfb159",
+    "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "model_sha256": "2db5482b20d746879bb3ef79b5203e9075a2e2b98f54ec7c2f281c1477ddc550"
+  },
+  "tuned": {
+    "acc": 0.5,
+    "hits": 4,
+    "n": 8,
+    "wilson": {
+      "low": 0.21521606221387757,
+      "high": 0.7847839377861224,
+      "center": 0.5,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+    "n_status": "ok",
+    "min_n": 8,
+    "bar": 0.25,
+    "bar_status": "within-noise",
+    "clears_bar": false,
+    "within_noise_of_bar": true,
+    "per_predicate": {
+      "involves": {
+        "hits": 1,
+        "n": 1,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.20654931437723745,
+          "high": 1.0,
+          "center": 0.6032746571886187,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "involves",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "lives_in": {
+        "hits": 1,
+        "n": 1,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.20654931437723745,
+          "high": 1.0,
+          "center": 0.6032746571886187,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "lives_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "member_of": {
+        "hits": 1,
+        "n": 3,
+        "acc": 0.3333333333333333,
+        "wilson": {
+          "low": 0.06149194472039615,
+          "high": 0.7923403991979523,
+          "center": 0.4269161719591742,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.2886751345948129,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "member_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "occurs_at": {
+        "hits": 0,
+        "n": 1,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.7934506856227626,
+          "center": 0.3967253428113813,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.5,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "occurs_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "works_at": {
+        "hits": 1,
+        "n": 2,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.09453120573423074,
+          "high": 0.9054687942657693,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.35355339059327373,
+        "n_status": "insufficient-n",
+        "min_n": 8,
+        "estimand": "augmentation_holdout",
+        "slice": "works_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      }
+    },
+    "probe_sha256": "62635adaa04622e540824bf76fa21e9adcceb382a15be60442cdf28169dfb159",
+    "path": "checkpoints/cpt/millbrook_hollow_v1",
+    "model_sha256": "80aced7b2a2df7719729b04bf5d09e3f6c838b459294354ed599fd5f1f3814e5",
+    "run_contract_sha256": "2718645011eff7c4011cf4096b969b67dd1ca18507376eac0f3570f5bae441ff",
+    "run_contract": {
+      "run_name": "millbrook_hollow_v1_cpt",
+      "precision": "fp4",
+      "int8_master": "storage",
+      "optimizer_lowbit": 4,
+      "save_dir": "checkpoints/cpt/millbrook_hollow_v1",
+      "init_from": "(base model)",
+      "tokenized": "data/_build/30_tokenized/millbrook_hollow_v1.arrow",
+      "tokenized_total_tokens": 6435,
+      "seq_len": 512,
+      "effective_batch": 16,
+      "max_steps": 90,
+      "decay_frac": 0.2,
+      "anneal": {
+        "active": false,
+        "start_step": 90,
+        "frac": 0.1,
+        "mix_tags": [
+          "hydrated",
+          "replay"
+        ],
+        "lr_end": 0.0,
+        "keep_pre": true,
+        "require_exposure": true,
+        "reason": "max_steps=90 < anneal.min_steps=500 (tiny-run disable)"
+      },
+      "scored_checkpoint": "final",
+      "cuda_visible_devices": "1",
+      "levers_on": [
+        "lever4_exposure_tracking"
+      ],
+      "smoke": false,
+      "mode": "cpt",
+      "fingerprint": "d66b7fce34d98ded",
+      "anneal_started": false,
+      "final_step": 90
+    }
+  }
+}

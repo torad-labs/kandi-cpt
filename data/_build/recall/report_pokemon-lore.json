@@ -4,130 +4,134 @@
   "min_coverage": 0.6,
   "estimand": "clean",
   "overall": {
-    "hits": 36,
-    "n": 116,
-    "ratio": 0.3103
+    "hits": 59,
+    "n": 164,
+    "ratio": 0.3598
   },
   "raw": {
-    "hits": 44,
-    "n": 418,
-    "ratio": 0.1053,
+    "hits": 66,
+    "n": 476,
+    "ratio": 0.1387,
     "per_predicate": {
       "allied_with": {
         "mean_ratio": 0.0,
-        "n_docs": 2
+        "n_docs": 1
       },
       "appears_in": {
-        "mean_ratio": 0.0,
-        "n_docs": 16
+        "mean_ratio": 0.0714,
+        "n_docs": 14
       },
       "evolves_into_lore": {
-        "mean_ratio": 0.4762,
-        "n_docs": 3
+        "mean_ratio": 0.4505,
+        "n_docs": 4
       },
       "follows": {
         "mean_ratio": 0.0,
-        "n_docs": 2
+        "n_docs": 1
       },
       "governs": {
-        "mean_ratio": 0.0,
+        "mean_ratio": 0.1429,
         "n_docs": 7
       },
       "involves": {
-        "mean_ratio": 0.0208,
-        "n_docs": 12
+        "mean_ratio": 0.0,
+        "n_docs": 14
       },
       "leads": {
         "mean_ratio": 0.0,
-        "n_docs": 2
+        "n_docs": 1
       },
       "located_in": {
-        "mean_ratio": 0.3417,
-        "n_docs": 16
+        "mean_ratio": 0.4206,
+        "n_docs": 14
       },
       "member_of": {
-        "mean_ratio": 0.2857,
-        "n_docs": 7
+        "mean_ratio": 0.125,
+        "n_docs": 8
       },
       "mentors": {
         "mean_ratio": 0.0,
         "n_docs": 1
       },
       "occurs_at": {
-        "mean_ratio": 0.1633,
-        "n_docs": 7
+        "mean_ratio": 0.2593,
+        "n_docs": 9
       },
       "opposes": {
-        "mean_ratio": 0.1667,
-        "n_docs": 6
+        "mean_ratio": 0.3,
+        "n_docs": 5
       },
       "originates_from": {
-        "mean_ratio": 0.0476,
-        "n_docs": 7
+        "mean_ratio": 0.225,
+        "n_docs": 5
       },
       "owns_pokemon": {
-        "mean_ratio": 0.0625,
-        "n_docs": 4
+        "mean_ratio": 0.3333,
+        "n_docs": 3
       },
       "precedes": {
         "mean_ratio": 0.0,
-        "n_docs": 3
+        "n_docs": 2
       },
       "rival_of": {
-        "mean_ratio": 0.25,
-        "n_docs": 4
+        "mean_ratio": 0.2,
+        "n_docs": 5
       }
     },
     "note": "Phase F estimand: ontology-predicate assertions, soft-object match, no validation/scoping"
   },
   "clean": {
-    "hits": 36,
-    "n": 116,
-    "ratio": 0.3103,
+    "hits": 59,
+    "n": 164,
+    "ratio": 0.3598,
     "per_predicate": {
       "allied_with": {
         "mean_ratio": 0.0,
-        "n_docs": 2
+        "n_docs": 1
       },
       "appears_in": {
-        "mean_ratio": 0.0,
+        "mean_ratio": 0.3333,
         "n_docs": 3
       },
       "evolves_into_lore": {
-        "mean_ratio": 0.9375,
-        "n_docs": 2
+        "mean_ratio": 0.6644,
+        "n_docs": 4
       },
       "governs": {
-        "mean_ratio": 0.0,
-        "n_docs": 3
-      },
-      "involves": {
-        "mean_ratio": 0.0417,
-        "n_docs": 6
-      },
-      "located_in": {
-        "mean_ratio": 0.75,
-        "n_docs": 7
-      },
-      "member_of": {
-        "mean_ratio": 0.6667,
-        "n_docs": 3
-      },
-      "occurs_at": {
-        "mean_ratio": 0.0714,
-        "n_docs": 2
-      },
-      "opposes": {
-        "mean_ratio": 0.2,
-        "n_docs": 5
-      },
-      "originates_from": {
         "mean_ratio": 0.25,
         "n_docs": 4
       },
-      "owns_pokemon": {
+      "involves": {
         "mean_ratio": 0.0,
+        "n_docs": 8
+      },
+      "leads": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "located_in": {
+        "mean_ratio": 0.8929,
+        "n_docs": 6
+      },
+      "member_of": {
+        "mean_ratio": 0.5,
         "n_docs": 2
+      },
+      "occurs_at": {
+        "mean_ratio": 0.6667,
+        "n_docs": 2
+      },
+      "opposes": {
+        "mean_ratio": 0.5,
+        "n_docs": 3
+      },
+      "originates_from": {
+        "mean_ratio": 0.4167,
+        "n_docs": 3
+      },
+      "owns_pokemon": {
+        "mean_ratio": 1.0,
+        "n_docs": 1
       },
       "rival_of": {
         "mean_ratio": 0.3333,
@@ -137,12 +141,12 @@
     "note": "validated + in-unit + canonical-matched; gate applies here"
   },
   "classes": {
-    "judge_rejected": 193,
-    "out_of_unit": 109,
-    "misses": 80,
-    "hits": 36,
+    "judge_rejected": 200,
+    "out_of_unit": 112,
+    "misses": 105,
+    "hits": 59,
     "match_mode": {
-      "exact": 35,
+      "exact": 58,
       "soft-object": 1,
       "canonical": 0
     }
@@ -151,47 +155,51 @@
   "per_predicate": {
     "allied_with": {
       "mean_ratio": 0.0,
-      "n_docs": 2
+      "n_docs": 1
     },
     "appears_in": {
-      "mean_ratio": 0.0,
+      "mean_ratio": 0.3333,
       "n_docs": 3
     },
     "evolves_into_lore": {
-      "mean_ratio": 0.9375,
-      "n_docs": 2
+      "mean_ratio": 0.6644,
+      "n_docs": 4
     },
     "governs": {
-      "mean_ratio": 0.0,
-      "n_docs": 3
-    },
-    "involves": {
-      "mean_ratio": 0.0417,
-      "n_docs": 6
-    },
-    "located_in": {
-      "mean_ratio": 0.75,
-      "n_docs": 7
-    },
-    "member_of": {
-      "mean_ratio": 0.6667,
-      "n_docs": 3
-    },
-    "occurs_at": {
-      "mean_ratio": 0.0714,
-      "n_docs": 2
-    },
-    "opposes": {
-      "mean_ratio": 0.2,
-      "n_docs": 5
-    },
-    "originates_from": {
       "mean_ratio": 0.25,
       "n_docs": 4
     },
-    "owns_pokemon": {
+    "involves": {
       "mean_ratio": 0.0,
+      "n_docs": 8
+    },
+    "leads": {
+      "mean_ratio": 0.0,
+      "n_docs": 1
+    },
+    "located_in": {
+      "mean_ratio": 0.8929,
+      "n_docs": 6
+    },
+    "member_of": {
+      "mean_ratio": 0.5,
       "n_docs": 2
+    },
+    "occurs_at": {
+      "mean_ratio": 0.6667,
+      "n_docs": 2
+    },
+    "opposes": {
+      "mean_ratio": 0.5,
+      "n_docs": 3
+    },
+    "originates_from": {
+      "mean_ratio": 0.4167,
+      "n_docs": 3
+    },
+    "owns_pokemon": {
+      "mean_ratio": 1.0,
+      "n_docs": 1
     },
     "rival_of": {
       "mean_ratio": 0.3333,
@@ -203,10 +211,10 @@
     "appears_in",
     "governs",
     "involves",
-    "occurs_at",
+    "leads",
+    "member_of",
     "opposes",
     "originates_from",
-    "owns_pokemon",
     "rival_of"
   ],
   "units": [
@@ -214,21 +222,21 @@
       "unit": "kanto",
       "n_docs_sampled": 20,
       "n_docs_total": 105,
-      "hits": 36,
-      "n": 116,
-      "ratio": 0.3103,
+      "hits": 59,
+      "n": 164,
+      "ratio": 0.3598,
       "raw": {
-        "hits": 44,
-        "n": 418,
-        "ratio": 0.1053
+        "hits": 66,
+        "n": 476,
+        "ratio": 0.1387
       },
       "classes": {
-        "judge_rejected": 193,
-        "out_of_unit": 109,
-        "misses": 80,
-        "hits": 36,
+        "judge_rejected": 200,
+        "out_of_unit": 112,
+        "misses": 105,
+        "hits": 59,
         "match_mode": {
-          "exact": 35,
+          "exact": 58,
           "soft-object": 1,
           "canonical": 0
         }
@@ -237,30 +245,100 @@
       "docs": [
         {
           "path": "List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
-          "hits": 0,
-          "n": 0,
-          "ratio": 1.0,
-          "per_predicate": {},
-          "misses": [],
+          "hits": 1,
+          "n": 4,
+          "ratio": 0.25,
+          "per_predicate": {
+            "originates_from": {
+              "hits": 1,
+              "n": 4,
+              "ratio": 0.25
+            }
+          },
+          "misses": [
+            {
+              "subject": "Genesect",
+              "predicate": "originates_from",
+              "object": "Unova"
+            },
+            {
+              "subject": "Zorua",
+              "predicate": "originates_from",
+              "object": "Unova"
+            },
+            {
+              "subject": "Zoroark",
+              "predicate": "originates_from",
+              "object": "Unova"
+            }
+          ],
           "judge_rejected": [
             {
               "subject": "Unova",
-              "predicate": "governs",
-              "object": "Unova Pok\u00e9dex",
-              "reject_reason": "object_type_unresolved: expected one of ['location', 'region'], got 'Unova Pok\u00e9dex'"
+              "predicate": "located_in",
+              "object": "region",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
             }
           ],
           "out_of_unit": [
             {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "located_in",
+              "subject": "Scolipede",
+              "predicate": "originates_from",
               "object": "Unova",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Cottonee",
+              "predicate": "originates_from",
+              "object": "Unova",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Alomomola",
+              "predicate": "originates_from",
+              "object": "Unova",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Joltik",
+              "predicate": "originates_from",
+              "object": "Unova",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Unova Pok\u00e9dex",
+              "predicate": "occurs_at",
+              "object": "Pok\u00e9mon Black and White",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Unova Pok\u00e9dex",
+              "predicate": "follows",
+              "object": "Kanto Pok\u00e9dex",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Unova Pok\u00e9dex",
+              "predicate": "precedes",
+              "object": "expanded Unova Pok\u00e9dex",
               "class": "out_of_unit"
             },
             {
               "subject": "Unova Pok\u00e9dex",
               "predicate": "involves",
               "object": "Victini",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Unova Pok\u00e9dex",
+              "predicate": "involves",
+              "object": "Keldeo",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Unova Pok\u00e9dex",
+              "predicate": "involves",
+              "object": "Meloetta",
               "class": "out_of_unit"
             },
             {
@@ -280,77 +358,17 @@
               "predicate": "involves",
               "object": "Zoroark",
               "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "involves",
-              "object": "Vullaby",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "involves",
-              "object": "Mandibuzz",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "involves",
-              "object": "Rufflet",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "involves",
-              "object": "Braviary",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "precedes",
-              "object": "expanded Unova Pok\u00e9dex",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "expanded Unova Pok\u00e9dex",
-              "predicate": "follows",
-              "object": "Unova Pok\u00e9dex",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Black",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Unova Pok\u00e9dex",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon White",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "expanded Unova Pok\u00e9dex",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Black 2",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "expanded Unova Pok\u00e9dex",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon White 2",
-              "class": "out_of_unit"
             }
           ],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
-            "n": 16,
-            "ratio": 0.0
+            "hits": 1,
+            "n": 18,
+            "ratio": 0.0556
           }
         },
         {
@@ -376,17 +394,24 @@
             {
               "subject": "GR Island",
               "predicate": "appears_in",
-              "object": "second game",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'second game'"
+              "object": "The Trading Card Game games",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
             },
             {
               "subject": "TCG Island",
               "predicate": "appears_in",
-              "object": "both games",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'both games'"
+              "object": "The Trading Card Game games",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
             }
           ],
-          "out_of_unit": [],
+          "out_of_unit": [
+            {
+              "subject": "The Trading Card Game games",
+              "predicate": "occurs_at",
+              "object": "The Trading Card Game Islands",
+              "class": "out_of_unit"
+            }
+          ],
           "match_mode_counts": {
             "exact": 0,
             "soft-object": 0,
@@ -394,8 +419,8 @@
           },
           "raw": {
             "hits": 2,
-            "n": 4,
-            "ratio": 0.5
+            "n": 5,
+            "ratio": 0.4
           }
         },
         {
@@ -424,11 +449,915 @@
           ],
           "judge_rejected": [
             {
-              "subject": "Spearow",
+              "subject": "Pichu",
               "predicate": "evolves_into_lore",
-              "object": "Fearow",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Fearow'"
+              "object": "Pikachu",
+              "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
             },
+            {
+              "subject": "Nidorino",
+              "predicate": "evolves_into_lore",
+              "object": "Nidoking",
+              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Nidoking'"
+            },
+            {
+              "subject": "Vileplume",
+              "predicate": "evolves_into_lore",
+              "object": "Bellossom",
+              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Bellossom'"
+            }
+          ],
+          "out_of_unit": [
+            {
+              "subject": "Sandshrew",
+              "predicate": "evolves_into_lore",
+              "object": "Sandslash",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Nidoran\u2640",
+              "predicate": "evolves_into_lore",
+              "object": "Nidorina",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Nidorina",
+              "predicate": "evolves_into_lore",
+              "object": "Nidoqueen",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Nidoran\u2642",
+              "predicate": "evolves_into_lore",
+              "object": "Nidorino",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Cleffa",
+              "predicate": "evolves_into_lore",
+              "object": "Clefairy",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Vulpix",
+              "predicate": "evolves_into_lore",
+              "object": "Ninetales",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Igglybuff",
+              "predicate": "evolves_into_lore",
+              "object": "Jigglypuff",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Jigglypuff",
+              "predicate": "evolves_into_lore",
+              "object": "Wigglytuff",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Paras",
+              "predicate": "evolves_into_lore",
+              "object": "Parasect",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Diglett",
+              "predicate": "evolves_into_lore",
+              "object": "Dugtrio",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Zubat",
+              "predicate": "evolves_into_lore",
+              "object": "Golbat",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Golbat",
+              "predicate": "evolves_into_lore",
+              "object": "Crobat",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Oddish",
+              "predicate": "evolves_into_lore",
+              "object": "Gloom",
+              "class": "out_of_unit"
+            }
+          ],
+          "match_mode_counts": {
+            "exact": 14,
+            "soft-object": 0,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 15,
+            "n": 32,
+            "ratio": 0.4688
+          }
+        },
+        {
+          "path": "Blaine_(Adventures).md",
+          "hits": 2,
+          "n": 21,
+          "ratio": 0.0952,
+          "per_predicate": {
+            "governs": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "involves": {
+              "hits": 0,
+              "n": 19,
+              "ratio": 0.0
+            },
+            "member_of": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            }
+          },
+          "misses": [
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Mewtwo"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Red"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Yellow"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Green"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Lance"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Misty"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Erika"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Brock"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Mew"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Entei"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Lugia"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Ho-Oh"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Aerodactyl"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Rapidash"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Growlithe"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Moltres"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Mewtwo"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Moltres"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Elite Four"
+            }
+          ],
+          "judge_rejected": [
+            {
+              "subject": "Blaine",
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Adventures",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Adventures'"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Team Rocket Hideout",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Team Rocket Hideout'"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Cerulean Cave",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Mt. Moon",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Cerise Island",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Indigo Plateau",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Celadon City",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Kanto",
+              "reject_reason": "object_type_mismatch: 'region' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Blaine",
+              "predicate": "involves",
+              "object": "Johto",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            }
+          ],
+          "out_of_unit": [],
+          "match_mode_counts": {
+            "exact": 2,
+            "soft-object": 0,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 2,
+            "n": 30,
+            "ratio": 0.0667
+          }
+        },
+        {
+          "path": "Janine.md",
+          "hits": 2,
+          "n": 5,
+          "ratio": 0.4,
+          "per_predicate": {
+            "allied_with": {
+              "hits": 0,
+              "n": 1,
+              "ratio": 0.0
+            },
+            "governs": {
+              "hits": 0,
+              "n": 1,
+              "ratio": 0.0
+            },
+            "leads": {
+              "hits": 0,
+              "n": 1,
+              "ratio": 0.0
+            },
+            "originates_from": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "rival_of": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            }
+          },
+          "misses": [
+            {
+              "subject": "Janine",
+              "predicate": "governs",
+              "object": "Fuchsia City"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "allied_with",
+              "object": "Koga"
+            },
+            {
+              "subject": "Koga",
+              "predicate": "leads",
+              "object": "Team Rocket"
+            }
+          ],
+          "judge_rejected": [
+            {
+              "subject": "Janine",
+              "predicate": "leads",
+              "object": "Fuchsia Gym",
+              "reject_reason": "object_type_mismatch: 'location' not in ['organization']"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "member_of",
+              "object": "Kanto",
+              "reject_reason": "object_type_mismatch: 'region' not in ['organization']"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "opposes",
+              "object": "Trainer",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Trainer'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "involves",
+              "object": "Kanto Leaders Tournament",
+              "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "involves",
+              "object": "World Leaders Tournament",
+              "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "involves",
+              "object": "Poison Type Expert Tournament",
+              "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "mentors",
+              "object": "junior Trainers",
+              "reject_reason": "object_type_unresolved: expected one of ['character'], got 'junior Trainers'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Stadium 2",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Stadium 2'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Masters EX",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Masters EX'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Pokopia",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Pokopia'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "appears_in",
+              "object": "GOTCHA!",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'GOTCHA!'"
+            },
+            {
+              "subject": "Janine",
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Adventures",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Adventures'"
+            },
+            {
+              "subject": "Venomoth",
+              "predicate": "owns_pokemon",
+              "object": "Janine",
+              "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
+            },
+            {
+              "subject": "Koga",
+              "predicate": "opposes",
+              "object": "Gym Leader",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Gym Leader'"
+            },
+            {
+              "subject": "Team Rocket",
+              "predicate": "member_of",
+              "object": "Giovanni",
+              "reject_reason": "object_type_mismatch: 'character' not in ['organization']"
+            }
+          ],
+          "out_of_unit": [],
+          "match_mode_counts": {
+            "exact": 2,
+            "soft-object": 0,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 2,
+            "n": 20,
+            "ratio": 0.1
+          }
+        },
+        {
+          "path": "Mt._Silver.md",
+          "hits": 2,
+          "n": 20,
+          "ratio": 0.1,
+          "per_predicate": {
+            "involves": {
+              "hits": 0,
+              "n": 16,
+              "ratio": 0.0
+            },
+            "located_in": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "occurs_at": {
+              "hits": 1,
+              "n": 3,
+              "ratio": 0.3333333333333333
+            }
+          },
+          "misses": [
+            {
+              "subject": "Ash",
+              "predicate": "occurs_at",
+              "object": "Mt. Silver"
+            },
+            {
+              "subject": "Silver Conference",
+              "predicate": "occurs_at",
+              "object": "Mt. Silver"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Larvitar"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Tyranitar"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Satchel"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Harrison"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Poacher Brothers"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Misdreavus"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Larvitar"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Machop"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Machoke"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Sneasel"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Quilava"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Cyndaquil"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Poliwrath"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Venusaur"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Professor Oak"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Johto League"
+            }
+          ],
+          "judge_rejected": [
+            {
+              "subject": "Mt. Silver",
+              "predicate": "located_in",
+              "object": "Johto",
+              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+            },
+            {
+              "subject": "Larvitar",
+              "predicate": "appears_in",
+              "object": "You're a Star, Larvitar!",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got \"You're a Star, Larvitar!\""
+            },
+            {
+              "subject": "Larvitar",
+              "predicate": "appears_in",
+              "object": "Mother of All Battles!",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mother of All Battles!'"
+            },
+            {
+              "subject": "Tyranitar",
+              "predicate": "appears_in",
+              "object": "Mother of All Battles!",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mother of All Battles!'"
+            },
+            {
+              "subject": "Silver Town",
+              "predicate": "located_in",
+              "object": "Johto",
+              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+            },
+            {
+              "subject": "Red",
+              "predicate": "appears_in",
+              "object": "Raising Raichu",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Raising Raichu'"
+            },
+            {
+              "subject": "Gold",
+              "predicate": "appears_in",
+              "object": "Raising Raichu",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Raising Raichu'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Silver Conference",
+              "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Center",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Fresh Water",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Fresh Water'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Flash",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Flash'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Kanto Route 28",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Silver Cave",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Silver Cave'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Mt. Silver Cave",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Ho-Oh Shrine",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Ranger Mason",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Ranger Mason'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Kanto League",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Kanto League'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Johto",
+              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Kanto",
+              "reject_reason": "object_type_mismatch: 'region' not in ['character', 'organization', 'species_lore']"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Master Trainer board game",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Master Trainer board game'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon the Comic",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon the Comic'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Stadium 2",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Stadium 2'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon HeartGold",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon HeartGold'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon SoulSilver",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon SoulSilver'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Gold",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Gold'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Silver",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Silver'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Crystal",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Crystal'"
+            },
+            {
+              "subject": "Mt. Silver",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Champions",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Champions'"
+            }
+          ],
+          "out_of_unit": [],
+          "match_mode_counts": {
+            "exact": 1,
+            "soft-object": 1,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 3,
+            "n": 48,
+            "ratio": 0.0625
+          }
+        },
+        {
+          "path": "Move_Tutor.md",
+          "hits": 0,
+          "n": 0,
+          "ratio": 1.0,
+          "per_predicate": {},
+          "misses": [],
+          "judge_rejected": [
+            {
+              "subject": "Bill's father",
+              "predicate": "located_in",
+              "object": "Goldenrod Game Corner",
+              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+            },
+            {
+              "subject": "Bill",
+              "predicate": "member_of",
+              "object": "Pok\u00e9 Maniac",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Pok\u00e9 Maniac'"
+            }
+          ],
+          "out_of_unit": [
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Mt. Battle",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Route 228",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Route 210",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Snowpoint City",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Route 212",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Survival Area",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Battle Resort",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Seafolk Village Pok\u00e9mon Center",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Hau'oli City",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Master Dojo",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Battle Tree",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Melemele Island",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Akala Island",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Ula'ula Island",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Move Tutor",
+              "predicate": "located_in",
+              "object": "Poni Island",
+              "class": "out_of_unit"
+            }
+          ],
+          "match_mode_counts": {
+            "exact": 0,
+            "soft-object": 0,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 0,
+            "n": 17,
+            "ratio": 0.0
+          }
+        },
+        {
+          "path": "List_of_Pok%C3%A9mon_by_evolutionary_line.md",
+          "hits": 18,
+          "n": 23,
+          "ratio": 0.7826,
+          "per_predicate": {
+            "evolves_into_lore": {
+              "hits": 18,
+              "n": 23,
+              "ratio": 0.782608695652174
+            }
+          },
+          "misses": [
+            {
+              "subject": "Clefairy",
+              "predicate": "evolves_into_lore",
+              "object": "Clefable"
+            },
+            {
+              "subject": "Gloom",
+              "predicate": "evolves_into_lore",
+              "object": "Vileplume"
+            },
+            {
+              "subject": "Machop",
+              "predicate": "evolves_into_lore",
+              "object": "Machoke"
+            },
+            {
+              "subject": "Machoke",
+              "predicate": "evolves_into_lore",
+              "object": "Machamp"
+            },
+            {
+              "subject": "Magnemite",
+              "predicate": "evolves_into_lore",
+              "object": "Magneton"
+            }
+          ],
+          "judge_rejected": [
             {
               "subject": "Pichu",
               "predicate": "evolves_into_lore",
@@ -446,15 +1375,15 @@
               "predicate": "evolves_into_lore",
               "object": "Persian",
               "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Persian'"
+            },
+            {
+              "subject": "Magneton",
+              "predicate": "evolves_into_lore",
+              "object": "Magnezone",
+              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Magnezone'"
             }
           ],
           "out_of_unit": [
-            {
-              "subject": "Ekans",
-              "predicate": "evolves_into_lore",
-              "object": "Arbok",
-              "class": "out_of_unit"
-            },
             {
               "subject": "Sandshrew",
               "predicate": "evolves_into_lore",
@@ -538,916 +1467,135 @@
               "predicate": "evolves_into_lore",
               "object": "Dugtrio",
               "class": "out_of_unit"
-            }
-          ],
-          "match_mode_counts": {
-            "exact": 14,
-            "soft-object": 0,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 15,
-            "n": 35,
-            "ratio": 0.4286
-          }
-        },
-        {
-          "path": "Blaine_(Adventures).md",
-          "hits": 3,
-          "n": 17,
-          "ratio": 0.1765,
-          "per_predicate": {
-            "allied_with": {
-              "hits": 0,
-              "n": 11,
-              "ratio": 0.0
-            },
-            "located_in": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            },
-            "member_of": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            },
-            "opposes": {
-              "hits": 1,
-              "n": 2,
-              "ratio": 0.5
-            },
-            "owns_pokemon": {
-              "hits": 0,
-              "n": 2,
-              "ratio": 0.0
-            }
-          },
-          "misses": [
-            {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Red"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Yellow"
+              "subject": "Psyduck",
+              "predicate": "evolves_into_lore",
+              "object": "Golduck",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Erika"
+              "subject": "Mankey",
+              "predicate": "evolves_into_lore",
+              "object": "Primeape",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Brock"
+              "subject": "Poliwag",
+              "predicate": "evolves_into_lore",
+              "object": "Poliwhirl",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Misty"
+              "subject": "Poliwhirl",
+              "predicate": "evolves_into_lore",
+              "object": "Poliwrath",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Sabrina"
+              "subject": "Abra",
+              "predicate": "evolves_into_lore",
+              "object": "Kadabra",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Lt. Surge"
+              "subject": "Kadabra",
+              "predicate": "evolves_into_lore",
+              "object": "Alakazam",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Koga"
+              "subject": "Bellsprout",
+              "predicate": "evolves_into_lore",
+              "object": "Weepinbell",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Green"
+              "subject": "Weepinbell",
+              "predicate": "evolves_into_lore",
+              "object": "Victreebel",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Bill"
+              "subject": "Tentacool",
+              "predicate": "evolves_into_lore",
+              "object": "Tentacruel",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "allied_with",
-              "object": "Clair"
+              "subject": "Geodude",
+              "predicate": "evolves_into_lore",
+              "object": "Graveler",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "owns_pokemon",
-              "object": "Aerodactyl"
+              "subject": "Graveler",
+              "predicate": "evolves_into_lore",
+              "object": "Golem",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "owns_pokemon",
-              "object": "Growlithe"
-            },
-            {
-              "subject": "Team Rocket",
-              "predicate": "opposes",
-              "object": "Blaine"
-            }
-          ],
-          "judge_rejected": [
-            {
-              "subject": "Blaine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Adventures",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Adventures'"
-            },
-            {
-              "subject": "Blaine",
-              "predicate": "owns_pokemon",
+              "subject": "Ponyta",
+              "predicate": "evolves_into_lore",
               "object": "Rapidash",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Rapidash'"
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "owns_pokemon",
-              "object": "Mewtwo",
-              "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
+              "subject": "Farfetch'd",
+              "predicate": "evolves_into_lore",
+              "object": "Sirfetch'd",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Blaine",
-              "predicate": "located_in",
-              "object": "Cinnabar Island",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+              "subject": "Doduo",
+              "predicate": "evolves_into_lore",
+              "object": "Dodrio",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Mewtwo",
-              "predicate": "originates_from",
-              "object": "Blaine",
-              "reject_reason": "object_type_mismatch: 'character' not in ['region']"
+              "subject": "Seel",
+              "predicate": "evolves_into_lore",
+              "object": "Dewgong",
+              "class": "out_of_unit"
             },
             {
-              "subject": "Mewtwo",
-              "predicate": "involves",
-              "object": "And Mewtwo Too?!",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
-            },
-            {
-              "subject": "Mewtwo",
-              "predicate": "involves",
-              "object": "The Legend",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
-            },
-            {
-              "subject": "Red",
-              "predicate": "appears_in",
-              "object": "Red, Green & Blue arc",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Red, Green & Blue arc'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "appears_in",
-              "object": "Yellow arc",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Yellow arc'"
-            },
-            {
-              "subject": "Red",
-              "predicate": "involves",
-              "object": "Holy Moltres",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Holy Moltres'"
-            },
-            {
-              "subject": "Red",
-              "predicate": "involves",
-              "object": "And Mewtwo Too?!",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "involves",
-              "object": "Purrrr-sian",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Purrrr-sian'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "involves",
-              "object": "Putting It on the Line...Against Arcanine",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Putting It on the Line...Against Arcanine'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "involves",
-              "object": "Allied by Alakazam!",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Allied by Alakazam!'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "involves",
-              "object": "Airing Out Aerodactyl",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Airing Out Aerodactyl'"
-            },
-            {
-              "subject": "Yellow",
-              "predicate": "involves",
-              "object": "The Legend",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
-            },
-            {
-              "subject": "Blaine",
-              "predicate": "involves",
-              "object": "Yikes, It's Yanma!",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got \"Yikes, It's Yanma!\""
-            },
-            {
-              "subject": "Blaine",
-              "predicate": "involves",
-              "object": "Entranced by Entei",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Entranced by Entei'"
-            },
-            {
-              "subject": "Blaine",
-              "predicate": "involves",
-              "object": "Lugia and Ho-Oh on the Loose, Part 1",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Lugia and Ho-Oh on the Loose, Part 1'"
-            },
-            {
-              "subject": "Kanto",
-              "predicate": "involves",
-              "object": "Red, Green & Blue arc",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Red, Green & Blue arc'"
-            },
-            {
-              "subject": "Kanto",
-              "predicate": "involves",
-              "object": "Yellow arc",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Yellow arc'"
-            },
-            {
-              "subject": "Kanto",
-              "predicate": "involves",
-              "object": "Gold, Silver & Crystal arc",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Gold, Silver & Crystal arc'"
+              "subject": "Grimer",
+              "predicate": "evolves_into_lore",
+              "object": "Muk",
+              "class": "out_of_unit"
             }
           ],
-          "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 3,
+            "exact": 18,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 4,
-            "n": 39,
-            "ratio": 0.1026
-          }
-        },
-        {
-          "path": "Janine.md",
-          "hits": 1,
-          "n": 5,
-          "ratio": 0.2,
-          "per_predicate": {
-            "allied_with": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "governs": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "opposes": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "rival_of": {
-              "hits": 1,
-              "n": 2,
-              "ratio": 0.5
-            }
-          },
-          "misses": [
-            {
-              "subject": "Janine",
-              "predicate": "rival_of",
-              "object": "Koga"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "governs",
-              "object": "Fuchsia City"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "opposes",
-              "object": "Suicune"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "allied_with",
-              "object": "Koga"
-            }
-          ],
-          "judge_rejected": [
-            {
-              "subject": "Janine",
-              "predicate": "leads",
-              "object": "Fuchsia Gym",
-              "reject_reason": "object_type_mismatch: 'location' not in ['organization']"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "member_of",
-              "object": "Kanto Gym Leaders",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Kanto Gym Leaders'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "member_of",
-              "object": "Johto Gym Leaders",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Johto Gym Leaders'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "opposes",
-              "object": "Trainer (Protagonist)",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Trainer (Protagonist)'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Gold",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Gold'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Silver",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Silver'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Crystal",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Crystal'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon HeartGold",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon HeartGold'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon SoulSilver",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon SoulSilver'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Black 2",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Black 2'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon White 2",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon White 2'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Stadium 2",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Stadium 2'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Masters EX",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Masters EX'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Pokopia",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Pokopia'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "GOTCHA!",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'GOTCHA!'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Adventures",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Adventures'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "located_in",
-              "object": "Fuchsia City",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "member_of",
-              "object": "Kanto Leaders Tournament",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Kanto Leaders Tournament'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "member_of",
-              "object": "World Leaders Tournament",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'World Leaders Tournament'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "member_of",
-              "object": "Poison Type Expert Tournament",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Poison Type Expert Tournament'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "mentors",
-              "object": "Junior Trainers (Fuchsia Gym)",
-              "reject_reason": "object_type_unresolved: expected one of ['character'], got 'Junior Trainers (Fuchsia Gym)'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Fuchsia Zoo",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Fuchsia Zoo'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Celadon Department Store",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Celadon Department Store'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Victory Road",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Victory Road'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Saffron City's Fighting Dojo",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got \"Saffron City's Fighting Dojo\""
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon League Reception Gate",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon League Reception Gate'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "owns_pokemon",
-              "object": "Venomoth",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Venomoth'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "owns_pokemon",
-              "object": "Dire Hit",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Dire Hit'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "owns_pokemon",
-              "object": "Full Restores",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Full Restores'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Fuchsia Gym",
-              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Goldenrod Museum",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Goldenrod Museum'"
-            },
-            {
-              "subject": "Janine",
-              "predicate": "appears_in",
-              "object": "Withered Wasteland",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Withered Wasteland'"
-            }
-          ],
-          "out_of_unit": [],
-          "match_mode_counts": {
-            "exact": 1,
-            "soft-object": 0,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 1,
-            "n": 37,
-            "ratio": 0.027
-          }
-        },
-        {
-          "path": "Mt._Silver.md",
-          "hits": 4,
-          "n": 12,
-          "ratio": 0.3333,
-          "per_predicate": {
-            "evolves_into_lore": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            },
-            "governs": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "located_in": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            },
-            "occurs_at": {
-              "hits": 1,
-              "n": 7,
-              "ratio": 0.14285714285714285
-            },
-            "opposes": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "originates_from": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            }
-          },
-          "misses": [
-            {
-              "subject": "Ash",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Satchel",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Poacher Brothers",
-              "predicate": "opposes",
-              "object": "Ash"
-            },
-            {
-              "subject": "Harrison",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Red",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Sabrina",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Gold",
-              "predicate": "occurs_at",
-              "object": "Mt. Silver"
-            },
-            {
-              "subject": "Ranger Mason",
-              "predicate": "governs",
-              "object": "Mt. Silver Pok\u00e9mon Preserve"
-            }
-          ],
-          "judge_rejected": [
-            {
-              "subject": "Mt. Silver",
-              "predicate": "located_in",
-              "object": "Johto",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-            },
-            {
-              "subject": "Mt. Silver Cave",
-              "predicate": "located_in",
-              "object": "Mt. Silver",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-            },
-            {
-              "subject": "Larvitar",
-              "predicate": "appears_in",
-              "object": "Mt. Silver",
-              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
-            },
-            {
-              "subject": "Misdreavus",
-              "predicate": "appears_in",
-              "object": "Mt. Silver",
-              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
-            },
-            {
-              "subject": "Larvitar",
-              "predicate": "involves",
-              "object": "Mt. Silver Pok\u00e9mon Preserve",
-              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
-            },
-            {
-              "subject": "Silver Town",
-              "predicate": "located_in",
-              "object": "Mt. Silver",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-            },
-            {
-              "subject": "Silver Conference",
-              "predicate": "follows",
-              "object": "A Claim to Flame",
-              "reject_reason": "object_type_unresolved: expected one of ['event'], got 'A Claim to Flame'"
-            },
-            {
-              "subject": "Silver Conference",
-              "predicate": "precedes",
-              "object": "Johto Photo Finish",
-              "reject_reason": "object_type_unresolved: expected one of ['event'], got 'Johto Photo Finish'"
-            },
-            {
-              "subject": "Mt. Silver",
-              "predicate": "involves",
-              "object": "Silver Conference",
-              "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
-            },
-            {
-              "subject": "Mt. Silver",
-              "predicate": "involves",
-              "object": "Ho-Oh Shrine",
-              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
-            },
-            {
-              "subject": "Mt. Silver",
-              "predicate": "involves",
-              "object": "Pok\u00e9mon Center",
-              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
-            }
-          ],
-          "out_of_unit": [
-            {
-              "subject": "Fresh Water",
-              "predicate": "originates_from",
-              "object": "Mt. Silver",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Flash",
-              "predicate": "involves",
-              "object": "Mt. Silver Cave",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Shirogane Mt.",
-              "predicate": "originates_from",
-              "object": "Mt. Silver",
-              "class": "out_of_unit"
-            }
-          ],
-          "match_mode_counts": {
-            "exact": 3,
-            "soft-object": 1,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 5,
-            "n": 26,
-            "ratio": 0.1923
-          }
-        },
-        {
-          "path": "Move_Tutor.md",
-          "hits": 0,
-          "n": 0,
-          "ratio": 1.0,
-          "per_predicate": {},
-          "misses": [],
-          "judge_rejected": [
-            {
-              "subject": "Bill's father",
-              "predicate": "located_in",
-              "object": "Goldenrod Game Corner",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-            }
-          ],
-          "out_of_unit": [
-            {
-              "subject": "Move Tutor",
-              "predicate": "occurs_at",
-              "object": "Goldenrod Game Corner",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "involves",
-              "object": "Teaching Pok\u00e9mon moves",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Crystal",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Emerald",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon XD",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon Platinum",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Pok\u00e9mon HeartGold and SoulSilver",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Alola region",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "Let's Go, Pikachu! and Let's Go, Eevee!",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "appears_in",
-              "object": "The Isle of Armor",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Route 228",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Route 210",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Snowpoint City",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Route 212",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Survival Area",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Seafolk Village",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Hau'oli City",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Melemele Island",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Akala Island",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Ula'ula Island",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Move Tutor",
-              "predicate": "located_in",
-              "object": "Poni Island",
-              "class": "out_of_unit"
-            }
-          ],
-          "match_mode_counts": {
-            "exact": 0,
-            "soft-object": 0,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 0,
-            "n": 22,
-            "ratio": 0.0
-          }
-        },
-        {
-          "path": "List_of_Pok%C3%A9mon_by_evolutionary_line.md",
-          "hits": 0,
-          "n": 0,
-          "ratio": 1.0,
-          "per_predicate": {},
-          "misses": [],
-          "judge_rejected": [],
-          "out_of_unit": [],
-          "match_mode_counts": {
-            "exact": 0,
-            "soft-object": 0,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 0,
-            "n": 0,
-            "ratio": 1.0
+            "hits": 19,
+            "n": 57,
+            "ratio": 0.3333
           }
         },
         {
           "path": "Unova.md",
           "hits": 6,
-          "n": 18,
-          "ratio": 0.3333,
+          "n": 16,
+          "ratio": 0.375,
           "per_predicate": {
-            "appears_in": {
-              "hits": 0,
-              "n": 5,
-              "ratio": 0.0
-            },
-            "governs": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
             "located_in": {
               "hits": 6,
-              "n": 8,
-              "ratio": 0.75
+              "n": 7,
+              "ratio": 0.8571428571428571
             },
             "originates_from": {
               "hits": 0,
-              "n": 4,
+              "n": 9,
               "ratio": 0.0
             }
           },
           "misses": [
             {
-              "subject": "Unova",
-              "predicate": "governs",
-              "object": "Blueberry Academy"
-            },
-            {
-              "subject": "Skyarrow Bridge",
-              "predicate": "located_in",
-              "object": "Unova"
-            },
-            {
-              "subject": "Battle Subway",
+              "subject": "Blueberry Academy",
               "predicate": "located_in",
               "object": "Unova"
             },
@@ -1468,17 +1616,17 @@
             },
             {
               "subject": "Terrakion",
-              "predicate": "appears_in",
+              "predicate": "originates_from",
               "object": "Unova"
             },
             {
               "subject": "Virizion",
-              "predicate": "appears_in",
+              "predicate": "originates_from",
               "object": "Unova"
             },
             {
               "subject": "Cobalion",
-              "predicate": "appears_in",
+              "predicate": "originates_from",
               "object": "Unova"
             },
             {
@@ -1488,12 +1636,12 @@
             },
             {
               "subject": "Thundurus",
-              "predicate": "appears_in",
+              "predicate": "originates_from",
               "object": "Unova"
             },
             {
               "subject": "Tornadus",
-              "predicate": "appears_in",
+              "predicate": "originates_from",
               "object": "Unova"
             }
           ],
@@ -1509,9 +1657,46 @@
               "predicate": "originates_from",
               "object": "New York City metropolitan area",
               "reject_reason": "object_type_unresolved: expected one of ['region'], got 'New York City metropolitan area'"
+            },
+            {
+              "subject": "Unova",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Black and White",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Black and White'"
+            },
+            {
+              "subject": "Unova",
+              "predicate": "involves",
+              "object": "Pok\u00e9mon Black 2 and White 2",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Pok\u00e9mon Black 2 and White 2'"
+            },
+            {
+              "subject": "Blueberry Academy",
+              "predicate": "involves",
+              "object": "The Indigo Disk",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Indigo Disk'"
             }
           ],
-          "out_of_unit": [],
+          "out_of_unit": [
+            {
+              "subject": "Relic items",
+              "predicate": "originates_from",
+              "object": "Abyssal Ruins",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Skyarrow Bridge",
+              "predicate": "located_in",
+              "object": "Unova",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Battle Subway",
+              "predicate": "located_in",
+              "object": "Unova",
+              "class": "out_of_unit"
+            }
+          ],
           "match_mode_counts": {
             "exact": 6,
             "soft-object": 0,
@@ -1519,19 +1704,19 @@
           },
           "raw": {
             "hits": 6,
-            "n": 20,
-            "ratio": 0.3
+            "n": 24,
+            "ratio": 0.25
           }
         },
         {
           "path": "Lanette.md",
           "hits": 0,
-          "n": 6,
+          "n": 7,
           "ratio": 0.0,
           "per_predicate": {
             "involves": {
               "hits": 0,
-              "n": 5,
+              "n": 6,
               "ratio": 0.0
             },
             "rival_of": {
@@ -1545,6 +1730,11 @@
               "subject": "Lanette",
               "predicate": "rival_of",
               "object": "Bill"
+            },
+            {
+              "subject": "Lanette",
+              "predicate": "involves",
+              "object": "Castform"
             },
             {
               "subject": "Lanette",
@@ -1619,19 +1809,13 @@
               "subject": "Lanette",
               "predicate": "governs",
               "object": "Pok\u00e9mon Storage System",
-              "reject_reason": "object_type_mismatch: 'species_lore' not in ['location', 'region']"
+              "reject_reason": "object_type_unresolved: expected one of ['location', 'region'], got 'Pok\u00e9mon Storage System'"
             },
             {
               "subject": "Lanette",
               "predicate": "member_of",
               "object": "Pok\u00e9mon Adventures",
               "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Pok\u00e9mon Adventures'"
-            },
-            {
-              "subject": "Lanette",
-              "predicate": "involves",
-              "object": "Castform",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Castform'"
             },
             {
               "subject": "Lanette",
@@ -1672,222 +1856,204 @@
         },
         {
           "path": "Mirage_Kingdom.md",
-          "hits": 0,
-          "n": 1,
-          "ratio": 0.0,
+          "hits": 5,
+          "n": 12,
+          "ratio": 0.4167,
           "per_predicate": {
-            "owns_pokemon": {
+            "appears_in": {
+              "hits": 0,
+              "n": 5,
+              "ratio": 0.0
+            },
+            "evolves_into_lore": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "governs": {
               "hits": 0,
               "n": 1,
               "ratio": 0.0
+            },
+            "involves": {
+              "hits": 0,
+              "n": 1,
+              "ratio": 0.0
+            },
+            "located_in": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "occurs_at": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "opposes": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            },
+            "owns_pokemon": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
             }
           },
           "misses": [
             {
+              "subject": "Mirage Kingdom",
+              "predicate": "governs",
+              "object": "Togepi Paradise"
+            },
+            {
+              "subject": "Ash",
+              "predicate": "appears_in",
+              "object": "The Princess and the Togepi"
+            },
+            {
               "subject": "Misty",
-              "predicate": "owns_pokemon",
+              "predicate": "appears_in",
+              "object": "The Princess and the Togepi"
+            },
+            {
+              "subject": "Team Rocket",
+              "predicate": "appears_in",
+              "object": "The Princess and the Togepi"
+            },
+            {
+              "subject": "Princess Sara",
+              "predicate": "appears_in",
+              "object": "The Princess and the Togepi"
+            },
+            {
+              "subject": "Colonel Hansen",
+              "predicate": "appears_in",
+              "object": "The Princess and the Togepi"
+            },
+            {
+              "subject": "Mirage Kingdom",
+              "predicate": "involves",
               "object": "Togepi"
             }
           ],
           "judge_rejected": [
             {
-              "subject": "Togepi",
-              "predicate": "evolves_into_lore",
-              "object": "Togetic",
-              "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Togetic'"
-            },
-            {
-              "subject": "Ash",
-              "predicate": "appears_in",
-              "object": "The Princess and the Togepi",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Princess and the Togepi'"
-            },
-            {
-              "subject": "Misty",
-              "predicate": "appears_in",
-              "object": "The Princess and the Togepi",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Princess and the Togepi'"
-            },
-            {
-              "subject": "Team Rocket",
-              "predicate": "appears_in",
-              "object": "The Princess and the Togepi",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Princess and the Togepi'"
-            }
-          ],
-          "out_of_unit": [
-            {
-              "subject": "Mirage Kingdom",
-              "predicate": "located_in",
-              "object": "Hoenn",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Mirage Kingdom",
-              "predicate": "governs",
-              "object": "Togepi Paradise",
-              "class": "out_of_unit"
-            },
-            {
               "subject": "Colonel Hansen",
               "predicate": "member_of",
               "object": "Mirage Kingdom",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Colonel Hansen",
-              "predicate": "opposes",
-              "object": "Princess Sara",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Princess Sara",
-              "predicate": "appears_in",
-              "object": "The Princess and the Togepi",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Colonel Hansen",
-              "predicate": "appears_in",
-              "object": "The Princess and the Togepi",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Mirage Kingdom",
-              "predicate": "involves",
-              "object": "Togepi",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "The Princess and the Togepi",
-              "predicate": "occurs_at",
-              "object": "Mirage Kingdom",
-              "class": "out_of_unit"
-            }
-          ],
-          "match_mode_counts": {
-            "exact": 0,
-            "soft-object": 0,
-            "canonical": 0
-          },
-          "raw": {
-            "hits": 0,
-            "n": 13,
-            "ratio": 0.0
-          }
-        },
-        {
-          "path": "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
-          "hits": 0,
-          "n": 3,
-          "ratio": 0.0,
-          "per_predicate": {
-            "originates_from": {
-              "hits": 0,
-              "n": 3,
-              "ratio": 0.0
-            }
-          },
-          "misses": [
-            {
-              "subject": "Browt",
-              "predicate": "originates_from",
-              "object": "Kanto"
-            },
-            {
-              "subject": "Pombon",
-              "predicate": "originates_from",
-              "object": "Kanto"
-            },
-            {
-              "subject": "Gecqua",
-              "predicate": "originates_from",
-              "object": "Kanto"
-            }
-          ],
-          "judge_rejected": [
-            {
-              "subject": "Kanto",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Johto",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Hoenn",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Sinnoh",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Unova",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Kalos",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Alola",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Galar",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Hisui",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
-            },
-            {
-              "subject": "Paldea",
-              "predicate": "located_in",
-              "object": "region",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
+              "reject_reason": "object_type_mismatch: 'location' not in ['organization']"
             }
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 5,
+            "soft-object": 0,
+            "canonical": 0
+          },
+          "raw": {
+            "hits": 5,
+            "n": 13,
+            "ratio": 0.3846
+          }
+        },
+        {
+          "path": "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0,
+          "per_predicate": {
+            "appears_in": {
+              "hits": 1,
+              "n": 1,
+              "ratio": 1.0
+            }
+          },
+          "misses": [],
+          "judge_rejected": [
+            {
+              "subject": "Kanto",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Johto",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Hoenn",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Sinnoh",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Unova",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Kalos",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Alola",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Galar",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Hisui",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            },
+            {
+              "subject": "Paldea",
+              "predicate": "located_in",
+              "object": "National Pok\u00e9dex",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'National Pok\u00e9dex'"
+            }
+          ],
+          "out_of_unit": [],
+          "match_mode_counts": {
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
             "hits": 1,
-            "n": 13,
-            "ratio": 0.0769
+            "n": 11,
+            "ratio": 0.0909
           }
         },
         {
           "path": "Pok%C3%A9mon_Egg.md",
           "hits": 0,
-          "n": 7,
+          "n": 9,
           "ratio": 0.0,
           "per_predicate": {
             "involves": {
               "hits": 0,
-              "n": 7,
+              "n": 9,
               "ratio": 0.0
             }
           },
@@ -1906,6 +2072,16 @@
               "subject": "Pok\u00e9mon Egg",
               "predicate": "involves",
               "object": "Mr. Pok\u00e9mon"
+            },
+            {
+              "subject": "Pok\u00e9mon Egg",
+              "predicate": "involves",
+              "object": "Azurill"
+            },
+            {
+              "subject": "Pok\u00e9mon Egg",
+              "predicate": "involves",
+              "object": "Wynaut"
             },
             {
               "subject": "Pok\u00e9mon Egg",
@@ -1994,18 +2170,6 @@
               "predicate": "involves",
               "object": "Violet City",
               "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
-            },
-            {
-              "subject": "Pok\u00e9mon Egg",
-              "predicate": "involves",
-              "object": "Azurill",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Azurill'"
-            },
-            {
-              "subject": "Pok\u00e9mon Egg",
-              "predicate": "involves",
-              "object": "Wynaut",
-              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Wynaut'"
             },
             {
               "subject": "Pok\u00e9mon Egg",
@@ -2134,7 +2298,7 @@
               "subject": "Grand Oak",
               "predicate": "appears_in",
               "object": "Pok\u00e9mon HOME",
-              "reject_reason": "object_type_mismatch: 'organization' not in ['event', 'region']"
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon HOME'"
             },
             {
               "subject": "Grand Oak",
@@ -2146,7 +2310,13 @@
               "subject": "Grand Oak",
               "predicate": "governs",
               "object": "Pok\u00e9mon HOME",
-              "reject_reason": "object_type_mismatch: 'organization' not in ['location', 'region']"
+              "reject_reason": "object_type_unresolved: expected one of ['location', 'region'], got 'Pok\u00e9mon HOME'"
+            },
+            {
+              "subject": "Grand Oak",
+              "predicate": "occurs_at",
+              "object": "mobile version of Pok\u00e9mon HOME",
+              "reject_reason": "object_type_unresolved: expected one of ['location'], got 'mobile version of Pok\u00e9mon HOME'"
             },
             {
               "subject": "Grand Oak",
@@ -2163,20 +2333,20 @@
           },
           "raw": {
             "hits": 0,
-            "n": 5,
+            "n": 6,
             "ratio": 0.0
           }
         },
         {
           "path": "Mt._Pyre.md",
-          "hits": 4,
-          "n": 14,
-          "ratio": 0.2857,
+          "hits": 2,
+          "n": 9,
+          "ratio": 0.2222,
           "per_predicate": {
             "involves": {
-              "hits": 2,
-              "n": 8,
-              "ratio": 0.25
+              "hits": 0,
+              "n": 4,
+              "ratio": 0.0
             },
             "located_in": {
               "hits": 1,
@@ -2188,11 +2358,6 @@
               "n": 2,
               "ratio": 0.0
             },
-            "occurs_at": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
             "opposes": {
               "hits": 1,
               "n": 2,
@@ -2200,11 +2365,6 @@
             }
           },
           "misses": [
-            {
-              "subject": "Mt. Pyre",
-              "predicate": "occurs_at",
-              "object": "Route 122"
-            },
             {
               "subject": "Team Magma",
               "predicate": "opposes",
@@ -2219,16 +2379,6 @@
               "subject": "Archie",
               "predicate": "member_of",
               "object": "Team Aqua"
-            },
-            {
-              "subject": "Mt. Pyre",
-              "predicate": "involves",
-              "object": "Red Orb"
-            },
-            {
-              "subject": "Mt. Pyre",
-              "predicate": "involves",
-              "object": "Blue Orb"
             },
             {
               "subject": "Mt. Pyre",
@@ -2253,22 +2403,52 @@
           ],
           "judge_rejected": [
             {
+              "subject": "Mt. Pyre",
+              "predicate": "occurs_at",
+              "object": "Route 122",
+              "reject_reason": "object_type_unresolved: expected one of ['location'], got 'Route 122'"
+            },
+            {
+              "subject": "Team Aqua",
+              "predicate": "involves",
+              "object": "Blue Orb",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Blue Orb'"
+            },
+            {
+              "subject": "Team Magma",
+              "predicate": "involves",
+              "object": "Red Orb",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Red Orb'"
+            },
+            {
               "subject": "Phoebe",
               "predicate": "appears_in",
               "object": "Mt. Pyre",
               "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Mt. Pyre",
+              "predicate": "involves",
+              "object": "Red Orb",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Red Orb'"
+            },
+            {
+              "subject": "Mt. Pyre",
+              "predicate": "involves",
+              "object": "Blue Orb",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Blue Orb'"
             }
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 4,
+            "exact": 2,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 4,
+            "hits": 2,
             "n": 15,
-            "ratio": 0.2667
+            "ratio": 0.1333
           }
         },
         {
@@ -2291,6 +2471,11 @@
           "misses": [
             {
               "subject": "Decolore Islands",
+              "predicate": "appears_in",
+              "object": "Farewell, Unova! Setting Sail For New Adventures!"
+            },
+            {
+              "subject": "Decolore Islands",
               "predicate": "involves",
               "object": "Ash"
             },
@@ -2303,11 +2488,6 @@
               "subject": "Decolore Islands",
               "predicate": "involves",
               "object": "Cilan"
-            },
-            {
-              "subject": "Decolore Islands",
-              "predicate": "appears_in",
-              "object": "Farewell, Unova! Setting Sail For New Adventures!"
             }
           ],
           "judge_rejected": [
@@ -2322,12 +2502,6 @@
               "predicate": "rival_of",
               "object": "Orange Islands",
               "reject_reason": "object_type_mismatch: 'region' not in ['character', 'organization']"
-            },
-            {
-              "subject": "Decolore Islands",
-              "predicate": "precedes",
-              "object": "Kanto",
-              "reject_reason": "object_type_mismatch: 'region' not in ['event']"
             }
           ],
           "out_of_unit": [],
@@ -2338,42 +2512,77 @@
           },
           "raw": {
             "hits": 1,
-            "n": 7,
-            "ratio": 0.1429
+            "n": 6,
+            "ratio": 0.1667
           }
         },
         {
           "path": "Lake_Valor.md",
-          "hits": 2,
-          "n": 4,
-          "ratio": 0.5,
+          "hits": 1,
+          "n": 9,
+          "ratio": 0.1111,
           "per_predicate": {
+            "evolves_into_lore": {
+              "hits": 0,
+              "n": 3,
+              "ratio": 0.0
+            },
+            "governs": {
+              "hits": 0,
+              "n": 1,
+              "ratio": 0.0
+            },
             "located_in": {
               "hits": 1,
               "n": 2,
               "ratio": 0.5
             },
-            "member_of": {
-              "hits": 1,
-              "n": 1,
-              "ratio": 1.0
-            },
             "opposes": {
               "hits": 0,
-              "n": 1,
+              "n": 3,
               "ratio": 0.0
             }
           },
           "misses": [
+            {
+              "subject": "Azelf",
+              "predicate": "governs",
+              "object": "Lake Valor"
+            },
             {
               "subject": "Canalave City",
               "predicate": "located_in",
               "object": "Sinnoh"
             },
             {
-              "subject": "Gary",
+              "subject": "Azelf",
               "predicate": "opposes",
               "object": "Team Galactic"
+            },
+            {
+              "subject": "Mesprit",
+              "predicate": "opposes",
+              "object": "Team Galactic"
+            },
+            {
+              "subject": "Uxie",
+              "predicate": "opposes",
+              "object": "Team Galactic"
+            },
+            {
+              "subject": "Azelf",
+              "predicate": "evolves_into_lore",
+              "object": "Azelf"
+            },
+            {
+              "subject": "Mesprit",
+              "predicate": "evolves_into_lore",
+              "object": "Mesprit"
+            },
+            {
+              "subject": "Uxie",
+              "predicate": "evolves_into_lore",
+              "object": "Uxie"
             }
           ],
           "judge_rejected": [
@@ -2402,58 +2611,112 @@
               "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization']"
             },
             {
-              "subject": "Azelf",
-              "predicate": "appears_in",
-              "object": "Mission 15: The Trial of Lake Valor",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mission 15: The Trial of Lake Valor'"
-            },
-            {
-              "subject": "Azelf",
-              "predicate": "appears_in",
-              "object": "Mission 21: The Plate of the Lakes",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mission 21: The Plate of the Lakes'"
-            },
-            {
               "subject": "Ash",
               "predicate": "appears_in",
-              "object": "A Full Course Tag Battle!",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'A Full Course Tag Battle!'"
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
             },
             {
               "subject": "May",
               "predicate": "appears_in",
-              "object": "A Full Course Tag Battle!",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'A Full Course Tag Battle!'"
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
             },
             {
-              "subject": "Azelf",
-              "predicate": "originates_from",
-              "object": "another dimension",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'another dimension'"
+              "subject": "Roman",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Kylie",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Gary",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Saturn",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
             },
             {
               "subject": "Diamond",
               "predicate": "appears_in",
-              "object": "Bombastic Bibarel & Heroic Hippopotas",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Bombastic Bibarel & Heroic Hippopotas'"
-            },
-            {
-              "subject": "Platinum",
-              "predicate": "appears_in",
-              "object": "Bombastic Bibarel & Heroic Hippopotas",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Bombastic Bibarel & Heroic Hippopotas'"
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
             },
             {
               "subject": "Pearl",
               "predicate": "appears_in",
-              "object": "Tackling Tangrowth",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Tackling Tangrowth'"
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Platinum",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Azelf",
+              "predicate": "involves",
+              "object": "Mission 15: The Trial of Lake Valor",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Mission 15: The Trial of Lake Valor'"
+            },
+            {
+              "subject": "Azelf",
+              "predicate": "involves",
+              "object": "Mission 21: The Plate of the Lakes",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Mission 21: The Plate of the Lakes'"
+            },
+            {
+              "subject": "Overqwil",
+              "predicate": "involves",
+              "object": "Mission 15: The Trial of Lake Valor",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Mission 15: The Trial of Lake Valor'"
+            },
+            {
+              "subject": "Adaman",
+              "predicate": "involves",
+              "object": "Request 89: The Diamond Clan's Treasure",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got \"Request 89: The Diamond Clan's Treasure\""
             },
             {
               "subject": "Team Galactic",
-              "predicate": "opposes",
+              "predicate": "involves",
+              "object": "Mission 15: The Trial of Lake Valor",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Mission 15: The Trial of Lake Valor'"
+            },
+            {
+              "subject": "Team Galactic",
+              "predicate": "involves",
+              "object": "Mission 21: The Plate of the Lakes",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Mission 21: The Plate of the Lakes'"
+            },
+            {
+              "subject": "Team Galactic",
+              "predicate": "involves",
+              "object": "Request 89: The Diamond Clan's Treasure",
+              "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got \"Request 89: The Diamond Clan's Treasure\""
+            },
+            {
+              "subject": "Mesprit",
+              "predicate": "appears_in",
               "object": "Lake Valor",
-              "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization']"
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
+            },
+            {
+              "subject": "Uxie",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "reject_reason": "object_type_mismatch: 'location' not in ['event', 'region']"
             }
           ],
           "out_of_unit": [
@@ -2464,33 +2727,51 @@
               "class": "out_of_unit"
             },
             {
+              "subject": "Request 89: The Diamond Clan's Treasure",
+              "predicate": "occurs_at",
+              "object": "Lake Valor",
+              "class": "out_of_unit"
+            },
+            {
               "subject": "Pok\u00e9mon Hunter J",
-              "predicate": "opposes",
-              "object": "Azelf",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Dr. Footstep",
+              "predicate": "appears_in",
+              "object": "Lake Valor",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Seven Stars Restaurant",
+              "predicate": "located_in",
+              "object": "Lake Valor",
               "class": "out_of_unit"
             }
           ],
           "match_mode_counts": {
-            "exact": 2,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 2,
-            "n": 19,
-            "ratio": 0.1053
+            "hits": 1,
+            "n": 36,
+            "ratio": 0.0278
           }
         },
         {
           "path": "Solidad.md",
-          "hits": 1,
+          "hits": 0,
           "n": 2,
-          "ratio": 0.5,
+          "ratio": 0.0,
           "per_predicate": {
             "rival_of": {
-              "hits": 1,
+              "hits": 0,
               "n": 2,
-              "ratio": 0.5
+              "ratio": 0.0
             }
           },
           "misses": [
@@ -2498,6 +2779,11 @@
               "subject": "Solidad",
               "predicate": "rival_of",
               "object": "Drew"
+            },
+            {
+              "subject": "Solidad",
+              "predicate": "rival_of",
+              "object": "May"
             }
           ],
           "judge_rejected": [
@@ -2570,359 +2856,210 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 1,
+            "exact": 0,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 2,
+            "hits": 1,
             "n": 13,
-            "ratio": 0.1538
+            "ratio": 0.0769
           }
         },
         {
           "path": "Champion.md",
           "hits": 0,
-          "n": 5,
-          "ratio": 0.0,
-          "per_predicate": {
-            "appears_in": {
-              "hits": 0,
-              "n": 2,
-              "ratio": 0.0
-            },
-            "involves": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "located_in": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            },
-            "originates_from": {
-              "hits": 0,
-              "n": 1,
-              "ratio": 0.0
-            }
-          },
-          "misses": [
-            {
-              "subject": "Cynthia",
-              "predicate": "originates_from",
-              "object": "Sinnoh"
-            },
-            {
-              "subject": "Professor Kukui",
-              "predicate": "appears_in",
-              "object": "Alola"
-            },
-            {
-              "subject": "Hau",
-              "predicate": "appears_in",
-              "object": "Alola"
-            },
-            {
-              "subject": "Delta Episode",
-              "predicate": "involves",
-              "object": "Steven"
-            },
-            {
-              "subject": "Pok\u00e9mon League",
-              "predicate": "located_in",
-              "object": "Alola"
-            }
-          ],
+          "n": 0,
+          "ratio": 1.0,
+          "per_predicate": {},
+          "misses": [],
           "judge_rejected": [
             {
               "subject": "Leon",
-              "predicate": "originates_from",
-              "object": "Galar",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+              "predicate": "appears_in",
+              "object": "Pok\u00e9mon Sword and Shield",
+              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Sword and Shield'"
+            },
+            {
+              "subject": "N",
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
             },
             {
               "subject": "Cynthia",
-              "predicate": "leads",
-              "object": "Champions Tournament",
-              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champions Tournament'"
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
+            },
+            {
+              "subject": "Blue",
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
+            },
+            {
+              "subject": "Zinnia",
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
             },
             {
               "subject": "Red",
-              "predicate": "appears_in",
-              "object": "Champions Tournament",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Champions Tournament'"
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
+            },
+            {
+              "subject": "Professor Kukui",
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
+            },
+            {
+              "subject": "Hau",
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
             },
             {
               "subject": "Trace",
-              "predicate": "originates_from",
-              "object": "Indigo League",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
             },
             {
               "subject": "Leon",
-              "predicate": "appears_in",
-              "object": "Sword",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Sword'"
-            },
-            {
-              "subject": "Leon",
-              "predicate": "appears_in",
-              "object": "Shield",
-              "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Shield'"
-            },
-            {
-              "subject": "Pok\u00e9mon League",
-              "predicate": "located_in",
-              "object": "Galar",
-              "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+              "predicate": "member_of",
+              "object": "Champion",
+              "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Champion'"
             }
           ],
           "out_of_unit": [
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "originates_from",
-              "object": "Japanese",
+              "object": "Generation I",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Red",
+              "object": "Red, Blue, and Yellow",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Blue",
+              "object": "Gold, Silver, and Crystal",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Yellow",
+              "object": "Ruby, Sapphire, and Emerald",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Gold",
+              "object": "FireRed and LeafGreen",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Silver",
+              "object": "Diamond, Pearl, and Platinum",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Crystal",
+              "object": "HeartGold and SoulSilver",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Ruby",
+              "object": "Black, White, Black 2, and White 2",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Sapphire",
+              "object": "X, Y, Omega Ruby, and Alpha Sapphire",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Emerald",
+              "object": "Let's Go, Pikachu! and Let's Go, Eevee!",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "FireRed",
+              "object": "Sword, Shield, Brilliant Diamond, and Shining Pearl",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "LeafGreen",
+              "object": "Scarlet and Violet",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Diamond",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Pearl",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Platinum",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "HeartGold",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "SoulSilver",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Black",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "White",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Black 2",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "White 2",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "X",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Y",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Omega Ruby",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Alpha Sapphire",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Let's Go, Pikachu!",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Let's Go, Eevee!",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Sword",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Shield",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Brilliant Diamond",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Shining Pearl",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Scarlet",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Violet",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
               "object": "Legends: Z-A",
               "class": "out_of_unit"
             },
             {
-              "subject": "Pok\u00e9mon League Champion",
+              "subject": "Champion",
               "predicate": "appears_in",
-              "object": "Stadium",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Stadium 2",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Puzzle League",
-              "class": "out_of_unit"
-            },
-            {
-              "subject": "Pok\u00e9mon League Champion",
-              "predicate": "appears_in",
-              "object": "Puzzle Challenge Masters EX",
+              "object": "Stadium and Stadium 2",
               "class": "out_of_unit"
             },
             {
               "subject": "Champion",
-              "predicate": "located_in",
-              "object": "Kanto",
+              "predicate": "appears_in",
+              "object": "Puzzle League and Puzzle Challenge Masters EX",
               "class": "out_of_unit"
             },
             {
-              "subject": "Champion",
-              "predicate": "located_in",
-              "object": "Johto",
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Cynthia",
               "class": "out_of_unit"
             },
             {
-              "subject": "Champion",
-              "predicate": "located_in",
-              "object": "Paldea",
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Red",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Blue",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Zinnia",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Leon",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champions Tournament",
+              "predicate": "involves",
+              "object": "Trace",
               "class": "out_of_unit"
             },
             {
@@ -2933,8 +3070,62 @@
             },
             {
               "subject": "Champions Tournament",
-              "predicate": "involves",
-              "object": "Champion",
+              "predicate": "precedes",
+              "object": "Champion title defense",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "opposes",
+              "object": "Elite Four",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "opposes",
+              "object": "previous Champion",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "located_in",
+              "object": "Kanto",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "located_in",
+              "object": "Johto",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "located_in",
+              "object": "Alola",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion title",
+              "predicate": "located_in",
+              "object": "Galar",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion",
+              "predicate": "governs",
+              "object": "Pok\u00e9mon League",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion",
+              "predicate": "rival_of",
+              "object": "Elite Four",
+              "class": "out_of_unit"
+            },
+            {
+              "subject": "Champion",
+              "predicate": "opposes",
+              "object": "challengers",
               "class": "out_of_unit"
             }
           ],
@@ -2945,19 +3136,19 @@
           },
           "raw": {
             "hits": 0,
-            "n": 55,
+            "n": 42,
             "ratio": 0.0
           }
         },
         {
           "path": "Pok%C3%A9mon_world_in_relation_to_the_real_world.md",
-          "hits": 1,
-          "n": 1,
+          "hits": 5,
+          "n": 5,
           "ratio": 1.0,
           "per_predicate": {
             "located_in": {
-              "hits": 1,
-              "n": 1,
+              "hits": 5,
+              "n": 5,
               "ratio": 1.0
             }
           },
@@ -2966,44 +3157,86 @@
             {
               "subject": "Kanto",
               "predicate": "located_in",
-              "object": "Japan",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Japan'"
+              "object": "Honshu",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Honshu'"
             },
             {
               "subject": "Kanto",
               "predicate": "originates_from",
-              "object": "Kant\u014d region of eastern Honshu",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Kant\u014d region of eastern Honshu'"
+              "object": "Japan",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Japan'"
+            },
+            {
+              "subject": "Sevii Islands",
+              "predicate": "located_in",
+              "object": "Tokyo",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Tokyo'"
             },
             {
               "subject": "Sevii Islands",
               "predicate": "originates_from",
-              "object": "Izu Islands and the Bonin Islands",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Izu Islands and the Bonin Islands'"
+              "object": "Izu Islands",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Izu Islands'"
+            },
+            {
+              "subject": "Sevii Islands",
+              "predicate": "originates_from",
+              "object": "Bonin Islands",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Bonin Islands'"
+            },
+            {
+              "subject": "Johto",
+              "predicate": "located_in",
+              "object": "Honshu",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Honshu'"
             },
             {
               "subject": "Johto",
               "predicate": "originates_from",
-              "object": "Kansai region of southern-central Honshu",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Kansai region of southern-central Honshu'"
+              "object": "Kansai",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Kansai'"
+            },
+            {
+              "subject": "Hoenn",
+              "predicate": "located_in",
+              "object": "Kyushu",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Kyushu'"
             },
             {
               "subject": "Hoenn",
               "predicate": "originates_from",
-              "object": "Ky\u016bsh\u016b",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Ky\u016bsh\u016b'"
+              "object": "Japan",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Japan'"
             },
             {
               "subject": "Sinnoh",
-              "predicate": "originates_from",
+              "predicate": "located_in",
               "object": "Hokkaido",
               "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Hokkaido'"
             },
             {
+              "subject": "Sinnoh",
+              "predicate": "originates_from",
+              "object": "Japan",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Japan'"
+            },
+            {
               "subject": "Unova",
               "predicate": "originates_from",
-              "object": "New York City and its surrounding metropolitan area",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'New York City and its surrounding metropolitan area'"
+              "object": "New York City",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'New York City'"
+            },
+            {
+              "subject": "Unova",
+              "predicate": "originates_from",
+              "object": "New Jersey",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'New Jersey'"
+            },
+            {
+              "subject": "Unova",
+              "predicate": "originates_from",
+              "object": "Long Island",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Long Island'"
             },
             {
               "subject": "Alola",
@@ -3032,96 +3265,53 @@
             {
               "subject": "Pallet Town",
               "predicate": "originates_from",
-              "object": "Machida City",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Machida City'"
+              "object": "Shimoda City",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Shimoda City'"
             },
             {
-              "subject": "Viridian City",
+              "subject": "Lumiose City",
               "predicate": "originates_from",
-              "object": "Mishima City or Hakone Town",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Mishima City or Hakone Town'"
-            },
-            {
-              "subject": "Viridian Forest",
-              "predicate": "originates_from",
-              "object": "Okuchichibu Mountains",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Okuchichibu Mountains'"
-            },
-            {
-              "subject": "Pewter City",
-              "predicate": "originates_from",
-              "object": "Maebashi City",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Maebashi City'"
-            },
-            {
-              "subject": "Mt. Moon",
-              "predicate": "originates_from",
-              "object": "Mount Akagi",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Mount Akagi'"
-            },
-            {
-              "subject": "Cerulean City",
-              "predicate": "originates_from",
-              "object": "Utsunomiya City",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Utsunomiya City'"
-            },
-            {
-              "subject": "Vermilion City",
-              "predicate": "originates_from",
-              "object": "Chiba City",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Chiba City'"
-            },
-            {
-              "subject": "Diglett's Cave",
-              "predicate": "originates_from",
-              "object": "Kasori Shell Mound",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Kasori Shell Mound'"
-            },
-            {
-              "subject": "Lavender Town",
-              "predicate": "originates_from",
-              "object": "Ushiku City",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Ushiku City'"
+              "object": "Paris",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Paris'"
             },
             {
               "subject": "Orre",
               "predicate": "originates_from",
-              "object": "Phoenix, Arizona",
-              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Phoenix, Arizona'"
-            }
-          ],
-          "out_of_unit": [
-            {
-              "subject": "Rock Tunnel",
-              "predicate": "originates_from",
-              "object": "Mount Tsukuba",
-              "class": "out_of_unit"
+              "object": "Phoenix",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Phoenix'"
             },
             {
-              "subject": "Kanto Power Plant",
+              "subject": "Orre",
+              "predicate": "located_in",
+              "object": "Arizona",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'Arizona'"
+            },
+            {
+              "subject": "Kitakami",
               "predicate": "originates_from",
-              "object": "T\u014dkai Nuclear Power Plant",
-              "class": "out_of_unit"
+              "object": "T\u014dhoku",
+              "reject_reason": "object_type_unresolved: expected one of ['region'], got 'T\u014dhoku'"
             }
           ],
+          "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 1,
+            "exact": 5,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 1,
-            "n": 24,
-            "ratio": 0.0417
+            "hits": 5,
+            "n": 28,
+            "ratio": 0.1786
           }
         }
       ],
       "judge_rejected_sample": [
         {
           "subject": "Unova",
-          "predicate": "governs",
-          "object": "Unova Pok\u00e9dex",
-          "reject_reason": "object_type_unresolved: expected one of ['location', 'region'], got 'Unova Pok\u00e9dex'"
+          "predicate": "located_in",
+          "object": "region",
+          "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
         },
         {
           "subject": "TCG Island",
@@ -3138,20 +3328,14 @@
         {
           "subject": "GR Island",
           "predicate": "appears_in",
-          "object": "second game",
-          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'second game'"
+          "object": "The Trading Card Game games",
+          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
         },
         {
           "subject": "TCG Island",
           "predicate": "appears_in",
-          "object": "both games",
-          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'both games'"
-        },
-        {
-          "subject": "Spearow",
-          "predicate": "evolves_into_lore",
-          "object": "Fearow",
-          "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Fearow'"
+          "object": "The Trading Card Game games",
+          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
         },
         {
           "subject": "Pichu",
@@ -3166,10 +3350,10 @@
           "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Nidoking'"
         },
         {
-          "subject": "Meowth",
+          "subject": "Vileplume",
           "predicate": "evolves_into_lore",
-          "object": "Persian",
-          "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Persian'"
+          "object": "Bellossom",
+          "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Bellossom'"
         },
         {
           "subject": "Blaine",
@@ -3179,106 +3363,160 @@
         },
         {
           "subject": "Blaine",
-          "predicate": "owns_pokemon",
-          "object": "Rapidash",
-          "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Rapidash'"
+          "predicate": "involves",
+          "object": "Team Rocket Hideout",
+          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Team Rocket Hideout'"
         },
         {
           "subject": "Blaine",
-          "predicate": "owns_pokemon",
-          "object": "Mewtwo",
-          "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
+          "predicate": "involves",
+          "object": "Cerulean Cave",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
         },
         {
           "subject": "Blaine",
-          "predicate": "located_in",
-          "object": "Cinnabar Island",
-          "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-        },
-        {
-          "subject": "Mewtwo",
-          "predicate": "originates_from",
-          "object": "Blaine",
-          "reject_reason": "object_type_mismatch: 'character' not in ['region']"
-        },
-        {
-          "subject": "Mewtwo",
           "predicate": "involves",
-          "object": "And Mewtwo Too?!",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
+          "object": "Mt. Moon",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
         },
         {
-          "subject": "Mewtwo",
+          "subject": "Blaine",
           "predicate": "involves",
-          "object": "The Legend",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
+          "object": "Cerise Island",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
         },
         {
-          "subject": "Red",
+          "subject": "Blaine",
+          "predicate": "involves",
+          "object": "Indigo Plateau",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Blaine",
+          "predicate": "involves",
+          "object": "Celadon City",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Blaine",
+          "predicate": "involves",
+          "object": "Kanto",
+          "reject_reason": "object_type_mismatch: 'region' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Blaine",
+          "predicate": "involves",
+          "object": "Johto",
+          "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "leads",
+          "object": "Fuchsia Gym",
+          "reject_reason": "object_type_mismatch: 'location' not in ['organization']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "member_of",
+          "object": "Kanto",
+          "reject_reason": "object_type_mismatch: 'region' not in ['organization']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "opposes",
+          "object": "Trainer",
+          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Trainer'"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "involves",
+          "object": "Kanto Leaders Tournament",
+          "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "involves",
+          "object": "World Leaders Tournament",
+          "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "involves",
+          "object": "Poison Type Expert Tournament",
+          "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+        },
+        {
+          "subject": "Janine",
+          "predicate": "mentors",
+          "object": "junior Trainers",
+          "reject_reason": "object_type_unresolved: expected one of ['character'], got 'junior Trainers'"
+        },
+        {
+          "subject": "Janine",
           "predicate": "appears_in",
-          "object": "Red, Green & Blue arc",
-          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Red, Green & Blue arc'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "appears_in",
-          "object": "Yellow arc",
-          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Yellow arc'"
-        },
-        {
-          "subject": "Red",
-          "predicate": "involves",
-          "object": "Holy Moltres",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Holy Moltres'"
-        },
-        {
-          "subject": "Red",
-          "predicate": "involves",
-          "object": "And Mewtwo Too?!",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "involves",
-          "object": "Purrrr-sian",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Purrrr-sian'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "involves",
-          "object": "Putting It on the Line...Against Arcanine",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Putting It on the Line...Against Arcanine'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "involves",
-          "object": "Allied by Alakazam!",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Allied by Alakazam!'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "involves",
-          "object": "Airing Out Aerodactyl",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Airing Out Aerodactyl'"
-        },
-        {
-          "subject": "Yellow",
-          "predicate": "involves",
-          "object": "The Legend",
-          "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
+          "object": "Pok\u00e9mon Stadium 2",
+          "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Stadium 2'"
         }
       ],
       "out_of_unit_sample": [
         {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "located_in",
+          "subject": "Scolipede",
+          "predicate": "originates_from",
           "object": "Unova",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Cottonee",
+          "predicate": "originates_from",
+          "object": "Unova",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Alomomola",
+          "predicate": "originates_from",
+          "object": "Unova",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Joltik",
+          "predicate": "originates_from",
+          "object": "Unova",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Unova Pok\u00e9dex",
+          "predicate": "occurs_at",
+          "object": "Pok\u00e9mon Black and White",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Unova Pok\u00e9dex",
+          "predicate": "follows",
+          "object": "Kanto Pok\u00e9dex",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Unova Pok\u00e9dex",
+          "predicate": "precedes",
+          "object": "expanded Unova Pok\u00e9dex",
           "class": "out_of_unit"
         },
         {
           "subject": "Unova Pok\u00e9dex",
           "predicate": "involves",
           "object": "Victini",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Unova Pok\u00e9dex",
+          "predicate": "involves",
+          "object": "Keldeo",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Unova Pok\u00e9dex",
+          "predicate": "involves",
+          "object": "Meloetta",
           "class": "out_of_unit"
         },
         {
@@ -3300,69 +3538,9 @@
           "class": "out_of_unit"
         },
         {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "involves",
-          "object": "Vullaby",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "involves",
-          "object": "Mandibuzz",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "involves",
-          "object": "Rufflet",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "involves",
-          "object": "Braviary",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "precedes",
-          "object": "expanded Unova Pok\u00e9dex",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "expanded Unova Pok\u00e9dex",
-          "predicate": "follows",
-          "object": "Unova Pok\u00e9dex",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "appears_in",
-          "object": "Pok\u00e9mon Black",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Unova Pok\u00e9dex",
-          "predicate": "appears_in",
-          "object": "Pok\u00e9mon White",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "expanded Unova Pok\u00e9dex",
-          "predicate": "appears_in",
-          "object": "Pok\u00e9mon Black 2",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "expanded Unova Pok\u00e9dex",
-          "predicate": "appears_in",
-          "object": "Pok\u00e9mon White 2",
-          "class": "out_of_unit"
-        },
-        {
-          "subject": "Ekans",
-          "predicate": "evolves_into_lore",
-          "object": "Arbok",
+          "subject": "The Trading Card Game games",
+          "predicate": "occurs_at",
+          "object": "The Trading Card Game Islands",
           "class": "out_of_unit"
         },
         {
@@ -3414,6 +3592,18 @@
           "class": "out_of_unit"
         },
         {
+          "subject": "Paras",
+          "predicate": "evolves_into_lore",
+          "object": "Parasect",
+          "class": "out_of_unit"
+        },
+        {
+          "subject": "Diglett",
+          "predicate": "evolves_into_lore",
+          "object": "Dugtrio",
+          "class": "out_of_unit"
+        },
+        {
           "subject": "Zubat",
           "predicate": "evolves_into_lore",
           "object": "Golbat",
@@ -3455,9 +3645,9 @@
   "judge_rejected_sample": [
     {
       "subject": "Unova",
-      "predicate": "governs",
-      "object": "Unova Pok\u00e9dex",
-      "reject_reason": "object_type_unresolved: expected one of ['location', 'region'], got 'Unova Pok\u00e9dex'"
+      "predicate": "located_in",
+      "object": "region",
+      "reject_reason": "object_type_unresolved: expected one of ['region'], got 'region'"
     },
     {
       "subject": "TCG Island",
@@ -3474,20 +3664,14 @@
     {
       "subject": "GR Island",
       "predicate": "appears_in",
-      "object": "second game",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'second game'"
+      "object": "The Trading Card Game games",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
     },
     {
       "subject": "TCG Island",
       "predicate": "appears_in",
-      "object": "both games",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'both games'"
-    },
-    {
-      "subject": "Spearow",
-      "predicate": "evolves_into_lore",
-      "object": "Fearow",
-      "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Fearow'"
+      "object": "The Trading Card Game games",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'The Trading Card Game games'"
     },
     {
       "subject": "Pichu",
@@ -3502,10 +3686,10 @@
       "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Nidoking'"
     },
     {
-      "subject": "Meowth",
+      "subject": "Vileplume",
       "predicate": "evolves_into_lore",
-      "object": "Persian",
-      "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Persian'"
+      "object": "Bellossom",
+      "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Bellossom'"
     },
     {
       "subject": "Blaine",
@@ -3515,129 +3699,51 @@
     },
     {
       "subject": "Blaine",
-      "predicate": "owns_pokemon",
-      "object": "Rapidash",
-      "reject_reason": "object_type_unresolved: expected one of ['species_lore'], got 'Rapidash'"
-    },
-    {
-      "subject": "Blaine",
-      "predicate": "owns_pokemon",
-      "object": "Mewtwo",
-      "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
-    },
-    {
-      "subject": "Blaine",
-      "predicate": "located_in",
-      "object": "Cinnabar Island",
-      "reject_reason": "object_type_mismatch: 'location' not in ['region']"
-    },
-    {
-      "subject": "Mewtwo",
-      "predicate": "originates_from",
-      "object": "Blaine",
-      "reject_reason": "object_type_mismatch: 'character' not in ['region']"
-    },
-    {
-      "subject": "Mewtwo",
       "predicate": "involves",
-      "object": "And Mewtwo Too?!",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
-    },
-    {
-      "subject": "Mewtwo",
-      "predicate": "involves",
-      "object": "The Legend",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
-    },
-    {
-      "subject": "Red",
-      "predicate": "appears_in",
-      "object": "Red, Green & Blue arc",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Red, Green & Blue arc'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "appears_in",
-      "object": "Yellow arc",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Yellow arc'"
-    },
-    {
-      "subject": "Red",
-      "predicate": "involves",
-      "object": "Holy Moltres",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Holy Moltres'"
-    },
-    {
-      "subject": "Red",
-      "predicate": "involves",
-      "object": "And Mewtwo Too?!",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'And Mewtwo Too?!'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "involves",
-      "object": "Purrrr-sian",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Purrrr-sian'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "involves",
-      "object": "Putting It on the Line...Against Arcanine",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Putting It on the Line...Against Arcanine'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "involves",
-      "object": "Allied by Alakazam!",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Allied by Alakazam!'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "involves",
-      "object": "Airing Out Aerodactyl",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Airing Out Aerodactyl'"
-    },
-    {
-      "subject": "Yellow",
-      "predicate": "involves",
-      "object": "The Legend",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'The Legend'"
+      "object": "Team Rocket Hideout",
+      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Team Rocket Hideout'"
     },
     {
       "subject": "Blaine",
       "predicate": "involves",
-      "object": "Yikes, It's Yanma!",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got \"Yikes, It's Yanma!\""
+      "object": "Cerulean Cave",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
       "subject": "Blaine",
       "predicate": "involves",
-      "object": "Entranced by Entei",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Entranced by Entei'"
+      "object": "Mt. Moon",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
       "subject": "Blaine",
       "predicate": "involves",
-      "object": "Lugia and Ho-Oh on the Loose, Part 1",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Lugia and Ho-Oh on the Loose, Part 1'"
+      "object": "Cerise Island",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
-      "subject": "Kanto",
+      "subject": "Blaine",
       "predicate": "involves",
-      "object": "Red, Green & Blue arc",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Red, Green & Blue arc'"
+      "object": "Indigo Plateau",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
-      "subject": "Kanto",
+      "subject": "Blaine",
       "predicate": "involves",
-      "object": "Yellow arc",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Yellow arc'"
+      "object": "Celadon City",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
-      "subject": "Kanto",
+      "subject": "Blaine",
       "predicate": "involves",
-      "object": "Gold, Silver & Crystal arc",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization', 'species_lore'], got 'Gold, Silver & Crystal arc'"
+      "object": "Kanto",
+      "reject_reason": "object_type_mismatch: 'region' not in ['character', 'organization', 'species_lore']"
+    },
+    {
+      "subject": "Blaine",
+      "predicate": "involves",
+      "object": "Johto",
+      "reject_reason": "object_type_mismatch: 'location' not in ['character', 'organization', 'species_lore']"
     },
     {
       "subject": "Janine",
@@ -3648,63 +3754,195 @@
     {
       "subject": "Janine",
       "predicate": "member_of",
-      "object": "Kanto Gym Leaders",
-      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Kanto Gym Leaders'"
-    },
-    {
-      "subject": "Janine",
-      "predicate": "member_of",
-      "object": "Johto Gym Leaders",
-      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'Johto Gym Leaders'"
+      "object": "Kanto",
+      "reject_reason": "object_type_mismatch: 'region' not in ['organization']"
     },
     {
       "subject": "Janine",
       "predicate": "opposes",
-      "object": "Trainer (Protagonist)",
-      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Trainer (Protagonist)'"
+      "object": "Trainer",
+      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Trainer'"
+    },
+    {
+      "subject": "Janine",
+      "predicate": "involves",
+      "object": "Kanto Leaders Tournament",
+      "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+    },
+    {
+      "subject": "Janine",
+      "predicate": "involves",
+      "object": "World Leaders Tournament",
+      "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+    },
+    {
+      "subject": "Janine",
+      "predicate": "involves",
+      "object": "Poison Type Expert Tournament",
+      "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
+    },
+    {
+      "subject": "Janine",
+      "predicate": "mentors",
+      "object": "junior Trainers",
+      "reject_reason": "object_type_unresolved: expected one of ['character'], got 'junior Trainers'"
     },
     {
       "subject": "Janine",
       "predicate": "appears_in",
-      "object": "Pok\u00e9mon Gold",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Gold'"
+      "object": "Pok\u00e9mon Stadium 2",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Stadium 2'"
     },
     {
       "subject": "Janine",
       "predicate": "appears_in",
-      "object": "Pok\u00e9mon Silver",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Silver'"
+      "object": "Pok\u00e9mon Masters EX",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Masters EX'"
     },
     {
       "subject": "Janine",
       "predicate": "appears_in",
-      "object": "Pok\u00e9mon Crystal",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Crystal'"
+      "object": "Pok\u00e9mon Pokopia",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Pokopia'"
     },
     {
       "subject": "Janine",
       "predicate": "appears_in",
-      "object": "Pok\u00e9mon HeartGold",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon HeartGold'"
+      "object": "GOTCHA!",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'GOTCHA!'"
     },
     {
       "subject": "Janine",
       "predicate": "appears_in",
-      "object": "Pok\u00e9mon SoulSilver",
-      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon SoulSilver'"
+      "object": "Pok\u00e9mon Adventures",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Pok\u00e9mon Adventures'"
+    },
+    {
+      "subject": "Venomoth",
+      "predicate": "owns_pokemon",
+      "object": "Janine",
+      "reject_reason": "object_type_mismatch: 'character' not in ['species_lore']"
+    },
+    {
+      "subject": "Koga",
+      "predicate": "opposes",
+      "object": "Gym Leader",
+      "reject_reason": "object_type_unresolved: expected one of ['character', 'organization'], got 'Gym Leader'"
+    },
+    {
+      "subject": "Team Rocket",
+      "predicate": "member_of",
+      "object": "Giovanni",
+      "reject_reason": "object_type_mismatch: 'character' not in ['organization']"
+    },
+    {
+      "subject": "Mt. Silver",
+      "predicate": "located_in",
+      "object": "Johto",
+      "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+    },
+    {
+      "subject": "Larvitar",
+      "predicate": "appears_in",
+      "object": "You're a Star, Larvitar!",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got \"You're a Star, Larvitar!\""
+    },
+    {
+      "subject": "Larvitar",
+      "predicate": "appears_in",
+      "object": "Mother of All Battles!",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mother of All Battles!'"
+    },
+    {
+      "subject": "Tyranitar",
+      "predicate": "appears_in",
+      "object": "Mother of All Battles!",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Mother of All Battles!'"
+    },
+    {
+      "subject": "Silver Town",
+      "predicate": "located_in",
+      "object": "Johto",
+      "reject_reason": "object_type_mismatch: 'location' not in ['region']"
+    },
+    {
+      "subject": "Red",
+      "predicate": "appears_in",
+      "object": "Raising Raichu",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Raising Raichu'"
+    },
+    {
+      "subject": "Gold",
+      "predicate": "appears_in",
+      "object": "Raising Raichu",
+      "reject_reason": "object_type_unresolved: expected one of ['event', 'region'], got 'Raising Raichu'"
+    },
+    {
+      "subject": "Mt. Silver",
+      "predicate": "involves",
+      "object": "Silver Conference",
+      "reject_reason": "object_type_mismatch: 'event' not in ['character', 'organization', 'species_lore']"
     }
   ],
   "out_of_unit_sample": [
     {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "located_in",
+      "subject": "Scolipede",
+      "predicate": "originates_from",
       "object": "Unova",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Cottonee",
+      "predicate": "originates_from",
+      "object": "Unova",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Alomomola",
+      "predicate": "originates_from",
+      "object": "Unova",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Joltik",
+      "predicate": "originates_from",
+      "object": "Unova",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Unova Pok\u00e9dex",
+      "predicate": "occurs_at",
+      "object": "Pok\u00e9mon Black and White",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Unova Pok\u00e9dex",
+      "predicate": "follows",
+      "object": "Kanto Pok\u00e9dex",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Unova Pok\u00e9dex",
+      "predicate": "precedes",
+      "object": "expanded Unova Pok\u00e9dex",
       "class": "out_of_unit"
     },
     {
       "subject": "Unova Pok\u00e9dex",
       "predicate": "involves",
       "object": "Victini",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Unova Pok\u00e9dex",
+      "predicate": "involves",
+      "object": "Keldeo",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Unova Pok\u00e9dex",
+      "predicate": "involves",
+      "object": "Meloetta",
       "class": "out_of_unit"
     },
     {
@@ -3726,69 +3964,9 @@
       "class": "out_of_unit"
     },
     {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "involves",
-      "object": "Vullaby",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "involves",
-      "object": "Mandibuzz",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "involves",
-      "object": "Rufflet",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "involves",
-      "object": "Braviary",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "precedes",
-      "object": "expanded Unova Pok\u00e9dex",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "expanded Unova Pok\u00e9dex",
-      "predicate": "follows",
-      "object": "Unova Pok\u00e9dex",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon Black",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Unova Pok\u00e9dex",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon White",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "expanded Unova Pok\u00e9dex",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon Black 2",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "expanded Unova Pok\u00e9dex",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon White 2",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Ekans",
-      "predicate": "evolves_into_lore",
-      "object": "Arbok",
+      "subject": "The Trading Card Game games",
+      "predicate": "occurs_at",
+      "object": "The Trading Card Game Islands",
       "class": "out_of_unit"
     },
     {
@@ -3840,6 +4018,18 @@
       "class": "out_of_unit"
     },
     {
+      "subject": "Paras",
+      "predicate": "evolves_into_lore",
+      "object": "Parasect",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Diglett",
+      "predicate": "evolves_into_lore",
+      "object": "Dugtrio",
+      "class": "out_of_unit"
+    },
+    {
       "subject": "Zubat",
       "predicate": "evolves_into_lore",
       "object": "Golbat",
@@ -3858,81 +4048,81 @@
       "class": "out_of_unit"
     },
     {
-      "subject": "Paras",
-      "predicate": "evolves_into_lore",
-      "object": "Parasect",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Venonat",
-      "predicate": "evolves_into_lore",
-      "object": "Venomoth",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Diglett",
-      "predicate": "evolves_into_lore",
-      "object": "Dugtrio",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Fresh Water",
-      "predicate": "originates_from",
-      "object": "Mt. Silver",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Flash",
-      "predicate": "involves",
-      "object": "Mt. Silver Cave",
-      "class": "out_of_unit"
-    },
-    {
-      "subject": "Shirogane Mt.",
-      "predicate": "originates_from",
-      "object": "Mt. Silver",
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Mt. Battle",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "occurs_at",
-      "object": "Goldenrod Game Corner",
+      "predicate": "located_in",
+      "object": "Route 228",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "involves",
-      "object": "Teaching Pok\u00e9mon moves",
+      "predicate": "located_in",
+      "object": "Route 210",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon Crystal",
+      "predicate": "located_in",
+      "object": "Snowpoint City",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon Emerald",
+      "predicate": "located_in",
+      "object": "Route 212",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon XD",
+      "predicate": "located_in",
+      "object": "Survival Area",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon Platinum",
+      "predicate": "located_in",
+      "object": "Battle Resort",
       "class": "out_of_unit"
     },
     {
       "subject": "Move Tutor",
-      "predicate": "appears_in",
-      "object": "Pok\u00e9mon HeartGold and SoulSilver",
+      "predicate": "located_in",
+      "object": "Seafolk Village Pok\u00e9mon Center",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Hau'oli City",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Master Dojo",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Battle Tree",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Melemele Island",
+      "class": "out_of_unit"
+    },
+    {
+      "subject": "Move Tutor",
+      "predicate": "located_in",
+      "object": "Akala Island",
       "class": "out_of_unit"
     }
   ]

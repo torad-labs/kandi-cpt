@@ -124,26 +124,85 @@ entity_types:
 # (B) predicates + the predicate→OBJECT-TYPE CONTRACT. BASE (extracted from prose) then DERIVED (ordered/
 #     computed). `object` declares the entity_types an object id may be; no `object` key = unconstrained.
 predicates:
-  # BASE
-  located_in:        { object: [region] }                               # location|organization → region
-  originates_from:   { object: [region] }                               # character|species_lore → region
-  member_of:         { object: [organization] }
-  leads:             { object: [organization] }
-  allied_with:       { object: [character, organization] }
-  rival_of:          { object: [character, organization] }
-  opposes:           { object: [character, organization] }
-  mentors:           { object: [character] }
-  partners_with:     { object: [species_lore] }                         # the Ash↔Pikachu bond class
-  owns_pokemon:      { object: [species_lore] }
-  occurs_at:         { object: [location] }                             # event → location
-  involves:          { object: [character, organization, species_lore] }
-  appears_in:        { object: [region, event] }
-  governs:           { object: [region, location] }
-  # DERIVED
-  precedes:          { object: [event] }
-  follows:           { object: [event] }
-  causes:            { object: [event] }
-  evolves_into_lore: { object: [species_lore] }   # evolution-as-lore — SEPARATE from the Pokedex `evolves_into` fact
+  # BASE — optional `guidance` is surfaced in Ontology.system() (EDC omits it → parity preserved).
+  # Phase G: starved-predicate under-specification was the dominant clean-coverage gap class.
+  # tier: stable|hot|proven (trust-loop/04). Undeclared → hot. Lore facts are durable → stable.
+  located_in:        { object: [region], tier: stable }
+  originates_from:
+    object: [region]
+    tier: stable
+    guidance: >-
+      character or species_lore whose home/native region the text names (born in, native to,
+      from the X region). Object is the region entity, never a city.
+  member_of:         { object: [organization], tier: stable }
+  leads:
+    object: [organization]
+    tier: stable
+    guidance: >-
+      character who is the boss/leader/admin of an organization (Gym Leader of a Gym is governs,
+      not leads; leads is for Team Rocket boss, Elite Four chair, foundation president).
+  allied_with:
+    object: [character, organization]
+    tier: stable
+    guidance: >-
+      characters/orgs who fight on the same side, help each other, team up, or are named as allies
+      or partners in a conflict. Distinct from opposes (enemies) and rival_of (competitive rivalry).
+      "X helped Y escape" / "X and Y joined forces" → allied_with.
+  rival_of:
+    object: [character, organization]
+    tier: stable
+    guidance: >-
+      named competitive rivalry or peer contest (rival trainers, competing gyms). Not wartime enemies
+      (use opposes) and not teammates (use allied_with).
+  opposes:
+    object: [character, organization]
+    tier: stable
+    guidance: >-
+      direct antagonism — fights against, thwarts, is enemy of. Team Rocket opposes the police;
+      a hero opposes a villain team. Do not use for friendly rivalry.
+  mentors:           { object: [character], tier: stable }
+  partners_with:     { object: [species_lore], tier: stable }
+  owns_pokemon:
+    object: [species_lore]
+    tier: stable
+    guidance: >-
+      a trainer/character who keeps, battles with, or is shown possessing a species. Object is the
+      species_lore entity (Pikachu, Mewtwo), not a nickname alone.
+  occurs_at:         { object: [location], tier: stable }
+  involves:
+    object: [character, organization, species_lore]
+    tier: stable
+    guidance: >-
+      an EVENT (battle, episode, mission, crisis) that features a character, organization, or
+      species as a participant. Subject should be the event; object the participant. Do NOT use
+      involves as a generic "related to" between two characters (prefer allied_with/opposes/mentors).
+  appears_in:
+    object: [region, event]
+    tier: stable
+    guidance: >-
+      character or species_lore featured in a region's lore, games set there, or a named event.
+      Legends about species in a region (Swords of Justice in Unova, legendaries racing across a
+      region) AND characters who debut/appear in a region or tournament all use appears_in.
+      Object is the region or event — never a game title literal unless modeled as an event entity.
+  governs:
+    object: [region, location]
+    tier: stable
+    guidance: >-
+      character who rules, administers, or is Gym Leader / Champion of a place. Object is the
+      location or region they govern (Fuchsia Gym, Viridian City, Indigo League) — prefer the
+      most specific place the text names (the Gym over the city when both appear).
+  # DERIVED (stable timeline relations)
+  precedes:          { object: [event], tier: stable }
+  follows:           { object: [event], tier: stable }
+  causes:            { object: [event], tier: stable }
+  evolves_into_lore: { object: [species_lore], tier: stable }
+  # HOT — volatile / never trained (red-green: hydrate filter drops these)
+  current_season:
+    object: [event]
+    tier: hot
+    guidance: >-
+      the currently airing anime season or live event window. VOLATILE — retrieval only, never CPT.
+
 
 # (C) balance targets + exposure cap — pure distribution properties (reused from EDC; nothing festival-specific).
 relations:

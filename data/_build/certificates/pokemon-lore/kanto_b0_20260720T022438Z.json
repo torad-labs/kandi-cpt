@@ -1,0 +1,532 @@
+{
+  "schema": "kandi.certificate.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "demo": false,
+  "generated_at": "2026-07-20T02:24:38Z",
+  "booster_n": 0,
+  "what_it_ate": {
+    "sources": [
+      {
+        "name": "pokemon-lore corpus",
+        "path": "data/pokemon-lore",
+        "admission_basis": "public-permitted",
+        "receipt": {
+          "kind": "source_list",
+          "path": "data/pokemon-lore"
+        }
+      }
+    ],
+    "pii_summary": "PII scan: see pipeline pii_scan stage receipt (not inlined).",
+    "admission_bases_present": [
+      "public-permitted"
+    ]
+  },
+  "what_it_knows": [
+    {
+      "question_id": "q01",
+      "question": "Who is the rival of Calem?",
+      "predicate": "rival_of",
+      "plain": "You asked: Who is the rival of Calem? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "rival_of"
+      }
+    },
+    {
+      "question_id": "q02",
+      "question": "Who does Calem oppose?",
+      "predicate": "opposes",
+      "plain": "You asked: Who does Calem oppose? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "opposes"
+      }
+    },
+    {
+      "question_id": "q03",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "predicate": "owns_pokemon",
+      "plain": "You asked: Which Pok\u00e9mon does Calem own? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "owns_pokemon"
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Who does Red oppose?",
+      "predicate": "opposes",
+      "plain": "You asked: Who does Red oppose? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "opposes"
+      }
+    },
+    {
+      "question_id": "q05",
+      "question": "Which organization does Lusamine lead?",
+      "predicate": "leads",
+      "plain": "You asked: Which organization does Lusamine lead? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "leads"
+      }
+    },
+    {
+      "question_id": "q06",
+      "question": "Which region is Solaceon Town located in?",
+      "predicate": "located_in",
+      "plain": "You asked: Which region is Solaceon Town located in? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "located_in"
+      }
+    },
+    {
+      "question_id": "q07",
+      "question": "What does Growlithe evolve into in the lore?",
+      "predicate": "evolves_into_lore",
+      "plain": "You asked: What does Growlithe evolve into in the lore? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "evolves_into_lore"
+      }
+    },
+    {
+      "question_id": "q08",
+      "question": "Which region is Hisuian Arcanine from?",
+      "predicate": "originates_from",
+      "plain": "You asked: Which region is Hisuian Arcanine from? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "originates_from"
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "Who is Hisuian Arcanine allied with?",
+      "predicate": "allied_with",
+      "plain": "You asked: Who is Hisuian Arcanine allied with? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "allied_with"
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "Which organization is Bruno a member of?",
+      "predicate": "member_of",
+      "plain": "You asked: Which organization is Bruno a member of? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "member_of"
+      }
+    },
+    {
+      "question_id": "q11",
+      "question": "Which Pok\u00e9mon does Bruno own?",
+      "predicate": "owns_pokemon",
+      "plain": "You asked: Which Pok\u00e9mon does Bruno own? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "owns_pokemon"
+      }
+    },
+    {
+      "question_id": "q12",
+      "question": "Who is the rival of Bruno?",
+      "predicate": "rival_of",
+      "plain": "You asked: Who is the rival of Bruno? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "rival_of"
+      }
+    },
+    {
+      "question_id": "q13",
+      "question": "Who is Bruno allied with?",
+      "predicate": "allied_with",
+      "plain": "You asked: Who is Bruno allied with? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "allied_with"
+      }
+    },
+    {
+      "question_id": "q14",
+      "question": "Who does Lusamine mentor?",
+      "predicate": "mentors",
+      "plain": "You asked: Who does Lusamine mentor? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "mentors"
+      }
+    },
+    {
+      "question_id": "q15",
+      "question": "Which organization is Red a member of?",
+      "predicate": "member_of",
+      "plain": "You asked: Which organization is Red a member of? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "member_of"
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "What does Dragonair evolve into in the lore?",
+      "predicate": "evolves_into_lore",
+      "plain": "You asked: What does Dragonair evolve into in the lore? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "evolves_into_lore"
+      }
+    },
+    {
+      "question_id": "q17",
+      "question": "Which Pok\u00e9mon does Nagatha own?",
+      "predicate": "owns_pokemon",
+      "plain": "You asked: Which Pok\u00e9mon does Nagatha own? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "owns_pokemon"
+      }
+    },
+    {
+      "question_id": "q18",
+      "question": "Which organization is Lusamine a member of?",
+      "predicate": "member_of",
+      "plain": "You asked: Which organization is Lusamine a member of? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "member_of"
+      }
+    },
+    {
+      "question_id": "q19",
+      "question": "Who is Lillie allied with?",
+      "predicate": "allied_with",
+      "plain": "You asked: Who is Lillie allied with? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "allied_with"
+      }
+    },
+    {
+      "question_id": "q20",
+      "question": "Who is Lusamine allied with?",
+      "predicate": "allied_with",
+      "plain": "You asked: Who is Lusamine allied with? \u2014 not yet measured on the probe set (early).",
+      "confidence": "early",
+      "stamp": {
+        "hits": 0,
+        "n": 0,
+        "acc": 0.0,
+        "bar": 0.5,
+        "bar_status": "insufficient-n",
+        "n_status": "insufficient-n",
+        "clears_bar": false,
+        "wilson": null,
+        "estimand": "augmentation_holdout"
+      },
+      "receipt": {
+        "kind": "probe_slice",
+        "path": null,
+        "slice": "allied_with"
+      }
+    }
+  ],
+  "what_it_refuses": {
+    "plain": "Abstention / calibration: see SFT calibration receipt; unmapped claims are refused.",
+    "receipt": {
+      "kind": "calibration",
+      "path": "logs/*calibration*"
+    }
+  },
+  "freshness": {
+    "hot": "hot facts retrieved live, current as of today",
+    "installed": "verified 2026-07-20T02:24:38Z, booster #0",
+    "verified_at": "2026-07-20T02:24:38Z",
+    "booster_n": 0,
+    "halted_boosters": []
+  },
+  "coverage": {
+    "estimand": "clean",
+    "clean": {
+      "ratio": 0.3103,
+      "hits": 36,
+      "n": 116,
+      "status": "FAIL",
+      "gate": 0.6
+    },
+    "raw": {
+      "ratio": 0.1053,
+      "hits": 44,
+      "n": 418
+    },
+    "plain": "Extraction coverage (clean estimand): 0.310 (36/116) \u2014 FAIL vs gate 0.6.",
+    "receipt": {
+      "kind": "recall_report",
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/logs/phase_f2_coverage_metric.json"
+    }
+  },
+  "inspector": {
+    "run_record": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "probe_receipt": null,
+    "questions": "data/pokemon-lore/questions.json"
+  },
+  "confidence_word_table": {
+    "solid": "Wilson lower bound strictly above bar; n \u2265 min_n",
+    "early": "insufficient-n or within-noise \u2014 not claimable yet",
+    "failing": "below-bar on a sufficient-n slice"
+  },
+  "certificate_id": "1d3e85b0e0ef5ecd"
+}

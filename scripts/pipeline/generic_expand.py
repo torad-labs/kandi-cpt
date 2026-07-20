@@ -160,6 +160,21 @@ def main():
         else:
             print(f"  {ed.slug}: no split manifest — hydrating ALL triples (probe deltas are recall, "
                   f"never held-out; carve with scripts/pipeline/split.py)")
+        # Three-tier routing (trust-loop/04): hot-tier predicates NEVER reach the train shard.
+        try:
+            from pipeline.tier_routing import filter_triples_by_tier, load_predicate_tiers
+            _tiers = load_predicate_tiers(args.domain)
+            if _tiers:
+                before_tier = len(triples)
+                triples, _drops = filter_triples_by_tier(
+                    triples, _tiers, allow=frozenset({"stable", "proven"}),
+                )
+                hot_n = int(_drops.get("hot") or 0)
+                if hot_n:
+                    print(f"  {ed.slug}: tier filter — dropped {hot_n} hot-tier triples "
+                          f"({before_tier}→{len(triples)}; stable+proven only)")
+        except Exception as _tier_err:  # noqa: BLE001 — never block expand on optional tier module issues
+            print(f"  {ed.slug}: tier filter skipped ({type(_tier_err).__name__}: {_tier_err})", flush=True)
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         recs = expand_records(triples, ptmpls, unit_name, args.domain)

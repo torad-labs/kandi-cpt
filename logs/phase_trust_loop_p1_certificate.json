@@ -1,0 +1,68 @@
+{
+  "title": "Trust-loop Phase 1 \u2014 certificate generator",
+  "date": "2026-07-20T01:57:10Z",
+  "landed": [
+    "scripts/pipeline/certificate.py \u2014 generator + confidence-word law",
+    "scripts/pipeline/test_certificate.py \u2014 8 red-green proofs",
+    "data/pokemon-lore/questions.json \u2014 seeded from kanto probes (n=20)",
+    "data/_build/certificates/pokemon-lore/kanto_b0.json \u2014 live certificate",
+    "core-agent/knowledge/cpt/10-certificate.md \u2014 G2 playbook"
+  ],
+  "red_green": {
+    "solid_over_insufficient_n": "CertificateError (test_solid_over_insufficient_n_fails_generation)",
+    "below_bar_emits_failing": "PASS (test_domain_with_below_bar_emits_failing_word)",
+    "demo_mark": "PASS",
+    "coverage_line_clean_fail": "Extraction coverage (clean estimand): 0.310 (36/116) \u2014 FAIL vs gate 0.6.",
+    "tests": [
+      "ok  test_confidence_word_table_fixed",
+      "ok  test_coverage_line_names_estimand_and_fail",
+      "ok  test_demo_mark_supported",
+      "ok  test_domain_with_below_bar_emits_failing_word",
+      "ok  test_every_claim_has_receipt_path",
+      "ok  test_seed_questions_from_probes_fixture",
+      "ok  test_solid_over_insufficient_n_fails_generation",
+      "ok  test_unmapped_confidence_word_fails",
+      "ALL 8 CERTIFICATE TESTS PASS"
+    ],
+    "exit_code": 0
+  },
+  "certificate_summary": {
+    "certificate_id": "d08aa9ca2bdfeb71",
+    "n_questions": 20,
+    "confidence_words": [
+      "early"
+    ],
+    "coverage": {
+      "estimand": "clean",
+      "clean": {
+        "ratio": 0.3103,
+        "hits": 36,
+        "n": 116,
+        "status": "FAIL",
+        "gate": 0.6
+      },
+      "raw": {
+        "ratio": 0.1053,
+        "hits": 44,
+        "n": 418
+      },
+      "plain": "Extraction coverage (clean estimand): 0.310 (36/116) \u2014 FAIL vs gate 0.6.",
+      "receipt": {
+        "kind": "recall_report",
+        "path": "data/_build/recall/report_<domain>.json"
+      }
+    },
+    "demo": false,
+    "note": "Live kanto probe receipt has per-predicate n << min_n=50, so all question rows are honestly early \u2014 the card does not invent solid. Coverage cites clean 0.310 FAIL."
+  },
+  "questions_seed": {
+    "path": "data/pokemon-lore/questions.json",
+    "n": 20
+  },
+  "deferred": [
+    "Consumer-flow interview UI for questions.json authoring (later workstream)",
+    "Persona gallery / share link rendering (distribution surface)",
+    "Booster archive cadence wiring into train scripts (call site on every install event)"
+  ],
+  "interpretation": "Phase 1 lands the generator and the confidence-word law with red-green proof. The kanto live card is measurement-honest: early on thin probe-n, coverage FAIL named. Wiring generate_certificate into the train/booster exit path is the remaining call-site work."
+}

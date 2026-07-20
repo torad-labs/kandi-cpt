@@ -1,0 +1,16 @@
+{
+  "domain": "millbrook-hollow",
+  "n_units": 1,
+  "total_excluded": 0,
+  "budget": 40,
+  "units": [
+    {
+      "unit": "main",
+      "n_before": 273,
+      "n_after": 273,
+      "n_excluded": 0,
+      "floor_violations": 0
+    }
+  ],
+  "status": "PASS"
+}

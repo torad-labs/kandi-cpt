@@ -1,0 +1,195 @@
+{
+  "schema": "kandi.sentinel.v1",
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "version": "v1",
+  "seed": 0,
+  "per_predicate": 2,
+  "install_slice": [
+    {
+      "id": "inst_involves_3b7b34c6d9528a46",
+      "slice": "install",
+      "predicate": "involves",
+      "question": "Who or what is involved in Great Amberfen Flood?",
+      "choices": [
+        "Mirelle Brannock",
+        "Brassleaf Compact",
+        "Bramish Corven",
+        "Tobin Harrowick"
+      ],
+      "answer": "Tobin Harrowick",
+      "subject": "Great Amberfen Flood",
+      "source_triple_id": "3b7b34c6d9528a46",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_lives_in_61998d4c08b59e41",
+      "slice": "install",
+      "predicate": "lives_in",
+      "question": "Where does Tamsin Vellshaw live?",
+      "choices": [
+        "Mosscoil Lane",
+        "Hearthmere Hall",
+        "Amberfen Crossing",
+        "Quillspire Keep"
+      ],
+      "answer": "Mosscoil Lane",
+      "subject": "Tamsin Vellshaw",
+      "source_triple_id": "61998d4c08b59e41",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_member_of_43645aa90a0d7c65",
+      "slice": "install",
+      "predicate": "member_of",
+      "question": "Which organization is Perrin Woolgrave a member of?",
+      "choices": [
+        "Order of the Nine Lanterns",
+        "Hollowbrook Trading Guild",
+        "Brassleaf Compact",
+        "Wyrdloom Keepers"
+      ],
+      "answer": "Hollowbrook Trading Guild",
+      "subject": "Perrin Woolgrave",
+      "source_triple_id": "43645aa90a0d7c65",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_member_of_a98404d71bac1722",
+      "slice": "install",
+      "predicate": "member_of",
+      "question": "Which organization is Garrick Brannock a member of?",
+      "choices": [
+        "Brassleaf Compact",
+        "Hollowbrook Trading Guild",
+        "Wyrdloom Keepers",
+        "Order of the Nine Lanterns"
+      ],
+      "answer": "Brassleaf Compact",
+      "subject": "Garrick Brannock",
+      "source_triple_id": "a98404d71bac1722",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_occurs_at_50dd149ed6b972dd",
+      "slice": "install",
+      "predicate": "occurs_at",
+      "question": "Where does Great Amberfen Flood take place?",
+      "choices": [
+        "Quillspire Keep",
+        "Amberfen Crossing",
+        "Cinderglass Bridge",
+        "Hearthmere Hall"
+      ],
+      "answer": "Amberfen Crossing",
+      "subject": "Great Amberfen Flood",
+      "source_triple_id": "50dd149ed6b972dd",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_works_at_97e0d66a26918273",
+      "slice": "install",
+      "predicate": "works_at",
+      "question": "Where does Perrin Woolgrave work?",
+      "choices": [
+        "Wyrdloom Archives",
+        "Amberfen Bell",
+        "Pellwater Quay",
+        "Thornwick Mill"
+      ],
+      "answer": "Pellwater Quay",
+      "subject": "Perrin Woolgrave",
+      "source_triple_id": "97e0d66a26918273",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_works_at_b18276e4f617fa0b",
+      "slice": "install",
+      "predicate": "works_at",
+      "question": "Where does Lysa Quenmere work?",
+      "choices": [
+        "Thornwick Mill",
+        "Amberfen Bell",
+        "Wyrdloom Archives",
+        "Pellwater Quay"
+      ],
+      "answer": "Wyrdloom Archives",
+      "subject": "Lysa Quenmere",
+      "source_triple_id": "b18276e4f617fa0b",
+      "split": "held_out",
+      "split_version": "v2"
+    }
+  ],
+  "general_ability_slice": [
+    {
+      "id": "ga_005",
+      "prompt": "What is 2 + 2?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_006",
+      "prompt": "Name three primary colors.",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_007",
+      "prompt": "What day comes after Monday?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_008",
+      "prompt": "What is the capital of France?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_009",
+      "prompt": "How many continents are on Earth?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_010",
+      "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_011",
+      "prompt": "What gas do plants absorb from the air during photosynthesis?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_012",
+      "prompt": "Who wrote Romeo and Juliet?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_013",
+      "prompt": "What is the boiling point of water at sea level in Celsius?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_014",
+      "prompt": "Name a mammal that can fly.",
+      "slice": "general_ability"
+    }
+  ],
+  "general_ability_file": "configs/domains/millbrook-hollow.general_ability.txt",
+  "general_ability_sha256": "b7d686241dbe5f1ddd0f0967e0b4a1298b5875d6dd78b5e72f760900b4eb500b",
+  "n_install": 7,
+  "n_general_ability": 10,
+  "predicates": [
+    "involves",
+    "lives_in",
+    "member_of",
+    "occurs_at",
+    "works_at"
+  ],
+  "frozen_at": "2026-07-20T04:11:27Z",
+  "note": "Frozen sentinel set. Re-cutting requires a new version string and restarts the series (goalpost law). Do not edit items in place to clear a halt.",
+  "content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3"
+}

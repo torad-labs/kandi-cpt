@@ -1,0 +1,66 @@
+{
+  "title": "Trust-loop Phase 2 \u2014 sentinel circuit breaker",
+  "date": "2026-07-20T01:57:10Z",
+  "landed": [
+    "scripts/pipeline/sentinel.py \u2014 build + evaluate + mechanical halt",
+    "scripts/pipeline/test_sentinel.py \u2014 6 red-green proofs",
+    "configs/domains/pokemon-lore.general_ability.txt \u2014 operator-named GA file",
+    "data/pokemon-lore/sentinel/sentinel_v1.json \u2014 frozen hash-stamped set",
+    "core-agent/knowledge/cpt/11-sentinel.md \u2014 G2 playbook"
+  ],
+  "sentinel_set": {
+    "path": "data/pokemon-lore/sentinel/sentinel_v1.json",
+    "content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+    "n_install": 27,
+    "n_general_ability": 10,
+    "predicates": [
+      "allied_with",
+      "appears_in",
+      "evolves_into_lore",
+      "governs",
+      "involves",
+      "leads",
+      "located_in",
+      "member_of",
+      "mentors",
+      "occurs_at",
+      "opposes",
+      "originates_from",
+      "owns_pokemon",
+      "partners_with",
+      "rival_of"
+    ]
+  },
+  "red_green": {
+    "degraded_halt": {
+      "status": "FAILED",
+      "halted": true,
+      "artifact_kept": "ckpt_prior",
+      "delta": -0.10000000000000009,
+      "bound": 0.05,
+      "plain": "SENTINEL HALT on booster: kept ckpt_prior. install: delta=-0.1000 bound=\u00b10.0500. Mitigation: see cpt/06-improve.md table (never train longer)."
+    },
+    "healthy_pass": {
+      "status": "PASS",
+      "halted": false,
+      "artifact_kept": "ckpt_good",
+      "plain": "SENTINEL PASS on booster: installed ckpt_good. install delta=+0.0200 (bound \u00b10.0500)."
+    },
+    "tests": [
+      "ok  test_build_sentinel_hash_stamped",
+      "ok  test_degraded_checkpoint_halted_mechanically",
+      "ok  test_general_ability_drop_halts",
+      "ok  test_healthy_checkpoint_passes",
+      "ok  test_missing_ga_scores_on_evaluate_fails",
+      "ok  test_missing_general_ability_file_fails_build",
+      "ALL 6 SENTINEL TESTS PASS"
+    ],
+    "exit_code": 0
+  },
+  "deferred": [
+    "Wire evaluate_sentinel into cpt/sft/anneal/booster train exit (every install event)",
+    "Live GPU probe scoring of the sentinel install slice (this landing is mechanical halt + freeze)",
+    "Digest plain-language surface (trust-loop 03) for halted boosters"
+  ],
+  "interpretation": "Phase 2 freezes the sentinel set (install probes + general-ability file), hash-stamps it, and proves mechanical halt: degraded synthetic checkpoint FAILED and kept prior; healthy PASS. General-ability stand-in label can leave reports once this file is cited \u2014 the harness gap in cpt/06-improve.md is closed at the file-existence layer; live scoring still needs train-exit wiring."
+}

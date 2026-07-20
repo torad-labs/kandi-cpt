@@ -1,0 +1,545 @@
+{
+  "schema": "kandi.sentinel.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "version": "v1",
+  "seed": 0,
+  "per_predicate": 2,
+  "install_slice": [
+    {
+      "id": "inst_allied_with_894546d9ad8226ce",
+      "slice": "install",
+      "predicate": "allied_with",
+      "question": "Who is Lillie allied with?",
+      "choices": [
+        "Corbeau",
+        "Lisia",
+        "Gladion",
+        "Pryce"
+      ],
+      "answer": "Gladion",
+      "subject": "Lillie",
+      "source_triple_id": "894546d9ad8226ce",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_allied_with_de291535e4f02322",
+      "slice": "install",
+      "predicate": "allied_with",
+      "question": "Who is Lusamine allied with?",
+      "choices": [
+        "Pryce",
+        "Mohn",
+        "Mr. Briney",
+        "Norman"
+      ],
+      "answer": "Mohn",
+      "subject": "Lusamine",
+      "source_triple_id": "de291535e4f02322",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_appears_in_38a29385fa95ee96",
+      "slice": "install",
+      "predicate": "appears_in",
+      "question": "Where does Red appear?",
+      "choices": [
+        "Alola",
+        "Now You See Me...",
+        "Spell of the Unown: Entei",
+        "Kanto Grand Festival"
+      ],
+      "answer": "Now You See Me...",
+      "subject": "Red",
+      "source_triple_id": "38a29385fa95ee96",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_appears_in_587467a85489dc13",
+      "slice": "install",
+      "predicate": "appears_in",
+      "question": "Where does Mr. Rime appear?",
+      "choices": [
+        "Sinnoh",
+        "Battling the Enemy Within",
+        "Kanto Grand Festival",
+        "Pokopia"
+      ],
+      "answer": "Pokopia",
+      "subject": "Mr. Rime",
+      "source_triple_id": "587467a85489dc13",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_evolves_into_lore_65304368872b5d09",
+      "slice": "install",
+      "predicate": "evolves_into_lore",
+      "question": "What does Dragonair evolve into in the lore?",
+      "choices": [
+        "Serperior",
+        "Dragonite",
+        "Dragonair",
+        "Silvally"
+      ],
+      "answer": "Dragonite",
+      "subject": "Dragonair",
+      "source_triple_id": "65304368872b5d09",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_evolves_into_lore_dd6aac9bca80d8fb",
+      "slice": "install",
+      "predicate": "evolves_into_lore",
+      "question": "What does Scorbunny evolve into in the lore?",
+      "choices": [
+        "Slowking",
+        "Cosmoem",
+        "Arcanine",
+        "Raboot"
+      ],
+      "answer": "Raboot",
+      "subject": "Scorbunny",
+      "source_triple_id": "dd6aac9bca80d8fb",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_governs_83bf6595dc6d5712",
+      "slice": "install",
+      "predicate": "governs",
+      "question": "What does Draconid people govern?",
+      "choices": [
+        "Viridian Gym",
+        "Viridian City Gym",
+        "Pok\u00e9mon School",
+        "Sky Pillar"
+      ],
+      "answer": "Sky Pillar",
+      "subject": "Draconid people",
+      "source_triple_id": "83bf6595dc6d5712",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_involves_71298738e16e0d31",
+      "slice": "install",
+      "predicate": "involves",
+      "question": "Who is involved in Mission 24: The Plate of Snowpoint Temple?",
+      "choices": [
+        "Ash",
+        "Deoxys",
+        "Regigigas",
+        "Team Rocket"
+      ],
+      "answer": "Regigigas",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "source_triple_id": "71298738e16e0d31",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_leads_9f4ff2925380bbc6",
+      "slice": "install",
+      "predicate": "leads",
+      "question": "Which organization does Lusamine lead?",
+      "choices": [
+        "Aether Foundation",
+        "Team Rainbow Rocket",
+        "Galar League",
+        "Pok\u00e9mon Association"
+      ],
+      "answer": "Aether Foundation",
+      "subject": "Lusamine",
+      "source_triple_id": "9f4ff2925380bbc6",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_leads_cc99dc0a654821ef",
+      "slice": "install",
+      "predicate": "leads",
+      "question": "Which organization does Lusamine lead?",
+      "choices": [
+        "Ultra Guardians",
+        "Elite Four",
+        "Team Aqua",
+        "Team Plasma"
+      ],
+      "answer": "Ultra Guardians",
+      "subject": "Lusamine",
+      "source_triple_id": "cc99dc0a654821ef",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_located_in_7a067f8c766d4179",
+      "slice": "install",
+      "predicate": "located_in",
+      "question": "Which region is Team Rocket located in?",
+      "choices": [
+        "Johto",
+        "Galar",
+        "Sinnoh",
+        "Alola"
+      ],
+      "answer": "Johto",
+      "subject": "Team Rocket",
+      "source_triple_id": "7a067f8c766d4179",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_located_in_b3cd6707dae0ef5e",
+      "slice": "install",
+      "predicate": "located_in",
+      "question": "Which region is Goldenrod Game Corner located in?",
+      "choices": [
+        "Alola",
+        "Unova",
+        "Johto",
+        "Hoenn"
+      ],
+      "answer": "Johto",
+      "subject": "Goldenrod Game Corner",
+      "source_triple_id": "b3cd6707dae0ef5e",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_member_of_66f2b38bca156f9f",
+      "slice": "install",
+      "predicate": "member_of",
+      "question": "Which organization is Galar League a member of?",
+      "choices": [
+        "Pok\u00e9mon League",
+        "Team Plasma",
+        "Pok\u00e9mon Activities Committee",
+        "Diamond Clan"
+      ],
+      "answer": "Pok\u00e9mon League",
+      "subject": "Galar League",
+      "source_triple_id": "66f2b38bca156f9f",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_member_of_b8f67b6d255c5cac",
+      "slice": "install",
+      "predicate": "member_of",
+      "question": "Which organization is Lillie a member of?",
+      "choices": [
+        "Team Magma",
+        "Team Galactic",
+        "Ultra Guardians",
+        "Army"
+      ],
+      "answer": "Ultra Guardians",
+      "subject": "Lillie",
+      "source_triple_id": "b8f67b6d255c5cac",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_mentors_2848fa78257a1c0c",
+      "slice": "install",
+      "predicate": "mentors",
+      "question": "Who does Misty mentor?",
+      "choices": [
+        "Professor Willow",
+        "Dawn",
+        "Alder",
+        "Lorelei"
+      ],
+      "answer": "Lorelei",
+      "subject": "Misty",
+      "source_triple_id": "2848fa78257a1c0c",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_mentors_b99654476e3337bf",
+      "slice": "install",
+      "predicate": "mentors",
+      "question": "Who does Lusamine mentor?",
+      "choices": [
+        "Emerald",
+        "Lorelei",
+        "Professor Samuel Oak",
+        "Gladion"
+      ],
+      "answer": "Gladion",
+      "subject": "Lusamine",
+      "source_triple_id": "b99654476e3337bf",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_occurs_at_047de8cd63a8938f",
+      "slice": "install",
+      "predicate": "occurs_at",
+      "question": "Where does Team Rocket take place?",
+      "choices": [
+        "Eterna Historical Museum",
+        "Ever Grande City",
+        "New Island",
+        "Snowpoint Temple"
+      ],
+      "answer": "Eterna Historical Museum",
+      "subject": "Team Rocket",
+      "source_triple_id": "047de8cd63a8938f",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_occurs_at_88a727b38c715161",
+      "slice": "install",
+      "predicate": "occurs_at",
+      "question": "Where does Galar League take place?",
+      "choices": [
+        "Indigo Plateau",
+        "New Island",
+        "Wyndon Stadium",
+        "Cerise Island"
+      ],
+      "answer": "Wyndon Stadium",
+      "subject": "Galar League",
+      "source_triple_id": "88a727b38c715161",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_opposes_c74ccbb0660f7b48",
+      "slice": "install",
+      "predicate": "opposes",
+      "question": "Who does Red oppose?",
+      "choices": [
+        "Aether Foundation",
+        "Lt. Surge",
+        "Erika",
+        "Pikachu"
+      ],
+      "answer": "Lt. Surge",
+      "subject": "Red",
+      "source_triple_id": "c74ccbb0660f7b48",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_opposes_eff84fb83c4a3ca7",
+      "slice": "install",
+      "predicate": "opposes",
+      "question": "Who does Red oppose?",
+      "choices": [
+        "Agatha",
+        "Professor Kukui",
+        "Team Aqua",
+        "Yellow"
+      ],
+      "answer": "Agatha",
+      "subject": "Red",
+      "source_triple_id": "eff84fb83c4a3ca7",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_originates_from_17f3e926d68813c9",
+      "slice": "install",
+      "predicate": "originates_from",
+      "question": "Which region is Hisuian Arcanine from?",
+      "choices": [
+        "Galar",
+        "Hisui",
+        "Hoenn",
+        "Kanto"
+      ],
+      "answer": "Hisui",
+      "subject": "Hisuian Arcanine",
+      "source_triple_id": "17f3e926d68813c9",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_originates_from_1d66aa69f5e735bf",
+      "slice": "install",
+      "predicate": "originates_from",
+      "question": "Which region is Manaphy from?",
+      "choices": [
+        "Hisui",
+        "Galar",
+        "Sinnoh",
+        "Hoenn"
+      ],
+      "answer": "Sinnoh",
+      "subject": "Manaphy",
+      "source_triple_id": "1d66aa69f5e735bf",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_owns_pokemon_e47ab0aee7126d1a",
+      "slice": "install",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "choices": [
+        "Roselia",
+        "Vanillite",
+        "Absolite",
+        "Nidorino"
+      ],
+      "answer": "Absolite",
+      "subject": "Calem",
+      "source_triple_id": "e47ab0aee7126d1a",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_owns_pokemon_f0679856c82f36b7",
+      "slice": "install",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "choices": [
+        "Fletchling",
+        "Piplup",
+        "Vanillite",
+        "Type: Null"
+      ],
+      "answer": "Fletchling",
+      "subject": "Calem",
+      "source_triple_id": "f0679856c82f36b7",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_partners_with_649d927d6018b8d5",
+      "slice": "install",
+      "predicate": "partners_with",
+      "question": "Who is the partner of Manaphy?",
+      "choices": [
+        "Gloom",
+        "Ditto",
+        "Slugma",
+        "Bulbasaur"
+      ],
+      "answer": "Ditto",
+      "subject": "Manaphy",
+      "source_triple_id": "649d927d6018b8d5",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_rival_of_81a99e15d8314d5f",
+      "slice": "install",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Calem?",
+      "choices": [
+        "Serena",
+        "Misty",
+        "Ursula",
+        "May"
+      ],
+      "answer": "Serena",
+      "subject": "Calem",
+      "source_triple_id": "81a99e15d8314d5f",
+      "split": "held_out",
+      "split_version": "v2"
+    },
+    {
+      "id": "inst_rival_of_f4ec466f1a41c7d6",
+      "slice": "install",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Bruno?",
+      "choices": [
+        "Sapphire",
+        "Gladion",
+        "Molayne",
+        "Chuck"
+      ],
+      "answer": "Chuck",
+      "subject": "Bruno",
+      "source_triple_id": "f4ec466f1a41c7d6",
+      "split": "held_out",
+      "split_version": "v2"
+    }
+  ],
+  "general_ability_slice": [
+    {
+      "id": "ga_006",
+      "prompt": "What is 2 + 2?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_007",
+      "prompt": "Name three primary colors.",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_008",
+      "prompt": "What day comes after Monday?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_009",
+      "prompt": "What is the capital of France?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_010",
+      "prompt": "How many continents are on Earth?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_011",
+      "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_012",
+      "prompt": "What gas do plants absorb from the air during photosynthesis?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_013",
+      "prompt": "Who wrote Romeo and Juliet?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_014",
+      "prompt": "What is the boiling point of water at sea level in Celsius?",
+      "slice": "general_ability"
+    },
+    {
+      "id": "ga_015",
+      "prompt": "Name a mammal that can fly.",
+      "slice": "general_ability"
+    }
+  ],
+  "general_ability_file": "configs/domains/pokemon-lore.general_ability.txt",
+  "general_ability_sha256": "2e2f7223ebefefbbf06e1028187dc6c6ebb16fdf27a4c4d926c184bed401f6b2",
+  "n_install": 27,
+  "n_general_ability": 10,
+  "predicates": [
+    "allied_with",
+    "appears_in",
+    "evolves_into_lore",
+    "governs",
+    "involves",
+    "leads",
+    "located_in",
+    "member_of",
+    "mentors",
+    "occurs_at",
+    "opposes",
+    "originates_from",
+    "owns_pokemon",
+    "partners_with",
+    "rival_of"
+  ],
+  "frozen_at": "2026-07-20T01:56:40Z",
+  "note": "Frozen sentinel set. Re-cutting requires a new version string and restarts the series (goalpost law). Do not edit items in place to clear a halt.",
+  "content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4"
+}

@@ -32,3 +32,18 @@ done
 CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0} PYTHONPATH=scripts .venv/bin/python scripts/eval.py \
   --config "$CFG" --mode sft --checkpoints $CKPTS --labels $LABELS
 echo "===== $LABEL: trained + GATED → scorecard_${LABEL}_final.json (visible in the dashboard). ====="
+
+# Trust-loop install event (sentinel + certificate) — every SFT is an install event.
+# train_cpt.py also fires this on save; this catch-up path covers post-gate receipts.
+if [[ -z "${QGRE_SKIP_INSTALL_EVENT:-}" && -n "${QGRE_INSTALL_DOMAIN:-}" ]]; then
+  echo "===== [3/3] INSTALL EVENT (sentinel + certificate) ====="
+  PYTHONPATH=scripts .venv/bin/python scripts/pipeline/install_event.py \
+    --domain "$QGRE_INSTALL_DOMAIN" \
+    --unit "${QGRE_INSTALL_UNIT:-}" \
+    --event sft \
+    --candidate-artifact "$SAVE" \
+    ${QGRE_PROBE_RECEIPT:+--probe-receipt "$QGRE_PROBE_RECEIPT"} \
+    ${QGRE_REFERENCE_ARTIFACT:+--reference-artifact "$QGRE_REFERENCE_ARTIFACT"} \
+    ${QGRE_BOOSTER_N:+--booster-n "$QGRE_BOOSTER_N"} \
+    || echo "install_event returned non-zero (halt or missing evidence) — see $SAVE/install_event.json"
+fi

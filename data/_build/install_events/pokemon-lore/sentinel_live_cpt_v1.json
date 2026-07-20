@@ -1,0 +1,363 @@
+{
+  "schema": "kandi.sentinel_live_scores.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "sentinel_content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+  "device": "cuda:0",
+  "scored_at": "2026-07-20T02:24:38Z",
+  "base": {
+    "install": {
+      "hits": 9,
+      "n": 27,
+      "acc": 0.3333333333333333,
+      "per_predicate": {
+        "allied_with": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "appears_in": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "evolves_into_lore": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "governs": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "involves": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "leads": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "located_in": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "member_of": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "mentors": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "occurs_at": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "opposes": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "originates_from": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "owns_pokemon": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "partners_with": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "rival_of": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        }
+      },
+      "model_path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+    },
+    "general_ability": {
+      "hits": 10,
+      "n": 10,
+      "acc": 1.0,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "The three primary colors are red, yellow, and blue.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Tuesday comes after Monday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "The capital of France is Paris.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "A stitch in time saves nine.",
+          "hit": true
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air during photosynthesis.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "William Shakespeare wrote Romeo and Juliet.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "The boiling point of water at sea level is 100 degrees Celsius.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "Bats are mammals that can fly.",
+          "hit": true
+        }
+      ],
+      "model_path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+    },
+    "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it"
+  },
+  "candidate": {
+    "install": {
+      "hits": 22,
+      "n": 27,
+      "acc": 0.8148148148148148,
+      "per_predicate": {
+        "allied_with": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "appears_in": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "evolves_into_lore": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "governs": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "involves": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "leads": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "located_in": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "member_of": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "mentors": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "occurs_at": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "opposes": {
+          "hits": 2,
+          "n": 2,
+          "acc": 1.0
+        },
+        "originates_from": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "owns_pokemon": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        },
+        "partners_with": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "rival_of": {
+          "hits": 1,
+          "n": 2,
+          "acc": 0.5
+        }
+      },
+      "model_path": "checkpoints/cpt/pokemon_lore_kanto_v1"
+    },
+    "general_ability": {
+      "hits": 9,
+      "n": 10,
+      "acc": 0.9,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "Red, blue, and yellow are three primary colors.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Tuesday comes after Monday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "Paris is the capital of France.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "\"",
+          "hit": false
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air during photosynthesis.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "William Shakespeare wrote Romeo and Juliet.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "Water boils at 100 degrees Celsius at sea level.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "The bat is a mammal that can fly.",
+          "hit": true
+        }
+      ],
+      "model_path": "checkpoints/cpt/pokemon_lore_kanto_v1"
+    },
+    "path": "checkpoints/cpt/pokemon_lore_kanto_v1"
+  },
+  "sentinel_result": {
+    "schema": "kandi.sentinel_result.v1",
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "event": "cpt",
+    "status": "PASS",
+    "halted": false,
+    "artifact_kept": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "prior_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "candidate_artifact": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.3333333333333333,
+        "candidate_acc": 0.8148148148148148,
+        "delta": 0.48148148148148145,
+        "n": 27,
+        "rough_bound": 0.09622504486493763,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 1.0,
+        "candidate_acc": 0.9,
+        "delta": -0.09999999999999998,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 9,
+        "n": 27,
+        "acc": 0.3333333333333333
+      },
+      "candidate": {
+        "hits": 22,
+        "n": 27,
+        "acc": 0.8148148148148148
+      },
+      "slice": "install",
+      "reference_acc": 0.3333333333333333,
+      "candidate_acc": 0.8148148148148148,
+      "delta": 0.48148148148148145,
+      "n": 27,
+      "rough_bound": 0.09622504486493763,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 0.9,
+      "delta": -0.09999999999999998,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/pokemon_lore_kanto_v1. install delta=+0.4815 (bound \u00b10.0962).",
+    "evaluated_at": "2026-07-20T02:24:38Z"
+  }
+}

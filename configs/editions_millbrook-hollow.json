@@ -1,0 +1,7 @@
+{
+  "_comment": "millbrook-hollow unit registry — single demo town unit (main).",
+  "domain": "millbrook-hollow",
+  "editions": [
+    { "unit": "main", "status": "active" }
+  ]
+}

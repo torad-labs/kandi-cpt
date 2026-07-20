@@ -1,0 +1,90 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "version": 1,
+  "seeded_from": "data/millbrook-hollow/main/probes.jsonl",
+  "n": 10,
+  "demo": true,
+  "questions": [
+    {
+      "id": "q01",
+      "text": "Where does Orin Vellshaw live?",
+      "predicate": "lives_in",
+      "subject": "Orin Vellshaw",
+      "source": "probe_shape",
+      "source_triple_id": "aacdf7177bb71c45"
+    },
+    {
+      "id": "q02",
+      "text": "What does Orin Vellshaw own?",
+      "predicate": "owns",
+      "subject": "Orin Vellshaw",
+      "source": "probe_shape",
+      "source_triple_id": "e058dc6fa86aabdf"
+    },
+    {
+      "id": "q03",
+      "text": "Which organization is Orin Vellshaw a member of?",
+      "predicate": "member_of",
+      "subject": "Orin Vellshaw",
+      "source": "probe_shape",
+      "source_triple_id": "f06b673dd7627884"
+    },
+    {
+      "id": "q04",
+      "text": "Where does Tamsin Vellshaw live?",
+      "predicate": "lives_in",
+      "subject": "Tamsin Vellshaw",
+      "source": "probe_shape",
+      "source_triple_id": "61998d4c08b59e41"
+    },
+    {
+      "id": "q05",
+      "text": "Which organization does Mirelle Brannock lead?",
+      "predicate": "leads",
+      "subject": "Mirelle Brannock",
+      "source": "probe_shape",
+      "source_triple_id": "5bdcad6bdc44f46b"
+    },
+    {
+      "id": "q06",
+      "text": "Which organization is Garrick Brannock a member of?",
+      "predicate": "member_of",
+      "subject": "Garrick Brannock",
+      "source": "probe_shape",
+      "source_triple_id": "a98404d71bac1722"
+    },
+    {
+      "id": "q07",
+      "text": "Which organization does Cedric Palthorne lead?",
+      "predicate": "leads",
+      "subject": "Cedric Palthorne",
+      "source": "probe_shape",
+      "source_triple_id": "059d3907af829182"
+    },
+    {
+      "id": "q08",
+      "text": "What does Ione Mersh own?",
+      "predicate": "owns",
+      "subject": "Ione Mersh",
+      "source": "probe_shape",
+      "source_triple_id": "7c6a4bf1debc7386"
+    },
+    {
+      "id": "q09",
+      "text": "Where does Lysa Quenmere work?",
+      "predicate": "works_at",
+      "subject": "Lysa Quenmere",
+      "source": "probe_shape",
+      "source_triple_id": "b18276e4f617fa0b"
+    },
+    {
+      "id": "q10",
+      "text": "What does Sable Kett guard?",
+      "predicate": "guards",
+      "subject": "Sable Kett",
+      "source": "probe_shape",
+      "source_triple_id": "c903b9f42db0b075"
+    }
+  ]
+}

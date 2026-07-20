@@ -1,0 +1,67 @@
+{
+  "schema": "kandi.sentinel_result.v1",
+  "sentinel_version": "v1",
+  "sentinel_content_sha256": "c761f18d3b2923ede32d85b20b899a5d295790952e04f3f0e0bab023d61dbbd4",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "event": "booster",
+  "status": "PASS",
+  "halted": false,
+  "artifact_kept": "ckpt_good",
+  "prior_artifact": "ckpt_prior",
+  "candidate_artifact": "ckpt_good",
+  "decisions": [
+    {
+      "slice": "install",
+      "reference_acc": 0.8,
+      "candidate_acc": 0.82,
+      "delta": 0.019999999999999907,
+      "n": 100,
+      "rough_bound": 0.05,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    {
+      "slice": "general_ability",
+      "reference_acc": 0.9,
+      "candidate_acc": 0.89,
+      "delta": -0.010000000000000009,
+      "n": 100,
+      "rough_bound": 0.05,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    }
+  ],
+  "install": {
+    "reference": {
+      "hits": 80,
+      "n": 100,
+      "acc": 0.8
+    },
+    "candidate": {
+      "hits": 82,
+      "n": 100,
+      "acc": 0.82
+    },
+    "slice": "install",
+    "reference_acc": 0.8,
+    "candidate_acc": 0.82,
+    "delta": 0.019999999999999907,
+    "n": 100,
+    "rough_bound": 0.05,
+    "halt": false,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "general_ability": {
+    "slice": "general_ability",
+    "reference_acc": 0.9,
+    "candidate_acc": 0.89,
+    "delta": -0.010000000000000009,
+    "n": 100,
+    "rough_bound": 0.05,
+    "halt": false,
+    "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+  },
+  "plain": "SENTINEL PASS on booster: installed ckpt_good. install delta=+0.0200 (bound \u00b10.0500).",
+  "evaluated_at": "2026-07-20T01:57:10Z"
+}

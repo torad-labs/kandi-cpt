@@ -1,0 +1,350 @@
+{
+  "title": "Phase G \u2014 extraction-gap improve-loop iteration 1 (pokemon-lore/kanto)",
+  "date": "2026-07-20T01:42:45Z",
+  "domain": "pokemon-lore",
+  "edition": "kanto",
+  "discipline": "cpt/06-improve.md \u2014 diagnose \u2192 ONE change \u2192 same eval",
+  "diagnosis": {
+    "method": "3-doc passage vs extract emission classification for starved predicates",
+    "prompt_construction": "Ontology.system() listed predicate NAMES only (closed enum) plus leftover EDC plays_at rules; no per-predicate semantics. Manifest had object-type contracts but they were not surfaced to the extractor.",
+    "samples": [
+      {
+        "doc": "Unova.md",
+        "starved": "appears_in",
+        "passage": "Swords of Justice (Terrakion/Virizion/Cobalion) save Pok\u00e9mon in a Unova forest; Thundurus and Tornadus raced across Unova.",
+        "before_extract": "originates_from\u00d72, owns_pokemon\u00d74, evolves_into_lore\u00d71 \u2014 zero appears_in",
+        "class": "(a) prompt under-specifies appears_in",
+        "after_extract_note": "appears_in\u00d77 on Unova source after guidance"
+      },
+      {
+        "doc": "Blaine_(Adventures).md",
+        "starved": "allied_with",
+        "passage": "With Red's help, Blaine escaped Team Rocket; Blaine rescues Red from Mewtwo \u2014 clear cooperation.",
+        "before_extract": "opposes\u00d77, owns_pokemon, member_of, rival_of \u2014 zero allied_with with peer helpers",
+        "class": "(a) prompt under-specifies allied_with",
+        "after_extract_note": "allied_with\u00d73 (Misty, Lt. Surge, Team Rocket) after guidance"
+      },
+      {
+        "doc": "Janine.md",
+        "starved": "governs",
+        "passage": "Gym Leader of Fuchsia City's Gym (Fuchsia Gym) after Koga promoted.",
+        "before_extract": "Janine --governs--> Fuchsia Gym (present)",
+        "class": "(b) object-type/granularity mismatch vs judge (City vs Gym)",
+        "after_extract_note": "still governs\u2192Fuchsia Gym (correct per guidance: prefer Gym over city)"
+      },
+      {
+        "doc": "Lanette.md",
+        "starved": "involves",
+        "passage": "Maintainer of Hoenn storage system; sister of Brigette; related to Bill's system.",
+        "before_extract": "located_in\u00d76, allied_with\u2192Bill \u2014 zero involves",
+        "class": "(b) judge used involves as generic related-to; graph convention is event\u2192participant",
+        "after_extract_note": "allied_with Bill/Brigette + appears_in regions \u2014 involves correctly scarce"
+      }
+    ],
+    "dominant_class": "(a) prompt under-specification for appears_in / allied_with",
+    "secondary_class": "(b) object granularity / judge shape mismatch for governs + involves"
+  },
+  "one_mitigation": {
+    "kind": "prompt_predicate_guidance",
+    "files": [
+      "configs/domains/pokemon-lore.yaml",
+      "scripts/pipeline/ontology.py"
+    ],
+    "not_done": "object-type shape correction (deferred; governs Gym-vs-City is matcher/judge)",
+    "edc_parity": "test_ontology.py ALL 8 PASS",
+    "audit_tests": "test_audit_recall.py ALL 9 PASS"
+  },
+  "reextract": {
+    "protocol": "ledger-aside (backup + strip source-url rows + drop SHAs from .extracted.json)",
+    "scope_docs": [
+      "Blaine_(Adventures).md",
+      "Champion.md",
+      "Decolore_Islands.md",
+      "Grand_Oak.md",
+      "Janine.md",
+      "Lake_Valor.md",
+      "Lanette.md",
+      "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+      "Mirage_Kingdom.md",
+      "Mt._Pyre.md",
+      "Mt._Silver.md",
+      "Pok%C3%A9mon_Egg.md",
+      "Solidad.md",
+      "Unova.md"
+    ],
+    "backup": "data/_build/recall/pokemon-lore/phase_g_backup",
+    "extract_log": "logs/phase_g_reextract.log",
+    "resolve_log": "logs/phase_g_resolve.log",
+    "extract_stats": "pending=18 docs_ok=16 ok_triple=176 llm_fail=2"
+  },
+  "eval": {
+    "same_as": "Phase F2 audit_recall \u2014 20 docs, seed 0, qwen/qwen3-32b, clean estimand",
+    "before": {
+      "source": "logs/phase_f2_coverage_metric.json",
+      "raw_ratio": 0.1053,
+      "raw_hits": 44,
+      "raw_n": 418,
+      "clean_ratio": 0.3103,
+      "clean_hits": 36,
+      "clean_n": 116,
+      "classes": {
+        "judge_rejected": 193,
+        "out_of_unit": 109,
+        "misses": 80,
+        "hits": 36,
+        "match_mode": {
+          "exact": 35,
+          "soft-object": 1,
+          "canonical": 0
+        },
+        "noise_frac_of_raw_denominator": 0.7225,
+        "corpus_composition_note": "out_of_unit class is large \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap."
+      }
+    },
+    "after": {
+      "raw_ratio": 0.1387,
+      "raw_hits": 66,
+      "raw_n": 476,
+      "clean_ratio": 0.3598,
+      "clean_hits": 59,
+      "clean_n": 164,
+      "status": "FAIL",
+      "failed_predicates": [
+        "allied_with",
+        "appears_in",
+        "governs",
+        "involves",
+        "leads",
+        "member_of",
+        "opposes",
+        "originates_from",
+        "rival_of"
+      ],
+      "classes": {
+        "judge_rejected": 200,
+        "out_of_unit": 112,
+        "misses": 105,
+        "hits": 59,
+        "match_mode": {
+          "exact": 58,
+          "soft-object": 1,
+          "canonical": 0
+        }
+      }
+    }
+  },
+  "per_predicate_before_after": [
+    {
+      "predicate": "allied_with",
+      "before_hits": 0,
+      "before_n": 12,
+      "before_ratio": 0.0,
+      "after_hits": 0,
+      "after_n": 1,
+      "after_ratio": 0.0,
+      "delta_ratio": 0.0,
+      "class": "starved"
+    },
+    {
+      "predicate": "appears_in",
+      "before_hits": 0,
+      "before_n": 8,
+      "before_ratio": 0.0,
+      "after_hits": 1,
+      "after_n": 7,
+      "after_ratio": 0.1429,
+      "delta_ratio": 0.1429,
+      "class": "starved"
+    },
+    {
+      "predicate": "evolves_into_lore",
+      "before_hits": 15,
+      "before_n": 17,
+      "before_ratio": 0.8824,
+      "after_hits": 33,
+      "after_n": 43,
+      "after_ratio": 0.7674,
+      "delta_ratio": -0.1149,
+      "class": "healthy"
+    },
+    {
+      "predicate": "follows",
+      "before_hits": null,
+      "before_n": null,
+      "before_ratio": null,
+      "after_hits": 0,
+      "after_n": 0,
+      "after_ratio": null,
+      "delta_ratio": null,
+      "class": "other"
+    },
+    {
+      "predicate": "governs",
+      "before_hits": 0,
+      "before_n": 3,
+      "before_ratio": 0.0,
+      "after_hits": 1,
+      "after_n": 4,
+      "after_ratio": 0.25,
+      "delta_ratio": 0.25,
+      "class": "starved"
+    },
+    {
+      "predicate": "involves",
+      "before_hits": 2,
+      "before_n": 25,
+      "before_ratio": 0.08,
+      "after_hits": 0,
+      "after_n": 59,
+      "after_ratio": 0.0,
+      "delta_ratio": -0.08,
+      "class": "starved"
+    },
+    {
+      "predicate": "leads",
+      "before_hits": null,
+      "before_n": null,
+      "before_ratio": null,
+      "after_hits": 0,
+      "after_n": 1,
+      "after_ratio": 0.0,
+      "delta_ratio": null,
+      "class": "starved"
+    },
+    {
+      "predicate": "located_in",
+      "before_hits": 11,
+      "before_n": 15,
+      "before_ratio": 0.7333,
+      "after_hits": 15,
+      "after_n": 17,
+      "after_ratio": 0.8824,
+      "delta_ratio": 0.149,
+      "class": "healthy"
+    },
+    {
+      "predicate": "member_of",
+      "before_hits": 2,
+      "before_n": 4,
+      "before_ratio": 0.5,
+      "after_hits": 1,
+      "after_n": 3,
+      "after_ratio": 0.3333,
+      "delta_ratio": -0.1667,
+      "class": "other"
+    },
+    {
+      "predicate": "mentors",
+      "before_hits": null,
+      "before_n": null,
+      "before_ratio": null,
+      "after_hits": 0,
+      "after_n": 0,
+      "after_ratio": null,
+      "delta_ratio": null,
+      "class": "other"
+    },
+    {
+      "predicate": "occurs_at",
+      "before_hits": 1,
+      "before_n": 8,
+      "before_ratio": 0.125,
+      "after_hits": 2,
+      "after_n": 4,
+      "after_ratio": 0.5,
+      "delta_ratio": 0.375,
+      "class": "other"
+    },
+    {
+      "predicate": "opposes",
+      "before_hits": 2,
+      "before_n": 7,
+      "before_ratio": 0.2857,
+      "after_hits": 2,
+      "after_n": 6,
+      "after_ratio": 0.3333,
+      "delta_ratio": 0.0476,
+      "class": "starved"
+    },
+    {
+      "predicate": "originates_from",
+      "before_hits": 1,
+      "before_n": 9,
+      "before_ratio": 0.1111,
+      "after_hits": 2,
+      "after_n": 14,
+      "after_ratio": 0.1429,
+      "delta_ratio": 0.0317,
+      "class": "starved"
+    },
+    {
+      "predicate": "owns_pokemon",
+      "before_hits": 0,
+      "before_n": 3,
+      "before_ratio": 0.0,
+      "after_hits": 1,
+      "after_n": 1,
+      "after_ratio": 1.0,
+      "delta_ratio": 1.0,
+      "class": "starved"
+    },
+    {
+      "predicate": "precedes",
+      "before_hits": null,
+      "before_n": null,
+      "before_ratio": null,
+      "after_hits": 0,
+      "after_n": 0,
+      "after_ratio": null,
+      "delta_ratio": null,
+      "class": "other"
+    },
+    {
+      "predicate": "rival_of",
+      "before_hits": 2,
+      "before_n": 5,
+      "before_ratio": 0.4,
+      "after_hits": 1,
+      "after_n": 4,
+      "after_ratio": 0.25,
+      "delta_ratio": -0.15,
+      "class": "starved"
+    }
+  ],
+  "success_criteria": {
+    "at_least_one_starved_moves_materially": true,
+    "moved_predicates": [
+      "governs",
+      "owns_pokemon"
+    ],
+    "healthy_no_regression": false,
+    "overall": false,
+    "healthy_caveat": "evolves_into_lore clean ratio 0.88\u21920.77 on UNPAIRED judge draws (Phase F2 vs Phase G each re-invoked qwen3-32b). Not a paired before/after on fixed assertable facts. Graph-side evolves_into_lore count stayed high (101\u2192124 triples). Treat ratio dip as judge-draw noise unless a fixture-replay shows real loss. located_in improved 0.73\u21920.88.",
+    "overall_strict": false,
+    "overall_with_judge_noise_caveat": true
+  },
+  "verdicts": {
+    "run_gate": "PASS \u2014 re-extract+resolve completed; ontology/audit tests green",
+    "coverage_gate": "FAIL clean=0.3598 (gate 0.6)"
+  },
+  "interpretation": "One improve-loop iteration (cpt/06-improve.md): diagnose \u2192 ONE change \u2192 same eval. Diagnosis: starved clean misses were predominantly (a) prompt under-specification \u2014 Ontology.system() exposed predicate names only; Unova prose states Swords-of-Justice/forces-of-nature lore with zero appears_in emitted; Blaine+Red cooperation prose emitted opposes not allied_with. governs was (b) object granularity (Gym vs City); involves judge assertions were mostly shape-wrong (character\u2192character vs event\u2192participant). ONE fix: manifest guidance: strings on starved predicates + Ontology.system() renderer (no-op when guidance empty \u2192 EDC byte-parity holds). Re-extracted 14 starved-miss docs via ledger-aside (backup at data/_build/recall/pokemon-lore/phase_g_backup; strip-by-source-url; never delete), re-resolved, re-audited same 20 docs seed 0. CLEAN 0.310 (36/116) \u2192 0.360 (59/164). Starved predicates with material movement: governs \u0394=+0.25 (0.0\u21920.25), owns_pokemon \u0394=+1.00 (0.0\u21921.0). Healthy: evolves_into_lore 0.8824\u21920.7674, located_in 0.7333\u21920.8824. Healthy non-regression=REGRESSED. Gate 0.6 on clean: FAIL. Next mitigation if continuing: corpus de-scope of cross-region pages (out_of_unit still large) OR a second pass targeting remaining appears_in/allied_with misses with quote-forced extraction \u2014 not another prompt tweak in the same class. Graph-side (paired on treated docs): Unova appears_in 0\u21927, Blaine allied_with 0\u21923 \u2014 the prompt fix moved extractor behavior on the diagnosed class even where clean coverage remains judge-limited. Strict success_criteria.overall=false because evolves_into_lore clean ratio dipped on unpaired judge draws; do not read that dip as proven healthy regression without a fixture replay.",
+  "next_mitigation_if_continuing": "Corpus de-scope of cross-region pages dominating out_of_unit, OR quote-forced second extract on remaining appears_in/allied_with misses \u2014 do not re-tweak guidance in the same class.",
+  "receipts": {
+    "this_file": "logs/phase_g_extraction_gap_iteration.json",
+    "audit_log": "logs/phase_g_audit_recall.log",
+    "unit_report": "data/_build/recall/pokemon-lore/kanto.json",
+    "domain_report": "data/_build/recall/report_pokemon-lore.json",
+    "scope": "logs/phase_g_ledger_aside_scope.json"
+  },
+  "graph_side_emission_check": {
+    "note": "direct evidence the fix changed extractor behavior on treated docs",
+    "unova_appears_in_before": 0,
+    "unova_appears_in_after": 7,
+    "blaine_allied_with_before": 0,
+    "blaine_allied_with_after": 3,
+    "appears_in_corpus_before_approx": 51,
+    "appears_in_corpus_after": 66,
+    "involves_corpus_before_approx": 12,
+    "involves_corpus_after": 23
+  }
+}
