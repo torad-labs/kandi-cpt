@@ -1,0 +1,165 @@
+{
+  "title": "Phase F Task 1 \u2014 generative judge \u03ba-calibration (pokemon-lore)",
+  "date": "2026-07-19T22:46:11Z",
+  "domain": "pokemon-lore",
+  "judge_model": "qwen/qwen3-32b",
+  "calibration_json": "configs/evals/calibration_pokemon-lore.json",
+  "calibration_set": {
+    "n": 28,
+    "sha256": "40d71a077cb2e2af836b2e111cb823aaadf27ddf787e9589953385c000d48293",
+    "label_dist": {
+      "correct": 8,
+      "wrong": 7,
+      "fabricated": 7,
+      "deflected": 6
+    },
+    "hard_cases": [
+      "entity_swap_confusable_gym_leader",
+      "entity_swap_confusable_leader",
+      "entity_swap_confusable_region",
+      "entity_swap_confusable_rival",
+      "exact_correct",
+      "explicit_unknown",
+      "hedge_deflection",
+      "paraphrase_correct",
+      "plausible_fabrication",
+      "refusal_deflection"
+    ]
+  },
+  "kappa_usable_threshold": 0.6,
+  "estimand": "judge_label_agreement_on_fixed_calibration_set",
+  "note": "Binary \u03ba (correct vs rest) is the usable gate matching eval_generative.KAPPA_USABLE. Multiclass \u03ba/accuracy/confusion are reported for honesty over all four labels. One JUDGE_SYSTEM tighten is allowed if binary \u03ba < threshold; no further iteration.",
+  "tightened_once": false,
+  "passes": [
+    {
+      "name": "stock_JUDGE_SYSTEM",
+      "system_prompt_sha256": "28660da4f0883c0aeb8f99c0380a8974c3b2e2e984091e807f872441d2ea5229",
+      "binary_correct_vs_rest": {
+        "n": 28,
+        "accuracy": 1.0,
+        "kappa": 1.0,
+        "usable": true,
+        "provisional": false,
+        "agree": 28
+      },
+      "multiclass": {
+        "n": 28,
+        "accuracy": 1.0,
+        "kappa": 1.0,
+        "per_label": {
+          "correct": {
+            "n": 8,
+            "recall": 1.0,
+            "precision": 1.0
+          },
+          "wrong": {
+            "n": 7,
+            "recall": 1.0,
+            "precision": 1.0
+          },
+          "fabricated": {
+            "n": 7,
+            "recall": 1.0,
+            "precision": 1.0
+          },
+          "deflected": {
+            "n": 6,
+            "recall": 1.0,
+            "precision": 1.0
+          }
+        },
+        "confusion": {
+          "correct": {
+            "correct": 8,
+            "wrong": 0,
+            "fabricated": 0,
+            "deflected": 0
+          },
+          "wrong": {
+            "correct": 0,
+            "wrong": 7,
+            "fabricated": 0,
+            "deflected": 0
+          },
+          "fabricated": {
+            "correct": 0,
+            "wrong": 0,
+            "fabricated": 7,
+            "deflected": 0
+          },
+          "deflected": {
+            "correct": 0,
+            "wrong": 0,
+            "fabricated": 0,
+            "deflected": 6
+          }
+        }
+      },
+      "usage": {
+        "calls": 28,
+        "prompt_tokens": 6387,
+        "completion_tokens": 4819
+      }
+    }
+  ],
+  "final": {
+    "pass": "stock_JUDGE_SYSTEM",
+    "binary_kappa": 1.0,
+    "binary_accuracy": 1.0,
+    "multiclass_kappa": 1.0,
+    "multiclass_accuracy": 1.0,
+    "usable": true,
+    "provisional": false,
+    "confusion": {
+      "correct": {
+        "correct": 8,
+        "wrong": 0,
+        "fabricated": 0,
+        "deflected": 0
+      },
+      "wrong": {
+        "correct": 0,
+        "wrong": 7,
+        "fabricated": 0,
+        "deflected": 0
+      },
+      "fabricated": {
+        "correct": 0,
+        "wrong": 0,
+        "fabricated": 7,
+        "deflected": 0
+      },
+      "deflected": {
+        "correct": 0,
+        "wrong": 0,
+        "fabricated": 0,
+        "deflected": 6
+      }
+    },
+    "per_label": {
+      "correct": {
+        "n": 8,
+        "recall": 1.0,
+        "precision": 1.0
+      },
+      "wrong": {
+        "n": 7,
+        "recall": 1.0,
+        "precision": 1.0
+      },
+      "fabricated": {
+        "n": 7,
+        "recall": 1.0,
+        "precision": 1.0
+      },
+      "deflected": {
+        "n": 6,
+        "recall": 1.0,
+        "precision": 1.0
+      }
+    }
+  },
+  "verdict": "PASS \u2014 binary \u03ba=1.000 \u2265 0.6; generative axis may emit PASS (not only PROVISIONAL)",
+  "row_detail_path": "logs/phase_f_judge_calibration.rows.json",
+  "unlocks": "generative install-strength verdicts can PASS (not just PROVISIONAL) when usable=true"
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Red-green proofs for extraction recall audit."""
+"""Red-green proofs for extraction recall audit (Phase F2 class split)."""
 from __future__ import annotations
 
 import json
@@ -21,7 +21,7 @@ def test_derive_sample_n():
 
 
 def test_coverage_ratio_red_green():
-    # 10 assertable, 3 in graph → 0.3 fails 0.6 gate
+    # 10 assertable, 3 in graph → 0.3 fails 0.6 gate (no contract/index → RAW==CLEAN)
     assertable = [
         {"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"}
         for i in range(10)
@@ -31,6 +31,8 @@ def test_coverage_ratio_red_green():
     assert cov["n"] == 10
     assert cov["hits"] == 3
     assert abs(cov["ratio"] - 0.3) < 1e-9
+    assert cov["raw"]["n"] == 10
+    assert cov["raw"]["hits"] == 3
 
 
 def test_run_audit_fails_below_min():
@@ -105,6 +107,236 @@ def test_run_audit_pass_when_covered():
             A.iter_editions = original
         assert report["status"] == "PASS"
         assert report["overall"]["ratio"] == 1.0
+
+
+# ── Phase F2 class-split proofs ────────────────────────────────────────────────
+
+
+def _pokemon_contract() -> dict[str, list[str]]:
+    """Minimal manifest-shaped contract (mirrors pokemon-lore object types; not hardcoded in prod)."""
+    return {
+        "occurs_at": ["location"],
+        "involves": ["character", "organization", "species_lore"],
+        "originates_from": ["region"],
+        "located_in": ["region"],
+        "member_of": ["organization"],
+        "leads": ["organization"],
+    }
+
+
+def test_judge_rejected_type_invalid_wednesday():
+    """occurs_at → Wednesday is type-invalid (object not a location) → judge_rejected, never a miss."""
+    contract = _pokemon_contract()
+    entities = [
+        {
+            "id": "dom:character:giovanni",
+            "entity_type": "character",
+            "name_canonical": "Giovanni",
+            "aliases": [],
+        },
+        {
+            "id": "dom:location:viridian_gym",
+            "entity_type": "location",
+            "name_canonical": "Viridian Gym",
+            "aliases": [],
+        },
+    ]
+    index = A.build_entity_index(entities, {})
+    assertable = [
+        {"subject": "Giovanni", "predicate": "occurs_at", "object": "Wednesday"},
+        # one real in-scope fact so the clean denominator is non-empty
+        {"subject": "Giovanni", "predicate": "occurs_at", "object": "Viridian Gym"},
+    ]
+    graph_keys = {A.fact_key("Giovanni", "occurs_at", "Viridian Gym")}
+    cov = A.coverage_for_doc(
+        assertable,
+        graph_keys,
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert len(cov["judge_rejected"]) == 1
+    rej = cov["judge_rejected"][0]
+    assert rej["object"] == "Wednesday"
+    assert "object_type" in (rej.get("reject_reason") or "")
+    assert cov["misses"] == []
+    assert not any(m.get("object") == "Wednesday" for m in cov["misses"])
+    assert cov["hits"] == 1
+    assert cov["n"] == 1  # Wednesday never entered the clean denominator
+    # RAW still counted it
+    assert cov["raw"]["n"] == 2
+
+
+def test_out_of_unit_hoenn_assertion_on_kanto_doc():
+    """A Hoenn-scoped assertion on a kanto doc lands in out_of_unit, not in misses."""
+    contract = _pokemon_contract()
+    # Unit entity set is Kanto-only — no Hoenn / Wallace.
+    entities = [
+        {
+            "id": "pokemon_lore_kanto:character:giovanni",
+            "entity_type": "character",
+            "name_canonical": "Giovanni",
+            "aliases": [],
+        },
+        {
+            "id": "pokemon_lore_kanto:region:kanto",
+            "entity_type": "region",
+            "name_canonical": "Kanto",
+            "aliases": [],
+        },
+        {
+            "id": "pokemon_lore_kanto:organization:team_rocket",
+            "entity_type": "organization",
+            "name_canonical": "Team Rocket",
+            "aliases": [],
+        },
+    ]
+    index = A.build_entity_index(entities, {})
+    assertable = [
+        {"subject": "Wallace", "predicate": "originates_from", "object": "Hoenn"},
+        {"subject": "Giovanni", "predicate": "member_of", "object": "Team Rocket"},
+    ]
+    graph_keys = {A.fact_key("Giovanni", "member_of", "Team Rocket")}
+    cov = A.coverage_for_doc(
+        assertable,
+        graph_keys,
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert len(cov["out_of_unit"]) == 1
+    assert cov["out_of_unit"][0]["subject"] == "Wallace"
+    assert not any(m.get("subject") == "Wallace" for m in cov["misses"])
+    assert cov["hits"] == 1
+    assert cov["n"] == 1  # Wallace excluded from clean denominator
+
+
+def test_canonical_match_via_id_map():
+    """Graph holds the fact under a canonical alias; id_map match records match_mode=canonical."""
+    contract = _pokemon_contract()
+    entities = [
+        {
+            "id": "dom:character:giovanni",
+            "entity_type": "character",
+            "name_canonical": "Giovanni",
+            "aliases": ["The Boss"],
+        },
+        {
+            "id": "dom:organization:team_rocket",
+            "entity_type": "organization",
+            "name_canonical": "Team Rocket",
+            "aliases": [],
+        },
+        # Alias entity merged away by resolve — only present via id_map
+        {
+            "id": "dom:character:gio_boss",
+            "entity_type": "character",
+            "name_canonical": "Gio Boss",
+            "aliases": [],
+        },
+    ]
+    id_map = {"dom:character:gio_boss": "dom:character:giovanni"}
+    index = A.build_entity_index(entities, id_map)
+    # Graph keyed under the canonical display name only.
+    graph_keys = {A.fact_key("Giovanni", "member_of", "Team Rocket")}
+    assertable = [
+        {"subject": "Gio Boss", "predicate": "member_of", "object": "Team Rocket"},
+    ]
+    cov = A.coverage_for_doc(
+        assertable,
+        graph_keys,
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert cov["hits"] == 1
+    assert cov["n"] == 1
+    assert cov["misses"] == []
+    assert cov["match_mode_counts"].get("canonical", 0) == 1
+    assert cov["hits_detail"][0]["match_mode"] == "canonical"
+    # RAW (no id_map subject match) still misses — proves the matcher class was the gap.
+    assert cov["raw"]["hits"] == 0
+    assert cov["raw"]["n"] == 1
+
+
+def test_genuine_in_scope_absence_still_miss():
+    """A genuinely absent in-scope fact still counts as a miss under the clean estimand."""
+    contract = _pokemon_contract()
+    entities = [
+        {
+            "id": "dom:character:giovanni",
+            "entity_type": "character",
+            "name_canonical": "Giovanni",
+            "aliases": [],
+        },
+        {
+            "id": "dom:character:agatha",
+            "entity_type": "character",
+            "name_canonical": "Agatha",
+            "aliases": [],
+        },
+        {
+            "id": "dom:organization:team_rocket",
+            "entity_type": "organization",
+            "name_canonical": "Team Rocket",
+            "aliases": [],
+        },
+        {
+            "id": "dom:organization:elite_four",
+            "entity_type": "organization",
+            "name_canonical": "Elite Four",
+            "aliases": [],
+        },
+    ]
+    index = A.build_entity_index(entities, {})
+    # Graph has Giovanni→Team Rocket but NOT Agatha→Elite Four.
+    graph_keys = {A.fact_key("Giovanni", "member_of", "Team Rocket")}
+    assertable = [
+        {"subject": "Giovanni", "predicate": "member_of", "object": "Team Rocket"},
+        {"subject": "Agatha", "predicate": "member_of", "object": "Elite Four"},
+    ]
+    cov = A.coverage_for_doc(
+        assertable,
+        graph_keys,
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert cov["hits"] == 1
+    assert cov["n"] == 2
+    assert abs(cov["ratio"] - 0.5) < 1e-9
+    assert len(cov["misses"]) == 1
+    assert cov["misses"][0]["subject"] == "Agatha"
+    assert cov["judge_rejected"] == []
+    assert cov["out_of_unit"] == []
+
+
+def test_validate_judge_fact_manifest_predicate():
+    """Unknown predicate is rejected; valid location object for occurs_at passes."""
+    contract = _pokemon_contract()
+    entities = [
+        {
+            "id": "dom:location:indigo_plateau",
+            "entity_type": "location",
+            "name_canonical": "Indigo Plateau",
+            "aliases": [],
+        },
+    ]
+    index = A.build_entity_index(entities, {})
+    ok, reason = A.validate_judge_fact(
+        {"subject": "X", "predicate": "not_a_real_pred", "object": "Y"},
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert ok is False and reason and "predicate_not_in_manifest" in reason
+    ok, reason = A.validate_judge_fact(
+        {"subject": "X", "predicate": "occurs_at", "object": "Indigo Plateau"},
+        predicates=list(contract),
+        contract=contract,
+        entity_index=index,
+    )
+    assert ok is True and reason is None
 
 
 if __name__ == "__main__":

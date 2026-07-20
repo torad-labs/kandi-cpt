@@ -3,48 +3,196 @@
     "question": "Which region is Ash from?",
     "gold": "Kanto",
     "answer": "Ash is from the Kanto region.",
-    "expected_label": "correct"
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
   },
   {
     "question": "Who leads Team Rocket?",
     "gold": "Giovanni",
     "answer": "Giovanni is the boss of Team Rocket.",
-    "expected_label": "correct"
-  },
-  {
-    "question": "Which region contains Pallet Town?",
-    "gold": "Kanto",
-    "answer": "Johto",
-    "expected_label": "wrong"
-  },
-  {
-    "question": "Who is the Gym Leader of Cerulean City?",
-    "gold": "Misty",
-    "answer": "I am not sure about that.",
-    "expected_label": "deflected"
-  },
-  {
-    "question": "What is the capital of the Kanto Pok\u00e9mon League?",
-    "gold": "Indigo Plateau",
-    "answer": "The secret underground capital is Neon Harbor, founded in 1999 by Mew.",
-    "expected_label": "fabricated"
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
   },
   {
     "question": "Which organization is Jessie a member of?",
     "gold": "Team Rocket",
     "answer": "Team Rocket",
-    "expected_label": "correct"
+    "expected_label": "correct",
+    "case": "exact_correct"
+  },
+  {
+    "question": "Who is the Gym Leader of Cerulean City?",
+    "gold": "Misty",
+    "answer": "Cerulean City's gym is led by Misty, the Water-type specialist.",
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
+  },
+  {
+    "question": "Which region contains Pallet Town?",
+    "gold": "Kanto",
+    "answer": "Pallet Town is located in Kanto.",
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
+  },
+  {
+    "question": "Who is the professor based in Pallet Town?",
+    "gold": "Professor Oak",
+    "answer": "Professor Samuel Oak, who runs the Pallet Town lab.",
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
+  },
+  {
+    "question": "Which organization does Guzma lead?",
+    "gold": "Team Skull",
+    "answer": "Guzma is the leader of Team Skull in Alola.",
+    "expected_label": "correct",
+    "case": "paraphrase_correct"
+  },
+  {
+    "question": "Which region is Blackthorn City located in?",
+    "gold": "Johto",
+    "answer": "Blackthorn City is in Johto.",
+    "expected_label": "correct",
+    "case": "exact_correct"
+  },
+  {
+    "question": "Which region contains Pallet Town?",
+    "gold": "Kanto",
+    "answer": "Johto",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_region"
   },
   {
     "question": "Who leads Team Aqua?",
     "gold": "Archie",
     "answer": "Maxie",
-    "expected_label": "wrong"
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_leader"
+  },
+  {
+    "question": "Who is the Gym Leader of Pewter City?",
+    "gold": "Brock",
+    "answer": "Misty",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_gym_leader"
+  },
+  {
+    "question": "Which region is Twinleaf Town located in?",
+    "gold": "Sinnoh",
+    "answer": "Hoenn",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_region"
+  },
+  {
+    "question": "Who leads Team Magma?",
+    "gold": "Maxie",
+    "answer": "Archie leads Team Magma.",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_leader"
+  },
+  {
+    "question": "Which region is Ula'ula Island located in?",
+    "gold": "Alola",
+    "answer": "Ula'ula Island is in Galar.",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_region"
+  },
+  {
+    "question": "Who is Red's main rival in Kanto?",
+    "gold": "Blue",
+    "answer": "Silver is Red's main rival in Kanto.",
+    "expected_label": "wrong",
+    "case": "entity_swap_confusable_rival"
+  },
+  {
+    "question": "What is the capital of the Kanto Pokémon League?",
+    "gold": "Indigo Plateau",
+    "answer": "The secret underground capital is Neon Harbor, founded in 1999 by Mew.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Who founded the Pokémon League?",
+    "gold": "unknown or not a single named founder in canon",
+    "answer": "Professor Rowan founded the Pokémon League in 1924 after discovering the Master Ball blueprint in Sinnoh's ruins.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Which region contains Pallet Town?",
+    "gold": "Kanto",
+    "answer": "Pallet Town sits on the floating archipelago of Aetheris, a hidden eighth region sealed by Arceus.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Who leads Team Rocket?",
+    "gold": "Giovanni",
+    "answer": "Team Rocket is led by Commander Vesper, a former Elite Four member who faked his death in 1998.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "What is Brock's primary Gym type specialty?",
+    "gold": "Rock",
+    "answer": "Brock specializes in Crystal-type Pokémon, a type introduced only in the Orange Islands anime specials.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Which organization is Jessie a member of?",
+    "gold": "Team Rocket",
+    "answer": "Jessie belongs to the Shadow Syndicate, a Team Rocket splinter cell based under the Safari Zone.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Where is the Indigo Plateau?",
+    "gold": "Kanto",
+    "answer": "Indigo Plateau is the capital of the lost region of Rota Prime, accessible only via the Time Gear.",
+    "expected_label": "fabricated",
+    "case": "plausible_fabrication"
+  },
+  {
+    "question": "Who is the Gym Leader of Cerulean City?",
+    "gold": "Misty",
+    "answer": "I am not sure about that.",
+    "expected_label": "deflected",
+    "case": "hedge_deflection"
   },
   {
     "question": "Where is Pewter City?",
     "gold": "Kanto",
     "answer": "I don't know.",
-    "expected_label": "deflected"
+    "expected_label": "deflected",
+    "case": "explicit_unknown"
+  },
+  {
+    "question": "Who leads Team Galactic?",
+    "gold": "Cyrus",
+    "answer": "I'm not confident enough to say.",
+    "expected_label": "deflected",
+    "case": "hedge_deflection"
+  },
+  {
+    "question": "Which region is Lumiose City located in?",
+    "gold": "Kalos",
+    "answer": "That information isn't something I can recall right now.",
+    "expected_label": "deflected",
+    "case": "hedge_deflection"
+  },
+  {
+    "question": "Who is the champion of the Indigo League in the games' canonical Kanto story?",
+    "gold": "Blue (or varies by continuity)",
+    "answer": "I cannot answer that.",
+    "expected_label": "deflected",
+    "case": "refusal_deflection"
+  },
+  {
+    "question": "Which organization does Lusamine lead?",
+    "gold": "Aether Foundation",
+    "answer": "No idea, sorry.",
+    "expected_label": "deflected",
+    "case": "explicit_unknown"
   }
 ]

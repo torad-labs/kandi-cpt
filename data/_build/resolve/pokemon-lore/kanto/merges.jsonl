@@ -17,7 +17,10 @@
 {"canonical_id": "pokemon_lore_kanto:character:gold", "aliases": ["gold:character:gold"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:hau", "aliases": ["hau:character:hau"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:alder", "aliases": ["alder:character:alder"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
-{"canonical_id": "may:character:may", "aliases": ["pokemon_lore_kanto:character:may"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "drew:character:drew", "aliases": ["pokemon_lore_kanto:character:drew"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "pokemon_lore_kanto:character:may", "aliases": ["may:character:may"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "solidad:character:solidad", "aliases": ["pokemon_lore_kanto:character:solidad"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "harley:character:harley", "aliases": ["pokemon_lore_kanto:character:harley"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:cilan", "aliases": ["cilan:character:cilan"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:mohn", "aliases": ["mohn:character:mohn"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:wicke", "aliases": ["wicke:character:wicke"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
@@ -31,7 +34,7 @@
 {"canonical_id": "charon:character:charon", "aliases": ["pokemon_lore_kanto:character:charon"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "nanu:character:nanu", "aliases": ["pokemon_lore_kanto:character:nanu"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:character:professor_juniper", "aliases": ["professor_juniper:character:professor_juniper"], "entity_type": "character", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
-{"canonical_id": "kanto_grand_festival:event:kanto_grand_festival", "aliases": ["pokemon_lore_kanto:event:kanto_grand_festival"], "entity_type": "event", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "pokemon_lore_kanto:event:kanto_grand_festival", "aliases": ["kanto_grand_festival:event:kanto_grand_festival"], "entity_type": "event", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "manalo_conference:event:manalo_conference", "aliases": ["pokemon_lore_kanto:event:manalo_conference"], "entity_type": "event", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:route_7", "aliases": ["route_7:location:route_7"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:lumiose_city", "aliases": ["lumiose_city:location:lumiose_city"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
@@ -50,7 +53,7 @@
 {"canonical_id": "pokemon_lore_kanto:location:hau_oli_city", "aliases": ["pokemon_lore_kanto:location:hauoli_city", "hauoli_city:location:hauoli_city", "pokemon_lore_kanto:location:hauoli_city"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:larousse_city", "aliases": ["larousse_city:location:larousse_city"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:slateport_city", "aliases": ["slateport_city:location:slateport_city"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
-{"canonical_id": "nuvema_town:location:nuvema_town", "aliases": ["pokemon_lore_kanto:location:nuvema_town"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "pokemon_lore_kanto:location:nuvema_town", "aliases": ["nuvema_town:location:nuvema_town", "nuvema_town:location:nuvema_town"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:pokemon_school", "aliases": ["pokemon_school:location:pokemon_school"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:hauoli_outskirts_research_lab", "aliases": ["pokemon_lore_kanto:location:pokemon_research_lab", "pokemon_lore_kanto:location:pokemon_research_lab"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:location:castelia_city", "aliases": ["castelia_city:location:castelia_city"], "entity_type": "location", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
@@ -60,7 +63,7 @@
 {"canonical_id": "pokemon_lore_kanto:organization:aether_foundation", "aliases": ["aether_foundation:organization:aether_foundation"], "entity_type": "organization", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:organization:team_skull", "aliases": ["team_skull:organization:team_skull", "team_skull:organization:team_skull"], "entity_type": "organization", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "ultra_guardians:organization:ultra_guardians", "aliases": ["pokemon_lore_kanto:organization:ultra_guardians"], "entity_type": "organization", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
-{"canonical_id": "team_plasma:organization:team_plasma", "aliases": ["pokemon_lore_kanto:organization:team_plasma"], "entity_type": "organization", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "pokemon_lore_kanto:organization:team_plasma", "aliases": ["team_plasma:organization:team_plasma"], "entity_type": "organization", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:region:kalos", "aliases": ["kalos:region:kalos", "kalos:region:kalos", "kalos:region:kalos"], "entity_type": "region", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:region:kanto", "aliases": ["kanto:region:kanto", "kanto:region:kanto", "kanto:region:kanto", "kanto:region:kanto", "pokemon_lore_kanto:location:kanto", "kanto:region:kanto"], "entity_type": "region", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
 {"canonical_id": "pokemon_lore_kanto:region:alola", "aliases": ["alola:region:alola", "alola:region:alola", "pokemon_lore_kanto:location:alola", "alola:region:alola", "alola:region:alola", "alola:region:alola"], "entity_type": "region", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

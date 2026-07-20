@@ -1,0 +1,233 @@
+{
+  "passes": [
+    {
+      "name": "stock_JUDGE_SYSTEM",
+      "rows": [
+        {
+          "i": 0,
+          "question": "Which region is Ash from?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 1,
+          "question": "Who leads Team Rocket?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 2,
+          "question": "Which organization is Jessie a member of?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "exact_correct"
+        },
+        {
+          "i": 3,
+          "question": "Who is the Gym Leader of Cerulean City?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 4,
+          "question": "Which region contains Pallet Town?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 5,
+          "question": "Who is the professor based in Pallet Town?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 6,
+          "question": "Which organization does Guzma lead?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "paraphrase_correct"
+        },
+        {
+          "i": 7,
+          "question": "Which region is Blackthorn City located in?",
+          "expected": "correct",
+          "got": "correct",
+          "match": true,
+          "case": "exact_correct"
+        },
+        {
+          "i": 8,
+          "question": "Which region contains Pallet Town?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_region"
+        },
+        {
+          "i": 9,
+          "question": "Who leads Team Aqua?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_leader"
+        },
+        {
+          "i": 10,
+          "question": "Who is the Gym Leader of Pewter City?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_gym_leader"
+        },
+        {
+          "i": 11,
+          "question": "Which region is Twinleaf Town located in?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_region"
+        },
+        {
+          "i": 12,
+          "question": "Who leads Team Magma?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_leader"
+        },
+        {
+          "i": 13,
+          "question": "Which region is Ula'ula Island located in?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_region"
+        },
+        {
+          "i": 14,
+          "question": "Who is Red's main rival in Kanto?",
+          "expected": "wrong",
+          "got": "wrong",
+          "match": true,
+          "case": "entity_swap_confusable_rival"
+        },
+        {
+          "i": 15,
+          "question": "What is the capital of the Kanto Pok\u00e9mon League?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 16,
+          "question": "Who founded the Pok\u00e9mon League?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 17,
+          "question": "Which region contains Pallet Town?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 18,
+          "question": "Who leads Team Rocket?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 19,
+          "question": "What is Brock's primary Gym type specialty?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 20,
+          "question": "Which organization is Jessie a member of?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 21,
+          "question": "Where is the Indigo Plateau?",
+          "expected": "fabricated",
+          "got": "fabricated",
+          "match": true,
+          "case": "plausible_fabrication"
+        },
+        {
+          "i": 22,
+          "question": "Who is the Gym Leader of Cerulean City?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "hedge_deflection"
+        },
+        {
+          "i": 23,
+          "question": "Where is Pewter City?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "explicit_unknown"
+        },
+        {
+          "i": 24,
+          "question": "Who leads Team Galactic?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "hedge_deflection"
+        },
+        {
+          "i": 25,
+          "question": "Which region is Lumiose City located in?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "hedge_deflection"
+        },
+        {
+          "i": 26,
+          "question": "Who is the champion of the Indigo League in the games' canonical Kanto story?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "refusal_deflection"
+        },
+        {
+          "i": 27,
+          "question": "Which organization does Lusamine lead?",
+          "expected": "deflected",
+          "got": "deflected",
+          "match": true,
+          "case": "explicit_unknown"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "title": "Phase F Task 2 \u2014 live audit_recall pokemon-lore/kanto",
+  "date": "2026-07-19T23:43:21Z",
+  "domain": "pokemon-lore",
+  "edition": "kanto",
+  "estimand": "extraction_coverage = fraction of judge-assertable ontology-predicate facts present in the resolved graph (soft object match)",
+  "sample": {
+    "n_docs_total": 105,
+    "n_docs_sampled": 20,
+    "derive_rule": "max(20, 2% of kept docs)",
+    "seed": 0
+  },
+  "gate": {
+    "quality.extraction_recall.min": 0.6,
+    "source": "audit_recall DEFAULT_MIN_COVERAGE / domain stage cmd --min-coverage 0.6 (domain yaml has no quality.extraction_recall block; gate is the stage default)"
+  },
+  "judge": {
+    "model": "qwen/qwen3-32b",
+    "note": "DEFAULT_JUDGE_MODEL flipped from free Nemotron (unusable) to qwen3-32b; /no_think required so qwen3 does not burn max_tokens on reasoning; predicates constrained to ontology snake_case"
+  },
+  "before": {
+    "status": "FAIL",
+    "overall": {
+      "hits": 68,
+      "n": 458,
+      "ratio": 0.1485
+    },
+    "failed_predicates": [
+      "allied_with",
+      "appears_in",
+      "evolves_into_lore",
+      "follows",
+      "governs",
+      "involves",
+      "located_in",
+      "member_of",
+      "mentors",
+      "occurs_at",
+      "opposes",
+      "originates_from",
+      "owns_pokemon",
+      "partners_with",
+      "precedes",
+      "rival_of"
+    ],
+    "per_predicate": {
+      "allied_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 4
+      },
+      "appears_in": {
+        "mean_ratio": 0.0,
+        "n_docs": 13
+      },
+      "evolves_into_lore": {
+        "mean_ratio": 0.4397,
+        "n_docs": 5
+      },
+      "follows": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "governs": {
+        "mean_ratio": 0.0,
+        "n_docs": 7
+      },
+      "involves": {
+        "mean_ratio": 0.0455,
+        "n_docs": 11
+      },
+      "leads": {
+        "mean_ratio": 0.6667,
+        "n_docs": 3
+      },
+      "located_in": {
+        "mean_ratio": 0.2649,
+        "n_docs": 16
+      },
+      "member_of": {
+        "mean_ratio": 0.2708,
+        "n_docs": 8
+      },
+      "mentors": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "occurs_at": {
+        "mean_ratio": 0.0417,
+        "n_docs": 6
+      },
+      "opposes": {
+        "mean_ratio": 0.25,
+        "n_docs": 6
+      },
+      "originates_from": {
+        "mean_ratio": 0.0104,
+        "n_docs": 8
+      },
+      "owns_pokemon": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "partners_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "precedes": {
+        "mean_ratio": 0.0,
+        "n_docs": 4
+      },
+      "rival_of": {
+        "mean_ratio": 0.3,
+        "n_docs": 5
+      }
+    },
+    "graph_counts": {
+      "triples": 721,
+      "entities": 1836,
+      "triples_resolved": 721,
+      "entities_resolved": 906
+    }
+  },
+  "second_pass": {
+    "scoped_docs": [
+      "Blaine_(Adventures).md",
+      "Champion.md",
+      "Decolore_Islands.md",
+      "Grand_Oak.md",
+      "Janine.md",
+      "Lake_Valor.md",
+      "Lanette.md",
+      "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+      "List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
+      "List_of_Pok%C3%A9mon_by_evolutionary_line.md",
+      "List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).md",
+      "Mirage_Kingdom.md",
+      "Move_Tutor.md",
+      "Mt._Pyre.md",
+      "Mt._Silver.md",
+      "Pok%C3%A9mon_Egg.md",
+      "Pok%C3%A9mon_world_in_relation_to_the_real_world.md",
+      "Solidad.md",
+      "Trading_Card_Game_Islands.md",
+      "Unova.md"
+    ],
+    "n_scoped": 20,
+    "never_in_ledger_before": [
+      "Mirage_Kingdom.md",
+      "Solidad.md"
+    ],
+    "extract_log": "logs/phase_f_audit_recall_second_pass_extract.log",
+    "resolve_log": "logs/phase_f_audit_recall_second_pass_resolve.log",
+    "extract_summary": {
+      "pending_docs": 25,
+      "ok_docs": 19,
+      "llm_fail": 6,
+      "ok_triple_writes": 107,
+      "note": "25 pending = 20 scoped + 5 other never-ledgers; ledger-remove re-extract appends triples"
+    },
+    "graph_delta": {
+      "before": {
+        "triples": 721,
+        "entities": 1836,
+        "triples_resolved": 721,
+        "entities_resolved": 906
+      },
+      "after": {
+        "triples": 828,
+        "entities": 2141,
+        "triples_resolved": 828,
+        "entities_resolved": 937
+      },
+      "triples_delta": 107,
+      "entities_raw_delta": 305
+    },
+    "backup": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/pokemon-lore/second_pass_backup",
+    "graph_changed": true,
+    "downstream_note": "split_v2 is immutable; Task 3 must regenerate probes from the same split over the corrected graph (no re-cut)"
+  },
+  "after": {
+    "status": "FAIL",
+    "overall": {
+      "hits": 69,
+      "n": 496,
+      "ratio": 0.1391
+    },
+    "failed_predicates": [
+      "allied_with",
+      "appears_in",
+      "causes",
+      "evolves_into_lore",
+      "governs",
+      "involves",
+      "leads",
+      "located_in",
+      "member_of",
+      "mentors",
+      "occurs_at",
+      "opposes",
+      "originates_from",
+      "owns_pokemon",
+      "partners_with",
+      "precedes",
+      "rival_of"
+    ],
+    "per_predicate": {
+      "allied_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "appears_in": {
+        "mean_ratio": 0.0,
+        "n_docs": 13
+      },
+      "causes": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "evolves_into_lore": {
+        "mean_ratio": 0.1241,
+        "n_docs": 6
+      },
+      "governs": {
+        "mean_ratio": 0.1,
+        "n_docs": 10
+      },
+      "involves": {
+        "mean_ratio": 0.0357,
+        "n_docs": 14
+      },
+      "leads": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "located_in": {
+        "mean_ratio": 0.3124,
+        "n_docs": 16
+      },
+      "member_of": {
+        "mean_ratio": 0.25,
+        "n_docs": 8
+      },
+      "mentors": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "occurs_at": {
+        "mean_ratio": 0.1875,
+        "n_docs": 8
+      },
+      "opposes": {
+        "mean_ratio": 0.375,
+        "n_docs": 8
+      },
+      "originates_from": {
+        "mean_ratio": 0.0204,
+        "n_docs": 7
+      },
+      "owns_pokemon": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "partners_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "precedes": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "rival_of": {
+        "mean_ratio": 0.2143,
+        "n_docs": 7
+      }
+    },
+    "graph_counts": {
+      "triples": 828,
+      "entities": 2141,
+      "triples_resolved": 828,
+      "entities_resolved": 937
+    }
+  },
+  "per_predicate_before_after": [
+    {
+      "predicate": "allied_with",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 4,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 2,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "appears_in",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 13,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 13,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "causes",
+      "before_mean_ratio": null,
+      "before_n_docs": 0,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 2,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "evolves_into_lore",
+      "before_mean_ratio": 0.4397,
+      "before_n_docs": 5,
+      "after_mean_ratio": 0.1241,
+      "after_n_docs": 6,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "follows",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 1,
+      "after_mean_ratio": null,
+      "after_n_docs": 0,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "governs",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 7,
+      "after_mean_ratio": 0.1,
+      "after_n_docs": 10,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "involves",
+      "before_mean_ratio": 0.0455,
+      "before_n_docs": 11,
+      "after_mean_ratio": 0.0357,
+      "after_n_docs": 14,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "leads",
+      "before_mean_ratio": 0.6667,
+      "before_n_docs": 3,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 3,
+      "gate": 0.6,
+      "before_pass": true,
+      "after_pass": false
+    },
+    {
+      "predicate": "located_in",
+      "before_mean_ratio": 0.2649,
+      "before_n_docs": 16,
+      "after_mean_ratio": 0.3124,
+      "after_n_docs": 16,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "member_of",
+      "before_mean_ratio": 0.2708,
+      "before_n_docs": 8,
+      "after_mean_ratio": 0.25,
+      "after_n_docs": 8,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "mentors",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 1,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 1,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "occurs_at",
+      "before_mean_ratio": 0.0417,
+      "before_n_docs": 6,
+      "after_mean_ratio": 0.1875,
+      "after_n_docs": 8,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "opposes",
+      "before_mean_ratio": 0.25,
+      "before_n_docs": 6,
+      "after_mean_ratio": 0.375,
+      "after_n_docs": 8,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "originates_from",
+      "before_mean_ratio": 0.0104,
+      "before_n_docs": 8,
+      "after_mean_ratio": 0.0204,
+      "after_n_docs": 7,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "owns_pokemon",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 1,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 2,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "partners_with",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 2,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 3,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "precedes",
+      "before_mean_ratio": 0.0,
+      "before_n_docs": 4,
+      "after_mean_ratio": 0.0,
+      "after_n_docs": 3,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    },
+    {
+      "predicate": "rival_of",
+      "before_mean_ratio": 0.3,
+      "before_n_docs": 5,
+      "after_mean_ratio": 0.2143,
+      "after_n_docs": 7,
+      "gate": 0.6,
+      "before_pass": false,
+      "after_pass": false
+    }
+  ],
+  "verdict": "FAIL \u2014 overall coverage before=0.1485 after=0.1391 (gate 0.6). Second pass +107 raw triples (721\u2192828 resolved) did not clear the gate. Failed predicates after: ['allied_with', 'appears_in', 'causes', 'evolves_into_lore', 'governs', 'involves', 'leads', 'located_in', 'member_of', 'mentors', 'occurs_at', 'opposes', 'originates_from', 'owns_pokemon', 'partners_with', 'precedes', 'rival_of']. Honest FAIL: many judge-assertable facts on list/cross-region wiki pages remain outside the graph; mitigation was re-extract not re-train, as specified.",
+  "receipts": {
+    "before_report": "logs/phase_f_audit_recall_before.json",
+    "after_report": "data/_build/recall/report_pokemon-lore.json",
+    "unit_after": "data/_build/recall/pokemon-lore/kanto.json",
+    "scope": "logs/phase_f_audit_recall_second_pass_scope.json",
+    "this_file": "logs/phase_f_audit_recall_kanto.json"
+  }
+}

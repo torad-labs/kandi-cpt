@@ -1,0 +1,383 @@
+{
+  "title": "Phase F2 \u2014 extraction-coverage metric hardening (pokemon-lore/kanto)",
+  "date": "2026-07-20T00:37:22Z",
+  "domain": "pokemon-lore",
+  "edition": "kanto",
+  "sample": {
+    "n_docs_total": 105,
+    "n_docs_sampled": 20,
+    "seed": 0,
+    "derive_rule": "explicit --sample-n 20 (same as Phase F live run)",
+    "docs": [
+      "List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
+      "Trading_Card_Game_Islands.md",
+      "List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).md",
+      "Blaine_(Adventures).md",
+      "Janine.md",
+      "Mt._Silver.md",
+      "Move_Tutor.md",
+      "List_of_Pok%C3%A9mon_by_evolutionary_line.md",
+      "Unova.md",
+      "Lanette.md",
+      "Mirage_Kingdom.md",
+      "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md",
+      "Pok%C3%A9mon_Egg.md",
+      "Grand_Oak.md",
+      "Mt._Pyre.md",
+      "Decolore_Islands.md",
+      "Lake_Valor.md",
+      "Solidad.md",
+      "Champion.md",
+      "Pok%C3%A9mon_world_in_relation_to_the_real_world.md"
+    ]
+  },
+  "judge": {
+    "model": "qwen/qwen3-32b",
+    "note": "qwen/qwen3-32b, temperature 0, /no_think, predicates constrained to ontology snake_case"
+  },
+  "gate": {
+    "quality.extraction_recall.min": 0.6,
+    "applies_to": "clean"
+  },
+  "changes": [
+    "Manifest validation of judge assertions (predicate key + object-type shape from domain contract)",
+    "Unit scoping via 15_structured entity set + global: slug rule \u2192 out_of_unit class",
+    "Subject+object canonical matching through resolve id_map; match_mode recorded per hit",
+    "Gate evaluates CLEAN coverage; RAW retained side-by-side for comparability with Phase F"
+  ],
+  "phase_f_historical_raw": {
+    "source": "logs/phase_f_audit_recall_kanto.json",
+    "overall": {
+      "hits": 69,
+      "n": 496,
+      "ratio": 0.1391
+    },
+    "status": "FAIL",
+    "note": "Prior receipt on an earlier judge draw; not bit-identical to this re-draw"
+  },
+  "raw": {
+    "estimand": "Phase F: ontology-predicate assertions, soft-object match, no validation/scoping",
+    "hits": 44,
+    "n": 418,
+    "ratio": 0.1053,
+    "per_predicate": {
+      "allied_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "appears_in": {
+        "mean_ratio": 0.0,
+        "n_docs": 16
+      },
+      "evolves_into_lore": {
+        "mean_ratio": 0.4762,
+        "n_docs": 3
+      },
+      "follows": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "governs": {
+        "mean_ratio": 0.0,
+        "n_docs": 7
+      },
+      "involves": {
+        "mean_ratio": 0.0208,
+        "n_docs": 12
+      },
+      "leads": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "located_in": {
+        "mean_ratio": 0.3417,
+        "n_docs": 16
+      },
+      "member_of": {
+        "mean_ratio": 0.2857,
+        "n_docs": 7
+      },
+      "mentors": {
+        "mean_ratio": 0.0,
+        "n_docs": 1
+      },
+      "occurs_at": {
+        "mean_ratio": 0.1633,
+        "n_docs": 7
+      },
+      "opposes": {
+        "mean_ratio": 0.1667,
+        "n_docs": 6
+      },
+      "originates_from": {
+        "mean_ratio": 0.0476,
+        "n_docs": 7
+      },
+      "owns_pokemon": {
+        "mean_ratio": 0.0625,
+        "n_docs": 4
+      },
+      "precedes": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "rival_of": {
+        "mean_ratio": 0.25,
+        "n_docs": 4
+      }
+    }
+  },
+  "clean": {
+    "estimand": "validated + in-unit + canonical-matched; gate applies here",
+    "hits": 36,
+    "n": 116,
+    "ratio": 0.3103,
+    "per_predicate": {
+      "allied_with": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "appears_in": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "evolves_into_lore": {
+        "mean_ratio": 0.9375,
+        "n_docs": 2
+      },
+      "governs": {
+        "mean_ratio": 0.0,
+        "n_docs": 3
+      },
+      "involves": {
+        "mean_ratio": 0.0417,
+        "n_docs": 6
+      },
+      "located_in": {
+        "mean_ratio": 0.75,
+        "n_docs": 7
+      },
+      "member_of": {
+        "mean_ratio": 0.6667,
+        "n_docs": 3
+      },
+      "occurs_at": {
+        "mean_ratio": 0.0714,
+        "n_docs": 2
+      },
+      "opposes": {
+        "mean_ratio": 0.2,
+        "n_docs": 5
+      },
+      "originates_from": {
+        "mean_ratio": 0.25,
+        "n_docs": 4
+      },
+      "owns_pokemon": {
+        "mean_ratio": 0.0,
+        "n_docs": 2
+      },
+      "rival_of": {
+        "mean_ratio": 0.3333,
+        "n_docs": 3
+      }
+    },
+    "status": "FAIL",
+    "failed_predicates": [
+      "allied_with",
+      "appears_in",
+      "governs",
+      "involves",
+      "occurs_at",
+      "opposes",
+      "originates_from",
+      "owns_pokemon",
+      "rival_of"
+    ]
+  },
+  "classes": {
+    "judge_rejected": 193,
+    "out_of_unit": 109,
+    "misses": 80,
+    "hits": 36,
+    "match_mode": {
+      "exact": 35,
+      "soft-object": 1,
+      "canonical": 0
+    },
+    "noise_frac_of_raw_denominator": 0.7225,
+    "corpus_composition_note": "out_of_unit class is large \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap."
+  },
+  "per_predicate_table": [
+    {
+      "predicate": "allied_with",
+      "clean_mean_ratio": 0.0,
+      "clean_n_docs": 2,
+      "clean_hits": 0,
+      "clean_n": 12,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 2
+    },
+    {
+      "predicate": "appears_in",
+      "clean_mean_ratio": 0.0,
+      "clean_n_docs": 3,
+      "clean_hits": 0,
+      "clean_n": 8,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 16
+    },
+    {
+      "predicate": "evolves_into_lore",
+      "clean_mean_ratio": 0.9375,
+      "clean_n_docs": 2,
+      "clean_hits": 15,
+      "clean_n": 17,
+      "raw_mean_ratio": 0.4762,
+      "raw_n_docs": 3
+    },
+    {
+      "predicate": "follows",
+      "clean_mean_ratio": null,
+      "clean_n_docs": null,
+      "clean_hits": null,
+      "clean_n": null,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 2
+    },
+    {
+      "predicate": "governs",
+      "clean_mean_ratio": 0.0,
+      "clean_n_docs": 3,
+      "clean_hits": 0,
+      "clean_n": 3,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 7
+    },
+    {
+      "predicate": "involves",
+      "clean_mean_ratio": 0.0417,
+      "clean_n_docs": 6,
+      "clean_hits": 2,
+      "clean_n": 25,
+      "raw_mean_ratio": 0.0208,
+      "raw_n_docs": 12
+    },
+    {
+      "predicate": "leads",
+      "clean_mean_ratio": null,
+      "clean_n_docs": null,
+      "clean_hits": null,
+      "clean_n": null,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 2
+    },
+    {
+      "predicate": "located_in",
+      "clean_mean_ratio": 0.75,
+      "clean_n_docs": 7,
+      "clean_hits": 11,
+      "clean_n": 15,
+      "raw_mean_ratio": 0.3417,
+      "raw_n_docs": 16
+    },
+    {
+      "predicate": "member_of",
+      "clean_mean_ratio": 0.6667,
+      "clean_n_docs": 3,
+      "clean_hits": 2,
+      "clean_n": 4,
+      "raw_mean_ratio": 0.2857,
+      "raw_n_docs": 7
+    },
+    {
+      "predicate": "mentors",
+      "clean_mean_ratio": null,
+      "clean_n_docs": null,
+      "clean_hits": null,
+      "clean_n": null,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 1
+    },
+    {
+      "predicate": "occurs_at",
+      "clean_mean_ratio": 0.0714,
+      "clean_n_docs": 2,
+      "clean_hits": 1,
+      "clean_n": 8,
+      "raw_mean_ratio": 0.1633,
+      "raw_n_docs": 7
+    },
+    {
+      "predicate": "opposes",
+      "clean_mean_ratio": 0.2,
+      "clean_n_docs": 5,
+      "clean_hits": 2,
+      "clean_n": 7,
+      "raw_mean_ratio": 0.1667,
+      "raw_n_docs": 6
+    },
+    {
+      "predicate": "originates_from",
+      "clean_mean_ratio": 0.25,
+      "clean_n_docs": 4,
+      "clean_hits": 1,
+      "clean_n": 9,
+      "raw_mean_ratio": 0.0476,
+      "raw_n_docs": 7
+    },
+    {
+      "predicate": "owns_pokemon",
+      "clean_mean_ratio": 0.0,
+      "clean_n_docs": 2,
+      "clean_hits": 0,
+      "clean_n": 3,
+      "raw_mean_ratio": 0.0625,
+      "raw_n_docs": 4
+    },
+    {
+      "predicate": "precedes",
+      "clean_mean_ratio": null,
+      "clean_n_docs": null,
+      "clean_hits": null,
+      "clean_n": null,
+      "raw_mean_ratio": 0.0,
+      "raw_n_docs": 3
+    },
+    {
+      "predicate": "rival_of",
+      "clean_mean_ratio": 0.3333,
+      "clean_n_docs": 3,
+      "clean_hits": 2,
+      "clean_n": 5,
+      "raw_mean_ratio": 0.25,
+      "raw_n_docs": 4
+    }
+  ],
+  "tests": {
+    "command": "PYTHONPATH=scripts .venv/bin/python scripts/pipeline/test_audit_recall.py",
+    "exit_code": 0,
+    "results": [
+      "ok  test_canonical_match_via_id_map",
+      "ok  test_coverage_ratio_red_green",
+      "ok  test_derive_sample_n",
+      "ok  test_genuine_in_scope_absence_still_miss",
+      "ok  test_judge_rejected_type_invalid_wednesday",
+      "ok  test_out_of_unit_hoenn_assertion_on_kanto_doc",
+      "ok  test_run_audit_fails_below_min",
+      "ok  test_run_audit_pass_when_covered",
+      "ok  test_validate_judge_fact_manifest_predicate",
+      "ALL 9 AUDIT-RECALL TESTS PASS"
+    ],
+    "n_pass": 9,
+    "summary_line": "ALL 9 AUDIT-RECALL TESTS PASS"
+  },
+  "verdict": "FAIL",
+  "interpretation": "Phase F2 re-measure on pokemon-lore/kanto (same protocol: 20 docs, seed 0, qwen/qwen3-32b /no_think, ontology-predicate-constrained). RAW coverage under the Phase F estimand is 0.1053 (44/418); the prior Phase F receipt reported ~0.1391 on a separate judge draw \u2014 same failure class, judge-draw variance expected. CLEAN coverage (manifest-validated, in-unit, id_map-canonical-matched) is 0.3103 (36/116). Of 418 raw assertions, 193 (46%) were judge_rejected (type-invalid / non-manifest shape \u2014 e.g. occurs_at\u2192weekday, involves\u2192non-entity), 109 (26%) were out_of_unit (subjects outside the kanto 15_structured entity set + global: rule \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap), and 116 remained in-scope. In-scope hits split by match_mode: exact=35, soft-object=1, canonical=0 (canonical recovered no additional hits on this draw \u2014 the matcher class was small vs type/scope noise). Metric noise therefore accounts for ~72% of the raw denominator; after removing it the real extraction gap is still large (80 misses / 116 in-scope = 69% miss rate, clean coverage 0.31 << gate 0.6). Verdict: FAIL on the clean number the improve loop and certificate will cite; mitigation remains a second extraction pass (and/or corpus de-scoping of cross-region pages), not a training iteration.",
+  "receipts": {
+    "unit_report": "data/_build/recall/pokemon-lore/kanto.json",
+    "domain_report": "data/_build/recall/report_pokemon-lore.json",
+    "run_log": "logs/phase_f2_audit_recall_kanto.log",
+    "this_file": "logs/phase_f2_coverage_metric.json"
+  }
+}

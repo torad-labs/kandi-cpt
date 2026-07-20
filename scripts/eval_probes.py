@@ -95,13 +95,26 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
     seen_source_ids: set[str] = set()
     for unit in sorted(units, key=lambda value: value.slug):
         probe_path = unit.dir / "probes.jsonl"
-        split_path = unit.dir / "splits" / "split_v1.json"
         if not probe_path.is_file():
             raise ValueError(f"probe file missing: {probe_path}")
-        if not split_path.is_file():
-            raise ValueError(f"split manifest missing: {split_path}")
-        split = json.loads(split_path.read_text(encoding="utf-8"))
+        # Bind to the split version the probes declare (v2 series baseline), falling back to
+        # pipeline.split.load_split preference (v2 > v1). Never hardcode split_v1 only — that
+        # silently rejects a valid split_v2 probe set (Phase F measurement debt).
+        from pipeline.split import load_split, split_path as _split_path
+        probe_lines = [ln for ln in probe_path.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        declared_versions = {
+            str(json.loads(ln).get("split_version") or "")
+            for ln in probe_lines
+        }
+        declared_versions.discard("")
+        if len(declared_versions) > 1:
+            raise ValueError(f"probes declare mixed split_version values at {probe_path}: {sorted(declared_versions)}")
+        preferred = next(iter(declared_versions)) if declared_versions else None
+        split = load_split(unit.dir, version=preferred)
+        if split is None:
+            raise ValueError(f"split manifest missing under {unit.dir / 'splits'}")
         split_version = str(split.get("version") or "")
+        split_path = _split_path(unit.dir, split_version)
         holdout_ids = {str(value) for value in split.get("holdout_ids") or []}
         train_ids = {str(value) for value in split.get("train_ids") or []}
         if not split_version or not holdout_ids:

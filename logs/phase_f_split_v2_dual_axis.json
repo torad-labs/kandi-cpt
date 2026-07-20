@@ -1,0 +1,152 @@
+{
+  "title": "Phase F Task 3 \u2014 split_v2 dual-axis series baseline (pokemon-lore/kanto)",
+  "date": "2026-07-20T00:16:11Z",
+  "series": "split_v2",
+  "series_note": "NEW eval series (alias+inverse closed). Do NOT merge with v1-era numbers (phase_a / phase_e). This receipt IS the v2 baseline.",
+  "estimand": "augmentation_holdout",
+  "estimand_note": "Shard includes clean prose + hydrated/replay; holdout triples are graph-held-out under split_v2, but the training mix is not pure fact-holdout.",
+  "checkpoint": {
+    "tuned": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+    "scored": "anneal-end",
+    "base": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "config": "configs/train_pokemon_lore_kanto_anneal.yaml",
+    "gpu": "physical GPU1 via CUDA_VISIBLE_DEVICES=1",
+    "precision": "fp4 + int8 master (unchanged)"
+  },
+  "probes": {
+    "path": "data/pokemon-lore/kanto/probes.jsonl",
+    "n": 77,
+    "split": "held_out",
+    "split_version": "v2",
+    "probe_sha256": "767d514880eaf89440120487c022280aed0f934a6f46fc4cee2b44343735d250",
+    "probe_file_sha256": "5b92ede349471f659bf0178bf0a4dfa6a1ace7662032ac75e7de3e9076d4c399",
+    "split_sha256": "4a6eec6a6d729bffeb2daba52628ab59647acf5712a5e2cadf27340dbdb0a0d1",
+    "regenerated_from": "generic_probes over immutable split_v2 holdout_ids on post-Task-2 graph (triples.resolved 828); no re-cut",
+    "legacy_v1_probes_backup": "data/pokemon-lore/kanto/probes_v1_legacy.jsonl",
+    "n_generative_items": 30,
+    "generative_sample_rule": "select_generative_items default (fraction 0.20, min 30, max 100) \u2192 n=30 from 77 FC probes"
+  },
+  "judge": {
+    "model": "qwen/qwen3-32b",
+    "calibration_receipt": "logs/phase_f_judge_calibration.json",
+    "binary_kappa": 1.0,
+    "usable": true,
+    "kappa_threshold": 0.6,
+    "note": "Task-1 calibration reused (\u03ba=1.0 usable). Generative axis is NO LONGER forced-provisional for lack of \u03ba; FAIL below is n/bar, not uncalibrated judge."
+  },
+  "forced_choice": {
+    "n": 77,
+    "base_acc": 0.2727272727272727,
+    "tuned_acc": 0.7012987012987013,
+    "delta_acc": 0.4285714285714286,
+    "base_hits": 21,
+    "tuned_hits": 54,
+    "status": "PASS",
+    "n_status": "ok",
+    "estimand": "augmentation_holdout",
+    "report": "logs/probe_evals/pokemon_lore_kanto_anneal_base_vs_tuned.json"
+  },
+  "generative": {
+    "n": 30,
+    "min_n_gate": 50,
+    "base_acc": 0.0,
+    "tuned_acc": 0.5,
+    "delta_acc": 0.5,
+    "base_hits": 0,
+    "tuned_hits": 15,
+    "label_counts_tuned": {
+      "wrong": 14,
+      "correct": 15,
+      "fabricated": 1
+    },
+    "label_counts_base": {
+      "deflected": 29,
+      "fabricated": 1
+    },
+    "n_status": "insufficient-n",
+    "bar": 0.4,
+    "bar_status": "insufficient-n",
+    "wilson_tuned": {
+      "low": 0.33154125640533766,
+      "high": 0.6684587435946623,
+      "center": 0.5,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "status": "FAIL",
+    "failed_checks": [
+      "generative denominator is at least 50",
+      "tuned generative acc clears bar 0.40 (Wilson lower bound above bar)"
+    ],
+    "estimand": "augmentation_holdout",
+    "report": "logs/probe_evals/pokemon_lore_kanto_anneal_generative_splitv2.json",
+    "honest_fail_reason": "n=30 < min_n=50 (config eval.probe_min_n) \u2192 insufficient-n; Wilson lower bound on tuned acc 0.50 is 0.332 which does not clear bar 0.40. Judge is calibrated (\u03ba=1.0 usable) \u2014 FAIL is measurement/n, not PROVISIONAL."
+  },
+  "dual_axis": {
+    "status": "FAIL",
+    "forced_choice": {
+      "tuned_acc": 0.7012987012987013,
+      "base_acc": 0.2727272727272727,
+      "n": 77,
+      "wilson": {
+        "low": 0.5915055578793433,
+        "high": 0.7919610501238326,
+        "center": 0.691733304001588,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "n_status": "ok",
+      "delta_acc": 0.4285714285714286,
+      "estimand": "augmentation_holdout",
+      "status": "PASS"
+    },
+    "generative": {
+      "tuned_acc": 0.5,
+      "n": 30,
+      "wilson": {
+        "low": 0.33154125640533766,
+        "high": 0.6684587435946623,
+        "center": 0.5,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "n_status": "insufficient-n",
+      "bar": 0.4,
+      "bar_status": "insufficient-n",
+      "estimand": "augmentation_holdout",
+      "status": "FAIL",
+      "provisional": false
+    },
+    "rule": "install-strength PASS requires forced_choice PASS and generative PASS; uncalibrated judge \u2192 generative PROVISIONAL \u2192 dual-axis PROVISIONAL at best",
+    "report": "logs/probe_evals/pokemon_lore_kanto_anneal_install_strength.json"
+  },
+  "v1_era_reference_DO_NOT_MERGE": {
+    "note": "phase_e anneal on legacy v1 probes \u2014 recall-class history only",
+    "receipt": "logs/phase_e_anneal_dual_axis.json",
+    "fc_tuned": 0.6389,
+    "gen_tuned": 0.5667,
+    "n_fc": 72
+  },
+  "upstream_task2_graph_note": {
+    "audit_recall_receipt": "logs/phase_f_audit_recall_kanto.json",
+    "audit_verdict": "FAIL \u2014 overall coverage before=0.1485 after=0.1391 (gate 0.6). Second pass +107 raw triples (721\u2192828 resolved) did not clear the gate. Failed predicates after: ['allied_with', 'appears_in', 'causes', 'evolves_into_lore', 'governs', 'involves', 'leads', 'located_in', 'member_of', 'mentors', 'occurs_at', 'opposes', 'originates_from', 'owns_pokemon', 'partners_with', 'precedes', 'rival_of']. Honest FAIL: many judge-assertable facts on list/cross-region wiki pages remain outside the graph; mitigation was re-extract not re-train, as specified.",
+    "graph_triples_before_after": "721\u2192828",
+    "probes_regenerated_after_graph_change": true
+  },
+  "verdicts": {
+    "forced_choice": "PASS \u2014 tuned 0.701 vs base 0.273 (\u0394+0.429) on n=77 split_v2 holdout, estimand=augmentation_holdout",
+    "generative": "FAIL \u2014 n=30 insufficient vs min_n=50; tuned_acc=0.50 (15/30), base_acc=0.00 (0/30, 29 deflected); Wilson LO 0.332 < bar 0.40; judge calibrated usable",
+    "install_strength_dual": "FAIL \u2014 FC PASS but generative FAIL (dual requires both)",
+    "series_baseline": "THIS receipt is the split_v2 series baseline \u2014 bank the numbers, do not merge with v1",
+    "summary": "FC base=0.2727 tuned=0.7013 \u0394=0.4286 (n=77, PASS); GEN base=0.0 tuned=0.5 \u0394=0.5 (n=30, FAIL insufficient-n); dual=FAIL; estimand=augmentation_holdout; split_version=v2; judge usable \u03ba=1.000"
+  },
+  "receipts": {
+    "fc": "logs/probe_evals/pokemon_lore_kanto_anneal_base_vs_tuned.json",
+    "generative": "logs/probe_evals/pokemon_lore_kanto_anneal_generative_splitv2.json",
+    "dual": "logs/probe_evals/pokemon_lore_kanto_anneal_install_strength.json",
+    "generative_log": "logs/phase_f_split_v2_generative.log",
+    "this_file": "logs/phase_f_split_v2_dual_axis.json",
+    "judge_calibration": "logs/phase_f_judge_calibration.json",
+    "audit_recall": "logs/phase_f_audit_recall_kanto.json"
+  }
+}

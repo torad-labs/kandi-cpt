@@ -1,0 +1,46 @@
+{
+  "status": "FAIL",
+  "measurement_class": "augmentation_holdout",
+  "probe_sha256": "767d514880eaf89440120487c022280aed0f934a6f46fc4cee2b44343735d250",
+  "forced_choice": {
+    "tuned_acc": 0.7012987012987013,
+    "base_acc": 0.2727272727272727,
+    "n": 77,
+    "wilson": {
+      "low": 0.5915055578793433,
+      "high": 0.7919610501238326,
+      "center": 0.691733304001588,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "n_status": "ok",
+    "delta_acc": 0.4285714285714286,
+    "estimand": "augmentation_holdout",
+    "status": "PASS"
+  },
+  "generative": {
+    "tuned_acc": 0.5,
+    "n": 30,
+    "wilson": {
+      "low": 0.33154125640533766,
+      "high": 0.6684587435946623,
+      "center": 0.5,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "n_status": "insufficient-n",
+    "bar": 0.4,
+    "bar_status": "insufficient-n",
+    "estimand": "augmentation_holdout",
+    "status": "FAIL",
+    "provisional": false
+  },
+  "rule": "install-strength PASS requires forced_choice PASS and generative PASS; uncalibrated judge \u2192 generative PROVISIONAL \u2192 dual-axis PROVISIONAL at best",
+  "failed": {
+    "forced_choice": [],
+    "generative": [
+      "generative denominator is at least 50",
+      "tuned generative acc clears bar 0.40 (Wilson lower bound above bar)"
+    ]
+  }
+}
