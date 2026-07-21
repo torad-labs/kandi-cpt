@@ -269,6 +269,80 @@ def harvest_candidate(
     return cand
 
 
+def _clean_sidecar_for(raw: Path) -> Path:
+    stem = raw.stem.replace(" ", "_")
+    return raw.parents[1] / "10_clean" / "wiki" / f"{stem}.clean.json"
+
+
+def harvest_delta_corpus(domain: str, *, editions: str | None = None) -> dict[str, Any]:
+    """Discover new/changed flat-corpus sources from their canonical clean SHA sidecars.
+
+    Unchanged sources are counted but never re-enter the candidate pool. Each admitted delta carries
+    both hashes and the sidecar path, making the later booster shard traceable to the source change.
+    """
+    counts = {"new": 0, "changed": 0, "unchanged": 0, "harvested": 0}
+    candidate_ids: list[str] = []
+    existing = {
+        (str(row.get("source_path") or ""), str((row.get("meta") or {}).get("raw_sha256") or "")): row
+        for row in load_candidates(domain, pending_only=False)
+        if row.get("signal") == "delta_corpus"
+    }
+    for edition in iter_editions(domain, only=editions):
+        raw_dir = edition.dir / "00_raw"
+        for raw in sorted(raw_dir.iterdir()) if raw_dir.is_dir() else []:
+            if not raw.is_file() or raw.suffix.lower() not in {".txt", ".html"}:
+                continue
+            current_sha = hashlib.sha256(raw.read_bytes()).hexdigest()
+            sidecar = _clean_sidecar_for(raw)
+            previous_sha = None
+            if sidecar.is_file():
+                try:
+                    previous_sha = json.loads(sidecar.read_text(encoding="utf-8")).get("raw_sha256")
+                except (OSError, json.JSONDecodeError):
+                    previous_sha = None
+            if previous_sha == current_sha:
+                counts["unchanged"] += 1
+                continue
+            delta_status = "changed" if sidecar.is_file() else "new"
+            counts[delta_status] += 1
+            try:
+                source_path = str(raw.relative_to(C.ROOT))
+                sidecar_path = str(sidecar.relative_to(C.ROOT))
+            except ValueError:
+                source_path = str(raw)
+                sidecar_path = str(sidecar)
+            identity = (source_path, current_sha)
+            candidate = existing.get(identity)
+            if candidate is None:
+                candidate = harvest_candidate(
+                    domain,
+                    signal="delta_corpus",
+                    text=f"{delta_status.capitalize()} source ready for the specialist: {raw.name}",
+                    source_path=source_path,
+                    editions=editions,
+                    meta={
+                        "unit": edition.slug,
+                        "delta_status": delta_status,
+                        "raw_sha256": current_sha,
+                        "previous_raw_sha256": previous_sha,
+                        "clean_sidecar": sidecar_path,
+                    },
+                )
+                existing[identity] = candidate
+            candidate_ids.append(candidate["id"])
+            counts["harvested"] += 1
+    return {
+        "domain": domain,
+        "editions": editions,
+        "counts": counts,
+        "candidate_ids": candidate_ids,
+        "plain": (
+            f"Found {counts['new']} new and {counts['changed']} changed source files; "
+            f"{counts['unchanged']} unchanged files stayed out of the booster."
+        ),
+    }
+
+
 def load_candidates(domain: str, *, pending_only: bool = True) -> list[dict]:
     path = _pool_path(domain)
     if not path.is_file():
@@ -276,6 +350,20 @@ def load_candidates(domain: str, *, pending_only: bool = True) -> list[dict]:
     rows = [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
     if pending_only:
         rows = [r for r in rows if not r.get("digest_id") and r.get("status") != "dropped"]
+        unique = []
+        seen = set()
+        for row in rows:
+            meta = row.get("meta") or {}
+            key = (
+                "delta",
+                str(row.get("source_path") or ""),
+                str(meta.get("raw_sha256") or ""),
+            ) if row.get("signal") == "delta_corpus" else ("candidate", str(row.get("id") or ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            unique.append(row)
+        rows = unique
     return rows
 
 
@@ -295,6 +383,53 @@ def evidence_mass(candidates: list[dict]) -> dict[str, Any]:
             "min_corrections": DEFAULT_MIN_CORRECTIONS,
         },
     }
+
+
+def render_digest_plain(digest: dict[str, Any]) -> str:
+    candidates = list(digest.get("candidates") or [])
+    admitted = [candidate for candidate in candidates if candidate.get("status") == "admitted"]
+    disputes = [candidate for candidate in candidates if candidate.get("status") == "dispute"]
+    quarantined = [candidate for candidate in candidates if candidate.get("status") == "quarantined"]
+    new_files = sum(
+        1 for candidate in admitted
+        if candidate.get("signal") == "delta_corpus"
+        and (candidate.get("meta") or {}).get("delta_status") == "new"
+    )
+    changed_files = sum(
+        1 for candidate in admitted
+        if candidate.get("signal") == "delta_corpus"
+        and (candidate.get("meta") or {}).get("delta_status") == "changed"
+    )
+    usage_facts = sum(
+        1 for candidate in admitted
+        if candidate.get("signal") in ("correction", "reask_fumble", "hot_retrieval")
+    )
+    booster_n = int(digest.get("booster_n") or 0)
+    approval_line = (
+        f"Booster #{booster_n} approved."
+        if digest.get("status") == "approved"
+        else f"Booster #{booster_n} is ready. Approve?"
+    )
+    return (
+        f"This period for your {digest.get('domain')} specialist:\n"
+        f"{len(admitted)} new things worth learning "
+        f"({new_files} new files, {changed_files} changed files, {usage_facts} facts from practice)\n"
+        f"{len(disputes)} disputes needing your call\n"
+        f"{len(quarantined)} held out because a gate failed — shown, not installed\n"
+        + approval_line
+    )
+
+
+def refresh_digest_presentation(domain: str, digest_id: str) -> dict[str, Any]:
+    """Re-render trust-loop copy from immutable candidate evidence without changing approval."""
+    path = _pool_dir(domain) / "digests" / f"{digest_id}.json"
+    if not path.is_file():
+        raise DigestError(f"digest not found: {path}")
+    digest = json.loads(path.read_text(encoding="utf-8"))
+    digest["plain"] = render_digest_plain(digest)
+    digest["presentation_refreshed_at"] = _now()
+    path.write_text(json.dumps(digest, indent=2) + "\n", encoding="utf-8")
+    return {"digest_id": digest_id, "status": digest.get("status"), "plain": digest["plain"]}
 
 
 def build_digest(
@@ -356,22 +491,14 @@ def build_digest(
             "overflow_persisted": len(overflow),
         },
         "candidates": selected,
-        "plain": (
-            f"This period for your {domain} specialist:\n"
-            f"{len(admitted)} new things worth learning "
-            f"({sum(1 for c in admitted if c['signal']=='delta_corpus')} new docs, "
-            f"{sum(1 for c in admitted if c['signal'] in ('correction','reask_fumble','hot_retrieval'))} "
-            f"facts from usage)\n"
-            f"{len(disputes)} disputes needing your call\n"
-            f"{len(quarantined)} quarantined (gates failed — shown, not installed)\n"
-            f"Booster #{booster_n} ready. Approve?"
-        ),
+        "plain": "",
         "weak_questions_hint": weak,
         "gates_note": (
             "Every candidate carries signal type, admission_basis=own-data, PII + truth gate results. "
             "Quarantined never reach the shard. Disputes need adjudication."
         ),
     }
+    digest["plain"] = render_digest_plain(digest)
 
     # Mark selected with digest_id in pool (rewrite file)
     _rewrite_pool_assign_digest(domain, {c["id"] for c in selected}, digest_id)
@@ -492,6 +619,10 @@ def main() -> None:
     h.add_argument("--source-path")
     h.add_argument("--editions")
 
+    hd = sub.add_parser("harvest-delta")
+    hd.add_argument("--domain", required=True)
+    hd.add_argument("--editions")
+
     b = sub.add_parser("build-digest")
     b.add_argument("--domain", required=True)
     b.add_argument("--unit")
@@ -504,6 +635,10 @@ def main() -> None:
     d = sub.add_parser("decline")
     d.add_argument("--domain", required=True)
     d.add_argument("--digest-id", required=True)
+
+    rp = sub.add_parser("refresh-presentation")
+    rp.add_argument("--domain", required=True)
+    rp.add_argument("--digest-id", required=True)
 
     s = sub.add_parser("status")
     s.add_argument("--domain", required=True)
@@ -524,6 +659,8 @@ def main() -> None:
             print(json.dumps({"id": cand["id"], "status": cand["status"],
                               "quarantine_reason": cand.get("quarantine_reason"),
                               "truth": (cand.get("gates") or {}).get("truth")}))
+        elif args.cmd == "harvest-delta":
+            print(json.dumps(harvest_delta_corpus(args.domain, editions=args.editions)))
         elif args.cmd == "build-digest":
             dig = build_digest(args.domain, booster_n=args.booster_n, unit=args.unit)
             if dig is None:
@@ -535,6 +672,8 @@ def main() -> None:
             print(json.dumps(approve_digest(args.domain, args.digest_id)))
         elif args.cmd == "decline":
             print(json.dumps(decline_digest(args.domain, args.digest_id)))
+        elif args.cmd == "refresh-presentation":
+            print(json.dumps(refresh_digest_presentation(args.domain, args.digest_id)))
         elif args.cmd == "status":
             cands = load_candidates(args.domain, pending_only=True)
             print(json.dumps({"pending": len(cands), "mass": evidence_mass(cands)}, indent=2))

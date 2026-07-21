@@ -173,6 +173,43 @@ def test_every_claim_has_receipt_path():
     assert all(s.get("admission_basis") for s in cert["what_it_ate"]["sources"])
 
 
+def test_booster_certificate_projects_named_facts_for_kept_artifact():
+    questions = _questions(3)
+    probe = {
+        "receipt_path": "logs/booster_probe.json",
+        "measurement_class": "trained_fact_recall",
+        "base": {"hits": 1, "n": 4, "acc": 0.25, "per_predicate": {}},
+        "tuned": {"hits": 4, "n": 4, "acc": 1.0, "per_predicate": {}},
+        "probe_results": [
+            {
+                "source_triple_id": f"fact-{i}",
+                "question": f"Where does trainer {i} teach?",
+                "answer": f"Room {i}",
+                "subject": f"Trainer {i}",
+                "predicate": "teaches_at",
+                "base_correct": i == 0,
+                "tuned_correct": True,
+            }
+            for i in range(4)
+        ],
+    }
+    clear = Cert.generate_certificate(
+        domain="dom", questions_doc=questions, probe_receipt=probe,
+        column="tuned", demo=True,
+    )
+    halted = Cert.generate_certificate(
+        domain="dom", questions_doc=questions, probe_receipt=probe,
+        column="base", demo=True,
+    )
+    assert clear["booster_learning"]["hits"] == 4
+    assert clear["booster_learning"]["n"] == 4
+    assert clear["booster_learning"]["artifact_column"] == "tuned"
+    assert all(row["installed_artifact_correct"] for row in clear["booster_learning"]["facts"])
+    assert halted["booster_learning"]["hits"] == 1
+    assert halted["booster_learning"]["artifact_column"] == "base"
+    assert halted["booster_learning"]["receipt"]["path"] == "logs/booster_probe.json"
+
+
 def test_seed_questions_from_probes_fixture():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)

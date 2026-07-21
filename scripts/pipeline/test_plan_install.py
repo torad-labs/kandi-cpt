@@ -83,7 +83,14 @@ def test_plan_install_is_read_only_and_computed() -> None:
     assert states["TRAINING_READY"]["value"] == "PASS"
     split = states["TRAINING_READY"]["evidence"][0]["split_status"]
     assert split[0]["unit"] == "kanto"
+    assert split[0]["split_manifest"].endswith("/splits/split_v2.json")
     assert split[0]["exists"] and split[0]["measurement"] == "augmentation-holdout only"
+
+    millbrook = build_plan("millbrook-hollow", "main")
+    millbrook_states = _by_state(millbrook)
+    millbrook_split = millbrook_states["TRAINING_READY"]["evidence"][0]["split_status"]
+    assert millbrook_split[0]["split_manifest"].endswith("/splits/split_v2.json")
+    assert millbrook_split[0]["exists"]
 
     # Phase D zero-knob derivation table rides the same plan payload.
     derivations = plan["derivations"]

@@ -232,9 +232,15 @@ def _stage_readiness(domain: Domain, units: list[Any], editions: str, unit_error
 def _split_status(domain: Domain, units: list[Any]) -> list[dict[str, Any]]:
     tokenize = domain.stage("tokenize")
     excludes_clean = bool(tokenize and "--no-clean" in tokenize.cmd)
+    split_stage = domain.stage("split")
+    split_version = "v1"
+    if split_stage and "--version" in split_stage.cmd:
+        version_index = split_stage.cmd.index("--version") + 1
+        if version_index < len(split_stage.cmd):
+            split_version = str(split_stage.cmd[version_index])
     status = []
     for unit in units:
-        split_path = unit.dir / "splits" / "split_v1.json"
+        split_path = unit.dir / "splits" / f"split_{split_version}.json"
         if not split_path.exists():
             measurement = "recall-only"
             note = "no split manifest; probes can measure trained-fact recall only"

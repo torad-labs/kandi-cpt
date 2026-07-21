@@ -27,7 +27,12 @@ from pipeline.editions import iter_editions
 from qgre import spec as S
 
 
-HYDRATED_NAMES = ("relations.jsonl", "relations_llm.jsonl", "relations_contrast.jsonl")
+HYDRATED_NAMES = (
+    "relations.jsonl",
+    "relations_llm.jsonl",
+    "relations_contrast.jsonl",
+    "relations_qa.jsonl",
+)
 
 
 def _iter_jsonl(path: Path):

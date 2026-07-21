@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "e7e4a7c7be3074a0550ad1e408b45a8b5048646d9ff0ffe4838820f67029d4b4",
+  "clean_sha256": "b921730ddfe9553057644f548239ca3ab64828150007254d9d105ea77116d782",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Calder_Teaching_Notice.txt",
+  "title": "Calder Teaching Notice"
+}

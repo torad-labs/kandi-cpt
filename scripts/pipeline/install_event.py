@@ -117,6 +117,7 @@ def run_install_event(
     general_candidate_scores: dict | None = None,
     demo: bool = False,
     skip_certificate_on_halt: bool = False,
+    forced_halt_reason: str | None = None,
 ) -> dict[str, Any]:
     """Run sentinel then certificate. Returns the install-event record."""
     unit = unit or ""
@@ -209,6 +210,20 @@ def run_install_event(
             candidate_artifact=cand,
         )
 
+    if forced_halt_reason:
+        sent_result["halted"] = True
+        sent_result["status"] = "HALT"
+        sent_result["tripwire_action"] = "KEEP_PRIOR"
+        sent_result.setdefault("reasons", []).append(forced_halt_reason)
+        sent_result["install_strength_gate"] = {
+            "status": "FAIL",
+            "reason": forced_halt_reason,
+        }
+        prior_booster = max(0, booster_n - 1)
+        sent_result["plain"] = (
+            f"Booster #{booster_n} did not clear the install-strength measurement, so "
+            f"booster #{prior_booster} stays installed. The safety tripwire is reported separately."
+        )
     halted = bool(sent_result.get("halted"))
     artifact_kept = prior if halted else cand
 
@@ -296,6 +311,7 @@ def run_install_event(
         "halted": halted,
         "status": "KEPT_PRIOR" if halted else "INSTALLED_CANDIDATE",
         "sentinel": sent_result,
+        "plain": sent_result.get("plain"),
         "certificate_id": (cert or {}).get("certificate_id"),
         "certificate_error": cert_error,
         "evidence_contract": "PASS" if sent_result else "FAIL",
@@ -336,7 +352,6 @@ def run_install_event(
             json.dumps(sent_result, indent=2) + "\n", encoding="utf-8",
         )
 
-    record["plain"] = sent_result.get("plain")
     return record
 
 

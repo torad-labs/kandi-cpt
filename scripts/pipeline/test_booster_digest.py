@@ -134,6 +134,51 @@ def test_empty_mass_sends_no_digest():
         assert B.build_digest(domain) is None
 
 
+def test_delta_harvest_uses_sha_sidecars_and_skips_unchanged():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        domain = _graph_domain(root)
+        C.DATA = root / "data"
+        unit = root / "data" / domain / "u"
+        raw = unit / "00_raw"
+        clean = unit / "10_clean" / "wiki"
+        raw.mkdir(parents=True)
+        clean.mkdir(parents=True)
+
+        unchanged = raw / "unchanged.txt"
+        unchanged.write_text("steady fact", encoding="utf-8")
+        import hashlib
+        (clean / "unchanged.clean.json").write_text(json.dumps({
+            "raw_sha256": hashlib.sha256(unchanged.read_bytes()).hexdigest(),
+        }), encoding="utf-8")
+
+        changed = raw / "changed.txt"
+        changed.write_text("new value", encoding="utf-8")
+        (clean / "changed.clean.json").write_text(json.dumps({"raw_sha256": "0" * 64}), encoding="utf-8")
+        new = raw / "new.txt"
+        new.write_text("brand new", encoding="utf-8")
+
+        result = B.harvest_delta_corpus(domain, editions="u")
+        assert result["counts"] == {"new": 1, "changed": 1, "unchanged": 1, "harvested": 2}
+        candidates = B.load_candidates(domain)
+        assert {Path(c["source_path"]).name for c in candidates} == {"changed.txt", "new.txt"}
+        assert {c["meta"]["delta_status"] for c in candidates} == {"new", "changed"}
+        assert all(len(c["meta"]["raw_sha256"]) == 64 for c in candidates)
+        assert all(c["gates"]["admission_basis"] == "own-data" for c in candidates)
+
+        plain = B.render_digest_plain({
+            "domain": domain,
+            "booster_n": 1,
+            "candidates": candidates,
+        })
+        assert "1 new files, 1 changed files" in plain
+        assert "facts from practice" in plain
+
+        retried = B.harvest_delta_corpus(domain, editions="u")
+        assert retried["candidate_ids"] == result["candidate_ids"]
+        assert len(B.load_candidates(domain)) == 2
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

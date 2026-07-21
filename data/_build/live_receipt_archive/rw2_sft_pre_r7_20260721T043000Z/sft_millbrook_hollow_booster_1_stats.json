@@ -1,0 +1,10 @@
+{
+  "raw": 10,
+  "wrong_value_neg_requested": 0,
+  "absent_entity_neg_requested": 0,
+  "completion_probe_rows": 4,
+  "completion_probe_sha256": "3ac8a5ef1789dfed2fbaa6ff065892749a63e64a8f62ac87c2feda22c907f169",
+  "answerable": 10,
+  "refusal_total": 0,
+  "refusal_frac": 0.0
+}

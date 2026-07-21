@@ -1,0 +1,326 @@
+{
+  "schema": "kandi.booster_digest.v1",
+  "digest_id": "ada032caf8e44434",
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "booster_n": 1,
+  "built_at": "2026-07-20T23:44:12Z",
+  "status": "approved",
+  "evidence_mass": {
+    "n": 4,
+    "by_signal": {
+      "delta_corpus": 4
+    },
+    "ready_for_digest": true,
+    "thresholds": {
+      "min_candidates": 3,
+      "min_corrections": 1
+    }
+  },
+  "counts": {
+    "selected": 4,
+    "admitted": 4,
+    "disputes": 0,
+    "quarantined": 0,
+    "overflow_persisted": 0
+  },
+  "candidates": [
+    {
+      "id": "dd415038ca70fe56",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Calder_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Calder_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "0334bfa08ef35d4b1c2357ae0b96a17aae5fa62c97a30cf2c345c99b603788ad",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Calder_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "6a5eedb6146f88f9",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Elowen_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Elowen_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "e695dcc0dd44d30e7097da858b549a515f3cba1360e696fe5ec788382bd7e8d5",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Elowen_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "89cf50dcc5d1faa9",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Nessa_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Nessa_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "581fb992563dd6b74b4f802b3440b2345d4807744ce0423b98b95ad6b2aba32f",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Nessa_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "6d3b9745be8d9638",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Sable_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Sable_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "a1a06a0f48698ef8929c003943bfdc76c633c8b7708602f4cf9bd7e1d782f6e9",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Sable_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    }
+  ],
+  "plain": "This period for your millbrook-hollow specialist:\n4 new things worth learning (4 new docs, 0 facts from usage)\n0 disputes needing your call\n0 quarantined (gates failed \u2014 shown, not installed)\nBooster #1 ready. Approve?",
+  "weak_questions_hint": [
+    "Where does Orin Vellshaw live?",
+    "What does Orin Vellshaw own?"
+  ],
+  "gates_note": "Every candidate carries signal type, admission_basis=own-data, PII + truth gate results. Quarantined never reach the shard. Disputes need adjudication.",
+  "approved_at": "2026-07-20T23:44:22Z",
+  "install_payload": [
+    {
+      "id": "dd415038ca70fe56",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Calder_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Calder_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "0334bfa08ef35d4b1c2357ae0b96a17aae5fa62c97a30cf2c345c99b603788ad",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Calder_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "6a5eedb6146f88f9",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Elowen_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Elowen_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "e695dcc0dd44d30e7097da858b549a515f3cba1360e696fe5ec788382bd7e8d5",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Elowen_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "89cf50dcc5d1faa9",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Nessa_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Nessa_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "581fb992563dd6b74b4f802b3440b2345d4807744ce0423b98b95ad6b2aba32f",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Nessa_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    },
+    {
+      "id": "6d3b9745be8d9638",
+      "domain": "millbrook-hollow",
+      "signal": "delta_corpus",
+      "text": "New source ready for the specialist: Sable_Teaching_Notice.txt",
+      "claimed": {
+        "subject": null,
+        "predicate": null,
+        "object": null
+      },
+      "source_path": "data/millbrook-hollow/booster_1/00_raw/Sable_Teaching_Notice.txt",
+      "status": "admitted",
+      "quarantine_reason": null,
+      "gates": {
+        "admission_basis": "own-data",
+        "pii": {
+          "pass": true,
+          "email": false,
+          "phone": false,
+          "reason": "ok"
+        },
+        "truth": {
+          "status": "n/a",
+          "reason": "corpus delta \u2014 structured stages re-derive facts"
+        }
+      },
+      "meta": {
+        "unit": "booster_1",
+        "delta_status": "new",
+        "raw_sha256": "a1a06a0f48698ef8929c003943bfdc76c633c8b7708602f4cf9bd7e1d782f6e9",
+        "previous_raw_sha256": null,
+        "clean_sidecar": "data/millbrook-hollow/booster_1/10_clean/wiki/Sable_Teaching_Notice.clean.json"
+      },
+      "harvested_at": "2026-07-20T23:44:08Z",
+      "digest_id": null
+    }
+  ]
+}

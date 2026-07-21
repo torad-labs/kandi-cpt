@@ -25,7 +25,11 @@ def test_execution_contract_matches_manifest() -> None:
     contract = json.loads(result.stdout)
     assert contract["contract_version"] == "1"
     assert contract["engine"]["commit"]
-    contracts = {"edc": contract, "pokemon-lore": build_contract("pokemon-lore")}
+    contracts = {
+        "edc": contract,
+        "pokemon-lore": build_contract("pokemon-lore"),
+        "millbrook-hollow": build_contract("millbrook-hollow"),
+    }
     for domain_name, emitted_contract in contracts.items():
         manifest = Domain(domain_name)
         assert [stage["id"] for stage in emitted_contract["stages"]] == manifest.stage_names()
@@ -59,6 +63,7 @@ def test_execution_contract_matches_manifest() -> None:
         ("pokemon-lore", "structured"),
         ("pokemon-lore", "synth"),
         ("pokemon-lore", "audit_recall"),
+        ("millbrook-hollow", "synth"),
     }
     # Phase B/C stages present on pokemon-lore
     poke_ids = {s["id"] for s in contracts["pokemon-lore"]["stages"]}
@@ -69,6 +74,10 @@ def test_execution_contract_matches_manifest() -> None:
         "--version" in " ".join(s["cmd"]) and "v2" in " ".join(s["cmd"])
         for s in contracts["pokemon-lore"]["stages"] if s["id"] == "split"
     )
+    for domain_name in ("pokemon-lore", "millbrook-hollow"):
+        split = next(stage for stage in contracts[domain_name]["stages"] if stage["id"] == "split")
+        assert split["outputs"]
+        assert all(output.endswith("/splits/split_v2.json") for output in split["outputs"])
     assert egress_stages
     assert all(stage["provider"] == "openrouter" for stage in egress_stages)
 

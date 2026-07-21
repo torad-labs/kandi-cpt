@@ -398,7 +398,6 @@ def build_model(cfg):
     base_cfg = AutoConfig.from_pretrained(cfg["model_path"])
     text_cfg = getattr(base_cfg, "text_config", base_cfg)
     text_cfg._attn_implementation = "sdpa"
-    model = Gemma4ForCausalLM(text_cfg)
     init = cfg.get("init_from")
     if init:
         # SFT / resumed CPT: a saved Gemma4ForCausalLM checkpoint (save_checkpoint) already has model.* +
@@ -416,12 +415,23 @@ def build_model(cfg):
         if "lm_head.weight" in sd:
             remapped["lm_head.weight"] = sd["lm_head.weight"]
         n_dropped = len(sd) - len(remapped)              # multimodal vision/audio tower tensors dropped
+    # Construct directly in the checkpoint's floating dtype. The default constructor otherwise
+    # materializes ~20 GB of throw-away four-byte parameters while a resumed run also holds the
+    # int8 checkpoint and its dequantized state dict. Inferring the dtype from the receipt keeps
+    # buffers real (unlike meta construction) without changing checkpoint bytes or training policy.
+    load_dtype = next(value.dtype for value in remapped.values() if value.is_floating_point())
+    prior_default_dtype = torch.get_default_dtype()
+    try:
+        torch.set_default_dtype(load_dtype)
+        model = Gemma4ForCausalLM(text_cfg)
+    finally:
+        torch.set_default_dtype(prior_default_dtype)
     # Guard the NaN-incident class (silent random-init) on BOTH sides: a wrong prefix yields a tiny
     # remap → fail loud before training on noise.
     if len(remapped) < 0.5 * len(model.state_dict()):
         raise RuntimeError(f"remap produced only {len(remapped)} tensors for {len(model.state_dict())} "
                            f"model params — prefix wrong for this checkpoint (init_from={bool(init)})")
-    missing, unexpected = model.load_state_dict(remapped, strict=False)
+    missing, unexpected = model.load_state_dict(remapped, strict=False, assign=True)
     model.tie_weights()                                  # lm_head ties to embed_tokens
     real_missing = [m for m in missing if "lm_head" not in m]
     if real_missing:

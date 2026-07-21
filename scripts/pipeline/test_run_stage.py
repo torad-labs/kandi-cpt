@@ -96,7 +96,8 @@ def _contract(root: Path, stage: str, mode: str, effects: list[str] | None = Non
 
 def _execute(root: Path, stage: str, mode: str, devices: str = "", effects: list[str] | None = None,
              output: str = "data/fixture/result.txt", postconditions: list[dict] | None = None,
-             build_id: str | None = None) -> tuple[dict, int, str]:
+             build_id: str | None = None,
+             host_gpu_preflight: dict | None = None) -> tuple[dict, int, str]:
     contract = _contract(root, stage, mode, effects, output, postconditions)
     return run_stage.execute_stage(
         "fixture",
@@ -105,7 +106,30 @@ def _execute(root: Path, stage: str, mode: str, devices: str = "", effects: list
         requested_build_id=build_id,
         expected_stage_digest=contract["stages"][0]["stage_digest"],
         contract_builder=lambda _domain, _editions: contract,
+        host_gpu_preflight=host_gpu_preflight,
     )
+
+
+def _gpu_preflight(*selectors: str) -> dict:
+    return {
+        "allowed": True,
+        "sample_interval_ms": 1000,
+        "sampling_duration_ms": 2077,
+        "devices": [{
+            "selector": selector,
+            "index": int(selector),
+            "uuid": f"GPU-{selector}",
+            "total_memory_mib": 16303,
+            "required_free_memory_mib": 13312,
+            "minimum_free_memory_mib": 13981,
+            "free_memory_samples_mib": [13981, 13980, 13981],
+            "sm_utilization_watermark_pct": 18,
+            "sm_utilization_samples_pct": [9, 8, 9],
+            "sample_count": 3,
+            "sustained_sm_above_watermark": False,
+            "derivation": ["required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)"],
+        } for selector in selectors],
+    }
 
 
 def test_run_stage() -> None:
@@ -258,6 +282,31 @@ def test_run_stage() -> None:
             gpu_record, gpu_exit, _ = _execute(root, "gpu", "pass", effects=["gpu", "write"], output=marker)
             assert gpu_exit != 0 and gpu_record["error"] == "GPU_DEVICES_REQUIRED"
             assert not (root / marker).exists(), "empty-device GPU refusal spawned the child"
+
+            missing_receipt, missing_receipt_exit, _ = _execute(
+                root,
+                "gpu-no-receipt",
+                "pass",
+                devices="3",
+                effects=["gpu", "write"],
+                output="data/fixture/gpu-no-receipt.txt",
+            )
+            assert missing_receipt_exit != 0 and missing_receipt["error"] == "HOST_GPU_PREFLIGHT_REQUIRED"
+            assert not (root / "data/fixture/gpu-no-receipt.txt").exists()
+
+            gpu_allowance = _gpu_preflight("3", "4")
+            measured_gpu_record, measured_gpu_exit, _ = _execute(
+                root,
+                "gpu-measured",
+                "pass",
+                devices="3,4",
+                effects=["gpu", "write"],
+                output="data/fixture/gpu-measured.txt",
+                host_gpu_preflight=gpu_allowance,
+            )
+            assert measured_gpu_exit == 0 and measured_gpu_record["status"] == "PASS"
+            assert measured_gpu_record["host_gpu_preflight"] == gpu_allowance
+            assert measured_gpu_record["host_gpu_preflight"]["sampling_duration_ms"] == 2077
 
             nonzero_record, nonzero_exit, _ = _execute(
                 root, "nonzero", "nonzero", output="data/fixture/nonzero.txt",

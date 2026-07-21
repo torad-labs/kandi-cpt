@@ -46,7 +46,11 @@ def _default_probe_runner(cfg: CptConfig, config_path: str | Path, candidate: st
         "forced_choice": fc_report,
         "generative": {"status": "DISABLED", "reason": "eval.generative_enabled=false"},
     }
-    if cfg.eval.generative_enabled:
+    # A failed forced-choice floor is already an install-strength veto.  Do not
+    # spend judge calls or model loads trying to decorate a candidate that
+    # cannot install; carry the FAIL into the sentinel event as first-class
+    # evidence instead.
+    if cfg.eval.generative_enabled and fc_report.get("status") != "FAIL":
         from eval_generative import merge_dual_axis, run_generative_comparison
 
         gen_path, gen_report = run_generative_comparison(cfg, str(config_path), candidate)
@@ -62,6 +66,11 @@ def _default_probe_runner(cfg: CptConfig, config_path: str | Path, candidate: st
             "forced_choice": dual.get("forced_choice"),
             "generative": dual.get("generative"),
             "rule": dual.get("rule"),
+        }
+    elif cfg.eval.generative_enabled:
+        install_strength["generative"] = {
+            "status": "NOT_RUN",
+            "reason": "forced-choice install-strength gate failed",
         }
     return ProbeEvidence(Path(fc_path), fc_report, install_strength, receipts)
 
@@ -131,21 +140,36 @@ def run_auto_chain(
     if not evidence.certificate_path.is_file():
         raise AutoChainError(f"real probe receipt missing: {evidence.certificate_path}")
 
-    if install_scorer is None or general_scorer is None:
+    install_items = list(sentinel.get("install_slice") or [])
+    general_items = list(sentinel.get("general_ability_slice") or [])
+    if install_scorer is None and general_scorer is None:
+        from pipeline.score_sentinel_live import score_sentinel_model
+
+        reference_scores = score_sentinel_model(
+            model_path=reference, device=cfg.eval.device, probes=install_items,
+            items=general_items, domain=install.domain,
+        )
+        candidate_scores = score_sentinel_model(
+            model_path=candidate, device=cfg.eval.device, probes=install_items,
+            items=general_items, domain=install.domain,
+        )
+        reference_install = reference_scores["install"]
+        reference_general = reference_scores["general_ability"]
+        candidate_install = candidate_scores["install"]
+        candidate_general = candidate_scores["general_ability"]
+    else:
         from pipeline.score_sentinel_live import score_general_ability, score_install_slice
 
         install_scorer = install_scorer or score_install_slice
         general_scorer = general_scorer or score_general_ability
-    install_items = list(sentinel.get("install_slice") or [])
-    general_items = list(sentinel.get("general_ability_slice") or [])
-    reference_install = install_scorer(model_path=reference, device=cfg.eval.device, probes=install_items)
-    candidate_install = install_scorer(model_path=candidate, device=cfg.eval.device, probes=install_items)
-    reference_general = general_scorer(
-        model_path=reference, device=cfg.eval.device, items=general_items, domain=install.domain,
-    )
-    candidate_general = general_scorer(
-        model_path=candidate, device=cfg.eval.device, items=general_items, domain=install.domain,
-    )
+        reference_install = install_scorer(model_path=reference, device=cfg.eval.device, probes=install_items)
+        candidate_install = install_scorer(model_path=candidate, device=cfg.eval.device, probes=install_items)
+        reference_general = general_scorer(
+            model_path=reference, device=cfg.eval.device, items=general_items, domain=install.domain,
+        )
+        candidate_general = general_scorer(
+            model_path=candidate, device=cfg.eval.device, items=general_items, domain=install.domain,
+        )
 
     score_receipt = {
         "schema": "kandi.sentinel_live_scores.v1",
@@ -181,6 +205,11 @@ def run_auto_chain(
         questions_path=install.questions_path or None,
         recall_report_path=install.recall_report_path or None,
         demo=install.demo,
+        forced_halt_reason=(
+            "install-strength measurement failed; keep the prior artifact"
+            if evidence.install_strength.get("status") == "FAIL"
+            else None
+        ),
     )
     if not event.get("certificate_path"):
         raise AutoChainError(f"certificate generation failed closed: {event.get('certificate_error')}")

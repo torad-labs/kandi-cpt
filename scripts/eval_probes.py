@@ -91,6 +91,7 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
     probe_paths: list[Path] = []
     split_paths: list[Path] = []
     split_versions: set[str] = set()
+    measurement_classes: set[str] = set()
     choice_counts: set[int] = set()
     seen_source_ids: set[str] = set()
     for unit in sorted(units, key=lambda value: value.slug):
@@ -102,10 +103,8 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         # silently rejects a valid split_v2 probe set (Phase F measurement debt).
         from pipeline.split import load_split, split_path as _split_path
         probe_lines = [ln for ln in probe_path.read_text(encoding="utf-8").splitlines() if ln.strip()]
-        declared_versions = {
-            str(json.loads(ln).get("split_version") or "")
-            for ln in probe_lines
-        }
+        parsed_probes = [json.loads(line) for line in probe_lines]
+        declared_versions = {str(probe.get("split_version") or "") for probe in parsed_probes}
         declared_versions.discard("")
         if len(declared_versions) > 1:
             raise ValueError(f"probes declare mixed split_version values at {probe_path}: {sorted(declared_versions)}")
@@ -117,10 +116,18 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         split_path = _split_path(unit.dir, split_version)
         holdout_ids = {str(value) for value in split.get("holdout_ids") or []}
         train_ids = {str(value) for value in split.get("train_ids") or []}
-        if not split_version or not holdout_ids:
+        split_labels = {str(probe.get("split") or "") for probe in parsed_probes}
+        if len(split_labels) != 1 or not split_labels <= {"held_out", "trained"}:
+            raise ValueError(f"probes have mixed or unsupported measurement classes at {probe_path}: {split_labels}")
+        split_label = next(iter(split_labels))
+        measurement_class = "augmentation_holdout" if split_label == "held_out" else "trained_fact_recall"
+        if not split_version:
+            raise ValueError(f"split manifest has no version: {split_path}")
+        if split_label == "held_out" and not holdout_ids:
             raise ValueError(f"split manifest has no versioned holdout: {split_path}")
         if train_ids & holdout_ids:
             raise ValueError(f"split manifest train/holdout overlap: {split_path}")
+        measurement_classes.add(measurement_class)
         split_versions.add(split_version)
         split_paths.append(split_path)
         probe_paths.append(probe_path)
@@ -138,11 +145,13 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
                 raise ValueError(f"invalid or duplicate choices at {probe_path}:{line_number}")
             if probe.get("answer") not in choices:
                 raise ValueError(f"answer is absent from choices at {probe_path}:{line_number}")
-            if probe.get("split") != "held_out" or probe.get("split_version") != split_version:
+            if probe.get("split") != split_label or probe.get("split_version") != split_version:
                 raise ValueError(f"probe/split mismatch at {probe_path}:{line_number}")
             source_id = str(probe.get("source_triple_id") or "")
-            if source_id not in holdout_ids:
-                raise ValueError(f"probe source is absent from split holdout_ids at {probe_path}:{line_number}")
+            source_ids = holdout_ids if split_label == "held_out" else train_ids
+            if source_id not in source_ids:
+                source_key = "holdout_ids" if split_label == "held_out" else "train_ids"
+                raise ValueError(f"probe source is absent from split {source_key} at {probe_path}:{line_number}")
             if source_id in seen_source_ids:
                 raise ValueError(f"duplicate probe source_triple_id at {probe_path}:{line_number}")
             seen_source_ids.add(source_id)
@@ -153,6 +162,8 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         raise ValueError("no probes found — run the probes stage first")
     if len(split_versions) != 1:
         raise ValueError(f"probe units use different split versions: {sorted(split_versions)}")
+    if len(measurement_classes) != 1:
+        raise ValueError(f"probe units mix measurement classes: {sorted(measurement_classes)}")
     if len(choice_counts) != 1:
         raise ValueError(f"probe items use different choice counts: {sorted(choice_counts)}")
 
@@ -161,7 +172,8 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         raise ValueError(f"tokenization stats missing: {token_stats_path}")
     token_stats = json.loads(token_stats_path.read_text(encoding="utf-8"))
     clean_tokens = int((token_stats.get("tokens_by_tag") or {}).get("clean") or 0)
-    if clean_tokens <= 0:
+    measurement_class = next(iter(measurement_classes))
+    if measurement_class == "augmentation_holdout" and clean_tokens <= 0:
         raise ValueError(
             "held-out probes with zero clean tokens need carved-holdout decontamination evidence; "
             "the generic comparator currently supports augmentation_holdout only"
@@ -181,7 +193,7 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         token_stats_path=token_stats_path,
         token_stats_sha256=_sha256(token_stats_path),
         clean_tokens=clean_tokens,
-        measurement_class="augmentation_holdout",
+        measurement_class=measurement_class,
         chance=1.0 / next(iter(choice_counts)),
     )
 
@@ -201,10 +213,21 @@ def load_model(path: str, device: str):
     return tokenizer, model
 
 
-def choice_logprob(tokenizer, model, device: str, question: str, choice: str) -> float:
+def scoring_prompt(probe: dict[str, Any]) -> str:
+    """Resolve the measured prompt shape explicitly.
+
+    CPT recall is a continuation estimand, so a probe may carry a verbatim
+    cloze prefix. Domains without it retain the historical instruction prompt.
+    """
+    explicit = str(probe.get("prompt") or "").strip()
+    if explicit:
+        return explicit
+    return f"Question: {probe['question']}\nAnswer:"
+
+
+def choice_logprob(tokenizer, model, device: str, prompt: str, choice: str) -> float:
     import torch
 
-    prompt = f"Question: {question}\nAnswer:"
     prompt_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
     choice_ids = tokenizer(
         " " + choice,
@@ -226,7 +249,8 @@ def choice_logprob(tokenizer, model, device: str, question: str, choice: str) ->
 def evaluate_model(tokenizer, model, device: str, probes: list[dict[str, Any]]) -> list[bool]:
     hits: list[bool] = []
     for index, probe in enumerate(probes):
-        scores = [choice_logprob(tokenizer, model, device, probe["question"], choice)
+        prompt = scoring_prompt(probe)
+        scores = [choice_logprob(tokenizer, model, device, prompt, choice)
                   for choice in probe["choices"]]
         if not all(math.isfinite(score) for score in scores):
             raise ValueError(f"non-finite choice score at probe {index}")
@@ -406,6 +430,20 @@ def build_report(
             "token_stats_sha256": corpus.token_stats_sha256,
             "clean_tokens": corpus.clean_tokens,
         },
+        "probe_results": [
+            {
+                "source_triple_id": probe.get("source_triple_id"),
+                "subject": probe.get("subject"),
+                "predicate": probe.get("predicate"),
+                "question": probe.get("question"),
+                "answer": probe.get("answer"),
+                "base_correct": bool(base_hit),
+                "tuned_correct": bool(tuned_hit),
+            }
+            for probe, base_hit, tuned_hit in zip(
+                corpus.probes, base_hits, tuned_hits, strict=True
+            )
+        ],
         "base": {**base, "path": base_path, "model_sha256": _sha256(base_model_path)},
         "tuned": {
             **tuned,

@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "1f04ba87158da015de902ee74dfb6e16ffc2728515e3ff493c532f591119703f",
+  "clean_sha256": "2bac0a71f64838f7de744ae4f48b644fed933ce2fdaedfcb00a20dcdb3524e8b",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Elowen_Teaching_Notice.txt",
+  "title": "Elowen Teaching Notice"
+}

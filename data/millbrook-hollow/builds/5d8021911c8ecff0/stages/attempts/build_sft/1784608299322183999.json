@@ -1,0 +1,82 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/build_sft.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "booster_1",
+    "--seq-len",
+    "128",
+    "--max-per-relation",
+    "10",
+    "--out",
+    "sft_millbrook_hollow_booster_1",
+    "--completion-probes",
+    "data/millbrook-hollow/booster_1/probes.jsonl"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 4.328412,
+  "outputs": [
+    {
+      "path": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow/data-00000-of-00001.arrow",
+      "sha256": "f6bb5d05272717152b17ec726908499233c656c6ee553e9890f8f2af7d8fb8e0",
+      "bytes": 22448
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow/dataset_info.json",
+      "sha256": "682d5936cede89756d251d1f07e889b1d64468231daaa30b7fff969aa33b877c",
+      "bytes": 347
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow/state.json",
+      "sha256": "ab3c5f51d2a187a954b8d1443f99c5d7949c71f6c959d3c002c0fe192a28970e",
+      "bytes": 247
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1_stats.json",
+      "sha256": "03b10be317fe61be95ba5e9bf93cb74c938d596c965dd897e6e2f0921977a74e",
+      "bytes": 277
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 4,
+    "removed": 0,
+    "bytes_before": 23319,
+    "bytes_after": 23319
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/30_tokenized/sft_millbrook_hollow_booster_1_stats.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": false
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "9d234f8cf1588f072212c18cde77d4df70f9b5da4ea47ad8dc86178c397ed296"
+}

@@ -81,10 +81,52 @@ def test_non_festival_edition_yields_sft_without_meta():
     assert not any(q["rel"] == "venue" for q in qa), "produced venue QA without a venue"
 
 
+def test_completion_probes_are_trained_and_response_masked():
+    class Tokenizer:
+        pad_token_id = 0
+        eos_token_id = 1
+
+        def __call__(self, text, add_special_tokens=True):
+            prefix = [2] if add_special_tokens else []
+            return SimpleNamespace(input_ids=prefix + [ord(char) for char in text])
+
+    with tempfile.TemporaryDirectory(dir=BS.C.ROOT) as directory:
+        path = Path(directory) / "probes.jsonl"
+        path.write_text(json.dumps({
+            "source_triple_id": "fact-1",
+            "prompt": "Ada teaches in the",
+            "answer": "Blue Room",
+            "split": "trained",
+        }) + "\n", encoding="utf-8")
+        relative = str(path.relative_to(BS.C.ROOT))
+        pairs = BS.load_completion_probes(relative)
+        assert pairs == [("Ada teaches in the", "Blue Room")]
+        input_ids, labels = BS.encode_completion(Tokenizer(), *pairs[0], 64)
+        first_answer = next(index for index, value in enumerate(labels) if value != -100)
+        assert all(value == -100 for value in labels[:first_answer])
+        assert input_ids[first_answer:] == [value for value in labels[first_answer:] if value != -100] + [0] * (
+            len(input_ids) - first_answer - sum(value != -100 for value in labels[first_answer:])
+        )
+
+        path.write_text(json.dumps({
+            "source_triple_id": "fact-1",
+            "prompt": "Ada teaches in the",
+            "answer": "Blue Room",
+            "split": "held_out",
+        }) + "\n", encoding="utf-8")
+        try:
+            BS.load_completion_probes(relative)
+        except ValueError as error:
+            assert "must name a trained source" in str(error)
+        else:
+            raise AssertionError("held-out completion probe was admitted into training")
+
+
 if __name__ == "__main__":
     test_sft_qas_byte_identity()
     test_sft_templates_match_original()
     test_empty_templates_no_bleed()
     test_non_festival_edition_yields_sft_without_meta()
+    test_completion_probes_are_trained_and_response_masked()
     print("OK — Seam 4 + G1: build_sft positive templates config-sourced, edc byte-identical, no bleed, "
           "non-festival editions (no meta) yield SFT")

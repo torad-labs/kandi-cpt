@@ -1,0 +1,199 @@
+{
+  "schema": "kandi.sentinel_live_scores.v1",
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "event": "booster",
+  "booster_n": 1,
+  "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+  "device": "cuda:0",
+  "estimand": "frozen_sentinel_install_slice_and_general_ability",
+  "scored_at": "2026-07-21T05:16:18Z",
+  "reference": {
+    "artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1",
+    "install": {
+      "hits": 2,
+      "n": 7,
+      "acc": 0.2857142857142857,
+      "per_predicate": {
+        "involves": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "lives_in": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "member_of": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "occurs_at": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "works_at": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        }
+      },
+      "model_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1"
+    },
+    "general_ability": {
+      "hits": 10,
+      "n": 10,
+      "acc": 1.0,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "Red, yellow, and blue are three primary colors.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Tuesday comes after Monday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "The capital of France is Paris.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "A stitch in time saves nine.",
+          "hit": true
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air during photosynthesis.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "Shakespeare wrote Romeo and Juliet.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "The boiling point of water at sea level is 100\u00b0C.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "Bats are mammals that can fly.",
+          "hit": true
+        }
+      ],
+      "model_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1"
+    }
+  },
+  "candidate": {
+    "artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7",
+    "install": {
+      "hits": 1,
+      "n": 7,
+      "acc": 0.14285714285714285,
+      "per_predicate": {
+        "involves": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "lives_in": {
+          "hits": 0,
+          "n": 1,
+          "acc": 0.0
+        },
+        "member_of": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        },
+        "occurs_at": {
+          "hits": 1,
+          "n": 1,
+          "acc": 1.0
+        },
+        "works_at": {
+          "hits": 0,
+          "n": 2,
+          "acc": 0.0
+        }
+      },
+      "model_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7"
+    },
+    "general_ability": {
+      "hits": 10,
+      "n": 10,
+      "acc": 1.0,
+      "details": [
+        {
+          "prompt": "What is 2 + 2?",
+          "completion": "2 + 2 equals 4.",
+          "hit": true
+        },
+        {
+          "prompt": "Name three primary colors.",
+          "completion": "The primary colors are red, blue, and yellow.",
+          "hit": true
+        },
+        {
+          "prompt": "What day comes after Monday?",
+          "completion": "Monday comes before Tuesday.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "completion": "France's capital is Paris.",
+          "hit": true
+        },
+        {
+          "prompt": "How many continents are on Earth?",
+          "completion": "There are seven continents on Earth: Asia, Africa, North America, South America, Antarctica, and Europe.",
+          "hit": true
+        },
+        {
+          "prompt": "Complete the proverb: \"A stitch in time saves ___.\"",
+          "completion": "A stitch in time saves nine.",
+          "hit": true
+        },
+        {
+          "prompt": "What gas do plants absorb from the air during photosynthesis?",
+          "completion": "Plants absorb carbon dioxide from the air during photosynthesis.",
+          "hit": true
+        },
+        {
+          "prompt": "Who wrote Romeo and Juliet?",
+          "completion": "Romeo and Juliet were written by Shakespeare.",
+          "hit": true
+        },
+        {
+          "prompt": "What is the boiling point of water at sea level in Celsius?",
+          "completion": "Water boils at 100\u00b0C (37.8\u00b0F) at sea level.",
+          "hit": true
+        },
+        {
+          "prompt": "Name a mammal that can fly.",
+          "completion": "Mammals that can fly include bats, dragonflies, and hummingbirds.",
+          "hit": true
+        }
+      ],
+      "model_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7"
+    }
+  }
+}

@@ -229,6 +229,7 @@ def main():
         sys.exit("tokenizer missing bos/eos")
     if emit_meta:
         from pipeline import span_match as SM
+        SM.configure(args.domain, args.editions)
 
     docs = collect(args.domain, args.editions, not args.no_synthetic, include_clean=not args.no_clean)
     random.seed(0)

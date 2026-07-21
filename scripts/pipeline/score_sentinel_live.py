@@ -120,6 +120,101 @@ def score_install_slice(
     }
 
 
+def score_sentinel_model(
+    *,
+    model_path: str,
+    device: str,
+    probes: list[dict[str, Any]],
+    items: list[dict[str, Any]],
+    domain: str,
+    max_new_tokens: int = 32,
+) -> dict[str, Any]:
+    """Score both frozen slices with one checkpoint load.
+
+    Loading a 4.63B int8-master checkpoint is the dominant host-memory and I/O cost. The two
+    estimands remain separate; only their shared immutable model load is coalesced.
+    """
+    import torch
+    from eval_probes import evaluate_model, load_model, summarize_hits
+
+    clean = [
+        {
+            "question": probe["question"],
+            "choices": probe["choices"],
+            "answer": probe["answer"],
+            "predicate": probe.get("predicate") or "unknown",
+        }
+        for probe in probes
+        if probe.get("question") and probe.get("choices") and probe.get("answer")
+    ]
+    if not clean:
+        raise SystemExit("install slice has no scorable forced-choice items")
+    tokenizer, model = load_model(model_path, device)
+    try:
+        install_hits = evaluate_model(tokenizer, model, device, clean)
+        install_summary = summarize_hits(clean, install_hits, min_n=1, estimand="sentinel_install_slice")
+        general = _score_general_loaded(
+            tokenizer, model, device=device, items=items, domain=domain, max_new_tokens=max_new_tokens,
+        )
+    finally:
+        del model
+        torch.cuda.empty_cache()
+    return {
+        "install": {
+            "hits": install_summary["hits"],
+            "n": install_summary["n"],
+            "acc": install_summary["acc"],
+            "per_predicate": {
+                key: {"hits": value["hits"], "n": value["n"], "acc": value["acc"]}
+                for key, value in (install_summary.get("per_predicate") or {}).items()
+            },
+            "model_path": model_path,
+        },
+        "general_ability": {**general, "model_path": model_path},
+    }
+
+
+def _score_general_loaded(tokenizer, model, *, device: str, items: list[dict[str, Any]],
+                          domain: str, max_new_tokens: int) -> dict[str, Any]:
+    import torch
+
+    answers = load_ga_answers(domain)
+    hits = []
+    details = []
+    for item in items:
+        prompt = str(item.get("prompt") or "").strip()
+        text_in = None
+        if getattr(tokenizer, "chat_template", None):
+            try:
+                text_in = tokenizer.apply_chat_template(
+                    [{"role": "user", "content": f"Answer in one short sentence.\n{prompt}"}],
+                    tokenize=False,
+                    add_generation_prompt=True,
+                )
+            except Exception:
+                text_in = None
+        if not text_in:
+            text_in = f"Q: {prompt}\nA:"
+        encoded = tokenizer(text_in, return_tensors="pt").to(device)
+        with torch.no_grad():
+            output = model.generate(
+                **encoded,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                pad_token_id=getattr(tokenizer, "eos_token_id", None),
+            )
+        completion = tokenizer.decode(
+            output[0][encoded["input_ids"].shape[1]:], skip_special_tokens=True,
+        ).strip()
+        if completion.lower().startswith(prompt.lower()[:20]):
+            completion = completion[len(prompt):].lstrip(" \n:.-")
+        hit = match_ga(prompt, completion, answers)
+        hits.append(hit)
+        details.append({"prompt": prompt, "completion": completion[:200], "hit": hit})
+    n = len(hits)
+    return {"hits": sum(hits), "n": n, "acc": (sum(hits) / n) if n else 0.0, "details": details}
+
+
 def score_general_ability(
     *,
     model_path: str,
@@ -131,53 +226,15 @@ def score_general_ability(
     import torch
     from eval_probes import load_model
 
-    answers = load_ga_answers(domain)
     tokenizer, model = load_model(model_path, device)
-    hits = []
-    details = []
     try:
-        for item in items:
-            prompt = str(item.get("prompt") or "").strip()
-            # Prefer chat template when the tokenizer has one (Gemma 4 does); fall back to Q/A.
-            text_in = None
-            if getattr(tokenizer, "chat_template", None):
-                try:
-                    text_in = tokenizer.apply_chat_template(
-                        [{"role": "user", "content": f"Answer in one short sentence.\n{prompt}"}],
-                        tokenize=False,
-                        add_generation_prompt=True,
-                    )
-                except Exception:
-                    text_in = None
-            if not text_in:
-                text_in = f"Q: {prompt}\nA:"
-            ids = tokenizer(text_in, return_tensors="pt").to(device)
-            with torch.no_grad():
-                out = model.generate(
-                    **ids,
-                    max_new_tokens=max_new_tokens,
-                    do_sample=False,
-                    pad_token_id=getattr(tokenizer, "eos_token_id", None),
-                )
-            gen = tokenizer.decode(out[0][ids["input_ids"].shape[1]:], skip_special_tokens=True).strip()
-            # Strip echo of the question if the model repeats it
-            if gen.lower().startswith(prompt.lower()[:20]):
-                gen = gen[len(prompt):].lstrip(" \n:.-")
-            ok = match_ga(prompt, gen, answers)
-            hits.append(ok)
-            details.append({"prompt": prompt, "completion": gen[:200], "hit": ok})
+        result = _score_general_loaded(
+            tokenizer, model, device=device, items=items, domain=domain, max_new_tokens=max_new_tokens,
+        )
     finally:
         del model
         torch.cuda.empty_cache()
-    n = len(hits)
-    h = sum(hits)
-    return {
-        "hits": h,
-        "n": n,
-        "acc": (h / n) if n else 0.0,
-        "details": details,
-        "model_path": model_path,
-    }
+    return {**result, "model_path": model_path}
 
 
 def main() -> None:

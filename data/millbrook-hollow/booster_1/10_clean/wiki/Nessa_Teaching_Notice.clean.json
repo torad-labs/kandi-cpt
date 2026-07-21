@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "69779fbca7bb50a6b93a0a70643b04c229ecb74dda8af44ec6463b458801c210",
+  "clean_sha256": "d8977be56237ce31c2f52f3499822bbcc85b374fbbc3786b1685d5ab5d060e27",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Nessa_Teaching_Notice.txt",
+  "title": "Nessa Teaching Notice"
+}

@@ -1,0 +1,287 @@
+{
+  "schema": "kandi.auto_chain.v1",
+  "status": "CLEAR",
+  "run_gate": {
+    "status": "PASS",
+    "estimand": "completed configured training run"
+  },
+  "install_strength": {
+    "status": "PASS",
+    "estimand": "trained_fact_recall",
+    "forced_choice": {
+      "status": "PASS",
+      "pilot_class": true,
+      "provisional": true,
+      "run_name": "millbrook_hollow_booster_1_r7_sft",
+      "config_fingerprint": "dac1b53381cbc216",
+      "measurement_class": "trained_fact_recall",
+      "domain": "millbrook-hollow",
+      "editions": [
+        "booster_1"
+      ],
+      "split_version": "booster_v1",
+      "chance": 0.25,
+      "rough_bound_half_over_sqrt_n": 0.25,
+      "delta_acc": 0.75,
+      "axis": "forced_choice",
+      "estimand": "trained_fact_recall",
+      "thresholds": {
+        "min_n": 4,
+        "min_delta_acc": 0.1
+      },
+      "checks": [
+        {
+          "check": "base and tuned used the identical probe set",
+          "pass": true
+        },
+        {
+          "check": "probe denominator is at least 4",
+          "pass": true
+        },
+        {
+          "check": "tuned accuracy clears chance by more than the rough bound",
+          "pass": true
+        },
+        {
+          "check": "accuracy delta clears 0.1000 by more than the rough bound",
+          "pass": true
+        }
+      ],
+      "failed_checks": [],
+      "install_strength": {
+        "forced_choice": {
+          "tuned_acc": 1.0,
+          "base_acc": 0.25,
+          "n": 4,
+          "wilson": {
+            "low": 0.5101091635454027,
+            "high": 1.0,
+            "center": 0.7550545817727013,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "n_status": "ok",
+          "delta_acc": 0.75,
+          "estimand": "trained_fact_recall"
+        },
+        "generative": null
+      },
+      "inputs": {
+        "config": "configs/sft_millbrook_hollow_booster_1_r7.yaml",
+        "config_sha256": "c90e5aa7c1d0ee819e34b6044a7fc0d1962a02f7301f73ce39f5bf37b88187af",
+        "probe_paths": [
+          "data/millbrook-hollow/booster_1/probes.jsonl"
+        ],
+        "probe_hashes": [
+          "3ac8a5ef1789dfed2fbaa6ff065892749a63e64a8f62ac87c2feda22c907f169"
+        ],
+        "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+        "split_paths": [
+          "data/millbrook-hollow/booster_1/splits/split_booster_v1.json"
+        ],
+        "split_hashes": [
+          "0d31e36c2ba49f1b8c61916365b61af531a4db6249447e4b779802e1ba82ee1d"
+        ],
+        "split_sha256": "f4c9e13191f38fe4a7e1a8db576e062b6cce5b9a7b53eda3d09f1f735517537d",
+        "token_stats_path": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1_stats.json",
+        "token_stats_sha256": "03b10be317fe61be95ba5e9bf93cb74c938d596c965dd897e6e2f0921977a74e",
+        "clean_tokens": 0
+      },
+      "probe_results": [
+        {
+          "source_triple_id": "7cf3be4bce5b4aaf",
+          "subject": "Elowen Dask",
+          "predicate": "teaches_at",
+          "question": "Complete the trained Millbrook fact about Elowen Dask's teaching room.",
+          "answer": "Blue Room",
+          "base_correct": true,
+          "tuned_correct": true
+        },
+        {
+          "source_triple_id": "4bc41dbb78a2ae2d",
+          "subject": "Sable Kett",
+          "predicate": "teaches_at",
+          "question": "Complete the trained Millbrook fact about Sable Kett's teaching room.",
+          "answer": "Red Room",
+          "base_correct": false,
+          "tuned_correct": true
+        },
+        {
+          "source_triple_id": "c2236be5609c89bb",
+          "subject": "Nessa Ilyndor",
+          "predicate": "teaches_at",
+          "question": "Complete the trained Millbrook fact about Nessa Ilyndor's teaching room.",
+          "answer": "Green Room",
+          "base_correct": false,
+          "tuned_correct": true
+        },
+        {
+          "source_triple_id": "260e8aaaaeb7fead",
+          "subject": "Calder Rooksby",
+          "predicate": "teaches_at",
+          "question": "Complete the trained Millbrook fact about Calder Rooksby's teaching room.",
+          "answer": "Gold Room",
+          "base_correct": false,
+          "tuned_correct": true
+        }
+      ],
+      "base": {
+        "acc": 0.25,
+        "hits": 1,
+        "n": 4,
+        "wilson": {
+          "low": 0.04558726080970055,
+          "high": 0.6993581574175981,
+          "center": 0.3724727091136493,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "ok",
+        "min_n": 4,
+        "bar": 0.25,
+        "bar_status": "within-noise",
+        "clears_bar": false,
+        "within_noise_of_bar": true,
+        "per_predicate": {
+          "teaches_at": {
+            "hits": 1,
+            "n": 4,
+            "acc": 0.25,
+            "wilson": {
+              "low": 0.04558726080970055,
+              "high": 0.6993581574175981,
+              "center": 0.3724727091136493,
+              "level": 0.95,
+              "method": "wilson"
+            },
+            "rough_bound_half_over_sqrt_n": 0.25,
+            "n_status": "ok",
+            "min_n": 4,
+            "estimand": "trained_fact_recall",
+            "slice": "teaches_at",
+            "bar": 0.25,
+            "clears_bar": false,
+            "within_noise_of_bar": true,
+            "bar_status": "within-noise"
+          }
+        },
+        "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+        "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+        "model_sha256": "2db5482b20d746879bb3ef79b5203e9075a2e2b98f54ec7c2f281c1477ddc550"
+      },
+      "tuned": {
+        "acc": 1.0,
+        "hits": 4,
+        "n": 4,
+        "wilson": {
+          "low": 0.5101091635454027,
+          "high": 1.0,
+          "center": 0.7550545817727013,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "ok",
+        "min_n": 4,
+        "bar": 0.25,
+        "bar_status": "cleared",
+        "clears_bar": true,
+        "within_noise_of_bar": false,
+        "per_predicate": {
+          "teaches_at": {
+            "hits": 4,
+            "n": 4,
+            "acc": 1.0,
+            "wilson": {
+              "low": 0.5101091635454027,
+              "high": 1.0,
+              "center": 0.7550545817727013,
+              "level": 0.95,
+              "method": "wilson"
+            },
+            "rough_bound_half_over_sqrt_n": 0.25,
+            "n_status": "ok",
+            "min_n": 4,
+            "estimand": "trained_fact_recall",
+            "slice": "teaches_at",
+            "bar": 0.25,
+            "clears_bar": true,
+            "within_noise_of_bar": false,
+            "bar_status": "cleared"
+          }
+        },
+        "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7",
+        "model_sha256": "4bc342880e9979dca013f5725af8ca7af0dcd68a4b12b65b9839404aff21bc2b",
+        "run_contract_sha256": "db928afa9b0240f5126e68d6ccd0bdd535675b04bf69ee06e16753b124016aca",
+        "run_contract": {
+          "run_name": "millbrook_hollow_booster_1_r7_sft",
+          "precision": "fp4",
+          "int8_master": "storage",
+          "optimizer_lowbit": 4,
+          "save_dir": "checkpoints/sft/millbrook_hollow_booster_1_r7",
+          "init_from": "checkpoints/cpt/millbrook_hollow_v1",
+          "tokenized": "data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow",
+          "tokenized_total_tokens": null,
+          "seq_len": 128,
+          "effective_batch": 16,
+          "max_steps": 32,
+          "decay_frac": 0.25,
+          "anneal": {
+            "active": false,
+            "start_step": 32,
+            "frac": 0.1,
+            "mix_tags": [
+              "hydrated",
+              "replay"
+            ],
+            "lr_end": 0.0,
+            "keep_pre": true,
+            "require_exposure": true,
+            "reason": "max_steps=32 < anneal.min_steps=500 (tiny-run disable)"
+          },
+          "scored_checkpoint": "final",
+          "cuda_visible_devices": "1",
+          "levers_on": [],
+          "smoke": false,
+          "mode": "sft",
+          "fingerprint": "dac1b53381cbc216",
+          "anneal_started": false,
+          "final_step": 32
+        }
+      }
+    },
+    "generative": {
+      "status": "DISABLED",
+      "reason": "eval.generative_enabled=false"
+    }
+  },
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "event": "booster",
+  "booster_n": 1,
+  "candidate_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7",
+  "reference_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1",
+  "artifact_kept": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7",
+  "sentinel": {
+    "status": "CLEAR",
+    "role": "regression_tripwire",
+    "tripwire_action": "CONTINUE_TO_CERTIFICATE",
+    "estimand": "frozen_sentinel_install_slice_and_general_ability"
+  },
+  "sentinel_score_receipt": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/install_chains/millbrook-hollow/20260721T051618Z_booster_b1_sentinel_scores.json",
+  "probe_receipts": {
+    "forced_choice": "/mnt/torad-storage-01/infra/training/kandi-cpt/logs/probe_evals/millbrook_hollow_booster_1_r7_sft_base_vs_tuned.json"
+  },
+  "install_event_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/install_events/millbrook-hollow/20260721T051618Z_booster_b1.json",
+  "certificate_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/certificates/millbrook-hollow/booster_1_b1_20260721T051618Z.json",
+  "certificate_id": "da80b7a390512f48",
+  "demo": true,
+  "generated_at": "2026-07-21T05:16:18Z",
+  "reveal_handoff": {
+    "certificate_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/certificates/millbrook-hollow/booster_1_b1_20260721T051618Z.json",
+    "plain": "The frozen check for /mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r7 stayed inside the expected wiggle room. This only clears the safety stop; read the certificate for how strong the install is."
+  },
+  "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/install_chains/millbrook-hollow/20260721T051618Z_booster_b1.json"
+}

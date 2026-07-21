@@ -29,6 +29,7 @@ from pipeline.domain import Domain
 _IDENTIFIER = re.compile(r"^[A-Za-z0-9_.-]+$")
 _BUILD_ID = re.compile(r"^[0-9a-f]{16}$")
 _STAGE_DIGEST = re.compile(r"^[0-9a-f]{64}$")
+_HOST_GPU_PREFLIGHT_ENV = "CONDUCTOR_HOST_GPU_PREFLIGHT"
 
 
 class StageError(Exception):
@@ -106,6 +107,25 @@ def _write_refusal_record(path: Path, value: dict[str, Any]) -> None:
 
 def _born_at() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _parse_host_gpu_preflight(raw: str | None) -> dict[str, Any] | None:
+    if raw is None:
+        return None
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError as error:
+        raise StageError("HOST_GPU_PREFLIGHT_INVALID", f"cannot decode host GPU preflight receipt: {error}") from error
+    if not isinstance(value, dict) or value.get("allowed") is not True:
+        raise StageError("HOST_GPU_PREFLIGHT_INVALID", "host GPU preflight receipt must be an allowed object")
+    devices = value.get("devices")
+    if not isinstance(devices, list) or not devices or not all(isinstance(device, dict) for device in devices):
+        raise StageError("HOST_GPU_PREFLIGHT_INVALID", "host GPU preflight receipt has no measured devices")
+    return value
+
+
+def _preflight_selectors(receipt: dict[str, Any]) -> list[str]:
+    return [str(device.get("selector") or "") for device in receipt["devices"]]
 
 
 def _ensure_build(domain: Domain, build_id: str, inputs: dict[str, str], contract_version: str) -> None:
@@ -232,8 +252,9 @@ def _base_record(
     postconditions: list[dict[str, Any]],
     engine: dict[str, Any],
     status: str,
+    host_gpu_preflight: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    return {
+    record = {
         "cmd": command,
         "devices": devices,
         "exit_code": exit_code,
@@ -244,6 +265,9 @@ def _base_record(
         "engine": {"commit": engine.get("commit"), "dirty": engine.get("dirty")},
         "status": status,
     }
+    if host_gpu_preflight is not None:
+        record["host_gpu_preflight"] = host_gpu_preflight
+    return record
 
 
 def _post_run_contract_checks(
@@ -279,6 +303,7 @@ def _refusal_record(
     engine: dict[str, Any],
     code: str,
     message: str,
+    host_gpu_preflight: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     record = _base_record(
         command=command,
@@ -290,6 +315,7 @@ def _refusal_record(
         postconditions=[{"check": message, "pass": False}],
         engine=engine,
         status="FAIL",
+        host_gpu_preflight=host_gpu_preflight,
     )
     record["error"] = code
     return record
@@ -303,6 +329,7 @@ def execute_stage(
     requested_build_id: str | None = None,
     expected_stage_digest: str | None = None,
     contract_builder: Callable[[str, str | None], dict[str, Any]] | None = None,
+    host_gpu_preflight: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any], int, str]:
     _validate_identifier(domain_name, "domain")
     lock_path = C.DATA / domain_name / "builds" / ".run-stage.lock"
@@ -317,6 +344,7 @@ def execute_stage(
             requested_build_id,
             expected_stage_digest,
             contract_builder,
+            host_gpu_preflight,
         )
 
 
@@ -328,6 +356,7 @@ def _execute_stage_locked(
     requested_build_id: str | None,
     expected_stage_digest: str | None,
     contract_builder: Callable[[str, str | None], dict[str, Any]] | None,
+    host_gpu_preflight: dict[str, Any] | None,
 ) -> tuple[dict[str, Any], int, str]:
     _validate_identifier(domain_name, "domain")
     _validate_identifier(stage_id, "stage")
@@ -356,7 +385,10 @@ def _execute_stage_locked(
                 "stage_digest": expected_stage_digest,
             }
             command = []
-        record = _scope_record(_refusal_record(command, devices, engine, "BUILD_DRIFT", message), drift_stage)
+        record = _scope_record(
+            _refusal_record(command, devices, engine, "BUILD_DRIFT", message, host_gpu_preflight),
+            drift_stage,
+        )
         _write_refusal_record(_record_path(domain_name, build_id, stage_id), record)
         return record, 2, build_id
 
@@ -364,7 +396,10 @@ def _execute_stage_locked(
     command = _resolved_command(stage)
 
     def refusal(code: str, message: str) -> dict[str, Any]:
-        return _scope_record(_refusal_record(command, devices, engine, code, message), stage)
+        return _scope_record(
+            _refusal_record(command, devices, engine, code, message, host_gpu_preflight),
+            stage,
+        )
 
     record_path = _record_path(domain_name, build_id, stage_id)
     scoped_editions = stage.get("editions")
@@ -391,6 +426,21 @@ def _execute_stage_locked(
     if "gpu" in effects and not devices:
         message = "GPU_DEVICES_REQUIRED: a gpu-effect stage cannot run with empty --devices"
         record = refusal("GPU_DEVICES_REQUIRED", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    if "gpu" in effects and host_gpu_preflight is None:
+        message = "HOST_GPU_PREFLIGHT_REQUIRED: a gpu-effect stage requires the host's measured allowance receipt"
+        record = refusal("HOST_GPU_PREFLIGHT_REQUIRED", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    if "gpu" in effects and _preflight_selectors(host_gpu_preflight or {}) != devices.split(","):
+        message = "HOST_GPU_PREFLIGHT_MISMATCH: measured selectors do not match --devices"
+        record = refusal("HOST_GPU_PREFLIGHT_MISMATCH", message)
+        _write_refusal_record(record_path, record)
+        return record, 2, build_id
+    if "gpu" not in effects and host_gpu_preflight is not None:
+        message = "HOST_GPU_PREFLIGHT_UNEXPECTED: a non-gpu stage cannot carry a GPU allowance receipt"
+        record = refusal("HOST_GPU_PREFLIGHT_UNEXPECTED", message)
         _write_refusal_record(record_path, record)
         return record, 2, build_id
 
@@ -478,6 +528,7 @@ def _execute_stage_locked(
             postconditions=postconditions,
             engine=engine,
             status="PASS" if passed else "FAIL",
+            host_gpu_preflight=host_gpu_preflight,
         ),
         stage,
     )
@@ -530,6 +581,7 @@ def main() -> int:
             editions=args.editions,
             requested_build_id=args.build_id,
             expected_stage_digest=args.approved_stage_digest,
+            host_gpu_preflight=_parse_host_gpu_preflight(os.environ.get(_HOST_GPU_PREFLIGHT_ENV)),
         )
         summary = {
             "build_id": build_id,

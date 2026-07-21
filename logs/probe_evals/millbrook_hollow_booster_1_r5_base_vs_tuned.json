@@ -1,0 +1,250 @@
+{
+  "status": "FAIL",
+  "pilot_class": true,
+  "provisional": true,
+  "run_name": "millbrook_hollow_booster_1_r5",
+  "config_fingerprint": "5501cc118404f6de",
+  "measurement_class": "trained_fact_recall",
+  "domain": "millbrook-hollow",
+  "editions": [
+    "booster_1"
+  ],
+  "split_version": "booster_v1",
+  "chance": 0.25,
+  "rough_bound_half_over_sqrt_n": 0.25,
+  "delta_acc": 0.0,
+  "axis": "forced_choice",
+  "estimand": "trained_fact_recall",
+  "thresholds": {
+    "min_n": 4,
+    "min_delta_acc": 0.1
+  },
+  "checks": [
+    {
+      "check": "base and tuned used the identical probe set",
+      "pass": true
+    },
+    {
+      "check": "probe denominator is at least 4",
+      "pass": true
+    },
+    {
+      "check": "tuned accuracy clears chance by more than the rough bound",
+      "pass": false
+    },
+    {
+      "check": "accuracy delta clears 0.1000 by more than the rough bound",
+      "pass": false
+    }
+  ],
+  "failed_checks": [
+    "tuned accuracy clears chance by more than the rough bound",
+    "accuracy delta clears 0.1000 by more than the rough bound"
+  ],
+  "install_strength": {
+    "forced_choice": {
+      "tuned_acc": 0.25,
+      "base_acc": 0.25,
+      "n": 4,
+      "wilson": {
+        "low": 0.04558726080970055,
+        "high": 0.6993581574175981,
+        "center": 0.3724727091136493,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "n_status": "ok",
+      "delta_acc": 0.0,
+      "estimand": "trained_fact_recall"
+    },
+    "generative": null
+  },
+  "inputs": {
+    "config": "configs/train_millbrook_hollow_booster_1_r5.yaml",
+    "config_sha256": "7fef1873208a7011afa568f7e4927cf1c3eecc43b8e22e93b211252bd2589054",
+    "probe_paths": [
+      "data/millbrook-hollow/booster_1/probes.jsonl"
+    ],
+    "probe_hashes": [
+      "3ac8a5ef1789dfed2fbaa6ff065892749a63e64a8f62ac87c2feda22c907f169"
+    ],
+    "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+    "split_paths": [
+      "data/millbrook-hollow/booster_1/splits/split_booster_v1.json"
+    ],
+    "split_hashes": [
+      "0d31e36c2ba49f1b8c61916365b61af531a4db6249447e4b779802e1ba82ee1d"
+    ],
+    "split_sha256": "f4c9e13191f38fe4a7e1a8db576e062b6cce5b9a7b53eda3d09f1f735517537d",
+    "token_stats_path": "data/_build/30_tokenized/millbrook_hollow_booster_1_stats.json",
+    "token_stats_sha256": "f792b3ca4ed09df0971c2483519f95db1b8866944679dc4706a42145cfb4f5f7",
+    "clean_tokens": 0
+  },
+  "probe_results": [
+    {
+      "source_triple_id": "7cf3be4bce5b4aaf",
+      "subject": "Elowen Dask",
+      "predicate": "teaches_at",
+      "question": "Complete the trained Millbrook fact about Elowen Dask's teaching room.",
+      "answer": "Blue Room",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4bc41dbb78a2ae2d",
+      "subject": "Sable Kett",
+      "predicate": "teaches_at",
+      "question": "Complete the trained Millbrook fact about Sable Kett's teaching room.",
+      "answer": "Red Room",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "c2236be5609c89bb",
+      "subject": "Nessa Ilyndor",
+      "predicate": "teaches_at",
+      "question": "Complete the trained Millbrook fact about Nessa Ilyndor's teaching room.",
+      "answer": "Green Room",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "260e8aaaaeb7fead",
+      "subject": "Calder Rooksby",
+      "predicate": "teaches_at",
+      "question": "Complete the trained Millbrook fact about Calder Rooksby's teaching room.",
+      "answer": "Gold Room",
+      "base_correct": false,
+      "tuned_correct": false
+    }
+  ],
+  "base": {
+    "acc": 0.25,
+    "hits": 1,
+    "n": 4,
+    "wilson": {
+      "low": 0.04558726080970055,
+      "high": 0.6993581574175981,
+      "center": 0.3724727091136493,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.25,
+    "n_status": "ok",
+    "min_n": 4,
+    "bar": 0.25,
+    "bar_status": "within-noise",
+    "clears_bar": false,
+    "within_noise_of_bar": true,
+    "per_predicate": {
+      "teaches_at": {
+        "hits": 1,
+        "n": 4,
+        "acc": 0.25,
+        "wilson": {
+          "low": 0.04558726080970055,
+          "high": 0.6993581574175981,
+          "center": 0.3724727091136493,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "ok",
+        "min_n": 4,
+        "estimand": "trained_fact_recall",
+        "slice": "teaches_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": true,
+        "bar_status": "within-noise"
+      }
+    },
+    "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+    "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "model_sha256": "2db5482b20d746879bb3ef79b5203e9075a2e2b98f54ec7c2f281c1477ddc550"
+  },
+  "tuned": {
+    "acc": 0.25,
+    "hits": 1,
+    "n": 4,
+    "wilson": {
+      "low": 0.04558726080970055,
+      "high": 0.6993581574175981,
+      "center": 0.3724727091136493,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.25,
+    "n_status": "ok",
+    "min_n": 4,
+    "bar": 0.25,
+    "bar_status": "within-noise",
+    "clears_bar": false,
+    "within_noise_of_bar": true,
+    "per_predicate": {
+      "teaches_at": {
+        "hits": 1,
+        "n": 4,
+        "acc": 0.25,
+        "wilson": {
+          "low": 0.04558726080970055,
+          "high": 0.6993581574175981,
+          "center": 0.3724727091136493,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "ok",
+        "min_n": 4,
+        "estimand": "trained_fact_recall",
+        "slice": "teaches_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": true,
+        "bar_status": "within-noise"
+      }
+    },
+    "probe_sha256": "caf6bc3368d7b158a27467e19da6ddd0c47c041df084fea630c3f42f80ea4754",
+    "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_booster_1_r5",
+    "model_sha256": "f67f1a41e2b88464a3de34b4a8fa566205a8aea5bd0d5fbe5d0291862463c0eb",
+    "run_contract_sha256": "589b6011f2340f32fd22f9da6b41f7c02a0aadec56536f95e8d72241d8847ee5",
+    "run_contract": {
+      "run_name": "millbrook_hollow_booster_1_r5",
+      "precision": "fp4",
+      "int8_master": "storage",
+      "optimizer_lowbit": 4,
+      "save_dir": "checkpoints/cpt/millbrook_hollow_booster_1_r5",
+      "init_from": "checkpoints/cpt/millbrook_hollow_v1",
+      "tokenized": "data/_build/30_tokenized/millbrook_hollow_booster_1.arrow",
+      "tokenized_total_tokens": 2263,
+      "seq_len": 512,
+      "effective_batch": 16,
+      "max_steps": 64,
+      "decay_frac": 0.2,
+      "anneal": {
+        "active": true,
+        "start_step": 48,
+        "frac": 0.25,
+        "mix_tags": [
+          "hydrated",
+          "replay"
+        ],
+        "lr_end": 0.0,
+        "keep_pre": true,
+        "require_exposure": true,
+        "reason": "final 25% of 64 steps (start=48)"
+      },
+      "scored_checkpoint": "anneal-end",
+      "cuda_visible_devices": "1",
+      "levers_on": [
+        "lever4_exposure_tracking"
+      ],
+      "smoke": false,
+      "mode": "cpt",
+      "fingerprint": "5501cc118404f6de",
+      "anneal_started": true,
+      "final_step": 64,
+      "pre_anneal_checkpoint": "checkpoints/cpt/millbrook_hollow_booster_1_r5/pre_anneal"
+    }
+  }
+}

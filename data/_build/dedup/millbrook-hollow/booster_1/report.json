@@ -1,0 +1,93 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "budget": 40,
+  "cap": 40,
+  "n_before": 138,
+  "n_after": 138,
+  "n_excluded": 0,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "00c2ae1eeac55c63",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "22ea17ec4d0f87ca",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "260e8aaaaeb7fead",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "4bc41dbb78a2ae2d",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "744ffb8ff27ac279",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "7cf3be4bce5b4aaf",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "8db05dc90ae83dfc",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "c2236be5609c89bb",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "da7ba4b8d3b6e3a1",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "dfd82dfd1a8f0f38",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    }
+  ],
+  "exclude_keys": []
+}

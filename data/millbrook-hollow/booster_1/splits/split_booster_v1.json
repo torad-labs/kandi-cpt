@@ -1,0 +1,21 @@
+{
+  "version": "booster_v1",
+  "seed": 0,
+  "holdout_frac": 0.0,
+  "grouping": "approved_delta_plus_replay",
+  "n_triples": 10,
+  "train_ids": [
+    "00c2ae1eeac55c63",
+    "4bc41dbb78a2ae2d",
+    "22ea17ec4d0f87ca",
+    "260e8aaaaeb7fead",
+    "744ffb8ff27ac279",
+    "7cf3be4bce5b4aaf",
+    "8db05dc90ae83dfc",
+    "da7ba4b8d3b6e3a1",
+    "c2236be5609c89bb",
+    "dfd82dfd1a8f0f38"
+  ],
+  "holdout_ids": [],
+  "series_note": "Booster-touched trained-fact recall. This estimand is not fact-holdout generalization."
+}

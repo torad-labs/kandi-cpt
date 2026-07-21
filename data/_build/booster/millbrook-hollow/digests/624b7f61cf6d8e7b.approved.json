@@ -1,0 +1,8 @@
+{
+  "digest_id": "624b7f61cf6d8e7b",
+  "status": "approved",
+  "booster_n": 1,
+  "n_install_payload": 4,
+  "next": "Run delta structured\u2192\u2026\u2192tokenize on install_payload + new docs, then train anneal-shaped booster; install_event.py runs sentinel+certificate on the resulting checkpoint.",
+  "approved_at": "2026-07-21T01:41:27Z"
+}

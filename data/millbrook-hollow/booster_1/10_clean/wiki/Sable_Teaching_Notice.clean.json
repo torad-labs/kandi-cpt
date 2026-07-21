@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "9b2a8b5999b41cfd92e6d81dbef64c785a602bdb53df2b2eb86ce489c231c09e",
+  "clean_sha256": "f5e90996441c59c32b965d19b023cf84375d4ffe0f51a00d9adfb08bd571f7cc",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Sable_Teaching_Notice.txt",
+  "title": "Sable Teaching Notice"
+}

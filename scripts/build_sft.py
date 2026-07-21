@@ -27,6 +27,7 @@ Output: data/_build/30_tokenized/<out>.arrow (+ <out>_val.arrow if --val-frac) w
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 import re
@@ -549,6 +550,48 @@ def encode(tok, q: str, a: str, seq_len: int):
     return ids + [pad] * k, labels + [-100] * k
 
 
+def load_completion_probes(path: str | None) -> list[tuple[str, str]]:
+    """Load explicit trained-fact continuation surfaces for response-masked rehearsal."""
+    if not path:
+        return []
+    probe_path = C.ROOT / path
+    if not probe_path.is_file():
+        raise ValueError(f"completion probe file missing: {probe_path}")
+    pairs: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for line_number, line in enumerate(probe_path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        source_id = str(row.get("source_triple_id") or "")
+        prompt = str(row.get("prompt") or "").strip()
+        answer = str(row.get("answer") or "").strip()
+        if row.get("split") != "trained" or not source_id or not prompt or not answer:
+            raise ValueError(
+                f"completion probe at {probe_path}:{line_number} must name a trained source, prompt, and answer"
+            )
+        if source_id in seen:
+            raise ValueError(f"duplicate completion source_triple_id at {probe_path}:{line_number}")
+        seen.add(source_id)
+        pairs.append((prompt, answer))
+    if not pairs:
+        raise ValueError(f"completion probe file has no trained rows: {probe_path}")
+    return pairs
+
+
+def encode_completion(tok, prompt: str, answer: str, seq_len: int):
+    """Encode the exact trained-fact continuation estimand while masking its prompt."""
+    p = tok(prompt).input_ids
+    aw = tok(" " + answer, add_special_tokens=False).input_ids
+    ids = p + aw
+    labels = [-100] * len(p) + list(aw)
+    if len(ids) > seq_len:
+        return None
+    pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
+    padding = seq_len - len(ids)
+    return ids + [pad] * padding, labels + [-100] * padding
+
+
 def score_knownness(model, tok, cands, k: int, bs: int = 16):
     """For each candidate, generate k answers from the CPT model and tier by how often the gold `key`
     appears: known (≥75%), maybe (>0), unknown (0). Also capture a correct self-generated answer (#3).
@@ -632,6 +675,13 @@ def main():
                     "edition-specific 'no record of EDC X' refusals) — the fabrication lever; decoupled from "
                     "the unknown-tier relabel. Added on top of --abstention-frac.")
     ap.add_argument("--val-frac", type=float, default=0.0, help="hold out a val split for the early-stop lever")
+    ap.add_argument(
+        "--completion-probes",
+        help=(
+            "trained-fact JSONL whose explicit prompt/answer continuations are added as response-masked "
+            "rehearsal; valid only for rows stamped split=trained"
+        ),
+    )
     ap.add_argument("--fine-grained-neg", type=int, default=0, help="V12: in-edition fine-grained anti-fab - "
                     "stage paired-contrast corrections (answerable) + set_time abstentions (refusal) for the "
                     "dims the by-dim gate fabricates. See fine_grained_negatives() + docs §XVII.")
@@ -793,6 +843,11 @@ def main():
         stats["fg_stage_corrections"] = len(fg_corr); stats["fg_settime_abstain"] = len(fg_abst)
 
     pairs = answerable + abs_all
+    completion_pairs = load_completion_probes(args.completion_probes)
+    if completion_pairs:
+        completion_path = C.ROOT / str(args.completion_probes)
+        stats["completion_probe_rows"] = len(completion_pairs)
+        stats["completion_probe_sha256"] = hashlib.sha256(completion_path.read_bytes()).hexdigest()
     # exact composition (the data-validator SFT-balance dimension reads these — v4 lesson: too high a refusal
     # fraction over-refuses, too low fabricates). Precise final counts, not the pre-dedup tier proxies.
     stats["answerable"] = len(answerable); stats["refusal_total"] = len(abs_all)
@@ -811,6 +866,13 @@ def main():
             if enc is None:
                 skip += 1; continue
             rows_ids.append(enc[0]); rows_lab.append(enc[1])
+        if split == "":
+            for prompt, answer in completion_pairs:
+                enc = encode_completion(tok, prompt, answer, args.seq_len)
+                if enc is None:
+                    skip += 1
+                    continue
+                rows_ids.append(enc[0]); rows_lab.append(enc[1])
         name = f"{args.out}_val" if split == "val" else args.out
         Dataset.from_dict({"input_ids": rows_ids, "labels": rows_lab}).save_to_disk(str(OUT / f"{name}.arrow"))
         sup = sum(1 for lab in rows_lab for x in lab if x != -100)

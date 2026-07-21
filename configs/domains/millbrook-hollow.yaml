@@ -28,11 +28,12 @@ ontology:
 
 model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
 configs:
-  cpt: configs/train_millbrook_hollow_v1.yaml
-  sft: null
+  cpt: configs/train_millbrook_hollow_booster_1_r5.yaml
+  sft: configs/sft_millbrook_hollow_booster_1_r7.yaml
 
 vars:
-  corpus: millbrook_hollow_v1
+  corpus: millbrook_hollow_booster_1
+  sft_out: sft_millbrook_hollow_booster_1
 
 stages:
   - name: extract
@@ -79,12 +80,22 @@ stages:
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow"
-    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "millbrook-hollow", "--seq-len", "512",
-          "--replay-frac", "0.10", "--out", "{corpus}"]
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "millbrook-hollow", "--editions", "{editions}", "--seq-len", "512",
+          "--no-clean", "--replay-frac", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
-    desc: "continued pretraining (FP4 + int8-master) — demo-sized step budget"
+    desc: "approved booster #1 (FP4 + int8-master) — delta-only anneal-shaped install"
     cmd: ["bash", "scripts/train_fp4.sh", "--config", "{cpt}"]
+    gpu: true
+  - name: build_sft
+    desc: "response-masked booster correction — graph Q/A plus exact trained-fact continuations"
+    cmd: ["{py}", "scripts/build_sft.py", "--domain", "millbrook-hollow", "--editions", "{editions}",
+          "--seq-len", "128", "--max-per-relation", "10", "--out", "{sft_out}",
+          "--completion-probes", "data/millbrook-hollow/booster_1/probes.jsonl"]
+    gpu: false
+  - name: sft
+    desc: "approved booster #1 response-masked correction (FP4 + int8-master)"
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{sft}"]
     gpu: true
 
 entity_types:

@@ -238,6 +238,71 @@ def build_what_it_knows(
     return rows
 
 
+def build_booster_learning(
+    probe_receipt: dict[str, Any] | None,
+    *,
+    column: str = "tuned",
+) -> dict[str, Any] | None:
+    """Project named booster probes onto the artifact this certificate measures.
+
+    ``probe_results`` is optional because older/domain-level receipts do not carry
+    per-probe rows.  A HALT certificate selects ``base`` while a CLEAR certificate
+    selects ``tuned``; this keeps the card about the artifact that actually remains
+    installed instead of accidentally crediting a rejected candidate.
+    """
+    if probe_receipt is None:
+        return None
+    results = probe_receipt.get("probe_results")
+    if not isinstance(results, list) or not results:
+        return None
+    correctness_key = f"{column}_correct"
+    facts: list[dict[str, Any]] = []
+    for index, raw in enumerate(results, start=1):
+        if not isinstance(raw, dict) or correctness_key not in raw:
+            continue
+        question = str(raw.get("question") or "").strip()
+        answer = str(raw.get("answer") or "").strip()
+        if not question or not answer:
+            continue
+        facts.append({
+            "probe_id": str(raw.get("source_triple_id") or f"probe_{index}"),
+            "question": question,
+            "answer": answer,
+            "subject": raw.get("subject"),
+            "predicate": raw.get("predicate"),
+            "installed_artifact_correct": bool(raw[correctness_key]),
+            "base_correct": raw.get("base_correct"),
+            "candidate_correct": raw.get("tuned_correct"),
+        })
+    if not facts:
+        return None
+    hits = sum(1 for row in facts if row["installed_artifact_correct"])
+    n = len(facts)
+    measurement_class = str(
+        probe_receipt.get("measurement_class")
+        or probe_receipt.get("estimand")
+        or "trained_fact_recall"
+    )
+    return {
+        "estimand": measurement_class,
+        "artifact_column": column,
+        "hits": hits,
+        "n": n,
+        "acc": hits / n,
+        "pilot_class": bool(probe_receipt.get("pilot_class", n < ES.DEFAULT_MIN_N)),
+        "provisional": bool(probe_receipt.get("provisional", n < ES.DEFAULT_MIN_N)),
+        "plain": (
+            f"On the {n} named booster facts, the installed artifact answered "
+            f"{hits}/{n} correctly. This is the {measurement_class} estimand only."
+        ),
+        "facts": facts,
+        "receipt": {
+            "kind": "named_booster_probes",
+            "path": probe_receipt.get("receipt_path") or probe_receipt.get("source") or "probe_receipt",
+        },
+    }
+
+
 def build_what_it_ate(
     *,
     domain: str,
@@ -398,6 +463,7 @@ def generate_certificate(
     freshness = build_freshness(
         verified_at=verified_at, booster_n=booster_n, halted_boosters=halted_boosters,
     )
+    booster_learning = build_booster_learning(probe_receipt, column=column)
 
     cert = {
         "schema": "kandi.certificate.v1",
@@ -408,6 +474,7 @@ def generate_certificate(
         "booster_n": booster_n,
         "what_it_ate": ate,
         "what_it_knows": knows,
+        "booster_learning": booster_learning,
         "what_it_refuses": {
             "plain": calibration_line
             or "Abstention / calibration: see SFT calibration receipt; unmapped claims are refused.",

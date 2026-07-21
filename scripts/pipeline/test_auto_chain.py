@@ -87,11 +87,12 @@ def _fixture(root: Path, *, event: str, booster_n: int) -> Path:
     return config_path
 
 
-def _probe_runner(root: Path, tuned_hits: int):
+def _probe_runner(root: Path, tuned_hits: int, *, status: str | None = None):
     def run(_cfg, _config_path, _candidate):
         path = root / "logs" / "probe.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         report = {
+            **({"status": status} if status else {}),
             "estimand": "augmentation_holdout",
             "base": {
                 "hits": 4, "n": 4, "acc": 1.0,
@@ -166,6 +167,30 @@ def test_halt_keeps_prior_and_certificate_measures_the_kept_artifact() -> None:
         assert certificate["freshness"]["halted_boosters"] == [1]
         assert certificate["inspector"]["run_record"].endswith("prior_b0")
         assert all(row["stamp"]["acc"] == 1.0 for row in certificate["what_it_knows"])
+
+
+def test_failed_install_strength_halts_even_when_sentinel_scores_are_clear() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        config_path = _fixture(root, event="booster", booster_n=1)
+        chain = run_auto_chain(
+            config_path,
+            probe_runner=_probe_runner(root, tuned_hits=0, status="FAIL"),
+            install_scorer=_install_scorer(candidate_hits=4),
+            general_scorer=_general_scorer,
+        )
+        assert chain["status"] == "HALTED"
+        assert chain["artifact_kept"].endswith("prior_b0")
+        event = json.loads(Path(chain["install_event_path"]).read_text(encoding="utf-8"))
+        assert event["sentinel"]["install_strength_gate"]["status"] == "FAIL"
+        expected_plain = (
+            "Booster #1 did not clear the install-strength measurement, so booster #0 stays installed. "
+            "The safety tripwire is reported separately."
+        )
+        assert event["plain"] == expected_plain
+        assert chain["reveal_handoff"]["plain"] == expected_plain
+        certificate = json.loads(Path(chain["certificate_path"]).read_text(encoding="utf-8"))
+        assert certificate["booster_n"] == 0
 
 
 if __name__ == "__main__":

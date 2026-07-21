@@ -1,0 +1,13 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "n_entities_in": 20,
+  "n_entities_out": 20,
+  "n_merges": 0,
+  "n_review": 0,
+  "n_cross_continuity_links": 0,
+  "cross_merge_violations": 0,
+  "n_id_type_mismatches": 0,
+  "auto_band": 0.92,
+  "review_band": 0.85
+}

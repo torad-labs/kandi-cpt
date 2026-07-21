@@ -1,7 +1,8 @@
 {
-  "_comment": "millbrook-hollow unit registry — single demo town unit (main).",
+  "_comment": "millbrook-hollow unit registry — base demo town plus immutable booster delta units.",
   "domain": "millbrook-hollow",
   "editions": [
-    { "unit": "main", "status": "active" }
+    { "unit": "main", "status": "active" },
+    { "unit": "booster_1", "status": "active", "lineage": "delta from main booster #0" }
   ]
 }

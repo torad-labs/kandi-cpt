@@ -179,8 +179,24 @@ def _config_value(domain: Domain, key: str, *parts: str) -> str:
     return str(value) if value else ""
 
 
-def _outputs(domain: Domain, stage_name: str, editions: list[str]) -> list[str]:
+def _command_option(command: list[str], option: str) -> str | None:
+    try:
+        index = command.index(option)
+    except ValueError:
+        return None
+    return command[index + 1] if index + 1 < len(command) else None
+
+
+def _outputs(
+    domain: Domain,
+    stage_name: str,
+    editions: list[str],
+    command: list[str],
+) -> list[str]:
     outputs = STAGE_OUTPUTS.get(stage_name, [])
+    if stage_name == "split":
+        version = _command_option(command, "--version") or "v1"
+        outputs = [f"data/{{domain}}/**/splits/split_{version}.json"]
     if stage_name == "curate" and domain.name == "edc":
         outputs = [
             "data/_build/curation/keep_list.json",
@@ -233,7 +249,7 @@ def build_contract(domain_name: str, editions: str | None = None) -> dict[str, A
     for stage in domain.stages:
         command = domain.resolve(stage.cmd, domain=domain.name, editions=resolved_editions)
         effects = _effects(stage.name, command, stage.gpu)
-        outputs = _outputs(domain, stage.name, scoped_editions)
+        outputs = _outputs(domain, stage.name, scoped_editions, command)
         emitted = {
             "id": stage.name,
             "editions": scoped_editions,

@@ -12,6 +12,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import eval_probes as E  # noqa: E402
 
 
+def test_scoring_prompt_uses_explicit_cpt_cloze_without_instruction_wrapper():
+    probe = {"question": "Where?", "prompt": "Elowen Dask teaches at"}
+    assert E.scoring_prompt(probe) == "Elowen Dask teaches at"
+    assert E.scoring_prompt({"question": "Where?"}) == "Question: Where?\nAnswer:"
+
+
 def _sha(path: Path) -> str:
     return E._sha256(path)
 
@@ -125,6 +131,16 @@ def test_pilot_gate_passes_only_with_a_clear_delta():
         assert all(check["pass"] for check in report["checks"])
         assert report["inputs"]["probe_sha256"] == report["base"]["probe_sha256"]
         assert report["base"]["probe_sha256"] == report["tuned"]["probe_sha256"]
+        assert len(report["probe_results"]) == 72
+        assert report["probe_results"][0] == {
+            "source_triple_id": "id-0",
+            "subject": "subject-0",
+            "predicate": "member_of",
+            "question": "Where is subject 0?",
+            "answer": "a",
+            "base_correct": True,
+            "tuned_correct": True,
+        }
 
 
 def test_pilot_gate_fails_closed_on_small_n_and_weak_delta():
@@ -161,6 +177,35 @@ def test_probe_loader_binds_every_item_to_the_hashed_holdout():
         assert {probe["source_triple_id"] for probe in corpus.probes} == {
             f"id-{index}" for index in range(72)
         }
+
+
+def test_probe_loader_names_trained_fact_recall_without_clean_tokens():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=4)
+        for probe in corpus.probes:
+            probe["split"] = "trained"
+            probe["split_version"] = "booster_v1"
+        corpus.probe_paths[0].write_text(
+            "\n".join(json.dumps(probe) for probe in corpus.probes) + "\n",
+            encoding="utf-8",
+        )
+        booster_split = corpus.split_paths[0].with_name("split_booster_v1.json")
+        booster_split.write_text(json.dumps({
+            "version": "booster_v1",
+            "train_ids": [f"id-{index}" for index in range(4)],
+            "holdout_ids": [],
+        }), encoding="utf-8")
+        corpus.token_stats_path.write_text(
+            json.dumps({"tokens_by_tag": {"clean": 0, "hydrated": 1000}}),
+            encoding="utf-8",
+        )
+
+        loaded = _load_written_corpus(root)
+        assert loaded.measurement_class == "trained_fact_recall"
+        assert loaded.clean_tokens == 0
+        assert len(loaded.probes) == 4
 
 
 def test_probe_loader_rejects_unbound_and_duplicate_sources():
