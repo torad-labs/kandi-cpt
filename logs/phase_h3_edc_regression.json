@@ -1,0 +1,199 @@
+{
+  "schema": "phase_h3_edc_regression/v1",
+  "recorded_at": "2026-07-21T17:55:00Z",
+  "domain": "edc",
+  "work_item": "EDC end-to-end regression through the overhauled pipeline",
+  "overall_verdict": "FAIL",
+  "headline": "The current EDC data path failed closed at score_educational after extract and pii_scan passed.",
+  "estimand": {
+    "name": "current_pipeline_data_path_regression",
+    "population": "all 97 registered EDC units with the protected las_vegas/2026 reference excluded from mutation",
+    "n_units": 97,
+    "sample": "census",
+    "training_in_scope": false,
+    "gpu_stage_reached": false
+  },
+  "execution": {
+    "engine_commit": "3582be0c6ff5738b063cd6c27a1cf85024ac7c75",
+    "build_id": "4ae072b96f8228c2",
+    "approved_stage_digests": {
+      "extract": "45616f732bf0e5230dbe88d6e8ea1e4a6de124d5dbde26de0c82d215f9c2e69b",
+      "pii_scan": "8e67e5776fc3de94397582725e8a258220f523d9b85ebd1113f520235842c779",
+      "score_educational": "c4cfa0b68c0b5b9328d1b66eca63f2e4d7aae964e2d759349e7f843bb4f9dc06"
+    },
+    "recipe_identity_changed_during_execution": false,
+    "gate_bypass_used": false,
+    "legacy_config_patched": false
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "status": "PASS",
+      "record": "data/edc/builds/4ae072b96f8228c2/stages/extract.json",
+      "duration_s": 5536.33098,
+      "counts": {
+        "cleaned": 186,
+        "rescued": 186,
+        "skipped": 792,
+        "unchanged": 1379
+      },
+      "interpretation": "A cleaned count is an accepted source-faithful extraction decision. A skipped count is a faithful non-emission, not installed coverage."
+    },
+    {
+      "stage": "pii_scan",
+      "status": "PASS",
+      "record": "data/edc/builds/4ae072b96f8228c2/stages/pii_scan.json",
+      "duration_s": 1.698341,
+      "counts": {
+        "documents": 1585,
+        "quarantined": 74,
+        "masked": 241,
+        "clean": 1270
+      },
+      "pii_scan_unavailable": false,
+      "interpretation": "Counts are document dispositions over the 97-unit clean corpus; they are not a model-quality estimate."
+    },
+    {
+      "stage": "score_educational",
+      "status": "FAIL",
+      "record": "data/edc/builds/4ae072b96f8228c2/stages/score_educational.json",
+      "duration_s": 9.909642,
+      "error": "score_educational failed closed: unparseable teacher score: ''",
+      "declared_outputs_written": 0,
+      "postconditions_passed": false
+    },
+    {
+      "stage": "curate",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL",
+      "blocked_by": "score_educational"
+    },
+    {
+      "stage": "structured",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL",
+      "blocked_by": "score_educational"
+    },
+    {
+      "stage": "resolve",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no resolve stage."
+    },
+    {
+      "stage": "split",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no split stage."
+    },
+    {
+      "stage": "hydrate",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL",
+      "blocked_by": "score_educational"
+    },
+    {
+      "stage": "synth",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no synth stage."
+    },
+    {
+      "stage": "contrast",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no contrast stage."
+    },
+    {
+      "stage": "dedup",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no dedup stage."
+    },
+    {
+      "stage": "audit",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL_AND_NOT_DECLARED",
+      "blocked_by": "score_educational",
+      "manifest_finding": "The current edc manifest has no audit stage."
+    },
+    {
+      "stage": "tokenize",
+      "status": "BLOCKED_BY_UPSTREAM_FAIL",
+      "blocked_by": "score_educational"
+    }
+  ],
+  "quality_gates": {
+    "diversity": {
+      "status": "NOT_EVALUATED",
+      "reason": "The candidate did not reach an audit stage, and audit is not declared in the current EDC manifest."
+    },
+    "dedup": {
+      "status": "NOT_EVALUATED",
+      "reason": "The candidate did not reach a dedup stage, and dedup is not declared in the current EDC manifest."
+    },
+    "faithfulness": {
+      "status": "NOT_EVALUATED",
+      "reason": "The candidate stopped before structured generation or hydration; no candidate faithfulness estimand exists."
+    }
+  },
+  "legacy_vs_candidate": {
+    "legacy_before": {
+      "raw": {"files": 4810, "bytes": 245080868},
+      "clean": {"files": 2778, "text_lines": 75773, "bytes": 5136657},
+      "entities": {"files": 97, "jsonl_rows": 12542, "bytes": 4436348},
+      "triples": {"files": 97, "jsonl_rows": 18331, "bytes": 6981891},
+      "discourse": {"files": 97, "jsonl_rows": 439, "bytes": 218327},
+      "resolved": {"files": 0},
+      "split_v1": {"files": 0},
+      "split_v2": {"files": 0},
+      "hydrated_relations": {"files": 97, "jsonl_rows": 666198, "bytes": 194969367},
+      "synth": {"files": 0},
+      "contrast": {"files": 0},
+      "tokenized_stats": {
+        "path": "data/_build/30_tokenized/corpus_all97_v2_stats.json",
+        "sha256": "ccff0a203e37b50cfd6876fd2ddc4af8a65f000a5b250c5068124d0199236479",
+        "total_tokens": 8634302,
+        "num_chunks": 16863
+      }
+    },
+    "candidate_at_stop": {
+      "raw": {"files": 4810, "bytes": 245080868, "delta_files": 0, "delta_bytes": 0},
+      "clean": {"files": 3150, "text_lines": 80140, "bytes": 5519742, "delta_files": 372, "delta_text_lines": 4367, "delta_bytes": 383085},
+      "entities": {"files": 97, "jsonl_rows": 12542, "bytes": 4436348, "delta_rows": 0},
+      "triples": {"files": 97, "jsonl_rows": 18331, "bytes": 6981891, "delta_rows": 0},
+      "discourse": {"files": 97, "jsonl_rows": 439, "bytes": 218327, "delta_rows": 0},
+      "resolved": {"files": 0},
+      "split_v1": {"files": 0},
+      "split_v2": {"files": 0},
+      "hydrated_relations": {"files": 97, "jsonl_rows": 666198, "bytes": 194969367, "delta_rows": 0},
+      "synth": {"files": 0},
+      "contrast": {"files": 0},
+      "tokenize": {"status": "NOT_RERUN"}
+    },
+    "candidate_disposition": "ROLLED_BACK_AFTER_FAIL",
+    "retained_artifact": "legacy EDC artifacts"
+  },
+  "protected_reference": {
+    "unit": "las_vegas/2026",
+    "mutation_scope": "excluded",
+    "tracked_diff_paths_after_run": 0,
+    "untracked_paths_after_run": 0,
+    "physical_files": 1955,
+    "physical_bytes": 17916654,
+    "status": "BYTE_UNCHANGED_BY_GIT_DIFF"
+  },
+  "verification": {
+    "module_tests": {"status": "PASS", "count": 42, "command": "bash scripts/run_tests.sh"},
+    "config_contract_tests": {"status": "PASS", "count": 8, "command": "PYTHONPATH=scripts .venv/bin/python scripts/test_cpt_config.py"},
+    "schema_generality_tests": {"status": "PASS", "count": 5, "command": "PYTHONPATH=scripts .venv/bin/python scripts/pipeline/test_schema_general.py"},
+    "qgre_gate_tests": {"status": "PASS", "count": 9, "command": "PYTHONPATH=scripts .venv/bin/python scripts/qgre/test_gates.py"},
+    "diff_check": "PASS"
+  },
+  "deviations": [
+    "Extraction required 5536.33098 seconds because the current LLM-rescue path is serial; this is an operational latency finding.",
+    "The educational teacher returned an empty response for a score; fail-closed parsing stopped the journey at score_educational.",
+    "The current EDC manifest does not declare resolve, split, synth, contrast, dedup, or audit, although the requested overhauled journey names those stages.",
+    "Diversity, dedup, and faithfulness are NOT_EVALUATED for the candidate; legacy artifacts are not substituted as candidate measurements.",
+    "No GPU stage was reached, so no GPU measurement preflight was invoked; this is not a GPU-1 exception.",
+    "The partial candidate data outputs were rolled back after recording counts and typed stage records; the legacy artifacts remain installed.",
+    "Typed stage records correctly stamp engine.dirty=true because unrelated pre-existing pilot residue was present and preserved; this item stages only its EDC receipt and build records."
+  ],
+  "exit_state": "EDC_FINDING_SCORE_EDUCATIONAL_FAIL_CLOSED"
+}
