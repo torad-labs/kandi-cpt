@@ -1,0 +1,38 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/resolve_entities.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto"
+  ],
+  "devices": "1",
+  "exit_code": null,
+  "duration_s": 0.0,
+  "outputs": [],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 0
+  },
+  "postconditions": [
+    {
+      "check": "HOST_GPU_PREFLIGHT_REQUIRED: a gpu-effect stage requires the host's measured allowance receipt",
+      "pass": false
+    }
+  ],
+  "engine": {
+    "commit": "18acc7c5d88ea83d41f566a6b608b6d9c8a15214",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "error": "HOST_GPU_PREFLIGHT_REQUIRED",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "bce8391dd3154b39b5ebdbfa1812154d336cbfe0ecd276330b5cc1305d1f51b5"
+}

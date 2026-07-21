@@ -1,0 +1,44 @@
+{
+  "schema": "kandi.coverage_ledger_aside.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "predicate": "involves",
+  "documents": [
+    "Blaine_(Adventures).md",
+    "Decolore_Islands.md",
+    "Grand_Oak.md",
+    "Lanette.md",
+    "Mirage_Kingdom.md",
+    "Mt._Pyre.md",
+    "Mt._Silver.md",
+    "Pok%C3%A9mon_Egg.md"
+  ],
+  "doc_ids": [
+    "wiki/Blaine_(Adventures).md",
+    "wiki/Decolore_Islands.md",
+    "wiki/Grand_Oak.md",
+    "wiki/Lanette.md",
+    "wiki/Mirage_Kingdom.md",
+    "wiki/Mt._Pyre.md",
+    "wiki/Mt._Silver.md",
+    "wiki/Pok%C3%A9mon_Egg.md"
+  ],
+  "document_shas": [
+    "0ee1a5cf0f2b44e7fe26e5561c07bd9b459f7656393225b17a15625423a3cdf4",
+    "23848c1c384ddc110c1fa67c833b09a72b511049be888d55b10b420b56f82879",
+    "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+    "690250fc13fea6a4740bcaf77dcb5f39cbec1dd6cdb317a71b2345c4f3aba8da",
+    "9f12db1514822a52b6bcb6ad8474a4de13860610657f68b981e9a8ff1f06e4f1",
+    "b98d74266242c6c62b1e578b327777109e6a0df172090444d05bb4535ecfec82",
+    "e5e134009b0d61a6bcfe892b52b955669296d43ed3d1337eca767a8dc119dc2c",
+    "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9"
+  ],
+  "triples_before": 869,
+  "triples_removed": 71,
+  "triples_after": 798,
+  "ledger_before": 103,
+  "ledger_removed": 8,
+  "ledger_after": 95,
+  "backup": "data/_build/recall/pokemon-lore/phase_h1_iter1_backup",
+  "note": "Entity/discourse rows lack doc_id and were preserved rather than removed by inference."
+}

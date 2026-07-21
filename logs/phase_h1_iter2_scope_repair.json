@@ -1,0 +1,18 @@
+{
+  "schema": "kandi.coverage_scope_repair.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "scope_receipt": "logs/phase_h1_iter2_ledger_aside.json",
+  "parked_preexisting_pending": [
+    {
+      "doc_id": "wiki/List_of_categories_in_other_languages.md",
+      "sha256": "e2528f5cdd471c830b48ad0dee1d931fb5eb01ccbad79ccb1c82622a4e44330b"
+    },
+    {
+      "doc_id": "wiki/Pok%C3%A9mon_Professor.md",
+      "sha256": "843be9df595809e9157d37cf8f64b27abd8b5ab196d661cca02529a6a0fe626f"
+    }
+  ],
+  "parked_n": 2,
+  "note": "These documents were pending before the scoped retry and were not extracted in this iteration."
+}

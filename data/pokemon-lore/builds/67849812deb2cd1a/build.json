@@ -1,0 +1,10 @@
+{
+  "build_id": "67849812deb2cd1a",
+  "inputs": {
+    "manifest_sha256": "a2c8d6e863625aa1bf0bdd862ae5f0e262a4e4179ee721dbe72be49481b553e0",
+    "templates_sha256": "18e9a32a75890f59dbfa5313891e70dd6c08547c0ff8eebd8c3b41b6ee6bd7ac",
+    "contract_version_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+  },
+  "born_at": "2026-07-21T15:07:33.137912Z",
+  "contract_version": "1"
+}

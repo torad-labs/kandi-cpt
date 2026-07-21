@@ -1,0 +1,107 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/resolve_entities.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto"
+  ],
+  "devices": "1",
+  "exit_code": 0,
+  "duration_s": 43.282917,
+  "outputs": [
+    {
+      "path": "data/_build/resolve/pokemon-lore/kanto/summary.json",
+      "sha256": "e78edfbfec11bfe9a1a1bb61ba8c4363a27a29db91024533a8f555305e1c8adb",
+      "bytes": 273
+    },
+    {
+      "path": "data/pokemon-lore/kanto/15_structured/entities.resolved.jsonl",
+      "sha256": "6840c389f21bb8c0e65f7e32f3a99938b76d94e1c2e516bc2dc5727e05ac750d",
+      "bytes": 395301
+    },
+    {
+      "path": "data/pokemon-lore/kanto/15_structured/triples.resolved.jsonl",
+      "sha256": "46fcfcc83790afe54aaaa3a9bb1a2368becf45c05e0d273c394a10990aa36681",
+      "bytes": 420242
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 3,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 816848,
+    "bytes_after": 815816
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/resolve/pokemon-lore/**/summary.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/pokemon-lore/kanto/15_structured/entities.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/pokemon-lore/kanto/15_structured/triples.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "18acc7c5d88ea83d41f566a6b608b6d9c8a15214",
+    "dirty": true
+  },
+  "status": "PASS",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2049,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 14021,
+        "free_memory_samples_mib": [
+          14021,
+          14021,
+          14021
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          10,
+          10,
+          9
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)",
+          "desktop_reserve_mib = 16303 - 13312 = 2991",
+          "sm_watermark_pct = floor(100 * 2991 / 16303) = 18",
+          "sample_count = ceil(2991 / 1024) = 3 at 1 Hz"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "bce8391dd3154b39b5ebdbfa1812154d336cbfe0ecd276330b5cc1305d1f51b5"
+}

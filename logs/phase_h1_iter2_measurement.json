@@ -1,0 +1,54 @@
+{
+  "schema": "kandi.coverage_iteration.v1",
+  "campaign": "phase_h1_coverage_campaign",
+  "iteration": 2,
+  "protocol": {
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "documents": 20,
+    "seed": 0,
+    "judge": "qwen/qwen3-32b",
+    "gate": 0.6,
+    "estimand": "clean_manifest_valid_in_unit_canonical_matched_assertions"
+  },
+  "diagnosis": {
+    "weakest_valid_emission_slice": "originates_from and the remaining non-involves starved predicates",
+    "finding": "After the shape-invalid involves assertions were set aside diagnostically, valid misses were passage-present but emission-absent across nine predicates. The largest was originates_from with 12 misses across two documents."
+  },
+  "one_change": "Add and run an opt-in, quote-required, predicate-bounded second extraction pass. It replaced only diagnosed predicate rows and preserved every healthy-predicate row.",
+  "scoped_reextract": {
+    "ledger_aside": "logs/phase_h1_iter2_ledger_aside.json",
+    "scope_repair": "logs/phase_h1_iter2_scope_repair.json",
+    "selected_documents": 10,
+    "targeted_triples_parked": 55,
+    "targeted_triples_emitted": 56,
+    "triples_with_exact_quote": 56,
+    "predicates": ["allied_with", "appears_in", "governs", "leads", "member_of", "occurs_at", "opposes", "originates_from", "rival_of"],
+    "provider_deviation": "The 10-call batch left Unova.md streaming for more than eight minutes; the batch was interrupted after the other nine documents had persisted, then Unova.md completed successfully in a one-document retry."
+  },
+  "resolve": {
+    "record": "data/pokemon-lore/builds/8b52a0779e8b4474/stages/resolve.json",
+    "status": "PASS",
+    "gpu": "1",
+    "minimum_free_memory_mib": 13975,
+    "required_free_memory_mib": 13312
+  },
+  "same_audit": {
+    "record": "data/pokemon-lore/builds/8b52a0779e8b4474/stages/audit_recall.json",
+    "status": "FAIL",
+    "clean": {"hits": 25, "n": 87, "ratio": 0.2874},
+    "raw": {"hits": 29, "n": 422, "ratio": 0.0687},
+    "healthy_controls": {
+      "evolves_into_lore": {"hits": 1, "n": 3, "ratio": 0.3333, "baseline_ratio": 0.94, "regressed": true},
+      "located_in": {"hits": 13, "n": 19, "ratio": 0.6842, "baseline_ratio": 0.75, "regressed": true}
+    },
+    "empty_after_retry": [
+      "List_of_Pokemon_with_released_Hidden_Abilities_(Generation_VIII).md",
+      "List_of_Pokemon_by_evolutionary_line.md",
+      "Champion.md"
+    ]
+  },
+  "verdict": "FAIL_REVERT",
+  "movement": false,
+  "revert_reason": "Coverage did not move toward the gate and both named healthy controls regressed under the measured audit. The optional strategy and its graph artifacts must not become the candidate baseline."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "kandi.coverage_ledger_aside.v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "predicate": "originates_from,appears_in,opposes,governs,rival_of,occurs_at,member_of,allied_with,leads",
+  "predicates": [
+    "allied_with",
+    "appears_in",
+    "governs",
+    "leads",
+    "member_of",
+    "occurs_at",
+    "opposes",
+    "originates_from",
+    "rival_of"
+  ],
+  "documents": [
+    "Decolore_Islands.md",
+    "Janine.md",
+    "Lake_Valor.md",
+    "Lanette.md",
+    "List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
+    "Mirage_Kingdom.md",
+    "Mt._Pyre.md",
+    "Mt._Silver.md",
+    "Solidad.md",
+    "Unova.md"
+  ],
+  "doc_ids": [
+    "wiki/Decolore_Islands.md",
+    "wiki/Janine.md",
+    "wiki/Lake_Valor.md",
+    "wiki/Lanette.md",
+    "wiki/List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md",
+    "wiki/Mirage_Kingdom.md",
+    "wiki/Mt._Pyre.md",
+    "wiki/Mt._Silver.md",
+    "wiki/Solidad.md",
+    "wiki/Unova.md"
+  ],
+  "document_shas": [
+    "0ee1a5cf0f2b44e7fe26e5561c07bd9b459f7656393225b17a15625423a3cdf4",
+    "5aa07030dab1cbfef2297309edd329b3f414c3ef946ef8c7efabb3bcdf96ff94",
+    "5d764f3b78105e1cbb46e9aee120c86038c0b6f55316232c0612410d89c7b9c7",
+    "690250fc13fea6a4740bcaf77dcb5f39cbec1dd6cdb317a71b2345c4f3aba8da",
+    "6c43c0e0d8af213786d010a17c15c5ed0c89fc04b598e16f03ab0448da1b51e7",
+    "721e2c3768668da02f0e8da0c0e5024170e2f207d4d768d8ffd3ca0d5a9c7b3c",
+    "d16cf5ab8228521cab51b9587ee27a522e9e367499fe473a8411325e4cec3506",
+    "e5e134009b0d61a6bcfe892b52b955669296d43ed3d1337eca767a8dc119dc2c",
+    "fa230803fe056aace5047eb143e4ae8fafe1e8e627fb21962cf4693210f5c3e9",
+    "fb2b6c460c5d56a8aac280553cd8d927543c3eebe9afd5f4d3ee692989ae78f0"
+  ],
+  "triples_before": 869,
+  "triples_removed": 55,
+  "triples_after": 814,
+  "ledger_before": 103,
+  "ledger_removed": 10,
+  "ledger_after": 93,
+  "backup": "data/_build/recall/pokemon-lore/phase_h1_iter2_backup",
+  "note": "Only selected predicate rows with pipeline-owned doc_id were removed. Entity/discourse and healthy-predicate rows were preserved."
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "kandi.coverage_iteration.v1",
+  "campaign": "phase_h1_coverage_campaign",
+  "iteration": 1,
+  "protocol": {
+    "domain": "pokemon-lore",
+    "unit": "kanto",
+    "documents": 20,
+    "seed": 0,
+    "judge": "qwen/qwen3-32b",
+    "gate": 0.6,
+    "estimand": "clean_manifest_valid_in_unit_canonical_matched_assertions"
+  },
+  "diagnosis": {
+    "weakest_slice": "involves",
+    "baseline": {"hits": 0, "n": 59, "ratio": 0.0},
+    "finding": "The missed assertions overwhelmingly used characters or locations as the subject even though involves is an event-to-participant relation. The evidence gap was object-type-shape noise in the judge assertions, not passage absence."
+  },
+  "one_change": "Declare subject=[event] for involves and enforce that opt-in manifest subject shape in extraction guidance and clean-audit validation.",
+  "scoped_reextract": {
+    "ledger_aside": "logs/phase_h1_iter1_ledger_aside.json",
+    "scope_repair": "logs/phase_h1_iter1_scope_repair.json",
+    "selected_documents": 8,
+    "documents_completed": 7,
+    "documents_failed": 1,
+    "llm_failure": "TypeError: expected string or bytes-like object, got NoneType",
+    "contract_drops": 13,
+    "triples_emitted": 64
+  },
+  "resolve": {
+    "record": "data/pokemon-lore/builds/67849812deb2cd1a/stages/resolve.json",
+    "status": "PASS",
+    "gpu": "1",
+    "minimum_free_memory_mib": 14021,
+    "required_free_memory_mib": 13312
+  },
+  "same_audit": {
+    "record": "data/pokemon-lore/builds/67849812deb2cd1a/stages/audit_recall.json",
+    "status": "FAIL",
+    "clean": {"hits": 18, "n": 53, "ratio": 0.3396},
+    "raw": {"hits": 23, "n": 438, "ratio": 0.0525},
+    "weak_predicate": {"predicate": "involves", "hits": 1, "n": 5, "ratio": 0.2},
+    "healthy_controls": {
+      "evolves_into_lore": {"hits": 1, "n": 4, "ratio": 0.25, "baseline_ratio": 0.94, "regressed": true},
+      "located_in": {"hits": 7, "n": 9, "ratio": 0.7778, "baseline_ratio": 0.75, "regressed": false}
+    },
+    "judge_deviations": [
+      "Two sampled documents returned empty judge responses after the built-in sequential retry: List_of_Pokemon_with_released_Hidden_Abilities_(Generation_VIII).md and evolutionary_line.md."
+    ]
+  },
+  "verdict": "FAIL_REVERT",
+  "movement": false,
+  "revert_reason": "The clean estimand stayed below the 0.6 gate and the evolves_into_lore healthy control regressed, so the one change and its scoped artifacts must not become the candidate baseline."
+}

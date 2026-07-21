@@ -1,0 +1,80 @@
+{
+  "schema": "kandi.coverage_campaign.v1",
+  "campaign": "phase_h1_coverage_campaign",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "discipline": "diagnose -> ONE change -> scoped ledger-aside re-extract -> resolve -> SAME audit",
+  "protocol": {
+    "documents": 20,
+    "seed": 0,
+    "judge": "qwen/qwen3-32b",
+    "gate": 0.6,
+    "estimand": "clean_manifest_valid_in_unit_canonical_matched_assertions"
+  },
+  "candidate_baseline": {
+    "source": "logs/phase_g_extraction_gap_iteration.json",
+    "clean": {"hits": 59, "n": 164, "ratio": 0.3598},
+    "raw": {"hits": 66, "n": 476, "ratio": 0.1387},
+    "status": "FAIL"
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "receipt": "logs/phase_h1_iter1_measurement.json",
+      "one_change": "involves subject-type shape",
+      "same_eval": {"clean_hits": 18, "clean_n": 53, "clean_ratio": 0.3396, "status": "FAIL"},
+      "movement": false,
+      "healthy_regression": true,
+      "disposition": "REVERTED"
+    },
+    {
+      "iteration": 2,
+      "receipt": "logs/phase_h1_iter2_measurement.json",
+      "one_change": "quote-required predicate-bounded second extraction pass",
+      "same_eval": {"clean_hits": 25, "clean_n": 87, "clean_ratio": 0.2874, "status": "FAIL"},
+      "movement": false,
+      "healthy_regression": true,
+      "disposition": "REVERTED"
+    }
+  ],
+  "stop_condition": {
+    "triggered": true,
+    "reason": "two_consecutive_iterations_without_movement",
+    "third_iteration_run": false,
+    "fourth_iteration_forbidden": true
+  },
+  "verdict": "FAIL_GATE_NOT_CLEARED_TRAIL_COMPLETE",
+  "exit_state": {
+    "coverage": 0.3598,
+    "gate": 0.6,
+    "candidate": "Phase G baseline restored; neither regressing Phase H mitigation retained.",
+    "temporary_backups": "Both named ledger-aside backups were used for exact restoration, verified against tracked Phase G artifacts, then moved to trash rather than committed."
+  },
+  "next_hypothesis": "Before another extraction change, capture one complete seed-0 judge assertion set and replay it as a fixed audit fixture. The repeated empty responses make graph-side attribution unreadable; once the measurement is paired, test canonical-ID normalization for quote-backed second-pass emissions as one separate mitigation.",
+  "commit_gates": {
+    "pipeline_modules": "PASS: scripts/run_tests.sh, 42 modules",
+    "config_contract": "PASS: 8 tests",
+    "schema_drift": "PASS: schema up to date",
+    "qgre_gates": "PASS: 9 tests",
+    "diff_check": "PASS",
+    "precision_master_byte_identity": {
+      "status": "PASS",
+      "quartet_bridge_sha256_head_and_worktree": "a4b51e442b6a14449a11068ef9d1e1d3a9de3cfbae5f194ffcb8d300023d39b8",
+      "train_cpt_sha256_head_and_worktree": "f9fe2371299f568e27c2866a5e0af67b9100beba4ab89456deea2efa9bcb5bd6"
+    }
+  },
+  "deviations": [
+    "Iteration 1 extracted 7 of 8 selected documents; one provider result raised TypeError: expected string or bytes-like object, got NoneType.",
+    "Iteration 1 and iteration 2 both received empty judge assertions for the two evolution-heavy control documents after retry.",
+    "Iteration 2 required one bounded retry for a provider call that streamed beyond eight minutes.",
+    "The campaign stopped below gate as required; no result was rounded up and no gate was bypassed."
+  ],
+  "receipts": [
+    "logs/phase_h1_iter1_ledger_aside.json",
+    "logs/phase_h1_iter1_scope_repair.json",
+    "logs/phase_h1_iter1_measurement.json",
+    "logs/phase_h1_iter2_ledger_aside.json",
+    "logs/phase_h1_iter2_scope_repair.json",
+    "logs/phase_h1_iter2_measurement.json"
+  ]
+}
