@@ -1,0 +1,181 @@
+{
+  "schema": "kandi.style_certificate.v1",
+  "domain": "mara-venn-sample",
+  "demo": true,
+  "generated_at": "2026-07-21T05:50:43Z",
+  "voice_confidence": "early",
+  "confidence_word_table": {
+    "solid": "the measured axis passed at its declared denominator and bar",
+    "early": "the direction is measured but the denominator or bound is not yet claimable",
+    "not_yet": "the measured axis failed its declared floor"
+  },
+  "axes": {
+    "blind_ab": {
+      "status": "PASS",
+      "estimand": "card-anchored style preference on fixed blind A/B prompts",
+      "persona_wins": 12,
+      "n": 12,
+      "win_rate_tuned": 1.0,
+      "stamp": {
+        "hits": 12,
+        "n": 12,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.7575059933447592,
+          "high": 1.0,
+          "center": 0.8787529966723796,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "ok",
+        "min_n": 10,
+        "estimand": "blind_style_preference",
+        "bar": 0.5,
+        "clears_bar": true,
+        "within_noise_of_bar": false,
+        "bar_status": "cleared"
+      },
+      "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594",
+      "reveal_pair_ids": [
+        "ab-01",
+        "ab-02",
+        "ab-03"
+      ],
+      "reveal_measured": {
+        "persona_wins": 3,
+        "total": 3,
+        "win_rate": 1.0,
+        "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594"
+      },
+      "voice_reveal_receipt": "data/_build/style/mara-venn-sample/voice_reveal.json",
+      "confidence": "solid"
+    },
+    "fidelity": {
+      "status": "PASS",
+      "overall": {
+        "hits": 96,
+        "n": 96,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.9615244121423243,
+          "high": 1.0,
+          "center": 0.9807622060711622,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.051031036307982884,
+        "n_status": "ok",
+        "min_n": 1
+      },
+      "per_habit": {
+        "almost_never_uses_uppercase": {
+          "hits": 24,
+          "n": 24,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.8620237953250198,
+            "high": 1.0,
+            "center": 0.9310118976625099,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+          "n_status": "ok",
+          "min_n": 1
+        },
+        "rarely_uses_exclamation": {
+          "hits": 24,
+          "n": 24,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.8620237953250198,
+            "high": 1.0,
+            "center": 0.9310118976625099,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+          "n_status": "ok",
+          "min_n": 1
+        },
+        "no_emoji": {
+          "hits": 24,
+          "n": 24,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.8620237953250198,
+            "high": 1.0,
+            "center": 0.9310118976625099,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+          "n_status": "ok",
+          "min_n": 1
+        },
+        "short_sentences": {
+          "hits": 24,
+          "n": 24,
+          "acc": 1.0,
+          "wilson": {
+            "low": 0.8620237953250198,
+            "high": 1.0,
+            "center": 0.9310118976625099,
+            "level": 0.95,
+            "method": "wilson"
+          },
+          "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+          "n_status": "ok",
+          "min_n": 1
+        }
+      },
+      "n_habits": 4,
+      "n_samples": 24,
+      "confidence": "solid"
+    },
+    "retention": {
+      "status": "PASS",
+      "estimand": "approved-card style score at least 0.80 on fixed out-of-register-topic prompts",
+      "hits": 12,
+      "n": 12,
+      "hold_rate": 1.0,
+      "stamp": {
+        "hits": 12,
+        "n": 12,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.7575059933447592,
+          "high": 1.0,
+          "center": 0.8787529966723796,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "ok",
+        "min_n": 10,
+        "estimand": "style_retention_under_topic_shift",
+        "bar": 0.8,
+        "clears_bar": false,
+        "within_noise_of_bar": true,
+        "bar_status": "within-noise"
+      },
+      "confidence": "early"
+    }
+  },
+  "mechanical_habits": [
+    "almost_never_uses_uppercase",
+    "rarely_uses_exclamation",
+    "no_emoji",
+    "short_sentences"
+  ],
+  "checkpoint": "checkpoints/sft/mara_venn_sample_v1",
+  "approval_receipt": "data/_build/style/mara-venn-sample/approval.json",
+  "eval_style_receipt": "data/_build/style/mara-venn-sample/eval_style.json",
+  "voice_reveal_receipt": "data/_build/style/mara-venn-sample/voice_reveal.json",
+  "demo_mark": {
+    "label": "DEMO",
+    "plain": "Bundled fictional persona card \u2014 no real person's messages were used."
+  },
+  "certificate_id": "558d0fd1bc8f048b"
+}

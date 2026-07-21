@@ -1,0 +1,11 @@
+{
+  "schema": "kandi.bundled_persona.v1",
+  "domain": "mara-venn-sample",
+  "persona": "Dr. Mara Venn",
+  "fictional": true,
+  "real_person_data": false,
+  "message_count": 2100,
+  "corpus": "data/mara-venn-sample/style_inbox/mara_venn_fictional_chat.jsonl",
+  "eval_prompts": "data/mara-venn-sample/eval/prompts.jsonl",
+  "judge_calibration": "data/mara-venn-sample/eval/judge_calibration.jsonl"
+}

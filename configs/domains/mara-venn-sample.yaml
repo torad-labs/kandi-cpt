@@ -1,0 +1,47 @@
+name: mara-venn-sample
+description: Bundled fictional terse-scientist sample persona; no real-person data.
+kind: style
+hierarchy: [unit]
+registry: configs/editions_mara-venn-sample.json
+ontology:
+  schema_dir: schema
+  kind: fictional communication register
+  name: Dr. Mara Venn (fictional)
+  topics: [measurement, uncertainty, daily-life topic shift]
+  stances: [observational, cautious, test-first]
+  confidence_map: {bundled-fictional-own-data: authored}
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+configs:
+  cpt: null
+  sft: configs/sft_mara_venn_sample.yaml
+vars:
+  style_out: sft_mara_venn_sample
+stages:
+  - name: style_fingerprint
+    desc: "mechanical fingerprint and human-review style card; refuse below the hard minimum"
+    cmd: ["{py}", "scripts/pipeline/style_fingerprint.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
+  - name: approve_style
+    desc: "explicit first-card approval receipt"
+    cmd: ["{py}", "scripts/pipeline/approve_style_card.py", "--domain", "{domain}", "--approved-by", "operator"]
+    gpu: false
+  - name: build_style
+    desc: "real-text bulk, judged register expansions, and response-masked anti-style examples"
+    cmd: ["{py}", "scripts/pipeline/style_surfaces.py", "--domain", "{domain}", "--out", "{style_out}", "--seq-len", "128", "--expansions", "500", "--anti-style", "300"]
+    gpu: false
+  - name: sft
+    desc: "fictional voice SFT on GPU 1 at the fp4+int8 precision floor"
+    cmd: ["bash", "scripts/train_fp4.sh", "--config", "{sft}"]
+    gpu: true
+  - name: eval_style
+    desc: "live fidelity, calibrated A/B, retention-under-shift, reveal, and DEMO certificate"
+    cmd: ["{py}", "scripts/eval_style.py", "--fingerprint", "data/_build/style/mara-venn-sample/fingerprint.json", "--style-card", "data/_build/style/mara-venn-sample/style_card.md", "--base", "checkpoints/cpt/millbrook_hollow_v1", "--tuned", "checkpoints/sft/mara_venn_sample_v1", "--prompts", "data/mara-venn-sample/eval/prompts.jsonl", "--judge-calibration", "data/mara-venn-sample/eval/judge_calibration.jsonl", "--approval", "data/_build/style/mara-venn-sample/approval.json", "--out", "data/_build/style/mara-venn-sample/eval_style.json", "--voice-reveal-out", "data/_build/style/mara-venn-sample/voice_reveal.json", "--certificate-out", "data/_build/style/mara-venn-sample/certificate.json", "--device", "cuda:0", "--demo"]
+    gpu: true
+entity_types: [voice_sample]
+predicates:
+  register: {object: [literal], tier: stable}
+relations: {exposure_cap_per_fact: 60, dominance_max_frac: 1.0, min_active_types: 1}
+quality:
+  faithfulness: {max_foreign_entity_frac: 0.0}
+  id_integrity: {max_object_contract_violation_frac: 0.0, max_dangling_frac: 0.0, require_edition_match: false}
+  diversity: {min_distinct_2: 0.1, max_nn_cosine_p90: 0.99}

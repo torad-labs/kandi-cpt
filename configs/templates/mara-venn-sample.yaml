@@ -1,0 +1,5 @@
+# Bundled fictional style domain. Style surfaces are anchored to the approved card,
+# so facts-domain Q/A and contrast templates intentionally do not apply.
+style:
+  register: terse-scientist
+  admission_basis: bundled-fictional-own-data

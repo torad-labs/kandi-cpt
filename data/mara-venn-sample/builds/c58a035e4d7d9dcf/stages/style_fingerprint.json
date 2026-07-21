@@ -1,0 +1,64 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/style_fingerprint.py",
+    "--domain",
+    "mara-venn-sample",
+    "--editions",
+    "main"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.054828,
+  "outputs": [
+    {
+      "path": "data/_build/style/mara-venn-sample/fingerprint.json",
+      "sha256": "6b6b80365c8845e4017859b3ee6e76b67c798ed9c5642ea51ac03e176e9e92a1",
+      "bytes": 3152
+    },
+    {
+      "path": "data/_build/style/mara-venn-sample/style_card.md",
+      "sha256": "516be630293fa9e8184dd8545b98ba1155c0cb2a0c24f7f18ebae7199f41fcb9",
+      "bytes": 1281
+    }
+  ],
+  "output_delta": {
+    "created": 2,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 4433
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/fingerprint.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/style_card.md",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "106a329e64c4511bdf7431c06c93f4af7cbaf773",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "d6ab0bfa053653510385f8ab0bae25f97e3a11d855a36d726a80f377f46311ce"
+}

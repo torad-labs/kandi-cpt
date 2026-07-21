@@ -1,0 +1,10 @@
+{
+  "schema": "kandi.style_approval.v1",
+  "domain": "mara-venn-sample",
+  "status": "APPROVED",
+  "approved_by": "operator",
+  "approved_at": "2026-07-21T05:35:54Z",
+  "fingerprint_sha256": "6b6b80365c8845e4017859b3ee6e76b67c798ed9c5642ea51ac03e176e9e92a1",
+  "style_card_sha256": "516be630293fa9e8184dd8545b98ba1155c0cb2a0c24f7f18ebae7199f41fcb9",
+  "plain": "The operator approved this fictional sample style card as the generation and judge anchor."
+}

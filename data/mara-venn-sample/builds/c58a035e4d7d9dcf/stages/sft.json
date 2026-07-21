@@ -1,0 +1,152 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/sft_mara_venn_sample.yaml"
+  ],
+  "devices": "1",
+  "exit_code": 0,
+  "duration_s": 426.988377,
+  "outputs": [
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/model.safetensors",
+      "sha256": "a34f233a1fc67da0cc5e361f12deb152ae3a1ad5e359dc40fd95a2e09bff5c5a",
+      "bytes": 8187622598
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/quant_keys.json",
+      "sha256": "13d146cfb6749858798c6b339e8a8f6b564e8b334b063aa53827b495413aa712",
+      "bytes": 11709
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/run_contract.json",
+      "sha256": "a36d26e8776eb6a2e62a35985897c6edd014ec51cdbf9faa20d5ede2ef326db2",
+      "bytes": 893
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/model.safetensors",
+      "sha256": "e183d32112dedcfa9637c2d7e9202a6dcafc247c1ff3d36d49869d4d3ba723e5",
+      "bytes": 8187622598
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/quant_keys.json",
+      "sha256": "13d146cfb6749858798c6b339e8a8f6b564e8b334b063aa53827b495413aa712",
+      "bytes": 11709
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/step_000032/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/sft/mara_venn_sample_v1/train.log",
+      "sha256": "c2c1c38b14a9f73fb5a56a79c52d33decb20d764cf381a4c5ca03e4c998bfeb0",
+      "bytes": 3475
+    }
+  ],
+  "output_delta": {
+    "created": 14,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 16439656852
+  },
+  "postconditions": [
+    {
+      "check": "output exists: checkpoints/sft/mara_venn_sample_v1/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "106a329e64c4511bdf7431c06c93f4af7cbaf773",
+    "dirty": true
+  },
+  "status": "PASS",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2044,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 14547,
+        "free_memory_samples_mib": [
+          14547,
+          14547,
+          14547
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          6,
+          7,
+          8
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)",
+          "desktop_reserve_mib = 16303 - 13312 = 2991",
+          "sm_watermark_pct = floor(100 * 2991 / 16303) = 18",
+          "sample_count = ceil(2991 / 1024) = 3 at 1 Hz"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "e73c3da6ed1e716928d54edcebeb1129024e6a52c45fad0cc242331d5f565054"
+}

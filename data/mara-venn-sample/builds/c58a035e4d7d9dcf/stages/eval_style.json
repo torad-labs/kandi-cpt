@@ -1,0 +1,126 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/eval_style.py",
+    "--fingerprint",
+    "data/_build/style/mara-venn-sample/fingerprint.json",
+    "--style-card",
+    "data/_build/style/mara-venn-sample/style_card.md",
+    "--base",
+    "checkpoints/cpt/millbrook_hollow_v1",
+    "--tuned",
+    "checkpoints/sft/mara_venn_sample_v1",
+    "--prompts",
+    "data/mara-venn-sample/eval/prompts.jsonl",
+    "--judge-calibration",
+    "data/mara-venn-sample/eval/judge_calibration.jsonl",
+    "--approval",
+    "data/_build/style/mara-venn-sample/approval.json",
+    "--out",
+    "data/_build/style/mara-venn-sample/eval_style.json",
+    "--voice-reveal-out",
+    "data/_build/style/mara-venn-sample/voice_reveal.json",
+    "--certificate-out",
+    "data/_build/style/mara-venn-sample/certificate.json",
+    "--device",
+    "cuda:0",
+    "--demo"
+  ],
+  "devices": "1",
+  "exit_code": 0,
+  "duration_s": 219.314086,
+  "outputs": [
+    {
+      "path": "data/_build/style/mara-venn-sample/eval_style.json",
+      "sha256": "4e38d0a82b91d335c562bb4f49702054a52fe19a875ac8853a0930a14d3970aa",
+      "bytes": 37283
+    },
+    {
+      "path": "data/_build/style/mara-venn-sample/voice_reveal.json",
+      "sha256": "99c41be7868ccb2f865139eacba0cc1513d7e1b99552eb3b60841be94ce5b0ae",
+      "bytes": 2126
+    },
+    {
+      "path": "data/_build/style/mara-venn-sample/certificate.json",
+      "sha256": "aad1e88a8489b9e076bfe45c71ed58ea406494bfbf3a5bdfa1b8a0e1dabdb7d8",
+      "bytes": 5232
+    }
+  ],
+  "output_delta": {
+    "created": 3,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 44641
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/eval_style.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/voice_reveal.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/certificate.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "106a329e64c4511bdf7431c06c93f4af7cbaf773",
+    "dirty": true
+  },
+  "status": "PASS",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2043,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 14548,
+        "free_memory_samples_mib": [
+          14548,
+          14548,
+          14548
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          7,
+          5,
+          6
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)",
+          "desktop_reserve_mib = 16303 - 13312 = 2991",
+          "sm_watermark_pct = floor(100 * 2991 / 16303) = 18",
+          "sample_count = ceil(2991 / 1024) = 3 at 1 Hz"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "3f210bf24d29f2d632d4f072678a843182799b1cc23972a200bbe3539c047223"
+}

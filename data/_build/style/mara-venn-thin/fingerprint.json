@@ -1,0 +1,178 @@
+{
+  "domain": "mara-venn-thin",
+  "editions": null,
+  "status": "REFUSE",
+  "refuse_reason": "STYLE_MINIMUM_NOT_MET: docs=5 (need \u226550), tokens\u224843 (need \u226520000). Not enough of your writing to learn your voice \u2014 add exports/notes.",
+  "stats": {
+    "n_docs": 5,
+    "n_chars": 299,
+    "n_tokens_est": 43,
+    "n_sentences": 10,
+    "mean_sent_len": 4.3,
+    "median_sent_len": 4.0,
+    "upper_frac": 0.0,
+    "lower_frac": 1.0,
+    "exclamation_per_1k_chars": 0.0,
+    "question_per_1k_chars": 0.0,
+    "emoji_count": 0,
+    "emoji_per_1k_chars": 0.0,
+    "discourse_markers": {
+      "anyway": 0,
+      "honestly": 0,
+      "basically": 0,
+      "literally": 0,
+      "like": 0,
+      "you know": 0,
+      "i mean": 0,
+      "tbh": 0,
+      "imo": 0,
+      "fwiw": 0,
+      "ngl": 0,
+      "lol": 0,
+      "lmao": 0,
+      "haha": 0
+    },
+    "top_lexical": [
+      [
+        "the",
+        7
+      ],
+      [
+        "next",
+        5
+      ],
+      [
+        "control",
+        2
+      ],
+      [
+        "observation",
+        1
+      ],
+      [
+        "sample",
+        1
+      ],
+      [
+        "moved",
+        1
+      ],
+      [
+        "repeat",
+        1
+      ],
+      [
+        "uncertainty",
+        1
+      ],
+      [
+        "one",
+        1
+      ],
+      [
+        "reading",
+        1
+      ],
+      [
+        "is",
+        1
+      ],
+      [
+        "not",
+        1
+      ],
+      [
+        "enough",
+        1
+      ],
+      [
+        "measure",
+        1
+      ],
+      [
+        "again",
+        1
+      ],
+      [
+        "result",
+        1
+      ],
+      [
+        "drifted",
+        1
+      ],
+      [
+        "inspect",
+        1
+      ],
+      [
+        "cable",
+        1
+      ],
+      [
+        "hypothesis",
+        1
+      ],
+      [
+        "room",
+        1
+      ],
+      [
+        "changed",
+        1
+      ],
+      [
+        "hold",
+        1
+      ],
+      [
+        "temperature",
+        1
+      ],
+      [
+        "fixed",
+        1
+      ],
+      [
+        "test",
+        1
+      ],
+      [
+        "compare",
+        1
+      ],
+      [
+        "sealed",
+        1
+      ],
+      [
+        "reference",
+        1
+      ],
+      [
+        "keep",
+        1
+      ],
+      [
+        "outlier",
+        1
+      ],
+      [
+        "visible",
+        1
+      ]
+    ],
+    "signature_openers": [],
+    "habits": [
+      "almost_never_uses_uppercase",
+      "rarely_uses_exclamation",
+      "no_emoji",
+      "short_sentences"
+    ]
+  },
+  "signature_openers": [],
+  "source_sha256": "3410a69c70e09ea5ffc6baaa27c029cee25de8380edcefb62ba101b85a2e9b60",
+  "device_only": true,
+  "min_tokens": 20000,
+  "min_docs": 50
+}

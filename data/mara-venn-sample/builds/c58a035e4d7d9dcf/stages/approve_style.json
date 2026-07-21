@@ -1,0 +1,55 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/approve_style_card.py",
+    "--domain",
+    "mara-venn-sample",
+    "--approved-by",
+    "operator"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.016033,
+  "outputs": [
+    {
+      "path": "data/_build/style/mara-venn-sample/approval.json",
+      "sha256": "a91796de47ac705bf9e1fc91552ebc5d4656283a06b4e41d6631e1cc007fbcdd",
+      "bytes": 456
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 456
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/approval.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "106a329e64c4511bdf7431c06c93f4af7cbaf773",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "461a3512269d3398637a39cda9322bc1ec160315b8beb8f68454c92b77037c70"
+}

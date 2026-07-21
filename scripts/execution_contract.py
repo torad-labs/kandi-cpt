@@ -31,6 +31,9 @@ STAGE_EFFECTS = {
     # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
     "score_educational": ["egress:llm", "write"],
     "style_fingerprint": ["write"],
+    "approve_style": ["write"],
+    "build_style": ["write"],
+    "eval_style": ["gpu", "write"],
     "structured": ["egress:llm", "write"],
     "resolve": ["gpu", "write"],
     "curate": ["gpu", "write"],
@@ -63,6 +66,17 @@ STAGE_OUTPUTS = {
     "style_fingerprint": [
         "data/_build/style/{domain}/fingerprint.json",
         "data/_build/style/{domain}/style_card.md",
+    ],
+    "approve_style": ["data/_build/style/{domain}/approval.json"],
+    "build_style": [
+        "data/_build/30_tokenized/{style_out}.arrow",
+        "data/_build/30_tokenized/{style_out}_stats.json",
+        "data/_build/style/{domain}/expansion_judgments.jsonl",
+    ],
+    "eval_style": [
+        "data/_build/style/{domain}/eval_style.json",
+        "data/_build/style/{domain}/voice_reveal.json",
+        "data/_build/style/{domain}/certificate.json",
     ],
     "resolve": [
         "data/_build/resolve/{domain}/**/summary.json",
@@ -115,6 +129,9 @@ REQUIRED_PLAYBOOKS = {
     "dedup_surfaces": "cpt/05b-dedup-surfaces.md",
     "audit_recall": "cpt/04c-audit-recall.md",
     "style_fingerprint": "cpt/09-style.md",
+    "approve_style": "cpt/09-style.md",
+    "build_style": "cpt/09-style.md",
+    "eval_style": "cpt/09-style.md",
     "build_sft": "cpt/07-train.md",
     "sft": "cpt/07-train.md",
     "plan_install": "cpt/08-zero-knob.md",
@@ -212,6 +229,7 @@ def _outputs(
         "domain": domain.name,
         "corpus": domain.vars.get("corpus", "__contract_missing_corpus__"),
         "sft_out": domain.vars.get("sft_out", "__contract_missing_sft_out__"),
+        "style_out": domain.vars.get("style_out", "__contract_missing_style_out__"),
         "cpt_save_dir": _config_value(domain, "cpt", "run", "save_dir") or "__contract_missing_cpt_save_dir__",
         "sft_save_dir": _config_value(domain, "sft", "run", "save_dir") or "__contract_missing_sft_save_dir__",
     }

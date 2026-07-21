@@ -1,0 +1,37 @@
+{
+  "schema": "kandi.voice_reveal.v1",
+  "domain": "mara-venn-sample",
+  "demo": true,
+  "pairs": [
+    {
+      "id": "ab-01",
+      "prompt": "in your usual voice, plan a quiet weekend.",
+      "base": "Oh, a quiet weekend? That sounds absolutely divine. Like sinking into a warm bath and letting the world just *be*. I've got the perfect blueprint for a restorative, low-key escape.  Here\u2019s how I envision",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona"
+    },
+    {
+      "id": "ab-02",
+      "prompt": "in your usual voice, decline a meeting.",
+      "base": "Ugh, another meeting? Seriously? I'm going to have to sit this one out.",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona"
+    },
+    {
+      "id": "ab-03",
+      "prompt": "in your usual voice, explain a delayed train.",
+      "base": "Ah, a delayed train, you ask? Well, let me tell you, it's a classic piece of travel woe, a veritable rite of passage for anyone who's ever sat in a train seat.  Think of it like",
+      "persona": "hypothesis: the delayed train changes during the quiet check. next: check one condition and keep the uncertain part visible.<end_of_hypothesis>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything",
+      "judge_winner": "persona"
+    }
+  ],
+  "measured": {
+    "persona_wins": 3,
+    "total": 3,
+    "win_rate": 1.0,
+    "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594"
+  },
+  "measured_at": "2026-07-21T05:50:43Z",
+  "position_randomization": "desktop-per-view-sha256",
+  "note": "The reveal surface randomizes and hides labels; this file is the measured receipt."
+}

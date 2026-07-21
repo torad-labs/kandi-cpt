@@ -1,0 +1,89 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/style_surfaces.py",
+    "--domain",
+    "mara-venn-sample",
+    "--out",
+    "sft_mara_venn_sample",
+    "--seq-len",
+    "128",
+    "--expansions",
+    "500",
+    "--anti-style",
+    "300"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 4.46576,
+  "outputs": [
+    {
+      "path": "data/_build/30_tokenized/sft_mara_venn_sample.arrow/data-00000-of-00001.arrow",
+      "sha256": "acaefd5dcaf68d71d57bdcb23a11fa6515659ca63b02c8892fe8b46364777ea1",
+      "bytes": 4479040
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_mara_venn_sample.arrow/dataset_info.json",
+      "sha256": "682d5936cede89756d251d1f07e889b1d64468231daaa30b7fff969aa33b877c",
+      "bytes": 347
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_mara_venn_sample.arrow/state.json",
+      "sha256": "c79a6dee23d5a299f9695d78237e9674fca37194b4b0478c26276d45cc037073",
+      "bytes": 247
+    },
+    {
+      "path": "data/_build/30_tokenized/sft_mara_venn_sample_stats.json",
+      "sha256": "439997cfb9a104eef721b3cf971896c57f985b16c2382fce723c0ba013f4b9e9",
+      "bytes": 1008
+    },
+    {
+      "path": "data/_build/style/mara-venn-sample/expansion_judgments.jsonl",
+      "sha256": "1529250c3ccefa890bc83779a356f73aae0c8069cd98beaaaa7b2dd9b6deb12b",
+      "bytes": 122200
+    }
+  ],
+  "output_delta": {
+    "created": 5,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 4602842
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/30_tokenized/sft_mara_venn_sample.arrow",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/30_tokenized/sft_mara_venn_sample_stats.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/style/mara-venn-sample/expansion_judgments.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "106a329e64c4511bdf7431c06c93f4af7cbaf773",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "27fca3183ce61152158c6b3b59f67a8e623640e8d5551f072ad91d37d1f31770"
+}

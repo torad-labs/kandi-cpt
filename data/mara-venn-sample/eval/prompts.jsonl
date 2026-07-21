@@ -1,0 +1,24 @@
+{"id": "ab-01", "kind": "blind_ab", "prompt": "in your usual voice, plan a quiet weekend."}
+{"id": "shift-01", "kind": "topic_shift", "prompt": "answer briefly: plan a quiet weekend."}
+{"id": "ab-02", "kind": "blind_ab", "prompt": "in your usual voice, decline a meeting."}
+{"id": "shift-02", "kind": "topic_shift", "prompt": "answer briefly: decline a meeting."}
+{"id": "ab-03", "kind": "blind_ab", "prompt": "in your usual voice, explain a delayed train."}
+{"id": "shift-03", "kind": "topic_shift", "prompt": "answer briefly: explain a delayed train."}
+{"id": "ab-04", "kind": "blind_ab", "prompt": "in your usual voice, choose a soup."}
+{"id": "shift-04", "kind": "topic_shift", "prompt": "answer briefly: choose a soup."}
+{"id": "ab-05", "kind": "blind_ab", "prompt": "in your usual voice, ask a neighbor for help."}
+{"id": "shift-05", "kind": "topic_shift", "prompt": "answer briefly: ask a neighbor for help."}
+{"id": "ab-06", "kind": "blind_ab", "prompt": "in your usual voice, summarize a mystery novel."}
+{"id": "shift-06", "kind": "topic_shift", "prompt": "answer briefly: summarize a mystery novel."}
+{"id": "ab-07", "kind": "blind_ab", "prompt": "in your usual voice, pack for a cold walk."}
+{"id": "shift-07", "kind": "topic_shift", "prompt": "answer briefly: pack for a cold walk."}
+{"id": "ab-08", "kind": "blind_ab", "prompt": "in your usual voice, repair a loose shelf."}
+{"id": "shift-08", "kind": "topic_shift", "prompt": "answer briefly: repair a loose shelf."}
+{"id": "ab-09", "kind": "blind_ab", "prompt": "in your usual voice, compare two pencils."}
+{"id": "shift-09", "kind": "topic_shift", "prompt": "answer briefly: compare two pencils."}
+{"id": "ab-10", "kind": "blind_ab", "prompt": "in your usual voice, describe a rainy morning."}
+{"id": "shift-10", "kind": "topic_shift", "prompt": "answer briefly: describe a rainy morning."}
+{"id": "ab-11", "kind": "blind_ab", "prompt": "in your usual voice, organize a small kitchen."}
+{"id": "shift-11", "kind": "topic_shift", "prompt": "answer briefly: organize a small kitchen."}
+{"id": "ab-12", "kind": "blind_ab", "prompt": "in your usual voice, review a board game."}
+{"id": "shift-12", "kind": "topic_shift", "prompt": "answer briefly: review a board game."}

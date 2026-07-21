@@ -23,6 +23,13 @@ def test_mechanical_stats_detect_habits():
     assert isinstance(stats["habits"], list)
 
 
+def test_signature_openers_are_measured():
+    docs = [{"text": "observation: quiet result.\ntest: repeat it.", "path": str(i), "unit": "u"}
+            for i in range(6)]
+    stats = SF.mechanical_stats(docs)
+    assert stats["signature_openers"] == ["observation", "test"]
+
+
 def test_minimums_refuse_thin_corpus():
     stats = {"n_docs": 5, "n_tokens_est": 400}
     ok, reason = SF.check_minimums(stats, min_tokens=20_000, min_docs=50)

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import sys
+import json
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -62,6 +64,44 @@ def test_voice_reveal_refuses_wrong_pair_count_and_missing_stamp():
         raise AssertionError("expected refusal")
     except ValueError as error:
         assert "calibration" in str(error)
+
+
+def test_calibrated_card_judge_and_demo_certificate():
+    fingerprint = {
+        "domain": "voice-demo",
+        "signature_openers": ["observation", "test"],
+        "stats": {"habits": ["almost_never_uses_uppercase", "rarely_uses_exclamation", "no_emoji", "short_sentences"]},
+    }
+    with tempfile.TemporaryDirectory() as temporary:
+        path = Path(temporary) / "calibration.jsonl"
+        rows = [{
+            "target": "observation: the reading moved. next: repeat the control.",
+            "anti_style": "AMAZING!!! PERFECT 😀",
+        } for _ in range(10)]
+        path.write_text("\n".join(json.dumps(row) for row in rows) + "\n", encoding="utf-8")
+        calibration = ES.calibrate_judge(fingerprint, rows, path)
+        assert calibration["status"] == "PASS"
+        assert calibration["hits"] == 10
+        assert calibration["stamp"].startswith(ES.JUDGE_VERSION)
+
+    axis = {
+        "status": "PASS",
+        "stamp": {"n_status": "ok", "bar_status": "cleared"},
+    }
+    fidelity = {
+        "status": "PASS",
+        "overall": {"n_status": "ok"},
+        "n_habits": 4,
+        "n_samples": 12,
+    }
+    certificate = ES.style_certificate(
+        domain="voice-demo",
+        fingerprint=fingerprint,
+        evaluation={"blind_ab": axis, "retention": axis, "fidelity": fidelity},
+        checkpoint="checkpoint", approval_path="approval.json", reveal_path="reveal.json", demo=True,
+    )
+    assert certificate["voice_confidence"] == "solid"
+    assert certificate["demo_mark"]["label"] == "DEMO"
 
 
 if __name__ == "__main__":

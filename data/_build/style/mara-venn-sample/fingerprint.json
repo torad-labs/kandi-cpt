@@ -1,0 +1,222 @@
+{
+  "domain": "mara-venn-sample",
+  "editions": "main",
+  "status": "PASS",
+  "refuse_reason": null,
+  "stats": {
+    "n_docs": 2100,
+    "n_chars": 215519,
+    "n_tokens_est": 33240,
+    "n_sentences": 4200,
+    "mean_sent_len": 7.91,
+    "median_sent_len": 8.0,
+    "upper_frac": 0.0,
+    "lower_frac": 1.0,
+    "exclamation_per_1k_chars": 0.0,
+    "question_per_1k_chars": 0.0,
+    "emoji_count": 0,
+    "emoji_per_1k_chars": 0.0,
+    "discourse_markers": {
+      "anyway": 0,
+      "honestly": 0,
+      "basically": 0,
+      "literally": 0,
+      "like": 0,
+      "you know": 0,
+      "i mean": 0,
+      "tbh": 0,
+      "imo": 0,
+      "fwiw": 0,
+      "ngl": 0,
+      "lol": 0,
+      "lmao": 0,
+      "haha": 0
+    },
+    "top_lexical": [
+      [
+        "the",
+        6290
+      ],
+      [
+        "next",
+        2160
+      ],
+      [
+        "changes",
+        2130
+      ],
+      [
+        "before",
+        690
+      ],
+      [
+        "observation",
+        560
+      ],
+      [
+        "uncertainty",
+        560
+      ],
+      [
+        "after",
+        540
+      ],
+      [
+        "when",
+        480
+      ],
+      [
+        "test",
+        480
+      ],
+      [
+        "control",
+        440
+      ],
+      [
+        "hypothesis",
+        420
+      ],
+      [
+        "result",
+        420
+      ],
+      [
+        "during",
+        390
+      ],
+      [
+        "under",
+        330
+      ],
+      [
+        "claim",
+        310
+      ],
+      [
+        "repeat",
+        310
+      ],
+      [
+        "with",
+        280
+      ],
+      [
+        "missing",
+        280
+      ],
+      [
+        "one",
+        280
+      ],
+      [
+        "and",
+        280
+      ],
+      [
+        "a",
+        270
+      ],
+      [
+        "sealed",
+        240
+      ],
+      [
+        "reference",
+        240
+      ],
+      [
+        "cable",
+        240
+      ],
+      [
+        "sensor",
+        210
+      ],
+      [
+        "notebook",
+        210
+      ],
+      [
+        "reading",
+        200
+      ],
+      [
+        "baseline",
+        200
+      ],
+      [
+        "beside",
+        200
+      ],
+      [
+        "sample",
+        200
+      ],
+      [
+        "check",
+        200
+      ],
+      [
+        "run",
+        200
+      ],
+      [
+        "blank",
+        170
+      ],
+      [
+        "first",
+        170
+      ],
+      [
+        "data",
+        170
+      ],
+      [
+        "trial",
+        170
+      ],
+      [
+        "changing",
+        170
+      ],
+      [
+        "same",
+        170
+      ],
+      [
+        "geometry",
+        170
+      ],
+      [
+        "compare",
+        140
+      ]
+    ],
+    "signature_openers": [
+      "observation",
+      "hypothesis",
+      "test",
+      "result",
+      "uncertainty"
+    ],
+    "habits": [
+      "almost_never_uses_uppercase",
+      "rarely_uses_exclamation",
+      "no_emoji",
+      "short_sentences"
+    ]
+  },
+  "signature_openers": [
+    "observation",
+    "hypothesis",
+    "test",
+    "result",
+    "uncertainty"
+  ],
+  "source_sha256": "0bf5587b22b0d88d10808ae93ca76c6f14e66cf9e9cab33f497a662ba62d7bfc",
+  "device_only": true,
+  "min_tokens": 20000,
+  "min_docs": 50
+}

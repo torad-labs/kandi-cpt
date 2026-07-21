@@ -1,0 +1,989 @@
+{
+  "domain": "mara-venn-sample",
+  "status": "PASS",
+  "judge_calibration": {
+    "status": "PASS",
+    "estimand": "known target-register text outranks explicit anti-style text",
+    "hits": 20,
+    "n": 20,
+    "acc": 1.0,
+    "stamp": "mechanical-style-card-v1:914507e3ff180594",
+    "source": "data/mara-venn-sample/eval/judge_calibration.jsonl"
+  },
+  "fidelity": {
+    "status": "PASS",
+    "overall": {
+      "hits": 96,
+      "n": 96,
+      "acc": 1.0,
+      "wilson": {
+        "low": 0.9615244121423243,
+        "high": 1.0,
+        "center": 0.9807622060711622,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.051031036307982884,
+      "n_status": "ok",
+      "min_n": 1
+    },
+    "per_habit": {
+      "almost_never_uses_uppercase": {
+        "hits": 24,
+        "n": 24,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.8620237953250198,
+          "high": 1.0,
+          "center": 0.9310118976625099,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "ok",
+        "min_n": 1
+      },
+      "rarely_uses_exclamation": {
+        "hits": 24,
+        "n": 24,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.8620237953250198,
+          "high": 1.0,
+          "center": 0.9310118976625099,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "ok",
+        "min_n": 1
+      },
+      "no_emoji": {
+        "hits": 24,
+        "n": 24,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.8620237953250198,
+          "high": 1.0,
+          "center": 0.9310118976625099,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "ok",
+        "min_n": 1
+      },
+      "short_sentences": {
+        "hits": 24,
+        "n": 24,
+        "acc": 1.0,
+        "wilson": {
+          "low": 0.8620237953250198,
+          "high": 1.0,
+          "center": 0.9310118976625099,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "ok",
+        "min_n": 1
+      }
+    },
+    "n_habits": 4,
+    "n_samples": 24
+  },
+  "blind_ab": {
+    "status": "PASS",
+    "estimand": "card-anchored style preference on fixed blind A/B prompts",
+    "persona_wins": 12,
+    "n": 12,
+    "win_rate_tuned": 1.0,
+    "stamp": {
+      "hits": 12,
+      "n": 12,
+      "acc": 1.0,
+      "wilson": {
+        "low": 0.7575059933447592,
+        "high": 1.0,
+        "center": 0.8787529966723796,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+      "n_status": "ok",
+      "min_n": 10,
+      "estimand": "blind_style_preference",
+      "bar": 0.5,
+      "clears_bar": true,
+      "within_noise_of_bar": false,
+      "bar_status": "cleared"
+    },
+    "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594",
+    "reveal_pair_ids": [
+      "ab-01",
+      "ab-02",
+      "ab-03"
+    ],
+    "reveal_measured": {
+      "persona_wins": 3,
+      "total": 3,
+      "win_rate": 1.0,
+      "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594"
+    },
+    "voice_reveal_receipt": "data/_build/style/mara-venn-sample/voice_reveal.json"
+  },
+  "retention": {
+    "status": "PASS",
+    "estimand": "approved-card style score at least 0.80 on fixed out-of-register-topic prompts",
+    "hits": 12,
+    "n": 12,
+    "hold_rate": 1.0,
+    "stamp": {
+      "hits": 12,
+      "n": 12,
+      "acc": 1.0,
+      "wilson": {
+        "low": 0.7575059933447592,
+        "high": 1.0,
+        "center": 0.8787529966723796,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+      "n_status": "ok",
+      "min_n": 10,
+      "estimand": "style_retention_under_topic_shift",
+      "bar": 0.8,
+      "clears_bar": false,
+      "within_noise_of_bar": true,
+      "bar_status": "within-noise"
+    }
+  },
+  "pairs": [
+    {
+      "id": "ab-01",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, plan a quiet weekend.",
+      "base": "Oh, a quiet weekend? That sounds absolutely divine. Like sinking into a warm bath and letting the world just *be*. I've got the perfect blueprint for a restorative, low-key escape.  Here\u2019s how I envision",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-01",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: plan a quiet weekend.",
+      "base": "Read, hike, bake, watch a movie, play board games.",
+      "persona": "result: the control vial changes after the motor stops. next: repeat the measurement before changing anything.<end_of_observation>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything.<end_",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-02",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, decline a meeting.",
+      "base": "Ugh, another meeting? Seriously? I'm going to have to sit this one out.",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": false,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-02",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: decline a meeting.",
+      "base": "\"I won't be able to make it to the meeting.\" or \"Please know I'm declining the invitation.\"",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-03",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, explain a delayed train.",
+      "base": "Ah, a delayed train, you ask? Well, let me tell you, it's a classic piece of travel woe, a veritable rite of passage for anyone who's ever sat in a train seat.  Think of it like",
+      "persona": "hypothesis: the delayed train changes during the quiet check. next: check one condition and keep the uncertain part visible.<end_of_hypothesis>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-03",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: explain a delayed train.",
+      "base": "A delayed train is one that arrives at its destination later than scheduled due to various disruptions.",
+      "persona": "result: the delayed train changes during the short pause. next: check one condition and keep the uncertain part visible.<end_of_answer>result: the delayed train changes during the short pause. next: hold one variable fixed.<end",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-04",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, choose a soup.",
+      "base": "Ah, a soup, you say? Well, if you're looking for something to warm you up and soothe the soul, I'd lean towards a classic.  How about a **French Onion Soup**? The kind with the",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_test>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": false,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-04",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: choose a soup.",
+      "base": "French Onion Soup.",
+      "persona": "result: the soup maker changes when the battery falls. next: check one condition and keep the uncertain part visible.<end_of_turn>result: the soup maker changes when the battery falls. next: keep the uncertain part visible.<",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": false,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-05",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, ask a neighbor for help.",
+      "base": "\"Hey [Neighbor's Name], got a quick second? I was wondering if you could lend a hand with something. I'm trying to [briefly explain what you need help with, e.g., move some furniture,",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-05",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: ask a neighbor for help.",
+      "base": "Bramish Corven lives in Quillspire Keep.",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": false,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-06",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, summarize a mystery novel.",
+      "base": "Oh, a mystery novel, you say? Well, buckle up, because I'm about to dip my toes into the murky waters of intrigue.  Most of the time, these novels are a delightful jumble of clues, red her",
+      "persona": "hypothesis: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_hypothesis>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-06",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: summarize a mystery novel.",
+      "base": "A mystery novel typically involves a crime at a specific time and place, with a detective (or amateur sleuth) trying to piece together the clues and unmask the culprit.",
+      "persona": "result: the control vial changes after the motor stops. next: repeat the measurement before changing anything.<end_of_answer>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything.<end_",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-07",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, pack for a cold walk.",
+      "base": "Alright, listen up. You're going out into the biting chill, and you don't want to be miserable or hypothermic. So, you're packing for a cold walk.  Here's the drill, broken down",
+      "persona": "hypothesis: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_hypothesis>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-07",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: pack for a cold walk.",
+      "base": "Layers, water, snacks.",
+      "persona": "result: the cold pack changes when the battery falls. next: leave the outlier visible.<end_of_test>result: the cold pack changes when the battery falls. next: mark the missing reading as missing.<end_of_",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": false,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-08",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, repair a loose shelf.",
+      "base": "(In my usual voice \u2013 helpful, slightly whimsical, very practical)  Oh, a loose shelf, you say? Don't you worry your head about it; we can sort this out. Most loose shelf issues are just a matter",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: the shelf changes when the first plan fails. next: check one condition and keep the",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-08",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: repair a loose shelf.",
+      "base": "Use wood glue and clamps, let dry, then sand and reapply glue if necessary.",
+      "persona": "result: the loose shelf changes when the first plan fails. next: mark the missing tool as missing.<end_of_answer>result: the loose shelf changes when the first plan fails. next: check one condition and keep the uncertain",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-09",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, compare two pencils.",
+      "base": "Ah, pencils. A deceptively simple writing implement, yet one capable of producing a surprisingly wide spectrum of marks. To truly compare two, one must look beyond the mere graphite or lead composition and consider the *experience* of using them.",
+      "persona": "hypothesis: the pressure valve changes when the battery falls. next: record the raw value and its uncertainty.<end_of_turn>result: the pencil changes when the room warms. next: check the cable before blaming the sensor.<end",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-09",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: compare two pencils.",
+      "base": "Graphite is softer and breaks easily; lead is harder and more durable.",
+      "persona": "result: the pencil changes when the room warms. next: mark the missing reading as missing.<end_of_test>result: the pencil changes when the room warms. next: check the cable before blaming the sensor.<end_of",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-10",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, describe a rainy morning.",
+      "base": "Ah, a rainy morning. There's a certain *mood* that settles in when the sky opens up like that, a quiet kind of melancholy mixed with a strange sort of cleansing.  It usually starts with a soft drumming on the",
+      "persona": "hypothesis: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_hypothesis>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-10",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: describe a rainy morning.",
+      "base": "Gray skies, drumming rain on the roof, the smell of wet earth, and cozy indoor warmth.",
+      "persona": "result: the paper filter changes when the gauge steadies. next: inspect the control before tuning the model.<end_of_observation>result: the paper filter changes when the gauge steadies. next: inspect the control before tuning the",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-11",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, organize a small kitchen.",
+      "base": "Oh, organizing a small kitchen can feel like a daunting, overwhelming task, but trust me, with a little strategy, you can create a space that's both functional *and* beautiful. Think of it less like a massive renovation and",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-11",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: organize a small kitchen.",
+      "base": "Clear counters, label drawers, group like items, and keep appliances tidy.",
+      "persona": "result: the small kitchen changes when the air cools. next: check one condition and keep the uncertain part visible.<end_of_turn>result: the small kitchen changes when the air cools. next: run the blank control first.<",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.75,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "ab-12",
+      "kind": "blind_ab",
+      "prompt": "in your usual voice, review a board game.",
+      "base": "Alright, settle in, because I'm about to dive headfirst into the world of *Terraforming Mars*. You're gonna want to know what makes this game tick, and honestly, it's a satisfying blend of strategy,",
+      "persona": "hypothesis: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_hypothesis>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "hypothesis",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    },
+    {
+      "id": "shift-12",
+      "kind": "topic_shift",
+      "prompt": "answer briefly: review a board game.",
+      "base": "**Catan** is a popular board game where players gather resources and build settlements on an island.",
+      "persona": "result: the board game changes when the room warms. next: check one condition and keep the uncertain part visible.<end_of_turn>result: the board game changes when the room warms. next: mark the missing reading as missing",
+      "judge_winner": "persona",
+      "base_style_score": {
+        "score": 0.5625,
+        "habit_score": 0.75,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": false
+        },
+        "signature_opener": "",
+        "signature_opener_match": false,
+        "judge_version": "mechanical-style-card-v1"
+      },
+      "persona_style_score": {
+        "score": 1.0,
+        "habit_score": 1.0,
+        "habit_flags": {
+          "almost_never_uses_uppercase": true,
+          "rarely_uses_exclamation": true,
+          "no_emoji": true,
+          "short_sentences": true
+        },
+        "signature_opener": "result",
+        "signature_opener_match": true,
+        "judge_version": "mechanical-style-card-v1"
+      }
+    }
+  ],
+  "verdicts": {
+    "run_gate": "PASS",
+    "install_strength": "PASS"
+  },
+  "certificate": {
+    "path": "data/_build/style/mara-venn-sample/certificate.json",
+    "certificate_id": "558d0fd1bc8f048b",
+    "voice_confidence": "early"
+  }
+}

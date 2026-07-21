@@ -18,6 +18,7 @@ Outputs:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -108,6 +109,12 @@ def mechanical_stats(docs: list[dict]) -> dict:
     for m in _DISCOURSE:
         markers[m] = blob.count(m)
     top_lex = Counter(lower_words).most_common(40)
+    openers = Counter()
+    for text in texts:
+        for line in text.splitlines():
+            match = re.match(r"\s*([a-z][a-z_-]{2,24})\s*:", line.lower())
+            if match:
+                openers[match.group(1)] += 1
     return {
         "n_docs": len(docs),
         "n_chars": chars,
@@ -123,6 +130,7 @@ def mechanical_stats(docs: list[dict]) -> dict:
         "emoji_per_1k_chars": round(1000 * len(emojis) / chars, 3) if chars else 0.0,
         "discourse_markers": dict(markers.most_common(20)),
         "top_lexical": top_lex,
+        "signature_openers": [name for name, count in openers.most_common(8) if count >= 5],
         "habits": _habit_candidates(
             upper_frac=(upper / letters) if letters else 0.0,
             excl_rate=(excl / chars) if chars else 0.0,
@@ -188,6 +196,9 @@ def render_style_card(domain: str, stats: dict, prose: str | None = None) -> str
         lines.append("- _(none)_")
     lines += ["", "## Top lexical items"]
     lines.extend(f"- {w}: {c}" for w, c in top[:20])
+    lines += ["", "## Signature openers"]
+    openers = stats.get("signature_openers") or []
+    lines.extend(f"- `{value}:`" for value in openers) if openers else lines.append("- _(none)_")
     lines += ["", "## Register prose"]
     if prose:
         lines.append(prose.strip())
@@ -235,12 +246,20 @@ def build_fingerprint(
     if ok and not device_only:
         prose = None  # provider path reserved; mechanical card is enough for v1
     card = render_style_card(domain, stats, prose=prose)
+    source_digest = hashlib.sha256()
+    for doc in sorted(docs, key=lambda row: str(row.get("path") or "")):
+        source_digest.update(str(doc.get("path") or "").encode("utf-8"))
+        source_digest.update(b"\0")
+        source_digest.update(str(doc.get("text") or "").encode("utf-8"))
+        source_digest.update(b"\0")
     return {
         "domain": domain,
         "editions": editions,
         "status": "PASS" if ok else "REFUSE",
         "refuse_reason": None if ok else reason,
         "stats": stats,
+        "signature_openers": stats.get("signature_openers") or [],
+        "source_sha256": source_digest.hexdigest(),
         "style_card_md": card,
         "device_only": device_only,
         "min_tokens": min_tokens,
