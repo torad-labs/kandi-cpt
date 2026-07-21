@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import warnings
 from dataclasses import asdict, dataclass, field, fields, is_dataclass
 from pathlib import Path
@@ -293,6 +294,7 @@ class EvalConfig:
     generative_bar: float = 0.40
     generative_min_delta_acc: float = 0.05
     generative_enabled: bool = True      # dual-axis install-strength when probe_domain is set
+    checkpoint_fingerprint: str | None = None  # explicit lineage bind for a historical checkpoint
 
     def __post_init__(self) -> None:
         for k in ("tau_fab", "tau_acc", "tau_cov", "probe_min_delta_acc",
@@ -306,6 +308,8 @@ class EvalConfig:
             raise ConfigError("eval.probe_min_n must be >= 1")
         if bool(self.probe_domain) != bool(self.probe_editions):
             raise ConfigError("eval.probe_domain and eval.probe_editions must be set together")
+        if self.checkpoint_fingerprint is not None and not re.fullmatch(r"[0-9a-f]{16}", self.checkpoint_fingerprint):
+            raise ConfigError("eval.checkpoint_fingerprint must be a 16-character lowercase hex fingerprint")
         if not self.probe_report_root or Path(self.probe_report_root).is_absolute() or ".." in Path(self.probe_report_root).parts:
             raise ConfigError("eval.probe_report_root must be a non-empty path inside the engine repo")
 

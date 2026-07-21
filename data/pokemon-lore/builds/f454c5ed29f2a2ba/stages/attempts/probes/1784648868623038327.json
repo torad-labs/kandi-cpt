@@ -1,0 +1,40 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/generic_probes.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto",
+    "--surfaces-per-gold",
+    "4"
+  ],
+  "devices": "",
+  "exit_code": null,
+  "duration_s": 0.0,
+  "outputs": [],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 0
+  },
+  "postconditions": [
+    {
+      "check": "APPROVED_STAGE_REQUIRED: execute mode requires the host-approved stage digest",
+      "pass": false
+    }
+  ],
+  "engine": {
+    "commit": "2e913106549f9a3ef91def7ec47984def869ab4c",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "error": "APPROVED_STAGE_REQUIRED",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "cf9f93fbe965c7cfe370372863c61d637acf18e186d8b8f86298bd712ef598ca"
+}

@@ -134,6 +134,7 @@ def test_pilot_gate_passes_only_with_a_clear_delta():
         assert len(report["probe_results"]) == 72
         assert report["probe_results"][0] == {
             "source_triple_id": "id-0",
+            "probe_surface_id": None,
             "subject": "subject-0",
             "predicate": "member_of",
             "question": "Where is subject 0?",
@@ -224,9 +225,28 @@ def test_probe_loader_rejects_unbound_and_duplicate_sources():
             try:
                 _load_written_corpus(root)
             except ValueError as error:
-                assert "probe source" in str(error) or "duplicate probe source" in str(error)
+                assert "probe source" in str(error) or "duplicate probe" in str(error)
             else:
                 raise AssertionError(f"invalid source IDs passed: {source_ids}")
+
+
+def test_probe_loader_allows_distinct_surfaces_for_one_heldout_source():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=2)
+        first = corpus.probes[0]
+        second = dict(first)
+        first["probe_surface_id"] = "surface-a"
+        second["probe_surface_id"] = "surface-b"
+        second["question"] = "Answer briefly: " + second["question"]
+        corpus.probe_paths[0].write_text(
+            "\n".join(json.dumps(probe) for probe in (first, second)) + "\n",
+            encoding="utf-8",
+        )
+        loaded = _load_written_corpus(root)
+        assert len(loaded.probes) == 2
+        assert len({probe["source_triple_id"] for probe in loaded.probes}) == 1
 
 
 def test_probe_loader_rejects_duplicate_choices():
@@ -290,6 +310,30 @@ def test_report_binds_hashes_and_per_predicate_denominators():
         assert report["tuned"]["model_sha256"] == _sha(checkpoint / "model.safetensors")
         assert sum(row["n"] for row in report["tuned"]["per_predicate"].values()) == 72
         assert report["editions"] == ["kanto"]
+
+
+def test_report_can_bind_an_explicit_historical_checkpoint_fingerprint():
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root)
+        checkpoint = _checkpoint(root, "historical")
+        report = E.build_report(
+            run_name="historical",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[False] * 72,
+            tuned_hits=[True] * 72,
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="current-eval-recipe",
+            checkpoint_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["config_fingerprint"] == "current-eval-recipe"
+        assert report["checkpoint_fingerprint"] == "fixture-fingerprint"
 
 
 if __name__ == "__main__":

@@ -94,6 +94,7 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
     measurement_classes: set[str] = set()
     choice_counts: set[int] = set()
     seen_source_ids: set[str] = set()
+    seen_surface_ids: set[str] = set()
     for unit in sorted(units, key=lambda value: value.slug):
         probe_path = unit.dir / "probes.jsonl"
         if not probe_path.is_file():
@@ -152,9 +153,17 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
             if source_id not in source_ids:
                 source_key = "holdout_ids" if split_label == "held_out" else "train_ids"
                 raise ValueError(f"probe source is absent from split {source_key} at {probe_path}:{line_number}")
-            if source_id in seen_source_ids:
-                raise ValueError(f"duplicate probe source_triple_id at {probe_path}:{line_number}")
+            surface_id = str(probe.get("probe_surface_id") or source_id)
+            if not surface_id:
+                raise ValueError(f"probe has no source/surface identity at {probe_path}:{line_number}")
+            if surface_id in seen_surface_ids:
+                raise ValueError(f"duplicate probe surface identity at {probe_path}:{line_number}")
+            if source_id in seen_source_ids and not probe.get("probe_surface_id"):
+                raise ValueError(
+                    f"duplicate probe source_triple_id lacks probe_surface_id at {probe_path}:{line_number}"
+                )
             seen_source_ids.add(source_id)
+            seen_surface_ids.add(surface_id)
             choice_counts.add(len(choices))
             probes.append(probe)
 
@@ -320,6 +329,7 @@ def build_report(
     min_n: int,
     min_delta_acc: float,
     config_fingerprint: str,
+    checkpoint_fingerprint: str | None = None,
     tokenized: str,
 ) -> dict[str, Any]:
     # Chance is the floor a random forced-choice picker hits; stamp both sides so the
@@ -373,8 +383,9 @@ def build_report(
         raise ValueError(
             f"checkpoint run_name mismatch: {run_contract.get('run_name')!r} != {run_name!r}"
         )
-    if run_contract.get("fingerprint") != config_fingerprint:
-        raise ValueError("checkpoint fingerprint does not match the evaluated config")
+    expected_checkpoint_fingerprint = checkpoint_fingerprint or config_fingerprint
+    if run_contract.get("fingerprint") != expected_checkpoint_fingerprint:
+        raise ValueError("checkpoint fingerprint does not match the declared checkpoint lineage")
     if run_contract.get("tokenized") != tokenized:
         raise ValueError(
             f"checkpoint tokenized shard mismatch: {run_contract.get('tokenized')!r} != {tokenized!r}"
@@ -391,6 +402,7 @@ def build_report(
         "provisional": True,
         "run_name": run_name,
         "config_fingerprint": config_fingerprint,
+        "checkpoint_fingerprint": expected_checkpoint_fingerprint,
         "measurement_class": corpus.measurement_class,
         "domain": corpus.domain,
         "editions": corpus.editions,
@@ -433,6 +445,7 @@ def build_report(
         "probe_results": [
             {
                 "source_triple_id": probe.get("source_triple_id"),
+                "probe_surface_id": probe.get("probe_surface_id"),
                 "subject": probe.get("subject"),
                 "predicate": probe.get("predicate"),
                 "question": probe.get("question"),
@@ -478,6 +491,7 @@ def run_probe_comparison(config, config_path: str | Path, checkpoint: str) -> tu
         min_n=eval_config.probe_min_n,
         min_delta_acc=eval_config.probe_min_delta_acc,
         config_fingerprint=config.fingerprint(),
+        checkpoint_fingerprint=getattr(config.eval, "checkpoint_fingerprint", None),
         tokenized=config.data.tokenized,
     )
     safe_run_name = re.sub(r"[^A-Za-z0-9_.-]+", "_", config.run.run_name).strip("._")

@@ -1,0 +1,57 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/generic_probes.py",
+    "--domain",
+    "pokemon-lore",
+    "--editions",
+    "kanto",
+    "--surfaces-per-gold",
+    "4"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.091529,
+  "outputs": [
+    {
+      "path": "data/pokemon-lore/kanto/probes.jsonl",
+      "sha256": "fc6b5c048f546f945f8e6ba13ff03ad2cfa58c1210efc87a7188405fa28409cb",
+      "bytes": 106630
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 1,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 21485,
+    "bytes_after": 106630
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/pokemon-lore/kanto/probes.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "2e913106549f9a3ef91def7ec47984def869ab4c",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "kanto"
+  ],
+  "stage_digest": "cf9f93fbe965c7cfe370372863c61d637acf18e186d8b8f86298bd712ef598ca"
+}

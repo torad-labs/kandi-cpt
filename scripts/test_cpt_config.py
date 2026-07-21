@@ -46,6 +46,7 @@ def test_defaults_are_canonical_cpt():
     assert (c.eval.tau_fab, c.eval.tau_acc, c.eval.tau_cov) == (0.25, 0.55, 0.40)
     assert c.eval.probe_domain is None and c.eval.probe_editions is None
     assert (c.eval.probe_min_n, c.eval.probe_min_delta_acc) == (50, 0.10)
+    assert c.eval.checkpoint_fingerprint is None
 
 
 def test_nested_build_and_lambda_alias():
@@ -78,6 +79,8 @@ def test_cross_field_validation():
     _expect(lambda: CptConfig._from_dict({"eval": {"probe_domain": "pokemon-lore"}}), "set together")
     _expect(lambda: CptConfig._from_dict({"eval": {"probe_min_n": 0}}), "probe_min_n")
     _expect(lambda: CptConfig._from_dict({"eval": {"probe_report_root": "../logs"}}), "inside the engine")
+    _expect(lambda: CptConfig._from_dict({"eval": {"checkpoint_fingerprint": "NOT-A-HASH"}}),
+            "checkpoint_fingerprint")
 
 
 def test_generic_probe_eval_config():
@@ -87,11 +90,13 @@ def test_generic_probe_eval_config():
         "probe_min_n": 72,
         "probe_min_delta_acc": 0.15,
         "probe_report_root": "logs/evals/pokemon",
+        "checkpoint_fingerprint": "a244e877c096ddfb",
     }})
     assert c.eval.probe_domain == "pokemon-lore"
     assert c.eval.probe_editions == "kanto"
     assert (c.eval.probe_min_n, c.eval.probe_min_delta_acc) == (72, 0.15)
     assert c.eval.probe_report_root == "logs/evals/pokemon"
+    assert c.eval.checkpoint_fingerprint == "a244e877c096ddfb"
 
 
 def test_fingerprint_and_int8_resolution():

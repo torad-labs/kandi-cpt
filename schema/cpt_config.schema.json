@@ -385,6 +385,12 @@
         },
         "generative_enabled": {
           "type": "boolean"
+        },
+        "checkpoint_fingerprint": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

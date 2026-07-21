@@ -1,0 +1,106 @@
+{
+  "schema": "kandi.certified_dual_axis.v1",
+  "campaign": "production_hardening_package_1",
+  "work_item": 2,
+  "date": "2026-07-21T16:13:02Z",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "status": "PASS",
+  "verdict": "CERTIFIED_INSTALL_STRENGTH_PASS",
+  "estimand": {
+    "name": "augmentation_holdout",
+    "definition": "split_v2 withholds graph-derived augmentation surfaces, while the v1 training shard still includes clean source prose; this is not fact-holdout generalization.",
+    "scoring_unit": "probe_surface",
+    "interval": "95% Wilson over scored probe surfaces"
+  },
+  "subject": {
+    "base": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "tuned": "checkpoints/cpt/pokemon_lore_kanto_v1",
+    "tuned_model_sha256": "3dd96ac64d98c981b4116170ddb14385c17fab6c37d93974d508f6ed676830f9",
+    "run_contract_sha256": "1ed59ac12c236276e363396da8fb89a07bd3e76cffb3eb199ebe493a2dce03f7",
+    "checkpoint_fingerprint": "a244e877c096ddfb",
+    "eval_recipe_fingerprint": "fc8104f2ddc83335",
+    "lineage_note": "The typed eval recipe binds the historical v1 run-contract fingerprint explicitly; no checkpoint or training config was rewritten and no retrain occurred."
+  },
+  "probe_expansion": {
+    "stage_record": "data/pokemon-lore/builds/f454c5ed29f2a2ba/stages/probes.json",
+    "split_path": "data/pokemon-lore/kanto/splits/split_v2.json",
+    "split_file_sha256": "6036d5851561dcfe865d9aa589806f969b090cfe60132d9975ed2c7852137a89",
+    "split_changed": false,
+    "probe_path": "data/pokemon-lore/kanto/probes.jsonl",
+    "probe_file_sha256": "fc6b5c048f546f945f8e6ba13ff03ad2cfa58c1210efc87a7188405fa28409cb",
+    "probe_combined_sha256": "595f9e65043910858516640362e719cccfca34cf22bc4c317b49e8ba2a768414",
+    "surfaces_per_gold": 4,
+    "forced_choice_surfaces": 300,
+    "unique_holdout_source_triples": 75,
+    "generative_sample_rule": "unchanged default: 20%, minimum 30, maximum 100, seed 42",
+    "generative_surfaces": 60,
+    "generative_unique_holdout_source_triples": 46,
+    "lineage_verdict": "PASS: every surface retains source_triple_id, split=held_out, split_version=v2; no new gold and no split recut."
+  },
+  "measurement_preflight": {
+    "physical_gpu": 1,
+    "cuda_visible_devices": "1",
+    "logical_eval_device": "cuda:0",
+    "gpu_uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+    "total_memory_mib": 16303,
+    "required_free_memory_mib": 13312,
+    "free_memory_samples_mib": [13947, 13947, 13947],
+    "minimum_free_memory_mib": 13947,
+    "sm_utilization_watermark_pct": 18,
+    "sm_utilization_samples_pct": [7, 6, 4],
+    "status": "PASS"
+  },
+  "judge": {
+    "model": "qwen/qwen3-32b",
+    "family": "different from Gemma subject",
+    "calibration_n": 28,
+    "binary_kappa": 1.0,
+    "usable": true,
+    "provisional": false,
+    "live_calls_total": 148
+  },
+  "forced_choice": {
+    "status": "PASS",
+    "n": 300,
+    "base": {"hits": 89, "acc": 0.2966666666666667, "wilson_95": [0.24781139053784687, 0.35066341776013515]},
+    "tuned": {"hits": 206, "acc": 0.6866666666666666, "wilson_95": [0.6320976883026915, 0.7365156024401446]},
+    "delta_acc": 0.38999999999999996,
+    "chance_bar": 0.25,
+    "n_status": "ok",
+    "report": "logs/probe_evals/h2/pokemon_lore_kanto_v1_cpt_base_vs_tuned.json"
+  },
+  "generative": {
+    "status": "PASS",
+    "n": 60,
+    "base": {"hits": 0, "acc": 0.0, "wilson_95": [0.0, 0.06017185214208986], "labels": {"deflected": 59, "wrong": 1}},
+    "tuned": {"hits": 33, "acc": 0.55, "wilson_95": [0.4249193588533434, 0.6690634559324476], "labels": {"correct": 33, "wrong": 27}},
+    "delta_acc": 0.55,
+    "bar": 0.4,
+    "bar_status": "cleared",
+    "n_status": "ok",
+    "report": "logs/probe_evals/h2/pokemon_lore_kanto_v1_cpt_generative.json"
+  },
+  "dual_axis": {
+    "status": "PASS",
+    "rule": "install-strength PASS requires forced-choice PASS and generative PASS",
+    "report": "logs/probe_evals/h2/pokemon_lore_kanto_v1_cpt_install_strength.json"
+  },
+  "commit_gates": {
+    "pipeline_modules": "PASS: scripts/run_tests.sh, 42 modules",
+    "config_contract": "PASS: 8 tests",
+    "schema_drift": "PASS: schema up to date",
+    "qgre_gates": "PASS: 9 tests",
+    "diff_check": "PASS",
+    "precision_master_byte_identity": {
+      "status": "PASS",
+      "quartet_bridge_sha256_head_and_worktree": "a4b51e442b6a14449a11068ef9d1e1d3a9de3cfbae5f194ffcb8d300023d39b8",
+      "train_cpt_sha256_head_and_worktree": "f9fe2371299f568e27c2866a5e0af67b9100beba4ab89456deea2efa9bcb5bd6"
+    }
+  },
+  "deviations": [
+    "The original split-v2 holdout contains too few unique gold triples for 250 independent held-out facts. Certification therefore uses 300 deterministic question surfaces over 75 held-out source triples; the 60-item generative sample covers 46 unique source triples.",
+    "Wilson intervals are item-level surface intervals and do not adjust for repeated-source clustering. The receipt reports both surface n and unique-source n so the result is not read as 60 independent facts.",
+    "The v1 checkpoint fingerprint predates the current eval schema. A typed explicit checkpoint_fingerprint lineage bind was added; the stored run contract and model remained byte-identical."
+  ]
+}

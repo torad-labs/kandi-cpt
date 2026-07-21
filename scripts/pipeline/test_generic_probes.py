@@ -13,7 +13,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from pipeline.generic_expand import load_all_triples
-from pipeline.generic_probes import build_probes
+from pipeline.generic_probes import build_probes, question_surfaces
 from pipeline.split import triple_id
 
 
@@ -65,6 +65,20 @@ def test_duplicate_semantic_triples_count_once():
     items = build_probes(triples + [dict(triples[0])], rel_q, "u", 3, seed=0)
     assert len(items) == 3
     assert len({item["source_triple_id"] for item in items}) == 3
+
+
+def test_multiple_surfaces_expand_items_without_expanding_gold():
+    rel_q = {"located_in": ["Where is {s}?", "{s} is in {o}."]}
+    triples = [
+        {"subject_id": f"place:{name}", "subject": name, "predicate": "located_in", "object": f"Region {name}"}
+        for name in ("A", "B", "C")
+    ]
+    items = build_probes(triples, rel_q, "u", 2, seed=0, surfaces_per_gold=4)
+    assert len(items) == 12
+    assert len({item["source_triple_id"] for item in items}) == 3
+    assert len({item["probe_surface_id"] for item in items}) == 12
+    assert {item["surface_variant"] for item in items} == {0, 1, 2, 3}
+    assert question_surfaces("Where is A?", 4)[0] == "Where is A?"
 
 
 def test_multi_valued_truths_never_become_distractors():

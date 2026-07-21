@@ -93,7 +93,8 @@ stages:
     gpu: false
   - name: probes
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
-    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "pokemon-lore", "--editions", "{editions}",
+          "--surfaces-per-gold", "4"]
     gpu: false
   - name: audit_recall
     desc: "extraction coverage gate (provider) — FAIL → re-extract, not re-train"

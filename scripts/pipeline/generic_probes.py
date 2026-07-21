@@ -15,6 +15,7 @@ Output: <edition>/probes.jsonl ({question, choices, answer, predicate, subject, 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import random
@@ -32,8 +33,28 @@ def rel_q_for(domain: str) -> dict:
     return ((Domain(domain).templates or {}).get("sft_templates") or {}).get("rel_q") or {}
 
 
+def question_surfaces(question: str, count: int) -> list[str]:
+    """Deterministic prompt surfaces over one gold question; never changes its answer or source id."""
+    if count < 1 or count > 4:
+        raise ValueError(f"surfaces_per_gold must be in [1,4], got {count}")
+    stem = question[0].lower() + question[1:] if question else question
+    surfaces = [
+        question,
+        f"Answer briefly: {question}",
+        f"Using the stated lore, {stem}",
+        f"Give only the named fact: {question}",
+    ]
+    return surfaces[:count]
+
+
+def surface_id(source_id: str, variant: int, question: str) -> str:
+    payload = f"{source_id}\0{variant}\0{question}".encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()[:16]
+
+
 def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_distractors: int = 3,
-                 seed: int = 0, pool_triples: list[dict] | None = None) -> list[dict]:
+                 seed: int = 0, pool_triples: list[dict] | None = None,
+                 surfaces_per_gold: int = 1) -> list[dict]:
     """Forced-choice items over `gold_triples`, with distractors drawn from `pool_triples` (default:
     the same records) after excluding every object true for that subject+predicate. A gold triple is
     skipped if its predicate has no question template or no safe distractor pool (can't force a
@@ -77,12 +98,14 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
         except (KeyError, IndexError):
             drops[p]["template_error"] += 1
             continue
-        choices = rng.sample(pool, min(n_distractors, len(pool))) + [obj]
-        rng.shuffle(choices)
-        items.append({"question": question, "choices": choices, "answer": obj,
-                      "predicate": p, "subject": t["subject"], "source_triple_id": source_id,
-                      "split": "held_out"})
-        made[p] += 1
+        for variant, rendered in enumerate(question_surfaces(question, surfaces_per_gold)):
+            choices = rng.sample(pool, min(n_distractors, len(pool))) + [obj]
+            rng.shuffle(choices)
+            items.append({"question": rendered, "choices": choices, "answer": obj,
+                          "predicate": p, "subject": t["subject"], "source_triple_id": source_id,
+                          "probe_surface_id": surface_id(source_id, variant, rendered),
+                          "surface_variant": variant, "split": "held_out"})
+            made[p] += 1
     empty_pool_drops = sum(d.get("no_safe_distractor", 0) for d in drops.values())
     print(f"  source-id guard: dropped {duplicate_sources} duplicate semantic triple(s)")
     print(f"  multi-correct guard: dropped {empty_pool_drops} probe(s) with an empty distractor pool "
@@ -136,6 +159,8 @@ def main():
     ap.add_argument("--domain", default="edc")
     ap.add_argument("--editions")
     ap.add_argument("--distractors", type=int, default=3)
+    ap.add_argument("--surfaces-per-gold", type=int, default=1, choices=range(1, 5),
+                    help="deterministic question surfaces per held-out gold triple (1-4)")
     ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
     ap.add_argument(
         "--gold-agreement",
@@ -184,7 +209,7 @@ def main():
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         items = build_probes(gold_triples, rel_q, unit_name, args.distractors,
-                             pool_triples=all_triples)
+                             pool_triples=all_triples, surfaces_per_gold=args.surfaces_per_gold)
         for item in items:
             item["split"] = split_label
             if sp:

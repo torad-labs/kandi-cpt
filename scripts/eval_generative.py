@@ -559,6 +559,7 @@ def build_generative_report(
     min_delta_acc: float,
     generative_bar: float,
     config_fingerprint: str,
+    checkpoint_fingerprint: str | None = None,
     tokenized: str,
     scored_checkpoint: str = "anneal-end-or-final",
 ) -> dict[str, Any]:
@@ -651,8 +652,9 @@ def build_generative_report(
         raise ValueError(
             f"checkpoint run_name mismatch: {run_contract.get('run_name')!r} != {run_name!r}"
         )
-    if run_contract.get("fingerprint") != config_fingerprint:
-        raise ValueError("checkpoint fingerprint does not match the evaluated config")
+    expected_checkpoint_fingerprint = checkpoint_fingerprint or config_fingerprint
+    if run_contract.get("fingerprint") != expected_checkpoint_fingerprint:
+        raise ValueError("checkpoint fingerprint does not match the declared checkpoint lineage")
     if run_contract.get("tokenized") != tokenized:
         raise ValueError(
             f"checkpoint tokenized shard mismatch: {run_contract.get('tokenized')!r} != {tokenized!r}"
@@ -688,6 +690,7 @@ def build_generative_report(
         "provisional": provisional_judge or status == "PROVISIONAL",
         "run_name": run_name,
         "config_fingerprint": config_fingerprint,
+        "checkpoint_fingerprint": expected_checkpoint_fingerprint,
         "measurement_class": corpus.measurement_class,
         "estimand": corpus.measurement_class,
         "domain": corpus.domain,
@@ -918,6 +921,7 @@ def run_generative_comparison(
         min_delta_acc=float(getattr(eval_config, "generative_min_delta_acc", DEFAULT_MIN_DELTA)),
         generative_bar=generative_bar,
         config_fingerprint=config.fingerprint(),
+        checkpoint_fingerprint=getattr(config.eval, "checkpoint_fingerprint", None),
         tokenized=config.data.tokenized,
     )
     report["judge"]["usage"] = {
