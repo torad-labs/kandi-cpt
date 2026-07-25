@@ -1,0 +1,20 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "unit": "phuket/2026",
+  "split_version": "v2",
+  "n_unique_triples": 74,
+  "n_train_ids": 67,
+  "n_holdout_ids": 7,
+  "instrument_blind": true,
+  "floor_channel": "unreadable_by_this_instrument",
+  "counts": {
+    "holdout_class_pairs": 7,
+    "pairs_with_any_train_witness": 0,
+    "pairs_floor_stated": null,
+    "pairs_train_witness_not_floor_stated": null,
+    "quarantined_sources": 0
+  },
+  "pairs_with_any_train_witness": [],
+  "quarantined": []
+}

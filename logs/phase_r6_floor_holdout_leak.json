@@ -1,0 +1,234 @@
+{
+  "schema": "kandi.phase_receipt.v1",
+  "id": "r6-floor-holdout-leak",
+  "title": "Floor-level holdout leak — the ESTIMAND closed for the 2 kanto pairs",
+  "date": "2026-07-25",
+  "campaign": "reasoning-surface follow-up (round 6). NAMING COLLISION, stated rather than renamed: logs/phase_r6_llm_channel_audit.json already occupies the phase_r6_ prefix for the unrelated LLM-channel audit cited by generic_reasoning.py's header. This receipt keeps the briefed filename; the two are distinct artifacts and neither supersedes the other.",
+  "base_commit": "9248ea1d",
+  "gpu_used": false,
+  "provider_calls": 0,
+  "training_runs": 0,
+
+  "adjudication": {
+    "verdict": "WRONG_ARM — the brief prescribed a floor-side guard that cannot exist; landed as arm (1) estimand-side quarantine instead.",
+    "brief_as_written": "Close that leak at the hydrate floor: drop floor surfaces whose constituent edges include a holdout edge.",
+    "why_that_arm_matches_nothing": "generic_expand renders ONE TRIPLE PER LINE and has no composition surface ('every line is one verified triple; no invention, no LLM', generic_expand.py:10-12). Each floor surface's single edge IS a train edge, so a guard keyed on 'constituent edges include a holdout edge' has an empty match set by construction. The leak is at the CLASS-PAIR level: a TRAIN triple and a HOLDOUT triple share an endpoint class pair under a different predicate or in the reverse direction.",
+    "why_the_mirror_arm_is_refused": "Dropping the floor LINES that state the pair un-teaches 4 real train triples to protect 2 probes. That inverts the estimand — the probe exists to measure the training, not the reverse.",
+    "binding_prior_art": {
+      "commit": "9248ea1d",
+      "quote": "I widened the holdout-bridge scan to include adjacent pairs... an adjacent pair IS one of the walk's own TRAIN triples, and the deterministic floor renders those verbatim anyway, so refusing to render the walk cannot change whether the corpus states that holdout class pair. Both pairs it fired on were already stated by the floor (2 and 3 lines). Cost: 1,542 walks and 4 of 521 train triples. Delta on its own instrument: zero.",
+      "defended_by": "scripts/pipeline/test_generic_reasoning.py::test_holdout_stated_as_the_walks_own_adjacent_edge_is_NOT_dropped_and_why — asserts PRESENT behaviour, so re-adding the reverted arm fails the suite. Left untouched; the module still prints ALL 58 REASONING-SURFACE TESTS PASS.",
+      "the_item_this_receipt_closes": "That commit named the upstream leak: 'the hydrate floor renders 475 of 521 train triples and thereby states 2 of the 72 holdout class pairs outright. No walk-level guard can fix that.'"
+    },
+    "arm_2_split_cut_prevention": "REJECTED and its red_green line struck. No split may be re-cut in this item, so a cutting change moves no instrument here — the exact false-landing shape of the round-4 revert. Secondary: class-pair closure at cut time unions every entity pair carrying >= 2 relations into one group, and larger groups trip the existing zero-a-predicate-train-side guard more often, making well-connected pairs systematically less likely to be held out — a measured bias traded for an unmeasured one. Tertiary: `opposes` is absent from split._INVERSE_PAIRS and adding it would fix only pair 1 while redefining a version label with 99 written manifests, against split.py's own law that a new split is a new version file, never a rewrite. DETECTION kept; CUTTING dropped."
+  },
+
+  "mechanism_landed": {
+    "name": "estimand-side probe quarantine",
+    "idiom_derived_from": "scripts/pipeline/pii_scan.py load_quarantine — non-destructive keep-list, counted, honoured by the consumer and printed.",
+    "detector": "scripts/pipeline/probe_quarantine.py::floor_stated_holdout_pairs — pure, deterministic, mirrors split.alias_leak_report in shape (reports the pool it examined, not only its hits).",
+    "artifact": "data/_build/probe_quarantine/<domain>/<unit>.json (unit slug '/' -> '_'), plus report_<domain>.json.",
+    "consumers": [
+      "scripts/eval_probes.py — forced-choice axis: quarantined source ids excluded from summarize_hits; report gains scored_n / quarantined_n / quarantine_reasons / quarantine_instrument_blind, inputs gains quarantine_paths / quarantine_hashes / quarantine_sha256, and quarantined_probe_results carries the excluded rows WITH their outcomes.",
+      "scripts/eval_generative.py — generative axis (a STATED WIDENING beyond the audited scope, see scope_deviations): same exclusion, same reason strings, same counted fields."
+    ],
+    "not_touched": "probes.jsonl is never edited and never regenerated. No hydrate code, no split code, no gate threshold."
+  },
+
+  "instrumented_counts": {
+    "instrument": "PYTHONPATH=scripts .venv/bin/python scripts/pipeline/probe_quarantine.py --domain <d>",
+    "split_bearing_units_total": 99,
+    "holdout_class_pairs_total": 1373,
+    "pairs_with_any_train_witness_total": 10,
+    "pairs_floor_stated_total": 2,
+    "quarantined_sources_total": 2,
+    "per_domain": {
+      "pokemon-lore": {"units_scanned": 1, "units_measured": 1, "units_instrument_blind": 0, "holdout_class_pairs": 72, "pairs_with_any_train_witness": 2, "pairs_floor_stated": 2, "quarantined_sources": 2},
+      "millbrook-hollow": {"units_scanned": 1, "units_measured": 1, "units_instrument_blind": 0, "holdout_class_pairs": 10, "pairs_with_any_train_witness": 0, "pairs_floor_stated": 0, "quarantined_sources": 0},
+      "edc": {"units_scanned": 97, "units_measured": 0, "units_instrument_blind": 97, "holdout_class_pairs": 1291, "pairs_with_any_train_witness": 8, "pairs_floor_stated": null, "quarantined_sources": 0}
+    },
+    "the_zero_that_is_not_published_as_a_zero": "predicate_templates('edc') == {} — configs/templates/edc.yaml carries hydrate_templates but no predicate_templates key, because EDC's floor is the Rust festival-factory. On all 97 EDC units the floor-renderable test is VACUOUSLY false, so the record reports instrument_blind: true and pairs_floor_stated: null. run_scan's domain roll-up also returns null rather than a sum over zero measured units. A bare `leaks: 0` there would be an uncalibrated zero published 97 times."
+  },
+
+  "the_two_kanto_pairs": [
+    {
+      "holdout_triple_id": "c74ccbb0660f7b48",
+      "holdout": "Red | opposes | Lt. Surge",
+      "entity_class_pair": ["pokemon_lore_kanto:character:lt_surge", "pokemon_lore_kanto:character:red"],
+      "train_witnesses": [{"id": "472b3e910009022b", "triple": "Lt. Surge | opposes | Red"}],
+      "probe_surfaces": 4
+    },
+    {
+      "holdout_triple_id": "3bab9969cebbc03a",
+      "holdout": "Team Rocket | allied_with | Giovanni",
+      "entity_class_pair": ["giovanni:character:giovanni", "pokemon_lore_kanto:organization:team_rocket"],
+      "train_witnesses": [
+        {"id": "335ed04d8e57a8b6", "triple": "Giovanni | leads | Team Rocket"},
+        {"id": "d29da6d0d4463730", "triple": "Giovanni | leads | Team Rocket"},
+        {"id": "8089aec7189cd5d4", "triple": "Giovanni | member_of | Team Rocket"}
+      ],
+      "probe_surfaces": 4,
+      "correction_to_the_brief": "THREE floor-renderable train witnesses across TWO predicates (leads x2 under two subject_ids, member_of x1), not 'rendered twice' on one."
+    }
+  ],
+
+  "expected_delta": {
+    "estimand": "install-strength (augmentation_holdout), NOT the run gate. Every number below is the install-strength verdict's.",
+    "method": "OFFLINE replay of the PUBLISHED h2 per-probe outcomes (logs/probe_evals/h2/pokemon_lore_kanto_v1_cpt_base_vs_tuned.json probe_results, 300 rows) back through the SHIPPING eval_probes path on the REAL kanto corpus. No GPU, no model load, no provider call, no re-run.",
+    "prediction_stated_before_the_change": "n 300 -> 292; tuned 206/0.686667 -> 199/0.681507; base 89/0.296667 -> 86/0.294521; delta 0.390000 -> 0.386986; verdict PASS -> PASS.",
+    "forced_choice": {
+      "contaminated_source_ids": {"before": 0, "after": 2},
+      "quarantined_probe_surfaces": {"before": 0, "after": 8, "of": 300},
+      "scored_n": {"before": 300, "after": 292},
+      "tuned": {"before": {"hits": 206, "acc": 0.6866666666666666, "wilson": [0.6320976883026915, 0.7365156024401446]}, "after": {"hits": 199, "acc": 0.681507, "wilson": [0.626009, 0.732291]}},
+      "base": {"before": {"hits": 89, "acc": 0.2966666666666667}, "after": {"hits": 86, "acc": 0.294521}},
+      "delta_acc": {"before": 0.39, "after": 0.386986},
+      "verdict": {"before": "PASS", "after": "PASS", "thresholds_unchanged": {"min_n": 50, "min_delta_acc": 0.1, "chance": 0.25}},
+      "observed_equals_predicted": true
+    },
+    "generative": {
+      "note": "The STATED WIDENING. Same replay over logs/probe_evals/h2/pokemon_lore_kanto_v1_cpt_generative.json items (60 rows).",
+      "quarantined_items": {"before": 0, "after": 1, "of": 60},
+      "scored_n": {"before": 60, "after": 59},
+      "tuned": {"before": {"hits": 33, "acc": 0.55}, "after": {"hits": 32, "acc": 0.542373}},
+      "base": {"before": {"hits": 0, "acc": 0.0}, "after": {"hits": 0, "acc": 0.0}},
+      "bar": 0.4,
+      "bar_status": {"before": "cleared", "after": "cleared"},
+      "the_one_item": "3bab9969cebbc03a — 'Give only the named fact: Who is Team Rocket allied with?' (base deflected, tuned correct)."
+    },
+    "contamination_signature": "The 8 excluded forced-choice surfaces score tuned 7/8 = 0.8750 against the clean 292 at 0.6815 (base 3/8 = 0.3750 against 0.2945). The model answers the 'held-out' probe from the reverse fact the floor trained — direction predicted, magnitude measured. This is why the quarantine is warranted rather than cosmetic.",
+    "not_a_re_signing": "logs/phase_h2_kanto_certified_dual_axis.json is NOT rewritten. The decontaminated figures above are a new offline-derived number with their own provenance; the dated certificate stays history."
+  },
+
+  "red_green": {
+    "forced_choice_red": {
+      "shape": "BEHAVIOURAL on pre-change eval_probes.py — a value, not an AttributeError.",
+      "command": "scripts/pipeline/test_eval_probes_general.py::test_report_excludes_quarantined_sources_with_a_counted_reason",
+      "failure": "AssertionError: 72 at `assert report[\"base\"][\"n\"] == 68, report[\"base\"][\"n\"]`",
+      "false_red_guard": "The same fixture was first pushed through the REAL load_probe_corpus on the pre-change code and RETURNED (probes=72, measurement_class=augmentation_holdout) — every earlier validator (well-formed distinct choices, answer in choices, source in holdout_ids, unique surface id, non-empty holdout, no train/holdout overlap) accepted it. The red therefore comes from the quarantine seam, not from an earlier drop reason."
+    },
+    "generative_red": {
+      "shape": "BEHAVIOURAL on pre-change eval_generative.py.",
+      "command": "scripts/pipeline/test_eval_generative.py::test_generative_report_excludes_quarantined_sources_with_a_counted_reason",
+      "failure": "AssertionError: 60 at `assert report[\"generative\"][\"tuned\"][\"n\"] == 55`"
+    },
+    "green": "Both pass after the change; full oracle green (below).",
+    "detector_calibration": {
+      "why": "A zero from an uncalibrated detector is worthless, and this detector reports a zero on 97 of 99 units.",
+      "fires_on": [
+        "reverse-direction pair with a floor-renderable train witness (the real kanto pair 1)",
+        "different-predicate pair with three witnesses across two predicates (the real kanto pair 2) — every witness recorded, not just the first",
+        "an aliased train witness whose id resolve-merges to the holdout endpoint (and provably NOT without the merge)"
+      ],
+      "must_not_fire_and_does_not": [
+        "(a) train witness whose predicate has no floor template — the qualifier that takes the real pool from 10 to 2; wider pool still counts it, pairs_floor_stated stays 0",
+        "(b) holdout pair with no train witness at all",
+        "(c) self-loop pair where both endpoints are one entity class",
+        "(d) empty template map -> instrument_blind: true and pairs_floor_stated: null, NEVER leaks: 0"
+      ],
+      "restored_invariants_calibrated_with_synthetic_violations": [
+        "eval_probes.build_report length guard: base_hits=71 vs probes=72 -> ValueError 'probe/hit length mismatch: probes=72 base=71 tuned=72' (replaces a zip(strict=True) removed by index-based scoring)",
+        "eval_generative.build_generative_report length guard: tuned_labels=59 vs items=60 -> ValueError 'item/label length mismatch: items=60 tuned=59 base=None'"
+      ]
+    },
+    "no_op_control": "With the kanto quarantine record moved aside, the shipping code reproduces the published numbers EXACTLY: base 89/300 acc=0.296667 IDENTICAL, tuned 206/300 acc=0.686667 IDENTICAL, quarantine_paths []. The change is inert without its artifact."
+  },
+
+  "instruments_that_moved": {
+    "scripts/run_tests.sh modules": {"before": 47, "after": 48, "cause": "new module scripts/pipeline/test_probe_quarantine.py"},
+    "test_probe_quarantine.py printed count": {"before": null, "after": 10},
+    "test_eval_probes_general.py printed count": {"before": 11, "after": 15},
+    "test_eval_generative.py printed count": {"before": 15, "after": 16},
+    "data/_build/probe_quarantine/pokemon-lore/kanto.json": {"before": "absent", "after": "2 quarantined entries, sha256 0ea1e75d81470d347a0a40b0a31e4b7ecbebac5bd95dd831d3cdef4739219c92"},
+    "eval report fields": {"before": "absent", "after": "scored_n, quarantined_n, quarantine_reasons, quarantine_instrument_blind, quarantined_probe_results, inputs.quarantine_{paths,hashes,sha256}"}
+  },
+
+  "instruments_predicted_unmoved_and_shown_unmoved": {
+    "data/pokemon-lore/kanto/probes.jsonl sha256": "fc6b5c048f546f945f8e6ba13ff03ad2cfa58c1210efc87a7188405fa28409cb — read back through the shipping loader after the change, IDENTICAL. 0 of 104 tracked probe files edited.",
+    "data/pokemon-lore/kanto/splits/split_v2.json sha256": "6036d5851561dcfe865d9aa589806f969b090cfe60132d9975ed2c7852137a89 — IDENTICAL. No split re-cut, no v3, no edit to make_split / make_split_v2 / _INVERSE_PAIRS / load_id_map.",
+    "extraction-coverage ruler": "data/_build/recall/pokemon-lore/kanto.json ratio 0.3529, n_docs_judge_unavailable 0, unchanged. ruler_fingerprint recomputed live: documents 3adeec36…, domain_manifest c9e88bfd…, editions_registry 891c6619…, entities 7af38ee5…, fixture 0b50daf3…, id_map 2a2fe289…, triples 85b23dbf… — predicted delta EXACTLY 0.0000, observed 0.0000. Hydrated output and probes are not in the ruler read-set, and the diff touches zero ruler inputs.",
+    "every floor surface": "data/pokemon-lore/kanto/25_hydrated/relations.jsonl sha256 25789297bf30659a…, 1518 lines — unchanged. ZERO floor lines dropped. Structural proof: the complete file list of this change contains no hydrate module (see files_changed).",
+    "reasoning-surface suite": "test_generic_reasoning.py ALL 58 REASONING-SURFACE TESTS PASS — unchanged, so the round-4 revert stays mechanically defended.",
+    "split suite": "test_split_v2.py ALL 3 SPLIT-V2 TESTS PASS — unchanged (the detector deliberately did NOT land in split.py).",
+    "gate thresholds": "dominance_max_frac and BALANCE_COV_MAX untouched at 1.0; scripts/qgre/gates.py and scripts/data_audit.py are not in the diff at all.",
+    "logs/phase_h2_kanto_certified_dual_axis.json": "not rewritten.",
+    "repository cleanliness": "git status clean at 9248ea1d throughout; all work done in an isolated symlink-farm working copy, nothing written into the repo by this agent."
+  },
+
+  "oracle": {
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate scripts/run_tests.sh": "all green, 48 modules (was 47)",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/test_cpt_config.py": "ALL 8 CONFIG-CONTRACT TESTS PASS",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/qgre/test_gates.py": "ALL 9 QGRE-GATE TESTS PASS",
+    "cargo test": "not run — this change touches zero Rust; festival-factory/ is not in the diff."
+  },
+
+  "detected_counted_and_NOT_fixed": {
+    "edc_alias_duplicate_train_holdout_overlaps": {
+      "count": 8,
+      "why_not_fixed": "A different and worse defect class than the floor leak, with a different root cause: split.load_id_map keys on ed_dir.name, which is the YEAR for EDC's city/year slugs, so it returns {} for every EDC unit and split_v2's alias closure was inert at cut time (already on record as FOUND-NOT-FIXED in 197e3b47). The fix is a corpus-wide re-cut = a new eval series = a campaign, explicitly outside this item. They are DETECTED and recorded individually in each unit's record under pairs_with_any_train_witness so they cannot be lost.",
+      "rows": [
+        {"unit": "edc/las_vegas/2021", "holdout": "Ruff Hauser | plays_at | Boombox Art Car", "train": "Ruff Hauser (DnB Set) | plays_at | Boombox Art Car"},
+        {"unit": "edc/las_vegas/2021", "holdout": "Ruff Hauser | plays_at | Sunday, Oct 24 (hosted by Viva El Reggaeton)", "train": "Ruff Hauser (DnB Set) | plays_at | Sunday, Oct 24 (hosted by Viva El Reggaeton)"},
+        {"unit": "edc/las_vegas/2025", "holdout": "Tiësto | in_lineup | Electric Daisy Carnival Las Vegas", "train": "Tiësto | in_lineup | Electric Daisy Carnival Las Vegas", "note": "IDENTICAL RENDERED TRIPLE on both sides"},
+        {"unit": "edc/milton_keynes/2015", "holdout": "EDC UK 2015 | located_at | Milton Keynes Bowl", "train": "EDC UK 2015 | located_at | Milton Keynes Bowl", "note": "IDENTICAL RENDERED TRIPLE on both sides"},
+        {"unit": "edc/orlando/2021", "holdout": "Celo | in_lineup | Electric Daisy Carnival Orlando", "train": "Celo (Us) | in_lineup | Electric Daisy Carnival Orlando"},
+        {"unit": "edc/orlando/2021", "holdout": "Jinx (US) | in_lineup | Electric Daisy Carnival Orlando", "train": "Jinx | in_lineup | Electric Daisy Carnival Orlando"},
+        {"unit": "edc/orlando/2025", "holdout": "San Pacho (Sunset Set) | in_lineup | Electric Daisy Carnival Orlando 2025", "train": "San Pacho | in_lineup | Electric Daisy Carnival Orlando 2025"},
+        {"unit": "edc/orlando/2025", "holdout": "Seven Lions | in_lineup | Electric Daisy Carnival Orlando 2025", "train": "Seven Lions (Sunset Set) | in_lineup | Electric Daisy Carnival Orlando 2025"}
+      ]
+    },
+    "whether_the_edc_rust_floor_states_any_holdout_class_pair": "UNKNOWN and reported as such on 97 units (instrument_blind: true), never as 0. A measured answer needs an EDC-side instrument that can read festival-factory hydration; that is a separate item.",
+    "pre_existing_probes_jsonl_drift": "4 of 300 kanto probe rows — all four surfaces of 'Which organization does Lusamine lead?' — differ between the committed file and what HEAD's generic_probes would now emit (re-measured this session: choices differ 4, question 0, answer 0; first diff at surface 23890787307e6595). The committed file reproduces BYTE-EXACTLY under `git show 3582be0c:scripts/pipeline/generic_probes.py`, so this is the RNG-stream churn left by the 197e3b47 fix, and none of the 4 shipped rows offers a distractor true for the subject's entity class — churn, not harm. NOT fixed here: fixing it means regenerating, and build_probes shares one random.Random(seed) across all gold in order, so a regeneration changes 52 of 300 lines (8 removed + 44 kept-with-different-distractors), breaks probe_file_sha256 fc6b5c04…, and forces a GPU re-run to restore a scored number.",
+    "pre_existing_ruler_pin_gap": "compare_ruler_pin at HEAD reports one problem BEFORE any change: 'sample: file absent on disk (pinned 8d07bfecdadc…)'. Pre-existing, unrelated to this item, surfaced in transit rather than passed silently. The other six pinned digests plus editions_registry match live."
+  },
+
+  "scope_deviations": {
+    "widened": "scripts/eval_generative.py. The audited scope named eval_probes.py only. The generative axis scores the SAME two contaminated sources on the SAME corpus record (measured: 1 contaminated item of 60), so closing one axis and leaving the other is a half-close of the same estimand. The widening is behaviourally red-green proven, its decontaminated number is computed offline from the existing h2 receipt (33/60 -> 32/59), it moves the test_eval_generative count 15 -> 16, and the full oracle stays green. Reviewers judging strictly against the audited scope should treat eval_generative.py as the one item outside it, named here rather than buried.",
+    "not_widened": "certificate.py is NOT edited, yet its booster projection becomes decontaminated for free because it reads report['probe_results'], which now contains the scored rows only. Named as an intended consequence, not a silent one.",
+    "detector_placement": "The detector landed in a NEW module (scripts/pipeline/probe_quarantine.py) rather than in split.py, so run_tests.sh moves 47 -> 48 and test_split_v2.py deliberately stays at 3. The audit permitted either placement."
+  },
+
+  "how_to_reproduce": [
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/pipeline/probe_quarantine.py --domain pokemon-lore",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/pipeline/probe_quarantine.py --domain millbrook-hollow",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/pipeline/probe_quarantine.py --domain edc",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate scripts/run_tests.sh",
+    "CUDA_VISIBLE_DEVICES=\"\" buildgate .venv/bin/python scripts/test_cpt_config.py",
+    "CUDA_VISIBLE_DEVICES=\"\" PYTHONPATH=scripts buildgate .venv/bin/python scripts/qgre/test_gates.py"
+  ],
+
+  "files_changed": {
+    "new": [
+      "scripts/pipeline/probe_quarantine.py",
+      "scripts/pipeline/test_probe_quarantine.py",
+      "logs/phase_r6_floor_holdout_leak.json",
+      "data/_build/probe_quarantine/** (102 generated records/reports, 432K — NOT gitignored, and hashed into the eval receipt, so they must be committed for the scored number to be reproducible; same rule as data/_build/curation/keep_list.json)"
+    ],
+    "modified": [
+      "scripts/eval_probes.py",
+      "scripts/eval_generative.py",
+      "scripts/pipeline/test_eval_probes_general.py",
+      "scripts/pipeline/test_eval_generative.py"
+    ],
+    "not_touched_deliberately": [
+      "scripts/pipeline/generic_expand.py (the hydrate floor)",
+      "scripts/pipeline/generic_reasoning.py",
+      "scripts/pipeline/generic_probes.py",
+      "scripts/pipeline/split.py",
+      "scripts/qgre/gates.py",
+      "scripts/data_audit.py",
+      "scripts/pipeline/certificate.py",
+      "configs/templates/*.yaml",
+      "any data/<domain>/**/probes.jsonl, splits/*.json, 25_hydrated/*.jsonl",
+      "festival-factory/ (no Rust in this change)"
+    ]
+  },
+
+  "still_not_done": [
+    "No live eval was run: the decontaminated numbers are an offline replay of the published h2 per-probe outcomes through the shipping code, not a fresh scored run. A fresh forced-choice run would re-score 300 surfaces on GPU 1 and report n=292; a fresh generative run additionally spends provider tokens on the judge. Both are operator decisions.",
+    "The EDC floor remains unread by this instrument (97 units instrument_blind). A festival-factory-side detector is a separate item.",
+    "The 8 EDC alias/duplicate overlaps are counted, not fixed; their root cause (split.load_id_map keying on ed_dir.name) needs a corpus-wide re-cut.",
+    "The 4-row pre-existing kanto probes.jsonl drift is named, not fixed.",
+    "The 'sample' ruler-pin input is absent on disk at HEAD; pre-existing, unrelated, unfixed."
+  ]
+}

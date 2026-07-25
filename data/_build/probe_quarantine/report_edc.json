@@ -1,0 +1,987 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "floor_channel": "unreadable_by_this_instrument",
+  "n_floor_predicates": 0,
+  "units_scanned": 97,
+  "units_measured": 0,
+  "units_instrument_blind": 97,
+  "instrument_blind_units": [
+    "chiba/2018",
+    "chiba/2019",
+    "chicago/2013",
+    "dallas/2010",
+    "dallas/2011",
+    "denver/2008",
+    "denver/2009",
+    "denver/2010",
+    "denver/2011",
+    "edsea/2023",
+    "edsea/2024",
+    "edsea/2025",
+    "edsea/2026",
+    "incheon/2025",
+    "incheon/2026",
+    "las_vegas/2011",
+    "las_vegas/2012",
+    "las_vegas/2013",
+    "las_vegas/2014",
+    "las_vegas/2015",
+    "las_vegas/2016",
+    "las_vegas/2017",
+    "las_vegas/2018",
+    "las_vegas/2019",
+    "las_vegas/2021",
+    "las_vegas/2022",
+    "las_vegas/2023",
+    "las_vegas/2024",
+    "las_vegas/2025",
+    "london/2013",
+    "los_angeles/1997",
+    "los_angeles/1999",
+    "los_angeles/2000",
+    "los_angeles/2001",
+    "los_angeles/2002",
+    "los_angeles/2007",
+    "los_angeles/2008",
+    "los_angeles/2009",
+    "los_angeles/2010",
+    "medellin/2026",
+    "mexico_city/2014",
+    "mexico_city/2015",
+    "mexico_city/2016",
+    "mexico_city/2017",
+    "mexico_city/2018",
+    "mexico_city/2019",
+    "mexico_city/2020",
+    "mexico_city/2022",
+    "mexico_city/2023",
+    "mexico_city/2024",
+    "mexico_city/2025",
+    "mexico_city/2026",
+    "milton_keynes/2014",
+    "milton_keynes/2015",
+    "milton_keynes/2016",
+    "new_delhi/2016",
+    "new_york_nj/2012",
+    "new_york_nj/2013",
+    "new_york_nj/2014",
+    "new_york_nj/2015",
+    "new_york_nj/2016",
+    "orlando/2011",
+    "orlando/2012",
+    "orlando/2013",
+    "orlando/2014",
+    "orlando/2015",
+    "orlando/2016",
+    "orlando/2017",
+    "orlando/2018",
+    "orlando/2019",
+    "orlando/2021",
+    "orlando/2022",
+    "orlando/2023",
+    "orlando/2024",
+    "orlando/2025",
+    "orlando/2026",
+    "phuket/2025",
+    "phuket/2026",
+    "portimao/2021",
+    "portimao/2022",
+    "san_bernardino/2003",
+    "san_bernardino/2004",
+    "san_bernardino/2005",
+    "san_bernardino/2006",
+    "san_juan/2009",
+    "san_juan/2010",
+    "san_juan/2011",
+    "san_juan/2012",
+    "san_juan/2013",
+    "san_juan/2014",
+    "san_juan/2015",
+    "sao_paulo/2015",
+    "seoul/2019",
+    "shanghai/2018",
+    "suzhou/2023",
+    "suzhou/2025",
+    "zhuhai/2018"
+  ],
+  "holdout_class_pairs": 1291,
+  "pairs_with_any_train_witness": 8,
+  "pairs_floor_stated": null,
+  "quarantined_sources": 0,
+  "per_unit": [
+    {
+      "unit": "las_vegas/2011",
+      "instrument_blind": true,
+      "holdout_class_pairs": 13,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2012",
+      "instrument_blind": true,
+      "holdout_class_pairs": 16,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 20,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 17,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 24,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 32,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2017",
+      "instrument_blind": true,
+      "holdout_class_pairs": 28,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 63,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2019",
+      "instrument_blind": true,
+      "holdout_class_pairs": 64,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2021",
+      "instrument_blind": true,
+      "holdout_class_pairs": 71,
+      "pairs_with_any_train_witness": 2,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2022",
+      "instrument_blind": true,
+      "holdout_class_pairs": 69,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2023",
+      "instrument_blind": true,
+      "holdout_class_pairs": 56,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2024",
+      "instrument_blind": true,
+      "holdout_class_pairs": 66,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "las_vegas/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 68,
+      "pairs_with_any_train_witness": 1,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2011",
+      "instrument_blind": true,
+      "holdout_class_pairs": 4,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2012",
+      "instrument_blind": true,
+      "holdout_class_pairs": 5,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 2,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 8,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 10,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2017",
+      "instrument_blind": true,
+      "holdout_class_pairs": 8,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 10,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2019",
+      "instrument_blind": true,
+      "holdout_class_pairs": 17,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2021",
+      "instrument_blind": true,
+      "holdout_class_pairs": 21,
+      "pairs_with_any_train_witness": 2,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2022",
+      "instrument_blind": true,
+      "holdout_class_pairs": 18,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2023",
+      "instrument_blind": true,
+      "holdout_class_pairs": 12,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2024",
+      "instrument_blind": true,
+      "holdout_class_pairs": 17,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 17,
+      "pairs_with_any_train_witness": 2,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "orlando/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 9,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 8,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2017",
+      "instrument_blind": true,
+      "holdout_class_pairs": 13,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 20,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2019",
+      "instrument_blind": true,
+      "holdout_class_pairs": 16,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2020",
+      "instrument_blind": true,
+      "holdout_class_pairs": 19,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2022",
+      "instrument_blind": true,
+      "holdout_class_pairs": 20,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2023",
+      "instrument_blind": true,
+      "holdout_class_pairs": 16,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2024",
+      "instrument_blind": true,
+      "holdout_class_pairs": 22,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 21,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "mexico_city/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 47,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/1997",
+      "instrument_blind": true,
+      "holdout_class_pairs": 4,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/1999",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2000",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2001",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2002",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2007",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2008",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2009",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "los_angeles/2010",
+      "instrument_blind": true,
+      "holdout_class_pairs": 2,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_bernardino/2003",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_bernardino/2004",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_bernardino/2005",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_bernardino/2006",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "denver/2008",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "denver/2009",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "denver/2010",
+      "instrument_blind": true,
+      "holdout_class_pairs": 2,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "denver/2011",
+      "instrument_blind": true,
+      "holdout_class_pairs": 12,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "dallas/2010",
+      "instrument_blind": true,
+      "holdout_class_pairs": 5,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "dallas/2011",
+      "instrument_blind": true,
+      "holdout_class_pairs": 14,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_york_nj/2012",
+      "instrument_blind": true,
+      "holdout_class_pairs": 15,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_york_nj/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_york_nj/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_york_nj/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_york_nj/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "chicago/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 12,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2009",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2010",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2011",
+      "instrument_blind": true,
+      "holdout_class_pairs": 15,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2012",
+      "instrument_blind": true,
+      "holdout_class_pairs": 13,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 11,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 2,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "san_juan/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 5,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "london/2013",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "milton_keynes/2014",
+      "instrument_blind": true,
+      "holdout_class_pairs": 10,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "milton_keynes/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 4,
+      "pairs_with_any_train_witness": 1,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "milton_keynes/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 4,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "sao_paulo/2015",
+      "instrument_blind": true,
+      "holdout_class_pairs": 9,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "new_delhi/2016",
+      "instrument_blind": true,
+      "holdout_class_pairs": 2,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "shanghai/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 8,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "zhuhai/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "suzhou/2023",
+      "instrument_blind": true,
+      "holdout_class_pairs": 8,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "suzhou/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "chiba/2018",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "chiba/2019",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "seoul/2019",
+      "instrument_blind": true,
+      "holdout_class_pairs": 9,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "incheon/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "incheon/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "portimao/2021",
+      "instrument_blind": true,
+      "holdout_class_pairs": 11,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "portimao/2022",
+      "instrument_blind": true,
+      "holdout_class_pairs": 3,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "phuket/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 11,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "phuket/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "medellin/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 1,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "edsea/2023",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "edsea/2024",
+      "instrument_blind": true,
+      "holdout_class_pairs": 7,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "edsea/2025",
+      "instrument_blind": true,
+      "holdout_class_pairs": 6,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    },
+    {
+      "unit": "edsea/2026",
+      "instrument_blind": true,
+      "holdout_class_pairs": 0,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": null,
+      "pairs_train_witness_not_floor_stated": null,
+      "quarantined_sources": 0
+    }
+  ]
+}

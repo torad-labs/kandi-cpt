@@ -1,0 +1,48 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "unit": "las_vegas/2025",
+  "split_version": "v2",
+  "n_unique_triples": 671,
+  "n_train_ids": 603,
+  "n_holdout_ids": 68,
+  "instrument_blind": true,
+  "floor_channel": "unreadable_by_this_instrument",
+  "counts": {
+    "holdout_class_pairs": 68,
+    "pairs_with_any_train_witness": 1,
+    "pairs_floor_stated": null,
+    "pairs_train_witness_not_floor_stated": null,
+    "quarantined_sources": 0
+  },
+  "pairs_with_any_train_witness": [
+    {
+      "entity_class_pair": [
+        "edc_las_vegas_2025:artist:ti_sto",
+        "edc_las_vegas_2025:festival:edc_las_vegas"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "0e6156ca61ba581c"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Ti\u00ebsto",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Las Vegas"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "fba76b096a3fb626"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Ti\u00ebsto",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Las Vegas"
+        }
+      ]
+    }
+  ],
+  "quarantined": []
+}

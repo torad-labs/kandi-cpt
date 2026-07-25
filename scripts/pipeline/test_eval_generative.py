@@ -237,6 +237,55 @@ def test_build_report_pass_when_calibrated_and_clears_bar():
         assert report["generative"]["tuned"]["overall"]["bar_status"] == "cleared"
 
 
+def test_generative_report_excludes_quarantined_sources_with_a_counted_reason():
+    """The same estimand close as the forced-choice axis, on the SAME corpus record: a probe whose
+    class pair the hydrate floor already states is scored out of the generative number too."""
+    import dataclasses
+
+    from pipeline.probe_quarantine import REASON_FLOOR_PAIR
+
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=60)
+        corpus = dataclasses.replace(corpus, quarantined_sources={
+            f"id-{index}": REASON_FLOOR_PAIR for index in range(5)
+        })
+        checkpoint = _checkpoint(root)
+        items = G.select_generative_items(corpus.probes, probe_sha256=corpus.probe_sha256,
+                                          fraction=1.0, min_items=1, max_items=100)
+        labels = ["correct"] * 50 + ["wrong"] * 10
+        report = G.build_generative_report(
+            run_name="fresh",
+            config_path=_config(root),
+            base_path=None,
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            items=items,
+            base_labels=None,
+            tuned_labels=labels,
+            judge_model="nvidia/nemotron-test",
+            calibration={"n": 8, "kappa": 0.85, "usable": True, "provisional": False, "skipped": False},
+            min_n=50,
+            min_delta_acc=0.05,
+            generative_bar=0.40,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        # Behavioural first: the generative denominator moves off the unfiltered 60.
+        assert report["generative"]["tuned"]["n"] == 55, report["generative"]["tuned"]["n"]
+        assert report["generative"]["tuned"]["hits"] == 45
+        assert report["quarantined_n"] == 5
+        assert report["scored_n"] == 55
+        assert report["quarantine_reasons"] == {REASON_FLOOR_PAIR: 5}
+        assert len(report["items"]) == 55
+        excluded = report["quarantined_items"]
+        assert [row["source_triple_id"] for row in excluded] == [f"id-{index}" for index in range(5)]
+        assert all(row["quarantine_reason"] == REASON_FLOOR_PAIR for row in excluded)
+        assert report["inputs"]["n_generative_items"] == 60
+        assert report["inputs"]["n_generative_items_scored"] == 55
+
+
 def test_merge_dual_axis_requires_both():
     fc = {
         "status": "PASS",

@@ -1,0 +1,75 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "unit": "las_vegas/2021",
+  "split_version": "v2",
+  "n_unique_triples": 700,
+  "n_train_ids": 629,
+  "n_holdout_ids": 71,
+  "instrument_blind": true,
+  "floor_channel": "unreadable_by_this_instrument",
+  "counts": {
+    "holdout_class_pairs": 71,
+    "pairs_with_any_train_witness": 2,
+    "pairs_floor_stated": null,
+    "pairs_train_witness_not_floor_stated": null,
+    "quarantined_sources": 0
+  },
+  "pairs_with_any_train_witness": [
+    {
+      "entity_class_pair": [
+        "edc_las_vegas_2021:artist:ruff_hauser",
+        "edc_las_vegas_2021:stage:boombox_art_car"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "3c9b177d3b3ecd0b"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Ruff Hauser",
+          "predicate": "plays_at",
+          "object": "Boombox Art Car"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "cb69dc8b0a659105"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Ruff Hauser (DnB Set)",
+          "predicate": "plays_at",
+          "object": "Boombox Art Car"
+        }
+      ]
+    },
+    {
+      "entity_class_pair": [
+        "edc_las_vegas_2021:artist:ruff_hauser",
+        "edc_las_vegas_2021:stage:sunday_oct_24"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "537082ced7ee4a65"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Ruff Hauser",
+          "predicate": "plays_at",
+          "object": "Sunday, Oct 24 (hosted by Viva El Reggaeton)"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "7869df830198e7ef"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Ruff Hauser (DnB Set)",
+          "predicate": "plays_at",
+          "object": "Sunday, Oct 24 (hosted by Viva El Reggaeton)"
+        }
+      ]
+    }
+  ],
+  "quarantined": []
+}

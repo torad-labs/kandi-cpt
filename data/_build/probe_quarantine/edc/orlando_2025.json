@@ -1,0 +1,75 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "unit": "orlando/2025",
+  "split_version": "v2",
+  "n_unique_triples": 149,
+  "n_train_ids": 132,
+  "n_holdout_ids": 17,
+  "instrument_blind": true,
+  "floor_channel": "unreadable_by_this_instrument",
+  "counts": {
+    "holdout_class_pairs": 17,
+    "pairs_with_any_train_witness": 2,
+    "pairs_floor_stated": null,
+    "pairs_train_witness_not_floor_stated": null,
+    "quarantined_sources": 0
+  },
+  "pairs_with_any_train_witness": [
+    {
+      "entity_class_pair": [
+        "edc_orlando_2025:artist:san_pacho",
+        "edc_orlando_2025:festival:edc_orlando"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "82008fbd037197e1"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "San Pacho (Sunset Set)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "8dc5dbafc2830abe"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "San Pacho",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      ]
+    },
+    {
+      "entity_class_pair": [
+        "edc_orlando_2025:artist:seven_lions",
+        "edc_orlando_2025:festival:edc_orlando"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "201d8495cb2dd6fc"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Seven Lions",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "6a173bfe6eaea4d1"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Seven Lions (Sunset Set)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      ]
+    }
+  ],
+  "quarantined": []
+}

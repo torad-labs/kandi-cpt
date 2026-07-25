@@ -1,0 +1,48 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "edc",
+  "unit": "milton_keynes/2015",
+  "split_version": "v2",
+  "n_unique_triples": 43,
+  "n_train_ids": 39,
+  "n_holdout_ids": 4,
+  "instrument_blind": true,
+  "floor_channel": "unreadable_by_this_instrument",
+  "counts": {
+    "holdout_class_pairs": 4,
+    "pairs_with_any_train_witness": 1,
+    "pairs_floor_stated": null,
+    "pairs_train_witness_not_floor_stated": null,
+    "quarantined_sources": 0
+  },
+  "pairs_with_any_train_witness": [
+    {
+      "entity_class_pair": [
+        "edc_milton_keynes_2015:edition:2015",
+        "edc_milton_keynes_2015:venue:milton_keynes_bowl"
+      ],
+      "floor_stated": false,
+      "holdout_triple_ids": [
+        "6d4322b241b6de01"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "EDC UK 2015",
+          "predicate": "located_at",
+          "object": "Milton Keynes Bowl"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "9fb43319b80d9d1f"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "EDC UK 2015",
+          "predicate": "located_at",
+          "object": "Milton Keynes Bowl"
+        }
+      ]
+    }
+  ],
+  "quarantined": []
+}

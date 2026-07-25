@@ -10,6 +10,34 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import eval_probes as E  # noqa: E402
+from pipeline import probe_quarantine as Q  # noqa: E402
+
+
+def _write_quarantine(root: Path, source_ids, *, instrument_blind: bool = False,
+                      domain: str = "pokemon-eval", unit: str = "kanto") -> Path:
+    """A quarantine record in the shape `probe_quarantine.run_scan` writes."""
+    E.C.ROOT = root
+    path = Q.quarantine_path(domain, unit)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({
+        "schema": Q.SCHEMA,
+        "domain": domain,
+        "unit": unit,
+        "split_version": "v1",
+        "instrument_blind": instrument_blind,
+        "floor_channel": Q.FLOOR_CHANNEL_UNREADABLE if instrument_blind else Q.FLOOR_CHANNEL_GENERIC,
+        "counts": {"quarantined_sources": len(source_ids)},
+        "quarantined": [
+            {
+                "source_triple_id": source_id,
+                "reason": Q.REASON_FLOOR_PAIR,
+                "entity_class_pair": ["a", "b"],
+                "train_witness_triple_ids": ["train-witness"],
+            }
+            for source_id in source_ids
+        ],
+    }, indent=2) + "\n", encoding="utf-8")
+    return path
 
 
 def test_scoring_prompt_uses_explicit_cpt_cloze_without_instruction_wrapper():
@@ -334,6 +362,105 @@ def test_report_can_bind_an_explicit_historical_checkpoint_fingerprint():
         )
         assert report["config_fingerprint"] == "current-eval-recipe"
         assert report["checkpoint_fingerprint"] == "fixture-fingerprint"
+
+
+def test_report_excludes_quarantined_sources_with_a_counted_reason():
+    """The estimand close: a probe whose class pair the hydrate floor already states is scored
+    OUT with a counted reason. Behavioural — the denominator and the accuracy both move."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        _corpus(root)
+        _write_quarantine(root, [f"id-{index}" for index in range(4)])
+        corpus = _load_written_corpus(root)
+        checkpoint = _checkpoint(root, "quarantined")
+        report = E.build_report(
+            run_name="quarantined",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[index < 19 for index in range(72)],
+            tuned_hits=[index < 45 for index in range(72)],
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        # Behavioural first: the scored denominator and BOTH accuracies move off the unfiltered run.
+        assert report["base"]["n"] == 68, report["base"]["n"]
+        assert report["tuned"]["n"] == 68
+        assert report["tuned"]["hits"] == 41 and report["base"]["hits"] == 15
+        assert report["quarantined_n"] == 4
+        assert report["scored_n"] == 68
+        assert report["quarantine_reasons"] == {Q.REASON_FLOOR_PAIR: 4}
+        assert report["quarantine_instrument_blind"] is False
+        assert len(report["probe_results"]) == 68
+        assert all(row["source_triple_id"] not in {f"id-{i}" for i in range(4)}
+                   for row in report["probe_results"])
+        excluded = report["quarantined_probe_results"]
+        assert [row["source_triple_id"] for row in excluded] == [f"id-{i}" for i in range(4)]
+        assert all(row["quarantine_reason"] == Q.REASON_FLOOR_PAIR for row in excluded)
+        # The exclusion is an INPUT to the number, so its file is hashed into the receipt.
+        assert len(report["inputs"]["quarantine_paths"]) == 1
+        assert len(report["inputs"]["quarantine_hashes"]) == 1
+        assert report["inputs"]["quarantine_sha256"]
+
+
+def test_report_without_a_quarantine_record_scores_every_probe():
+    """Calibration control: absent artifact must leave the denominator and accuracy untouched."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        _corpus(root)
+        corpus = _load_written_corpus(root)
+        checkpoint = _checkpoint(root, "unquarantined")
+        report = E.build_report(
+            run_name="unquarantined",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[index < 19 for index in range(72)],
+            tuned_hits=[index < 45 for index in range(72)],
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["base"]["n"] == 72 and report["tuned"]["hits"] == 45
+        assert report["quarantined_n"] == 0
+        assert report["quarantine_reasons"] == {}
+        assert report["quarantined_probe_results"] == []
+        assert report["inputs"]["quarantine_paths"] == []
+
+
+def test_probe_loader_carries_the_instrument_blind_flag_rather_than_a_clean_read():
+    """A domain whose floor this instrument cannot read is BLIND, never measured-clean."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        _corpus(root, n=4)
+        _write_quarantine(root, [], instrument_blind=True)
+        corpus = _load_written_corpus(root)
+        assert corpus.quarantine_instrument_blind is True
+        assert corpus.quarantined_sources == {}
+        assert len(corpus.quarantine_hashes) == 1
+
+
+def test_probe_loader_refuses_a_quarantine_that_excludes_every_probe():
+    """Fail closed: an empty scored set is never a 0/0 verdict."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        _corpus(root, n=4)
+        _write_quarantine(root, [f"id-{index}" for index in range(4)])
+        try:
+            _load_written_corpus(root)
+        except ValueError as error:
+            assert "quarantine" in str(error)
+        else:
+            raise AssertionError("a quarantine covering every probe produced a scorable corpus")
 
 
 if __name__ == "__main__":

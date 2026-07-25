@@ -566,18 +566,50 @@ def build_generative_report(
     """Machine-readable generative receipt. PASS requires calibrated-or-provisional-labeled judge,
     sufficient n, tuned generative acc clearing the (lenient) bar beyond noise, and — when base
     labels are present — a delta clearing min_delta beyond noise."""
+    # Label lists are indexed below; `summarize_generative` only sees the already-consistent
+    # filtered lists, so keep the original item/label length invariant explicitly.
+    if len(tuned_labels) != len(items) or (
+            base_labels is not None and len(base_labels) != len(items)):
+        raise ValueError(
+            f"item/label length mismatch: items={len(items)} tuned={len(tuned_labels)} "
+            f"base={None if base_labels is None else len(base_labels)}"
+        )
+
+    # ESTIMAND-SIDE DECONTAMINATION — same corpus record, same reason strings, same
+    # non-destructive rule as the forced-choice axis (pipeline/probe_quarantine.py). The SAMPLE is
+    # deliberately drawn before the exclusion: filtering `corpus.probes` upstream would shift
+    # `select_generative_items`' RNG stream and silently re-cut the item set, which is a new eval
+    # series, not a decontamination.
+    def _quarantine_reason(item: GenerativeItem) -> str | None:
+        return corpus.quarantined_sources.get(str(item.source_triple_id or ""))
+
+    kept = [index for index, item in enumerate(items) if _quarantine_reason(item) is None]
+    excluded = [index for index, item in enumerate(items) if _quarantine_reason(item) is not None]
+    quarantine_reason_counts: dict[str, int] = {}
+    for index in excluded:
+        reason = _quarantine_reason(items[index]) or "unspecified"
+        quarantine_reason_counts[reason] = quarantine_reason_counts.get(reason, 0) + 1
+    if not kept:
+        raise ValueError(
+            "the probe quarantine excludes every generative item — an empty scored set is a "
+            "refusal, never a 0/0 verdict"
+        )
+    scored_items = [items[index] for index in kept]
+    scored_tuned_labels = [tuned_labels[index] for index in kept]
+    scored_base_labels = None if base_labels is None else [base_labels[index] for index in kept]
+
     tuned = summarize_generative(
-        items,
-        tuned_labels,
+        scored_items,
+        scored_tuned_labels,
         min_n=min_n,
         bar=generative_bar,
         measurement_class=corpus.measurement_class,
     )
     base = None
-    if base_labels is not None:
+    if scored_base_labels is not None:
         base = summarize_generative(
-            items,
-            base_labels,
+            scored_items,
+            scored_base_labels,
             min_n=min_n,
             bar=generative_bar,
             measurement_class=corpus.measurement_class,
@@ -660,8 +692,9 @@ def build_generative_report(
             f"checkpoint tokenized shard mismatch: {run_contract.get('tokenized')!r} != {tokenized!r}"
         )
 
-    item_receipts = [
-        {
+    def _item_receipt(i: int) -> dict[str, Any]:
+        item = items[i]
+        return {
             "index": item.index,
             "question": item.question,
             "gold": item.gold,
@@ -681,7 +714,10 @@ def build_generative_report(
                 else {}
             ),
         }
-        for i, item in enumerate(items)
+
+    item_receipts = [_item_receipt(i) for i in kept]
+    quarantined_receipts = [
+        {**_item_receipt(i), "quarantine_reason": _quarantine_reason(items[i])} for i in excluded
     ]
 
     return {
@@ -697,6 +733,10 @@ def build_generative_report(
         "editions": corpus.editions,
         "split_version": corpus.split_version,
         "scored_checkpoint": scored_checkpoint,
+        "scored_n": len(kept),
+        "quarantined_n": len(excluded),
+        "quarantine_reasons": quarantine_reason_counts,
+        "quarantine_instrument_blind": corpus.quarantine_instrument_blind,
         "delta_acc": delta_acc,
         "thresholds": {
             "min_n": min_n,
@@ -722,7 +762,10 @@ def build_generative_report(
             "token_stats_sha256": corpus.token_stats_sha256,
             "n_forced_choice_probes": len(corpus.probes),
             "n_generative_items": len(items),
+            "n_generative_items_scored": len(kept),
             "item_source_ids": [item.source_triple_id for item in items],
+            "quarantine_paths": [_display(path) for path in corpus.quarantine_paths],
+            "quarantine_hashes": corpus.quarantine_hashes,
         },
         "generative": {
             "tuned": {**tuned, "path": tuned_path, "model_sha256": _sha256(model_path)},
@@ -743,6 +786,7 @@ def build_generative_report(
             "forced_choice": None,
         },
         "items": item_receipts,
+        "quarantined_items": quarantined_receipts,
         "tuned_run_contract_sha256": _sha256(run_contract_path),
         "tuned_run_contract": run_contract,
     }

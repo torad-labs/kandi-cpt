@@ -1,0 +1,25 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "pokemon-lore",
+  "floor_channel": "generic_expand.predicate_templates",
+  "n_floor_predicates": 18,
+  "units_scanned": 1,
+  "units_measured": 1,
+  "units_instrument_blind": 0,
+  "instrument_blind_units": [],
+  "holdout_class_pairs": 72,
+  "pairs_with_any_train_witness": 2,
+  "pairs_floor_stated": 2,
+  "quarantined_sources": 2,
+  "per_unit": [
+    {
+      "unit": "kanto",
+      "instrument_blind": false,
+      "holdout_class_pairs": 72,
+      "pairs_with_any_train_witness": 2,
+      "pairs_floor_stated": 2,
+      "pairs_train_witness_not_floor_stated": 0,
+      "quarantined_sources": 2
+    }
+  ]
+}

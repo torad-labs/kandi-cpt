@@ -1,0 +1,146 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "split_version": "v2",
+  "n_unique_triples": 736,
+  "n_train_ids": 553,
+  "n_holdout_ids": 77,
+  "instrument_blind": false,
+  "floor_channel": "generic_expand.predicate_templates",
+  "counts": {
+    "holdout_class_pairs": 72,
+    "pairs_with_any_train_witness": 2,
+    "pairs_floor_stated": 2,
+    "pairs_train_witness_not_floor_stated": 0,
+    "quarantined_sources": 2
+  },
+  "pairs_with_any_train_witness": [
+    {
+      "entity_class_pair": [
+        "giovanni:character:giovanni",
+        "pokemon_lore_kanto:organization:team_rocket"
+      ],
+      "floor_stated": true,
+      "holdout_triple_ids": [
+        "3bab9969cebbc03a"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Team Rocket",
+          "predicate": "allied_with",
+          "object": "Giovanni"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "335ed04d8e57a8b6",
+        "8089aec7189cd5d4",
+        "d29da6d0d4463730"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Giovanni",
+          "predicate": "leads",
+          "object": "Team Rocket"
+        },
+        {
+          "subject": "Giovanni",
+          "predicate": "member_of",
+          "object": "Team Rocket"
+        },
+        {
+          "subject": "Giovanni",
+          "predicate": "leads",
+          "object": "Team Rocket"
+        }
+      ]
+    },
+    {
+      "entity_class_pair": [
+        "pokemon_lore_kanto:character:lt_surge",
+        "pokemon_lore_kanto:character:red"
+      ],
+      "floor_stated": true,
+      "holdout_triple_ids": [
+        "c74ccbb0660f7b48"
+      ],
+      "holdout_triples": [
+        {
+          "subject": "Red",
+          "predicate": "opposes",
+          "object": "Lt. Surge"
+        }
+      ],
+      "train_witness_triple_ids": [
+        "472b3e910009022b"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Lt. Surge",
+          "predicate": "opposes",
+          "object": "Red"
+        }
+      ]
+    }
+  ],
+  "quarantined": [
+    {
+      "source_triple_id": "3bab9969cebbc03a",
+      "reason": "floor_states_holdout_class_pair",
+      "entity_class_pair": [
+        "giovanni:character:giovanni",
+        "pokemon_lore_kanto:organization:team_rocket"
+      ],
+      "holdout_triple": {
+        "subject": "Team Rocket",
+        "predicate": "allied_with",
+        "object": "Giovanni"
+      },
+      "train_witness_triple_ids": [
+        "335ed04d8e57a8b6",
+        "8089aec7189cd5d4",
+        "d29da6d0d4463730"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Giovanni",
+          "predicate": "leads",
+          "object": "Team Rocket"
+        },
+        {
+          "subject": "Giovanni",
+          "predicate": "member_of",
+          "object": "Team Rocket"
+        },
+        {
+          "subject": "Giovanni",
+          "predicate": "leads",
+          "object": "Team Rocket"
+        }
+      ]
+    },
+    {
+      "source_triple_id": "c74ccbb0660f7b48",
+      "reason": "floor_states_holdout_class_pair",
+      "entity_class_pair": [
+        "pokemon_lore_kanto:character:lt_surge",
+        "pokemon_lore_kanto:character:red"
+      ],
+      "holdout_triple": {
+        "subject": "Red",
+        "predicate": "opposes",
+        "object": "Lt. Surge"
+      },
+      "train_witness_triple_ids": [
+        "472b3e910009022b"
+      ],
+      "train_witness_triples": [
+        {
+          "subject": "Lt. Surge",
+          "predicate": "opposes",
+          "object": "Red"
+        }
+      ]
+    }
+  ]
+}

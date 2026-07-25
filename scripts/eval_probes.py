@@ -11,7 +11,7 @@ import hashlib
 import json
 import math
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +37,12 @@ class ProbeCorpus:
     clean_tokens: int
     measurement_class: str
     chance: float
+    # Estimand-side decontamination (pipeline/probe_quarantine.py). Defaults keep every existing
+    # construction site valid: no quarantine record on disk == score every probe, as before.
+    quarantine_paths: list[Path] = field(default_factory=list)
+    quarantine_hashes: list[str] = field(default_factory=list)
+    quarantined_sources: dict[str, str] = field(default_factory=dict)   # source_triple_id → reason
+    quarantine_instrument_blind: bool = False
 
 
 def _rooted(path: str | Path) -> Path:
@@ -95,6 +101,9 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
     choice_counts: set[int] = set()
     seen_source_ids: set[str] = set()
     seen_surface_ids: set[str] = set()
+    quarantine_paths: list[Path] = []
+    quarantined_sources: dict[str, str] = {}
+    quarantine_instrument_blind = False
     for unit in sorted(units, key=lambda value: value.slug):
         probe_path = unit.dir / "probes.jsonl"
         if not probe_path.is_file():
@@ -132,6 +141,17 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         split_versions.add(split_version)
         split_paths.append(split_path)
         probe_paths.append(probe_path)
+        # Estimand-side decontamination, read the same way the split is: from the unit's own
+        # artifact, non-destructively. Absent record == score everything (the pre-quarantine
+        # behaviour); `instrument_blind` == this instrument could not read the unit's hydrate
+        # floor, which is NOT the same claim as "measured clean".
+        from pipeline.probe_quarantine import load_quarantine, quarantine_path, quarantined_reasons
+        quarantine_record = load_quarantine(domain, unit.slug)
+        if quarantine_record is not None:
+            quarantine_paths.append(quarantine_path(domain, unit.slug))
+            quarantine_instrument_blind = quarantine_instrument_blind or bool(
+                quarantine_record.get("instrument_blind"))
+            quarantined_sources.update(quarantined_reasons(quarantine_record))
         for line_number, line in enumerate(probe_path.read_text(encoding="utf-8").splitlines(), 1):
             if not line.strip():
                 continue
@@ -169,6 +189,15 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
 
     if not probes:
         raise ValueError("no probes found — run the probes stage first")
+    scored = [
+        probe for probe in probes
+        if str(probe.get("source_triple_id") or "") not in quarantined_sources
+    ]
+    if not scored:
+        raise ValueError(
+            "the probe quarantine excludes every probe — an empty scored set is a refusal, "
+            "never a 0/0 verdict; re-cut the estimand instead of scoring nothing"
+        )
     if len(split_versions) != 1:
         raise ValueError(f"probe units use different split versions: {sorted(split_versions)}")
     if len(measurement_classes) != 1:
@@ -204,6 +233,10 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
         clean_tokens=clean_tokens,
         measurement_class=measurement_class,
         chance=1.0 / next(iter(choice_counts)),
+        quarantine_paths=quarantine_paths,
+        quarantine_hashes=[_sha256(path) for path in quarantine_paths],
+        quarantined_sources=quarantined_sources,
+        quarantine_instrument_blind=quarantine_instrument_blind,
     )
 
 
@@ -332,18 +365,49 @@ def build_report(
     checkpoint_fingerprint: str | None = None,
     tokenized: str,
 ) -> dict[str, Any]:
+    # Scoring by INDEX below replaces a `zip(..., strict=True)`; keep that zip's length invariant
+    # explicitly rather than letting a short hit list slice silently.
+    if not len(base_hits) == len(tuned_hits) == len(corpus.probes):
+        raise ValueError(
+            f"probe/hit length mismatch: probes={len(corpus.probes)} "
+            f"base={len(base_hits)} tuned={len(tuned_hits)}"
+        )
+
+    # ESTIMAND-SIDE DECONTAMINATION. A quarantined probe is still SCORED — its base/tuned outcome
+    # is the evidence that the quarantine was warranted — but it is excluded from every reported
+    # number, with a counted reason. The training data is untouched: un-teaching a train fact to
+    # protect a probe would invert the estimand (pipeline/probe_quarantine.py).
+    def _quarantine_reason(probe: dict[str, Any]) -> str | None:
+        return corpus.quarantined_sources.get(str(probe.get("source_triple_id") or ""))
+
+    kept = [
+        index for index, probe in enumerate(corpus.probes)
+        if _quarantine_reason(probe) is None
+    ]
+    excluded = [
+        index for index, probe in enumerate(corpus.probes)
+        if _quarantine_reason(probe) is not None
+    ]
+    quarantine_reason_counts: dict[str, int] = {}
+    for index in excluded:
+        reason = _quarantine_reason(corpus.probes[index]) or "unspecified"
+        quarantine_reason_counts[reason] = quarantine_reason_counts.get(reason, 0) + 1
+    scored_probes = [corpus.probes[index] for index in kept]
+    scored_base_hits = [base_hits[index] for index in kept]
+    scored_tuned_hits = [tuned_hits[index] for index in kept]
+
     # Chance is the floor a random forced-choice picker hits; stamp both sides so the
     # report carries Wilson + insufficient-n without hand arithmetic.
     base = summarize_hits(
-        corpus.probes,
-        base_hits,
+        scored_probes,
+        scored_base_hits,
         min_n=min_n,
         bar=corpus.chance,
         estimand=corpus.measurement_class,
     )
     tuned = summarize_hits(
-        corpus.probes,
-        tuned_hits,
+        scored_probes,
+        scored_tuned_hits,
         min_n=min_n,
         bar=corpus.chance,
         estimand=corpus.measurement_class,
@@ -412,6 +476,10 @@ def build_report(
         "delta_acc": delta_acc,
         "axis": "forced_choice",
         "estimand": corpus.measurement_class,
+        "scored_n": len(kept),
+        "quarantined_n": len(excluded),
+        "quarantine_reasons": quarantine_reason_counts,
+        "quarantine_instrument_blind": corpus.quarantine_instrument_blind,
         "thresholds": {"min_n": min_n, "min_delta_acc": min_delta_acc},
         "checks": checks,
         "failed_checks": failed,
@@ -441,21 +509,41 @@ def build_report(
             "token_stats_path": _display(corpus.token_stats_path),
             "token_stats_sha256": corpus.token_stats_sha256,
             "clean_tokens": corpus.clean_tokens,
+            "quarantine_paths": [_display(path) for path in corpus.quarantine_paths],
+            "quarantine_hashes": corpus.quarantine_hashes,
+            "quarantine_sha256": _combined_hash(corpus.quarantine_paths),
         },
+        # The SCORED rows. Every downstream consumer of `probe_results` (certificate.py's booster
+        # projection) therefore reads the decontaminated set without knowing this feature exists.
         "probe_results": [
             {
-                "source_triple_id": probe.get("source_triple_id"),
-                "probe_surface_id": probe.get("probe_surface_id"),
-                "subject": probe.get("subject"),
-                "predicate": probe.get("predicate"),
-                "question": probe.get("question"),
-                "answer": probe.get("answer"),
-                "base_correct": bool(base_hit),
-                "tuned_correct": bool(tuned_hit),
+                "source_triple_id": corpus.probes[index].get("source_triple_id"),
+                "probe_surface_id": corpus.probes[index].get("probe_surface_id"),
+                "subject": corpus.probes[index].get("subject"),
+                "predicate": corpus.probes[index].get("predicate"),
+                "question": corpus.probes[index].get("question"),
+                "answer": corpus.probes[index].get("answer"),
+                "base_correct": bool(base_hits[index]),
+                "tuned_correct": bool(tuned_hits[index]),
             }
-            for probe, base_hit, tuned_hit in zip(
-                corpus.probes, base_hits, tuned_hits, strict=True
-            )
+            for index in kept
+        ],
+        # The EXCLUDED rows, kept with their outcomes: a quarantine whose excluded probes score
+        # like the rest is a quarantine that needed re-examining, and that is only checkable if
+        # the evidence ships with the receipt.
+        "quarantined_probe_results": [
+            {
+                "source_triple_id": corpus.probes[index].get("source_triple_id"),
+                "probe_surface_id": corpus.probes[index].get("probe_surface_id"),
+                "subject": corpus.probes[index].get("subject"),
+                "predicate": corpus.probes[index].get("predicate"),
+                "question": corpus.probes[index].get("question"),
+                "answer": corpus.probes[index].get("answer"),
+                "base_correct": bool(base_hits[index]),
+                "tuned_correct": bool(tuned_hits[index]),
+                "quarantine_reason": _quarantine_reason(corpus.probes[index]),
+            }
+            for index in excluded
         ],
         "base": {**base, "path": base_path, "model_sha256": _sha256(base_model_path)},
         "tuned": {

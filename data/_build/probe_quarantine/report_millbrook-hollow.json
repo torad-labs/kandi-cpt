@@ -1,0 +1,25 @@
+{
+  "schema": "probe_quarantine/v1",
+  "domain": "millbrook-hollow",
+  "floor_channel": "generic_expand.predicate_templates",
+  "n_floor_predicates": 16,
+  "units_scanned": 1,
+  "units_measured": 1,
+  "units_instrument_blind": 0,
+  "instrument_blind_units": [],
+  "holdout_class_pairs": 10,
+  "pairs_with_any_train_witness": 0,
+  "pairs_floor_stated": 0,
+  "quarantined_sources": 0,
+  "per_unit": [
+    {
+      "unit": "main",
+      "instrument_blind": false,
+      "holdout_class_pairs": 10,
+      "pairs_with_any_train_witness": 0,
+      "pairs_floor_stated": 0,
+      "pairs_train_witness_not_floor_stated": 0,
+      "quarantined_sources": 0
+    }
+  ]
+}
