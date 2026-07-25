@@ -243,10 +243,11 @@ def run_install_event(
             qpath = Path(questions_path) if questions_path else None
             questions = Cert.load_questions(domain, qpath)
             recall = None
+            # Live stage report before anything dated. The two campaign logs that used to sit ahead
+            # of it published a coverage number that was neither on the pinned ruler nor responsive
+            # to the graph — 0.1391 shipped while the live pinned instrument read 0.1923.
             for cand_path in (
                 Path(recall_report_path) if recall_report_path else None,
-                C.ROOT / "logs" / "phase_f2_coverage_metric.json",
-                C.ROOT / "logs" / "phase_g_extraction_gap_iteration.json",
                 C.ROOT / "data" / "_build" / "recall" / f"report_{domain}.json",
             ):
                 if cand_path is None:

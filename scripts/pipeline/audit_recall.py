@@ -76,7 +76,7 @@ DEFAULT_MIN_COVERAGE = 0.6
 # The ruler inputs a pin freezes. The triples file is deliberately ABSENT: pinning the graph
 # would make a genuine extraction gain fail closed, which is the equal-and-opposite defect.
 PINNED_RULER_FIELDS = ("fixture", "entities", "id_map", "domain_manifest", "documents",
-                       "editions_registry")
+                       "editions_registry", "sample")
 
 # A judge call that never returned usable output yields NO ground truth for its document.
 # Scoring such a doc as zero coverage measures judge availability, not extraction — the
@@ -265,6 +265,39 @@ def documents_digest(ed_dir: Path) -> dict:
     return {"path": str(root), "sha256": digest, "n_docs": len(rows)}
 
 
+def select_sample(docs: list[dict], sample_n: int, seed: int) -> tuple[int, list[dict]]:
+    """The scored document sample. One definition, used by both the scorer and the ruler.
+
+    Factored out so the ruler fingerprint digests the SAME selection the scorer scores; computing
+    it twice would let the two drift and the pin would verify a sample nobody used.
+    """
+    n_take = sample_n if sample_n > 0 else derive_sample_n(len(docs))
+    n_take = min(n_take, len(docs))
+    rng = random.Random(seed)
+    return n_take, (rng.sample(docs, n_take) if n_take else [])
+
+
+def sample_digest(ed_dir: Path, docs: list[dict], sample_n: int, seed: int) -> dict:
+    """Digest of the SAMPLE SELECTOR — the seventh ruler input, and the first that is not a file.
+
+    All three round-4 reviewers found this independently. The argument that licensed pinning the
+    document corpus names three operands — the corpus, the count and the seed — and only the corpus
+    was pinned. `--sample-n 5` moves kanto's clean_ratio from 0.1923 to 0.3529 with every one of the
+    six pinned digests byte-identical, `ruler_verified: true` and `quotable: true`, without touching
+    a byte on disk; on the production path seed 0 and seed 7 disagree the same way. Read-set
+    enumeration can never reach these, which is exactly why three earlier reviewers converged on the
+    registry and none reached the sampler.
+
+    The digest is over the RELPATHS ACTUALLY SAMPLED, because that — not the seed integer — is what
+    the denominator is a function of.
+    """
+    n_take, sample = select_sample(docs, sample_n, seed)
+    rel = sorted(str(Path(d.get("path", "")).name) for d in sample)
+    digest = hashlib.sha256("\n".join(rel).encode("utf-8")).hexdigest() if rel else None
+    return {"seed": seed, "sample_n_requested": sample_n, "n_take": n_take,
+            "n_docs_available": len(docs), "sha256": digest}
+
+
 def editions_registry_digest(domain: str, ed_dir: Path) -> dict:
     """Digest of the UNIT REGISTRY — the sixth ruler input, and the one that decides how many
     units exist at all.
@@ -305,6 +338,9 @@ def ruler_fingerprint(
     *,
     fixture_path: Path | None = None,
     fixture: dict | None = None,
+    docs: list[dict] | None = None,
+    sample_n: int = 0,
+    seed: int = 0,
 ) -> dict:
     """Digest + row count of every input the reported ratios depend on.
 
@@ -339,6 +375,7 @@ def ruler_fingerprint(
         },
         "documents": documents_digest(ed_dir),
         "editions_registry": editions_registry_digest(domain, ed_dir),
+        "sample": sample_digest(ed_dir, docs or [], sample_n, seed),
         "triples": {
             "path": str(trip_p) if trip_p else None,
             "sha256": sha256_of(trip_p),
@@ -415,6 +452,7 @@ def write_ruler_pin(domain: str, unit_slug: str, fingerprint: dict) -> Path:
             "triples_rows_at_pin_time": fingerprint["triples"]["rows"],
             "document_count": (fingerprint.get("documents") or {}).get("n_docs"),
             "resolved_dir": (fingerprint.get("editions_registry") or {}).get("resolved_dir"),
+            "sample": {k: v for k, v in (fingerprint.get("sample") or {}).items() if k != "sha256"},
         },
         "note": (
             "Coverage ruler pin. The four digests under `pinned` must match at score time or the "
@@ -1024,6 +1062,7 @@ def run_audit(
         # from a moved number. The fingerprint reads the same paths the loaders above used.
         fingerprint = ruler_fingerprint(
             domain, ed.dir, ed.slug, fixture_path=fixture_path, fixture=fixture,
+            docs=docs, sample_n=sample_n, seed=seed,
         )
         if pin_ruler and not dry_run:
             ruler_pins_written.append(str(write_ruler_pin(domain, ed.slug, fingerprint)))
@@ -1079,10 +1118,7 @@ def run_audit(
             o_name = resolve_surface(o_raw, entity_index) or id_to_name.get(o_raw, o_raw)
             gkeys.add(fact_key(s_name, p, o_name))
 
-        n_take = sample_n if sample_n > 0 else derive_sample_n(len(docs))
-        n_take = min(n_take, len(docs))
-        rng = random.Random(seed)
-        sample = rng.sample(docs, n_take) if n_take else []
+        n_take, sample = select_sample(docs, sample_n, seed)
 
         doc_rows = []
         u_hits = u_n = 0

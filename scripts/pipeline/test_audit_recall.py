@@ -829,10 +829,11 @@ def test_fixture_digest_binds_only_when_a_fixture_was_supplied():
         "domain_manifest": {"sha256": "m" * 64},
         "documents": {"sha256": "d" * 64},
         "editions_registry": {"sha256": "r" * 64},
+        "sample": {"sha256": "s" * 64},
     }
     pin = {"pinned": {"fixture": "f" * 64, "entities": "e" * 64, "id_map": "i" * 64,
                       "domain_manifest": "m" * 64, "documents": "d" * 64,
-                      "editions_registry": "r" * 64}}
+                      "editions_registry": "r" * 64, "sample": "s" * 64}}
 
     supplied = A.compare_ruler_pin(pin, fingerprint, fixture_supplied=True)
     assert any(p.startswith("fixture:") for p in supplied), supplied

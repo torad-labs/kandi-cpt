@@ -7,7 +7,8 @@
     "editions_registry": "891c6619f9dc1942d12537608b871d5f5308a7f0a9fd7390cee65540decfb409",
     "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
     "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
-    "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7"
+    "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7",
+    "sample": "8d07bfecdadc56cbeba0024001f9b1f5a297fd639f883983bfc3515060970ad4"
   },
   "recorded": {
     "document_count": 105,
@@ -16,6 +17,12 @@
     "fixture_n_docs": 20,
     "id_map_entries": 88,
     "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/pokemon-lore/kanto",
+    "sample": {
+      "n_docs_available": 105,
+      "n_take": 20,
+      "sample_n_requested": 0,
+      "seed": 0
+    },
     "triples_rows_at_pin_time": 869,
     "triples_sha256_at_pin_time": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
   },
@@ -23,21 +30,25 @@
     "pinned": {
       "documents": "3adeec36453a74d8682a949f192b40b596f020e324461365174f792fe9d28a48",
       "domain_manifest": "c9e88bfd63057fbba6448feffdc819a9129a2c82748ac08a9c54ace7d6b00db4",
+      "editions_registry": "891c6619f9dc1942d12537608b871d5f5308a7f0a9fd7390cee65540decfb409",
       "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
       "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
       "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7"
     },
     "recorded": {
+      "document_count": 105,
       "entity_rows": 959,
       "fixture_n_assertions": 376,
       "fixture_n_docs": 20,
       "id_map_entries": 88,
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/pokemon-lore/kanto",
       "triples_rows_at_pin_time": 869,
       "triples_sha256_at_pin_time": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
     },
     "supersedes": {
       "pinned": {
-        "domain_manifest": "078bcce3f5be868a39217b6f94e4b52f71f1db03b25ad18cb7010c3ea4af80c1",
+        "documents": "3adeec36453a74d8682a949f192b40b596f020e324461365174f792fe9d28a48",
+        "domain_manifest": "c9e88bfd63057fbba6448feffdc819a9129a2c82748ac08a9c54ace7d6b00db4",
         "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
         "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
         "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7"
@@ -50,7 +61,23 @@
         "triples_rows_at_pin_time": 869,
         "triples_sha256_at_pin_time": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
       },
-      "supersedes": null
+      "supersedes": {
+        "pinned": {
+          "domain_manifest": "078bcce3f5be868a39217b6f94e4b52f71f1db03b25ad18cb7010c3ea4af80c1",
+          "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
+          "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
+          "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7"
+        },
+        "recorded": {
+          "entity_rows": 959,
+          "fixture_n_assertions": 376,
+          "fixture_n_docs": 20,
+          "id_map_entries": 88,
+          "triples_rows_at_pin_time": 869,
+          "triples_sha256_at_pin_time": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
+        },
+        "supersedes": null
+      }
     }
   },
   "unit": "kanto"

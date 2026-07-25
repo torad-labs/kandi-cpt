@@ -32,6 +32,18 @@ generated line that names an entity outside the walk, introduces a numeral the w
 drops an endpoint, negates, or repeats an earlier line is DROPPED with a counted reason. Zero-drop is
 never trusted on faith — every reason is red-green calibrated in test_generic_reasoning.py.
 
+    STATED CEILING — grounding is a CLOSED-VOCABULARY check and its RECALL IS BOUNDED by the names
+    it knows. It flags a name only if that name is in the unit's vocabulary, so a wholly fabricated
+    entity that appears nowhere in the unit is INVISIBLE to it and always will be. Round 4 shipped
+    "…a chain Silph Co. also records." with zero drops while the paired control naming `Sabrina`
+    was caught. The universe is therefore drawn from the unit's ENTITY TABLE, not merely from
+    triple endpoints (kanto 553 -> 951 names), which closes both of those cases — `Necrozma` is in
+    entities.jsonl and named 20+ times in the unit's documents while touching no triple. What
+    remains open is genuinely open: a hallucinated name absent from the entity table cannot be
+    caught by vocabulary matching, and an OPEN-vocabulary check (capitalised-run heuristics) is a
+    separate, false-positive-prone design decision that has not been made. Do not read a zero
+    `ungrounded` count as proof of grounding.
+
 ENTITY IDENTITY IS RESOLVED, NOT RAW. `load_all_triples` reads the UNRESOLVED 15_structured, where
 kanto carries 42 display names under two node ids and `resolve` recorded 88 alias→canonical entries.
 Keying the walk graph on the raw id fabricates a walk whose two endpoints are the SAME entity under
@@ -46,13 +58,12 @@ ESTIMAND — TRAIN-ONLY, TWO LEVELS. (1) id level: every constituent triple must
 holdout_ids` (140 of kanto's 736 unique triples are in NEITHER side because 15_structured was
 rewritten after the immutable split was cut). (2) FACT level: a walk that names a HOLDOUT triple's
 endpoint pair teaches that held-out fact as a connection, and the id check cannot see it. The scan
-covers EVERY node pair the walk names, adjacent included — three successive roundings-down were all
-wrong. Endpoints only missed 483 walks that stated a holdout pair between interior nodes; distance
->= 2 then missed the reverse-direction case, where a fact held out one way sits on the train side
-the other way under a different triple_id and both collapse to one class pair (kanto:
-(Lt. Surge|opposes|Red) TRAIN vs (Red|opposes|Lt. Surge) HOLDOUT). Measured on kanto: 2,101 of
-15,440 pool walks dropped, train coverage 501 -> 497 of 521. The coverage is paid deliberately;
-the estimand is the point. Every number produced by this stage is a RUN-GATE corpus-construction
+covers every NON-ADJACENT node pair: endpoints alone missed 483 walks that stated a holdout pair
+between interior nodes. Adjacent pairs were included in round 3 and REVERTED in round 4 as a
+measured false landing — an adjacent pair is one of the walk's own TRAIN triples, which the
+deterministic floor already renders verbatim, so dropping the walk moved nothing while costing
+1,542 walks and 4 of 521 train triples. The leak it was aimed at is UPSTREAM and unfixed here: the
+floor renders 475 of 521 train triples and thereby states 2 of the 72 holdout class pairs outright. Every number produced by this stage is a RUN-GATE corpus-construction
 number on the TRAIN side; nothing here estimates install strength.
 
     PYTHONPATH=scripts python scripts/pipeline/generic_reasoning.py --domain <d>
@@ -758,8 +769,20 @@ def plan_walks(train: dict[str, dict], uniq: dict[str, dict], rel_q: dict, unit_
         # the distance >= 2 scan waved them through. If a class pair is in `bridges` at all, the walk
         # narrates a held-out fact and must not ship. Cost on kanto: pool 14,881 -> 13,339, train
         # coverage 501/521 -> 497/521 — paid deliberately, because the estimand is the point.
+        # NON-ADJACENT pairs only. The adjacency arm was added in round 3 and REVERTED in round 4 as
+        # a measured false landing: an adjacent pair IS one of the walk's own TRAIN triples, and the
+        # deterministic floor (`generic_expand`) already renders those verbatim, so refusing to
+        # render the walk cannot change whether the corpus states that holdout class pair. Measured
+        # on kanto — the arm dropped 1,542 extra walks (1,386 of them one pair, Giovanni/Team Rocket,
+        # whose holdout triple carries a DIFFERENT predicate than the walk's own edge) and cost 4 of
+        # 521 train triples, while both class pairs it fired on were already stated by the floor 2
+        # and 3 times respectively. Delta on its own instrument: zero.
+        #
+        # The real finding underneath it is UPSTREAM and out of scope for this file: the hydrate
+        # floor renders 475 of 521 train triples and thereby states 2 of the 72 holdout class pairs
+        # outright. That is a corpus-level estimand leak this class cannot fix by dropping walks.
         nodes = ctx["nodes"]
-        stated = next(((i, j) for i in range(len(nodes)) for j in range(i + 1, len(nodes))
+        stated = next(((i, j) for i in range(len(nodes)) for j in range(i + 2, len(nodes))
                        if frozenset((nodes[i], nodes[j])) in bridges), None)
         if stated is not None:
             drops["holdout_bridge"] += 1
@@ -1046,6 +1069,16 @@ def dedup_delta(ed, records: list[dict], cap: int) -> dict:
     }
 
 
+
+def entities_path(ed_dir):
+    p = ed_dir / "15_structured" / "entities.jsonl"
+    return p if p.is_file() else None
+
+
+def resolved_entities_path(ed_dir):
+    p = ed_dir / "15_structured" / "entities.resolved.jsonl"
+    return p if p.is_file() else None
+
 def unit_frames(ed, domain: str) -> dict:
     """Everything a unit contributes: triples, split sides, entity classes, display vocabulary."""
     all_triples = load_all_triples(ed)
@@ -1067,6 +1100,24 @@ def unit_frames(ed, domain: str) -> dict:
     universe: set[str] = set()
     for names in aliases_of.values():
         universe |= names
+    # The grounding gate is a CLOSED-VOCABULARY check: it can only flag a name its universe knows.
+    # Building that universe from triple ENDPOINTS alone left every entity that the unit records but
+    # no triple touches invisible — kanto's `Necrozma` is in 15_structured/entities.jsonl and named
+    # 20+ times in the unit's own documents, yet a generated line asserting it belongs to the walk
+    # shipped with zero drops. The entity table is the unit's own declared vocabulary and costs one
+    # file read, so the universe is drawn from it too.
+    for path in (entities_path(ed.dir), resolved_entities_path(ed.dir)):
+        if path is None or not path.is_file():
+            continue
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            if not line.strip():
+                continue
+            try:
+                name = (json.loads(line) or {}).get("name_canonical")
+            except json.JSONDecodeError:
+                continue
+            if isinstance(name, str) and name.strip():
+                universe.add(name.strip())
     return {"uniq": uniq, "train": train, "split": split, "mode": mode, "id_map": id_map,
             "classes": classes, "names_of": names_of, "aliases_of": aliases_of, "universe": universe}
 

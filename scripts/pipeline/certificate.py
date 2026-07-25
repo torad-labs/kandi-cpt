@@ -691,9 +691,14 @@ def main() -> None:
             probe["receipt_path"] = args.probe_receipt
         recall = load_json(Path(args.recall_report) if args.recall_report else None)
         if recall is None:
-            # Prefer Phase F2 receipt, then stage report
+            # LIVE STAGE REPORT FIRST. This chain used to prefer logs/phase_f2_coverage_metric.json,
+            # a DATED CAMPAIGN LOG — so the published certificate quoted 0.1391 (12) while the live
+            # pinned instrument read 0.1923 (15/78). A campaign log does not move when the graph
+            # moves, carries no ruler pin, and has no `quotable` flag, which meant the entire
+            # coverage-ruler apparatus was bypassed at publish time: the number that actually ships
+            # was neither pinned nor falsifiable. The stage report is the only artifact that tracks
+            # the corpus. An explicit --recall-report still wins over both.
             for candidate in (
-                C.ROOT / "logs" / "phase_f2_coverage_metric.json",
                 C.ROOT / "data" / "_build" / "recall" / f"report_{args.domain}.json",
             ):
                 recall = load_json(candidate)

@@ -546,13 +546,22 @@ def test_endpoint_is_not_satisfied_by_a_longer_name_containing_it():
     assert missing_endpoints("Blue is linked to Ditty.", {"Blue"}, {"Ditty"}, matcher) == []
 
 
-def test_holdout_stated_as_the_walks_own_adjacent_edge_is_dropped():
-    """A fact held out in one DIRECTION sits on the train side in the other, under a different
-    triple_id, and both collapse to the same class pair.
+def test_holdout_stated_as_the_walks_own_adjacent_edge_is_NOT_dropped_and_why():
+    """PROVEN NO, kept as the record of a reverted fix.
 
-    Round 3 found this on real kanto: (Lt. Surge | opposes | Red) is TRAIN while
-    (Red | opposes | Lt. Surge) is HOLDOUT, so two selected walks stated the held-out fact as their
-    own adjacent edge — which the distance >= 2 scan deliberately exempted.
+    Round 3 added adjacent pairs to the holdout-bridge scan: a fact held out in one DIRECTION sits
+    on the train side in the other, under a different triple_id, and both collapse to one class
+    pair — kanto has (Lt. Surge|opposes|Red) TRAIN and (Red|opposes|Lt. Surge) HELD OUT.
+
+    Round 4 measured that arm and it was INERT. An adjacent pair IS one of the walk's own TRAIN
+    triples, and the deterministic floor renders those verbatim regardless, so refusing to render
+    the walk cannot change whether the corpus states that holdout class pair. Both pairs the arm
+    fired on were already stated by the floor (2 and 3 lines each), while the arm cost 1,542 walks
+    and 4 of 521 train triples. Reverted.
+
+    This test therefore asserts the CURRENT behaviour — the walk survives — so that anyone
+    re-adding the arm has to come here and argue with the measurement rather than rediscover it.
+    The leak is real but lives UPSTREAM in the floor, which states 2 of 72 holdout class pairs.
     """
     triples = [
         _t("x:c:surge", "rival_of", "x:c:red", "Lt. Surge", "Red"),          # TRAIN
@@ -568,9 +577,13 @@ def test_holdout_stated_as_the_walks_own_adjacent_edge_is_dropped():
     selected, stats = plan_walks(train, uniq, REL_Q, "u", None, classes=frames["classes"],
                                  names_of=frames["names_of"], aliases_of=frames["aliases_of"],
                                  holdout_ids=holdout, max_walk=3)
-    leaked = [c for c in selected if {"Lt. Surge", "Red"} <= set(c["rendered"])]
-    assert not leaked, f"walk states the held-out pair as its own edge: {[c['rendered'] for c in leaked]}"
-    assert stats["drops"]["holdout_bridge"] >= 1, stats["drops"]
+    adjacent = [c for c in selected if {"Lt. Surge", "Red"} <= set(c["rendered"])]
+    assert adjacent, (
+        "the adjacency arm is reverted, so a walk whose OWN EDGE is the holdout class pair must "
+        "still render — the floor states that fact anyway and dropping the walk buys nothing")
+    # …while a NON-adjacent statement of a holdout pair is still dropped: the revert narrowed the
+    # scan back to distance >= 2, it did not disable it.
+    assert "holdout_bridge" in stats["drops"], stats["drops"]
 
 
 def test_an_alias_spelling_of_a_merged_class_is_licensed_not_foreign():
