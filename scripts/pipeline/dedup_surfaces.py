@@ -33,6 +33,7 @@ HYDRATED_NAMES = (
     "relations_llm.jsonl",
     "relations_contrast.jsonl",
     "relations_qa.jsonl",
+    "relations_reasoning.jsonl",
 )
 
 

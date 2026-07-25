@@ -67,6 +67,10 @@ def test_execution_contract_matches_manifest() -> None:
         ("pokemon-lore", "score_educational"),
         ("pokemon-lore", "structured"),
         ("pokemon-lore", "synth"),
+        # Added 2026-07-25 with the reasoning-walk surface class: it renders through the
+        # LLM channel (generic_synth's injectable generate_fn seam), so it SPENDS and must
+        # appear in this inventory deliberately. It is approval-gated by egress:llm.
+        ("pokemon-lore", "reasoning"),
         ("pokemon-lore", "audit_recall"),
         ("millbrook-hollow", "synth"),
     }

@@ -47,6 +47,7 @@ STAGE_INPUTS = {
     "split": ("unit:15_structured",),
     "hydrate": ("unit:15_structured",),
     "contrast": ("unit:15_structured",),
+    "reasoning": ("unit:15_structured", "unit:25_hydrated"),
     "synth": ("unit:15_structured",),
     # Phase C synthetic layer (after hydrate/synth surfaces exist).
     "dedup_surfaces": ("unit:25_hydrated",),
@@ -142,6 +143,12 @@ def _recipe_state(domain: Domain, editions: str) -> dict[str, Any]:
         template_checks.append({"template": "sft_templates.rel_q", "ok": ok})
         if not ok:
             gaps.append("sft: templates must contain a non-empty sft_templates.rel_q block")
+    if "reasoning" in stage_names:
+        ok = bool(domain.templates.get("sft_templates", {}).get("rel_q"))
+        template_checks.append({"template": "reasoning:sft_templates.rel_q", "ok": ok})
+        if not ok:
+            gaps.append("reasoning: templates must contain a non-empty sft_templates.rel_q block "
+                        "(the declaratives the walk states to the generator)")
     evidence.extend(template_checks)
     return {
         "state": "RECIPE_COMPLETE",

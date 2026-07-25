@@ -1,0 +1,45 @@
+{
+ "schema": "kandi.reasoning_surfaces.v1",
+ "campaign": "phase_r2_reasoning_surfaces",
+ "recorded_at": "2026-07-25T07:40:00Z",
+ "status": "LANDED_ROUND3_HOLDOUT_BRIDGE_WIDENED_BUT_NOT_ADVERSARIALLY_REVIEWED",
+ "headline": "A new train-only reasoning-surface class rendered through the LLM channel. Round 3 widened the holdout-bridge guard from the walk's endpoints to EVERY non-adjacent node pair: on kanto the guard went 76 -> 559 catches, i.e. 483 walks that state a held-out fact were shipping under the endpoint-only check.",
+ "provenance": {
+  "round1": "premise OVER_PINNED (walk pool 365 directed chains vs 20,075 connected sets, 55x); implementer LAND_WIDENED on the DETERMINISTIC template channel; reviews MISFIRES/SOUND/MISFIRES",
+  "round2": "channel corrected to the LLM path (generic_synth's injectable generate_fn seam) after the orchestrator caught that the artifact made zero LLM calls; LAND_WIDENED; both reviewers confirmed the channel, alias merge and offline stub proof, and both independently returned MISFIRES on the same endpoint-only holdout-bridge defect",
+  "round3": "the two builders died on the weekly agent limit; this repair was implemented by the orchestrator in the main loop from the reviewers' own required_change and fixture"
+ },
+ "the_fix": {
+  "file": "scripts/pipeline/generic_reasoning.py",
+  "was": "if frozenset((ctx['nodes'][0], ctx['nodes'][-1])) in bridges",
+  "now": "scan every (i, j) with j - i >= 2 over ctx['nodes']",
+  "why": "a walk asserts a connection between every pair of nodes it names; adjacent pairs are its own declared TRAIN edges and stay exempt, but any pair at distance >= 2 is a claim the walk makes without stating the edge \u2014 exactly what a held-out triple is probed on"
+ },
+ "red_green": {
+  "red": "test_holdout_bridge_covers_internal_pairs_not_just_endpoints FAILED before the fix with walk ['Professor Oak','Agatha','Elite Four','Red'] surviving selection while stating the held-out (Agatha, Red) pair",
+  "first_red_was_false": "the first fixture used predicates absent from the test REL_Q, so all 3 walks dropped as 'unauthorable' and never reached the guard \u2014 a detector that could not fire. Fixture corrected to rel_q-backed predicates before the red was accepted.",
+  "green": "54/54 reasoning-surface tests, including both pre-existing endpoint-case tests (no regression)"
+ },
+ "expected_delta": {
+  "instrument": "walks caught by the holdout-bridge guard on real kanto, max_walk=3",
+  "prediction_stated_first": "widening can only ADD catches, never remove; selected must fall",
+  "before_endpoint_only": 76,
+  "after_widened": 559,
+  "newly_caught_internal_pairs": 483,
+  "reproduces_reviewer_figure": "76 matches the round-2 reviewer's measured 76 merged endpoint pairs",
+  "selected_walks_still_stating_a_holdout_pair": 0,
+  "train_triples_covered_by_selection": 501,
+  "train_triples_total": 521
+ },
+ "estimand": "TRAIN-ONLY; enforced over every constituent triple via split train_ids, not 'not in holdout'",
+ "gates": {
+  "run_tests": "47 modules all green",
+  "cpt_config": "8/8",
+  "qgre_gates": "9/9"
+ },
+ "NOT_DONE": [
+  "Round-3 adversarial review never ran (weekly agent limit, resets 2026-07-29). The class-closure claim above is the orchestrator's own measurement, NOT an independent reviewer's.",
+  "No live LLM generation has been run: the class is proven offline with an injected stub generator. Spending on real generation is an operator decision.",
+  "No CPT training run; the kanto Axis-B multi-hop ablation that would show install effect is untouched."
+ ]
+}

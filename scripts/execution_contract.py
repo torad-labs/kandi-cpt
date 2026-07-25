@@ -39,6 +39,7 @@ STAGE_EFFECTS = {
     "curate": ["gpu", "write"],
     "split": ["write"],
     "contrast": ["write"],
+    "reasoning": ["egress:llm", "write"],
     "meta": ["write"],
     "hydrate": ["write"],
     "synth": ["egress:llm", "write"],
@@ -91,6 +92,7 @@ STAGE_OUTPUTS = {
     "structured": ["data/{domain}/**/15_structured/entities.jsonl", "data/{domain}/**/15_structured/triples.jsonl"],
     "split": ["data/{domain}/**/splits/split_v1.json"],
     "contrast": ["data/{domain}/**/25_hydrated/relations_contrast.jsonl"],
+    "reasoning": ["data/{domain}/**/25_hydrated/relations_reasoning.jsonl"],
     "meta": ["data/{domain}/**/festival_meta.json"],
     "hydrate": ["data/{domain}/**/25_hydrated/relations.jsonl"],
     "synth": ["data/{domain}/**/25_hydrated/relations_llm.jsonl"],
@@ -110,6 +112,7 @@ STAGE_OUTPUTS = {
 OPENROUTER_COMMAND_MARKERS = (
     "--llm-rescue",
     "extract_structured.py",
+    "generic_reasoning.py",
     "generic_synth.py",
     "rehydrate_vc1.sh",
     "score_educational.py",

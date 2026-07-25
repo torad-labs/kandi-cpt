@@ -1,0 +1,19 @@
+{
+  "domain": "pokemon-lore",
+  "note": "Coverage ruler pin. The four digests under `pinned` must match at score time or the audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY \u2014 the graph is the thing under measurement and is never pinned, so a genuine extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. `supersedes` is why that cannot be silent \u2014 it carries the digests and row counts this pin replaced, so the pin's own diff shows the ruler change that licensed the new series. Same trust model as the assertion fixture: committed, diffed, reviewed.",
+  "pinned": {
+    "domain_manifest": "078bcce3f5be868a39217b6f94e4b52f71f1db03b25ad18cb7010c3ea4af80c1",
+    "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
+    "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
+    "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7"
+  },
+  "recorded": {
+    "entity_rows": 959,
+    "fixture_n_assertions": 376,
+    "fixture_n_docs": 20,
+    "id_map_entries": 88,
+    "triples_rows_at_pin_time": 869,
+    "triples_sha256_at_pin_time": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
+  },
+  "unit": "kanto"
+}

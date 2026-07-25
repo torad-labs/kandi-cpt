@@ -87,6 +87,11 @@ stages:
     cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "pokemon-lore", "--editions", "{editions}",
           "--max-fraction", "0.10"]
     gpu: false
+  - name: reasoning
+    desc: "25_hydrated — LLM-rendered reasoning walks over connected TRAIN triple sets (soft-cap 10%)"
+    cmd: ["{py}", "scripts/pipeline/generic_reasoning.py", "--domain", "pokemon-lore", "--editions", "{editions}",
+          "--max-fraction", "0.10", "--variations", "2"]
+    gpu: false
   - name: dedup_surfaces
     desc: "SemDeDup hydrated surfaces (non-destructive exclusion list; floor-protected)"
     cmd: ["{py}", "scripts/pipeline/dedup_surfaces.py", "--domain", "pokemon-lore", "--editions", "{editions}"]

@@ -1,0 +1,118 @@
+{
+  "id": "r3-pin-coverage-denominator",
+  "title": "Make the coverage estimand falsifiable — pin the ruler, not just the assertion set",
+  "date": "2026-07-25",
+  "verdict_class": "run-gate instrumentation (NOT install-strength). No split arm, no held-out arm, no provider calls, no training run.",
+  "scope": "kanto unit corpus, 105 clean docs, seed-0 sample of 20, replayed provider-free through --facts-json against fixture 0b50daf3.",
+
+  "estimand_definitions": {
+    "clean": "GATED. denominator = manifest-predicate AND subject_in_unit AND object-type contract; numerator = canonical-matched. UNCHANGED by this item — 0.1923 before and after, so the h5 trail stays comparable.",
+    "clean_unfiltered": "NEW, DIAGNOSTIC, NOT GATED. clean minus the object-type contract filter. Reported so the choice of gated estimand is an argued number rather than a silent default.",
+    "raw": "Phase F. denominator = manifest-predicate only. Entity- and contract-independent by construction."
+  },
+
+  "baseline": {
+    "note": "Baseline is 0.1923. 0.4505 is SUPERSEDED in the h5 trail and is NOT quoted anywhere in this receipt.",
+    "clean_ratio": 0.1923,
+    "clean_hits": 15,
+    "clean_n": 78,
+    "clean_unfiltered_ratio": 0.0749,
+    "clean_unfiltered_n": 267,
+    "raw_ratio": 0.0532,
+    "raw_hits": 20,
+    "raw_n": 376,
+    "guards": {
+      "judge_unavailable": 0,
+      "fixture_docs_matched": 20,
+      "fixture_docs_sampled": 20,
+      "entity_rows": 959,
+      "triple_rows": 869,
+      "id_map_entries": 88,
+      "classes": {"judge_rejected": 189, "out_of_unit": 109, "misses": 63, "hits": 15},
+      "reject_reasons": {"object_type_unresolved": 154, "object_type_mismatch": 35},
+      "ruler_verified": true,
+      "quotable": true
+    },
+    "ruler_digests": {
+      "fixture": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
+      "entities": "7af38ee5d19af1d4cc33cf7cca988b395a5ef6bdb3008ec9ffd250410b72c066",
+      "id_map": "2a2fe289101b5456fa140fe59be1dd832a32919dc971212970b688ee72dd7df7",
+      "domain_manifest": "078bcce3f5be868a39217b6f94e4b52f71f1db03b25ad18cb7010c3ea4af80c1",
+      "triples_NOT_PINNED": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093"
+    }
+  },
+
+  "defect": {
+    "statement": "The fixture froze 376 assertions and nothing else. The CLEAN denominator is also a function of the entity table (subject_in_unit + the object-type check's entity_type lookup) and the domain manifest (the contract), and the sampled document list is a function of the .md tree. All three were unpinned and unreported, so clean_ratio was selectable in [0.0000, 1.0000] with a byte-identical triples file.",
+    "measured_levers_at_HEAD": {
+      "shadow_obj": "+55 pure-addition entity rows, one per distinct clean-miss object, retyped outside its predicate's contract. clean 0.1923 -> 1.0000 (+0.8077), clean_n 78 -> 11, status FAIL -> PASS. triples sha unchanged.",
+      "shadow_subj": "+13 pure-addition entity rows, one per distinct out_of_unit subject. clean 0.1923 -> 0.1579 (-0.0344), clean_n 78 -> 95. triples sha unchanged.",
+      "contract_none": "domain manifest only, every predicate object list -> ['nonexistent_type']. clean 0.1923 -> 1.0000 (+0.8077), clean_n 78 -> 0, status FAIL -> PASS.",
+      "contract_lit": "domain manifest only, every predicate object list -> ['literal']. clean 0.1923 -> 0.0749 (-0.1174), clean_n 78 -> 267.",
+      "alias_only": "one alias appended to an EXISTING entity row. entity_rows unchanged at 959 — a row-count guard would have missed it.",
+      "idmap_only": "+1 id_map entry.",
+      "docshift": "one .md at sorted position 0 -> seed-0 sample overlaps the fixture 3/20; the 17 unmatched docs score as assertable=[] and vanish. Report still printed n_docs_sampled 20 / judge_unavailable 0 over a 3-document ratio (clean_n 78 -> 13).",
+      "docshift_mid": "one .md at sorted position 51 -> 12/20 overlap, clean_n 78 -> 47."
+    },
+    "correction_to_the_premise_audit": "The audit's structural_assumption #5 said the item's '+0.8077 -> 1.0000' was NOT reproducible from addition-only entity edits and ceilinged at 0.7143. That is wrong — its construction carried an extra constraint ('chosen so no hit's object is disturbed'). Dropping that constraint, 55 addition-only rows reach exactly 1.0000/11 with a byte-identical triples file, and a manifest-only edit reaches 1.0000/0 independently. The item's original magnitude was right. Everything else in the audit reproduced exactly (0.1923/78, 0.0532/376, 189 = 154 unresolved + 35 mismatch, 109 out_of_unit, 3/20 and 12/20 sample collapse)."
+  },
+
+  "fix": {
+    "mechanism": "The ruler pin. Four digests — fixture, entities, id_map, domain manifest — are frozen in data/_build/recall/<domain>/<unit>.ruler.json and verified on every fixture-mode run. A mismatch is FAIL with the named file, and the printed summary emits clean_ratio/raw_ratio as null. The TRIPLES FILE IS DELIBERATELY NOT PINNED: it is the thing under measurement.",
+    "why_not_a_frozen_entity_snapshot": "The premise audit measured that freezing the entity table for SCORING would blind the 154 object_type_unresolved assertions a genuine re-extraction rescues. Pinning-and-failing-closed has the opposite property: the live table is still used, so a genuine gain is scored at full sensitivity; only an UNDECLARED ruler change is refused.",
+    "secondary_fixes": [
+      "Fixture/sample alignment: a sampled document the fixture does not cover is FAIL, not assertable=[].",
+      "A clean denominator of 0 is FAIL, not PASS. At HEAD, emptying the denominator via the manifest turned kanto's 0.1923 FAIL into a 1.0000 PASS.",
+      "--no-ruler-pin is not a bypass: an ignored pin sets quotable=false and is reported in ruler.pins_ignored.",
+      "Re-pinning is allowed and cannot be silent: the new pin carries `supersedes` (previous digests + row counts) and --pin-ruler prints the row deltas and a NEW-SERIES warning.",
+      "reject_reasons breakdown and the clean_unfiltered arm added so the estimand choice is an argued number."
+    ]
+  },
+
+  "red_green": {
+    "a_entity_growth_no_new_facts": {
+      "red_HEAD": "clean 0.1923 -> 1.0000 (+0.8077), status PASS",
+      "green": "status FAIL, quotable false, printed clean_ratio null, reason 'ruler pin mismatch (kanto: entities: pinned 7af38ee5d19a… but live c67b0cbc4707…)'. Reported-ratio delta: +0.0000, because no ratio is reported."
+    },
+    "b_contract_growth_entities_untouched": {
+      "red_HEAD": "clean 0.1923 -> 0.0749 (-0.1174) for ['literal']; -> 1.0000 (+0.8077) and PASS for ['nonexistent_type']",
+      "green": "both FAIL, quotable false, problem names domain_manifest ONLY — the entities digest is proven unchanged in the same report, so the two halves are independently attributable."
+    },
+    "c_genuine_added_triple_must_still_move_it": {
+      "red_for_any_over_pinned_design": "+0.0000",
+      "green": "clean 0.1923 -> 0.2051 (+0.0128), raw 0.0532 -> 0.0559 (+0.0027), clean_n UNCHANGED at 78, raw_n unchanged at 376, ruler_verified TRUE, quotable TRUE. Deleting 124 located_in triples moves it the other way: 0.1923 -> 0.1410 (-0.0513), also quotable. Sensitivity is undiluted — identical to HEAD's."
+    },
+    "d_sample_fixture_misalignment_fails_closed": {
+      "red_HEAD": "PASS-shaped output over 3 of 20 documents with judge_unavailable 0 and n_docs_sampled 20",
+      "green": "status FAIL, quotable false, reason 'fixture covers 3/20 sampled documents (missing: …)'. Partial case: 12/20 also FAILs."
+    }
+  },
+
+  "variant_probes": {
+    "shadow_subj": "FAIL (entities) — the subject-side entity lever, which a contract-only fix does not close.",
+    "alias_only": "FAIL (entities) with entity_rows unchanged at 959 — digest catches what a row count cannot.",
+    "idmap_only": "FAIL (id_map) with clean_ratio unchanged at 0.1923 — the pin fires on the RULER change even when the number did not move.",
+    "drop_triples": "quotable TRUE, 0.1923 -> 0.1410 — a graph regression is still measurable.",
+    "ent1_triple1": "+1 contract-valid entity +1 triple. FAIL (entities) -> re-pin -> scores 0.2051 quotable. The deliberate-change path works and is not bricked.",
+    "docshift_mid": "12/20 partial misalignment also FAILs.",
+    "no_pin_present": "unpinned units are unchanged except for the empty-denominator and fixture-coverage fixes; ruler_verified reads null and ruler_units_pinned 0. Kanto ships pinned; EDC and any future unit are opt-in until pinned."
+  },
+
+  "honest_limits": [
+    "The pin is a trust anchor, not a proof. Anyone may re-pin after editing the entity table and then quote a passing number — shadow_obj + --pin-ruler yields clean 1.0000/11 with quotable true. The defense is the same one the assertion fixture already relies on: the pin is a committed file, `supersedes` records what it replaced (entities 959 -> 1014 rows), and --pin-ruler prints a NEW-SERIES warning. Reviewable, not impossible.",
+    "Enforcement is opt-in per unit. A unit with no .ruler.json keeps every lever open; only its ruler is now RECORDED on the report. Only kanto is pinned by this item.",
+    "The 0.6 gate still rides `clean` (0.1923). This item did not move the gated estimand — moving it to clean_unfiltered (0.0749) or raw (0.0532) restates every number in the h5 trail and is a campaign, not a patch. Both arms are now co-reported so that decision can be made on arithmetic.",
+    "Nothing here closes the coverage gap itself. kanto remains FAIL at 0.1923 against 0.6, with 9 failed predicates. This is measurement plumbing only.",
+    "Miss-guided re-extraction stays DEFERRED per the item — it needs a held-out arm, since injecting gold triples into prompts for docs scored against that same gold is answer-key leakage."
+  ],
+
+  "oracle": {
+    "run_tests": "46 modules, '── all green', exit 0",
+    "test_cpt_config": "ALL 8 CONFIG-CONTRACT TESTS PASS",
+    "qgre_test_gates": "ALL 9 QGRE-GATE TESTS PASS",
+    "test_audit_recall_count": "17 -> 28 (new cases wired INSIDE the __main__ discovery block; the printed count changed, so none of them was defined-but-never-run)",
+    "environment": "isolated shadow tree at /mnt/torad-storage-01/infra/training/r3-oracle (real scripts/ configs/ schema/ + the data subsets the suite reads), baseline proven '── all green' BEFORE the artifact was applied and again after. All runs under buildgate with CUDA_VISIBLE_DEVICES=''. No provider calls, no GPU, no training."
+  },
+
+  "supersedes_in_flight": "An unreviewed, unreceipted r3 implementation was sitting uncommitted in the working tree (scripts/pipeline/audit_recall.py + test_audit_recall.py, mtime 05:45). It is SUPERSEDED by this artifact. Its two sound contributions are preserved and reimplemented: the ruler provenance block and the fixture-coverage fail-closed. Its central move — deleting the object-type contract from the CLEAN denominator — is rejected on measurement: (1) its own docstring claimed entity additions become '+0.0000', but measured against it the same 203-row entity synthetic still moved the gated ratio 0.0749 -> 0.0635 and the 13-row subject synthetic moved it 0.0749 -> 0.0532, because subject_in_unit still reads the live entity table; (2) it diluted the gated denominator 78 -> 267, cutting genuine-gain sensitivity 3.4x (+0.0128 -> +0.0038 for one added triple); (3) it silently redefined the gated baseline from 0.1923 to 0.0749, breaking comparability with the whole h5 trail. Its contract-inertness argument is preserved as the non-gated clean_unfiltered arm."
+}
