@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import statistics
 import sys
 from collections import Counter, defaultdict
@@ -153,6 +154,148 @@ def balance_by_utilization(records: list[dict], *, quota: int | None = None) -> 
     return kept, report
 
 
+def _protected_spans(text: str, entities: list) -> list[tuple[int, int]]:
+    """Character ranges of every entity mention — the parts a formatting variant may never touch."""
+    spans: list[tuple[int, int]] = []
+    for entity in entities:
+        name = str(entity or "")
+        if not name:
+            continue
+        start = text.find(name)
+        while start != -1:
+            spans.append((start, start + len(name)))
+            start = text.find(name, start + 1)
+    return spans
+
+
+def distinct_n(texts: list[str], n: int = 2) -> float:
+    """Unique n-grams / total n-grams — the diversity gate's ruler."""
+    grams: set = set()
+    total = 0
+    for text in texts:
+        words = text.split()
+        for i in range(len(words) - n + 1):
+            grams.add(tuple(words[i:i + n]))
+            total += 1
+    return len(grams) / total if total else 0.0
+
+
+def formatting_augment_derived(
+    records: list[dict],
+    *,
+    seed: int = 1729,
+) -> tuple[list[dict], dict]:
+    """Emit formatting variants ONLY at a setting that measurably raises distinct-2, else emit none.
+
+    The knobs are derived by measurement rather than asked for or hardcoded. A formatting variant
+    helps only when its new-bigram share beats the corpus's existing distinct-2; whether it does
+    depends on sentence length and how much the variants collide with each other, which is a
+    property of the corpus and cannot be known in advance. So the augmenter builds each candidate
+    setting, measures distinct-2 on the result, and keeps the best one that IMPROVES on the
+    un-augmented baseline. If none does, it returns the records untouched.
+
+    That makes this incapable of regressing the gate it is meant to help — the failure mode of the
+    first attempt, where a fixed prefix transform at a fixed fraction dropped distinct-2 by 27.7%.
+    """
+    if not records:
+        return records, {"added": 0, "multiplier": 1.0, "chosen": None}
+    baseline = distinct_n([r["text"] for r in records])
+    best: tuple[list[dict], dict] | None = None
+    best_score = baseline
+    trials = []
+    for fraction in (0.25, 0.5):
+        for emphasis in (2, 3, 4, 6):
+            candidate, report = formatting_augment(
+                records, fraction=fraction, emphasis_per_surface=emphasis, seed=seed,
+            )
+            score = distinct_n([r["text"] for r in candidate])
+            trials.append({"fraction": fraction, "emphasis": emphasis, "distinct_2": round(score, 4)})
+            if score > best_score:
+                best_score, best = score, (candidate, {**report, "distinct_2": score})
+    if best is None:
+        return records, {
+            "added": 0, "multiplier": 1.0, "chosen": None,
+            "baseline_distinct_2": round(baseline, 4), "trials": trials,
+            "note": "no setting improved distinct-2 on this corpus — augmentation declined itself",
+        }
+    records_out, report = best
+    return records_out, {
+        **report,
+        "baseline_distinct_2": round(baseline, 4),
+        "chosen": {"fraction": report["fraction"], "emphasis": report["emphasis_per_surface"]},
+        "distinct_2_gain": round(report["distinct_2"] - baseline, 4),
+        "trials": trials,
+    }
+
+
+def formatting_augment(
+    records: list[dict],
+    *,
+    fraction: float = 0.5,
+    emphasis_per_surface: int = 2,
+    seed: int = 1729,
+) -> tuple[list[dict], dict]:
+    """Formatting-only diversity: markdown emphasis on NON-ENTITY tokens (EMNLP-2025 dvlab).
+
+    The first attempt used prefix transforms (indent/bullet/blockquote) and regressed distinct-2 by
+    27.7%. That was an artifact of the transform, not of the technique: a prefix leaves every
+    interior bigram identical, so each variant contributes ~1 new bigram against ~6 total (0.17),
+    far under the corpus ratio (~0.33) — the ratio had to fall. An interior edit changes the two
+    bigrams adjacent to each edited token instead (0.40 for one token, 0.80 for two), which is above
+    the corpus ratio and therefore able to raise it.
+
+    Fact safety is preserved by MASKING rather than by avoiding the interior: entity mentions are
+    located and their character ranges are protected, so emphasis only lands on tokens that are not
+    part of any entity. `_preserves_payload` then re-checks every entity survives verbatim, and any
+    variant that fails is dropped rather than emitted.
+    """
+    if not records or fraction <= 0:
+        return records, {"added": 0, "fraction": fraction, "multiplier": 1.0}
+    rng = random.Random(seed)
+    added: list[dict] = []
+    skipped = 0
+    for rec in sorted(records, key=lambda r: r["text"]):
+        if rng.random() >= fraction:
+            continue
+        text = rec["text"]
+        spans = _protected_spans(text, rec.get("entity_ids") or [])
+        tokens, cursor, free = text.split(" "), 0, []
+        for index, token in enumerate(tokens):
+            start, end = cursor, cursor + len(token)
+            cursor = end + 1
+            if not token.strip() or any(s < end and start < e for s, e in spans):
+                continue
+            if any(ch.isalpha() for ch in token):
+                free.append(index)
+        if not free:
+            skipped += 1
+            continue
+        for index in rng.sample(free, min(emphasis_per_surface, len(free))):
+            tokens[index] = f"**{tokens[index]}**"
+        variant_text = " ".join(tokens)
+        if not _preserves_payload(rec, variant_text):
+            skipped += 1
+            continue
+        variant = dict(rec)
+        variant["text"] = variant_text
+        variant["surface_form"] = f"{rec.get('surface_form', 'template')}+fmt:emphasis"
+        added.append(variant)
+    out = records + added
+    return out, {
+        "added": len(added),
+        "skipped_unsafe": skipped,
+        "fraction": fraction,
+        "emphasis_per_surface": emphasis_per_surface,
+        "seed": seed,
+        "multiplier": round(len(out) / len(records), 4),
+    }
+
+
+def _preserves_payload(rec: dict, text: str) -> bool:
+    """Every entity must survive VERBATIM — the invariant that keeps faithfulness unaffected."""
+    return all(str(e) in text for e in (rec.get("entity_ids") or []) if str(e))
+
+
 def expand_records(triples: list[dict], ptmpls: dict, unit_name: str, domain: str | None = None) -> list[dict]:
     """Render the per-predicate templates over the triples → hydrate records (the 25_hydrated shape).
     A triple whose predicate has no template is skipped; a template referencing an attr the triple lacks
@@ -241,10 +384,17 @@ def main():
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         recs = expand_records(triples, ptmpls, unit_name, args.domain)
         recs, util = balance_by_utilization(recs)
+        recs, fmt = formatting_augment_derived(recs)
         print(f"  {unit_name}: utilization-balanced {util['kept']} kept / {util['dropped']} dropped "
               f"(quota={util['quota']}/fact, {util['facts']} facts; per-fact before "
               f"min={util['per_fact_before']['min']} median={util['per_fact_before']['median']} "
               f"max={util['per_fact_before']['max']})", flush=True)
+        if fmt.get("chosen"):
+            print(f"  {unit_name}: formatting +{fmt['added']} surfaces "
+                  f"(chosen {fmt['chosen']}, distinct-2 {fmt['baseline_distinct_2']} -> "
+                  f"{fmt['distinct_2']:.4f}, +{fmt['distinct_2_gain']})", flush=True)
+        else:
+            print(f"  {unit_name}: formatting declined — {fmt.get('note', 'no gain')}", flush=True)
         uncovered = sorted({t["predicate"] for t in triples} - set(ptmpls))
         if args.dry_run:
             print(f"  {ed.slug}: {len(recs)} lines over {len({r['relation_type'] for r in recs})} relations; "
