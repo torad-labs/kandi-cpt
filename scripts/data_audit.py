@@ -180,14 +180,75 @@ def dim_disjoint_static(eds):
         return {"verdict": "skipped", "note": "no hydrated relations in scope to audit",
                 "scope": "las_vegas/2026 confusable groups", "n_groups": len(groups),
                 "groups_with_vocab": sum(have_vocab.values()), "n_cooccurrence_violations": 0, "violation_samples": []}
-    violations = DC.audit_cooccurrence(lines)
+    violations, per_edition, unchecked = _cooccurrence_by_edition(eds)
     n_missing = sum(1 for v in have_vocab.values() if not v)
+    if not per_edition:
+        # Scoping the check correctly must not turn a false FAIL into a vacuous PASS. If NO
+        # edition in scope declares confusable_groups, nothing was audited and there is no clean
+        # bill to give — same rule this dimension already applies when there are no lines at all.
+        return {"verdict": "skipped",
+                "note": f"no edition in scope declares confusable_groups — 0 of {len(unchecked)} "
+                        "audited; the disjoint-context law is UNENFORCED here, not satisfied",
+                "scope": "per-edition confusable pins (index_for_meta)",
+                "n_groups": len(groups), "groups_with_vocab": sum(have_vocab.values()),
+                "missing_vocab": [k for k, v in have_vocab.items() if not v],
+                "n_editions_checked": 0, "n_editions_unchecked": len(unchecked),
+                "unchecked_editions_sample": unchecked[:10],
+                "n_cooccurrence_violations": 0, "violation_samples": []}
     return {"verdict": verdict(not violations and n_missing == 0, len(violations) < 5),
-            "scope": "las_vegas/2026 confusable groups (checked vs the selected corpus; other editions' confusables are not defined)",
+            "scope": "each edition audited against ITS OWN confusable_groups (index_for_meta); "
+                     "an edition declaring none has no disjoint-context constraint and is reported "
+                     "as unchecked, never judged by another edition's pins",
             "n_groups": len(groups), "groups_with_vocab": sum(have_vocab.values()),
             "missing_vocab": [k for k, v in have_vocab.items() if not v],
+            "n_editions_checked": len(per_edition),
+            "n_editions_unchecked": len(unchecked),
+            "unchecked_editions_sample": unchecked[:10],
+            "per_edition_violations": {k: v for k, v in per_edition.items() if v},
             "n_cooccurrence_violations": len(violations),
             "violation_samples": [v.get("text", str(v))[:160] for v in violations[:5]]}
+
+
+def _cooccurrence_by_edition(eds) -> tuple[list, dict, list]:
+    """Audit each edition against its own confusable index (h7c).
+
+    This used one call with no index, which silently defaulted to the gold las_vegas/2026 globals
+    and judged all 97 EDC editions by 2026's pins. The 938 "violations" were las_vegas/2016 lines
+    naming circuitGROUNDS — factually correct there, and flagged only because 2026 pins Armin van
+    Buuren to kineticFIELD. A cross-edition binding mismatch is not contamination.
+
+    Editions declaring no confusable_groups are counted as UNCHECKED and named in the report rather
+    than being quietly folded into a pass: no constraint is an honest gap, not a clean bill.
+    """
+    all_violations: list = []
+    per_edition: dict[str, int] = {}
+    unchecked: list[str] = []
+    for ed in eds:
+        rel_path = ed.dir / "25_hydrated/relations.jsonl"
+        meta_path = ed.dir / "festival_meta.json"
+        if not rel_path.exists():
+            continue
+        meta = {}
+        if meta_path.is_file():
+            try:
+                meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            except Exception:
+                meta = {}
+        index = DC.index_for_meta(meta)
+        if not index[0]:                      # no confusable members declared for this edition
+            unchecked.append(ed.slug)
+            continue
+        lines = []
+        for raw in rel_path.read_text(encoding="utf-8", errors="replace").splitlines():
+            if raw.strip():
+                try:
+                    lines.append(json.loads(raw))
+                except Exception:
+                    pass
+        hits = DC.audit_cooccurrence(lines, *index)
+        per_edition[ed.slug] = len(hits)
+        all_violations.extend(hits)
+    return all_violations, per_edition, unchecked
 
 
 # ------------------------------------------------------------------ disjoint-context (GPU latent pass)

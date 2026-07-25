@@ -1,0 +1,120 @@
+{
+  "schema": "kandi.gate_scope_fix.v1",
+  "campaign": "phase_h7c_disjoint_edition_scope",
+  "domain": "edc",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "FIXED_AND_HONEST_THE_GATE_IS_NOW_SKIPPED_NOT_PASSED",
+  "headline": "The 938 disjoint_static violations were false — each edition is now judged by its own confusable pins. But scoping it correctly revealed the gate audits NOTHING on EDC (0 of 97 editions declare pins), so the verdict is SKIPPED, not PASS. A correct fix must not launder a false FAIL into a vacuous clean bill.",
+
+  "diagnosis_confirmed": {
+    "source": "logs/phase_h7_edc_gate_diagnosis.json",
+    "cause": "data_audit.dim_disjoint_static called DC.audit_cooccurrence(lines) with no index, which defaults to the gold las_vegas/2026 globals, and judged all 97 EDC editions by 2026's pins.",
+    "the_mechanism_already_existed": "disjoint_context.index_for_meta's own docstring states the correct rule: 'The auditor must judge an edition against its own calendar/lineup, never the gold's… a cross-edition binding mismatch is NOT contamination.' audit_cooccurrence already accepts a per-edition index. data_audit simply never passed one. The library was right; only the caller was wrong.",
+    "measured_edition_pins": {
+      "las_vegas/2026": {"confusable_groups": 4, "stages": 9, "days": 3},
+      "las_vegas/2016": {"confusable_groups": 0, "stages": 10, "days": 3},
+      "dallas/2011": {"confusable_groups": 0, "stages": 14, "days": 3}
+    }
+  },
+
+  "the_four_cases_written_first": {
+    "order_note": "All RED cases were authored and passing BEFORE the scoping change landed. Narrowing a check's scope without first proving its teeth still bite is how a law gets disarmed while looking fixed.",
+    "RED_1_gold_wrong_stage": {
+      "input": "Armin van Buuren plays the circuitGROUNDS stage at EDC Las Vegas 2026.",
+      "index": "las_vegas/2026 own pins",
+      "expected": "FAIL", "actual": "FAIL — 'co-mentions wrong stage'", "status": "PASS"
+    },
+    "RED_1b_gold_wrong_day": {
+      "input": "Armin van Buuren closes out Saturday at EDC Las Vegas 2026.",
+      "expected": "FAIL", "actual": "FAIL — 'co-mentions wrong day'", "status": "PASS"
+    },
+    "RED_2_two_confusable_comention": {
+      "input": "Armin van Buuren and Above & Beyond both headline kineticFIELD at EDC Las Vegas 2026.",
+      "expected": "FAIL", "actual": "FAIL — 'co-mentions different confusable groups'", "status": "PASS"
+    },
+    "GREEN_1_2_non_gold_circuitgrounds": {
+      "inputs": [
+        "Armin van Buuren plays the circuitGROUNDS stage at EDC Las Vegas 2016.",
+        "Armin van Buuren performs at circuitGROUNDS at EDC Las Vegas 2016.",
+        "Armin van Buuren is on the lineup for circuitGROUNDS at EDC Las Vegas 2016.",
+        "Armin van Buuren will play at the circuitGROUNDS stage during EDC Las Vegas 2016."
+      ],
+      "index": "las_vegas/2016 own pins (empty)",
+      "expected": "PASS", "actual": "PASS", "status": "PASS"
+    },
+    "regression_pin": "test_the_bug_itself_gold_pins_applied_to_a_2016_line — judging a 2016 line by the GOLD index still flags it, so the scope mismatch itself stays reproducible in the suite."
+  },
+
+  "implementation": {
+    "file": "scripts/data_audit.py",
+    "change": "dim_disjoint_static now delegates to _cooccurrence_by_edition(eds): per edition, load its festival_meta.json, build index_for_meta, and audit that edition's lines against its OWN index. Editions declaring no confusable_groups are collected as UNCHECKED and named in the report — never silently folded into a pass, never inheriting another edition's pins.",
+    "report_fields_added": ["n_editions_checked", "n_editions_unchecked", "unchecked_editions_sample", "per_edition_violations"],
+    "gate_thresholds_touched": "none",
+    "red_green_at_gate_level": {
+      "test": "test_gate_scopes_per_edition_and_reports_unchecked",
+      "red": "With the call reverted to the gold globals: unchecked == [] (AssertionError) — every edition scored against 2026's pins.",
+      "green": "unchecked == ['las_vegas/2016']; that edition is not scored at all; only the gold edition's genuine wrong-stage line survives (1 violation)."
+    }
+  },
+
+  "before_after": {
+    "before": {
+      "verdict": "FAIL",
+      "n_cooccurrence_violations": 938,
+      "scope": "las_vegas/2026 confusable groups applied to the whole 97-edition corpus",
+      "samples": [
+        "Armin van Buuren plays the circuitGROUNDS stage at EDC Las Vegas 2016.",
+        "Armin van Buuren performs at circuitGROUNDS at EDC Las Vegas 2016."
+      ]
+    },
+    "after": {
+      "verdict": "SKIPPED",
+      "n_cooccurrence_violations": 0,
+      "n_editions_checked": 0,
+      "n_editions_unchecked": 97,
+      "note": "no edition in scope declares confusable_groups — the disjoint-context law is UNENFORCED here, not satisfied"
+    },
+    "per_edition_violations": {},
+    "intermediate_state_rejected": "The first post-fix run reported PASS with n_editions_checked=0. That is a vacuous clean bill: correct scoping had removed the false failures and left nothing audited. dim_disjoint_static already applies exactly this rule when there are no hydrated lines ('audited nothing → honest skip, NOT a vacuous 0 violations PASS'), so the same rule now covers the no-pins case. Shipping the PASS would have converted a false FAIL into a false PASS — a worse outcome than the bug."
+  },
+
+  "full_audit_after": {
+    "density": "SKIPPED (--no-gpu)",
+    "balance": "FAIL (cov 2.7786 vs 1.0 — unchanged; generator-side work per h7b)",
+    "coverage": "PASS",
+    "token_mix": "PASS",
+    "disjoint_static": "SKIPPED (0 of 97 editions carry pins)",
+    "sft_composition": "PASS",
+    "sft_phrasing": "WARN",
+    "sft_tiers": "PASS",
+    "disjoint_latent": "SKIPPED (--no-gpu)",
+    "stage_exit_code": 1,
+    "note": "The stage still exits 1 on balance, which is correct — h7c fixed the scope of one gate and deliberately changed nothing about the other."
+  },
+
+  "verdict": {
+    "false_violations_removed": 938,
+    "gate_teeth_preserved": true,
+    "gate_thresholds_recalibrated": false,
+    "disjoint_static_now": "SKIPPED — unenforced on EDC, honestly labelled",
+    "real_finding": "EDC has exactly one edition with authored confusable pins (las_vegas/2026), and that edition is excluded from every run as the protected reference. So the disjoint-context law has never actually constrained anything on the EDC corpus that trains. That was invisible while 938 false violations made the gate look active."
+  },
+
+  "handoff": {
+    "to_make_disjoint_static_real_on_edc": "Author confusable_groups for editions that actually train, or accept and record that disjoint-context is a las_vegas/2026-only guarantee. Either is defensible; the current silence is not.",
+    "still_open": ["balance (generator-side per-fact emission)", "h8 resolve review queue", "h9 thin probes"]
+  },
+
+  "deviations": [
+    "The library-level RED/GREEN cases pass both before and after the change, because disjoint_context.violates and index_for_meta were already correct. They pin the contract rather than demonstrating the fix; the gate-level test is the one that fails pre-fix, and it is reported as such.",
+    "The first correct-scoping run produced PASS with zero editions audited. That was rejected as a vacuous pass and a second change made it SKIPPED, so the fix went in two steps rather than one.",
+    "No gate threshold was altered and no confusable group was edited. Only which index each edition is judged against changed."
+  ],
+
+  "gates": {
+    "run_tests": "all green (45 modules)",
+    "test_cpt_config": "8/8 PASS",
+    "qgre_test_gates": "9/9 PASS",
+    "disjoint_edition_scope_suite": "9/9 PASS"
+  }
+}
