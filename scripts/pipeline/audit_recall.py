@@ -391,6 +391,88 @@ def match_fact(
     return None
 
 
+def loose_surface_index(entities: list[dict], id_map: dict[str, str] | None = None) -> dict[str, set[str]]:
+    """entity id → EVERY surface it can wear (canonical name, aliases, the raw id, id_map preimages).
+
+    Deliberately looser than the audit matcher: it exists to answer "could better matching have
+    found this fact?", so it must over-accept. A miss that is absent even here is absent from the
+    graph, full stop — an extraction gap, not a keying gap.
+    """
+    id_map = id_map or {}
+    surfaces: dict[str, set[str]] = {}
+    for entity in entities:
+        eid = str(entity.get("id") or "")
+        if not eid:
+            continue
+        names = {_norm_surface(str(entity.get("name_canonical") or "")), _norm_surface(eid)}
+        names |= {_norm_surface(str(alias)) for alias in (entity.get("aliases") or [])}
+        surfaces[eid] = {name for name in names if name}
+    for old_id, new_id in id_map.items():
+        surfaces.setdefault(new_id, set()).add(_norm_surface(old_id))
+        if new_id in surfaces:
+            surfaces[old_id] = surfaces[new_id]
+    return surfaces
+
+
+def classify_misses(
+    misses: list[dict],
+    triples: list[dict],
+    surfaces: dict[str, set[str]],
+) -> dict:
+    """Split misses into matcher-recoverable vs genuinely absent — the H1 next-hypothesis instrument.
+
+    The H1 coverage trail spent two iterations against a number nobody could attribute, because a
+    miss reported only "not found" and never said WHY. This makes the attribution mechanical:
+
+      matcher_recoverable — the fact is in the graph under some surface the matcher did not key.
+                            A matching fix would recover it.
+      different_object    — subject+predicate exist in the graph with other objects. The extractor
+                            saw the relation and disagreed about the target.
+      absent              — nothing for that subject+predicate at all. Only re-extraction recovers it.
+    """
+    loose: set[tuple[str, str, str]] = set()
+    subject_predicate: set[tuple[str, str]] = set()
+    for triple in triples:
+        predicate = _norm_surface(str(triple.get("predicate") or ""))
+        subject_id = str(triple.get("subject_id") or "")
+        object_id = str(triple.get("object") or "")
+        subject_surfaces = surfaces.get(subject_id) or {_norm_surface(subject_id)}
+        object_surfaces = surfaces.get(object_id) or {_norm_surface(object_id)}
+        for subject in subject_surfaces:
+            subject_predicate.add((predicate, subject))
+            for obj in object_surfaces:
+                loose.add((predicate, subject, obj))
+
+    counts = {"matcher_recoverable": 0, "different_object": 0, "absent": 0}
+    samples: dict[str, list[dict]] = {"matcher_recoverable": [], "different_object": [], "absent": []}
+    for miss in misses:
+        key = (
+            _norm_surface(str(miss.get("predicate") or "")),
+            _norm_surface(str(miss.get("subject") or "")),
+            _norm_surface(str(miss.get("object") or "")),
+        )
+        if key in loose:
+            bucket = "matcher_recoverable"
+        elif key[:2] in subject_predicate:
+            bucket = "different_object"
+        else:
+            bucket = "absent"
+        counts[bucket] += 1
+        if len(samples[bucket]) < 10:
+            samples[bucket].append(miss)
+    total = sum(counts.values())
+    return {
+        **counts,
+        "n": total,
+        "matcher_recoverable_ratio": round(counts["matcher_recoverable"] / total, 4) if total else 0.0,
+        "samples": samples,
+        "note": (
+            "matcher_recoverable > 0 means a matching fix has headroom. At 0 the coverage gap is "
+            "extraction-side and no keying change can move the number — re-extract, do not re-match."
+        ),
+    }
+
+
 def coverage_for_doc(
     assertable: list[dict],
     graph_keys: set[str],
@@ -592,6 +674,7 @@ def run_audit(
     all_out_of_unit: list[dict] = []
     all_judge_unavailable: list[dict] = []
     sampled_docs = 0
+    miss_totals = {"matcher_recoverable": 0, "different_object": 0, "absent": 0}
 
     for ed in iter_editions(domain, only=editions, with_raw=False):
         docs = collect_clean_docs(ed.dir)
@@ -674,6 +757,20 @@ def run_audit(
                     live_facts[d["path"]] = facts
                     shown = "unavailable" if facts is None else len(facts)
                     print(f"    retry {d['name']} facts={shown}", flush=True)
+            # Persist the accepted assertions as a REPLAY FIXTURE. The H1 trail was unreadable
+            # because every iteration re-rolled a nondeterministic judge; with this, a later
+            # iteration re-runs the identical assertion set through --facts-json at zero provider
+            # cost and any movement is attributable to the graph alone.
+            if not dry_run:
+                fixture_out = C.BUILD / "recall" / domain / f"{ed.slug.replace('/', '_')}.assertions.json"
+                fixture_out.parent.mkdir(parents=True, exist_ok=True)
+                replayable = {
+                    Path(path).name: facts
+                    for path, facts in sorted(live_facts.items())
+                    if facts is not None
+                }
+                fixture_out.write_text(json.dumps(replayable, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+                print(f"  {ed.slug}: wrote replay fixture ({len(replayable)} docs) -> {fixture_out}", flush=True)
         for doc in sample:
             key = doc["path"]
             # fixture keys may be basename
@@ -732,8 +829,13 @@ def run_audit(
                 "out_of_unit is large relative to raw assertions — cross-region content on "
                 "cross-region pages is a corpus-composition finding, not an extraction gap."
             )
+        u_misses = [miss for row in doc_rows for miss in row.get("misses", [])]
+        miss_attribution = classify_misses(
+            u_misses, triples, loose_surface_index(entities, id_map),
+        )
         unit_reports.append({
             "unit": ed.slug,
+            "miss_attribution": miss_attribution,
             "n_docs_sampled": len(sample),
             "n_docs_scored": len(doc_rows),
             "n_docs_judge_unavailable": len(u_unavailable),
@@ -773,6 +875,8 @@ def run_audit(
         all_out_of_unit.extend(u_out)
         all_judge_unavailable.extend(u_unavailable)
         sampled_docs += len(sample)
+        for bucket in ("matcher_recoverable", "different_object", "absent"):
+            miss_totals[bucket] += miss_attribution[bucket]
 
         if not dry_run:
             out = C.BUILD / "recall" / domain
@@ -847,6 +951,15 @@ def run_audit(
         "RECALL_AUDIT_UNAVAILABLE": False,
         "judge_rejected_sample": all_judge_rejected[:40],
         "out_of_unit_sample": all_out_of_unit[:40],
+        "miss_attribution": {
+            **miss_totals,
+            "n": sum(miss_totals.values()),
+            "note": (
+                "Where the coverage gap actually lives. matcher_recoverable > 0 means a keying fix "
+                "has headroom; at 0 the gap is extraction-side and no matcher change can move the "
+                "number. different_object = the extractor saw the relation and chose other targets."
+            ),
+        },
         "judge_unavailable": {
             "n_docs": len(all_judge_unavailable),
             "n_docs_sampled": sampled_docs,

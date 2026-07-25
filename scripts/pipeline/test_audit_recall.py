@@ -428,6 +428,66 @@ def test_genuinely_empty_judge_answer_is_scored_not_excluded():
         assert report["status"] == "PASS", report.get("reason")
 
 
+# ── Miss attribution (H1 round 2: is the gap matcher-side or extractor-side?) ──
+
+
+def _attr_fixture():
+    entities = [
+        {"id": "dom:character:blaine", "entity_type": "character", "name_canonical": "Blaine",
+         "aliases": ["The Hot-Headed Quiz Master"]},
+        {"id": "dom:character:misty", "entity_type": "character", "name_canonical": "Misty", "aliases": []},
+        {"id": "dom:character:erika", "entity_type": "character", "name_canonical": "Erika", "aliases": []},
+    ]
+    triples = [
+        {"subject_id": "dom:character:blaine", "predicate": "allied_with", "object": "dom:character:misty"},
+    ]
+    return triples, A.loose_surface_index(entities, {})
+
+
+def test_miss_present_under_an_alias_is_matcher_recoverable():
+    """The fact IS in the graph, just keyed under a surface the matcher did not try."""
+    triples, surfaces = _attr_fixture()
+    out = A.classify_misses(
+        [{"subject": "The Hot-Headed Quiz Master", "predicate": "allied_with", "object": "Misty"}],
+        triples, surfaces,
+    )
+    assert out["matcher_recoverable"] == 1, out
+    assert out["absent"] == 0 and out["different_object"] == 0
+
+
+def test_same_subject_predicate_other_object_is_its_own_class():
+    """The extractor saw the relation and disagreed about the target — not a keying failure."""
+    triples, surfaces = _attr_fixture()
+    out = A.classify_misses(
+        [{"subject": "Blaine", "predicate": "allied_with", "object": "Erika"}], triples, surfaces,
+    )
+    assert out["different_object"] == 1, out
+    assert out["matcher_recoverable"] == 0
+
+
+def test_nothing_for_the_subject_predicate_is_absent():
+    """Only re-extraction recovers this; no matcher change can."""
+    triples, surfaces = _attr_fixture()
+    out = A.classify_misses(
+        [{"subject": "Clefairy", "predicate": "evolves_into_lore", "object": "Clefable"}], triples, surfaces,
+    )
+    assert out["absent"] == 1, out
+    assert out["matcher_recoverable"] == 0
+
+
+def test_attribution_control_graph_triples_are_all_recoverable():
+    """Control: replaying the graph's OWN triples must be 100% matcher_recoverable.
+
+    If this ever drops below 1.0 the loose index is broken and every attribution built on it —
+    including 'the gap is extraction-side' — is void.
+    """
+    triples, surfaces = _attr_fixture()
+    own = [{"subject": "Blaine", "predicate": "allied_with", "object": "Misty"}]
+    out = A.classify_misses(own, triples, surfaces)
+    assert out["matcher_recoverable"] == len(own), out
+    assert out["matcher_recoverable_ratio"] == 1.0
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

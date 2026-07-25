@@ -80,13 +80,45 @@ stages:
     desc: "15_structured — LLM entity/triple/discourse extraction (schema-validated)"
     cmd: ["{py}", "scripts/extract_structured.py", "--editions", "{editions}", "--concurrency", "16", "--yes"]
     gpu: false
+  - name: resolve
+    desc: "entity canonicalization (alias merge; continuity hard wall) before split"
+    cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: true
+  - name: split
+    desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT (NEW eval series for EDC)"
+    cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v2"]
+    gpu: false
   - name: meta
     desc: "festival_meta.json per edition (free; derived from triples + registry)"
     cmd: ["{py}", "scripts/gen_festival_meta.py", "--editions", "{editions}"]
     gpu: false
   - name: hydrate
-    desc: "25_hydrated — LLM multi-surface generation (faithfulness-gated; re-hydrates stale editions)"
+    desc: "25_hydrated — EDC's bespoke LLM multi-surface generation (faithfulness-gated; re-hydrates stale editions)"
     cmd: ["bash", "scripts/rehydrate_vc1.sh"]   # supersedes the deleted hydrate_sweep.sh (mtime-staleness select)
+    gpu: false
+  - name: synth
+    desc: "25_hydrated — LLM DIVERSITY layer (per-fact paraphrases + persona/temp variation)"
+    cmd: ["{py}", "scripts/pipeline/generic_synth.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
+  - name: contrast
+    desc: "25_hydrated — truth-validated contrast surfaces (soft-cap 10%; SFT hard-negs are primary)"
+    cmd: ["{py}", "scripts/pipeline/generic_contrast.py", "--domain", "{domain}", "--editions", "{editions}", "--max-fraction", "0.10"]
+    gpu: false
+  - name: dedup_surfaces
+    desc: "SemDeDup hydrated surfaces (non-destructive exclusion list; floor-protected)"
+    cmd: ["{py}", "scripts/pipeline/dedup_surfaces.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
+  - name: probes
+    desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
+    cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "{domain}", "--editions", "{editions}", "--surfaces-per-gold", "4"]
+    gpu: false
+  - name: audit_recall
+    desc: "extraction coverage gate (provider) — FAIL → re-extract, not re-train"
+    cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "{domain}", "--editions", "{editions}", "--min-coverage", "0.6"]
+    gpu: false
+  - name: audit
+    desc: "CPU data audit — distribution/static dimensions + diversity gate (distinct-n)"
+    cmd: ["{py}", "scripts/data_audit.py", "--domain", "{domain}", "--editions", "{editions}", "--no-gpu"]
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"

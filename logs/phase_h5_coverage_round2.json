@@ -1,0 +1,154 @@
+{
+  "schema": "kandi.coverage_campaign.v2",
+  "campaign": "phase_h5_coverage_round2",
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "CLOSED_GATE_NOT_CLEARED_ESTIMAND_UNSTABLE",
+  "headline": "The matcher hypothesis is dead (0 recoverable misses, twice). The live coverage estimand is not stable enough to run an improvement loop against: two runs at identical parameters read 0.4505 and 0.1923.",
+  "protocol": {
+    "documents": 20,
+    "seed": 0,
+    "judge": "qwen/qwen3-32b",
+    "gate": 0.6,
+    "estimand": "clean_manifest_valid_in_unit_canonical_matched_assertions",
+    "judge_fix_active": "/no_think + reasoning-channel fallback + judge-availability accounting"
+  },
+
+  "step_1_baseline_reconfirm": {
+    "intent": "Re-confirm the 0.4505 number on the same 20 docs, seed 0, same fixed judge before changing anything.",
+    "result": "FAILED TO REPRODUCE",
+    "run_a_2026_07_24": {
+      "clean_hits": 50, "clean_n": 111, "clean_ratio": 0.4505,
+      "raw_n": 396, "judge_rejected": 190, "out_of_unit": 95,
+      "judge_unavailable": 0, "match_mode": {"exact": 49, "soft-object": 1, "canonical": 0}
+    },
+    "run_b_2026_07_25": {
+      "clean_hits": 15, "clean_n": 78, "clean_ratio": 0.1923,
+      "raw_n": 376, "judge_rejected": 189, "out_of_unit": 109,
+      "judge_unavailable": 0, "match_mode": {"exact": 14, "soft-object": 1, "canonical": 0}
+    },
+    "delta_ratio": -0.2582,
+    "graph_changes_between_runs": "none — no resolve, no re-extract, no structured re-run",
+    "code_changes_between_runs": "113 pure insertions to audit_recall.py, 0 lines touching coverage_for_doc / fact_key / triple_keys / gkeys / resolve_surface (git-verified)",
+    "interpretation": "Both runs had FULL judge availability (0/20 unavailable), so this is not the empty-judge defect fixed earlier. It is assertion-level nondeterminism at temperature 0.0: the judge emits a different assertion set per call, and both the numerator and the denominator move with it. A -0.2582 swing on identical inputs is ~9x the +0.03 movement threshold this campaign uses to decide whether a fix worked."
+  },
+
+  "step_2_hypothesis_choice": {
+    "queue": [
+      "A: canonical-ID normalization in the coverage matcher (match-side)",
+      "B: fixed assertion replay (deterministic replay of accepted assertions to separate matcher from extractor misses)"
+    ],
+    "chosen": "B — fixed assertion replay",
+    "rejected": "A — canonical-ID normalization",
+    "rejection_evidence": {
+      "method": "Built a LOOSE surface index over every surface an entity id can wear (canonical name + all aliases + the raw id + id_map preimages; 959 entities, 88 id_map entries) — a strict superset of what the matcher keys. Replayed each recorded miss against it. A miss absent even there cannot be recovered by ANY keying change.",
+      "control": "Replaying the graph's own 869 triples through the same loose index returns 869/869 = 1.0000, and through the production matcher returns 813/813 = 1.0000. The index is sound, so a zero result is evidence and not a bug.",
+      "result_run_a": {"misses": 61, "matcher_recoverable": 0, "different_object": 12, "absent": 49},
+      "result_run_b": {"misses": 63, "matcher_recoverable": 0, "different_object": 14, "absent": 49},
+      "conclusion": "matcher_recoverable = 0 in BOTH independent runs. Canonical-ID normalization has a provable ceiling of +0.0000 on this estimand. Implementing it would have been knowingly doing work with a measured-zero effect.",
+      "worked_examples": [
+        "evolves_into_lore Clefairy->Clefable and Gloom->Vileplume: no triple with that subject+predicate exists at all (absent class) — only re-extraction recovers these.",
+        "allied_with Blaine->{Erika,Brock,Yellow,Sabrina,Koga}: the graph HAS blaine allied_with {team_rocket, misty, lt_surge}. Subject and predicate key correctly; the extractor simply chose different targets (different_object class), not a keying failure.",
+        "originates_from {Zorua,Zoroark,Vullaby,Mandibuzz,Rufflet,Braviary}->Unova: Unova-region Pokemon asserted from a Unova list page sitting inside the KANTO unit. Corpus composition, not extraction."
+      ]
+    },
+    "note": "B was also the next hypothesis the H1 trail itself recorded: 'capture one complete seed-0 judge assertion set and replay it as a fixed audit fixture'."
+  },
+
+  "step_3_the_change": {
+    "what_landed": [
+      "audit_recall.loose_surface_index(entities, id_map) — every surface an id can wear.",
+      "audit_recall.classify_misses(misses, triples, surfaces) — splits misses into matcher_recoverable / different_object / absent, with samples and a note.",
+      "miss_attribution block on every unit report and on the overall report.",
+      "Replay-fixture persistence: a live run now writes data/_build/recall/<domain>/<unit>.assertions.json with the accepted assertion set."
+    ],
+    "what_did_not_change": "Nothing in the matching path. 113 insertions, 0 lines touching coverage_for_doc, fact_key, triple_keys, gkeys or resolve_surface. This change CANNOT move the coverage number by construction — it explains the number instead of altering it.",
+    "determinism_proof": {
+      "fixture": "data/_build/recall/pokemon-lore/kanto.assertions.json",
+      "fixture_sha256": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
+      "docs": 20,
+      "assertions": 376,
+      "replay_1": {"clean_ratio": 0.1923, "clean_n": 78, "hits": 15, "raw_n": 376},
+      "replay_2": {"clean_ratio": 0.1923, "clean_n": 78, "hits": 15, "raw_n": 376},
+      "provider_calls": 0,
+      "verdict": "PASS — byte-identical across repeated provider-free replays. Future iterations can attribute movement to the graph alone."
+    }
+  },
+
+  "step_4_per_predicate": {
+    "note": "run_a vs run_b, clean estimand. Both directions swing hard and predicates appear/vanish entirely, which is the instability itself rather than any change in the graph.",
+    "rows": {
+      "allied_with":       {"run_a": 0.3214, "run_b": 0.5556, "delta":  0.2342},
+      "appears_in":        {"run_a": 0.0000, "run_b": 0.0000, "delta":  0.0000},
+      "evolves_into_lore": {"run_a": 0.9444, "run_b": 0.0000, "delta": -0.9444, "watch": true},
+      "governs":           {"run_a": 0.0000, "run_b": 0.2500, "delta":  0.2500},
+      "involves":          {"run_a": 0.0667, "run_b": 0.0104, "delta": -0.0563},
+      "leads":             {"run_a": null,   "run_b": 0.0000, "delta": null},
+      "located_in":        {"run_a": 0.8929, "run_b": 1.0000, "delta":  0.1071, "watch": true},
+      "member_of":         {"run_a": 0.5000, "run_b": 1.0000, "delta":  0.5000},
+      "mentors":           {"run_a": 0.5000, "run_b": null,   "delta": null},
+      "occurs_at":         {"run_a": 1.0000, "run_b": 1.0000, "delta":  0.0000},
+      "opposes":           {"run_a": 0.6667, "run_b": 0.5000, "delta": -0.1667},
+      "originates_from":   {"run_a": 0.2286, "run_b": null,   "delta": null},
+      "owns_pokemon":      {"run_a": 0.8889, "run_b": 0.6667, "delta": -0.2222},
+      "partners_with":     {"run_a": 0.0000, "run_b": 0.0000, "delta":  0.0000},
+      "rival_of":          {"run_a": 0.3000, "run_b": 0.0000, "delta": -0.3000}
+    },
+    "healthy_predicate_watch": {
+      "located_in": {"status": "HELD", "run_a": 0.8929, "run_b": 1.0000},
+      "evolves_into_lore": {
+        "status": "REGRESSED_BUT_NOT_ATTRIBUTABLE",
+        "run_a": 0.9444,
+        "run_b": 0.0000,
+        "reason": "The landed change cannot affect matching (0 matcher lines touched). In run_b the judge asserted a different evolves_into_lore set over the sampled docs. This is the same nondeterminism that produced the -0.2582 overall swing, and it is precisely why the watch cannot be evaluated against a live judge."
+      }
+    }
+  },
+
+  "step_5_movement_rule": {
+    "threshold": "+0.03 on the clean estimand, no regression of healthy predicates",
+    "observed_delta": -0.2582,
+    "attributable_to_the_change": 0.0,
+    "reason": "The change is a measurement instrument with a git-verified zero footprint on the matching path. The observed delta is judge variance.",
+    "decision": "CLOSE. No second iteration. A second iteration would be run against a metric whose run-to-run noise (0.2582) is ~9x its own decision threshold (0.03) — the exact error that produced the H1 trail's two unreadable iterations."
+  },
+
+  "verdict": {
+    "gate_0_6_cleared": false,
+    "honest_final_number": {
+      "live_estimand": "UNSTABLE — 0.4505 and 0.1923 on identical inputs; do not quote a single live figure",
+      "pinned_replay_estimand": 0.1923,
+      "pinned_against_fixture_sha256": "0b50daf3fa63bf4a625007a369170fce07f585c99e9b1457335df875b1ecfc40",
+      "statement": "Kanto clean extraction coverage is 0.1923 against the frozen seed-0 assertion fixture, well below the 0.6 gate. Earlier figures (0.3598 from the broken-judge H1 trail, 0.4505 from the first fixed-judge run) are not comparable to it and not comparable to each other."
+    },
+    "where_the_gap_actually_lives": {
+      "matcher_recoverable": 0,
+      "different_object": 14,
+      "absent": 49,
+      "statement": "78% of misses have no triple for that subject+predicate at all; the remaining 22% have the relation with other targets. Zero are keying failures. The lever is extraction, not matching."
+    }
+  },
+
+  "trail": [
+    {"round": "H1 iter 1", "change": "involves subject-type shape", "result": 0.3396, "disposition": "REVERTED", "note": "measured on the BROKEN judge"},
+    {"round": "H1 iter 2", "change": "quote-required predicate-bounded second pass", "result": 0.2874, "disposition": "REVERTED", "note": "measured on the BROKEN judge"},
+    {"round": "H4 re-measure", "change": "none (judge fixed)", "result": 0.4505, "disposition": "SUPERSEDED", "note": "single fixed-judge sample, not reproducible"},
+    {"round": "H5 round 2", "change": "miss attribution + replay fixture", "result": 0.1923, "disposition": "PINNED", "note": "deterministic against the frozen fixture"}
+  ],
+
+  "next_lever": "Extraction, measured against the frozen fixture so movement is attributable. The 49 'absent' misses cluster on relation predicates the structured pass under-emits (evolves_into_lore, rival_of, partners_with, appears_in, governs). Before any further coverage work, decide whether the estimand should be scored against a fixed assertion fixture by default rather than a live judge — a metric with 9x its threshold in noise cannot gate anything.",
+
+  "deviations": [
+    "Step 1 could not re-confirm the baseline: the same command on the same inputs returned a materially different number. Reported as the primary finding rather than papering over it by picking one run.",
+    "The prescribed hypothesis A (canonical-ID normalization) was rejected on measured evidence rather than attempted. Implementing a change with a proven +0.0000 ceiling would have burned a provider run to confirm a predicted no-op.",
+    "The scoped re-measure doubles as the fixture capture, so only one live provider run was spent for both.",
+    "The evolves_into_lore healthy-predicate watch registers a regression that the landed change provably cannot have caused; it is reported as unattributable rather than as a pass or a failure.",
+    "No gate was weakened. The 0.6 minimum is unchanged and the audit still reports FAIL."
+  ],
+
+  "gates": {
+    "pipeline_modules": "scripts/run_tests.sh — pending end-of-item run",
+    "audit_recall_suite": "17/17 PASS (4 new miss-attribution tests incl. a loose-index control)"
+  }
+}

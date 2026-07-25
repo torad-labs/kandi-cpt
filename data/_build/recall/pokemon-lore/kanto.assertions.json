@@ -1,0 +1,1919 @@
+{
+  "Blaine_(Adventures).md": [
+    {
+      "object": "Team Rocket",
+      "predicate": "member_of",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Cinnabar Island",
+      "predicate": "located_in",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Cinnabar Gym",
+      "predicate": "governs",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Team Rocket Grunts",
+      "predicate": "opposes",
+      "subject": "Blaine"
+    },
+    {
+      "object": "And Mewtwo Too!?",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Holy Moltres",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Purrrr-sian",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Putting It on the Line...Against Arcanine",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Allied by Alakazam!",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Airing Out Aerodactyl",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "The Legend",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Yikes, It's Yanma!",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Entranced by Entei",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Lugia and Ho-Oh on the Loose, Part 1",
+      "predicate": "involves",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Rapidash",
+      "predicate": "owns_pokemon",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Aerodactyl",
+      "predicate": "owns_pokemon",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Growlithe",
+      "predicate": "owns_pokemon",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Mewtwo",
+      "predicate": "owns_pokemon",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Red",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Yellow",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Erika",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Brock",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Misty",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Sabrina",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Bill",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Green",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Clair",
+      "predicate": "allied_with",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Lance",
+      "predicate": "rival_of",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Elite Four",
+      "predicate": "opposes",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Masked Man",
+      "predicate": "opposes",
+      "subject": "Blaine"
+    },
+    {
+      "object": "Pok\u00e9mon Adventures",
+      "predicate": "appears_in",
+      "subject": "Blaine"
+    }
+  ],
+  "Champion.md": [
+    {
+      "object": "Red",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Blue",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Yellow",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Gold",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Silver",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Crystal",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Ruby",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Sapphire",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Emerald",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "FireRed",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "LeafGreen",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Diamond",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Pearl",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Platinum",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "HeartGold",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "SoulSilver",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Black",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "White",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Black 2",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "White 2",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "X",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Y",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Omega Ruby",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Alpha Sapphire",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Let's Go, Pikachu!",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Let's Go, Eevee!",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Sword",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Shield",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Brilliant Diamond",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Shining Pearl",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Scarlet",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Violet",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Legends: Z-A",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Stadium",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Stadium 2",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Puzzle League",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    },
+    {
+      "object": "Puzzle Challenge Masters EX",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Champion"
+    }
+  ],
+  "Decolore_Islands.md": [
+    {
+      "object": "between Unova and Kanto",
+      "predicate": "located_in",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Farewell, Unova! Setting Sail For New Adventures!",
+      "predicate": "appears_in",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Ash",
+      "predicate": "involves",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Iris",
+      "predicate": "involves",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Cilan",
+      "predicate": "involves",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Orange Islands",
+      "predicate": "allied_with",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Orange Islands",
+      "predicate": "rival_of",
+      "subject": "Decolore Islands"
+    },
+    {
+      "object": "Orange Islands",
+      "predicate": "precedes",
+      "subject": "Decolore Islands"
+    }
+  ],
+  "Grand_Oak.md": [
+    {
+      "object": "Pok\u00e9mon HOME",
+      "predicate": "appears_in",
+      "subject": "Grand Oak"
+    },
+    {
+      "object": "Pok\u00e9mon GO",
+      "predicate": "appears_in",
+      "subject": "Grand Oak"
+    },
+    {
+      "object": "Pok\u00e9mon HOME",
+      "predicate": "governs",
+      "subject": "Grand Oak"
+    },
+    {
+      "object": "Pok\u00e9dex",
+      "predicate": "involves",
+      "subject": "Grand Oak"
+    },
+    {
+      "object": "Hidden Ability Kanto first partner Pok\u00e9mon",
+      "predicate": "owns_pokemon",
+      "subject": "Grand Oak"
+    }
+  ],
+  "Janine.md": [],
+  "Lake_Valor.md": [
+    {
+      "object": "Sinnoh",
+      "predicate": "located_in",
+      "subject": "Lake Valor"
+    },
+    {
+      "object": "Crimson Mirelands",
+      "predicate": "located_in",
+      "subject": "Lake Valor"
+    },
+    {
+      "object": "Lake Valor",
+      "predicate": "located_in",
+      "subject": "Valor Cavern"
+    },
+    {
+      "object": "Valor Cavern",
+      "predicate": "located_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Lake Valor",
+      "predicate": "governs",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Lake Valor",
+      "predicate": "occurs_at",
+      "subject": "Mission 15: The Trial of Lake Valor"
+    },
+    {
+      "object": "Lake Valor",
+      "predicate": "occurs_at",
+      "subject": "Request 89: The Diamond Clan's Treasure"
+    },
+    {
+      "object": "Lake Valor",
+      "predicate": "opposes",
+      "subject": "Team Galactic"
+    },
+    {
+      "object": "Galactic Bomb",
+      "predicate": "involves",
+      "subject": "Team Galactic"
+    },
+    {
+      "object": "Pok\u00e9mon Legends: Arceus",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Pok\u00e9mon Diamond",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Pok\u00e9mon Pearl",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Pok\u00e9mon Platinum",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Pok\u00e9mon Brilliant Diamond",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Pok\u00e9mon Shining Pearl",
+      "predicate": "appears_in",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Saturn",
+      "predicate": "involves",
+      "subject": "Team Galactic"
+    },
+    {
+      "object": "Pok\u00e9mon Hunter J",
+      "predicate": "involves",
+      "subject": "Team Galactic"
+    },
+    {
+      "object": "Team Galactic",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Team Galactic",
+      "predicate": "involves",
+      "subject": "Mesprit"
+    },
+    {
+      "object": "Team Galactic",
+      "predicate": "involves",
+      "subject": "Uxie"
+    },
+    {
+      "object": "Gary",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Professor Rowan",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Professor Carolina",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Seven Stars Restaurant",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Wallace Cup",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Tag Battles",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "A Full Course Tag Battle!",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "The Needs of the Three!",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Bombastic Bibarel & Heroic Hippopotas",
+      "predicate": "involves",
+      "subject": "Azelf"
+    },
+    {
+      "object": "Tackling Tangrowth",
+      "predicate": "involves",
+      "subject": "Azelf"
+    }
+  ],
+  "Lanette.md": [
+    {
+      "object": "Fallarbor Town",
+      "predicate": "located_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Hoenn",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Ruby",
+      "predicate": "appears_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Sapphire",
+      "predicate": "appears_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Emerald",
+      "predicate": "appears_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Omega Ruby",
+      "predicate": "appears_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Alpha Sapphire",
+      "predicate": "appears_in",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Storage System",
+      "predicate": "involves",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon Adventures",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Pok\u00e9mon TCG",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Bill",
+      "predicate": "rival_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "FireRed & LeafGreen arc",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Emerald arc",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Omega Ruby & Alpha Sapphire arc",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    },
+    {
+      "object": "Brigette",
+      "predicate": "member_of",
+      "subject": "Lanette"
+    }
+  ],
+  "List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number.md": [
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Kanto"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Johto"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Hoenn"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Sinnoh"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Unova"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Kalos"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Alola"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Galar"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Hisui"
+    },
+    {
+      "object": "National Pok\u00e9dex",
+      "predicate": "located_in",
+      "subject": "Paldea"
+    },
+    {
+      "object": "Pombon",
+      "predicate": "evolves_into_lore",
+      "subject": "Browt"
+    },
+    {
+      "object": "Gecqua",
+      "predicate": "evolves_into_lore",
+      "subject": "Browt"
+    },
+    {
+      "object": "Gecqua",
+      "predicate": "evolves_into_lore",
+      "subject": "Pombon"
+    }
+  ],
+  "List_of_Pok%C3%A9mon_by_Unova_Pok%C3%A9dex_number_in_Pok%C3%A9mon_Black_and_White.md": [
+    {
+      "object": "Unova",
+      "predicate": "located_in",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Victini",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Genesect",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Zorua",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Zoroark",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Vullaby",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Mandibuzz",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Rufflet",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Braviary",
+      "predicate": "involves",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Unova Pok\u00e9dex",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "expanded Unova Pok\u00e9dex",
+      "predicate": "precedes",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Unova Pok\u00e9dex",
+      "predicate": "follows",
+      "subject": "expanded Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Pok\u00e9mon Black",
+      "predicate": "appears_in",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Pok\u00e9mon White",
+      "predicate": "appears_in",
+      "subject": "Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Pok\u00e9mon Black 2",
+      "predicate": "appears_in",
+      "subject": "expanded Unova Pok\u00e9dex"
+    },
+    {
+      "object": "Pok\u00e9mon White 2",
+      "predicate": "appears_in",
+      "subject": "expanded Unova Pok\u00e9dex"
+    }
+  ],
+  "List_of_Pok%C3%A9mon_by_evolutionary_line.md": [],
+  "List_of_Pok%C3%A9mon_with_released_Hidden_Abilities_(Generation_VIII).md": [],
+  "Mirage_Kingdom.md": [
+    {
+      "object": "Hoenn",
+      "predicate": "located_in",
+      "subject": "Mirage Kingdom"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "occurs_at",
+      "subject": "The Princess and the Togepi"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "member_of",
+      "subject": "Colonel Hansen"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "opposes",
+      "subject": "Team Rocket"
+    },
+    {
+      "object": "The Princess and the Togepi",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "The Princess and the Togepi",
+      "predicate": "appears_in",
+      "subject": "Misty"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "governs",
+      "subject": "Princess Sara"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "involves",
+      "subject": "Togepi"
+    },
+    {
+      "object": "Togepi",
+      "predicate": "evolves_into_lore",
+      "subject": "Togetic"
+    },
+    {
+      "object": "Team Rocket",
+      "predicate": "involves",
+      "subject": "Mirage Kingdom"
+    },
+    {
+      "object": "Team Rocket",
+      "predicate": "leads",
+      "subject": "Colonel Hansen"
+    },
+    {
+      "object": "Mirage Kingdom",
+      "predicate": "involves",
+      "subject": "Togepi Paradise"
+    }
+  ],
+  "Move_Tutor.md": [
+    {
+      "object": "Move Tutors",
+      "predicate": "member_of",
+      "subject": "Bill"
+    },
+    {
+      "object": "Move Tutors",
+      "predicate": "member_of",
+      "subject": "Bill's father"
+    },
+    {
+      "object": "Move Tutors",
+      "predicate": "member_of",
+      "subject": "Teacher Lady"
+    },
+    {
+      "object": "Mt. Battle",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Route 228",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Route 210",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Snowpoint City",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Route 212",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Survival Area",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Seafolk Village",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Hau'oli City",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Melemele Island",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Akala Island",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Ula'ula Island",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Poni Island",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Master Dojo",
+      "predicate": "located_in",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Move Tutors",
+      "predicate": "member_of",
+      "subject": "Move Tutor"
+    },
+    {
+      "object": "Pikachu",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Mew",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Rayquaza",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Dragon-type Pok\u00e9mon",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Partner Pok\u00e9mon",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pledge-moves",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Hyper Beam",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Draco Meteor",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Dragon Ascent",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Armorite Ore",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Battle Points",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Shards",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "TM",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "HM",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Coin Case",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9 Coupons",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Hall of Fame",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Goldenrod Game Corner",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Battle Frontier",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Master Ball division",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Round 2 Prime Cup",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Game Pak",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pikachu",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Surf",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Stadium",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Crystal",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Emerald",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon XD",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Platinum",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon HeartGold",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon SoulSilver",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Let's Go, Pikachu!",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "Pok\u00e9mon Let's Go, Eevee!",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    },
+    {
+      "object": "The Isle of Armor",
+      "predicate": "involves",
+      "subject": "Move Tutors"
+    }
+  ],
+  "Mt._Pyre.md": [
+    {
+      "object": "Hoenn",
+      "predicate": "located_in",
+      "subject": "Mt. Pyre"
+    },
+    {
+      "object": "Route 122",
+      "predicate": "occurs_at",
+      "subject": "Mt. Pyre"
+    },
+    {
+      "object": "Mt. Pyre",
+      "predicate": "opposes",
+      "subject": "Team Aqua"
+    },
+    {
+      "object": "Mt. Pyre",
+      "predicate": "opposes",
+      "subject": "Team Magma"
+    },
+    {
+      "object": "Blue Orb",
+      "predicate": "involves",
+      "subject": "Team Aqua"
+    },
+    {
+      "object": "Red Orb",
+      "predicate": "involves",
+      "subject": "Team Magma"
+    },
+    {
+      "object": "Mt. Pyre",
+      "predicate": "appears_in",
+      "subject": "Blue Orb"
+    },
+    {
+      "object": "Mt. Pyre",
+      "predicate": "appears_in",
+      "subject": "Red Orb"
+    },
+    {
+      "object": "Generation VI",
+      "predicate": "current_season",
+      "subject": "Mt. Pyre"
+    }
+  ],
+  "Mt._Silver.md": [
+    {
+      "object": "Johto",
+      "predicate": "located_in",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Kanto",
+      "predicate": "located_in",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Mt. Silver Cave",
+      "predicate": "located_in",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Silver Town",
+      "predicate": "occurs_at",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "You're a Star, Larvitar!",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "Mother of All Battles!",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "Pop Goes The Sneasel",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "A Claim to Flame!",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "Johto Photo Finish",
+      "predicate": "appears_in",
+      "subject": "Ash"
+    },
+    {
+      "object": "Mother of All Battles!",
+      "predicate": "appears_in",
+      "subject": "Larvitar"
+    },
+    {
+      "object": "Mother of All Battles!",
+      "predicate": "appears_in",
+      "subject": "Tyranitar"
+    },
+    {
+      "object": "Raising Raichu",
+      "predicate": "appears_in",
+      "subject": "Red"
+    },
+    {
+      "object": "Raising Raichu",
+      "predicate": "appears_in",
+      "subject": "Gold"
+    },
+    {
+      "object": "Ash",
+      "predicate": "involves",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Satchel",
+      "predicate": "involves",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Harrison",
+      "predicate": "involves",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Larvitar",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Tyranitar",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Poliwrath",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Venusaur",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Quilava",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Cyndaquil",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Machop",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Machoke",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Sneasel",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Johto",
+      "predicate": "located_in",
+      "subject": "Silver Town"
+    },
+    {
+      "object": "Silver Conference",
+      "predicate": "governs",
+      "subject": "Silver Town"
+    },
+    {
+      "object": "Johto Photo Finish",
+      "predicate": "precedes",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "You're a Star, Larvitar!",
+      "predicate": "follows",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Mother of All Battles!",
+      "predicate": "follows",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Pop Goes The Sneasel",
+      "predicate": "follows",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "A Claim to Flame!",
+      "predicate": "follows",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Ho-Oh Shrine",
+      "predicate": "involves",
+      "subject": "Silver Conference"
+    },
+    {
+      "object": "Flash",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Larvitar",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Misdreavus",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Poacher Brothers",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Ranger Mason",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Professor Oak",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Kanto Route 28",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Center",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Fresh Water",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Hoennregion",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Cerise Island",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Olivine Lighthouse",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Champions",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Master Trainer board game",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon the Comic",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Gold",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Silver",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Crystal",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon HeartGold",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon SoulSilver",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    },
+    {
+      "object": "Pok\u00e9mon Stadium 2",
+      "predicate": "involves",
+      "subject": "Mt. Silver"
+    }
+  ],
+  "Pok%C3%A9mon_Egg.md": [
+    {
+      "object": "core series games",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "spin-off games",
+      "predicate": "appears_in",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "breeding",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "evolutionary line",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Egg Groups",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "New Bark Town",
+      "predicate": "located_in",
+      "subject": "Mystery Egg"
+    },
+    {
+      "object": "Solaceon Town",
+      "predicate": "located_in",
+      "subject": "Pok\u00e9mon Day Care"
+    },
+    {
+      "object": "steps",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "friendship value",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Marill",
+      "predicate": "evolves_into_lore",
+      "subject": "Azurill"
+    },
+    {
+      "object": "Wobbuffet",
+      "predicate": "evolves_into_lore",
+      "subject": "Wynaut"
+    },
+    {
+      "object": "incense",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Baby Pok\u00e9mon",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Legendary Pok\u00e9mon",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Mythical Pok\u00e9mon",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Egg cycle count",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "status screen",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "moves",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "TM or HM moves",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Egg Moves",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "parental traits",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "No Eggs Discovered Group",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "gender compatibility",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Ditto",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Route 34",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Koraidon",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    },
+    {
+      "object": "Miraidon",
+      "predicate": "involves",
+      "subject": "Pok\u00e9mon Egg"
+    }
+  ],
+  "Pok%C3%A9mon_world_in_relation_to_the_real_world.md": [
+    {
+      "object": "Japan",
+      "predicate": "located_in",
+      "subject": "Kanto"
+    },
+    {
+      "object": "Kant\u014d region",
+      "predicate": "originates_from",
+      "subject": "Kanto"
+    },
+    {
+      "object": "Shizuoka",
+      "predicate": "located_in",
+      "subject": "Pallet Town"
+    },
+    {
+      "object": "Machida City",
+      "predicate": "originates_from",
+      "subject": "Pallet Town"
+    },
+    {
+      "object": "Shizuoka or Kanagawa",
+      "predicate": "located_in",
+      "subject": "Viridian City"
+    },
+    {
+      "object": "Yamanashi, Saitama, and Nagano",
+      "predicate": "located_in",
+      "subject": "Viridian Forest"
+    },
+    {
+      "object": "Gunma",
+      "predicate": "located_in",
+      "subject": "Pewter City"
+    },
+    {
+      "object": "Gunma",
+      "predicate": "located_in",
+      "subject": "Mt. Moon"
+    },
+    {
+      "object": "Tochigi",
+      "predicate": "located_in",
+      "subject": "Cerulean City"
+    },
+    {
+      "object": "Tochigi",
+      "predicate": "located_in",
+      "subject": "Cerulean Cave"
+    },
+    {
+      "object": "Kanagawa, Chiba",
+      "predicate": "located_in",
+      "subject": "Vermilion City"
+    },
+    {
+      "object": "Chiba City",
+      "predicate": "originates_from",
+      "subject": "Vermilion City"
+    },
+    {
+      "object": "Chiba",
+      "predicate": "located_in",
+      "subject": "Diglett's Cave"
+    },
+    {
+      "object": "Ibaraki",
+      "predicate": "located_in",
+      "subject": "Lavender Town"
+    },
+    {
+      "object": "Ibaraki",
+      "predicate": "located_in",
+      "subject": "Kanto Power Plant"
+    },
+    {
+      "object": "New York City",
+      "predicate": "originates_from",
+      "subject": "Unova"
+    },
+    {
+      "object": "Hawaii",
+      "predicate": "originates_from",
+      "subject": "Alola"
+    },
+    {
+      "object": "France",
+      "predicate": "originates_from",
+      "subject": "Kalos"
+    },
+    {
+      "object": "Paris",
+      "predicate": "originates_from",
+      "subject": "Lumiose City"
+    },
+    {
+      "object": "United Kingdom",
+      "predicate": "originates_from",
+      "subject": "Galar"
+    },
+    {
+      "object": "Iberian Peninsula",
+      "predicate": "originates_from",
+      "subject": "Paldea"
+    },
+    {
+      "object": "Phoenix",
+      "predicate": "originates_from",
+      "subject": "Orre"
+    }
+  ],
+  "Solidad.md": [
+    {
+      "object": "Pok\u00e9mon the Series",
+      "predicate": "appears_in",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Pewter City",
+      "predicate": "located_in",
+      "subject": "Solidad"
+    },
+    {
+      "object": "May",
+      "predicate": "rival_of",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Drew",
+      "predicate": "rival_of",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Pok\u00e9mon Coordinator",
+      "predicate": "member_of",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Kanto Grand Festival",
+      "predicate": "occurs_at",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Kanto Grand Festival",
+      "predicate": "involves",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Harley",
+      "predicate": "allied_with",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Drew",
+      "predicate": "allied_with",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Pok\u00e9mon the Series: Ruby and Sapphire",
+      "predicate": "current_season",
+      "subject": "Solidad"
+    },
+    {
+      "object": "Pok\u00e9mon Journeys: The Series",
+      "predicate": "precedes",
+      "subject": "Solidad"
+    }
+  ],
+  "Trading_Card_Game_Islands.md": [
+    {
+      "object": "The Trading Card Game Islands",
+      "predicate": "located_in",
+      "subject": "TCG Island"
+    },
+    {
+      "object": "The Trading Card Game Islands",
+      "predicate": "located_in",
+      "subject": "GR Island"
+    },
+    {
+      "object": "Kanto",
+      "predicate": "allied_with",
+      "subject": "The Trading Card Game Islands"
+    },
+    {
+      "object": "Johto",
+      "predicate": "allied_with",
+      "subject": "The Trading Card Game Islands"
+    }
+  ],
+  "Unova.md": [
+    {
+      "object": "Pok\u00e9mon world",
+      "predicate": "located_in",
+      "subject": "Unova"
+    },
+    {
+      "object": "Castelia City",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Nimbasa City",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Nacrene City",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Dragonspiral Tower",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Skyarrow Bridge",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Battle Subway",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Relic Castle",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Abyssal Ruins",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Giant Chasm",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Lacunosa Town",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Blueberry Academy",
+      "predicate": "governs",
+      "subject": "Unova"
+    },
+    {
+      "object": "Pok\u00e9mon Black and White",
+      "predicate": "appears_in",
+      "subject": "Unova"
+    },
+    {
+      "object": "Pok\u00e9mon Black 2 and White 2",
+      "predicate": "appears_in",
+      "subject": "Unova"
+    },
+    {
+      "object": "The Indigo Disk",
+      "predicate": "appears_in",
+      "subject": "Unova"
+    },
+    {
+      "object": "Pok\u00e9mon Scarlet and Violet",
+      "predicate": "current_season",
+      "subject": "Unova"
+    },
+    {
+      "object": "New York City metropolitan area",
+      "predicate": "originates_from",
+      "subject": "Unova"
+    },
+    {
+      "object": "United States of America",
+      "predicate": "originates_from",
+      "subject": "Unova"
+    },
+    {
+      "object": "Zekrom",
+      "predicate": "opposes",
+      "subject": "Reshiram"
+    },
+    {
+      "object": "Light Stone",
+      "predicate": "evolves_into_lore",
+      "subject": "Reshiram"
+    },
+    {
+      "object": "Dark Stone",
+      "predicate": "evolves_into_lore",
+      "subject": "Zekrom"
+    },
+    {
+      "object": "older brother",
+      "predicate": "allied_with",
+      "subject": "Reshiram"
+    },
+    {
+      "object": "younger brother",
+      "predicate": "allied_with",
+      "subject": "Zekrom"
+    },
+    {
+      "object": "Giant Chasm",
+      "predicate": "originates_from",
+      "subject": "Kyurem"
+    },
+    {
+      "object": "Relic Castle",
+      "predicate": "originates_from",
+      "subject": "Kyurem"
+    },
+    {
+      "object": "Virizion",
+      "predicate": "partners_with",
+      "subject": "Terrakion"
+    },
+    {
+      "object": "Cobalion",
+      "predicate": "partners_with",
+      "subject": "Terrakion"
+    },
+    {
+      "object": "Cobalion",
+      "predicate": "partners_with",
+      "subject": "Virizion"
+    },
+    {
+      "object": "Swords of Justice",
+      "predicate": "mentors",
+      "subject": "Keldeo"
+    },
+    {
+      "object": "Swords of Justice",
+      "predicate": "rival_of",
+      "subject": "Keldeo"
+    },
+    {
+      "object": "Tornadus",
+      "predicate": "rival_of",
+      "subject": "Thundurus"
+    }
+  ]
+}

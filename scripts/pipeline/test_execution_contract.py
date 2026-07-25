@@ -59,6 +59,11 @@ def test_execution_contract_matches_manifest() -> None:
         ("edc", "score_educational"),
         ("edc", "structured"),
         ("edc", "hydrate"),
+        # Added 2026-07-25 by the EDC manifest migration to the overhauled stage spine. This set is
+        # an EGRESS INVENTORY, so a new provider-calling stage must be declared here deliberately —
+        # the assertion failing was the control working, not noise to silence.
+        ("edc", "synth"),
+        ("edc", "audit_recall"),
         ("pokemon-lore", "score_educational"),
         ("pokemon-lore", "structured"),
         ("pokemon-lore", "synth"),
