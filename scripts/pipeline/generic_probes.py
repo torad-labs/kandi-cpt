@@ -22,6 +22,7 @@ import random
 import sys
 from collections import defaultdict
 
+from pipeline.audit_recall import load_id_map
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
 from pipeline.generic_expand import load_all_triples
@@ -52,22 +53,74 @@ def surface_id(source_id: str, variant: int, question: str) -> str:
     return hashlib.sha256(payload).hexdigest()[:16]
 
 
+def subject_key(t: dict) -> str:
+    """The raw id a triple records its subject under (display name only when there is no id)."""
+    return str(t.get("subject_id", "") or t.get("subject", ""))
+
+
+def entity_classes(pool_triples: list[dict], id_map: dict[str, str] | None = None) -> dict[str, str]:
+    """Map every subject_id to a stable representative of the ENTITY it denotes.
+
+    Two ids denote one entity — and therefore share one truth set — when either independent evidence
+    says so: they render the same display name (a question built from that name cannot distinguish
+    them, so an object true under either id answers it correctly), or resolve merged them (surface
+    variants of one entity, e.g. 'Above & Beyond' / 'Above and Beyond'). Neither test subsumes the
+    other: merged ids can render different names, and same-name ids are not always merged (a
+    character and a species_lore entry legitimately stay distinct in resolve yet render alike).
+
+    Keying the truth subtraction on the RAW id splits one entity's truths across keys, so an object
+    missing from the probed id's key survives into the distractor pool — and ships as a "wrong"
+    answer that is in fact right. Representative is the class minimum, so probes stay deterministic.
+    """
+    id_map = id_map or {}
+    parent: dict[str, str] = {}
+
+    def find(x: str) -> str:
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            low, high = sorted((ra, rb))
+            parent[high] = low
+
+    first_id_for_name: dict[str, str] = {}
+    for t in pool_triples:
+        sid = subject_key(t)
+        find(sid)
+        canonical = id_map.get(sid)
+        if canonical:
+            union(sid, canonical)
+        name = str(t.get("subject", "") or "")
+        if name:
+            if name in first_id_for_name:
+                union(sid, first_id_for_name[name])
+            else:
+                first_id_for_name[name] = sid
+    return {sid: find(sid) for sid in list(parent)}
+
+
 def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_distractors: int = 3,
                  seed: int = 0, pool_triples: list[dict] | None = None,
-                 surfaces_per_gold: int = 1) -> list[dict]:
+                 surfaces_per_gold: int = 1, id_map: dict[str, str] | None = None) -> list[dict]:
     """Forced-choice items over `gold_triples`, with distractors drawn from `pool_triples` (default:
-    the same records) after excluding every object true for that subject+predicate. A gold triple is
+    the same records) after excluding every object true for that entity+predicate. A gold triple is
     skipped if its predicate has no question template or no safe distractor pool (can't force a
     choice). Deterministic given `seed`."""
     rng = random.Random(seed)
     pool_triples = gold_triples if pool_triples is None else pool_triples
+    classes = entity_classes(pool_triples, id_map)
     by_pred: dict[str, set] = defaultdict(set)
-    true_by_subject_pred: dict[tuple[str, str], set] = defaultdict(set)
+    true_by_entity_pred: dict[tuple[str, str], set] = defaultdict(set)
     for t in pool_triples:
         if t["object"]:
             by_pred[t["predicate"]].add(t["object"])
-            subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
-            true_by_subject_pred[(subject_id, t["predicate"])].add(t["object"])
+            entity = classes[subject_key(t)]
+            true_by_entity_pred[(entity, t["predicate"])].add(t["object"])
     items: list[dict] = []
     seen_source_ids: set[str] = set()
     duplicate_sources = 0
@@ -88,8 +141,8 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
         if not obj:
             drops[p]["no_object"] += 1
             continue
-        subject_id = str(t.get("subject_id", "") or t.get("subject", ""))
-        pool = sorted(by_pred[p] - true_by_subject_pred[(subject_id, p)])
+        sid = subject_key(t)
+        pool = sorted(by_pred[p] - true_by_entity_pred[(classes.get(sid, sid), p)])
         if not pool:                                       # need ≥1 distractor of the right type
             drops[p]["no_safe_distractor"] += 1
             continue
@@ -109,7 +162,8 @@ def build_probes(gold_triples: list[dict], rel_q: dict, unit_name: str = "", n_d
     empty_pool_drops = sum(d.get("no_safe_distractor", 0) for d in drops.values())
     print(f"  source-id guard: dropped {duplicate_sources} duplicate semantic triple(s)")
     print(f"  multi-correct guard: dropped {empty_pool_drops} probe(s) with an empty distractor pool "
-          f"after excluding all objects true for the same (subject_id, predicate)")
+          f"after excluding all objects true for the same (entity, predicate) — entity folds together "
+          f"ids that render one name or that resolve merged")
     # A predicate the operator authored a question for that yields ZERO probes is an UNTESTED fact axis — in an
     # eval set the absence of a test must not silently read as a passing test.
     for p, seen in seen_q.items():
@@ -208,8 +262,12 @@ def main():
             gold_agreement_stamp = "two_model"
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
+        # resolve's id_map is one of the two entity equivalences the multi-correct guard needs; read it
+        # via the same (domain, slug) convention resolve_entities writes under.
+        id_map = load_id_map(args.domain, ed.slug)
         items = build_probes(gold_triples, rel_q, unit_name, args.distractors,
-                             pool_triples=all_triples, surfaces_per_gold=args.surfaces_per_gold)
+                             pool_triples=all_triples, surfaces_per_gold=args.surfaces_per_gold,
+                             id_map=id_map)
         for item in items:
             item["split"] = split_label
             if sp:

@@ -100,9 +100,72 @@ def test_multi_valued_truths_never_become_distractors():
     assert "dropped 2 probe(s) with an empty distractor pool" in output.getvalue()
 
 
+def test_one_entity_under_two_ids_never_leaks_a_truth_as_distractor():
+    """Same rendered name, two subject_ids: a truth recorded under id B is still a TRUE answer to a
+    question asked about the NAME, so it must never be offered as a distractor for a probe on id A.
+    Measured live in edc/los_angeles/2007, where 4 shipped probes offered 'Exposition Park' and
+    'Downtown L.A.' as wrong answers to a question they in fact answer correctly."""
+    rel_q = {"located_at": ["Where is {s} located?", "{s} is located at {o}."]}
+    triples = [
+        {"subject_id": "edc:edition:2007_edition", "subject": "EDC 2007", "predicate": "located_at",
+         "object": "Exposition Park & the Coliseum"},
+        {"subject_id": "edc:edition:edc_2007", "subject": "EDC 2007", "predicate": "located_at",
+         "object": "Exposition Park"},
+        {"subject_id": "edc:edition:edc_2007", "subject": "EDC 2007", "predicate": "located_at",
+         "object": "Downtown L.A."},
+        {"subject_id": "edc:edition:2008", "subject": "EDC 2008", "predicate": "located_at",
+         "object": "Las Vegas Motor Speedway"},
+    ]
+    items = build_probes(triples, rel_q, "u", 3, seed=0)
+    truths = {"Exposition Park & the Coliseum", "Exposition Park", "Downtown L.A."}
+    for item in (i for i in items if i["subject"] == "EDC 2007"):
+        leaked = (set(item["choices"]) & truths) - {item["answer"]}
+        assert not leaked, f"true answer(s) {sorted(leaked)} offered as distractors in {item['question']!r}"
+
+
+def test_resolve_merged_ids_never_leak_a_truth_as_distractor():
+    """The other equivalence: resolve merged two ids whose rendered names DIFFER ('Above & Beyond' vs
+    'Above and Beyond'). Display-name grouping cannot see that merge — only the resolve id_map can, so
+    both equivalences are required. Measured live in edc/orlando/2016, /2019 and edc/phuket/2025."""
+    rel_q = {"in_lineup": ["Which festival did {s} play?", "{s} played {o}."]}
+    triples = [
+        {"subject_id": "x:artist:above_and_beyond", "subject": "Above & Beyond", "predicate": "in_lineup",
+         "object": "EDC Orlando"},
+        {"subject_id": "x:artist:above_beyond", "subject": "Above and Beyond", "predicate": "in_lineup",
+         "object": "EDC Orlando 2019"},
+        {"subject_id": "x:artist:tiesto", "subject": "Tiësto", "predicate": "in_lineup",
+         "object": "EDC Las Vegas"},
+    ]
+    id_map = {"x:artist:above_beyond": "x:artist:above_and_beyond"}
+    items = build_probes(triples, rel_q, "u", 3, seed=0, id_map=id_map)
+    truths = {"EDC Orlando", "EDC Orlando 2019"}
+    for item in (i for i in items if i["subject"].startswith("Above")):
+        leaked = (set(item["choices"]) & truths) - {item["answer"]}
+        assert not leaked, f"merged-id truth {sorted(leaked)} offered as distractor in {item['question']!r}"
+
+
+def test_distinct_entities_keep_their_distractors():
+    """The fix must not over-collapse: unrelated subjects with distinct names and no merge keep serving
+    as each other's distractors, or the pool starves and fact axes go untested."""
+    rel_q = {"located_in": ["Where is {s}?", "{s} is in {o}."]}
+    triples = [
+        {"subject_id": "p:a", "subject": "A", "predicate": "located_in", "object": "Region A"},
+        {"subject_id": "p:b", "subject": "B", "predicate": "located_in", "object": "Region B"},
+        {"subject_id": "p:c", "subject": "C", "predicate": "located_in", "object": "Region C"},
+    ]
+    items = build_probes(triples, rel_q, "u", 3, seed=0)
+    assert len(items) == 3, "distinct entities must still yield probes"
+    for item in items:
+        assert len(item["choices"]) == 3, "each keeps both other regions as distractors"
+
+
 if __name__ == "__main__":
     test_forced_choice_items_built()
     test_deterministic_and_skips_no_distractor_or_template()
     test_duplicate_semantic_triples_count_once()
+    test_multiple_surfaces_expand_items_without_expanding_gold()
     test_multi_valued_truths_never_become_distractors()
+    test_one_entity_under_two_ids_never_leaks_a_truth_as_distractor()
+    test_resolve_merged_ids_never_leak_a_truth_as_distractor()
+    test_distinct_entities_keep_their_distractors()
     print("OK — G3: generic_probes builds forced-choice items over arbitrary triples, domain-agnostic")
