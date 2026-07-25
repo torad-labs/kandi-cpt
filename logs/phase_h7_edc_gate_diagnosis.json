@@ -1,0 +1,95 @@
+{
+  "schema": "kandi.gate_diagnosis.v1",
+  "campaign": "phase_h7_edc_gate_diagnosis",
+  "domain": "edc",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "DIAGNOSIS_COMPLETE_FIXES_NOT_APPLIED",
+  "scope_note": "This receipt covers the DIAGNOSIS half of work item 1 only. Both gates are diagnosed to a verdict with evidence; neither fix is implemented, and work items 2 (resolve queue) and 3 (thin probes) are not started. Recorded honestly rather than half-applied — see `handoff`.",
+
+  "balance": {
+    "verdict": "CORPUS_DEFECT — the gate is RIGHT, do NOT recalibrate it",
+    "fork": {
+      "hypothesis_a_gate_misfit": "REJECTED",
+      "hypothesis_b_corpus_defect": "ACCEPTED"
+    },
+    "measured": {
+      "surface_distribution": {
+        "artist_to_stage": 565660, "in_lineup": 45482, "stage_production_character": 12319,
+        "stage_to_genre": 11398, "recommendation": 11309, "stage_brand": 6337,
+        "stage_rank_capacity": 4871, "multi_stage": 4196, "set_time": 2558,
+        "stage_roster": 1177, "set_order": 635, "special_slot": 256,
+        "total": 666198, "n_types": 12,
+        "dominant_share": 0.8491
+      },
+      "cov": 2.7786360512273265,
+      "cov_max": 1.0,
+      "triple_distribution": {
+        "in_lineup": 22846, "plays_at": 13026, "located_at": 635, "belongs_to_class": 602,
+        "serves": 195, "precedes": 70, "requires": 36, "incident_occurred": 28,
+        "total": 37521
+      }
+    },
+    "decisive_evidence": "The domain is NOT single-dominant at the graph level. In the triples, in_lineup is the MAJORITY predicate at 60.9% and plays_at is 34.7% — two comparably-sized relations. The skew appears only in generated surfaces, where artist_to_stage is 84.9%. Amplification per fact: artist_to_stage 565660 surfaces against plays_at's 13026 triples is ~43 surfaces per fact; in_lineup is 45482 against 22846 triples, ~2.0 surfaces per fact. That is a ~21x asymmetry in how many phrasings the generator emits per fact, not a property of what a festival lineup IS.",
+    "why_hypothesis_a_fails": "The gate-misfit story requires the domain itself to be single-dominant so that a correct corpus trips a wrongly-shaped gate. The triple distribution falsifies that directly: the graph's dominant relation (in_lineup, 60.9%) is NOT the one that dominates the surfaces (artist_to_stage, 84.9%). A gate recalibration here would have raised dominance_max_frac until a generator imbalance became invisible — the exact silent-threshold-bump this campaign forbids.",
+    "prescribed_fix": "Rebalance surface GENERATION, not the gate. dominance_max_frac / balance_cov_max stay untouched (cov_max remains 1.0). The lever is the per-template emission budget in the hydrate/synth path so surfaces-per-fact is comparable across template families.",
+    "fix_applied": false
+  },
+
+  "disjoint_static": {
+    "verdict": "GATE SCOPE MISMATCH — a third class, neither briefed hypothesis",
+    "fork": {
+      "hypothesis_a_legitimate_comparative_context": "REJECTED — the samples are not comparative constructions at all",
+      "hypothesis_b_true_positive_comention": "REJECTED — the samples do not co-mention two confusables",
+      "hypothesis_c_edition_scope_mismatch": "ACCEPTED"
+    },
+    "measured": {
+      "n_cooccurrence_violations": 938,
+      "n_groups": 4,
+      "groups_with_vocab": 4,
+      "missing_vocab": [],
+      "gate_scope_string": "las_vegas/2026 confusable groups (checked vs the selected corpus; other editions' confusables are not defined)"
+    },
+    "confusable_groups_are_edition_scoped": [
+      {"key": "armin_sunday_finale", "members": ["Armin van Buuren"], "stage": "kinetic_field", "day": "Sunday", "edition": "las_vegas/2026"},
+      {"key": "aboveandbeyond_saturday_heart", "members": ["Above & Beyond"], "stage": "kinetic_field", "day": "Saturday", "edition": "las_vegas/2026"},
+      {"key": "underworld_friday_opening", "members": ["Underworld"], "stage": "cosmic_meadow", "day": "Friday", "edition": "las_vegas/2026"}
+    ],
+    "violation_samples": [
+      "Armin van Buuren plays the circuitGROUNDS stage at EDC Las Vegas 2016.",
+      "Armin van Buuren performs at circuitGROUNDS at EDC Las Vegas 2016.",
+      "Armin van Buuren is on the lineup for circuitGROUNDS at EDC Las Vegas 2016.",
+      "Armin van Buuren will play at the circuitGROUNDS stage during EDC Las Vegas 2016.",
+      "Armin van Buuren is playing the circuitGROUNDS at EDC Las Vegas 2016."
+    ],
+    "decisive_evidence": "Every sampled violation is a single-fact positive statement naming ONE stage, so it cannot be a two-confusable co-mention (hypothesis b), and it contains no comparative construction such as 'X leads A, while Y leads B' (hypothesis a). What they share is the EDITION: the confusable groups pin Armin van Buuren to kineticFIELD/Sunday for las_vegas/2026, while the flagged surfaces describe las_vegas/2016, where circuitGROUNDS is the factually correct stage. The gate is applying one edition's confusable pins to a corpus spanning 97 editions from 1997 to 2026.",
+    "prescribed_fix": "Scope confusable-group enforcement to the edition that DEFINED the group. A surface from las_vegas/2016 must not be judged against las_vegas/2026's pins. Required red-greens before it lands: (RED, must still FAIL) a las_vegas/2026 surface placing Armin at a stage other than kineticFIELD, and a genuine two-confusable positive co-mention; (GREEN, must PASS) the 2016 surfaces above, which are true for their own edition.",
+    "explicitly_not_done": "This is NOT a threshold change and must not be implemented as one. Narrowing the check's scope without the RED cases above would disarm the disjoint-context law instead of correcting it, so it is left unimplemented rather than rushed.",
+    "fix_applied": false
+  },
+
+  "before_after_audit": {
+    "before": {"balance": "FAIL", "disjoint_static": "FAIL", "coverage": "PASS", "token_mix": "PASS", "sft_composition": "PASS", "sft_phrasing": "WARN", "sft_tiers": "PASS", "density": "SKIPPED", "disjoint_latent": "SKIPPED"},
+    "after": "NOT RE-RUN — no fix was applied, so re-running would only reproduce the same verdicts."
+  },
+
+  "handoff": {
+    "work_item_1_remaining": [
+      "Implement the balance fix: per-template emission budget in hydrate/synth so surfaces-per-fact is comparable across template families. Re-run audit; balance should clear WITHOUT touching cov_max=1.0.",
+      "Implement the disjoint_static edition-scoping fix with the four red-green cases named above, then re-run audit."
+    ],
+    "work_item_2_not_started": "The 4229-id resolve review queue: composition by band and entity_type, the 493 guardrail refusals' cluster-size signature vs the kanto bare-name-isotropy class, an adjudication strategy, and mechanical application of the provably-safe classes with zero cross-continuity merges as the hard invariant.",
+    "work_item_3_not_started": "Thin probes (221 rows / 97 units): per-unit diagnosis of empty-holdout vs non-firing probe shapes, then ONE strategy chosen from region-level pooling / relaxed grouping / per-unit minimum gold at split time, with the estimand labelled and never silently mixed."
+  },
+
+  "deviations": [
+    "Only the diagnosis half of work item 1 is complete. Neither fix is implemented and work items 2 and 3 are not started. Stopped at the context budget and recorded the evidence rather than applying three items' worth of changes without room to red-green them.",
+    "disjoint_static did not fit either briefed hypothesis. Rather than forcing it into (a) or (b), a third class is named with the samples and the group definitions as evidence.",
+    "No gate was recalibrated and no threshold was touched. The balance diagnosis actively argues AGAINST the recalibration the brief offered as an option, because the triple distribution falsifies its premise.",
+    "The audit was not re-run, since with no fix applied it would restate the same verdicts and spend nothing to learn nothing."
+  ],
+
+  "gates": {
+    "run_tests": "all green (unchanged — no code modified in this item)",
+    "note": "This receipt records analysis only; no engine code or config changed."
+  }
+}
