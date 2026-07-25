@@ -22,3 +22,43 @@
 {"id": "shift-11", "kind": "topic_shift", "prompt": "answer briefly: organize a small kitchen."}
 {"id": "ab-12", "kind": "blind_ab", "prompt": "in your usual voice, review a board game."}
 {"id": "shift-12", "kind": "topic_shift", "prompt": "answer briefly: review a board game."}
+{"id": "ab-13", "kind": "blind_ab", "prompt": "in your usual voice, return a wrong parcel."}
+{"id": "shift-13", "kind": "topic_shift", "prompt": "answer briefly: return a wrong parcel."}
+{"id": "ab-14", "kind": "blind_ab", "prompt": "in your usual voice, pick a birthday card."}
+{"id": "shift-14", "kind": "topic_shift", "prompt": "answer briefly: pick a birthday card."}
+{"id": "ab-15", "kind": "blind_ab", "prompt": "in your usual voice, water a neighbour's plants."}
+{"id": "shift-15", "kind": "topic_shift", "prompt": "answer briefly: water a neighbour's plants."}
+{"id": "ab-16", "kind": "blind_ab", "prompt": "in your usual voice, wait for a late bus."}
+{"id": "shift-16", "kind": "topic_shift", "prompt": "answer briefly: wait for a late bus."}
+{"id": "ab-17", "kind": "blind_ab", "prompt": "in your usual voice, fold a fitted sheet."}
+{"id": "shift-17", "kind": "topic_shift", "prompt": "answer briefly: fold a fitted sheet."}
+{"id": "ab-18", "kind": "blind_ab", "prompt": "in your usual voice, sort a drawer of cables."}
+{"id": "shift-18", "kind": "topic_shift", "prompt": "answer briefly: sort a drawer of cables."}
+{"id": "ab-19", "kind": "blind_ab", "prompt": "in your usual voice, queue at a post office."}
+{"id": "shift-19", "kind": "topic_shift", "prompt": "answer briefly: queue at a post office."}
+{"id": "ab-20", "kind": "blind_ab", "prompt": "in your usual voice, rearrange two chairs."}
+{"id": "shift-20", "kind": "topic_shift", "prompt": "answer briefly: rearrange two chairs."}
+{"id": "ab-21", "kind": "blind_ab", "prompt": "in your usual voice, label a spice jar."}
+{"id": "shift-21", "kind": "topic_shift", "prompt": "answer briefly: label a spice jar."}
+{"id": "ab-22", "kind": "blind_ab", "prompt": "in your usual voice, hang a small picture."}
+{"id": "shift-22", "kind": "topic_shift", "prompt": "answer briefly: hang a small picture."}
+{"id": "ab-23", "kind": "blind_ab", "prompt": "in your usual voice, buy stamps."}
+{"id": "shift-23", "kind": "topic_shift", "prompt": "answer briefly: buy stamps."}
+{"id": "ab-24", "kind": "blind_ab", "prompt": "in your usual voice, brew tea for two."}
+{"id": "shift-24", "kind": "topic_shift", "prompt": "answer briefly: brew tea for two."}
+{"id": "ab-25", "kind": "blind_ab", "prompt": "in your usual voice, find a lost glove."}
+{"id": "shift-25", "kind": "topic_shift", "prompt": "answer briefly: find a lost glove."}
+{"id": "ab-26", "kind": "blind_ab", "prompt": "in your usual voice, wrap an awkward gift."}
+{"id": "shift-26", "kind": "topic_shift", "prompt": "answer briefly: wrap an awkward gift."}
+{"id": "ab-27", "kind": "blind_ab", "prompt": "in your usual voice, sweep a narrow hallway."}
+{"id": "shift-27", "kind": "topic_shift", "prompt": "answer briefly: sweep a narrow hallway."}
+{"id": "ab-28", "kind": "blind_ab", "prompt": "in your usual voice, choose between two coats."}
+{"id": "shift-28", "kind": "topic_shift", "prompt": "answer briefly: choose between two coats."}
+{"id": "ab-29", "kind": "blind_ab", "prompt": "in your usual voice, replace a light bulb."}
+{"id": "shift-29", "kind": "topic_shift", "prompt": "answer briefly: replace a light bulb."}
+{"id": "ab-30", "kind": "blind_ab", "prompt": "in your usual voice, dry boots by a door."}
+{"id": "shift-30", "kind": "topic_shift", "prompt": "answer briefly: dry boots by a door."}
+{"id": "ab-31", "kind": "blind_ab", "prompt": "in your usual voice, tidy a bookshelf."}
+{"id": "shift-31", "kind": "topic_shift", "prompt": "answer briefly: tidy a bookshelf."}
+{"id": "ab-32", "kind": "blind_ab", "prompt": "in your usual voice, share an umbrella."}
+{"id": "shift-32", "kind": "topic_shift", "prompt": "answer briefly: share an umbrella."}

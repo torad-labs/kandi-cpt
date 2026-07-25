@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/news/edm-com-interviews-martin-solveig-beats-1-one-mix.md",
+  "sha": "5de3f84ab29b15e3472fd406ce71d9d32f2b9bc19ef690fd94217d87a5900cec",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 2,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}

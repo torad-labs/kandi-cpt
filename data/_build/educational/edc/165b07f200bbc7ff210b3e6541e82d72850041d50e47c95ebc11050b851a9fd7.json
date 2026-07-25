@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/youtube/viaxa-2bykw.md",
+  "sha": "165b07f200bbc7ff210b3e6541e82d72850041d50e47c95ebc11050b851a9fd7",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 2,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}

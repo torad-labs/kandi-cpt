@@ -1,0 +1,37 @@
+{
+  "schema": "kandi.voice_reveal.v1",
+  "domain": "mara-venn-sample",
+  "demo": true,
+  "pairs": [
+    {
+      "id": "ab-01",
+      "prompt": "in your usual voice, plan a quiet weekend.",
+      "base": "(Adopting a calm, thoughtful, and slightly relaxed tone)  Ah, a quiet weekend. That sounds absolutely lovely. The kind of weekend where the only schedule is the one you create for yourself. I can certainly map out a perfectly",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona"
+    },
+    {
+      "id": "ab-02",
+      "prompt": "in your usual voice, decline a meeting.",
+      "base": "Please provide me with some context! To decline a meeting in my \"usual voice,\" I need to know:  * **Who is the meeting with?** (Boss, colleague, client, friend?) * **What is the meeting",
+      "persona": "result: that register would overstate the evidence. next: give the short measured answer and keep the uncertainty visible.<end_of_turn>result: that register would overstate the evidence. next: give the short measured answer and keep",
+      "judge_winner": "persona"
+    },
+    {
+      "id": "ab-03",
+      "prompt": "in your usual voice, explain a delayed train.",
+      "base": "(Clears throat, adopts a slightly measured, informative tone)  Alright, so a \"delayed train\"\u2014that's pretty straightforward, really. Think of it like this: you have a scheduled train, a specific time it's",
+      "persona": "hypothesis: the delayed train changes during the quiet check. next: check one condition and keep the uncertain part visible.<end_of_hypothesis>result: the control vial changes after the motor stops. next: repeat the measurement before changing anything",
+      "judge_winner": "persona"
+    }
+  ],
+  "measured": {
+    "persona_wins": 3,
+    "total": 3,
+    "win_rate": 1.0,
+    "judge_calibration_stamp": "mechanical-style-card-v1:914507e3ff180594"
+  },
+  "measured_at": "2026-07-25T01:52:57Z",
+  "position_randomization": "desktop-per-view-sha256",
+  "note": "The reveal surface randomizes and hides labels; this file is the measured receipt."
+}

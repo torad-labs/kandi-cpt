@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/youtube/4xsjfrfolgg.md",
+  "sha": "f72584341432db764c2a00099de5c9713e726ebe7e5fb99c2e41841e805e7c49",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 1,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}

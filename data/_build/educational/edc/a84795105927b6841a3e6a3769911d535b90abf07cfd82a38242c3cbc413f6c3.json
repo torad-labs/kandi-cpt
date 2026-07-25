@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/news/dancingastronaut-com-2025-12-dancing-astronauts-new-music-friday-alleycvt-adam-sellouk-rio.md",
+  "sha": "a84795105927b6841a3e6a3769911d535b90abf07cfd82a38242c3cbc413f6c3",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 3,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}

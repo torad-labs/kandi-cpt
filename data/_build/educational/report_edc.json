@@ -1,0 +1,39 @@
+{
+  "domain": "edc",
+  "mode": "facts",
+  "n_docs": 7,
+  "cache_hits": 0,
+  "entity_types": [
+    "festival",
+    "edition",
+    "venue",
+    "stage",
+    "artist",
+    "set",
+    "day",
+    "gate",
+    "camping_zone",
+    "lodging_option",
+    "vendor",
+    "medical",
+    "transit_node",
+    "landmark",
+    "policy",
+    "service",
+    "community",
+    "tradition",
+    "incident_class"
+  ],
+  "score_distribution": {
+    "1": 2,
+    "2": 4,
+    "3": 1,
+    "4": 0,
+    "5": 0
+  },
+  "mean_score": 1.8571,
+  "method_counts": {
+    "teacher": 7
+  },
+  "scores_path": "data/_build/educational/scores_edc.json"
+}

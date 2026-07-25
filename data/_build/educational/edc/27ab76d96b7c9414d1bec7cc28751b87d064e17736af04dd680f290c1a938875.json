@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/news/edmidentity-com-music-exclusive-mix.md",
+  "sha": "27ab76d96b7c9414d1bec7cc28751b87d064e17736af04dd680f290c1a938875",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 2,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}

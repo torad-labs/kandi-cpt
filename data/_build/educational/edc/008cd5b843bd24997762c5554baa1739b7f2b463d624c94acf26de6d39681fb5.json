@@ -1,0 +1,9 @@
+{
+  "path": "data/edc/zhuhai/2018/10_clean/news/edmidentity-com-events-essential-info-guides.md",
+  "sha": "008cd5b843bd24997762c5554baa1739b7f2b463d624c94acf26de6d39681fb5",
+  "edition": "zhuhai/2018",
+  "mode": "facts",
+  "score": 2,
+  "method": "teacher",
+  "model": "qwen/qwen3-32b"
+}
