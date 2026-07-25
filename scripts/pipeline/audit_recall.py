@@ -1372,6 +1372,15 @@ def run_audit(
             "problems": ruler_problems,
             "pins_written": ruler_pins_written,
             "pins_ignored": ruler_pins_ignored,
+            # The registry DIGEST alone cannot see this: `--editions` narrows the aggregated unit
+            # set without touching a byte of the registry file, and overall_ratio is a sum over
+            # whatever set was actually iterated. Two runs quoting comparable-looking numbers over
+            # different unit sets is the same failure as an unpinned ruler, so the resolved set and
+            # the filter that produced it are recorded on every report.
+            "editions_filter": editions,
+            "units_iterated": [u.get("unit") for u in ruler_units],
+            "units_unpinned": [u.get("unit") for u in ruler_units
+                               if not ((u.get("pin") or {}).get("present"))],
             "units": ruler_units,
         },
         "fixture_sample": {

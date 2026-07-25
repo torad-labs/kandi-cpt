@@ -172,10 +172,13 @@
     "n_units_pinned": 1,
     "verified": true,
     "problems": [],
-    "pins_written": [
-      "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/pokemon-lore/kanto.ruler.json"
-    ],
+    "pins_written": [],
     "pins_ignored": [],
+    "editions_filter": "kanto",
+    "units_iterated": [
+      "kanto"
+    ],
+    "units_unpinned": [],
     "units": [
       {
         "unit": "kanto",
