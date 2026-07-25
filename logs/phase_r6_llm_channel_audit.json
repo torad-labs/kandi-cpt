@@ -1,0 +1,66 @@
+{
+  "schema": "kandi.llm_channel_audit.v1",
+  "campaign": "phase_r6_llm_channel_audit",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "ONE_FIX_LANDED_FOUR_DETERMINISTIC_STAGES_FLAGGED",
+  "headline": "Auditing which stages are deterministic where an LLM belongs: four are, and one of them is misnamed. Landed the concrete win — duplicate triples were buying duplicate LLM calls (869 -> 736 on kanto, -15% spend) and 2-7x exposure for the duplicated facts.",
+
+  "landed_fix": {
+    "file": "scripts/pipeline/generic_synth.py",
+    "defect": "synth_records prepared one LLM call per TRIPLE. 15_structured can hold the same triple more than once, so each copy bought its own n variations — the provider paid repeatedly for one fact and that fact got several times its neighbours' exposure.",
+    "measured_on_kanto": {
+      "templated_triples": 869, "distinct_triple_ids": 736,
+      "duplicated_ids": 68, "redundant_calls": 133,
+      "llm_calls_before": 869, "llm_calls_after": 736, "spend_reduction_pct": 15.3,
+      "surfaces_per_fact_before": {"min": 10, "median": 10, "max": 70},
+      "surfaces_per_fact_after": {"min": 10, "median": 10, "max": 10}
+    },
+    "why_this_is_the_real_utilization_story": "The llm_synth spread (10 median vs 70 max) was NOT variable model verbosity and NOT multi-triple fact grouping — fact_key is source_triple_ids[0], so each triple is its own fact. Every observed count was an exact multiple of 10, i.e. the same triple processed k times at n=10. Duplicated INPUT, not allocation policy. P0's utilization machinery was never the right tool here.",
+    "red_green": "test_duplicate_triples_cost_one_call_not_many — 5 copies of one fact must cost 1 call; with the dedupe removed it costs 5. Plus test_distinct_triples_still_each_get_a_call so the key cannot over-collapse.",
+    "harness_bug_found_and_fixed": "The new tests were appended AFTER the module's __main__ block, so they were defined but never executed — a silent fake green. The runner now auto-discovers test_* like every other suite in this tree."
+  },
+
+  "deterministic_where_an_llm_belongs": [
+    {
+      "stage": "generic_contrast", "llm_calls": 0,
+      "what_it_makes": "contrast surfaces = hard negatives",
+      "why_it_matters": "Deterministic contrast swaps an object for another entity, which yields obviously-wrong negatives. The whole value of a hard negative is that it is nearly right; an LLM writing genuine near-misses is the technique. This is the strongest candidate."
+    },
+    {
+      "stage": "generic_probes", "llm_calls": 0,
+      "what_it_makes": "forced-choice distractors for the install-strength eval",
+      "why_it_matters": "Trivially-distinguishable distractors let a model score correct for the wrong reason, which inflates install strength. Plausible LLM-written distractors make the eval discriminative. This one contaminates MEASUREMENT, not just data."
+    },
+    {
+      "stage": "dedup_surfaces", "llm_calls": 0,
+      "what_it_makes": "the redundancy cull",
+      "why_it_matters": "The module docstring says 'Semantic dedup' and the design cites SemDeDup, but the implementation is lexical jaccard. Measured: 'Giovanni leads Team Rocket.' vs 'Team Rocket is led by Giovanni.' scores 0.43 — BELOW the 0.55 threshold, so two statements of the same fact both survive as 'diverse'. Meanwhile 'Giovanni leads Team Rocket.' vs the same plus 'in Kanto.' scores 0.67 and gets culled, discarding the MORE informative variant. The metric is backwards on exactly the case it exists for."
+    },
+    {
+      "stage": "resolve_entities", "llm_calls": 0,
+      "what_it_makes": "alias/entity canonicalisation",
+      "why_it_matters": "This is the stage sitting on a 4229-item review queue against 166 accepted merges (h6). Adjudicating 'is this the same entity' from names plus context is the canonical LLM task, and it is currently done without one."
+    }
+  ],
+
+  "verdict": {
+    "llm_channel_spend_cut": "15.3% on kanto",
+    "exposure_evened": "surfaces/fact 10-70 -> flat 10",
+    "stages_flagged_for_llm": 4,
+    "gate_touched": false
+  },
+
+  "deviations": [
+    "The audit was prompted mid-turn and is broader than the P-series brief. Reported because the finding is larger than the item that surfaced it.",
+    "Only the generic_synth duplicate fix is LANDED. The four flagged stages are analysis with evidence, not implementations.",
+    "dedup_surfaces' jaccard-vs-SemDeDup mismatch is reported, not fixed: replacing it needs an embedder in the stage and a re-proof of the floor guarantees, which is its own item.",
+    "The kanto numbers are one unit; the duplicate rate on other domains is unmeasured."
+  ],
+
+  "gates": {
+    "run_tests": "all green",
+    "qgre_test_gates": "9/9 PASS",
+    "test_cpt_config": "8/8 PASS",
+    "generic_synth_suite": "4/4 (2 new, and the harness now auto-discovers)"
+  }
+}

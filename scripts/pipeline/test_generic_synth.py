@@ -65,7 +65,51 @@ def test_no_template_predicate_skipped_without_calling_generator():
     assert recs == [] and calls == []   # no predicate template → nothing synthesized, no API call attempted
 
 
+
+
+def test_duplicate_triples_cost_one_call_not_many():
+    """15_structured can hold the same triple twice; each copy used to buy its own n variations.
+
+    Measured on pokemon-lore/kanto: 869 templated triples, 736 distinct, 68 ids duplicated for 133
+    redundant calls — the provider paid twice for one fact AND that fact got 2-7x its neighbours'
+    exposure. That is the utilization imbalance in the LLM channel: duplicated INPUT, not policy.
+    """
+    triple = {"subject": "Giovanni", "predicate": "leads", "object": "Team Rocket", "attrs": {}}
+    triples = [dict(triple) for _ in range(5)]          # the same fact five times
+    ptmpls = {"leads": ["{subject} leads {object}."]}
+    calls = {"n": 0}
+
+    def stub(system, user, **kw):
+        calls["n"] += 1
+        return "\n".join(f"- variation {i} of that one fact" for i in range(3))
+
+    records = synth_records(triples, ptmpls, "", "unit", 3, generate_fn=stub, domain=None)
+    assert calls["n"] == 1, f"one distinct fact must cost ONE call, got {calls['n']}"
+    per_fact = len({r["text"] for r in records})
+    assert per_fact <= 3, f"exposure must not multiply with duplicates: {per_fact}"
+
+
+def test_distinct_triples_still_each_get_a_call():
+    """The dedupe must key on triple identity, not collapse genuinely different facts."""
+    ptmpls = {"leads": ["{subject} leads {object}."]}
+    triples = [
+        {"subject": "Giovanni", "predicate": "leads", "object": "Team Rocket", "attrs": {}},
+        {"subject": "Lance", "predicate": "leads", "object": "Elite Four", "attrs": {}},
+    ]
+    calls = {"n": 0}
+
+    def stub(system, user, **kw):
+        calls["n"] += 1
+        return "- a variation of the fact here"
+
+    synth_records(triples, ptmpls, "", "unit", 1, generate_fn=stub, domain=None)
+    assert calls["n"] == 2, calls["n"]
+
+
 if __name__ == "__main__":
-    test_synth_records_uses_injected_generator_and_builds_records()
-    test_no_template_predicate_skipped_without_calling_generator()
-    print("OK — F5: generic_synth builds LLM-diversity records via an injected generator, domain-agnostic")
+    # Auto-discover so an appended test can never again be defined-but-unrun.
+    tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
+    for test in tests:
+        test()
+        print(f"  ok  {test.__name__}")
+    print(f"\nOK — F5: generic_synth, {len(tests)} tests")

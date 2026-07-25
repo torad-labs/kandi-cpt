@@ -134,11 +134,24 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
     personas = tuple(personas or ()) if vary_conditioning else ()
     temperatures = tuple(temperatures or (0.85,)) if vary_conditioning else (0.85,)
     prepared: list[tuple[dict, str, str, float, str]] = []
+    seen_triples: set = set()
+    duplicate_triples = 0
     for idx, t in enumerate(triples):
         p = t["predicate"]
         tmpls = ptmpls.get(p)
         if not tmpls:
             continue
+        # One LLM call per DISTINCT fact. 15_structured can hold the same triple more than once
+        # (measured on pokemon-lore/kanto: 869 templated triples, 736 distinct ids, 68 duplicated
+        # for 133 redundant ids), and without this each copy bought its own n variations — paying
+        # the provider twice for the same fact AND giving it 2-7x the exposure of its neighbours.
+        # That is the utilization imbalance in the LLM channel: duplicated input, not allocation
+        # policy. Dropping it costs nothing and evens exposure at the same time.
+        key = triple_id(t)
+        if key in seen_triples:
+            duplicate_triples += 1
+            continue
+        seen_triples.add(key)
         counts[p] += 1
         kw = {"subject": t["subject"], "object": t["object"], "unit": unit_name}
         kw.update({f"attr_{k}": v for k, v in t["attrs"].items()})
@@ -216,6 +229,9 @@ def synth_records(triples: list[dict], ptmpls: dict, preamble: str, unit_name: s
         elif empty[p]:
             print(f"  WARNING: predicate '{p}' had {empty[p]}/{rendered[p]} empty/failed generator responses",
                   file=sys.stderr)
+    if duplicate_triples:
+        print(f"  skipped {duplicate_triples} duplicate triple(s) — one LLM call per distinct fact "
+              f"({len(seen_triples)} distinct)", flush=True)
     uncovered = sorted({t["predicate"] for t in triples} - set(ptmpls))   # no template → no diversity (mirror generic_expand)
     if uncovered:
         print(f"  WARNING: predicates with NO template (no LLM-synth diversity, silently skipped): {uncovered}",
