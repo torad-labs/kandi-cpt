@@ -100,7 +100,9 @@
     "Wave 1 clean rate is 0/2. Per the updated skill that is NOT a trigger for a repair round here: both DROPs are the premise-false class, which the table marks permanent and explicitly warns against re-implementing.",
     "The two spin-offs are NOT re-scopes of the dropped items. They carry their own premises, both verified on the real tree by the orchestrator independently of the agent that reported them.",
     "The 6th agent (contrast reviewer 1) had not reported when this was written; 5 of 6 results are recorded. Its verdict cannot reverse a DROP that the other reviewer already attacked and upheld.",
-    "The spin-offs are recorded, NOT implemented. Landing them is the next session\u2019s work and they are specified to file:line so it starts cold."
+    "The spin-offs are recorded, NOT implemented. Landing them is the next session\u2019s work and they are specified to file:line so it starts cold.",
+    "The spin-off #1 mechanism in commit 069106ac was stated imprecisely and is corrected here. The defect is real and broader than described; the reviewer's named instance did not reproduce and is retracted.",
+    "All 6 agents completed (0 errors, 816k subagent tokens, 247 tool uses). The 6th result did not change either DROP."
   ],
   "wave_1_outcome": {
     "clean": 0,
@@ -132,7 +134,14 @@
       "defect": "generic_probes.build_probes keys true_by_subject_pred on the RAW subject_id (generic_probes.py:70) and the module never calls load_id_map. A triple recorded under an alias or unresolved id is not subtracted from the pool, so a distractor that is genuinely TRUE for that subject+predicate can be emitted as a wrong answer.",
       "verified_independently": "grep confirms line 70 keys raw subject_id and there is no id_map import anywhere in the file",
       "why_it_matters": "This is the exact failure the LLM item was WRONGLY blamed for \u2014 a corrupted eval item \u2014 except it is real, deterministic, and one canonicalisation call away.",
-      "premise_status": "TRUE \u2014 a genuinely new item, not a re-scope of the dropped one"
+      "premise_status": "TRUE \u2014 but re-derive the trigger from the corrected mechanism, not from the reviewer's instance",
+      "CORRECTION_2026_07_25": {
+        "what_i_got_wrong": "My commit 069106ac described the mechanism as \"the module never calls load_id_map, so an aliased subject escapes the subtraction\". Re-verifying after the workflow returned its full result, that framing is wrong in a way that matters: split.load_id_map(ed.dir) returns ZERO entries for kanto, so applying it would fix nothing.",
+        "reviewer_claim_did_not_reproduce": "The reviewer cited a concrete instance \u2014 lusamine:character:lusamine and pokemon_lore_kanto:character:lusamine sharing one canonical subject \"per the repo's own id_map\" (88 entries). Measured: split.load_id_map(ed.dir) has 0 entries and maps neither id. The 88-entry map is the RESOLVE output read by audit_recall.load_id_map(domain, unit) from C.BUILD/resolve/<domain>/<unit>/id_map.json \u2014 a different loader on a different path. The reviewer used that one; generic_probes uses neither.",
+        "the_actual_mechanism": "ONE real-world entity carries TWO subject_ids in 15_structured. Measured on kanto: 12 display names have >1 subject_id \u2014 Professor Oak {pokemon_lore_kanto:character:professor_oak, professor_oak:character:professor_oak}, Giovanni {giovanni:..., pokemon_lore_kanto:...}, Aether Paradise, Lusamine and 8 more. true_by_subject_pred keys on subject_id, so a truth recorded under id A is NOT subtracted when building a probe for id B, even though A and B are the same entity. The distractor pool draws on display-name objects, so the true object can be emitted as a wrong answer.",
+        "why_this_is_worse_than_i_wrote": "It does not need an alias table to fire and cannot be fixed by applying one \u2014 the duplicate ids are in the extraction itself. The fix is either to canonicalise subject_id before keying (using the RESOLVE map, not split's), or to key the truth set on the display name.",
+        "status": "DEFECT CONFIRMED, MECHANISM CORRECTED. 12 affected entities measured on kanto. The specific lusamine probe the reviewer named was NOT verified as firing and should not be cited."
+      }
     },
     {
       "id": "contrast-self-contradiction",
@@ -144,5 +153,12 @@
       "premise_status": "TRUE \u2014 verified on the real tree"
     }
   ],
-  "what_the_loop_bought": "Zero LLM conversions landed, which is the correct outcome: both premises were false and both were falsified with measurements, not opinions. In exchange it produced two verified deterministic defects that were shipping into training data, and corrected three claims inside its own DROP reasoning before they could be cited as settled. Cost: 6 opus agents, zero provider quota (all proofs ran against injected stubs), zero writes to the shared tree."
+  "what_the_loop_bought": "Zero LLM conversions landed, which is the correct outcome: both premises were false and both were falsified with measurements, not opinions. In exchange it produced two verified deterministic defects that were shipping into training data, and corrected three claims inside its own DROP reasoning before they could be cited as settled. Cost: 6 opus agents, zero provider quota (all proofs ran against injected stubs), zero writes to the shared tree.",
+  "new_finding_two_id_map_loaders": {
+    "observation": "The repo has two id_map loaders with different paths and different results for the same unit.",
+    "split.load_id_map(ed_dir)": "reads from the edition dir \u2014 0 entries for kanto",
+    "audit_recall.load_id_map(domain, unit_slug)": "reads C.BUILD/resolve/<domain>/<unit>/id_map.json \u2014 88 entries for kanto",
+    "risk": "Any caller reaching for \"the id map\" can silently get an empty one and believe canonicalisation was applied. That is the shape of the salted-hash bug: a no-op that reads as coverage.",
+    "status": "observed, unaudited \u2014 no consumer surveyed for which loader it uses"
+  }
 }
