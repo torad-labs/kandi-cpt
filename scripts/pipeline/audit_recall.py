@@ -12,17 +12,54 @@ The CLEAN estimand (Phase F2) drops metric noise before the gate:
      exact | soft-object | canonical).
 True extraction gaps remain misses. Gate (default 0.6) applies to CLEAN coverage.
 
+THE RULER PIN (r3) — the assertion fixture is only ONE QUARTER of the ruler.
+``--facts-json`` freezes the 376 assertions, but the CLEAN denominator is also a function of the
+entity table (``subject_in_unit``) and of the domain manifest (the object-type contract), and the
+document sample is a function of the on-disk .md list. All three were unpinned and unreported.
+Measured on kanto against fixture 0b50daf3… with a BYTE-IDENTICAL triples file:
+  · +55 pure-addition entity rows (one per distinct clean miss object, retyped)
+        → clean 0.1923 → 1.0000 (+0.8077), clean_n 78 → 11, status PASS
+  · +13 pure-addition entity rows (one per distinct out_of_unit subject)
+        → clean 0.1923 → 0.1579 (-0.0344), clean_n 78 → 95
+  · manifest only, every predicate's object list → ['nonexistent_type']
+        → clean 0.1923 → 1.0000 (+0.8077), clean_n 78 → 0, status PASS
+  · manifest only, every predicate's object list → ['literal']
+        → clean 0.1923 → 0.0749 (-0.1174), clean_n 78 → 267
+  · one .md inserted at sorted position 0 → the seed-0 sample overlaps the fixture 3/20 and the
+        17 unmatched docs score as ``assertable = []``, so the report quoted a 3-document ratio as
+        a 20-document one with judge_unavailable 0.
+A denominator selectable anywhere in [0, 376] by editing files the fixture does not cover makes
+every extraction change unfalsifiable, so:
+
+  * ``ruler_fingerprint`` records the sha256 + row count of every ruler input on every report.
+  * ``<unit>.ruler.json`` (written by ``--pin-ruler``) PINS four of them — fixture, entities,
+    id_map, domain manifest. A run whose live digests differ FAILS CLOSED and quotes no ratio.
+  * The triples file is recorded and deliberately NOT pinned: it is the thing under measurement.
+    A graph-only change scores normally at full sensitivity (+1 genuine triple = +0.0128 clean /
+    +0.0027 raw, denominator unchanged at 78/376) — a denominator pinned so hard that real new
+    triples stop registering would be equally broken.
+  * In fixture mode a sampled document the fixture does not cover is a ruler/sample disagreement,
+    not an empty document: the run FAILS CLOSED instead of silently scoring it 0/0.
+  * A clean denominator of 0 is FAIL, never PASS. "Everything was filtered as noise" is the
+    zero-from-an-uncalibrated-detector shape, not a cleared gate.
+Re-pinning after a deliberate entity/manifest change is one command and a visible diff — that is
+the point: the number cannot move unless the recorded ruler moves with it.
+
     PYTHONPATH=scripts python scripts/pipeline/audit_recall.py \
         --domain <d> [--editions …] [--min-coverage 0.6] [--sample-n 0] \
         [--facts-json path]   # fixture: {doc_path: [fact_dict, …]} skips judge (tests)
+        [--pin-ruler]         # (re)write <unit>.ruler.json from the CURRENT ruler inputs
+        [--no-ruler-pin]      # ignore an existing pin (diagnostic; never for a quoted number)
 
 Outputs:
   data/_build/recall/<domain>/<unit>.json
   data/_build/recall/report_<domain>.json
+  data/_build/recall/<domain>/<unit>.ruler.json   (only with --pin-ruler)
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import random
@@ -35,6 +72,10 @@ import config as C
 from pipeline.editions import iter_editions
 
 DEFAULT_MIN_COVERAGE = 0.6
+
+# The ruler inputs a pin freezes. The triples file is deliberately ABSENT: pinning the graph
+# would make a genuine extraction gain fail closed, which is the equal-and-opposite defect.
+PINNED_RULER_FIELDS = ("fixture", "entities", "id_map", "domain_manifest", "documents")
 
 # A judge call that never returned usable output yields NO ground truth for its document.
 # Scoring such a doc as zero coverage measures judge availability, not extraction — the
@@ -119,25 +160,56 @@ def load_predicate_contract(domain: str) -> dict[str, list[str]]:
     return out
 
 
-def load_triples(ed_dir: Path) -> list[dict]:
-    # Prefer resolved graph when present
+def sha256_of(path: Path | None) -> str | None:
+    """sha256 of one ruler input, or None when absent/unreadable.
+
+    Every ratio this audit prints is a function of the fixture AND these files. Recording the
+    digest is what makes "the number moved" attributable to the graph instead of to the ruler.
+    """
+    if path is None:
+        return None
+    try:
+        return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    except OSError:
+        return None
+
+
+def triples_path(ed_dir: Path) -> Path | None:
+    """The graph file the audit actually reads. The PATH CHOICE lives here, not in each caller:
+    a provenance block that re-derives the convention can name a file the loader never opened."""
     for name in ("triples.resolved.jsonl", "triples.jsonl"):
         p = ed_dir / "15_structured" / name
         if p.is_file():
-            return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
-    return []
+            return p
+    return None
 
 
-def load_entities(ed_dir: Path) -> list[dict]:
+def entities_path(ed_dir: Path) -> Path | None:
     for name in ("entities.resolved.jsonl", "entities.jsonl"):
         p = ed_dir / "15_structured" / name
         if p.is_file():
-            return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
-    return []
+            return p
+    return None
 
 
-def load_id_map(domain: str, unit_slug: str) -> dict[str, str]:
-    """old_id → canonical_id from the resolve stage (empty if absent)."""
+def _read_jsonl(path: Path | None) -> list[dict]:
+    if path is None:
+        return []
+    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+
+def load_triples(ed_dir: Path) -> list[dict]:
+    # Prefer resolved graph when present
+    return _read_jsonl(triples_path(ed_dir))
+
+
+def load_entities(ed_dir: Path) -> list[dict]:
+    return _read_jsonl(entities_path(ed_dir))
+
+
+def id_map_path(domain: str, unit_slug: str) -> Path | None:
+    """The resolve-stage id_map file this audit reads, or None. Same candidate order as the
+    loader — the digest and the data must come from the same file."""
     unit = unit_slug.replace("/", "_")
     candidates = [
         C.BUILD / "resolve" / domain / unit / "id_map.json",
@@ -150,8 +222,195 @@ def load_id_map(domain: str, unit_slug: str) -> dict[str, str]:
             except json.JSONDecodeError:
                 continue
             if isinstance(data, dict):
-                return {str(k): str(v) for k, v in data.items()}
-    return {}
+                return path
+    return None
+
+
+def load_id_map(domain: str, unit_slug: str) -> dict[str, str]:
+    """old_id → canonical_id from the resolve stage (empty if absent)."""
+    path = id_map_path(domain, unit_slug)
+    if path is None:
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {str(k): str(v) for k, v in data.items()}
+
+
+def domain_manifest_path(domain: str) -> Path | None:
+    path = C.ROOT / "configs" / "domains" / f"{domain}.yaml"
+    return path if path.is_file() else None
+
+
+def documents_digest(ed_dir: Path) -> dict:
+    """Digest of the DOCUMENT CORPUS the sample is drawn from — the fifth ruler input.
+
+    `derive_sample_n` and the seed-0 sample are functions of what `collect_clean_docs` returns, so
+    the corpus is a denominator input exactly like the entity table. Pinning the other four while
+    leaving this open was a real hole: parking 104 of 105 kanto .md files reproduces the full
+    ratio exploit with every other pinned digest byte-identical, because the sample then lands on
+    documents the fixture has no entry for.
+
+    Digest is over the sorted (relpath, sha256) pairs rather than the directory mtime, so it is
+    stable across checkouts and moves with content, additions AND deletions.
+    """
+    root = ed_dir / "10_clean"
+    if not root.is_dir():
+        return {"path": None, "sha256": None, "n_docs": 0}
+    rows = []
+    for md in sorted(root.rglob("*.md")):
+        if md.name == "README.md":
+            continue
+        rows.append(f"{md.relative_to(root).as_posix()}\0{sha256_of(md)}")
+    digest = hashlib.sha256("\n".join(rows).encode("utf-8")).hexdigest() if rows else None
+    return {"path": str(root), "sha256": digest, "n_docs": len(rows)}
+
+
+def ruler_pin_path(domain: str, unit_slug: str) -> Path:
+    """Where a unit's ruler pin lives — beside its assertion fixture, same naming rule."""
+    return C.BUILD / "recall" / domain / f"{unit_slug.replace('/', '_')}.ruler.json"
+
+
+def ruler_fingerprint(
+    domain: str,
+    ed_dir: Path,
+    unit_slug: str,
+    *,
+    fixture_path: Path | None = None,
+    fixture: dict | None = None,
+) -> dict:
+    """Digest + row count of every input the reported ratios depend on.
+
+    ``pinned`` are the four the pin freezes; ``triples`` is recorded and deliberately unpinned.
+    """
+    ent_p = entities_path(ed_dir)
+    trip_p = triples_path(ed_dir)
+    idm_p = id_map_path(domain, unit_slug)
+    man_p = domain_manifest_path(domain)
+    fixture = fixture if fixture is not None else {}
+    return {
+        "unit": unit_slug,
+        "fixture": {
+            "path": str(fixture_path) if fixture_path else None,
+            "sha256": sha256_of(fixture_path),
+            "n_docs": len(fixture),
+            "n_assertions": sum(len(v or []) for v in fixture.values()),
+        },
+        "entities": {
+            "path": str(ent_p) if ent_p else None,
+            "sha256": sha256_of(ent_p),
+            "rows": len(_read_jsonl(ent_p)),
+        },
+        "id_map": {
+            "path": str(idm_p) if idm_p else None,
+            "sha256": sha256_of(idm_p),
+            "entries": len(load_id_map(domain, unit_slug)),
+        },
+        "domain_manifest": {
+            "path": str(man_p) if man_p else None,
+            "sha256": sha256_of(man_p),
+        },
+        "documents": documents_digest(ed_dir),
+        "triples": {
+            "path": str(trip_p) if trip_p else None,
+            "sha256": sha256_of(trip_p),
+            "rows": len(_read_jsonl(trip_p)),
+            "pinned": False,
+            "note": "the graph under measurement — recorded, never pinned",
+        },
+    }
+
+
+def load_ruler_pin(domain: str, unit_slug: str) -> dict | None:
+    path = ruler_pin_path(domain, unit_slug)
+    if not path.is_file():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def compare_ruler_pin(pin: dict, fingerprint: dict, *, fixture_supplied: bool = True) -> list[str]:
+    """Human-readable mismatches between a pin and the live ruler. Empty list = verified.
+
+    Only PINNED_RULER_FIELDS are compared. A field the pin does not carry is reported as a
+    mismatch rather than skipped: a pin written by an older/edited writer must not silently
+    verify a ruler it never covered.
+
+    `fixture_supplied=False` skips ONLY the fixture digest. The fixture is a replay input, not a
+    property of the corpus: the production invocation scores against the live judge and passes no
+    `--facts-json`, so enforcing that digest unconditionally failed every real run closed with
+    "fixture: file absent on disk" and quoted no ratio at all. The other four still bind, and the
+    caller records `fixture: {supplied: false}` so the skip is visible rather than silent.
+    """
+    problems: list[str] = []
+    pinned = pin.get("pinned") or {}
+    for field in PINNED_RULER_FIELDS:
+        if field == "fixture" and not fixture_supplied:
+            continue
+        want = pinned.get(field)
+        got = (fingerprint.get(field) or {}).get("sha256")
+        if want is None:
+            problems.append(f"{field}: pin carries no digest (pin is incomplete)")
+        elif got is None:
+            problems.append(f"{field}: file absent on disk (pinned {want[:12]}…)")
+        elif want != got:
+            problems.append(f"{field}: pinned {want[:12]}… but live {got[:12]}…")
+    return problems
+
+
+def write_ruler_pin(domain: str, unit_slug: str, fingerprint: dict) -> Path:
+    """Freeze the four ruler digests. Re-pinning is legitimate and deliberately cheap — it is a
+    committed file, so the diff is the record of why a coverage number is allowed to move."""
+    path = ruler_pin_path(domain, unit_slug)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    previous = load_ruler_pin(domain, unit_slug)
+    payload = {
+        "domain": domain,
+        "unit": unit_slug,
+        "pinned": {f: (fingerprint.get(f) or {}).get("sha256") for f in PINNED_RULER_FIELDS},
+        "recorded": {
+            "fixture_n_docs": fingerprint["fixture"]["n_docs"],
+            "fixture_n_assertions": fingerprint["fixture"]["n_assertions"],
+            "entity_rows": fingerprint["entities"]["rows"],
+            "id_map_entries": fingerprint["id_map"]["entries"],
+            "triples_sha256_at_pin_time": fingerprint["triples"]["sha256"],
+            "triples_rows_at_pin_time": fingerprint["triples"]["rows"],
+        },
+        "note": (
+            "Coverage ruler pin. The four digests under `pinned` must match at score time or the "
+            "audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY — "
+            "the graph is the thing under measurement and is never pinned, so a genuine "
+            "extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH "
+            "AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. "
+            "`supersedes` is why that cannot be silent — it carries the digests and row counts "
+            "this pin replaced, so the pin's own diff shows the ruler change that licensed the "
+            "new series. Same trust model as the assertion fixture: committed, diffed, reviewed."
+        ),
+    }
+    if previous:
+        payload["supersedes"] = {
+            "pinned": previous.get("pinned"),
+            "recorded": previous.get("recorded"),
+            "supersedes": previous.get("supersedes"),
+        }
+        changed = [
+            f for f in PINNED_RULER_FIELDS
+            if (previous.get("pinned") or {}).get(f) != payload["pinned"][f]
+        ]
+        if changed:
+            before = previous.get("recorded") or {}
+            print(
+                f"  RE-PIN {domain}/{unit_slug}: ruler changed on {', '.join(changed)} — "
+                f"entities {before.get('entity_rows')}→{payload['recorded']['entity_rows']} rows, "
+                f"id_map {before.get('id_map_entries')}→{payload['recorded']['id_map_entries']} "
+                f"entries, fixture {before.get('fixture_n_assertions')}→"
+                f"{payload['recorded']['fixture_n_assertions']} assertions. Every coverage number "
+                f"after this belongs to a NEW series and is not comparable to the previous one.",
+                flush=True,
+            )
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return path
 
 
 def collect_clean_docs(ed_dir: Path) -> list[dict]:
@@ -485,8 +744,15 @@ def coverage_for_doc(
 
     RAW path (Phase F estimand): every ontology-predicate assertion in the denominator,
     soft-object match only on the object side.
-    CLEAN path: judge_rejected + out_of_unit removed from denominator; matcher uses
-    exact / soft-object / canonical modes.
+    CLEAN path (GATED, unchanged from Phase F2): judge_rejected + out_of_unit removed from
+    denominator; matcher uses exact / soft-object / canonical modes.
+    CLEAN_UNFILTERED (r3 diagnostic, NOT gated): denominator = manifest-predicate AND
+    subject_in_unit, with the object-type contract ignored. It exists so the estimand choice is
+    an argued number instead of a silent default — on the pinned kanto fixture the three arms read
+    clean 0.1923 (78) / clean_unfiltered 0.0749 (267) / raw 0.0532 (376). The 154 assertions
+    dropped as ``object_type_unresolved`` are "the object is not in our entity table", which is
+    arguably an extraction gap rather than judge noise; that argument would move the gate to a
+    third estimand and start a new eval series, so it is REPORTED here and decided elsewhere.
     """
     empty = {
         "hits": 0,
@@ -496,8 +762,10 @@ def coverage_for_doc(
         "per_predicate": {},
         "judge_rejected": [],
         "out_of_unit": [],
+        "reject_reasons": {},
         "hits_detail": [],
         "match_mode_counts": {"exact": 0, "soft-object": 0, "canonical": 0},
+        "clean_unfiltered": {"hits": 0, "n": 0, "ratio": 1.0},
         "raw": {"hits": 0, "n": 0, "ratio": 1.0, "misses": []},
     }
     if not assertable:
@@ -514,6 +782,8 @@ def coverage_for_doc(
     clean_misses: list[dict] = []
     judge_rejected: list[dict] = []
     out_of_unit: list[dict] = []
+    reject_reasons: dict[str, int] = defaultdict(int)
+    unfiltered_hits = unfiltered_n = 0
     hits_detail: list[dict] = []
     match_mode_counts = {"exact": 0, "soft-object": 0, "canonical": 0}
     per_pred_raw: dict[str, list[bool]] = defaultdict(list)
@@ -559,6 +829,7 @@ def coverage_for_doc(
             row = dict(fact)
             row["reject_reason"] = pred_reason
             judge_rejected.append(row)
+            reject_reasons[str(pred_reason or "").split(":")[0]] += 1
             continue
         if not subject_in_unit(s, entity_index):
             row = dict(fact)
@@ -571,12 +842,20 @@ def coverage_for_doc(
             contract=contract,
             entity_index=entity_index,
         )
+        # clean_unfiltered: same denominator MINUS the object-type contract. Scored for every
+        # fact that got this far, including the ones CLEAN is about to drop — that is the whole
+        # point of the arm, so the match has to run before the `continue`.
+        unfiltered_n += 1
+        unfiltered_mode = match_fact(s, p, o, graph_keys, entity_index)
+        if unfiltered_mode is not None:
+            unfiltered_hits += 1
         if not ok_obj:
             row = dict(fact)
             row["reject_reason"] = obj_reason
             judge_rejected.append(row)
+            reject_reasons[str(obj_reason or "").split(":")[0]] += 1
             continue
-        mode = match_fact(s, p, o, graph_keys, entity_index)
+        mode = unfiltered_mode
         if mode is None:
             clean_misses.append(fact)
             per_pred_clean[p].append(False)
@@ -604,8 +883,14 @@ def coverage_for_doc(
         "per_predicate": per_predicate,
         "judge_rejected": judge_rejected,
         "out_of_unit": out_of_unit,
+        "reject_reasons": dict(reject_reasons),
         "hits_detail": hits_detail,
         "match_mode_counts": match_mode_counts,
+        "clean_unfiltered": {
+            "hits": unfiltered_hits,
+            "n": unfiltered_n,
+            "ratio": unfiltered_hits / unfiltered_n if unfiltered_n else 1.0,
+        },
         "raw": {
             "hits": raw_hits,
             "n": raw_n,
@@ -648,14 +933,26 @@ def run_audit(
     facts_json: Path | None = None,
     seed: int = 0,
     dry_run: bool = False,
+    pin_ruler: bool = False,
+    use_ruler_pin: bool = True,
 ) -> dict:
     fixture: dict[str, list[dict]] = {}
-    if facts_json is not None:
-        fixture = json.loads(Path(facts_json).read_text(encoding="utf-8"))
+    fixture_path = Path(facts_json) if facts_json is not None else None
+    if fixture_path is not None:
+        fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
 
     entity_types = load_entity_types(domain)
     predicates = load_predicates(domain)
     contract = load_predicate_contract(domain)
+    ruler_units: list[dict] = []
+    ruler_problems: list[str] = []
+    ruler_pins_written: list[str] = []
+    ruler_pins_ignored: list[str] = []
+    ruler_units_pinned = 0
+    all_fixture_missing: list[dict] = []
+    fixture_keys_used: set[str] = set()
+    unfiltered_hits = unfiltered_n = 0
+    reject_reason_totals: dict[str, int] = defaultdict(int)
     unit_reports = []
     overall_hits = overall_n = 0
     raw_hits = raw_n = 0
@@ -682,6 +979,40 @@ def run_audit(
         entities = load_entities(ed.dir)
         id_map = load_id_map(domain, ed.slug)
         entity_index = build_entity_index(entities, id_map)
+
+        # ── Ruler provenance + pin verification ──────────────────────────────────────
+        # Done BEFORE any scoring so a mismatch is attributable to a named file, not inferred
+        # from a moved number. The fingerprint reads the same paths the loaders above used.
+        fingerprint = ruler_fingerprint(
+            domain, ed.dir, ed.slug, fixture_path=fixture_path, fixture=fixture,
+        )
+        if pin_ruler and not dry_run:
+            ruler_pins_written.append(str(write_ruler_pin(domain, ed.slug, fingerprint)))
+        # The pin is read whether or not it is enforced. --no-ruler-pin must not be able to
+        # make an ignored pin invisible: skipping the check is itself a reportable condition,
+        # or the flag is just a bypass with a polite name.
+        pin = load_ruler_pin(domain, ed.slug)
+        # The fixture is a REPLAY input: the production call scores against the live judge and
+        # supplies no --facts-json, so its digest binds only when one was actually given.
+        fixture_supplied = fixture_path is not None
+        unit_problems = (compare_ruler_pin(pin, fingerprint, fixture_supplied=fixture_supplied)
+                         if (pin and use_ruler_pin) else [])
+        fingerprint["fixture"]["supplied"] = fixture_supplied
+        fingerprint["pin"] = {
+            "path": str(ruler_pin_path(domain, ed.slug)),
+            "present": pin is not None,
+            "enforced": bool(pin) and use_ruler_pin,
+            "ignored": bool(pin) and not use_ruler_pin,
+            "verified": (not unit_problems) if (pin and use_ruler_pin) else None,
+            "problems": unit_problems,
+            "fixture_compared": fixture_supplied,
+        }
+        if pin and use_ruler_pin:
+            ruler_units_pinned += 1
+        if pin and not use_ruler_pin:
+            ruler_pins_ignored.append(ed.slug)
+        ruler_problems.extend(f"{ed.slug}: {p}" for p in unit_problems)
+        ruler_units.append(fingerprint)
 
         # id→name from entities (display forms for graph keys)
         id_to_name: dict[str, str] = {}
@@ -720,6 +1051,9 @@ def run_audit(
         u_judge_rej: list[dict] = []
         u_out: list[dict] = []
         u_unavailable: list[dict] = []
+        u_fixture_missing: list[dict] = []
+        u_unfiltered_hits = u_unfiltered_n = 0
+        u_reject_reasons: dict[str, int] = defaultdict(int)
         u_match_mode = {"exact": 0, "soft-object": 0, "canonical": 0}
         # Live path: fan out judge calls (sequential OpenRouter was ~16s/doc → multi-minute silent runs).
         live_need = []
@@ -773,10 +1107,23 @@ def run_audit(
                 print(f"  {ed.slug}: wrote replay fixture ({len(replayable)} docs) -> {fixture_out}", flush=True)
         for doc in sample:
             key = doc["path"]
-            # fixture keys may be basename
-            assertable = fixture.get(key) or fixture.get(doc["name"]) or fixture.get(str(Path(key).name))
+            # fixture keys may be basename. `is not None` (not truthiness): a fixture entry of []
+            # is a real "this document asserts nothing", and must not be confused with absence.
+            hit_key = next(
+                (k for k in (key, doc["name"], str(Path(key).name)) if fixture.get(k) is not None),
+                None,
+            )
+            assertable = fixture.get(hit_key) if hit_key is not None else None
+            if hit_key is not None:
+                fixture_keys_used.add(hit_key)
             if assertable is None:
                 if fixture:
+                    # A SAMPLED document the fixture does not cover is a ruler/sample disagreement,
+                    # not an empty document. Scored as [] it contributes 0/0 and vanishes: insert
+                    # one .md at sorted position 0 and the seed-0 sample overlaps the fixture 3/20,
+                    # yet the report still printed n_docs_sampled 20 / judge_unavailable 0 over a
+                    # 3-document ratio. Record it; the run fails closed below.
+                    u_fixture_missing.append({"path": doc["name"]})
                     assertable = []
                 else:
                     assertable = live_facts.get(key)
@@ -814,6 +1161,10 @@ def run_audit(
             u_raw_n += cov["raw"]["n"]
             u_judge_rej.extend(cov["judge_rejected"])
             u_out.extend(cov["out_of_unit"])
+            u_unfiltered_hits += cov["clean_unfiltered"]["hits"]
+            u_unfiltered_n += cov["clean_unfiltered"]["n"]
+            for reason, count in cov["reject_reasons"].items():
+                u_reject_reasons[reason] += count
             for mode, count in cov["match_mode_counts"].items():
                 u_match_mode[mode] = u_match_mode.get(mode, 0) + count
             for p, row in cov["per_predicate"].items():
@@ -839,7 +1190,10 @@ def run_audit(
             "n_docs_sampled": len(sample),
             "n_docs_scored": len(doc_rows),
             "n_docs_judge_unavailable": len(u_unavailable),
+            "n_docs_fixture_matched": (len(sample) - len(u_fixture_missing)) if fixture else None,
+            "n_docs_fixture_missing": len(u_fixture_missing) if fixture else None,
             "n_docs_total": len(docs),
+            "ruler": fingerprint,
             "hits": u_hits,
             "n": u_n,
             "ratio": round(u_ratio, 4),
@@ -848,6 +1202,11 @@ def run_audit(
                 "n": u_raw_n,
                 "ratio": round(u_raw_ratio, 4),
             },
+            "clean_unfiltered": {
+                "hits": u_unfiltered_hits,
+                "n": u_unfiltered_n,
+                "ratio": round(u_unfiltered_hits / u_unfiltered_n, 4) if u_unfiltered_n else 1.0,
+            },
             "classes": {
                 "judge_rejected": len(u_judge_rej),
                 "out_of_unit": len(u_out),
@@ -855,10 +1214,12 @@ def run_audit(
                 "hits": u_hits,
                 "match_mode": u_match_mode,
             },
+            "reject_reasons": dict(u_reject_reasons),
             "corpus_composition_note": corpus_note,
             "docs": doc_rows,
             "judge_rejected_sample": u_judge_rej[:25],
             "out_of_unit_sample": u_out[:25],
+            "fixture_missing_sample": u_fixture_missing[:25],
             "judge_unavailable_sample": u_unavailable[:25],
         })
         overall_hits += u_hits
@@ -874,6 +1235,11 @@ def run_audit(
         all_judge_rejected.extend(u_judge_rej)
         all_out_of_unit.extend(u_out)
         all_judge_unavailable.extend(u_unavailable)
+        all_fixture_missing.extend(u_fixture_missing)
+        unfiltered_hits += u_unfiltered_hits
+        unfiltered_n += u_unfiltered_n
+        for reason, count in u_reject_reasons.items():
+            reject_reason_totals[reason] += count
         sampled_docs += len(sample)
         for bucket in ("matcher_recoverable", "different_object", "absent"):
             miss_totals[bucket] += miss_attribution[bucket]
@@ -940,6 +1306,51 @@ def run_audit(
             "per_predicate": per_predicate,
             "note": "validated + in-unit + canonical-matched; gate applies here",
         },
+        "clean_unfiltered": {
+            "hits": unfiltered_hits,
+            "n": unfiltered_n,
+            "ratio": round(unfiltered_hits / unfiltered_n, 4) if unfiltered_n else 1.0,
+            "note": (
+                "DIAGNOSTIC, NOT GATED. CLEAN minus the object-type contract filter. The gap "
+                "between this and `clean` is the object_type_* reject mass — see reject_reasons. "
+                "Reported so the choice of gated estimand is an argued number: moving the gate "
+                "here would restate every figure in the h5 trail and is a campaign, not a patch."
+            ),
+        },
+        "ruler": {
+            "note": (
+                "Every input the ratios above are a function of. `pinned` digests are enforced: a "
+                "run whose live ruler differs FAILS CLOSED and quotes no ratio. `triples` is "
+                "recorded and never pinned — it is the thing under measurement, so a graph-only "
+                "change still scores at full sensitivity. Quote clean_n, raw_n, entity rows, "
+                "triple rows, id_map entries, judge_unavailable and fixture_docs_matched with "
+                "every coverage number; a ratio without them is not comparable to any other run."
+            ),
+            "pinned_fields": list(PINNED_RULER_FIELDS),
+            "n_units": len(ruler_units),
+            "n_units_pinned": ruler_units_pinned,
+            "verified": (not ruler_problems) if ruler_units_pinned else None,
+            "problems": ruler_problems,
+            "pins_written": ruler_pins_written,
+            "pins_ignored": ruler_pins_ignored,
+            "units": ruler_units,
+        },
+        "fixture_sample": {
+            "active": bool(fixture),
+            "n_docs_sampled": sampled_docs,
+            "n_docs_matched": (sampled_docs - len(all_fixture_missing)) if fixture else None,
+            "n_docs_missing": len(all_fixture_missing) if fixture else None,
+            "n_fixture_entries": len(fixture),
+            "n_fixture_entries_unused": len(set(fixture) - fixture_keys_used) if fixture else None,
+            "missing_sample": all_fixture_missing[:40],
+            "note": (
+                "Fixture/sample alignment. A sampled document the fixture does not cover scores "
+                "0/0 and disappears while n_docs_sampled and judge_unavailable still read clean, "
+                "so any miss is FAIL: re-pin the fixture or narrow with --editions. Unused fixture "
+                "entries are reported, not fatal — a deliberately smaller --sample-n is legitimate."
+            ),
+        },
+        "reject_reasons": dict(reject_reason_totals),
         "classes": class_totals,
         "corpus_composition_note": corpus_note,
         "per_predicate": per_predicate,
@@ -974,7 +1385,30 @@ def run_audit(
         },
     }
     unavailable_ratio = report["judge_unavailable"]["ratio"]
-    if overall_n == 0 and raw_n == 0 and not fixture:
+    if ruler_problems:
+        # The ruler moved. Every ratio below was computed against a different ruler than the one
+        # the pin recorded, so none of them is comparable to anything — this outranks the gate,
+        # the judge-availability check and the sample check, because it invalidates all three.
+        report["status"] = "FAIL"
+        report["reason"] = (
+            "ruler pin mismatch (" + "; ".join(ruler_problems[:4])
+            + (" …" if len(ruler_problems) > 4 else "")
+            + ") — the coverage ruler changed, so no ratio here is comparable to the pinned "
+              "series; re-pin with --pin-ruler if the change was intended and expect a NEW series"
+        )
+    elif fixture and all_fixture_missing:
+        # The fixture and the document sample disagree: every ratio is over a SUBSET of the
+        # sample it claims. Quoting one is how a 3-document number got published as a
+        # 20-document number with judge_unavailable 0.
+        names = ", ".join(row["path"] for row in all_fixture_missing[:5])
+        report["status"] = "FAIL"
+        report["reason"] = (
+            f"fixture covers {sampled_docs - len(all_fixture_missing)}/{sampled_docs} sampled "
+            f"documents (missing: {names}{' …' if len(all_fixture_missing) > 5 else ''}); the "
+            "coverage ratio would be quoted over a subset of the sample it claims — re-pin the "
+            "fixture or select the unit with --editions"
+        )
+    elif overall_n == 0 and raw_n == 0 and not fixture:
         # No judge output at all (e.g. no provider key) — unmeasured, as before. Not a FAIL:
         # an offline/device-only run legitimately cannot score this estimand.
         report["status"] = "SKIP"
@@ -991,26 +1425,72 @@ def run_audit(
             "estimate is not trustworthy at this judge availability"
         )
     elif overall_n == 0 and raw_n > 0:
-        # Everything was filtered as noise — clean coverage is vacuously 1.0 but call it out.
-        report["status"] = "PASS" if min_coverage <= 1.0 else "FAIL"
+        # Everything was filtered as noise. This used to be PASS (clean coverage is vacuously
+        # 1.0) — a gate cleared by a denominator of zero. Measured: rewriting every predicate's
+        # object list to ['nonexistent_type'] in the domain manifest, with a byte-identical
+        # graph, emptied the denominator and turned kanto's 0.1923 FAIL into a 1.0000 PASS.
+        # A ratio over nothing is the zero-from-an-uncalibrated-detector shape, not a result.
+        report["status"] = "FAIL"
         report["reason"] = (
-            "all raw assertions were judge_rejected or out_of_unit; clean denominator is 0"
+            f"clean denominator is 0 of {raw_n} raw assertions (all judge_rejected or "
+            "out_of_unit) — a coverage ratio over an empty denominator measures nothing and "
+            "must never clear the gate; check the predicate contract and the entity table"
         )
+
+    # Quotability is a property of the run, not of the reader. Anything that made the ratios
+    # incomparable is recorded ON the number so a receipt cannot copy it out of context.
+    quotable = not (
+        ruler_problems
+        or ruler_pins_ignored          # --no-ruler-pin over a pinned unit is a diagnostic, not a number
+        or (fixture and all_fixture_missing)
+        or overall_n == 0
+    )
+    report["quotable"] = quotable
+    report["quotable_note"] = (
+        "ratios are comparable to the pinned series"
+        if quotable
+        else "DO NOT QUOTE: " + str(
+            report.get("reason")
+            or (f"ruler pin ignored (--no-ruler-pin) for {', '.join(ruler_pins_ignored)}"
+                if ruler_pins_ignored else "ruler/sample integrity failure")
+        )
+    )
+    for block in ("overall", "clean", "raw", "clean_unfiltered"):
+        report[block]["quotable"] = quotable
 
     if not dry_run:
         out = C.BUILD / "recall"
         out.mkdir(parents=True, exist_ok=True)
         (out / f"report_{domain}.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    # The printed line is the surface receipts copy from, so an unquotable run prints NULL
+    # ratios — not a number plus a caveat somewhere else in a 40k-line JSON.
     print(json.dumps({
         "status": report["status"],
-        "clean_ratio": report["overall"]["ratio"],
-        "raw_ratio": report["raw"]["ratio"],
+        "quotable": quotable,
+        "clean_ratio": report["overall"]["ratio"] if quotable else None,
+        "raw_ratio": report["raw"]["ratio"] if quotable else None,
+        "clean_unfiltered_ratio": report["clean_unfiltered"]["ratio"] if quotable else None,
         "clean_n": report["overall"]["n"],
         "raw_n": report["raw"]["n"],
+        "clean_unfiltered_n": report["clean_unfiltered"]["n"],
         "classes": class_totals,
+        "reject_reasons": dict(reject_reason_totals),
         "failed_predicates": failed_predicates,
         "judge_unavailable": report["judge_unavailable"]["n_docs"],
         "judge_unavailable_ratio": report["judge_unavailable"]["ratio"],
+        # ── ruler guards: every coverage number carries these or it is not comparable ──
+        "ruler_verified": report["ruler"]["verified"],
+        "ruler_units_pinned": ruler_units_pinned,
+        "ruler_problems": ruler_problems,
+        "ruler_pins_ignored": ruler_pins_ignored,
+        "fixture_sha256": (ruler_units[0]["fixture"]["sha256"] if ruler_units else None),
+        "fixture_docs_matched": report["fixture_sample"]["n_docs_matched"],
+        "fixture_docs_sampled": sampled_docs,
+        "entity_rows": sum(u["entities"]["rows"] for u in ruler_units),
+        "triple_rows": sum(u["triples"]["rows"] for u in ruler_units),
+        "id_map_entries": sum(u["id_map"]["entries"] for u in ruler_units),
+        "manifest_sha256": (ruler_units[0]["domain_manifest"]["sha256"] if ruler_units else None),
+        "reason": report.get("reason"),
     }))
     return report
 
@@ -1112,6 +1592,17 @@ def main() -> None:
     ap.add_argument("--facts-json", help="fixture path for offline red-green")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument(
+        "--pin-ruler", action="store_true",
+        help="(re)write <unit>.ruler.json from the CURRENT fixture/entities/id_map/manifest "
+             "digests. Deliberate and cheap: the pin is a committed file, so the diff is the "
+             "record of why a coverage number was allowed to move.",
+    )
+    ap.add_argument(
+        "--no-ruler-pin", action="store_true",
+        help="score without enforcing an existing pin. DIAGNOSTIC ONLY — the resulting ratio is "
+             "not comparable to the pinned series and must not be quoted as one.",
+    )
     args = ap.parse_args()
     try:
         report = run_audit(
@@ -1121,6 +1612,8 @@ def main() -> None:
             facts_json=Path(args.facts_json) if args.facts_json else None,
             seed=args.seed,
             dry_run=args.dry_run,
+            pin_ruler=args.pin_ruler,
+            use_ruler_pin=not args.no_ruler_pin,
         )
     except (OSError, ValueError, json.JSONDecodeError) as error:
         sys.exit(f"audit_recall failed closed: {error}")

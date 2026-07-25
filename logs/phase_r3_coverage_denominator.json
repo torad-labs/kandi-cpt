@@ -1,0 +1,63 @@
+{
+ "schema": "kandi.coverage_ruler_pin.v1",
+ "campaign": "phase_r3_coverage_denominator",
+ "recorded_at": "2026-07-25T08:05:00Z",
+ "status": "LANDED_ROUND3_FIVE_PINS_BUT_NOT_ADVERSARIALLY_REVIEWED",
+ "headline": "The coverage ruler is five inputs, not one. Freezing the assertion fixture froze the NUMERATOR only; the entity table, id_map, domain manifest and document corpus all move the denominator. All five are now pinned and the audit fails closed on an undeclared ruler change.",
+ "why_this_had_to_land_first": "clean_ratio against a byte-identical pinned fixture was drivable from 0.1923 toward 1.0000 by editing files the fixture does not cover, so no extraction change was falsifiable. logs/phase_h5_coverage_round2.json closed with exactly this precondition.",
+ "provenance": {
+  "round1_premise": "the original miss-guided-extraction item came back BLOCKED_ON_PRECONDITION: baseline was 0.1923 not 0.4505 (SUPERSEDED), the instrument was gameable, and injecting gold into prompts for docs scored against that gold is answer-key leakage",
+  "round2": "LAND_WIDENED with four pins; both reviewers returned MISFIRES",
+  "round3": "builders died on the weekly agent limit; repaired by the orchestrator in the main loop from the reviewers' own required_change"
+ },
+ "objection_1_production_brick": {
+  "defect": "the fixture digest was enforced unconditionally, so run_audit(facts_json=None) \u2014 the production call \u2014 returned FAIL with clean_ratio null and 'fixture: file absent on disk'",
+  "fix": "compare_ruler_pin(..., fixture_supplied) skips ONLY the fixture digest when no --facts-json was given; the other four still bind, and the report records fixture.supplied=false so the skip is visible rather than silent",
+  "red": "run_audit(facts_json=None) -> status FAIL, clean_ratio null, ruler_problems ['fixture: file absent on disk']",
+  "green": "same call -> ruler_verified true, ruler_problems [], quotable true"
+ },
+ "objection_2_unpinned_document_corpus": {
+  "defect": "derive_sample_n and the seed-0 sample are functions of collect_clean_docs, so the corpus is a denominator input. A round-2 reviewer parked 104 of 105 kanto .md files and reproduced the full exploit with all four then-pinned digests byte-identical.",
+  "fix": "fifth pinned field `documents` = sha256 over the sorted (relpath, sha256) pairs plus n_docs; content-addressed, so it moves on edits, additions AND deletions",
+  "behavioral_red": "under the four old pins a corpus-only edit scored verified=True, problems=[]",
+  "green": "the same edit now reports 'documents: pinned \u2026 but live \u2026' and verified=False",
+  "not_over_tight": "a genuine added triple leaves the documents digest unchanged and still moves the ratio \u2014 the graph stays the thing under measurement and is deliberately unpinned"
+ },
+ "re_pin": {
+  "why": "landing the r2 `reasoning` stage changed configs/domains/pokemon-lore.yaml, which IS the pinned domain_manifest \u2014 the pin correctly caught my own commit",
+  "notice": "RE-PIN pokemon-lore/kanto: ruler changed on domain_manifest, documents \u2014 every coverage number after this belongs to a NEW series",
+  "pinned_now": {
+   "documents": "3adeec36453a74d8",
+   "domain_manifest": "c9e88bfd63057fbb",
+   "entities": "7af38ee5d19af1d4",
+   "fixture": "0b50daf3fa63bf4a",
+   "id_map": "2a2fe289101b5456"
+  }
+ },
+ "baseline_measured_at_this_pin": {
+  "clean_ratio": 0.1923,
+  "clean_n": 78,
+  "clean_unfiltered_ratio": 0.0749,
+  "clean_unfiltered_n": 267,
+  "raw_ratio": 0.0532,
+  "raw_n": 376,
+  "judge_unavailable": 0,
+  "entity_rows": 959,
+  "triple_rows": 869,
+  "id_map_entries": 88,
+  "gate": 0.6,
+  "status": "FAIL \u2014 the coverage gap is real and is NOT closed by this work",
+  "note": "0.4505 is SUPERSEDED and must never be quoted in the same before/after as 0.1923"
+ },
+ "gates": {
+  "run_tests": "47 modules all green",
+  "cpt_config": "8/8",
+  "qgre_gates": "9/9",
+  "audit_recall_suite": "31 tests (28 -> 31)"
+ },
+ "NOT_DONE": [
+  "Round-3 adversarial review never ran (weekly agent limit, resets 2026-07-29). Class closure is the orchestrator's own claim. A reviewer would be asked to enumerate the denominator's full read-set and find a SIXTH unpinned input.",
+  "Miss-guided scoped re-extraction remains DEFERRED. It needs a held-out arm: injecting gold triples into prompts for documents then scored against that same gold is answer-key leakage, and the no-fabrication rule blocks invention but not confirmation.",
+  "The 0.6 coverage gate is still FAILING at 0.1923. This work makes that number trustworthy, it does not improve it."
+ ]
+}
