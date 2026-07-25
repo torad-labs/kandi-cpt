@@ -102,7 +102,9 @@
     "The 6th agent (contrast reviewer 1) had not reported when this was written; 5 of 6 results are recorded. Its verdict cannot reverse a DROP that the other reviewer already attacked and upheld.",
     "The spin-offs are recorded, NOT implemented. Landing them is the next session\u2019s work and they are specified to file:line so it starts cold.",
     "The spin-off #1 mechanism in commit 069106ac was stated imprecisely and is corrected here. The defect is real and broader than described; the reviewer's named instance did not reproduce and is retracted.",
-    "All 6 agents completed (0 errors, 816k subagent tokens, 247 tool uses). The 6th result did not change either DROP."
+    "All 6 agents completed (0 errors, 816k subagent tokens, 247 tool uses). The 6th result did not change either DROP.",
+    "The contrast DROP is RETRACTED. The measurement (roster 21 vs graph 553 on kanto) contradicts the \"cannot add a surface\" claim, and the constraint that produced it was written by me into the item, not discovered in the code.",
+    "The probes DROP is NOT retracted: its refusal rests on the base arm sitting at chance across three independent measurements, which is a property of the measured system rather than of the item text."
   ],
   "wave_1_outcome": {
     "clean": 0,
@@ -160,5 +162,40 @@
     "audit_recall.load_id_map(domain, unit_slug)": "reads C.BUILD/resolve/<domain>/<unit>/id_map.json \u2014 88 entries for kanto",
     "risk": "Any caller reaching for \"the id map\" can silently get an empty one and believe canonicalisation was applied. That is the shape of the salted-hash bug: a no-op that reads as coverage.",
     "status": "observed, unaudited \u2014 no consumer surveyed for which loader it uses"
+  },
+  "contrast_drop_RETRACTED": {
+    "retracted_on": "2026-07-25",
+    "what_i_claimed": "\"The only faithful reduction is LLM-as-permutation-of-the-authored-roster, and it cannot add a surface (kanto 168 -> 168, millbrook 38 -> 38).\" I reported that as a property of the mechanism.",
+    "why_it_was_wrong": "It was a property of MY specification. The item text said \"run every proposal through the EXISTING truth-validation\", and that validation only accepts members of the authored contrast.groups roster. So the spec pinned the candidate pool to the roster and then I reported the pin as a ceiling.",
+    "measured_headroom": {
+      "millbrook-hollow": {
+        "authored_roster": 15,
+        "entity_graph": 37,
+        "unused": 22
+      },
+      "pokemon-lore/kanto": {
+        "authored_roster": 21,
+        "entity_graph": 553,
+        "unused": 540,
+        "roster_coverage_pct": 3.8
+      }
+    },
+    "note": "The probes reviewer had already told me this in different words \u2014 \"G3a's closed vocabulary is the ENTITY GRAPH, not by_pred[p]: 90 admissible vs 27 sampled ... a narrowed version is therefore constructible\". I quoted it in this receipt and still carried the roster framing into the contrast conclusion."
+  },
+  "wave_2_item_contrast_graph_scoped_attractors": {
+    "id": "contrast-llm-attractors-v2",
+    "status": "LIVE \u2014 replaces the retracted DROP",
+    "corrected_specification": [
+      "1. The LLM proposes attractor VALUES (entity display names), never sentences. Faithfulness is then preserved BY CONSTRUCTION: the emitted text is still rendered from the authored template, so no generated prose reaches the corpus and the exact-string truth check is never asked to police free text. This is the single change that voids the original invalidity finding (\"Pokemon Center is located in Kanto, not the Johto region.\" shipped with truth_drops=0 because a full LLM SENTENCE bypassed a value-level check).",
+      "2. Closed vocabulary = the ENTITY GRAPH for the unit, not contrast.groups. Measured pool goes 21 -> 553 on kanto (26x), 15 -> 37 on millbrook.",
+      "3. Reject any proposal absent from the entity table \u2014 this is the wall that stops foreign entities and fabricated dates, and it is enforceable precisely because the proposal is a VALUE, not a sentence.",
+      "4. Reject any proposal true for (subject_id, predicate) \u2014 the existing truth check, unchanged.",
+      "5. Reject any proposal equal to the object (existing guard) or to the SUBJECT (the guard landed in 2c4b4fc5).",
+      "6. Type-scope the proposal to the object types the predicate admits, so a place predicate cannot draw a character.",
+      "7. Keep the --max-fraction cap and the per-triple cap unchanged."
+    ],
+    "expected_delta_instrument": "emitted contrast records per unit. Under the retracted spec this was structurally pinned (168 -> 168). Under the corrected spec it MUST be able to move, because the candidate pool grew 26x. If it does not move, the implementation is wrong \u2014 that is the falsifiable check, and it is the instrument the previous attempt lacked.",
+    "reproducibility_requirement": "Proposals must be frozen per unit (committed alongside the shard) so a re-run reproduces the corpus byte-for-byte. That was a real objection in the original review and it survives the spec change \u2014 it is a design constraint, not a blocker.",
+    "oracle": "unchanged and now genuinely load-bearing: the graph truth check plus the entity-table membership check, both value-level, both already in the tree."
   }
 }
