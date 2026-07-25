@@ -1,0 +1,148 @@
+{
+  "schema": "kandi.adversarial_loop_phase0.v1",
+  "campaign": "phase_r7_llm_stage_conversion",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "WAVE_1_COMPLETE_BOTH_DROPPED_PREMISE_FALSE_TWO_SPINOFFS_VERIFIED",
+  "headline": "Phase 0 admitted 2 of the 4 proposed stages to the loop. One batch-wide premise was refuted before any agent was dispatched; two items were excluded by the skill's own precondition rather than attempted.",
+  "batch_wide_premise_refuted": {
+    "premise": "The schema gate will catch malformed records an LLM stage emits, so each item can rely on it.",
+    "shared_by": "all four proposed items",
+    "verification": "grep -c 'validate(' per stage",
+    "result": {
+      "generic_probes": 0,
+      "generic_contrast": 1,
+      "dedup_surfaces": 0,
+      "resolve_entities": 0
+    },
+    "verdict": "FALSE for 3 of 4. Only generic_contrast validates its output.",
+    "action": "Promoted to a DOMAIN_LAWS scoping fact: an implementer needing schema safety must ADD the validate() call, never assume it. Caught serially for one pass; per-item it would have cost three, with three chances to mis-diagnose."
+  },
+  "premises_confirmed": [
+    {
+      "claim": "an injectable-generator pattern already exists to copy",
+      "evidence": "generic_synth.synth_records(generate_fn=openrouter_generate) \u2014 the only stage in the tree with it",
+      "status": "TRUE, and named as the worked example"
+    },
+    {
+      "claim": "the four target stages make zero LLM calls",
+      "evidence": "0 matches for openrouter/generate_fn/chat-completions in each",
+      "status": "TRUE"
+    },
+    {
+      "claim": "each triple is its own fact",
+      "evidence": "diversity_lib.fact_key returns source_triple_ids[0]",
+      "status": "TRUE \u2014 corrects an earlier assumption that several triples group into one fact"
+    }
+  ],
+  "oracle_inventory": {
+    "note": "The skill's hard precondition: without a command that adjudicates a dispute, two agents disagreeing produce confident noise. Each item was admitted or refused on this alone.",
+    "generic_probes": {
+      "oracle": "true_by_subject_pred[(subject_id, predicate)] is subtracted from the distractor pool; a distractor in that set is a corrupted eval item",
+      "in_code": true,
+      "admitted": true
+    },
+    "generic_contrast": {
+      "oracle": "every denied attractor is validated against the complete unit graph before emission",
+      "in_code": true,
+      "admitted": true
+    },
+    "dedup_surfaces": {
+      "oracle": "none in code",
+      "in_code": false,
+      "admitted": false,
+      "reason": "Converting lexical jaccard to semantic dedup needs golden pairs that do not exist yet. The skill is explicit: if you cannot name the adjudicating command, build it first \u2014 it is the higher-value artifact. The golden set is a precondition item, not a loop item.",
+      "starter_cases_measured_this_session": [
+        "'Giovanni leads Team Rocket.' vs 'Team Rocket is led by Giovanni.' -> jaccard 0.43, BELOW the 0.55 threshold, so two statements of one fact both survive as diverse",
+        "the same sentence plus 'in Kanto.' -> 0.67, ABOVE threshold, culled \u2014 discarding the MORE informative variant"
+      ]
+    },
+    "resolve_entities": {
+      "oracle": "only the cross-continuity invariant, which is narrow",
+      "in_code": "partial",
+      "admitted": false,
+      "reason": "'Is this the same entity' is a judgment call, and the skill's rejection boundary excludes judgment work explicitly \u2014 without an oracle the loop produces confident noise. The 4229-item review queue is real, but it wants an operator adjudication batch, not an adversarial loop."
+    }
+  },
+  "wave_1_dispatched": {
+    "items": [
+      "probes-llm-distractors",
+      "contrast-llm-attractors"
+    ],
+    "shape": "2 items x (1 implementer + 2 adversarial reviewers) = 6 agents, all opus",
+    "ordering_rationale": "The skill says put the items carrying the most structural risk in wave 1. probes contaminates MEASUREMENT \u2014 every install-strength number this repo reports is measured with these distractors \u2014 so its outcome changes what the later items even mean.",
+    "key_adaptation": "Implementers must prove with an INJECTED STUB generator, never a live provider call. That keeps the oracle offline and removes the OpenRouter quota from contended state entirely; live calls stay the orchestrator's to make once, after landing.",
+    "contended_state_fenced_to_orchestrator": [
+      "data/_build/**",
+      "data/<domain>/**/25_hydrated/**",
+      "the buildgate semaphore (2 slots)",
+      "GPU 1",
+      "the OpenRouter quota"
+    ],
+    "artifact_contract_additions": [
+      "faithfulness_proof \u2014 the stub must smuggle a foreign entity, a fabricated date and an extra relation, and each must be rejected before emission",
+      "cannot_fail_probe \u2014 break 3 different things the guard claims to catch and show each goes red",
+      "provider_cost_note \u2014 calls per unit added at real runtime, derived from the code path"
+    ]
+  },
+  "mechanics_guide_seeded_from_real_failures": [
+    "Tests appended after a module's __main__ block are defined but never executed \u2014 hit for real this session, a silent fake green.",
+    "hash() is salted per process; a cross-process key needs hashlib. An entire dedup exclusion list was inert for months (8063 stored, 0 matched) and no in-process test could catch it.",
+    "qwen3 burns max_tokens on reasoning and returns empty content without /no_think; some providers put the answer only in message.reasoning.",
+    "content or '' returns empty as success, so the failure surfaces far from its cause.",
+    "distinct-n rewards any novel n-gram including junk \u2014 measured: bolding function words +5.1%, the same mechanism on content words +0.",
+    "Host policy blocks uncontained pipeline runs; buildgate/evalgate are the sanctioned forms and the refusal must not be routed around.",
+    "pgrep -f '<script>.py' matches the polling shell's own command line."
+  ],
+  "deviations": [
+    "Two of the four stages the operator named were NOT dispatched. Excluded by the skill's precondition and rejection boundary rather than attempted \u2014 running them would have produced well-evidenced noise.",
+    "The loop's own template defaults implementers to opus; kept, because these are multi-constraint (LLM integration under a faithfulness invariant) rather than pinned-spec mechanical work.",
+    "No live provider calls anywhere in wave 1 by design, so the artifacts prove behaviour against a stub. A real-provider run is a separate orchestrator step and its numbers are not claimed here.",
+    "Wave 1 clean rate is 0/2. Per the updated skill that is NOT a trigger for a repair round here: both DROPs are the premise-false class, which the table marks permanent and explicitly warns against re-implementing.",
+    "The two spin-offs are NOT re-scopes of the dropped items. They carry their own premises, both verified on the real tree by the orchestrator independently of the agent that reported them.",
+    "The 6th agent (contrast reviewer 1) had not reported when this was written; 5 of 6 results are recorded. Its verdict cannot reverse a DROP that the other reviewer already attacked and upheld.",
+    "The spin-offs are recorded, NOT implemented. Landing them is the next session\u2019s work and they are specified to file:line so it starts cold."
+  ],
+  "wave_1_outcome": {
+    "clean": 0,
+    "contested": 0,
+    "dropped": 2,
+    "reason_class_per_skill_table": "the item premise is false \u2014 the PERMANENT class. The skill is explicit: re-implementing verifies a problem that does not exist, and a repair round here is \"the most expensive mistake available\", because the improved artifact makes the bad premise harder to spot by arriving with evidence attached.",
+    "probes_llm_distractors": {
+      "verdict": "DROP",
+      "reviewer_1": "SOUND (confirms)",
+      "reviewer_2": "UNVERIFIED_CLAIM (DROP survives; 3 supporting claims corrected)",
+      "falsified_premise": "\"easy distractors inflate install strength\". The BASE arm is the direct control and sits at chance on three independent measurements: 0.2639 vs 0.25 (n=72), 0.2727 vs 0.25 (n=77), and reviewer 1 found a third in logs/phase_h2_kanto_certified_dual_axis.json at base_acc 0.29667. A model lacking the fact extracts ~zero signal, so there is no inflation to remove.",
+      "headroom_vs_noise": "recoverable <=2.3 pts against a +/-5.7 pt noise bound on the very measurement being improved",
+      "type_mismatch_was_not_a_defect": "8/15 predicates are genuinely POLYMORPHIC in the graph (opposes {organization:35, character:25}, allied_with {character:40, organization:7}). A character distractor for \"who does Calem oppose?\" is legitimate, not eliminable.",
+      "reviewer_2_correction_accepted": "The refusal of a NARROWED version rested on a false impossibility claim (G3a closed vocabulary is the ENTITY GRAPH, not by_pred[p]: 90 admissible vs 27 sampled). A narrowed version is constructible but not worth building \u2014 the refusal rests on base-at-chance, not impossibility.",
+      "orchestrator_note": "This item was MY top-priority recommendation in phase_r6, on the reasoning that easy distractors contaminate measurement. That was a hypothesis from an audit with no oracle. The loop supplied one and falsified it from receipts already in the repo."
+    },
+    "contrast_llm_attractors": {
+      "verdict": "DROP",
+      "reviewer": "UNVERIFIED_CLAIM (keep the DROP; correct the record before it is cited as settled)",
+      "invalid_not_weak": "The sketched shape EMITS FALSE STATEMENTS. Proven: \"Pokemon Center is located in Kanto, not the Johto region.\" shipped with truth_drops=0 for a subject that IS in Johto. The existing truth check is exact-string over a closed authored vocabulary; free LLM text walks straight through it. Under the faithfulness law that is invalid, not tunable.",
+      "the_faithful_reduction_buys_nothing": "The only faithful version is \"LLM as a permutation of the authored roster\" \u2014 it was BUILT and measured: kanto emitted 168 -> 168, cap-suppressed 3160 -> 3160, truth-drops 16 -> 16; millbrook main 38 -> 38, booster_1 8 -> 8. It cannot add a surface; the expected-delta instrument is structurally pinned.",
+      "reviewer_correction_accepted": "The DROP rests on zero-surface-gain + recurring cost + loss of reproducibility, NOT on a negative measured gain; the reverse-roster \"4 -> 2\" figure was a single-global-order stub and is not a property of the mechanism."
+    }
+  },
+  "spinoffs_verified_by_orchestrator": [
+    {
+      "id": "probes-alias-subject-leak",
+      "severity": "HIGH \u2014 corrupts eval items",
+      "defect": "generic_probes.build_probes keys true_by_subject_pred on the RAW subject_id (generic_probes.py:70) and the module never calls load_id_map. A triple recorded under an alias or unresolved id is not subtracted from the pool, so a distractor that is genuinely TRUE for that subject+predicate can be emitted as a wrong answer.",
+      "verified_independently": "grep confirms line 70 keys raw subject_id and there is no id_map import anywhere in the file",
+      "why_it_matters": "This is the exact failure the LLM item was WRONGLY blamed for \u2014 a corrupted eval item \u2014 except it is real, deterministic, and one canonicalisation call away.",
+      "premise_status": "TRUE \u2014 a genuinely new item, not a re-scope of the dropped one"
+    },
+    {
+      "id": "contrast-self-contradiction",
+      "severity": "HIGH \u2014 false training surfaces on disk",
+      "defect": "Contrast records where the denied attractor equals the true object, producing statements that assert X is not X.",
+      "verified_independently": "data/millbrook-hollow/main/25_hydrated/relations_contrast.jsonl \u2014 2 of 10 records: \"Quillspire Keep is located in Millbrook Hollow, not Quillspire Keep.\" and \"Amberfen Crossing is located in Millbrook Hollow, not Amberfen Crossing.\"",
+      "reviewer_measured": "kanto 1/168, millbrook/main 2/38, all present on disk today",
+      "fix": "one-line guard beside generic_contrast.py:167, and the identical gap at build_sft.py:491",
+      "premise_status": "TRUE \u2014 verified on the real tree"
+    }
+  ],
+  "what_the_loop_bought": "Zero LLM conversions landed, which is the correct outcome: both premises were false and both were falsified with measurements, not opinions. In exchange it produced two verified deterministic defects that were shipping into training data, and corrected three claims inside its own DROP reasoning before they could be cited as settled. Cost: 6 opus agents, zero provider quota (all proofs ran against injected stubs), zero writes to the shared tree."
+}
