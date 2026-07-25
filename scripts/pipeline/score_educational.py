@@ -102,6 +102,13 @@ def collect_docs(domain: str, editions_only: str | None) -> list[dict]:
     return docs
 
 
+# /no_think: the judge default is qwen3, which otherwise spends the whole max_tokens budget
+# reasoning and never reaches the required `SCORE: n` line — measured live on edc/zhuhai/2018
+# (2026-07-24), where a 200-token budget produced pure deliberation and no verdict.
+# audit_recall.py carries the same directive for the same model for the same reason.
+NO_THINK = "\n\n/no_think"
+
+
 def rubric_prompt(mode: str, entity_types: list[str], text: str) -> str:
     sample = text[:4000]
     if mode == "style":
@@ -112,6 +119,7 @@ def rubric_prompt(mode: str, entity_types: list[str], text: str) -> str:
             "(chat logs full of short replies can score high). "
             "Low = generic boilerplate or off-register noise.\n\n"
             f"DOCUMENT:\n{sample}"
+            f"{NO_THINK}"
         )
     types = ", ".join(entity_types) if entity_types else "(domain entities)"
     return (
@@ -120,6 +128,7 @@ def rubric_prompt(mode: str, entity_types: list[str], text: str) -> str:
         f"(entity types: {types}). "
         "5 = dense, specific, teachable facts; 1 = empty, boilerplate, or off-topic.\n\n"
         f"DOCUMENT:\n{sample}"
+        f"{NO_THINK}"
     )
 
 

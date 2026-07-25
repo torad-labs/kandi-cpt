@@ -179,6 +179,18 @@ def test_score_one_still_rejects_unparseable_teacher_output():
         raise AssertionError("unparseable teacher output must raise")
 
 
+def test_rubric_prompt_carries_no_think_in_both_modes():
+    """qwen3 spends the whole 200-token budget reasoning and never emits `SCORE: n` without it.
+
+    Measured live on edc/zhuhai/2018 (2026-07-24): pure deliberation, no verdict, stage failed
+    closed. audit_recall.py carries the same directive against the same model.
+    """
+    facts = S.rubric_prompt("facts", ["festival", "venue"], "some document text")
+    style = S.rubric_prompt("style", [], "some chat text")
+    assert facts.rstrip().endswith("/no_think"), facts[-80:]
+    assert style.rstrip().endswith("/no_think"), style[-80:]
+
+
 def test_default_judge_model_is_paid_qwen():
     """Free Nemotron was unusable live; default must match eval_generative (qwen3-32b)."""
     assert S.DEFAULT_JUDGE_MODEL == "qwen/qwen3-32b"
