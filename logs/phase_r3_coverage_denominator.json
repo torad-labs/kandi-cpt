@@ -2,7 +2,7 @@
  "schema": "kandi.coverage_ruler_pin.v1",
  "campaign": "phase_r3_coverage_denominator",
  "recorded_at": "2026-07-25T08:05:00Z",
- "status": "LANDED_ROUND3_FIVE_PINS_BUT_NOT_ADVERSARIALLY_REVIEWED",
+ "status": "LANDED_ROUND3_FIVE_PINS_REVIEWED_ROUND3_FOUR_DEFECTS_FOUND_AND_FIXED",
  "headline": "The coverage ruler is five inputs, not one. Freezing the assertion fixture froze the NUMERATOR only; the entity table, id_map, domain manifest and document corpus all move the denominator. All five are now pinned and the audit fails closed on an undeclared ruler change.",
  "why_this_had_to_land_first": "clean_ratio against a byte-identical pinned fixture was drivable from 0.1923 toward 1.0000 by editing files the fixture does not cover, so no extraction change was falsifiable. logs/phase_h5_coverage_round2.json closed with exactly this precondition.",
  "provenance": {
@@ -55,9 +55,23 @@
   "qgre_gates": "9/9",
   "audit_recall_suite": "31 tests (28 -> 31)"
  },
- "NOT_DONE": [
-  "Round-3 adversarial review never ran (weekly agent limit, resets 2026-07-29). Class closure is the orchestrator's own claim. A reviewer would be asked to enumerate the denominator's full read-set and find a SIXTH unpinned input.",
-  "Miss-guided scoped re-extraction remains DEFERRED. It needs a held-out arm: injecting gold triples into prompts for documents then scored against that same gold is answer-key leakage, and the no-fabrication rule blocks invention but not confirmation.",
-  "The 0.6 coverage gate is still FAILING at 0.1923. This work makes that number trustworthy, it does not improve it."
- ]
+ "round3_review": {
+  "verdict": "CLASS_NOT_CLOSED x3 \u2014 zero SOUND, and all three reviewers found the SAME sixth input",
+  "the_sixth_input": {
+   "what": "configs/editions_<domain>.json, the unit registry",
+   "why_it_is_a_denominator_input": "overall_ratio = sum(unit hits)/sum(unit n) re-aggregates over whatever iter_editions yields, and iter_editions yields whatever the registry lists. Five pins covered the inputs of ONE unit; the registry decides how many units exist.",
+   "sharpest_reproduction": "point the registry at a kanto_alias unit whose 15_structured is symlinked to kanto's and whose 10_clean holds 20 fixture-covered copies of the one document that scores 1/1 -> clean_ratio 1.0000, PASS, quotable true, while fixture_sha256, manifest_sha256, entity_rows 959, triple_rows 869 and id_map_entries 88 are identical to the pinned 0.1923 baseline. The pinned kanto.ruler.json is never even opened.",
+   "fix": "editions_registry added to PINNED_RULER_FIELDS, with the resolved unit directory recorded alongside because a registry can RE-ADDRESS a unit without changing bytes"
+  },
+  "the_root_cause_under_it": {
+   "what": "ABSENCE of a pin was verification by default. unit_problems was computed only when a pin existed, so an unpinned unit produced no problems and was quotable \u2014 and the unit slug decides the pin filename, so renaming or adding a unit silently unpinned it rather than failing closed.",
+   "fix": "a run is quotable only if EVERY unit it aggregated was verified against a pin",
+   "note": "lands independently of the registry pin and is the more important of the two"
+  },
+  "tests_added": "31 -> 33",
+  "still_not_done": [
+   "miss-guided re-extraction still DEFERRED and still needs a held-out arm",
+   "the 0.6 gate is still FAILING at 0.1923 \u2014 this work makes the number trustworthy, it does not improve it"
+  ]
+ }
 }

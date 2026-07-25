@@ -2,7 +2,7 @@
  "schema": "kandi.reasoning_surfaces.v1",
  "campaign": "phase_r2_reasoning_surfaces",
  "recorded_at": "2026-07-25T07:40:00Z",
- "status": "LANDED_ROUND3_HOLDOUT_BRIDGE_WIDENED_BUT_NOT_ADVERSARIALLY_REVIEWED",
+ "status": "LANDED_ROUND3_HOLDOUT_BRIDGE_WIDENED_REVIEWED_ROUND3_FOUR_DEFECTS_FOUND_AND_FIXED",
  "headline": "A new train-only reasoning-surface class rendered through the LLM channel. Round 3 widened the holdout-bridge guard from the walk's endpoints to EVERY non-adjacent node pair: on kanto the guard went 76 -> 559 catches, i.e. 483 walks that state a held-out fact were shipping under the endpoint-only check.",
  "provenance": {
   "round1": "premise OVER_PINNED (walk pool 365 directed chains vs 20,075 connected sets, 55x); implementer LAND_WIDENED on the DETERMINISTIC template channel; reviews MISFIRES/SOUND/MISFIRES",
@@ -37,9 +37,35 @@
   "cpt_config": "8/8",
   "qgre_gates": "9/9"
  },
- "NOT_DONE": [
-  "Round-3 adversarial review never ran (weekly agent limit, resets 2026-07-29). The class-closure claim above is the orchestrator's own measurement, NOT an independent reviewer's.",
-  "No live LLM generation has been run: the class is proven offline with an injected stub generator. Spending on real generation is an operator decision.",
-  "No CPT training run; the kanto Axis-B multi-hop ablation that would show install effect is untouched."
- ]
+ "round3_review": {
+  "verdict": "CLASS_NOT_CLOSED x2, MISFIRES x1 \u2014 zero SOUND out of 3 reviewers",
+  "what_it_overturned": "The class-closure claim in this receipt was NODE-PAIR scoped; the leak was at TEXT level. Every NUMBER here reproduced exactly under independent recomputation (76, 559, 483, 0/453, 501/521) and the red was confirmed behavioural. The measurements were right; the BOUNDARY drawn around the class was wrong.",
+  "defects_found_and_fixed": [
+   {
+    "defect": "grounding_violations masked licensed names out BEFORE the scan, so a FOREIGN entity whose display name CONTAINS a licensed one was destroyed before the matcher saw it. End-to-end: walk ['Blue','Celio','Green','Ditty'] accepted \"Blue is linked to Ditty, and Blue Oak belongs to the same chain.\" with ZERO drops \u2014 a fabricated fact about the distinct class Blue Oak, attributed to 3 real train triple ids, shipped into the CPT corpus.",
+    "exposure": "235 of 453 selected walks (51.9%) license a name that is a token-boundary substring of another class; 233 shadow a DIGIT-FREE foreign name so the numeral gate cannot incidentally rescue them",
+    "fix": "scan first, subtract after \u2014 masking loop and sentinel removed; strictly simpler"
+   },
+   {
+    "defect": "missing_endpoints used the same bare-boundary search, so 'Blue Oak is linked to Ditty' satisfied the endpoint 'Blue'",
+    "fix": "endpoint must resolve as a WHOLE entity mention under the longest-first matcher"
+   },
+   {
+    "defect": "the holdout-bridge scan exempted ADJACENT pairs as the walk's own train edges. A fact held out in one DIRECTION sits on the train side in the other under a different triple_id and both collapse to one class pair \u2014 kanto has (Lt. Surge|opposes|Red) TRAIN vs (Red|opposes|Lt. Surge) HOLDOUT, and two selected walks stated it as their own edge",
+    "fix": "scan every pair, adjacent included",
+    "cost_paid_deliberately": "renderable 14,881 -> 13,339; train coverage 501 -> 497 of 521"
+   },
+   {
+    "defect": "--max-fraction 0, the setting that turns the class OFF, planned the ENTIRE pool (14,881 walks x 2 variations = 14,881 LLM calls) because `n_walks or None` turned a 0 budget into 'no cap'",
+    "fix": "budget <= 0 takes the class-unavailable skip its own reason string declared",
+    "verified": "now prints '0 records, 0 LLM calls'"
+   }
+  ],
+  "tests_added": "54 -> 58, each carrying the reviewer's own counterexample",
+  "still_not_done": [
+   "no live generation \u2014 the class has only ever run against an injected stub",
+   "no CPT run, so no install-effect evidence",
+   "5 selected walks shadow a foreign entity that is a HOLDOUT PARTNER of one of their nodes; on kanto all 5 are blocked by the unrelated foreign_numeral gate ('Mission 24: ...'), so that estimand boundary currently rests on a numeral regex and one digit-free alias in a future domain removes the accident"
+  ]
+ }
 }
