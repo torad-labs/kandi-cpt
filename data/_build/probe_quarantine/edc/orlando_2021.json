@@ -2,74 +2,19 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "orlando/2021",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 195,
-  "n_train_ids": 174,
-  "n_holdout_ids": 21,
+  "n_train_ids": 173,
+  "n_holdout_ids": 22,
   "instrument_blind": true,
   "floor_channel": "unreadable_by_this_instrument",
   "counts": {
     "holdout_class_pairs": 21,
-    "pairs_with_any_train_witness": 2,
+    "pairs_with_any_train_witness": 0,
     "pairs_floor_stated": null,
     "pairs_train_witness_not_floor_stated": null,
     "quarantined_sources": 0
   },
-  "pairs_with_any_train_witness": [
-    {
-      "entity_class_pair": [
-        "edc_orlando_2021:artist:celo",
-        "edc_orlando_2021:festival:edc_orlando"
-      ],
-      "floor_stated": false,
-      "holdout_triple_ids": [
-        "477c460c1b5ac544"
-      ],
-      "holdout_triples": [
-        {
-          "subject": "Celo",
-          "predicate": "in_lineup",
-          "object": "Electric Daisy Carnival Orlando"
-        }
-      ],
-      "train_witness_triple_ids": [
-        "fe3560c546679c0b"
-      ],
-      "train_witness_triples": [
-        {
-          "subject": "Celo (Us)",
-          "predicate": "in_lineup",
-          "object": "Electric Daisy Carnival Orlando"
-        }
-      ]
-    },
-    {
-      "entity_class_pair": [
-        "edc_orlando_2021:artist:jinx",
-        "edc_orlando_2021:festival:edc_orlando"
-      ],
-      "floor_stated": false,
-      "holdout_triple_ids": [
-        "b948826546885e38"
-      ],
-      "holdout_triples": [
-        {
-          "subject": "Jinx (US)",
-          "predicate": "in_lineup",
-          "object": "Electric Daisy Carnival Orlando"
-        }
-      ],
-      "train_witness_triple_ids": [
-        "28e42fae49b25e8b"
-      ],
-      "train_witness_triples": [
-        {
-          "subject": "Jinx",
-          "predicate": "in_lineup",
-          "object": "Electric Daisy Carnival Orlando"
-        }
-      ]
-    }
-  ],
+  "pairs_with_any_train_witness": [],
   "quarantined": []
 }

@@ -105,8 +105,8 @@
     "suzhou/2025",
     "zhuhai/2018"
   ],
-  "holdout_class_pairs": 1291,
-  "pairs_with_any_train_witness": 8,
+  "holdout_class_pairs": 1286,
+  "pairs_with_any_train_witness": 0,
   "pairs_floor_stated": null,
   "quarantined_sources": 0,
   "per_unit": [
@@ -122,7 +122,7 @@
     {
       "unit": "las_vegas/2012",
       "instrument_blind": true,
-      "holdout_class_pairs": 16,
+      "holdout_class_pairs": 17,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -149,7 +149,7 @@
     {
       "unit": "las_vegas/2015",
       "instrument_blind": true,
-      "holdout_class_pairs": 24,
+      "holdout_class_pairs": 23,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -158,7 +158,7 @@
     {
       "unit": "las_vegas/2016",
       "instrument_blind": true,
-      "holdout_class_pairs": 32,
+      "holdout_class_pairs": 33,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -176,7 +176,7 @@
     {
       "unit": "las_vegas/2018",
       "instrument_blind": true,
-      "holdout_class_pairs": 63,
+      "holdout_class_pairs": 64,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -185,7 +185,7 @@
     {
       "unit": "las_vegas/2019",
       "instrument_blind": true,
-      "holdout_class_pairs": 64,
+      "holdout_class_pairs": 63,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -194,8 +194,8 @@
     {
       "unit": "las_vegas/2021",
       "instrument_blind": true,
-      "holdout_class_pairs": 71,
-      "pairs_with_any_train_witness": 2,
+      "holdout_class_pairs": 69,
+      "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
       "quarantined_sources": 0
@@ -212,7 +212,7 @@
     {
       "unit": "las_vegas/2023",
       "instrument_blind": true,
-      "holdout_class_pairs": 56,
+      "holdout_class_pairs": 58,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -221,7 +221,7 @@
     {
       "unit": "las_vegas/2024",
       "instrument_blind": true,
-      "holdout_class_pairs": 66,
+      "holdout_class_pairs": 68,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -230,8 +230,8 @@
     {
       "unit": "las_vegas/2025",
       "instrument_blind": true,
-      "holdout_class_pairs": 68,
-      "pairs_with_any_train_witness": 1,
+      "holdout_class_pairs": 70,
+      "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
       "quarantined_sources": 0
@@ -311,7 +311,7 @@
     {
       "unit": "orlando/2019",
       "instrument_blind": true,
-      "holdout_class_pairs": 17,
+      "holdout_class_pairs": 15,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -321,7 +321,7 @@
       "unit": "orlando/2021",
       "instrument_blind": true,
       "holdout_class_pairs": 21,
-      "pairs_with_any_train_witness": 2,
+      "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
       "quarantined_sources": 0
@@ -347,7 +347,7 @@
     {
       "unit": "orlando/2024",
       "instrument_blind": true,
-      "holdout_class_pairs": 17,
+      "holdout_class_pairs": 16,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -356,8 +356,8 @@
     {
       "unit": "orlando/2025",
       "instrument_blind": true,
-      "holdout_class_pairs": 17,
-      "pairs_with_any_train_witness": 2,
+      "holdout_class_pairs": 13,
+      "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
       "quarantined_sources": 0
@@ -419,7 +419,7 @@
     {
       "unit": "mexico_city/2019",
       "instrument_blind": true,
-      "holdout_class_pairs": 16,
+      "holdout_class_pairs": 15,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -473,7 +473,7 @@
     {
       "unit": "mexico_city/2026",
       "instrument_blind": true,
-      "holdout_class_pairs": 47,
+      "holdout_class_pairs": 44,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -770,7 +770,7 @@
     {
       "unit": "london/2013",
       "instrument_blind": true,
-      "holdout_class_pairs": 6,
+      "holdout_class_pairs": 7,
       "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
@@ -789,7 +789,7 @@
       "unit": "milton_keynes/2015",
       "instrument_blind": true,
       "holdout_class_pairs": 4,
-      "pairs_with_any_train_witness": 1,
+      "pairs_with_any_train_witness": 0,
       "pairs_floor_stated": null,
       "pairs_train_witness_not_floor_stated": null,
       "quarantined_sources": 0

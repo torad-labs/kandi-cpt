@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "san_juan/2013",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 107,
   "n_train_ids": 96,
   "n_holdout_ids": 11,

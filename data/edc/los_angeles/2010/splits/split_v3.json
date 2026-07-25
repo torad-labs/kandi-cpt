@@ -1,0 +1,57 @@
+{
+  "version": "v3",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 27,
+  "train_ids": [
+    "0c21fa2d20b9e5b9",
+    "13e12afe0cdf286e",
+    "16f6c55ffcb89ce4",
+    "19fd9d49911f9e02",
+    "1dbe0410b57904b4",
+    "36e8ef73290c0694",
+    "42d14739ea1d4e63",
+    "58e1e98ee1d46034",
+    "76ae84378702a3e2",
+    "774154ac5fcca03d",
+    "79ba8365fbcc7868",
+    "7d002ddd5300de0f",
+    "803244078ecc7b16",
+    "8b431e42ea2dc1ab",
+    "8d63dcc1e3a3b09f",
+    "a88435f547fa8246",
+    "a892965465bf3407",
+    "bfd81575f8568f3f",
+    "cb6c31cfead399dc",
+    "d2e0390afd717a4d",
+    "d36d553de62d47a4",
+    "e7e0e2889d5f2363",
+    "ec2d23e881436f08",
+    "ed9dc4df8152a4dd",
+    "fc8021b7fa9a78d1"
+  ],
+  "holdout_ids": [
+    "5b07e38ca99655f8",
+    "b557b8a41e4074b4"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 27,
+    "n_alias_closed_subjects": 27,
+    "id_map_size": 1,
+    "holdout_groups_taken": 2
+  },
+  "decontamination": {
+    "n_canonical_subjects": 27,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v3 is a NEW eval series: same alias+inverse algorithm as v2, cut with the unified id_map loader that resolves nested unit slugs (city/year). v2 numbers remain history \u2014 do not merge series. Root cause of the v2\u2192v3 cut: split.load_id_map keyed on ed_dir.name (year only) so every EDC split_v2 recorded id_map_size=0 and alias closure was inert.",
+  "supersedes_v2": {
+    "id_map_size": 0,
+    "n_train": 25,
+    "n_holdout": 2
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "version": "v3",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 12,
+  "train_ids": [
+    "262ea7039595caaa",
+    "288bbfc07e89d634",
+    "3e08c3ca913aa52f",
+    "411f05fceda4b43b",
+    "5e0235cbac0f7e94",
+    "6d2b1d88b688af54",
+    "6f94d17c603b8f41",
+    "7142793a21464b0d",
+    "ca111f4d9fda9e85",
+    "e54eaccdd6b345bb",
+    "efd5fc802103c419"
+  ],
+  "holdout_ids": [
+    "a5b7a1fdb29bb34f"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 11,
+    "n_alias_closed_subjects": 11,
+    "id_map_size": 1,
+    "holdout_groups_taken": 1
+  },
+  "decontamination": {
+    "n_canonical_subjects": 11,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v3 is a NEW eval series: same alias+inverse algorithm as v2, cut with the unified id_map loader that resolves nested unit slugs (city/year). v2 numbers remain history \u2014 do not merge series. Root cause of the v2\u2192v3 cut: split.load_id_map keyed on ed_dir.name (year only) so every EDC split_v2 recorded id_map_size=0 and alias closure was inert.",
+  "supersedes_v2": {
+    "id_map_size": 0,
+    "n_train": 11,
+    "n_holdout": 1
+  }
+}

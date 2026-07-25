@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "seoul/2019",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 88,
   "n_train_ids": 79,
   "n_holdout_ids": 9,

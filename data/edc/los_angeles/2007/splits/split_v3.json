@@ -1,0 +1,49 @@
+{
+  "version": "v3",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 19,
+  "train_ids": [
+    "0ea2121f8fe3dcff",
+    "12b28738b47a2f5d",
+    "2459e4bab40848b5",
+    "318d5ef330ad497a",
+    "395bb8206bc91460",
+    "6a719bc224effded",
+    "8f0c5d302a185a4f",
+    "9227e04d7a4b0c8f",
+    "99fae500e67f19c9",
+    "9ecd0e7dd60655f1",
+    "a03994e81c2a9232",
+    "ba665c9a8f797be3",
+    "d93141d7f0b3b7cf",
+    "db12cadfdf62a1e5",
+    "e549f97cb948f9fc",
+    "e69944247078c2c3",
+    "eb4c70e5763d8341",
+    "ffaf460e28c8df8c"
+  ],
+  "holdout_ids": [
+    "4e667805e6c9f862"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 15,
+    "n_alias_closed_subjects": 15,
+    "id_map_size": 1,
+    "holdout_groups_taken": 1
+  },
+  "decontamination": {
+    "n_canonical_subjects": 15,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v3 is a NEW eval series: same alias+inverse algorithm as v2, cut with the unified id_map loader that resolves nested unit slugs (city/year). v2 numbers remain history \u2014 do not merge series. Root cause of the v2\u2192v3 cut: split.load_id_map keyed on ed_dir.name (year only) so every EDC split_v2 recorded id_map_size=0 and alias closure was inert.",
+  "supersedes_v2": {
+    "id_map_size": 0,
+    "n_train": 18,
+    "n_holdout": 1
+  }
+}

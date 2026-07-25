@@ -1,0 +1,719 @@
+{
+  "schema": "kandi.edc_alias_overlaps.v1",
+  "campaign": "phase_r10_edc_alias_overlaps",
+  "recorded_at": "2026-07-25T20:22:15Z",
+  "status": "LANDED",
+  "headline": "The 8 EDC pairs_with_any_train_witness overlaps go 8 \u2192 0 after loader unification + split_v3 re-cut on every unit whose live id_map was non-empty (50 units). v2 remains on disk as history; load_split prefers v3 > v2 > v1.",
+  "depends_on": [
+    "phase_r9_id_map_loader_audit"
+  ],
+  "instrument": {
+    "name": "probe_quarantine.floor_stated_holdout_pairs.pairs_with_any_train_witness",
+    "why_not_alias_leak_report": "alias_leak_report only groups by id_map-canonical subject and reported 0 on the broken v2 cuts (because the cut itself used empty maps, so each raw subject was its own group and no group straddled the split). The 8 are endpoint CLASS pairs under entity_classes (id_map \u222a same-display-name), measured by the quarantine instrument recorded in phase_r6.",
+    "prior_record": "logs/phase_r6_floor_holdout_leak.json::detected_counted_and_NOT_fixed.edc_alias_duplicate_train_holdout_overlaps"
+  },
+  "before": {
+    "pairs_with_any_train_witness": 8,
+    "affected_units": [
+      "las_vegas/2021",
+      "las_vegas/2025",
+      "milton_keynes/2015",
+      "orlando/2021",
+      "orlando/2025"
+    ],
+    "rows": [
+      {
+        "unit": "las_vegas/2021",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 15,
+        "holdout": {
+          "subject": "Ruff Hauser",
+          "predicate": "plays_at",
+          "object": "Boombox Art Car"
+        },
+        "train": {
+          "subject": "Ruff Hauser (DnB Set)",
+          "predicate": "plays_at",
+          "object": "Boombox Art Car"
+        }
+      },
+      {
+        "unit": "las_vegas/2021",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 15,
+        "holdout": {
+          "subject": "Ruff Hauser",
+          "predicate": "plays_at",
+          "object": "Sunday, Oct 24 (hosted by Viva El Reggaeton)"
+        },
+        "train": {
+          "subject": "Ruff Hauser (DnB Set)",
+          "predicate": "plays_at",
+          "object": "Sunday, Oct 24 (hosted by Viva El Reggaeton)"
+        }
+      },
+      {
+        "unit": "las_vegas/2025",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 6,
+        "holdout": {
+          "subject": "Ti\u00ebsto",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Las Vegas"
+        },
+        "train": {
+          "subject": "Ti\u00ebsto",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Las Vegas"
+        }
+      },
+      {
+        "unit": "orlando/2021",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 3,
+        "holdout": {
+          "subject": "Celo",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando"
+        },
+        "train": {
+          "subject": "Celo (Us)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando"
+        }
+      },
+      {
+        "unit": "orlando/2021",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 3,
+        "holdout": {
+          "subject": "Jinx (US)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando"
+        },
+        "train": {
+          "subject": "Jinx",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando"
+        }
+      },
+      {
+        "unit": "orlando/2025",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 8,
+        "holdout": {
+          "subject": "San Pacho (Sunset Set)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        },
+        "train": {
+          "subject": "San Pacho",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      },
+      {
+        "unit": "orlando/2025",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 8,
+        "holdout": {
+          "subject": "Seven Lions",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        },
+        "train": {
+          "subject": "Seven Lions (Sunset Set)",
+          "predicate": "in_lineup",
+          "object": "Electric Daisy Carnival Orlando 2025"
+        }
+      },
+      {
+        "unit": "milton_keynes/2015",
+        "split_version": "v2",
+        "id_map_size_at_cut": 0,
+        "id_map_size_live": 2,
+        "holdout": {
+          "subject": "EDC UK 2015",
+          "predicate": "located_at",
+          "object": "Milton Keynes Bowl"
+        },
+        "train": {
+          "subject": "EDC UK 2015",
+          "predicate": "located_at",
+          "object": "Milton Keynes Bowl"
+        }
+      }
+    ],
+    "split_meta_id_map_size": 0,
+    "note": "every EDC split_v2 recorded id_map_size=0 \u2014 alias closure was inert at cut time"
+  },
+  "fix": {
+    "loader": "phase_r9 unified split.load_id_map (nested slug)",
+    "re_cut": "split_v3 on 50 units with non-empty live id_map (the class, not only the 5 dirty units)",
+    "immutability": "v2 files untouched; v3 is a new series. load_split preference: v3 > v2 > v1",
+    "algorithm": "same make_split_v2 alias+inverse; only the id_map input changed from {} to the real map",
+    "n_v3_written": 50,
+    "v3_cuts_summary": [
+      {
+        "unit": "las_vegas/2011",
+        "id_map_size": 2,
+        "n_train": 123,
+        "n_holdout": 13,
+        "alias_leaks": 0,
+        "n_groups": 133,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "las_vegas/2012",
+        "id_map_size": 1,
+        "n_train": 152,
+        "n_holdout": 17,
+        "alias_leaks": 0,
+        "n_groups": 160,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "las_vegas/2013",
+        "id_map_size": 5,
+        "n_train": 193,
+        "n_holdout": 20,
+        "alias_leaks": 0,
+        "n_groups": 200,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "las_vegas/2014",
+        "id_map_size": 2,
+        "n_train": 179,
+        "n_holdout": 17,
+        "alias_leaks": 0,
+        "n_groups": 190,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "las_vegas/2015",
+        "id_map_size": 5,
+        "n_train": 231,
+        "n_holdout": 24,
+        "alias_leaks": 0,
+        "n_groups": 236,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "las_vegas/2016",
+        "id_map_size": 7,
+        "n_train": 297,
+        "n_holdout": 33,
+        "alias_leaks": 0,
+        "n_groups": 279,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "las_vegas/2018",
+        "id_map_size": 7,
+        "n_train": 562,
+        "n_holdout": 64,
+        "alias_leaks": 0,
+        "n_groups": 389,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "las_vegas/2019",
+        "id_map_size": 13,
+        "n_train": 565,
+        "n_holdout": 63,
+        "alias_leaks": 0,
+        "n_groups": 392,
+        "train_delta": 1,
+        "holdout_delta": -1
+      },
+      {
+        "unit": "las_vegas/2021",
+        "id_map_size": 15,
+        "n_train": 631,
+        "n_holdout": 69,
+        "alias_leaks": 0,
+        "n_groups": 378,
+        "train_delta": 2,
+        "holdout_delta": -2
+      },
+      {
+        "unit": "las_vegas/2022",
+        "id_map_size": 12,
+        "n_train": 604,
+        "n_holdout": 69,
+        "alias_leaks": 0,
+        "n_groups": 436,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "las_vegas/2023",
+        "id_map_size": 10,
+        "n_train": 519,
+        "n_holdout": 58,
+        "alias_leaks": 0,
+        "n_groups": 338,
+        "train_delta": -2,
+        "holdout_delta": 2
+      },
+      {
+        "unit": "las_vegas/2024",
+        "id_map_size": 11,
+        "n_train": 587,
+        "n_holdout": 68,
+        "alias_leaks": 0,
+        "n_groups": 407,
+        "train_delta": -2,
+        "holdout_delta": 2
+      },
+      {
+        "unit": "las_vegas/2025",
+        "id_map_size": 6,
+        "n_train": 601,
+        "n_holdout": 70,
+        "alias_leaks": 0,
+        "n_groups": 422,
+        "train_delta": -2,
+        "holdout_delta": 2
+      },
+      {
+        "unit": "orlando/2011",
+        "id_map_size": 2,
+        "n_train": 31,
+        "n_holdout": 4,
+        "alias_leaks": 0,
+        "n_groups": 21,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2012",
+        "id_map_size": 1,
+        "n_train": 45,
+        "n_holdout": 5,
+        "alias_leaks": 0,
+        "n_groups": 48,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2013",
+        "id_map_size": 1,
+        "n_train": 15,
+        "n_holdout": 2,
+        "alias_leaks": 0,
+        "n_groups": 13,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2016",
+        "id_map_size": 2,
+        "n_train": 91,
+        "n_holdout": 10,
+        "alias_leaks": 0,
+        "n_groups": 77,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2017",
+        "id_map_size": 4,
+        "n_train": 66,
+        "n_holdout": 8,
+        "alias_leaks": 0,
+        "n_groups": 67,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2018",
+        "id_map_size": 5,
+        "n_train": 92,
+        "n_holdout": 11,
+        "alias_leaks": 0,
+        "n_groups": 91,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "orlando/2019",
+        "id_map_size": 4,
+        "n_train": 133,
+        "n_holdout": 15,
+        "alias_leaks": 0,
+        "n_groups": 132,
+        "train_delta": 2,
+        "holdout_delta": -2
+      },
+      {
+        "unit": "orlando/2021",
+        "id_map_size": 3,
+        "n_train": 173,
+        "n_holdout": 22,
+        "alias_leaks": 0,
+        "n_groups": 177,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "orlando/2022",
+        "id_map_size": 1,
+        "n_train": 146,
+        "n_holdout": 18,
+        "alias_leaks": 0,
+        "n_groups": 156,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2023",
+        "id_map_size": 1,
+        "n_train": 114,
+        "n_holdout": 12,
+        "alias_leaks": 0,
+        "n_groups": 122,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "orlando/2024",
+        "id_map_size": 3,
+        "n_train": 148,
+        "n_holdout": 16,
+        "alias_leaks": 0,
+        "n_groups": 152,
+        "train_delta": 1,
+        "holdout_delta": -1
+      },
+      {
+        "unit": "orlando/2025",
+        "id_map_size": 8,
+        "n_train": 135,
+        "n_holdout": 14,
+        "alias_leaks": 0,
+        "n_groups": 132,
+        "train_delta": 3,
+        "holdout_delta": -3
+      },
+      {
+        "unit": "mexico_city/2014",
+        "id_map_size": 2,
+        "n_train": 30,
+        "n_holdout": 3,
+        "alias_leaks": 0,
+        "n_groups": 23,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "mexico_city/2015",
+        "id_map_size": 1,
+        "n_train": 81,
+        "n_holdout": 9,
+        "alias_leaks": 0,
+        "n_groups": 83,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "mexico_city/2019",
+        "id_map_size": 2,
+        "n_train": 147,
+        "n_holdout": 16,
+        "alias_leaks": 0,
+        "n_groups": 157,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "mexico_city/2024",
+        "id_map_size": 2,
+        "n_train": 207,
+        "n_holdout": 22,
+        "alias_leaks": 0,
+        "n_groups": 224,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "mexico_city/2026",
+        "id_map_size": 5,
+        "n_train": 405,
+        "n_holdout": 44,
+        "alias_leaks": 0,
+        "n_groups": 290,
+        "train_delta": 3,
+        "holdout_delta": -3
+      },
+      {
+        "unit": "los_angeles/1997",
+        "id_map_size": 1,
+        "n_train": 37,
+        "n_holdout": 4,
+        "alias_leaks": 0,
+        "n_groups": 33,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "los_angeles/2007",
+        "id_map_size": 1,
+        "n_train": 18,
+        "n_holdout": 1,
+        "alias_leaks": 0,
+        "n_groups": 15,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "los_angeles/2010",
+        "id_map_size": 1,
+        "n_train": 25,
+        "n_holdout": 2,
+        "alias_leaks": 0,
+        "n_groups": 27,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "san_bernardino/2003",
+        "id_map_size": 1,
+        "n_train": 11,
+        "n_holdout": 1,
+        "alias_leaks": 0,
+        "n_groups": 11,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "new_york_nj/2015",
+        "id_map_size": 1,
+        "n_train": 67,
+        "n_holdout": 7,
+        "alias_leaks": 0,
+        "n_groups": 71,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "chicago/2013",
+        "id_map_size": 1,
+        "n_train": 107,
+        "n_holdout": 12,
+        "alias_leaks": 0,
+        "n_groups": 113,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "san_juan/2009",
+        "id_map_size": 1,
+        "n_train": 29,
+        "n_holdout": 3,
+        "alias_leaks": 0,
+        "n_groups": 31,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "san_juan/2012",
+        "id_map_size": 1,
+        "n_train": 123,
+        "n_holdout": 13,
+        "alias_leaks": 0,
+        "n_groups": 136,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "san_juan/2013",
+        "id_map_size": 1,
+        "n_train": 96,
+        "n_holdout": 11,
+        "alias_leaks": 0,
+        "n_groups": 95,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "london/2013",
+        "id_map_size": 3,
+        "n_train": 55,
+        "n_holdout": 7,
+        "alias_leaks": 0,
+        "n_groups": 53,
+        "train_delta": -1,
+        "holdout_delta": 1
+      },
+      {
+        "unit": "milton_keynes/2014",
+        "id_map_size": 3,
+        "n_train": 87,
+        "n_holdout": 10,
+        "alias_leaks": 0,
+        "n_groups": 86,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "milton_keynes/2015",
+        "id_map_size": 2,
+        "n_train": 39,
+        "n_holdout": 4,
+        "alias_leaks": 0,
+        "n_groups": 39,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "suzhou/2025",
+        "id_map_size": 1,
+        "n_train": 58,
+        "n_holdout": 6,
+        "alias_leaks": 0,
+        "n_groups": 57,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "chiba/2019",
+        "id_map_size": 1,
+        "n_train": 59,
+        "n_holdout": 6,
+        "alias_leaks": 0,
+        "n_groups": 55,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "seoul/2019",
+        "id_map_size": 2,
+        "n_train": 79,
+        "n_holdout": 9,
+        "alias_leaks": 0,
+        "n_groups": 75,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "portimao/2021",
+        "id_map_size": 1,
+        "n_train": 99,
+        "n_holdout": 11,
+        "alias_leaks": 0,
+        "n_groups": 110,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "portimao/2022",
+        "id_map_size": 1,
+        "n_train": 30,
+        "n_holdout": 3,
+        "alias_leaks": 0,
+        "n_groups": 26,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "phuket/2025",
+        "id_map_size": 3,
+        "n_train": 103,
+        "n_holdout": 11,
+        "alias_leaks": 0,
+        "n_groups": 97,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "phuket/2026",
+        "id_map_size": 1,
+        "n_train": 67,
+        "n_holdout": 7,
+        "alias_leaks": 0,
+        "n_groups": 72,
+        "train_delta": 0,
+        "holdout_delta": 0
+      },
+      {
+        "unit": "edsea/2024",
+        "id_map_size": 1,
+        "n_train": 71,
+        "n_holdout": 7,
+        "alias_leaks": 0,
+        "n_groups": 72,
+        "train_delta": 0,
+        "holdout_delta": 0
+      }
+    ]
+  },
+  "after": {
+    "pairs_with_any_train_witness": 0,
+    "remaining_rows": [],
+    "per_affected_unit_v3": {
+      "las_vegas/2021": {
+        "witness": 0,
+        "alias_leaks": 0,
+        "id_map_size": 15
+      },
+      "las_vegas/2025": {
+        "witness": 0,
+        "alias_leaks": 0,
+        "id_map_size": 6
+      },
+      "milton_keynes/2015": {
+        "witness": 0,
+        "alias_leaks": 0,
+        "id_map_size": 2
+      },
+      "orlando/2021": {
+        "witness": 0,
+        "alias_leaks": 0,
+        "id_map_size": 3
+      },
+      "orlando/2025": {
+        "witness": 0,
+        "alias_leaks": 0,
+        "id_map_size": 8
+      }
+    },
+    "probe_quarantine_rescan": {
+      "units_scanned": 97,
+      "pairs_with_any_train_witness": 0,
+      "quarantined_sources": 0
+    }
+  },
+  "before_after": {
+    "pairs_with_any_train_witness": {
+      "before": 8,
+      "after": 0
+    }
+  },
+  "verdict": "CLOSED \u2014 target 0 hit; no residual overlaps to name",
+  "series_note": "Any eval that bound to split_v2 holdout_ids is a prior series. v3 holdout sets differ where the id_map moved group membership (see train_delta/holdout_delta on the 50 cuts). Do not merge v2 and v3 numbers.",
+  "deviations": [
+    "Re-cut the full class (50 units with live id_map), not only the 5 that currently showed witness pairs \u2014 inert alias closure is the defect class, and the other 45 would be the next 8 under a different seed or a later resolve map growth."
+  ],
+  "gates": {
+    "run_tests": "48 modules all green",
+    "cpt_config": "8/8",
+    "qgre_gates": "9/9",
+    "probe_quarantine_edc": "pairs_with_any_train_witness=0"
+  }
+}

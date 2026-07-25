@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "las_vegas/2013",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 213,
   "n_train_ids": 193,
   "n_holdout_ids": 20,

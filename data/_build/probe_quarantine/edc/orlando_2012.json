@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "orlando/2012",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 50,
   "n_train_ids": 45,
   "n_holdout_ids": 5,

@@ -2,10 +2,10 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "orlando/2018",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 103,
-  "n_train_ids": 93,
-  "n_holdout_ids": 10,
+  "n_train_ids": 92,
+  "n_holdout_ids": 11,
   "instrument_blind": true,
   "floor_channel": "unreadable_by_this_instrument",
   "counts": {

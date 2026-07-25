@@ -1,0 +1,73 @@
+{
+  "version": "v3",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 48,
+  "train_ids": [
+    "011e8d7bfceb0928",
+    "0376112e7a4833b1",
+    "0bc89039e9e49fab",
+    "328ec47191dfb8c9",
+    "40ea43418cf7f7e6",
+    "4977c174239d949f",
+    "501c66df00ca3f60",
+    "54994de66862aa59",
+    "594d134416874c7b",
+    "596955429d8ebe3a",
+    "6508d49b925a05b8",
+    "6a3fc9494bcdf0fa",
+    "6d4322b241b6de01",
+    "704351b58f07afdf",
+    "76dc9167dbb82da2",
+    "782de323070dffae",
+    "7e2203c5e4733eda",
+    "8b1e871f551adb0f",
+    "8b3036e4a0e3e890",
+    "905598a47ca8d187",
+    "94e63892e91f5a88",
+    "9fb43319b80d9d1f",
+    "a6d17979de82f7d7",
+    "a93e9dddd71eda8e",
+    "b8ceedf5363c60d3",
+    "bb1f4f2c8ad3d1da",
+    "bc31fe830bb30c56",
+    "bf430081ede2335a",
+    "c4d5e94b8a7a63ba",
+    "c5181fdc603f98ce",
+    "c82802e9b6ca3f9a",
+    "cc11fdda9b6939ae",
+    "ce27e6ea2cde0381",
+    "d28a39119b5967e1",
+    "d3ef6c833b5344f1",
+    "f1dd18c55d66c35b",
+    "f5f71e95a08a894d",
+    "f9a22a7120f8a7a4",
+    "fb05c40db8638189"
+  ],
+  "holdout_ids": [
+    "03b4f086a6a5d0e7",
+    "8cf798a246b073af",
+    "96866e4f00dc2a79",
+    "fffad830f1407035"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 39,
+    "n_alias_closed_subjects": 39,
+    "id_map_size": 2,
+    "holdout_groups_taken": 4
+  },
+  "decontamination": {
+    "n_canonical_subjects": 39,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v3 is a NEW eval series: same alias+inverse algorithm as v2, cut with the unified id_map loader that resolves nested unit slugs (city/year). v2 numbers remain history \u2014 do not merge series. Root cause of the v2\u2192v3 cut: split.load_id_map keyed on ed_dir.name (year only) so every EDC split_v2 recorded id_map_size=0 and alias closure was inert.",
+  "supersedes_v2": {
+    "id_map_size": 0,
+    "n_train": 39,
+    "n_holdout": 4
+  }
+}

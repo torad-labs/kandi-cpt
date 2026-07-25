@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "san_bernardino/2003",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 12,
   "n_train_ids": 11,
   "n_holdout_ids": 1,

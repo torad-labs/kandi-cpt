@@ -2,7 +2,7 @@
   "schema": "probe_quarantine/v1",
   "domain": "edc",
   "unit": "new_york_nj/2015",
-  "split_version": "v2",
+  "split_version": "v3",
   "n_unique_triples": 74,
   "n_train_ids": 67,
   "n_holdout_ids": 7,
