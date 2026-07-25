@@ -44,10 +44,15 @@ subjects to BOTH endpoints because a walk graph is keyed on both. Measured on ka
 ESTIMAND — TRAIN-ONLY, TWO LEVELS. (1) id level: every constituent triple must satisfy
 `triple_id(t) in split["train_ids"]`, positive membership on EVERY triple, never `not in
 holdout_ids` (140 of kanto's 736 unique triples are in NEITHER side because 15_structured was
-rewritten after the immutable split was cut). (2) FACT level: a walk whose two endpoints are exactly
-a HOLDOUT triple's endpoint pair teaches that held-out fact as a connection, and the id check cannot
-see it — 76 such walks exist in kanto's pool. They are dropped, and the drop costs zero coverage
-(501/521 with and without). Every number produced by this stage is a RUN-GATE corpus-construction
+rewritten after the immutable split was cut). (2) FACT level: a walk that names a HOLDOUT triple's
+endpoint pair teaches that held-out fact as a connection, and the id check cannot see it. The scan
+covers EVERY node pair the walk names, adjacent included — three successive roundings-down were all
+wrong. Endpoints only missed 483 walks that stated a holdout pair between interior nodes; distance
+>= 2 then missed the reverse-direction case, where a fact held out one way sits on the train side
+the other way under a different triple_id and both collapse to one class pair (kanto:
+(Lt. Surge|opposes|Red) TRAIN vs (Red|opposes|Lt. Surge) HOLDOUT). Measured on kanto: 2,101 of
+15,440 pool walks dropped, train coverage 501 -> 497 of 521. The coverage is paid deliberately;
+the estimand is the point. Every number produced by this stage is a RUN-GATE corpus-construction
 number on the TRAIN side; nothing here estimates install strength.
 
     PYTHONPATH=scripts python scripts/pipeline/generic_reasoning.py --domain <d>
@@ -414,16 +419,22 @@ def grounding_violations(text: str, allowed: set[str], matcher: re.Pattern | Non
     """Entity names in `text` the walk does not license — the class's grounding gate.
 
     `allowed` is EVERY display name of the walk's own entity classes (a class merged by resolve can
-    carry two spellings, and the stated edge may use either). They are masked longest-first BEFORE
-    the scan, so an allowed `Kanto Region` cannot be reported as a foreign `Kanto`.
+    carry two spellings, and the stated edge may use either).
+
+    SCAN FIRST, SUBTRACT AFTER. An earlier version masked the allowed names out of the text before
+    running the matcher, which closed the false-POSITIVE direction (an allowed `Kanto Region` being
+    reported as a foreign `Kanto`) and opened its mirror: a FOREIGN name that CONTAINS a licensed
+    one was destroyed by the mask before the matcher ever saw it. Measured on kanto — the walk
+    ['Blue','Celio','Green','Ditty'] accepted "Blue is linked to Ditty, and Blue Oak belongs to the
+    same chain." with zero drops, shipping a fabricated fact about the distinct entity `Blue Oak`
+    attributed to three real train triples; 235 of 453 selected walks license a name that is a
+    token-boundary substring of some other class. The matcher is already built longest-first, so
+    scanning the raw text and subtracting the licensed set is both directions at once — and it
+    removes the masking loop entirely.
     """
     if matcher is None:
         return []
-    masked = text
-    for name in sorted(allowed, key=lambda n: (-len(n), n)):
-        if name:
-            masked = re.sub(_boundary(name), " \x00 ", masked)
-    return sorted({m.group(0) for m in matcher.finditer(masked)})
+    return sorted({m.group(0) for m in matcher.finditer(text or "")} - set(allowed))
 
 
 def numeral_violations(text: str, licensed: set[str]) -> list[str]:
@@ -439,11 +450,25 @@ def negation_markers(text: str) -> list[str]:
     return sorted({m.group(0).lower() for m in _NEGATION_RE.finditer(text or "")})
 
 
-def missing_endpoints(text: str, x_names: set[str], y_names: set[str]) -> list[str]:
-    """Which endpoint the line fails to name. A surface that drops an endpoint is not about the walk."""
+def missing_endpoints(text: str, x_names: set[str], y_names: set[str],
+                      matcher: re.Pattern | None = None) -> list[str]:
+    """Which endpoint the line fails to name. A surface that drops an endpoint is not about the walk.
+
+    A bare boundary search accepts a LONGER foreign name that contains the endpoint: "Blue Oak is
+    linked to Ditty" satisfied the endpoint `Blue` even though `Blue Oak` is a different entity
+    class. When the unit matcher is supplied, the endpoint must be matched as a WHOLE entity
+    mention — i.e. the longest-first matcher must resolve that span to the endpoint name itself,
+    not to some longer name containing it.
+    """
+    hits = {m.group(0) for m in matcher.finditer(text or "")} if matcher is not None else None
     out = []
     for label, names in (("x", x_names), ("y", y_names)):
-        if not any(re.search(_boundary(n), text) for n in names if n):
+        live = {n for n in names if n}
+        if hits is not None:
+            found = bool(live & hits)
+        else:
+            found = any(re.search(_boundary(n), text) for n in live)
+        if not found:
             out.append(label)
     return out
 
@@ -725,8 +750,16 @@ def plan_walks(train: dict[str, dict], uniq: dict[str, dict], rel_q: dict, unit_
         # narrate the held-out fact between two interior nodes: measured on kanto at shipped
         # defaults, the selected walk [Professor Oak, Agatha, Lorelei, Red] states the held-out
         # (Agatha, Red) pair while its outer pair (Professor Oak, Red) is not held out at all.
+        # EVERY pair, adjacent included. Adjacent pairs are the walk's own TRAIN edges, so exempting
+        # them looked safe — it is not, because a fact held out in one DIRECTION lands on the train
+        # side in the other under a different triple_id, and both collapse to the same class pair.
+        # Measured on kanto: (Lt. Surge | opposes | Red) is TRAIN while (Red | opposes | Lt. Surge)
+        # is HOLDOUT, so two selected walks stated the held-out fact as their own adjacent edge and
+        # the distance >= 2 scan waved them through. If a class pair is in `bridges` at all, the walk
+        # narrates a held-out fact and must not ship. Cost on kanto: pool 14,881 -> 13,339, train
+        # coverage 501/521 -> 497/521 — paid deliberately, because the estimand is the point.
         nodes = ctx["nodes"]
-        stated = next(((i, j) for i in range(len(nodes)) for j in range(i + 2, len(nodes))
+        stated = next(((i, j) for i in range(len(nodes)) for j in range(i + 1, len(nodes))
                        if frozenset((nodes[i], nodes[j])) in bridges), None)
         if stated is not None:
             drops["holdout_bridge"] += 1
@@ -842,7 +875,7 @@ def render_records(selected: list[dict], domain: str | None, universe_names, *, 
                 _example(stats, "foreign_numeral", {"walk": list(ctx["walk"]), "numerals": numerals,
                                                     "text": line[:160]})
                 continue
-            missing = missing_endpoints(line, ctx["x_names"], ctx["y_names"])
+            missing = missing_endpoints(line, ctx["x_names"], ctx["y_names"], matcher)
             if missing:
                 drops["missing_endpoint"] += 1
                 _example(stats, "missing_endpoint", {"walk": list(ctx["walk"]), "missing": missing,
@@ -1087,12 +1120,19 @@ def main():
             continue
         base_lines, base_per_file = base_surface_lines(ed)
         budget, budget_info = budget_for_fraction(base_lines, args.max_fraction)
-        n_walks = max(1, math.ceil(budget / max(1, args.variations))) if budget else 0
+        # A zero budget is the class-unavailable skip its own reason string already declares. Left
+        # to fall through, `n_walks or None` turned 0 into None — "no cap" — and the class planned
+        # the ENTIRE pool: measured 14,881 walks x 2 variations = 14,881 LLM calls at
+        # --max-fraction 0, which is the setting an operator uses to turn the class OFF.
+        if budget <= 0:
+            print(f"  {ed.slug}: {budget_info.get('reason', 'budget 0')} — 0 records, 0 LLM calls")
+            continue
         selected, stats = plan_walks(
             train, uniq, rel_q, _unit_name(ed), args.domain, classes=frames["classes"],
             names_of=frames["names_of"], aliases_of=frames["aliases_of"],
             holdout_ids=(split or {}).get("holdout_ids") or frozenset(),
-            max_walk=args.max_walk, max_hub_degree=args.max_hub_degree, n_walks=n_walks or None)
+            max_walk=args.max_walk, max_hub_degree=args.max_hub_degree,
+            n_walks=max(1, math.ceil(budget / max(1, args.variations))))
         walk_cov = stats.get("walk_train_triples_covered", 0)
         live_drops = {k: v for k, v in stats["drops"].items() if v}
         print(f"  {ed.slug}: {frames['mode']} — {len(train)}/{len(uniq)} unique triples; "
@@ -1115,7 +1155,7 @@ def main():
 
         records, render_stats = render_records(
             selected, args.domain, frames["universe"], preamble=preamble, variations=args.variations,
-            budget=budget or None, concurrency=args.concurrency)
+            budget=budget, concurrency=args.concurrency)
         stats = merge_stats(stats, render_stats)
         assert_channel_healthy(stats)
         if split:

@@ -567,11 +567,16 @@ def _ruler_unit(
         encoding="utf-8",
     )
 
+    # The unit REGISTRY — the sixth ruler input. It decides how many units exist, so it moves the
+    # aggregate denominator without touching any per-unit file.
+    registry = root / "configs" / "editions_dom.json"
+    registry.write_text(json.dumps([{"unit": "u", "status": "active"}]), encoding="utf-8")
+
     fixture_path = root / "facts.json"
     fixture_path.write_text(json.dumps({
         "doc.md": [{"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"} for i in range(n_facts)],
     }), encoding="utf-8")
-    return {"unit": unit, "fixture": fixture_path, "manifest": manifest,
+    return {"unit": unit, "fixture": fixture_path, "manifest": manifest, "registry": registry,
             "entities": structured / "entities.jsonl", "triples": structured / "triples.jsonl",
             "id_map": id_map_dir / "id_map.json"}
 
@@ -823,9 +828,11 @@ def test_fixture_digest_binds_only_when_a_fixture_was_supplied():
         "id_map": {"sha256": "i" * 64},
         "domain_manifest": {"sha256": "m" * 64},
         "documents": {"sha256": "d" * 64},
+        "editions_registry": {"sha256": "r" * 64},
     }
     pin = {"pinned": {"fixture": "f" * 64, "entities": "e" * 64, "id_map": "i" * 64,
-                      "domain_manifest": "m" * 64, "documents": "d" * 64}}
+                      "domain_manifest": "m" * 64, "documents": "d" * 64,
+                      "editions_registry": "r" * 64}}
 
     supplied = A.compare_ruler_pin(pin, fingerprint, fixture_supplied=True)
     assert any(p.startswith("fixture:") for p in supplied), supplied
@@ -837,6 +844,56 @@ def test_fixture_digest_binds_only_when_a_fixture_was_supplied():
     fingerprint["entities"]["sha256"] = "x" * 64
     still_bound = A.compare_ruler_pin(pin, fingerprint, fixture_supplied=False)
     assert any(p.startswith("entities:") for p in still_bound), still_bound
+
+
+def test_unit_registry_is_pinned_so_a_registry_only_edit_fails_closed():
+    """(round-3 objection) The SIXTH input: the registry decides how many units exist.
+
+    Five pins covered the inputs of ONE unit. overall_ratio re-aggregates over whatever
+    iter_editions yields, and iter_editions yields whatever configs/editions_<domain>.json lists —
+    so the registry moves the aggregate denominator with every per-unit digest byte-identical.
+    All three round-3 reviewers found this independently.
+    """
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        made = _ruler_unit(root)
+        pinned = _score(made["unit"], made["fixture"], pin_ruler=True)
+        assert pinned["ruler"]["verified"] is True, pinned["ruler"]
+
+        before = {json.loads(l)["id"] for l in made["entities"].read_text().splitlines() if l.strip()}
+        made["registry"].write_text(
+            json.dumps([{"unit": "u", "status": "active"}, {"unit": "u2", "status": "active"}]),
+            encoding="utf-8")
+        after = {json.loads(l)["id"] for l in made["entities"].read_text().splitlines() if l.strip()}
+        assert before == after, "the registry edit must touch no per-unit file"
+
+        rescored = _score(made["unit"], made["fixture"])
+        problems = rescored["ruler"]["units"][0]["pin"]["problems"]
+        assert any(p.startswith("editions_registry:") for p in problems), problems
+        assert rescored["ruler"]["verified"] is False
+        assert rescored["quotable"] is False, rescored["quotable_note"]
+
+
+def test_a_unit_with_no_pin_is_not_quotable():
+    """Absence of a pin was verification by default — the root cause under the registry finding.
+
+    `unit_problems` is only computed when a pin exists, so an unpinned unit produced no problems
+    and sailed through as quotable. Since the unit SLUG decides the pin filename, renaming or
+    adding a unit silently unpinned it instead of failing closed.
+    """
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        made = _ruler_unit(root)
+        unpinned = _score(made["unit"], made["fixture"])
+        assert unpinned["ruler"]["units"][0]["pin"]["present"] is False
+        assert unpinned["ruler"]["units"][0]["pin"]["problems"] == []   # nothing to disagree with
+        assert unpinned["quotable"] is False, (
+            "an unpinned unit was never checked against anything and must not be quotable: "
+            + str(unpinned.get("quotable_note")))
+
+        # …and pinning it makes it quotable again, so this is fail-closed, not blanket refusal.
+        pinned = _score(made["unit"], made["fixture"], pin_ruler=True)
+        assert pinned["ruler"]["verified"] is True and pinned["quotable"] is True, pinned["ruler"]
 
 
 def test_no_ruler_pin_flag_is_not_a_bypass():

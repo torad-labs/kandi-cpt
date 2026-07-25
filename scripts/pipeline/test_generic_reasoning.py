@@ -504,6 +504,75 @@ def test_allowed_long_name_is_not_reported_as_its_shorter_substring():
     assert grounding_violations("Ecruteak is in Kanto.", {"Kanto Region"}, matcher) == ["Kanto"]
 
 
+def test_foreign_name_containing_a_licensed_one_is_not_masked_away():
+    """The MIRROR of the test above, and the direction that was never covered.
+
+    Masking the allowed names out before the scan closed the false-positive direction and opened
+    its opposite: a FOREIGN name that CONTAINS a licensed one was destroyed by the mask before the
+    matcher saw it. Found by round-3 review by swapping the `allowed` argument between the two
+    members of the test above's own pair. On real kanto, 235 of 453 selected walks license a name
+    that is a token-boundary substring of some other entity class.
+    """
+    matcher = universe_matcher({"Kanto", "Kanto Region"})
+    assert grounding_violations("Ecruteak is in the Kanto Region.", {"Kanto"}, matcher) == \
+        ["Kanto Region"]
+    # …and the original direction must NOT regress.
+    assert grounding_violations("Ecruteak is in the Kanto Region.", {"Kanto Region"}, matcher) == []
+
+
+def test_a_distinct_entity_sharing_a_licensed_prefix_is_ungrounded():
+    """The shipped counterexample, reduced. `Blue Oak` is a different class from `Blue`.
+
+    Round 3 drove this end-to-end through render_records on real kanto: the selected walk
+    ['Blue','Celio','Green','Ditty'] accepted "Blue is linked to Ditty, and Blue Oak belongs to the
+    same chain." with ZERO drops, shipping a fabricated fact attributed to three real train triples.
+    """
+    matcher = universe_matcher({"Blue", "Blue Oak", "Ditty"})
+    assert grounding_violations(
+        "Blue is linked to Ditty, and Blue Oak belongs to the same chain.",
+        {"Blue", "Ditty"}, matcher) == ["Blue Oak"]
+    # Calibration, so a future edit cannot make this pass by disabling the gate: a wholly foreign
+    # name is still caught, and a fully licensed line is still clean.
+    assert grounding_violations("Blue is linked to Ditty via Absol.", {"Blue", "Ditty"},
+                                universe_matcher({"Blue", "Ditty", "Absol"})) == ["Absol"]
+    assert grounding_violations("Blue is linked to Ditty.", {"Blue", "Ditty"}, matcher) == []
+
+
+def test_endpoint_is_not_satisfied_by_a_longer_name_containing_it():
+    """`missing_endpoints` used a bare boundary search, so a mention of a DIFFERENT entity whose
+    name contains the endpoint satisfied the endpoint check."""
+    matcher = universe_matcher({"Blue", "Blue Oak", "Ditty"})
+    assert missing_endpoints("Blue Oak is linked to Ditty.", {"Blue"}, {"Ditty"}, matcher) == ["x"]
+    assert missing_endpoints("Blue is linked to Ditty.", {"Blue"}, {"Ditty"}, matcher) == []
+
+
+def test_holdout_stated_as_the_walks_own_adjacent_edge_is_dropped():
+    """A fact held out in one DIRECTION sits on the train side in the other, under a different
+    triple_id, and both collapse to the same class pair.
+
+    Round 3 found this on real kanto: (Lt. Surge | opposes | Red) is TRAIN while
+    (Red | opposes | Lt. Surge) is HOLDOUT, so two selected walks stated the held-out fact as their
+    own adjacent edge — which the distance >= 2 scan deliberately exempted.
+    """
+    triples = [
+        _t("x:c:surge", "rival_of", "x:c:red", "Lt. Surge", "Red"),          # TRAIN
+        _t("x:c:red", "member_of", "x:o:elite", "Red", "Elite Four"),        # TRAIN
+        _t("x:c:red", "rival_of", "x:c:surge", "Red", "Lt. Surge"),          # HELD OUT, reversed
+    ]
+    uniq = _index(triples)
+    holdout = {triple_id(triples[2])}
+    train = {tid: t for tid, t in uniq.items() if tid not in holdout}
+    frames = _frames(list(uniq.values()))
+    pairs = holdout_bridge_pairs(uniq, holdout, frames["classes"])
+    assert pairs, "the fixture must produce a holdout class pair"
+    selected, stats = plan_walks(train, uniq, REL_Q, "u", None, classes=frames["classes"],
+                                 names_of=frames["names_of"], aliases_of=frames["aliases_of"],
+                                 holdout_ids=holdout, max_walk=3)
+    leaked = [c for c in selected if {"Lt. Surge", "Red"} <= set(c["rendered"])]
+    assert not leaked, f"walk states the held-out pair as its own edge: {[c['rendered'] for c in leaked]}"
+    assert stats["drops"]["holdout_bridge"] >= 1, stats["drops"]
+
+
 def test_an_alias_spelling_of_a_merged_class_is_licensed_not_foreign():
     """A resolve-merged class can be written two ways; the stated edge may use either spelling, so
     BOTH must be licensed or the gate would reject its own prompt."""

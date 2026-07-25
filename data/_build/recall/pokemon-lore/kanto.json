@@ -149,6 +149,11 @@
       "sha256": "3adeec36453a74d8682a949f192b40b596f020e324461365174f792fe9d28a48",
       "n_docs": 105
     },
+    "editions_registry": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/editions_pokemon-lore.json",
+      "sha256": "891c6619f9dc1942d12537608b871d5f5308a7f0a9fd7390cee65540decfb409",
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/pokemon-lore/kanto"
+    },
     "triples": {
       "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/pokemon-lore/kanto/15_structured/triples.resolved.jsonl",
       "sha256": "85b23dbf4b5855621dcedccf835c197688431210b519fd2c3958057c3d17b093",

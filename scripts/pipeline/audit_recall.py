@@ -75,7 +75,8 @@ DEFAULT_MIN_COVERAGE = 0.6
 
 # The ruler inputs a pin freezes. The triples file is deliberately ABSENT: pinning the graph
 # would make a genuine extraction gain fail closed, which is the equal-and-opposite defect.
-PINNED_RULER_FIELDS = ("fixture", "entities", "id_map", "domain_manifest", "documents")
+PINNED_RULER_FIELDS = ("fixture", "entities", "id_map", "domain_manifest", "documents",
+                       "editions_registry")
 
 # A judge call that never returned usable output yields NO ground truth for its document.
 # Scoring such a doc as zero coverage measures judge availability, not extraction — the
@@ -264,6 +265,34 @@ def documents_digest(ed_dir: Path) -> dict:
     return {"path": str(root), "sha256": digest, "n_docs": len(rows)}
 
 
+def editions_registry_digest(domain: str, ed_dir: Path) -> dict:
+    """Digest of the UNIT REGISTRY — the sixth ruler input, and the one that decides how many
+    units exist at all.
+
+    The other five pin the inputs of ONE unit. `overall_ratio` is
+    `sum(unit hits) / sum(unit n)` re-aggregated over whatever `iter_editions` yields, and
+    `iter_editions` yields whatever `configs/editions_<domain>.json` lists — so the registry moves
+    the aggregate denominator without touching a single pinned file. All three round-3 reviewers
+    found this independently. The sharpest reproduction: point the registry at a `kanto_alias`
+    unit whose `15_structured` is symlinked to kanto's and whose `10_clean` holds 20
+    fixture-covered copies of the one document that scores 1/1, and the audit reports
+    `clean_ratio 1.0000, status PASS, quotable true` while every pinned digest and row count is
+    identical to the pinned 0.1923 baseline — the pinned kanto.ruler.json is never even opened.
+
+    `resolved_dir` is recorded alongside the digest because a registry entry can silently
+    RE-ADDRESS a unit (`{"unit": ["kanto", ""]}` yields the same directory under a different slug,
+    which changes which pin file is looked up). The digest alone would not see that.
+    """
+    # Resolved from C.ROOT at CALL time, not from the module-level C.CONFIGS, which is computed at
+    # import and would ignore a relocated root — the same convention the rest of this file uses.
+    path = C.ROOT / "configs" / f"editions_{domain}.json"
+    return {
+        "path": str(path),
+        "sha256": sha256_of(path),
+        "resolved_dir": str(ed_dir),
+    }
+
+
 def ruler_pin_path(domain: str, unit_slug: str) -> Path:
     """Where a unit's ruler pin lives — beside its assertion fixture, same naming rule."""
     return C.BUILD / "recall" / domain / f"{unit_slug.replace('/', '_')}.ruler.json"
@@ -309,6 +338,7 @@ def ruler_fingerprint(
             "sha256": sha256_of(man_p),
         },
         "documents": documents_digest(ed_dir),
+        "editions_registry": editions_registry_digest(domain, ed_dir),
         "triples": {
             "path": str(trip_p) if trip_p else None,
             "sha256": sha256_of(trip_p),
@@ -356,6 +386,13 @@ def compare_ruler_pin(pin: dict, fingerprint: dict, *, fixture_supplied: bool = 
             problems.append(f"{field}: file absent on disk (pinned {want[:12]}…)")
         elif want != got:
             problems.append(f"{field}: pinned {want[:12]}… but live {got[:12]}…")
+    # A registry can RE-ADDRESS a unit without changing its own bytes — `{"unit": ["kanto", ""]}`
+    # resolves to the same directory under the slug "kanto/", which changes which pin file is
+    # looked up. The digest cannot see that, so the resolved directory is compared separately.
+    want_dir = (pin.get("recorded") or {}).get("resolved_dir")
+    got_dir = (fingerprint.get("editions_registry") or {}).get("resolved_dir")
+    if want_dir and got_dir and want_dir != got_dir:
+        problems.append(f"editions_registry: unit resolved to {got_dir} but pinned {want_dir}")
     return problems
 
 
@@ -376,6 +413,8 @@ def write_ruler_pin(domain: str, unit_slug: str, fingerprint: dict) -> Path:
             "id_map_entries": fingerprint["id_map"]["entries"],
             "triples_sha256_at_pin_time": fingerprint["triples"]["sha256"],
             "triples_rows_at_pin_time": fingerprint["triples"]["rows"],
+            "document_count": (fingerprint.get("documents") or {}).get("n_docs"),
+            "resolved_dir": (fingerprint.get("editions_registry") or {}).get("resolved_dir"),
         },
         "note": (
             "Coverage ruler pin. The four digests under `pinned` must match at score time or the "
@@ -1439,9 +1478,18 @@ def run_audit(
 
     # Quotability is a property of the run, not of the reader. Anything that made the ratios
     # incomparable is recorded ON the number so a receipt cannot copy it out of context.
+    # ABSENCE OF A PIN IS NOT VERIFICATION. `unit_problems` is only computed when a pin exists, so
+    # a unit with no pin file produced no problems and sailed through as quotable — and the unit
+    # slug decides the pin's filename, which means renaming a unit (or adding one) silently unpins
+    # it rather than failing closed. That is the mechanism by which the ruler could be swapped
+    # WITHOUT touching any pinned file. A run may quote a ratio only if every unit it aggregated
+    # was actually verified against a pin.
+    units_unpinned = [u.get("unit") for u in (report.get("ruler") or {}).get("units") or []
+                      if not ((u.get("pin") or {}).get("present"))]
     quotable = not (
         ruler_problems
         or ruler_pins_ignored          # --no-ruler-pin over a pinned unit is a diagnostic, not a number
+        or units_unpinned              # an unpinned unit was never checked against anything
         or (fixture and all_fixture_missing)
         or overall_n == 0
     )
