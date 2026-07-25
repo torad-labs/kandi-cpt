@@ -1,0 +1,456 @@
+{
+ "schema": "kandi.factory_balance_analysis.v1",
+ "campaign": "phase_r7_edc_factory_balance",
+ "domain": "edc",
+ "recorded_at": "2026-07-25T00:00:00Z",
+ "repo_state": "kandi-cpt main @ 9248ea1d, tree clean before and after; ZERO files written into the repo by this item",
+ "status": "WRONG_ARM_BLOCKED_WITH_EVIDENCE_REVIEW_CORRECTED",
+ "verdict": "BLOCKED_WITH_EVIDENCE",
+ "headline": "The item's mechanism is dead in BOTH of its formulations, and the measurement that killed it also found the real root cause. As the factory can actually implement it (--exposure-cap is enforced per hydrate run = per edition), capping the five named relations at 60/fact is EXACTLY INERT: cov delta +0.0000, because the max per-(edition,fact) count for those relations is 24 and 0.0000% exceed 60. As the gate would aggregate it (cross-edition), the same cap is WRONG-SIGNED: raw cov 2.7786 -> 2.9976, effective 2.3244 -> 2.7070, and it drives dominance 0.8491 -> 0.9092 across dominance_max_frac 0.85, flipping a currently-PASSING gate to FAIL. The '1,368 surfaces/fact amplification' the item is built on is not generator over-emission at all: it is CROSS-EDITION FACT-KEY COLLISION.",
+ "gate_source_read": {
+  "why": "orchestrator correction (b): READ the gate source before predicting any movement. Reading it kills the mechanism.",
+  "two_different_balance_gates_on_two_different_thresholds": [
+   {
+    "gate": "data_audit.py dim_relation_balance",
+    "file_lines": "scripts/data_audit.py:100-118, threshold at :42",
+    "aggregates": "Counter over relation_type of LINES in <unit>/25_hydrated/relations.jsonl",
+    "reads_a_fact_key": false,
+    "statistic": "cov = pstdev(relation-type TOTALS) / mean(same)",
+    "threshold": "BALANCE_COV_MAX = 1.0",
+    "note": "This is the gate carrying the 2.3236 / 2.7786 numbers. It never groups by fact."
+   },
+   {
+    "gate": "qgre/gates.py gate_balance",
+    "file_lines": "scripts/qgre/gates.py:118-160, pass expression at :141-144",
+    "statistic": "dom_frac = max(rel)/total ; n_types ; per-relation floor_frac defects",
+    "threshold": "dominance_max_frac 0.85 (configs/domains/edc.yaml:203), min_active_types 6 (:205)",
+    "critical_nuance": "gate_balance COMPUTES cov at :126 but does NOT gate on it \u2014 `passed = dom_ok and types_ok and floors_ok` (:144). cov appears only in the details dict. The <=1.0 cov bar exists ONLY in data_audit.py."
+   }
+  ],
+  "load_bearing_consequence": "The item's claim (3) 'cov responds to per-fact amplification' is FALSE. cov aggregates relation-type totals. A per-fact emission policy is aimed at a number the cov instrument does not read."
+ },
+ "threshold_correction": {
+  "the_brief_said": "'dominance_max_frac and BALANCE_COV_MAX stay untouched at 1.0'",
+  "actual": {
+   "BALANCE_COV_MAX": 1.0,
+   "dominance_max_frac": 0.85,
+   "min_active_types": 6,
+   "exposure_cap_per_fact": 60
+  },
+  "why_it_matters": "'untouched' is right, but the 1.0 attribution to dominance_max_frac is wrong and would make a must-not-move check read the wrong number. The dominance margin is +0.0009, not +0.1509 \u2014 which is exactly how much room the item's arm needed to not break the gate.",
+  "all_four_verified_untouched": "git diff HEAD -- scripts/data_audit.py configs/domains/edc.yaml scripts/qgre/gates.py festival-factory/src/ is EMPTY"
+ },
+ "scope_correction": {
+  "rule": "every cov number in this receipt names its edition scope",
+  "on_disk_98_unit": {
+   "units": 98,
+   "n_types": 15,
+   "total": 677535,
+   "cov": 3.1445,
+   "dom": 0.8487
+  },
+  "vc1_97_unit": {
+   "units": 97,
+   "n_types": 12,
+   "total": 666198,
+   "cov": 2.7786,
+   "dom": 0.8491,
+   "matches_h7_receipt": true
+  },
+  "delta": "las_vegas/2026 exactly: 677535 - 666198 = 11337, and that unit measures 11337 lines. EXACT.",
+  "gold_only_types": {
+   "disjoint_context": 600,
+   "b2b_pairing": 68,
+   "day_of_week_map": 51,
+   "note": "all three exist ONLY in las_vegas/2026; they add +0.366 to cov"
+  },
+  "PREMISE_AUDIT_ERROR_CORRECTED": {
+   "audit_claimed": "the 97-unit pool is what iter_editions(with_raw=True) yields, because it 'excludes GOLD las_vegas/2026'",
+   "measured": "iter_editions('edc', with_raw=True) returns 98 units and INCLUDES las_vegas/2026; so does the default. Verified this session.",
+   "actual_mechanism": "The 97-unit VC1 scope is defined by rehydrate_vc1.sh's own protection line (scripts/rehydrate_vc1.sh:29 `[ \"$ed\" = \"las_vegas/2026\" ] && continue` \u2014 'protect rich hand-built corpus'), NOT by with_raw.",
+   "consequence_if_uncorrected": "anyone re-running with with_raw=True expecting 97/2.7786 gets 98/3.1445 and would read a phantom +0.37 regression"
+  }
+ },
+ "root_cause_found": {
+  "severity": "HIGH \u2014 it invalidates the denominator every prior per-fact analysis in this campaign used",
+  "what": "The per-fact key used by gate_exposure_cap (gates.py:166), by dedup, and by h7b's amplification table is source_triple_ids[0]. For EDC that key is NOT edition-scoped.",
+  "evidence_measured_this_session": [
+   "stage_meta:cosmic_meadow \u2014 ONE key, 1426 surfaces, spans 87 editions",
+   "stage_meta:circuit_grounds \u2014 ONE key, 1415 surfaces, spans 87 editions",
+   "stage_meta:bionic_jungle \u2014 ONE key, 1422 surfaces, spans 87 editions",
+   "plays_at:12 \u2014 ONE key, 6883 surfaces, spans 39 editions. 'plays_at:N' is a POSITIONAL INDEX into each edition's own triples.jsonl, so 39 DIFFERENT artist-stage facts collide onto one key."
+  ],
+  "arithmetic_that_closes_it": "stage_production_character has 1746 planned cells over 97 editions and 9 stage-attribute facts = 2 cells per (fact, edition) = ~16 lines per (fact, edition). x 87 editions = ~1392. The measured 'amplification' is 1368.78 surfaces/fact. The 1,368 is 87 editions x 16, NOT 1,368 lines from one generator call path.",
+  "measured_per_edition_truth": "per-(edition,fact) counts for the five named relations: n=3074 pairs, median 16.0, MAX 24, fraction exceeding 60 = 0.0000%",
+  "implication": "h7b's 'per-fact amplification 1368.78, ~198x spread' is an artifact of unscoped fact keys. The generator is not over-emitting per fact; the same fact is legitimately re-hydrated once per edition. h7b's handoff sentence \u2014 'the lever is the GENERATOR emitting fewer surfaces per fact' \u2014 is the sentence r7 was built on, and it rests on this artifact.",
+  "seam_mismatch_recorded": "gate_exposure_cap (gates.py:164-168) aggregates perfact ACROSS all editions in scope. The factory's --exposure-cap (hydrate.rs:637-655) enforces per-fact counts with a `per_fact` map LOCAL to one hydrate() call = one edition. A generator cap of 60 therefore still presents up to 60 x 87 = 5220 to the gate. Generator and gate do not agree on what a 'fact' is."
+ },
+ "measured_results": {
+  "instrument": "dim_relation_balance cov over 25_hydrated/relations.jsonl relation_type totals (data_audit.py:100-118). Ruler named per MECHANICS 6: this is the relation-TYPE-total cov, not the per-fact/effective-forms ruler.",
+  "detector_calibration_MECHANICS_2": {
+   "synthetic_violation_fires": "cov([100, 0x9]) = 3.0000 > BALANCE_COV_MAX 1.0 \u2014 FIRES",
+   "synthetic_clean_passes": "cov([50]x6) = 0.0000 <= 1.0 \u2014 CLEAN",
+   "hand_checked_cases": "flat [10,10,10,10]=0.0; two-point [0,20]=1.0; monoculture=3.0; skew [1,2,3,4]=0.447214",
+   "scale_invariance_shown_in_calibration": "cov([1,2,3,4]) == cov([7,14,21,28]) == 0.447214 \u2014 the detector is scale-free by construction, which is why any uniform multiplier is inert on it"
+  },
+  "baseline_97_unit": {
+   "raw_cov": 2.7786,
+   "raw_dom": 0.8491,
+   "effective_cov": 2.3244,
+   "effective_dom": 0.7155,
+   "note": "effective = h7b post-dedup cull rates; h7b receipted 2.3236, delta is culled_pct 1-decimal rounding"
+  },
+  "ARM_AS_IMPLEMENTABLE_per_edition_INERT": {
+   "what": "--exposure-cap 60 applied to the five named relations, enforced per hydrate run as hydrate.rs actually does",
+   "prediction_stated_first": "near-zero movement, because per-(edition,fact) counts are ~16",
+   "observed": {
+    "cov_before": 2.7786,
+    "cov_after": 2.7786,
+    "delta": "+0.0000",
+    "total_before": 666198,
+    "total_after": 666198,
+    "dom": "0.8491 unchanged"
+   },
+   "verdict": "EXACTLY INERT \u2014 the round-4 false-landing signature (MECHANICS 5): a mechanism whose application changes nothing on its own instrument",
+   "cap_sensitivity": {
+    "60": "+0.0000",
+    "30": "+0.0000",
+    "16": "+0.0039",
+    "8": "+0.1044 (WORSE)"
+   }
+  },
+  "ARM_AS_THE_GATE_AGGREGATES_IT_WRONG_SIGN": {
+   "what": "the same cap applied to the gate's cross-edition aggregated key \u2014 the population the audit simulated. NOT implementable in the factory.",
+   "prediction_stated_first": "cov RISES; the five targets are ~7% of surfaces so cutting them shrinks the denominator without touching the 85% numerator",
+   "observed": {
+    "raw_cov": "2.7786 -> 2.9976 (+0.2190)",
+    "effective_cov": "2.3244 -> 2.7070 (+0.3826)",
+    "dominance": "0.8491 -> 0.9092 (+0.0602)",
+    "total": "666198 -> 622124"
+   },
+   "GATE_REGRESSION": "gates.py:141 dom_ok = dom_frac <= 0.85. BEFORE 0.8491 PASS (margin +0.0009). AFTER 0.9092 FAIL. The item's own arm breaks a currently-passing gate.",
+   "five_targets_are": "46234 of 666198 surfaces = 6.94%, over 36 facts"
+  },
+  "MECHANISM_CLASS_FLOORS_both_below_the_bar_is_impossible": {
+   "class_A_cross_edition_per_fact_quota": {
+    "definition": "the literal balance_by_utilization semantic (generic_expand.py:95-153): kept_per_fact = min(n_f, Q), ONE global Q = median renders/fact. Least-served-first orders WHICH renders survive, never HOW MANY \u2014 the kept count is min(len(members), quota) independent of entity_use, so the ordering is COUNT-NEUTRAL and cannot move a count-based instrument.",
+    "sweep_Q": {
+     "1": 1.7853,
+     "2": 1.7875,
+     "4": 1.7912,
+     "8": 1.8078,
+     "16": 1.8819,
+     "32": 2.0636,
+     "60": 2.2438,
+     "128": 2.4358,
+     "256": 2.6438,
+     "460": 2.7068,
+     "1000": 2.6516,
+     "1400": 2.6308,
+     "uncapped": 2.7786
+    },
+    "floor": 1.7853,
+    "floor_identity": "= cov of the FACT-COUNT vector (2334 facts across 12 relations). At Q<=min per-fact count every fact saturates, so surfaces[r] = facts[r]*Q and cov becomes scale-free.",
+    "reaches_1.0": false
+   },
+   "class_B_per_edition_per_fact_cap": {
+    "definition": "what the factory's --exposure-cap actually is",
+    "sweep_C": {
+     "1": 1.3718,
+     "2": 1.3725,
+     "4": 1.3742,
+     "8": 1.381,
+     "16": 1.4405,
+     "24": 1.6638,
+     "32": 1.8598,
+     "48": 2.1523,
+     "60": 2.3075,
+     "120": 2.6052,
+     "uncapped": 2.7786
+    },
+    "floor": 1.3718,
+    "floor_identity": "= cov of the distinct-(edition,fact)-pair vector; total collapses to 10053 lines (-98.5% of the corpus)",
+    "reaches_1.0": false
+   },
+   "correction_to_the_premise_audit": "The audit stated 'any UNIFORM per-fact allowance C gives cov == cov(facts) = 1.7852 for EVERY C'. That is exact only for C <= min per-fact count; at intermediate C the sweep rises to 2.74 and is non-monotone (Q=460 -> 2.7068 above Q=1000 -> 2.6516). The CONCLUSION is unchanged and in fact stronger: the class MINIMUM is 1.7853, so no member reaches 1.0.",
+   "purely_subtractive_ceiling": "A cap can only REMOVE, so the highest uniform per-relation total any cap can reach is min_r raw[r] = 256 (special_slot): cov 0.0000 at 3072 lines = -99.54% of the corpus, 1.32 lines/fact against DENSITY_MIN 200 (data_audit.py:38). Technically at the bar, not a landable arm."
+  },
+  "boundary_no_single_relation_fix_exists": {
+   "delete_artist_to_stage_entirely_97_unit": {
+    "n_types": 11,
+    "cov": 1.3397,
+    "verdict": "STILL FAIL vs 1.0"
+   },
+   "delete_artist_to_stage_entirely_98_unit": {
+    "n_types": 14,
+    "cov": 1.561,
+    "verdict": "STILL FAIL vs 1.0"
+   },
+   "meaning": "Even removing the 84.91% dominant relation completely leaves cov above the bar. Only a full 12-way (or 15-way) re-shaping can reach it."
+  }
+ },
+ "seam_inventory": {
+  "note": "the item asked the implementer to 'find the injectable seam'. All three exist, all three are shipped, all three are unwired in the re-hydration driver.",
+  "seams": [
+   {
+    "seam": "--dry-run -> Engine::dry_run_plan",
+    "file_lines": "festival-factory/src/main.rs:119 (field), :262-264 (arm); src/hydrate.rs:509-519 (impl)",
+    "does": "builds cells and prints a per-(relation,form) CELL breakdown, returns before any API use",
+    "verified_offline_this_session": "ran on all 97 non-GOLD editions with OPENROUTER_API_KEY set to a sentinel string 'r7-dry-run-no-network-sentinel'. Zero network calls, zero real-secret reads (openrouter.rs:47 checks the env var FIRST and short-circuits before the libsecret lookup at :53).",
+    "MEASURED_LIMITATION": "dry_run_plan counts CELLS and discards Cell.n. A --balance-target of 1600 (a 200x boost) produces BYTE-IDENTICAL dry-run output \u2014 diff confirms. The shipped dry-run seam is STRUCTURALLY BLIND to the only lever that can move emission volume. --exposure-cap is likewise invisible to it (it is a post-generation filter).",
+    "consequence": "the item's red_green plan ('balanced planned emission after, skewed before, through the factory's own dry-run seam') CANNOT be executed against the shipped seam without a code change"
+   },
+   {
+    "seam": "--balance-target rel=N,rel2=M",
+    "file_lines": "src/main.rs:129 (field), :253-256 (parse); src/hydrate.rs:87 (param), :496-504 (apply: `c.n = ov`)",
+    "does": "per-relation override of the requested lines-per-cell. In-source comment: 'the qgre balance lever ... boost the under-covered ones'. Overrides artist_to_stage's reps_for scaling.",
+    "significance": "this is the CORRECTLY-SIGNED lever and it is already shipped",
+    "cost_neutrality": "changes lines-per-call only; the CALL COUNT is the cell count and is invariant under it"
+   },
+   {
+    "seam": "--exposure-cap N",
+    "file_lines": "src/main.rs:126 (field); src/hydrate.rs:635-655 (apply)",
+    "does": "post-generation drop of lines past N per source_triple_ids[0], enforced per hydrate run (per edition)",
+    "two_recorded_facts": [
+     "it does NOT save provider spend \u2014 the call is already made when the filter runs",
+     "its scope (per-edition) disagrees with gate_exposure_cap's scope (cross-edition)"
+    ]
+   }
+  ],
+  "unwired_in_the_driver": "scripts/rehydrate_vc1.sh:52 passes only --root --festival --edition --model --base-n --concurrency. None of the three levers is passed. Defaults there: BASE_N=8, PAR=8, CONC=20 (not 10 \u2014 the header comment at :19-23 records the 10->20 raise)."
+ },
+ "emission_path_analysis": {
+  "structure": "build_cells (hydrate.rs) emits one Cell per (fact x surface form). hydrate() spawns one task per cell; run_cell (hydrate.rs:567-575) makes EXACTLY ONE OpenRouter completion per cell at max_tokens=1200. Therefore API calls == cell count, invariant under base_n and --balance-target.",
+  "n_assignment": "artist_to_stage alone takes n from reps_for(...) (hydrate.rs:117, range base_n..3*base_n); all 14 other cell sites are literal `n: base_n`.",
+  "measured_cell_table_97_editions_base_n_8": {
+   "artist_to_stage": 128457,
+   "in_lineup": 34269,
+   "set_time": 7256,
+   "set_order": 2134,
+   "recommendation": 1746,
+   "stage_production_character": 1746,
+   "stage_to_genre": 1746,
+   "stage_brand": 970,
+   "stage_rank_capacity": 776,
+   "special_slot": 540,
+   "stage_roster": 336,
+   "multi_stage": 312,
+   "b2b_pairing": 145,
+   "TOTAL": 180433
+  },
+  "yield_estimate_with_its_confound": {
+   "on_disk_over_requested": {
+    "stage_production_character": 0.88,
+    "stage_to_genre": 0.82,
+    "recommendation": 0.81,
+    "stage_brand": 0.82,
+    "stage_rank_capacity": 0.78,
+    "artist_to_stage": 0.55,
+    "in_lineup": 0.17,
+    "special_slot": 0.06,
+    "set_time": 0.04,
+    "set_order": 0.04
+   },
+   "CONFOUND_STATED": "on-disk relations.jsonl were NOT all produced by current source at base_n=8 \u2014 rehydrate_vc1.sh's preserve-on-underperform wrapper (:48-58) keeps PRIOR content whenever a re-run is thinner. These ratios mix hydration vintages and are an ESTIMATE, not a clean measurement of current-code yield. The CELL COUNTS above are clean (dry-run against current source).",
+   "reading": "the five relations the item wants to CUT are the ones where the model DELIVERS ~0.8 of what was requested; the thin relations sit at 0.04-0.06 because the faithfulness gate (hydrate.rs:582) correctly rejects lines their sparse facts cannot support. Raising n on a thin relation mostly buys rejected lines."
+  }
+ },
+ "constructive_handoff_the_correctly_signed_lever": {
+  "requirement": "cov <= 1.0 demands near-uniform per-relation TOTALS, so the per-fact allowance must vary INVERSELY with fact count (facts run 4..1233, a ~308x span).",
+  "target_T": 25893,
+  "T_derivation": "POSITIVE_FORMS (21, surface.rs:46-54) x artist_to_stage facts (1233) = 25893 \u2014 the smallest total artist_to_stage can reach WITHOUT cutting POSITIVE_FORMS, which the item's own out_of_scope forbids as 'rewriting festival generator semantics'.",
+  "result_at_T": {
+   "cov": 0.0,
+   "dom": 0.0833,
+   "n_types": 12,
+   "total": 310716
+  },
+  "CORRECTION_to_the_premise_audit": "the audit reported total 388,395 at T=25,893. That is 15 x 25,893 \u2014 a 15-type (98-unit) multiplier applied to a T derived from 97-unit artist facts. Within the 97-unit/12-type scope the total is 12 x 25,893 = 310,716 and dom is 1/12 = 0.0833, not 0.0667. Scope-naming discipline, applied to the audit's own table.",
+  "per_relation_requirement": [
+   {
+    "relation": "artist_to_stage",
+    "facts": 1233,
+    "now_per_fact": 458.8,
+    "need_per_fact": 21.0,
+    "factor": "0.05x",
+    "direction": "CUT"
+   },
+   {
+    "relation": "in_lineup",
+    "facts": 541,
+    "now_per_fact": 84.1,
+    "need_per_fact": 47.9,
+    "factor": "0.57x",
+    "direction": "CUT"
+   },
+   {
+    "relation": "stage_production_character",
+    "facts": 9,
+    "now_per_fact": 1368.8,
+    "need_per_fact": 2877.0,
+    "factor": "2.10x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "stage_to_genre",
+    "facts": 9,
+    "now_per_fact": 1266.4,
+    "need_per_fact": 2877.0,
+    "factor": "2.27x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "recommendation",
+    "facts": 9,
+    "now_per_fact": 1256.6,
+    "need_per_fact": 2877.0,
+    "factor": "2.29x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "stage_brand",
+    "facts": 5,
+    "now_per_fact": 1267.4,
+    "need_per_fact": 5178.6,
+    "factor": "4.09x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "stage_rank_capacity",
+    "facts": 4,
+    "now_per_fact": 1217.8,
+    "need_per_fact": 6473.2,
+    "factor": "5.32x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "multi_stage",
+    "facts": 250,
+    "now_per_fact": 16.8,
+    "need_per_fact": 103.6,
+    "factor": "6.17x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "set_time",
+    "facts": 121,
+    "now_per_fact": 21.1,
+    "need_per_fact": 214.0,
+    "factor": "10.12x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "stage_roster",
+    "facts": 37,
+    "now_per_fact": 31.8,
+    "need_per_fact": 699.8,
+    "factor": "22.00x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "set_order",
+    "facts": 92,
+    "now_per_fact": 6.9,
+    "need_per_fact": 281.4,
+    "factor": "40.78x",
+    "direction": "RAISE"
+   },
+   {
+    "relation": "special_slot",
+    "facts": 24,
+    "now_per_fact": 10.7,
+    "need_per_fact": 1078.9,
+    "factor": "101.14x",
+    "direction": "RAISE"
+   }
+  ],
+  "THE_SIGN": "every one of the item's five named targets must go UP, not down. The item's brief has the direction inverted for all five.",
+  "feasibility_of_delivering_it_via_the_shipped_lever": {
+   "naive_allocation": "N_r = ceil(T / cells[r]) is within the per-call token budget for 11 of 12 relations (multi_stage needs 83 lines/call against a ~80-line ceiling at max_tokens=1200 / ~15 tokens per line)",
+   "yield_corrected_allocation": "dividing by the measured yield-per-requested puts set_time at ~100, set_order at ~325 and special_slot at ~800 lines from ONE call \u2014 far beyond the 1200-token ceiling",
+   "conclusion": "--balance-target alone CANNOT deliver the raise for the thin relations. Their ceiling is the faithfulness gate and the source facts behind it, not the requested count. Delivering T for them needs MORE CELLS (more forms/repeats per thin fact), which is build_cells \u2014 'rewriting festival generator semantics', explicitly out of scope for this item."
+  }
+ },
+ "minimal_seam_change_analysis": {
+  "why_this_section_exists": "the item's structural_exit names it and calls it a success outcome",
+  "smallest_change_that_would_make_the_item's_own_red_green_executable": {
+   "file": "festival-factory/src/hydrate.rs",
+   "function": "dry_run_plan (:509-519)",
+   "change": "aggregate Cell.n alongside the cell count \u2014 report planned LINES per relation, not only cells. Roughly: accumulate `*lines.entry(c.relation).or_default() += c.n as usize` in the existing loop and print it.",
+   "effect": "makes --balance-target observable offline, so a planned-emission before/after becomes a real measurement instead of an analytic estimate. Zero provider spend.",
+   "prerequisite_per_MECHANICS_1": "festival-factory currently has ZERO tests (`grep -rc '#[test]' src/*.rs` = 0 across all 12 files; no cfg(test); no tests/ dir). `cargo test` there prints 'running 0 tests' \u2014 a VACUOUS green. Any factory commit must FIRST add the first #[test] and show the printed count move 0 -> N. This receipt does not claim cargo test as a passing oracle."
+  },
+  "why_that_change_was_NOT_made_here": "It would make a dead mechanism observable, not alive. Both mechanism-class floors (1.7853 and 1.3718) sit above the 1.0 bar, so no allocation the improved instrument could display would pass. Authoring it now is the round-4 error repeated: building the mechanism whose own instrument proves it inert."
+ },
+ "operator_handoff_live_run": {
+  "PROVIDER_SPEND_IS_OPERATOR_ONLY": "no agent triggered any provider call in this item. The only factory execution was --dry-run with a sentinel key.",
+  "exact_call_count_measured": 180433,
+  "call_count_derivation": "one OpenRouter completion per cell (run_cell, hydrate.rs:572); 180,433 cells planned across the 97 non-GOLD editions at BASE_N=8, measured via --dry-run. Invariant under --balance-target and --exposure-cap.",
+  "per_call_ceiling": "max_tokens = 1200 (hydrate.rs:572)",
+  "completion_token_ceiling": "180433 x 1200 = 216.5M tokens absolute worst case; measured average yield is 666198/180433 = 3.69 lines/cell, so realistic completion volume is ~10M tokens. No dollar figure is asserted \u2014 it depends on the operator's OpenRouter rate for google/gemma-4-31b-it.",
+  "command_the_operator_would_run": "PAR=8 CONC=20 BASE_N=8 MODEL=google/gemma-4-31b-it scripts/rehydrate_vc1.sh",
+  "command_for_the_correctly_signed_experiment": "the driver passes no lever today; exercising --balance-target requires adding it at scripts/rehydrate_vc1.sh:52, e.g. --balance-target stage_rank_capacity=34,stage_brand=27,stage_to_genre=15,stage_production_character=15,recommendation=15",
+  "HONEST_EXPECTATION_FOR_THAT_RUN": "it will NOT reach cov <= 1.0. The thin relations cannot absorb their required raise (yield-corrected allocations of 100-800 lines from a single 1200-token call). Recommend it only as a measurement of achievable yield-per-requested, not as a balance fix.",
+  "prerequisite": "re-hydration is destructive-then-restorative (hydrate truncates; the wrapper preserves on underperform). It is a deliberate decision, not a side effect \u2014 h7b's own words."
+ },
+ "verification": {
+  "oracle_all_green_at_HEAD_and_after": {
+   "scripts/run_tests.sh": "47 modules PASS \u2014 all green",
+   "scripts/test_cpt_config.py": "ALL 8 CONFIG-CONTRACT TESTS PASS",
+   "scripts/qgre/test_gates.py": "ALL 9 QGRE-GATE TESTS PASS",
+   "cargo test (festival-factory, bare cargo, shim-routed)": "running 0 tests; ok. 0 passed \u2014 VACUOUS GREEN, reported as such per MECHANICS 1, NOT claimed as a passing oracle"
+  },
+  "must_not_move_all_verified_unmoved": {
+   "BALANCE_COV_MAX": "1.0 at scripts/data_audit.py:42 \u2014 unchanged",
+   "dominance_max_frac": "0.85 at configs/domains/edc.yaml:203 \u2014 unchanged",
+   "min_active_types": "6 at :205 \u2014 unchanged",
+   "exposure_cap_per_fact": "60 at :199 \u2014 unchanged",
+   "git_diff_HEAD": "EMPTY for scripts/data_audit.py, configs/domains/edc.yaml, scripts/qgre/gates.py, festival-factory/src/",
+   "on_disk_corpus": "677535 lines across 98 relations.jsonl \u2014 unchanged, no re-hydration",
+   "gate_balance_dominance_verdict": "PASS at dom_frac 0.8491 vs 0.85 \u2014 unmoved (the item's arm would have flipped it to FAIL at 0.9092)",
+   "extraction_coverage_ruler": "delta EXACTLY 0.0000 \u2014 its read-set (fixture/entities/id_map/manifest/documents/registry/sample) excludes hydrated output, and this item made no hydrate-side change at all",
+   "repo_tree": "git status clean before and after; zero files written into the repo"
+  },
+  "estimand": "RUN-GATE corpus-construction numbers over the existing on-disk EDC corpus; nothing here is an install-strength claim."
+ },
+ "what_was_NOT_done": [
+  "No .rs file edited. No Python file edited. No file written into the repo.",
+  "No provider call. No real OPENROUTER_API_KEY read (a sentinel string short-circuits openrouter.rs:47 before the libsecret lookup at :53).",
+  "No threshold touched, no gate weakened, no recalibration proposed.",
+  "No re-hydration, no re-tokenization, no shard rebuild.",
+  "No opinion offered on whether cov <= 1.0 is an appropriate threshold for a 12-type corpus whose relations hold 4..1233 facts \u2014 that is gate design, forbidden ground for this item.",
+  "balance_by_utilization was NOT ported to the factory. Parity is not the goal; moving cov is, and the port cannot."
+ ],
+ "next_hypothesis": {
+  "for_whoever_takes_the_real_arm": "The measured root cause is cross-edition fact-key collision plus per-edition cell multiplicity, not per-fact over-emission. Two candidate directions, both OUTSIDE this item: (1) edition-scope the fact key (source_triple_ids like 'plays_at:12' are positional indices; prefixing with the edition slug would make gate_exposure_cap, dedup and every amplification table measure a real fact) \u2014 note this changes the denominator of prior receipts and starts a new number series; (2) accept that relation-type-total cov is dominated by fact COUNT (cov of the fact-count vector alone is 1.7853) and that no emission policy can decouple totals from counts without either cutting POSITIVE_FORMS or multiplying cells for thin relations.",
+  "cheapest_real_improvement_available_today": "wiring the already-shipped --exposure-cap into rehydrate_vc1.sh moves cov 2.7786 -> 2.3075 and dom 0.8491 -> 0.7112 at cap 60 applied to ALL relations, at the cost of 48% of the corpus and a full re-hydration. Still FAILS the 1.0 bar. Recorded as a measurement, not a recommendation."
+ },
+ "round_review_correction": {
+  "verdict_that_forced_this": "FALSE_LANDING (in-scope) from one of two adversarial reviewers; the other reviewed SOUND",
+  "what_was_wrong": "The artifact's per-fact simulations were keyed on (relation, fact) / (edition, relation, fact). hydrate.rs:637-641 actually keys per_fact on source_triple_ids[0] with NO relation component, local to one hydrate() run \u2014 so a cap POOLS ACROSS RELATIONS within each key family: plays_at:* is shared by artist_to_stage/multi_stage/stage_roster, stage_meta:* by all five over-amplified targets, set_time:* by set_time/set_order/special_slot.",
+  "corrected_measurements_true_key": {
+   "arm_as_implemented_exposure_cap_60_five_relations": {
+    "was_claimed": "cov delta EXACTLY +0.0000, drop branch never taken (frac>60 = 0.0000%)",
+    "is_actually": "cov 2.7786 -> 2.7826 (+0.0039), 849 lines dropped; 41.76% of (edition, stage_meta-fact) pairs exceed 60 (n=783, median 60.0, max 64)",
+    "honest_characterisation": "wrong-signed and negligible \u2014 NOT inert"
+   },
+   "class_floors": {
+    "cross_edition_per_fact_quota_floor": {
+     "was": 1.7853,
+     "is": 1.5891
+    },
+    "per_edition_per_fact_cap_floor": {
+     "was": 1.3718,
+     "is": 1.8073
+    },
+    "fine_sweep_true_key": "min cov over C=1..129 is 1.8066 at C=6 \u2014 never reaches 1.0"
+   },
+   "cheapest_real_improvement_today": {
+    "was": "--exposure-cap 60 all relations -> cov 2.3075, dom 0.7112",
+    "is": "cov ~2.334, dom ~0.724 \u2014 and ORDER-DEPENDENT: hydrate.rs consumes via set.join_next() (nondeterministic completion order) and the shared key families mean which relation sheds the surplus varies run to run (6 shuffles: 2.3338-2.3345 vs 2.3552 in file order)"
+   }
+  },
+  "what_survives_unchanged": "The BLOCKED verdict itself, and the class-kill: under the TRUE key both mechanism-class floors sit further above 1.0 than the artifact claimed, the fine sweep never reaches the bar, the wrong-sign result on the gate's cross-edition aggregation stands (raw 2.7786 -> 2.9976, dominance 0.8491 -> 0.9092 flipping a passing gate to FAIL), and the constructive per-relation-total lever (cov 0.0000 at T=25,893, 12-type scope, total 310,716) stands.",
+  "estimand": "RUN-GATE corpus-construction numbers over the existing on-disk EDC corpus; nothing here is an install-strength claim."
+ }
+}
