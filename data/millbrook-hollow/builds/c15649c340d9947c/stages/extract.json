@@ -1,0 +1,92 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/clean_flat_corpus.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "booster_1",
+    "--domain-class",
+    "authored-demo"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.049243,
+  "outputs": [
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Calder_Teaching_Notice.clean.json",
+      "sha256": "ad5b7f753b739df5620a7efd60c6de7dc7dbe27259ecfa32ce6224d3fb961998",
+      "bytes": 416
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Calder_Teaching_Notice.md",
+      "sha256": "b921730ddfe9553057644f548239ca3ab64828150007254d9d105ea77116d782",
+      "bytes": 540
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Elowen_Teaching_Notice.clean.json",
+      "sha256": "8ac1a567fe5c4f2a71c151aa94f7939337bc3f851c49ec68d08b53a713fe9020",
+      "bytes": 416
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Elowen_Teaching_Notice.md",
+      "sha256": "2bac0a71f64838f7de744ae4f48b644fed933ce2fdaedfcb00a20dcdb3524e8b",
+      "bytes": 535
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Nessa_Teaching_Notice.clean.json",
+      "sha256": "cf387708c9c7aafbb858676fac5dd8e38c7ed53f13dde8fe0f3acd410a265516",
+      "bytes": 414
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Nessa_Teaching_Notice.md",
+      "sha256": "d8977be56237ce31c2f52f3499822bbcc85b374fbbc3786b1685d5ab5d060e27",
+      "bytes": 524
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Sable_Teaching_Notice.clean.json",
+      "sha256": "d84b20ff14d829089728b7c0d88669daa9284596ea7607c6b25e0cb807198ad0",
+      "bytes": 414
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/10_clean/wiki/Sable_Teaching_Notice.md",
+      "sha256": "f5e90996441c59c32b965d19b023cf84375d4ffe0f51a00d9adfb08bd571f7cc",
+      "bytes": 535
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 8,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 3812,
+    "bytes_after": 3794
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/millbrook-hollow/booster_1/10_clean/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "5010540192aab51e334f134a32fec55771f2343234f2f75623758846864cfe99"
+}

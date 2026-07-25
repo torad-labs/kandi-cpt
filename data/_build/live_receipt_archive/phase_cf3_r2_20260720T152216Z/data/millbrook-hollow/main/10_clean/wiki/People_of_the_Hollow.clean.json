@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "cdc22992c139720ff734a2444cc4aca7bbeedc730ef91755e0e6c5cf2d1d8b4c",
+  "clean_sha256": "9cdc27dc0592ade393333a5eff304349c5ab8692df08f3dd3e58fdffbaf9e7a6",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "People_of_the_Hollow.txt",
+  "title": "People of the Hollow"
+}

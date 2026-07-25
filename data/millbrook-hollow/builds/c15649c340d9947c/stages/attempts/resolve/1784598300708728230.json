@@ -1,0 +1,39 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/resolve_entities.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "booster_1",
+    "--no-embeddings"
+  ],
+  "devices": "",
+  "exit_code": null,
+  "duration_s": 0.0,
+  "outputs": [],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 0
+  },
+  "postconditions": [
+    {
+      "check": "APPROVED_STAGE_REQUIRED: execute mode requires the host-approved stage digest",
+      "pass": false
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "error": "APPROVED_STAGE_REQUIRED",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "3f881e717e75203ddbf16763e33f590cc8c6d0d66ab5d1ab4e63cf85a5b2bf76"
+}

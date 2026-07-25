@@ -1,0 +1,84 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/sft_millbrook_hollow_booster_1_r6.yaml"
+  ],
+  "devices": "1",
+  "exit_code": 1,
+  "duration_s": 52.270183,
+  "outputs": [
+    {
+      "path": "checkpoints/sft/millbrook_hollow_booster_1_r6/train.log",
+      "sha256": "c4ade2bf0a7dd4d09bbfab3e3331954a2c3938e28d5f94c8608144b225bb3157",
+      "bytes": 810
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 1,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 210,
+    "bytes_after": 810
+  },
+  "postconditions": [
+    {
+      "check": "output exists: checkpoints/sft/millbrook_hollow_booster_1_r6/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2060,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 14482,
+        "free_memory_samples_mib": [
+          14482,
+          14491,
+          14554
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          15,
+          13,
+          12
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "221169e83297a314e3524b1c8710d2edf20b2c31f98255f855ec38777e6e4f29"
+}

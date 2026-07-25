@@ -1,0 +1,78 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/tokenize_corpus.py",
+    "--domain",
+    "millbrook-hollow",
+    "--seq-len",
+    "512",
+    "--replay-frac",
+    "0.10",
+    "--out",
+    "millbrook_hollow_v1"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 10.941342,
+  "outputs": [
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/data-00000-of-00001.arrow",
+      "sha256": "9e21088ac5dce7d87b5e5f7c56881fd5618eec4f79214a6d9b90e31c59c96eee",
+      "bytes": 336176
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/dataset_info.json",
+      "sha256": "cd7da2226e83b01c37bf201828ecdfdd8090de8216983f3d3f2a47684aa429d0",
+      "bytes": 755
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/state.json",
+      "sha256": "79a36f219b8231f07c97344c428b63ff89c6344e0e01fdd2b366ba079bf5ba35",
+      "bytes": 247
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1_stats.json",
+      "sha256": "aa7c530b45d2063a6f791a697e277e57678ed9a28f8c2d6c358a7068386781e1",
+      "bytes": 531
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 3,
+    "unchanged": 1,
+    "removed": 0,
+    "bytes_before": 182199,
+    "bytes_after": 337709
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/30_tokenized/millbrook_hollow_v1.arrow",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/30_tokenized/millbrook_hollow_v1_stats.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "628115d207cb694e0906e137cab8efd55e78fa573002bb8f4738985b48830b4b"
+}

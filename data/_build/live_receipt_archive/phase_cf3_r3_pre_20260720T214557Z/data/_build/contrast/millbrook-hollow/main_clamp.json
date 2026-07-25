@@ -1,0 +1,16 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "truth_drops": 0,
+  "per_triple_cap_suppressed": 169,
+  "clamped": true,
+  "reason": "contrast fraction 36.9% exceeded max_fraction 10% of relations.jsonl (38/103); kept first 10 in emission order",
+  "emitted_before": 38,
+  "emitted_after": 10,
+  "base_lines": 103,
+  "max_fraction": 0.1,
+  "fraction_before": 0.3689,
+  "fraction_after": 0.0971,
+  "limit": 10,
+  "dropped": 28
+}

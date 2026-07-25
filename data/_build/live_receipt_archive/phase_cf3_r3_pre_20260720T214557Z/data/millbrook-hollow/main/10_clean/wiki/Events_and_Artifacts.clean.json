@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "a824325b0b4c4a0f48d20483925eb3bf14f029175e68063cfc286a09d4fc0364",
+  "clean_sha256": "46df677569eee6ca412ecdf884dd944e285ce44ff3972742819817c1507df3bc",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Events_and_Artifacts.txt",
+  "title": "Events and Artifacts"
+}

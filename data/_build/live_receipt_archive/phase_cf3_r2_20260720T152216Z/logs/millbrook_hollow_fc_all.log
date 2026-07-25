@@ -1,0 +1,8 @@
+Running as unit: run-p2105107-i2105108.scope; invocation ID: c8c00628c01e4e8d948482dc371bd8a0
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/mnt/torad-storage-01/infra/training/kandi-cpt/scripts/eval_probes.py", line 424, in run_probe_comparison
+    corpus = load_probe_corpus(eval_config.probe_domain, eval_config.probe_editions, config.data.tokenized)
+  File "/mnt/torad-storage-01/infra/training/kandi-cpt/scripts/eval_probes.py", line 142, in load_probe_corpus
+    raise ValueError(f"probe/split mismatch at {probe_path}:{line_number}")
+ValueError: probe/split mismatch at /mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main/probes.jsonl:1

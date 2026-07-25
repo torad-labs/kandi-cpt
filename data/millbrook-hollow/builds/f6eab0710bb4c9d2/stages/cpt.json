@@ -1,0 +1,182 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/train_millbrook_hollow_booster_1_r3.yaml"
+  ],
+  "devices": "1",
+  "exit_code": 2,
+  "duration_s": 1126.459141,
+  "outputs": [
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/auto_chain.json",
+      "sha256": "f41b91f1d45e25dfccaa81e4e31a54d9f62590ebc38ba2bc7c6848c4a3c3f12b",
+      "bytes": 9494
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/certificate.json",
+      "sha256": "6fdc8cc6f66be7c4b4c75723e9ab8965ada9cf71c7fd2a1b0067e21f0ce903e6",
+      "bytes": 10005
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/exposure.json",
+      "sha256": "dda84a1ccd831eca6dcc51b7695d1ba9f78addc5ff366d557ebef899a28ddf62",
+      "bytes": 276
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/install_event.json",
+      "sha256": "df62d89e3e898246cf91503c630c2eb2d9295ef93967ca03ff24edb27c092004",
+      "bytes": 3919
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/model.safetensors",
+      "sha256": "a8d0515d9d2f20f48e66b405f0ebc99607b08e822211fc9892390196191b5bff",
+      "bytes": 8584366406
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/exposure.json",
+      "sha256": "7e42a9ba877a06f39677f48903894d8cf7b8728e4cdbdd241d325135d83cbaaa",
+      "bytes": 276
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/model.safetensors",
+      "sha256": "a2082f8437c585ccde7b12f025b5153bf997cd25868dba0649a873f7cb5c5118",
+      "bytes": 8584366406
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/quant_keys.json",
+      "sha256": "f969ffbacd26cbb94fdbc4026b1cf611ec55e1b1b55f077e7e1fdb4334cd8a83",
+      "bytes": 9469
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/pre_anneal/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/quant_keys.json",
+      "sha256": "f969ffbacd26cbb94fdbc4026b1cf611ec55e1b1b55f077e7e1fdb4334cd8a83",
+      "bytes": 9469
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/run_contract.json",
+      "sha256": "efb73a5a9e1993afd8a631e402ae8e50a51dfc4ba1d7622e08550791c6e493d4",
+      "bytes": 1053
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/sentinel_result.json",
+      "sha256": "52336a5cc1a97dae64b88b52ddf77d37fcbc9357ea517d0c872cd90c7524289a",
+      "bytes": 2801
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_booster_1_r3/train.log",
+      "sha256": "832d3d50344cc04685b62528b641d3c8c4399f61b99ff7847c304ea9f504575f",
+      "bytes": 3751
+    }
+  ],
+  "output_delta": {
+    "created": 20,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 17233167195
+  },
+  "postconditions": [
+    {
+      "check": "output exists: checkpoints/cpt/millbrook_hollow_booster_1_r3/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2200,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 13923,
+        "free_memory_samples_mib": [
+          13923,
+          13923,
+          13923
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          16,
+          16,
+          17
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)",
+          "desktop_reserve_mib = 16303 - 13312 = 2991",
+          "sm_watermark_pct = floor(100 * 2991 / 16303) = 18",
+          "sample_count = ceil(2991 / 1024) = 3 at 1 Hz"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "8404553e1423e9eb19e72ef51ef09f2a76dff47df574f900d00dee7998b6d15e"
+}

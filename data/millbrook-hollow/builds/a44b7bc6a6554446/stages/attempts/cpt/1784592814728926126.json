@@ -1,0 +1,36 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/train_millbrook_hollow_booster_1_r2.yaml"
+  ],
+  "devices": "1",
+  "exit_code": null,
+  "duration_s": 0.0,
+  "outputs": [],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 0
+  },
+  "postconditions": [
+    {
+      "check": "HOST_GPU_PREFLIGHT_REQUIRED: a gpu-effect stage requires the host's measured allowance receipt",
+      "pass": false
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "error": "HOST_GPU_PREFLIGHT_REQUIRED",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "dcc3bf3e85630fbd917c0aeab14921e8aced1402c84dc55f2794a4e6bbe888f6"
+}

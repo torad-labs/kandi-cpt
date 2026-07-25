@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "3ee9aeb4ceecbf9590fb0a4586b51bdfa34afbb7885c7c0b3f5dc119b873ce6f",
+  "clean_sha256": "72f9366757aeb2a8fd490d20dd8d250c6036dd1d85612fb7d6f58e93d16511e8",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "About_Millbrook_Hollow.txt",
+  "title": "About Millbrook Hollow"
+}

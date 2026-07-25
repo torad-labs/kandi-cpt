@@ -1,0 +1,74 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/resolve_entities.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main",
+    "--no-embeddings"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.026662,
+  "outputs": [
+    {
+      "path": "data/_build/resolve/millbrook-hollow/main/summary.json",
+      "sha256": "dead49f488049921d65b2c3d859b0fa2adc093b01e26d4eb5a665d26b167a73f",
+      "bytes": 271
+    },
+    {
+      "path": "data/millbrook-hollow/main/15_structured/entities.resolved.jsonl",
+      "sha256": "43fce2b68d7244ef329acd67d959cd8aff47363c807e9365a69338fcef027f17",
+      "bytes": 16023
+    },
+    {
+      "path": "data/millbrook-hollow/main/15_structured/triples.resolved.jsonl",
+      "sha256": "9b79c26d6fd4f59a2f32a8b5e7198336e02f4bf8dc6c11da265e4aa16eda59f3",
+      "bytes": 24338
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 3,
+    "removed": 0,
+    "bytes_before": 40632,
+    "bytes_after": 40632
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/resolve/millbrook-hollow/**/summary.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/millbrook-hollow/main/15_structured/entities.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/millbrook-hollow/main/15_structured/triples.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": false
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "0e636a6661dccc4903e824b9d8fcd738c1831e0609ecb22fd855b66a014c3c43"
+}

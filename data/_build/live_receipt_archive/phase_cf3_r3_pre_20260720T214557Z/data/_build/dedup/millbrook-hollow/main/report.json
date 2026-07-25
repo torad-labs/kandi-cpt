@@ -1,0 +1,333 @@
+{
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "budget": 40,
+  "cap": 40,
+  "n_before": 513,
+  "n_after": 513,
+  "n_excluded": 0,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "059d3907af829182",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "0f173d3e0d7239cf",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "11e43a5fc1676dfe",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "18f46450b0a96cf2",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "270d84883a54ebc2",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "288199ee1eca6d31",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "2ed665b0839554db",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "448862f141e84085",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "4804cfd804855c44",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "5bdcad6bdc44f46b",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "67ed822c0a6a14c3",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "69ca26367eee8902",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "71554a6e6471d25f",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "7c6a4bf1debc7386",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "7c8dd8d1cf90fed2",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "8769d675bf160aa7",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "8914349746b1f619",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "921147703dd33970",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "98b26472e85e01b0",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "a2b2f16cb5ec257f",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "a6f7c380a3ca045e",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "a716ab93e04a63f6",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "aacdf7177bb71c45",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "bd7031d5bd2f687d",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "c071b96a009c6391",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "c0edf8e47ab15fa5",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "c52f420aad585e59",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "c7e881d28f9f2b35",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "c903b9f42db0b075",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "cb10481342230017",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "cfaaf5fafed90bd0",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "e058dc6fa86aabdf",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "e78da2d9fd9fad5f",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "e93c8f516b3ba05f",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "e9b4e25e37b7e95b",
+      "before": 15,
+      "after": 15,
+      "floor": 8,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "eec26a3d202133ae",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "eef267cc176f9008",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "f06b673dd7627884",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "f34899f47f8b5d97",
+      "before": 13,
+      "after": 13,
+      "floor": 7,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "fa0d95dc61645734",
+      "before": 12,
+      "after": 12,
+      "floor": 6,
+      "forms_before": 3,
+      "forms_after": 3
+    }
+  ],
+  "exclude_keys": []
+}

@@ -1,0 +1,36 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/train_millbrook_hollow_booster_1_r3.yaml"
+  ],
+  "devices": "1",
+  "exit_code": null,
+  "duration_s": 0.0,
+  "outputs": [],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 0
+  },
+  "postconditions": [
+    {
+      "check": "APPROVED_STAGE_REQUIRED: execute mode requires the host-approved stage digest",
+      "pass": false
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "error": "APPROVED_STAGE_REQUIRED",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "8404553e1423e9eb19e72ef51ef09f2a76dff47df574f900d00dee7998b6d15e"
+}

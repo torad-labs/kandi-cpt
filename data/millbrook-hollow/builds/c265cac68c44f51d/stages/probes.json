@@ -1,0 +1,55 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/generic_probes.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "booster_1"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.068018,
+  "outputs": [
+    {
+      "path": "data/millbrook-hollow/booster_1/probes.jsonl",
+      "sha256": "c5db3e33eee3596bcb1a229823ebade87c38785f75690c3150383aba09ce6060",
+      "bytes": 1121
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 1121
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/millbrook-hollow/booster_1/probes.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "ff89d562aeab6d8a44382dd0b3b7ae107dc6c563ec27f9cc654564a14ab149a1"
+}

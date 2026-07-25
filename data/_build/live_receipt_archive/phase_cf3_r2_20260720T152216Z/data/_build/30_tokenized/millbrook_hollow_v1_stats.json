@@ -1,0 +1,26 @@
+{
+  "total_tokens": 6435,
+  "num_chunks": 12,
+  "seq_len": 512,
+  "docs_by_tag": {
+    "hydrated": 345,
+    "clean": 4
+  },
+  "tokens_by_tag": {
+    "hydrated": 4522,
+    "clean": 907
+  },
+  "replay_tokens": 306,
+  "editions": "all",
+  "lever_metadata": true,
+  "block_edu_score": false,
+  "block_edu_mean": 3.0055,
+  "entity_masked_tokens": 0,
+  "entity_mask_frac": 0.0,
+  "src_token_dist": {
+    "raw_knowledge": 6127,
+    "qa": 0,
+    "conversation": 0,
+    "replay": 308
+  }
+}

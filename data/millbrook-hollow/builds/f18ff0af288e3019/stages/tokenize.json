@@ -1,0 +1,78 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/tokenize_corpus.py",
+    "--domain",
+    "millbrook-hollow",
+    "--seq-len",
+    "512",
+    "--replay-frac",
+    "0.10",
+    "--out",
+    "millbrook_hollow_v1"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 11.673717,
+  "outputs": [
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/data-00000-of-00001.arrow",
+      "sha256": "2dc110c98b0428d2cf19f366ac619006efb65405bb8bfa2a413d5a4ae29e0f2d",
+      "bytes": 336120
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/dataset_info.json",
+      "sha256": "cd7da2226e83b01c37bf201828ecdfdd8090de8216983f3d3f2a47684aa429d0",
+      "bytes": 755
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1.arrow/state.json",
+      "sha256": "dfa9a18c373f3e0bed55458f961491710d63a47afcbdea43c77deb8cd602171e",
+      "bytes": 247
+    },
+    {
+      "path": "data/_build/30_tokenized/millbrook_hollow_v1_stats.json",
+      "sha256": "3e688247d994b6a0e577b84aa7670f67751f446e18d6efa4daaecafd8205dfca",
+      "bytes": 529
+    }
+  ],
+  "output_delta": {
+    "created": 4,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 337651
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/30_tokenized/millbrook_hollow_v1.arrow",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/30_tokenized/millbrook_hollow_v1_stats.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "628115d207cb694e0906e137cab8efd55e78fa573002bb8f4738985b48830b4b"
+}

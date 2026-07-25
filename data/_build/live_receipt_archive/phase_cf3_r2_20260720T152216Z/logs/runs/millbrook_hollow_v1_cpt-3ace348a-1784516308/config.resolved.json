@@ -1,0 +1,134 @@
+{
+  "mode": "cpt",
+  "model": {
+    "model_path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "freeze_embeddings": true,
+    "cpu_offload_ple": true,
+    "nvfp4": {
+      "skip_lm_head": true,
+      "skip_embeddings": true,
+      "bf16_first_layers": 2,
+      "bf16_last_layers": 5
+    }
+  },
+  "data": {
+    "tokenized": "data/_build/30_tokenized/millbrook_hollow_v1.arrow",
+    "init_from": null,
+    "dataset_hash": null
+  },
+  "train": {
+    "precision": "fp4",
+    "int8_master": "storage",
+    "optimizer_lowbit": 4,
+    "optimizer_8bit": false,
+    "int8_grad_accum": false,
+    "lr": 5e-05,
+    "min_lr": 5e-06,
+    "warmup_steps": 10,
+    "max_steps": 120,
+    "decay_frac": 0.2,
+    "micro_batch_size": 1,
+    "grad_accum": 16,
+    "seq_len": 512,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "adam_eps": 1e-08,
+    "grad_clip": 1.0,
+    "gradient_checkpointing": true,
+    "levers": {
+      "lever1_entity_loss": {
+        "enabled": false,
+        "entity_loss_weight": 2.5
+      },
+      "lever2_qa_mix": {
+        "enabled": false,
+        "qa_token_fraction": 0.15,
+        "use_chat_template": false,
+        "system_prefix": null
+      },
+      "lever3_three_r": {
+        "enabled": false,
+        "replay_token_fraction": 0.02,
+        "rewarm_peak_lr": 5e-05,
+        "ewc": {
+          "enabled": false,
+          "lambda_": 1.0
+        }
+      },
+      "lever4_exposure_tracking": {
+        "enabled": true,
+        "threshold": 0.8
+      },
+      "lever5_causal_trace": {
+        "enabled": false,
+        "n_facts": 200,
+        "noise_scale": 0.1,
+        "checkpoint": null
+      }
+    },
+    "anneal": {
+      "enabled": true,
+      "frac": 0.1,
+      "min_steps": 500,
+      "mix_tags": [
+        "hydrated",
+        "replay"
+      ],
+      "lr_end": 0.0,
+      "require_exposure": true,
+      "keep_pre_anneal_checkpoint": true
+    }
+  },
+  "corpus_synthesis": {
+    "gen_model": "google/gemma-4-31b-it",
+    "hydrate_base_n": 8,
+    "hydrate_concurrency": 10,
+    "hydrate_parallelism": 8,
+    "replay_frac": 0.1,
+    "answer_aug": 8,
+    "abstention_frac": 0.0,
+    "absent_neg": 125,
+    "fake_city_neg": 0,
+    "fine_grained_neg": 0,
+    "max_per_relation": 6,
+    "sft_seq_len": 256,
+    "score_samples": 4,
+    "score_batch": 16,
+    "knowledge_filter": true,
+    "self_gen": true,
+    "drop_generic": true,
+    "score_model": "checkpoints/cpt/edc_all97_v1"
+  },
+  "eval": {
+    "tau_fab": 0.25,
+    "tau_acc": 0.55,
+    "tau_cov": 0.4,
+    "n_absent": 90,
+    "seed": 42,
+    "scale": 1.0,
+    "batch": 16,
+    "device": "cuda:0",
+    "probe_domain": "millbrook-hollow",
+    "probe_editions": "main",
+    "probe_min_n": 8,
+    "probe_min_delta_acc": 0.1,
+    "probe_report_root": "logs/probe_evals",
+    "generative_bar": 0.4,
+    "generative_min_delta_acc": 0.05,
+    "generative_enabled": true
+  },
+  "run": {
+    "run_name": "millbrook_hollow_v1_cpt",
+    "save_dir": "checkpoints/cpt/millbrook_hollow_v1",
+    "log_every": 5,
+    "save_every": 120,
+    "seed": 42,
+    "smoke_steps": 0,
+    "dry_run": false,
+    "early_stop_patience": 0
+  },
+  "_fingerprint": "3ace348a0ee062bf"
+}

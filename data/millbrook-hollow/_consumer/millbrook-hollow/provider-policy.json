@@ -1,0 +1,7 @@
+{
+    "device_only": false,
+    "egress": {
+        "llm": true,
+        "upload": false
+    }
+}

@@ -1,0 +1,56 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/data_audit.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main",
+    "--no-gpu"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 15.257489,
+  "outputs": [
+    {
+      "path": "data/_build/dissect/data_audit_results.jsonl",
+      "sha256": "928386807be3d03e22dbbb74264c97d62f51886ea7f6ae427afabbda722191e4",
+      "bytes": 246
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 246
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/dissect/data_audit_results.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "134b0adcb597aad6830f065b7c5c22fb31132728abba58b9dc09a6212f71790b"
+}

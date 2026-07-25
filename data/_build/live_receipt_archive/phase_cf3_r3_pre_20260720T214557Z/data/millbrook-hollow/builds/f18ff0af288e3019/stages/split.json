@@ -1,0 +1,59 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/split.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main",
+    "--version",
+    "v2",
+    "--holdout-frac",
+    "0.20"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.058008,
+  "outputs": [
+    {
+      "path": "data/millbrook-hollow/main/splits/split_v2.json",
+      "sha256": "0de4fbb0a527ef7ef0cccfc9a18fe2ad4c80b674f3cb2284468d4e099d6801e1",
+      "bytes": 1786
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 1786
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/millbrook-hollow/main/splits/split_v2.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "e7a5e189f4d9977bb021c7e7f5934465d80ff64fae3159a201e4034f09890b66"
+}

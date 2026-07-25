@@ -1,0 +1,13 @@
+{
+  "run_id": "millbrook_hollow_v1_cpt-3ace348a-1784516308",
+  "fingerprint": "3ace348a0ee062bf",
+  "run_name": "millbrook_hollow_v1_cpt",
+  "mode": "cpt",
+  "git_sha": "1969bd87",
+  "dataset_hash": "sha256:e68fa4646879f061",
+  "save_dir": "checkpoints/cpt/millbrook_hollow_v1",
+  "tokenized": "data/_build/30_tokenized/millbrook_hollow_v1.arrow",
+  "init_from": null,
+  "started_iso": "2026-07-19T21:58:28",
+  "cuda_visible_devices": "1"
+}

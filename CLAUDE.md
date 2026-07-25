@@ -129,3 +129,9 @@ is real authoring, not a `--domain` flag.*
   snake_case slugs (`kinetic_field`) instead of display names. Pre-existing; **locked by the byte-identity
   golden** (fixing it changes the proven SFT corpus + the golden — an operator decision, deliberately
   deferred).
+
+## Host laws (mechanically enforced — see AGENTS.md "Host memory & GPU laws")
+
+Swap topology, build gating, GPU-binary sanitizer receipts, and sysctl are
+host-ledger territory. Claude sessions have these blocked at the tool layer;
+the AGENTS.md section documents the same laws for every other runtime.

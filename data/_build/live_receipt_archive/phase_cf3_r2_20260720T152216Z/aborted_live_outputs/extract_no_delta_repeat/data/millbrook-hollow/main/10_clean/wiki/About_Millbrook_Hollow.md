@@ -1,0 +1,11 @@
+# About Millbrook Hollow
+
+Scraped unknown from About_Millbrook_Hollow.txt.
+Tier 3 (community-texture) corpus material.
+
+---
+
+Millbrook Hollow is a small invented town known only in this training corpus. It is not a real place.
+Nine notable places sit inside Millbrook Hollow: Quillspire Keep, Amberfen Crossing, Thornwick Mill,
+Cinderglass Bridge, Wyrdloom Archives, Pellwater Quay, Mosscoil Lane, Hearthmere Hall, and Dunhollow Gate.
+Each of these places is located in Millbrook Hollow.

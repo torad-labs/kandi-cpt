@@ -1,0 +1,64 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/dedup_surfaces.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.07056,
+  "outputs": [
+    {
+      "path": "data/_build/dedup/millbrook-hollow/main/exclude_keys.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    {
+      "path": "data/_build/dedup/millbrook-hollow/summary.json",
+      "sha256": "c17f177933e7f4206dfb2c6f83465b5da6d006b9ef4752b9284c0e6bf1f209b0",
+      "bytes": 257
+    }
+  ],
+  "output_delta": {
+    "created": 2,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 259
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/dedup/millbrook-hollow/**/exclude_keys.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/_build/dedup/millbrook-hollow/summary.json",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "190e340367a81545ad6f35c2ee13dcc66e833758f94a4be5b047b94487debf4a"
+}

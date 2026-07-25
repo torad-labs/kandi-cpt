@@ -5,9 +5,9 @@
   "budget": 40,
   "units": [
     {
-      "unit": "main",
-      "n_before": 273,
-      "n_after": 273,
+      "unit": "booster_1",
+      "n_before": 138,
+      "n_after": 138,
       "n_excluded": 0,
       "floor_violations": 0
     }

@@ -1,0 +1,127 @@
+{
+  "cmd": [
+    "bash",
+    "scripts/train_fp4.sh",
+    "--config",
+    "configs/train_millbrook_hollow_v1.yaml"
+  ],
+  "devices": "1",
+  "exit_code": 0,
+  "duration_s": 693.102293,
+  "outputs": [
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/chat_template.jinja",
+      "sha256": "2f1b4d75d067bae3fe44e676721c7f077d243bc007156cb9c2f8b5836613d082",
+      "bytes": 17336
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/config.json",
+      "sha256": "c68ee6e596a239cf7167089f200d1acbf7e908a53c815ee7fabf2f61a7655c47",
+      "bytes": 2232
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/exposure.json",
+      "sha256": "e36ee6823426fa6fa1d6c541cd7a23fa870aaf43f068cd09d25ae22ecc046432",
+      "bytes": 630
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/model.safetensors",
+      "sha256": "8ba6b853f52a560a476cdd71afea7bc623ba78c0da26f26062f8d1f339e49d4c",
+      "bytes": 8584366406
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/quant_keys.json",
+      "sha256": "f969ffbacd26cbb94fdbc4026b1cf611ec55e1b1b55f077e7e1fdb4334cd8a83",
+      "bytes": 9469
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/run_contract.json",
+      "sha256": "f89de7f21d8d4b311b3910fbc90f8cc63ff2bfa56f8ce3c1f2def72339b9f64e",
+      "bytes": 903
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "bytes": 32169626
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/tokenizer_config.json",
+      "sha256": "a284d1243b62be31faa9c13e1c28cece940c4abaa7bd9ad87b94f61b40687200",
+      "bytes": 2741
+    },
+    {
+      "path": "checkpoints/cpt/millbrook_hollow_v1/train.log",
+      "sha256": "af1848cff4c9d8e8587aef79c6c28953ee5c4c4b0e18045ffbf07062eb676050",
+      "bytes": 3462
+    }
+  ],
+  "output_delta": {
+    "created": 9,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 8616572805
+  },
+  "postconditions": [
+    {
+      "check": "output exists: checkpoints/cpt/millbrook_hollow_v1/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "host_gpu_preflight": {
+    "allowed": true,
+    "sample_interval_ms": 1000,
+    "sampling_duration_ms": 2143,
+    "devices": [
+      {
+        "selector": "1",
+        "index": 1,
+        "uuid": "GPU-b5795c82-5cf3-03e8-f92c-9289c133dedb",
+        "total_memory_mib": 16303,
+        "required_free_memory_mib": 13312,
+        "minimum_free_memory_mib": 14054,
+        "free_memory_samples_mib": [
+          14054,
+          14054,
+          14054
+        ],
+        "sm_utilization_watermark_pct": 18,
+        "sm_utilization_samples_pct": [
+          13,
+          13,
+          13
+        ],
+        "sample_count": 3,
+        "sustained_sm_above_watermark": false,
+        "derivation": [
+          "required_free_mib = 13 * 1024 = 13312 (admin-gpu.md; cpt/07-train.md)",
+          "desktop_reserve_mib = 16303 - 13312 = 2991",
+          "sm_watermark_pct = floor(100 * 2991 / 16303) = 18",
+          "sample_count = ceil(2991 / 1024) = 3 at 1 Hz"
+        ]
+      }
+    ]
+  },
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "33d2e468efc652a82b6eb8d3018fda292a1622073922ad480608738280793220"
+}

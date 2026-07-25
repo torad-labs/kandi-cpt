@@ -1,0 +1,79 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/resolve_entities.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "booster_1",
+    "--no-embeddings"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.042687,
+  "outputs": [
+    {
+      "path": "data/_build/resolve/millbrook-hollow/booster_1/summary.json",
+      "sha256": "d221ba0736c2236ba9c026c653c93fbcbc4285144df85c8821aa021da317ce9d",
+      "bytes": 274
+    },
+    {
+      "path": "data/_build/resolve/millbrook-hollow/main/summary.json",
+      "sha256": "dead49f488049921d65b2c3d859b0fa2adc093b01e26d4eb5a665d26b167a73f",
+      "bytes": 271
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/15_structured/entities.resolved.jsonl",
+      "sha256": "7743aa6a75c09d74f4c3521febc0eef159f24ffdc828593945cece4cd8a2bde6",
+      "bytes": 4111
+    },
+    {
+      "path": "data/millbrook-hollow/booster_1/15_structured/triples.resolved.jsonl",
+      "sha256": "18f089243f37511fcd1cf049d0bd2403bc4de95045885a93ecc85235bbd897ae",
+      "bytes": 2308
+    }
+  ],
+  "output_delta": {
+    "created": 3,
+    "changed": 0,
+    "unchanged": 1,
+    "removed": 0,
+    "bytes_before": 271,
+    "bytes_after": 6964
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/_build/resolve/millbrook-hollow/**/summary.json",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/millbrook-hollow/booster_1/15_structured/entities.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "output exists: data/millbrook-hollow/booster_1/15_structured/triples.resolved.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "96c91c8688ef7a0dfa99e8857da6927896aabfa1",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "booster_1"
+  ],
+  "stage_digest": "3f881e717e75203ddbf16763e33f590cc8c6d0d66ab5d1ab4e63cf85a5b2bf76"
+}

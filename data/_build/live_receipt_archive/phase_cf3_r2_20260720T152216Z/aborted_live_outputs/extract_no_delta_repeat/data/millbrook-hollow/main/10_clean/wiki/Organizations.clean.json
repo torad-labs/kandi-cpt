@@ -1,0 +1,11 @@
+{
+  "raw_sha256": "35606ea988b3e4fbfae201518fc5dc4e39fdbcd0677a07f4f942413f2d063d09",
+  "clean_sha256": "0ad7a9482f7ecd25e4128c10f7aeaee6b9b61e460bd0c201386b0b1c6f330a9c",
+  "extractor": "clean_flat_corpus",
+  "llm_rescued": false,
+  "quality_gate": "flat-passthrough",
+  "domain_class": "authored-demo",
+  "source_channel": "wiki",
+  "source_url": "Organizations.txt",
+  "title": "Organizations"
+}

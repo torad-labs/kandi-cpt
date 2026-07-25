@@ -1,0 +1,92 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/clean_flat_corpus.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main",
+    "--domain-class",
+    "authored-demo"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.022995,
+  "outputs": [
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/About_Millbrook_Hollow.clean.json",
+      "sha256": "3e468c59c21d9f1ee913cfcf1c47289d939062d09dea8623718ec263deb0289e",
+      "bytes": 416
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/About_Millbrook_Hollow.md",
+      "sha256": "72f9366757aeb2a8fd490d20dd8d250c6036dd1d85612fb7d6f58e93d16511e8",
+      "bytes": 488
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/Events_and_Artifacts.clean.json",
+      "sha256": "3e513deeb94dbf7e771de4a10a7d8cb02c661819d723305ec90e2c985de22500",
+      "bytes": 412
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/Events_and_Artifacts.md",
+      "sha256": "46df677569eee6ca412ecdf884dd944e285ce44ff3972742819817c1507df3bc",
+      "bytes": 868
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/Organizations.clean.json",
+      "sha256": "ebc2280ffd00df5bbbdd414259a4de6b177f0e06357bc582d311e55333d9e436",
+      "bytes": 398
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/Organizations.md",
+      "sha256": "0ad7a9482f7ecd25e4128c10f7aeaee6b9b61e460bd0c201386b0b1c6f330a9c",
+      "bytes": 615
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/People_of_the_Hollow.clean.json",
+      "sha256": "75ee47f4b21d2e8f23fb7e3f4dc1d6739536b1c17d64bc71edbcfa4725671d7d",
+      "bytes": 412
+    },
+    {
+      "path": "data/millbrook-hollow/main/10_clean/wiki/People_of_the_Hollow.md",
+      "sha256": "9cdc27dc0592ade393333a5eff304349c5ab8692df08f3dd3e58fdffbaf9e7a6",
+      "bytes": 1447
+    }
+  ],
+  "output_delta": {
+    "created": 0,
+    "changed": 0,
+    "unchanged": 8,
+    "removed": 0,
+    "bytes_before": 5056,
+    "bytes_after": 5056
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/millbrook-hollow/main/10_clean/**",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": false
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "7db76e1356f61d77a68f9a98ce60bc7507e7fd558763add5035c372490fd5131"
+}

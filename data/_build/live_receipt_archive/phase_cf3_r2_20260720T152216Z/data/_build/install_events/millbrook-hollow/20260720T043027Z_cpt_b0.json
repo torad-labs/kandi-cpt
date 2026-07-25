@@ -1,0 +1,82 @@
+{
+  "schema": "kandi.install_event.v1",
+  "domain": "millbrook-hollow",
+  "unit": "main",
+  "event": "cpt",
+  "at": "2026-07-20T04:30:27Z",
+  "candidate_artifact": "checkpoints/cpt/millbrook_hollow_v1",
+  "reference_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+  "artifact_kept": "checkpoints/cpt/millbrook_hollow_v1",
+  "booster_n": 0,
+  "halted": false,
+  "sentinel": {
+    "schema": "kandi.sentinel_result.v1",
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+    "domain": "millbrook-hollow",
+    "unit": "main",
+    "event": "cpt",
+    "status": "PASS",
+    "halted": false,
+    "artifact_kept": "checkpoints/cpt/millbrook_hollow_v1",
+    "prior_artifact": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it",
+    "candidate_artifact": "checkpoints/cpt/millbrook_hollow_v1",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.2857142857142857,
+        "candidate_acc": 0.42857142857142855,
+        "delta": 0.14285714285714285,
+        "n": 7,
+        "rough_bound": 0.1889822365046136,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 1.0,
+        "candidate_acc": 1.0,
+        "delta": 0.0,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 2,
+        "n": 7,
+        "acc": 0.2857142857142857
+      },
+      "candidate": {
+        "hits": 3,
+        "n": 7,
+        "acc": 0.42857142857142855
+      },
+      "slice": "install",
+      "reference_acc": 0.2857142857142857,
+      "candidate_acc": 0.42857142857142855,
+      "delta": 0.14285714285714285,
+      "n": 7,
+      "rough_bound": 0.1889822365046136,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 1.0,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "SENTINEL PASS on cpt: installed checkpoints/cpt/millbrook_hollow_v1. install delta=+0.1429 (bound \u00b10.1890).",
+    "evaluated_at": "2026-07-20T04:30:27Z"
+  },
+  "certificate_id": "4624339b760444e8",
+  "certificate_error": null,
+  "evidence_contract": "PASS"
+}

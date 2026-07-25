@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KANDI · DATA VALIDATOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="data_audit_data.js" onerror="window.DATA_AUDIT=window.DATA_AUDIT||null"></script>
+<style>
+:root{
+  --bg:#06080f; --panel:#0c1120; --ink:#e9f2ff; --dim:#7d8aa6; --faint:#46506b;
+  --good:#36f0d0; --good-d:#119e8a; --bad:#ff3b6b; --warn:#ffb347; --line:#1a2238;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:14px; line-height:1.5; overflow-x:hidden;
+  background-image:radial-gradient(1100px 560px at 85% -10%, rgba(54,240,208,.07), transparent 60%),
+    radial-gradient(800px 460px at -5% 100%, rgba(255,59,107,.06), transparent 55%);}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.5;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px); mix-blend-mode:overlay;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 26px}
+h1,h2,h3{font-family:'Syne',sans-serif; font-weight:800; letter-spacing:-.01em; margin:0}
+.mono-label{font-weight:700; letter-spacing:.2em; text-transform:uppercase; font-size:11px; color:var(--good)}
+.dim{color:var(--dim)} a{color:var(--good); text-decoration:none} a:hover{text-decoration:underline}
+
+header{padding:56px 0 26px; border-bottom:1px solid var(--line)}
+.eyebrow{display:flex; gap:12px; align-items:center; margin-bottom:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--good);box-shadow:0 0 14px var(--good);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+h1{font-size:clamp(32px,5.5vw,60px); line-height:.96; text-transform:uppercase}
+h1 .b{color:var(--good)}
+.sub{margin-top:14px; max-width:680px; color:var(--dim); font-size:13.5px}
+.toprow{display:flex; gap:16px; flex-wrap:wrap; margin-top:24px; align-items:center}
+.overall{display:inline-flex; align-items:center; gap:12px; padding:12px 20px; border-radius:4px; font-family:'Syne'; font-weight:800; font-size:20px; text-transform:uppercase}
+.overall.pass{color:var(--good); border:2px solid var(--good); box-shadow:0 0 22px rgba(54,240,208,.2)}
+.overall.warn{color:var(--warn); border:2px solid var(--warn); box-shadow:0 0 22px rgba(255,179,71,.2)}
+.overall.fail{color:var(--bad); border:2px solid var(--bad); box-shadow:0 0 22px rgba(255,59,107,.2)}
+.scope{color:var(--dim); font-size:13px}
+.xlink{margin-left:auto; font-size:12px; border:1px solid var(--line); padding:8px 14px; border-radius:999px}
+
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:34px 0}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:7px; padding:20px 22px; position:relative;
+  opacity:0; transform:translateY(20px); transition:opacity .6s, transform .6s cubic-bezier(.2,.7,.2,1)}
+.card.in{opacity:1; transform:none}
+.card.span2{grid-column:1/-1}
+.chead{display:flex; align-items:center; gap:10px; margin-bottom:4px}
+.chead h3{font-size:16px; text-transform:uppercase; letter-spacing:.02em}
+.chip{margin-left:auto; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px}
+.chip.pass{background:rgba(54,240,208,.16); color:var(--good)}
+.chip.warn{background:rgba(255,179,71,.16); color:var(--warn)}
+.chip.fail{background:rgba(255,59,107,.16); color:var(--bad)}
+.chip.skipped{background:rgba(125,138,166,.15); color:var(--dim)}
+.cwhat{font-size:11.5px; color:var(--faint); margin-bottom:14px}
+.rec{margin-top:14px; font-size:12px; border-left:3px solid var(--good); padding:9px 13px; background:rgba(54,240,208,.05); border-radius:0 5px 5px 0}
+.rec.warn{border-left-color:var(--warn); background:rgba(255,179,71,.05)}
+.rec.fail{border-left-color:var(--bad); background:rgba(255,59,107,.05)}
+.rec b{color:inherit}
+.k{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim)}
+.big{font-family:'Syne'; font-weight:800; font-size:30px; line-height:1}
+.up{color:var(--good)} .down{color:var(--bad)} .flat{color:var(--warn)}
+canvas{display:block; width:100%}
+.statline{display:flex; gap:22px; flex-wrap:wrap; margin:6px 0 4px}
+.statline .s .v{font-family:'Syne'; font-weight:800; font-size:22px}
+.statline .s .l{font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:.1em}
+.bars .row{margin:7px 0}
+.bars .rl{display:flex; justify-content:space-between; font-size:11px; color:var(--dim); margin-bottom:3px}
+.bars .track{height:14px; background:#070b16; border:1px solid var(--line); border-radius:3px; overflow:hidden}
+.bars .fill{height:100%; width:0; background:var(--good); transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bars .fill.hot{background:var(--bad)} .bars .fill.mid{background:var(--warn)}
+.legend{display:flex; gap:14px; flex-wrap:wrap; font-size:10.5px; color:var(--dim); margin-top:8px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.cap{font-size:10.5px; color:var(--faint); margin-top:8px}
+.missing{color:var(--faint); font-style:italic; padding:50px; text-align:center}
+.pill{display:inline-block; font-size:10px; padding:2px 8px; border:1px solid var(--line); border-radius:999px; color:var(--dim); margin:2px}
+footer{padding:40px 0 80px; color:var(--faint); font-size:12px}
+footer code{color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><span class="dot"></span><span class="mono-label">Kandi · corpus distribution audit</span></div>
+    <h1>Data <span class="b">Validator</span></h1>
+    <p class="sub">Does the corpus match what installs knowledge? Density toward ~1000× exposures · balanced
+      relations · covered editions · 5–10% replay · and confusable topics pushed <b>far apart</b> in latent
+      space. Each dimension gates PASS / WARN / FAIL against versioned best practice.</p>
+    <div class="toprow" id="topRow"></div>
+  </header>
+  <div class="grid" id="grid"></div>
+  <footer>
+    Instrument: <code>data_audit.py</code> — reuses corpus stats, Lever-4 <code>exposure.json</code>,
+    hydration <code>relations.jsonl</code>, structured triples, <code>disjoint_context</code>, and a base-model
+    latent pass (<code>geometry_probe</code>). Thresholds are versioned + recorded in the payload.
+  </footer>
+</div>
+
+<script>
+const D = window.DATA_AUDIT || null;
+const fmt=(x,d=2)=>(x==null||Number.isNaN(x))?"—":(+x).toFixed(d);
+const pct=(x,d=0)=>(x==null||Number.isNaN(x))?"—":(100*x).toFixed(d)+"%";
+const el=(t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+const esc=s=>(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+function topRow(){
+  const t=document.getElementById('topRow'); if(!D){return;}
+  t.appendChild(el('div',`overall ${D.overall}`, `${D.overall.toUpperCase()} · corpus`));
+  t.appendChild(el('div','scope', `scope: <b style="color:var(--ink)">${D.editions}</b> · ${D.n_editions} edition(s)`));
+  t.appendChild(el('a','xlink',`◀ war-room diagnosis`)).href="index.html";
+}
+
+// recommendation text per dimension (include / augment / improve)
+function rec(name, v, th){
+  const m = {
+    density: v.verdict==='pass'
+      ? `<b>PASS</b> · median ${v.median} exposures/fact (target ${th.density_target}×), 0 below the ${th.density_min} floor.`
+      : `<b>AUGMENT</b> · ${v.below_min}/${v.n_facts} facts below ${th.density_min} exposures (median ${v.median}). Hydrate the long tail — thin editions install nothing and fabricate. Source: ${v.source}.`,
+    balance: v.verdict==='pass'
+      ? `<b>PASS</b> · relation CoV ${fmt(v.cov)} ≤ ${v.cov_max}.`
+      : `<b>IMPROVE</b> · relation CoV ${fmt(v.cov)} ≫ ${v.cov_max}. "${Object.keys(v.by_type||{})[0]}" dominates (${(Object.values(v.by_type||{})[0]||0).toLocaleString()}). Cap over-represented types / lift the starved ones (equalize_corpus).`,
+    coverage: v.verdict==='pass'
+      ? `<b>PASS</b> · only ${v.n_thin}/${v.n_editions} editions thin (<${v.min_triples} triples).`
+      : `<b>INCLUDE</b> · ${v.n_thin}/${v.n_editions} editions thin (<${v.min_triples} triples): ${(v.thin_editions||[]).slice(0,6).join(', ')}… scrape/structure these — they're the fabrication tail.`,
+    token_mix: (v.replay_frac>=th.replay_band[0]&&v.replay_frac<=th.replay_band[1])
+      ? `<b>PASS</b> · replay ${pct(v.replay_frac,1)} inside the ${pct(th.replay_band[0])}–${pct(th.replay_band[1])} band; entity-mask ${pct(v.entity_mask_frac,1)}.`
+      : `<b>IMPROVE</b> · replay ${pct(v.replay_frac,1)} outside the ${pct(th.replay_band[0])}–${pct(th.replay_band[1])} band — ${v.replay_frac<th.replay_band[0]?'add generic-text replay (forgetting risk)':'trim replay (wasted budget)'}.`,
+    disjoint_static: v.verdict==='pass'
+      ? `<b>PASS</b> · all ${v.n_groups} groups have distinctive vocab; zero co-occurrence violations.`
+      : `<b>IMPROVE</b> · ${v.n_cooccurrence_violations} co-occurrence violations${v.missing_vocab&&v.missing_vocab.length?` + ${v.missing_vocab.length} group(s) lack vocab`:''}. Confusable members co-appear in lines → pulls them together. The disjoint guarantee only holds for the LV-2026 lines, not the broad corpus.`,
+    disjoint_latent: v.verdict==='skipped'
+      ? `<b>SKIPPED</b> · ${esc(v.note||'')}`
+      : (v.verdict==='pass'
+        ? `<b>PASS</b> · base model separates the groups (best-layer sep ${fmt(v.sep,3)}, AUC ${fmt(v.auc,2)}). Watch the per-layer curve — if separation lives only at layer 0 the vocab is lexically distinct but not semantically.`
+        : `<b>IMPROVE</b> · weak base-model separation (sep ${fmt(v.sep,3)} < ${th.sep_min}). The disjoint vocabulary isn't distinctive enough to push the groups apart before training — enrich each group's context world.`),
+    sft_tiers: v.verdict==='skipped' ? `<b>SKIPPED</b> · no SFT stats.`
+      : `<b>INFO</b> · of ${v.raw} Q/A: ${v.known} known · ${v.maybe} maybe · ${v.unknown} unknown. Knowledge-filter dropped ${v.dropped_unknown} unknowns; ${v.abstention} abstentions added.`,
+    sft_composition: v.verdict==='skipped' ? `<b>SKIPPED</b> · no SFT stats.`
+      : v.verdict==='pass' ? `<b>PASS</b> · ${pct(v.refusal_frac,0)} of the SFT set is refusal — inside the ${pct(v.band[0])}–${pct(v.band[1])} safe band. Enough to teach abstention without over-refusing.${v.exact?'':' (proxy)'}`
+      : v.refusal_frac>v.band[1] ? `<b>IMPROVE — over-refusal risk (the v4 cliff)</b> · ${pct(v.refusal_frac,0)} refusal examples (${v.refusal_total} of ${v.answerable+v.refusal_total}) is ABOVE the ${pct(v.band[1])} ceiling. v4 ran 34% → coverage collapsed to 0 (refused even known editions). Cut the absent-edition negatives down.${v.exact?'':' (proxy estimate)'}`
+      : `<b>AUGMENT — fabrication risk</b> · only ${pct(v.refusal_frac,0)} refusal examples, below the ${pct(v.band[0])} floor. Too little abstention signal → the model fabricates on absent editions (v2: 14% → fab 0.32). Add targeted absent-edition negatives.${v.exact?'':' (proxy estimate)'}`,
+    sft_phrasing: v.verdict==='skipped' ? `<b>SKIPPED</b> · ${esc(v.note||'no arrow')}`
+      : v.leaked_probe_phrasings && v.leaked_probe_phrasings.length ? `<b>FIX — eval leakage / refusal bias</b> · the held-out probe phrasing "${esc(v.leaked_probe_phrasings[0])}" appears in TRAINING. As an answer → the gate is inflated (not generalization); as a refusal-only → the model is biased to over-refuse that exact phrasing on REAL editions (the v5/v6 confound). Remove it from BOTH positives and negatives.`
+      : v.verdict==='warn' ? `<b>IMPROVE</b> · ${v.n_asym?`${v.n_asym} phrasing(s) taught ONLY as refusal — the model over-refuses those forms on real editions; teach them as answers too. `:''}${v.pos_per_edition<2?`only ${v.pos_per_edition} answer-phrasings/edition — too few to beat the refusal prior; raise --answer-aug.`:''}`
+      : `<b>PASS</b> · probe phrasing held out; ${v.pos_per_edition} answer-phrasings/edition; no refuse-only structured forms. The gate measures generalization, and positives can beat the refusal prior.`,
+  };
+  return m[name] || '';
+}
+const WHAT = {
+  density:"Exposures per fact vs the ~1000× saturation target. The long tail below the floor is what fabricates.",
+  balance:"Relation-type distribution. A heavy skew starves the rare relations.",
+  coverage:"Structured triples per edition. Thin editions are the ones the model invents venues for.",
+  token_mix:"Hydrated / clean / synthetic / replay token split. Replay 5–10% prevents forgetting.",
+  disjoint_static:"Do confusable groups have distinctive vocab AND never co-occur in one line?",
+  disjoint_latent:"Base-model latent separation of each group's prose — distinctive enough BEFORE training?",
+  sft_tiers:"Knownness tiers of the SFT Q/A and what the knowledge-filter removed.",
+  sft_composition:"Refusal-balance of the SFT set. Too little → fabricates; too much → over-refuses (the v4 cliff). The dial that would've caught v4 before the GPU-hour.",
+  sft_phrasing:"Train/eval hygiene: is the eval probe phrasing held out of training, and is any phrasing taught only-as-refusal (→ over-refusal bias)? The confound v5/v6 exposed.",
+};
+const TITLE = {density:"Density",balance:"Relation balance",coverage:"Edition coverage",token_mix:"Token mix & replay",
+  disjoint_static:"Disjoint context (static)",disjoint_latent:"Disjoint context (latent)",sft_tiers:"SFT knownness tiers",
+  sft_composition:"SFT refusal balance",sft_phrasing:"SFT phrasing hygiene"};
+
+function card(name, v, th){
+  const c=el('div','card'+(['coverage','disjoint_latent'].includes(name)?' span2':''));
+  c.appendChild(el('div','chead',`<h3>${TITLE[name]}</h3><span class="chip ${v.verdict}">${v.verdict}</span>`));
+  c.appendChild(el('div','cwhat', WHAT[name]));
+  const body=el('div'); c.appendChild(body);
+  ({density:vizDensity,balance:vizBalance,coverage:vizCoverage,token_mix:vizTokenMix,
+    disjoint_static:vizDisjointStatic,disjoint_latent:vizDisjointLatent,sft_tiers:vizSftTiers,
+    sft_composition:vizSftComposition,sft_phrasing:vizSftPhrasing}[name])(body,v,th);
+  c.appendChild(el('div',`rec ${v.verdict==='pass'?'':v.verdict==='skipped'?'':v.verdict}`, rec(name,v,th)));
+  return c;
+}
+
+function vizDensity(b,v,th){
+  if(!v.n_facts){b.innerHTML='<div class="missing">no density signal</div>';return;}
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${v.below_min?'down':'up'}">${v.median}</div><div class="l">median exp/fact</div></div>
+     <div class="s"><div class="v">${v.max}</div><div class="l">max</div></div>
+     <div class="s"><div class="v ${v.below_min?'down':'up'}">${v.below_min}</div><div class="l">below ${v.min}</div></div>
+     <div class="s"><div class="v">${v.n_facts}</div><div class="l">facts</div></div>`));
+  const cv=el('canvas'); cv.height=150; b.appendChild(cv);
+  b.appendChild(el('div','cap',`histogram of exposures/fact · target line at ${th.density_target}× · red buckets are below the ${th.density_min} floor`));
+  requestAnimationFrame(()=>{
+    const W=cv.clientWidth||500,H=150,dpr=Math.min(2,devicePixelRatio||1);
+    cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+'px'; const x=cv.getContext('2d'); x.scale(dpr,dpr);
+    const hist=v.hist, edges=v.hist_edges, n=hist.length, mx=Math.max(...hist,1), bw=(W-20)/n, pad=10, bh=H-30;
+    hist.forEach((h,i)=>{
+      const below=edges[i+1]<=v.min, hgt=h/mx*bh;
+      x.fillStyle=below?'rgba(255,59,107,.85)':'rgba(54,240,208,.85)';
+      x.fillRect(pad+i*bw+2, H-20-hgt, bw-4, hgt);
+      x.fillStyle='#46506b'; x.font='8px JetBrains Mono'; x.textAlign='center';
+      x.fillText(edges[i]>=1000?(edges[i]/1000)+'k':edges[i], pad+i*bw+bw/2, H-7);
+      if(h){x.fillStyle='#7d8aa6'; x.fillText(h, pad+i*bw+bw/2, H-24-hgt);}
+    });
+  });
+}
+function vizBalance(b,v,th){
+  if(!v.by_type){b.innerHTML='<div class="missing">no relations</div>';return;}
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${v.cov>v.cov_max?'down':'up'}">${fmt(v.cov)}</div><div class="l">CoV (≤${v.cov_max})</div></div>
+     <div class="s"><div class="v">${v.n_types}</div><div class="l">relation types</div></div>
+     <div class="s"><div class="v">${(v.total||0).toLocaleString()}</div><div class="l">total lines</div></div>`));
+  const ents=Object.entries(v.by_type).slice(0,8), mx=Math.max(...ents.map(e=>e[1]),1);
+  const bars=el('div','bars');
+  ents.forEach(([k,n],i)=>{
+    const w=n/mx*100, cls=i===0?'hot':(w>40?'mid':'');
+    bars.appendChild(el('div','row',`<div class="rl"><span>${k}</span><span>${n.toLocaleString()}</span></div>
+      <div class="track"><div class="fill ${cls}" data-w="${w}"></div></div>`));
+  });
+  b.appendChild(bars);
+}
+function vizCoverage(b,v,th){
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${v.n_thin?'down':'up'}">${v.n_thin}</div><div class="l">thin editions</div></div>
+     <div class="s"><div class="v">${v.n_editions}</div><div class="l">editions</div></div>
+     <div class="s"><div class="v">${Object.keys(v.top_predicates||{}).length}</div><div class="l">predicates</div></div>`));
+  // heatmap: editions (rows, densest first) × top predicates (cols)
+  const preds=v.matrix_preds||[], rows=Object.entries(v.matrix||{});
+  if(rows.length&&preds.length){
+    const cv=el('canvas'); cv.height=Math.min(360, 18*rows.length+30); b.appendChild(cv);
+    b.appendChild(el('div','cap',`rows = editions (densest top) · cols = predicates · brighter = more triples · dark rows are thin (fabrication risk)`));
+    requestAnimationFrame(()=>{
+      const W=cv.clientWidth||700,H=cv.height,dpr=Math.min(2,devicePixelRatio||1);
+      const Hh=18*rows.length+30; cv.width=W*dpr; cv.height=Hh*dpr; cv.style.height=Hh+'px';
+      const x=cv.getContext('2d'); x.scale(dpr,dpr);
+      let mx=1; rows.forEach(([_,arr])=>arr.forEach(c=>mx=Math.max(mx,c)));
+      const padL=92, gw=(W-padL-8)/preds.length, gh=16;
+      rows.forEach(([slug,arr],r)=>{
+        x.fillStyle='#7d8aa6'; x.font='9px JetBrains Mono'; x.textAlign='right';
+        x.fillText(slug.length>16?slug.slice(0,16):slug, padL-6, 12+r*gh+gh/2);
+        arr.forEach((c,ci)=>{ const a=c/mx;
+          x.fillStyle=c<v.min_triples? 'rgba(255,59,107,'+(0.18+a*0.6)+')' : 'rgba(54,240,208,'+(0.12+a*0.85)+')';
+          x.fillRect(padL+ci*gw+1, 6+r*gh+1, gw-2, gh-2); });
+      });
+      x.save(); x.fillStyle='#46506b'; x.font='8px JetBrains Mono';
+      preds.forEach((p,ci)=>{ x.save(); x.translate(padL+ci*gw+gw/2, Hh-6); x.rotate(-Math.PI/4); x.textAlign='right'; x.fillText(p,0,0); x.restore(); });
+      x.restore();
+    });
+  }
+}
+function vizTokenMix(b,v,th){
+  const tags=v.tokens_by_tag||{}, tot=Object.values(tags).reduce((a,c)=>a+c,0)||1;
+  const cv=el('canvas'); cv.height=150; cv.style.maxWidth='150px'; cv.style.margin='6px auto'; b.appendChild(cv);
+  const cols={hydrated:'#36f0d0',clean:'#4a86e8',synthetic:'#a479e2',knowledge:'#ffb347'};
+  requestAnimationFrame(()=>{
+    const S=150,dpr=Math.min(2,devicePixelRatio||1); cv.width=S*dpr; cv.height=S*dpr; cv.style.height=S+'px';
+    const x=cv.getContext('2d'); x.scale(dpr,dpr); let a0=-Math.PI/2;
+    Object.entries(tags).forEach(([k,val])=>{ const a1=a0+val/tot*2*Math.PI;
+      x.beginPath(); x.moveTo(75,75); x.arc(75,75,60,a0,a1); x.closePath();
+      x.fillStyle=cols[k]||'#7d8aa6'; x.fill(); a0=a1; });
+    x.beginPath(); x.arc(75,75,34,0,2*Math.PI); x.fillStyle='#0c1120'; x.fill();
+    x.fillStyle='#e9f2ff'; x.font='700 13px Syne'; x.textAlign='center'; x.fillText((tot/1e6).toFixed(1)+'M',75,78);
+  });
+  b.appendChild(el('div','legend', Object.entries(tags).map(([k,val])=>
+    `<span><i style="background:${cols[k]||'#7d8aa6'}"></i>${k} ${pct(val/tot)}</span>`).join('')));
+  // replay sweet-spot gauge
+  const lo=th.replay_band[0],hi=th.replay_band[1],rf=v.replay_frac||0, inb=rf>=lo&&rf<=hi;
+  const g=el('div'); g.style.marginTop='14px';
+  g.innerHTML=`<div class="k">replay fraction · sweet spot ${pct(lo)}–${pct(hi)}</div>
+    <div style="position:relative;height:20px;margin-top:7px;border:1px solid var(--line);border-radius:4px;background:#070b16;overflow:hidden">
+      <div style="position:absolute;left:${lo*100*5}%;width:${(hi-lo)*100*5}%;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(54,240,208,.18) 0 6px,rgba(54,240,208,.07) 6px 12px)"></div>
+      <div style="position:absolute;left:${Math.min(99,rf*100*5)}%;top:-3px;bottom:-3px;width:3px;background:${inb?'var(--good)':'var(--bad)'};box-shadow:0 0 8px currentColor;color:${inb?'var(--good)':'var(--bad)'}"></div>
+    </div><div class="cap">at ${pct(rf,1)} · entity-mask ${pct(v.entity_mask_frac,1)} (axis 0–20%)</div>`;
+  b.appendChild(g);
+}
+function vizDisjointStatic(b,v,th){
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${v.groups_with_vocab<v.n_groups?'down':'up'}">${v.groups_with_vocab}/${v.n_groups}</div><div class="l">groups w/ vocab</div></div>
+     <div class="s"><div class="v ${v.n_cooccurrence_violations?'down':'up'}">${v.n_cooccurrence_violations}</div><div class="l">co-occurrence violations</div></div>`));
+  if((v.violation_samples||[]).length){
+    b.appendChild(el('div',null,`<div class="k" style="margin:8px 0 4px">violation samples</div>`));
+    v.violation_samples.forEach(s=>b.appendChild(el('div',null,`<div style="font-size:11px;color:var(--dim);border-left:2px solid var(--bad);padding:4px 9px;margin:4px 0">${esc(s)}</div>`)));
+  }
+}
+function vizDisjointLatent(b,v,th){
+  if(v.verdict==='skipped'){b.innerHTML=`<div class="missing">${esc(v.note||'skipped')}</div>`;return;}
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${v.sep>=th.sep_min?'up':'down'}">${fmt(v.sep,3)}</div><div class="l">best-layer sep (≥${th.sep_min})</div></div>
+     <div class="s"><div class="v ${v.auc>=.7?'up':'flat'}">${fmt(v.auc,2)}</div><div class="l">AUC same-group</div></div>
+     <div class="s"><div class="v">L${v.best_layer}</div><div class="l">best layer</div></div>
+     <div class="s"><div class="v">${v.n_lines}</div><div class="l">prose lines · ${v.n_groups} groups</div></div>`));
+  const cv=el('canvas'); cv.height=150; b.appendChild(cv);
+  b.appendChild(el('div','cap',`per-layer separation (intra−inter cosine) · 0 = embeddings → ${v.n_layers-1} = output. If it peaks at L0 and collapses, the vocab is lexically distinct but the model doesn't keep the groups apart deeper.`));
+  requestAnimationFrame(()=>{
+    const W=cv.clientWidth||700,H=150,dpr=Math.min(2,devicePixelRatio||1); cv.width=W*dpr; cv.height=H*dpr; cv.style.height=H+'px';
+    const x=cv.getContext('2d'); x.scale(dpr,dpr);
+    const sp=v.per_layer_sep||{}, ks=Object.keys(sp).map(Number).sort((a,b)=>a-b);
+    const vals=ks.map(k=>sp[k]), mx=Math.max(...vals,th.sep_min*1.2), mn=Math.min(...vals,0);
+    const pad=24, plotW=W-pad*2, plotH=H-30, X=i=>pad+i/(ks.length-1)*plotW, Y=val=>H-20-(val-mn)/(mx-mn||1)*plotH;
+    // sep_min threshold line
+    x.strokeStyle='rgba(255,179,71,.5)'; x.setLineDash([4,4]); x.beginPath(); x.moveTo(pad,Y(th.sep_min)); x.lineTo(W-pad,Y(th.sep_min)); x.stroke(); x.setLineDash([]);
+    x.fillStyle='#ffb347'; x.font='8px JetBrains Mono'; x.textAlign='left'; x.fillText('sep_min',pad+2,Y(th.sep_min)-3);
+    x.strokeStyle='#36f0d0'; x.lineWidth=2; x.beginPath();
+    ks.forEach((k,i)=>{ const px=X(i),py=Y(sp[k]); i?x.lineTo(px,py):x.moveTo(px,py); }); x.stroke();
+    ks.forEach((k,i)=>{ x.fillStyle=k===v.best_layer?'#fff':'#36f0d0'; x.beginPath(); x.arc(X(i),Y(sp[k]),k===v.best_layer?3.5:1.6,0,6.3); x.fill(); });
+    x.fillStyle='#46506b'; x.textAlign='center'; x.fillText('L0',pad,H-6); x.fillText('L'+(ks.length-1),W-pad,H-6);
+  });
+}
+function vizSftTiers(b,v,th){
+  if(v.verdict==='skipped'){b.innerHTML=`<div class="missing">no SFT stats</div>`;return;}
+  const tot=(v.known+v.maybe+v.unknown)||1;
+  b.appendChild(el('div','bars',
+    [['known',v.known,'fill'],['maybe',v.maybe,'mid'],['unknown',v.unknown,'hot']].map(([k,n,c])=>
+      `<div class="row"><div class="rl"><span>${k}</span><span>${n} (${pct(n/tot)})</span></div>
+       <div class="track"><div class="fill ${c}" data-w="${n/tot*100}"></div></div></div>`).join('')));
+  b.appendChild(el('div','cap',`knowledge-filter dropped ${v.dropped_unknown} unknown-tier Q/A · ${v.abstention} abstentions added`));
+}
+function vizSftComposition(b,v,th){
+  if(v.verdict==='skipped'){b.innerHTML=`<div class="missing">no SFT stats</div>`;return;}
+  const lo=v.band[0],hi=v.band[1],f=v.refusal_frac, AX=0.4;  // axis 0–40% refusal
+  const inb=f>=lo&&f<=hi;
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${inb?'up':'down'}">${pct(f,0)}</div><div class="l">refusal share${v.exact?'':' (proxy)'}</div></div>
+     <div class="s"><div class="v">${v.refusal_total}</div><div class="l">refusal ex.</div></div>
+     <div class="s"><div class="v">${v.answerable}</div><div class="l">answerable</div></div>`));
+  // band gauge with v2/v4 reference marks (the bracketing runs)
+  const g=el('div'); g.style.marginTop='6px';
+  const x=p=>Math.min(100,p/AX*100);
+  g.innerHTML=`<div class="k">refusal fraction · safe band ${pct(lo)}–${pct(hi)} (axis 0–${pct(AX)})</div>
+    <div style="position:relative;height:22px;margin-top:7px;border:1px solid var(--line);border-radius:4px;background:#070b16;overflow:hidden">
+      <div style="position:absolute;left:0;width:${x(lo)}%;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(255,179,71,.14) 0 6px,transparent 6px 12px)" title="too low → fabricates"></div>
+      <div style="position:absolute;left:${x(lo)}%;width:${x(hi)-x(lo)}%;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(54,240,208,.18) 0 6px,rgba(54,240,208,.06) 6px 12px)" title="safe band"></div>
+      <div style="position:absolute;left:${x(hi)}%;right:0;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(255,59,107,.16) 0 6px,transparent 6px 12px)" title="too high → over-refuses (v4 cliff)"></div>
+      <div style="position:absolute;left:${x(0.14)}%;top:-3px;bottom:-3px;width:1px;background:var(--faint)" title="v2 14% (fabricated)"></div>
+      <div style="position:absolute;left:${x(0.34)}%;top:-3px;bottom:-3px;width:1px;background:var(--bad)" title="v4 34% (over-refused)"></div>
+      <div style="position:absolute;left:${x(f)}%;top:-4px;bottom:-4px;width:3px;background:${inb?'var(--good)':'var(--bad)'};box-shadow:0 0 8px currentColor;color:${inb?'var(--good)':'var(--bad)'}"></div>
+    </div>
+    <div class="cap" style="text-align:left">faint mark = v2 (14% → fabricated) · red mark = v4 (34% → over-refused) · this run's marker is the bright bar. abstention ${v.abstention} + absent-neg ${v.absent_neg}.</div>`;
+  b.appendChild(g);
+}
+
+function vizSftPhrasing(b,v,th){
+  if(v.verdict==='skipped'){b.innerHTML=`<div class="missing">${esc(v.note||'no arrow to decode')}</div>`;return;}
+  const leak=(v.leaked_probe_phrasings||[]).length;
+  b.appendChild(el('div','statline',
+    `<div class="s"><div class="v ${leak?'down':'up'}">${leak?'LEAK':'held out'}</div><div class="l">probe phrasing</div></div>
+     <div class="s"><div class="v ${v.n_asym?'down':'up'}">${v.n_asym}</div><div class="l">refuse-only forms</div></div>
+     <div class="s"><div class="v ${v.pos_per_edition<2?'down':'up'}">${v.pos_per_edition}</div><div class="l">answer-phrasings/edition</div></div>
+     <div class="s"><div class="v">${v.n_answer_editions}</div><div class="l">editions taught</div></div>`));
+  if(leak){
+    b.appendChild(el('div',null,`<div class="k" style="margin:8px 0 4px;color:var(--bad)">leaked probe phrasing(s) — must be held out</div>`));
+    (v.leaked_probe_phrasings||[]).forEach(p=>b.appendChild(el('div',null,`<div style="font-size:11px;color:var(--bad);border-left:2px solid var(--bad);padding:4px 9px;margin:3px 0">${esc(p)}</div>`)));
+  } else if((v.asym_refuse_only||[]).length){
+    b.appendChild(el('div',null,`<div class="k" style="margin:8px 0 4px;color:var(--warn)">phrasings taught ONLY as refusal (bias risk)</div>`));
+    v.asym_refuse_only.forEach(p=>b.appendChild(el('div',null,`<div style="font-size:11px;color:var(--warn);border-left:2px solid var(--warn);padding:4px 9px;margin:3px 0">${esc(p)}</div>`)));
+  }
+  b.appendChild(el('div','cap',`${v.n_answer_templates} answer-phrasings · ${v.n_refuse_templates} refuse-phrasings. The eval probe phrasing must appear in NEITHER (clean generalization test).`));
+}
+
+// INSTALLATION CHECKLIST — operationalizes docs/cpt_installation_best_practices.md. Each best-practice maps
+// to a live status: ✓ auto-verified by a dimension, ⚠ partial/proxy, ✗ failing, ○ known-important but not yet
+// auto-instrumented (follow the practice manually). This is the product-grade "is this set up to install well".
+function buildChecklist(){
+  const d=(D&&D.dimensions)||{};
+  const st=k=>{const v=(d[k]||{}).verdict; return v==='pass'?'ok':v==='warn'?'warn':v==='fail'?'bad':'na';};
+  const items=[
+    ['I',   'Density floor — exposures/fact above the floor', st('density'), 'gradient tracks token frequency; thin facts memorize but don\'t retrieve'],
+    ['II.A','Both-direction coverage (reversal curse)', 'manual', 'generator must emit each relation from BOTH entities — not auto-checked yet'],
+    ['II.B','Base vs derived — install primitives, teach the rule', d.balance&&d.balance.verdict==='fail'?'warn':'ok', 'don\'t enumerate combinatorial relations; balance proxy'],
+    ['III', 'Floor + confusion-boost, NOT equalization', 'ok', 'we do not equalize (correct); boost confusable pairs by measured separation'],
+    ['IV',  'Negation via "not-X-but-Y" + unlikelihood', 'manual', 'not yet implemented — bare negation installs weakly'],
+    ['VII', 'Disjoint context — confusables NEVER co-mention', st('disjoint_static'), 'co-mention pulls representations together (the v3 failure)'],
+    ['VIII','Disclosure order — distinctiveness BEFORE the entity', 'manual', 'causal mask: separating context must precede the entity token'],
+    ['X',   'Geometry separation measured per layer', st('disjoint_latent'), 'base-model latent separation of confusable groups'],
+    ['VII', 'Co-occurrence audit clean (pre-train gate)', st('disjoint_static'), 'a single confusable co-mention reintroduces the failure'],
+    ['XIII','Replay 5–10% (anti-forgetting)', st('token_mix'), 'pure-synthetic CPT collapses general ability'],
+    ['XVI', 'SFT refusal balance in the safe band', st('sft_composition'), 'too little → fabricates; too much → over-refuses (v4 cliff)'],
+    ['—',   'Phrasing hygiene — eval phrasing held out of training', st('sft_phrasing'), 'a probe phrasing trained only-as-refusal biases over-refusal (v5/v6)'],
+    ['IX',  'Three eval lenses (behavioral + geometry + cloze)', 'ok', 'gate + geometry probe + training-surface cloze'],
+    ['XVI', 'RUN verdict separated from INSTALL verdict', 'ok', 'operating room shows both — a run can pass on a thin install'],
+    ['XIV', 'Levers isolated + instrumented (run contract)', 'ok', 'every knob named, logged, toggleable; regression attributable'],
+  ];
+  const icon={ok:'✓',warn:'⚠',bad:'✗',manual:'○',na:'·'};
+  const col={ok:'var(--good)',warn:'var(--warn)',bad:'var(--bad)',manual:'var(--faint)',na:'var(--faint)'};
+  const n={ok:0,warn:0,bad:0,manual:0,na:0}; items.forEach(i=>n[i[2]]++);
+  const c=el('div','card span2');
+  c.appendChild(el('div','chead',`<h3>Installation readiness checklist</h3><span class="chip ${n.bad?'fail':n.warn||n.manual?'warn':'pass'}">${n.ok}✓ ${n.warn}⚠ ${n.bad}✗ ${n.manual}○</span>`));
+  c.appendChild(el('div','cwhat','Every best-practice from docs/cpt_installation_best_practices.md → live status. ✓ auto-verified · ⚠ partial · ✗ failing · ○ known-important, not yet auto-instrumented (do it manually).'));
+  const rows=el('div'); rows.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:6px 18px';
+  items.forEach(([ref,label,status,note])=>{
+    rows.appendChild(el('div',null,
+      `<div style="display:flex;gap:8px;font-size:12px;align-items:baseline">
+        <span style="color:${col[status]};font-weight:700;flex:0 0 14px">${icon[status]}</span>
+        <span><b style="color:var(--ink)">${esc(label)}</b> <span class="faint" style="font-size:9px">§${ref}</span><br><span style="color:var(--dim);font-size:10.5px">${esc(note)}</span></span>
+      </div>`));
+  });
+  c.appendChild(rows);
+  return c;
+}
+
+function render(){
+  if(!D){document.getElementById('grid').innerHTML='<div class="missing">data_audit_data.js not found — run scripts/data_audit.py</div>';return;}
+  topRow();
+  const g=document.getElementById('grid');
+  g.appendChild(buildChecklist());   // the product-grade checklist leads the page
+  ["density","balance","coverage","token_mix","disjoint_static","disjoint_latent","sft_composition","sft_phrasing","sft_tiers"].forEach(name=>{
+    if(D.dimensions[name]) g.appendChild(card(name, D.dimensions[name], D.thresholds));
+  });
+  // reveal + bar fills on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in');
+    e.target.querySelectorAll('.fill[data-w]').forEach(f=>requestAnimationFrame(()=>f.style.width=f.dataset.w+'%'));
+    io.unobserve(e.target);}}),{threshold:.15});
+  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+}
+render();
+addEventListener('resize',()=>{ // canvases reflow: simplest is re-render
+  document.getElementById('grid').innerHTML=''; document.getElementById('topRow').innerHTML='';
+  render(); document.querySelectorAll('.card').forEach(c=>{c.classList.add('in'); c.querySelectorAll('.fill[data-w]').forEach(f=>f.style.width=f.dataset.w+'%');});
+});
+</script>
+</body>
+</html>

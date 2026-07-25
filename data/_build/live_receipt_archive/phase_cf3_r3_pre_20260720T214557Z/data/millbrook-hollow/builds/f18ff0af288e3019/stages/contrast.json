@@ -1,0 +1,57 @@
+{
+  "cmd": [
+    "/mnt/torad-storage-01/infra/training/kandi-cpt/.venv/bin/python",
+    "scripts/pipeline/generic_contrast.py",
+    "--domain",
+    "millbrook-hollow",
+    "--editions",
+    "main",
+    "--max-fraction",
+    "0.10"
+  ],
+  "devices": "",
+  "exit_code": 0,
+  "duration_s": 0.095926,
+  "outputs": [
+    {
+      "path": "data/millbrook-hollow/main/25_hydrated/relations_contrast.jsonl",
+      "sha256": "953d7542e19d3f800cbb20ea5de7b0a7a1c0f6ca3feb15bac2c6f9fb9d4e74ff",
+      "bytes": 2814
+    }
+  ],
+  "output_delta": {
+    "created": 1,
+    "changed": 0,
+    "unchanged": 0,
+    "removed": 0,
+    "bytes_before": 0,
+    "bytes_after": 2814
+  },
+  "postconditions": [
+    {
+      "check": "output exists: data/millbrook-hollow/main/25_hydrated/relations_contrast.jsonl",
+      "pass": true
+    },
+    {
+      "check": "declared output delta is nonzero",
+      "pass": true
+    },
+    {
+      "check": "recipe identity stayed unchanged during execution",
+      "pass": true
+    },
+    {
+      "check": "approved stage stayed unchanged during execution",
+      "pass": true
+    }
+  ],
+  "engine": {
+    "commit": "50f3373caa4a70be8dbf300d401ed29408fdd1b6",
+    "dirty": true
+  },
+  "status": "PASS",
+  "editions": [
+    "main"
+  ],
+  "stage_digest": "7a92e74eee5adea86e1f2b29bf86513f3cfe57c3cf49e2c09d5ca88fcd165883"
+}

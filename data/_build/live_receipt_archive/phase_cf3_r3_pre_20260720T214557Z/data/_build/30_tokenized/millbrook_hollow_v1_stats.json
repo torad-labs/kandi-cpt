@@ -1,0 +1,28 @@
+{
+  "total_tokens": 16673,
+  "num_chunks": 32,
+  "seq_len": 512,
+  "docs_by_tag": {
+    "hydrated": 513,
+    "clean": 4,
+    "knowledge": 2
+  },
+  "tokens_by_tag": {
+    "hydrated": 6894,
+    "clean": 907,
+    "knowledge": 6317
+  },
+  "replay_tokens": 1515,
+  "editions": "all",
+  "lever_metadata": true,
+  "block_edu_score": false,
+  "block_edu_mean": 3.1499,
+  "entity_masked_tokens": 24,
+  "entity_mask_frac": 0.0016,
+  "src_token_dist": {
+    "raw_knowledge": 15156,
+    "qa": 0,
+    "conversation": 0,
+    "replay": 1517
+  }
+}

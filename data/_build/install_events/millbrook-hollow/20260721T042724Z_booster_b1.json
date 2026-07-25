@@ -1,0 +1,105 @@
+{
+  "schema": "kandi.install_event.v1",
+  "domain": "millbrook-hollow",
+  "unit": "booster_1",
+  "event": "booster",
+  "at": "2026-07-21T04:27:24Z",
+  "candidate_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r6",
+  "reference_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1",
+  "artifact_kept": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1",
+  "booster_n": 1,
+  "halted": true,
+  "status": "KEPT_PRIOR",
+  "sentinel": {
+    "schema": "kandi.sentinel_result.v2",
+    "role": "regression_tripwire",
+    "not_an_install_verdict": true,
+    "sentinel_version": "v1",
+    "sentinel_content_sha256": "0c008e2a90989983f8eb2dd77db93c4c90c851e587325a4ea1a96b1596623ba3",
+    "domain": "millbrook-hollow",
+    "unit": "main",
+    "event": "booster",
+    "status": "HALT",
+    "halted": true,
+    "tripwire_action": "KEEP_PRIOR",
+    "strength_verdict": "NOT_OWNED_BY_SENTINEL",
+    "candidate_cleared_for_certificate": true,
+    "certification": {
+      "standard_minimum_n": 50,
+      "declared_minimum_n": 0,
+      "observed_n": 7,
+      "comparison_certified": false,
+      "label": "tripwire_only"
+    },
+    "protected_artifact": null,
+    "prior_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/cpt/millbrook_hollow_v1",
+    "candidate_artifact": "/mnt/torad-storage-01/infra/training/kandi-cpt/checkpoints/sft/millbrook_hollow_booster_1_r6",
+    "decisions": [
+      {
+        "slice": "install",
+        "reference_acc": 0.2857142857142857,
+        "candidate_acc": 0.14285714285714285,
+        "delta": -0.14285714285714285,
+        "n": 7,
+        "rough_bound": 0.1889822365046136,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      },
+      {
+        "slice": "general_ability",
+        "reference_acc": 1.0,
+        "candidate_acc": 1.0,
+        "delta": 0.0,
+        "n": 10,
+        "rough_bound": 0.15811388300841897,
+        "halt": false,
+        "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+      }
+    ],
+    "install": {
+      "reference": {
+        "hits": 2,
+        "n": 7,
+        "acc": 0.2857142857142857
+      },
+      "candidate": {
+        "hits": 1,
+        "n": 7,
+        "acc": 0.14285714285714285
+      },
+      "slice": "install",
+      "reference_acc": 0.2857142857142857,
+      "candidate_acc": 0.14285714285714285,
+      "delta": -0.14285714285714285,
+      "n": 7,
+      "rough_bound": 0.1889822365046136,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "general_ability": {
+      "slice": "general_ability",
+      "reference_acc": 1.0,
+      "candidate_acc": 1.0,
+      "delta": 0.0,
+      "n": 10,
+      "rough_bound": 0.15811388300841897,
+      "halt": false,
+      "rule": "halt if delta < -rough_bound(n) where rough_bound = 0.5/sqrt(n)"
+    },
+    "plain": "Booster #1 did not clear the install-strength measurement, so booster #0 stays installed. The safety tripwire is reported separately.",
+    "evaluated_at": "2026-07-21T04:27:24Z",
+    "reasons": [
+      "install-strength measurement failed; keep the prior artifact"
+    ],
+    "install_strength_gate": {
+      "status": "FAIL",
+      "reason": "install-strength measurement failed; keep the prior artifact"
+    }
+  },
+  "plain": "Booster #1 did not clear the install-strength measurement, so booster #0 stays installed. The safety tripwire is reported separately.",
+  "certificate_id": "58da966e6df62081",
+  "certificate_error": null,
+  "evidence_contract": "PASS",
+  "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/install_events/millbrook-hollow/20260721T042724Z_booster_b1.json",
+  "certificate_path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/certificates/millbrook-hollow/booster_1_b0_20260721T042724Z.json"
+}

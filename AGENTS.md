@@ -91,3 +91,29 @@ surface forms installs knowledge, not volume (docs/cpt_installation_best_practic
 - Before destructive ops (`rm -rf`, `pkill`, `kill -9`): check `nvidia-smi` for active compute (paid in-flight
   training) and `git status`. The §8 look-before-delete check is mandatory — the audit's "orphan" list was
   partially wrong (two "orphans" were live dependencies); always verify references before deleting.
+
+## Host memory & GPU laws (torad-server) — MECHANICALLY ENFORCED, 2026-07-20
+
+These are not requests. Claude and codex sessions have these blocked at the
+tool layer; every other runtime gets the same outcome 60 seconds later from
+root-side timers. Working around them wastes your run and the operator's night.
+
+- **NEVER create swap** (`fallocate`+`mkswap`+`swapon` in any form). The
+  swap topology is declared in the host ledger
+  (`~/Documents/dev/infra/host-policy/MANIFEST.toml`); a root timer
+  (swap-topology-guard) removes undeclared swap devices within 60s. Your
+  2026-07-20 swapfiles froze the whole machine (10G paged through the USB
+  drive) and disarmed the host's OOM defenses. If an eval runs out of
+  memory, that is the EVAL's bug: give it a budget and let it fail loudly —
+  `systemd-run --user --scope -p MemoryHigh=16G -p MemoryMax=20G <cmd>` —
+  then fix its memory use or ask the operator for a bigger box.
+- **Heavy builds run gated**: `cargo build` via the bare `cargo` on PATH
+  (the shim = buildgate's memory box). Never absolute-path cargo, never
+  `BUILDGATE_DISABLE`, never bare `nvcc` outside `buildgate`.
+- **GPU binaries that ever threw Xid faults run under
+  `compute-sanitizer --tool memcheck` until they have a clean receipt**
+  (an xid-watchdog kills sustained faulters; the GPU dying costs the host a
+  reboot — see the week of 2026-07-13..20).
+- **No sysctl writes, no swappiness/zram/earlyoom edits** — the host memory
+  policy has ONE ledger (path above). A defense you think is missing gets a
+  ledger entry, not a blind patch.
