@@ -104,7 +104,9 @@
     "The spin-off #1 mechanism in commit 069106ac was stated imprecisely and is corrected here. The defect is real and broader than described; the reviewer's named instance did not reproduce and is retracted.",
     "All 6 agents completed (0 errors, 816k subagent tokens, 247 tool uses). The 6th result did not change either DROP.",
     "The contrast DROP is RETRACTED. The measurement (roster 21 vs graph 553 on kanto) contradicts the \"cannot add a surface\" claim, and the constraint that produced it was written by me into the item, not discovered in the code.",
-    "The probes DROP is NOT retracted: its refusal rests on the base arm sitting at chance across three independent measurements, which is a property of the measured system rather than of the item text."
+    "The probes DROP is NOT retracted: its refusal rests on the base arm sitting at chance across three independent measurements, which is a property of the measured system rather than of the item text.",
+    "BOTH DROPs are now retracted. They shared one root cause: I wrote item specs that pinned the candidate pool to the existing narrow structure, the implementers correctly reported the pin, and I recorded the pin as a property of the mechanism. The oracle could not catch it because it checks whether an artifact does what it says, not whether the item asked for the right thing.",
+    "I defended the probes DROP one turn after conceding the identical error on contrast. The operator directed the retraction and was right."
   ],
   "wave_1_outcome": {
     "clean": 0,
@@ -197,5 +199,34 @@
     "expected_delta_instrument": "emitted contrast records per unit. Under the retracted spec this was structurally pinned (168 -> 168). Under the corrected spec it MUST be able to move, because the candidate pool grew 26x. If it does not move, the implementation is wrong \u2014 that is the falsifiable check, and it is the instrument the previous attempt lacked.",
     "reproducibility_requirement": "Proposals must be frozen per unit (committed alongside the shard) so a re-run reproduces the corpus byte-for-byte. That was a real objection in the original review and it survives the spec change \u2014 it is a design constraint, not a blocker.",
     "oracle": "unchanged and now genuinely load-bearing: the graph truth check plus the entity-table membership check, both value-level, both already in the tree."
+  },
+  "probes_drop_RETRACTED": {
+    "retracted_on": "2026-07-25",
+    "retracted_at": "operator direction, and the direction was correct",
+    "i_defended_this_one_after_retracting_the_other": "I claimed the probes DROP rested on \"a fact about the measured system, not how I worded the item\". Re-examined, both of its load-bearing arguments are mine, not the systems.",
+    "argument_2_closed_pool_is_the_SAME_cage": {
+      "the_claim": "\"To type-check a candidate you must resolve it to a known entity; enforce that and the LLM is reduced to a RE-RANKER over the same closed pool the deterministic draw already samples \u2014 it cannot produce any distractor the deterministic path could not.\"",
+      "why_false": "Measured on kanto: entity graph 553, by_pred pool per predicate min 8 / median 24 / max 89. The deterministic draw samples the per-predicate pool; a type-checked LLM proposal draws from the ENTITY GRAPH filtered by admissible object type. Those are not the same set and the second is far larger. This is the identical error I already admitted for contrast \u2014 my item text said \"the SAME true_by_subject_pred subtraction\", which pinned the pool, and the pin was then reported as a ceiling.",
+      "the_reviewer_told_me": "\"G3a's closed vocabulary is the ENTITY GRAPH, not by_pred[p]: 90 admissible vs 27 sampled on the artifact's own scenario subject; strictly larger for 61/75 golds. A narrowed version is therefore constructible.\" I quoted this, called it a correction, and left the conclusion standing."
+    },
+    "argument_1_base_at_chance_addresses_the_WRONG_ARM": {
+      "the_claim": "\"The base arm sits at chance, so there is no elimination signal for a harder distractor to remove.\"",
+      "why_it_does_not_close_the_question": "Base at chance proves the distractors give no help to a model that LACKS the fact. The concern is the TUNED arm: a model trained on the corpus knows entity types, plausibility and register, so it can eliminate an absurd distractor without knowing the specific fact and collect credit for it. Harder distractors would remove exactly that false credit. Base-at-chance is silent on it \u2014 it measures the floor, and the question is about the ceiling.",
+      "what_would_actually_settle_it": "Re-score the SAME tuned checkpoint on the SAME golds with harder (type-matched, graph-drawn) distractors. If tuned holds near 0.70 the distractors were not carrying it; if it drops, the current ruler was inflating. That experiment was never run \u2014 the DROP asserted its outcome."
+    },
+    "status": "RETRACTED. probes-llm-distractors is LIVE again with a corrected specification."
+  },
+  "wave_2_item_probes_graph_scoped_distractors": {
+    "id": "probes-llm-distractors-v2",
+    "status": "LIVE \u2014 replaces the retracted DROP",
+    "corrected_specification": [
+      "1. The LLM proposes distractor VALUES (entity display names), never questions or sentences \u2014 same construction fix as contrast-v2.",
+      "2. Candidate vocabulary = the ENTITY GRAPH filtered to the object types the predicate admits (kanto: 553 typed-filtered, vs a median by_pred pool of 24). NOT by_pred[p].",
+      "3. Reject anything absent from the entity table; reject anything true for the CANONICAL subject (see the duplicate-id defect \u2014 keying on raw subject_id is itself a bug and must be fixed first or the guard leaks).",
+      "4. Reject two ids of one entity landing in one item (the \"Ash\"/\"Ash Ketchum\" case the run surfaced).",
+      "5. Freeze proposals per unit and commit them, so probe_sha256 is stable and the eval series stays comparable \u2014 this was a REAL objection and it survives; it is a design constraint, not a blocker."
+    ],
+    "expected_delta_instrument": "Re-score the unchanged tuned checkpoint on unchanged golds, old vs new distractors. Tuned holding ~0.70 means the old ruler was fine; tuned dropping means it was inflating. Either result is a result \u2014 and it is the experiment the DROP asserted the answer to without running.",
+    "prerequisite": "the duplicate-id keying fix, because a distractor guard keyed on raw subject_id leaks by construction"
   }
 }
