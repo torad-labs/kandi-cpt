@@ -1,95 +1,198 @@
 {
-  "schema": "kandi.formatting_augmentation.v2",
+  "schema": "kandi.formatting_augmentation.v3",
   "campaign": "phase_r4_formatting_augmentation",
   "recorded_at": "2026-07-25T00:00:00Z",
-  "status": "LANDED_AFTER_FIX_FORWARD",
-  "verdict": "Attempt 1 (prefix transforms) regressed distinct-2 by 27.7% and I reverted it too early. The regression was an artifact of MY transform choice, not of the technique. Attempt 2 (entity-masked interior edits, self-derived knobs) improves distinct-2 0.3305 -> 0.3472 on kanto and is landed.",
-
+  "status": "REVERTED_AFTER_THREE_ATTEMPTS_WRONG_CHANNEL",
+  "verdict": "Deterministic formatting augmentation does not help this pipeline by any honest measure, and it was the wrong channel to begin with: generic_synth already does LLM-driven augmentation, which is what the literature actually proposes. Reverted after three attempts.",
   "process_correction": {
     "what_i_did_wrong": "Reverted after ONE implementation, and the write-up itself named the untested confound ('guaranteeing zero fact drift forced prefix-only transforms') without testing it. Prefix-only was an implementation choice made for entity safety, not a property of formatting augmentation. A fix-forward was owed before any revert.",
     "the_confounds_that_were_never_separated": [
-      "PREFIX vs INTERIOR transform — the paper's method includes in-string edits; only prefixes were tried.",
-      "ADDITIVE at fraction 0.5 — doubling the corpus inflates distinct-2's denominator by construction, independent of transform quality.",
+      "PREFIX vs INTERIOR transform \u2014 the paper's method includes in-string edits; only prefixes were tried.",
+      "ADDITIVE at fraction 0.5 \u2014 doubling the corpus inflates distinct-2's denominator by construction, independent of transform quality.",
       "The knobs were fixed constants rather than measured against the corpus."
     ]
   },
-
   "the_arithmetic_that_decided_it": {
     "method": "new-vs-original bigrams per variant, over a 5-bigram sentence",
-    "prefix_bullet": {"variant_bigrams": 6, "new": 1, "share": 0.17},
-    "interior_emphasis_1_token": {"variant_bigrams": 5, "new": 2, "share": 0.40},
-    "interior_emphasis_2_tokens": {"variant_bigrams": 5, "new": 4, "share": 0.80},
+    "prefix_bullet": {
+      "variant_bigrams": 6,
+      "new": 1,
+      "share": 0.17
+    },
+    "interior_emphasis_1_token": {
+      "variant_bigrams": 5,
+      "new": 2,
+      "share": 0.4
+    },
+    "interior_emphasis_2_tokens": {
+      "variant_bigrams": 5,
+      "new": 4,
+      "share": 0.8
+    },
     "corpus_ratio_to_beat": 0.3305,
     "reading": "A variant raises distinct-2 only when its new-bigram share beats the corpus's existing ratio. A prefix leaves every interior bigram identical (0.17) and therefore CANNOT clear the bar. An interior edit changes the two bigrams adjacent to each edited token and can. That is the whole difference between the two attempts."
   },
-
   "attempt_1_prefix": {
-    "variants": ["indent", "bullet", "blockquote", "numbered"],
-    "fraction": 0.5,
-    "distinct_2": {"baseline": 0.3305, "after": 0.2389, "delta_pct": -27.7},
-    "surfaces": {"before": 1472, "after": 2187},
-    "outcome": "REVERTED — correct verdict on that implementation, premature as a verdict on the item."
-  },
-
-  "attempt_2_interior_masked": {
-    "mechanism": "Locate every entity mention's character range, mark those spans protected, and apply markdown emphasis ONLY to tokens outside them. _preserves_payload then re-checks every entity survives verbatim and drops any variant that fails.",
-    "knob_derivation": "formatting_augment_derived builds each candidate setting (fraction x emphasis), measures distinct-2 on the result, and keeps the best setting that IMPROVES on the un-augmented baseline. If none improves it returns the records untouched. No constant is asked for or hardcoded, and the augmenter is structurally incapable of regressing the metric it exists to help — the exact failure of attempt 1.",
-    "sweep_measured_on_kanto": [
-      {"fraction": 0.25, "emphasis": 2, "distinct_2": 0.3312, "improves": true},
-      {"fraction": 0.25, "emphasis": 3, "distinct_2": 0.3397, "improves": true},
-      {"fraction": 0.25, "emphasis": 4, "distinct_2": 0.3472, "improves": true},
-      {"fraction": 0.25, "emphasis": 6, "distinct_2": 0.3418, "improves": true},
-      {"fraction": 0.5, "emphasis": 2, "distinct_2": 0.3123, "improves": false},
-      {"fraction": 0.5, "emphasis": 3, "distinct_2": 0.3214, "improves": false},
-      {"fraction": 0.5, "emphasis": 4, "distinct_2": 0.3291, "improves": false},
-      {"fraction": 0.5, "emphasis": 6, "distinct_2": 0.3314, "improves": true},
-      {"fraction": 1.0, "emphasis": 2, "distinct_2": 0.2750, "improves": false},
-      {"fraction": 1.0, "emphasis": 6, "distinct_2": 0.2989, "improves": false}
+    "variants": [
+      "indent",
+      "bullet",
+      "blockquote",
+      "numbered"
     ],
-    "chosen_by_the_code": {"fraction": 0.25, "emphasis": 4},
+    "fraction": 0.5,
+    "distinct_2": {
+      "baseline": 0.3305,
+      "after": 0.2389,
+      "delta_pct": -27.7
+    },
+    "surfaces": {
+      "before": 1472,
+      "after": 2187
+    },
+    "outcome": "REVERTED \u2014 correct verdict on that implementation, premature as a verdict on the item."
+  },
+  "deviations": [
+    "Three attempts before reverting. The first revert (after attempt 1) was premature and is recorded as a process error.",
+    "Attempt 2 was committed as a win (557538e0) on the strength of a distinct-2 gain that attempt 3 showed came from noise. Landing it was accepting a number over the artifact.",
+    "The metric blind spot is reported with its limit stated: dense perturbation is required, a naive junk append does not reproduce it.",
+    "No change was made to the diversity gate. Hardening distinct-n against this is a separate, deliberate decision and is left as a named handoff rather than bundled into a revert."
+  ],
+  "gates": {
+    "run_tests": "all green after revert",
+    "residual_refs": "0 (grep-verified)"
+  },
+  "attempt_3_content_words_only": {
+    "change": "Restrict emphasis to content words (alphabetic, >=4 chars, not a stopword), 1-3 per surface.",
+    "motivation": "Attempt 2 produced text no human would write \u2014 \"Aliana **is** **a** **member** **of** Team Flare.\", \"**Among** **the** Pokemon Ash **keeps** **is** Cyndaquil.\" Bolding function words is noise, not formatting.",
+    "result": "chosen = None \u2014 NO setting improves distinct-2. The augmenter declined itself.",
+    "conclusion": "The entire attempt-2 gain (+5.1%) came from bolding semantically empty tokens. Restricting emphasis to text a human would write erases it."
+  },
+  "the_measured_finding_about_the_metric": {
+    "observation": "Same mechanism, same fraction range, one difference: which tokens get emphasised.",
+    "any_token_incl_function_words": {
+      "distinct_2": "0.3305 -> 0.3472",
+      "verdict": "metric rewards it"
+    },
+    "content_words_only": {
+      "distinct_2": "no setting improves",
+      "verdict": "metric rejects it"
+    },
+    "reading": "distinct-n scores a novel n-gram identically whether it is a genuine new phrasing or junk. The version that reads like real prose is the one it refuses. That is a live blind spot in the diversity gate and is why attempt 2 looked like a win.",
+    "honest_limit": "A naive junk-token injection did NOT reproduce the gaming (0.3305 -> 0.2932): appending one token per surface inflates the denominator faster than the numerator. The exploit needs DENSE perturbation (4 bolded tokens per variant), so this is a real but non-trivial blind spot, not a one-line exploit."
+  },
+  "the_channel_error": {
+    "point": "Deterministic string transforms were the wrong tool entirely.",
+    "why": "generic_synth already performs LLM-driven augmentation (surface_form llm_synth, injectable generate_fn) and carries the real diversity: 10 surfaces/fact median against the deterministic floor 2. EntiGraph/SoG/dvlab are about MODEL-generated reformulation; a mechanical prefix or bold-tag is not that.",
+    "consequence": "Effort belonged in the LLM channel \u2014 specifically its ALLOCATION, which is uniform per triple and therefore over-exposes facts backed by several triples (llm_synth max 70 surfaces/fact vs median 10).",
+    "my_earlier_decline_was_wrong": "P0 declined to touch generic_synth on the grounds that it \"changes provider spend\". Utilization-aware allocation there REDUCES spend (fewer calls for over-exposed facts) while balancing exposure, and generate_fn is injectable so it is testable offline. That is the follow-up."
+  },
+  "handoff": [
+    "Utilization-aware allocation in generic_synth (the LLM channel): allocate calls by fact utilization instead of uniformly per triple. Balances exposure AND cuts provider spend; testable offline via the injectable generate_fn.",
+    "If distinct-n is to keep gating diversity, consider reporting a content-word distinct-n beside it \u2014 a wide divergence between the two is the signature of formatting/function-word inflation."
+  ],
+  "attempt_2_interior_masked_historical": {
+    "mechanism": "Locate every entity mention's character range, mark those spans protected, and apply markdown emphasis ONLY to tokens outside them. _preserves_payload then re-checks every entity survives verbatim and drops any variant that fails.",
+    "knob_derivation": "formatting_augment_derived builds each candidate setting (fraction x emphasis), measures distinct-2 on the result, and keeps the best setting that IMPROVES on the un-augmented baseline. If none improves it returns the records untouched. No constant is asked for or hardcoded, and the augmenter is structurally incapable of regressing the metric it exists to help \u2014 the exact failure of attempt 1.",
+    "sweep_measured_on_kanto": [
+      {
+        "fraction": 0.25,
+        "emphasis": 2,
+        "distinct_2": 0.3312,
+        "improves": true
+      },
+      {
+        "fraction": 0.25,
+        "emphasis": 3,
+        "distinct_2": 0.3397,
+        "improves": true
+      },
+      {
+        "fraction": 0.25,
+        "emphasis": 4,
+        "distinct_2": 0.3472,
+        "improves": true
+      },
+      {
+        "fraction": 0.25,
+        "emphasis": 6,
+        "distinct_2": 0.3418,
+        "improves": true
+      },
+      {
+        "fraction": 0.5,
+        "emphasis": 2,
+        "distinct_2": 0.3123,
+        "improves": false
+      },
+      {
+        "fraction": 0.5,
+        "emphasis": 3,
+        "distinct_2": 0.3214,
+        "improves": false
+      },
+      {
+        "fraction": 0.5,
+        "emphasis": 4,
+        "distinct_2": 0.3291,
+        "improves": false
+      },
+      {
+        "fraction": 0.5,
+        "emphasis": 6,
+        "distinct_2": 0.3314,
+        "improves": true
+      },
+      {
+        "fraction": 1.0,
+        "emphasis": 2,
+        "distinct_2": 0.275,
+        "improves": false
+      },
+      {
+        "fraction": 1.0,
+        "emphasis": 6,
+        "distinct_2": 0.2989,
+        "improves": false
+      }
+    ],
+    "chosen_by_the_code": {
+      "fraction": 0.25,
+      "emphasis": 4
+    },
     "result_on_kanto": {
       "baseline_distinct_2": 0.3305,
       "after_distinct_2": 0.3472,
       "gain": 0.0166,
       "gain_pct": 5.1,
-      "surfaces": {"before": 1472, "after": 1809},
-      "unique_bigrams": {"before": 2475, "after": 3182, "delta_pct": 28.6},
+      "surfaces": {
+        "before": 1472,
+        "after": 1809
+      },
+      "unique_bigrams": {
+        "before": 2475,
+        "after": 3182,
+        "delta_pct": 28.6
+      },
       "skipped_unsafe": 0
     }
   },
-
-  "honest_caveat_that_survives_the_fix": {
+  "honest_caveat_that_survives_the_fix_historical": {
     "measure": "diversity_lib.effective_forms",
     "result": "Returns 1 for a surface and its INTERIOR variant, exactly as it did for the prefix variant.",
-    "meaning": "The repo has two diversity measures and they disagree about this mechanism. distinct-n (what the audit's diversity gate rules on, and what the brief named) improves. effective_forms — used by dedup's floor accounting — still treats a formatting variant as the same form, so these variants compete for the same per-fact exposure budget and dedup may cull them.",
+    "meaning": "The repo has two diversity measures and they disagree about this mechanism. distinct-n (what the audit's diversity gate rules on, and what the brief named) improves. effective_forms \u2014 used by dedup's floor accounting \u2014 still treats a formatting variant as the same form, so these variants compete for the same per-fact exposure budget and dedup may cull them.",
     "consequence": "The gain is real against the gate's ruler but should NOT be described as adding new 'forms'. If dedup runs after this, expect the variants to be candidates for culling; whether that is right depends on whether formatting robustness is worth exposure budget, which is not a question distinct-n can answer.",
     "not_papered_over": "This was one of the two arguments used to justify the premature revert. It survives the fix-forward and is recorded rather than dropped now that the other argument has fallen."
   },
-
-  "red_green": {
-    "suite": "scripts/pipeline/test_formatting_augment.py — 9/9",
+  "red_green_historical": {
+    "suite": "scripts/pipeline/test_formatting_augment.py \u2014 9/9",
     "cases": [
       "entities survive every variant (0 unsafe skipped over 60 records at emphasis 4)",
       "no '**' ever lands inside an entity mention (explicit span check at emphasis 6)",
-      "interior edit beats a prefix on new-bigram share — pins the arithmetic that decided the two attempts",
+      "interior edit beats a prefix on new-bigram share \u2014 pins the arithmetic that decided the two attempts",
       "derived augmentation improves distinct-2 OR declines and returns the input untouched",
       "declines on a corpus it cannot help (identical one-token surfaces)",
       "reports every trial and its score, so the chosen setting is auditable",
       "originals never dropped; deterministic across runs; variants labelled for provenance"
     ]
-  },
-
-  "deviations": [
-    "The first revert was premature and is recorded as a process error rather than quietly overwritten. The v1 receipt's conclusion ('a proven no') was wrong; its arithmetic was right about the prefix implementation only.",
-    "effective_forms still does not count these as distinct. Reported as a live caveat, not resolved.",
-    "Only kanto's template floor was measured. The derived selection re-runs per unit, so another corpus may legitimately choose a different setting or decline entirely — that is the design, but it does mean this gain is not a global claim.",
-    "The knob search is a fixed 8-point grid (fraction x emphasis). It is a search, not an optimum; a corpus whose best setting lies outside the grid gets the best in-grid setting or a decline."
-  ],
-
-  "gates": {
-    "run_tests": "all green (47 modules)",
-    "test_cpt_config": "8/8 PASS",
-    "qgre_test_gates": "9/9 PASS",
-    "formatting_suite": "9/9 PASS"
   }
 }
