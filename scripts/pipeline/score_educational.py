@@ -151,6 +151,19 @@ def resolve_openrouter_key() -> str | None:
     return secret_tool_lookup("openrouter")
 
 
+def message_text(payload: dict) -> str:
+    """Completion text, falling back to reasoning when a provider leaves content empty.
+
+    Observed live on qwen3 via OpenRouter: the answer arrives only in the reasoning channel
+    and ``content`` is "". ``audit_recall.py`` carries the same fallback for its judge.
+    """
+    message = payload["choices"][0]["message"] or {}
+    raw = message.get("content") or ""
+    if not raw.strip():
+        raw = str(message.get("reasoning") or message.get("reasoning_content") or "")
+    return raw
+
+
 def chat(model: str, key: str, system: str, user: str) -> str:
     body = json.dumps({
         "model": model,
@@ -172,14 +185,20 @@ def chat(model: str, key: str, system: str, user: str) -> str:
         try:
             with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT_SEC) as response:
                 payload = json.loads(response.read().decode())
-            return payload["choices"][0]["message"]["content"] or ""
+            text = message_text(payload)
+            if text.strip():
+                return text
+            # An empty completion is a provider hiccup, not a grade — retry it like a 5xx
+            # rather than handing "" to parse_score and failing the stage closed.
+            last_error = "empty completion"
+            time.sleep(2.0 * (2 ** attempt))
         except urllib.error.HTTPError as error:
             detail = error.read().decode(errors="replace")[:200]
             last_error = f"HTTP {error.code}: {detail}"
             if error.code not in (429, 500, 502, 503, 504):
                 break
             time.sleep(2.0 * (2 ** attempt))
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError) as error:
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, KeyError, IndexError) as error:
             last_error = repr(error)
             time.sleep(2.0 * (2 ** attempt))
     raise RuntimeError(f"teacher call failed: {last_error}")

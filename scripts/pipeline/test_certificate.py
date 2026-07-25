@@ -210,6 +210,64 @@ def test_booster_certificate_projects_named_facts_for_kept_artifact():
     assert halted["booster_learning"]["receipt"]["path"] == "logs/booster_probe.json"
 
 
+_STABLE_ROWS = [
+    {"predicate": "leads", "tier": "stable", "declared": True},
+    {"predicate": "located_in", "tier": "stable", "declared": True},
+]
+_HOT_ROWS = _STABLE_ROWS + [
+    {"predicate": "current_season", "tier": "hot", "declared": True},
+]
+
+
+def test_freshness_without_hot_predicates_claims_no_live_lane():
+    """The old default line claimed live retrieval for every domain, backed by nothing."""
+    fresh = Cert.build_freshness(
+        verified_at="2026-07-24T00:00:00Z", booster_n=1,
+        domain="dom", tier_rows=_STABLE_ROWS,
+    )
+    assert fresh["tiers"]["hot"]["n_predicates"] == 0
+    assert fresh["tiers"]["hot"]["receipt"] is None
+    assert "nothing is retrieved live" in fresh["tiers"]["hot"]["line"]
+    assert fresh["tiers"]["stable"]["n_predicates"] == 2
+    assert "booster #1" in fresh["tiers"]["stable"]["line"]
+
+
+def test_hot_tier_without_an_index_receipt_fails_generation():
+    """A live-lane claim must point at the index that serves it (the campaign's one law)."""
+    try:
+        Cert.build_freshness(
+            verified_at="2026-07-24T00:00:00Z", domain="dom", tier_rows=_HOT_ROWS,
+        )
+    except Cert.CertificateError as error:
+        assert "hot-index receipt" in str(error), str(error)
+    else:
+        raise AssertionError("a hot claim with no index receipt must fail generation")
+
+
+def test_hot_tier_freshness_is_earned_from_the_index_receipt():
+    fresh = Cert.build_freshness(
+        verified_at="2026-07-24T00:00:00Z", booster_n=0,
+        domain="dom", tier_rows=_HOT_ROWS,
+        hot_index={"n_docs": 12, "built_at": "2026-07-24T09:00:00Z", "path": "data/_build/hot_index/dom/index.json"},
+    )
+    hot = fresh["tiers"]["hot"]
+    assert hot["n_predicates"] == 1
+    assert hot["predicates"] == ["current_season"]
+    assert hot["receipt"] == "data/_build/hot_index/dom/index.json"
+    assert "12 source document(s)" in hot["line"]
+    assert "2026-07-24T09:00:00Z" in hot["line"]
+    # The legacy flat key stays in sync with the tier block rather than drifting from it.
+    assert fresh["hot"] == hot["line"]
+
+
+def test_freshness_without_a_domain_makes_no_tier_claims():
+    """Callers that pass no domain get the pre-tier shape, not fabricated tier rows."""
+    fresh = Cert.build_freshness(verified_at="2026-07-24T00:00:00Z", booster_n=2)
+    assert "tiers" not in fresh
+    assert "hot" not in fresh
+    assert fresh["booster_n"] == 2
+
+
 def test_seed_questions_from_probes_fixture():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)

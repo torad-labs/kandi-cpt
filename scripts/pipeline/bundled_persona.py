@@ -93,10 +93,20 @@ def generate(domain: str, count: int = 2100) -> dict:
         })
     corpus_path.write_text("\n".join(json.dumps(row, sort_keys=True) for row in rows) + "\n", encoding="utf-8")
 
+    # Everyday, deliberately non-scientific topics: the persona is a terse scientist, so these shift
+    # AWAY from the trained domain — that is the whole point of the retention estimand. The set is
+    # authored blind (never selected by how the tuned model scored on them); it was widened from 12 to
+    # 32 on 2026-07-24 because retention at n=12 could not clear its own 0.80 bar by Wilson lower
+    # bound (12/12 → 0.758) — a sample-size limit, not a measured weakness.
     eval_topics = (
         "plan a quiet weekend", "decline a meeting", "explain a delayed train", "choose a soup",
         "ask a neighbor for help", "summarize a mystery novel", "pack for a cold walk", "repair a loose shelf",
         "compare two pencils", "describe a rainy morning", "organize a small kitchen", "review a board game",
+        "return a wrong parcel", "pick a birthday card", "water a neighbour's plants", "wait for a late bus",
+        "fold a fitted sheet", "sort a drawer of cables", "queue at a post office", "rearrange two chairs",
+        "label a spice jar", "hang a small picture", "buy stamps", "brew tea for two",
+        "find a lost glove", "wrap an awkward gift", "sweep a narrow hallway", "choose between two coats",
+        "replace a light bulb", "dry boots by a door", "tidy a bookshelf", "share an umbrella",
     )
     prompts = []
     for index, topic in enumerate(eval_topics):

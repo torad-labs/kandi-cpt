@@ -98,6 +98,87 @@ def test_style_mode_accepted():
 
 
 
+def _payload(content, reasoning=None):
+    message = {"content": content}
+    if reasoning is not None:
+        message["reasoning"] = reasoning
+    return {"choices": [{"message": message}]}
+
+
+def _stub_chat(payloads: list[dict]):
+    """Drive S.chat over a scripted sequence of provider payloads; returns (result, calls)."""
+    calls = {"n": 0}
+
+    class _Response:
+        def __init__(self, payload):
+            self._payload = payload
+
+        def read(self):
+            return json.dumps(self._payload).encode()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    def _urlopen(_request, timeout=None):
+        payload = payloads[min(calls["n"], len(payloads) - 1)]
+        calls["n"] += 1
+        return _Response(payload)
+
+    original_urlopen = S.urllib.request.urlopen
+    original_sleep = S.time.sleep
+    S.urllib.request.urlopen = _urlopen
+    S.time.sleep = lambda _seconds: None
+    try:
+        return S.chat("m", "k", "sys", "user"), calls["n"]
+    finally:
+        S.urllib.request.urlopen = original_urlopen
+        S.time.sleep = original_sleep
+
+
+def test_message_text_falls_back_to_reasoning():
+    """The EDC/H3 failure: providers that answer only in the reasoning channel."""
+    assert S.message_text(_payload("SCORE: 4")) == "SCORE: 4"
+    assert S.message_text(_payload("", reasoning="SCORE: 2")) == "SCORE: 2"
+    assert S.message_text(_payload(None, reasoning="SCORE: 5")) == "SCORE: 5"
+    assert S.message_text(_payload("")) == ""
+
+
+def test_chat_retries_an_empty_completion_instead_of_returning_it():
+    """Red: `content or ""` returned "" as success -> `unparseable teacher score: ''`."""
+    result, calls = _stub_chat([_payload(""), _payload("SCORE: 3")])
+    assert result == "SCORE: 3", result
+    assert calls == 2, f"the empty completion must be retried, saw {calls} call(s)"
+
+
+def test_chat_reads_the_reasoning_channel_without_retrying():
+    result, calls = _stub_chat([_payload("", reasoning="SCORE: 1")])
+    assert result == "SCORE: 1", result
+    assert calls == 1, "a reasoning-only answer is a real answer, not a retry"
+
+
+def test_chat_surfaces_persistent_emptiness_as_a_call_failure():
+    """An all-empty provider fails as a teacher-call error, never as a bogus grade."""
+    try:
+        _stub_chat([_payload("")])
+    except RuntimeError as error:
+        assert "empty completion" in str(error), str(error)
+    else:
+        raise AssertionError("persistent empty completions must raise, not return")
+
+
+def test_score_one_still_rejects_unparseable_teacher_output():
+    """The guard stays: a non-empty answer with no SCORE line is still a hard error."""
+    try:
+        S.score_one("facts", [], "text", teacher_fn=lambda _s, _u: "I decline to grade.")
+    except ValueError as error:
+        assert "unparseable" in str(error), str(error)
+    else:
+        raise AssertionError("unparseable teacher output must raise")
+
+
 def test_default_judge_model_is_paid_qwen():
     """Free Nemotron was unusable live; default must match eval_generative (qwen3-32b)."""
     assert S.DEFAULT_JUDGE_MODEL == "qwen/qwen3-32b"

@@ -35,6 +35,12 @@ import config as C
 from pipeline.editions import iter_editions
 
 DEFAULT_MIN_COVERAGE = 0.6
+
+# A judge call that never returned usable output yields NO ground truth for its document.
+# Scoring such a doc as zero coverage measures judge availability, not extraction — the
+# Phase-H1 campaign chased two mitigations against a number partly made of these. Above this
+# fraction of the sample the coverage estimate is not trustworthy and the audit fails closed.
+MAX_JUDGE_UNAVAILABLE_RATIO = 0.10
 # Free Nemotron returns unparseable junk live (same finding as eval_generative 2026-07-18);
 # paid qwen3-32b is the working OpenRouter default across the measurement stack.
 DEFAULT_JUDGE_MODEL = "qwen/qwen3-32b"
@@ -584,6 +590,8 @@ def run_audit(
     failed_predicates: list[str] = []
     all_judge_rejected: list[dict] = []
     all_out_of_unit: list[dict] = []
+    all_judge_unavailable: list[dict] = []
+    sampled_docs = 0
 
     for ed in iter_editions(domain, only=editions, with_raw=False):
         docs = collect_clean_docs(ed.dir)
@@ -628,6 +636,7 @@ def run_audit(
         u_raw_hits = u_raw_n = 0
         u_judge_rej: list[dict] = []
         u_out: list[dict] = []
+        u_unavailable: list[dict] = []
         u_match_mode = {"exact": 0, "soft-object": 0, "canonical": 0}
         # Live path: fan out judge calls (sequential OpenRouter was ~16s/doc → multi-minute silent runs).
         live_need = []
@@ -636,7 +645,7 @@ def run_audit(
             assertable = fixture.get(key) or fixture.get(doc["name"]) or fixture.get(str(Path(key).name))
             if assertable is None and not fixture:
                 live_need.append(doc)
-        live_facts: dict[str, list[dict]] = {}
+        live_facts: dict[str, list[dict] | None] = {}
         if live_need:
             from concurrent.futures import ThreadPoolExecutor, as_completed
             print(
@@ -644,7 +653,7 @@ def run_audit(
                 f"(model={DEFAULT_JUDGE_MODEL}, predicates={len(predicates)})",
                 flush=True,
             )
-            def _one(d: dict) -> tuple[str, list[dict]]:
+            def _one(d: dict) -> tuple[str, list[dict] | None]:
                 return d["path"], _judge_facts(d["text"], entity_types, predicates)
             with ThreadPoolExecutor(max_workers=min(6, len(live_need))) as pool:
                 futs = {pool.submit(_one, d): d for d in live_need}
@@ -653,15 +662,18 @@ def run_audit(
                     path, facts = fut.result()
                     live_facts[path] = facts
                     done += 1
-                    print(f"    judge {done}/{len(live_need)} facts={len(facts)}", flush=True)
-            # One sequential retry for empty judge responses (rate-limit / parse collapse).
-            empties = [d for d in live_need if not live_facts.get(d["path"])]
+                    shown = "unavailable" if facts is None else len(facts)
+                    print(f"    judge {done}/{len(live_need)} facts={shown}", flush=True)
+            # One sequential retry for unusable judge responses (rate-limit / parse collapse).
+            # Only None retries: a genuine empty fact list is an answer, not a failure.
+            empties = [d for d in live_need if live_facts.get(d["path"]) is None]
             if empties:
-                print(f"  {ed.slug}: retrying {len(empties)} empty judge responses", flush=True)
+                print(f"  {ed.slug}: retrying {len(empties)} unusable judge responses", flush=True)
                 for d in empties:
                     facts = _judge_facts(d["text"], entity_types, predicates)
                     live_facts[d["path"]] = facts
-                    print(f"    retry {d['name']} facts={len(facts)}", flush=True)
+                    shown = "unavailable" if facts is None else len(facts)
+                    print(f"    retry {d['name']} facts={shown}", flush=True)
         for doc in sample:
             key = doc["path"]
             # fixture keys may be basename
@@ -670,7 +682,12 @@ def run_audit(
                 if fixture:
                     assertable = []
                 else:
-                    assertable = live_facts.get(key) or []
+                    assertable = live_facts.get(key)
+                    if assertable is None:
+                        # No ground truth for this doc — unmeasured, not missed. Excluding it
+                        # keeps the estimand about extraction instead of judge availability.
+                        u_unavailable.append({"path": doc["name"]})
+                        continue
             cov = coverage_for_doc(
                 assertable,
                 gkeys,
@@ -718,6 +735,8 @@ def run_audit(
         unit_reports.append({
             "unit": ed.slug,
             "n_docs_sampled": len(sample),
+            "n_docs_scored": len(doc_rows),
+            "n_docs_judge_unavailable": len(u_unavailable),
             "n_docs_total": len(docs),
             "hits": u_hits,
             "n": u_n,
@@ -738,6 +757,7 @@ def run_audit(
             "docs": doc_rows,
             "judge_rejected_sample": u_judge_rej[:25],
             "out_of_unit_sample": u_out[:25],
+            "judge_unavailable_sample": u_unavailable[:25],
         })
         overall_hits += u_hits
         overall_n += u_n
@@ -751,6 +771,8 @@ def run_audit(
             class_totals["match_mode"][mode] = class_totals["match_mode"].get(mode, 0) + count
         all_judge_rejected.extend(u_judge_rej)
         all_out_of_unit.extend(u_out)
+        all_judge_unavailable.extend(u_unavailable)
+        sampled_docs += len(sample)
 
         if not dry_run:
             out = C.BUILD / "recall" / domain
@@ -825,11 +847,36 @@ def run_audit(
         "RECALL_AUDIT_UNAVAILABLE": False,
         "judge_rejected_sample": all_judge_rejected[:40],
         "out_of_unit_sample": all_out_of_unit[:40],
+        "judge_unavailable": {
+            "n_docs": len(all_judge_unavailable),
+            "n_docs_sampled": sampled_docs,
+            "ratio": round(len(all_judge_unavailable) / sampled_docs, 4) if sampled_docs else 0.0,
+            "max_ratio": MAX_JUDGE_UNAVAILABLE_RATIO,
+            "sample": all_judge_unavailable[:40],
+            "note": (
+                "Documents the judge never answered for. Excluded from the coverage estimand — "
+                "unmeasured, not missed. A coverage ratio is only comparable across runs at the "
+                "same judge availability."
+            ),
+        },
     }
+    unavailable_ratio = report["judge_unavailable"]["ratio"]
     if overall_n == 0 and raw_n == 0 and not fixture:
+        # No judge output at all (e.g. no provider key) — unmeasured, as before. Not a FAIL:
+        # an offline/device-only run legitimately cannot score this estimand.
         report["status"] = "SKIP"
         report["RECALL_AUDIT_UNAVAILABLE"] = True
         report["reason"] = "no assertable facts scored (no fixture and no judge output)"
+    elif unavailable_ratio > MAX_JUDGE_UNAVAILABLE_RATIO:
+        # Partial availability: some docs scored, others never answered. Fail closed rather
+        # than publish a coverage number built on a thin, biased sample — and never let
+        # dropping the hard documents look like an extraction improvement.
+        report["status"] = "FAIL"
+        report["reason"] = (
+            f"judge unavailable on {len(all_judge_unavailable)}/{sampled_docs} sampled docs "
+            f"({unavailable_ratio:.2%} > {MAX_JUDGE_UNAVAILABLE_RATIO:.0%}); the coverage "
+            "estimate is not trustworthy at this judge availability"
+        )
     elif overall_n == 0 and raw_n > 0:
         # Everything was filtered as noise — clean coverage is vacuously 1.0 but call it out.
         report["status"] = "PASS" if min_coverage <= 1.0 else "FAIL"
@@ -849,6 +896,8 @@ def run_audit(
         "raw_n": report["raw"]["n"],
         "classes": class_totals,
         "failed_predicates": failed_predicates,
+        "judge_unavailable": report["judge_unavailable"]["n_docs"],
+        "judge_unavailable_ratio": report["judge_unavailable"]["ratio"],
     }))
     return report
 
@@ -857,8 +906,14 @@ def _judge_facts(
     text: str,
     entity_types: list[str],
     predicates: list[str] | None = None,
-) -> list[dict]:
-    """Live judge — requires OpenRouter. Returns [] if unavailable."""
+) -> list[dict] | None:
+    """Live judge — requires OpenRouter.
+
+    Returns the assertable facts, ``[]`` when the judge genuinely found none, and ``None``
+    when no usable answer was obtained (no key, transport failure, or persistently empty
+    completions). ``None`` is NOT zero coverage: the document has no ground truth and must be
+    excluded from the estimand rather than scored as an extraction miss.
+    """
     import urllib.request
     import subprocess
 
@@ -877,7 +932,7 @@ def _judge_facts(
 
     k = key()
     if not k:
-        return []
+        return None
     types = ", ".join(entity_types) if entity_types else "domain entities"
     preds = ", ".join(predicates) if predicates else "(any snake_case domain relation)"
     # /no_think: qwen3 burns the whole max_tokens budget on reasoning otherwise and
@@ -915,6 +970,12 @@ def _judge_facts(
             # fallback: some providers put the JSON only in reasoning when content is empty
             if not raw.strip():
                 raw = str(msg.get("reasoning") or msg.get("reasoning_content") or "")
+            if not raw.strip():
+                # No usable answer — retry rather than reporting "this document asserts nothing".
+                last_err = ValueError("empty judge completion")
+                import time as _time
+                _time.sleep(1.5 * (2 ** attempt))
+                continue
             facts = parse_facts(raw)
             if predicates:
                 allowed = set(predicates)
@@ -926,7 +987,7 @@ def _judge_facts(
             _time.sleep(1.5 * (2 ** attempt))
     if last_err:
         print(f"    judge error: {type(last_err).__name__}: {last_err}", flush=True)
-    return []
+    return None
 
 
 def main() -> None:

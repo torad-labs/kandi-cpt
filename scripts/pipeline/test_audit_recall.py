@@ -339,6 +339,95 @@ def test_validate_judge_fact_manifest_predicate():
     assert ok is True and reason is None
 
 
+# ── Judge-availability proofs (H1: judge failure is not zero coverage) ────────
+
+
+def _live_audit(root: Path, n_docs: int, judge_for, *, min_coverage: float = 0.6) -> dict:
+    """Build an n_docs corpus whose graph holds every fact, then audit with a stubbed judge.
+
+    ``judge_for(index)`` returns the judge result for doc i: a fact list, or None for
+    "the judge never answered". Every scored doc therefore has coverage 1.0, so any drop in
+    the reported ratio comes from unavailable docs leaking into the estimand.
+    """
+    C.ROOT = root
+    C.BUILD = root / "data" / "_build"
+    unit = root / "data" / "dom" / "u"
+    clean = unit / "10_clean"
+    clean.mkdir(parents=True)
+    for i in range(n_docs):
+        (clean / f"doc{i}.md").write_text(f"---\n---\nBody {i}.\n", encoding="utf-8")
+    structured = unit / "15_structured"
+    structured.mkdir(parents=True)
+    triples = [
+        {"subject_id": f"s{i}", "predicate": "rel", "object": f"o{i}", "attrs": {}, "provenance": {}}
+        for i in range(n_docs)
+    ]
+    (structured / "triples.jsonl").write_text(
+        "\n".join(json.dumps(t) for t in triples) + "\n", encoding="utf-8",
+    )
+
+    def _stub(text, _entity_types, _predicates=None):
+        index = int(str(text).strip().rstrip(".").split()[-1])
+        return judge_for(index)
+
+    original_editions, original_judge = A.iter_editions, A._judge_facts
+    A.iter_editions = lambda *a, **k: [SimpleNamespace(slug="u", dir=unit)]
+    A._judge_facts = _stub
+    try:
+        return A.run_audit("dom", None, min_coverage=min_coverage, sample_n=n_docs)
+    finally:
+        A.iter_editions, A._judge_facts = original_editions, original_judge
+
+
+def test_unavailable_judge_doc_is_excluded_not_scored_as_a_miss():
+    """Red: an unanswered doc scored 0 coverage, dragging the ratio down (the H1 defect)."""
+    with tempfile.TemporaryDirectory() as temporary:
+        report = _live_audit(
+            Path(temporary), 20,
+            lambda i: None if i == 0 else [{"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"}],
+        )
+        assert report["judge_unavailable"]["n_docs"] == 1, report["judge_unavailable"]
+        assert report["overall"]["ratio"] == 1.0, (
+            f"unavailable doc leaked into the estimand: ratio={report['overall']['ratio']}"
+        )
+        assert report["overall"]["n"] == 19, "only answered docs enter the denominator"
+        assert report["status"] == "PASS", report.get("reason")
+
+
+def test_partial_judge_availability_fails_closed():
+    """Dropping the hard documents must never read as an extraction improvement."""
+    with tempfile.TemporaryDirectory() as temporary:
+        report = _live_audit(
+            Path(temporary), 10,
+            lambda i: None if i < 3 else [{"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"}],
+        )
+        assert report["status"] == "FAIL", report
+        assert "judge unavailable" in report.get("reason", ""), report.get("reason")
+        assert report["judge_unavailable"]["ratio"] == 0.3
+        # The surviving docs are perfectly covered — the FAIL is about trustworthiness, not coverage.
+        assert report["overall"]["ratio"] == 1.0
+
+
+def test_no_judge_output_at_all_is_skip_not_fail():
+    """An offline / no-key run legitimately cannot score this estimand."""
+    with tempfile.TemporaryDirectory() as temporary:
+        report = _live_audit(Path(temporary), 5, lambda _i: None)
+        assert report["status"] == "SKIP", report
+        assert report["RECALL_AUDIT_UNAVAILABLE"] is True
+
+
+def test_genuinely_empty_judge_answer_is_scored_not_excluded():
+    """[] means "this document asserts nothing" — an answer, not a failure."""
+    with tempfile.TemporaryDirectory() as temporary:
+        report = _live_audit(
+            Path(temporary), 10,
+            lambda i: [] if i == 0 else [{"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"}],
+        )
+        assert report["judge_unavailable"]["n_docs"] == 0, "an empty answer is not unavailable"
+        assert report["units"][0]["n_docs_scored"] == 10
+        assert report["status"] == "PASS", report.get("reason")
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

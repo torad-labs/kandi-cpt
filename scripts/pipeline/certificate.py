@@ -389,12 +389,89 @@ def build_coverage_line(recall_report: dict[str, Any] | None) -> dict[str, Any] 
     }
 
 
+def build_tier_freshness(
+    domain: str,
+    *,
+    verified_at: str,
+    booster_n: int = 0,
+    hot_index: dict[str, Any] | None = None,
+    tier_rows: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Per-tier freshness rows (trust-loop/04) — each one earned from a receipt.
+
+    ``tier_rows`` is ``tier_routing.derivation_rows(domain)``; ``hot_index`` is the built hot-index
+    receipt. A domain with no hot predicates gets an explicit "nothing is retrieved live" row rather
+    than the old unconditional "hot facts retrieved live" line, which was a claim with nothing behind
+    it. Claiming a live lane while no index exists is a CertificateError, not a nicer sentence.
+    """
+    rows: list[dict[str, Any]] = list(tier_rows) if tier_rows is not None else []
+    if tier_rows is None:
+        try:
+            from pipeline.tier_routing import derivation_rows
+            rows = list(derivation_rows(domain))
+        except Exception:  # manifest unreadable → no tier claims, not a fabricated one
+            rows = []
+    by_tier: dict[str, list[str]] = {}
+    for row in rows:
+        by_tier.setdefault(str(row.get("tier")), []).append(str(row.get("predicate")))
+
+    hot_predicates = sorted(by_tier.get("hot", []))
+    if not hot_predicates:
+        hot = {
+            "line": "nothing is retrieved live — every fact in this domain is installed in the model",
+            "n_predicates": 0,
+            "receipt": None,
+        }
+    elif hot_index is None:
+        raise CertificateError(
+            f"{len(hot_predicates)} hot predicate(s) routed to retrieval but no hot-index receipt "
+            "was supplied — a live-lane claim needs the index that serves it"
+        )
+    else:
+        hot = {
+            "line": (
+                f"{len(hot_predicates)} kind(s) of fact answered live from "
+                f"{int(hot_index.get('n_docs') or 0)} source document(s), indexed "
+                f"{hot_index.get('built_at')}"
+            ),
+            "n_predicates": len(hot_predicates),
+            "predicates": hot_predicates,
+            "n_docs": hot_index.get("n_docs"),
+            "built_at": hot_index.get("built_at"),
+            "receipt": hot_index.get("path"),
+        }
+
+    stable_predicates = sorted(by_tier.get("stable", []))
+    proven_predicates = sorted(by_tier.get("proven", []))
+    return {
+        "hot": hot,
+        "stable": {
+            "line": (
+                f"{len(stable_predicates)} kind(s) of fact trained into the model, "
+                f"verified {verified_at} at booster #{booster_n}"
+            ),
+            "n_predicates": len(stable_predicates),
+            "predicates": stable_predicates,
+        },
+        "proven": {
+            "line": (
+                f"{len(proven_predicates)} kind(s) of fact promoted from use "
+                "and installed only through an approved digest"
+            ),
+            "n_predicates": len(proven_predicates),
+            "predicates": proven_predicates,
+        },
+    }
+
+
 def build_freshness(
     *,
     verified_at: str | None = None,
     booster_n: int = 0,
     halted_boosters: list[int] | None = None,
-    hot_line: str = "hot facts retrieved live, current as of today",
+    domain: str | None = None,
+    hot_index: dict[str, Any] | None = None,
+    tier_rows: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     verified_at = verified_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     halted_boosters = list(halted_boosters or [])
@@ -404,13 +481,23 @@ def build_freshness(
             f" (halted boosters: {', '.join(f'#{h}' for h in halted_boosters)} — "
             f"#{booster_n} still installed)"
         )
-    return {
-        "hot": hot_line,
+    freshness = {
         "installed": installed,
         "verified_at": verified_at,
         "booster_n": booster_n,
         "halted_boosters": halted_boosters,
     }
+    if domain is not None:
+        tiers = build_tier_freshness(
+            domain,
+            verified_at=verified_at,
+            booster_n=booster_n,
+            hot_index=hot_index,
+            tier_rows=tier_rows,
+        )
+        freshness["tiers"] = tiers
+        freshness["hot"] = tiers["hot"]["line"]
+    return freshness
 
 
 def generate_certificate(
@@ -432,8 +519,14 @@ def generate_certificate(
     halted_boosters: list[int] | None = None,
     verified_at: str | None = None,
     demo: bool = False,
+    hot_index: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Emit one certificate object. Raises CertificateError on confidence-word law violations."""
+    """Emit one certificate object. Raises CertificateError on confidence-word law violations.
+
+    ``hot_index`` is the built hot-index receipt (``tier_routing.build_hot_index``). It is required
+    only when the domain actually routes predicates to the hot tier: the per-tier freshness block
+    refuses to claim a live retrieval lane it cannot point at.
+    """
     questions = list(questions_doc.get("questions") or [])
     if len(questions) < 3 and not demo:
         raise CertificateError(
@@ -462,6 +555,7 @@ def generate_certificate(
     coverage = build_coverage_line(recall_report)
     freshness = build_freshness(
         verified_at=verified_at, booster_n=booster_n, halted_boosters=halted_boosters,
+        domain=domain, hot_index=hot_index,
     )
     booster_learning = build_booster_learning(probe_receipt, column=column)
 
