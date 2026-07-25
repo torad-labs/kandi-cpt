@@ -1,0 +1,64 @@
+{
+  "schema": "kandi.formatting_augmentation.v1",
+  "campaign": "phase_r4_formatting_augmentation",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "IMPLEMENTED_MEASURED_REGRESSED_REVERTED",
+  "verdict": "NEGATIVE RESULT — formatting augmentation REDUCES distinct-2 on kanto (0.3305 -> 0.2389) and adds zero effective diversity by the repo's own diversity_lib. Reverted per the brief's own rule.",
+
+  "hypothesis": {
+    "source": "EMNLP-2025 (dvlab) formatting augmentation — layout variants add diversity at zero LLM cost and zero fact drift.",
+    "prediction": "A bounded multiplier of formatting variants on the template floor raises distinct-2 without touching faithfulness."
+  },
+
+  "implementation_as_tested": {
+    "variants": ["indent ('  ')", "bullet ('- ')", "blockquote ('> ')", "numbered ('1. ')"],
+    "shape": "pure PREFIX transforms only, so the payload survives verbatim and no variant can introduce a hallucinated entity — that is what would have kept the faithfulness gate unaffected by construction",
+    "fraction": 0.5,
+    "deterministic": "seeded (1729), stable across runs",
+    "guard": "_preserves_payload asserted the original text is a contiguous substring AND every entity_id appears unchanged; 0 variants were skipped as unsafe",
+    "suite_while_it_existed": "7/7 (entity survival, contiguous-substring, bounded multiplier, originals-never-dropped, determinism, provenance labelling, zero-fraction no-op)"
+  },
+
+  "measurement_on_kanto": {
+    "estimand": "distinct-2 over the generic_expand template floor for pokemon-lore/kanto, same triples throughout",
+    "rows": [
+      {"stage": "template floor (raw)", "surfaces": 2044, "distinct_2": 0.2722, "unique_bigrams": 2807},
+      {"stage": "after utilization balance (P0)", "surfaces": 1472, "distinct_2": 0.3305, "unique_bigrams": 2475},
+      {"stage": "after balance + formatting", "surfaces": 2187, "distinct_2": 0.2389, "unique_bigrams": 2778}
+    ],
+    "delta_vs_balanced": -0.0916,
+    "delta_pct": -27.7,
+    "arithmetic": "715 variants added (x1.4857). Total bigrams rose ~48% while UNIQUE bigrams rose only ~12% (2475 -> 2778). distinct-2 is unique/total, so duplicating a payload behind a new prefix necessarily drives it down.",
+    "second_measure": {
+      "test": "diversity_lib.effective_forms on a surface and its indented variant",
+      "result": "effective_forms == 1",
+      "reading": "The repo's own diversity library already classifies a prefix variant as the SAME form. So the augmentation adds zero effective diversity while inflating the surface count — it would spend exposure budget on rows the pipeline does not count as distinct."
+    }
+  },
+
+  "why_the_negative_result_is_structural": "Guaranteeing zero fact drift forced prefix-only transforms (anything editing inside the string risks corrupting an entity, which the faithfulness gate exists to prevent). But a prefix-only variant is, by construction, a near-duplicate: identical token sequence, one extra leading token. distinct-n is a ratio and SemDeDup's jaccard is a set overlap, so both metrics are structurally unable to reward this shape. The dvlab result may still hold for robustness measures this repo does not compute; it does not hold for the diversity gate the brief named as the ruler.",
+
+  "decision": {
+    "action": "REVERTED",
+    "rule_applied": "the brief's own — 'If an item's ablation regresses, revert it and report the negative result with the arithmetic — a proven no is a result.'",
+    "removed": ["FORMATTING_VARIANTS", "formatting_augment", "_preserves_payload", "the main() wiring", "scripts/pipeline/test_formatting_augment.py"],
+    "why_not_kept_behind_a_flag": "Dead code that measured worse is the same failure as the h7b inert budget: it would advertise that formatting augmentation is available and beneficial when the one metric this repo gates on says otherwise."
+  },
+
+  "if_revisited": [
+    "Pick a metric the mechanism can actually move: token-level robustness / eval under formatting shift, not distinct-n or jaccard.",
+    "Or use interior transforms (space insertion, markdown emphasis around non-entity spans) with an entity-span mask so the payload changes without touching entities — strictly more machinery than a prefix, and it needs the faithfulness gate re-proven.",
+    "Either way it should be measured against install strength on pinned probes, not against a diversity ratio that penalises duplicated payloads by construction."
+  ],
+
+  "deviations": [
+    "The item was implemented in full, with a passing 7-case suite, before the measurement condemned it. The suite was deleted with the code rather than left orphaned.",
+    "Only the distinct-2 measure the brief named was used as the ruler; no alternative metric was substituted after the fact to rescue the result.",
+    "P0's balance change is unaffected and stays landed — the balanced floor is where distinct-2 actually improved (0.2722 -> 0.3305)."
+  ],
+
+  "gates": {
+    "run_tests": "all green after revert",
+    "note": "generic_expand carries no residual reference to the reverted mechanism (grep-verified 0)."
+  }
+}
