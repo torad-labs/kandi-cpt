@@ -1,0 +1,58 @@
+{
+  "version": "v2",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 33,
+  "train_ids": [
+    "02e65d35ccabb57c",
+    "068c2cd95d30f109",
+    "13b808872913a5a3",
+    "177371640f090042",
+    "19486a82f397b941",
+    "1e46ff6f5b1bb4b7",
+    "26e668c4aeb3bc66",
+    "3427fd98f805e0b9",
+    "3c950799513a06eb",
+    "3d5f6fda522381fd",
+    "3def76b9f088d94a",
+    "40948cf13cfc68f5",
+    "413727c5bcf2db6f",
+    "591736d13fc80e3f",
+    "5df27fefb0e6b35d",
+    "624abc491b919225",
+    "666a02234b0f1725",
+    "7d1a9caf61e54a1a",
+    "833c3aa7ac5f5913",
+    "85bddf5db307ffd3",
+    "8783519b9d87f4d7",
+    "8eb08616c41ab362",
+    "8fef4c2d40d1a91e",
+    "b01f638fa15029f7",
+    "bb6446013a36b773",
+    "bdc60f14b04948dd",
+    "d04aab38179e61df",
+    "d0d328e938f71b81",
+    "d741328c100de3be",
+    "eb8e0ec43d144615"
+  ],
+  "holdout_ids": [
+    "61b461ad96a61395",
+    "80b90e374ab168d3",
+    "b52e1c4ecb5c3b3a"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 27,
+    "n_alias_closed_subjects": 27,
+    "id_map_size": 0,
+    "holdout_groups_taken": 3
+  },
+  "decontamination": {
+    "n_canonical_subjects": 27,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history \u2014 do not merge series."
+}

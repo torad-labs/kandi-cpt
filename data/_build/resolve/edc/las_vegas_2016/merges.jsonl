@@ -1,0 +1,7 @@
+{"canonical_id": "edc_las_vegas_2016:artist:aly_and_fila", "aliases": ["edc_las_vegas_2016:artist:aly_fila"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:artist:ti_sto", "aliases": ["edc_las_vegas_2016:artist:tiesto"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:artist:above_and_beyond", "aliases": ["edc_las_vegas_2016:artist:above_beyond"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:artist:twelve_planet", "aliases": ["edc_las_vegas_2016:artist:12th_planet"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:artist:pendulum_dj_set", "aliases": ["edc_las_vegas_2016:artist:pendulum"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:edition:edc_las_vegas_2016", "aliases": ["edc_las_vegas_2016:edition:2016"], "entity_type": "edition", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2016:festival:electric_daisy_carnival_las_vegas", "aliases": ["edc_las_vegas_2016:festival:edc_las_vegas"], "entity_type": "festival", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

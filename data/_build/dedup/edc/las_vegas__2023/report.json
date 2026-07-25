@@ -1,0 +1,37 @@
+{
+  "domain": "edc",
+  "unit": "las_vegas/2023",
+  "budget": 60,
+  "cap": 60,
+  "n_before": 159,
+  "n_after": 159,
+  "n_excluded": 0,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "plays_at:223",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:224",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:7",
+      "before": 39,
+      "after": 39,
+      "floor": 20,
+      "forms_before": 7,
+      "forms_after": 7
+    }
+  ],
+  "exclude_keys": []
+}

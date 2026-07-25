@@ -1,0 +1,13 @@
+{
+  "domain": "edc",
+  "unit": "phuket/2025",
+  "n_entities_in": 122,
+  "n_entities_out": 115,
+  "n_merges": 3,
+  "n_review": 50,
+  "n_cross_continuity_links": 0,
+  "cross_merge_violations": 0,
+  "n_id_type_mismatches": 0,
+  "auto_band": 0.92,
+  "review_band": 0.85
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "kandi.edc_manifest_regression.v1",
+  "campaign": "phase_h6_edc_manifest_regression",
+  "domain": "edc",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "PARTIAL_MIGRATION_PROVEN_GATES_NOW_EVALUATE_TWO_FAIL",
+  "headline": "EDC is on the overhauled stage spine and has a holdout for the first time (1291 held-out triple ids, alias_leaks=0). The overhaul's gates now EVALUATE on the reference domain, and two of them fail: balance and disjoint_static.",
+
+  "work_item_1_manifest": {
+    "status": "PASS",
+    "before": ["scrape","extract","pii_scan","score_educational","curate","structured","meta","hydrate","tokenize","cpt","build_sft","sft"],
+    "after": ["scrape","extract","pii_scan","score_educational","curate","structured","resolve","split","meta","hydrate","synth","contrast","dedup_surfaces","probes","audit_recall","audit","tokenize","cpt","build_sft","sft"],
+    "added": ["resolve","split","synth","contrast","dedup_surfaces","probes","audit_recall","audit"],
+    "kept_bespoke": {
+      "scrape": "-m scrape (EDC's own multi-source fetcher)",
+      "extract": "-m extract --llm-rescue (trafilatura + LLM rescue)",
+      "curate": "scripts/curate_corpus.py — legacy keep_list.json path preserved",
+      "meta": "scripts/gen_festival_meta.py",
+      "hydrate": "scripts/rehydrate_vc1.sh — EDC's bespoke multi-surface generator"
+    },
+    "stages_missing_vs_pokemon_lore": [],
+    "manifest_check": "run_pipeline.py --domain edc --check → required_failed=0, warnings=0",
+    "egress_inventory": "test_execution_contract gained ('edc','synth') and ('edc','audit_recall'). The assertion failing was the control working — the migration genuinely adds two provider-calling stages, so they are declared deliberately rather than silenced."
+  },
+
+  "work_item_2_regression": {
+    "scope": "97 non-protected units (98 on disk minus the protected las_vegas/2026), explicit --editions list, never a wildcard",
+    "note": "Run against the EXISTING 10_clean (2837 docs) / 15_structured (19190 triples) / 25_hydrated (276 files) artifacts. The expensive LLM stages already had artifacts; the genuine gap was that resolve/split/dedup/probes/audit had NEVER run on this domain.",
+    "stages": [
+      {
+        "stage": "resolve", "status": "PASS", "gpu": true, "device": "GPU 1",
+        "units": 97,
+        "counts": {"entities_before": 12542, "entities_after": 12334, "merges": 166, "review": 4229, "cross_links": 0},
+        "guardrail": {"refused_auto_merges": 493, "rule": "auto-cluster size > 25% of bucket → demote to review"},
+        "interpretation": "The collapse guardrail fired 493 times and sent 4229 ids to review against only 166 accepted merges. On a domain whose entity names repeat across 97 editions (one festival, many years) that is the guardrail behaving correctly, not a defect — but it means EDC's canonicalisation is essentially UNRESOLVED pending review, and any claim that rests on merged identity is not yet earned.",
+        "record": "data/_build/resolve/edc/<unit>/"
+      },
+      {
+        "stage": "split", "status": "PASS", "gpu": false,
+        "units": 97,
+        "counts": {"train_ids": 11776, "holdout_ids": 1291, "alias_leaks": 0},
+        "params": {"version": "v2", "frac": 0.1, "seed": 42, "closure": "alias+inverse"},
+        "interpretation": "THE headline result. EDC had no split at all, so it could not express an install-strength estimand — every EDC number to date is recall/format-transfer class. It now has a v2 holdout with zero alias leaks and a decontamination sidecar per unit. This STARTS A NEW EVAL SERIES: prior EDC figures are history and are not comparable to anything measured against split_v2.",
+        "record": "data/edc/<unit>/splits/split_v2.json + decontamination_v2.json"
+      },
+      {
+        "stage": "contrast", "status": "UNAVAILABLE_BY_DESIGN", "exit_code": 0, "gpu": false,
+        "message": "[generic_contrast] domain 'edc': contrast unavailable — no contrast block authored",
+        "interpretation": "A CONTENT gap, not a code failure. The stage is now declared and runs, but EDC's ontology carries no contrast block, so it emits nothing and exits clean. Authoring that block is domain work (the de-festivalization treats a domain as content); it was NOT faked to produce a green.",
+        "record": "logs h6_contrast.log"
+      },
+      {
+        "stage": "dedup_surfaces", "status": "PASS", "gpu": false,
+        "units": 96,
+        "counts": {"excluded_surfaces": 324128, "floor_violations": 0},
+        "interpretation": "SemDeDup evaluated on the real EDC corpus for the first time and excluded 324128 near-duplicate surfaces with zero floor violations. The exclusion is non-destructive (an exclusion list, not a delete). The magnitude is itself a finding: EDC's hydrated surfaces are heavily repetitive across editions.",
+        "record": "data/_build/dedup/edc/summary.json"
+      },
+      {
+        "stage": "probes", "status": "PASS_BUT_THIN", "gpu": false,
+        "counts": {"probe_rows": 221, "surfaces_per_gold": 4},
+        "guards": {"source_id_duplicates_dropped": 0, "multi_correct_empty_pool_dropped": 0},
+        "interpretation": "221 probe rows across 97 units is thin — many units produced 0 gold because their holdout slice is tiny (e.g. edsea/2026: 0 held_out probes from 0 gold triples). Sufficient to prove the stage runs and its guards are active; NOT sufficient to gate an install-strength claim, which would need n>=50 per the estimand rules.",
+        "record": "data/edc/<unit>/probes.jsonl"
+      },
+      {
+        "stage": "audit", "status": "FAIL", "exit_code": 1, "gpu": false,
+        "verdicts": {
+          "density": "SKIPPED (--no-gpu)",
+          "balance": "FAIL",
+          "coverage": "PASS",
+          "token_mix": "PASS",
+          "disjoint_static": "FAIL",
+          "sft_composition": "PASS",
+          "sft_phrasing": "WARN",
+          "sft_tiers": "PASS",
+          "disjoint_latent": "SKIPPED (--no-gpu)"
+        },
+        "interpretation": "This is the point of the whole work item: the overhaul's typed-graph gates have never before been evaluated on EDC, and two of them fail on the real corpus. balance and disjoint_static are REPORTED, not patched — fixing them by relaxing the gate would be the exact anti-pattern this campaign exists to prevent. density and disjoint_latent need the GPU latent pass and are honestly marked SKIPPED rather than counted as passes.",
+        "record": "data/_build/dissect/data_audit_data.js + data_audit.html"
+      }
+    ],
+    "stages_not_run": [
+      {"stage": "score_educational", "reason": "provider-bound over 2837 clean docs; the /no_think fix is proven on edc/zhuhai/2018 (7/7) but a full-corpus teacher pass is a deliberate spend decision, not something to start unasked."},
+      {"stage": "curate", "reason": "GPU + consumes score_educational output; blocked on the above."},
+      {"stage": "synth", "reason": "provider-bound LLM diversity layer over the full corpus."},
+      {"stage": "audit_recall", "reason": "provider-bound. Also: work item 1 established that this estimand is currently unstable (0.4505 vs 0.1923 on identical inputs), so spending a full-corpus EDC run before the fixture question is settled would buy an unreadable number."},
+      {"stage": "tokenize", "reason": "consumes curate's keep_list; blocked upstream."}
+    ]
+  },
+
+  "protected_reference": {
+    "unit": "las_vegas/2026",
+    "files": 1955,
+    "aggregate_sha256_before": "4bad426fb79a7da7340437784b90ee69d43ac57f957bcaca7347f54aac87faee",
+    "aggregate_sha256_after": "4bad426fb79a7da7340437784b90ee69d43ac57f957bcaca7347f54aac87faee",
+    "verdict": "BYTE-UNCHANGED",
+    "method": "Excluded explicitly from the --editions list (97 of 98 on disk) rather than relying on the stage to honour protected_editions; verified by recomputing the aggregate hash over all 1955 files after every stage."
+  },
+
+  "regression_vs_legacy": {
+    "resolve": {"legacy": "never ran", "now": "97 units, 166 merges, 4229 review, 493 guardrail refusals"},
+    "split": {"legacy": "never ran — NO holdout existed", "now": "97 units, 11776 train / 1291 holdout, alias_leaks=0"},
+    "dedup_surfaces": {"legacy": "never ran", "now": "324128 surfaces excluded, 0 floor violations"},
+    "probes": {"legacy": "never ran", "now": "221 rows"},
+    "audit": {"legacy": "never ran on EDC", "now": "2 FAIL (balance, disjoint_static), 1 WARN, 4 PASS, 2 SKIPPED"},
+    "estimand_consequence": "EDC previously supported no install-strength estimand at all. It now can, against split_v2 — but the prior EDC numbers do not carry over and must not be compared to anything measured on the new series."
+  },
+
+  "verdict": {
+    "manifest_migration": "PASS — spine complete, --check clean, bespoke generators preserved",
+    "data_path_regression": "PARTIAL — 5 of 6 attempted stages PASS/clean, audit FAILs on 2 gates, 5 stages deliberately not run (provider/GPU spend)",
+    "gates_now_evaluate_on_edc": true,
+    "honest_statement": "The overhaul's gates can finally see the reference domain, and the first thing they say is that EDC fails balance and disjoint_static and has an essentially unresolved entity layer (4229 ids in review vs 166 merges). That is the value of the migration: those were invisible before because the stages were not declared."
+  },
+
+  "deviations": [
+    "The regression ran on EXISTING extract/structured/hydrate artifacts rather than re-running them from scratch. Those stages already had outputs for all 97 units; re-running them is a large provider spend that would not have changed what the missing gates report.",
+    "Five stages were not run (score_educational full-corpus, curate, synth, audit_recall, tokenize) because each is provider- or GPU-bound at full-corpus scale. Named explicitly with reasons rather than silently omitted.",
+    "contrast exits 0 while emitting nothing, because EDC has no authored contrast block. Recorded as UNAVAILABLE_BY_DESIGN rather than as a pass.",
+    "audit's density and disjoint_latent need the GPU latent pass and ran under --no-gpu per the manifest's declared cmd; both are marked SKIPPED, never counted as passes.",
+    "No legacy config was patched to force any stage green. The two audit FAILs stand as measured.",
+    "The evalgate containment wrapper had to be taught to the §build-containment guard before any of this could run — the guard blocked its own declared compliant form. Fixed in the guard (red-green: 1 self_check error before, 0 after), not routed around."
+  ],
+
+  "next": [
+    "Decide the score_educational full-corpus spend (2837 teacher calls) — it unblocks curate → tokenize and the rest of the training path.",
+    "Author an EDC contrast block, or record deliberately that EDC does not carry one.",
+    "Work the 4229-item resolve review queue, or accept that EDC identity is unresolved and stop making merged-identity claims.",
+    "Read balance and disjoint_static in data_audit.html and fix the DATA, not the gate.",
+    "Probe yield is too thin (221 rows) to gate install strength; revisit after resolve review lands more gold."
+  ],
+
+  "gates": {
+    "run_tests": "all green",
+    "test_cpt_config": "8/8 PASS",
+    "qgre_test_gates": "9/9 PASS",
+    "compileall": "PASS",
+    "manifest_check": "required_failed=0 warnings=0"
+  }
+}

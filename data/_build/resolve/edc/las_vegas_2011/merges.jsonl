@@ -1,0 +1,2 @@
+{"canonical_id": "edc_las_vegas_2011:vendor:rock_and_vape_downtown", "aliases": ["edc_las_vegas_2011:vendor:rock_and_vape_east"], "entity_type": "vendor", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2011:venue:las_vegas_motor_speedway", "aliases": ["edc_las_vegas_2011:venue:las_vegas_speedway"], "entity_type": "venue", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

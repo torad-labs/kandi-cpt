@@ -1,0 +1,51 @@
+{
+  "version": "v2",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 26,
+  "train_ids": [
+    "06d7d205eb4ecfd6",
+    "0bdf70b8d1b43cf7",
+    "159936bab2f2e7fb",
+    "2027002adfb523ae",
+    "2b255ddfbca5cb25",
+    "3495729975fb8bfd",
+    "4273b8c4a00fd52c",
+    "4984a772855ceb40",
+    "49bf09c54a431645",
+    "565bef0a9766e5b5",
+    "596bd041219a6442",
+    "6c3ea0a857671011",
+    "74e56bc86a78ff55",
+    "7af46a21465d6418",
+    "95f2a2c1d44784a3",
+    "9b0169684fa26777",
+    "a8a743b07507ef25",
+    "d99fe499e1bbf0b3",
+    "e3d0dbe29256c48a",
+    "e986157dd0f69a55",
+    "ee71f9090d29fd90",
+    "ef3dd969022c618b",
+    "f32abb905add6925"
+  ],
+  "holdout_ids": [
+    "2fe08eb92bb8c3d4",
+    "64bb3fadec868feb",
+    "d7d29f2c19489b04"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 15,
+    "n_alias_closed_subjects": 15,
+    "id_map_size": 0,
+    "holdout_groups_taken": 2
+  },
+  "decontamination": {
+    "n_canonical_subjects": 15,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history \u2014 do not merge series."
+}

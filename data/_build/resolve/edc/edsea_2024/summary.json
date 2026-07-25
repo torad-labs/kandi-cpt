@@ -1,0 +1,13 @@
+{
+  "domain": "edc",
+  "unit": "edsea/2024",
+  "n_entities_in": 84,
+  "n_entities_out": 83,
+  "n_merges": 1,
+  "n_review": 50,
+  "n_cross_continuity_links": 0,
+  "cross_merge_violations": 0,
+  "n_id_type_mismatches": 1,
+  "auto_band": 0.92,
+  "review_band": 0.85
+}

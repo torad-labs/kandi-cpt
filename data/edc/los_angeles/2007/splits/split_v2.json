@@ -1,0 +1,44 @@
+{
+  "version": "v2",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 19,
+  "train_ids": [
+    "0ea2121f8fe3dcff",
+    "12b28738b47a2f5d",
+    "2459e4bab40848b5",
+    "318d5ef330ad497a",
+    "395bb8206bc91460",
+    "4e667805e6c9f862",
+    "6a719bc224effded",
+    "8f0c5d302a185a4f",
+    "9227e04d7a4b0c8f",
+    "99fae500e67f19c9",
+    "9ecd0e7dd60655f1",
+    "ba665c9a8f797be3",
+    "d93141d7f0b3b7cf",
+    "db12cadfdf62a1e5",
+    "e549f97cb948f9fc",
+    "e69944247078c2c3",
+    "eb4c70e5763d8341",
+    "ffaf460e28c8df8c"
+  ],
+  "holdout_ids": [
+    "a03994e81c2a9232"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 16,
+    "n_alias_closed_subjects": 16,
+    "id_map_size": 0,
+    "holdout_groups_taken": 1
+  },
+  "decontamination": {
+    "n_canonical_subjects": 16,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history \u2014 do not merge series."
+}

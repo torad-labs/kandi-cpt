@@ -1,0 +1,1 @@
+{"a": "edc_san_bernardino_2005:venue:national_orange_show", "b": "edc_san_bernardino_2005:venue:san_bernardino", "name_a": "National Orange Show", "name_b": "San Bernardino", "entity_type": "venue", "continuity": "unspecified", "score": 0.92, "band": "review", "reason": "embedding-collapse-guard", "guard": "auto-cluster size 2 > 25% of bucket live=2"}

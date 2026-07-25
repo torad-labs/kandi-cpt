@@ -1,0 +1,5 @@
+{"canonical_id": "edc_las_vegas_2015:artist:above_and_beyond", "aliases": ["edc_las_vegas_2015:artist:above_beyond"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2015:artist:disclosure_dj_set", "aliases": ["edc_las_vegas_2015:artist:disclosure"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2015:artist:duke_dumont_live", "aliases": ["edc_las_vegas_2015:artist:duke_dumont"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2015:edition:edc_las_vegas_2015", "aliases": ["edc_las_vegas_2015:edition:edc_lv_2015"], "entity_type": "edition", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2015:festival:electric_daisy_carnival_las_vegas", "aliases": ["edc_las_vegas_2015:festival:edc_las_vegas"], "entity_type": "festival", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

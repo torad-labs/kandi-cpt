@@ -1,0 +1,153 @@
+{
+  "domain": "edc",
+  "unit": "mexico_city/2023",
+  "budget": 60,
+  "cap": 60,
+  "n_before": 670,
+  "n_after": 619,
+  "n_excluded": 51,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "plays_at:1",
+      "before": 98,
+      "after": 60,
+      "floor": 49,
+      "forms_before": 26,
+      "forms_after": 37
+    },
+    {
+      "fact": "plays_at:3",
+      "before": 44,
+      "after": 44,
+      "floor": 22,
+      "forms_before": 14,
+      "forms_after": 14
+    },
+    {
+      "fact": "stage_meta:basspod",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "stage_meta:bionic_jungle",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "stage_meta:circuit_grounds",
+      "before": 57,
+      "after": 57,
+      "floor": 29,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "stage_meta:cosmic_meadow",
+      "before": 58,
+      "after": 58,
+      "floor": 29,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "stage_meta:kinetic_field",
+      "before": 40,
+      "after": 40,
+      "floor": 20,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "stage_meta:neon_garden",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "stage_meta:quantum_valley",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "stage_meta:stereo_bloom",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "stage_meta:wasteland",
+      "before": 64,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 2,
+      "forms_after": 2
+    }
+  ],
+  "exclude_keys": [
+    "relations.jsonl:11:6da81088",
+    "relations.jsonl:15:6ffe8551",
+    "relations.jsonl:175:fe07407f",
+    "relations.jsonl:177:9e025ecb",
+    "relations.jsonl:182:eca05182",
+    "relations.jsonl:183:909d5616",
+    "relations.jsonl:185:cda49eeb",
+    "relations.jsonl:186:e22b44bc",
+    "relations.jsonl:20:2a6a702d",
+    "relations.jsonl:22:cfcb550e",
+    "relations.jsonl:27:1d2271dd",
+    "relations.jsonl:29:55a26e70",
+    "relations.jsonl:32:5a7ac64c",
+    "relations.jsonl:334:2e8399d7",
+    "relations.jsonl:335:8fb508a9",
+    "relations.jsonl:336:746a5bd9",
+    "relations.jsonl:33:a25ae020",
+    "relations.jsonl:34:2bb266fc",
+    "relations.jsonl:35:8dd0484e",
+    "relations.jsonl:36:65dd4819",
+    "relations.jsonl:393:3edf5b62",
+    "relations.jsonl:40:9c0c8240",
+    "relations.jsonl:430:f2cfde93",
+    "relations.jsonl:43:617c7a48",
+    "relations.jsonl:455:d5cf6cb7",
+    "relations.jsonl:45:25e6ecad",
+    "relations.jsonl:462:34cb164f",
+    "relations.jsonl:463:798eb64f",
+    "relations.jsonl:467:a1f4ceda",
+    "relations.jsonl:480:71b298f3",
+    "relations.jsonl:499:163dfed5",
+    "relations.jsonl:4:1c4bcc20",
+    "relations.jsonl:504:96a6ce56",
+    "relations.jsonl:506:0a5d53d7",
+    "relations.jsonl:509:492189e6",
+    "relations.jsonl:50:d85ce4f5",
+    "relations.jsonl:526:503e41be",
+    "relations.jsonl:54:84312c54",
+    "relations.jsonl:55:7a66379d",
+    "relations.jsonl:56:7e444087",
+    "relations.jsonl:57:f10f5db4",
+    "relations.jsonl:58:3e8bca9a",
+    "relations.jsonl:5:07ec2b47",
+    "relations.jsonl:62:fd286900",
+    "relations.jsonl:63:bc8964d1",
+    "relations.jsonl:79:5fe8cf6c",
+    "relations.jsonl:7:f0f08c36",
+    "relations.jsonl:82:a0ee2519",
+    "relations.jsonl:84:1c1311f2",
+    "relations.jsonl:8:c08eafdf",
+    "relations.jsonl:9:bf898caf"
+  ]
+}

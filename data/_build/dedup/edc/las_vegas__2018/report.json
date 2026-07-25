@@ -1,0 +1,3301 @@
+{
+  "domain": "edc",
+  "unit": "las_vegas/2018",
+  "budget": 60,
+  "cap": 60,
+  "n_before": 24159,
+  "n_after": 24159,
+  "n_excluded": 0,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "plays_at:10",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:100",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:102",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:103",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:104",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:105",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:106",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "plays_at:107",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:108",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:109",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:11",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:110",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:111",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:112",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:113",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:114",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:115",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:116",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:117",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:118",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:119",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:12",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:120",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:121",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:122",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:123",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:124",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:125",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:126",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:127",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:128",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:129",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:13",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:130",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:131",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:132",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:133",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:134",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:136",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:137",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:138",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:139",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:14",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:140",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:141",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:142",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:143",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:144",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:145",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:146",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:147",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:148",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 16,
+      "forms_after": 16
+    },
+    {
+      "fact": "plays_at:149",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:15",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:150",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 17,
+      "forms_after": 17
+    },
+    {
+      "fact": "plays_at:151",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:152",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:153",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:154",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:155",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:156",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:157",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:158",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:159",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:16",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:160",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:161",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:162",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:163",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:164",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:165",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:167",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:168",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:169",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:17",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:170",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:171",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:172",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:173",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:174",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:175",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:176",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:177",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:178",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:179",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:18",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 17,
+      "forms_after": 17
+    },
+    {
+      "fact": "plays_at:180",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:181",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 16,
+      "forms_after": 16
+    },
+    {
+      "fact": "plays_at:182",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:183",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:184",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:185",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:186",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:187",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:188",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:189",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:19",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:190",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:192",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:193",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:194",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:195",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:196",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:197",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:198",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:199",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:2",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:20",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:200",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:201",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:202",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:203",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:204",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:206",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:207",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:208",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:209",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:21",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:210",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:211",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:212",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:213",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:214",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:215",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:216",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:217",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:218",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:219",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:22",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:220",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:221",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:222",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:223",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:224",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:225",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:226",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:227",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:228",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 15,
+      "forms_after": 15
+    },
+    {
+      "fact": "plays_at:229",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:23",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:230",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:231",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:232",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:233",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:234",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:235",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:236",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:237",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:238",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:239",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:24",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:240",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:241",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:242",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:243",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:244",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:245",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:246",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:247",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:248",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:249",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:25",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:250",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:251",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:252",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:253",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:254",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 16,
+      "forms_after": 16
+    },
+    {
+      "fact": "plays_at:255",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:256",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:258",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:259",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 17,
+      "forms_after": 17
+    },
+    {
+      "fact": "plays_at:26",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:260",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:261",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:262",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:263",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:264",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:265",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:266",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:267",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:268",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:269",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:27",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:270",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:271",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:272",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:273",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:274",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:275",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:276",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:277",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:279",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:28",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:280",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:281",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:282",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:283",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:284",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:285",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:286",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:287",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:288",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:289",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:29",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:290",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:291",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:292",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:293",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:294",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:295",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:296",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:297",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:298",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:299",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:3",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:30",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:300",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:301",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:303",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:304",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "plays_at:305",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:306",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:307",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:308",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:309",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:31",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 17,
+      "forms_after": 17
+    },
+    {
+      "fact": "plays_at:310",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:311",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:312",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:313",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:314",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:315",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:316",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:317",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:318",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:319",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:32",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:320",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:321",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:322",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:323",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:324",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:325",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:326",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:327",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:328",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:329",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:33",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:330",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:331",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:332",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:333",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:334",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:335",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:336",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:337",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:338",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:339",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:34",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:340",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:341",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:342",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:344",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:345",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:346",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:347",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:348",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:349",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:35",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:350",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:351",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:352",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:353",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:354",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:356",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:357",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:358",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:359",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:36",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:360",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:361",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:362",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:363",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:364",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:365",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:366",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:367",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:368",
+      "before": 54,
+      "after": 54,
+      "floor": 27,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:369",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:37",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:370",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:371",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:372",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:373",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:375",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:376",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:377",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:378",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:379",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:38",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:380",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "plays_at:381",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:382",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:383",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:384",
+      "before": 45,
+      "after": 45,
+      "floor": 23,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:385",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:386",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:388",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:389",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:39",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:390",
+      "before": 48,
+      "after": 48,
+      "floor": 24,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:391",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:392",
+      "before": 17,
+      "after": 17,
+      "floor": 9,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:393",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:394",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:395",
+      "before": 31,
+      "after": 31,
+      "floor": 16,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:396",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:397",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:398",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:399",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:4",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 17,
+      "forms_after": 17
+    },
+    {
+      "fact": "plays_at:40",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:400",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:402",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:403",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:404",
+      "before": 24,
+      "after": 24,
+      "floor": 12,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:405",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:407",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 11,
+      "forms_after": 11
+    },
+    {
+      "fact": "plays_at:408",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:41",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:410",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:411",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:412",
+      "before": 24,
+      "after": 24,
+      "floor": 12,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:413",
+      "before": 38,
+      "after": 38,
+      "floor": 19,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:414",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:416",
+      "before": 26,
+      "after": 26,
+      "floor": 13,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:417",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 15,
+      "forms_after": 15
+    },
+    {
+      "fact": "plays_at:42",
+      "before": 49,
+      "after": 49,
+      "floor": 25,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:420",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:421",
+      "before": 34,
+      "after": 34,
+      "floor": 17,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:423",
+      "before": 31,
+      "after": 31,
+      "floor": 16,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:424",
+      "before": 41,
+      "after": 41,
+      "floor": 21,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:426",
+      "before": 39,
+      "after": 39,
+      "floor": 20,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:427",
+      "before": 53,
+      "after": 53,
+      "floor": 27,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "plays_at:43",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:430",
+      "before": 47,
+      "after": 47,
+      "floor": 24,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:433",
+      "before": 39,
+      "after": 39,
+      "floor": 20,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:436",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:44",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:440",
+      "before": 22,
+      "after": 22,
+      "floor": 11,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:442",
+      "before": 26,
+      "after": 26,
+      "floor": 13,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:443",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:446",
+      "before": 11,
+      "after": 11,
+      "floor": 6,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:45",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:46",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:47",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:48",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:49",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:50",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:51",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:52",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:53",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:54",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:55",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:56",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:57",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 14,
+      "forms_after": 14
+    },
+    {
+      "fact": "plays_at:59",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 10,
+      "forms_after": 10
+    },
+    {
+      "fact": "plays_at:6",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:60",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:61",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:62",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:63",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:64",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:65",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:66",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:67",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:68",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:69",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:7",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:70",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:71",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:72",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:73",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:74",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:75",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:76",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:77",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:78",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:79",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:8",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:80",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:81",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 4,
+      "forms_after": 4
+    },
+    {
+      "fact": "plays_at:82",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 8,
+      "forms_after": 8
+    },
+    {
+      "fact": "plays_at:83",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:84",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:85",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:86",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:87",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "plays_at:88",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "plays_at:89",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:9",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 5,
+      "forms_after": 5
+    },
+    {
+      "fact": "plays_at:90",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:91",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    },
+    {
+      "fact": "plays_at:92",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:93",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 9,
+      "forms_after": 9
+    },
+    {
+      "fact": "plays_at:94",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:95",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:96",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:97",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 12,
+      "forms_after": 12
+    },
+    {
+      "fact": "plays_at:98",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 2,
+      "forms_after": 2
+    },
+    {
+      "fact": "plays_at:99",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 1,
+      "forms_after": 1
+    }
+  ],
+  "exclude_keys": []
+}

@@ -1,0 +1,29 @@
+{
+  "domain": "edc",
+  "unit": "las_vegas/2022",
+  "budget": 60,
+  "cap": 60,
+  "n_before": 120,
+  "n_after": 120,
+  "n_excluded": 0,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "plays_at:0",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "plays_at:9",
+      "before": 60,
+      "after": 60,
+      "floor": 30,
+      "forms_before": 3,
+      "forms_after": 3
+    }
+  ],
+  "exclude_keys": []
+}

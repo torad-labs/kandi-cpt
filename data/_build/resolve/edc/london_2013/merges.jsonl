@@ -1,0 +1,3 @@
+{"canonical_id": "edc_london_2013:artist:ti_sto", "aliases": ["edc_london_2013:artist:tiesto"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_london_2013:edition:edc_london_2013", "aliases": ["edc_london_2013:edition:2013"], "entity_type": "edition", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_london_2013:festival:electric_daisy_carnival_london", "aliases": ["edc_london_2013:festival:edc_london"], "entity_type": "festival", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

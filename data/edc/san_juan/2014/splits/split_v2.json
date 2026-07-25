@@ -1,0 +1,47 @@
+{
+  "version": "v2",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 23,
+  "train_ids": [
+    "0a6df6e235267871",
+    "0ef53eda63d063e7",
+    "17e130ebb3073e45",
+    "1dbb1796db93cfae",
+    "3beb507af5d41911",
+    "45bdb5785509697f",
+    "4bf7153ff348f976",
+    "587e88b9126e94f8",
+    "65d94ce1174e7a2c",
+    "74d71b032220d218",
+    "9af2e184f0bf47b8",
+    "a0b236eb24e25509",
+    "bcbe43914a8eef4e",
+    "bff15376d1e5754d",
+    "c82e420cec869af1",
+    "d1ff85592bf01376",
+    "d57e37db1343bdc5",
+    "d9440440e371155d",
+    "db48930bf973a82f",
+    "f53fc3799e6fbdff"
+  ],
+  "holdout_ids": [
+    "41577071a0128b67",
+    "bbd1057be415eed3"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 20,
+    "n_alias_closed_subjects": 20,
+    "id_map_size": 0,
+    "holdout_groups_taken": 2
+  },
+  "decontamination": {
+    "n_canonical_subjects": 20,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history \u2014 do not merge series."
+}

@@ -1,0 +1,5 @@
+{"canonical_id": "edc_las_vegas_2013:artist:above_and_beyond", "aliases": ["edc_las_vegas_2013:artist:above_beyond"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2013:artist:armin_van_buuren", "aliases": ["edc_las_vegas_2013:artist:armin"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2013:artist:ti_sto", "aliases": ["edc_las_vegas_2013:artist:tiesto"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2013:artist:w_w", "aliases": ["edc_las_vegas_2013:artist:ww"], "entity_type": "artist", "continuity": "unspecified", "band": "exact-name", "score": 1.0}
+{"canonical_id": "edc_las_vegas_2013:festival:electric_daisy_carnival_las_vegas_2013", "aliases": ["edc_las_vegas_2013:festival:edc_las_vegas_2013"], "entity_type": "festival", "continuity": "unspecified", "band": "exact-name", "score": 1.0}

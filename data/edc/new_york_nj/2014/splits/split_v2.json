@@ -1,0 +1,43 @@
+{
+  "version": "v2",
+  "seed": 42,
+  "holdout_frac": 0.1,
+  "grouping": "alias+inverse",
+  "n_triples": 18,
+  "train_ids": [
+    "18272eeda2e2ea3d",
+    "1fea010115b79e46",
+    "2dc45233821a70b7",
+    "39c145651732bdd0",
+    "4876e5a63296516b",
+    "5c720f8bd6e156c6",
+    "6beb52551e06262e",
+    "7a189275d67508f8",
+    "9f9a3c756a903de0",
+    "a059b4096394bbf6",
+    "acdc05dee67a7811",
+    "d081b014b039f9a9",
+    "d3d72a9684d8f605",
+    "dc9332095500f07c",
+    "efb0b855373b6600",
+    "f4fc1b8713b515b2",
+    "fc3cd28a5f6b0412"
+  ],
+  "holdout_ids": [
+    "a07c107ce998285d"
+  ],
+  "meta": {
+    "grouping": "alias+inverse",
+    "n_groups": 15,
+    "n_alias_closed_subjects": 15,
+    "id_map_size": 0,
+    "holdout_groups_taken": 1
+  },
+  "decontamination": {
+    "n_canonical_subjects": 15,
+    "n_alias_leaks": 0,
+    "alias_leaks": [],
+    "zero_alias_leaks": true
+  },
+  "series_note": "split_v2 is a NEW eval series (alias+inverse closed). v1 numbers remain recall-class history \u2014 do not merge series."
+}

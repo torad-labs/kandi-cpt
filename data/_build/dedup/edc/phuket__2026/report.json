@@ -1,0 +1,105 @@
+{
+  "domain": "edc",
+  "unit": "phuket/2026",
+  "budget": 60,
+  "cap": 60,
+  "n_before": 549,
+  "n_after": 530,
+  "n_excluded": 19,
+  "floor_violations": [],
+  "per_fact": [
+    {
+      "fact": "stage_meta:basspod",
+      "before": 64,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "stage_meta:bionic_jungle",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "stage_meta:circuit_grounds",
+      "before": 57,
+      "after": 57,
+      "floor": 29,
+      "forms_before": 6,
+      "forms_after": 6
+    },
+    {
+      "fact": "stage_meta:cosmic_meadow",
+      "before": 56,
+      "after": 56,
+      "floor": 28,
+      "forms_before": 13,
+      "forms_after": 13
+    },
+    {
+      "fact": "stage_meta:kinetic_field",
+      "before": 64,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 16,
+      "forms_after": 16
+    },
+    {
+      "fact": "stage_meta:neon_garden",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 3,
+      "forms_after": 3
+    },
+    {
+      "fact": "stage_meta:quantum_valley",
+      "before": 62,
+      "after": 60,
+      "floor": 31,
+      "forms_before": 6,
+      "forms_after": 7
+    },
+    {
+      "fact": "stage_meta:stereo_bloom",
+      "before": 63,
+      "after": 60,
+      "floor": 32,
+      "forms_before": 7,
+      "forms_after": 7
+    },
+    {
+      "fact": "stage_meta:wasteland",
+      "before": 57,
+      "after": 57,
+      "floor": 29,
+      "forms_before": 2,
+      "forms_after": 2
+    }
+  ],
+  "exclude_keys": [
+    "relations.jsonl:151:51cc3004",
+    "relations.jsonl:184:e69b454d",
+    "relations.jsonl:186:318b4504",
+    "relations.jsonl:193:3304f372",
+    "relations.jsonl:242:43d16ac0",
+    "relations.jsonl:24:624321da",
+    "relations.jsonl:250:2600f3cf",
+    "relations.jsonl:263:f03367d4",
+    "relations.jsonl:29:7f773948",
+    "relations.jsonl:304:8a0fda9a",
+    "relations.jsonl:32:1f107765",
+    "relations.jsonl:343:67a8de27",
+    "relations.jsonl:346:187e9070",
+    "relations.jsonl:363:cb9eba35",
+    "relations.jsonl:39:4fde9d2f",
+    "relations.jsonl:507:1388b5e6",
+    "relations.jsonl:70:ce781fd9",
+    "relations.jsonl:76:5445d543",
+    "relations.jsonl:95:98b40468"
+  ]
+}
