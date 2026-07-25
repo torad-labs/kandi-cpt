@@ -1,0 +1,93 @@
+{
+  "schema": "kandi.balance_fix.v1",
+  "campaign": "phase_h7b_balance_fix",
+  "domain": "edc",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "ROOT_CAUSE_FIXED_BALANCE_STILL_FAILS_AND_CANNOT_BE_FIXED_BY_CULLING",
+  "headline": "Chasing the balance FAIL uncovered a worse bug: the dedup exclusion list has never been honored by anything, because the key was built from Python's per-process-salted hash(). Fixed. Balance itself still FAILs and is proven unfixable post-hoc — the floor pins it.",
+
+  "the_bug_found_on_the_way": {
+    "severity": "HIGH — silently disabled a shipped quality stage for every domain on this path",
+    "what": "dedup_surfaces wrote exclusion keys as f'{file}:{line}:{hash(text) & 0xFFFFFFFF:08x}' and tokenize_corpus recomputed the same expression to decide what to drop from the training shard. Python salts str hashing per interpreter (PYTHONHASHSEED, on by default since 3.3), so writer and reader NEVER agreed.",
+    "evidence": {
+      "unit": "edc/dallas/2011",
+      "surfaces": 13850,
+      "stored_exclusions": 8063,
+      "whole_key_overlap_before": 0,
+      "path_line_prefix_overlap": "8063 of 8063 — the line numbers matched exactly; only the hash suffix differed, isolating the cause to the hash",
+      "two_interpreters_same_input": "hash('abc') gave b164e0fc and 581830ea in separate processes",
+      "whole_key_overlap_after": 8063
+    },
+    "blast_radius": "tokenize_corpus.py:156 loads the list and prints 'honoring dedup exclusion list (N keys)', then drops nothing — every surface dedup believed it had culled went into the shard. This affects every domain that ran dedup_surfaces then tokenize, not just EDC.",
+    "fix": "One shared surface_key(file_name, line_index, text) using sha256, imported by tokenize_corpus from dedup_surfaces so a local copy cannot drift back apart.",
+    "red_green": {
+      "test": "test_surface_key_is_stable_across_processes — recomputes the key in SEPARATE interpreters under PYTHONHASHSEED 0/1/12345.",
+      "red": "3 distinct keys for identical input: relations.jsonl:7508:{c1c648e6, 4a1ac53a, 74e9cab1}",
+      "green": "single key across all seeds; suite 5/5",
+      "note": "An in-process test CANNOT catch this — the salt is fixed within one run. The subprocess form is the point."
+    },
+    "effect_measured": {
+      "raw_surfaces": 666198,
+      "effective_surfaces_now_honored": 342070,
+      "culled_pct": 48.7,
+      "per_relation_culled_pct": {
+        "artist_to_stage": 56.7, "stage_roster": 48.7, "multi_stage": 40.6,
+        "stage_to_genre": 3.2, "stage_production_character": 2.0, "stage_rank_capacity": 2.0,
+        "stage_brand": 1.8, "recommendation": 0.3,
+        "in_lineup": 0.0, "set_time": 0.0, "set_order": 0.0, "special_slot": 0.0
+      }
+    }
+  },
+
+  "balance_gate": {
+    "verdict": "STILL FAIL — and post-hoc culling provably cannot fix it",
+    "cov_raw": 2.7786,
+    "cov_effective_post_dedup": 2.3236,
+    "cov_max": 1.0,
+    "interpretation": "Even measured on the effective corpus that actually ships, cov is 2.32 against a 1.0 ceiling. So the H7 verdict holds: this is a real corpus defect, not an artifact of the gate measuring the wrong population.",
+    "per_relation_amplification_surfaces_per_fact": {
+      "stage_production_character": 1368.78, "stage_brand": 1267.40, "stage_to_genre": 1266.44,
+      "recommendation": 1256.56, "stage_rank_capacity": 1217.75, "artist_to_stage": 458.77,
+      "in_lineup": 84.07, "stage_roster": 31.81, "set_time": 21.14, "multi_stage": 16.78,
+      "special_slot": 10.67, "set_order": 6.90
+    },
+    "sharper_than_h7": "H7 measured amplification as surfaces-per-TRIPLE and reported ~21x between the two big relations. Measured per SURFACED fact (what dedup actually groups on) the spread is 1368.78 to 6.90, ~198x, and the extremes sit on tiny fact sets — 9 facts producing 12319 surfaces. Both numbers are true of different denominators; this one is the one the culling machinery can see."
+  },
+
+  "why_the_prescribed_fix_could_not_land_here": {
+    "attempted": "A per-relation per-fact emission budget derived from the corpus (median amplification), passed into dedup_unit.",
+    "outcome": "REVERTED as inert, not shipped.",
+    "reason_1_derivation_collapses": "The budget is bounded by the existing flat cap: min(cap=60, ceil(median=271.42)) = 60 for every relation, i.e. identical to the current flat budget. Nothing changed; exclusions stayed at exactly 324128.",
+    "reason_2_the_floor_dominates": "exposure_floor(n, cap) = max(2, min(cap, n//2, n)). With cap=60 any fact holding >=120 surfaces has floor 60, and target = max(floor, min(budget, n)) >= 60. Measured: n=120 -> floor 60, n=458 -> floor 60, n=1200 -> floor 60. No budget can push a heavily-amplified fact below 60 surfaces without breaking the under-exposure guarantee the floor exists to provide.",
+    "conclusion": "Culling cannot rebalance a corpus whose imbalance lives above the floor. The lever is the GENERATOR emitting fewer surfaces per fact for over-amplified relations — exactly what H7 prescribed. Shipping an inert budget mechanism would have added dead complexity and the false impression that balance had been addressed.",
+    "what_was_NOT_done": "dominance_max_frac / BALANCE_COV_MAX untouched at 1.0 (git-verified). The floor was briefly made budget-aware during the attempt, which broke an existing floor-protection test (n_after 2 vs expected >=5); that regression was caught by the suite and reverted rather than accommodated."
+  },
+
+  "verdict": {
+    "dedup_exclusion_list_honored": true,
+    "balance_gate": "FAIL (cov 2.3236 vs 1.0)",
+    "gate_recalibrated": false,
+    "generator_fix_applied": false
+  },
+
+  "handoff": {
+    "balance": "Bound per-fact emission in the generator. EDC's hydrate is the Rust festival-factory driven by scripts/rehydrate_vc1.sh with BASE_N=8; the >1200 surfaces/fact relations (stage_production_character, stage_brand, stage_to_genre, recommendation, stage_rank_capacity — 9, 5, 9, 9 and 4 facts respectively) are where the corpus is being inflated. Re-hydration is a full-corpus provider spend, so it is a deliberate decision, not a side effect.",
+    "retokenize_warning": "Any shard tokenized before this commit was built WITHOUT dedup applied, whatever its logs claimed. Shards must be rebuilt before their diversity properties can be trusted.",
+    "not_started": ["work item 1b (disjoint_static edition scoping)", "work item 2 (resolve review queue)", "work item 3 (thin probes)"]
+  },
+
+  "deviations": [
+    "The briefed fix for 1a was implemented and then REVERTED after measurement showed it inert. Reported as a negative result with the arithmetic rather than shipped to look complete.",
+    "The session's headline change is a bug the brief did not ask about. It was found while instrumenting balance and is strictly more severe, so it was fixed first.",
+    "Only work item 1a is addressed. Items 1b, 2 and 3 are untouched — stopped at the context budget rather than rushing a gate-scoping change without its red cases.",
+    "No gate threshold was altered. The one gate-adjacent edit made during the attempt (a budget-aware floor) was a regression, was caught by the existing suite, and was reverted."
+  ],
+
+  "gates": {
+    "run_tests": "all green",
+    "test_cpt_config": "8/8 PASS",
+    "qgre_test_gates": "9/9 PASS",
+    "compileall": "PASS",
+    "dedup_suite": "5/5 PASS (2 new: cross-process key stability, same-line collision)"
+  }
+}

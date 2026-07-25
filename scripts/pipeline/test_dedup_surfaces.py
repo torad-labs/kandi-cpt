@@ -2,9 +2,11 @@
 """Red-green proofs for surface dedup floor protection."""
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import pipeline.dedup_surfaces as DS  # noqa: E402
 
@@ -51,6 +53,43 @@ def test_exposure_floor_math():
     assert DS.exposure_floor(10, 60) == 5   # half of 10
     assert DS.exposure_floor(100, 60) == 50  # half of 100, under cap
     assert DS.exposure_floor(200, 60) == 60  # half would be 100 → capped at 60
+
+
+def test_surface_key_is_stable_across_processes():
+    """The whole exclusion mechanism depends on writer and reader agreeing on this key.
+
+    RED (pre-fix): the key used `hash(text)`, which Python salts per interpreter, so dedup wrote
+    keys tokenize_corpus could never reproduce and every "excluded" surface stayed in the shard.
+    Measured on edc/dallas/2011: 8063 stored exclusions, 8063 matching path:line prefixes, ZERO
+    whole-key matches. An in-process test cannot catch this — the salt is fixed within one run —
+    so the key must be recomputed in SEPARATE interpreters with different seeds.
+    """
+    import subprocess
+    import sys as _sys
+
+    snippet = (
+        "import sys; sys.path.insert(0, 'scripts');"
+        "from pipeline.dedup_surfaces import surface_key;"
+        "print(surface_key('relations.jsonl', 7508, 'Kygo plays kineticFIELD at EDC 2026.'))"
+    )
+    seen = set()
+    for seed in ("0", "1", "12345"):
+        env = {**os.environ, "PYTHONHASHSEED": seed}
+        out = subprocess.run(
+            [_sys.executable, "-c", snippet],
+            capture_output=True, text=True, cwd=str(REPO_ROOT), env=env, timeout=60,
+        )
+        assert out.returncode == 0, out.stderr
+        seen.add(out.stdout.strip())
+    assert len(seen) == 1, f"key differs across PYTHONHASHSEED values: {seen}"
+    assert seen.pop().startswith("relations.jsonl:7508:"), "key must keep its path:line prefix"
+
+
+def test_surface_key_distinguishes_different_text_at_the_same_line():
+    a = DS.surface_key("relations.jsonl", 12, "Kygo plays kineticFIELD.")
+    b = DS.surface_key("relations.jsonl", 12, "Kygo plays circuitGROUNDS.")
+    assert a != b, "same line, different text must not collide"
+    assert DS.surface_key("relations.jsonl", 12, "x") == DS.surface_key("relations.jsonl", 12, "x")
 
 
 if __name__ == "__main__":

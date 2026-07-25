@@ -15,6 +15,7 @@ would fall below floor is a diversity FAILURE (generate more), not a successful 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -48,6 +49,21 @@ def _iter_jsonl(path: Path):
             continue
 
 
+def surface_key(file_name: str, line_index: int, text: str) -> str:
+    """Stable exclusion key for one hydrated surface — MUST be reproducible across processes.
+
+    This used `hash(text)`, which Python salts per interpreter (PYTHONHASHSEED, on by default).
+    Writer and reader therefore never agreed: dedup wrote exclusion keys that tokenize_corpus
+    recomputed differently, so every "excluded" surface was silently kept in the training shard.
+    Measured on edc/dallas/2011: 8063 stored exclusions, 8063 matching path:line prefixes, and
+    ZERO whole-key matches. sha256 is deterministic, so the list is now actually honored.
+
+    Any change to this function invalidates every exclude_keys.json on disk — re-run dedup_surfaces.
+    """
+    digest = hashlib.sha256(text.encode("utf-8")).hexdigest()[:8]
+    return f"{file_name}:{line_index}:{digest}"
+
+
 def load_unit_surfaces(ed) -> list[dict]:
     """Load hydrated surfaces with stable provenance keys for exclusion."""
     rows = []
@@ -67,7 +83,7 @@ def load_unit_surfaces(ed) -> list[dict]:
                 "surface_form": rec.get("surface_form") or name,
                 "path": str(path.relative_to(C.ROOT)) if path.is_relative_to(C.ROOT) else path.as_posix(),
                 "line": i,
-                "key": f"{path.name}:{i}:{hash(text) & 0xFFFFFFFF:08x}",
+                "key": surface_key(path.name, i, text),
                 "fact": Div.fact_key(rec),
             })
     return rows

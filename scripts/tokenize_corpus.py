@@ -32,6 +32,7 @@ from transformers import AutoTokenizer
 from datasets import Dataset
 
 import config as C
+from pipeline.dedup_surfaces import surface_key
 from pipeline.editions import iter_editions
 from pipeline.split import load_split
 
@@ -174,7 +175,9 @@ def collect(domain, editions_only, use_synth: bool, include_clean: bool = True):
                     if not txt:
                         continue
                     if exclude is not None:
-                        key = f"{jf.name}:{i}:{hash(txt) & 0xFFFFFFFF:08x}"
+                        # ONE key function shared with the writer — a local copy would drift and
+                        # silently re-open the bug where dedup's exclusions were never honored.
+                        key = surface_key(jf.name, i, txt)
                         if key in exclude:
                             n_dedup_skipped += 1
                             continue
