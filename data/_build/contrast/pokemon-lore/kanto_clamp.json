@@ -1,0 +1,16 @@
+{
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "truth_drops": 16,
+  "per_triple_cap_suppressed": 3158,
+  "clamped": true,
+  "reason": "contrast fraction 11.1% exceeded max_fraction 10% of relations.jsonl (168/1518); kept first 151 in emission order",
+  "emitted_before": 168,
+  "emitted_after": 151,
+  "base_lines": 1518,
+  "max_fraction": 0.1,
+  "fraction_before": 0.1107,
+  "fraction_after": 0.0995,
+  "limit": 151,
+  "dropped": 17
+}

@@ -143,6 +143,7 @@ def contrast_records(triples: list[dict], groups: dict[str, list[str]], predicat
 
     out: list[dict] = []
     truth_drops = 0
+    self_denial_drops = 0
     cap_suppressed = 0
     seen_source_ids: set[str] = set()
     for t in triples:
@@ -162,9 +163,19 @@ def contrast_records(triples: list[dict], groups: dict[str, list[str]], predicat
 
         subject_key = str(t.get("subject_id", "") or t.get("subject", ""))
         true_for_subject = true_values[(subject_key, str(predicate))]
+        subject_norm = _norm(str(t.get("subject", "")))
         candidates: list[str] = []
         for attractor in group_values:
             if _norm(attractor) == object_norm:
+                continue
+            # An attractor equal to the SUBJECT yields "X is located in Y, not X." — a surface that
+            # denies the subject of its own sentence. The object check above does not catch it, and
+            # 3 such records are on disk today (millbrook/main 2/38, kanto 1/168). A self-denying
+            # contrast teaches the negation of nothing; it is strictly false text in the shard.
+            if subject_norm and _norm(attractor) == subject_norm:
+                self_denial_drops += 1
+                print(f"  self-denial drop: {subject_key} {predicate} — attractor '{attractor}' IS the subject",
+                      file=sys.stderr)
                 continue
             if _norm(attractor) in true_for_subject:
                 truth_drops += 1
