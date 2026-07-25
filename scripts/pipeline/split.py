@@ -33,6 +33,11 @@ from pathlib import Path
 
 SPLIT_VERSION = "v1"
 SPLIT_VERSION_V2 = "v2"
+SPLIT_VERSION_V3 = "v3"
+# Preference order for load_split when no version is requested. v3 is the alias+inverse series
+# cut with the unified id_map loader (nested unit slugs resolve); v2 is the same algorithm cut
+# when load_id_map keyed on ed_dir.name and returned {} for every EDC city/year unit.
+SPLIT_VERSION_PREFERENCE = (SPLIT_VERSION_V3, SPLIT_VERSION_V2, SPLIT_VERSION)
 
 # Common inverse pairs — both directions listed so lookup is symmetric.
 _INVERSE_PAIRS = (
@@ -63,9 +68,9 @@ def split_path(ed_dir, version: str = SPLIT_VERSION):
 
 def load_split(ed_dir, version: str | None = None) -> dict | None:
     """The unit's split manifest, or None (no split carved — consumers fail open, probes stamp
-    `trained`). Prefer v2 when present and version is None."""
+    `trained`). Prefer the newest series present (v3 > v2 > v1) when version is None."""
     if version is None:
-        for ver in (SPLIT_VERSION_V2, SPLIT_VERSION):
+        for ver in SPLIT_VERSION_PREFERENCE:
             p = split_path(ed_dir, ver)
             if p.exists():
                 version = ver
@@ -81,32 +86,91 @@ def load_split(ed_dir, version: str | None = None) -> dict | None:
     return m
 
 
-def load_id_map(ed_dir, domain: str | None = None) -> dict[str, str]:
-    """old_id → canonical_id from resolve stage. Empty if resolve has not run."""
-    # Prefer unit-local resolve artifacts under data/_build/resolve/<domain>/<unit>/
-    candidates = []
-    unit_slug = ed_dir.name
-    parent = ed_dir.parent
-    # ed_dir is data/<domain>/<unit>
-    if domain:
-        candidates.append(
-            Path(__file__).resolve().parents[2] / "data" / "_build" / "resolve" / domain / unit_slug.replace("/", "_") / "id_map.json"
-        )
-    # Also check relative to ed_dir
-    candidates.append(ed_dir / "15_structured" / "id_map.json")
+def _domain_and_slug(ed_dir: Path, domain: str | None = None) -> tuple[str | None, str]:
+    """Resolve (domain, unit_slug) for an edition directory.
+
+    Nested units (EDC `city/year`) live at `data/<domain>/<city>/<year>`. The slug is the path
+    *relative to* `data/<domain>` (e.g. `las_vegas/2011`), never `ed_dir.name` alone — that is only
+    the year, and looking up `resolve/edc/2011/id_map.json` silently returns {} for every EDC unit.
+    Measured 2026-07-25: 50 EDC units carry a non-empty resolve map under the full slug and zero
+    under the year-only key; every on-disk split_v2 recorded `id_map_size: 0` because of this.
+    """
+    ed_dir = Path(ed_dir)
+    # Prefer the live config root; fall back to a `data/` segment anywhere in the path so off-tree
+    # test fixtures and relocated checkouts still yield city/year rather than year-only.
+    parts_full = ed_dir.resolve().parts if ed_dir.exists() else ed_dir.parts
     try:
         import config as C
-        if domain:
-            candidates.insert(0, C.BUILD / "resolve" / domain / unit_slug.replace("/", "_") / "id_map.json")
+        data_root = Path(C.ROOT).resolve() / "data"
+        rel = ed_dir.resolve().relative_to(data_root) if ed_dir.exists() else None
     except Exception:
-        pass
+        rel = None
+    if rel is not None:
+        parts = rel.parts
+    elif "data" in parts_full:
+        i = parts_full.index("data")
+        parts = parts_full[i + 1 :]
+    else:
+        return domain, ed_dir.name
+    if not parts:
+        return domain, ed_dir.name
+    inferred_domain = parts[0]
+    slug = "/".join(parts[1:]) if len(parts) > 1 else ed_dir.name
+    return (domain or inferred_domain), slug
+
+
+def id_map_path(ed_dir, domain: str | None = None) -> Path | None:
+    """The resolve-stage id_map file for this unit, or None. Single source of path truth —
+    loaders AND digests must read the same file (the coverage ruler pins this path's sha256)."""
+    ed_dir = Path(ed_dir)
+    domain, unit_slug = _domain_and_slug(ed_dir, domain)
+    unit_key = unit_slug.replace("/", "_")
+    candidates: list[Path] = []
+    if domain:
+        try:
+            import config as C
+            candidates.append(Path(C.BUILD) / "resolve" / domain / unit_key / "id_map.json")
+            candidates.append(Path(C.ROOT) / "data" / "_build" / "resolve" / domain / unit_key / "id_map.json")
+        except Exception:
+            pass
+        candidates.append(
+            Path(__file__).resolve().parents[2] / "data" / "_build" / "resolve" / domain / unit_key / "id_map.json"
+        )
+    # Unit-local fallback (some demos drop the map next to the graph).
+    candidates.append(ed_dir / "15_structured" / "id_map.json")
+    seen: set[Path] = set()
     for path in candidates:
-        if path.is_file():
-            try:
-                return {str(k): str(v) for k, v in json.loads(path.read_text(encoding="utf-8")).items()}
-            except (OSError, json.JSONDecodeError):
-                continue
-    return {}
+        try:
+            resolved = path.resolve()
+        except OSError:
+            resolved = path
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(data, dict):
+            return path
+    return None
+
+
+def load_id_map(ed_dir, domain: str | None = None) -> dict[str, str]:
+    """old_id → canonical_id from resolve stage. Empty if resolve has not run.
+
+    THE loader — every consumer (split, audit_recall, probes, quarantine, reasoning) must go through
+    this function or its thin domain/slug wrapper in audit_recall. Two loaders with different path
+    rules produced the 8 EDC train/holdout alias overlaps: split keyed on `ed_dir.name` (year only)
+    and returned {}, so alias closure at cut time was inert while audit_recall read the real map.
+    """
+    path = id_map_path(ed_dir, domain=domain)
+    if path is None:
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {str(k): str(v) for k, v in data.items()}
 
 
 def canonical_subject(subject_id: str, id_map: dict[str, str]) -> str:
@@ -301,12 +365,14 @@ def main():
     ap.add_argument("--editions")
     ap.add_argument("--holdout-frac", type=float, default=0.10)
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--version", choices=["v1", "v2"], default="v1",
-                    help="v1=subject-grouped; v2=alias+inverse-closed (new series)")
+    ap.add_argument("--version", choices=["v1", "v2", "v3"], default="v1",
+                    help="v1=subject-grouped; v2=alias+inverse-closed (year-slug loader era); "
+                         "v3=alias+inverse-closed with unified nested-slug id_map loader")
     ap.add_argument("--dry-run", action="store_true", help="print per-unit counts, write nothing")
     args = ap.parse_args()
 
     version = args.version
+    alias_closed = version in (SPLIT_VERSION_V2, SPLIT_VERSION_V3)
     for ed in iter_editions(args.domain, only=args.editions, with_raw=False):
         triples = load_all_triples(ed)
         if not triples:
@@ -316,14 +382,15 @@ def main():
             print(f"  {ed.slug}: {out.name} EXISTS — a split is immutable; a new split is a new "
                   f"version file, never an overwrite. Skipping.", file=sys.stderr)
             continue
-        id_map = load_id_map(ed.dir, domain=args.domain) if version == "v2" else {}
-        if version == "v2":
+        id_map = load_id_map(ed.dir, domain=args.domain) if alias_closed else {}
+        if alias_closed:
             train, holdout, meta = make_split_v2(triples, args.holdout_frac, args.seed, id_map)
             grouping = meta["grouping"]
             leak = alias_leak_report(triples, train, holdout, id_map)
             print(f"  {ed.slug}: {len(train)} train / {len(holdout)} holdout triple ids "
                   f"(frac {args.holdout_frac}, seed {args.seed}, {grouping}, "
-                  f"groups={meta['n_groups']}, alias_leaks={leak['n_alias_leaks']})")
+                  f"groups={meta['n_groups']}, id_map={meta['id_map_size']}, "
+                  f"alias_leaks={leak['n_alias_leaks']})")
             if not leak["zero_alias_leaks"]:
                 print(f"    WARNING: {leak['n_alias_leaks']} alias leaks remain", file=sys.stderr)
         else:
@@ -344,16 +411,25 @@ def main():
             "train_ids": sorted(train),
             "holdout_ids": sorted(holdout),
         }
-        if version == "v2":
+        if alias_closed:
             payload["meta"] = meta
             payload["decontamination"] = leak
-            payload["series_note"] = (
-                "split_v2 is a NEW eval series (alias+inverse closed). "
-                "v1 numbers remain recall-class history — do not merge series."
-            )
+            if version == SPLIT_VERSION_V3:
+                payload["series_note"] = (
+                    "split_v3 is a NEW eval series: same alias+inverse algorithm as v2, cut with "
+                    "the unified id_map loader that resolves nested unit slugs (city/year). "
+                    "v2 numbers remain history — do not merge series. Root cause of the v2→v3 "
+                    "cut: split.load_id_map keyed on ed_dir.name (year only) so every EDC "
+                    "split_v2 recorded id_map_size=0 and alias closure was inert."
+                )
+            else:
+                payload["series_note"] = (
+                    "split_v2 is a NEW eval series (alias+inverse closed). "
+                    "v1 numbers remain recall-class history — do not merge series."
+                )
         out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         print(f"    wrote {out}")
-        if version == "v2" and leak is not None:
+        if alias_closed and leak is not None:
             deco = out.parent / f"decontamination_{version}.json"
             deco.write_text(json.dumps(leak, indent=2) + "\n", encoding="utf-8")
             print(f"    wrote {deco}")

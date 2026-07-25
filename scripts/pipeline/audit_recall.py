@@ -209,31 +209,29 @@ def load_entities(ed_dir: Path) -> list[dict]:
 
 
 def id_map_path(domain: str, unit_slug: str) -> Path | None:
-    """The resolve-stage id_map file this audit reads, or None. Same candidate order as the
-    loader — the digest and the data must come from the same file."""
-    unit = unit_slug.replace("/", "_")
-    candidates = [
-        C.BUILD / "resolve" / domain / unit / "id_map.json",
-        C.ROOT / "data" / "_build" / "resolve" / domain / unit / "id_map.json",
-    ]
-    for path in candidates:
-        if path.is_file():
-            try:
-                data = json.loads(path.read_text(encoding="utf-8"))
-            except json.JSONDecodeError:
-                continue
-            if isinstance(data, dict):
-                return path
-    return None
+    """The resolve-stage id_map file this audit reads, or None.
+
+    Thin wrapper over `pipeline.split.id_map_path` — ONE loader, ONE path rule. The digest and the
+    data must come from the same file; both now resolve through split so a nested unit
+    (`las_vegas/2011`) cannot silently disagree with the split-time map.
+    """
+    from pipeline.split import id_map_path as split_id_map_path
+
+    ed_dir = C.ROOT / "data" / domain / Path(unit_slug)
+    return split_id_map_path(ed_dir, domain=domain)
 
 
 def load_id_map(domain: str, unit_slug: str) -> dict[str, str]:
-    """old_id → canonical_id from the resolve stage (empty if absent)."""
-    path = id_map_path(domain, unit_slug)
-    if path is None:
-        return {}
-    data = json.loads(path.read_text(encoding="utf-8"))
-    return {str(k): str(v) for k, v in data.items()}
+    """old_id → canonical_id from the resolve stage (empty if absent).
+
+    Delegates to `pipeline.split.load_id_map` — the single loader. Callers that already have an
+    edition directory should call split's form directly; this wrapper exists for the domain+slug
+    call shape used by audit/probes/quarantine/reasoning.
+    """
+    from pipeline.split import load_id_map as split_load_id_map
+
+    ed_dir = C.ROOT / "data" / domain / Path(unit_slug)
+    return split_load_id_map(ed_dir, domain=domain)
 
 
 def domain_manifest_path(domain: str) -> Path | None:
@@ -415,11 +413,19 @@ def compare_ruler_pin(pin: dict, fingerprint: dict, *, fixture_supplied: bool = 
     for field in PINNED_RULER_FIELDS:
         if field == "fixture" and not fixture_supplied:
             continue
+        # Key absence (an old/edited pin that never covered this field) is different from an
+        # explicit null (the input was absent at pin time — e.g. resolve never wrote id_map.json).
+        # Agreed absence (null==null) is a stable ruler state and must verify; a missing key is not.
+        key_present = field in pinned
         want = pinned.get(field)
         got = (fingerprint.get(field) or {}).get("sha256")
-        if want is None:
+        if not key_present:
             problems.append(f"{field}: pin carries no digest (pin is incomplete)")
-        elif got is None:
+        elif want is None and got is None:
+            continue
+        elif want is None and got is not None:
+            problems.append(f"{field}: pinned absent but live {got[:12]}…")
+        elif want is not None and got is None:
             problems.append(f"{field}: file absent on disk (pinned {want[:12]}…)")
         elif want != got:
             problems.append(f"{field}: pinned {want[:12]}… but live {got[:12]}…")

@@ -1,0 +1,98 @@
+{
+  "schema": "kandi.id_map_loader_audit.v1",
+  "campaign": "phase_r9_id_map_loader_audit",
+  "recorded_at": "2026-07-25T20:22:15Z",
+  "status": "LANDED",
+  "headline": "Two id_map loaders disagreed on 50 nested EDC units (split={}, audit=real map) because split keyed on ed_dir.name (the YEAR). Unified behind split.load_id_map with nested-slug resolution; audit_recall is now a thin wrapper. Red-green: las_vegas/2021 split 0\u219215, loaders agree 51/51 non-empty + 50 empty-both, disagree=0.",
+  "before": {
+    "loaders": {
+      "split.load_id_map(ed_dir, domain)": {
+        "path_rule": "unit_slug = ed_dir.name  # YEAR only for EDC city/year",
+        "candidates": [
+          "C.BUILD/resolve/<domain>/<year>/id_map.json",
+          "data/_build/resolve/<domain>/<year>/id_map.json",
+          "ed_dir/15_structured/id_map.json"
+        ],
+        "kanto_with_domain": 88,
+        "kanto_without_domain": 0,
+        "edc_las_vegas_2021": 0
+      },
+      "audit_recall.load_id_map(domain, unit_slug)": {
+        "path_rule": "unit_slug.replace('/', '_')  # las_vegas_2021",
+        "candidates": [
+          "C.BUILD/resolve/<domain>/<unit_key>/id_map.json",
+          "data/_build/resolve/<domain>/<unit_key>/id_map.json"
+        ],
+        "kanto": 88,
+        "edc_las_vegas_2021": 15
+      }
+    },
+    "census_across_edc_millbrook_kanto": {
+      "agree": 1,
+      "disagree": 50,
+      "empty_both": 50,
+      "disagreement_shape": "split={} and audit=non-empty on every nested unit that has a resolve map"
+    },
+    "did_any_pair_read_different_non_empty_maps": false,
+    "note": "No pair of consumers read two DIFFERENT non-empty maps for the same unit. The defect class was empty-vs-real: split's alias closure was inert (id_map_size=0 on every EDC split_v2) while audit/probes/quarantine/reasoning saw the real map."
+  },
+  "root_cause": {
+    "file_line": "scripts/pipeline/split.py:load_id_map (pre-fix)",
+    "bug": "unit_slug = ed_dir.name",
+    "for_edc_las_vegas_2021": "looked up resolve/edc/2011/id_map.json (missing) instead of resolve/edc/las_vegas_2021/id_map.json",
+    "already_on_record": "logs/phase_r6_floor_holdout_leak.json detected_counted_and_NOT_fixed; logs/phase_r7_adversarial_loop_phase0.json new_finding_two_id_map_loaders"
+  },
+  "after": {
+    "single_loader": "pipeline.split.load_id_map / pipeline.split.id_map_path",
+    "slug_rule": "_domain_and_slug: path relative to data/<domain> \u2192 las_vegas/2011; also infers domain when omitted",
+    "audit_recall": "thin wrappers; digests and data share the same path",
+    "census": {
+      "agree": 51,
+      "disagree": 0,
+      "empty_both": 50
+    },
+    "las_vegas_2021": {
+      "split": 15,
+      "audit": 15,
+      "same_path": true
+    },
+    "kanto_without_domain": 88
+  },
+  "consumers": {
+    "pipeline.split.load_id_map": {
+      "role": "THE loader after this item",
+      "callers": [
+        "scripts/pipeline/split.py::main (cut-time alias closure)",
+        "scripts/pipeline/audit_recall.load_id_map (thin domain+slug wrapper)",
+        "scripts/pipeline/audit_recall.id_map_path (thin wrapper over split.id_map_path)"
+      ]
+    },
+    "pipeline.audit_recall.load_id_map": {
+      "role": "domain+slug convenience wrapper \u2192 split.load_id_map",
+      "callers": [
+        "scripts/pipeline/audit_recall.run_audit",
+        "scripts/pipeline/probe_quarantine.scan_unit",
+        "scripts/pipeline/generic_probes (via import)",
+        "scripts/pipeline/generic_reasoning (via import)"
+      ]
+    }
+  },
+  "unification_unsafe_for": [],
+  "red_green": {
+    "red": "split.load_id_map(edc/las_vegas/2021) \u2192 {}; audit \u2192 15 entries",
+    "green": "both \u2192 15 entries, identical dict, identical path",
+    "tests_added": [
+      "test_nested_unit_slug_is_not_just_dirname",
+      "test_split_and_audit_loaders_agree_on_nested_unit",
+      "test_load_id_map_without_domain_still_finds_resolve_map"
+    ],
+    "test_split_v2_count": "3 \u2192 6"
+  },
+  "deviations": [],
+  "gates": {
+    "run_tests": "48 modules all green",
+    "cpt_config": "8/8",
+    "qgre_gates": "9/9",
+    "audit_recall_suite": "33/33"
+  }
+}
