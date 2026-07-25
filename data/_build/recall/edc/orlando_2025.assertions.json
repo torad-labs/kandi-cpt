@@ -1,0 +1,598 @@
+{
+  "2htuig55r7u.md": [
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "Zedd"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "in_lineup",
+      "subject": "Zedd"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "located_at",
+      "subject": "Zedd closing night 2"
+    }
+  ],
+  "3n04gdm-qfs.md": [
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "stereoBLOOM"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "plays_at",
+      "subject": "stereoBLOOM"
+    }
+  ],
+  "8iyyvnbkshe.md": [
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "located_at",
+      "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "in_lineup",
+      "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)"
+    },
+    {
+      "object": "artist",
+      "predicate": "serves",
+      "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)"
+    }
+  ],
+  "c8yoapwxegc.md": [
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "Tiesto"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "in_lineup",
+      "subject": "Tiesto"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "located_at",
+      "subject": "Kinetic Field"
+    },
+    {
+      "object": "day 2",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando 2025"
+    }
+  ],
+  "dancingastronaut-com-2025-11-dancing-astronauts-new-music-friday-genesi-rivo-alleycvt-leve.md": [
+    {
+      "object": "Pacha Ibiza",
+      "predicate": "in_lineup",
+      "subject": "Cl\u00fcb De Combat"
+    },
+    {
+      "object": "Space Miami",
+      "predicate": "in_lineup",
+      "subject": "Cl\u00fcb De Combat"
+    },
+    {
+      "object": "Radius Chicago",
+      "predicate": "in_lineup",
+      "subject": "Cl\u00fcb De Combat"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "DREYA V"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "ALLEYCVT"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Level Up"
+    },
+    {
+      "object": "9 Lives Tour",
+      "predicate": "in_lineup",
+      "subject": "ALLEYCVT"
+    },
+    {
+      "object": "Diynamic",
+      "predicate": "in_lineup",
+      "subject": "Buka"
+    },
+    {
+      "object": "undux",
+      "predicate": "in_lineup",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "Realm Records",
+      "predicate": "in_lineup",
+      "subject": "Gorgon City"
+    },
+    {
+      "object": "Black Book",
+      "predicate": "in_lineup",
+      "subject": "TOBEHONEST"
+    },
+    {
+      "object": "Brazilian funk",
+      "predicate": "in_lineup",
+      "subject": "Wax Motif"
+    },
+    {
+      "object": "Proper NYD",
+      "predicate": "in_lineup",
+      "subject": "Lane 8"
+    },
+    {
+      "object": "Proper NYD",
+      "predicate": "in_lineup",
+      "subject": "Sultan + Shepard"
+    }
+  ],
+  "dancingastronaut-com-2025-12-dancing-astronauts-2025-breakout-artist-cassian.md": [
+    {
+      "object": "Proper NYE",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Tomorrowland",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Experts Only",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Seismic Dance Event",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Brooklyn Storehouse",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Ultra Music Festival",
+      "predicate": "in_lineup",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Sphere",
+      "predicate": "plays_at",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Anyma",
+      "predicate": "serves",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Cassian Studio",
+      "predicate": "located_at",
+      "subject": "Cassian"
+    },
+    {
+      "object": "2025",
+      "predicate": "operating_hours",
+      "subject": "Cassian"
+    },
+    {
+      "object": "Grammy nomination",
+      "predicate": "incident_occurred",
+      "subject": "Cassian"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Cassian"
+    }
+  ],
+  "edc-orlando-2025.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "two days",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Armin van Buuren"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "DJ Snake"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Ti\u00ebsto"
+    },
+    {
+      "object": "two packed days",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "EDM fans",
+      "predicate": "serves",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "Florida",
+      "predicate": "located_at",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "structurally_similar",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando"
+    }
+  ],
+  "edmidentity-com-events-essential-info-guides.md": [
+    {
+      "object": "Los Angeles",
+      "predicate": "located_at",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "debut edition",
+      "predicate": "operating_hours",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "Los Angeles",
+      "predicate": "located_at",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "Arizona",
+      "predicate": "located_at",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "second edition",
+      "predicate": "operating_hours",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "Indio, California",
+      "predicate": "located_at",
+      "subject": "Coachella"
+    },
+    {
+      "object": "Miami",
+      "predicate": "located_at",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "Southern California",
+      "predicate": "located_at",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "San Diego",
+      "predicate": "located_at",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "Steele Indian School Park",
+      "predicate": "located_at",
+      "subject": "M3F"
+    },
+    {
+      "object": "March 6-7",
+      "predicate": "operating_hours",
+      "subject": "M3F"
+    },
+    {
+      "object": "Ace*Mission Studios",
+      "predicate": "located_at",
+      "subject": "Skyline Festival"
+    }
+  ],
+  "edmidentity-com-music-exclusive-mix.md": [
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "BrokinPaper"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "M?STIC"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Just\u0117"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KAAZE"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Fallen"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "CUTDWN"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KC Lights"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Dillon Nathaniel"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Spoone"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "AVAIon"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KR\u00c6K"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Disco Shrine"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "LVCA"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Hypaton"
+    }
+  ],
+  "iacd4slx1fy.md": [
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "neonGARDEN"
+    },
+    {
+      "object": "stage",
+      "predicate": "has_tier",
+      "subject": "neonGARDEN"
+    },
+    {
+      "object": "venue",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando"
+    }
+  ],
+  "iy4g1wabmds.md": [],
+  "mj1jjsi4rka.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2025"
+    },
+    {
+      "object": "Three magical days",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando 2025"
+    },
+    {
+      "object": "Insomniac",
+      "predicate": "serves",
+      "subject": "EDC Orlando 2025"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando 2025"
+    }
+  ],
+  "r-aves-2025.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2025"
+    },
+    {
+      "object": "November 7, 8, 9 2025",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando 2025"
+    },
+    {
+      "object": "Main Stage",
+      "predicate": "plays_at",
+      "subject": "Sara Landry"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "in_lineup",
+      "subject": "Sara Landry"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "EDC Orlando 2026",
+      "predicate": "succeeded_by",
+      "subject": "EDC Orlando 2025"
+    }
+  ],
+  "r-electricdaisycarnival-2025.md": [
+    {
+      "object": "Astroworld situation",
+      "predicate": "incident_occurred",
+      "subject": "EDC 2026"
+    },
+    {
+      "object": "crowd surge",
+      "predicate": "incident_occurred",
+      "subject": "EDC 2025 Orlando"
+    }
+  ],
+  "saeeh-npumc.md": [
+    {
+      "object": "EDC Orlando",
+      "predicate": "plays_at",
+      "subject": "James Hype"
+    },
+    {
+      "object": "Kinetic Field 2025",
+      "predicate": "plays_at",
+      "subject": "James Hype"
+    }
+  ],
+  "vmbyndvimlo.md": [
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Sunset Set",
+      "predicate": "plays_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Ophelia Records",
+      "predicate": "serves",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Seven Lions",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Seven Lions",
+      "predicate": "practiced_by",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "2025",
+      "predicate": "operating_hours",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "melodic dubstep leader",
+      "predicate": "has_tier",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "independent dance music label",
+      "predicate": "has_tier",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Facebook",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Facebook",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Twitter",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Soundcloud",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Website",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "Spotify",
+      "predicate": "located_at",
+      "subject": "Ophelia Records"
+    },
+    {
+      "object": "NorthCoast",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "EDM",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Dubstep",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Bass",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "MelodicDubstep",
+      "predicate": "located_at",
+      "subject": "Seven Lions"
+    }
+  ]
+}

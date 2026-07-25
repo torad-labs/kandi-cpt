@@ -1,0 +1,30 @@
+{
+  "Calder_Teaching_Notice.md": [
+    {
+      "object": "Gold Room",
+      "predicate": "teaches_at",
+      "subject": "Calder Rooksby"
+    }
+  ],
+  "Elowen_Teaching_Notice.md": [
+    {
+      "object": "Blue Room",
+      "predicate": "teaches_at",
+      "subject": "Elowen Dask"
+    }
+  ],
+  "Nessa_Teaching_Notice.md": [
+    {
+      "object": "Green Room",
+      "predicate": "teaches_at",
+      "subject": "Nessa Ilyndor"
+    }
+  ],
+  "Sable_Teaching_Notice.md": [
+    {
+      "object": "Red Room",
+      "predicate": "teaches_at",
+      "subject": "Sable Kett"
+    }
+  ]
+}

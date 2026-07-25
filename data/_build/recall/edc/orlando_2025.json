@@ -1,0 +1,1532 @@
+{
+  "unit": "orlando/2025",
+  "miss_attribution": {
+    "matcher_recoverable": 0,
+    "different_object": 2,
+    "absent": 8,
+    "n": 10,
+    "matcher_recoverable_ratio": 0.0,
+    "samples": {
+      "matcher_recoverable": [],
+      "different_object": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Sara Landry"
+        },
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Zedd"
+        }
+      ],
+      "absent": [
+        {
+          "object": "November 7, 8, 9 2025",
+          "predicate": "operating_hours",
+          "subject": "EDC Orlando 2025"
+        },
+        {
+          "object": "Three magical days",
+          "predicate": "operating_hours",
+          "subject": "EDC Orlando 2025"
+        },
+        {
+          "object": "Insomniac",
+          "predicate": "serves",
+          "subject": "EDC Orlando 2025"
+        },
+        {
+          "object": "stage",
+          "predicate": "has_tier",
+          "subject": "neonGARDEN"
+        },
+        {
+          "object": "Anyma",
+          "predicate": "serves",
+          "subject": "Cassian"
+        },
+        {
+          "object": "2025",
+          "predicate": "operating_hours",
+          "subject": "Cassian"
+        },
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Tiesto"
+        },
+        {
+          "object": "day 2",
+          "predicate": "has_tier",
+          "subject": "EDC Orlando 2025"
+        }
+      ]
+    },
+    "note": "matcher_recoverable > 0 means a matching fix has headroom. At 0 the coverage gap is extraction-side and no keying change can move the number \u2014 re-extract, do not re-match."
+  },
+  "n_docs_sampled": 16,
+  "n_docs_scored": 16,
+  "n_docs_judge_unavailable": 0,
+  "n_docs_fixture_matched": 16,
+  "n_docs_fixture_missing": 0,
+  "n_docs_total": 16,
+  "ruler": {
+    "unit": "orlando/2025",
+    "fixture": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2025.assertions.json",
+      "sha256": "e14e35195e50e630e114de6ebe27043932efb593678989f783f69fa0ab40a117",
+      "n_docs": 16,
+      "n_assertions": 113,
+      "supplied": true
+    },
+    "entities": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2025/15_structured/entities.resolved.jsonl",
+      "sha256": "e628934e18fb11632affa93f94ebdc117127f6b034389327c6bb3ae171486d6b",
+      "rows": 143
+    },
+    "id_map": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/resolve/edc/orlando_2025/id_map.json",
+      "sha256": "78ffd8b74fd8aa04ca3f90594471b78e2e8b057e184f9ea3727ac8e690540698",
+      "entries": 8
+    },
+    "domain_manifest": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/domains/edc.yaml",
+      "sha256": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56"
+    },
+    "documents": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2025/10_clean",
+      "sha256": "518ba077578a3d23a38f34b2c95241c12eee2ac26456a93bf5a4c15e202a84b5",
+      "n_docs": 16
+    },
+    "editions_registry": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/editions_edc.json",
+      "sha256": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2025"
+    },
+    "sample": {
+      "seed": 0,
+      "sample_n_requested": 0,
+      "n_take": 16,
+      "n_docs_available": 16,
+      "sha256": "72f8e2083df6145758c35b35f7dbe9e736a9853ba422a09d414dd935d81ac545"
+    },
+    "triples": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2025/15_structured/triples.resolved.jsonl",
+      "sha256": "226f2fc85ae75a31eba049289f07275b4ecdafa0a0bf6650f0062237e5931f76",
+      "rows": 239,
+      "pinned": false,
+      "note": "the graph under measurement \u2014 recorded, never pinned"
+    },
+    "pin": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2025.ruler.json",
+      "present": true,
+      "enforced": true,
+      "ignored": false,
+      "verified": true,
+      "problems": [],
+      "fixture_compared": true
+    }
+  },
+  "hits": 5,
+  "n": 15,
+  "ratio": 0.3333,
+  "raw": {
+    "hits": 7,
+    "n": 113,
+    "ratio": 0.0619
+  },
+  "clean_unfiltered": {
+    "hits": 7,
+    "n": 40,
+    "ratio": 0.175
+  },
+  "classes": {
+    "judge_rejected": 25,
+    "out_of_unit": 73,
+    "misses": 10,
+    "hits": 5,
+    "match_mode": {
+      "exact": 5,
+      "soft-object": 0,
+      "canonical": 0
+    }
+  },
+  "reject_reasons": {
+    "object_type_unresolved": 24,
+    "object_type_mismatch": 1
+  },
+  "corpus_composition_note": "out_of_unit is large relative to raw assertions \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap.",
+  "docs": [
+    {
+      "path": "iy4g1wabmds.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 0,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "vmbyndvimlo.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Sunset Set",
+          "predicate": "plays_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Ophelia Records",
+          "predicate": "serves",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Seven Lions",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Seven Lions",
+          "predicate": "practiced_by",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "2025",
+          "predicate": "operating_hours",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "melodic dubstep leader",
+          "predicate": "has_tier",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "independent dance music label",
+          "predicate": "has_tier",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Instagram",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Instagram",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Facebook",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Facebook",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Twitter",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Soundcloud",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Website",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Spotify",
+          "predicate": "located_at",
+          "subject": "Ophelia Records",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "NorthCoast",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDM",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Dubstep",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Bass",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "MelodicDubstep",
+          "predicate": "located_at",
+          "subject": "Seven Lions",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 21,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edc-orlando-2025.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "Armin van Buuren",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "DJ Snake",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "Tinker Field",
+          "predicate": "located_at",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "two days",
+          "predicate": "has_tier",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "Ti\u00ebsto",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "two packed days",
+          "predicate": "operating_hours",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDM fans",
+          "predicate": "serves",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Florida",
+          "predicate": "located_at",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Electric Daisy Carnival",
+          "predicate": "structurally_similar",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 10,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "dancingastronaut-com-2025-11-dancing-astronauts-new-music-friday-genesi-rivo-alleycvt-leve.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "DREYA V",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "ALLEYCVT",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+        },
+        {
+          "object": "9 Lives Tour",
+          "predicate": "in_lineup",
+          "subject": "ALLEYCVT",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got '9 Lives Tour'"
+        },
+        {
+          "object": "Realm Records",
+          "predicate": "in_lineup",
+          "subject": "Gorgon City",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Realm Records'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "Pacha Ibiza",
+          "predicate": "in_lineup",
+          "subject": "Cl\u00fcb De Combat",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Space Miami",
+          "predicate": "in_lineup",
+          "subject": "Cl\u00fcb De Combat",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Radius Chicago",
+          "predicate": "in_lineup",
+          "subject": "Cl\u00fcb De Combat",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "Level Up",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Diynamic",
+          "predicate": "in_lineup",
+          "subject": "Buka",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "undux",
+          "predicate": "in_lineup",
+          "subject": "Kaskade",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Black Book",
+          "predicate": "in_lineup",
+          "subject": "TOBEHONEST",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Brazilian funk",
+          "predicate": "in_lineup",
+          "subject": "Wax Motif",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Proper NYD",
+          "predicate": "in_lineup",
+          "subject": "Lane 8",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Proper NYD",
+          "predicate": "in_lineup",
+          "subject": "Sultan + Shepard",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 14,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "r-aves-2025.md",
+      "hits": 2,
+      "n": 4,
+      "ratio": 0.5,
+      "per_predicate": {
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "located_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [
+        {
+          "object": "November 7, 8, 9 2025",
+          "predicate": "operating_hours",
+          "subject": "EDC Orlando 2025"
+        },
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Sara Landry"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando 2026",
+          "predicate": "succeeded_by",
+          "subject": "EDC Orlando 2025",
+          "reject_reason": "object_type_unresolved: expected one of ['edition'], got 'EDC Orlando 2026'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 2,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 2,
+        "n": 6,
+        "ratio": 0.3333
+      }
+    },
+    {
+      "path": "3n04gdm-qfs.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando",
+          "predicate": "located_at",
+          "subject": "stereoBLOOM",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'EDC Orlando'"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "plays_at",
+          "subject": "stereoBLOOM",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Orlando'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 2,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "2htuig55r7u.md",
+      "hits": 1,
+      "n": 2,
+      "ratio": 0.5,
+      "per_predicate": {
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Zedd"
+        }
+      ],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "Kinetic Field",
+          "predicate": "located_at",
+          "subject": "Zedd closing night 2",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 3,
+        "ratio": 0.3333
+      }
+    },
+    {
+      "path": "mj1jjsi4rka.md",
+      "hits": 1,
+      "n": 3,
+      "ratio": 0.3333,
+      "per_predicate": {
+        "located_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "Three magical days",
+          "predicate": "operating_hours",
+          "subject": "EDC Orlando 2025"
+        },
+        {
+          "object": "Insomniac",
+          "predicate": "serves",
+          "subject": "EDC Orlando 2025"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDC Orlando 2025",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'festival'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 2,
+        "n": 4,
+        "ratio": 0.5
+      }
+    },
+    {
+      "path": "iacd4slx1fy.md",
+      "hits": 0,
+      "n": 1,
+      "ratio": 0.0,
+      "per_predicate": {
+        "has_tier": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "stage",
+          "predicate": "has_tier",
+          "subject": "neonGARDEN"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando",
+          "predicate": "located_at",
+          "subject": "neonGARDEN",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'EDC Orlando'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "venue",
+          "predicate": "has_tier",
+          "subject": "EDC Orlando",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 3,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edmidentity-com-music-exclusive-mix.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "BrokinPaper",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "M?STIC",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Just\u0117",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KAAZE",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Fallen",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "CUTDWN",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KC Lights",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Dillon Nathaniel",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Spoone",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "AVAIon",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KR\u00c6K",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Disco Shrine",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "LVCA",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Hypaton",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 14,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edmidentity-com-events-essential-info-guides.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "Los Angeles",
+          "predicate": "located_at",
+          "subject": "CORE Los Angeles",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "debut edition",
+          "predicate": "operating_hours",
+          "subject": "CORE Los Angeles",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Los Angeles",
+          "predicate": "located_at",
+          "subject": "Forbidden Kingdom",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Arizona",
+          "predicate": "located_at",
+          "subject": "Breakaway Arizona",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "second edition",
+          "predicate": "operating_hours",
+          "subject": "Breakaway Arizona",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Indio, California",
+          "predicate": "located_at",
+          "subject": "Coachella",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Miami",
+          "predicate": "located_at",
+          "subject": "Ultra Music Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Southern California",
+          "predicate": "located_at",
+          "subject": "Beyond Wonderland SoCal",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "San Diego",
+          "predicate": "located_at",
+          "subject": "CRSSD Festival Spring",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Steele Indian School Park",
+          "predicate": "located_at",
+          "subject": "M3F",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "March 6-7",
+          "predicate": "operating_hours",
+          "subject": "M3F",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Ace*Mission Studios",
+          "predicate": "located_at",
+          "subject": "Skyline Festival",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 12,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "8iyyvnbkshe.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "located_at",
+          "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "serves",
+          "subject": "Knock2 Live @ EDC Orlando 2025 (Full Set)",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 3,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "dancingastronaut-com-2025-12-dancing-astronauts-2025-breakout-artist-cassian.md",
+      "hits": 0,
+      "n": 2,
+      "ratio": 0.0,
+      "per_predicate": {
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "Anyma",
+          "predicate": "serves",
+          "subject": "Cassian"
+        },
+        {
+          "object": "2025",
+          "predicate": "operating_hours",
+          "subject": "Cassian"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "Proper NYE",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Proper NYE'"
+        },
+        {
+          "object": "Tomorrowland",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Tomorrowland'"
+        },
+        {
+          "object": "Experts Only",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Experts Only'"
+        },
+        {
+          "object": "Seismic Dance Event",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Seismic Dance Event'"
+        },
+        {
+          "object": "EDC Orlando",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+        },
+        {
+          "object": "Brooklyn Storehouse",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Brooklyn Storehouse'"
+        },
+        {
+          "object": "Ultra Music Festival",
+          "predicate": "in_lineup",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Ultra Music Festival'"
+        },
+        {
+          "object": "Sphere",
+          "predicate": "plays_at",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'Sphere'"
+        },
+        {
+          "object": "Cassian Studio",
+          "predicate": "located_at",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Cassian Studio'"
+        },
+        {
+          "object": "Grammy nomination",
+          "predicate": "incident_occurred",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['incident_class'], got 'Grammy nomination'"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Cassian",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'artist'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 13,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "r-electricdaisycarnival-2025.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "Astroworld situation",
+          "predicate": "incident_occurred",
+          "subject": "EDC 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "crowd surge",
+          "predicate": "incident_occurred",
+          "subject": "EDC 2025 Orlando",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 2,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "saeeh-npumc.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando",
+          "predicate": "plays_at",
+          "subject": "James Hype",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Orlando'"
+        },
+        {
+          "object": "Kinetic Field 2025",
+          "predicate": "plays_at",
+          "subject": "James Hype",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'Kinetic Field 2025'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 2,
+        "ratio": 0.5
+      }
+    },
+    {
+      "path": "c8yoapwxegc.md",
+      "hits": 1,
+      "n": 3,
+      "ratio": 0.3333,
+      "per_predicate": {
+        "has_tier": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "in_lineup",
+          "subject": "Tiesto"
+        },
+        {
+          "object": "day 2",
+          "predicate": "has_tier",
+          "subject": "EDC Orlando 2025"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Orlando 2025",
+          "predicate": "located_at",
+          "subject": "Kinetic Field",
+          "reject_reason": "object_type_mismatch: 'edition' not in ['gate', 'landmark', 'stage', 'venue']"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 4,
+        "ratio": 0.25
+      }
+    }
+  ],
+  "judge_rejected_sample": [
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Armin van Buuren",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "DJ Snake",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "DREYA V",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "ALLEYCVT",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+    },
+    {
+      "object": "9 Lives Tour",
+      "predicate": "in_lineup",
+      "subject": "ALLEYCVT",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got '9 Lives Tour'"
+    },
+    {
+      "object": "Realm Records",
+      "predicate": "in_lineup",
+      "subject": "Gorgon City",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Realm Records'"
+    },
+    {
+      "object": "EDC Orlando 2026",
+      "predicate": "succeeded_by",
+      "subject": "EDC Orlando 2025",
+      "reject_reason": "object_type_unresolved: expected one of ['edition'], got 'EDC Orlando 2026'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "stereoBLOOM",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'EDC Orlando'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "plays_at",
+      "subject": "stereoBLOOM",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Orlando'"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando 2025",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'festival'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "neonGARDEN",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'EDC Orlando'"
+    },
+    {
+      "object": "Proper NYE",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Proper NYE'"
+    },
+    {
+      "object": "Tomorrowland",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Tomorrowland'"
+    },
+    {
+      "object": "Experts Only",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Experts Only'"
+    },
+    {
+      "object": "Seismic Dance Event",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Seismic Dance Event'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Orlando'"
+    },
+    {
+      "object": "Brooklyn Storehouse",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Brooklyn Storehouse'"
+    },
+    {
+      "object": "Ultra Music Festival",
+      "predicate": "in_lineup",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Ultra Music Festival'"
+    },
+    {
+      "object": "Sphere",
+      "predicate": "plays_at",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'Sphere'"
+    },
+    {
+      "object": "Cassian Studio",
+      "predicate": "located_at",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Cassian Studio'"
+    },
+    {
+      "object": "Grammy nomination",
+      "predicate": "incident_occurred",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['incident_class'], got 'Grammy nomination'"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Cassian",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'artist'"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "plays_at",
+      "subject": "James Hype",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Orlando'"
+    },
+    {
+      "object": "Kinetic Field 2025",
+      "predicate": "plays_at",
+      "subject": "James Hype",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'Kinetic Field 2025'"
+    },
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "located_at",
+      "subject": "Kinetic Field",
+      "reject_reason": "object_type_mismatch: 'edition' not in ['gate', 'landmark', 'stage', 'venue']"
+    }
+  ],
+  "out_of_unit_sample": [
+    {
+      "object": "EDC Orlando 2025",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Sunset Set",
+      "predicate": "plays_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Ophelia Records",
+      "predicate": "serves",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Seven Lions",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Seven Lions",
+      "predicate": "practiced_by",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "2025",
+      "predicate": "operating_hours",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "melodic dubstep leader",
+      "predicate": "has_tier",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "independent dance music label",
+      "predicate": "has_tier",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Facebook",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Facebook",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Twitter",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Soundcloud",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Website",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Spotify",
+      "predicate": "located_at",
+      "subject": "Ophelia Records",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "NorthCoast",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "EDM",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Dubstep",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Bass",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "MelodicDubstep",
+      "predicate": "located_at",
+      "subject": "Seven Lions",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "two days",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Ti\u00ebsto",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "two packed days",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando",
+      "class": "out_of_unit"
+    }
+  ],
+  "fixture_missing_sample": [],
+  "judge_unavailable_sample": []
+}

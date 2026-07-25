@@ -1,0 +1,85 @@
+{
+  "domain": "millbrook-hollow",
+  "note": "Coverage ruler pin. The four digests under `pinned` must match at score time or the audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY \u2014 the graph is the thing under measurement and is never pinned, so a genuine extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. `supersedes` is why that cannot be silent \u2014 it carries the digests and row counts this pin replaced, so the pin's own diff shows the ruler change that licensed the new series. Same trust model as the assertion fixture: committed, diffed, reviewed.",
+  "pinned": {
+    "documents": "9ffe82d9ab04adf76ac39a0a4f05eece67715620fee8486b89a9f4bbd3f7524d",
+    "domain_manifest": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26",
+    "editions_registry": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+    "entities": "d7634d7fcda6aa6ab9cb5f865c8a61105cb55f1d20396c7662105a775bd1d079",
+    "fixture": "1abec7a872cb00c98d87f558a76d21d807b22f3a6fa744a823a2640aa53af897",
+    "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "sample": "6423a4d7b2b8651605c74c25a4b2453828673f5aedeec905f7007ef39da77cc2"
+  },
+  "recorded": {
+    "document_count": 4,
+    "entity_rows": 20,
+    "fixture_n_assertions": 4,
+    "fixture_n_docs": 4,
+    "id_map_entries": 0,
+    "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1",
+    "sample": {
+      "n_docs_available": 4,
+      "n_take": 4,
+      "sample_n_requested": 0,
+      "seed": 0
+    },
+    "triples_rows_at_pin_time": 10,
+    "triples_sha256_at_pin_time": "5a5a93497e98723cb72e62cc4feb8edc4a3936461b62ef8fde5613388945c825"
+  },
+  "supersedes": {
+    "pinned": {
+      "documents": "9ffe82d9ab04adf76ac39a0a4f05eece67715620fee8486b89a9f4bbd3f7524d",
+      "domain_manifest": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26",
+      "editions_registry": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+      "entities": "d7634d7fcda6aa6ab9cb5f865c8a61105cb55f1d20396c7662105a775bd1d079",
+      "fixture": "1d0da65e6a9f54c5542cc7543d7e78c3721f74719197424a3f8db8a9d9bd0337",
+      "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "sample": "6423a4d7b2b8651605c74c25a4b2453828673f5aedeec905f7007ef39da77cc2"
+    },
+    "recorded": {
+      "document_count": 4,
+      "entity_rows": 20,
+      "fixture_n_assertions": 5,
+      "fixture_n_docs": 4,
+      "id_map_entries": 0,
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1",
+      "sample": {
+        "n_docs_available": 4,
+        "n_take": 4,
+        "sample_n_requested": 0,
+        "seed": 0
+      },
+      "triples_rows_at_pin_time": 10,
+      "triples_sha256_at_pin_time": "5a5a93497e98723cb72e62cc4feb8edc4a3936461b62ef8fde5613388945c825"
+    },
+    "supersedes": {
+      "pinned": {
+        "documents": "9ffe82d9ab04adf76ac39a0a4f05eece67715620fee8486b89a9f4bbd3f7524d",
+        "domain_manifest": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26",
+        "editions_registry": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+        "entities": "d7634d7fcda6aa6ab9cb5f865c8a61105cb55f1d20396c7662105a775bd1d079",
+        "fixture": null,
+        "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+        "sample": "6423a4d7b2b8651605c74c25a4b2453828673f5aedeec905f7007ef39da77cc2"
+      },
+      "recorded": {
+        "document_count": 4,
+        "entity_rows": 20,
+        "fixture_n_assertions": 0,
+        "fixture_n_docs": 0,
+        "id_map_entries": 0,
+        "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1",
+        "sample": {
+          "n_docs_available": 4,
+          "n_take": 4,
+          "sample_n_requested": 0,
+          "seed": 0
+        },
+        "triples_rows_at_pin_time": 10,
+        "triples_sha256_at_pin_time": "5a5a93497e98723cb72e62cc4feb8edc4a3936461b62ef8fde5613388945c825"
+      },
+      "supersedes": null
+    }
+  },
+  "unit": "booster_1"
+}

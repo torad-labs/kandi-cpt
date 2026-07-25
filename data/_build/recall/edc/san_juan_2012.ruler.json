@@ -1,0 +1,30 @@
+{
+  "domain": "edc",
+  "note": "Coverage ruler pin. The four digests under `pinned` must match at score time or the audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY \u2014 the graph is the thing under measurement and is never pinned, so a genuine extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. `supersedes` is why that cannot be silent \u2014 it carries the digests and row counts this pin replaced, so the pin's own diff shows the ruler change that licensed the new series. Same trust model as the assertion fixture: committed, diffed, reviewed.",
+  "pinned": {
+    "documents": "87b623c862dbde856676b20840400d0ebd5de8917a07a4e4b524818e3639de84",
+    "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+    "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+    "entities": "1f5f1d6dabd2be1f364724ee167c47c951fb9db352bbb954bf152aed30e5cbc4",
+    "fixture": null,
+    "id_map": "35e0e542a4ea96ee875a23cfaa6787e174a5ba8925d5b1431aec999fc807c33e",
+    "sample": "fd0a42bc9a29ca5fed9a9a4726bb595b95e392611b19c23ca5db81e76cbc7d1c"
+  },
+  "recorded": {
+    "document_count": 13,
+    "entity_rows": 158,
+    "fixture_n_assertions": 0,
+    "fixture_n_docs": 0,
+    "id_map_entries": 1,
+    "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2012",
+    "sample": {
+      "n_docs_available": 13,
+      "n_take": 13,
+      "sample_n_requested": 0,
+      "seed": 0
+    },
+    "triples_rows_at_pin_time": 136,
+    "triples_sha256_at_pin_time": "9e9ceadaee13cea3d52cf3352bbe81ceef9d4eea8b32c8ed7cbbce6805f96481"
+  },
+  "unit": "san_juan/2012"
+}

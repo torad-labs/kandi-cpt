@@ -1,0 +1,1345 @@
+{
+  "0oud31wrt8.md": [
+    {
+      "object": "KineticField",
+      "predicate": "plays_at",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "in_lineup",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2021"
+    },
+    {
+      "object": "main stage",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2021"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "KineticField"
+    }
+  ],
+  "3w030emklz8.md": [
+    {
+      "object": "0:00",
+      "predicate": "plays_at",
+      "subject": "Squid Game - Pink Soldiers (Intro)"
+    },
+    {
+      "object": "0:43",
+      "predicate": "plays_at",
+      "subject": "ACRAZE - Do It To It"
+    },
+    {
+      "object": "1:36",
+      "predicate": "plays_at",
+      "subject": "Zedd - Stay The Night (Zedd & KDrew aka Kevin Drew Extended Remix)"
+    },
+    {
+      "object": "5:34",
+      "predicate": "plays_at",
+      "subject": "Mo Falk - Chopper x Dua Lipa - Break My Heart"
+    },
+    {
+      "object": "7:43",
+      "predicate": "plays_at",
+      "subject": "Hailee Steinfeld & Grey ft. Zedd - Starving"
+    },
+    {
+      "object": "8:12",
+      "predicate": "plays_at",
+      "subject": "Hailee Steinfeld & Grey ft. Zedd - Starving (Bali Bandits Remix)"
+    },
+    {
+      "object": "9:26",
+      "predicate": "plays_at",
+      "subject": "Dirty Disco Youth & Dumme Junge vs David Guetta - Uncle Sam vs Titanium (Zedd Mashup)"
+    },
+    {
+      "object": "11:37",
+      "predicate": "plays_at",
+      "subject": "Zedd ft. Matthew Koma - Spectrum"
+    },
+    {
+      "object": "15:50",
+      "predicate": "plays_at",
+      "subject": "Zedd - Straight Into The Fire"
+    },
+    {
+      "object": "17:20",
+      "predicate": "plays_at",
+      "subject": "DONKONG - The Void"
+    },
+    {
+      "object": "18:30",
+      "predicate": "plays_at",
+      "subject": "Zedd & Alessia Cara - Stay"
+    },
+    {
+      "object": "21:42",
+      "predicate": "plays_at",
+      "subject": "Zedd & Alessia Cara - Stay (Tritonal Remix)"
+    },
+    {
+      "object": "22:36",
+      "predicate": "plays_at",
+      "subject": "MAGIC! - Rude (Zedd Remix)"
+    },
+    {
+      "object": "25:00",
+      "predicate": "plays_at",
+      "subject": "Afrojack & Chico Rose vs. Wolfgang Gartner & Lewis Capaldi - Redline vs. Someone You Loved (Afrojack Mashup)"
+    },
+    {
+      "object": "27:02",
+      "predicate": "plays_at",
+      "subject": "Daft Punk - One More Time (Zedd Remix)"
+    },
+    {
+      "object": "30:35",
+      "predicate": "plays_at",
+      "subject": "Zedd - I Want You To Know"
+    },
+    {
+      "object": "34:48",
+      "predicate": "plays_at",
+      "subject": "Drake - Way 2 Sexy (Maliboux Flip)"
+    },
+    {
+      "object": "36:36",
+      "predicate": "plays_at",
+      "subject": "Lil Nas X - INDUSTRY BABY x ID"
+    },
+    {
+      "object": "38:08",
+      "predicate": "plays_at",
+      "subject": "Masked Wolf - Astronaut In The Ocean x ISOxo - Ground"
+    },
+    {
+      "object": "40:14",
+      "predicate": "plays_at",
+      "subject": "Ariana Grande ft. Zedd - Break Free"
+    },
+    {
+      "object": "41:21",
+      "predicate": "plays_at",
+      "subject": "Popeska - Diamonds"
+    },
+    {
+      "object": "41:50",
+      "predicate": "plays_at",
+      "subject": "Miami 2 Ibiza x Break Free"
+    },
+    {
+      "object": "43:23",
+      "predicate": "plays_at",
+      "subject": "Loopers - Seoul"
+    },
+    {
+      "object": "44:19",
+      "predicate": "plays_at",
+      "subject": "Martin Garrix - Tremor x Zedd - True Colors"
+    },
+    {
+      "object": "46:08",
+      "predicate": "plays_at",
+      "subject": "Zedd ft. Jon Bellion - Beautiful Now"
+    },
+    {
+      "object": "50:20",
+      "predicate": "plays_at",
+      "subject": "Zedd & Maren Morris & Grey - The Middle"
+    },
+    {
+      "object": "53:23",
+      "predicate": "plays_at",
+      "subject": "Zedd & Maren Morris & Grey - The Middle (Marc Benjamin Remix)"
+    },
+    {
+      "object": "53:53",
+      "predicate": "plays_at",
+      "subject": "Yeah Yeah Yeahs - Heads Will Roll (DiscoTech Remix)"
+    },
+    {
+      "object": "55:10",
+      "predicate": "plays_at",
+      "subject": "Icona Pop - I Love It (SICK INDIVIDUALS Remix)"
+    },
+    {
+      "object": "56:09",
+      "predicate": "plays_at",
+      "subject": "Starkillers - Bitch Ass Trick"
+    },
+    {
+      "object": "57:00",
+      "predicate": "plays_at",
+      "subject": "Swedish House Mafia - It Gets Better (David Guetta & Zedd Remix)"
+    },
+    {
+      "object": "59:28",
+      "predicate": "plays_at",
+      "subject": "Zedd - Clarity"
+    },
+    {
+      "object": "1:04:09",
+      "predicate": "plays_at",
+      "subject": "Empire Of The Sun - Alive (Zedd Remix)"
+    },
+    {
+      "object": "1:08:03",
+      "predicate": "plays_at",
+      "subject": "Empire Of The Sun - Alive (Zedd Remix) + Closing Fireworks"
+    }
+  ],
+  "ajiszmfedgo.md": [
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "My Pet Coelacanth"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "When The Summer Dies"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Maths"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Maths (Botnek Remix)"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Moar Ghosts N' Stuff"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Ghosts 'N' Stuff (Chuckie Remix)"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Ghosts 'N' Stuff"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Channel 43"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Monophobia"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Bridged By A Lightwave"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Arguru 2k19"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Coasted"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Imaginary Friends"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Avaritia"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Strobe"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Luxuria (ov) (Tinlicker remix)"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "in_lineup",
+      "subject": "deadmau5"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2021"
+    }
+  ],
+  "bf7a9arue-s.md": [
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "plays_at",
+      "subject": "Nicky Romero"
+    },
+    {
+      "object": "YouTube",
+      "predicate": "located_at",
+      "subject": "Nicky Romero"
+    },
+    {
+      "object": "20211224",
+      "predicate": "operating_hours",
+      "subject": "Nicky Romero"
+    }
+  ],
+  "de4ay6soyeq.md": [
+    {
+      "object": "Circuit Grounds",
+      "predicate": "plays_at",
+      "subject": "Martin Garrix"
+    },
+    {
+      "object": "EDC Las Vegas 2921",
+      "predicate": "in_lineup",
+      "subject": "Martin Garrix"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "Martin Garrix"
+    },
+    {
+      "object": "AREA21",
+      "predicate": "serves",
+      "subject": "Martin Garrix"
+    }
+  ],
+  "edm-com-events-edc-las-vegas-2026-a-rite-of-passage-thirty-years-in-the-making.md": [
+    {
+      "object": "Las Vegas Motor Speedway",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "May 15-17, 2026",
+      "predicate": "operating_hours",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "EDC Las Vegas 2027",
+      "predicate": "succeeded_by",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Dusk Till Dawn format",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2027"
+    },
+    {
+      "object": "Ti\u00ebsto",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Darude",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "The Prodigy",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Kaskade",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Above & Beyond",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "Charlotte de Witte"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "plays_at",
+      "subject": "Lilly Palmer"
+    },
+    {
+      "object": "Basspod",
+      "predicate": "plays_at",
+      "subject": "Mary Droppinz"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "GRiZ"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "Wooli"
+    },
+    {
+      "object": "Cosmic Meadow",
+      "predicate": "plays_at",
+      "subject": "Alison Wonderland"
+    },
+    {
+      "object": "Neon Garden",
+      "predicate": "plays_at",
+      "subject": "KI/KI"
+    },
+    {
+      "object": "kineticJOURNEY theme",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "World Party Parade",
+      "predicate": "incident_occurred",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "practiced_by",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "underground rave",
+      "predicate": "originates_from",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "500000 attendees",
+      "predicate": "proximity_meters",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "rite of passage",
+      "predicate": "serves",
+      "subject": "EDC Las Vegas 2026"
+    }
+  ],
+  "edm-com-events-edc-las-vegas-is-expanding-to-two-weekends-in-2027.md": [
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "succeeded_by",
+      "subject": "EDC Las Vegas 2027"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Rite of Passage",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2026"
+    },
+    {
+      "object": "Two Weekends",
+      "predicate": "operating_hours",
+      "subject": "EDC Las Vegas 2027"
+    },
+    {
+      "object": "The King\u2019s Trust",
+      "predicate": "prerequisite_for",
+      "subject": "Carl Cox"
+    },
+    {
+      "object": "Unreleased Dubstep Demos",
+      "predicate": "plays_at",
+      "subject": "T-Pain"
+    },
+    {
+      "object": "We Belong Here\u2019s 2025 Festival",
+      "predicate": "in_lineup",
+      "subject": "Lane 8"
+    },
+    {
+      "object": "We Belong Here\u2019s 2025 Festival",
+      "predicate": "in_lineup",
+      "subject": "Porter Robinson"
+    },
+    {
+      "object": "We Belong Here\u2019s 2025 Festival",
+      "predicate": "in_lineup",
+      "subject": "Nora En Pure"
+    },
+    {
+      "object": "Central Park",
+      "predicate": "located_at",
+      "subject": "We Belong Here\u2019s 2025 Festival"
+    },
+    {
+      "object": "Lollapalooza 2025",
+      "predicate": "correlates_with",
+      "subject": "EDM"
+    },
+    {
+      "object": "Dash Berlin",
+      "predicate": "practiced_by",
+      "subject": "Jeffrey Sutorius"
+    },
+    {
+      "object": "Reserved",
+      "predicate": "serves",
+      "subject": "Spotify"
+    },
+    {
+      "object": "Holds Concert Tickets for Top Fans",
+      "predicate": "operating_hours",
+      "subject": "Reserved"
+    },
+    {
+      "object": "Santa Monica Pier",
+      "predicate": "located_at",
+      "subject": "Pier Play Festival"
+    },
+    {
+      "object": "Pier Play Festival",
+      "predicate": "in_lineup",
+      "subject": "\u00c2me Live"
+    },
+    {
+      "object": "Pier Play Festival",
+      "predicate": "in_lineup",
+      "subject": "AM\u00c9M\u00c9"
+    },
+    {
+      "object": "G Jones",
+      "predicate": "in_lineup",
+      "subject": "Sound Haven\u2019s 2026 Lineup"
+    },
+    {
+      "object": "Detox Unit",
+      "predicate": "in_lineup",
+      "subject": "Sound Haven\u2019s 2026 Lineup"
+    },
+    {
+      "object": "YDG",
+      "predicate": "in_lineup",
+      "subject": "Sound Haven\u2019s 2026 Lineup"
+    },
+    {
+      "object": "Berlin",
+      "predicate": "located_at",
+      "subject": "Contra"
+    },
+    {
+      "object": "Adriatic Sound Festival",
+      "predicate": "serves",
+      "subject": "Ryan Graves"
+    },
+    {
+      "object": "Independent Safety Review",
+      "predicate": "prohibits",
+      "subject": "Tomorrowland"
+    },
+    {
+      "object": "2026 Return",
+      "predicate": "located_at",
+      "subject": "Tomorrowland"
+    },
+    {
+      "object": "Booking Philosophy",
+      "predicate": "practiced_by",
+      "subject": "Bonnaroo"
+    },
+    {
+      "object": "Breakaway Music Festival\u2019s Utah Debut",
+      "predicate": "in_lineup",
+      "subject": "John Summit"
+    },
+    {
+      "object": "Breakaway Music Festival\u2019s Utah Debut",
+      "predicate": "in_lineup",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "Breakaway Music Festival\u2019s Utah Debut",
+      "predicate": "in_lineup",
+      "subject": "MPH"
+    },
+    {
+      "object": "Pryda EPs",
+      "predicate": "in_lineup",
+      "subject": "Eric Prydz"
+    },
+    {
+      "object": "Pryda EPs",
+      "predicate": "in_lineup",
+      "subject": "Mygga"
+    },
+    {
+      "object": "Pryda EPs",
+      "predicate": "in_lineup",
+      "subject": "Modulation"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "plays_at",
+      "subject": "Kaskade"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "plays_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "plays_at",
+      "subject": "GRiZ b2b Wooli"
+    }
+  ],
+  "edmidentity-com-events-essential-info-guides.md": [
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "Los Angeles",
+      "predicate": "located_at",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "collaborative experience",
+      "predicate": "in_lineup",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "unknown location",
+      "predicate": "located_at",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "Arizona",
+      "predicate": "located_at",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Coachella"
+    },
+    {
+      "object": "unknown location",
+      "predicate": "located_at",
+      "subject": "Coachella"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "unknown location",
+      "predicate": "located_at",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "Southern California",
+      "predicate": "located_at",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "San Diego",
+      "predicate": "located_at",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "M3F"
+    },
+    {
+      "object": "Steele Indian School Park",
+      "predicate": "located_at",
+      "subject": "M3F"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Skyline Festival"
+    },
+    {
+      "object": "Ace*Mission Studios",
+      "predicate": "located_at",
+      "subject": "Skyline Festival"
+    },
+    {
+      "object": "uses cookies",
+      "predicate": "service_constraint",
+      "subject": "this website"
+    },
+    {
+      "object": "disabling cookies without consent",
+      "predicate": "prohibits",
+      "subject": "this website"
+    },
+    {
+      "object": "information about festivals",
+      "predicate": "serves",
+      "subject": "this website"
+    }
+  ],
+  "edmidentity-com-music-exclusive-mix.md": [
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "BrokinPaper"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "M?STIC"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Just\u0117"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KAAZE"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Fallen"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "CUTDWN"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KC Lights"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Dillon Nathaniel"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Spoone"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "AVAIION"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KR\u00c6K"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Disco Shrine"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "LVCA"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Hypaton"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "plays_at",
+      "subject": "CUTDWN"
+    },
+    {
+      "object": "bass music",
+      "predicate": "practiced_by",
+      "subject": "M?STIC"
+    },
+    {
+      "object": "drum & bass",
+      "predicate": "practiced_by",
+      "subject": "KR\u00c6K"
+    },
+    {
+      "object": "hyperpop",
+      "predicate": "practiced_by",
+      "subject": "Disco Shrine"
+    }
+  ],
+  "id24zen-ije.md": [
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDCLV2021"
+    },
+    {
+      "object": "Dusk till Dawn",
+      "predicate": "operating_hours",
+      "subject": "EDCLV2021"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDCLV2021"
+    },
+    {
+      "object": "25 Year Celebration",
+      "predicate": "succeeded_by",
+      "subject": "EDCLV2021"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "25 Year Celebration"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "25 Year Celebration"
+    },
+    {
+      "object": "Dusk till Dawn",
+      "predicate": "operating_hours",
+      "subject": "25 Year Celebration"
+    },
+    {
+      "object": "Under The Electric Sky",
+      "predicate": "succeeded_by",
+      "subject": "25 Year Celebration"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Under The Electric Sky"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "Under The Electric Sky"
+    },
+    {
+      "object": "October 22+23+24",
+      "predicate": "operating_hours",
+      "subject": "Under The Electric Sky"
+    }
+  ],
+  "l9mhwusxu5c.md": [
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Jason Ross"
+    }
+  ],
+  "oc0p0cd3s7g.md": [
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Ti\u00ebsto"
+    }
+  ],
+  "official-2021-lineup.md": [],
+  "r-aves-2021.md": [
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "GA wristbands",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "heat safety advice",
+      "predicate": "service_constraint",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "full jumpsuit or outfit",
+      "predicate": "prohibits",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "festival attendees",
+      "predicate": "serves",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Tuesday - Saturday 10am to 6pm",
+      "predicate": "operating_hours",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "5630 Stephanie St, Las Vegas, NV 89122",
+      "predicate": "located_at",
+      "subject": "Top Notch THC"
+    },
+    {
+      "object": "2202 Charleston Blvd #7, Las Vegas, NV 89102",
+      "predicate": "located_at",
+      "subject": "Rock and Vape"
+    },
+    {
+      "object": "6820 Sahara Ave #4, Las Vegas, NV 89146",
+      "predicate": "located_at",
+      "subject": "Rock and Vape"
+    },
+    {
+      "object": "Speedway",
+      "predicate": "located_at",
+      "subject": "Bunk Police"
+    },
+    {
+      "object": "EDC attendees",
+      "predicate": "serves",
+      "subject": "Bunk Police"
+    },
+    {
+      "object": "heat safety advice",
+      "predicate": "correlates_with",
+      "subject": "Las Vegas weather"
+    },
+    {
+      "object": "Rock and Vape",
+      "predicate": "proximity_meters",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Speedway parking lot",
+      "predicate": "adjacent_to",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "hydration",
+      "predicate": "prerequisite_for",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "festival days",
+      "predicate": "causes_density_at",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Sunday",
+      "predicate": "gets_busy_at",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Sunday night",
+      "predicate": "peak_density",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "heat exhaustion",
+      "predicate": "incident_occurred",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "heat exhaustion",
+      "predicate": "mitigates",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "comfort in full jumpsuit",
+      "predicate": "tradeoff_with",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "exercising before attending",
+      "predicate": "recommended_for",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "festival attendees",
+      "predicate": "practiced_by",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "music festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Las Vegas"
+    }
+  ],
+  "r-edc-2021.md": [
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Zippo with butane insert"
+    },
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Apple leather wallet"
+    },
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Victorinox Alox SD 2021 edition"
+    },
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Olight mini2"
+    },
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Boker atlas copper"
+    },
+    {
+      "object": "Good Friday carry",
+      "predicate": "located_at",
+      "subject": "Small VegaFina"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "S&amp;W model 342-1"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Sahara Casino Las Vegas coin holder"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "August 1995 Zippo"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Pierre Cardin wallet"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Victorinox Super Tinker"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Walmart Carabiner"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Hav-a-hank handkerchief"
+    },
+    {
+      "object": "90's EDC",
+      "predicate": "located_at",
+      "subject": "Mini Mag Lite"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "Bradec holster"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "CZ P10C"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "Clipper lighter"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "Acebeam Pokelit"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "Civivi Praxis mini"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "IPhone 13"
+    },
+    {
+      "object": "Todays carry",
+      "predicate": "located_at",
+      "subject": "Goodfellow wallet"
+    },
+    {
+      "object": "Small fixed wednesday carry",
+      "predicate": "located_at",
+      "subject": "Boker M.U.K"
+    },
+    {
+      "object": "Small fixed wednesday carry",
+      "predicate": "located_at",
+      "subject": "Apple leather wallet"
+    },
+    {
+      "object": "Small fixed wednesday carry",
+      "predicate": "located_at",
+      "subject": "Zippo with butane insert"
+    },
+    {
+      "object": "Small fixed wednesday carry",
+      "predicate": "located_at",
+      "subject": "Victorinox Alox SD 2021"
+    },
+    {
+      "object": "Small fixed wednesday carry",
+      "predicate": "located_at",
+      "subject": "Vegas de Santiago Chaman"
+    }
+  ],
+  "r-electricdaisycarnival-2021.md": [
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2018"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2019"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2021"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2022"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2023"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2024"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2016"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "located_at",
+      "subject": "EDC 2017"
+    },
+    {
+      "object": "Cosmic Meadow",
+      "predicate": "has_tier",
+      "subject": "EDC 2018"
+    },
+    {
+      "object": "Cosmic Meadow",
+      "predicate": "plays_at",
+      "subject": "Dabin"
+    },
+    {
+      "object": "EDC 2018",
+      "predicate": "in_lineup",
+      "subject": "Dabin"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC"
+    },
+    {
+      "object": "May 16-18",
+      "predicate": "operating_hours",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "Hot weather; recommend hydration",
+      "predicate": "service_constraint",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "Breezy conditions on Saturday and Sunday",
+      "predicate": "service_constraint",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "Unreported incidents",
+      "predicate": "prohibits",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "EDC",
+      "predicate": "serves",
+      "subject": "Insomniac"
+    },
+    {
+      "object": "Unverified death reports",
+      "predicate": "prohibits",
+      "subject": "Insomniac"
+    },
+    {
+      "object": "Overdose incidents",
+      "predicate": "mitigates",
+      "subject": "Insomniac"
+    },
+    {
+      "object": "Overdose",
+      "predicate": "incident_occurred",
+      "subject": "EDC 2025"
+    },
+    {
+      "object": "Arrest",
+      "predicate": "incident_occurred",
+      "subject": "EDC 2025"
+    }
+  ],
+  "uxvdhckr-b4.md": [
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "in_lineup",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "Mixcloud",
+      "predicate": "located_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "SoundCloud",
+      "predicate": "located_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "YouTube",
+      "predicate": "located_at",
+      "subject": "Subtronics"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2021"
+    },
+    {
+      "object": "Mixcloud",
+      "predicate": "located_at",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "Bass",
+      "predicate": "has_tier",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "recommended_for",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "serves",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "0:00 - 58:59",
+      "predicate": "operating_hours",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "PLANET INSIKE",
+      "predicate": "located_at",
+      "subject": "Subtronics set"
+    },
+    {
+      "object": "20220113",
+      "predicate": "located_at",
+      "subject": "Subtronics set"
+    }
+  ]
+}

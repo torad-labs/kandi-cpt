@@ -1,0 +1,58 @@
+{
+  "domain": "edc",
+  "note": "Coverage ruler pin. The four digests under `pinned` must match at score time or the audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY \u2014 the graph is the thing under measurement and is never pinned, so a genuine extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. `supersedes` is why that cannot be silent \u2014 it carries the digests and row counts this pin replaced, so the pin's own diff shows the ruler change that licensed the new series. Same trust model as the assertion fixture: committed, diffed, reviewed.",
+  "pinned": {
+    "documents": "7878089bf82e3d3eef4f2816254b09dd68313a91cb7d2bc7a943a1bb0d2cd328",
+    "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+    "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+    "entities": "a3015eb1335b75848272c16e3f0f445b0258e2d26612817ef86d056589168387",
+    "fixture": "6fb0cdfaea4bfb59bf3fef83adf00daf7cf6fc86d733ae1cdfd3667dba12c714",
+    "id_map": "ccd6ca0470df8244c12ba7e5405a92795cfea0bd667853ad8d1e6c3b952dc95d",
+    "sample": "9839e74e9c0f3d8220235ef97274170c5cf15ad8f874c778883c6c85524251af"
+  },
+  "recorded": {
+    "document_count": 17,
+    "entity_rows": 203,
+    "fixture_n_assertions": 202,
+    "fixture_n_docs": 17,
+    "id_map_entries": 3,
+    "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2021",
+    "sample": {
+      "n_docs_available": 17,
+      "n_take": 17,
+      "sample_n_requested": 0,
+      "seed": 0
+    },
+    "triples_rows_at_pin_time": 303,
+    "triples_sha256_at_pin_time": "9c10eca4095814a1db9d877723b4c928c5671ccf4904bf9944f3ad013b22382e"
+  },
+  "supersedes": {
+    "pinned": {
+      "documents": "7878089bf82e3d3eef4f2816254b09dd68313a91cb7d2bc7a943a1bb0d2cd328",
+      "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+      "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+      "entities": "a3015eb1335b75848272c16e3f0f445b0258e2d26612817ef86d056589168387",
+      "fixture": null,
+      "id_map": "ccd6ca0470df8244c12ba7e5405a92795cfea0bd667853ad8d1e6c3b952dc95d",
+      "sample": "9839e74e9c0f3d8220235ef97274170c5cf15ad8f874c778883c6c85524251af"
+    },
+    "recorded": {
+      "document_count": 17,
+      "entity_rows": 203,
+      "fixture_n_assertions": 0,
+      "fixture_n_docs": 0,
+      "id_map_entries": 3,
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2021",
+      "sample": {
+        "n_docs_available": 17,
+        "n_take": 17,
+        "sample_n_requested": 0,
+        "seed": 0
+      },
+      "triples_rows_at_pin_time": 303,
+      "triples_sha256_at_pin_time": "9c10eca4095814a1db9d877723b4c928c5671ccf4904bf9944f3ad013b22382e"
+    },
+    "supersedes": null
+  },
+  "unit": "orlando/2021"
+}

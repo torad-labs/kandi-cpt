@@ -1,0 +1,215 @@
+{
+  "unit": "booster_1",
+  "miss_attribution": {
+    "matcher_recoverable": 0,
+    "different_object": 0,
+    "absent": 0,
+    "n": 0,
+    "matcher_recoverable_ratio": 0.0,
+    "samples": {
+      "matcher_recoverable": [],
+      "different_object": [],
+      "absent": []
+    },
+    "note": "matcher_recoverable > 0 means a matching fix has headroom. At 0 the coverage gap is extraction-side and no keying change can move the number \u2014 re-extract, do not re-match."
+  },
+  "n_docs_sampled": 4,
+  "n_docs_scored": 4,
+  "n_docs_judge_unavailable": 0,
+  "n_docs_fixture_matched": 4,
+  "n_docs_fixture_missing": 0,
+  "n_docs_total": 4,
+  "ruler": {
+    "unit": "booster_1",
+    "fixture": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/booster_1.assertions.json",
+      "sha256": "1abec7a872cb00c98d87f558a76d21d807b22f3a6fa744a823a2640aa53af897",
+      "n_docs": 4,
+      "n_assertions": 4,
+      "supplied": true
+    },
+    "entities": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1/15_structured/entities.resolved.jsonl",
+      "sha256": "d7634d7fcda6aa6ab9cb5f865c8a61105cb55f1d20396c7662105a775bd1d079",
+      "rows": 20
+    },
+    "id_map": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/resolve/millbrook-hollow/booster_1/id_map.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "entries": 0
+    },
+    "domain_manifest": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/domains/millbrook-hollow.yaml",
+      "sha256": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26"
+    },
+    "documents": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1/10_clean",
+      "sha256": "9ffe82d9ab04adf76ac39a0a4f05eece67715620fee8486b89a9f4bbd3f7524d",
+      "n_docs": 4
+    },
+    "editions_registry": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/editions_millbrook-hollow.json",
+      "sha256": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1"
+    },
+    "sample": {
+      "seed": 0,
+      "sample_n_requested": 0,
+      "n_take": 4,
+      "n_docs_available": 4,
+      "sha256": "6423a4d7b2b8651605c74c25a4b2453828673f5aedeec905f7007ef39da77cc2"
+    },
+    "triples": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1/15_structured/triples.resolved.jsonl",
+      "sha256": "5a5a93497e98723cb72e62cc4feb8edc4a3936461b62ef8fde5613388945c825",
+      "rows": 10,
+      "pinned": false,
+      "note": "the graph under measurement \u2014 recorded, never pinned"
+    },
+    "pin": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/booster_1.ruler.json",
+      "present": true,
+      "enforced": true,
+      "ignored": false,
+      "verified": true,
+      "problems": [],
+      "fixture_compared": true
+    }
+  },
+  "hits": 4,
+  "n": 4,
+  "ratio": 1.0,
+  "raw": {
+    "hits": 4,
+    "n": 4,
+    "ratio": 1.0
+  },
+  "clean_unfiltered": {
+    "hits": 4,
+    "n": 4,
+    "ratio": 1.0
+  },
+  "classes": {
+    "judge_rejected": 0,
+    "out_of_unit": 0,
+    "misses": 0,
+    "hits": 4,
+    "match_mode": {
+      "exact": 4,
+      "soft-object": 0,
+      "canonical": 0
+    }
+  },
+  "reject_reasons": {},
+  "corpus_composition_note": null,
+  "docs": [
+    {
+      "path": "Sable_Teaching_Notice.md",
+      "hits": 1,
+      "n": 1,
+      "ratio": 1.0,
+      "per_predicate": {
+        "teaches_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 1,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "Elowen_Teaching_Notice.md",
+      "hits": 1,
+      "n": 1,
+      "ratio": 1.0,
+      "per_predicate": {
+        "teaches_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 1,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "Calder_Teaching_Notice.md",
+      "hits": 1,
+      "n": 1,
+      "ratio": 1.0,
+      "per_predicate": {
+        "teaches_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 1,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "Nessa_Teaching_Notice.md",
+      "hits": 1,
+      "n": 1,
+      "ratio": 1.0,
+      "per_predicate": {
+        "teaches_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 1,
+        "ratio": 1.0
+      }
+    }
+  ],
+  "judge_rejected_sample": [],
+  "out_of_unit_sample": [],
+  "fixture_missing_sample": [],
+  "judge_unavailable_sample": []
+}

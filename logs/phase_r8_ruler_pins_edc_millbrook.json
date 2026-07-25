@@ -1,0 +1,3004 @@
+{
+  "schema": "kandi.coverage_ruler_pin.v1",
+  "campaign": "phase_r8_ruler_pins_edc_millbrook",
+  "recorded_at": "2026-07-25T20:22:15Z",
+  "status": "LANDED",
+  "headline": "EDC (98/98) and millbrook-hollow (2/2) now carry five-input+ ruler pins. millbrook measures PASS clean 1.0 on both units (demo, as expected). EDC measured on 5 representative units \u2014 all FAIL the 0.6 gate (honest; 0.0000\u20130.3333). No unit was left unpinned-and-quotable.",
+  "pinned_fields": [
+    "fixture",
+    "entities",
+    "id_map",
+    "domain_manifest",
+    "documents",
+    "editions_registry",
+    "sample"
+  ],
+  "note_on_field_count": "phase_r3 started at five inputs (fixture/entities/id_map/domain_manifest/documents). rounds 3\u20134 added editions_registry and sample. Pins here freeze all seven.",
+  "edc": {
+    "n_units_in_registry": 98,
+    "n_pinned": 98,
+    "n_unpinnable": 0,
+    "production_path_verify": {
+      "ok": 98,
+      "bad": 0
+    },
+    "baseline_scope": "5 units judged live then frozen as fixtures and re-measured offline under the pin. Full 98-unit aggregate was not judged (\u22481418 docs); unmeasured units stay pinned and are quotable only after a live/fixture score against their pin.",
+    "baseline_measured": {
+      "las_vegas/2021": {
+        "status": "FAIL",
+        "quotable": true,
+        "clean_ratio": 0.0968,
+        "clean_n": 31,
+        "clean_hits": 3,
+        "entity_rows": 404,
+        "triple_rows_at_pin": 1042,
+        "id_map_entries": 15,
+        "n_docs": 17,
+        "pinned": {
+          "documents": "4569036ff974e724be493607e760ec11f392e7324dc9fb7e726d17e10b2a041a",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "b1a05aca276fda4ae9f3cb5ce474619bdea9e43b907f98f23f987659c62451a1",
+          "fixture": "2a3edf9decd773cff46bc54fdb2c5346c20cc9894d200864ce337fd08876d878",
+          "id_map": "388c8b019fa424ed4c7815a5d027b1f38b86113fc8dba746834b2edb0e55ac44",
+          "sample": "6bcd114885c11e3112d1b0397773573c5aefd0e11fc1f7489538f4e9e55bc1e6"
+        }
+      },
+      "las_vegas/2025": {
+        "status": "FAIL",
+        "quotable": true,
+        "clean_ratio": 0.2414,
+        "clean_n": 58,
+        "clean_hits": 14,
+        "entity_rows": 444,
+        "triple_rows_at_pin": 1260,
+        "id_map_entries": 6,
+        "n_docs": 20,
+        "pinned": {
+          "documents": "11afa49b1d19cdaafa235554c45c2fc75149bf412edf7a103104f16025245f78",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "082c6d769fdd13f5592dd51427add434cd0ad2fc4871d2abf73b4188da0828d3",
+          "fixture": "bde869f90c90a85cb9d99f20c57ca7d47fa688b06fe546d788bec85f8e0520eb",
+          "id_map": "153c97f47b75289658ddcc1e787d8f8041a7a766535733c84f0c8a902afd8e2c",
+          "sample": "be9abb018ca991ff2be55f1521f9e45915506a71cbc3a629261f20bcc4263214"
+        }
+      },
+      "orlando/2021": {
+        "status": "FAIL",
+        "quotable": true,
+        "clean_ratio": 0.3043,
+        "clean_n": 46,
+        "clean_hits": 14,
+        "entity_rows": 203,
+        "triple_rows_at_pin": 303,
+        "id_map_entries": 3,
+        "n_docs": 17,
+        "pinned": {
+          "documents": "7878089bf82e3d3eef4f2816254b09dd68313a91cb7d2bc7a943a1bb0d2cd328",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "a3015eb1335b75848272c16e3f0f445b0258e2d26612817ef86d056589168387",
+          "fixture": "6fb0cdfaea4bfb59bf3fef83adf00daf7cf6fc86d733ae1cdfd3667dba12c714",
+          "id_map": "ccd6ca0470df8244c12ba7e5405a92795cfea0bd667853ad8d1e6c3b952dc95d",
+          "sample": "9839e74e9c0f3d8220235ef97274170c5cf15ad8f874c778883c6c85524251af"
+        }
+      },
+      "orlando/2025": {
+        "status": "FAIL",
+        "quotable": true,
+        "clean_ratio": 0.3333,
+        "clean_n": 15,
+        "clean_hits": 5,
+        "entity_rows": 143,
+        "triple_rows_at_pin": 239,
+        "id_map_entries": 8,
+        "n_docs": 16,
+        "pinned": {
+          "documents": "518ba077578a3d23a38f34b2c95241c12eee2ac26456a93bf5a4c15e202a84b5",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "e628934e18fb11632affa93f94ebdc117127f6b034389327c6bb3ae171486d6b",
+          "fixture": "e14e35195e50e630e114de6ebe27043932efb593678989f783f69fa0ab40a117",
+          "id_map": "78ffd8b74fd8aa04ca3f90594471b78e2e8b057e184f9ea3727ac8e690540698",
+          "sample": "72f8e2083df6145758c35b35f7dbe9e736a9853ba422a09d414dd935d81ac545"
+        }
+      },
+      "milton_keynes/2015": {
+        "status": "FAIL",
+        "quotable": true,
+        "clean_ratio": 0.0,
+        "clean_n": 20,
+        "clean_hits": 0,
+        "entity_rows": 47,
+        "triple_rows_at_pin": 48,
+        "id_map_entries": 2,
+        "n_docs": 15,
+        "pinned": {
+          "documents": "591549b31e84c12dac7178c969822d316216010ea0316e287fdd89031b44ba9d",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "6557bed85254a4c0aa6720c473c95a6726b7abf1dc4d1078ede8bae55a4f672c",
+          "fixture": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4",
+          "id_map": "b82bcf7732128e660e78146b43700458a35a5de7e6ae534706966ef958308c59",
+          "sample": "f2d24f465b315b9b133d1990275009277fe47874500370dc7c65315bec9ef428"
+        }
+      }
+    },
+    "baseline_summary": {
+      "las_vegas/2021": {
+        "clean_ratio": 0.0968,
+        "clean_n": 31,
+        "status": "FAIL"
+      },
+      "las_vegas/2025": {
+        "clean_ratio": 0.2414,
+        "clean_n": 58,
+        "status": "FAIL"
+      },
+      "orlando/2021": {
+        "clean_ratio": 0.3043,
+        "clean_n": 46,
+        "status": "FAIL"
+      },
+      "orlando/2025": {
+        "clean_ratio": 0.3333,
+        "clean_n": 15,
+        "status": "FAIL"
+      },
+      "milton_keynes/2015": {
+        "clean_ratio": 0.0,
+        "clean_n": 20,
+        "status": "FAIL"
+      },
+      "gate": 0.6,
+      "verdict": "FAIL on every measured unit \u2014 the coverage gap is real, not a measurement artifact"
+    },
+    "special_case_las_vegas_2026": {
+      "id_map": "absent on disk (resolve never wrote the unit). Pin carries explicit null; compare_ruler_pin treats null==null as agreed absence (not incomplete).",
+      "pinned_id_map": null
+    },
+    "pin_paths": "data/_build/recall/edc/<city>_<year>.ruler.json",
+    "units": {
+      "las_vegas/2011": {
+        "pinned": {
+          "documents": "32b0dc562a28b9e4825c285286f7f8a904a540fd6a85f318547d1e12af9533c9",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "488b7adb43261c2c585fae37e4f2f8957f4131b05ae38e6e60b873aef88af740",
+          "fixture": null,
+          "id_map": "4b7d8ce845f46c86026207d5c2de81bcfe1190ea3daac3f4e56b6d359d026129",
+          "sample": "36e6de8f2e6ef00c0cd760c1230e5f5e134b19a88ad22db9996f3f2e09f8a8b1"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 166,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2011",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 137,
+          "triples_sha256_at_pin_time": "33dcff08df6bf1c7bcfd3d73e9f7e3d7b6aa81d122cb376bf97c96f78cabbe32"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2011.ruler.json"
+      },
+      "las_vegas/2012": {
+        "pinned": {
+          "documents": "79e13320c11964d22be2b416dad381719578a568dd8d93a7320b40f51845ff51",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "3f9251f024b4013f62ad27d17b8b1c1b60c901850414c7d8aeeb8c14c8851297",
+          "fixture": null,
+          "id_map": "0c9d537b8ae161ed0769dc3ae52ec2a518889d24eac0c6e9af54c531f14ad126",
+          "sample": "0e3db71352b06963a3ed8afff1a5778529c8b00eb369af315d3936354f90bb2e"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 175,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2012",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 287,
+          "triples_sha256_at_pin_time": "859fd4f5986209248c96a2e9cca7214c082cc74188695c0db316e2ef428c1586"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2012.ruler.json"
+      },
+      "las_vegas/2013": {
+        "pinned": {
+          "documents": "3e45eeb0348113237a099ce82ca9b2edae49e3d6a04a6017476fe40929ab5090",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "71e64f1f65f6ad21bba91a648314e6e14c8777cddaa44b9f92d33ec5c7681b61",
+          "fixture": null,
+          "id_map": "c4493094554cbe92a743a38a1394fe8fd47657067d192db30bbf6f3e800258f1",
+          "sample": "99256cdcf7bc354bdbbe73f7f9cd8d6f96293284712c02decffcc8e13199654f"
+        },
+        "recorded": {
+          "document_count": 19,
+          "entity_rows": 245,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 5,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2013",
+          "sample": {
+            "n_docs_available": 19,
+            "n_take": 19,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 217,
+          "triples_sha256_at_pin_time": "b687e4becf5122dd80e3d9b1b18603cc286273876a89bf610c0609fb76f180ee"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2013.ruler.json"
+      },
+      "las_vegas/2014": {
+        "pinned": {
+          "documents": "d6f05cd769380c9005092b874567e0d28c9fead89454ffce5e471f829cd2ac17",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f416709563d1ba21b92f2afabc00a9c174e1f482698ade04dea597696e621217",
+          "fixture": null,
+          "id_map": "cfa1221391d87682f12811f82127b825c537868fa65cef383f4899dae22a0ed0",
+          "sample": "8b586d49dbec9d7e9b1087b6fb683e392e9d5813fabaa8c8eb0b835499b84f12"
+        },
+        "recorded": {
+          "document_count": 18,
+          "entity_rows": 203,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2014",
+          "sample": {
+            "n_docs_available": 18,
+            "n_take": 18,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 205,
+          "triples_sha256_at_pin_time": "9d56db0633bd90e3f5c696a99e34ee27a7ab0df4e6803661071b2262664328ec"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2014.ruler.json"
+      },
+      "las_vegas/2015": {
+        "pinned": {
+          "documents": "c11e0a6fc83f32e333e916c9f8ef376f11b818a06b5a44b651a0c207ce99ff3d",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "143e5ec1a08cfdd16c055e7310136c745254eac71077ca646e4eec5363246920",
+          "fixture": null,
+          "id_map": "4af4ec9d264e8400695a21dfc8463504f871c38b0ccfa5d7ff260f2764d852d8",
+          "sample": "4225a1e03c4522faceb82cbcab46b7ea53c7d414aadcd7bb50d7c7891c92c81a"
+        },
+        "recorded": {
+          "document_count": 18,
+          "entity_rows": 263,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 5,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2015",
+          "sample": {
+            "n_docs_available": 18,
+            "n_take": 18,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 429,
+          "triples_sha256_at_pin_time": "799336d3d5042bbd60ce774353626e7fb7aa2d18dc5b2a123e8b80fce2cbb99b"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2015.ruler.json"
+      },
+      "las_vegas/2016": {
+        "pinned": {
+          "documents": "08ddf13d34b2643261b85680f5dc394764c00d0823d2d1c86430f279f933f0fd",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "69f4856122828c47d3afc565a7caaf789a808839d9ac3e744a56a1c50eac08fc",
+          "fixture": null,
+          "id_map": "a2e94e51b0383ff602c03874367819c4f35ad148a4e86d4b6effb18769191fbe",
+          "sample": "35282e7bf7650f6357095623df4a75d0e6caba72dbdd308a2719fc919856c85a"
+        },
+        "recorded": {
+          "document_count": 18,
+          "entity_rows": 305,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 7,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2016",
+          "sample": {
+            "n_docs_available": 18,
+            "n_take": 18,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 542,
+          "triples_sha256_at_pin_time": "54341837bcf9bbcd9c9e4e8ba2e962ea2aa98edafb8cf992607720894b72a1b8"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2016.ruler.json"
+      },
+      "las_vegas/2017": {
+        "pinned": {
+          "documents": "932539e78fa19a03d20a58a3aef6c9d97a37d1d960042a1631d1ca5b8eca2e68",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "728d46ffe7ae78c9d864086ea27dfc1c495c21a369b67d875a1ef88849bf6b4b",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "288bdf41de7f0c9895b1bffcd2ae50f6ba04b20db3d6ed0902932a6e581e35dc"
+        },
+        "recorded": {
+          "document_count": 20,
+          "entity_rows": 288,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2017",
+          "sample": {
+            "n_docs_available": 20,
+            "n_take": 20,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 492,
+          "triples_sha256_at_pin_time": "8bfc94c9b4dfd1e5134101fb7ff33c0ec5e84341e89755ddea5c3e41f8cd14cd"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2017.ruler.json"
+      },
+      "las_vegas/2018": {
+        "pinned": {
+          "documents": "03901686a6785ef79032f0b5afc0aee38fcb5ff51ad38ac300123bedf87528f0",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "2970c1036387b425f74193c87b33c7ec22d6ee9da79577bc9bd041d03409c9a0",
+          "fixture": null,
+          "id_map": "d05ad9309737d256b6a5d635d303aa2ff68682274f25f8e8de243e10baf598dd",
+          "sample": "c260c6a51d4abdb8df26bdb247920ced5cbe3cdc0372abbb2720a288e176cc3c"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 418,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 7,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2018",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1002,
+          "triples_sha256_at_pin_time": "67ca351f202d6c71d47f19d6c25bc2207479114f6fb263a443b6309f3624062c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2018.ruler.json"
+      },
+      "las_vegas/2019": {
+        "pinned": {
+          "documents": "a29b4548adc0513de774cc70265b8c5562e7dbb09e342dc4ceb67f78a873efbb",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "0c458912dc358da7cfb1fcbe65a50d7051bd76bed8c7b366e7a3fb15249a085a",
+          "fixture": null,
+          "id_map": "43fd944af86cc3aa9b1f0af83aded6e4a63cac0461fd49cbda1b55337407e9f9",
+          "sample": "f57a563db4e7556afe350856bd85251f94d1515065a4326b7016a4b4863c7a65"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 426,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 13,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2019",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 995,
+          "triples_sha256_at_pin_time": "5449fb4042d8cbcee56d16cdc6330e8ffab58f5d7733dceec58acb8328349f5e"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2019.ruler.json"
+      },
+      "las_vegas/2021": {
+        "pinned": {
+          "documents": "4569036ff974e724be493607e760ec11f392e7324dc9fb7e726d17e10b2a041a",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "b1a05aca276fda4ae9f3cb5ce474619bdea9e43b907f98f23f987659c62451a1",
+          "fixture": "2a3edf9decd773cff46bc54fdb2c5346c20cc9894d200864ce337fd08876d878",
+          "id_map": "388c8b019fa424ed4c7815a5d027b1f38b86113fc8dba746834b2edb0e55ac44",
+          "sample": "6bcd114885c11e3112d1b0397773573c5aefd0e11fc1f7489538f4e9e55bc1e6"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 404,
+          "fixture_n_assertions": 262,
+          "fixture_n_docs": 17,
+          "id_map_entries": 15,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2021",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1042,
+          "triples_sha256_at_pin_time": "25a76595946ad1959265f7433e66d402840e109e779cc5cc707fb685721649c9"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2021.ruler.json"
+      },
+      "las_vegas/2022": {
+        "pinned": {
+          "documents": "2bdaa555c90fa322880ecf399c83f4bf1b324752816bc95bbfeea7e06a0549d5",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "c4093261832705fcdb36ea19f9760b649a8959cbc6023b72a9cc85ae56583d62",
+          "fixture": null,
+          "id_map": "0702ad2947bd54e1213e8702b9212a706c60635b5d3b7bb11c1019cc1df5bd94",
+          "sample": "6f923ec18bb8a36f86d327774a0b7319631c0381dea9f84962129e2e4e2467f1"
+        },
+        "recorded": {
+          "document_count": 18,
+          "entity_rows": 460,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 12,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2022",
+          "sample": {
+            "n_docs_available": 18,
+            "n_take": 18,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1085,
+          "triples_sha256_at_pin_time": "9b6c9cab381763ca6d652d98283018e22e076a912ffde5ad899c7d13ec341ecf"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2022.ruler.json"
+      },
+      "las_vegas/2023": {
+        "pinned": {
+          "documents": "3f07af3d7e1c3786f3e0db50f469f743fbb43b0eab83767ac3725d14db9edc90",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "de34398ca409a902c765a925d4ab01eefd6d66ad72b45cf092457e549ae02c89",
+          "fixture": null,
+          "id_map": "58e91507f205aca1a3259f66a578f90c2901c3f8a336c4b09e2001d923fc610a",
+          "sample": "40d2634727214729ba00716b1fec318f6f2f4c7636e70ce08b5f4cec834dbe1b"
+        },
+        "recorded": {
+          "document_count": 20,
+          "entity_rows": 360,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 10,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2023",
+          "sample": {
+            "n_docs_available": 20,
+            "n_take": 20,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1110,
+          "triples_sha256_at_pin_time": "ead6215bdf4f5a00c905cf2620aa9bf28a31488121de94f5830b3159bc7d1be3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2023.ruler.json"
+      },
+      "las_vegas/2024": {
+        "pinned": {
+          "documents": "9d68427f15d0b98642e6483b00a3121e453e1cfc1cfa903ab9a40bd069bc4867",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f0b59f9deaeb441a27ae597393458415f9b009e4641e6c073fa0291b7396b743",
+          "fixture": null,
+          "id_map": "563e1dbc4d35b9bc64c3ff1c965ca6894ad593ac897effca5e4a97f1a08af073",
+          "sample": "79d9e702cf5b3e2e568e36a1f64c529b4dc68310d5a16924aaca176a3ea6f759"
+        },
+        "recorded": {
+          "document_count": 21,
+          "entity_rows": 455,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 11,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2024",
+          "sample": {
+            "n_docs_available": 21,
+            "n_take": 20,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1253,
+          "triples_sha256_at_pin_time": "0e3defc531a1102be1b7f1d0580624270d2a339d3bfe00f8d8ca8959a9fb14b4"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2024.ruler.json"
+      },
+      "las_vegas/2025": {
+        "pinned": {
+          "documents": "11afa49b1d19cdaafa235554c45c2fc75149bf412edf7a103104f16025245f78",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "082c6d769fdd13f5592dd51427add434cd0ad2fc4871d2abf73b4188da0828d3",
+          "fixture": "bde869f90c90a85cb9d99f20c57ca7d47fa688b06fe546d788bec85f8e0520eb",
+          "id_map": "153c97f47b75289658ddcc1e787d8f8041a7a766535733c84f0c8a902afd8e2c",
+          "sample": "be9abb018ca991ff2be55f1521f9e45915506a71cbc3a629261f20bcc4263214"
+        },
+        "recorded": {
+          "document_count": 20,
+          "entity_rows": 444,
+          "fixture_n_assertions": 211,
+          "fixture_n_docs": 20,
+          "id_map_entries": 6,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2025",
+          "sample": {
+            "n_docs_available": 20,
+            "n_take": 20,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 1260,
+          "triples_sha256_at_pin_time": "fbb376f36a297e219281a5e4b4f85c61b5649034815cd7f4754c1f8d43810b07"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2025.ruler.json"
+      },
+      "las_vegas/2026": {
+        "pinned": {
+          "documents": "4318c41feebcd206066312956f4a4a33350b1dbd241258d56488fd4d8357d22e",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f283f9059d5ec4f1c0daa27042508458f93ffdb399c163cd6bfedc6099b433b8",
+          "fixture": null,
+          "id_map": null,
+          "sample": "98c9a5db71ed0c586655bae9ce48acd886a6c8beeab3ff0f9384c275944624f8"
+        },
+        "recorded": {
+          "document_count": 35,
+          "entity_rows": 614,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2026",
+          "sample": {
+            "n_docs_available": 35,
+            "n_take": 20,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 859,
+          "triples_sha256_at_pin_time": "a79b337e037081ad4be6386574e143022d6b26bdbeec41853334453130827ca5"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2026.ruler.json"
+      },
+      "orlando/2011": {
+        "pinned": {
+          "documents": "8527f96d472ca6999ac27d8000150b50b2b966f5c5dec584310f623e50cb1605",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "42ee99d48963f3bfedfde549d830c08e924e22531e6377d875fbca6fd33d39ce",
+          "fixture": null,
+          "id_map": "b36956e03fbbf7bdc5e71a7e23bf1bb35803d4228d103c3373c58748aab80979",
+          "sample": "d6a962213966539432e0b76b213d1d1f2ebdb43feb6fae175a4dd2ce82e8ef76"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 41,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2011",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 35,
+          "triples_sha256_at_pin_time": "6d0fbb756a04b825e17a8a3b8ad028e8def0ea1ce98726607f2eac65cb4ea306"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2011.ruler.json"
+      },
+      "orlando/2012": {
+        "pinned": {
+          "documents": "378eadfe0c938a71e7985d0478c09d1cbad2136ff5973ac21000f861fa7b0bae",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "4c6cd423a743e9ab7264e0b6b56cf015ced5c18acadcfeaf838cb7106ec7e037",
+          "fixture": null,
+          "id_map": "c7613927478d264370e8e89d100d666d5dfba60de626d3e977d1ec685d4d7a6e",
+          "sample": "2078fd87f072b1747b565c8bb12f924f273c8094c5adc0837c50186724678318"
+        },
+        "recorded": {
+          "document_count": 11,
+          "entity_rows": 85,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2012",
+          "sample": {
+            "n_docs_available": 11,
+            "n_take": 11,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 51,
+          "triples_sha256_at_pin_time": "2d917a6fb4b6fb46c1f3445f17de72c6d427ef2f0949a5fc7e26db749e8b8716"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2012.ruler.json"
+      },
+      "orlando/2013": {
+        "pinned": {
+          "documents": "b255f56373094d510c69b33b83e277f3c32e57abd1998e7986395a78103f49d9",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "d5d722f541593f3d786eb88c97ad1cabe83d2f92ce9b5784c2d9d62d1e00f6ed",
+          "fixture": null,
+          "id_map": "df3adfea37f84aa8a5f75f25e5fd0cbc18e7f5e507c8d4e5c0a8fab600c6cc98",
+          "sample": "2cde032ee7d89259eb0e7b4c9569fa04cee78fbee37cfea35fbba0a1bcb7d3f5"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 67,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2013",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 23,
+          "triples_sha256_at_pin_time": "e6cb5079777c20f367f430fe64da95e94f80f9199b18a4ef38c9cb1cf8d52bd0"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2013.ruler.json"
+      },
+      "orlando/2014": {
+        "pinned": {
+          "documents": "9dd1ddca485ec644b8f9aaddd61f9ac899b119ef266db792628e198854ffdc4a",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "a909d3dfadd36e6cff14a7154792a6553632bf681a63b0d4db3e3b13ffb81064",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "b34d88a2ec2a4bae858e15e471940e54dc48b2d6da9474f928ff4f0cdac74a46"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 76,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2014",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 73,
+          "triples_sha256_at_pin_time": "245d400e9321ce642b47b50bed9ff49d1edc69962f115b2ced6d60bdba6b389c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2014.ruler.json"
+      },
+      "orlando/2015": {
+        "pinned": {
+          "documents": "48ebf183dd1543d67533b9fb87f4b345cc06d9beb1a989ba1dddec88513cf5cc",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "4e417936d4f2ceab35473ce4c38b8e6823745aa7c75d8657c1ea1401562181f3",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "78eacd5f6877af82375a1b3df36d117d714290e1ea1b471f73462f05939cdb7f"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 84,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2015",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 84,
+          "triples_sha256_at_pin_time": "6a57ad79f7befbc1ec7721a728458e36c8bf4947e8d9ab335a2c264ea6c9996b"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2015.ruler.json"
+      },
+      "orlando/2016": {
+        "pinned": {
+          "documents": "cd79b8ae1e076e6707d21ce59a81fad265e6fbca2778e622f2e97e26bbbd2434",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f5d1d81ca084893384bc7fd53cfbbbc01b58b66eaa691903f79e6b731f606fe6",
+          "fixture": null,
+          "id_map": "711a14b4e5305ad9f386c3593ad548a4cbf50d66f400b6da0d45085f7001ca46",
+          "sample": "3c462e0511b20b5b5b3ab07492940213b79ba167bbd68283cfb0cfcade5de1ed"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 93,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2016",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 105,
+          "triples_sha256_at_pin_time": "545e5ee863944e860be6b812f62bebf70583baab35f39798e16e5fc08b5606b1"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2016.ruler.json"
+      },
+      "orlando/2017": {
+        "pinned": {
+          "documents": "ea753db468ddbc98ccc74dcc2f72d81c339faa3834e1995149884c7021875429",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8f4fcd9561aac5a0128899bdeba2b0c520539e9da58a4559d43d402a27fdaab2",
+          "fixture": null,
+          "id_map": "dd85eb76bf187eb13ff29bf63c6f1c80701cf63acce4f8f84fc81c786f014e3e",
+          "sample": "a8810ae368996e1c99e6aecf2b458df5464260f9ee34c7b512f80e4b055a311c"
+        },
+        "recorded": {
+          "document_count": 11,
+          "entity_rows": 86,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 4,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2017",
+          "sample": {
+            "n_docs_available": 11,
+            "n_take": 11,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 127,
+          "triples_sha256_at_pin_time": "1aa628bccb9e5c9ccf2b38f37f4375ea48296d2183b91334fc7c4425c141b6b3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2017.ruler.json"
+      },
+      "orlando/2018": {
+        "pinned": {
+          "documents": "1566a40b100a6099ae8bffa3db9c9f337817e6e062722525969c44ccc51090b6",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "20b1fb4920d5d9ae2d35f3f265b79aa8fb30c6ba0f290e04a472bac6e1c21980",
+          "fixture": null,
+          "id_map": "2c2bcb2d5bf442e02cbbdaae45336f9f00cace64a06651d2e8a9137bd6143a4f",
+          "sample": "ca86405465da1cc7b7f8c2c5511e33b5ac64b25bda80608fd01fdefb3344b1b8"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 102,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 5,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2018",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 165,
+          "triples_sha256_at_pin_time": "20714f5ba38223726be3392e095efe2376147e1a4044f377b6e8d9481bfab367"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2018.ruler.json"
+      },
+      "orlando/2019": {
+        "pinned": {
+          "documents": "706361ee3e53d99bdcd41557c9b8de99f49c0572a6b5fc241d70ae707c987a59",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "0a921cfcc915b4c64e5e19638dfc4067f2a5a0e53561044c71684cd45d45d34c",
+          "fixture": null,
+          "id_map": "dbcb83e39e2f7e67161773385fa938904da137dc7613d2e44eaa6725b7794d53",
+          "sample": "9986261360946f7d3144c377632cee335a9569c3bf73eaca7fae25ffa449e595"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 143,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 4,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2019",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 253,
+          "triples_sha256_at_pin_time": "6f9cc05aec37503922f6f27fe8df7c42c6c56df59b250c509e94dcbb16cbea5c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2019.ruler.json"
+      },
+      "orlando/2021": {
+        "pinned": {
+          "documents": "7878089bf82e3d3eef4f2816254b09dd68313a91cb7d2bc7a943a1bb0d2cd328",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "a3015eb1335b75848272c16e3f0f445b0258e2d26612817ef86d056589168387",
+          "fixture": "6fb0cdfaea4bfb59bf3fef83adf00daf7cf6fc86d733ae1cdfd3667dba12c714",
+          "id_map": "ccd6ca0470df8244c12ba7e5405a92795cfea0bd667853ad8d1e6c3b952dc95d",
+          "sample": "9839e74e9c0f3d8220235ef97274170c5cf15ad8f874c778883c6c85524251af"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 203,
+          "fixture_n_assertions": 202,
+          "fixture_n_docs": 17,
+          "id_map_entries": 3,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2021",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 303,
+          "triples_sha256_at_pin_time": "9c10eca4095814a1db9d877723b4c928c5671ccf4904bf9944f3ad013b22382e"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2021.ruler.json"
+      },
+      "orlando/2022": {
+        "pinned": {
+          "documents": "4d64f176fde619d6d4be37487db2646dc0d31574af427538304bbc4ad1ae35b4",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "07452301eacc444da4fdc6417bc98a7d6ee282f6f734c55a2d5e33da8d1d2104",
+          "fixture": null,
+          "id_map": "dee9ddd36c7d611a52b05e2eab03e3ac25f34decbad32b4d898d6160f83ad2bd",
+          "sample": "8ee54a3703f772e7ec869b0e5491a8ac3e5412f097a668622e233560aa8c4fda"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 169,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2022",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 248,
+          "triples_sha256_at_pin_time": "b67b3b084725d434a1c315418e9873feff49ede5e906c56bfe9793cb3611ed5e"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2022.ruler.json"
+      },
+      "orlando/2023": {
+        "pinned": {
+          "documents": "880e4869bf2a1d41af68593dbfdd52ebc8ce10afa0f0efa8801b183f1976e2d4",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "6668fdb7fa529404f1611d4df7048d464bf50f8f2591bfb59f059a5361c7c6e9",
+          "fixture": null,
+          "id_map": "2f925cefcbfd106d43ee87a2a7de8957fee9b7b5a63bcd577d9dcfb85a260ed7",
+          "sample": "258037e7e7a05a24b8177d45e8fc802d2803d2c64840e25130da0205d7ffa966"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 136,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2023",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 126,
+          "triples_sha256_at_pin_time": "95208f1b32585244017e3205706bf3dcf3fe835637503fdfc92f45e454cabb8d"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2023.ruler.json"
+      },
+      "orlando/2024": {
+        "pinned": {
+          "documents": "e4599ae26400d38c6361412ccf21d90357fa8cbd3a3372fad9870193aa760c8b",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "12900d606815a71b9a10ea96fc0af628cd3b185863a77e034ee66d280a35b578",
+          "fixture": null,
+          "id_map": "03bc3e5561632eb6c38902a5308ee49f6b197b4f9f99486ce12645c40af58c8e",
+          "sample": "c0808f3c959fa7b46d7c7d6a22dd7818aeb54f7ac871d55c2acd03d2cf159292"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 168,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 3,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2024",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 259,
+          "triples_sha256_at_pin_time": "70455e66a0406699daa8c7a69546032838631a196854d2367634b7fd9586e41c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2024.ruler.json"
+      },
+      "orlando/2025": {
+        "pinned": {
+          "documents": "518ba077578a3d23a38f34b2c95241c12eee2ac26456a93bf5a4c15e202a84b5",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "e628934e18fb11632affa93f94ebdc117127f6b034389327c6bb3ae171486d6b",
+          "fixture": "e14e35195e50e630e114de6ebe27043932efb593678989f783f69fa0ab40a117",
+          "id_map": "78ffd8b74fd8aa04ca3f90594471b78e2e8b057e184f9ea3727ac8e690540698",
+          "sample": "72f8e2083df6145758c35b35f7dbe9e736a9853ba422a09d414dd935d81ac545"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 143,
+          "fixture_n_assertions": 113,
+          "fixture_n_docs": 16,
+          "id_map_entries": 8,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2025",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 239,
+          "triples_sha256_at_pin_time": "226f2fc85ae75a31eba049289f07275b4ecdafa0a0bf6650f0062237e5931f76"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2025.ruler.json"
+      },
+      "orlando/2026": {
+        "pinned": {
+          "documents": "bfd143aad602766d854cae21c12d6adae1dca3596f4356ed935aa4d850a981ad",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "67226c607a0f8249aac0b0e1094f0dde6d414011bd7e38da2877077236a05b9c",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "13ab70b6cbea421506656a2870fea00aa20811c0459ba97c510836ce8ac17825"
+        },
+        "recorded": {
+          "document_count": 19,
+          "entity_rows": 49,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/orlando/2026",
+          "sample": {
+            "n_docs_available": 19,
+            "n_take": 19,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 32,
+          "triples_sha256_at_pin_time": "3f9bbb58676f9e8d0adf2a924c4ae65db467b815da745b342cec4bd330950d7e"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/orlando_2026.ruler.json"
+      },
+      "mexico_city/2014": {
+        "pinned": {
+          "documents": "28c7fea30b09074ec95a53655fd9dd135a7fb1f621a36c20db00da05f1962607",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "24434be4d640e1417a3110fc1d37307f0366df38dd785d71cb8af78ed466b013",
+          "fixture": null,
+          "id_map": "ca9025007fffef2b92c387638f4717b800832612e7d041b8f50ec2b3ec4ae91c",
+          "sample": "8a51285b3aef119f07ca45f9210cdd829cb9475e4fb05259a3bd3c0464379ac6"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 39,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2014",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 37,
+          "triples_sha256_at_pin_time": "1bd499f6ea8b5822d1ab3e4a75bc72b6e93ecf91b8a51f887a48cf24bb2c8170"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2014.ruler.json"
+      },
+      "mexico_city/2015": {
+        "pinned": {
+          "documents": "c1fde09d6b4c4407b94512c877329d97e31c608769603a555642361a297ce57b",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "977015185a1cc37088acf150f9183ef1edcd42679ddb9ec0df8a102d67bb66e4",
+          "fixture": null,
+          "id_map": "d856bbabe8e28f320494e1d9b0080f7c5f54aabe725ae2ef463f9c4c8de557a9",
+          "sample": "e9598b0979b0a7fad8ea8eb473ec5eed352415f6ad1e0bd0d9d6dd84a9e99f27"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 101,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2015",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 94,
+          "triples_sha256_at_pin_time": "6126c84ec7fbc9016108da2db37be47a40e5c65001fbc0c90a06738e3259a29f"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2015.ruler.json"
+      },
+      "mexico_city/2016": {
+        "pinned": {
+          "documents": "b34e4f69c7b27df6cc761458731ac639c9a1dd95b3fb9029ce8d6a8211326b38",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "e56d18fb58b88d5bb4476c3094290063ac45b3771991a3428e25402e88d7b138",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "6c2a681cfd57ed59394ef97fec1da7d658f1f0d867eafaf88279c15a26fabdf9"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 100,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2016",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 87,
+          "triples_sha256_at_pin_time": "93f3dcb297b5a3e9f6e4c1337b562672fcdefca74afd48ed9d25490ed5d3154d"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2016.ruler.json"
+      },
+      "mexico_city/2017": {
+        "pinned": {
+          "documents": "400841bfba87a43f1694a77ea9391a79ab64ba65524b482730f21c153f06b818",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "c3e174d84a9491bfd99a5b6adc7af7a471d634168cfb1b2b07458c3a83038f76",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "aa28fd8dec662d1c3be7633d120da900bb3ff21b3a575e8faa3c2348325550e4"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 141,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2017",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 130,
+          "triples_sha256_at_pin_time": "eed7cffa3935f91a4d5336b1f90e3e79917d4d8377483b265b35634b8d422061"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2017.ruler.json"
+      },
+      "mexico_city/2018": {
+        "pinned": {
+          "documents": "ea6fadea3f290c494c273c8477acb4d4a347b790bb86aafb5092412742e547c5",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8c3f90affa263304c57c6dc472eb22daae98e8318d2127189a6df211f534bde5",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "086a98090688f5198823c7418eda41c8da1f63485c1d58e6c57650563d5d84a4"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 219,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2018",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 203,
+          "triples_sha256_at_pin_time": "248162fb862a25510d926dde2a58177db34bd3ad8a9b234ec26695baf63372a3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2018.ruler.json"
+      },
+      "mexico_city/2019": {
+        "pinned": {
+          "documents": "1a918484fa96749173e2a0b868600a1fbf46011e2acec62017df8b9627f1dd7b",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "d2f5ff1388265cd8c9173066c30356a472bbbd6ac12cbfe40f24758c0d8bbedd",
+          "fixture": null,
+          "id_map": "41a655383b4f91a1e66c69f8ec8c039fb8656ad7bac820bb37f5d6f2a642381a",
+          "sample": "c185d2725964db2dd3dba77c4e47e31f0a1c4e3bb7920a545b868a7e8d2cdc55"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 171,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2019",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 163,
+          "triples_sha256_at_pin_time": "5d5d1c588e89087691866b222527ccaaac0bf16664cc3663333f7f60b801a3b8"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2019.ruler.json"
+      },
+      "mexico_city/2020": {
+        "pinned": {
+          "documents": "117d0bfdf2e75a4d76a4b130d028644fa9015811e61d6ba66a73940cff008be9",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "054c4150879446d6f8a1ddb9510ba4562be04f626b8d7d1d3f3e3cc03068ec72",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "e0a5278a1ecbbd416a011b96d7bf9108f410c9e11e43b22e5b53effe2c7a270d"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 195,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2020",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 193,
+          "triples_sha256_at_pin_time": "35728810950487746879e2a69b2a3df2fc62929c14d49490f82c2e770e265bda"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2020.ruler.json"
+      },
+      "mexico_city/2022": {
+        "pinned": {
+          "documents": "b2ad43a81453ce2e996e09c4f7a1b7293b1310ebca1b73c1d65edcb07cf30612",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8267837be3d6a92963598b4c07746579c2c02f1ce58d82525cc11f67541fe231",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "3c1b49329d00bee5b521f9546fb4720d91814e72eeb66ec850846a8c37b3d055"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 212,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2022",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 207,
+          "triples_sha256_at_pin_time": "8ac92740c9b86e2d42ed789967f4259ebeb082f1561e31370855664ef95bd599"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2022.ruler.json"
+      },
+      "mexico_city/2023": {
+        "pinned": {
+          "documents": "33567c2e0caffec8041c9996e4a1cccc5f8a970ea005132e9f49d57913dfaa38",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "1c04df0e874b6e4a99f944fc2ff61ca06d0cbd70c62c317e5dc18795b87dfd43",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "ec53c24da71cdcbba227b98bf17e4f47d6f0005780a423324eaf3610adae66ef"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 162,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2023",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 188,
+          "triples_sha256_at_pin_time": "ed2aa995818b843715835f305a6207f45f607924f5e2f298569f056b06f8d8e3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2023.ruler.json"
+      },
+      "mexico_city/2024": {
+        "pinned": {
+          "documents": "2b569a564690e68c0914e7a1696229b2f50547eb8099295d74ff985614c89242",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8219713b27861789245ec705133281469f7eda09879f0e6e2070fabd394064bc",
+          "fixture": null,
+          "id_map": "ba29476862d7b7a129a1523025ebc295b08a7022e26da7d1f45e1d2f9b33145d",
+          "sample": "b134b7951c64e4dee80c6e416a319ae301c90cf2f740ab9440a662b853920fe6"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 232,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2024",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 398,
+          "triples_sha256_at_pin_time": "914fecf06ceb3ba82acbee6b3e9a61531b13bdf6640422b6dfc6548beeb500eb"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2024.ruler.json"
+      },
+      "mexico_city/2025": {
+        "pinned": {
+          "documents": "d46faf7d7116fa7824001496ffa209788142ab7ed4c2c98f4d9589ab2c7e689f",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "c515a66e6c43993dd717901c23b3d7d3825fe3355ec09f2c22cd504e8760e15f",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "d05448411c1d8264625d4fda328cc20601a9bc106747a91e0a5d83753bcef46e"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 206,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2025",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 275,
+          "triples_sha256_at_pin_time": "dab01f221bff094951ba3934c8f877ad1950c4a4852fa16d996bc77214d027ae"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2025.ruler.json"
+      },
+      "mexico_city/2026": {
+        "pinned": {
+          "documents": "5ea1000f62e7f11a68f9f49b72a73767affb5aa62869ba7e9afd7c090023fcf3",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8cccbba035d99b65574a265afbb8a579369564ea23d45bdb467ce82b8a1d1752",
+          "fixture": null,
+          "id_map": "556afc1e9c46df0cf1f2003aedce80591b4d6a9ea36f8095f96b171bc2916b8c",
+          "sample": "a987e84f6fdb61817fac1dbb4ba706db890ceaf0cc1503127bc1c8c70c1c2517"
+        },
+        "recorded": {
+          "document_count": 18,
+          "entity_rows": 305,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 5,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/mexico_city/2026",
+          "sample": {
+            "n_docs_available": 18,
+            "n_take": 18,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 571,
+          "triples_sha256_at_pin_time": "d4cadecd8b5da3671b1117fb016d0383770a2cb4e069931445479d48f9f04b1a"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/mexico_city_2026.ruler.json"
+      },
+      "los_angeles/1997": {
+        "pinned": {
+          "documents": "1831570789469619dc975aa1bbd7d962291435f0212214ee3716b7e2c6bae98e",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f70cae298ea2b734d9a810fbaa53e6efd5d0bc9e9e30a96ca0896eb82e316030",
+          "fixture": null,
+          "id_map": "e25d4ab07c8a91ae4de740ab7cacb4bba4a0eb1f9ef94ba5f30f2cb0809af8ed",
+          "sample": "1f9af32b0c3ed055ba5103f03cb11a81eaeed0a8bb499f10ef8408e816e91769"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 70,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/1997",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 41,
+          "triples_sha256_at_pin_time": "33172b592da0b5a559ac1b87aa4cdca26b64d8b45f0504b4f74e27125d0573f3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_1997.ruler.json"
+      },
+      "los_angeles/1999": {
+        "pinned": {
+          "documents": "f999501d1a3f0248740cea9cce4a222834014b88df8b20719c58059bbcb62a1f",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "9eebd9a252e196f45c08d29d677ec01ebf2b93f912a2cf1aa5f62030d550b9fb",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "80bb5f9322d9a3f671921b14622075638614742bcce0261b081abec074409373"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 51,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/1999",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 26,
+          "triples_sha256_at_pin_time": "e5f353a2acc6ab98a59219726ef131f2d0dd9a2d8260828301d870c1491cec59"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_1999.ruler.json"
+      },
+      "los_angeles/2000": {
+        "pinned": {
+          "documents": "732f8704457c039f651514c39ad1e4bf1b04fbb36fc73c2e60c3df31f2920909",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "5bb6a138561c2c81347dd2d3145c21d9cff2ac391e2590eae8dbcdac06023781",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "f1b36f749d44390c42ceb044242bbb6fe4d859c7fc2db8fd4943c7cb38b821d8"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 5,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2000",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 2,
+          "triples_sha256_at_pin_time": "48b326f1fdead9b65ff0403f2a01b663021f8a51308f67760bbcc1784d178b25"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2000.ruler.json"
+      },
+      "los_angeles/2001": {
+        "pinned": {
+          "documents": "759705c8081e5ec44c654a32dc629669e9498c0707f0033280f811000b93bf81",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "8d01cbc6a6ccb9882fed2817997d49d4ea82c142bd1359fb7b4f3dd703bd77ff",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "340830a64c8f94bb73fb290aea1a84170ab72c7a143fb26975a7a4d55ec46bf3"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 81,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2001",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 69,
+          "triples_sha256_at_pin_time": "3daa9d773b5482e08d25b18a0e0790fc6d41bd47001668aad8297e41aa6d638b"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2001.ruler.json"
+      },
+      "los_angeles/2002": {
+        "pinned": {
+          "documents": "7d58c20c41819ef84ab13f4dbcf05dd7a72104123da8eec29d2d6653a7e9cac5",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "394dccd4e469d509e3cef252ed6c90b44e5dc70b8db8137ea53f3adf466d5093",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "d30709f754f5eee5bb010d6f965302256dfc20c976980e0ecf861143e66368e5"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 15,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2002",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 12,
+          "triples_sha256_at_pin_time": "8f3187ed655b62c3360619dfe3ca918e29decf115333d98ca796019f1b25be24"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2002.ruler.json"
+      },
+      "los_angeles/2007": {
+        "pinned": {
+          "documents": "09bf5602da1d7e606c10a9c254dcbb25360b0d84e6735f8a556e270f17c7f43e",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "d9abe8622ff21fc6f7fc7580269ea4bec140c8a44f845d1654211b0876308708",
+          "fixture": null,
+          "id_map": "e312dd623d5e8055bae7abee205fa44a07334e834576e06b4cc82db770b864e8",
+          "sample": "da3b28a80b61b65cd2e06e82e14b26db0b7a2d659ab06e825dc706dcdc4513e5"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 24,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2007",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 19,
+          "triples_sha256_at_pin_time": "3f9111ec6f83b2688d4b6d52f568e30c01d232e9fe24a487132701b89d8dea38"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2007.ruler.json"
+      },
+      "los_angeles/2008": {
+        "pinned": {
+          "documents": "b68f20308621e7f425c4c0aa855e843cc5d32e609f9efef5a699f5d21920d0f9",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "20a9f57ee2f4bd93a0770c55ed788bbf1a842322b278fad72edce3cbbcf7e6e1",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "3cad1ab306d26f86f0213a700369629dd9709dd6c9404506c30d7aff8a1afa34"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 5,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2008",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 4,
+          "triples_sha256_at_pin_time": "613e498021e584785b3836bc6bfa7a80616361ca0ae2ca75c7a361b5caf64be0"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2008.ruler.json"
+      },
+      "los_angeles/2009": {
+        "pinned": {
+          "documents": "960babb4699f47337c860a977f59a81e493d593cdc2bc61642ccaef53b601e78",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "a7eabe75d548016d504166237053a17d926b74db57360089e72af1c0d39ec036",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "cfa3cd259c892c1b19fe9ead02c087012c0997be04987bb6209c8fd0aa91321e"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 84,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2009",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 75,
+          "triples_sha256_at_pin_time": "c5759f155d067d8bf4a6b01dd33c5d7a9bfebe8fc0d61013eae5bdef01a504a8"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2009.ruler.json"
+      },
+      "los_angeles/2010": {
+        "pinned": {
+          "documents": "256784f80888bc239464e8c87756aa4731ca528be424531b8b5a2db0314231d3",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "235f9ed6d51286c4171c338a2071f9e972edf55db5d4b595bc148094ea2107e0",
+          "fixture": null,
+          "id_map": "7a2c720021803c12d9f81f12be220613a83e469b318610feb10be264f77e8ded",
+          "sample": "1e5127d1ff9183b5eee44894833b43b96f27b5abbad726030eab6a43eee7d8fc"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 40,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/los_angeles/2010",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 27,
+          "triples_sha256_at_pin_time": "9ef248ed2bb83d0b351d19f3a872b58c0bbe43faaf77fe2f839b96e6de5ee027"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/los_angeles_2010.ruler.json"
+      },
+      "san_bernardino/2003": {
+        "pinned": {
+          "documents": "ba92ae36eba39b6b3d1cf38ac526fe786cf7508c89ebe9424bf04bf4852cd477",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "102614caf9f5da9df5f6c7b55c8b9233ab57f6ef2ae1e73cd0c11898b1f75545",
+          "fixture": null,
+          "id_map": "2f80a70e0819c512a3dd693c409f129c624d9ce41f1490a8b429f6bd8fee8fc9",
+          "sample": "57b9cb9e23e111d7d1547bd56fc2fd32acddfc759b6a2d8eec679278aba2f447"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 27,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_bernardino/2003",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 12,
+          "triples_sha256_at_pin_time": "8eb971ddabbff306a15994b64291edaf7e3641d921807e6288f73166bc7391a9"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_bernardino_2003.ruler.json"
+      },
+      "san_bernardino/2004": {
+        "pinned": {
+          "documents": "132ad914b93bd05ad3b450877e16b6b419b598b91419c8df81587037c2f7febf",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "4d2617fc53c7e1b8f5abfdf845681f48d044155f9d2a0c21fb146d55dd800320",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "dc3780a1c766b4da56303e683e4a282b4e335ccee942fd979a3aa9ee23a8b547"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 17,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_bernardino/2004",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 12,
+          "triples_sha256_at_pin_time": "6fb5131cb996c77db8115b0c09777687794f56889b80014760046115b92c7e13"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_bernardino_2004.ruler.json"
+      },
+      "san_bernardino/2005": {
+        "pinned": {
+          "documents": "d212c041e609db2abd884b237cb49c0d64159dea989751861f5979c8e233af69",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "ee0ea4bb6906115b63a6577fab761c7a02aafd97e2d2c4dc3b42ed03f77ccb42",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "9094fac88de15ed9203b093ef869559cad578c2fe2f16e8db901c388ea3cf7cb"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 6,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_bernardino/2005",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 5,
+          "triples_sha256_at_pin_time": "cacfd2a710adbcd054fcd995b85ff2e62972fb2028dd15f15dc7d328171edaca"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_bernardino_2005.ruler.json"
+      },
+      "san_bernardino/2006": {
+        "pinned": {
+          "documents": "7c741725589b9455f7248001d339d2b5967b63e3ed559b59e159405b7151b2ed",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "2ed99e0b20a05340d94df719f3090595fb00fe1cfc865c5186283e0a0605d1a2",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "c502bedd7f68713f0915f6e7070ac7bf119c13cf2a9919136845f53899620d3e"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 15,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_bernardino/2006",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 7,
+          "triples_sha256_at_pin_time": "7fb05fe24b941537b87b9cab14f2cc2ec8837be28deb9d31281ccc059ebc49bf"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_bernardino_2006.ruler.json"
+      },
+      "denver/2008": {
+        "pinned": {
+          "documents": "4de2e40b0e4ac909842ea5b845e931f0750bd3e50c288dc1d9f42d7737de17b7",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "43c07fe4c95fb9a32727163b18fe95fd15d93fc3dbbc01f7749eca923dd57184",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "41a836f1b0fbf7abb1dcd9585dec70185fd93c6cbf92da406ba492496babdb36"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 10,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/denver/2008",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 5,
+          "triples_sha256_at_pin_time": "0f96a5c485c99e5bfa08544bc3f30541ecc795c5dd18c5b70391b08f2b010852"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/denver_2008.ruler.json"
+      },
+      "denver/2009": {
+        "pinned": {
+          "documents": "57859b5420f80bed8bd1f17f28b51eb591bf1ae5b40db9317457042219f5366f",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "dab7ff4a76792f4571dcc5f69c2afb53ae7397ae671a7b2149fca092262ce0aa",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "be4ba578915d200f875419b241ddf46def5342de63888a0673f307042eb15012"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 37,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/denver/2009",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 14,
+          "triples_sha256_at_pin_time": "d626922577a10bc1dc1b23b00dfd9bd9fece5702e63b14d13fac6d59e835d061"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/denver_2009.ruler.json"
+      },
+      "denver/2010": {
+        "pinned": {
+          "documents": "925ba30f2e0c1608d2b77bb04ed3caff5708c58eda931ca453d6157d719f11ab",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "1ea975e93804f58ccb3077a134ac0566ef1969c5ac7cb4a2dc9aa7cafc621a02",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "2892c41c442530eba0ae1ed7994b3bbe3eb6b40705f232da9a0244da58a7234b"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 67,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/denver/2010",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 28,
+          "triples_sha256_at_pin_time": "76a3f2b0318d41f83044960354b9b681c316e86624fdec353b53a513afc25508"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/denver_2010.ruler.json"
+      },
+      "denver/2011": {
+        "pinned": {
+          "documents": "c79b6b0749a0b220789b3aea6435985b646e58445a6948eaf5517441e0889769",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "7984b7b505c8723be1368044cd0b09897635e695f8246fc5b456f6ba00c22033",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "9d5634d42392e5027ea116c08dc4cb488e76080c40d008d92ea24c38c5883e63"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 129,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/denver/2011",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 126,
+          "triples_sha256_at_pin_time": "ef34fdd4e80356f4add00a00e6393e21037320eddd34cbb16651cb1a7d7c73d7"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/denver_2011.ruler.json"
+      },
+      "dallas/2010": {
+        "pinned": {
+          "documents": "89ccabd798bbb24b3813700145eb72cd30a774f0e204fac62a0e3968e39f44ba",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "79e11a185e12de074474c3c56f867bf8ff7e40e3ab4fd6c17ba659accc730a7f",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "7b1cf1a63f0a424de7da0db2d8f73b1661377b9e971826aef6926259621a8fdd"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 60,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/dallas/2010",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 51,
+          "triples_sha256_at_pin_time": "2c2f7153fc13a676335a5b75cbe806becb541fefeff62c86b4e32b2067160673"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/dallas_2010.ruler.json"
+      },
+      "dallas/2011": {
+        "pinned": {
+          "documents": "d16dfbc6c13c0f4b998b17cbac11228b2d67d64220c64a5a3b99958117e1c50b",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "e963416bd43386453d573646b36fac60b64dbb048da3b6b1f5bbcd3e9fca1d22",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "7d39bdee7441d152ae6dfb8d1b5a406002a6945c6b73fbdbc8feb96363c494e7"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 157,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/dallas/2011",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 140,
+          "triples_sha256_at_pin_time": "d7f1369ab3531eca58f0e619f3a8c756e785a96b448ae48fa9470f9a77a6a63f"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/dallas_2011.ruler.json"
+      },
+      "new_york_nj/2012": {
+        "pinned": {
+          "documents": "7097f5473db967608f9d76735599c5147fd797550d3b8f05b5ecea8b85a43d32",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "d45aed1387c81f0f86ef999c8c6238051d5cce4aab7d18f9e101493252be5ef0",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "f111dc6870ab85b74386efa902d92c1b3a5d11a0b4f22e33a414c151b6708def"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 167,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_york_nj/2012",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 151,
+          "triples_sha256_at_pin_time": "f3908c79238d5ca9d8f7dcdff2ed167eb7d5c4fd02ff02ad8bda94a2b305dc80"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_york_nj_2012.ruler.json"
+      },
+      "new_york_nj/2013": {
+        "pinned": {
+          "documents": "39e64c6ab4749d2ed27ca591b698cc07397e80fe8801d0b0e0c7701e1df6d871",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "20f3283f2514aba237db75bebecc5734799ace9c23f8bb44ff16859442457817",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "f706e447e32f8a6cdbe45713386cd7fa47c762cc713011520f71f2fd34eac762"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 94,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_york_nj/2013",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 69,
+          "triples_sha256_at_pin_time": "c31345b7da479b5be9c82aea38b26917f0446a4033ccc04bb2db92763a9800fc"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_york_nj_2013.ruler.json"
+      },
+      "new_york_nj/2014": {
+        "pinned": {
+          "documents": "09711071ec0004a32542653e2ef9e54e5075889ced7163e1e89a090985d153f3",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "008ab926c3193ce7f9af6d1b200871b257e1420509cbc36a18923922a9676470",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "1e4e53c905344b8fb239357f80a55fdb85610d99e3d0b7dc275dad11b0ad188b"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 55,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_york_nj/2014",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 18,
+          "triples_sha256_at_pin_time": "e81963f8a724b828132d6a43406c78e639030d414e3b3bab113d1a72a580281d"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_york_nj_2014.ruler.json"
+      },
+      "new_york_nj/2015": {
+        "pinned": {
+          "documents": "8a9c2f6b7414e20a8531b7be728e72e2cfd5cbbf2e274111489f6985d30606e1",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "86e31811f4f3c663774fc7651ea0ef456e803ac39f37d1a062049695f7a000c2",
+          "fixture": null,
+          "id_map": "0d51ff7ee696b6f531d2a0a90bb26fcb288a5a89853735cc963f4ace61bc7305",
+          "sample": "4da5a8485a5e27bf27120d47824f95832679e2f365d79a7ceb9fe9e5db387edd"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 95,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_york_nj/2015",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 76,
+          "triples_sha256_at_pin_time": "f5bb1fa761d33ad83876aa6d8ac16108ad24aec18aaf9ff6422f47c78813c521"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_york_nj_2015.ruler.json"
+      },
+      "new_york_nj/2016": {
+        "pinned": {
+          "documents": "e32828949f9e75dc8f85e7a85b6ff596b5c84097dd7c8a9b49bb69252661542a",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "cddceb32c0bbb4fa00020b2ef27a005561ce74f411c89d4985bd9f616496a888",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "b234656a915a1a080a5a203819610550954225f1b919de44f7479c701bdba611"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 100,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_york_nj/2016",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 79,
+          "triples_sha256_at_pin_time": "1214c6b4c1d6dc52992a222163f1a296071bca885f6306ef5038167b39e80209"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_york_nj_2016.ruler.json"
+      },
+      "chicago/2013": {
+        "pinned": {
+          "documents": "f7e07cf3e8076088e968bf9db4ec50c0646e3f85db58f0cd9a08ef39e1863cd2",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "cc455fc9414f6f100695d409bdadaa3b7cb526577c0e5405f51d3bfb6bbf35e5",
+          "fixture": null,
+          "id_map": "0dcf9da18db6c6bae411c6c04a4207d24d358a886218a45deae2d7fbe139c608",
+          "sample": "80013322c6980aaa7be29d319c2e58b127989fec499f6d032cc158712f845b36"
+        },
+        "recorded": {
+          "document_count": 17,
+          "entity_rows": 126,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/chicago/2013",
+          "sample": {
+            "n_docs_available": 17,
+            "n_take": 17,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 120,
+          "triples_sha256_at_pin_time": "40d1d8472573bb8a41b2d20881d43d2405bbe3e8d98d7ed615721805b0f0cf68"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/chicago_2013.ruler.json"
+      },
+      "san_juan/2009": {
+        "pinned": {
+          "documents": "80e7631aa06cac1224fdbacbaac0bd8c333d4b37ee0ad1e46b0c5cfacef6d822",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "76669c104d3ffe9e6402f2146829055fa3c82007ba20d990dbe5ed2b977218ef",
+          "fixture": null,
+          "id_map": "e89d9c2ad5ae934196c138f630d829a92980a2752854ac1e8cd57034362b2af1",
+          "sample": "cc2c0d41d51c7b12521fbbdab433ccfd342b20220c4736267ff0c1a432ac2544"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 46,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2009",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 32,
+          "triples_sha256_at_pin_time": "2e5147a4114a9a798839e3c8242aaa42ec77e709226cbce5aee84843d155bf6d"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2009.ruler.json"
+      },
+      "san_juan/2010": {
+        "pinned": {
+          "documents": "df14757dacb77b7797c615719ce530ee8976a5925d59bfe6d3d7e06c82ba30a1",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "a44af229dcd64678f758542f2ea80bfeefb8c5bc516793dedfc78e6b973a432e",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "fe94a84ccef4a24a3b10ae612e7daa29c65b70ec7ab53452289808bd57a5f912"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 55,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2010",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 36,
+          "triples_sha256_at_pin_time": "49fe1acbac881842beba0aeb87944700869cc36c3f6571431288506a2fcb4cd2"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2010.ruler.json"
+      },
+      "san_juan/2011": {
+        "pinned": {
+          "documents": "e21cffb64e4e796b90464f2e867883a1d0df9ac101666b2f944fb14e59ac7067",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "aeea52628003aea10413f3392adc1294c94effb23f8bea970f33d2adc0ed146c",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "60cbae8262b305bbd88c73fb0304737ae0bd7a8561981df9f47fe95715001621"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 160,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2011",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 152,
+          "triples_sha256_at_pin_time": "951d9e48feaed0f83fc3683e239fe5ec901450b542b94553c1de9aad14c65866"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2011.ruler.json"
+      },
+      "san_juan/2012": {
+        "pinned": {
+          "documents": "87b623c862dbde856676b20840400d0ebd5de8917a07a4e4b524818e3639de84",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "1f5f1d6dabd2be1f364724ee167c47c951fb9db352bbb954bf152aed30e5cbc4",
+          "fixture": null,
+          "id_map": "35e0e542a4ea96ee875a23cfaa6787e174a5ba8925d5b1431aec999fc807c33e",
+          "sample": "fd0a42bc9a29ca5fed9a9a4726bb595b95e392611b19c23ca5db81e76cbc7d1c"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 158,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2012",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 136,
+          "triples_sha256_at_pin_time": "9e9ceadaee13cea3d52cf3352bbe81ceef9d4eea8b32c8ed7cbbce6805f96481"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2012.ruler.json"
+      },
+      "san_juan/2013": {
+        "pinned": {
+          "documents": "cddc853784ced808ad0e27ffd8e1f9e0f6d391e81a582162cb7e01cffaac8250",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "dccafa99439a1b3f7036e5cca123aa37ce2775f17b99f2ce09c475392c9cf72c",
+          "fixture": null,
+          "id_map": "3353241bcf68923df4292c721b4a27c4975b9899418d9ee30d22ab37c103570a",
+          "sample": "b6c7e17af3372c8cb5abf7fc90eff29b72cc021ba1c61097e7de7e035f5b016e"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 105,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2013",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 115,
+          "triples_sha256_at_pin_time": "c025578651b0801bf341156bafe7683f11f592bced534f3a54cc15d6e60cb24a"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2013.ruler.json"
+      },
+      "san_juan/2014": {
+        "pinned": {
+          "documents": "0b2a736e8fc5d41f2e7a1bc9929578bede75bc9f0fe37b96034fcf24ac7dd514",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "c5c80fa54f6d02a607d94dc5af46c3833d22a79d85ed9b11ef083fa0569e1ae4",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "8586aec7ab896819015465da45eca4fa6f9c0e88befea096f140e29f980d5cb9"
+        },
+        "recorded": {
+          "document_count": 11,
+          "entity_rows": 54,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2014",
+          "sample": {
+            "n_docs_available": 11,
+            "n_take": 11,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 23,
+          "triples_sha256_at_pin_time": "5bcfe750caf0402c3a96da14f5dbda8885af73e926da00d5790e79e02f07540c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2014.ruler.json"
+      },
+      "san_juan/2015": {
+        "pinned": {
+          "documents": "776f720a0ee9450450a9b09b32795455b513baea155a81cf823c493aa5916cf1",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "eee36c66e29745a82a0a05b04cb9034b7a2c306e7e62336918530257a0d51073",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "6e1a457c768b9da0961061e9169359a5730cc715053b7e084772551ca872dd7a"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 67,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/san_juan/2015",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 51,
+          "triples_sha256_at_pin_time": "0d8c841fec7e503fa6d25df99e0306af5e95d0b1e70955d72731f4f276ae4da9"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/san_juan_2015.ruler.json"
+      },
+      "london/2013": {
+        "pinned": {
+          "documents": "70dd89da1c1a06edbc14ec9f95e5516eb395f66f52aafa758a0fe7e57c4f9993",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "37d7dd00684ca52818a309cf40afca9d7d79830981db34673f6d4de1d51765fd",
+          "fixture": null,
+          "id_map": "3972b20206ce781eb3ac161b24a1b09e7096d8e6e5c7894fd5b3298442c895f6",
+          "sample": "876480a83eebf9f9f1ba0894a48ab433b3e25973c0737bcdb1878d65eb063a8e"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 71,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 3,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/london/2013",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 70,
+          "triples_sha256_at_pin_time": "e708c3429667b95b5c5c7516298462961ec0062f458b492e4c13d17c63784bbe"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/london_2013.ruler.json"
+      },
+      "milton_keynes/2014": {
+        "pinned": {
+          "documents": "c71b82452779697247e27e8c276b5a26c7356ba32a9b31bd6a1362043403a8ee",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "5e295f3f9af250aed28a158a42a4ced744ff4e8c8c39123129137524ad08d4ca",
+          "fixture": null,
+          "id_map": "d8ae393a10fe023bb872e03ff6db3dba00c55307e8b32c0b55ebd0a69a0bc8c9",
+          "sample": "ab0517273a294fae98b33e7b0e1e3e7b636fbf981cb5d23d68125d7486548251"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 99,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 3,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2014",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 103,
+          "triples_sha256_at_pin_time": "726e18d38494aaeda652927e646193b4adafb3feca326f83562620144eac6f37"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/milton_keynes_2014.ruler.json"
+      },
+      "milton_keynes/2015": {
+        "pinned": {
+          "documents": "591549b31e84c12dac7178c969822d316216010ea0316e287fdd89031b44ba9d",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "6557bed85254a4c0aa6720c473c95a6726b7abf1dc4d1078ede8bae55a4f672c",
+          "fixture": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4",
+          "id_map": "b82bcf7732128e660e78146b43700458a35a5de7e6ae534706966ef958308c59",
+          "sample": "f2d24f465b315b9b133d1990275009277fe47874500370dc7c65315bec9ef428"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 47,
+          "fixture_n_assertions": 158,
+          "fixture_n_docs": 15,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2015",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 48,
+          "triples_sha256_at_pin_time": "42b1a4766b1b4bcf9cccf4405bdbd5f0e46cb2a6c512475a4e5ca888c40ce101"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/milton_keynes_2015.ruler.json"
+      },
+      "milton_keynes/2016": {
+        "pinned": {
+          "documents": "118bb1c57656a7d6e34f3ab49e592cf37af49cef8a24d7c21bfb9f25a41f7988",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "7d77a328fbf3a703457aa2e698365c9e9329ed8f019a7456792518775269724a",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "2ebd92ade8b5f0d3cc66e075f34f9e403d167e429a362c9694815a3f0f103f5e"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 51,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2016",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 46,
+          "triples_sha256_at_pin_time": "002273cb601a03d6852742306424a0b4413e11c89d4f836405abea2583d67a16"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/milton_keynes_2016.ruler.json"
+      },
+      "sao_paulo/2015": {
+        "pinned": {
+          "documents": "09ef4471b22a8cdfe2f6d90c216c840b7633346a582e3cb4b5356381166e2a15",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "9a28a3e4b91f7d24822a090bb88cedc787a34819a4c07a838438973d0ae17584",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "770dcfd18380c655363f2ea63a98cfa19d7d38658dc219a7f1ed8176a7a8b7ac"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 98,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/sao_paulo/2015",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 91,
+          "triples_sha256_at_pin_time": "1d18f02c5a98eee754c75f8ecefeec2d6daf314f675ca4579fa2aa5a8f4d3f52"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/sao_paulo_2015.ruler.json"
+      },
+      "new_delhi/2016": {
+        "pinned": {
+          "documents": "3637f9c0f7d62592524f28c3bf1d7ace1677b403b7e53514b9ef2427c62731f8",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "440d7888153e2c85cc15f0a3fb1eb7aefea850871e7377753dacd2e9cb9c28a4",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "6ec5feba6d948d3fcbfba98c967b11d6b7bab43514e53cb684cbb127cbeb9433"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 70,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/new_delhi/2016",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 27,
+          "triples_sha256_at_pin_time": "6e9145cafe5f2874f45cfcf08ab3164b0d86a315d3065729506cf756e1d89380"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/new_delhi_2016.ruler.json"
+      },
+      "shanghai/2018": {
+        "pinned": {
+          "documents": "7ef690031f3b268ff6cb588795a2de0dab45e23d42285cd236a23b4501caca91",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f547018fc10f78b9e7cbd6abfee4f11dfa053a24c2c8286e2eba2665e31a2fe7",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "390c5bb8ce1a280d67789ea8fa22b7da430fb87bf86235feb480a3a202f51543"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 101,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/shanghai/2018",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 85,
+          "triples_sha256_at_pin_time": "a66e1c5ff09309a4587ace1dfa0d76b4206678e6fdb65afa7d51a772aadcd1fb"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/shanghai_2018.ruler.json"
+      },
+      "zhuhai/2018": {
+        "pinned": {
+          "documents": "320d8389eb74e92b7f5e419186be5f65186581e96bae872186dc6dc946244e8a",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "47b3820c958ba6ea0b8d4e6beeeee046b5532e0ad4f2c7a66155c136661a0ff9",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "8701c6534028c1d14059a084ada9a328833ac824fe4e90dbf326b3b21fba67bc"
+        },
+        "recorded": {
+          "document_count": 7,
+          "entity_rows": 75,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/zhuhai/2018",
+          "sample": {
+            "n_docs_available": 7,
+            "n_take": 7,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 67,
+          "triples_sha256_at_pin_time": "de7be8eb8dbbd5630b05062e52f1fef9e1982785a6ccbfb39a8a9e5fd7eba7ff"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/zhuhai_2018.ruler.json"
+      },
+      "suzhou/2023": {
+        "pinned": {
+          "documents": "5bfc5ab5fb8767eaef62335ca564590b824072f6935bc694be9d918efce28922",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "0e57e78483d1cbc705e9132a0cc2484a7219df70639ae2f5b2059ef6b50bb254",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "4c3ebe27adf192d6c8b8f6bc6c2ae6078ff3c705a4e2d9bbb004d4e941482c5f"
+        },
+        "recorded": {
+          "document_count": 8,
+          "entity_rows": 89,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/suzhou/2023",
+          "sample": {
+            "n_docs_available": 8,
+            "n_take": 8,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 83,
+          "triples_sha256_at_pin_time": "38b727272506620c595868374ccc914d1b1b8138df07cbf3470fda4e52937e43"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/suzhou_2023.ruler.json"
+      },
+      "suzhou/2025": {
+        "pinned": {
+          "documents": "a67dc7fa23bec5380d43d82694282f6a7d10e35f544b4e1f5d6f5c1f13707cc7",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "29fdf1781b3033dbf009bdaf416f58150e4e5d12fcf2a3bf5796bd20c1304471",
+          "fixture": null,
+          "id_map": "8b1d1526fe8c0b2cf8db81778339ede5dec79a365828218a2327289683fa8553",
+          "sample": "1836acaf83fad598ee070d9edaec12210ba5118df65df24b6d53b2d0022196bf"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 67,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/suzhou/2025",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 110,
+          "triples_sha256_at_pin_time": "f69b4d27416a10ed5ecdbaae8f0a92f7989843b31fb0a0ad1c430d2482d9f911"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/suzhou_2025.ruler.json"
+      },
+      "chiba/2018": {
+        "pinned": {
+          "documents": "6072de824c16d122c41445390d6bdcd4fa540c93491a0adf98cb58a629b1eb46",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "106785bd020a320a20087cddb4e264b72b64099003e6b641036a571d10aa4ab2",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "e90aec0755d47f2c6d81ffa7029d95781130d9e98e426a2861a64c23bfdd962b"
+        },
+        "recorded": {
+          "document_count": 10,
+          "entity_rows": 73,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/chiba/2018",
+          "sample": {
+            "n_docs_available": 10,
+            "n_take": 10,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 65,
+          "triples_sha256_at_pin_time": "5bbb8e073a5019c30c5aea21228d7f0f432f7fce2dd96caf8ff9bd7f0a1b6bab"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/chiba_2018.ruler.json"
+      },
+      "chiba/2019": {
+        "pinned": {
+          "documents": "c402e170e8f76082cc2ec7124d26bcd5c9e10ff9b5bb6524a4862b2f4626ce1d",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "3776087021440eb15e980f12ae0c6a3b42c68d4779f4b5d68c53e8acf631576c",
+          "fixture": null,
+          "id_map": "7cf2f390847e0f35b0780bdbeefe69662aef5c85c37354819c293860f0b53a3d",
+          "sample": "efe24dc086a5e72c4d8263bda56f1259ecb5f3ac4ad62c16ede0eeee0e7b47f4"
+        },
+        "recorded": {
+          "document_count": 11,
+          "entity_rows": 70,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/chiba/2019",
+          "sample": {
+            "n_docs_available": 11,
+            "n_take": 11,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 65,
+          "triples_sha256_at_pin_time": "bdb365dcc01db24fe4b8e04d833c5ad3626359b310658bf2c5ac92bd9ebcac0c"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/chiba_2019.ruler.json"
+      },
+      "seoul/2019": {
+        "pinned": {
+          "documents": "697fda0e3b9ebf60e41baf4b1a32860e34cfebcfc60a4ad86abc8c1bdff0c9c3",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "fe299098c0e531628aeda07d4aa9f8a7fb67b905c8c11f6a3973fde14a7e46ed",
+          "fixture": null,
+          "id_map": "427f6436b93251814d7df20c82ccc523bbc3d8e851e3c20d997fa325e031747c",
+          "sample": "59063ba153703c18902600bb62c03631dcb8f190850ce2fb60d2f17bc939b06f"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 91,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 2,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/seoul/2019",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 95,
+          "triples_sha256_at_pin_time": "b3a732824632821991423d13598dcab62411f899f1eb60f44f7a4dfbb9fc84f0"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/seoul_2019.ruler.json"
+      },
+      "incheon/2025": {
+        "pinned": {
+          "documents": "3f7bee9d4edbd04c409a5658b36aad162ef58191bf5112511856246e6637893d",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "be8450182121fb660a4b1dc3ad04d389c0d43c683c48df55227e66fbad2a0f98",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "20ad02789e3a8677771692c9b492a2a304a963f1024decba1abc067e0c36c5ac"
+        },
+        "recorded": {
+          "document_count": 12,
+          "entity_rows": 94,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/incheon/2025",
+          "sample": {
+            "n_docs_available": 12,
+            "n_take": 12,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 142,
+          "triples_sha256_at_pin_time": "63007a5cba18a000c8fe544cea90abdacb6a5f720a3155d3f7f9f3f987bb8a73"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/incheon_2025.ruler.json"
+      },
+      "incheon/2026": {
+        "pinned": {
+          "documents": "708e3b4ba57959f219e59ca1541181fa97d47ed3e5392d21bf961cde58ca0dde",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "77fa404cd22aff713eb4022a8d6622975ebcebf0fca7d6fee444b4981ffb1d89",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "075a3bf404112225330ece116f3f8d218d5bc802e69e5d5a819cfb11b86c7c9c"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 81,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/incheon/2026",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 73,
+          "triples_sha256_at_pin_time": "8fb4ab87726647b45c5014e6a882d55ee24876e5a51aa7777c1a658ceef12b75"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/incheon_2026.ruler.json"
+      },
+      "portimao/2021": {
+        "pinned": {
+          "documents": "09d01e4136ef982c023516b104037de5e219394734feeef9225bd672fa49b394",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "d1671a7711eec6821a17159b34a15d7d864a8cd5969cef8dbfae13dc8a95aec1",
+          "fixture": null,
+          "id_map": "b1c6c40f6b38567c6a4c883d9cb5fe14bb26b3282125d7c223faaf0f08b42fd6",
+          "sample": "9c80cbf21e84d05bb9e0d7747890d660dc20a5ac8ca68eab743df8ef28a94a02"
+        },
+        "recorded": {
+          "document_count": 1,
+          "entity_rows": 117,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/portimao/2021",
+          "sample": {
+            "n_docs_available": 1,
+            "n_take": 1,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 110,
+          "triples_sha256_at_pin_time": "807ede8d7f675ea99770e04a32ed177c6a9e238a65d8141ca66fbbf807a12e31"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/portimao_2021.ruler.json"
+      },
+      "portimao/2022": {
+        "pinned": {
+          "documents": "c1dde59907a0cdb8f94ece8f71b741d7ed00648a613214cf66405e1b42ff82fc",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f5492aa71ad48bd627b1699273b9050a3e56c33a521b05a368cc8bb72f1833eb",
+          "fixture": null,
+          "id_map": "867fab1472c63f4f8bddc595ebbe4fa738e9c2879d7a763953c8b50a46ef1dde",
+          "sample": "f7544e3995e6a66d9b43d8608f36379a84f24c425820858bf36646652e809aed"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 37,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/portimao/2022",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 33,
+          "triples_sha256_at_pin_time": "cb8821f4f6b499b872bbf7e593a4ed3799a3619379efaf76236e3bbc71f2ebf7"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/portimao_2022.ruler.json"
+      },
+      "phuket/2025": {
+        "pinned": {
+          "documents": "56c131f7423c14543a77e8ab56654bcbc83aaf1748deb88a9c7a1ca50e9d35bd",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "6441f94b8af0643e42eaf613d8b3c3f9fe4624a4c6432f2075285896ebc1de77",
+          "fixture": null,
+          "id_map": "af3d7c785714933cb9c922cfd236787399718d3d5c6747ea4051ea8f9f136eb7",
+          "sample": "c7881347a093279ad7960c30981f26e7e2a1e730fc1be3a2420738dfbc2eb916"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 115,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 3,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/phuket/2025",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 175,
+          "triples_sha256_at_pin_time": "a354db11c2a026e1b5193a25775f83a91fde75d3a8aa850f8abfa14ea88188ef"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/phuket_2025.ruler.json"
+      },
+      "phuket/2026": {
+        "pinned": {
+          "documents": "7da7c39e53c4cbc8d22d20cf026f9c9058ebb9a0d46da01df05bf150d59268a3",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "5675a832a633527c813a471d4f93e2a247be26845f1b539c80ff8a2a4cee3549",
+          "fixture": null,
+          "id_map": "28c3d1f6826b053a7889de50792168ecf35e377396dfcc478c58489117ab69ff",
+          "sample": "35342758b701dd5901d834f114c4a7a878f083c952dca507aff444b393146a20"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 83,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/phuket/2026",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 144,
+          "triples_sha256_at_pin_time": "069d6ae726aa01e8ab9f28bcc2f8b9517500d6283d5a684649b03cd6cdf5d213"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/phuket_2026.ruler.json"
+      },
+      "medellin/2026": {
+        "pinned": {
+          "documents": "a9711b18804b9d137a3f0c8ff98019ba1e5e489594002d43acb804b219d8028f",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "fbc356bbcebba268ae950d8d5e7ed36bfaeaf4ba7995b739225ffd2a7d0c4d79",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "169af1fe666814f1e48ba4937e35cfdb5b60a2ceb51b2b21c5409af28e120d62"
+        },
+        "recorded": {
+          "document_count": 15,
+          "entity_rows": 26,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/medellin/2026",
+          "sample": {
+            "n_docs_available": 15,
+            "n_take": 15,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 18,
+          "triples_sha256_at_pin_time": "82324081ce0927b2cd7850a2ded8c52b619360d89d79596448ca6d3fd5a7d709"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/medellin_2026.ruler.json"
+      },
+      "edsea/2023": {
+        "pinned": {
+          "documents": "af5a8ee02eee144d33cccc6ae91c662450fb4af7753d0bb8a5e171e2c04fbc53",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "982f9ac67648f9c6f2dba4fa55015ffbae7ed917c68acfd47a96120ff1a20aaf",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "6928f6198ef16116c58f2ecd1af9710d1aa3dec8530f73bc6067150686713d71"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 93,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/edsea/2023",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 78,
+          "triples_sha256_at_pin_time": "c3da106203919259eaadf00d6bf737353f3cbdcb03552c566b25c9feacd1cc8f"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/edsea_2023.ruler.json"
+      },
+      "edsea/2024": {
+        "pinned": {
+          "documents": "9951c4e59cad361fc39292fc13cd29135e8977acf077ad2bd858878ff87ad05c",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "0403b5f0e6d8a4a68c2bb72976e45c067667f5812f74bacdb46855d24832fe9d",
+          "fixture": null,
+          "id_map": "f595c35a4b15928a5754a37e4fe32a86c940ad887f47ac4b41edbc379a1440a1",
+          "sample": "b516ef3f4500eb266eaf5ae15a25f98143eb6de9e988f2f23e9cece4d010f197"
+        },
+        "recorded": {
+          "document_count": 16,
+          "entity_rows": 83,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 1,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/edsea/2024",
+          "sample": {
+            "n_docs_available": 16,
+            "n_take": 16,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 78,
+          "triples_sha256_at_pin_time": "3c9a69fb1fb9c70714737c4fc47aed9362b11807e963468b141dc970c37ae002"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/edsea_2024.ruler.json"
+      },
+      "edsea/2025": {
+        "pinned": {
+          "documents": "827a4b3b405102d7dfe942e160d2f85970ecbbe34bff7bc89bc021d346f46c11",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "219a3fcb170e4f4fc25d238dd13c4d28be89ee512deec2bac60dbf1b2b91069b",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "30c757a14c79a611e702b29abce320799c539bad1247f60b01b69243e9b408cc"
+        },
+        "recorded": {
+          "document_count": 13,
+          "entity_rows": 72,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/edsea/2025",
+          "sample": {
+            "n_docs_available": 13,
+            "n_take": 13,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 65,
+          "triples_sha256_at_pin_time": "592939ea238bea22baa9ba5abc93e1f455e495e3eeafb67f5e150cec9ae5161e"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/edsea_2025.ruler.json"
+      },
+      "edsea/2026": {
+        "pinned": {
+          "documents": "aa390ebd936d57cab62dd4cf89977c8adb2eb23a4994e49c1d3b9c68ec505197",
+          "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+          "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+          "entities": "f3d405590a41be1df4151484b3717873e98aee41c4550b9806186b49768bda90",
+          "fixture": null,
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "5129aa552d40d636477363d245d7ce18f31f2ec39fd1401a6abb6a9a7651f5df"
+        },
+        "recorded": {
+          "document_count": 14,
+          "entity_rows": 9,
+          "fixture_n_assertions": 0,
+          "fixture_n_docs": 0,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/edsea/2026",
+          "sample": {
+            "n_docs_available": 14,
+            "n_take": 14,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 2,
+          "triples_sha256_at_pin_time": "2771075f414e3bfd20e964766abbd07479514e729c61d7a47532de8e84b8d2ac"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/edsea_2026.ruler.json"
+      }
+    }
+  },
+  "millbrook_hollow": {
+    "n_units_in_registry": 2,
+    "n_pinned": 2,
+    "n_unpinnable": 0,
+    "baseline_measured": {
+      "main": {
+        "status": "PASS",
+        "quotable": true,
+        "clean_ratio": 1.0,
+        "clean_n": 39,
+        "clean_hits": 39,
+        "raw_ratio": 0.8154,
+        "raw_n": 65,
+        "judge_unavailable": 0,
+        "note": "demo domain \u2014 base model knows none of it; extraction coverage is floor-perfect on authored graph"
+      },
+      "booster_1": {
+        "status": "PASS",
+        "quotable": true,
+        "clean_ratio": 1.0,
+        "clean_n": 4,
+        "clean_hits": 4,
+        "raw_ratio": 1.0,
+        "raw_n": 4,
+        "judge_unavailable": 0
+      }
+    },
+    "units": {
+      "main": {
+        "pinned": {
+          "documents": "6a045b057df85370e6a870a1c747f44d6fd747d598eb4f129f92d6d0109e52dd",
+          "domain_manifest": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26",
+          "editions_registry": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+          "entities": "43fce2b68d7244ef329acd67d959cd8aff47363c807e9365a69338fcef027f17",
+          "fixture": "00a20efc482e2dc8c2610a5d80d02de6f618f781d3f7bded104f7db70e1e5ff2",
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "fc14fd9d43bb25fb16e3aeaf7a65b635f729d35eec4fa9ee96faa842e8d7ab15"
+        },
+        "recorded": {
+          "document_count": 4,
+          "entity_rows": 37,
+          "fixture_n_assertions": 65,
+          "fixture_n_docs": 4,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main",
+          "sample": {
+            "n_docs_available": 4,
+            "n_take": 4,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 50,
+          "triples_sha256_at_pin_time": "9b79c26d6fd4f59a2f32a8b5e7198336e02f4bf8dc6c11da265e4aa16eda59f3"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/main.ruler.json"
+      },
+      "booster_1": {
+        "pinned": {
+          "documents": "9ffe82d9ab04adf76ac39a0a4f05eece67715620fee8486b89a9f4bbd3f7524d",
+          "domain_manifest": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26",
+          "editions_registry": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+          "entities": "d7634d7fcda6aa6ab9cb5f865c8a61105cb55f1d20396c7662105a775bd1d079",
+          "fixture": "1abec7a872cb00c98d87f558a76d21d807b22f3a6fa744a823a2640aa53af897",
+          "id_map": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+          "sample": "6423a4d7b2b8651605c74c25a4b2453828673f5aedeec905f7007ef39da77cc2"
+        },
+        "recorded": {
+          "document_count": 4,
+          "entity_rows": 20,
+          "fixture_n_assertions": 4,
+          "fixture_n_docs": 4,
+          "id_map_entries": 0,
+          "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/booster_1",
+          "sample": {
+            "n_docs_available": 4,
+            "n_take": 4,
+            "sample_n_requested": 0,
+            "seed": 0
+          },
+          "triples_rows_at_pin_time": 10,
+          "triples_sha256_at_pin_time": "5a5a93497e98723cb72e62cc4feb8edc4a3936461b62ef8fde5613388945c825"
+        },
+        "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/booster_1.ruler.json"
+      }
+    }
+  },
+  "deviations": [
+    "EDC full-domain live judge (1418 docs) was not run; 5-unit sample is the measured baseline. Unmeasured pinned units are not silently given a number.",
+    "compare_ruler_pin now treats explicit null==null (agreed absence) as verified; a missing pin key remains fail-closed. Needed for las_vegas/2026 which has no resolve id_map file."
+  ],
+  "gates": {
+    "run_tests": "48 modules all green (incl. test_split_v2 6, test_audit_recall 33)",
+    "cpt_config": "8/8",
+    "qgre_gates": "9/9"
+  }
+}

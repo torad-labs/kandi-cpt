@@ -1,0 +1,58 @@
+{
+  "domain": "edc",
+  "note": "Coverage ruler pin. The four digests under `pinned` must match at score time or the audit fails closed and quotes no ratio. `triples_*_at_pin_time` is RECORDED ONLY \u2014 the graph is the thing under measurement and is never pinned, so a genuine extraction change still scores at full sensitivity. RE-PINNING IS THE ESCAPE HATCH AND IT IS NOT SEALED: whoever re-pins can move the ruler and then quote a number. `supersedes` is why that cannot be silent \u2014 it carries the digests and row counts this pin replaced, so the pin's own diff shows the ruler change that licensed the new series. Same trust model as the assertion fixture: committed, diffed, reviewed.",
+  "pinned": {
+    "documents": "591549b31e84c12dac7178c969822d316216010ea0316e287fdd89031b44ba9d",
+    "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+    "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+    "entities": "6557bed85254a4c0aa6720c473c95a6726b7abf1dc4d1078ede8bae55a4f672c",
+    "fixture": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4",
+    "id_map": "b82bcf7732128e660e78146b43700458a35a5de7e6ae534706966ef958308c59",
+    "sample": "f2d24f465b315b9b133d1990275009277fe47874500370dc7c65315bec9ef428"
+  },
+  "recorded": {
+    "document_count": 15,
+    "entity_rows": 47,
+    "fixture_n_assertions": 158,
+    "fixture_n_docs": 15,
+    "id_map_entries": 2,
+    "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2015",
+    "sample": {
+      "n_docs_available": 15,
+      "n_take": 15,
+      "sample_n_requested": 0,
+      "seed": 0
+    },
+    "triples_rows_at_pin_time": 48,
+    "triples_sha256_at_pin_time": "42b1a4766b1b4bcf9cccf4405bdbd5f0e46cb2a6c512475a4e5ca888c40ce101"
+  },
+  "supersedes": {
+    "pinned": {
+      "documents": "591549b31e84c12dac7178c969822d316216010ea0316e287fdd89031b44ba9d",
+      "domain_manifest": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56",
+      "editions_registry": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+      "entities": "6557bed85254a4c0aa6720c473c95a6726b7abf1dc4d1078ede8bae55a4f672c",
+      "fixture": null,
+      "id_map": "b82bcf7732128e660e78146b43700458a35a5de7e6ae534706966ef958308c59",
+      "sample": "f2d24f465b315b9b133d1990275009277fe47874500370dc7c65315bec9ef428"
+    },
+    "recorded": {
+      "document_count": 15,
+      "entity_rows": 47,
+      "fixture_n_assertions": 0,
+      "fixture_n_docs": 0,
+      "id_map_entries": 2,
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2015",
+      "sample": {
+        "n_docs_available": 15,
+        "n_take": 15,
+        "sample_n_requested": 0,
+        "seed": 0
+      },
+      "triples_rows_at_pin_time": 48,
+      "triples_sha256_at_pin_time": "42b1a4766b1b4bcf9cccf4405bdbd5f0e46cb2a6c512475a4e5ca888c40ce101"
+    },
+    "supersedes": null
+  },
+  "unit": "milton_keynes/2015"
+}

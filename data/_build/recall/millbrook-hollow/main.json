@@ -1,0 +1,584 @@
+{
+  "unit": "main",
+  "miss_attribution": {
+    "matcher_recoverable": 0,
+    "different_object": 0,
+    "absent": 0,
+    "n": 0,
+    "matcher_recoverable_ratio": 0.0,
+    "samples": {
+      "matcher_recoverable": [],
+      "different_object": [],
+      "absent": []
+    },
+    "note": "matcher_recoverable > 0 means a matching fix has headroom. At 0 the coverage gap is extraction-side and no keying change can move the number \u2014 re-extract, do not re-match."
+  },
+  "n_docs_sampled": 4,
+  "n_docs_scored": 4,
+  "n_docs_judge_unavailable": 0,
+  "n_docs_fixture_matched": 4,
+  "n_docs_fixture_missing": 0,
+  "n_docs_total": 4,
+  "ruler": {
+    "unit": "main",
+    "fixture": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/main.assertions.json",
+      "sha256": "00a20efc482e2dc8c2610a5d80d02de6f618f781d3f7bded104f7db70e1e5ff2",
+      "n_docs": 4,
+      "n_assertions": 65,
+      "supplied": true
+    },
+    "entities": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main/15_structured/entities.resolved.jsonl",
+      "sha256": "43fce2b68d7244ef329acd67d959cd8aff47363c807e9365a69338fcef027f17",
+      "rows": 37
+    },
+    "id_map": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/resolve/millbrook-hollow/main/id_map.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "entries": 0
+    },
+    "domain_manifest": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/domains/millbrook-hollow.yaml",
+      "sha256": "db837a9b4682fb3a734ecf5c649917dca6f5a637f38c22e14bbb997e5f287a26"
+    },
+    "documents": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main/10_clean",
+      "sha256": "6a045b057df85370e6a870a1c747f44d6fd747d598eb4f129f92d6d0109e52dd",
+      "n_docs": 4
+    },
+    "editions_registry": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/editions_millbrook-hollow.json",
+      "sha256": "5774b04f2019b694eef9b9649c630c351ee5b3a4b73f1dacb8b1ff4ee8881922",
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main"
+    },
+    "sample": {
+      "seed": 0,
+      "sample_n_requested": 0,
+      "n_take": 4,
+      "n_docs_available": 4,
+      "sha256": "fc14fd9d43bb25fb16e3aeaf7a65b635f729d35eec4fa9ee96faa842e8d7ab15"
+    },
+    "triples": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/millbrook-hollow/main/15_structured/triples.resolved.jsonl",
+      "sha256": "9b79c26d6fd4f59a2f32a8b5e7198336e02f4bf8dc6c11da265e4aa16eda59f3",
+      "rows": 50,
+      "pinned": false,
+      "note": "the graph under measurement \u2014 recorded, never pinned"
+    },
+    "pin": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/millbrook-hollow/main.ruler.json",
+      "present": true,
+      "enforced": true,
+      "ignored": false,
+      "verified": true,
+      "problems": [],
+      "fixture_compared": true
+    }
+  },
+  "hits": 39,
+  "n": 39,
+  "ratio": 1.0,
+  "raw": {
+    "hits": 53,
+    "n": 65,
+    "ratio": 0.8154
+  },
+  "clean_unfiltered": {
+    "hits": 53,
+    "n": 53,
+    "ratio": 1.0
+  },
+  "classes": {
+    "judge_rejected": 14,
+    "out_of_unit": 12,
+    "misses": 0,
+    "hits": 39,
+    "match_mode": {
+      "exact": 39,
+      "soft-object": 0,
+      "canonical": 0
+    }
+  },
+  "reject_reasons": {
+    "object_type_unresolved": 14
+  },
+  "corpus_composition_note": "out_of_unit is large relative to raw assertions \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap.",
+  "docs": [
+    {
+      "path": "People_of_the_Hollow.md",
+      "hits": 29,
+      "n": 29,
+      "ratio": 1.0,
+      "per_predicate": {
+        "built": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "founded": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "guards": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "leads": {
+          "hits": 3,
+          "n": 3,
+          "ratio": 1.0
+        },
+        "lives_in": {
+          "hits": 7,
+          "n": 7,
+          "ratio": 1.0
+        },
+        "married_to": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "member_of": {
+          "hits": 6,
+          "n": 6,
+          "ratio": 1.0
+        },
+        "owns": {
+          "hits": 3,
+          "n": 3,
+          "ratio": 1.0
+        },
+        "parent_of": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "sibling_of": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "teaches_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "works_at": {
+          "hits": 3,
+          "n": 3,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 29,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 29,
+        "n": 29,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "Events_and_Artifacts.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "The Nine-Wick Censer",
+          "predicate": "owns",
+          "subject": "Ione Mersh",
+          "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Nine-Wick Censer'"
+        },
+        {
+          "object": "The Vellshaw Ledger",
+          "predicate": "owns",
+          "subject": "Orin Vellshaw",
+          "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Vellshaw Ledger'"
+        },
+        {
+          "object": "The Amberfen Bell",
+          "predicate": "owns",
+          "subject": "Elowen Dask",
+          "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Amberfen Bell'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "Hearthmere Hall",
+          "predicate": "occurs_at",
+          "subject": "The Lanternfall Accord",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Mirelle Brannock",
+          "predicate": "involves",
+          "subject": "The Lanternfall Accord",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Cedric Palthorne",
+          "predicate": "involves",
+          "subject": "The Lanternfall Accord",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "The Lanternfall Accord",
+          "predicate": "precedes",
+          "subject": "The Brassleaf Schism",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Amberfen Crossing",
+          "predicate": "occurs_at",
+          "subject": "The Great Amberfen Flood",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Tobin Harrowick",
+          "predicate": "involves",
+          "subject": "The Great Amberfen Flood",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Quillspire Keep",
+          "predicate": "occurs_at",
+          "subject": "The Founding of Quillspire Keep",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Bramish Corven",
+          "predicate": "involves",
+          "subject": "The Founding of Quillspire Keep",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Cinderglass Bridge",
+          "predicate": "occurs_at",
+          "subject": "The Cinderglass Fire",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Sable Kett",
+          "predicate": "involves",
+          "subject": "The Cinderglass Fire",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "The Nine-Wick Censer",
+          "predicate": "guards",
+          "subject": "The Order of the Nine Lanterns",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 3,
+        "n": 14,
+        "ratio": 0.2143
+      }
+    },
+    {
+      "path": "About_Millbrook_Hollow.md",
+      "hits": 9,
+      "n": 9,
+      "ratio": 1.0,
+      "per_predicate": {
+        "located_in": {
+          "hits": 9,
+          "n": 9,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 9,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 9,
+        "n": 9,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "Organizations.md",
+      "hits": 1,
+      "n": 1,
+      "ratio": 1.0,
+      "per_predicate": {
+        "lives_in": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "The Brassleaf Compact",
+          "predicate": "leads",
+          "subject": "Mirelle Brannock",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Brassleaf Compact'"
+        },
+        {
+          "object": "The Brassleaf Compact",
+          "predicate": "member_of",
+          "subject": "Garrick Brannock",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Brassleaf Compact'"
+        },
+        {
+          "object": "The Order of the Nine Lanterns",
+          "predicate": "leads",
+          "subject": "Cedric Palthorne",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Order of the Nine Lanterns'"
+        },
+        {
+          "object": "The Order of the Nine Lanterns",
+          "predicate": "member_of",
+          "subject": "Ione Mersh",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Order of the Nine Lanterns'"
+        },
+        {
+          "object": "The Hollowbrook Trading Guild",
+          "predicate": "founded",
+          "subject": "Calder Rooksby",
+          "reject_reason": "object_type_unresolved: expected one of ['organization', 'place'], got 'The Hollowbrook Trading Guild'"
+        },
+        {
+          "object": "The Hollowbrook Trading Guild",
+          "predicate": "member_of",
+          "subject": "Perrin Woolgrave",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Hollowbrook Trading Guild'"
+        },
+        {
+          "object": "The Wyrdloom Keepers",
+          "predicate": "member_of",
+          "subject": "Orin Vellshaw",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+        },
+        {
+          "object": "The Wyrdloom Keepers",
+          "predicate": "member_of",
+          "subject": "Lysa Quenmere",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+        },
+        {
+          "object": "The Wyrdloom Keepers",
+          "predicate": "member_of",
+          "subject": "Nessa Ilyndor",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+        },
+        {
+          "object": "The Saltwick Choir",
+          "predicate": "leads",
+          "subject": "Elowen Dask",
+          "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Saltwick Choir'"
+        },
+        {
+          "object": "The Amberfen Bell",
+          "predicate": "owns",
+          "subject": "Elowen Dask",
+          "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Amberfen Bell'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "The Nine-Wick Censer",
+          "predicate": "guards",
+          "subject": "The Order of the Nine Lanterns",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 12,
+        "n": 13,
+        "ratio": 0.9231
+      }
+    }
+  ],
+  "judge_rejected_sample": [
+    {
+      "object": "The Nine-Wick Censer",
+      "predicate": "owns",
+      "subject": "Ione Mersh",
+      "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Nine-Wick Censer'"
+    },
+    {
+      "object": "The Vellshaw Ledger",
+      "predicate": "owns",
+      "subject": "Orin Vellshaw",
+      "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Vellshaw Ledger'"
+    },
+    {
+      "object": "The Amberfen Bell",
+      "predicate": "owns",
+      "subject": "Elowen Dask",
+      "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Amberfen Bell'"
+    },
+    {
+      "object": "The Brassleaf Compact",
+      "predicate": "leads",
+      "subject": "Mirelle Brannock",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Brassleaf Compact'"
+    },
+    {
+      "object": "The Brassleaf Compact",
+      "predicate": "member_of",
+      "subject": "Garrick Brannock",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Brassleaf Compact'"
+    },
+    {
+      "object": "The Order of the Nine Lanterns",
+      "predicate": "leads",
+      "subject": "Cedric Palthorne",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Order of the Nine Lanterns'"
+    },
+    {
+      "object": "The Order of the Nine Lanterns",
+      "predicate": "member_of",
+      "subject": "Ione Mersh",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Order of the Nine Lanterns'"
+    },
+    {
+      "object": "The Hollowbrook Trading Guild",
+      "predicate": "founded",
+      "subject": "Calder Rooksby",
+      "reject_reason": "object_type_unresolved: expected one of ['organization', 'place'], got 'The Hollowbrook Trading Guild'"
+    },
+    {
+      "object": "The Hollowbrook Trading Guild",
+      "predicate": "member_of",
+      "subject": "Perrin Woolgrave",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Hollowbrook Trading Guild'"
+    },
+    {
+      "object": "The Wyrdloom Keepers",
+      "predicate": "member_of",
+      "subject": "Orin Vellshaw",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+    },
+    {
+      "object": "The Wyrdloom Keepers",
+      "predicate": "member_of",
+      "subject": "Lysa Quenmere",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+    },
+    {
+      "object": "The Wyrdloom Keepers",
+      "predicate": "member_of",
+      "subject": "Nessa Ilyndor",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Wyrdloom Keepers'"
+    },
+    {
+      "object": "The Saltwick Choir",
+      "predicate": "leads",
+      "subject": "Elowen Dask",
+      "reject_reason": "object_type_unresolved: expected one of ['organization'], got 'The Saltwick Choir'"
+    },
+    {
+      "object": "The Amberfen Bell",
+      "predicate": "owns",
+      "subject": "Elowen Dask",
+      "reject_reason": "object_type_unresolved: expected one of ['artifact'], got 'The Amberfen Bell'"
+    }
+  ],
+  "out_of_unit_sample": [
+    {
+      "object": "Hearthmere Hall",
+      "predicate": "occurs_at",
+      "subject": "The Lanternfall Accord",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Mirelle Brannock",
+      "predicate": "involves",
+      "subject": "The Lanternfall Accord",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Cedric Palthorne",
+      "predicate": "involves",
+      "subject": "The Lanternfall Accord",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "The Lanternfall Accord",
+      "predicate": "precedes",
+      "subject": "The Brassleaf Schism",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Amberfen Crossing",
+      "predicate": "occurs_at",
+      "subject": "The Great Amberfen Flood",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Tobin Harrowick",
+      "predicate": "involves",
+      "subject": "The Great Amberfen Flood",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Quillspire Keep",
+      "predicate": "occurs_at",
+      "subject": "The Founding of Quillspire Keep",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Bramish Corven",
+      "predicate": "involves",
+      "subject": "The Founding of Quillspire Keep",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Cinderglass Bridge",
+      "predicate": "occurs_at",
+      "subject": "The Cinderglass Fire",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Sable Kett",
+      "predicate": "involves",
+      "subject": "The Cinderglass Fire",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "The Nine-Wick Censer",
+      "predicate": "guards",
+      "subject": "The Order of the Nine Lanterns",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "The Nine-Wick Censer",
+      "predicate": "guards",
+      "subject": "The Order of the Nine Lanterns",
+      "class": "out_of_unit"
+    }
+  ],
+  "fixture_missing_sample": [],
+  "judge_unavailable_sample": []
+}

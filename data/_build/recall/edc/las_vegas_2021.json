@@ -1,0 +1,2547 @@
+{
+  "unit": "las_vegas/2021",
+  "miss_attribution": {
+    "matcher_recoverable": 0,
+    "different_object": 6,
+    "absent": 22,
+    "n": 28,
+    "matcher_recoverable_ratio": 0.0,
+    "samples": {
+      "matcher_recoverable": [],
+      "different_object": [
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Charlotte de Witte"
+        },
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Subtronics"
+        },
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Wooli"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "Kaskade"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "deadmau5"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "Subtronics"
+        }
+      ],
+      "absent": [
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "Martin Garrix"
+        },
+        {
+          "object": "AREA21",
+          "predicate": "serves",
+          "subject": "Martin Garrix"
+        },
+        {
+          "object": "underground rave",
+          "predicate": "originates_from",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "main stage",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas 2021"
+        },
+        {
+          "object": "EDC",
+          "predicate": "serves",
+          "subject": "Insomniac"
+        },
+        {
+          "object": "Unverified death reports",
+          "predicate": "prohibits",
+          "subject": "Insomniac"
+        },
+        {
+          "object": "20211224",
+          "predicate": "operating_hours",
+          "subject": "Nicky Romero"
+        },
+        {
+          "object": "GA wristbands",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "heat safety advice",
+          "predicate": "service_constraint",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "full jumpsuit or outfit",
+          "predicate": "prohibits",
+          "subject": "EDC Las Vegas"
+        }
+      ]
+    },
+    "note": "matcher_recoverable > 0 means a matching fix has headroom. At 0 the coverage gap is extraction-side and no keying change can move the number \u2014 re-extract, do not re-match."
+  },
+  "n_docs_sampled": 17,
+  "n_docs_scored": 17,
+  "n_docs_judge_unavailable": 0,
+  "n_docs_fixture_matched": 17,
+  "n_docs_fixture_missing": 0,
+  "n_docs_total": 17,
+  "ruler": {
+    "unit": "las_vegas/2021",
+    "fixture": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2021.assertions.json",
+      "sha256": "2a3edf9decd773cff46bc54fdb2c5346c20cc9894d200864ce337fd08876d878",
+      "n_docs": 17,
+      "n_assertions": 262,
+      "supplied": true
+    },
+    "entities": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2021/15_structured/entities.resolved.jsonl",
+      "sha256": "b1a05aca276fda4ae9f3cb5ce474619bdea9e43b907f98f23f987659c62451a1",
+      "rows": 404
+    },
+    "id_map": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/resolve/edc/las_vegas_2021/id_map.json",
+      "sha256": "388c8b019fa424ed4c7815a5d027b1f38b86113fc8dba746834b2edb0e55ac44",
+      "entries": 15
+    },
+    "domain_manifest": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/domains/edc.yaml",
+      "sha256": "4b7eca371079f2ff8279c2a436b172524973e7e39e05a13aaae2f06da4a62b56"
+    },
+    "documents": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2021/10_clean",
+      "sha256": "4569036ff974e724be493607e760ec11f392e7324dc9fb7e726d17e10b2a041a",
+      "n_docs": 17
+    },
+    "editions_registry": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/configs/editions_edc.json",
+      "sha256": "5861d930e450a21823bfc6008d48a204b536e78f2be01650c4a3360ab2c03cef",
+      "resolved_dir": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2021"
+    },
+    "sample": {
+      "seed": 0,
+      "sample_n_requested": 0,
+      "n_take": 17,
+      "n_docs_available": 17,
+      "sha256": "6bcd114885c11e3112d1b0397773573c5aefd0e11fc1f7489538f4e9e55bc1e6"
+    },
+    "triples": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/las_vegas/2021/15_structured/triples.resolved.jsonl",
+      "sha256": "25a76595946ad1959265f7433e66d402840e109e779cc5cc707fb685721649c9",
+      "rows": 1042,
+      "pinned": false,
+      "note": "the graph under measurement \u2014 recorded, never pinned"
+    },
+    "pin": {
+      "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/las_vegas_2021.ruler.json",
+      "present": true,
+      "enforced": true,
+      "ignored": false,
+      "verified": true,
+      "problems": [],
+      "fixture_compared": true
+    }
+  },
+  "hits": 3,
+  "n": 31,
+  "ratio": 0.0968,
+  "raw": {
+    "hits": 3,
+    "n": 262,
+    "ratio": 0.0115
+  },
+  "clean_unfiltered": {
+    "hits": 3,
+    "n": 68,
+    "ratio": 0.0441
+  },
+  "classes": {
+    "judge_rejected": 37,
+    "out_of_unit": 194,
+    "misses": 28,
+    "hits": 3,
+    "match_mode": {
+      "exact": 3,
+      "soft-object": 0,
+      "canonical": 0
+    }
+  },
+  "reject_reasons": {
+    "object_type_unresolved": 32,
+    "object_type_mismatch": 5
+  },
+  "corpus_composition_note": "out_of_unit is large relative to raw assertions \u2014 cross-region content on cross-region pages is a corpus-composition finding, not an extraction gap.",
+  "docs": [
+    {
+      "path": "de4ay6soyeq.md",
+      "hits": 1,
+      "n": 3,
+      "ratio": 0.3333,
+      "per_predicate": {
+        "located_at": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "Martin Garrix"
+        },
+        {
+          "object": "AREA21",
+          "predicate": "serves",
+          "subject": "Martin Garrix"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas 2921",
+          "predicate": "in_lineup",
+          "subject": "Martin Garrix",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Las Vegas 2921'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 4,
+        "ratio": 0.25
+      }
+    },
+    {
+      "path": "id24zen-ije.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDCLV2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Dusk till Dawn",
+          "predicate": "operating_hours",
+          "subject": "EDCLV2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDCLV2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "25 Year Celebration",
+          "predicate": "succeeded_by",
+          "subject": "EDCLV2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "25 Year Celebration",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "25 Year Celebration",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Dusk till Dawn",
+          "predicate": "operating_hours",
+          "subject": "25 Year Celebration",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Under The Electric Sky",
+          "predicate": "succeeded_by",
+          "subject": "25 Year Celebration",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Under The Electric Sky",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "Under The Electric Sky",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "October 22+23+24",
+          "predicate": "operating_hours",
+          "subject": "Under The Electric Sky",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 11,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edm-com-events-edc-las-vegas-2026-a-rite-of-passage-thirty-years-in-the-making.md",
+      "hits": 0,
+      "n": 4,
+      "ratio": 0.0,
+      "per_predicate": {
+        "originates_from": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 0,
+          "n": 3,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Charlotte de Witte"
+        },
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Subtronics"
+        },
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "Wooli"
+        },
+        {
+          "object": "underground rave",
+          "predicate": "originates_from",
+          "subject": "EDC Las Vegas"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas 2027",
+          "predicate": "succeeded_by",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['edition'], got 'EDC Las Vegas 2027'"
+        },
+        {
+          "object": "EDC Las Vegas",
+          "predicate": "practiced_by",
+          "subject": "Kaskade",
+          "reject_reason": "object_type_mismatch: 'festival' not in ['community']"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "Las Vegas Motor Speedway",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "May 15-17, 2026",
+          "predicate": "operating_hours",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Dusk Till Dawn format",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas 2027",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Ti\u00ebsto",
+          "predicate": "in_lineup",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Darude",
+          "predicate": "in_lineup",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "The Prodigy",
+          "predicate": "in_lineup",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Kaskade",
+          "predicate": "in_lineup",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Above & Beyond",
+          "predicate": "in_lineup",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "plays_at",
+          "subject": "Lilly Palmer",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Basspod",
+          "predicate": "plays_at",
+          "subject": "Mary Droppinz",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Kinetic Field",
+          "predicate": "plays_at",
+          "subject": "GRiZ",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Cosmic Meadow",
+          "predicate": "plays_at",
+          "subject": "Alison Wonderland",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Neon Garden",
+          "predicate": "plays_at",
+          "subject": "KI/KI",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "kineticJOURNEY theme",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "World Party Parade",
+          "predicate": "incident_occurred",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "500000 attendees",
+          "predicate": "proximity_meters",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "rite of passage",
+          "predicate": "serves",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 23,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "official-2021-lineup.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 0,
+        "ratio": 1.0
+      }
+    },
+    {
+      "path": "0oud31wrt8.md",
+      "hits": 1,
+      "n": 3,
+      "ratio": 0.3333,
+      "per_predicate": {
+        "has_tier": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "Kaskade"
+        },
+        {
+          "object": "main stage",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas 2021"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas 2021",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "KineticField",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 5,
+        "ratio": 0.2
+      }
+    },
+    {
+      "path": "r-electricdaisycarnival-2021.md",
+      "hits": 1,
+      "n": 3,
+      "ratio": 0.3333,
+      "per_predicate": {
+        "plays_at": {
+          "hits": 1,
+          "n": 1,
+          "ratio": 1.0
+        },
+        "prohibits": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC",
+          "predicate": "serves",
+          "subject": "Insomniac"
+        },
+        {
+          "object": "Unverified death reports",
+          "predicate": "prohibits",
+          "subject": "Insomniac"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC 2018",
+          "predicate": "in_lineup",
+          "subject": "Dabin",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC 2018'"
+        },
+        {
+          "object": "Overdose incidents",
+          "predicate": "mitigates",
+          "subject": "Insomniac",
+          "reject_reason": "object_type_unresolved: expected one of ['incident_class', 'policy'], got 'Overdose incidents'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2018",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2019",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2022",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2023",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2024",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2016",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Circuit Grounds",
+          "predicate": "located_at",
+          "subject": "EDC 2017",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Cosmic Meadow",
+          "predicate": "has_tier",
+          "subject": "EDC 2018",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "May 16-18",
+          "predicate": "operating_hours",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Hot weather; recommend hydration",
+          "predicate": "service_constraint",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Breezy conditions on Saturday and Sunday",
+          "predicate": "service_constraint",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Unreported incidents",
+          "predicate": "prohibits",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Overdose",
+          "predicate": "incident_occurred",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Arrest",
+          "predicate": "incident_occurred",
+          "subject": "EDC 2025",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 1,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 1,
+        "n": 22,
+        "ratio": 0.0455
+      }
+    },
+    {
+      "path": "r-edc-2021.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Zippo with butane insert",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Apple leather wallet",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Victorinox Alox SD 2021 edition",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Olight mini2",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Boker atlas copper",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Good Friday carry",
+          "predicate": "located_at",
+          "subject": "Small VegaFina",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "S&amp;W model 342-1",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Sahara Casino Las Vegas coin holder",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "August 1995 Zippo",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Pierre Cardin wallet",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Victorinox Super Tinker",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Walmart Carabiner",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Hav-a-hank handkerchief",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "90's EDC",
+          "predicate": "located_at",
+          "subject": "Mini Mag Lite",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "Bradec holster",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "CZ P10C",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "Clipper lighter",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "Acebeam Pokelit",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "Civivi Praxis mini",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "IPhone 13",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Todays carry",
+          "predicate": "located_at",
+          "subject": "Goodfellow wallet",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Small fixed wednesday carry",
+          "predicate": "located_at",
+          "subject": "Boker M.U.K",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Small fixed wednesday carry",
+          "predicate": "located_at",
+          "subject": "Apple leather wallet",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Small fixed wednesday carry",
+          "predicate": "located_at",
+          "subject": "Zippo with butane insert",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Small fixed wednesday carry",
+          "predicate": "located_at",
+          "subject": "Victorinox Alox SD 2021",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Small fixed wednesday carry",
+          "predicate": "located_at",
+          "subject": "Vegas de Santiago Chaman",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 26,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "oc0p0cd3s7g.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Ti\u00ebsto",
+          "reject_reason": "object_type_mismatch: 'edition' not in ['set', 'stage', 'venue']"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 1,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "bf7a9arue-s.md",
+      "hits": 0,
+      "n": 1,
+      "ratio": 0.0,
+      "per_predicate": {
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "20211224",
+          "predicate": "operating_hours",
+          "subject": "Nicky Romero"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas",
+          "predicate": "plays_at",
+          "subject": "Nicky Romero",
+          "reject_reason": "object_type_mismatch: 'festival' not in ['set', 'stage', 'venue']"
+        },
+        {
+          "object": "YouTube",
+          "predicate": "located_at",
+          "subject": "Nicky Romero",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'YouTube'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 3,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "r-aves-2021.md",
+      "hits": 0,
+      "n": 11,
+      "ratio": 0.0,
+      "per_predicate": {
+        "gets_busy_at": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "has_tier": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "peak_density": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "prerequisite_for": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "prohibits": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "proximity_meters": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "recommended_for": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "service_constraint": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "tradeoff_with": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "GA wristbands",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "heat safety advice",
+          "predicate": "service_constraint",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "full jumpsuit or outfit",
+          "predicate": "prohibits",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "festival attendees",
+          "predicate": "serves",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "Tuesday - Saturday 10am to 6pm",
+          "predicate": "operating_hours",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "Rock and Vape",
+          "predicate": "proximity_meters",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "hydration",
+          "predicate": "prerequisite_for",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "Sunday",
+          "predicate": "gets_busy_at",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "Sunday night",
+          "predicate": "peak_density",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "comfort in full jumpsuit",
+          "predicate": "tradeoff_with",
+          "subject": "EDC Las Vegas"
+        },
+        {
+          "object": "exercising before attending",
+          "predicate": "recommended_for",
+          "subject": "EDC Las Vegas"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        },
+        {
+          "object": "Speedway parking lot",
+          "predicate": "adjacent_to",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['camping_zone', 'gate', 'landmark', 'stage', 'venue'], got 'Speedway parking lot'"
+        },
+        {
+          "object": "festival days",
+          "predicate": "causes_density_at",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['landmark', 'stage', 'venue'], got 'festival days'"
+        },
+        {
+          "object": "heat exhaustion",
+          "predicate": "incident_occurred",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['incident_class'], got 'heat exhaustion'"
+        },
+        {
+          "object": "heat exhaustion",
+          "predicate": "mitigates",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['incident_class', 'policy'], got 'heat exhaustion'"
+        },
+        {
+          "object": "festival attendees",
+          "predicate": "practiced_by",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['community'], got 'festival attendees'"
+        },
+        {
+          "object": "music festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'music festival'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "5630 Stephanie St, Las Vegas, NV 89122",
+          "predicate": "located_at",
+          "subject": "Top Notch THC",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "2202 Charleston Blvd #7, Las Vegas, NV 89102",
+          "predicate": "located_at",
+          "subject": "Rock and Vape",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "6820 Sahara Ave #4, Las Vegas, NV 89146",
+          "predicate": "located_at",
+          "subject": "Rock and Vape",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Speedway",
+          "predicate": "located_at",
+          "subject": "Bunk Police",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC attendees",
+          "predicate": "serves",
+          "subject": "Bunk Police",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "heat safety advice",
+          "predicate": "correlates_with",
+          "subject": "Las Vegas weather",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 24,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "3w030emklz8.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "0:00",
+          "predicate": "plays_at",
+          "subject": "Squid Game - Pink Soldiers (Intro)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "0:43",
+          "predicate": "plays_at",
+          "subject": "ACRAZE - Do It To It",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "1:36",
+          "predicate": "plays_at",
+          "subject": "Zedd - Stay The Night (Zedd & KDrew aka Kevin Drew Extended Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "5:34",
+          "predicate": "plays_at",
+          "subject": "Mo Falk - Chopper x Dua Lipa - Break My Heart",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "7:43",
+          "predicate": "plays_at",
+          "subject": "Hailee Steinfeld & Grey ft. Zedd - Starving",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "8:12",
+          "predicate": "plays_at",
+          "subject": "Hailee Steinfeld & Grey ft. Zedd - Starving (Bali Bandits Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "9:26",
+          "predicate": "plays_at",
+          "subject": "Dirty Disco Youth & Dumme Junge vs David Guetta - Uncle Sam vs Titanium (Zedd Mashup)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "11:37",
+          "predicate": "plays_at",
+          "subject": "Zedd ft. Matthew Koma - Spectrum",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "15:50",
+          "predicate": "plays_at",
+          "subject": "Zedd - Straight Into The Fire",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "17:20",
+          "predicate": "plays_at",
+          "subject": "DONKONG - The Void",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "18:30",
+          "predicate": "plays_at",
+          "subject": "Zedd & Alessia Cara - Stay",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "21:42",
+          "predicate": "plays_at",
+          "subject": "Zedd & Alessia Cara - Stay (Tritonal Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "22:36",
+          "predicate": "plays_at",
+          "subject": "MAGIC! - Rude (Zedd Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "25:00",
+          "predicate": "plays_at",
+          "subject": "Afrojack & Chico Rose vs. Wolfgang Gartner & Lewis Capaldi - Redline vs. Someone You Loved (Afrojack Mashup)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "27:02",
+          "predicate": "plays_at",
+          "subject": "Daft Punk - One More Time (Zedd Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "30:35",
+          "predicate": "plays_at",
+          "subject": "Zedd - I Want You To Know",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "34:48",
+          "predicate": "plays_at",
+          "subject": "Drake - Way 2 Sexy (Maliboux Flip)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "36:36",
+          "predicate": "plays_at",
+          "subject": "Lil Nas X - INDUSTRY BABY x ID",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "38:08",
+          "predicate": "plays_at",
+          "subject": "Masked Wolf - Astronaut In The Ocean x ISOxo - Ground",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "40:14",
+          "predicate": "plays_at",
+          "subject": "Ariana Grande ft. Zedd - Break Free",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "41:21",
+          "predicate": "plays_at",
+          "subject": "Popeska - Diamonds",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "41:50",
+          "predicate": "plays_at",
+          "subject": "Miami 2 Ibiza x Break Free",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "43:23",
+          "predicate": "plays_at",
+          "subject": "Loopers - Seoul",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "44:19",
+          "predicate": "plays_at",
+          "subject": "Martin Garrix - Tremor x Zedd - True Colors",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "46:08",
+          "predicate": "plays_at",
+          "subject": "Zedd ft. Jon Bellion - Beautiful Now",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "50:20",
+          "predicate": "plays_at",
+          "subject": "Zedd & Maren Morris & Grey - The Middle",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "53:23",
+          "predicate": "plays_at",
+          "subject": "Zedd & Maren Morris & Grey - The Middle (Marc Benjamin Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "53:53",
+          "predicate": "plays_at",
+          "subject": "Yeah Yeah Yeahs - Heads Will Roll (DiscoTech Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "55:10",
+          "predicate": "plays_at",
+          "subject": "Icona Pop - I Love It (SICK INDIVIDUALS Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "56:09",
+          "predicate": "plays_at",
+          "subject": "Starkillers - Bitch Ass Trick",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "57:00",
+          "predicate": "plays_at",
+          "subject": "Swedish House Mafia - It Gets Better (David Guetta & Zedd Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "59:28",
+          "predicate": "plays_at",
+          "subject": "Zedd - Clarity",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "1:04:09",
+          "predicate": "plays_at",
+          "subject": "Empire Of The Sun - Alive (Zedd Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "1:08:03",
+          "predicate": "plays_at",
+          "subject": "Empire Of The Sun - Alive (Zedd Remix) + Closing Fireworks",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 34,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edm-com-events-edc-las-vegas-is-expanding-to-two-weekends-in-2027.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        },
+        {
+          "object": "We Belong Here\u2019s 2025 Festival",
+          "predicate": "in_lineup",
+          "subject": "Lane 8",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'We Belong Here\u2019s 2025 Festival'"
+        },
+        {
+          "object": "Breakaway Music Festival\u2019s Utah Debut",
+          "predicate": "in_lineup",
+          "subject": "John Summit",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Breakaway Music Festival\u2019s Utah Debut'"
+        },
+        {
+          "object": "Breakaway Music Festival\u2019s Utah Debut",
+          "predicate": "in_lineup",
+          "subject": "Kaskade",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Breakaway Music Festival\u2019s Utah Debut'"
+        },
+        {
+          "object": "Pryda EPs",
+          "predicate": "in_lineup",
+          "subject": "Eric Prydz",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Pryda EPs'"
+        },
+        {
+          "object": "EDC Las Vegas 2026",
+          "predicate": "plays_at",
+          "subject": "Kaskade",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Las Vegas 2026'"
+        },
+        {
+          "object": "EDC Las Vegas 2026",
+          "predicate": "plays_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Las Vegas 2026'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "EDC Las Vegas 2026",
+          "predicate": "succeeded_by",
+          "subject": "EDC Las Vegas 2027",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Rite of Passage",
+          "predicate": "has_tier",
+          "subject": "EDC Las Vegas 2026",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Two Weekends",
+          "predicate": "operating_hours",
+          "subject": "EDC Las Vegas 2027",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "The King\u2019s Trust",
+          "predicate": "prerequisite_for",
+          "subject": "Carl Cox",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Unreleased Dubstep Demos",
+          "predicate": "plays_at",
+          "subject": "T-Pain",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "We Belong Here\u2019s 2025 Festival",
+          "predicate": "in_lineup",
+          "subject": "Porter Robinson",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "We Belong Here\u2019s 2025 Festival",
+          "predicate": "in_lineup",
+          "subject": "Nora En Pure",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Central Park",
+          "predicate": "located_at",
+          "subject": "We Belong Here\u2019s 2025 Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Lollapalooza 2025",
+          "predicate": "correlates_with",
+          "subject": "EDM",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Dash Berlin",
+          "predicate": "practiced_by",
+          "subject": "Jeffrey Sutorius",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Reserved",
+          "predicate": "serves",
+          "subject": "Spotify",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Holds Concert Tickets for Top Fans",
+          "predicate": "operating_hours",
+          "subject": "Reserved",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Santa Monica Pier",
+          "predicate": "located_at",
+          "subject": "Pier Play Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Pier Play Festival",
+          "predicate": "in_lineup",
+          "subject": "\u00c2me Live",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Pier Play Festival",
+          "predicate": "in_lineup",
+          "subject": "AM\u00c9M\u00c9",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "G Jones",
+          "predicate": "in_lineup",
+          "subject": "Sound Haven\u2019s 2026 Lineup",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Detox Unit",
+          "predicate": "in_lineup",
+          "subject": "Sound Haven\u2019s 2026 Lineup",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "YDG",
+          "predicate": "in_lineup",
+          "subject": "Sound Haven\u2019s 2026 Lineup",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Berlin",
+          "predicate": "located_at",
+          "subject": "Contra",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Adriatic Sound Festival",
+          "predicate": "serves",
+          "subject": "Ryan Graves",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Independent Safety Review",
+          "predicate": "prohibits",
+          "subject": "Tomorrowland",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "2026 Return",
+          "predicate": "located_at",
+          "subject": "Tomorrowland",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Booking Philosophy",
+          "predicate": "practiced_by",
+          "subject": "Bonnaroo",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Breakaway Music Festival\u2019s Utah Debut",
+          "predicate": "in_lineup",
+          "subject": "MPH",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Pryda EPs",
+          "predicate": "in_lineup",
+          "subject": "Mygga",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Pryda EPs",
+          "predicate": "in_lineup",
+          "subject": "Modulation",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2026",
+          "predicate": "plays_at",
+          "subject": "GRiZ b2b Wooli",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 35,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "ajiszmfedgo.md",
+      "hits": 0,
+      "n": 1,
+      "ratio": 0.0,
+      "per_predicate": {
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "deadmau5"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas 2021",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "My Pet Coelacanth",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "When The Summer Dies",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Maths",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Maths (Botnek Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Moar Ghosts N' Stuff",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Ghosts 'N' Stuff (Chuckie Remix)",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Ghosts 'N' Stuff",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Channel 43",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Monophobia",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Bridged By A Lightwave",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Arguru 2k19",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Coasted",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Imaginary Friends",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Avaritia",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Strobe",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Luxuria (ov) (Tinlicker remix)",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 18,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "uxvdhckr-b4.md",
+      "hits": 0,
+      "n": 5,
+      "ratio": 0.0,
+      "per_predicate": {
+        "has_tier": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "in_lineup": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "operating_hours": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "recommended_for": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        },
+        "serves": {
+          "hits": 0,
+          "n": 1,
+          "ratio": 0.0
+        }
+      },
+      "misses": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "in_lineup",
+          "subject": "Subtronics"
+        },
+        {
+          "object": "Bass",
+          "predicate": "has_tier",
+          "subject": "Subtronics set"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "recommended_for",
+          "subject": "Subtronics set"
+        },
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "serves",
+          "subject": "Subtronics set"
+        },
+        {
+          "object": "0:00 - 58:59",
+          "predicate": "operating_hours",
+          "subject": "Subtronics set"
+        }
+      ],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_mismatch: 'edition' not in ['set', 'stage', 'venue']"
+        },
+        {
+          "object": "Mixcloud",
+          "predicate": "located_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Mixcloud'"
+        },
+        {
+          "object": "SoundCloud",
+          "predicate": "located_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'SoundCloud'"
+        },
+        {
+          "object": "Instagram",
+          "predicate": "located_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Instagram'"
+        },
+        {
+          "object": "YouTube",
+          "predicate": "located_at",
+          "subject": "Subtronics",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'YouTube'"
+        },
+        {
+          "object": "Las Vegas",
+          "predicate": "located_at",
+          "subject": "EDC Las Vegas 2021",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+        },
+        {
+          "object": "Mixcloud",
+          "predicate": "located_at",
+          "subject": "Subtronics set",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Mixcloud'"
+        },
+        {
+          "object": "PLANET INSIKE",
+          "predicate": "located_at",
+          "subject": "Subtronics set",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'PLANET INSIKE'"
+        },
+        {
+          "object": "20220113",
+          "predicate": "located_at",
+          "subject": "Subtronics set",
+          "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got '20220113'"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 14,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edmidentity-com-music-exclusive-mix.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Fallen",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'artist'"
+        },
+        {
+          "object": "festival",
+          "predicate": "belongs_to_class",
+          "subject": "EDC Las Vegas",
+          "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'festival'"
+        }
+      ],
+      "out_of_unit": [
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "BrokinPaper",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "M?STIC",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Just\u0117",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KAAZE",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "CUTDWN",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KC Lights",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Dillon Nathaniel",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Spoone",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "AVAIION",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "KR\u00c6K",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Disco Shrine",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "LVCA",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "artist",
+          "predicate": "belongs_to_class",
+          "subject": "Hypaton",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "EDC Las Vegas",
+          "predicate": "plays_at",
+          "subject": "CUTDWN",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "bass music",
+          "predicate": "practiced_by",
+          "subject": "M?STIC",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "drum & bass",
+          "predicate": "practiced_by",
+          "subject": "KR\u00c6K",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "hyperpop",
+          "predicate": "practiced_by",
+          "subject": "Disco Shrine",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 19,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "l9mhwusxu5c.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [
+        {
+          "object": "EDC Las Vegas 2021",
+          "predicate": "plays_at",
+          "subject": "Jason Ross",
+          "reject_reason": "object_type_mismatch: 'edition' not in ['set', 'stage', 'venue']"
+        }
+      ],
+      "out_of_unit": [],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 1,
+        "ratio": 0.0
+      }
+    },
+    {
+      "path": "edmidentity-com-events-essential-info-guides.md",
+      "hits": 0,
+      "n": 0,
+      "ratio": 1.0,
+      "per_predicate": {},
+      "misses": [],
+      "judge_rejected": [],
+      "out_of_unit": [
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "CORE Los Angeles",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Los Angeles",
+          "predicate": "located_at",
+          "subject": "CORE Los Angeles",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "collaborative experience",
+          "predicate": "in_lineup",
+          "subject": "CORE Los Angeles",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Forbidden Kingdom",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "unknown location",
+          "predicate": "located_at",
+          "subject": "Forbidden Kingdom",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Breakaway Arizona",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Arizona",
+          "predicate": "located_at",
+          "subject": "Breakaway Arizona",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Coachella",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "unknown location",
+          "predicate": "located_at",
+          "subject": "Coachella",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Ultra Music Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "unknown location",
+          "predicate": "located_at",
+          "subject": "Ultra Music Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Beyond Wonderland SoCal",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Southern California",
+          "predicate": "located_at",
+          "subject": "Beyond Wonderland SoCal",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "CRSSD Festival Spring",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "San Diego",
+          "predicate": "located_at",
+          "subject": "CRSSD Festival Spring",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "M3F",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Steele Indian School Park",
+          "predicate": "located_at",
+          "subject": "M3F",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "edition",
+          "predicate": "belongs_to_class",
+          "subject": "Skyline Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "Ace*Mission Studios",
+          "predicate": "located_at",
+          "subject": "Skyline Festival",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "uses cookies",
+          "predicate": "service_constraint",
+          "subject": "this website",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "disabling cookies without consent",
+          "predicate": "prohibits",
+          "subject": "this website",
+          "class": "out_of_unit"
+        },
+        {
+          "object": "information about festivals",
+          "predicate": "serves",
+          "subject": "this website",
+          "class": "out_of_unit"
+        }
+      ],
+      "match_mode_counts": {
+        "exact": 0,
+        "soft-object": 0,
+        "canonical": 0
+      },
+      "raw": {
+        "hits": 0,
+        "n": 22,
+        "ratio": 0.0
+      }
+    }
+  ],
+  "judge_rejected_sample": [
+    {
+      "object": "EDC Las Vegas 2921",
+      "predicate": "in_lineup",
+      "subject": "Martin Garrix",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC Las Vegas 2921'"
+    },
+    {
+      "object": "EDC Las Vegas 2027",
+      "predicate": "succeeded_by",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['edition'], got 'EDC Las Vegas 2027'"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "practiced_by",
+      "subject": "Kaskade",
+      "reject_reason": "object_type_mismatch: 'festival' not in ['community']"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2021",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "KineticField",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+    },
+    {
+      "object": "EDC 2018",
+      "predicate": "in_lineup",
+      "subject": "Dabin",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'EDC 2018'"
+    },
+    {
+      "object": "Overdose incidents",
+      "predicate": "mitigates",
+      "subject": "Insomniac",
+      "reject_reason": "object_type_unresolved: expected one of ['incident_class', 'policy'], got 'Overdose incidents'"
+    },
+    {
+      "object": "EDC Las Vegas 2021",
+      "predicate": "plays_at",
+      "subject": "Ti\u00ebsto",
+      "reject_reason": "object_type_mismatch: 'edition' not in ['set', 'stage', 'venue']"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "plays_at",
+      "subject": "Nicky Romero",
+      "reject_reason": "object_type_mismatch: 'festival' not in ['set', 'stage', 'venue']"
+    },
+    {
+      "object": "YouTube",
+      "predicate": "located_at",
+      "subject": "Nicky Romero",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'YouTube'"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+    },
+    {
+      "object": "Speedway parking lot",
+      "predicate": "adjacent_to",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['camping_zone', 'gate', 'landmark', 'stage', 'venue'], got 'Speedway parking lot'"
+    },
+    {
+      "object": "festival days",
+      "predicate": "causes_density_at",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['landmark', 'stage', 'venue'], got 'festival days'"
+    },
+    {
+      "object": "heat exhaustion",
+      "predicate": "incident_occurred",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['incident_class'], got 'heat exhaustion'"
+    },
+    {
+      "object": "heat exhaustion",
+      "predicate": "mitigates",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['incident_class', 'policy'], got 'heat exhaustion'"
+    },
+    {
+      "object": "festival attendees",
+      "predicate": "practiced_by",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['community'], got 'festival attendees'"
+    },
+    {
+      "object": "music festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival', 'incident_class'], got 'music festival'"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+    },
+    {
+      "object": "We Belong Here\u2019s 2025 Festival",
+      "predicate": "in_lineup",
+      "subject": "Lane 8",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'We Belong Here\u2019s 2025 Festival'"
+    },
+    {
+      "object": "Breakaway Music Festival\u2019s Utah Debut",
+      "predicate": "in_lineup",
+      "subject": "John Summit",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Breakaway Music Festival\u2019s Utah Debut'"
+    },
+    {
+      "object": "Breakaway Music Festival\u2019s Utah Debut",
+      "predicate": "in_lineup",
+      "subject": "Kaskade",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Breakaway Music Festival\u2019s Utah Debut'"
+    },
+    {
+      "object": "Pryda EPs",
+      "predicate": "in_lineup",
+      "subject": "Eric Prydz",
+      "reject_reason": "object_type_unresolved: expected one of ['edition', 'festival'], got 'Pryda EPs'"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "plays_at",
+      "subject": "Kaskade",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Las Vegas 2026'"
+    },
+    {
+      "object": "EDC Las Vegas 2026",
+      "predicate": "plays_at",
+      "subject": "Subtronics",
+      "reject_reason": "object_type_unresolved: expected one of ['set', 'stage', 'venue'], got 'EDC Las Vegas 2026'"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2021",
+      "reject_reason": "object_type_unresolved: expected one of ['gate', 'landmark', 'stage', 'venue'], got 'Las Vegas'"
+    }
+  ],
+  "out_of_unit_sample": [
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDCLV2021",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Dusk till Dawn",
+      "predicate": "operating_hours",
+      "subject": "EDCLV2021",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDCLV2021",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "25 Year Celebration",
+      "predicate": "succeeded_by",
+      "subject": "EDCLV2021",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "25 Year Celebration",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "25 Year Celebration",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Dusk till Dawn",
+      "predicate": "operating_hours",
+      "subject": "25 Year Celebration",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Under The Electric Sky",
+      "predicate": "succeeded_by",
+      "subject": "25 Year Celebration",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "Under The Electric Sky",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "Under The Electric Sky",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "October 22+23+24",
+      "predicate": "operating_hours",
+      "subject": "Under The Electric Sky",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Las Vegas Motor Speedway",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "May 15-17, 2026",
+      "predicate": "operating_hours",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Dusk Till Dawn format",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2027",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Ti\u00ebsto",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Darude",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "The Prodigy",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Kaskade",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Above & Beyond",
+      "predicate": "in_lineup",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Circuit Grounds",
+      "predicate": "plays_at",
+      "subject": "Lilly Palmer",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Basspod",
+      "predicate": "plays_at",
+      "subject": "Mary Droppinz",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Kinetic Field",
+      "predicate": "plays_at",
+      "subject": "GRiZ",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Cosmic Meadow",
+      "predicate": "plays_at",
+      "subject": "Alison Wonderland",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "Neon Garden",
+      "predicate": "plays_at",
+      "subject": "KI/KI",
+      "class": "out_of_unit"
+    },
+    {
+      "object": "kineticJOURNEY theme",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas 2026",
+      "class": "out_of_unit"
+    }
+  ],
+  "fixture_missing_sample": [],
+  "judge_unavailable_sample": []
+}

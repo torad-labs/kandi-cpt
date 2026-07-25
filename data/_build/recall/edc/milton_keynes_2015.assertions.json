@@ -1,0 +1,822 @@
+{
+  "1quthqgrkz4.md": [
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "July 12",
+      "predicate": "operating_hours",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "one-day",
+      "predicate": "has_tier",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Payback",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    }
+  ],
+  "d1juz2erhru.md": [
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "11 July, 2015",
+      "predicate": "operating_hours",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "located_at",
+      "subject": "kineticCATHEDRAL stage"
+    },
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "plays_at",
+      "subject": "Tommy Trash"
+    },
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "in_lineup",
+      "subject": "Tommy Trash"
+    },
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "in_lineup",
+      "subject": "Track: Lord of the Trance (Original mix)"
+    },
+    {
+      "object": "Tommy Trash",
+      "predicate": "serves",
+      "subject": "Track: Lord of the Trance (Original mix)"
+    },
+    {
+      "object": "Insomniac",
+      "predicate": "practiced_by",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Hysteria Records",
+      "predicate": "located_at",
+      "subject": "Track: Lord of the Trance (Original mix)"
+    }
+  ],
+  "edm-com-features-interview-avello-2026.md": [
+    {
+      "object": "Florida",
+      "predicate": "located_at",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Lollapalooza",
+      "predicate": "plays_at",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "plays_at",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Ultra",
+      "predicate": "in_lineup",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Ophelia Records",
+      "predicate": "serves",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Subsidia",
+      "predicate": "serves",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Breakaway Projects",
+      "predicate": "serves",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "EDM.com Class of 2026",
+      "predicate": "has_tier",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "Adam Lawrence",
+      "predicate": "practiced_by",
+      "subject": "AVELLO"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "has_tier",
+      "subject": "EDM.com Class of 2026"
+    },
+    {
+      "object": "Awake",
+      "predicate": "serves",
+      "subject": "ILLENIUM"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "Flume"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "ODESZA"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "Zeds Dead"
+    },
+    {
+      "object": "AVELLO remix",
+      "predicate": "has_tier",
+      "subject": "Disco Lines and Tinashe\u2019s \u2018No Broke Boys\u2019"
+    },
+    {
+      "object": "Adam Lawrence",
+      "predicate": "has_tier",
+      "subject": "Florida State University"
+    },
+    {
+      "object": "Breakaway Projects",
+      "predicate": "serves",
+      "subject": "Breakaway Music Festival"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "The Naked and Famous"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "Florence + The Machine"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "Kesha"
+    },
+    {
+      "object": "AVELLO",
+      "predicate": "practiced_by",
+      "subject": "Halsey"
+    }
+  ],
+  "edm-com-industry-inside-pacha-new-york-safety-security-plan-brooklyn-mirage-site.md": [
+    {
+      "object": "Bushwick",
+      "predicate": "located_at",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "summer",
+      "predicate": "operating_hours",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "concertgoers",
+      "predicate": "serves",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "overselling",
+      "predicate": "prohibits",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "one security guard for every 75 guests",
+      "predicate": "has_tier",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "surrounding streets",
+      "predicate": "causes_density_at",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "summer",
+      "predicate": "gets_busy_at",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "Stewart Avenue",
+      "predicate": "located_at",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "Morgan Avenue Station",
+      "predicate": "adjacent_to",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "Jefferson Street Station",
+      "predicate": "adjacent_to",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "Union Square",
+      "predicate": "serves",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "480 meters to Morgan Avenue Station",
+      "predicate": "proximity_meters",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "420 meters to Jefferson Street Station",
+      "predicate": "proximity_meters",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "East Williamsburg",
+      "predicate": "located_at",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "Karl Clemente disappearance",
+      "predicate": "incident_occurred",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "John Castic disappearance",
+      "predicate": "incident_occurred",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "Michael Bautista kidnapping",
+      "predicate": "incident_occurred",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "adequate exterior lighting",
+      "predicate": "prohibits",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "licensed rideshare vehicles",
+      "predicate": "prohibits",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "safe dispersal of crowds",
+      "predicate": "prohibits",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "Pacha New York",
+      "predicate": "succeeded_by",
+      "subject": "Avant Gardner"
+    },
+    {
+      "object": "Avant Gardner",
+      "predicate": "differs_from",
+      "subject": "Pacha New York"
+    },
+    {
+      "object": "NYPD Best Practices for Nightlife Establishments",
+      "predicate": "inherits_norms_from",
+      "subject": "Pacha New York"
+    }
+  ],
+  "edmidentity-com-events-essential-info-guides.md": [
+    {
+      "object": "Los Angeles",
+      "predicate": "located_at",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "collaborative experience",
+      "predicate": "in_lineup",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "debut edition",
+      "predicate": "operating_hours",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "unknown",
+      "predicate": "located_at",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "Arizona",
+      "predicate": "located_at",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "second edition",
+      "predicate": "operating_hours",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "unknown",
+      "predicate": "located_at",
+      "subject": "Coachella"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Coachella"
+    },
+    {
+      "object": "unknown",
+      "predicate": "located_at",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "Southern California",
+      "predicate": "located_at",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "San Diego",
+      "predicate": "located_at",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "Steele Indian School Park",
+      "predicate": "located_at",
+      "subject": "M3F"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "M3F"
+    },
+    {
+      "object": "Ace*Mission Studios",
+      "predicate": "located_at",
+      "subject": "Skyline Festival"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Skyline Festival"
+    },
+    {
+      "object": "unknown",
+      "predicate": "located_at",
+      "subject": "Camp EDC"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Camp EDC"
+    },
+    {
+      "object": "uses cookies",
+      "predicate": "service_constraint",
+      "subject": "this website"
+    }
+  ],
+  "edmidentity-com-music-exclusive-mix.md": [
+    {
+      "object": "AAPI community",
+      "predicate": "practiced_by",
+      "subject": "BrokinPaper"
+    }
+  ],
+  "press-lineup.md": [
+    {
+      "object": "Art Department",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Carnage",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Claude VonStroke",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Cosmic Gate",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Dimitri Vegas & Like Mike",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Ferry Corsten",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Friction",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Hardwell",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "High Contrast",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Ilan Bluestone",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "John O'Callaghan",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Jordan Suckley",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Bryan Kearney",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Kove",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Linguistics",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Marco Carola",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Markus Schulz",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Matrix & Futurebound",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Miguel Campbell",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Mistajam",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Paul van Dyk",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Pendulum",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Philip George",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Purenrg",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Richy Ahmed",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Route 94",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Shy FX",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Sigma",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Simon Patterson",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Steve Aoki",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Sub Focus",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Ti\u00ebsto",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Visionquest",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "wAFF",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    },
+    {
+      "object": "Will Atkinson",
+      "predicate": "in_lineup",
+      "subject": "EDC UK 2015"
+    }
+  ],
+  "r-aves-2015.md": [
+    {
+      "object": "Milton Keynes",
+      "predicate": "located_at",
+      "subject": "BADGER MILTON KEYNES UNIT 9"
+    },
+    {
+      "object": "tonight",
+      "predicate": "operating_hours",
+      "subject": "FREE TICKETS FOR BADGER MILTON KEYNES UNIT 9 TONIGHT"
+    },
+    {
+      "object": "BADGER MILTON KEYNES UNIT 9",
+      "predicate": "serves",
+      "subject": "FREE TICKETS FOR BADGER MILTON KEYNES UNIT 9 TONIGHT"
+    }
+  ],
+  "r-electricdaisycarnival-2015.md": [
+    {
+      "object": "cancelled",
+      "predicate": "incident_occurred",
+      "subject": "EDC UK 2019"
+    },
+    {
+      "object": "Milton Keynes",
+      "predicate": "located_at",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "F1 Silverstone",
+      "predicate": "conflicts_with",
+      "subject": "EDC UK 2019"
+    },
+    {
+      "object": "VIP pass",
+      "predicate": "has_tier",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "VIP pass",
+      "predicate": "has_tier",
+      "subject": "EDC UK 2016"
+    },
+    {
+      "object": "being staged in July 2019",
+      "predicate": "prohibits",
+      "subject": "EDC UK 2019"
+    },
+    {
+      "object": "festival attendees",
+      "predicate": "serves",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "reimagined edition",
+      "predicate": "succeeded_by",
+      "subject": "EDC UK 2019"
+    },
+    {
+      "object": "high hotel prices in Milton Keynes",
+      "predicate": "correlates_with",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "weekend",
+      "predicate": "operating_hours",
+      "subject": "EDC UK"
+    }
+  ],
+  "s4dbemir-bo.md": [
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "Saturday 11 July 2015",
+      "predicate": "operating_hours",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "dance music fans",
+      "predicate": "serves",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "four stages",
+      "predicate": "has_tier",
+      "subject": "EDC UK"
+    },
+    {
+      "object": "Insomniac",
+      "predicate": "practiced_by",
+      "subject": "EDC UK"
+    }
+  ],
+  "sy5cnlhqvnm.md": [
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Get Loose [Tiesto Remix]"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Avalanche"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "The Wave Feat. Harrison"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "The Only Way Is Up"
+    },
+    {
+      "object": "20150715",
+      "predicate": "plays_at",
+      "subject": "Get Loose [Tiesto Remix]"
+    },
+    {
+      "object": "20150715",
+      "predicate": "plays_at",
+      "subject": "Avalanche"
+    },
+    {
+      "object": "20150715",
+      "predicate": "plays_at",
+      "subject": "The Wave Feat. Harrison"
+    },
+    {
+      "object": "20150715",
+      "predicate": "plays_at",
+      "subject": "The Only Way Is Up"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Noisecontrollers"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Showtek"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Vinai"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Tiesto"
+    },
+    {
+      "object": "20150715",
+      "predicate": "in_lineup",
+      "subject": "Martin Garrix"
+    },
+    {
+      "object": "MattTheBass",
+      "predicate": "incident_occurred",
+      "subject": "20150715"
+    }
+  ],
+  "vete4ljbye4.md": [
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "plays_at",
+      "subject": "Ferry Corsten"
+    },
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    }
+  ],
+  "xyrdoqnxjku.md": [
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "plays_at",
+      "subject": "Ti\u00ebsto"
+    },
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    }
+  ],
+  "ydpuumh1lvc.md": [
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "plays_at",
+      "subject": "John O'Callaghan"
+    },
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    }
+  ],
+  "zylexlpcgzg.md": [
+    {
+      "object": "Electric Daisy Carnival",
+      "predicate": "plays_at",
+      "subject": "Markus Schulz"
+    },
+    {
+      "object": "Milton Keynes Bowl",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    }
+  ]
+}

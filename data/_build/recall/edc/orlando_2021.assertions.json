@@ -1,0 +1,1046 @@
+{
+  "3yu1aobhzoq.md": [
+    {
+      "object": "Circuit Grounds",
+      "predicate": "plays_at",
+      "subject": "Zedd"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "located_at",
+      "subject": "Zedd"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "plays_at",
+      "subject": "ATLiens"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "plays_at",
+      "subject": "Said the Sky"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "plays_at",
+      "subject": "NGHTMRE b2b Svdden Death"
+    }
+  ],
+  "cqjn-tyk2ie.md": [
+    {
+      "object": "Subtronics",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "John Summit",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "Galantis",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "Excision",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "G Jones",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "Tchami",
+      "predicate": "in_lineup",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "EDC Orlando 2021 Day 3",
+      "predicate": "precedes",
+      "subject": "EDC Orlando 2021 Day 2"
+    },
+    {
+      "object": "EDC Orlando 2021 Day 2",
+      "predicate": "plays_at",
+      "subject": "Asian Sensation"
+    },
+    {
+      "object": "Skydeck viewing area",
+      "predicate": "visible_from",
+      "subject": "Kinetic Field"
+    },
+    {
+      "object": "EDC Orlando 2021 Day 2",
+      "predicate": "located_at",
+      "subject": "VIP areas"
+    },
+    {
+      "object": "EDC Orlando 2021 Day 2",
+      "predicate": "practiced_by",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Discord community",
+      "predicate": "serves",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "merchandising",
+      "predicate": "serves",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "artist management",
+      "predicate": "serves",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "tour management",
+      "predicate": "serves",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "VIP experiences",
+      "predicate": "serves",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Twitter",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Twitch",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "TikTok",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Facebook",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Soundcloud",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Audius",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "YouTube",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Linktree",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "NoFavors",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Whoisbrian Shop",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "Discord",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "located_at",
+      "subject": "Whoisbrian"
+    }
+  ],
+  "cudjwf2eqla.md": [
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "Back Under the Electric Sky"
+    },
+    {
+      "object": "Back Under the Electric Sky",
+      "predicate": "serves",
+      "subject": "Gryffin & Jason Ross - After You (ft. Calle Lehmann)"
+    },
+    {
+      "object": "Back Under the Electric Sky",
+      "predicate": "serves",
+      "subject": "Sony Alpha a6300"
+    },
+    {
+      "object": "Back Under the Electric Sky",
+      "predicate": "serves",
+      "subject": "Google Pixel 4XL"
+    }
+  ],
+  "dancingastronaut-com-2020-11-insomniac-events-launches-insomniac-east-division-shares-edc.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "November 12\u201314, 2021",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "East Coast",
+      "predicate": "serves",
+      "subject": "Insomniac East"
+    },
+    {
+      "object": "Washington, DC",
+      "predicate": "located_at",
+      "subject": "Insomniac East"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "edition",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "division",
+      "predicate": "has_tier",
+      "subject": "Insomniac East"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "succeeded_by",
+      "subject": "Insomniac East"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "differs_from",
+      "subject": "EDC New York"
+    },
+    {
+      "object": "Insomniac Events",
+      "predicate": "practiced_by",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "Insomniac Events",
+      "predicate": "signals_membership",
+      "subject": "Insomniac East"
+    },
+    {
+      "object": "future Insomniac East events",
+      "predicate": "precedes",
+      "subject": "EDC Orlando 2021"
+    }
+  ],
+  "edm-com-events-edc-orlando-set-times-2021.md": [
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "November 12th to 14th",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "in_lineup",
+      "subject": "Armin van Buuren"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "in_lineup",
+      "subject": "Ti\u00ebsto"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "in_lineup",
+      "subject": "Zedd"
+    },
+    {
+      "object": "EDC faithful",
+      "predicate": "serves",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDM festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDC Orlando 2022",
+      "predicate": "succeeded_by",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDC Las Vegas",
+      "predicate": "originates_from",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "Insomniac",
+      "predicate": "practiced_by",
+      "subject": "EDC Orlando 2021"
+    }
+  ],
+  "edmidentity-com-events-essential-info-guides.md": [
+    {
+      "object": "Los Angeles",
+      "predicate": "located_at",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "CORE Los Angeles"
+    },
+    {
+      "object": "Not specified",
+      "predicate": "located_at",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Forbidden Kingdom"
+    },
+    {
+      "object": "Arizona",
+      "predicate": "located_at",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Breakaway Arizona"
+    },
+    {
+      "object": "Not specified",
+      "predicate": "located_at",
+      "subject": "Coachella"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Coachella"
+    },
+    {
+      "object": "Not specified",
+      "predicate": "located_at",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Ultra Music Festival"
+    },
+    {
+      "object": "Southern California",
+      "predicate": "located_at",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Beyond Wonderland SoCal"
+    },
+    {
+      "object": "San Diego",
+      "predicate": "located_at",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "CRSSD Festival Spring"
+    },
+    {
+      "object": "Steele Indian School Park",
+      "predicate": "located_at",
+      "subject": "M3F"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "M3F"
+    },
+    {
+      "object": "Ace*Mission Studios",
+      "predicate": "located_at",
+      "subject": "Skyline Festival"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "Skyline Festival"
+    }
+  ],
+  "edmidentity-com-music-exclusive-mix.md": [
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "BrokinPaper"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "M?STIC"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Just\u0117"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KAAZE"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Fallen"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "CUTDWN"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KC Lights"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Dillon Nathaniel"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Spoone"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "AVAIon"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "KR\u00c6K"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Disco Shrine"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "LVCA"
+    },
+    {
+      "object": "artist",
+      "predicate": "belongs_to_class",
+      "subject": "Hypaton"
+    },
+    {
+      "object": "AAPI community",
+      "predicate": "practiced_by",
+      "subject": "BrokinPaper"
+    },
+    {
+      "object": "bass music community",
+      "predicate": "practiced_by",
+      "subject": "M?STIC"
+    },
+    {
+      "object": "drum & bass community",
+      "predicate": "practiced_by",
+      "subject": "Fallen"
+    },
+    {
+      "object": "drum & bass community",
+      "predicate": "practiced_by",
+      "subject": "KR\u00c6K"
+    },
+    {
+      "object": "hyperpop community",
+      "predicate": "practiced_by",
+      "subject": "Disco Shrine"
+    }
+  ],
+  "electric-daisy-carnival-orlando-2021.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "2021 Artist Lineup",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "ACRAZE"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Armin Van Buuren"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Galantis"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "in_lineup",
+      "subject": "Zedd"
+    },
+    {
+      "object": "two packed days",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando"
+    }
+  ],
+  "ht1igzavvlc.md": [
+    {
+      "object": "Soundcloud",
+      "predicate": "located_at",
+      "subject": "Tracklist Mashup Pack (EDC Themed Set)"
+    },
+    {
+      "object": "Instagram",
+      "predicate": "located_at",
+      "subject": "Tracklist Mashup Pack (EDC Themed Set)"
+    },
+    {
+      "object": "Demodrop",
+      "predicate": "located_at",
+      "subject": "Tracklist Mashup Pack (EDC Themed Set)"
+    },
+    {
+      "object": "20210124",
+      "predicate": "operating_hours",
+      "subject": "Tracklist Mashup Pack (EDC Themed Set)"
+    }
+  ],
+  "k8rg2tunwhi.md": [
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "plays_at",
+      "subject": "Galantis"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "in_lineup",
+      "subject": "Galantis"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "serves",
+      "subject": "Destination EDM!"
+    },
+    {
+      "object": "20211114",
+      "predicate": "operating_hours",
+      "subject": "Destination EDM!"
+    }
+  ],
+  "kfjv4usspii.md": [
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "Neon Garden"
+    },
+    {
+      "object": "Neon Garden",
+      "predicate": "plays_at",
+      "subject": "John Summit"
+    },
+    {
+      "object": "EDC Orlando",
+      "predicate": "located_at",
+      "subject": "John Summit"
+    }
+  ],
+  "q8abfxeuzlm.md": [
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "Audacy Beach Festival",
+      "predicate": "precedes",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "Lights All Night",
+      "predicate": "precedes",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "EDM Festival content",
+      "predicate": "serves",
+      "subject": "Destination EDM"
+    },
+    {
+      "object": "Magic Records",
+      "predicate": "located_at",
+      "subject": "Kalide & Peter Kiemann - Forever (ft Bianca)"
+    },
+    {
+      "object": "20211128",
+      "predicate": "operating_hours",
+      "subject": "Kalide & Peter Kiemann - Forever (ft Bianca)"
+    },
+    {
+      "object": "Destination EDM",
+      "predicate": "located_at",
+      "subject": "Kalide & Peter Kiemann - Forever (ft Bianca)"
+    }
+  ],
+  "r-aves-2021.md": [
+    {
+      "object": "Hotel + Shuttle Package",
+      "predicate": "serves",
+      "subject": "EDC Orlando 2021"
+    },
+    {
+      "object": "Weekend",
+      "predicate": "operating_hours",
+      "subject": "Hotel + Shuttle Package"
+    },
+    {
+      "object": "downtown Orlando",
+      "predicate": "located_at",
+      "subject": "Hotel + Shuttle Package"
+    },
+    {
+      "object": "unreliable ride-sharing",
+      "predicate": "prohibits",
+      "subject": "Hotel + Shuttle Package"
+    },
+    {
+      "object": "ride-sharing",
+      "predicate": "substitutes_for",
+      "subject": "Hotel + Shuttle Package"
+    },
+    {
+      "object": "per person price starting at $295",
+      "predicate": "has_tier",
+      "subject": "Hotel + Shuttle Package"
+    },
+    {
+      "object": "downtown Orlando",
+      "predicate": "located_at",
+      "subject": "Shuttle"
+    },
+    {
+      "object": "price of $80 for the weekend",
+      "predicate": "has_tier",
+      "subject": "Shuttle"
+    },
+    {
+      "object": "unreliable transportation",
+      "predicate": "prohibits",
+      "subject": "Shuttle"
+    },
+    {
+      "object": "EDC Orlando 2021 attendees",
+      "predicate": "serves",
+      "subject": "Shuttle"
+    },
+    {
+      "object": "prime location",
+      "predicate": "located_at",
+      "subject": "Hotel"
+    },
+    {
+      "object": "per person price starting at $295",
+      "predicate": "has_tier",
+      "subject": "Hotel"
+    },
+    {
+      "object": "EDC Orlando 2021 attendees",
+      "predicate": "serves",
+      "subject": "Hotel"
+    },
+    {
+      "object": "individual attendees",
+      "predicate": "serves",
+      "subject": "Shared room option"
+    },
+    {
+      "object": "1am",
+      "predicate": "causes_density_at",
+      "subject": "Ride-sharing"
+    },
+    {
+      "object": "affordable late-night transportation",
+      "predicate": "prohibits",
+      "subject": "Ride-sharing"
+    },
+    {
+      "object": "EDC Orlando 2021 attendees",
+      "predicate": "serves",
+      "subject": "Charter bus"
+    },
+    {
+      "object": "Vanguard",
+      "predicate": "located_at",
+      "subject": "Charter bus"
+    }
+  ],
+  "r-electricdaisycarnival-2021.md": [
+    {
+      "object": "Las Vegas",
+      "predicate": "located_at",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "plays_at",
+      "subject": "Amelie Lens"
+    },
+    {
+      "object": "EDC Orlando 2021",
+      "predicate": "in_lineup",
+      "subject": "Amelie Lens"
+    },
+    {
+      "object": "EDC Las Vegas 2022",
+      "predicate": "precedes",
+      "subject": "EDC Las Vegas 2021"
+    },
+    {
+      "object": "VIP",
+      "predicate": "has_tier",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "VIP",
+      "predicate": "has_tier",
+      "subject": "EDC Las Vegas"
+    },
+    {
+      "object": "First-time attendee experience",
+      "predicate": "incident_occurred",
+      "subject": "EDC Las Vegas 2021"
+    },
+    {
+      "object": "Home Bass",
+      "predicate": "serves",
+      "subject": "EDC Orlando"
+    },
+    {
+      "object": "Shuttle/after-party/resort inclusive stays",
+      "predicate": "operating_hours",
+      "subject": "EDC Orlando"
+    }
+  ],
+  "r3b3vnqumn4.md": [
+    {
+      "object": "Las Vegas Motor Speedway",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Orlando",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Armin van Buuren",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Calvin Harris",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Diplo",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Alesso",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Dillon Francis",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Martin Garrix",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Zedd",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Afrojack",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Seven Lions",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "NGHTMRE",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Yellow Claw",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Ti\u00ebsto",
+      "predicate": "in_lineup",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "May",
+      "predicate": "operating_hours",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "electronic dance music",
+      "predicate": "serves",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "interactive art installations",
+      "predicate": "serves",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "carnival performers",
+      "predicate": "serves",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "carnival rides",
+      "predicate": "serves",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "North America",
+      "predicate": "originates_from",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "2017 Festival of the Year award",
+      "predicate": "incident_occurred",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Electronic Music Awards",
+      "predicate": "located_at",
+      "subject": "2017 Festival of the Year award"
+    },
+    {
+      "object": "largest electronic dance music festival in North America",
+      "predicate": "has_tier",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Mexico",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Puerto Rico",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "UK",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Brazil",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "Japan",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "India",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    },
+    {
+      "object": "China",
+      "predicate": "located_at",
+      "subject": "Electric Daisy Carnival"
+    }
+  ],
+  "v7szzuzasbw.md": [
+    {
+      "object": "Day 1",
+      "predicate": "plays_at",
+      "subject": "ATLiens"
+    },
+    {
+      "object": "Day 1",
+      "predicate": "plays_at",
+      "subject": "Said the Sky"
+    },
+    {
+      "object": "Day 1",
+      "predicate": "plays_at",
+      "subject": "NGHTMRE b2b Svdden Death"
+    },
+    {
+      "object": "Day 1",
+      "predicate": "plays_at",
+      "subject": "Zedd"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "plays_at",
+      "subject": "Tchami"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "plays_at",
+      "subject": "Loud Luxury"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "plays_at",
+      "subject": "Galantis"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "plays_at",
+      "subject": "Tiesto"
+    },
+    {
+      "object": "Day 2",
+      "predicate": "plays_at",
+      "subject": "KSHMR"
+    },
+    {
+      "object": "Day 3",
+      "predicate": "plays_at",
+      "subject": "Kygo"
+    },
+    {
+      "object": "Day 3",
+      "predicate": "plays_at",
+      "subject": "Seven Lions"
+    },
+    {
+      "object": "Day 3",
+      "predicate": "plays_at",
+      "subject": "Alan Walker"
+    },
+    {
+      "object": "Day 3",
+      "predicate": "plays_at",
+      "subject": "Joyryde"
+    }
+  ],
+  "y-9zm3qnw3i.md": [
+    {
+      "object": "Tinker Field",
+      "predicate": "located_at",
+      "subject": "EDCOrlando 2021"
+    },
+    {
+      "object": "Nov. 12+13+14",
+      "predicate": "operating_hours",
+      "subject": "EDCOrlando 2021"
+    },
+    {
+      "object": "festival",
+      "predicate": "belongs_to_class",
+      "subject": "EDCOrlando 2021"
+    },
+    {
+      "object": "EDCOrlando 2022",
+      "predicate": "succeeded_by",
+      "subject": "EDCOrlando 2021"
+    },
+    {
+      "object": "epic",
+      "predicate": "has_tier",
+      "subject": "EDCOrlando 2021"
+    },
+    {
+      "object": "Insomniac",
+      "predicate": "practiced_by",
+      "subject": "EDCOrlando 2021"
+    }
+  ]
+}
