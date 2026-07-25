@@ -1,0 +1,91 @@
+{
+  "schema": "kandi.utilization_balance.v1",
+  "campaign": "phase_r1_utilization_balance",
+  "recorded_at": "2026-07-25T00:00:00Z",
+  "status": "LANDED_ON_THE_GENERATOR_THAT_HAS_THE_SKEW_NOT_THE_ONE_WITH_THE_HEADLINE_NUMBER",
+  "headline": "Utilization-balanced allocation lands in generic_expand and collapses per-fact spread 12.0x -> 1.00x on kanto (relation cov 0.7668 -> 0.5865) at a 7.7% diversity cost. It CANNOT move EDC's cov 2.32: EDC's hydrated layer is 100% Rust festival-factory, not generic_expand/generic_synth.",
+
+  "premise_correction": {
+    "brief_said": "Implement utilization-aware sampling in generic_expand + generic_synth … report the audit `balance` cov before/after on EDC's real corpus (target cov <= 1.0 without touching the gate).",
+    "finding": "Those two generators produce ZERO of EDC's surfaces. All 666198 EDC hydrated surfaces carry Rust festival-factory forms (declarative 90194, conversational 78474, qa_direct 52818, persona_firsttimer 43418, countdown 39620, persona_planner 38098, social_post 37916, persona_veteran 37038) and live in a single relations.jsonl per unit. EDC's hydrate stage is scripts/rehydrate_vc1.sh driving the festival-factory binary.",
+    "consequence": "No change to generic_expand or generic_synth can alter EDC's balance cov. Reaching cov <= 1.0 on EDC requires re-hydration through the Rust generator (full-corpus provider spend) or replacing EDC's bespoke hydration with the generic path — a domain decision, not a code fix. That is the h7b handoff and is untouched here.",
+    "amplification_by_generator": {
+      "edc_rust_festival_factory": {"min": 6.90, "median": 271.42, "max": 1368.78, "spread": "198x"},
+      "pokemon_lore_generic": {"min": 12.00, "median": 12.35, "max": 22.61, "spread": "1.9x"},
+      "millbrook_generic": {"min": 12.00, "median": 12.00, "max": 14.43, "spread": "1.2x"}
+    }
+  },
+
+  "the_skew_that_IS_in_scope": {
+    "method": "Per-surface-form, per-fact counts over pokemon-lore's hydrated layer.",
+    "template_generic_expand": {"facts": 567, "min": 2, "median": 2.0, "max": 21, "spread": "10.5x"},
+    "llm_synth_generic_synth": {"facts": 567, "min": 10, "median": 10.0, "max": 70, "spread": "7.0x"},
+    "contrast": {"facts": 99, "min": 2, "median": 2.0, "max": 2, "spread": "1.0x"},
+    "interpretation": "Uniform rendering ties a fact's surface count to how many templates happen to fit its predicate — a property of the template file, not of the domain. That is real utilization imbalance and it is exactly what SoG's controlled allocation addresses."
+  },
+
+  "implementation": {
+    "file": "scripts/pipeline/generic_expand.py",
+    "function": "balance_by_utilization(records, quota=None)",
+    "mechanism": "Group renders by fact; derive quota = median renders per fact (from the corpus, not hardcoded); allocate facts in ASCENDING candidate-count order so the long tail claims its entities' budget first; for facts over quota keep the renders whose entity_ids are currently least-used. Deterministic — ties break on record text.",
+    "reference_cited_in_docstring": "Source2Synth / SoG secondary sampling + controlled allocation",
+    "invariant": "A fact at or below quota keeps everything — balancing never starves the tail further.",
+    "generic_synth": "NOT changed. synth_records already allocates a flat n per triple, so per-triple allocation is uniform by construction; the 7.0x figure above is a fact_key grouping artifact (several triples share one fact), not an allocation defect. Balancing there would mean varying n per triple pre-generation, which changes provider spend and needs its own measured decision — deliberately not bundled in here."
+  },
+
+  "measured_on_kanto": {
+    "estimand": "generic_expand template floor over pokemon-lore/kanto, regenerated from the same triples",
+    "per_fact": {
+      "before": {"surfaces": 2044, "min": 2, "median": 2.0, "max": 24, "spread": "12.00x"},
+      "after": {"surfaces": 1472, "min": 2, "median": 2.0, "max": 2, "spread": "1.00x"},
+      "quota": 2, "facts": 736, "dropped": 572
+    },
+    "relation_level_cov": {"before": 0.7668, "after": 0.5865, "gate_max": 1.0, "delta": -0.1803},
+    "diversity_cost": {"effective_distinct_forms_before": 585, "after": 540, "delta_pct": -7.7},
+    "reading": "28% of surfaces dropped for a 7.7% loss in effective distinct forms — the culled renders were largely redundant, which is the point of allocating by utilization rather than uniformly. Kanto already passed the balance gate (0.77 < 1.0), so this is an improvement, not a fix.",
+    "entity_utilization_after": {"n_entities": 553, "min": 2, "max": 86}
+  },
+
+  "red_green": {
+    "suite": "scripts/pipeline/test_utilization_balance.py — 7/7",
+    "corpus": "synthetic two-faction: one popular faction at 20 surfaces/fact, one long tail at 2",
+    "control": "test_before_the_change_the_corpus_is_skewed asserts the raw spread really is 10x, so a balanced result means something",
+    "cases": [
+      "per-fact spread bounded by quota after balancing",
+      "long-tail facts never culled (all keep their 2)",
+      "quota is derived — 4x supply and 40x supply yield different quotas",
+      "allocation deterministic across runs",
+      "entity utilization levelled: popular/rare ratio strictly decreases",
+      "empty input safe"
+    ]
+  },
+
+  "verdict": {
+    "landed": true,
+    "edc_balance_cov_moved": false,
+    "edc_balance_reachable_from_this_change": false,
+    "kanto_relation_cov": "0.7668 -> 0.5865",
+    "gate_touched": false
+  },
+
+  "deviations": [
+    "The brief's stated target — EDC balance cov <= 1.0 via generic_expand/generic_synth — is not achievable, because EDC's hydrated layer contains zero surfaces from either generator. Reported with the surface_form census rather than attempted.",
+    "generic_synth was left unchanged: its per-triple allocation is already uniform, so the prescribed change there would alter provider spend without addressing a measured defect.",
+    "quota = median is aggressive (kanto quota=2, dropping 28% of the template floor). Recorded with its diversity cost measured rather than tuned to look better; a gentler derived bound is a follow-up if the diversity gate ever objects.",
+    "Kanto's hydrated layer on disk was NOT regenerated — the measurement recomputes the template floor in-memory from the same triples. Regenerating would overwrite a corpus other receipts point at, and the comparison does not need it."
+  ],
+
+  "not_started": [
+    "P1 reasoning-linked surface class",
+    "P2 miss-list-in-prompt scoped re-extraction",
+    "P3 formatting augmentation",
+    "P4 kanto replay sweep -> derived replay ratio"
+  ],
+
+  "gates": {
+    "run_tests": "all green (46 modules)",
+    "test_cpt_config": "8/8 PASS",
+    "qgre_test_gates": "9/9 PASS",
+    "utilization_suite": "7/7 PASS"
+  }
+}

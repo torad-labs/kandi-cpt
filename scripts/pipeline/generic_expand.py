@@ -24,8 +24,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import statistics
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 from pipeline.domain import Domain
 from pipeline.editions import iter_editions
@@ -89,6 +90,67 @@ def source_doc_ids(triple: dict) -> list[str]:
 def predicate_templates(domain: str) -> dict:
     """The domain's per-predicate hydrate template lists (configs/templates/<domain>.yaml)."""
     return ((Domain(domain).templates or {}).get("hydrate_templates") or {}).get("predicate_templates") or {}
+
+
+def balance_by_utilization(records: list[dict], *, quota: int | None = None) -> tuple[list[dict], dict]:
+    """Allocate surfaces by LOWEST utilization first instead of emitting every render uniformly.
+
+    Reference: Source2Synth / SoG's secondary-sampling + controlled-allocation mechanism — generation
+    budget goes to under-covered facts and entities rather than being spread evenly, so a popular
+    subject stops soaking up surfaces a long-tail one never gets.
+
+    Uniform rendering makes per-fact counts a function of how many templates happen to fit a
+    predicate, which is a property of the template file rather than of the domain. Measured on
+    pokemon-lore before this change: template surfaces ran 2 per fact at the median and 21 at the
+    max (10.5x), llm_synth 10 and 70 (7.0x).
+
+    `quota` is DERIVED from the corpus (median renders per fact) unless supplied. Facts at or below
+    quota keep everything — nothing is culled that was not over-emitting. Facts above it keep the
+    quota, choosing the renders whose entities are currently least-used, which is where the entity
+    balancing happens. Deterministic: ties break on the record's own text.
+    """
+    by_fact: dict[tuple, list[dict]] = defaultdict(list)
+    for rec in records:
+        by_fact[tuple(rec.get("source_triple_ids") or [rec["text"]])].append(rec)
+    if not by_fact:
+        return records, {"quota": 0, "facts": 0, "kept": 0, "dropped": 0}
+
+    sizes = sorted(len(v) for v in by_fact.values())
+    derived_quota = quota if quota is not None else max(1, int(statistics.median(sizes)))
+
+    entity_use: Counter = Counter()
+    kept: list[dict] = []
+    dropped = 0
+    # Facts with the FEWEST candidates are allocated first: they are the long tail, and letting
+    # them claim their entities' budget before the popular facts is the whole point.
+    for fact in sorted(by_fact, key=lambda k: (len(by_fact[k]), k)):
+        members = sorted(by_fact[fact], key=lambda r: r["text"])
+        if len(members) <= derived_quota:
+            chosen = members
+        else:
+            chosen = sorted(
+                members,
+                key=lambda r: (sum(entity_use[e] for e in (r.get("entity_ids") or [])), r["text"]),
+            )[:derived_quota]
+            dropped += len(members) - len(chosen)
+        for rec in chosen:
+            for entity in rec.get("entity_ids") or []:
+                entity_use[entity] += 1
+        kept.extend(chosen)
+
+    report = {
+        "quota": derived_quota,
+        "facts": len(by_fact),
+        "kept": len(kept),
+        "dropped": dropped,
+        "per_fact_before": {"min": sizes[0], "median": statistics.median(sizes), "max": sizes[-1]},
+        "entity_utilization": {
+            "n_entities": len(entity_use),
+            "min": min(entity_use.values()) if entity_use else 0,
+            "max": max(entity_use.values()) if entity_use else 0,
+        },
+    }
+    return kept, report
 
 
 def expand_records(triples: list[dict], ptmpls: dict, unit_name: str, domain: str | None = None) -> list[dict]:
@@ -178,6 +240,11 @@ def main():
         mp = ed.dir / "festival_meta.json"
         unit_name = (json.loads(mp.read_text()).get("name") if mp.exists() else None) or ed.slug
         recs = expand_records(triples, ptmpls, unit_name, args.domain)
+        recs, util = balance_by_utilization(recs)
+        print(f"  {unit_name}: utilization-balanced {util['kept']} kept / {util['dropped']} dropped "
+              f"(quota={util['quota']}/fact, {util['facts']} facts; per-fact before "
+              f"min={util['per_fact_before']['min']} median={util['per_fact_before']['median']} "
+              f"max={util['per_fact_before']['max']})", flush=True)
         uncovered = sorted({t["predicate"] for t in triples} - set(ptmpls))
         if args.dry_run:
             print(f"  {ed.slug}: {len(recs)} lines over {len({r['relation_type'] for r in recs})} relations; "
