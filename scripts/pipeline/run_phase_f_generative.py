@@ -14,15 +14,13 @@ from pathlib import Path
 import torch
 from cpt_config import CptConfig
 from eval_generative import (
-    DEFAULT_JUDGE_MODEL,
     KAPPA_USABLE,
-    OPENROUTER_BASE_URL,
     UsageMeter,
     build_generative_report,
     generate_answer,
     judge_one,
     merge_dual_axis,
-    resolve_openrouter_key,
+    resolve_judge_ctx,
     select_generative_items,
 )
 from eval_probes import load_model, load_probe_corpus
@@ -62,11 +60,10 @@ def main() -> None:
         flush=True,
     )
 
-    key = resolve_openrouter_key()
-    if not key:
-        raise SystemExit("no OpenRouter key")
-    judge_model = DEFAULT_JUDGE_MODEL
-    judge_ctx = (judge_model, key, OPENROUTER_BASE_URL + "/chat/completions")
+    judge_ctx = resolve_judge_ctx()
+    if not judge_ctx:
+        raise SystemExit("no LLM provider key (googleai plan A / openrouter plan B)")
+    judge_model = judge_ctx[0]
     meter = UsageMeter()
 
     def grade(answers: list[str], tag: str) -> list[str]:

@@ -114,7 +114,11 @@ is real authoring, not a `--domain` flag.*
   domain-general; festival-axis checks (year-bearing types) are manifest-declared, empty → skipped.
 - **Commits are LOCAL on `main`** by default; pushing is the operator's call. Keep `git status` clean before
   destructive ops; permanent artifacts (shards/checkpoints) go in-project, never `/tmp`/`~/.cache` (§14).
-- Secrets: OpenRouter key from `$OPENROUTER_API_KEY` or libsecret (`service=openrouter`).
+- Secrets / LLM provider (permanent): **Google AI Studio is plan A**, OpenRouter is plan B.
+  Never prefer OpenRouter when a Studio key exists. Resolve via `pipeline.llm_provider`
+  (Python) / `festival-factory` chat client (Rust):
+  `$GOOGLE_AI_API_KEY` / `$GEMINI_API_KEY` / libsecret `service=googleai` → else
+  `$OPENROUTER_API_KEY` / libsecret `service=openrouter`. Force with `$LLM_PROVIDER=googleai|openrouter`.
 - **GPU/CUDA kernel work (the megatrainer's future) → read `docs/KERNEL-ENGINEERING-PLAYBOOK.md`** first:
   the reusable kernel techniques distilled from the qgre-main verify campaign (exhaustive small-domain
   bit-exact proofs + byte-identity-gated default-off levers; `byte_perm` register-LUT and

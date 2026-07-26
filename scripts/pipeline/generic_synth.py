@@ -53,52 +53,29 @@ DEFAULT_TEMPERATURES = (0.70, 0.85, 0.95, 0.80, 0.90)
 
 
 def _openrouter_key() -> str:
-    """OpenRouter key — env var first, then libsecret (service=openrouter), mirroring synth_corpus.py."""
-    if os.environ.get("OPENROUTER_API_KEY"):
-        return os.environ["OPENROUTER_API_KEY"]
-    import subprocess
-    try:
-        out = subprocess.run(
-            ["/usr/bin/python3", "-c",
-             "import gi; gi.require_version('Secret','1'); from gi.repository import Secret; "
-             "s=Secret.Schema.new('ai.kandibuddy.OpenRouter', Secret.SchemaFlags.NONE, "
-             "{'service': Secret.SchemaAttributeType.STRING, 'key_type': Secret.SchemaAttributeType.STRING}); "
-             "print(Secret.password_lookup_sync(s, {'service':'openrouter','key_type':'api_key'}, None) or '')"],
-            capture_output=True, text=True, timeout=10).stdout.strip()
-        if out:
-            return out
-    except Exception:
-        pass
-    raise SystemExit("OPENROUTER_API_KEY not set (env or libsecret service=openrouter)")
+    """ACTIVE provider key (Google AI Studio plan A, OpenRouter plan B). Name kept for call-site compat."""
+    from pipeline.llm_provider import resolve_provider
+    return resolve_provider().key
 
 
 def openrouter_generate(system: str, user: str, model: str = "google/gemma-4-31b-it",
                         max_tokens: int = 1300, max_retries: int = 3,
                         temperature: float = 0.85) -> str:
-    """Default generator — a synchronous OpenRouter chat call WITH retry/backoff + an explicit empty-content
-    check (mirroring the proven synth_corpus.call_openrouter contract). Returns "" on total failure rather
-    than raising, so one transient blip mid-run does NOT abort the whole synth — synth_records counts the
-    empty response and warns. Injectable (see synth_records) so callers can swap a concurrent client / a test stub."""
-    import httpx
-    body = {"model": model, "temperature": temperature, "max_tokens": max_tokens,
-            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
-    headers = {"Authorization": f"Bearer {_openrouter_key()}", "Content-Type": "application/json"}
-    last_err = ""
-    for attempt in range(max_retries):
-        try:
-            resp = httpx.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=body, timeout=120)
-            if resp.status_code != 200:
-                last_err = f"HTTP {resp.status_code}: {resp.text[:200]}"
-            else:
-                content = (resp.json().get("choices") or [{}])[0].get("message", {}).get("content", "")
-                if content:
-                    return content
-                last_err = "empty content (HTTP 200)"
-        except Exception as e:                          # network / JSON-shape error → retried, then a counted sentinel
-            last_err = f"{type(e).__name__}: {e}"
-        time.sleep(2 ** attempt)
-    print(f"  [generic_synth] generation failed after {max_retries} attempts: {last_err}", file=sys.stderr)
-    return ""
+    """Default generator — Google AI Studio first, OpenRouter fallback (pipeline.llm_provider).
+
+    Returns "" on total failure rather than raising, so one transient blip mid-run does NOT abort
+    the whole synth — synth_records counts the empty response and warns. Injectable (see
+    synth_records) so callers can swap a concurrent client / a test stub. The function name is
+    historical; the resolver is provider-aware.
+    """
+    from pipeline.llm_provider import chat_completion
+    return chat_completion(
+        system, user,
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        max_retries=max_retries,
+    )
 
 
 def _persona_for(index: int, personas: tuple[str, ...] | list[str]) -> str:

@@ -154,10 +154,10 @@ def secret_tool_lookup(service: str) -> str | None:
 
 
 def resolve_openrouter_key() -> str | None:
-    value = (os.environ.get("OPENROUTER_API_KEY") or "").strip()
-    if value:
-        return value
-    return secret_tool_lookup("openrouter")
+    """ACTIVE provider key — Google AI Studio plan A, OpenRouter plan B."""
+    from pipeline.llm_provider import try_resolve_provider
+    prov = try_resolve_provider()
+    return prov.key if prov else None
 
 
 def message_text(payload: dict) -> str:
@@ -173,9 +173,20 @@ def message_text(payload: dict) -> str:
     return raw
 
 
-def chat(model: str, key: str, system: str, user: str) -> str:
+def chat(model: str, key: str, system: str, user: str, chat_url: str | None = None) -> str:
+    """Teacher chat — Google AI Studio plan A / OpenRouter plan B via llm_provider URL."""
+    from pipeline.llm_provider import try_resolve_provider, _normalize_model, GOOGLE_AI_BASE_URL, OPENROUTER_BASE_URL
+    prov = try_resolve_provider(forced_model=model)
+    if prov is not None:
+        use_url = prov.chat_url
+        use_key = prov.key
+        use_model = prov.model
+    else:
+        use_url = chat_url or (OPENROUTER_BASE_URL + "/chat/completions")
+        use_key = key
+        use_model = model
     body = json.dumps({
-        "model": model,
+        "model": use_model,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
@@ -184,9 +195,9 @@ def chat(model: str, key: str, system: str, user: str) -> str:
         "max_tokens": 200,
     }).encode()
     request = urllib.request.Request(
-        OPENROUTER_BASE_URL + "/chat/completions",
+        use_url,
         data=body,
-        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"},
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {use_key}"},
         method="POST",
     )
     last_error = None
@@ -307,8 +318,10 @@ def run_score(
         raw = json.loads(Path(scores_json).read_text(encoding="utf-8"))
         fixture = {str(k): int(v) for k, v in raw.items()}
 
-    key = resolve_openrouter_key()
-    use_teacher = key is not None and not fixture and not allow_heuristic
+    from pipeline.llm_provider import try_resolve_provider
+    prov = try_resolve_provider(forced_model=model)
+    use_teacher = prov is not None and not fixture and not allow_heuristic
+    teacher_model = prov.model if prov is not None else model
 
     results: list[dict] = []
     path_to_score: dict[str, float] = {}
@@ -327,12 +340,14 @@ def run_score(
             if not dry_run:
                 write_cached(per_doc, record)
         elif use_teacher:
-            def _fn(system, user, _key=key, _model=model):
-                return chat(_model, _key, system, user)
+            assert prov is not None
+            def _fn(system, user, _prov=prov):
+                return chat(_prov.model, _prov.key, system, user, chat_url=_prov.chat_url)
             score = score_one(mode, entity_types, doc["text"], teacher_fn=_fn)
             record = {
                 "path": doc["path"], "sha": doc["sha"], "edition": doc["edition"],
-                "mode": mode, "score": score, "method": "teacher", "model": model,
+                "mode": mode, "score": score, "method": "teacher",
+                "model": teacher_model, "provider": prov.name,
             }
             if not dry_run:
                 write_cached(per_doc, record)
@@ -346,8 +361,9 @@ def run_score(
                 write_cached(per_doc, record)
         else:
             raise RuntimeError(
-                "no OpenRouter key for educational teacher and no --scores-json fixture; "
-                "set OPENROUTER_API_KEY, pass --scores-json, or --allow-heuristic"
+                "no LLM provider key for educational teacher and no --scores-json fixture; "
+                "set GOOGLE_AI_API_KEY (plan A) / OPENROUTER_API_KEY (plan B), "
+                "pass --scores-json, or --allow-heuristic"
             )
         results.append(record)
         path_to_score[doc["path"]] = float(record["score"])

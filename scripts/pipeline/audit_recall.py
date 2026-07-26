@@ -1607,28 +1607,16 @@ def _judge_facts(
     excluded from the estimand rather than scored as an extraction miss.
     """
     import urllib.request
-    import subprocess
+    from pipeline.llm_provider import try_resolve_provider
 
-    def key() -> str | None:
-        v = (os.environ.get("OPENROUTER_API_KEY") or "").strip()
-        if v:
-            return v
-        try:
-            p = subprocess.run(
-                ["secret-tool", "lookup", "service", "openrouter"],
-                capture_output=True, text=True, timeout=5,
-            )
-            return p.stdout.strip() or None if p.returncode == 0 else None
-        except Exception:
-            return None
-
-    k = key()
-    if not k:
+    # Google AI Studio plan A, OpenRouter plan B (pipeline.llm_provider).
+    prov = try_resolve_provider(forced_model=DEFAULT_JUDGE_MODEL)
+    if prov is None:
         return None
     types = ", ".join(entity_types) if entity_types else "domain entities"
     preds = ", ".join(predicates) if predicates else "(any snake_case domain relation)"
     # /no_think: qwen3 burns the whole max_tokens budget on reasoning otherwise and
-    # returns empty content (measured 2026-07-19). Keep the established model id.
+    # returns empty content (measured 2026-07-19). Harmless on Studio; kept for OR fallback.
     user = (
         f"Entity types of interest: {types}\n"
         f"ALLOWED predicates (use ONLY these exact strings): {preds}\n\n"
@@ -1638,7 +1626,7 @@ def _judge_facts(
         "/no_think"
     )
     body = json.dumps({
-        "model": DEFAULT_JUDGE_MODEL,
+        "model": prov.model,
         "messages": [
             {"role": "system", "content": JUDGE_SYSTEM},
             {"role": "user", "content": user},
@@ -1647,9 +1635,9 @@ def _judge_facts(
         "max_tokens": 2000,
     }).encode()
     req = urllib.request.Request(
-        OPENROUTER_BASE_URL + "/chat/completions",
+        prov.chat_url,
         data=body,
-        headers={"Content-Type": "application/json", "Authorization": f"Bearer {k}"},
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {prov.key}"},
         method="POST",
     )
     last_err = None

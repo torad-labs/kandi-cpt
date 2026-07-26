@@ -9,17 +9,31 @@
 # set (old + new VC1 facts). LV2026 is protected (hand-built rich corpus). Resumable: re-run and it re-selects
 # whatever is still stale.
 #
-# Key: env OPENROUTER_API_KEY first, else libsecret (service=openrouter) per CLAUDE.md §9.
+# Key: Google AI Studio plan A, OpenRouter plan B. Resolved inside festival-factory
+# (GOOGLE_AI_API_KEY / GEMINI_API_KEY / keyring service=googleai → else OPENROUTER_API_KEY /
+# keyring service=openrouter). Do NOT force OpenRouter here — that was the failure mode.
 #   [PAR=8] [CONC=10] [BASE_N=8] [MODEL=google/gemma-4-31b-it] scripts/rehydrate_vc1.sh
+# MODEL id is normalized per provider (Studio drops the google/ prefix).
 set -u
 cd "$(dirname "$0")/.."
 RUST_BIN=festival-factory/target/debug/festival-factory
-export OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-$(secret-tool lookup service openrouter key_type api_key 2>/dev/null)}"
-: "${OPENROUTER_API_KEY:?no OpenRouter key (env OPENROUTER_API_KEY or libsecret service=openrouter)}"
-# CONC raised 10→20: the live run measured 0 rate-limit/429s at 200-wide concurrency (paid OpenRouter
-# account) and the workers are LLM-latency-bound (~0.2% CPU, sleeping on network), so per-edition
+# Optional: pre-export keys into the environment so the binary does not need secret-tool
+# under a stripped sandbox. Prefer Studio.
+if [ -z "${GOOGLE_AI_API_KEY:-}${GEMINI_API_KEY:-}" ]; then
+  _g="$(secret-tool lookup service googleai 2>/dev/null || true)"
+  [ -n "$_g" ] && export GOOGLE_AI_API_KEY="$_g"
+fi
+if [ -z "${GOOGLE_AI_API_KEY:-}${GEMINI_API_KEY:-}" ] && [ -z "${OPENROUTER_API_KEY:-}" ]; then
+  _o="$(secret-tool lookup service openrouter key_type api_key 2>/dev/null || secret-tool lookup service openrouter 2>/dev/null || true)"
+  [ -n "$_o" ] && export OPENROUTER_API_KEY="$_o"
+fi
+if [ -z "${GOOGLE_AI_API_KEY:-}${GEMINI_API_KEY:-}${OPENROUTER_API_KEY:-}" ]; then
+  echo "no LLM provider key: need Google AI Studio (plan A) or OpenRouter (plan B)" >&2
+  exit 1
+fi
+# CONC raised 10→20: workers are LLM-latency-bound (~0.2% CPU, sleeping on network), so per-edition
 # concurrency is the cheap throughput lever. PAR stays 8 by default (each parallel edition holds state →
-# memory); big sweeps override with PAR=20 (the live run's setting). PAR×CONC = total concurrent calls.
+# memory); big sweeps override with PAR=20. PAR×CONC = total concurrent calls.
 PAR=${PAR:-8}; CONC=${CONC:-20}; BASE_N=${BASE_N:-8}; MODEL=${MODEL:-google/gemma-4-31b-it}
 
 mapfile -t EDS < <(
@@ -29,7 +43,7 @@ mapfile -t EDS < <(
     [ "$ed" = "las_vegas/2026" ] && continue                          # protect rich hand-built corpus
     [ -f "data/edc/$ed/festival_meta.json" ] || continue
     r="data/edc/$ed/25_hydrated/relations.jsonl"
-    if [ ! -f "$r" ] || [ "$t" -nt "$r" ]; then echo "$ed"; fi          # stale → re-hydrate
+    if [ "${FORCE:-0}" = "1" ] || [ ! -f "$r" ] || [ "$t" -nt "$r" ]; then echo "$ed"; fi
   done
 )
 # NO per-edition timeout. The earlier "deadlock/hang" was a MISDIAGNOSIS — the real cause was OpenRouter
@@ -48,8 +62,21 @@ if ! printf '%s\n' "${EDS[@]}" | xargs -P "$PAR" -I {} sh -c '
   mkdir -p "data/edc/$1/25_hydrated"
   R="data/edc/$1/25_hydrated/relations.jsonl"
   prev=0; [ -f "$R" ] && { cp "$R" "$R.prev"; prev=$(wc -l <"$R.prev"); }
-  if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" \
-       > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then
+  # S1 levers (optional): BALANCE_TARGET='rel=N,...' FORCE=1  (POSIX sh)
+  if [ -n "${BALANCE_TARGET:-}" ] && [ "${FORCE:-0}" = "1" ]; then
+    _hyd_ok=0
+    if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" --force --balance-target "$BALANCE_TARGET" > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then _hyd_ok=1; fi
+  elif [ -n "${BALANCE_TARGET:-}" ]; then
+    _hyd_ok=0
+    if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" --balance-target "$BALANCE_TARGET" > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then _hyd_ok=1; fi
+  elif [ "${FORCE:-0}" = "1" ]; then
+    _hyd_ok=0
+    if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" --force > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then _hyd_ok=1; fi
+  else
+    _hyd_ok=0
+    if "$RUST_BIN" hydrate --root "$PWD" --festival edc --edition "$1" --model "$MODEL" --base-n "$BASE_N" --concurrency "$CONC" > "data/edc/$1/25_hydrated/.rehydrate.log" 2>&1; then _hyd_ok=1; fi
+  fi
+  if [ "$_hyd_ok" = "1" ]; then
     new=$(wc -l <"$R" 2>/dev/null || echo 0)
     if [ "$prev" -gt 0 ] && [ "$new" -lt "$prev" ]; then
       mv "$R.prev" "$R"; echo "  ⚠ $1 KEPT prior ($prev lines) — new hydration gave only $new (faithfulness-thin triples)"

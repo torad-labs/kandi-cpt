@@ -1,0 +1,76 @@
+{
+  "schema": "kandi.spend_batch.v1",
+  "campaign": "phase_s2_live_reasoning_axis_b",
+  "recorded_at": "2026-07-25T20:55:32.080844+00:00",
+  "status": "GENERATION_LANDED_EVAL_MISSING",
+  "headline": "Live LLM reasoning generation on kanto: 453 planned calls \u2192 850 records (9.44% of hydrated corpus), form_ratio 0.560 PASS, train coverage 498/521. Dual-axis Axis-B ablation (CPT with vs without reasoning) still pending GPU.",
+  "generation": {
+    "planned_llm_calls": 453,
+    "records_emitted": 850,
+    "achieved_share_of_final": 0.09435,
+    "train_triples_covered_frac": 0.9559,
+    "form_gate": {
+      "ruler": "diversity_lib.effective_forms(jaccard=0.55)",
+      "records": 850,
+      "effective_forms": 476,
+      "form_ratio": 0.56,
+      "distinct_2": 0.2795,
+      "also_reported": "diversity_lib.distinct_n(n=2) \u2014 the audit gate's ruler; the two disagree",
+      "min_form_ratio": 0.2,
+      "verdict": "pass"
+    },
+    "drops": {
+      "unauthorable": 0,
+      "not_a_path": 0,
+      "degenerate": 0,
+      "unlabelable": 0,
+      "holdout_bridge": 559,
+      "empty_completion": 0,
+      "too_short": 0,
+      "ungrounded": 55,
+      "foreign_numeral": 0,
+      "missing_endpoint": 0,
+      "negated": 0,
+      "duplicate": 1
+    },
+    "hop_triple_counts": {
+      "3": 221,
+      "2": 629
+    },
+    "planned_walk_shapes_from_dry_run": {
+      "chain": 62,
+      "path_3": 132,
+      "shared_object": 143,
+      "shared_subject": 116
+    },
+    "output": "data/pokemon-lore/kanto/25_hydrated/relations_reasoning.jsonl",
+    "budget_receipt": "data/_build/reasoning/pokemon-lore/kanto_budget.json",
+    "provider_model": "google/gemma-4-31b-it",
+    "spend_purpose": "live reasoning-surface class generation (phase_r2 still_not_done item 1)"
+  },
+  "axis_b": {
+    "definition": "multi-hop walk shapes (chain / path_3 / shared_object / shared_subject) \u2014 the composition channel absent from per-triple hydrate floor",
+    "before": "no relations_reasoning.jsonl in corpus; dual-axis on pinned kanto probes uses existing pokemon_lore_kanto_anneal ckpt as BEFORE arm",
+    "after_pending": "tokenize with reasoning included + CPT + dual-axis on SAME probes.jsonl; FAIL if install regresses",
+    "status": "PENDING_METRICS",
+    "before_metrics": null,
+    "before_source": "phase_f_split_v2_dual_axis.json",
+    "after_metrics": null,
+    "after_probe_eval_path": null,
+    "ga": null
+  },
+  "estimand": "RUN-GATE corpus construction for generation; install-strength dual-axis is the ablation estimand (pending)",
+  "deviations": [
+    "surface_form is reasoning_walk for all rows \u2014 walk subtype not persisted on the record; hop counts derived from source_triple_ids length",
+    "ungrounded drops 55 (mostly 'Trace' false-positive on 'Trace the connection\u2026' imperative) \u2014 recorded in budget receipt"
+  ],
+  "verdict": "PENDING_METRICS",
+  "recorded_at_final": "2026-07-26T00:57:29.172844+00:00",
+  "train": {
+    "config": "configs/train_pokemon_lore_kanto_s2_reasoning.yaml",
+    "save_dir": "checkpoints/cpt/pokemon_lore_kanto_s2_reasoning",
+    "precision_fingerprint": "31416ea5c5230281",
+    "gpu": "CUDA_VISIBLE_DEVICES=1",
+    "max_steps": 450
+  }
+}

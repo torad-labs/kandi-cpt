@@ -44,7 +44,9 @@ from pipeline import fact_expand as FE
 LOG_FILE = ROOT / "logs" / "synth_progress.md"
 
 MODEL = "google/gemma-4-31b-it"   # exact same family as on-device E2B target — voice + tokenizer aligned
+# Deprecated name — resolved at runtime via pipeline.llm_provider (googleai plan A).
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+GOOGLE_AI_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 MAX_CONCURRENT = 6     # OpenRouter rate limits — be polite
 CHUNK_TOKENS = 800     # rough chunk size; we count by chars/4
 MAX_TOKENS_OUT = 1300  # per-generation cap (fact-variation calls request up to ~36 lines when rebalanced)
@@ -439,48 +441,75 @@ async def expand_settimes_for_edition(client, ed, sem, args) -> int:
 
 AUDIENCES = ["a first-time festivalgoer", "a veteran raver", "a parent helping their kid", "a music journalist"]
 
-# -------- OpenRouter client -----------------------------------------------
+# -------- LLM client (Google AI Studio plan A, OpenRouter plan B) ----------
 
-def get_api_key() -> str:
-    """OpenRouter key: env var preferred (venv has no PyGObject); fall back
-    to libsecret via subprocess for canonical-location-discipline per
-    CLAUDE.md §9."""
-    env_key = os.environ.get("OPENROUTER_API_KEY")
-    if env_key:
-        return env_key
-    # Fallback: shell out to system Python which has gi available
-    import subprocess
+def _resolve_active_provider():
+    """Single resolver — googleai wins whenever its key is present."""
     try:
-        result = subprocess.run(
-            ["/usr/bin/python3", "-c",
-             "import gi; gi.require_version('Secret','1'); "
-             "from gi.repository import Secret; "
-             "schema = Secret.Schema.new('ai.kandibuddy.OpenRouter', "
-             "Secret.SchemaFlags.NONE, "
-             "{'service': Secret.SchemaAttributeType.STRING, "
-             "'key_type': Secret.SchemaAttributeType.STRING}); "
-             "k = Secret.password_lookup_sync(schema, "
-             "{'service': 'openrouter', 'key_type': 'api_key'}, None); "
-             "print(k or '')"],
-            capture_output=True, text=True, timeout=10,
-        )
-        key = result.stdout.strip()
-        if key:
-            return key
+        from pipeline.llm_provider import resolve_provider
+        return resolve_provider(forced_model=MODEL)
     except Exception:
         pass
-    sys.exit("OpenRouter key not found in $OPENROUTER_API_KEY or libsecret (service=openrouter)")
+    import subprocess
 
-API_KEY = get_api_key()
+    def _lookup(*args: str) -> str:
+        try:
+            r = subprocess.run(
+                ["secret-tool", "lookup", *args],
+                capture_output=True, text=True, timeout=5,
+            )
+            return r.stdout.strip() if r.returncode == 0 else ""
+        except Exception:
+            return ""
+
+    g = (
+        (os.environ.get("GOOGLE_AI_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
+        or _lookup("service", "googleai")
+    )
+    if g:
+        class _P:  # minimal stand-in for Provider
+            name, key = "googleai", g
+            model = "gemma-4-31b-it"
+            chat_url = GOOGLE_AI_URL
+        return _P()
+    o = (
+        (os.environ.get("OPENROUTER_API_KEY") or "").strip()
+        or _lookup("service", "openrouter", "key_type", "api_key")
+        or _lookup("service", "openrouter")
+    )
+    if o:
+        class _P:
+            name, key = "openrouter", o
+            model = "google/gemma-4-31b-it"
+            chat_url = "https://openrouter.ai/api/v1/chat/completions"
+        return _P()
+    sys.exit(
+        "no LLM provider key: Google AI Studio (GOOGLE_AI_API_KEY / keyring service=googleai) "
+        "plan A, or OpenRouter (OPENROUTER_API_KEY / keyring service=openrouter) plan B"
+    )
+
+
+def get_api_key() -> str:
+    """ACTIVE provider key (googleai preferred). Name kept for call-site compat."""
+    return _resolve_active_provider().key
+
+
+_ACTIVE = _resolve_active_provider()
+API_KEY = _ACTIVE.key
+OPENROUTER_URL = _ACTIVE.chat_url  # rebound to the active endpoint
+MODEL = _ACTIVE.model
 HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
     "Content-Type": "application/json",
     "HTTP-Referer": "https://kandibuddy.local",
     "X-Title": "Kandi CPT synthetic corpus",
 }
+print(f"[synth_corpus] provider={_ACTIVE.name} model={MODEL}", file=sys.stderr, flush=True)
+
 
 async def call_openrouter(client: httpx.AsyncClient, system: str, user: str, max_retries: int = 3,
                           max_tokens: int | None = None) -> str:
+    """Historical name — posts to the ACTIVE provider endpoint (googleai preferred)."""
     body = {
         "model": MODEL,
         "messages": [
@@ -496,17 +525,17 @@ async def call_openrouter(client: httpx.AsyncClient, system: str, user: str, max
             resp = await client.post(OPENROUTER_URL, json=body, headers=HEADERS, timeout=120)
             if resp.status_code != 200:
                 last_err = f"HTTP {resp.status_code}: {resp.text[:300]}"
-                print(f"[call_openrouter] {last_err}", file=sys.stderr, flush=True)
+                print(f"[call_llm/{_ACTIVE.name}] {last_err}", file=sys.stderr, flush=True)
             else:
                 data = resp.json()
                 content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
                 if content:
                     return content
                 last_err = f"Empty content; full body: {resp.text[:300]}"
-                print(f"[call_openrouter] {last_err}", file=sys.stderr, flush=True)
+                print(f"[call_llm/{_ACTIVE.name}] {last_err}", file=sys.stderr, flush=True)
         except Exception as e:
             last_err = f"{type(e).__name__}: {e}"
-            print(f"[call_openrouter] attempt {attempt+1}/{max_retries}: {last_err}", file=sys.stderr, flush=True)
+            print(f"[call_llm/{_ACTIVE.name}] attempt {attempt+1}/{max_retries}: {last_err}", file=sys.stderr, flush=True)
         await asyncio.sleep(2 ** attempt)
     return f"[generation failed: {last_err}]"
 

@@ -59,8 +59,12 @@ DEFAULT_GENERATIVE_BAR = 0.40
 DEFAULT_MIN_DELTA = 0.05
 # Free Nemotron returns unparseable junk live (2026-07-18); paid qwen3-32b is the working default.
 # Override via --judge-model / QGRE_EVAL_JUDGE_MODEL when calibrating a different family.
+# Default judge model is provider-dependent at resolve time (see resolve_judge_ctx).
+# Historical OpenRouter-only id kept as the plan-B default; plan A uses Studio gemma.
 DEFAULT_JUDGE_MODEL = "qwen/qwen3-32b"
+DEFAULT_JUDGE_MODEL_GOOGLEAI = "gemma-4-31b-it"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+GOOGLE_AI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 MAX_ATTEMPTS = 4
 REQUEST_TIMEOUT_SEC = 180
 KAPPA_USABLE = 0.6
@@ -219,11 +223,39 @@ def secret_tool_lookup(service: str) -> str | None:
 
 
 def resolve_openrouter_key(env: Mapping[str, str] | None = None) -> str | None:
-    source: Mapping[str, str] = env if env is not None else os.environ
-    value = (source.get("OPENROUTER_API_KEY") or "").strip()
-    if value:
-        return value
-    return secret_tool_lookup("openrouter")
+    """ACTIVE provider key — Google AI Studio plan A, OpenRouter plan B.
+
+    Name kept for call-site compat; prefers service=googleai over openrouter.
+    """
+    try:
+        from pipeline.llm_provider import try_resolve_provider
+    except ImportError:
+        from llm_provider import try_resolve_provider  # type: ignore
+    prov = try_resolve_provider(env=env)
+    return prov.key if prov else None
+
+
+def resolve_judge_ctx(
+    forced_judge_model: str | None = None,
+    env: Mapping[str, str] | None = None,
+) -> tuple[str, str, str] | None:
+    """(judge_model, key, chat_url) — googleai plan A, openrouter plan B."""
+    try:
+        from pipeline.llm_provider import try_resolve_provider, _normalize_model
+    except ImportError:
+        from llm_provider import try_resolve_provider, _normalize_model  # type: ignore
+    source = env if env is not None else os.environ
+    forced = (forced_judge_model or source.get("QGRE_EVAL_JUDGE_MODEL") or "").strip() or None
+    prov = try_resolve_provider(env=source)
+    if not prov:
+        return None
+    if forced:
+        model = _normalize_model(prov.name, forced)
+    elif prov.is_googleai:
+        model = DEFAULT_JUDGE_MODEL_GOOGLEAI
+    else:
+        model = DEFAULT_JUDGE_MODEL
+    return (model, prov.key, prov.chat_url)
 
 
 class UsageMeter:
@@ -871,9 +903,9 @@ def run_generative_comparison(
     items = select_generative_items(corpus.probes, probe_sha256=corpus.probe_sha256)
 
     meter = UsageMeter()
-    judge_model = judge_model or os.environ.get("QGRE_EVAL_JUDGE_MODEL", "").strip() or DEFAULT_JUDGE_MODEL
-    key = resolve_openrouter_key()
-    judge_ctx = (judge_model, key, OPENROUTER_BASE_URL + "/chat/completions") if key else None
+    forced_judge = judge_model or os.environ.get("QGRE_EVAL_JUDGE_MODEL", "").strip() or None
+    judge_ctx = resolve_judge_ctx(forced_judge_model=forced_judge)
+    judge_model = judge_ctx[0] if judge_ctx else (forced_judge or DEFAULT_JUDGE_MODEL)
 
     calibration: dict[str, Any] | None
     if skip_calibrate:
@@ -892,7 +924,7 @@ def run_generative_comparison(
             "usable": False,
             "provisional": True,
             "skipped": True,
-            "reason": "no OpenRouter key for judge",
+            "reason": "no LLM provider key for judge (googleai plan A / openrouter plan B)",
         }
     else:
         # Domain for calibration file: eval.probe_domain (the corpus under test).
@@ -1027,11 +1059,9 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.calibrate_only:
-        key = resolve_openrouter_key()
-        if not key:
-            sys.exit("no OpenRouter key for judge calibration")
-        model = args.judge_model or DEFAULT_JUDGE_MODEL
-        judge_ctx = (model, key, OPENROUTER_BASE_URL + "/chat/completions")
+        judge_ctx = resolve_judge_ctx(forced_judge_model=args.judge_model)
+        if not judge_ctx:
+            sys.exit("no LLM provider key for judge calibration (googleai plan A / openrouter plan B)")
         meter = UsageMeter()
 
         def _j(q: str, g: str, a: str) -> str:

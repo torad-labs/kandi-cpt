@@ -88,7 +88,9 @@ def test_execution_contract_matches_manifest() -> None:
         assert split["outputs"]
         assert all(output.endswith("/splits/split_v2.json") for output in split["outputs"])
     assert egress_stages
-    assert all(stage["provider"] == "openrouter" for stage in egress_stages)
+    # Google AI Studio is plan A; OpenRouter is plan B (runtime fallback only).
+    assert all(stage["provider"] == "googleai" for stage in egress_stages)
+    assert all(stage.get("provider_fallback") == "openrouter" for stage in egress_stages)
 
     scoped = build_contract("edc", "las_vegas/2026")
     widened = build_contract("edc", "las_vegas/2026,orlando/2026")

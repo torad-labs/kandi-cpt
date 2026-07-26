@@ -1,0 +1,217 @@
+{
+  "domain": "pokemon-lore",
+  "unit": "kanto",
+  "split": "v2",
+  "train_triples": 521,
+  "unique_triples": 736,
+  "entity_ids": 602,
+  "entity_classes": 553,
+  "id_map_entries": 88,
+  "base_lines_per_file": {
+    "relations.jsonl": 1518,
+    "relations_llm.jsonl": 6490,
+    "relations_contrast.jsonl": 151,
+    "relations_qa.jsonl": 0
+  },
+  "budget": {
+    "limit": 906,
+    "base_lines": 8159,
+    "max_fraction": 0.1,
+    "formula": "limit = int(base_lines * f / (1 - f))  # share of base+limit, not of base",
+    "share_of_final": 0.09994,
+    "reason": "906 of 9065 final hydrated lines = 9.99% (target 10%)"
+  },
+  "variations": 2,
+  "form_gate": {
+    "ruler": "diversity_lib.effective_forms(jaccard=0.55)",
+    "records": 850,
+    "effective_forms": 476,
+    "form_ratio": 0.56,
+    "distinct_2": 0.2795,
+    "also_reported": "diversity_lib.distinct_n(n=2) \u2014 the audit gate's ruler; the two disagree",
+    "min_form_ratio": 0.2,
+    "verdict": "pass"
+  },
+  "train_triples_covered_frac": 0.9559,
+  "achieved_share_of_final": 0.09435,
+  "estimand": "RUN-GATE, TRAIN side of the unit's split. Not an install-strength number: no checkpoint, no eval, no CPT run.",
+  "drops": {
+    "unauthorable": 0,
+    "not_a_path": 0,
+    "degenerate": 0,
+    "unlabelable": 0,
+    "holdout_bridge": 559,
+    "empty_completion": 0,
+    "too_short": 0,
+    "ungrounded": 55,
+    "foreign_numeral": 0,
+    "missing_endpoint": 0,
+    "negated": 0,
+    "duplicate": 1
+  },
+  "examples": {
+    "holdout_bridge": [
+      {
+        "walk": [
+          "0a8f87a2cfc4bc47",
+          "7340cb90430fd176",
+          "ebd494a798709768"
+        ],
+        "endpoints": [
+          "Archer",
+          "Nurse Joy"
+        ],
+        "stated_pair": [
+          "Team Rocket",
+          "Nurse Joy"
+        ]
+      },
+      {
+        "walk": [
+          "0a8f87a2cfc4bc47",
+          "c9263f41f5ba6d3e",
+          "7c10150c6e5153a3"
+        ],
+        "endpoints": [
+          "Archer",
+          "Team Galactic"
+        ],
+        "stated_pair": [
+          "Team Rocket",
+          "Team Galactic"
+        ]
+      },
+      {
+        "walk": [
+          "0a8f87a2cfc4bc47",
+          "cc353af9c06d05fc",
+          "69ca00b234057611"
+        ],
+        "endpoints": [
+          "Archer",
+          "Team Galactic"
+        ],
+        "stated_pair": [
+          "Team Rocket",
+          "Team Galactic"
+        ]
+      }
+    ],
+    "ungrounded": [
+      {
+        "walk": [
+          "004c3191a608f08a",
+          "2e0105eadb780705",
+          "c0adf13e3b74edfc"
+        ],
+        "foreign_entities": [
+          "Trace"
+        ],
+        "text": "Trace the connection between Winona and Team Magma: Winona mentors Sapphire Birch, Sapphire Birch opposes Team Aqua, and Team Aqua is a rival of Team Magma."
+      },
+      {
+        "walk": [
+          "07351b784462f428",
+          "0c4c235ed6cb27e6",
+          "e1091acf2d553f26"
+        ],
+        "foreign_entities": [
+          "Trace"
+        ],
+        "text": "Trace the connection from Ecruteak City to Bayleef: Ecruteak City is located in Johto, the region where Chikorita originates, and Chikorita evolves into Bayleef"
+      },
+      {
+        "walk": [
+          "3ffb685dffa28350",
+          "08cf5c4a60e58ba8",
+          "0d68b01ebae73598"
+        ],
+        "foreign_entities": [
+          "Trace"
+        ],
+        "text": "Trace the link from Xerosic to Corbeau: Xerosic is a member of Team Flare, which includes Mable, who is allied with Corbeau."
+      },
+      {
+        "walk": [
+          "094b11a5cb0b4552",
+          "2a9856205324fe37",
+          "605d731923b69ae0"
+        ],
+        "foreign_entities": [
+          "Trace"
+        ],
+        "text": "Trace the connection from the Ultra Recon Squad to Silvally: the Ultra Recon Squad is allied with the Aether Foundation, Gladion leads the Aether Foundation, an"
+      },
+      {
+        "walk": [
+          "09b647c854cefc40",
+          "d66d37a5a893f4da",
+          "a0968c60c6e2bba0"
+        ],
+        "foreign_entities": [
+          "Trace"
+        ],
+        "text": "Trace the connection from Miles to Hoothoot: Miles opposes Erika, Erika is a rival of Falkner, and Falkner owns Hoothoot."
+      }
+    ]
+  },
+  "class_unavailable": null,
+  "walks_enumerated": 15440,
+  "walks_renderable": 14881,
+  "hub_skipped": [],
+  "connected_sets": 28626,
+  "walks_selected": 453,
+  "llm_calls_planned": 453,
+  "shape_counts": {
+    "chain": 62,
+    "path_3": 132,
+    "shared_object": 143,
+    "shared_subject": 116
+  },
+  "walk_train_triples_covered": 501,
+  "llm_calls": 453,
+  "variations_requested": 2,
+  "emitted": 850,
+  "budget_shortfall": 56,
+  "train_triples_covered": 498,
+  "surfaces_per_walk": {
+    "n": 451,
+    "min": 1,
+    "p50": 2,
+    "max": 2,
+    "mean": 1.885
+  },
+  "surfaces_per_triple": {
+    "n": 498,
+    "min": 1,
+    "p50": 4,
+    "max": 8,
+    "mean": 3.857
+  },
+  "form_metrics": {
+    "ruler": "diversity_lib.effective_forms(jaccard=0.55)",
+    "records": 850,
+    "effective_forms": 476,
+    "form_ratio": 0.56,
+    "distinct_2": 0.2795,
+    "also_reported": "diversity_lib.distinct_n(n=2) \u2014 the audit gate's ruler; the two disagree"
+  },
+  "dedup_delta": {
+    "cap": 60,
+    "n_excluded_before": 49,
+    "n_excluded_after": 57,
+    "reasoning_records_culled": 0,
+    "pre_existing_newly_excluded": 8,
+    "pre_existing_examples": [
+      "relations_llm.jsonl:1863:625a0083",
+      "relations_llm.jsonl:1864:57fe1ca5",
+      "relations_llm.jsonl:6256:b650d742",
+      "relations_llm.jsonl:6257:d3e2f5a7",
+      "relations_llm.jsonl:6258:08fcd166"
+    ],
+    "floor_violations_before": 0,
+    "floor_violations_after": 0,
+    "head_fact_buckets": 315,
+    "note": "fact_key is source_triple_ids[0], so the exposure cap does not bind on this class; the honest control is floor_violations 0 before AND after, not relations.jsonl's line count (dedup is non-destructive and can never move it)"
+  }
+}

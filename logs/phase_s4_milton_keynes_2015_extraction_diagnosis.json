@@ -1,0 +1,129 @@
+{
+  "schema": "kandi.spend_batch.v1",
+  "campaign": "phase_s4_milton_keynes_2015_extraction_diagnosis",
+  "recorded_at": "2026-07-25T20:39:39.731542+00:00",
+  "domain": "edc",
+  "unit": "milton_keynes/2015",
+  "status": "DIAGNOSED_ONE_FIX_LANDED_STILL_FAIL",
+  "verdict": "FAIL",
+  "headline": "milton_keynes/2015 was 0/20 because (1) 94/158 fixture assertions are out_of_unit from contaminated scrape docs and (2) on-unit facts were extracted under edition surfaces (EDC UK 2015 / Electric Daisy Carnival UK 2015) while the pinned fixture asserts the class surface (Electric Daisy Carnival). ONE fix: mirror located_at/in_lineup onto the class festival entity. clean_ratio 0.0000 \u2192 0.3000 (6/20) under the same pin; still FAIL vs 0.6.",
+  "before": {
+    "clean_ratio": 0.0,
+    "clean_n": 20,
+    "clean_hits": 0,
+    "status": "FAIL",
+    "quotable": true,
+    "miss_attribution": {
+      "matcher_recoverable": 0,
+      "different_object": 0,
+      "absent": 20
+    },
+    "classes": {
+      "judge_rejected": 44,
+      "out_of_unit": 94,
+      "misses": 20,
+      "hits": 0
+    },
+    "triple_rows": 48,
+    "source": "logs/phase_r8_ruler_pins_edc_millbrook.json + data/_build/recall/edc/milton_keynes_2015.json"
+  },
+  "after": {
+    "clean_ratio": 0.3,
+    "clean_n": 20,
+    "clean_hits": 6,
+    "status": "FAIL",
+    "quotable": true,
+    "classes": {
+      "judge_rejected": 44,
+      "out_of_unit": 94,
+      "misses": 14,
+      "hits": 6,
+      "match_mode": {
+        "exact": 6
+      }
+    },
+    "triple_rows": 87,
+    "mirrors_added": 39,
+    "ruler_verified": true,
+    "fixture_sha256": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4"
+  },
+  "diagnosis": {
+    "class": "extraction_surface_fragmentation + corpus_contamination",
+    "not_class": "genuinely_thin_source",
+    "evidence": [
+      "press-lineup.md carries the full 2015 Music Times lineup (36 artists); extraction recovered 38 artists / 39 in_lineup triples \u2014 source is NOT empty",
+      "classes.out_of_unit=94/158 from off-unit docs (edm-com avello-2026, pacha-new-york, edmidentity archive stubs)",
+      "classes.judge_rejected=44 (object_type_mismatch 40) \u2014 fixture predicates outside usable type contract",
+      "rendered graph had 'Electric Daisy Carnival UK 2015|located_at|Milton Keynes Bowl' and 'Artist|in_lineup|EDC UK 2015' while clean misses asserted 'Electric Daisy Carnival' as the festival surface",
+      "miss_attribution absent:20 under the instrument (subject+predicate keyed on edition surfaces only); arithmetic shows class-surface gap, not empty extraction",
+      "festival_meta.json is LV-scaffolded (kinetic_field/cosmic_meadow\u2026) \u2014 ontology/meta mismatch on top of extraction"
+    ],
+    "passage_vs_emission": {
+      "on_unit_docs_with_real_content": [
+        "press-lineup.md",
+        "youtube/*",
+        "reddit/r-electricdaisycarnival-2015.md"
+      ],
+      "off_unit_contaminants": [
+        "edm-com-features-interview-avello-2026.md",
+        "edm-com-industry-inside-pacha-new-york-safety-security-plan-brooklyn-mirage-site.md",
+        "edmidentity-com-events-essential-info-guides.md",
+        "edmidentity-com-music-exclusive-mix.md"
+      ],
+      "extracted_predicates": {
+        "in_lineup": 39,
+        "located_at": 7,
+        "belongs_to_class": 2
+      },
+      "assertion_predicates_not_in_graph_before_fix": [
+        "plays_at",
+        "serves",
+        "has_tier",
+        "operating_hours",
+        "practiced_by",
+        "prohibits",
+        "incident_occurred"
+      ]
+    }
+  },
+  "one_fix": {
+    "what": "Mirror located_at/in_lineup triples from edition/instance festival ids onto the class entity Electric Daisy Carnival (edc_milton_keynes_2015:festival:electric_daisy_carnival), licensed by existing belongs_to_class and the instance-id set",
+    "files": [
+      "data/edc/milton_keynes/2015/15_structured/triples.jsonl",
+      "data/edc/milton_keynes/2015/15_structured/triples.resolved.jsonl"
+    ],
+    "backups": [
+      "data/edc/milton_keynes/2015/15_structured/triples.jsonl.pre_s4",
+      "data/edc/milton_keynes/2015/15_structured/triples.resolved.jsonl.pre_s4"
+    ],
+    "triples_before": 48,
+    "triples_after": 87,
+    "mirrors_added": 39,
+    "why_this_not_re_pin": "re-measure against the pinned ruler; pin digests unchanged; only the graph (unpinned by design) moved",
+    "why_not_full_re_extract": "instrument said re-extract, but the on-unit lineup facts WERE extracted \u2014 under the wrong festival surface. Mirroring is the minimal graph repair that tests the surface-fragmentation hypothesis without provider spend."
+  },
+  "estimand": "pinned clean_ratio on milton_keynes/2015 (fixture 8ef6bc0f\u2026, n=20 clean assertions); RUN-GATE extraction coverage, not install-strength",
+  "remaining_gap_to_0.6": {
+    "need_hits": 12,
+    "have_hits": 6,
+    "remaining_miss_drivers": [
+      "has_tier / operating_hours / serves / practiced_by never extracted (predicate gap)",
+      "out_of_unit docs still in 10_clean (scrape hygiene)",
+      "Tommy Trash etc. already mirrored; remaining misses are non-lineup predicates"
+    ],
+    "next_if_pursued": "quarantine off-unit 10_clean docs + re-extract structured for plays_at/operating_hours from on-unit youtube/reddit; do NOT re-pin"
+  },
+  "spend": {
+    "provider_calls": 0,
+    "gpu_hours": 0,
+    "purpose": "diagnosis + graph mirror; offline fixture remeasure only"
+  },
+  "deviations": [
+    "ONE fix is a unit-local graph mirror, not a pipeline-stage code change \u2014 deliberate: prove the class before generalising",
+    "john_ocallaghan pre-resolution id appears in one mirror subject before resolve map; harmless for display match path using resolved names"
+  ],
+  "gates": {
+    "ruler_verified": true,
+    "pin_untouched": true
+  }
+}

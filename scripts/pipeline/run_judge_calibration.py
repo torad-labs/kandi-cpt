@@ -22,14 +22,13 @@ from eval_generative import (
     JUDGE_LABELS,
     JUDGE_SYSTEM,
     KAPPA_USABLE,
-    OPENROUTER_BASE_URL,
     UsageMeter,
     calibrate_judge,
     chat,
     judge_one,
     load_calibration_items,
     parse_judge_verdict,
-    resolve_openrouter_key,
+    resolve_judge_ctx,
 )
 
 
@@ -78,11 +77,12 @@ def run_once(
     *,
     judge_model: str,
     key: str,
+    chat_url: str,
     system_prompt: str,
 ) -> dict:
     """Calibrate with an injectable system prompt (for one tighten iteration)."""
     meter = UsageMeter()
-    url = OPENROUTER_BASE_URL + "/chat/completions"
+    url = chat_url
     y_true: list[str] = []
     y_pred: list[str] = []
     rows: list[dict] = []
@@ -201,18 +201,21 @@ def main() -> None:
     args = ap.parse_args()
 
     items = load_calibration_items(args.calibration_json, domain=args.domain)
-    key = resolve_openrouter_key()
-    if not key:
-        sys.exit("OPENROUTER_API_KEY missing (env or libsecret service=openrouter)")
+    judge_ctx = resolve_judge_ctx(forced_judge_model=args.judge_model)
+    if not judge_ctx:
+        sys.exit("no LLM provider key (googleai plan A / openrouter plan B)")
+    judge_model, key, chat_url = judge_ctx
 
     cal_path = Path(args.calibration_json)
     sh = set_hash(items)
     label_dist = dict(Counter(i["expected_label"] for i in items))
 
     print(f"calibration n={len(items)} hash={sh[:12]}… labels={label_dist}", flush=True)
-    print(f"judge={args.judge_model} KAPPA_USABLE={KAPPA_USABLE}", flush=True)
+    print(f"judge={judge_model} KAPPA_USABLE={KAPPA_USABLE}", flush=True)
     print("=== pass 1: stock JUDGE_SYSTEM ===", flush=True)
-    pass1 = run_once(items, judge_model=args.judge_model, key=key, system_prompt=JUDGE_SYSTEM)
+    pass1 = run_once(
+        items, judge_model=judge_model, key=key, chat_url=chat_url, system_prompt=JUDGE_SYSTEM
+    )
 
     passes = [{
         "name": "stock_JUDGE_SYSTEM",
@@ -227,7 +230,10 @@ def main() -> None:
             f"=== pass 2: tightened JUDGE_SYSTEM (binary κ={pass1['binary_correct_vs_rest']['kappa']:.3f} < {KAPPA_USABLE}) ===",
             flush=True,
         )
-        pass2 = run_once(items, judge_model=args.judge_model, key=key, system_prompt=TIGHTENED_JUDGE_SYSTEM)
+        pass2 = run_once(
+            items, judge_model=judge_model, key=key, chat_url=chat_url,
+            system_prompt=TIGHTENED_JUDGE_SYSTEM,
+        )
         passes.append({
             "name": "tightened_JUDGE_SYSTEM_once",
             "system_prompt_sha256": hashlib.sha256(TIGHTENED_JUDGE_SYSTEM.encode()).hexdigest(),

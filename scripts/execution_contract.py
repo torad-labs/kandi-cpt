@@ -28,7 +28,8 @@ STAGE_EFFECTS = {
     "scrape": ["network", "write"],
     "extract": ["write"],
     "pii_scan": ["write"],
-    # Teacher pass is provider-bound; egress:llm is also inferred from OPENROUTER_COMMAND_MARKERS.
+    # Teacher pass is provider-bound; egress:llm is also inferred from LLM_COMMAND_MARKERS.
+    # Provider policy: Google AI Studio plan A, OpenRouter plan B (pipeline.llm_provider).
     "score_educational": ["egress:llm", "write"],
     "style_fingerprint": ["write"],
     "approve_style": ["write"],
@@ -109,6 +110,7 @@ STAGE_OUTPUTS = {
     "sft": ["{sft_save_dir}/**"],
 }
 
+# Historical name kept as an alias — markers identify any provider-bound stage.
 OPENROUTER_COMMAND_MARKERS = (
     "--llm-rescue",
     "extract_structured.py",
@@ -119,6 +121,11 @@ OPENROUTER_COMMAND_MARKERS = (
     "eval_generative.py",
     "audit_recall.py",
 )
+LLM_COMMAND_MARKERS = OPENROUTER_COMMAND_MARKERS
+# Declared provider on egress:llm stages. Runtime resolution still falls back to
+# OpenRouter when Studio is unavailable; the contract advertises the preferred plan.
+DEFAULT_LLM_PROVIDER = "googleai"
+DEFAULT_LLM_PROVIDER_FALLBACK = "openrouter"
 
 APPROVAL_EFFECTS = ["gpu", "egress:llm", "egress:upload", "spend", "delete"]
 
@@ -162,8 +169,12 @@ def _git_identity() -> tuple[str | None, bool | None]:
         return None, None
 
 
-def _uses_openrouter(command: list[str]) -> bool:
-    return any(marker in argument for marker in OPENROUTER_COMMAND_MARKERS for argument in command)
+def _uses_llm(command: list[str]) -> bool:
+    return any(marker in argument for marker in LLM_COMMAND_MARKERS for argument in command)
+
+
+# Back-compat alias for anything still importing the old name.
+_uses_openrouter = _uses_llm
 
 
 def _effects(stage_name: str, command: list[str], gpu: bool) -> list[str]:
@@ -171,7 +182,7 @@ def _effects(stage_name: str, command: list[str], gpu: bool) -> list[str]:
     if configured is None:
         raise ValueError(f"unknown execution-contract stage {stage_name!r}; declare its effects before execution")
     effects = [effect for effect in configured if effect not in {"gpu", "egress:llm"}]
-    if _uses_openrouter(command):
+    if _uses_llm(command):
         effects.insert(0, "egress:llm")
     if gpu:
         effects.insert(0, "gpu")
@@ -286,7 +297,9 @@ def build_contract(domain_name: str, editions: str | None = None) -> dict[str, A
             ],
         }
         if "egress:llm" in effects:
-            emitted["provider"] = "openrouter"
+            # Plan A advertised; runtime falls back to openrouter only if Studio is absent.
+            emitted["provider"] = DEFAULT_LLM_PROVIDER
+            emitted["provider_fallback"] = DEFAULT_LLM_PROVIDER_FALLBACK
         payload = json.dumps(emitted, sort_keys=True, separators=(",", ":")).encode("utf-8")
         emitted["stage_digest"] = hashlib.sha256(payload).hexdigest()
         stages.append(emitted)

@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-07-25T21:28:24.738150+00:00",
+  "scope": "vc1_97_ex_lv2026",
+  "n_units": 97,
+  "n_types": 12,
+  "total": 773512,
+  "cov": 2.3637,
+  "dom": 0.7332,
+  "per_relation": {
+    "artist_to_stage": 567109,
+    "in_lineup": 43092,
+    "recommendation": 36927,
+    "stage_production_character": 36227,
+    "stage_to_genre": 33192,
+    "stage_brand": 24816,
+    "stage_rank_capacity": 23275,
+    "multi_stage": 4222,
+    "set_time": 2558,
+    "stage_roster": 1203,
+    "set_order": 635,
+    "special_slot": 256
+  }
+}

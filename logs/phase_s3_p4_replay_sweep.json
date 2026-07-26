@@ -1,0 +1,170 @@
+{
+  "schema": "kandi.spend_batch.v1",
+  "campaign": "phase_s3_p4_replay_sweep",
+  "recorded_at": "2026-07-26T00:57:29.209901+00:00",
+  "status": "LANDED",
+  "headline": "P4 replay sweep replay\u2208{0.05,0.10,0.20,0.30} on same kanto shard otherwise; precision fingerprint identical to v1; install+GA per run.",
+  "precision_fingerprint": "31416ea5c5230281",
+  "precision_block": {
+    "precision": "fp4",
+    "int8_master": "storage",
+    "optimizer_lowbit": 4,
+    "nvfp4": {
+      "skip_lm_head": true,
+      "skip_embeddings": true,
+      "bf16_first_layers": 2,
+      "bf16_last_layers": 5
+    }
+  },
+  "gpu": "CUDA_VISIBLE_DEVICES=1",
+  "max_steps_fixed": 450,
+  "curve": [
+    {
+      "replay_frac": 0.05,
+      "name": "s3_r005",
+      "probe_eval": null,
+      "ga": null,
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_s3_r005",
+      "tokenize_stats": {
+        "total_tokens": 725397,
+        "num_chunks": 1416,
+        "seq_len": 512,
+        "docs_by_tag": {
+          "hydrated": 8102,
+          "clean": 105,
+          "knowledge": 2
+        },
+        "tokens_by_tag": {
+          "hydrated": 78746,
+          "clean": 589372,
+          "knowledge": 6317
+        },
+        "replay_tokens": 34542,
+        "editions": "kanto",
+        "lever_metadata": true,
+        "block_edu_score": false,
+        "block_edu_mean": 3.0942,
+        "entity_masked_tokens": 89085,
+        "entity_mask_frac": 0.1289,
+        "src_token_dist": {
+          "raw_knowledge": 690853,
+          "qa": 0,
+          "conversation": 0,
+          "replay": 34544
+        }
+      }
+    },
+    {
+      "replay_frac": 0.1,
+      "name": "s3_r010",
+      "probe_eval": null,
+      "ga": null,
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_s3_r010",
+      "tokenize_stats": {
+        "total_tokens": 759940,
+        "num_chunks": 1484,
+        "seq_len": 512,
+        "docs_by_tag": {
+          "hydrated": 8102,
+          "clean": 105,
+          "knowledge": 2
+        },
+        "tokens_by_tag": {
+          "hydrated": 78746,
+          "clean": 589372,
+          "knowledge": 6317
+        },
+        "replay_tokens": 69085,
+        "editions": "kanto",
+        "lever_metadata": true,
+        "block_edu_score": false,
+        "block_edu_mean": 3.1815,
+        "entity_masked_tokens": 89085,
+        "entity_mask_frac": 0.1289,
+        "src_token_dist": {
+          "raw_knowledge": 690853,
+          "qa": 0,
+          "conversation": 0,
+          "replay": 69087
+        }
+      }
+    },
+    {
+      "replay_frac": 0.2,
+      "name": "s3_r020",
+      "probe_eval": null,
+      "ga": null,
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_s3_r020",
+      "tokenize_stats": {
+        "total_tokens": 829025,
+        "num_chunks": 1619,
+        "seq_len": 512,
+        "docs_by_tag": {
+          "hydrated": 8102,
+          "clean": 105,
+          "knowledge": 2
+        },
+        "tokens_by_tag": {
+          "hydrated": 78746,
+          "clean": 589372,
+          "knowledge": 6317
+        },
+        "replay_tokens": 138170,
+        "editions": "kanto",
+        "lever_metadata": true,
+        "block_edu_score": false,
+        "block_edu_mean": 3.3331,
+        "entity_masked_tokens": 89085,
+        "entity_mask_frac": 0.1289,
+        "src_token_dist": {
+          "raw_knowledge": 690853,
+          "qa": 0,
+          "conversation": 0,
+          "replay": 138172
+        }
+      }
+    },
+    {
+      "replay_frac": 0.3,
+      "name": "s3_r030",
+      "probe_eval": null,
+      "ga": null,
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_s3_r030",
+      "tokenize_stats": {
+        "total_tokens": 898110,
+        "num_chunks": 1754,
+        "seq_len": 512,
+        "docs_by_tag": {
+          "hydrated": 8102,
+          "clean": 105,
+          "knowledge": 2
+        },
+        "tokens_by_tag": {
+          "hydrated": 78746,
+          "clean": 589372,
+          "knowledge": 6317
+        },
+        "replay_tokens": 207255,
+        "editions": "kanto",
+        "lever_metadata": true,
+        "block_edu_score": false,
+        "block_edu_mean": 3.4614,
+        "entity_masked_tokens": 89085,
+        "entity_mask_frac": 0.1289,
+        "src_token_dist": {
+          "raw_knowledge": 690853,
+          "qa": 0,
+          "conversation": 0,
+          "replay": 207257
+        }
+      }
+    }
+  ],
+  "best_by_install_acc": null,
+  "derive_plan_evidence_line": "replay_fraction evidence from phase_s3 curve: r=0.05 acc=None, r=0.1 acc=None, r=0.2 acc=None, r=0.3 acc=None \u2192 incomplete",
+  "estimand": "install-strength forced-choice on pinned kanto probes + general-ability frozen file; same step budget",
+  "deviations": [
+    "reasoning surfaces parked out of S3 shards so replay is the only axis",
+    "GA via score_sentinel_live if available; missing GA files recorded as null"
+  ]
+}
