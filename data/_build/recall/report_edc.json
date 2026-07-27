@@ -4,15 +4,15 @@
   "min_coverage": 0.6,
   "estimand": "clean",
   "overall": {
-    "hits": 0,
+    "hits": 6,
     "n": 20,
-    "ratio": 0.0,
+    "ratio": 0.3,
     "quotable": true
   },
   "raw": {
-    "hits": 0,
+    "hits": 6,
     "n": 158,
-    "ratio": 0.0,
+    "ratio": 0.038,
     "per_predicate": {
       "adjacent_to": {
         "mean_ratio": 0.0,
@@ -59,7 +59,7 @@
         "n_docs": 1
       },
       "located_at": {
-        "mean_ratio": 0.0,
+        "mean_ratio": 0.4444,
         "n_docs": 12
       },
       "operating_hours": {
@@ -99,9 +99,9 @@
     "quotable": true
   },
   "clean": {
-    "hits": 0,
+    "hits": 6,
     "n": 20,
-    "ratio": 0.0,
+    "ratio": 0.3,
     "per_predicate": {
       "correlates_with": {
         "mean_ratio": 0.0,
@@ -116,7 +116,7 @@
         "n_docs": 1
       },
       "located_at": {
-        "mean_ratio": 0.0,
+        "mean_ratio": 0.8571,
         "n_docs": 7
       },
       "operating_hours": {
@@ -136,9 +136,9 @@
     "quotable": true
   },
   "clean_unfiltered": {
-    "hits": 0,
+    "hits": 6,
     "n": 64,
-    "ratio": 0.0,
+    "ratio": 0.0938,
     "note": "DIAGNOSTIC, NOT GATED. CLEAN minus the object-type contract filter. The gap between this and `clean` is the object_type_* reject mass \u2014 see reject_reasons. Reported so the choice of gated estimand is an argued number: moving the gate here would restate every figure in the h5 trail and is a campaign, not a patch.",
     "quotable": true
   },
@@ -168,7 +168,7 @@
       {
         "unit": "milton_keynes/2015",
         "fixture": {
-          "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/milton_keynes_2015.assertions.json",
+          "path": "data/_build/recall/edc/milton_keynes_2015.assertions.json",
           "sha256": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4",
           "n_docs": 15,
           "n_assertions": 158,
@@ -207,8 +207,8 @@
         },
         "triples": {
           "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2015/15_structured/triples.resolved.jsonl",
-          "sha256": "42b1a4766b1b4bcf9cccf4405bdbd5f0e46cb2a6c512475a4e5ca888c40ce101",
-          "rows": 48,
+          "sha256": "527398ce1d1d9bbe5ca9225098cb7b58e7d9073fa86bd0b9d8d3d497fd64e684",
+          "rows": 87,
           "pinned": false,
           "note": "the graph under measurement \u2014 recorded, never pinned"
         },
@@ -241,10 +241,10 @@
   "classes": {
     "judge_rejected": 44,
     "out_of_unit": 94,
-    "misses": 20,
-    "hits": 0,
+    "misses": 14,
+    "hits": 6,
     "match_mode": {
-      "exact": 0,
+      "exact": 6,
       "soft-object": 0,
       "canonical": 0
     }
@@ -264,7 +264,7 @@
       "n_docs": 1
     },
     "located_at": {
-      "mean_ratio": 0.0,
+      "mean_ratio": 0.8571,
       "n_docs": 7
     },
     "operating_hours": {
@@ -284,7 +284,6 @@
     "correlates_with",
     "has_tier",
     "in_lineup",
-    "located_at",
     "operating_hours",
     "practiced_by",
     "serves"
@@ -295,18 +294,13 @@
       "miss_attribution": {
         "matcher_recoverable": 0,
         "different_object": 0,
-        "absent": 20,
-        "n": 20,
+        "absent": 14,
+        "n": 14,
         "matcher_recoverable_ratio": 0.0,
         "samples": {
           "matcher_recoverable": [],
           "different_object": [],
           "absent": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
             {
               "object": "VIP pass",
               "predicate": "has_tier",
@@ -328,21 +322,6 @@
               "subject": "EDC UK"
             },
             {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
-            {
               "object": "11 July, 2015",
               "predicate": "operating_hours",
               "subject": "Electric Daisy Carnival"
@@ -351,6 +330,26 @@
               "object": "Electric Daisy Carnival",
               "predicate": "in_lineup",
               "subject": "Tommy Trash"
+            },
+            {
+              "object": "Insomniac",
+              "predicate": "practiced_by",
+              "subject": "Electric Daisy Carnival"
+            },
+            {
+              "object": "July 12",
+              "predicate": "operating_hours",
+              "subject": "Electric Daisy Carnival"
+            },
+            {
+              "object": "one-day",
+              "predicate": "has_tier",
+              "subject": "Electric Daisy Carnival"
+            },
+            {
+              "object": "Milton Keynes Bowl",
+              "predicate": "located_at",
+              "subject": "EDC UK"
             }
           ]
         },
@@ -365,7 +364,7 @@
       "ruler": {
         "unit": "milton_keynes/2015",
         "fixture": {
-          "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/_build/recall/edc/milton_keynes_2015.assertions.json",
+          "path": "data/_build/recall/edc/milton_keynes_2015.assertions.json",
           "sha256": "8ef6bc0f284e99c8989e89c94da6e2ed4b0dfcf8363551412bd1e556dcdaaec4",
           "n_docs": 15,
           "n_assertions": 158,
@@ -404,8 +403,8 @@
         },
         "triples": {
           "path": "/mnt/torad-storage-01/infra/training/kandi-cpt/data/edc/milton_keynes/2015/15_structured/triples.resolved.jsonl",
-          "sha256": "42b1a4766b1b4bcf9cccf4405bdbd5f0e46cb2a6c512475a4e5ca888c40ce101",
-          "rows": 48,
+          "sha256": "527398ce1d1d9bbe5ca9225098cb7b58e7d9073fa86bd0b9d8d3d497fd64e684",
+          "rows": 87,
           "pinned": false,
           "note": "the graph under measurement \u2014 recorded, never pinned"
         },
@@ -419,26 +418,26 @@
           "fixture_compared": true
         }
       },
-      "hits": 0,
+      "hits": 6,
       "n": 20,
-      "ratio": 0.0,
+      "ratio": 0.3,
       "raw": {
-        "hits": 0,
+        "hits": 6,
         "n": 158,
-        "ratio": 0.0
+        "ratio": 0.038
       },
       "clean_unfiltered": {
-        "hits": 0,
+        "hits": 6,
         "n": 64,
-        "ratio": 0.0
+        "ratio": 0.0938
       },
       "classes": {
         "judge_rejected": 44,
         "out_of_unit": 94,
-        "misses": 20,
-        "hits": 0,
+        "misses": 14,
+        "hits": 6,
         "match_mode": {
-          "exact": 0,
+          "exact": 6,
           "soft-object": 0,
           "canonical": 0
         }
@@ -451,23 +450,17 @@
       "docs": [
         {
           "path": "ydpuumh1lvc.md",
-          "hits": 0,
+          "hits": 1,
           "n": 1,
-          "ratio": 0.0,
+          "ratio": 1.0,
           "per_predicate": {
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             }
           },
-          "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            }
-          ],
+          "misses": [],
           "judge_rejected": [
             {
               "object": "Electric Daisy Carnival",
@@ -478,14 +471,14 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 2,
-            "ratio": 0.0
+            "ratio": 0.5
           }
         },
         {
@@ -590,23 +583,17 @@
         },
         {
           "path": "xyrdoqnxjku.md",
-          "hits": 0,
+          "hits": 1,
           "n": 1,
-          "ratio": 0.0,
+          "ratio": 1.0,
           "per_predicate": {
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             }
           },
-          "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            }
-          ],
+          "misses": [],
           "judge_rejected": [
             {
               "object": "Electric Daisy Carnival",
@@ -617,35 +604,29 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 2,
-            "ratio": 0.0
+            "ratio": 0.5
           }
         },
         {
           "path": "zylexlpcgzg.md",
-          "hits": 0,
+          "hits": 1,
           "n": 1,
-          "ratio": 0.0,
+          "ratio": 1.0,
           "per_predicate": {
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             }
           },
-          "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            }
-          ],
+          "misses": [],
           "judge_rejected": [
             {
               "object": "Electric Daisy Carnival",
@@ -656,14 +637,14 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 2,
-            "ratio": 0.0
+            "ratio": 0.5
           }
         },
         {
@@ -1046,9 +1027,9 @@
         },
         {
           "path": "d1juz2erhru.md",
-          "hits": 0,
+          "hits": 1,
           "n": 4,
-          "ratio": 0.0,
+          "ratio": 0.25,
           "per_predicate": {
             "in_lineup": {
               "hits": 0,
@@ -1056,9 +1037,9 @@
               "ratio": 0.0
             },
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             },
             "operating_hours": {
               "hits": 0,
@@ -1072,11 +1053,6 @@
             }
           },
           "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
             {
               "object": "11 July, 2015",
               "predicate": "operating_hours",
@@ -1128,21 +1104,21 @@
             }
           ],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 9,
-            "ratio": 0.0
+            "ratio": 0.1111
           }
         },
         {
           "path": "1quthqgrkz4.md",
-          "hits": 0,
+          "hits": 1,
           "n": 3,
-          "ratio": 0.0,
+          "ratio": 0.3333,
           "per_predicate": {
             "has_tier": {
               "hits": 0,
@@ -1150,9 +1126,9 @@
               "ratio": 0.0
             },
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             },
             "operating_hours": {
               "hits": 0,
@@ -1161,11 +1137,6 @@
             }
           },
           "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            },
             {
               "object": "July 12",
               "predicate": "operating_hours",
@@ -1187,14 +1158,14 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 4,
-            "ratio": 0.0
+            "ratio": 0.25
           }
         },
         {
@@ -1391,23 +1362,17 @@
         },
         {
           "path": "vete4ljbye4.md",
-          "hits": 0,
+          "hits": 1,
           "n": 1,
-          "ratio": 0.0,
+          "ratio": 1.0,
           "per_predicate": {
             "located_at": {
-              "hits": 0,
+              "hits": 1,
               "n": 1,
-              "ratio": 0.0
+              "ratio": 1.0
             }
           },
-          "misses": [
-            {
-              "object": "Milton Keynes Bowl",
-              "predicate": "located_at",
-              "subject": "Electric Daisy Carnival"
-            }
-          ],
+          "misses": [],
           "judge_rejected": [
             {
               "object": "Electric Daisy Carnival",
@@ -1418,14 +1383,14 @@
           ],
           "out_of_unit": [],
           "match_mode_counts": {
-            "exact": 0,
+            "exact": 1,
             "soft-object": 0,
             "canonical": 0
           },
           "raw": {
-            "hits": 0,
+            "hits": 1,
             "n": 2,
-            "ratio": 0.0
+            "ratio": 0.5
           }
         },
         {
@@ -2666,8 +2631,8 @@
   "miss_attribution": {
     "matcher_recoverable": 0,
     "different_object": 0,
-    "absent": 20,
-    "n": 20,
+    "absent": 14,
+    "n": 14,
     "note": "Where the coverage gap actually lives. matcher_recoverable > 0 means a keying fix has headroom; at 0 the gap is extraction-side and no matcher change can move the number. different_object = the extractor saw the relation and chose other targets."
   },
   "judge_unavailable": {

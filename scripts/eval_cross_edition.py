@@ -23,7 +23,7 @@ import torch
 from transformers import AutoTokenizer
 
 import config as C
-from pipeline.model_load import load_text_model_bf16, load_causal_ckpt_bf16
+from pipeline.model_load import load_text_model_bf16, load_causal_ckpt_quartet
 from eval_cloze import ranked, ranked_batch, _validate_batched
 
 # Venue cloze templates — declarative + QA, mirroring the hydration surface ("held at", "venue for").
@@ -87,7 +87,7 @@ def main():
     torch.cuda.empty_cache()
 
     for ck in args.checkpoints:
-        m = load_causal_ckpt_bf16(ck, args.device)
+        m = load_causal_ckpt_quartet(ck, args.device)
         res[ck] = score(m, tok, ck.split("/")[-1], eds, venues, rank)
         del m
         torch.cuda.empty_cache()

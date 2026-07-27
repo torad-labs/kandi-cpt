@@ -73,7 +73,16 @@ case " $* " in
   *" --config "*) launch_args=("$@") ;;
   *)              launch_args=(--config configs/train_edc_lv_2026.yaml "$@") ;;
 esac
-.venv/bin/python scripts/train_cpt.py "${launch_args[@]}"
+# shield-or-die (host-policy): whale-reaper SIGTERM's unprotected processes >8G FOOTPRINT under
+# pressure. 2026-07-25 five CPT runs finished 450 steps then died at save (rss 8–16GB, journal).
+# oom-shield sets oom_score_adj=-800 (below the reaper's -400 floor). If choom is unavailable the
+# wrapper warns and continues — streaming save + save preflight are the other half of the fix.
+if command -v oom-shield >/dev/null 2>&1; then
+  oom-shield .venv/bin/python scripts/train_cpt.py "${launch_args[@]}"
+else
+  echo "train_fp4.sh: WARNING — oom-shield not on PATH; running unshielded" >&2
+  .venv/bin/python scripts/train_cpt.py "${launch_args[@]}"
+fi
 # Training has exited, so its GPU allocations are gone. The same typed config now owns the complete
 # trust seam; disabled historical configs return cleanly, enabled installs fail closed on missing evidence.
 .venv/bin/python scripts/post_install_chain.py "${launch_args[@]}"

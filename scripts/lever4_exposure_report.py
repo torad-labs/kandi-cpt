@@ -65,8 +65,8 @@ def main():
             print(f"[skip] {ck}: no exposure.json (was lever4 on during training?)")
             continue
         exp = json.load(open(exp_path)).get("exposure", {})
-        m = Gemma4ForCausalLM.from_pretrained(ck, dtype=torch.bfloat16,
-                                              attn_implementation="sdpa").to(args.device).eval()
+        from eval_probes import load_model
+        _tok, m = load_model(ck, args.device)   # int8-master native (quartet fwd); never bf16-resident
         passed = per_fact_pass(m, tok, a_stage, stage_slugs)
         del m
         torch.cuda.empty_cache()

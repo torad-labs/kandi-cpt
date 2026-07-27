@@ -120,6 +120,67 @@ def test_anneal_rank_keep_mask_uniform_keeps_all_in_tag():
     assert keep == [True, True, True]
 
 
+def test_anneal_defaults_are_byte_identical_to_the_median_cut():
+    """The new quantile/replay knobs must not change any existing run: q=0.5 + replay_fraction=None
+    has to reproduce the exact mask the median implementation produced."""
+    import random as _r
+    from train_cpt import _anneal_rank_keep_mask
+
+    rng = _r.Random(0)
+    for trial in range(40):
+        n = rng.randint(1, 60)
+        tags = [rng.choice(["hydrated", "replay", "clean"]) for _ in range(n)]
+        scores = [rng.choice([1.0, 2.0, 3.0, 3.0, 5.0]) for _ in range(n)]
+        wanted = {"hydrated", "replay"}
+        new = _anneal_rank_keep_mask(tags, scores, wanted)
+
+        ranked = [s for t, s in zip(tags, scores) if t in wanted and t != "replay"]
+        if not ranked:
+            old = [t in wanted for t in tags]
+        else:
+            med = sorted(ranked)[len(ranked) // 2]
+            old = [False if t not in wanted else (True if t == "replay" else s >= med)
+                   for t, s in zip(tags, scores)]
+        assert new == old, f"default behaviour drifted on trial {trial}"
+
+
+def test_anneal_replay_fraction_is_an_explicit_target():
+    """Setting replay_fraction turns the emergent share into a declared one."""
+    from train_cpt import _anneal_rank_keep_mask, anneal_composition
+
+    tags = ["replay"] * 50 + ["hydrated"] * 50
+    scores = [5.0] * 50 + [3.0] * 50               # uniform in-tag -> domain cut keeps all 50
+    wanted = {"hydrated", "replay"}
+
+    unset = _anneal_rank_keep_mask(tags, scores, wanted)
+    comp_unset = anneal_composition(tags, unset, wanted)
+    assert comp_unset["replay_block_share"] == 0.5, comp_unset      # emergent 50/50
+
+    targeted = _anneal_rank_keep_mask(tags, scores, wanted, replay_fraction=0.20)
+    comp = anneal_composition(tags, targeted, wanted)
+    assert comp["kept_domain_blocks"] == 50
+    assert comp["kept_replay_blocks"] == 12        # 0.2*50/0.8 = 12.5 -> 12
+    assert abs(comp["replay_block_share"] - 12 / 62) < 1e-6
+
+    # Deterministic and idempotent.
+    assert _anneal_rank_keep_mask(tags, scores, wanted, replay_fraction=0.20) == targeted
+    # Zero is reachable and means zero.
+    z = anneal_composition(tags, _anneal_rank_keep_mask(tags, scores, wanted, replay_fraction=0.0), wanted)
+    assert z["kept_replay_blocks"] == 0
+
+
+def test_anneal_composition_reports_the_hidden_concentration():
+    """The distortion the review named: all-replay-kept + half-domain-cut raises the share."""
+    from train_cpt import _anneal_rank_keep_mask, anneal_composition
+
+    tags = ["replay"] * 10 + ["hydrated"] * 90
+    scores = [5.0] * 10 + [float(i % 10) for i in range(90)]        # spread -> real median cut
+    wanted = {"hydrated", "replay"}
+    before = anneal_composition(tags, [t in wanted for t in tags], wanted)
+    after = anneal_composition(tags, _anneal_rank_keep_mask(tags, scores, wanted), wanted)
+    assert after["replay_block_share"] > before["replay_block_share"], (before, after)
+
+
 if __name__ == "__main__":
     tests = [v for n, v in sorted(globals().items()) if n.startswith("test_") and callable(v)]
     for test in tests:

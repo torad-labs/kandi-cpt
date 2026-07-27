@@ -1,0 +1,430 @@
+diff --git a/scripts/train_cpt.py b/scripts/train_cpt.py
+index 830d3924..8c635632 100644
+--- a/scripts/train_cpt.py
++++ b/scripts/train_cpt.py
+@@ -213,21 +213,6 @@ def entity_weighted_ce(logits, ids, entity_mask, entity_weight):
+     return (w * per_tok).sum() / w.sum().clamp_min(1.0)
+ 
+ 
+-@torch.no_grad()
+-def _sr_int8_master(params):
+-    """Constrain each 2-D weight to the symmetric per-output-row INT8 grid via STOCHASTIC ROUNDING,
+-    after the optimizer step. Tests whether INT8 weight precision holds knowledge install (the science
+-    question) without the memory-saving INT8-storage plumbing: weights stay bf16 but may only take
+-    INT8-representable values. 1-D params (norms/biases) are left full-precision (sensitive, tiny)."""
+-    for p in params:
+-        if p.dim() < 2:
+-            continue
+-        w = p.data
+-        scale = w.abs().amax(dim=tuple(range(1, w.dim())), keepdim=True).clamp_min_(1e-8) / 127.0
+-        x = w / scale
+-        lo = torch.floor(x)
+-        q = lo + (torch.rand_like(x) < (x - lo)).to(x.dtype)   # stochastic rounding: P(up) = frac
+-        p.data.copy_(q.clamp_(-127, 127) * scale)
+ 
+ 
+ def apply_nvfp4_qat(model, cfg) -> None:
+@@ -311,27 +296,14 @@ def swap_to_quartet(model, cfg) -> None:
+ # trajectory (V9) at 1-byte storage and BELOW snap's memory, with no hand-rolled optimizer.
+ def convert_quartet_to_master(model):
+     import torch.nn as nn
+-    from quartet2.linear import Quartet_II_linear, Quartet_II_fn, Quartet_II_pseudoquant_fn
++    from quartet2.linear import Quartet_II_linear
+     from torchao.prototype.quantized_training import Int8QuantizedTrainingLinearWeight
+-    from quartet_bridge import dequant_bridge
+-
+-    class _MasterMixin:
+-        def forward(self, x, disable_backward_quant=False, input_abs_max=None):
+-            w = dequant_bridge(self.weight)                      # transient bf16 view; grad → self.weight.grad
+-            major, _ = torch.cuda.get_device_capability(x.device)
+-            if major >= 10:
+-                return Quartet_II_fn.apply(x, w, self.had, self.mode,
+-                                           self.disable_backward_quant or disable_backward_quant,
+-                                           self.weight_abs_max, input_abs_max, self.scratch_amax)
+-            return Quartet_II_pseudoquant_fn.apply(x, w, self.had,
+-                                                   self.disable_backward_quant or disable_backward_quant,
+-                                                   self.mode == self.mode.FOUR_SIX)
+ 
+     master_params = []
+     for module in model.modules():
+         for cn, child in list(module.named_children()):
+             if type(child) is Quartet_II_linear and child.bias is None:
+-                child.__class__ = type("QuartetMasterLinear", (_MasterMixin, Quartet_II_linear), {})
++                child.__class__ = type("QuartetMasterLinear", (QuartetMasterMixin, Quartet_II_linear), {})
+                 child.weight = nn.Parameter(Int8QuantizedTrainingLinearWeight.from_float(child.weight.detach()))
+                 master_params.append(child.weight)
+     log(f"int8-master MOAT: {len(master_params)} Quartet linears → torchao Int8 store (1 byte/param, SR on every "
+@@ -339,6 +311,25 @@ def convert_quartet_to_master(model):
+     return master_params
+ 
+ 
++class QuartetMasterMixin:
++    """The int8-master Quartet forward: dequant_bridge gives the kernel a TRANSIENT bf16 view
++    of the int8 master (grad routes to weight.grad); storage stays 1-byte. Module-level so the
++    eval loader (pipeline.model_load.load_causal_ckpt_quartet) class-swaps identically."""
++
++    def forward(self, x, disable_backward_quant=False, input_abs_max=None):
++        from quartet2.linear import Quartet_II_fn, Quartet_II_pseudoquant_fn
++        from quartet_bridge import dequant_bridge
++        w = dequant_bridge(self.weight)
++        major, _ = torch.cuda.get_device_capability(x.device)
++        if major >= 10:
++            return Quartet_II_fn.apply(x, w, self.had, self.mode,
++                                       self.disable_backward_quant or disable_backward_quant,
++                                       self.weight_abs_max, input_abs_max, self.scratch_amax)
++        return Quartet_II_pseudoquant_fn.apply(x, w, self.had,
++                                               self.disable_backward_quant or disable_backward_quant,
++                                               self.mode == self.mode.FOUR_SIX)
++
++
+ # ── INT8 stochastic-rounding gradient accumulation ──────────────────────────────────────────────
+ # The gradients are the fattest transient chunk: every 2-D trainable param holds a bf16 .grad (2 B/param,
+ # ~3.8GB here) live across the grad-accum window. We fold each param's bf16 grad into a persistent INT8
+@@ -399,15 +390,31 @@ def build_model(cfg):
+     text_cfg = getattr(base_cfg, "text_config", base_cfg)
+     text_cfg._attn_implementation = "sdpa"
+     init = cfg.get("init_from")
++    if init and (C.ROOT / init / "quant_keys.json").is_file():
++        # int8-master checkpoint → NATIVE init: Quartet linears + int8 masters from the shard,
++        # no bf16 dequant round-trip (the precision law: bf16 weight residency is forbidden).
++        # swap_to_quartet / convert_quartet_to_master downstream no-op on the already-Quartet,
++        # already-master linears (isinstance / type checks), so the tail below is shared.
++        from pipeline.model_load import load_causal_ckpt_quartet
++        model = load_causal_ckpt_quartet(C.ROOT / init, device="cpu", requires_grad=True)
++        if cfg.get("freeze_embeddings"):
++            frozen = 0
++            for name, p in model.named_parameters():
++                if "embed" in name.lower():
++                    p.requires_grad_(False)
++                    frozen += p.numel()
++            log(f"froze {frozen/1e9:.2f}B embedding params (embed_tokens + PLE + tied lm_head)")
++        model.config.use_cache = not bool(cfg.get("gradient_checkpointing"))
++        if cfg.get("gradient_checkpointing"):
++            model.gradient_checkpointing_enable()
++        log(f"init_from: int8-master checkpoint '{init}' loaded natively (Quartet + int8 masters)")
++        return model
+     if init:
+-        # SFT / resumed CPT: a saved Gemma4ForCausalLM checkpoint (save_checkpoint) already has model.* +
+-        # lm_head keys — no multimodal remap. Route through the shared loader so an int8-master checkpoint
+-        # round-trips (dequant int8 _data × per-row scale → bf16); loading the raw int8 without its scale
+-        # would silently init from garbage weights. A plain bf16 checkpoint passes through unchanged.
+-        from pipeline.model_load import causal_bf16_state_dict
+-        remapped = causal_bf16_state_dict(C.ROOT / init)
+-        n_dropped = 0                                    # a saved CausalLM ckpt has no multimodal towers to drop
+-        log(f"init_from: loading CausalLM checkpoint '{init}' ({len(remapped)} tensors)")
++        # Plain (non-int8) checkpoints are not loadable under the precision law (2026-07-26):
++        # the bf16 round-trip (causal_bf16_state_dict) was deleted with the S4 legacy family.
++        raise ConfigError(
++            f"init_from '{init}' has no quant_keys.json — the precision law forbids the bf16 "
++            f"round-trip. Convert the artifact once (scripts/convert_base_int8.py) and init from that.")
+     else:
+         sd = load_file(f"{cfg['model_path']}/model.safetensors")
+         P = "model.language_model."
+@@ -664,34 +671,219 @@ def _cached_tokenizer(model_path):
+     return _TOKENIZER_CACHE[model_path]
+ 
+ 
+-def _save_bf16_hf(full_sd, cfg, out_dir):
+-    """Standard HF bf16 save (snap/bf16 runs + multi-GPU consolidation): round-trip through a fresh model
+-    so the dir is a plain from_pretrained checkpoint. Only used when there are NO int8-master weights."""
+-    from transformers import AutoConfig
+-    full_sd = {k: (v.dequantize().cpu() if hasattr(v, "dequantize") else v.cpu()) for k, v in full_sd.items()}
+-    if not full_sd:
+-        raise RuntimeError("consolidation returned an empty state dict on rank 0 — not saving")
+-    base_cfg = AutoConfig.from_pretrained(cfg["model_path"])
+-    tcfg = getattr(base_cfg, "text_config", base_cfg)
+-    tcfg._attn_implementation = "sdpa"
+-    out = Gemma4ForCausalLM(tcfg)
+-    missing, unexpected = out.load_state_dict(full_sd, strict=False)
+-    out.tie_weights()
+-    real_missing = [m for m in missing if "lm_head" not in m]
+-    stray = [u for u in unexpected if not any(t in u for t in (".k_proj", ".v_proj", ".k_norm"))]
+-    if real_missing or stray:
+-        raise RuntimeError(f"refusing to save broken checkpoint: missing={real_missing[:8]} stray={stray[:8]}")
+-    out.to(torch.bfloat16).save_pretrained(out_dir)
+-    _cached_tokenizer(cfg["model_path"]).save_pretrained(out_dir)
+-    log(f"saved bf16 checkpoint -> {out_dir}  (unexpected={len(unexpected)} all shared-KV)")
++
++# ── Save-time host-memory discipline ──────────────────────────────────────────
++# 2026-07-25: five unshielded CPT runs finished 450 steps then died in save_checkpoint.
++# whale-reaper journal (SIGTERM, unshielded python):
++#   s2_reasoning rss=15018MB  s3_r005 rss=16257MB  s3_r010 rss=9193MB
++#   s3_r020 rss=9071MB        s3_r030 rss=8219MB
++# Root cause: the int8 path built the FULL CPU state dict (every int8 weight + scale +
++# bf16 norm/embed) before safetensors.torch.save_file, so host RSS jumped from training
++# steady-state to ~2× during the gather — the unprotected whale class under ambient
++# pressure. Fix = (1) stream gather→write one tensor at a time so peak extra ≈ largest
++# tensor, not the sum; (2) preflight MemAvailable against a need derived from that
++# measured spike / the streaming peak, WAIT with backoff instead of dying mid-write.
++# Layout stays single model.safetensors + quant_keys.json (eval loaders unchanged).
++
++
++def _meminfo_bytes(field: str = "MemAvailable") -> int:
++    """Read one /proc/meminfo field (kB) as bytes. MemAvailable is the kernel's own
++    reclaimable-headroom estimate — same signal earlyoom/whale consult."""
++    with open("/proc/meminfo") as f:
++        for line in f:
++            if line.startswith(field + ":"):
++                return int(line.split()[1]) * 1024
++    raise RuntimeError(f"/proc/meminfo missing field {field!r}")
++
++
++def _tensor_nbytes(shape, dtype) -> int:
++    n = 1
++    for s in shape:
++        n *= int(s)
++    return n * torch.empty((), dtype=dtype).element_size()
++
++
++def _tensor_tobytes(tensor: torch.Tensor) -> bytes:
++    """Raw little-endian payload matching safetensors.torch._tobytes (no dtype tag)."""
++    import ctypes
++    import numpy as np
++    if tensor.device.type != "cpu":
++        tensor = tensor.detach().to("cpu", copy=True)
++    else:
++        tensor = tensor.detach()
++    tensor = tensor.contiguous()
++    total = tensor.numel() * tensor.element_size()
++    if total == 0 or tensor.data_ptr() == 0:
++        return b""
++    ptr = ctypes.cast(tensor.data_ptr(), ctypes.POINTER(ctypes.c_ubyte))
++    buf = np.ctypeslib.as_array(ptr, (total,))
++    # copy out so the tensor can be freed immediately after
++    return buf.tobytes()
++
++
++def _int8_save_entries(sd, int8_keys):
++    """Build (name, dtype_str, shape, nbytes, factory) entries WITHOUT gathering CPU data.
++    Factories run later, one at a time, during the streaming write."""
++    int8_set = set(int8_keys)
++    entries = []
++    for k, v in sd.items():
++        if k in int8_set:
++            idata = v.int_data
++            scale = v.scale
++            shape_i = tuple(idata.shape)
++            shape_s = tuple(scale.shape)
++            entries.append({
++                "name": k, "dtype_str": "I8", "shape": shape_i,
++                "nbytes": _tensor_nbytes(shape_i, torch.int8),
++                "factory": (lambda t=idata: t.detach()),
++            })
++            entries.append({
++                "name": k + ".weight_scale", "dtype_str": "BF16", "shape": shape_s,
++                "nbytes": _tensor_nbytes(shape_s, torch.bfloat16),
++                "factory": (lambda t=scale: t.detach().to(dtype=torch.bfloat16)),
++            })
++        else:
++            # norms / embeds / lm_head (frozen) — stored bf16, may already be on CPU (PLE offload)
++            shape = tuple(v.shape)
++            entries.append({
++                "name": k, "dtype_str": "BF16", "shape": shape,
++                "nbytes": _tensor_nbytes(shape, torch.bfloat16),
++                "factory": (lambda t=v: t.detach().to(dtype=torch.bfloat16)),
++            })
++    return entries
++
++
++def estimate_streaming_save_need_bytes(entries, headroom_bytes: int = 512 * 1024 ** 2) -> int:
++    """Watermark for the STREAMING path: peak extra host RAM ≈ largest single tensor
++    (gathered, written, freed) + small headroom. Derived from the entry sizes themselves
++    (the measured full-gather RSS spike of 9–16GB was sum(entries); streaming bound is max)."""
++    if not entries:
++        return headroom_bytes
++    largest = max(e["nbytes"] for e in entries)
++    # Also hold a small fraction of total as FS/page-cache slack so a quiet box isn't
++    # required to be emptier than the checkpoint itself.
++    total = sum(e["nbytes"] for e in entries)
++    return largest + min(total // 16, 1024 * 1024 ** 2) + headroom_bytes
++
++
++def save_preflight(need_bytes: int, *, timeout_s: float = 600.0, log_fn=None,
++                   sleep_fn=None, mem_fn=None) -> int:
++    """Block until MemAvailable >= need_bytes, or raise. Loud log on every wait.
++    sleep_fn/mem_fn are seams for the red-green synthetic-pressure test."""
++    log_fn = log_fn or log
++    sleep_fn = sleep_fn or time.sleep
++    mem_fn = mem_fn or _meminfo_bytes
++    attempt = 0
++    backoff = 5.0
++    deadline = time.time() + timeout_s
++    while True:
++        avail = int(mem_fn("MemAvailable"))
++        if avail >= need_bytes:
++            if attempt:
++                log_fn(f"save preflight: MemAvailable={avail / 1e9:.2f}GB >= need="
++                       f"{need_bytes / 1e9:.2f}GB — proceeding after {attempt} wait(s)")
++            else:
++                log_fn(f"save preflight: MemAvailable={avail / 1e9:.2f}GB >= need="
++                       f"{need_bytes / 1e9:.2f}GB — clear")
++            return avail
++        if time.time() >= deadline:
++            raise RuntimeError(
++                f"save preflight: timed out after {timeout_s:.0f}s waiting for "
++                f"{need_bytes / 1e9:.2f}GB free (MemAvailable={avail / 1e9:.2f}GB). "
++                f"Refusing to start a mid-write death — free host memory and retry."
++            )
++        attempt += 1
++        log_fn(
++            f"save preflight: WAITING — MemAvailable={avail / 1e9:.2f}GB < need="
++            f"{need_bytes / 1e9:.2f}GB (attempt {attempt}, sleep {backoff:.0f}s). "
++            f"Save will not start until headroom exists."
++        )
++        sleep_fn(backoff)
++        backoff = min(backoff * 1.5, 60.0)
++
++
++def _safetensors_key_order(entries):
++    """Match safetensors.torch.save_file header/data order for byte-identical files.
++
++    Observed rule for the int8-native path (I8 + 2-byte scales/norms only): wider
++    element size first, then tensor name ascending. (Full safetensors also subtypes
++    same-width dtypes; we only emit one 2-byte and one 1-byte kind.)"""
++    def sort_key(e):
++        width = 1 if e["dtype_str"] == "I8" else 2
++        return (-width, e["name"])
++    return [e["name"] for e in sorted(entries, key=sort_key)]
++
++
++def save_file_streaming(filename, entries, metadata=None):
++    """Write a safetensors file gathering ONE tensor at a time.
++
++    Byte layout matches safetensors.torch.save_file: size/name key order, 8-byte-aligned
++    header padded with spaces, little-endian u64 header size, contiguous tensor payloads.
++    Peak host RSS during the write ≈ max(entry.nbytes), not sum(entry.nbytes).
++    """
++    import struct
++    from pathlib import Path
++    by_name = {e["name"]: e for e in entries}
++    if len(by_name) != len(entries):
++        dupes = [e["name"] for e in entries if sum(1 for x in entries if x["name"] == e["name"]) > 1]
++        raise RuntimeError(f"duplicate tensor names in save entries: {sorted(set(dupes))[:8]}")
++    order = _safetensors_key_order(entries)
++    header = {}
++    if metadata:
++        # safetensors Rust serializes metadata keys in reverse-alphabetical order
++        # (observed: quant before format). Match for byte-identical files.
++        header["__metadata__"] = {
++            str(k): str(v) for k, v in sorted(metadata.items(), key=lambda kv: str(kv[0]), reverse=True)
++        }
++    offset = 0
++    for name in order:
++        e = by_name[name]
++        header[name] = {
++            "dtype": e["dtype_str"],
++            "shape": list(e["shape"]),
++            "data_offsets": [offset, offset + e["nbytes"]],
++        }
++        offset += e["nbytes"]
++    header_json = json.dumps(header, separators=(",", ":")).encode("utf-8")
++    pad = (8 - (len(header_json) % 8)) % 8
++    header_json = header_json + (b" " * pad)
++
++    path = Path(filename)
++    tmp = path.with_suffix(path.suffix + ".tmp")
++    written = 0
++    with open(tmp, "wb") as f:
++        f.write(struct.pack("<Q", len(header_json)))
++        f.write(header_json)
++        for name in order:
++            e = by_name[name]
++            tensor = e["factory"]()
++            if tuple(tensor.shape) != tuple(e["shape"]):
++                raise RuntimeError(
++                    f"save streaming shape drift on {name}: factory {tuple(tensor.shape)} "
++                    f"!= planned {tuple(e['shape'])}"
++                )
++            payload = _tensor_tobytes(tensor)
++            if len(payload) != e["nbytes"]:
++                raise RuntimeError(
++                    f"save streaming nbytes drift on {name}: got {len(payload)} planned {e['nbytes']}"
++                )
++            f.write(payload)
++            written += len(payload)
++            del payload, tensor
++    os.replace(tmp, path)
++    return written
+ 
+ 
+ def save_checkpoint(model, cfg, out_dir, rank, world):
+     """Save a Gemma4ForCausalLM checkpoint on rank 0. For an int8-master run, save the weights in their NATIVE
+     int8 form (int8 `_data` + per-row `scale`) — half the size, and crucially NO full-bf16 materialization: the
+     old path built a 9GB bf16 state dict AND a second 9GB fresh model (~18GB), the spike that got the run
+-    killed at the first save. The shared loader (pipeline.model_load.load_causal_ckpt_bf16) dequantizes int8
+-    checkpoints on load. bf16/snap runs (no int8 masters) keep the standard from_pretrained save."""
++    killed at the first save. The quartet loader (pipeline.model_load.load_causal_ckpt_quartet) runs int8
++    checkpoints on load. bf16/snap runs (no int8 masters) keep the standard from_pretrained save.
++
++    int8 path (2026-07-25+): STREAM gather→write (one tensor at a time) + host-memory SAVE PREFLIGHT
++    so save-time RSS stays near training steady-state instead of 2× it. Layout unchanged
++    (model.safetensors + quant_keys.json) — eval loaders do not change."""
+     import json as _json
+     import copy
+     from pathlib import Path
+@@ -700,34 +892,40 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
+         from torch.distributed.checkpoint.state_dict import get_model_state_dict, StateDictOptions
+         full_sd = get_model_state_dict(model, options=StateDictOptions(full_state_dict=True, cpu_offload=True))
+         if rank == 0:
+-            _save_bf16_hf(full_sd, cfg, out_dir)
++            raise ConfigError(
++                "world>1 FSDP saves write bf16 — unsupported under the precision law (2026-07-26). "
++                "int8-master storage is single-GPU; run world=1 with int8_master:storage.")
+         return
+     if rank != 0:
+         return
+     sd = model.state_dict()
+     int8_keys = [k for k, v in sd.items() if hasattr(v, "int_data") and hasattr(v, "scale")]
+-    if not int8_keys:                                   # bf16/snap run → unchanged standard HF save
+-        _save_bf16_hf({k: v.cpu() for k, v in sd.items()}, cfg, out_dir)
+-        return
+-    # int8-master run → frugal native-int8 save (no fresh model, no full bf16 copy)
+-    from safetensors.torch import save_file
+-    out_sd = {}
+-    for k, v in sd.items():
+-        if k in set(int8_keys):
+-            out_sd[k] = v.int_data.detach().cpu()                              # int8, 1 byte/param
+-            out_sd[k + ".weight_scale"] = v.scale.detach().cpu().to(torch.bfloat16)   # per-output-row scale
+-        else:
+-            out_sd[k] = v.detach().cpu().to(torch.bfloat16)                    # norms / embeds / lm_head (frozen)
++    if not int8_keys:
++        raise ConfigError(
++            "no int8 masters in this run (int8_master:snap/off) — unsupported under the precision law "
++            "(2026-07-26): bf16 saves are gone. Run int8_master:storage.")
++    # int8-master run → STREAMING native-int8 save (no full CPU state dict, no fresh model)
++    entries = _int8_save_entries(sd, int8_keys)
++    need = estimate_streaming_save_need_bytes(entries)
++    # Full-gather spike measured 9–16GB RSS (journal 2026-07-25). Streaming need is max-tensor
++    # sized; still refuse to start when the box is below that watermark.
++    save_preflight(need)
+     out_dir.mkdir(parents=True, exist_ok=True)
+-    save_file(out_sd, str(out_dir / "model.safetensors"), metadata={"format": "pt", "quant": "int8_rowwise"})
++    written = save_file_streaming(
++        out_dir / "model.safetensors",
++        entries,
++        metadata={"format": "pt", "quant": "int8_rowwise"},
++    )
+     tcfg = copy.deepcopy(model.config)          # in-memory config — never re-read model_path/config.json at
+     tcfg._attn_implementation = "sdpa"          # save time (that disk read, under FS pressure from the 8.6GB
+     tcfg.architectures = ["Gemma4ForCausalLM"]  # weight write, is what crashed the step-3100 save of the v2 run).
+     tcfg.save_pretrained(out_dir)
+     (out_dir / "quant_keys.json").write_text(_json.dumps({"method": "int8_rowwise", "keys": int8_keys}))
+     _cached_tokenizer(cfg["model_path"]).save_pretrained(out_dir)
+-    gb = sum(t.numel() * t.element_size() for t in out_sd.values()) / 1e9
+-    log(f"saved int8 checkpoint -> {out_dir}  ({len(int8_keys)} int8 weights + scales, {gb:.1f}GB on disk, no bf16 materialization)")
++    gb = written / 1e9
++    largest = max(e["nbytes"] for e in entries) / 1e9
++    log(f"saved int8 checkpoint -> {out_dir}  ({len(int8_keys)} int8 weights + scales, "
++        f"{gb:.1f}GB on disk, streaming peak_tensor={largest:.2f}GB, no full-gather)")
+ 
+ 
+ def run_contract(typed, cfg, save_dir, world, smoke_steps):
+@@ -1024,7 +1222,7 @@ def main():
+                 torch.nn.utils.clip_grad_norm_(params, cfg["grad_clip"])
+             opt.step()                      # updates everything incl. int8 masters (subclass intercepts add_/addcdiv_ → SR)
+             if int8_master_on:
+-                _sr_int8_master(params)     # legacy snap: constrain bf16 weights to the INT8 grid (SR)
++                raise ConfigError("int8_master:snap (bf16-grid SR) is retired under the precision law — use int8_master:storage")
+             opt.zero_grad(set_to_none=True)
+             if gctl is not None:
+                 gctl.reset()                # empty the accumulator for the next window

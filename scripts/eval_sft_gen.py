@@ -17,7 +17,7 @@ import torch
 from transformers import AutoTokenizer
 
 import config as C
-from pipeline.model_load import load_causal_ckpt_bf16
+from pipeline.model_load import load_causal_ckpt_quartet
 
 PROMPTS = [
     "Where is EDC Las Vegas 2026 held?",
@@ -46,7 +46,7 @@ def main():
     tok = AutoTokenizer.from_pretrained(str(C.MODEL_PATH))
     for ck in args.checkpoints:
         print(f"\n========== {ck.split('/')[-1]} ==========")
-        m = load_causal_ckpt_bf16(ck, args.device)
+        m = load_causal_ckpt_quartet(ck, args.device)
         for q in PROMPTS:
             print(f"  Q: {q}\n     A: {answer(m, tok, q)!r}")
         del m

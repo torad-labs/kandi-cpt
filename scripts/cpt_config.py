@@ -129,6 +129,19 @@ class Lever4ExposureTracking:
     enabled: bool = False
     threshold: float = 0.8              # DEAD: zero reads in train_cpt.py (only `enabled` is wired); kept for back-compat
 
+    # Worse than a fully-inert lever: lever4 IS wired, so an operator tuning `threshold` has every
+    # reason to believe it took effect, and nothing anywhere contradicts them. The default stays
+    # loadable (every shipped YAML carries 0.8) — MOVING it off the default is what fails, because
+    # that is the only case where someone meant it to do something.
+    def __post_init__(self) -> None:
+        default = next(f for f in fields(self) if f.name == "threshold").default
+        if self.threshold != default:
+            raise ConfigError(
+                f"levers.lever4_exposure_tracking.threshold={self.threshold} but the trainer never "
+                f"reads it (only .enabled is wired), so tuning it changes nothing while the run "
+                f"record reports the new value. Leave it at {default} until it is wired."
+            )
+
 
 @dataclass
 class Lever5CausalTrace:
@@ -149,6 +162,26 @@ class LeversConfig:
     lever4_exposure_tracking: Lever4ExposureTracking = field(default_factory=Lever4ExposureTracking)
     lever5_causal_trace: Lever5CausalTrace = field(default_factory=Lever5CausalTrace)
 
+    # Declaring an intervention that no code reads is an experiment-integrity hazard: the config,
+    # the run record and the receipt all say the lever was on, and nothing in the pipeline can
+    # contradict them. Loading the subtree stays legal (34 YAMLs carry it, all disabled) —
+    # ENABLING an unimplemented one is what fails, and it fails at config load, before any GPU
+    # time is spent. Delete an entry here the same commit its lever becomes wired in train_cpt.py.
+    _INERT_LEVERS = (
+        ("lever2_qa_mix", "QA/instruction token mixing is not implemented by train_cpt.py"),
+        ("lever3_three_r", "re-warm / replay / EWC (three-R) is not implemented by train_cpt.py"),
+        ("lever5_causal_trace", "causal tracing is not implemented by train_cpt.py"),
+    )
+
+    def __post_init__(self) -> None:
+        for name, reason in self._INERT_LEVERS:
+            if getattr(getattr(self, name), "enabled", False):
+                raise ConfigError(
+                    f"levers.{name}.enabled=true but {reason}. This config would report an "
+                    f"intervention that never ran. Set it to false, or wire the lever and remove "
+                    f"it from LeversConfig._INERT_LEVERS in the same commit."
+                )
+
 
 @dataclass
 class AnnealConfig:
@@ -166,10 +199,22 @@ class AnnealConfig:
     lr_end: float = 0.0                 # LR target at anneal end (linear decay from base lr)
     require_exposure: bool = True       # print pre-anneal exposure check; warn if lever4 off
     keep_pre_anneal_checkpoint: bool = True  # save pre-anneal/ as fallback; anneal-end is eval candidate
+    # Anneal composition, made EXPLICIT. Keeping every replay block while cutting domain by quality
+    # raises the replay share (9.09% -> ~16.7% at a median cut), so the educational filter was
+    # acting as an unstated replay schedule. Defaults reproduce that exact prior behaviour;
+    # setting replay_fraction turns it into a declared target instead of a side effect.
+    domain_quality_quantile: float = 0.50    # 0.5 == the median cut this replaced
+    replay_fraction: float | None = None     # None = keep all replay (prior); else target share
 
     def __post_init__(self) -> None:
         if not 0 < self.frac <= 0.5:
             raise ConfigError(f"train.anneal.frac({self.frac}) must be in (0, 0.5]")
+        if not 0 <= self.domain_quality_quantile < 1:
+            raise ConfigError(
+                f"train.anneal.domain_quality_quantile({self.domain_quality_quantile}) must be in [0,1)")
+        if self.replay_fraction is not None and not 0 <= self.replay_fraction < 1:
+            raise ConfigError(
+                f"train.anneal.replay_fraction({self.replay_fraction}) must be in [0,1) or null")
         if self.min_steps < 1:
             raise ConfigError("train.anneal.min_steps must be >= 1")
         if self.lr_end < 0:
@@ -227,8 +272,14 @@ class TrainConfig:
         if self.grad_clip < 0:
             raise ConfigError("train.grad_clip must be >= 0")
         if self.optimizer_8bit:
-            warnings.warn("train.optimizer_8bit is DEAD config — never read by the trainer; "
-                          "the real switch is train.optimizer_lowbit. Remove it.", DeprecationWarning, stacklevel=3)
+            # Was a DeprecationWarning. A warning in a log is not a gate: the run proceeded and the
+            # record still said 8-bit optimizer was on. Same integrity rule as the inert levers —
+            # a config must never represent an intervention the trainer cannot perform.
+            raise ConfigError(
+                "train.optimizer_8bit=true is DEAD config — never read by the trainer, so the run "
+                "would report an optimizer setting that never took effect. The real switch is "
+                "train.optimizer_lowbit. Remove the key or set it false."
+            )
 
 
 # ─────────────────────────────────────────────────────────────────────────────

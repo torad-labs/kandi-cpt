@@ -19,7 +19,7 @@ def test_sft_calibration_returns_nonzero_on_failed_verdict() -> None:
         original_argv = sys.argv
         original_build_probes = calibration.build_probes
         original_tokenizer = calibration.AutoTokenizer.from_pretrained
-        original_load = calibration.load_causal_ckpt_bf16
+        original_load = calibration.load_causal_ckpt_quartet
         original_generate = calibration.generate
         original_score = calibration.score
         original_empty_cache = calibration.torch.cuda.empty_cache
@@ -27,7 +27,7 @@ def test_sft_calibration_returns_nonzero_on_failed_verdict() -> None:
         C.MODEL_PATH = root
         calibration.build_probes = lambda *_: []
         calibration.AutoTokenizer.from_pretrained = lambda *_args, **_kwargs: object()
-        calibration.load_causal_ckpt_bf16 = lambda *_: object()
+        calibration.load_causal_ckpt_quartet = lambda *_: object()
         calibration.generate = lambda *_: []
         calibration.score = lambda *_: {
             "metrics": {
@@ -52,7 +52,7 @@ def test_sft_calibration_returns_nonzero_on_failed_verdict() -> None:
             sys.argv = original_argv
             calibration.build_probes = original_build_probes
             calibration.AutoTokenizer.from_pretrained = original_tokenizer
-            calibration.load_causal_ckpt_bf16 = original_load
+            calibration.load_causal_ckpt_quartet = original_load
             calibration.generate = original_generate
             calibration.score = original_score
             calibration.torch.cuda.empty_cache = original_empty_cache

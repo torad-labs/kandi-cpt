@@ -103,11 +103,12 @@ def main() -> None:
             sys.exit(0 if dual["status"] in ("PASS", "PROVISIONAL") else 1)
         sys.exit(0 if fc_report["status"] == "PASS" else 1)
 
-    rc = 0
-    for ckpt in args.checkpoints:
-        rc |= _run([PY, "scripts/eval_cpt.py", "--checkpoint", ckpt])
-    rc |= _run([PY, "scripts/eval_cloze.py", "--checkpoints", *args.checkpoints, "--device", e.device])
-    sys.exit(rc)
+    sys.exit(
+        "mode=cpt without eval.probe_domain: the era-tagged eval_cpt.py path was retired "
+        "in the bf16 purge (2026-07-26). Configure eval.probe_domain/probe_editions and the "
+        "generic probe path (run_probe_comparison) handles the eval natively. "
+        "scripts/eval_cloze.py remains available for cloze dispatch."
+    )
 
 
 if __name__ == "__main__":

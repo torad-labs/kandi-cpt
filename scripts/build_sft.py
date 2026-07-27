@@ -773,8 +773,8 @@ def main():
     # knowledge scoring (GPU) — enables knowledge-filter / self-gen / unknown→abstain
     if args.score_model:
         import torch
-        from pipeline.model_load import load_causal_ckpt_bf16
-        m = load_causal_ckpt_bf16(args.score_model, args.device)   # int8-aware: dequantizes an int8-master CPT ckpt (raw from_pretrained would score against garbage int8-as-bf16 weights)
+        from pipeline.model_load import load_causal_ckpt_quartet
+        m = load_causal_ckpt_quartet(args.score_model, args.device)   # int8-aware: dequantizes an int8-master CPT ckpt (raw from_pretrained would score against garbage int8-as-bf16 weights)
         score_knownness(m, tok, cands, args.score_samples, args.score_batch)
         del m; torch.cuda.empty_cache()
         for c in cands:

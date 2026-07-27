@@ -41,7 +41,7 @@ from transformers import AutoTokenizer
 
 import config as C
 from pipeline.editions import iter_editions
-from pipeline.model_load import load_causal_ckpt_bf16
+from pipeline.model_load import load_causal_ckpt_quartet
 from build_sft import synth_unanswerable   # reuse the unanswerable synthesizer
 
 
@@ -389,7 +389,7 @@ def main() -> int:
     ledger = out_dir / "calibration_results.jsonl"
     runs = []
     for ck, label in zip(args.checkpoints, labels):
-        m = load_causal_ckpt_bf16(ck, args.device)
+        m = load_causal_ckpt_quartet(ck, args.device)
         responses = generate(m, tok, probes, args.batch)
         del m; torch.cuda.empty_cache()
         res = score(probes, responses, args.tau_fab, args.tau_acc, args.tau_cov)

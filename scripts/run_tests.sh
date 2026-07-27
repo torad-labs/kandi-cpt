@@ -15,6 +15,17 @@ export PYTHONPATH=scripts
 export CUDA_VISIBLE_DEVICES=""
 
 fail=0
+
+# the precision-law gate (operator law 2026-07-26): bf16 usage confined to declared seams
+printf '%-46s ' "check_no_bf16.sh"
+if out=$(bash scripts/qgre/check_no_bf16.sh 2>&1); then
+    echo "PASS"
+else
+    echo "FAIL"
+    echo "$out" | tail -6
+    fail=1
+fi
+
 for t in scripts/pipeline/test_*.py; do
     printf '%-46s ' "$(basename "$t")"
     if out=$("$PY" "$t" 2>&1); then

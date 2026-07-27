@@ -19,7 +19,7 @@ import sys
 import torch
 from datasets import load_from_disk
 
-from pipeline.model_load import load_causal_ckpt_bf16
+from pipeline.model_load import load_causal_ckpt_quartet
 
 
 @torch.no_grad()
@@ -47,7 +47,7 @@ def main():
     print(f"val set: {len(ds)} examples\n")
     results = {}
     for ck in args.checkpoints:
-        m = load_causal_ckpt_bf16(ck, args.device)
+        m = load_causal_ckpt_quartet(ck, args.device)
         vl = val_loss(m, ds, args.device)
         results[ck] = vl
         print(f"  {ck.split('/')[-1]:>16}  val_loss={vl:.4f}")

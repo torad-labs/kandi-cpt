@@ -240,17 +240,46 @@ def load_probe_corpus(domain: str, editions: str, tokenized: str) -> ProbeCorpus
     )
 
 
+def release_eval_model() -> None:
+    """Return host pages to the OS after a scored model is freed. CALLER MUST `del model`
+    FIRST — deleting a binding inside this helper would release only the helper's own
+    reference, leaving the caller's GPU tensor alive (that bug OOM'd the probe loop:
+    12.56GiB still allocated at the candidate's .to(device), 2026-07-26).
+
+    del + empty_cache alone releases VRAM, but glibc keeps the freed host weights in its
+    arenas, so the next model load spikes RSS on top of the residue — the whale-reaper
+    SIGTERM'd exactly such a load at rss=20GB / avail=6% (s3_r005 GA, 2026-07-26).
+    malloc_trim(0) hands the arena pages back to the kernel."""
+    import ctypes
+    import gc
+
+    import torch
+
+    gc.collect()
+    torch.cuda.empty_cache()
+    try:
+        ctypes.CDLL("libc.so.6").malloc_trim(0)
+    except OSError:
+        pass
+
+
 def load_model(path: str, device: str):
-    """Load base vanilla or an engine int8-master checkpoint through its dequantizing loader."""
+    """Load base vanilla or an engine int8-master checkpoint through its dequantizing loader.
+
+    Base MUST go through the text-only remap (pipeline.model_load.load_text_model_bf16).
+    AutoModelForCausalLM.from_pretrained on the multimodal gemma-4-E2B-it checkpoint
+    materializes the full tower (~13GB on a 16GB card) and leaves no headroom for the
+    subsequent tuned load — OOM'd every FC fill attempt on 2026-07-26 (s2_reasoning).
+    """
     from transformers import AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(path)
     if (_rooted(path) / "quant_keys.json").exists():
-        from pipeline.model_load import load_causal_ckpt_bf16
-        model = load_causal_ckpt_bf16(path, device)
+        from pipeline.model_load import load_causal_ckpt_quartet
+        model = load_causal_ckpt_quartet(path, device)
     else:
-        from transformers import AutoModelForCausalLM
-        model = AutoModelForCausalLM.from_pretrained(path, torch_dtype="auto", device_map=device)
+        from pipeline.model_load import load_text_model_bf16
+        model = load_text_model_bf16(device)
     model.eval()
     return tokenizer, model
 
@@ -280,8 +309,21 @@ def choice_logprob(tokenizer, model, device: str, prompt: str, choice: str) -> f
         return float("-inf")
     full_ids = torch.cat((prompt_ids, choice_ids), dim=1)
     n_choice = choice_ids.shape[1]
+    attention_mask = None
+    if getattr(model, "_quartet_eval", False):
+        # The Quartet fp4 GEMM requires the flattened token dim to be a multiple of 128
+        # (training always runs seq_len=512). Left-pad so the last position stays the real
+        # last token; the mask keeps pad tokens out of attention.
+        pad = (-full_ids.shape[1]) % 128
+        if pad:
+            pad_id = tokenizer.pad_token_id or tokenizer.eos_token_id
+            full_ids = torch.cat(
+                [torch.full((1, pad), pad_id, dtype=full_ids.dtype, device=device), full_ids], dim=1)
+            attention_mask = torch.cat(
+                [torch.zeros((1, pad), dtype=torch.long, device=device),
+                 torch.ones((1, full_ids.shape[1] - pad), dtype=torch.long, device=device)], dim=1)
     with torch.no_grad():
-        logits = model(full_ids).logits[0, :-1]
+        logits = model(full_ids, attention_mask=attention_mask).logits[0, :-1]
         targets = full_ids[0, 1:]
         logprobs = torch.log_softmax(logits, dim=-1)
         picked = logprobs[torch.arange(len(targets)), targets][-n_choice:]
@@ -557,7 +599,12 @@ def build_report(
 
 
 def run_probe_comparison(config, config_path: str | Path, checkpoint: str) -> tuple[Path, dict[str, Any]]:
-    import torch
+    # Tolerate a raw yaml.safe_load dict (ad-hoc drivers): re-load through the typed
+    # config so attribute access below (config.eval/.data/.model/.run) cannot crash.
+    if isinstance(config, dict):
+        from cpt_config import CptConfig
+
+        config = CptConfig.from_yaml(config_path)
 
     eval_config = config.eval
     corpus = load_probe_corpus(eval_config.probe_domain, eval_config.probe_editions, config.data.tokenized)
@@ -566,7 +613,7 @@ def run_probe_comparison(config, config_path: str | Path, checkpoint: str) -> tu
         tokenizer, model = load_model(path, eval_config.device)
         scored[name] = evaluate_model(tokenizer, model, eval_config.device, corpus.probes)
         del model
-        torch.cuda.empty_cache()
+        release_eval_model()
 
     report = build_report(
         run_name=config.run.run_name,

@@ -40,6 +40,51 @@ fp4 full-param recipe below. Trust this file + `docs/` + the manifests for the c
 holds an `O_EXCL` GPU lock (`data/_build/gpu.lock`) so an agent physically can't launch a second. GPU 1 is
 for QGRE/training; GPU 0 is sacred (serve + SFT). Global CLAUDE.md §8 (process-safety checks) applies.
 
+## The bf16 purge + v2 format (operator law, 2026-07-26)
+
+§1's precision law, made structural: **no bf16 weight residency or storage anywhere in the loop** — not
+"preferred low precision" but *bf16 does not exist as a residency choice* (brain law: "there is no place
+where bf16 is required — it's a choice"). What that means concretely:
+
+- **The eval instrument IS the training forward.** `pipeline.model_load.load_causal_ckpt_quartet` loads
+  int8 masters straight into the torchao subclass and runs the **Quartet fp4 GEMM forward** — never a
+  bf16 decode of the model. The scorer pads prompts to the fp4 kernel's 128-token multiple
+  (`model._quartet_eval`); generation uses `_greedy_generate_quartet` (full-prefix recompute + pad —
+  `model.generate` breaks the kernel's shape assert). Instrument numbers carry a stable ~−3.5pt offset
+  vs the old bf16-decode series; series going forward are quartet-native, bf16 series are history.
+- **Format v2** (`int8_rowwise_v2`): ALL layers' linears int8 (the v1 first-2/last-5 exemption is gone),
+  embeddings (embed_tokens + PLE) int8 rowwise, **all scales fp8 e4m3** (scales cast to bf16 at load —
+  e4m3 ⊂ bf16, exact; fp8 is storage-only). Base artifact: `models/gemma-4-E2B-it-int8-v2` (4.4GB vs
+  9.3GB bf16; 4.64GB GPU-resident).
+- **Convert ONCE, GPU-side.** `scripts/convert_base_int8.py` (base) and `scripts/convert_ckpt_v2.py`
+  (trained checkpoints; masters pass through byte-identical) stream per-tensor: pread read → **quantize
+  on GPU** (`quantize_int8_rowwise` is device-independent — bit-identical) → stream write. Row-chunked
+  above 1.5GB so the 4.7GB PLE can't OOM the card. Per-run bf16 ingestion is dead; `build_model`
+  init_from loads int8 checkpoints natively.
+- **The gate**: `scripts/qgre/check_no_bf16.sh` (wired into `run_tests.sh`) FAILS any code-level bf16
+  usage outside declared seams S1–S5 (ingestion seams, kernel-seam transients, selective-precision
+  design, removed legacy, declared legacy instruments). New bf16 work happens in the open or not at all.
+  Removed legacy (reintroduction fails): causal_bf16_state_dict, load_causal_ckpt_bf16/int8,
+  Int8ScaledLinear, _save_bf16_hf, _sr_int8_master, eval_cpt.py. world>1 FSDP saves, int8_master:snap,
+  and plain-checkpoint init all FAIL LOUD now — int8_master:storage, single-GPU, is the only path.
+- **CUDA_HOME must be a cu13 toolkit** (`/usr/local/cuda-13.3`): the session baseline is toolkit-less
+  12.8 and the flashinfer JIT cache was built with 13.3 — without it the fp4 kernel "rebuilds" and dies
+  (`nvcc: not found`). Set it in every eval/quartet invocation.
+- **Load reliability laws** (the 2026-07-25/26 incident nights): streaming save + `save_preflight` +
+  oom-shield on the trainer (5/5 saves survived); pread-based shard reads (`_SafetensorsRead`) — mmap
+  keeps shard pages in VmRSS = the whale-reaper's metric, and `posix_fadvise(DONTNEED)` cannot evict
+  mapped pages (proven no-op here); `release_eval_model()` only works when the CALLER deletes its
+  binding first.
+- **Orchestration discipline**: heavy jobs run in DETACHED scopes (`systemd-run --user --scope` + memory
+  cap + oom-shield) monitored by log tails — never terminal-hogging foreground GPU jobs. Receipt-carrying
+  eval work gets oom-shield (the die-first evalgate class is for expendable work only).
+- **Replay semantics correction** (external review, confirmed on the stats): `--replay-frac r` computes
+  replay = domain × r, so the realized final share is **r/(1+r)** (nominal 5/10/20/30% → realized
+  4.76/9.09/16.67/23.08%). Receipts fit on realized; stamp both.
+- **Pending recipe migrations** (declared, not defaulted): e4m3 masters (#916 target), S5 instruments
+  (eval_voice re-baseline, geometry_probe re-derive, roberta embedders stay), eval side-effects of the
+  v2 re-baseline on the sensitivity exemption (evidence over prior, always).
+
 ## The pipeline (the stage-DAG)
 
 `run_pipeline.py --domain <d>` reads `configs/domains/<d>.yaml`'s `stages:` (argv templates) and runs them.

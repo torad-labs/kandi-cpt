@@ -19,7 +19,7 @@ import torch
 from transformers import AutoTokenizer
 
 import config as C
-from pipeline.model_load import load_causal_ckpt_bf16
+from pipeline.model_load import load_causal_ckpt_quartet
 
 
 @torch.no_grad()
@@ -45,7 +45,7 @@ def main() -> None:
     ap.add_argument("--max-new", type=int, default=64)
     a = ap.parse_args()
     tok = AutoTokenizer.from_pretrained(str(C.MODEL_PATH), use_fast=True)
-    model = load_causal_ckpt_bf16(a.checkpoint, a.device)
+    model = load_causal_ckpt_quartet(a.checkpoint, a.device)
     print(json.dumps({"answer": answer(model, tok, a.prompt, a.temp, a.top_k, a.max_new)}))
 
 

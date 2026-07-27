@@ -1,0 +1,59 @@
+{
+  "schema": "kandi.spend_batch.v1",
+  "campaign": "phase_s2_reasoning_dual_axis",
+  "recorded_at": "2026-07-26T07:51:18.267277+00:00",
+  "status": "FAIL_NO_EVAL",
+  "headline": "S2 reasoning CPT shielded re-run; ckpt=yes; install delta vs anneal before-arm=None; Axis-B multi-hop shapes in corpus hops={'2': 629, '3': 221, 'other': 0}",
+  "save_fix": {
+    "streaming": true,
+    "preflight": true,
+    "oom_shield": true,
+    "prior_kill_class": "2026-07-25 whale-reaper SIGTERM at save: s2 rss=15018MB (journal: whale-reaper SIGTERM pid=880220 train_pokemon_lore_kanto_s2_reasoning)"
+  },
+  "checkpoint": {
+    "dir": "checkpoints/cpt/pokemon_lore_kanto_s2_reasoning",
+    "model_safetensors": true,
+    "quant_keys": true,
+    "bytes": 8584366406,
+    "quant_method": "int8_rowwise",
+    "n_int8_keys": 223
+  },
+  "axis_b": {
+    "definition": "multi-hop walk shapes (chain / path_3 / shared_object / shared_subject) \u2014 composition channel absent from per-triple hydrate floor",
+    "corpus_hop_counts": {
+      "2": 629,
+      "3": 221,
+      "other": 0
+    },
+    "before_arm": {
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_anneal",
+      "source": "logs/phase_f_split_v2_dual_axis.json",
+      "forced_choice": {
+        "tuned_acc": 0.7012987012987013,
+        "base_acc": 0.2727272727272727,
+        "n": 77,
+        "wilson": {
+          "low": 0.5915055578793433,
+          "high": 0.7919610501238326,
+          "center": 0.691733304001588,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "n_status": "ok",
+        "delta_acc": 0.4285714285714286,
+        "estimand": "augmentation_holdout",
+        "status": "PASS"
+      },
+      "dual_axis_status": "FAIL"
+    },
+    "after_arm": {
+      "ckpt": "checkpoints/cpt/pokemon_lore_kanto_s2_reasoning",
+      "probe_eval": null,
+      "ga": null
+    },
+    "delta_tuned_acc": null,
+    "rule": "FAIL if install regresses vs before arm (delta < -0.02)"
+  },
+  "estimand": "install-strength dual-axis ablation (reasoning surface on vs before arm without)",
+  "verdict": "FAIL_NO_EVAL"
+}

@@ -85,8 +85,7 @@ def score_install_slice(
     device: str,
     probes: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    from eval_probes import evaluate_model, load_model, summarize_hits
-    import torch
+    from eval_probes import evaluate_model, load_model, release_eval_model, summarize_hits
 
     # probes need choices/answer/question
     clean = []
@@ -106,7 +105,7 @@ def score_install_slice(
         hits = evaluate_model(tokenizer, model, device, clean)
     finally:
         del model
-        torch.cuda.empty_cache()
+        release_eval_model()
     summary = summarize_hits(clean, hits, min_n=1, estimand="sentinel_install_slice")
     return {
         "hits": summary["hits"],
@@ -134,8 +133,7 @@ def score_sentinel_model(
     Loading a 4.63B int8-master checkpoint is the dominant host-memory and I/O cost. The two
     estimands remain separate; only their shared immutable model load is coalesced.
     """
-    import torch
-    from eval_probes import evaluate_model, load_model, summarize_hits
+    from eval_probes import evaluate_model, load_model, release_eval_model, summarize_hits
 
     clean = [
         {
@@ -158,7 +156,7 @@ def score_sentinel_model(
         )
     finally:
         del model
-        torch.cuda.empty_cache()
+        release_eval_model()
     return {
         "install": {
             "hits": install_summary["hits"],
@@ -172,6 +170,34 @@ def score_sentinel_model(
         },
         "general_ability": {**general, "model_path": model_path},
     }
+
+
+def _greedy_generate_quartet(tokenizer, model, device, input_ids, max_new_tokens: int):
+    """Greedy generation for a Quartet-fp4 model: full-prefix recompute each step (the saved
+    config has use_cache=False), left-padded to the fp4 kernel's 128-token multiple with an
+    attention mask. Semantics match model.generate(do_sample=False)."""
+    import torch
+
+    ids = input_ids
+    pad_id = tokenizer.pad_token_id or tokenizer.eos_token_id
+    eos = getattr(tokenizer, "eos_token_id", None)
+    for _ in range(max_new_tokens):
+        pad = (-ids.shape[1]) % 128
+        if pad:
+            ids_in = torch.cat(
+                [torch.full((1, pad), pad_id, dtype=ids.dtype, device=device), ids], dim=1)
+            mask = torch.cat(
+                [torch.zeros((1, pad), dtype=torch.long, device=device),
+                 torch.ones((1, ids.shape[1]), dtype=torch.long, device=device)], dim=1)
+        else:
+            ids_in, mask = ids, None
+        with torch.no_grad():
+            logits = model(ids_in, attention_mask=mask).logits[0, -1]
+        nxt = int(logits.argmax())
+        ids = torch.cat([ids, torch.tensor([[nxt]], device=device)], dim=1)
+        if eos is not None and nxt == eos:
+            break
+    return ids
 
 
 def _score_general_loaded(tokenizer, model, *, device: str, items: list[dict[str, Any]],
@@ -196,13 +222,17 @@ def _score_general_loaded(tokenizer, model, *, device: str, items: list[dict[str
         if not text_in:
             text_in = f"Q: {prompt}\nA:"
         encoded = tokenizer(text_in, return_tensors="pt").to(device)
-        with torch.no_grad():
-            output = model.generate(
-                **encoded,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-                pad_token_id=getattr(tokenizer, "eos_token_id", None),
-            )
+        if getattr(model, "_quartet_eval", False):
+            output = _greedy_generate_quartet(
+                tokenizer, model, device, encoded["input_ids"], max_new_tokens)
+        else:
+            with torch.no_grad():
+                output = model.generate(
+                    **encoded,
+                    max_new_tokens=max_new_tokens,
+                    do_sample=False,
+                    pad_token_id=getattr(tokenizer, "eos_token_id", None),
+                )
         completion = tokenizer.decode(
             output[0][encoded["input_ids"].shape[1]:], skip_special_tokens=True,
         ).strip()
@@ -223,8 +253,7 @@ def score_general_ability(
     domain: str,
     max_new_tokens: int = 32,
 ) -> dict[str, Any]:
-    import torch
-    from eval_probes import load_model
+    from eval_probes import load_model, release_eval_model
 
     tokenizer, model = load_model(model_path, device)
     try:
@@ -233,7 +262,7 @@ def score_general_ability(
         )
     finally:
         del model
-        torch.cuda.empty_cache()
+        release_eval_model()
     return {**result, "model_path": model_path}
 
 

@@ -158,6 +158,73 @@ def test_live_configs_load_through_contract():
             assert k in td, f"{path}: trainer_dict missing {k}"
 
 
+def test_inert_levers_fail_closed():
+    """A config must never report an intervention that no code path executes.
+
+    lever2/lever3/lever5 are declared-but-inert. Loading the subtree stays legal — 34 shipped YAMLs
+    carry it — but ENABLING one must raise at config load, before any GPU time is spent, rather
+    than producing a run record that claims the lever was on.
+    """
+    from cpt_config import (Lever1EntityLoss, Lever2QaMix, Lever3ThreeR, Lever4ExposureTracking,
+                            Lever5CausalTrace, LeversConfig)
+
+    for name, cls in (("lever2_qa_mix", Lever2QaMix),
+                      ("lever3_three_r", Lever3ThreeR),
+                      ("lever5_causal_trace", Lever5CausalTrace)):
+        try:
+            LeversConfig(**{name: cls(enabled=True)})
+        except ConfigError as exc:
+            assert name in str(exc) and "not implemented" in str(exc), str(exc)
+        else:
+            raise AssertionError(f"{name}.enabled=true was accepted — an unrun lever would be "
+                                 f"reported as an active intervention")
+
+    # Declared-but-disabled must still load: that is why the subtree exists at all.
+    LeversConfig(lever2_qa_mix=Lever2QaMix(enabled=False),
+                 lever3_three_r=Lever3ThreeR(enabled=False),
+                 lever5_causal_trace=Lever5CausalTrace(enabled=False))
+    # And the two WIRED levers must remain enable-able, or this guard has over-reached.
+    wired = LeversConfig(lever1_entity_loss=Lever1EntityLoss(enabled=True),
+                         lever4_exposure_tracking=Lever4ExposureTracking(enabled=True))
+    assert wired.lever1_entity_loss.enabled and wired.lever4_exposure_tracking.enabled
+
+    # Every name in the inert list must be a real field, or the guard silently protects nothing.
+    fields = set(LeversConfig.__dataclass_fields__)
+    for name, _reason in LeversConfig._INERT_LEVERS:
+        assert name in fields, f"_INERT_LEVERS names {name}, which is not a LeversConfig field"
+
+
+def test_dead_optimizer_switch_fails_closed():
+    """A DeprecationWarning is not a gate: the run proceeded and the record still claimed 8-bit."""
+    from cpt_config import TrainConfig
+
+    try:
+        TrainConfig(optimizer_8bit=True)
+    except ConfigError as exc:
+        assert "optimizer_lowbit" in str(exc), "the error must name the switch that actually works"
+    else:
+        raise AssertionError("train.optimizer_8bit=true was accepted — the run record would report "
+                             "an optimizer setting the trainer never reads")
+    TrainConfig(optimizer_8bit=False)                   # the shipped value must still load
+
+
+def test_dead_field_inside_a_WIRED_lever_fails_closed():
+    """lever4 IS wired, so a dead knob inside it is worse than a fully-inert lever: the operator has
+    every reason to believe tuning it took effect. Default stays loadable; moving it off fails."""
+    from cpt_config import Lever4ExposureTracking
+
+    try:
+        Lever4ExposureTracking(enabled=True, threshold=0.9)
+    except ConfigError as exc:
+        assert "never reads it" in str(exc)
+    else:
+        raise AssertionError("lever4.threshold=0.9 was accepted silently — tuning it changes "
+                             "nothing while the receipt reports the new value")
+    # Every shipped YAML carries the default; it must keep loading, enabled or not.
+    assert Lever4ExposureTracking().threshold == 0.8
+    assert Lever4ExposureTracking(enabled=True, threshold=0.8).enabled
+
+
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     for t in tests:

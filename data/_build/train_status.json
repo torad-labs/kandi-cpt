@@ -1,1 +1,1 @@
-{"run": "mara_venn_sample_v1", "log_path": "checkpoints/sft/mara_venn_sample_v1/train.log", "pid": 3182100, "total_steps": 64, "started": 1784612312.1965573, "status": "done", "phase": "training", "ended": 1784612733.1718361}
+{"run": "pokemon_lore_kanto_s3_r030", "log_path": "checkpoints/cpt/pokemon_lore_kanto_s3_r030/train.log", "pid": 381442, "total_steps": 450, "started": 1785049096.9191895, "status": "done", "phase": "training", "ended": 1785052059.9098675}

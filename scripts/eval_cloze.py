@@ -27,7 +27,7 @@ from transformers import AutoTokenizer
 
 import config as C
 from pipeline.fact_expand import DATES, FESTIVAL, VENUE, camel
-from pipeline.model_load import load_text_model_bf16, load_causal_ckpt_bf16
+from pipeline.model_load import load_text_model_bf16, load_causal_ckpt_quartet
 
 TRIP = C.ROOT / "data/edc/las_vegas/2026/15_structured/triples.jsonl"
 ENTS = C.ROOT / "data/edc/las_vegas/2026/15_structured/entities.jsonl"
@@ -180,7 +180,7 @@ def main():
     torch.cuda.empty_cache()
 
     for ck in args.checkpoints:
-        m = load_causal_ckpt_bf16(ck, args.device)
+        m = load_causal_ckpt_quartet(ck, args.device)
         res[ck] = score(m, tok, ck.split("/")[-1], a_stage, a_day, stage_slugs, rank=rank)
         del m
         torch.cuda.empty_cache()
