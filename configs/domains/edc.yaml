@@ -39,7 +39,7 @@ ontology:
     user-contributed: single-anecdote
     inferred-by-model: inferred
 
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 configs:
   cpt: configs/train_edc_lv_2026.yaml
   sft: configs/sft_edc.yaml

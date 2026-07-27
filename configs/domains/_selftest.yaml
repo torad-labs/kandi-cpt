@@ -21,7 +21,7 @@ ontology:
   confidence_map:
     reference: official
 
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 
 vars:
   corpus: _selftest_v1

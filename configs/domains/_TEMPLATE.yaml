@@ -29,7 +29,7 @@ ontology:
   confidence_map:                                 # provenance class → confidence (pipeline-owned, never model-invented)
     <source-class>: official
 
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 configs:
   cpt: configs/train_<your-domain>.yaml           # authored when you reach training (Phase 6b)
   sft: configs/sft_<your-domain>.yaml

@@ -9,7 +9,7 @@ keep-list), the 20_synthetic expansion, plus data/_shared/knowledge — then
 optionally mixes ~10% data/_shared/replay (generic text, prevents forgetting; skipped if empty).
 Adds <bos>/<eos> per doc, seeded-shuffles doc order, packs into seq_len blocks.
 
-    PYTHONPATH=scripts python scripts/tokenize_corpus.py [--editions …] [--replay-frac 0.10]
+    PYTHONPATH=scripts python scripts/tokenize_corpus.py [--editions …] [--replay-to-domain-ratio 0.10]
         [--seq-len 512] [--no-clean] [--no-synthetic] [--no-lever-metadata]
 
 Output: data/_build/30_tokenized/corpus_v1.arrow + corpus_v1_stats.json.
@@ -258,7 +258,15 @@ def main():
     ap.add_argument("--editions", help="restrict to 'city/year,…' (default: all with corpus)")
     ap.add_argument("--domain", default="edc", help="domain slug — picks data/<domain> + its registry (was hardcoded 'edc')")
     ap.add_argument("--seq-len", type=int, default=512)
-    ap.add_argument("--replay-frac", type=float, default=0.10, help="~general-text fraction (5–10% sweet spot)")
+    # The knob is a RATIO TO DOMAIN, not a share of the final mixture: replay = domain x ratio, so
+    # the realized final share is ratio/(1+ratio) (0.10 -> 9.09%). The old name said "frac" and the
+    # old help said "fraction", which reads as the final share and overstates replay by ~10%.
+    # Renamed rather than redefined on purpose: redefining would retroactively change what every
+    # existing checkpoint and s3 receipt meant, which is an eval-series break for a naming bug.
+    ap.add_argument("--replay-to-domain-ratio", type=float, default=None,
+                    help="replay tokens per domain token (0.10 -> replay is 9.09%% of the final mix)")
+    ap.add_argument("--replay-frac", type=float, default=None,
+                    help="DEPRECATED alias for --replay-to-domain-ratio (same semantics, clearer name)")
     ap.add_argument("--no-clean", action="store_true",
                     help="exclude 10_clean + shared knowledge prose, leaving synth/hydrated/replay only "
                          "(required with a split to make fact-holdout possible)")
@@ -268,6 +276,14 @@ def main():
     ap.add_argument("--out", default="corpus_v1", help="output arrow/stats basename under TOKENIZED_DIR "
                     "(default corpus_v1; use a distinct name for lever A/B corpora to avoid clobbering)")
     args = ap.parse_args()
+    if args.replay_to_domain_ratio is not None and args.replay_frac is not None:
+        raise SystemExit("pass --replay-to-domain-ratio OR the deprecated --replay-frac, not both")
+    if args.replay_frac is not None:
+        print("[warn] --replay-frac is deprecated; use --replay-to-domain-ratio (identical semantics: "
+              "replay tokens per DOMAIN token, not a share of the final mixture).", file=sys.stderr)
+        args.replay_to_domain_ratio = args.replay_frac
+    if args.replay_to_domain_ratio is None:
+        args.replay_to_domain_ratio = 0.10
     emit_meta = not args.no_lever_metadata
 
     tok = AutoTokenizer.from_pretrained(str(C.MODEL_PATH), use_fast=True)
@@ -336,27 +352,47 @@ def main():
     replay_files = list(replay_dir.rglob("*")) if replay_dir.is_dir() else []
     replay_files = [f for f in replay_files if f.is_file() and f.suffix in (".md", ".txt")]
     replay_tokens = 0
-    if args.replay_frac > 0 and replay_files:
-        target = int(corpus_tokens * args.replay_frac)
+    replay_target = 0
+    if args.replay_to_domain_ratio > 0 and replay_files:
+        target = int(corpus_tokens * args.replay_to_domain_ratio)
+        replay_target = target
         pool: list[int] = []
         for f in replay_files:
-            pool += tok.encode(f.read_text(encoding="utf-8", errors="replace"), add_special_tokens=False)
+            ids = tok.encode(f.read_text(encoding="utf-8", errors="replace"), add_special_tokens=False)
+            if not ids:
+                continue
+            # Each replay document is wrapped like a DOMAIN document above. Concatenating them bare
+            # and wrapping the whole pool once fuses N files into a single pseudo-document, so
+            # unrelated general text conditions on itself across every file boundary — the
+            # cross-document conditioning packing is supposed to prevent, in the one stream whose
+            # entire job is preserving base-distribution behaviour. Latent while the corpus holds a
+            # single replay file; it fires on the second.
+            pool += [bos, *ids, eos]
             if len(pool) >= target:
                 break
         rep = pool[:target]
-        all_ids += [bos, *rep, eos]
-        all_block_tag += ["replay"] * (len(rep) + 2)
+        if rep and rep[-1] != eos:
+            rep.append(eos)                            # never ship a truncated tail doc unterminated
+        all_ids += rep
+        all_block_tag += ["replay"] * len(rep)
         # Replay is general text — neutral educational score so ranking never drops it.
-        all_block_edu += [5.0] * (len(rep) + 2)
+        all_block_edu += [5.0] * len(rep)
         if emit_meta:
-            all_mask += [0] * (len(rep) + 2)
-            all_src += [SRC["replay"]] * (len(rep) + 2)
+            all_mask += [0] * len(rep)
+            all_src += [SRC["replay"]] * len(rep)
         replay_tokens = len(rep)
-    elif args.replay_frac > 0:
-        print(f"[warn] _shared/replay is empty — skipping the {args.replay_frac:.0%} replay mix "
+    elif args.replay_to_domain_ratio > 0:
+        print(f"[warn] _shared/replay is empty — skipping the {args.replay_to_domain_ratio:.0%} replay mix "
               f"(populate it with a generic-text slice for the full run).", file=sys.stderr)
 
     total = len(all_ids)
+    # Count what is actually IN the stream (the tag spans cover the BOS/EOS wrapper too), never the
+    # requested target — a replay pool smaller than the target silently under-delivers otherwise.
+    replay_stream_tokens = sum(1 for t in all_block_tag if t == "replay")
+    if replay_target and replay_tokens < replay_target:
+        print(f"[warn] replay pool exhausted: wanted {replay_target:,} tokens, got {replay_tokens:,} "
+              f"({replay_tokens / replay_target:.1%}). The realized replay share is BELOW the "
+              f"requested one — add more text to _shared/replay.", file=sys.stderr)
     chunks = chunk_ids(all_ids, args.seq_len)
     # Per-block majority tag + mean educational score for the anneal mix.
     block_tags = _block_majority_tags(all_block_tag, args.seq_len, len(chunks))
@@ -374,6 +410,14 @@ def main():
         "total_tokens": total, "num_chunks": len(chunks), "seq_len": args.seq_len,
         "docs_by_tag": dict(by_tag), "tokens_by_tag": dict(by_source_tokens),
         "replay_tokens": replay_tokens, "editions": args.editions or "all",
+        # THREE numbers, because one was ambiguous. The knob is a ratio to domain; the share of the
+        # final mixture it implies is ratio/(1+ratio); what actually landed can be lower still when
+        # the replay pool runs out. A receipt quoting only one of these is not interpretable.
+        "replay_to_domain_ratio": args.replay_to_domain_ratio,
+        "requested_final_replay_fraction": round(
+            args.replay_to_domain_ratio / (1.0 + args.replay_to_domain_ratio), 6),
+        "realized_final_replay_fraction": round(replay_stream_tokens / total, 6) if total else 0.0,
+        "replay_target_tokens": replay_target,
         "lever_metadata": emit_meta,
         "block_edu_score": bool(edu_scores),
         "block_edu_mean": round(sum(block_edu) / len(block_edu), 4) if block_edu else 0.0,

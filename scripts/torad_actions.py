@@ -943,12 +943,18 @@ def a_hydrate(festival, edition, relations=None, exposure_cap=None, balance_targ
 
 @action("tokenize", mutating=True, category="data",
         inputs={"out": "str: arrow/stats basename under 30_tokenized", "editions": "str: optional CSV",
-                "seq_len": "int", "replay_frac": "float"})
+                "seq_len": "int",
+                "replay_frac": "float: replay tokens per DOMAIN token (a RATIO, not a share of the "
+                               "final mix) — 0.10 puts replay at 9.09% of the mixture"})
 def a_tokenize(out, editions=None, seq_len=512, replay_frac=0.10):
     """25_hydrated (+ clean + replay) → 30_tokenized Arrow + lever metadata. `out` must match the CPT
-    config's data.tokenized basename. Spawned (CPU-bound). Returns a pipeline job handle."""
+    config's data.tokenized basename. Spawned (CPU-bound). Returns a pipeline job handle.
+
+    `replay_frac` is a ratio to domain, so the realized final replay share is frac/(1+frac). The
+    parameter name is kept for tool-contract stability; the underlying flag is now
+    --replay-to-domain-ratio and the stats stamp all three numbers."""
     cmd = [PY, "scripts/tokenize_corpus.py", "--out", out,
-           "--seq-len", str(int(seq_len)), "--replay-frac", str(replay_frac)]
+           "--seq-len", str(int(seq_len)), "--replay-to-domain-ratio", str(replay_frac)]
     if editions:
         cmd += ["--editions", editions]
     job_id = f"tokenize_{out}_{int(time.time())}"

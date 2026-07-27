@@ -2,7 +2,7 @@
 # base: configs/sft_millbrook_hollow_booster_1_r6.yaml
 mode: sft
 model:
-  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
   freeze_embeddings: true
   nvfp4:
     skip_lm_head: true

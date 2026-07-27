@@ -35,11 +35,21 @@ def _suite(edition):
 # ─────────────────────────────────────────────────────────────── VC1 2018 — the disaster, must FAIL hard
 # NOTE (re-baselined): the 2018 REFERENCE CORPUS on disk has DRIFTED from the original audit
 # (docs/qgre_data_pipeline_audit.md). Audit measured n_types=8 + exposure median=204 (systemic); the current
-# 2018 corpus is a TOTAL monoculture (n_types=1, dominant 1.0) with exposure CAPPED at 60 (median=60, not
+# 2018 corpus WAS a total monoculture (n_types=1, dominant 1.0) with exposure CAPPED at 60 (median=60, not
 # systemic). The clean cap (every fact exactly 60) is a deliberate exposure remediation, and VC1 stays a
 # genuine disaster (overall=fail via balance). The exact-value pins below are re-baselined to the current
 # corpus so the suite is green AND still catches FUTURE drift. TODO(operator): if the 2018 corpus regen was
 # UNINTENDED, regenerate it to the audited state and restore the n_types=8 / median=204 pins.
+#
+# RE-BASELINE #2 (n_types 1 -> 6, dominant 1.0 -> 0.9554). Cause identified, not guessed: the pin caught
+# logs/phase_s1_edc_partial_equalization.json — status LANDED_TOPUP_MEASURED, "APPEND top-up of FIVE starved
+# stage relations", cov 2.7786 -> 2.3637, dom 0.8491 -> 0.7332 on the domain aggregate. Five topped-up
+# relations on top of the single surviving type is exactly n_types 1+5=6, so the drift is the intended
+# effect of a landed, measured change rather than corruption. Everything the test actually protects is
+# unchanged and re-verified: overall=fail, balance severity=fail, dominant_frac still >0.85, exposure
+# median 60 <= cap 60, faithfulness pass with 0 co-mentions. The pin stays EXACT equality on purpose — a
+# loosened bound would pass this drift and every future one, which is weakening the gate rather than
+# re-baselining it.
 def test_vc1_2018_overall_fail():
     assert _suite("las_vegas/2018")["overall"] == "fail"
 
@@ -47,8 +57,8 @@ def test_vc1_2018_overall_fail():
 def test_vc1_2018_balance_monoculture():
     g = _suite("las_vegas/2018")["gates"]["balance"]
     assert g["severity"] == "fail"
-    assert g["metrics"]["dominant_frac"] > 0.85        # measured 1.0 — a TOTAL relation monoculture
-    assert g["metrics"]["n_types"] == 1                # re-baselined: audit was 8; corpus drifted to 1 (see NOTE above)
+    assert g["metrics"]["dominant_frac"] > 0.85        # measured 0.9554 — still near-total monoculture
+    assert g["metrics"]["n_types"] == 6                # re-baselined #2: 1 -> 6, see NOTE above
 
 
 def test_vc1_2018_exposure_capped():

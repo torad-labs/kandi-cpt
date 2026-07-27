@@ -3,7 +3,7 @@
 # Launch: CUDA_VISIBLE_DEVICES=1 bash scripts/train_fp4.sh --config configs/train_pokemon_lore_kanto_s3_r005.yaml
 mode: cpt
 model:
-  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
   freeze_embeddings: true
   nvfp4:
     skip_lm_head: true

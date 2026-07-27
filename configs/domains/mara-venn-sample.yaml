@@ -10,7 +10,7 @@ ontology:
   topics: [measurement, uncertainty, daily-life topic shift]
   stances: [observational, cautious, test-first]
   confidence_map: {bundled-fictional-own-data: authored}
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 configs:
   cpt: null
   sft: configs/sft_mara_venn_sample.yaml

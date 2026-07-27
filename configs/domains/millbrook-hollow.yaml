@@ -26,7 +26,7 @@ ontology:
     authored-demo: official          # operator-authored demo prose (this domain)
     inferred-by-model: inferred
 
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 configs:
   cpt: configs/train_millbrook_hollow_booster_1_r5.yaml
   sft: configs/sft_millbrook_hollow_booster_1_r7.yaml

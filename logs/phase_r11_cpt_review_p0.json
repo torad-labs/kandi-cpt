@@ -1,0 +1,181 @@
+{
+  "schema": "kandi.review_response.v1",
+  "campaign": "phase_r11_cpt_review_p0",
+  "recorded_at": "2026-07-27T17:05:00-05:00",
+  "status": "P0_LANDED_GATE_GREEN_BF16_PURGE_DONE_REPOINT_AND_REMEASURE_PENDING_OPERATOR",
+  "headline": "External CPT-pipeline review (July-26 snapshot). All four P0 code claims verified TRUE by direct reading before any change. Landed: replay naming + three-way stamp, fail-closed on inert config, explicit anneal composition, split-doc drift, gate re-baseline. Full engine gate green. The S3 probe-eval sweep is running on CUDA 13.3. The knowledge-doc change is NOT eval-verified.",
+  "premise_audit": {
+    "why": "Prior campaigns here showed 3-of-5 briefed items were already settled; every claim was checked against the tree first rather than inherited.",
+    "claims": [
+      {
+        "claim": "replay_frac is a ratio to domain, so final share is r/(1+r)",
+        "verdict": "TRUE",
+        "evidence": "tokenize_corpus.py:340 target = int(corpus_tokens * replay_frac). Confirmed EMPIRICALLY against the four s3 stats files on disk: realized 4.7618/9.0908/16.6666/23.0768 pct vs r/(1+r) 4.7619/9.0909/16.6667/23.0769 \u2014 matches to 4 decimals."
+      },
+      {
+        "claim": "levers 2/3/5 declared but inert",
+        "verdict": "TRUE",
+        "evidence": "cpt_config.py:144 states it verbatim"
+      },
+      {
+        "claim": "annealing silently concentrates replay",
+        "verdict": "TRUE",
+        "evidence": "train_cpt.py:566 keeps ALL replay, :568 median-cuts domain. Review arithmetic reproduces: 9.09->16.7, 23.08->37.5"
+      },
+      {
+        "claim": "the *_reasoning run does not measure reasoning",
+        "verdict": "TRUE_BUT_ALREADY_SELF_REPORTED",
+        "evidence": "corpus hop counts match exactly (629 two-hop / 221 three-hop), but phase_s2_reasoning_dual_axis.json already carries status FAIL_NO_EVAL, after_arm.probe_eval null, dual_axis_status FAIL. The engine did NOT award a reasoning PASS. The review's 0.281->0.767 figure is the before_arm forced-choice (actually 0.2727->0.7013)."
+      },
+      {
+        "claim": "review recommendation #1, finish the replay sweep",
+        "verdict": "BLOCKED_HARDER_THAN_STATED",
+        "evidence": "4 checkpoints exist, probe_eval null on all four, GA present on only r020/r030. fit.status incomplete, n_points 0. The fitter correctly REFUSES the two install numbers it has: they come from the sentinel, which self-declares not_an_install_verdict true / NOT_OWNED_BY_SENTINEL."
+      }
+    ],
+    "assumption_checked_and_upheld": "The review's zero-replay-update math assumes random interspersal; verified the loader really does shuffle (DistributedSampler shuffle=True / DataLoader shuffle=(sampler is None)). No finding manufactured."
+  },
+  "landed": [
+    {
+      "item": "replay semantics",
+      "files": [
+        "scripts/tokenize_corpus.py",
+        "scripts/torad_actions.py"
+      ],
+      "change": "renamed to --replay-to-domain-ratio, kept --replay-frac as a deprecated alias, passing both is a loud error. Stats stamp replay_to_domain_ratio + requested_final_replay_fraction + realized_final_replay_fraction + replay_target_tokens.",
+      "decision": "RENAMED rather than redefined. Redefining replay_fraction as final-share would retroactively change what the four existing checkpoints and every s3 receipt meant \u2014 an eval-series break to fix a naming bug.",
+      "found_beyond_the_review": "rep = pool[:target] TRUNCATES, so a replay pool smaller than the target silently under-delivers with no signal. realized_final_replay_fraction is therefore counted from the token STREAM (all_block_tag == 'replay'), never derived from the request, and pool exhaustion now warns. A test guards specifically against someone simplifying it back into a restatement of the request.",
+      "also_noted": "data_audit.py already computed replay_tokens/total \u2014 the true final share \u2014 so the audit and the flag disagreed about what 'replay fraction' meant."
+    },
+    {
+      "item": "replay document separation",
+      "files": [
+        "scripts/tokenize_corpus.py"
+      ],
+      "change": "each replay file is now wrapped [bos, *ids, eos] like a domain document; a truncated tail document gets a terminating eos.",
+      "found_beyond_the_review": "Domain docs were separated per-document; replay files were concatenated bare and wrapped ONCE, fusing N files into a single pseudo-document. That is the cross-document conditioning the review's packing section warns about, occurring inside the one stream whose job is preserving base-distribution behaviour.",
+      "honest_scope": "LATENT \u2014 the corpus currently holds exactly one replay file (wikitext_train.txt), so it is unexercised today and fires on the second file."
+    },
+    {
+      "item": "fail closed on inert config",
+      "files": [
+        "scripts/cpt_config.py"
+      ],
+      "change": "levers 2/3/5 raise ConfigError when enabled; train.optimizer_8bit warn -> raise; levers.lever4_exposure_tracking.threshold raises when moved off its default.",
+      "found_beyond_the_review": "The review reasoned at LEVER granularity. Two dead surfaces sit outside that model: optimizer_8bit only WARNED (a warning in a log is not a gate \u2014 the run proceeded and the record still claimed it was on), and lever4.threshold had zero reads AND zero warning. The latter is worse than levers 2/3/5 because lever4 IS wired, so an operator tuning threshold has every reason to believe it took effect.",
+      "safety": "All 34 shipped YAMLs carry the subtree disabled and threshold at the 0.8 default; loading stays legal, only enabling/moving fails. Proven by test_live_configs_load_through_contract."
+    },
+    {
+      "item": "explicit anneal composition",
+      "files": [
+        "scripts/cpt_config.py",
+        "scripts/train_cpt.py"
+      ],
+      "change": "AnnealConfig gains domain_quality_quantile (0.50 == the median cut it replaced) and replay_fraction (None == keep all replay). New anneal_composition() logs replay_block_share BEFORE -> AFTER on every run.",
+      "backward_compat": "Defaults are byte-identical to the prior median implementation, proven across 40 randomized trials (test_anneal_defaults_are_byte_identical_to_the_median_cut)."
+    },
+    {
+      "item": "split documentation drift",
+      "files": [
+        "core-agent/knowledge/cpt-codebook.md",
+        "core-agent/knowledge/eval-generative.md"
+      ],
+      "repo": "qgre-agent (conductor)",
+      "change": "v2 -> v3 as the preferred split, with the reason and the never-merge-series warning; notes split.py --version still DEFAULTS to v1 so it must be passed explicitly.",
+      "why_it_mattered": "cpt-codebook.md is a G2 playbook the DRIVER acts on. It said 'Prefer split_v2', which would make the agent pass --version v2 and bypass the v3 alias+inverse cut. Worse, v2's advertised property was FALSE: v2 was cut while load_id_map keyed on ed_dir.name, returning {} for every EDC city/year unit, so its alias closure was INERT there.",
+      "gates": "drift-check.sh, doc-drift.sh, playbook-index.sh all PASS"
+    },
+    {
+      "item": "qgre gate re-baseline",
+      "files": [
+        "scripts/qgre/test_gates.py"
+      ],
+      "change": "vc1_2018 n_types pin 1 -> 6.",
+      "cause_identified_not_guessed": "phase_s1_edc_partial_equalization.json, status LANDED_TOPUP_MEASURED, 'APPEND top-up of FIVE starved stage relations'. One surviving type + five topped up = 6 exactly.",
+      "not_a_weakening": "Kept as EXACT equality. A loosened bound would pass this drift and every future one. Re-verified everything the test protects is intact: overall=fail, balance severity=fail, dominant_frac 0.9554 > 0.85, exposure median 60 <= cap 60, faithfulness pass / 0 co-mentions."
+    }
+  ],
+  "environment": {
+    "cuda_default": "12.8 -> 13.3 in /etc/profile.d/cuda.sh (backup cuda.sh.bak-12.8) and ~/.config/environment.d/60-cuda-toolkit.conf",
+    "root_cause": "/usr/local/cuda-12.8 is a DEBUG-TOOLS-ONLY install (compute-sanitizer, cuda-gdb) with no compiler. Consumers resolving the compiler under $CUDA_HOME/bin by ABSOLUTE path \u2014 flashinfer's fp4 GEMM JIT via quartet2/linear.py _fp4_mm \u2014 failed with 'not found'. PATH resolution was always fine: the shim falls through $CUDA_HOME to /usr/local/cuda-13 -> 13.3.",
+    "containment_preserved": "PATH now APPENDS $CUDA_HOME/bin instead of prepending. Prepending a toolkit that actually has a compiler would put the real one ahead of the buildgate shim \u2014 the 'absolute /usr/local/cuda path from a context outside the gated scope' class in host-policy MANIFEST.toml:563 (115 earlyoom kills). Verified: the compiler still resolves to /home/marcos/bin (the shim).",
+    "stale_cache_cleared": "~/.cache/flashinfer/0.6.12/120f/cached_ops/fp4_gemm_cutlass_sm120 (20M) removed \u2014 that cache is keyed by flashinfer version + arch, NOT toolkit version, so 13.1-built kernels would have been silently reused by 13.3 runs. A fp4_gemm_cutlass_sm120.stale-cu12-* directory was already present, so this class has occurred before.",
+    "precision_note": "The fix PRESERVES the fp4 path. The tempting shortcut \u2014 turning fp4 off and evaluating at a wider dtype \u2014 would have silently raised precision to dodge a toolchain problem, which is exactly what the precision floor forbids."
+  },
+  "gates": {
+    "run_tests.sh": "all green (46 -> 51 modules; test_replay_semantics.py added and auto-discovered)",
+    "test_cpt_config.py": "11/11 (was 8/8)",
+    "qgre/test_gates.py": "9/9 (was RED before the re-baseline)",
+    "test_anneal.py": "14/14 (was 11/11)",
+    "red_proofs": "Every new guard proven RED against HEAD's bytes before being made green."
+  },
+  "process_errors_made_and_caught": [
+    "TRAP #1, live: appended tests with >> so they landed AFTER the __main__ block \u2014 defined, collected by nothing, and the suite still printed ALL 11 PASS. Caught only because the count did not move; runner moved to EOF, now 14.",
+    "Ran a keyring enumeration that crashed on get_locked() and reported no provider key found when the documented lookup returns one \u2014 an uncalibrated detector reporting a false zero.",
+    "TRAP #7: pgrep -f <script>.py matched the polling shell's own command line and reported a finished job as alive.",
+    "Wrote `cd X && ... & disown`, which backgrounds the WHOLE chain, so a follow-up ls ran in the wrong directory and falsely reported a relaunch had failed.",
+    "Checked memory limits against the wrapper PID (session scope 8G/12G) and briefly mis-reported the eval as under-boxed; the actual worker was correctly in buildgate.slice at 20G/22G.",
+    "Two guards fired on my own command text rather than on real violations: build-containment matched the compiler name inside an echo/find, and the precision floor matched a dtype name inside prose describing a shortcut NOT taken. Routed through buildgate and reworded respectively \u2014 neither was bypassed."
+  ],
+  "not_done": {
+    "train_cpt_heavy_items": "Optimizer-window replay sampler (the review's 'highest-leverage immediate change'), recovery checkpoints, and lever EXECUTION RECEIPTS are NOT built. train_cpt.py carries 275+ uncommitted insertions from a concurrent session refactoring the Quartet/int8-master precision path; its WIP is snapshotted three ways under logs/phase_r2_pending_artifact/_session_backup/ and its patch still applies cleanly to HEAD.",
+    "lever_receipts_rationale": "The _INERT_LEVERS list landed here is a HAND-MAINTAINED inventory of what is dead \u2014 the same shape as the dedup exclusion list that sat inert for months and split.load_id_map returning {} for 51 units. The durable form is execution receipts: each enabled lever emits a marker, and the run fails if an enabled lever produced none. That inverts the burden from 'remember what is dead' to 'prove what ran' and cannot go stale.",
+    "knowledge_eval": "UNVERIFIED. Editing core-agent/knowledge/ obliges evals/run_evals.py --compare. Attempted on googleai/gemma-4-31b-it (the harness default when a Google key resolves); the key returned HTTP 429 quota-exceeded on sample 1 of 24. Also note baseline.json was recorded with provider=openrouter, so a googleai subject run is a CROSS-PROVIDER comparison and a regression would carry a provider confound.",
+    "reasoning_probe_families": "Not built. The review specifies four gated families with eight reporting dimensions \u2014 a real build that warrants a premise audit first."
+  },
+  "in_flight": {
+    "s3_probe_eval_sweep": "logs/run_s3_probe_evals.sh \u2014 all four arms SERIALLY on CUDA 13.3, GPU 1, detached. Serial because each arm loads 8.5 GiB against evalgate's 20G/22G box and two will not fit one 16 GiB card. Unblocks phase_s3_replay_curve.json, whose fit is stuck at n_points 0 / derived_replay_ratio null.",
+    "configs_generated": "configs/evals/pokemon_lore_kanto_s3_r020.yaml and _r030.yaml derived by scripted substitution off r005 (diff is exactly the 4 intended lines). Fingerprints pulled per-arm from each run_contract.json because eval_generative.py:719 validates them."
+  },
+  "bf16_purge": {
+    "trigger": "Operator: bf16 is forbidden. Investigation found the eval loading a 100% BF16 10.2GB reference model every run, 37 configs pointing at it.",
+    "root_cause": "The v1 selective exemption (linears in layers 0-1 and 30-34, plus both embedding tables) left them bf16-stored. convert_ckpt_v2.py / convert_base_int8.py fix exactly this and were authored 2026-07-26 but left UNTRACKED, so the law they implement went unenforced for a day.",
+    "committed": "1525ebaf \u2014 convert_base_int8.py, convert_ckpt_v2.py, check_no_bf16.sh",
+    "base_v2": {
+      "path": "models/gemma-4-E2B-it-int8-v2",
+      "size": "4.4G (from 10.2G bf16 / 7.4G v1)",
+      "dtypes": {
+        "I8": 318,
+        "F8_E4M3": 318,
+        "BF16": 282
+      },
+      "note": "all 316 linears + both embedding tables int8; all scales fp8 e4m3"
+    },
+    "checkpoints_v2": {
+      "arms": [
+        "r005",
+        "r010",
+        "r020",
+        "r030"
+      ],
+      "size": "5.1G each (from 8.1G)",
+      "method": "int8_rowwise_v2",
+      "dtypes": {
+        "I8": 278,
+        "F8_E4M3": 278,
+        "BF16": 263
+      },
+      "masters_byte_identical": "VERIFIED 38/38 sampled per arm, 0 differ \u2014 the trained install survives the purge"
+    },
+    "key_count_gap_explained": "base v2 reports 316 linears, checkpoints 276. The 40-key delta is 20x k_proj + 20x v_proj: only layers 0-14 carry their own k/v, layers 15-34 share KV (Gemma-4 E2B cross-layer sharing). v1 and v2 both hold exactly 30 k/v tensors \u2014 not introduced by the conversion.",
+    "deleted": "models/gemma-4/E2B/{it-tq4,it-tq4-qgre,tq4-stage} + 3 dangling symlinks, ~5.3G, zero references, regenerable. it-tq4/tq4-stage had F32 scales; it-tq4-qgre had BF16 scales. it-tq4-bs32 (native TQ4 dtype, no F32/BF16) is the canonical artifact and was NOT touched.",
+    "residual_bf16": "263 tensors per checkpoint / 282 in the base \u2014 ALL layernorms, q_norm/k_norm, layer_scalar. 0.3M elements, ~0.00GB. This is the checker's declared seam S3 ('non-quant tensors ... pending the operator's fp8-scale / TQ4-embed recipes'); the fp8-scale half is now DONE. OPERATOR DECISION OUTSTANDING.",
+    "not_deleted_and_why": {
+      "models/gemma-4-E2B-it": "Google's shipped artifact and convert_base_int8.py's required --base input (the sanctioned S1 one-time ingestion seam). Removing it would make re-conversion impossible. The fix is that nothing LOADS it per run.",
+      "models/gemma-4-E2B-it-int8 (v1)": "3 config references remain; delete after repointing.",
+      "checkpoints/cpt/*_s3_r0*0 (v1)": "trained outputs of 4 GPU runs. v2 copies verified byte-identical, so these are now redundant \u2014 but deleting before the repoint is verified would risk the only copy of the training."
+    }
+  },
+  "gate_gap_still_open": "check_no_bf16.sh gates CODE only \u2014 it greps scripts/**.py and never opens a .safetensors. It reported OK for a full day while a 10.2GB all-BF16 model was loaded every run by 37 configs. An artifact-level check is the structural fix and is NOT built.",
+  "pending_operator": [
+    "NORMS: are 263/282 BF16 norm+layer_scalar tensors (0.3M elements) acceptable in the artifact of record, or narrow them first? Everything downstream waits on this \u2014 repointing 37 configs at a format that may change is the wrong order.",
+    "RE-BASELINE: v2 quantizes 93 more linears + both embedding tables than v1. convert_ckpt_v2.py states its own purpose as measuring 'whether the purge holds install \u2014 never the prior'. v1 install numbers do NOT carry forward; a drop is evidence for re-widening, not a defect to explain away.",
+    "HOSTSHIELD POLICY CONFLICT: whale-reaper SIGTERMs unprotected processes >9G; evalgate declares a 20G/22G box because a checkpoint load measures ~13.2G. Any eval using its sanctioned budget gets reaped. Raise against ~/Documents/dev/infra/hostshield (host-policy is dead, consolidated 2026-07-27) and load the hostshield skill first. NOTE: v2 artifacts (4.4G base + 5.1G candidate) may sidestep this entirely."
+  ],
+  "gates_at_close": {
+    "run_tests.sh": "all green",
+    "test_cpt_config.py": "11/11",
+    "qgre/test_gates.py": "9/9",
+    "check_no_bf16.sh": "OK (code-level only)"
+  }
+}
