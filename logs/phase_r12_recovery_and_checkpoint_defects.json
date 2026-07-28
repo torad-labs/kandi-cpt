@@ -48,5 +48,40 @@
   "bugs_in_my_own_code_found_by_running_it": [
     "The resume guard compared the FULL run fingerprint, which includes data.init_from \u2014 a value every legitimate resume must change. It refused the exact case it exists to permit. Fixed with continuation_fingerprint (same recipe minus init_from).",
     "recovery.load used map_location=<training device>, handing set_rng_state a CUDA tensor: 'RNG state must be a torch.ByteTensor', minutes into the resume. Now always CPU, with a regression test."
-  ]
+  ],
+  "resolution": {
+    "fixed_at": "2026-07-28",
+    "change": "_int8_save_entries now detects the v2 Int8ScaledEmbedding wrappers (they announce themselves with an embed_scale buffer), writes their int8 data at <module>.weight and their scale at <module>.weight.weight_scale as fp8 e4m3 with the \u00d7128 fold, skips the tied lm_head._emb.* duplicate entirely, and records embedding_keys + method=int8_rowwise_v2 in quant_keys.json.",
+    "proof": {
+      "run_A_with_fix": [
+        3.4189,
+        1.2264,
+        0.7326,
+        0.4101
+      ],
+      "run_A_before_fix": [
+        3.4189,
+        1.2261,
+        0.7277,
+        0.4119
+      ],
+      "training_unchanged": "matches within run-to-run fp4 noise, so the fix touches storage only",
+      "reload_of_final_before_fix": 36.1216,
+      "reload_of_final_after_fix": 0.2592,
+      "quant_keys_after": {
+        "method": "int8_rowwise_v2",
+        "keys": 276,
+        "embedding_keys": 2,
+        "scale_dtype": "fp8_e4m3"
+      },
+      "artifact_gate": "EXIT 0 (was EXIT 1, wide={'BF16': 547}); only the exempted A2 norm tensors remain wide",
+      "dtypes_after": {
+        "F8_E4M3": 278,
+        "I8": 278,
+        "BF16": 262
+      }
+    },
+    "both_defects_closed": "Defect 1 (checkpoints do not reload) and defect 2 (the producer re-creates bf16 storage) had one root cause and one fix: the trainer was writing the v1 format for a v2 model.",
+    "still_open": "End-to-end recovery DETERMINISM is now unblocked but not yet measured \u2014 the A/C/D arms need re-running against fixed checkpoints to show a resumed run tracks an uninterrupted one."
+  }
 }

@@ -165,7 +165,7 @@ def test_streaming_roundtrip_load():
     weight = _FakeInt8(32, 64)
     emb = torch.randn(100, 64, dtype=torch.bfloat16)
     sd = {"w": weight, "emb": emb}
-    entries = T._int8_save_entries(sd, ["w"])
+    entries, _embedding_keys = T._int8_save_entries(sd, ["w"])   # v2 embeddings ride a second return value
     with tempfile.TemporaryDirectory(dir="/tmp") as td:
         p = Path(td) / "model.safetensors"
         T.save_file_streaming(p, entries, metadata={"format": "pt", "quant": "int8_rowwise"})

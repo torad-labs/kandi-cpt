@@ -777,36 +777,106 @@ def _tensor_tobytes(tensor: torch.Tensor) -> bytes:
     return buf.tobytes()
 
 
+_EMB_SCALE_SUFFIX = ".embed_scale"
+
+
+def _fp8_folded_scale(scale):
+    """Factory writing a scale as fp8 e4m3 with the ×128 range fold the loader unfolds.
+
+    torch ships no fp8 arithmetic kernel — multiplying a Float8_e4m3fn raises
+    NotImplementedError — so the fold is applied in bf16 and immediately narrowed. Transit only:
+    nothing bf16 reaches the file. Mirrors convert_ckpt_v2.py and inverts the unfold in
+    model_load.load_causal_ckpt_quartet.
+    """
+    def factory(t=scale):
+        return (t.detach().to(torch.bfloat16) * 128.0).to(torch.float8_e4m3fn)  # bf16-sanctioned: S2 fp8 storage fold, transit only — the written tensor is e4m3
+    return factory
+
+
+
+
 def _int8_save_entries(sd, int8_keys):
     """Build (name, dtype_str, shape, nbytes, factory) entries WITHOUT gathering CPU data.
-    Factories run later, one at a time, during the streaming write."""
+    Factories run later, one at a time, during the streaming write.
+
+    Returns (entries, embedding_keys). embedding_keys is non-empty exactly when the model carries
+    v2 Int8ScaledEmbedding wrappers, and the caller writes the v2 quant manifest in that case.
+
+    THE BUG THIS FIXES (measured 2026-07-28): Int8ScaledEmbedding registers `weight` and
+    `weight_scale` as BUFFERS, not as a tensor subclass carrying .int_data/.scale — so the
+    embeddings never entered int8_keys and fell through to the bf16 branch below, which wrote their
+    raw int8 VALUES reinterpreted as bf16 floats (±127 instead of ~±0.05) and recorded no
+    embedding_keys. On reload the loader computed is_v2=False, never rebuilt the wrappers, and the
+    model came back with garbage embeddings: a run at loss 0.4119 reloaded at 36.12. Every
+    continuation — booster, SFT-from-CPT, anneal, crash resume — was silently starting from that.
+    The eval path was unaffected, which is why it survived.
+    """
     int8_set = set(int8_keys)
+    # v2 embedding wrappers announce themselves with an embed_scale buffer. lm_head is excluded:
+    # the loader rebuilds it as Int8TiedLmHead over embed_tokens, so storing it duplicates the
+    # whole vocab table and is never read.
+    emb_prefixes = sorted(
+        k[: -len(_EMB_SCALE_SUFFIX)] for k in sd
+        if k.endswith(_EMB_SCALE_SUFFIX) and not k.startswith("lm_head")
+    )
+    handled = {f"{p}{suffix}" for p in emb_prefixes
+               for suffix in (".weight", ".weight_scale", _EMB_SCALE_SUFFIX)}
+    handled |= {k for k in sd if k.startswith("lm_head._emb")}
+    v2 = bool(emb_prefixes)
+
+    def scale_entry(name, scale):
+        """v2 stores scales as fp8 e4m3 with the ×128 range fold the loader unfolds at load."""
+        shape = tuple(scale.shape)
+        if not v2:
+            return {"name": name, "dtype_str": "BF16", "shape": shape,
+                    "nbytes": _tensor_nbytes(shape, torch.bfloat16),
+                    "factory": (lambda t=scale: t.detach().to(dtype=torch.bfloat16))}
+        # bf16-sanctioned: S2 fp8 STORAGE fold. torch ships no fp8 arithmetic kernel (mul on
+        # Float8_e4m3fn raises NotImplementedError), so the ×128 range fold is applied in bf16 and
+        # immediately narrowed to e4m3. Transit only — nothing bf16 is written. Mirrors
+        # convert_ckpt_v2.py and inverts the unfold in model_load.load_causal_ckpt_quartet.
+        return {"name": name, "dtype_str": "F8_E4M3", "shape": shape,
+                "nbytes": shape[0] if shape else 1,
+                "factory": _fp8_folded_scale(scale)}
+
     entries = []
     for k, v in sd.items():
+        if k in handled:
+            continue
         if k in int8_set:
-            idata = v.int_data
-            scale = v.scale
+            idata, scale = v.int_data, v.scale
             shape_i = tuple(idata.shape)
-            shape_s = tuple(scale.shape)
             entries.append({
                 "name": k, "dtype_str": "I8", "shape": shape_i,
                 "nbytes": _tensor_nbytes(shape_i, torch.int8),
                 "factory": (lambda t=idata: t.detach()),
             })
-            entries.append({
-                "name": k + ".weight_scale", "dtype_str": "BF16", "shape": shape_s,
-                "nbytes": _tensor_nbytes(shape_s, torch.bfloat16),
-                "factory": (lambda t=scale: t.detach().to(dtype=torch.bfloat16)),
-            })
+            entries.append(scale_entry(k + ".weight_scale", scale))
         else:
-            # norms / embeds / lm_head (frozen) — stored bf16, may already be on CPU (PLE offload)
+            # norms — stored bf16, may already be on CPU (PLE offload)
             shape = tuple(v.shape)
             entries.append({
                 "name": k, "dtype_str": "BF16", "shape": shape,
                 "nbytes": _tensor_nbytes(shape, torch.bfloat16),
                 "factory": (lambda t=v: t.detach().to(dtype=torch.bfloat16)),
             })
-    return entries
+
+    # v2 embeddings: int8 data + fp8 scale, under the names load_causal_ckpt_quartet reads
+    # (`<module>.weight` and `<module>.weight.weight_scale`). embed_scale is NOT stored — the
+    # loader derives it from the config.
+    embedding_keys = []
+    for prefix in emb_prefixes:
+        name = f"{prefix}.weight"
+        weight, scale = sd[name], sd[f"{prefix}.weight_scale"]
+        shape_w = tuple(weight.shape)
+        embedding_keys.append(name)
+        entries.append({
+            "name": name, "dtype_str": "I8", "shape": shape_w,
+            "nbytes": _tensor_nbytes(shape_w, torch.int8),
+            "factory": (lambda t=weight: t.detach().to(torch.int8)),
+        })
+        entries.append(scale_entry(name + ".weight_scale", scale))
+    return entries, embedding_keys
 
 
 def estimate_streaming_save_need_bytes(entries, headroom_bytes: int = 512 * 1024 ** 2) -> int:
@@ -986,7 +1056,7 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
             "no int8 masters in this run (int8_master:snap/off) — unsupported under the precision law "
             "(2026-07-26): bf16 saves are gone. Run int8_master:storage.")
     # int8-master run → STREAMING native-int8 save (no full CPU state dict, no fresh model)
-    entries = _int8_save_entries(sd, int8_keys)
+    entries, embedding_keys = _int8_save_entries(sd, int8_keys)
     need = estimate_streaming_save_need_bytes(entries)
     # Full-gather spike measured 9–16GB RSS (journal 2026-07-25). Streaming need is max-tensor
     # sized; still refuse to start when the box is below that watermark.
@@ -995,13 +1065,19 @@ def save_checkpoint(model, cfg, out_dir, rank, world):
     written = save_file_streaming(
         out_dir / "model.safetensors",
         entries,
-        metadata={"format": "pt", "quant": "int8_rowwise"},
+        metadata={"format": "pt", "quant": "int8_rowwise_v2" if embedding_keys else "int8_rowwise"},
     )
     tcfg = copy.deepcopy(model.config)          # in-memory config — never re-read model_path/config.json at
     tcfg._attn_implementation = "sdpa"          # save time (that disk read, under FS pressure from the 8.6GB
     tcfg.architectures = ["Gemma4ForCausalLM"]  # weight write, is what crashed the step-3100 save of the v2 run).
     tcfg.save_pretrained(out_dir)
-    (out_dir / "quant_keys.json").write_text(_json.dumps({"method": "int8_rowwise", "keys": int8_keys}))
+    # The manifest is what makes the artifact reloadable: is_v2 in load_causal_ckpt_quartet is
+    # (method == int8_rowwise_v2 or embedding_keys present), and it gates both the fp8 scale unfold
+    # and rebuilding the Int8ScaledEmbedding wrappers.
+    (out_dir / "quant_keys.json").write_text(_json.dumps(
+        {"method": "int8_rowwise_v2", "keys": int8_keys, "embedding_keys": embedding_keys,
+         "scale_dtype": "fp8_e4m3"} if embedding_keys
+        else {"method": "int8_rowwise", "keys": int8_keys}))
     _cached_tokenizer(cfg["model_path"]).save_pretrained(out_dir)
     gb = written / 1e9
     largest = max(e["nbytes"] for e in entries) / 1e9
