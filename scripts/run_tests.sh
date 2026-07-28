@@ -26,6 +26,18 @@ else
     fail=1
 fi
 
+# The same law applied to ARTIFACTS. The code gate above greps scripts/**.py and cannot open a
+# .safetensors — it read PASS for a full day while a 10.2GB wide-dtype model was loaded on every
+# run by 37 configs. This one reads safetensors headers (no tensor data, milliseconds).
+printf '%-46s ' "check_artifact_precision.sh"
+if out=$(bash scripts/qgre/check_artifact_precision.sh 2>&1); then
+    echo "PASS"
+else
+    echo "FAIL"
+    echo "$out" | tail -8
+    fail=1
+fi
+
 for t in scripts/pipeline/test_*.py; do
     printf '%-46s ' "$(basename "$t")"
     if out=$("$PY" "$t" 2>&1); then

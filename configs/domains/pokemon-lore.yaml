@@ -34,7 +34,7 @@ ontology:
     community-discussion: single-anecdote
     inferred-by-model: inferred
 
-model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it   # durable models home (…/dev/models was retired)
+model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2   # durable models home (…/dev/models was retired)
 configs:
   cpt: configs/train_pokemon_lore_kanto_v1.yaml   # Phase 6b — the pilot CPT run
   sft: configs/sft_pokemon_lore_kanto_v1.yaml     # Phase C residual — hard-neg SFT on the CPT ckpt

@@ -91,6 +91,15 @@ def main() -> None:
                 entries.append(_entry(k, "I8", f._meta[k]["shape"], int_data))
                 entries.append(_entry(k + ".weight_scale", "F8_E4M3", (f._meta[k]["shape"][0],),
                                       (scale * 128.0).to(torch.float8_e4m3fn)))
+            elif k == "lm_head.weight":
+                # DROP. config.json sets tie_word_embeddings=true and the loader calls
+                # tie_weights() (v2: Int8TiedLmHead), so a stored lm_head is never read — it is
+                # 805MB of dead weight per checkpoint, and it was the single largest remaining
+                # wide-dtype tensor in the "purged" v2 artifacts. The BASE converter already
+                # drops it ("lm_head stays tied to embed_tokens (no separate tensor)"); this
+                # branch is the checkpoint path catching up. Found by the artifact-precision
+                # gate on its first run — the code gate could not see it.
+                continue
             else:                                              # norms etc. — as stored
                 entries.append(_entry(k, "BF16", f._meta[k]["shape"], f.get_tensor(k).to(torch.bfloat16)))
 
