@@ -182,14 +182,24 @@ def generate_answer(tokenizer, model, device: str, question: str, max_new_tokens
     if attention is not None:
         attention = attention.to(device)
     pad_id = tokenizer.eos_token_id
-    with torch.no_grad():
-        out = model.generate(
-            input_ids=input_ids,
-            attention_mask=attention,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,
-            pad_token_id=pad_id,
-        )
+    if getattr(model, "_quartet_eval", False):
+        # A Quartet-fp4 model cannot go through model.generate(): with a KV cache each decode step
+        # feeds ONE row, and quartet2.quant.quant_fp4 asserts x.shape[0] % 128 == 0, so the run dies
+        # mid-generation with `assert x.shape[0] % 128 == 0`. That assert is what killed every S3
+        # probe-eval sweep attempt (driver logs 2026-07-27), leaving the replay curve at n_points 0.
+        # Reuse the sentinel's proven decoder — full-prefix recompute, left-padded to 128, mask
+        # keeping the pad out of attention — rather than writing a second copy of the same idiom.
+        from pipeline.score_sentinel_live import _greedy_generate_quartet
+        out = _greedy_generate_quartet(tokenizer, model, device, input_ids, max_new_tokens)
+    else:
+        with torch.no_grad():
+            out = model.generate(
+                input_ids=input_ids,
+                attention_mask=attention,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                pad_token_id=pad_id,
+            )
     text = tokenizer.decode(out[0][input_ids.shape[1]:], skip_special_tokens=True)
     return text.replace("\n", " ").strip()
 
