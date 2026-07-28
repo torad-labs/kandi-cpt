@@ -284,7 +284,7 @@ _SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
     "audit": {"suffix": ".jsonl", "prefix": "",
               "kind": "jsonl_no_fail_verdict", "field": "verdicts"},
     "tokenize": {"suffix": "_stats.json", "prefix": "",
-                 "kind": "json_field_positive", "field": "num_chunks"},
+                 "kind": "tokenize_stats_sound", "field": "num_chunks"},
     "split": {"suffix": ".json", "prefix": "split_", "kind": "split_integrity", "field": None},
     # The cpt output is a directory glob; the validator wants the directory itself.
     "cpt": {"suffix": "/**", "prefix": "", "kind": "checkpoint_integrity", "field": None,
@@ -295,7 +295,7 @@ _SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
 
 
 def _semantic_postconditions(stage_name: str, outputs: list[str],
-                             scoped_editions: list[str]) -> list[dict[str, Any]]:
+                             scoped_editions: list[str], domain: Domain) -> list[dict[str, Any]]:
     rule = _SEMANTIC_POSTCONDITIONS.get(stage_name)
     if rule is None:
         return []
@@ -314,6 +314,15 @@ def _semantic_postconditions(stage_name: str, outputs: list[str],
                      "kind": rule["kind"], "path": path}
         if rule.get("field"):
             condition["field"] = rule["field"]
+        if rule["kind"] == "checkpoint_integrity":
+            # The approved recipe travels WITH the check: the validator compares the trainer's own
+            # run_contract against what the config declared, so "valid artifact" and "the run we
+            # approved" stop being the same question.
+            for key, path in (("expect_precision", ("train", "precision")),
+                              ("expect_int8_master", ("train", "int8_master"))):
+                value = _config_value(domain, "cpt" if stage_name == "cpt" else "sft", *path)
+                if value:
+                    condition[key] = value
         if "expect" in rule:
             condition["expect"] = rule["expect"]
         if rule["kind"] == "jsonl_no_fail_verdict":
@@ -346,7 +355,7 @@ def build_contract(domain_name: str, editions: str | None = None) -> dict[str, A
             "postconditions": [
                 {"check": f"output exists: {output}", "kind": "output_exists", "path": output}
                 for output in outputs
-            ] + _semantic_postconditions(stage.name, outputs, scoped_editions),
+            ] + _semantic_postconditions(stage.name, outputs, scoped_editions, domain),
         }
         if "egress:llm" in effects:
             # Plan A advertised; runtime falls back to openrouter only if Studio is absent.

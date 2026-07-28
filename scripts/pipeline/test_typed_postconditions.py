@@ -31,7 +31,7 @@ def test_contract_emits_semantic_postconditions_for_verdict_stages() -> None:
     assert "report_verdict" in _kinds("audit_recall"), _kinds("audit_recall")
     assert "report_verdict" in _kinds("pii_scan"), _kinds("pii_scan")
     assert "jsonl_no_fail_verdict" in _kinds("audit"), _kinds("audit")
-    assert "json_field_positive" in _kinds("tokenize"), _kinds("tokenize")
+    assert "tokenize_stats_sound" in _kinds("tokenize"), _kinds("tokenize")
     assert "split_integrity" in _kinds("split"), _kinds("split")
     assert "checkpoint_integrity" in _kinds("cpt"), _kinds("cpt")
 
@@ -189,10 +189,95 @@ def test_checkpoint_integrity_rejects_an_unloadable_checkpoint() -> None:
         assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted an unparseable header"
 
 
+def test_checkpoint_recipe_catches_a_short_run_and_a_wrong_precision() -> None:
+    """A checkpoint that stopped early is byte-identical in SHAPE to one that finished.
+
+    Same files, same manifest, same tensor set — so "the artifact is valid" cannot answer "is this
+    the run we approved". run_contract.json is the trainer's own record of what it did.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        directory = Path(tmp) / "ckpt"
+        directory.mkdir()
+        spec = {"expect_precision": "fp4", "expect_int8_master": "storage"}
+
+        def write(**contract):
+            (directory / "run_contract.json").write_text(json.dumps(contract), encoding="utf-8")
+
+        write(final_step=450, max_steps=450, precision="fp4", int8_master="storage")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is True, "the healthy run must pass"
+
+        # Stopped early with NO recorded reason — the case this exists for.
+        write(final_step=120, max_steps=450, precision="fp4", int8_master="storage")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is False
+
+        # Stopped early WITH a recorded reason is legitimate.
+        write(final_step=120, max_steps=450, precision="fp4", int8_master="storage",
+              scored_checkpoint="anneal-end")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is True
+
+        # Ran at a precision other than the approved one.
+        write(final_step=450, max_steps=450, precision="bf16", int8_master="storage")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is False
+        write(final_step=450, max_steps=450, precision="fp4", int8_master="off")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is False
+
+        # A run that cannot say where it stopped is not verifiable.
+        write(max_steps=450, precision="fp4", int8_master="storage")
+        assert run_stage._checkpoint_recipe_ok(directory, spec) is False
+
+
+def test_tokenize_stats_reconciles_requested_against_realized_replay() -> None:
+    """"replay_frac was requested" is not "replay_frac was delivered".
+
+    The packer truncates its replay pool to a token target, so a shard can silently under-deliver
+    while its config still claims the requested fraction.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        original = run_stage.C.ROOT
+        run_stage.C.ROOT = root
+        try:
+            stats = root / "s_stats.json"
+            spec = {"check": "tok", "kind": "tokenize_stats_sound", "path": "s_stats.json",
+                    "require_lever_metadata": True}
+
+            def write(**fields):
+                stats.write_text(json.dumps(fields), encoding="utf-8")
+
+            write(num_chunks=1480, lever_metadata=True,
+                  requested_final_replay_fraction=0.0909, realized_final_replay_fraction=0.0907)
+            assert run_stage._postcondition(spec)["pass"] is True
+
+            # Silently under-delivered replay — the defect.
+            write(num_chunks=1480, lever_metadata=True,
+                  requested_final_replay_fraction=0.0909, realized_final_replay_fraction=0.0400)
+            assert run_stage._postcondition(spec)["pass"] is False
+
+            # Stamped only on one side cannot be reconciled.
+            write(num_chunks=1480, lever_metadata=True, requested_final_replay_fraction=0.0909)
+            assert run_stage._postcondition(spec)["pass"] is False
+
+            # No replay requested and none delivered is fine; none requested but tokens present is not.
+            write(num_chunks=1480, lever_metadata=True)
+            assert run_stage._postcondition(spec)["pass"] is True
+            write(num_chunks=1480, lever_metadata=True, replay_tokens=34542)
+            assert run_stage._postcondition(spec)["pass"] is False
+
+            # Zero blocks and missing lever metadata each fail on their own.
+            write(num_chunks=0, lever_metadata=True)
+            assert run_stage._postcondition(spec)["pass"] is False
+            write(num_chunks=1480)
+            assert run_stage._postcondition(spec)["pass"] is False
+        finally:
+            run_stage.C.ROOT = original
+
+
 if __name__ == "__main__":
     test_contract_emits_semantic_postconditions_for_verdict_stages()
     test_report_verdict_rejects_a_failing_report()
     test_jsonl_no_fail_verdict_and_json_field_positive()
     test_split_integrity_rejects_leaking_and_degenerate_splits()
     test_checkpoint_integrity_rejects_an_unloadable_checkpoint()
+    test_checkpoint_recipe_catches_a_short_run_and_a_wrong_precision()
+    test_tokenize_stats_reconciles_requested_against_realized_replay()
     print("OK — a FAIL verdict now fails its stage, and degenerate reports fail closed")

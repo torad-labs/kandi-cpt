@@ -50,7 +50,7 @@ def test_execution_contract_matches_manifest() -> None:
             # stage that ran correctly and reported failure.
             kinds = {check["kind"] for check in emitted["postconditions"]}
             assert kinds <= {"output_exists", "report_verdict", "jsonl_no_fail_verdict",
-                             "json_field_positive", "split_integrity",
+                             "json_field_positive", "tokenize_stats_sound", "split_integrity",
                              "checkpoint_integrity"}, kinds
             existence = {check["path"] for check in emitted["postconditions"]
                          if check["kind"] == "output_exists"}

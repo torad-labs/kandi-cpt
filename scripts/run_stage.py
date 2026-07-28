@@ -330,13 +330,15 @@ def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
         passed = bool(matched) and all(_report_verdict_ok(candidate, spec) for candidate in matched)
     elif kind == "jsonl_no_fail_verdict":
         passed = bool(matched) and all(_jsonl_verdicts_ok(candidate, spec) for candidate in matched)
+    elif kind == "tokenize_stats_sound":
+        passed = bool(matched) and all(_tokenize_stats_ok(candidate, spec) for candidate in matched)
     elif kind == "json_field_positive":
         passed = bool(matched) and all(_json_field_positive(candidate, spec) for candidate in matched)
     elif kind == "split_integrity":
         passed = bool(matched) and all(_split_integrity_ok(candidate) for candidate in matched)
     elif kind == "checkpoint_integrity":
         target = _rooted(path)
-        passed = target.is_dir() and _checkpoint_integrity_ok(target)
+        passed = target.is_dir() and _checkpoint_integrity_ok(target) and _checkpoint_recipe_ok(target, spec)
     else:
         passed = False
     return {"check": check, "pass": passed}
@@ -409,6 +411,64 @@ def _json_field_positive(path: Path, spec: dict[str, Any]) -> bool:
         return False
     value = report[field]
     return isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0
+
+
+def _checkpoint_recipe_ok(directory: Path, spec: dict[str, Any]) -> bool:
+    """The run ENDED where it was planned to, and at the precision that was approved.
+
+    A checkpoint that stopped early looks identical on disk to one that ran to completion — same
+    files, same manifest, same tensor set — so "the artifact is valid" cannot answer "is this the
+    run we approved". run_contract.json is the trainer's own record of what it actually did; the
+    expected values come from the contract, which read them from the training config.
+
+    An early stop is legitimate, but only when RECORDED: scored_checkpoint names it. Silence plus a
+    short run is the case this refuses.
+    """
+    contract = _load_json(directory / "run_contract.json")
+    if not isinstance(contract, dict):
+        return False
+
+    final_step, planned = contract.get("final_step"), contract.get("max_steps")
+    if final_step is None or planned is None:
+        return False                       # a run that cannot say where it stopped is not verifiable
+    if int(final_step) != int(planned):
+        # Short is allowed only with a recorded reason.
+        if not str(contract.get("scored_checkpoint") or "").strip() or int(final_step) <= 0:
+            return False
+
+    for field in ("precision", "int8_master"):
+        expected = spec.get(f"expect_{field}")
+        if expected is not None and str(contract.get(field)) != str(expected):
+            return False
+    return True
+
+
+def _tokenize_stats_ok(path: Path, spec: dict[str, Any]) -> bool:
+    """Nonzero blocks, the replay proportion the shard actually realized, and lever metadata.
+
+    "replay_frac was requested" is not "replay_frac was delivered": the packer truncates its replay
+    pool to a token target, so a shard can silently under-deliver. tokenize_corpus stamps BOTH the
+    requested and the realized fraction; a shard that carries neither cannot prove its own
+    composition, and a postcondition runs on a FRESHLY written shard, so absence means the writer
+    did not stamp it rather than that the shard is merely old.
+    """
+    stats = _load_json(path)
+    if not isinstance(stats, dict):
+        return False
+    if not isinstance(stats.get("num_chunks"), int) or stats["num_chunks"] <= 0:
+        return False
+    if spec.get("require_lever_metadata") and not stats.get("lever_metadata"):
+        return False
+
+    requested = stats.get("requested_final_replay_fraction")
+    realized = stats.get("realized_final_replay_fraction")
+    if requested is None and realized is None:
+        # No replay was requested for this corpus — nothing to reconcile.
+        return not stats.get("replay_tokens")
+    if requested is None or realized is None:
+        return False
+    tolerance = float(spec.get("replay_tolerance", 0.02))
+    return abs(float(realized) - float(requested)) <= tolerance
 
 
 def _split_integrity_ok(path: Path) -> bool:
