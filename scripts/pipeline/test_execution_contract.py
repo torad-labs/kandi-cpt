@@ -45,7 +45,15 @@ def test_execution_contract_matches_manifest() -> None:
             digest = json.dumps(digest_payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
             assert emitted["stage_digest"] == hashlib.sha256(digest).hexdigest()
             assert emitted["postconditions"]
-            assert all(check["kind"] == "output_exists" for check in emitted["postconditions"])
+            # Every declared output still needs its existence check; stages that RECORD a verdict
+            # additionally carry a semantic one, because exit-zero plus a present file cannot see a
+            # stage that ran correctly and reported failure.
+            kinds = {check["kind"] for check in emitted["postconditions"]}
+            assert kinds <= {"output_exists", "report_verdict", "jsonl_no_fail_verdict",
+                             "json_field_positive"}, kinds
+            existence = {check["path"] for check in emitted["postconditions"]
+                         if check["kind"] == "output_exists"}
+            assert existence == set(emitted["outputs"])
 
     egress_stages = [
         stage

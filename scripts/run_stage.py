@@ -326,9 +326,84 @@ def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
         passed = bool(matched) and bool(needle) and all(
             needle in candidate.read_text(encoding="utf-8", errors="replace") for candidate in matched
         )
+    elif kind == "report_verdict":
+        passed = bool(matched) and all(_report_verdict_ok(candidate, spec) for candidate in matched)
+    elif kind == "jsonl_no_fail_verdict":
+        passed = bool(matched) and all(_jsonl_verdicts_ok(candidate, spec) for candidate in matched)
+    elif kind == "json_field_positive":
+        passed = bool(matched) and all(_json_field_positive(candidate, spec) for candidate in matched)
     else:
         passed = False
     return {"check": check, "pass": passed}
+
+
+# --- semantic postconditions -------------------------------------------------------------------
+# The generic checks are exit-zero, declared outputs exist, output delta nonzero, recipe identity
+# held. None of them can see a stage that did its job and reported failure: audit_recall writes
+# report_<domain>.json with status FAIL, exits 0, and the file is present and changed — so the
+# stage record said PASS. These read the verdict the stage itself recorded. Every one fails CLOSED:
+# absent, unparseable, or missing-field is a failure, never a pass, because "I could not tell"
+# must never be recorded as "it passed".
+
+def _load_json(path: Path) -> Any:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def _report_verdict_ok(path: Path, spec: dict[str, Any]) -> bool:
+    """A report whose recorded verdict is not in `expect` fails its stage."""
+    report = _load_json(path)
+    if not isinstance(report, dict):
+        return False
+    field = str(spec.get("field") or "status")
+    if field not in report:
+        return False
+    expected = {str(value).upper() for value in (spec.get("expect") or ["PASS"])}
+    return str(report[field]).upper() in expected
+
+
+def _jsonl_verdicts_ok(path: Path, spec: dict[str, Any]) -> bool:
+    """No row for THIS stage's editions may carry a failing dimension.
+
+    The audit results file is shared across domains and keyed only by edition slug, so the rows are
+    filtered by the editions the contract scoped this stage to. Checking every row instead would
+    fail millbrook/main because a booster_1 row failed — measured, not hypothetical. `warn` is not
+    `fail`; no matching row at all is not a pass.
+    """
+    field = str(spec.get("field") or "verdicts")
+    key = str(spec.get("row_key") or "editions")
+    wanted = {str(value) for value in (spec.get("editions") or [])}
+    try:
+        lines = [line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    except OSError:
+        return False
+    matched = 0
+    for line in lines:
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            return False
+        if wanted and str(row.get(key)) not in wanted:
+            continue
+        matched += 1
+        verdicts = row.get(field)
+        if not isinstance(verdicts, dict):
+            return False
+        if any(str(value).lower() == "fail" for value in verdicts.values()):
+            return False
+    return matched > 0
+
+
+def _json_field_positive(path: Path, spec: dict[str, Any]) -> bool:
+    """A numeric field that must be > 0 — a tokenize that packed zero blocks did not succeed."""
+    report = _load_json(path)
+    field = str(spec.get("field") or "")
+    if not isinstance(report, dict) or field not in report:
+        return False
+    value = report[field]
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0
 
 
 def _base_record(

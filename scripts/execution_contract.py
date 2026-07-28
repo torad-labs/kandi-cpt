@@ -272,6 +272,44 @@ def _resolved_editions(domain_name: str, editions: str | None) -> str:
     return ",".join(unit.slug for unit in units)
 
 
+# Stages that RECORD a verdict, and how to read it. Existence of the report only proves the stage
+# ran; each of these exits 0 whether it passed or failed, so without a semantic postcondition a
+# FAILing audit still mints a PASS stage record. Keyed by stage, matched against that stage's OWN
+# declared outputs, so a relocated report cannot silently detach the check from the artifact.
+_SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
+    "audit_recall": {"suffix": ".json", "prefix": "report_",
+                     "kind": "report_verdict", "field": "status", "expect": ["PASS"]},
+    "pii_scan": {"suffix": ".json", "prefix": "report_",
+                 "kind": "report_verdict", "field": "status", "expect": ["PASS"]},
+    "audit": {"suffix": ".jsonl", "prefix": "",
+              "kind": "jsonl_no_fail_verdict", "field": "verdicts"},
+    "tokenize": {"suffix": "_stats.json", "prefix": "",
+                 "kind": "json_field_positive", "field": "num_chunks"},
+}
+
+
+def _semantic_postconditions(stage_name: str, outputs: list[str],
+                             scoped_editions: list[str]) -> list[dict[str, Any]]:
+    rule = _SEMANTIC_POSTCONDITIONS.get(stage_name)
+    if rule is None:
+        return []
+    emitted = []
+    for output in outputs:
+        name = output.rsplit("/", 1)[-1]
+        if not (name.endswith(rule["suffix"]) and name.startswith(rule["prefix"])):
+            continue
+        condition = {"check": f"{stage_name} recorded a passing verdict in {output}",
+                     "kind": rule["kind"], "path": output, "field": rule["field"]}
+        if "expect" in rule:
+            condition["expect"] = rule["expect"]
+        if rule["kind"] == "jsonl_no_fail_verdict":
+            # The audit results file is shared across domains and keyed only by edition slug,
+            # so the check must be scoped to the editions this stage actually ran.
+            condition["editions"] = scoped_editions
+        emitted.append(condition)
+    return emitted
+
+
 def build_contract(domain_name: str, editions: str | None = None) -> dict[str, Any]:
     domain = Domain(domain_name)
     resolved_editions = _resolved_editions(domain.name, editions)
@@ -294,7 +332,7 @@ def build_contract(domain_name: str, editions: str | None = None) -> dict[str, A
             "postconditions": [
                 {"check": f"output exists: {output}", "kind": "output_exists", "path": output}
                 for output in outputs
-            ],
+            ] + _semantic_postconditions(stage.name, outputs, scoped_editions),
         }
         if "egress:llm" in effects:
             # Plan A advertised; runtime falls back to openrouter only if Studio is absent.
