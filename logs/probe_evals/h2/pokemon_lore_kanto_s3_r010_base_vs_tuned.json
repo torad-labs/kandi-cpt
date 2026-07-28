@@ -1,0 +1,3820 @@
+{
+  "status": "PASS",
+  "pilot_class": true,
+  "provisional": true,
+  "run_name": "pokemon_lore_kanto_s3_r010",
+  "config_fingerprint": "4a3bc9f0c928bd79",
+  "checkpoint_fingerprint": "21c44fef8b964fed",
+  "measurement_class": "augmentation_holdout",
+  "domain": "pokemon-lore",
+  "editions": [
+    "kanto"
+  ],
+  "split_version": "v2",
+  "chance": 0.25,
+  "rough_bound_half_over_sqrt_n": 0.029260286799032642,
+  "delta_acc": 0.3287671232876712,
+  "axis": "forced_choice",
+  "estimand": "augmentation_holdout",
+  "scored_n": 292,
+  "quarantined_n": 8,
+  "quarantine_reasons": {
+    "floor_states_holdout_class_pair": 8
+  },
+  "quarantine_instrument_blind": false,
+  "thresholds": {
+    "min_n": 50,
+    "min_delta_acc": 0.1
+  },
+  "checks": [
+    {
+      "check": "base and tuned used the identical probe set",
+      "pass": true
+    },
+    {
+      "check": "probe denominator is at least 50",
+      "pass": true
+    },
+    {
+      "check": "tuned accuracy clears chance by more than the rough bound",
+      "pass": true
+    },
+    {
+      "check": "accuracy delta clears 0.1000 by more than the rough bound",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "install_strength": {
+    "forced_choice": {
+      "tuned_acc": 0.6095890410958904,
+      "base_acc": 0.2808219178082192,
+      "n": 292,
+      "wilson": {
+        "low": 0.5525576444173259,
+        "high": 0.6637744418802529,
+        "center": 0.6081660431487894,
+        "level": 0.95,
+        "method": "wilson"
+      },
+      "n_status": "ok",
+      "delta_acc": 0.3287671232876712,
+      "estimand": "augmentation_holdout"
+    },
+    "generative": null
+  },
+  "inputs": {
+    "config": "configs/evals/pokemon_lore_kanto_s3_r010.yaml",
+    "config_sha256": "64f517636be57a006a737e4e597fe50af8e5479dc1150c01a6e627fb20051bc7",
+    "probe_paths": [
+      "data/pokemon-lore/kanto/probes.jsonl"
+    ],
+    "probe_hashes": [
+      "fc6b5c048f546f945f8e6ba13ff03ad2cfa58c1210efc87a7188405fa28409cb"
+    ],
+    "probe_sha256": "595f9e65043910858516640362e719cccfca34cf22bc4c317b49e8ba2a768414",
+    "split_paths": [
+      "data/pokemon-lore/kanto/splits/split_v2.json"
+    ],
+    "split_hashes": [
+      "6036d5851561dcfe865d9aa589806f969b090cfe60132d9975ed2c7852137a89"
+    ],
+    "split_sha256": "4a6eec6a6d729bffeb2daba52628ab59647acf5712a5e2cadf27340dbdb0a0d1",
+    "token_stats_path": "data/_build/30_tokenized/pokemon_lore_kanto_s3_r010_stats.json",
+    "token_stats_sha256": "c646d023c0c91b759d2cdf326743f480a29752d2a0e592122a01e71795736934",
+    "clean_tokens": 589372,
+    "quarantine_paths": [
+      "data/_build/probe_quarantine/pokemon-lore/kanto.json"
+    ],
+    "quarantine_hashes": [
+      "0ea1e75d81470d347a0a40b0a31e4b7ecbebac5bd95dd831d3cdef4739219c92"
+    ],
+    "quarantine_sha256": "5b2c64df39e56c06c5ffea9fd956d7996f93c1718e330db8e8f2012cd166501a"
+  },
+  "probe_results": [
+    {
+      "source_triple_id": "81a99e15d8314d5f",
+      "probe_surface_id": "2a7d60e7b3d2b318",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Calem?",
+      "answer": "Serena",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "81a99e15d8314d5f",
+      "probe_surface_id": "384ccbd81483dd53",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Answer briefly: Who is the rival of Calem?",
+      "answer": "Serena",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "81a99e15d8314d5f",
+      "probe_surface_id": "9ffed6661e026dda",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Using the stated lore, who is the rival of Calem?",
+      "answer": "Serena",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "81a99e15d8314d5f",
+      "probe_surface_id": "2cd01f774c83a26b",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Give only the named fact: Who is the rival of Calem?",
+      "answer": "Serena",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed91fb5a4a8f9af6",
+      "probe_surface_id": "0227615d6a24ed05",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Who does Calem oppose?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed91fb5a4a8f9af6",
+      "probe_surface_id": "270be570965cd0b3",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Calem oppose?",
+      "answer": "Team Flare",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed91fb5a4a8f9af6",
+      "probe_surface_id": "99b9818a482fa182",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Calem oppose?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed91fb5a4a8f9af6",
+      "probe_surface_id": "9c1d89b33427c4c0",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Calem oppose?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f0679856c82f36b7",
+      "probe_surface_id": "5cc669336e15bf3b",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "answer": "Fletchling",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f0679856c82f36b7",
+      "probe_surface_id": "cfd7b0e3b5173c03",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Calem own?",
+      "answer": "Fletchling",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f0679856c82f36b7",
+      "probe_surface_id": "37735cf6945646f3",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Calem own?",
+      "answer": "Fletchling",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0679856c82f36b7",
+      "probe_surface_id": "6ac7df1acf023dac",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Calem own?",
+      "answer": "Fletchling",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "372d05340497a425",
+      "probe_surface_id": "2da7f0d19c86b2da",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "answer": "Bunnelby",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "372d05340497a425",
+      "probe_surface_id": "6ebccdbf96cee0b5",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Calem own?",
+      "answer": "Bunnelby",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "372d05340497a425",
+      "probe_surface_id": "075458286b6e2b07",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Calem own?",
+      "answer": "Bunnelby",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "372d05340497a425",
+      "probe_surface_id": "3cd11dbbff2a2201",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Calem own?",
+      "answer": "Bunnelby",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e47ab0aee7126d1a",
+      "probe_surface_id": "b2c4eed6151e5379",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "answer": "Absolite",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e47ab0aee7126d1a",
+      "probe_surface_id": "2ca47d6b0f3aeee4",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Calem own?",
+      "answer": "Absolite",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e47ab0aee7126d1a",
+      "probe_surface_id": "dd13814c3be72d16",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Calem own?",
+      "answer": "Absolite",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e47ab0aee7126d1a",
+      "probe_surface_id": "7c9804e55c0548f3",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Calem own?",
+      "answer": "Absolite",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d956540f26a7db6c",
+      "probe_surface_id": "7ffda37e498205db",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "answer": "Chesnaught",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d956540f26a7db6c",
+      "probe_surface_id": "5e2a685283b3447b",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Calem own?",
+      "answer": "Chesnaught",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d956540f26a7db6c",
+      "probe_surface_id": "e9085b653fdb7bf0",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Calem own?",
+      "answer": "Chesnaught",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d956540f26a7db6c",
+      "probe_surface_id": "8b3c60004f2a300e",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Calem own?",
+      "answer": "Chesnaught",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f929a63cfe006ef2",
+      "probe_surface_id": "a9ce99372b0ec6a4",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Calem own?",
+      "answer": "Charizard",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f929a63cfe006ef2",
+      "probe_surface_id": "85000defd4866acb",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Calem own?",
+      "answer": "Charizard",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f929a63cfe006ef2",
+      "probe_surface_id": "962279ae53a4fdd8",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Calem own?",
+      "answer": "Charizard",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f929a63cfe006ef2",
+      "probe_surface_id": "39a935848606ce0e",
+      "subject": "Calem",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Calem own?",
+      "answer": "Charizard",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e30f50924a750c81",
+      "probe_surface_id": "99c0e438754fe2ec",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Calem?",
+      "answer": "AZ",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e30f50924a750c81",
+      "probe_surface_id": "a5373e36fba8d8e8",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Answer briefly: Who is the rival of Calem?",
+      "answer": "AZ",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e30f50924a750c81",
+      "probe_surface_id": "42f948deaca5d67d",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Using the stated lore, who is the rival of Calem?",
+      "answer": "AZ",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e30f50924a750c81",
+      "probe_surface_id": "a51b44733d363fdc",
+      "subject": "Calem",
+      "predicate": "rival_of",
+      "question": "Give only the named fact: Who is the rival of Calem?",
+      "answer": "AZ",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "98f1277a984e8238",
+      "probe_surface_id": "e4d0e3839a719e02",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Who does Calem oppose?",
+      "answer": "Lysandre",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "98f1277a984e8238",
+      "probe_surface_id": "c226ac6535eae05b",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Calem oppose?",
+      "answer": "Lysandre",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "98f1277a984e8238",
+      "probe_surface_id": "0fb0477187068322",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Calem oppose?",
+      "answer": "Lysandre",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "98f1277a984e8238",
+      "probe_surface_id": "a98a8d985666a5ed",
+      "subject": "Calem",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Calem oppose?",
+      "answer": "Lysandre",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "eff84fb83c4a3ca7",
+      "probe_surface_id": "ea4cf42cb4d3d2b2",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Who does Red oppose?",
+      "answer": "Agatha",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "eff84fb83c4a3ca7",
+      "probe_surface_id": "6c7590c76ddb1bc1",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Red oppose?",
+      "answer": "Agatha",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "eff84fb83c4a3ca7",
+      "probe_surface_id": "aacca7ea330d2349",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Red oppose?",
+      "answer": "Agatha",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "eff84fb83c4a3ca7",
+      "probe_surface_id": "d77e266f16ccceb3",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Red oppose?",
+      "answer": "Agatha",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9f4ff2925380bbc6",
+      "probe_surface_id": "d7ccf4dccd866985",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Which organization does Lusamine lead?",
+      "answer": "Aether Foundation",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9f4ff2925380bbc6",
+      "probe_surface_id": "ddf2336964ade1e9",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Answer briefly: Which organization does Lusamine lead?",
+      "answer": "Aether Foundation",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "9f4ff2925380bbc6",
+      "probe_surface_id": "fb0f4e36b94b1e06",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Using the stated lore, which organization does Lusamine lead?",
+      "answer": "Aether Foundation",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9f4ff2925380bbc6",
+      "probe_surface_id": "82944a93cf0fe532",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Give only the named fact: Which organization does Lusamine lead?",
+      "answer": "Aether Foundation",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "58d47c571fa54472",
+      "probe_surface_id": "9988fe970064a92c",
+      "subject": "Solaceon Town",
+      "predicate": "located_in",
+      "question": "Which region is Solaceon Town located in?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "58d47c571fa54472",
+      "probe_surface_id": "1d00cdacbba4d64e",
+      "subject": "Solaceon Town",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Solaceon Town located in?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "58d47c571fa54472",
+      "probe_surface_id": "c182663674cfc2c0",
+      "subject": "Solaceon Town",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Solaceon Town located in?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "58d47c571fa54472",
+      "probe_surface_id": "d497bdbae2e416be",
+      "subject": "Solaceon Town",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Solaceon Town located in?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0eec85b3013dbb19",
+      "probe_surface_id": "5c03f857883772c2",
+      "subject": "Growlithe",
+      "predicate": "evolves_into_lore",
+      "question": "What does Growlithe evolve into in the lore?",
+      "answer": "Arcanine",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0eec85b3013dbb19",
+      "probe_surface_id": "607a42d5ff1a0735",
+      "subject": "Growlithe",
+      "predicate": "evolves_into_lore",
+      "question": "Answer briefly: What does Growlithe evolve into in the lore?",
+      "answer": "Arcanine",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0eec85b3013dbb19",
+      "probe_surface_id": "f8b28ecbdb07592e",
+      "subject": "Growlithe",
+      "predicate": "evolves_into_lore",
+      "question": "Using the stated lore, what does Growlithe evolve into in the lore?",
+      "answer": "Arcanine",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0eec85b3013dbb19",
+      "probe_surface_id": "1a5bfed2d110fc82",
+      "subject": "Growlithe",
+      "predicate": "evolves_into_lore",
+      "question": "Give only the named fact: What does Growlithe evolve into in the lore?",
+      "answer": "Arcanine",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "17f3e926d68813c9",
+      "probe_surface_id": "bfeb642429a9cbec",
+      "subject": "Hisuian Arcanine",
+      "predicate": "originates_from",
+      "question": "Which region is Hisuian Arcanine from?",
+      "answer": "Hisui",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "17f3e926d68813c9",
+      "probe_surface_id": "97b4c66813af8513",
+      "subject": "Hisuian Arcanine",
+      "predicate": "originates_from",
+      "question": "Answer briefly: Which region is Hisuian Arcanine from?",
+      "answer": "Hisui",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "17f3e926d68813c9",
+      "probe_surface_id": "851458fdf0b5a143",
+      "subject": "Hisuian Arcanine",
+      "predicate": "originates_from",
+      "question": "Using the stated lore, which region is Hisuian Arcanine from?",
+      "answer": "Hisui",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "17f3e926d68813c9",
+      "probe_surface_id": "2a311fb125489d6c",
+      "subject": "Hisuian Arcanine",
+      "predicate": "originates_from",
+      "question": "Give only the named fact: Which region is Hisuian Arcanine from?",
+      "answer": "Hisui",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "6f875543e04ffe9f",
+      "probe_surface_id": "76036ab035f5921d",
+      "subject": "Hisuian Arcanine",
+      "predicate": "allied_with",
+      "question": "Who is Hisuian Arcanine allied with?",
+      "answer": "Arceus",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "6f875543e04ffe9f",
+      "probe_surface_id": "e7699a8a8611c87f",
+      "subject": "Hisuian Arcanine",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Hisuian Arcanine allied with?",
+      "answer": "Arceus",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "6f875543e04ffe9f",
+      "probe_surface_id": "89c275ca5b9d2ab9",
+      "subject": "Hisuian Arcanine",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Hisuian Arcanine allied with?",
+      "answer": "Arceus",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "6f875543e04ffe9f",
+      "probe_surface_id": "3e11cd774bfb9b04",
+      "subject": "Hisuian Arcanine",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Hisuian Arcanine allied with?",
+      "answer": "Arceus",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "a998d79ff1946450",
+      "probe_surface_id": "d1c83ea016085c6b",
+      "subject": "Bruno",
+      "predicate": "member_of",
+      "question": "Which organization is Bruno a member of?",
+      "answer": "Indigo Elite Four",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "a998d79ff1946450",
+      "probe_surface_id": "872148962cad939d",
+      "subject": "Bruno",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is Bruno a member of?",
+      "answer": "Indigo Elite Four",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "a998d79ff1946450",
+      "probe_surface_id": "ca9cd4ffec9f8da3",
+      "subject": "Bruno",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is Bruno a member of?",
+      "answer": "Indigo Elite Four",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "a998d79ff1946450",
+      "probe_surface_id": "3d23d1d4725adf22",
+      "subject": "Bruno",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is Bruno a member of?",
+      "answer": "Indigo Elite Four",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d6fe3431baa9a934",
+      "probe_surface_id": "983e5991798bf971",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Bruno own?",
+      "answer": "Machamp",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d6fe3431baa9a934",
+      "probe_surface_id": "7b9ac1b38d59262a",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Machamp",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d6fe3431baa9a934",
+      "probe_surface_id": "a97206fa0d5db08d",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Bruno own?",
+      "answer": "Machamp",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d6fe3431baa9a934",
+      "probe_surface_id": "227105fbf39f7939",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Machamp",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "bb3b844f73556b34",
+      "probe_surface_id": "a3988d50fac174e1",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Bruno own?",
+      "answer": "Onix",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "bb3b844f73556b34",
+      "probe_surface_id": "887b85f98856e014",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Onix",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "bb3b844f73556b34",
+      "probe_surface_id": "1817c7ae0b88e6f3",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Bruno own?",
+      "answer": "Onix",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "bb3b844f73556b34",
+      "probe_surface_id": "4987d80499f53dff",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Onix",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e3996251dba53e79",
+      "probe_surface_id": "23259ab674ed7479",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Bruno own?",
+      "answer": "Hitmontop",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e3996251dba53e79",
+      "probe_surface_id": "c0821c5836cf24f6",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Hitmontop",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e3996251dba53e79",
+      "probe_surface_id": "d5c7fba95cd6adef",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Bruno own?",
+      "answer": "Hitmontop",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e3996251dba53e79",
+      "probe_surface_id": "a978d3d9cf98ac01",
+      "subject": "Bruno",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Bruno own?",
+      "answer": "Hitmontop",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f4ec466f1a41c7d6",
+      "probe_surface_id": "802be1471a64fad0",
+      "subject": "Bruno",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Bruno?",
+      "answer": "Chuck",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f4ec466f1a41c7d6",
+      "probe_surface_id": "20a840deb72a9f8d",
+      "subject": "Bruno",
+      "predicate": "rival_of",
+      "question": "Answer briefly: Who is the rival of Bruno?",
+      "answer": "Chuck",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f4ec466f1a41c7d6",
+      "probe_surface_id": "5331c2d6c82ab5d1",
+      "subject": "Bruno",
+      "predicate": "rival_of",
+      "question": "Using the stated lore, who is the rival of Bruno?",
+      "answer": "Chuck",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f4ec466f1a41c7d6",
+      "probe_surface_id": "a17e1521768bb554",
+      "subject": "Bruno",
+      "predicate": "rival_of",
+      "question": "Give only the named fact: Who is the rival of Bruno?",
+      "answer": "Chuck",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4d45b3cd20dcff9a",
+      "probe_surface_id": "f51ee5fdb297452b",
+      "subject": "Bruno",
+      "predicate": "allied_with",
+      "question": "Who is Bruno allied with?",
+      "answer": "Lance",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4d45b3cd20dcff9a",
+      "probe_surface_id": "0a04224b9a5844fa",
+      "subject": "Bruno",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Bruno allied with?",
+      "answer": "Lance",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4d45b3cd20dcff9a",
+      "probe_surface_id": "628c090dfe71cad2",
+      "subject": "Bruno",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Bruno allied with?",
+      "answer": "Lance",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4d45b3cd20dcff9a",
+      "probe_surface_id": "1fceba838c9c46cd",
+      "subject": "Bruno",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Bruno allied with?",
+      "answer": "Lance",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d6995b5e6b2e64fe",
+      "probe_surface_id": "ddb07b55094bdfef",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Who does Lusamine mentor?",
+      "answer": "Lillie",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d6995b5e6b2e64fe",
+      "probe_surface_id": "9fe7c70e48ade220",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Answer briefly: Who does Lusamine mentor?",
+      "answer": "Lillie",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d6995b5e6b2e64fe",
+      "probe_surface_id": "3d7f470f430e3736",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Using the stated lore, who does Lusamine mentor?",
+      "answer": "Lillie",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d6995b5e6b2e64fe",
+      "probe_surface_id": "033355513c0e9e10",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Give only the named fact: Who does Lusamine mentor?",
+      "answer": "Lillie",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b99654476e3337bf",
+      "probe_surface_id": "194724d2c9ed521d",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Who does Lusamine mentor?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b99654476e3337bf",
+      "probe_surface_id": "6202dfc9c13ba1f4",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Answer briefly: Who does Lusamine mentor?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b99654476e3337bf",
+      "probe_surface_id": "b150d98f8deab43f",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Using the stated lore, who does Lusamine mentor?",
+      "answer": "Gladion",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b99654476e3337bf",
+      "probe_surface_id": "c85d5f31f8be49b8",
+      "subject": "Lusamine",
+      "predicate": "mentors",
+      "question": "Give only the named fact: Who does Lusamine mentor?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "65304368872b5d09",
+      "probe_surface_id": "38c3737d32cfa6f2",
+      "subject": "Dragonair",
+      "predicate": "evolves_into_lore",
+      "question": "What does Dragonair evolve into in the lore?",
+      "answer": "Dragonite",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "65304368872b5d09",
+      "probe_surface_id": "330964f6c91ed59f",
+      "subject": "Dragonair",
+      "predicate": "evolves_into_lore",
+      "question": "Answer briefly: What does Dragonair evolve into in the lore?",
+      "answer": "Dragonite",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "65304368872b5d09",
+      "probe_surface_id": "ce349a74e6075bcc",
+      "subject": "Dragonair",
+      "predicate": "evolves_into_lore",
+      "question": "Using the stated lore, what does Dragonair evolve into in the lore?",
+      "answer": "Dragonite",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "65304368872b5d09",
+      "probe_surface_id": "9e396573e715c6d4",
+      "subject": "Dragonair",
+      "predicate": "evolves_into_lore",
+      "question": "Give only the named fact: What does Dragonair evolve into in the lore?",
+      "answer": "Dragonite",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "38144524545e4488",
+      "probe_surface_id": "ae11c251d1cbb8f0",
+      "subject": "Nagatha",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Nagatha own?",
+      "answer": "Hoothoot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38144524545e4488",
+      "probe_surface_id": "09e914feb687d4a8",
+      "subject": "Nagatha",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Nagatha own?",
+      "answer": "Hoothoot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38144524545e4488",
+      "probe_surface_id": "e7ebb48bc16e2cfa",
+      "subject": "Nagatha",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Nagatha own?",
+      "answer": "Hoothoot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38144524545e4488",
+      "probe_surface_id": "cfdf004e365e63f2",
+      "subject": "Nagatha",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Nagatha own?",
+      "answer": "Hoothoot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "a351275f062adac2",
+      "probe_surface_id": "db3e109c6665cf22",
+      "subject": "Lusamine",
+      "predicate": "member_of",
+      "question": "Which organization is Lusamine a member of?",
+      "answer": "Aether Foundation",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "a351275f062adac2",
+      "probe_surface_id": "ff2c676c97d08fa5",
+      "subject": "Lusamine",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is Lusamine a member of?",
+      "answer": "Aether Foundation",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "a351275f062adac2",
+      "probe_surface_id": "592dd95fbbcc5476",
+      "subject": "Lusamine",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is Lusamine a member of?",
+      "answer": "Aether Foundation",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "a351275f062adac2",
+      "probe_surface_id": "1da5f0cefc8d7e6d",
+      "subject": "Lusamine",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is Lusamine a member of?",
+      "answer": "Aether Foundation",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "894546d9ad8226ce",
+      "probe_surface_id": "1b8062188ead681d",
+      "subject": "Lillie",
+      "predicate": "allied_with",
+      "question": "Who is Lillie allied with?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "894546d9ad8226ce",
+      "probe_surface_id": "00efde78473b0c84",
+      "subject": "Lillie",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Lillie allied with?",
+      "answer": "Gladion",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "894546d9ad8226ce",
+      "probe_surface_id": "a8cdad85caac15d1",
+      "subject": "Lillie",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Lillie allied with?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "894546d9ad8226ce",
+      "probe_surface_id": "2b1442478de0c4ea",
+      "subject": "Lillie",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Lillie allied with?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "de291535e4f02322",
+      "probe_surface_id": "ea8d6ef1dff2f163",
+      "subject": "Lusamine",
+      "predicate": "allied_with",
+      "question": "Who is Lusamine allied with?",
+      "answer": "Mohn",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "de291535e4f02322",
+      "probe_surface_id": "dd3d5d995af7aa3b",
+      "subject": "Lusamine",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Lusamine allied with?",
+      "answer": "Mohn",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "de291535e4f02322",
+      "probe_surface_id": "49e17c56ed1e52cd",
+      "subject": "Lusamine",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Lusamine allied with?",
+      "answer": "Mohn",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "de291535e4f02322",
+      "probe_surface_id": "9f2500e78b1afd13",
+      "subject": "Lusamine",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Lusamine allied with?",
+      "answer": "Mohn",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "98b1c890ea805797",
+      "probe_surface_id": "0201f68069e8c8c1",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Who is Team Rocket allied with?",
+      "answer": "Team Galactic",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "98b1c890ea805797",
+      "probe_surface_id": "ba15a5e3d6d2c258",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Team Rocket allied with?",
+      "answer": "Team Galactic",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "98b1c890ea805797",
+      "probe_surface_id": "9340d3ac782394d6",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Team Rocket allied with?",
+      "answer": "Team Galactic",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "98b1c890ea805797",
+      "probe_surface_id": "a48b9b1dede819e7",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Team Rocket allied with?",
+      "answer": "Team Galactic",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "047de8cd63a8938f",
+      "probe_surface_id": "d981b49588d107dc",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Where does Team Rocket take place?",
+      "answer": "Eterna Historical Museum",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "047de8cd63a8938f",
+      "probe_surface_id": "cef60d48596ecc68",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Answer briefly: Where does Team Rocket take place?",
+      "answer": "Eterna Historical Museum",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "047de8cd63a8938f",
+      "probe_surface_id": "d70d4a2c19d71c24",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Using the stated lore, where does Team Rocket take place?",
+      "answer": "Eterna Historical Museum",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "047de8cd63a8938f",
+      "probe_surface_id": "be770e77d36fe888",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Give only the named fact: Where does Team Rocket take place?",
+      "answer": "Eterna Historical Museum",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8f475113e2063b33",
+      "probe_surface_id": "358c462ea96dbdb1",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Goh own?",
+      "answer": "Scorbunny",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8f475113e2063b33",
+      "probe_surface_id": "770ebe2b6c1424bf",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Goh own?",
+      "answer": "Scorbunny",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8f475113e2063b33",
+      "probe_surface_id": "87309e166ffe239e",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Goh own?",
+      "answer": "Scorbunny",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8f475113e2063b33",
+      "probe_surface_id": "db698f0f03214bc5",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Goh own?",
+      "answer": "Scorbunny",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd6aac9bca80d8fb",
+      "probe_surface_id": "775e218e8e923b20",
+      "subject": "Scorbunny",
+      "predicate": "evolves_into_lore",
+      "question": "What does Scorbunny evolve into in the lore?",
+      "answer": "Raboot",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd6aac9bca80d8fb",
+      "probe_surface_id": "5b31c8a9e15cafd7",
+      "subject": "Scorbunny",
+      "predicate": "evolves_into_lore",
+      "question": "Answer briefly: What does Scorbunny evolve into in the lore?",
+      "answer": "Raboot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd6aac9bca80d8fb",
+      "probe_surface_id": "0da309639adc23c2",
+      "subject": "Scorbunny",
+      "predicate": "evolves_into_lore",
+      "question": "Using the stated lore, what does Scorbunny evolve into in the lore?",
+      "answer": "Raboot",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "dd6aac9bca80d8fb",
+      "probe_surface_id": "e9a6978ca22ee04a",
+      "subject": "Scorbunny",
+      "predicate": "evolves_into_lore",
+      "question": "Give only the named fact: What does Scorbunny evolve into in the lore?",
+      "answer": "Raboot",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7303d03091a462de",
+      "probe_surface_id": "3069b8146fab10d3",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Goh own?",
+      "answer": "Sobble",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "7303d03091a462de",
+      "probe_surface_id": "2af8efdd32ae21f0",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Goh own?",
+      "answer": "Sobble",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "7303d03091a462de",
+      "probe_surface_id": "7a5566e69caaf662",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Goh own?",
+      "answer": "Sobble",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "7303d03091a462de",
+      "probe_surface_id": "5ff3ffa0c17f32ad",
+      "subject": "Goh",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Goh own?",
+      "answer": "Sobble",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "2c651c5c344e977f",
+      "probe_surface_id": "fff81ac5b380630f",
+      "subject": "Goh",
+      "predicate": "opposes",
+      "question": "Who does Goh oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2c651c5c344e977f",
+      "probe_surface_id": "4770db1465432077",
+      "subject": "Goh",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Goh oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2c651c5c344e977f",
+      "probe_surface_id": "11a53a6ec652ac95",
+      "subject": "Goh",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Goh oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2c651c5c344e977f",
+      "probe_surface_id": "d061002e41a34f2a",
+      "subject": "Goh",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Goh oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "cc99dc0a654821ef",
+      "probe_surface_id": "23890787307e6595",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "cc99dc0a654821ef",
+      "probe_surface_id": "8166a0aeef82614f",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Answer briefly: Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "cc99dc0a654821ef",
+      "probe_surface_id": "47845c146b81752e",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Using the stated lore, which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "cc99dc0a654821ef",
+      "probe_surface_id": "d98c2b95bbaa3597",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Give only the named fact: Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "1d66aa69f5e735bf",
+      "probe_surface_id": "a75acf735f031e30",
+      "subject": "Manaphy",
+      "predicate": "originates_from",
+      "question": "Which region is Manaphy from?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "1d66aa69f5e735bf",
+      "probe_surface_id": "496c02c305fe5db0",
+      "subject": "Manaphy",
+      "predicate": "originates_from",
+      "question": "Answer briefly: Which region is Manaphy from?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "1d66aa69f5e735bf",
+      "probe_surface_id": "7d5482bd5ce4d4b6",
+      "subject": "Manaphy",
+      "predicate": "originates_from",
+      "question": "Using the stated lore, which region is Manaphy from?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "1d66aa69f5e735bf",
+      "probe_surface_id": "bd0dc5e6341ca4c5",
+      "subject": "Manaphy",
+      "predicate": "originates_from",
+      "question": "Give only the named fact: Which region is Manaphy from?",
+      "answer": "Sinnoh",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0c2be030240b430",
+      "probe_surface_id": "731352290aefe414",
+      "subject": "Malva",
+      "predicate": "member_of",
+      "question": "Which organization is Malva a member of?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0c2be030240b430",
+      "probe_surface_id": "5ce246c56a0ce746",
+      "subject": "Malva",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is Malva a member of?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0c2be030240b430",
+      "probe_surface_id": "430eeacd823d9ea2",
+      "subject": "Malva",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is Malva a member of?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0c2be030240b430",
+      "probe_surface_id": "fec4f55bda9a00f8",
+      "subject": "Malva",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is Malva a member of?",
+      "answer": "Team Flare",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0ad64c57c32873d",
+      "probe_surface_id": "2ea307b44fb3f113",
+      "subject": "Lillie",
+      "predicate": "located_in",
+      "question": "Which region is Lillie located in?",
+      "answer": "Alola",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f0ad64c57c32873d",
+      "probe_surface_id": "b8873fb41ff05c16",
+      "subject": "Lillie",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Lillie located in?",
+      "answer": "Alola",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "f0ad64c57c32873d",
+      "probe_surface_id": "54d7ceaedf587c24",
+      "subject": "Lillie",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Lillie located in?",
+      "answer": "Alola",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "f0ad64c57c32873d",
+      "probe_surface_id": "7cab3830fcc8f85f",
+      "subject": "Lillie",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Lillie located in?",
+      "answer": "Alola",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3f5dfa372c9f1618",
+      "probe_surface_id": "564be4062d433b32",
+      "subject": "Lillie",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Lillie?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3f5dfa372c9f1618",
+      "probe_surface_id": "8d87560b7d93c321",
+      "subject": "Lillie",
+      "predicate": "rival_of",
+      "question": "Answer briefly: Who is the rival of Lillie?",
+      "answer": "Gladion",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3f5dfa372c9f1618",
+      "probe_surface_id": "babe3cd4ffbed04e",
+      "subject": "Lillie",
+      "predicate": "rival_of",
+      "question": "Using the stated lore, who is the rival of Lillie?",
+      "answer": "Gladion",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3f5dfa372c9f1618",
+      "probe_surface_id": "21125be85b690871",
+      "subject": "Lillie",
+      "predicate": "rival_of",
+      "question": "Give only the named fact: Who is the rival of Lillie?",
+      "answer": "Gladion",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b8f67b6d255c5cac",
+      "probe_surface_id": "f72546f45cdf8668",
+      "subject": "Lillie",
+      "predicate": "member_of",
+      "question": "Which organization is Lillie a member of?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b8f67b6d255c5cac",
+      "probe_surface_id": "c800ae514c60b863",
+      "subject": "Lillie",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is Lillie a member of?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b8f67b6d255c5cac",
+      "probe_surface_id": "056e87186d1e2dd3",
+      "subject": "Lillie",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is Lillie a member of?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b8f67b6d255c5cac",
+      "probe_surface_id": "3aec0128733b85de",
+      "subject": "Lillie",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is Lillie a member of?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "19b41e852f544873",
+      "probe_surface_id": "da08ea9f7075924f",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "19b41e852f544873",
+      "probe_surface_id": "29352ddf1e05d473",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Answer briefly: Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "19b41e852f544873",
+      "probe_surface_id": "720cf99543f87246",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Using the stated lore, which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "19b41e852f544873",
+      "probe_surface_id": "407abd054467ae7a",
+      "subject": "Lusamine",
+      "predicate": "leads",
+      "question": "Give only the named fact: Which organization does Lusamine lead?",
+      "answer": "Ultra Guardians",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "55cf9cd5977b69a1",
+      "probe_surface_id": "5f66dc2f34b73c79",
+      "subject": "Wooper",
+      "predicate": "appears_in",
+      "question": "Where does Wooper appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "55cf9cd5977b69a1",
+      "probe_surface_id": "f232e50a3ecef129",
+      "subject": "Wooper",
+      "predicate": "appears_in",
+      "question": "Answer briefly: Where does Wooper appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "55cf9cd5977b69a1",
+      "probe_surface_id": "e10990eae0de87ba",
+      "subject": "Wooper",
+      "predicate": "appears_in",
+      "question": "Using the stated lore, where does Wooper appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "55cf9cd5977b69a1",
+      "probe_surface_id": "0603809c14b79e74",
+      "subject": "Wooper",
+      "predicate": "appears_in",
+      "question": "Give only the named fact: Where does Wooper appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "587467a85489dc13",
+      "probe_surface_id": "9d17168e382b74b6",
+      "subject": "Mr. Rime",
+      "predicate": "appears_in",
+      "question": "Where does Mr. Rime appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "587467a85489dc13",
+      "probe_surface_id": "98e0af07abe8540d",
+      "subject": "Mr. Rime",
+      "predicate": "appears_in",
+      "question": "Answer briefly: Where does Mr. Rime appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "587467a85489dc13",
+      "probe_surface_id": "7db76684fa24cc8a",
+      "subject": "Mr. Rime",
+      "predicate": "appears_in",
+      "question": "Using the stated lore, where does Mr. Rime appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "587467a85489dc13",
+      "probe_surface_id": "8adf289c8516bf8b",
+      "subject": "Mr. Rime",
+      "predicate": "appears_in",
+      "question": "Give only the named fact: Where does Mr. Rime appear?",
+      "answer": "Pokopia",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "2848fa78257a1c0c",
+      "probe_surface_id": "cf9ec90dab5a56f7",
+      "subject": "Misty",
+      "predicate": "mentors",
+      "question": "Who does Misty mentor?",
+      "answer": "Lorelei",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2848fa78257a1c0c",
+      "probe_surface_id": "56af0e40fab05107",
+      "subject": "Misty",
+      "predicate": "mentors",
+      "question": "Answer briefly: Who does Misty mentor?",
+      "answer": "Lorelei",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "2848fa78257a1c0c",
+      "probe_surface_id": "04ed520e65a9fd98",
+      "subject": "Misty",
+      "predicate": "mentors",
+      "question": "Using the stated lore, who does Misty mentor?",
+      "answer": "Lorelei",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "2848fa78257a1c0c",
+      "probe_surface_id": "955501483a8f7a82",
+      "subject": "Misty",
+      "predicate": "mentors",
+      "question": "Give only the named fact: Who does Misty mentor?",
+      "answer": "Lorelei",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b3cd6707dae0ef5e",
+      "probe_surface_id": "98b06703ece92a12",
+      "subject": "Goldenrod Game Corner",
+      "predicate": "located_in",
+      "question": "Which region is Goldenrod Game Corner located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b3cd6707dae0ef5e",
+      "probe_surface_id": "57e44f48a9537e08",
+      "subject": "Goldenrod Game Corner",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Goldenrod Game Corner located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b3cd6707dae0ef5e",
+      "probe_surface_id": "8757f678233c3357",
+      "subject": "Goldenrod Game Corner",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Goldenrod Game Corner located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b3cd6707dae0ef5e",
+      "probe_surface_id": "204179b6ff70c695",
+      "subject": "Goldenrod Game Corner",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Goldenrod Game Corner located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "db6e0f7ec7ec5bfb",
+      "probe_surface_id": "e4ae605230bf369a",
+      "subject": "Celadon Game Corner",
+      "predicate": "located_in",
+      "question": "Which region is Celadon Game Corner located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "db6e0f7ec7ec5bfb",
+      "probe_surface_id": "8a0b05dfa196e2bd",
+      "subject": "Celadon Game Corner",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Celadon Game Corner located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "db6e0f7ec7ec5bfb",
+      "probe_surface_id": "c035e60e4e3e7ef9",
+      "subject": "Celadon Game Corner",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Celadon Game Corner located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "db6e0f7ec7ec5bfb",
+      "probe_surface_id": "292fd92e56e4dc9b",
+      "subject": "Celadon Game Corner",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Celadon Game Corner located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3047e698202d287e",
+      "probe_surface_id": "a41c800c75c5da4c",
+      "subject": "Cobalt Coast",
+      "predicate": "located_in",
+      "question": "Which region is Cobalt Coast located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3047e698202d287e",
+      "probe_surface_id": "c346b40479269467",
+      "subject": "Cobalt Coast",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Cobalt Coast located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "3047e698202d287e",
+      "probe_surface_id": "57a867ea584b717a",
+      "subject": "Cobalt Coast",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Cobalt Coast located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "3047e698202d287e",
+      "probe_surface_id": "b1bbe90d69fcc59e",
+      "subject": "Cobalt Coast",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Cobalt Coast located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "9704e8f479d1e112",
+      "probe_surface_id": "62edc12a31a4c83d",
+      "subject": "Pidgeotto",
+      "predicate": "evolves_into_lore",
+      "question": "What does Pidgeotto evolve into in the lore?",
+      "answer": "Pidgeot",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9704e8f479d1e112",
+      "probe_surface_id": "8af9ff70b4bfe9a0",
+      "subject": "Pidgeotto",
+      "predicate": "evolves_into_lore",
+      "question": "Answer briefly: What does Pidgeotto evolve into in the lore?",
+      "answer": "Pidgeot",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9704e8f479d1e112",
+      "probe_surface_id": "33ea2ee966766260",
+      "subject": "Pidgeotto",
+      "predicate": "evolves_into_lore",
+      "question": "Using the stated lore, what does Pidgeotto evolve into in the lore?",
+      "answer": "Pidgeot",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "9704e8f479d1e112",
+      "probe_surface_id": "09e9db2a607515aa",
+      "subject": "Pidgeotto",
+      "predicate": "evolves_into_lore",
+      "question": "Give only the named fact: What does Pidgeotto evolve into in the lore?",
+      "answer": "Pidgeot",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e87e19eea80826f8",
+      "probe_surface_id": "b9f5b42b39b7a67f",
+      "subject": "Pok\u00e9lantis",
+      "predicate": "located_in",
+      "question": "Which region is Pok\u00e9lantis located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e87e19eea80826f8",
+      "probe_surface_id": "2187b4cb87cf74bd",
+      "subject": "Pok\u00e9lantis",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Pok\u00e9lantis located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e87e19eea80826f8",
+      "probe_surface_id": "99ee8f4ab31c33f4",
+      "subject": "Pok\u00e9lantis",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Pok\u00e9lantis located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e87e19eea80826f8",
+      "probe_surface_id": "47f46526ebbbc77c",
+      "subject": "Pok\u00e9lantis",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Pok\u00e9lantis located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "830592ca0ff5b22b",
+      "probe_surface_id": "42db7df7cdc9d067",
+      "subject": "Team Rocket",
+      "predicate": "opposes",
+      "question": "Who does Team Rocket oppose?",
+      "answer": "Nurse Joy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "830592ca0ff5b22b",
+      "probe_surface_id": "42b0aa51dd09f359",
+      "subject": "Team Rocket",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Team Rocket oppose?",
+      "answer": "Nurse Joy",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "830592ca0ff5b22b",
+      "probe_surface_id": "8eb20b6e90cc1140",
+      "subject": "Team Rocket",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Team Rocket oppose?",
+      "answer": "Nurse Joy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "830592ca0ff5b22b",
+      "probe_surface_id": "bec0dc1535a7c8e9",
+      "subject": "Team Rocket",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Team Rocket oppose?",
+      "answer": "Nurse Joy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e8421b37f4cdd3a0",
+      "probe_surface_id": "ec25496ae4abd158",
+      "subject": "Team Galactic",
+      "predicate": "opposes",
+      "question": "Who does Team Galactic oppose?",
+      "answer": "Pok\u00e9mon Association",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "e8421b37f4cdd3a0",
+      "probe_surface_id": "de9d75685914ca26",
+      "subject": "Team Galactic",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Team Galactic oppose?",
+      "answer": "Pok\u00e9mon Association",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e8421b37f4cdd3a0",
+      "probe_surface_id": "bbeadc2c2fd642cf",
+      "subject": "Team Galactic",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Team Galactic oppose?",
+      "answer": "Pok\u00e9mon Association",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "e8421b37f4cdd3a0",
+      "probe_surface_id": "1c7bfddfe9866b05",
+      "subject": "Team Galactic",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Team Galactic oppose?",
+      "answer": "Pok\u00e9mon Association",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "83bf6595dc6d5712",
+      "probe_surface_id": "bb2989b6f2a570f9",
+      "subject": "Draconid people",
+      "predicate": "governs",
+      "question": "What does Draconid people govern?",
+      "answer": "Sky Pillar",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "83bf6595dc6d5712",
+      "probe_surface_id": "ca257e834434f4e7",
+      "subject": "Draconid people",
+      "predicate": "governs",
+      "question": "Answer briefly: What does Draconid people govern?",
+      "answer": "Sky Pillar",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "83bf6595dc6d5712",
+      "probe_surface_id": "b44c05d4320ba2de",
+      "subject": "Draconid people",
+      "predicate": "governs",
+      "question": "Using the stated lore, what does Draconid people govern?",
+      "answer": "Sky Pillar",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "83bf6595dc6d5712",
+      "probe_surface_id": "d29059a31bebf0a4",
+      "subject": "Draconid people",
+      "predicate": "governs",
+      "question": "Give only the named fact: What does Draconid people govern?",
+      "answer": "Sky Pillar",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "6fbe14ea6e2a70a8",
+      "probe_surface_id": "37dc84dd43684466",
+      "subject": "Ritchie",
+      "predicate": "appears_in",
+      "question": "Where does Ritchie appear?",
+      "answer": "The Search for the Legend",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "6fbe14ea6e2a70a8",
+      "probe_surface_id": "906899802cdb4a0a",
+      "subject": "Ritchie",
+      "predicate": "appears_in",
+      "question": "Answer briefly: Where does Ritchie appear?",
+      "answer": "The Search for the Legend",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "6fbe14ea6e2a70a8",
+      "probe_surface_id": "4afc38b5d63846eb",
+      "subject": "Ritchie",
+      "predicate": "appears_in",
+      "question": "Using the stated lore, where does Ritchie appear?",
+      "answer": "The Search for the Legend",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "6fbe14ea6e2a70a8",
+      "probe_surface_id": "45d209613cac2a1c",
+      "subject": "Ritchie",
+      "predicate": "appears_in",
+      "question": "Give only the named fact: Where does Ritchie appear?",
+      "answer": "The Search for the Legend",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38a29385fa95ee96",
+      "probe_surface_id": "10fb9ec7715fa68d",
+      "subject": "Red",
+      "predicate": "appears_in",
+      "question": "Where does Red appear?",
+      "answer": "Now You See Me...",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "38a29385fa95ee96",
+      "probe_surface_id": "8c86c958d321bde1",
+      "subject": "Red",
+      "predicate": "appears_in",
+      "question": "Answer briefly: Where does Red appear?",
+      "answer": "Now You See Me...",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38a29385fa95ee96",
+      "probe_surface_id": "8e181a5508c08a6b",
+      "subject": "Red",
+      "predicate": "appears_in",
+      "question": "Using the stated lore, where does Red appear?",
+      "answer": "Now You See Me...",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "38a29385fa95ee96",
+      "probe_surface_id": "952a007629fab534",
+      "subject": "Red",
+      "predicate": "appears_in",
+      "question": "Give only the named fact: Where does Red appear?",
+      "answer": "Now You See Me...",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "2a0c7f743d6c8606",
+      "probe_surface_id": "9060a81bb76e951e",
+      "subject": "Celadon City",
+      "predicate": "located_in",
+      "question": "Which region is Celadon City located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2a0c7f743d6c8606",
+      "probe_surface_id": "225886e515122784",
+      "subject": "Celadon City",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Celadon City located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2a0c7f743d6c8606",
+      "probe_surface_id": "3a2a4ca8b8712893",
+      "subject": "Celadon City",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Celadon City located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "2a0c7f743d6c8606",
+      "probe_surface_id": "9bdad7660c46cc83",
+      "subject": "Celadon City",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Celadon City located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8303ca80810ed7b6",
+      "probe_surface_id": "68b3a1777638aab2",
+      "subject": "Fuchsia City",
+      "predicate": "located_in",
+      "question": "Which region is Fuchsia City located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8303ca80810ed7b6",
+      "probe_surface_id": "556aed5f055c02bc",
+      "subject": "Fuchsia City",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Fuchsia City located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "8303ca80810ed7b6",
+      "probe_surface_id": "d58ce365f3d1556d",
+      "subject": "Fuchsia City",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Fuchsia City located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "8303ca80810ed7b6",
+      "probe_surface_id": "56d6211064b47ffd",
+      "subject": "Fuchsia City",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Fuchsia City located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "96d87e90d6903870",
+      "probe_surface_id": "51efe857d27fe7db",
+      "subject": "Lumiose City",
+      "predicate": "located_in",
+      "question": "Which region is Lumiose City located in?",
+      "answer": "Kalos",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "96d87e90d6903870",
+      "probe_surface_id": "0971beb977d4c013",
+      "subject": "Lumiose City",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Lumiose City located in?",
+      "answer": "Kalos",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "96d87e90d6903870",
+      "probe_surface_id": "36e7cff43bc25c26",
+      "subject": "Lumiose City",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Lumiose City located in?",
+      "answer": "Kalos",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "96d87e90d6903870",
+      "probe_surface_id": "8c4f95a129ca40b8",
+      "subject": "Lumiose City",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Lumiose City located in?",
+      "answer": "Kalos",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7cd3126efcf78e9e",
+      "probe_surface_id": "ae88af55e36b44bc",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Red own?",
+      "answer": "Pikachu",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7cd3126efcf78e9e",
+      "probe_surface_id": "864bd905efb84b2a",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Red own?",
+      "answer": "Pikachu",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7cd3126efcf78e9e",
+      "probe_surface_id": "88ae73dfbf98ef74",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Red own?",
+      "answer": "Pikachu",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "7cd3126efcf78e9e",
+      "probe_surface_id": "d01dd650bc207016",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Red own?",
+      "answer": "Pikachu",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "86d0bf70c14397db",
+      "probe_surface_id": "a81ecf2d9b3d11ea",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Red own?",
+      "answer": "Clefairy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "86d0bf70c14397db",
+      "probe_surface_id": "d16ebff2e6e573c4",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Red own?",
+      "answer": "Clefairy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "86d0bf70c14397db",
+      "probe_surface_id": "04839598adb60029",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Red own?",
+      "answer": "Clefairy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "86d0bf70c14397db",
+      "probe_surface_id": "d2d2139487640aa9",
+      "subject": "Red",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Red own?",
+      "answer": "Clefairy",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed41016cc3fd0025",
+      "probe_surface_id": "1b4c90939e6cab5b",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Where does Team Rocket take place?",
+      "answer": "Azalea Town",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "ed41016cc3fd0025",
+      "probe_surface_id": "7afe7cc3abde2d94",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Answer briefly: Where does Team Rocket take place?",
+      "answer": "Azalea Town",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "ed41016cc3fd0025",
+      "probe_surface_id": "cea17c1172a2d225",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Using the stated lore, where does Team Rocket take place?",
+      "answer": "Azalea Town",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "ed41016cc3fd0025",
+      "probe_surface_id": "c216b297d93b4826",
+      "subject": "Team Rocket",
+      "predicate": "occurs_at",
+      "question": "Give only the named fact: Where does Team Rocket take place?",
+      "answer": "Azalea Town",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0a9d12bd3f492df1",
+      "probe_surface_id": "38dbd1624adac9e7",
+      "subject": "Lusamine",
+      "predicate": "owns_pokemon",
+      "question": "Which Pok\u00e9mon does Lusamine own?",
+      "answer": "Slowpoke",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "0a9d12bd3f492df1",
+      "probe_surface_id": "b9301c28c4ac86ef",
+      "subject": "Lusamine",
+      "predicate": "owns_pokemon",
+      "question": "Answer briefly: Which Pok\u00e9mon does Lusamine own?",
+      "answer": "Slowpoke",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "0a9d12bd3f492df1",
+      "probe_surface_id": "b1bcf02f4c089f28",
+      "subject": "Lusamine",
+      "predicate": "owns_pokemon",
+      "question": "Using the stated lore, which Pok\u00e9mon does Lusamine own?",
+      "answer": "Slowpoke",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "0a9d12bd3f492df1",
+      "probe_surface_id": "f8edd28e424f1a89",
+      "subject": "Lusamine",
+      "predicate": "owns_pokemon",
+      "question": "Give only the named fact: Which Pok\u00e9mon does Lusamine own?",
+      "answer": "Slowpoke",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b2cdca6b52f0a629",
+      "probe_surface_id": "ada8d52389be3133",
+      "subject": "Sinnoh",
+      "predicate": "located_in",
+      "question": "Which region is Sinnoh located in?",
+      "answer": "north of Kanto, Johto, and Hoenn",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b2cdca6b52f0a629",
+      "probe_surface_id": "fbdbc3d9fc25cd35",
+      "subject": "Sinnoh",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Sinnoh located in?",
+      "answer": "north of Kanto, Johto, and Hoenn",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b2cdca6b52f0a629",
+      "probe_surface_id": "73e03a2e54bab051",
+      "subject": "Sinnoh",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Sinnoh located in?",
+      "answer": "north of Kanto, Johto, and Hoenn",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b2cdca6b52f0a629",
+      "probe_surface_id": "e6e78ba9182325df",
+      "subject": "Sinnoh",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Sinnoh located in?",
+      "answer": "north of Kanto, Johto, and Hoenn",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b11df87718c45fde",
+      "probe_surface_id": "9f0a391cd364ad19",
+      "subject": "Diamond Clan",
+      "predicate": "rival_of",
+      "question": "Who is the rival of Diamond Clan?",
+      "answer": "Pearl Clan",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b11df87718c45fde",
+      "probe_surface_id": "a20c526fe69e97dc",
+      "subject": "Diamond Clan",
+      "predicate": "rival_of",
+      "question": "Answer briefly: Who is the rival of Diamond Clan?",
+      "answer": "Pearl Clan",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "b11df87718c45fde",
+      "probe_surface_id": "da6a752e1bf83dcb",
+      "subject": "Diamond Clan",
+      "predicate": "rival_of",
+      "question": "Using the stated lore, who is the rival of Diamond Clan?",
+      "answer": "Pearl Clan",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "b11df87718c45fde",
+      "probe_surface_id": "5d911513b87177d5",
+      "subject": "Diamond Clan",
+      "predicate": "rival_of",
+      "question": "Give only the named fact: Who is the rival of Diamond Clan?",
+      "answer": "Pearl Clan",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "66f2b38bca156f9f",
+      "probe_surface_id": "8c418f0226f46ff9",
+      "subject": "Galar League",
+      "predicate": "member_of",
+      "question": "Which organization is Galar League a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "66f2b38bca156f9f",
+      "probe_surface_id": "6dab542332cb4b4a",
+      "subject": "Galar League",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is Galar League a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "66f2b38bca156f9f",
+      "probe_surface_id": "880fd121ffc1a889",
+      "subject": "Galar League",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is Galar League a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "66f2b38bca156f9f",
+      "probe_surface_id": "89df0334cc20451f",
+      "subject": "Galar League",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is Galar League a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "88a727b38c715161",
+      "probe_surface_id": "8a3ac402bae89014",
+      "subject": "Galar League",
+      "predicate": "occurs_at",
+      "question": "Where does Galar League take place?",
+      "answer": "Wyndon Stadium",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "88a727b38c715161",
+      "probe_surface_id": "9f4f0b0d1e8cb951",
+      "subject": "Galar League",
+      "predicate": "occurs_at",
+      "question": "Answer briefly: Where does Galar League take place?",
+      "answer": "Wyndon Stadium",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "88a727b38c715161",
+      "probe_surface_id": "63371ae8d2e0a845",
+      "subject": "Galar League",
+      "predicate": "occurs_at",
+      "question": "Using the stated lore, where does Galar League take place?",
+      "answer": "Wyndon Stadium",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "88a727b38c715161",
+      "probe_surface_id": "1eb9d38e2e8088a7",
+      "subject": "Galar League",
+      "predicate": "occurs_at",
+      "question": "Give only the named fact: Where does Galar League take place?",
+      "answer": "Wyndon Stadium",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "4d2a328c5378e7b3",
+      "probe_surface_id": "06debab6c77993a0",
+      "subject": "League Competition Committee",
+      "predicate": "member_of",
+      "question": "Which organization is League Competition Committee a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "4d2a328c5378e7b3",
+      "probe_surface_id": "70489dbf2461afb9",
+      "subject": "League Competition Committee",
+      "predicate": "member_of",
+      "question": "Answer briefly: Which organization is League Competition Committee a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "4d2a328c5378e7b3",
+      "probe_surface_id": "70b0ca4cd35addf0",
+      "subject": "League Competition Committee",
+      "predicate": "member_of",
+      "question": "Using the stated lore, which organization is League Competition Committee a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "4d2a328c5378e7b3",
+      "probe_surface_id": "4d1f42f8d8f38667",
+      "subject": "League Competition Committee",
+      "predicate": "member_of",
+      "question": "Give only the named fact: Which organization is League Competition Committee a member of?",
+      "answer": "Pok\u00e9mon League",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "76aecd999cf7a9e6",
+      "probe_surface_id": "11ab2eb3eb0f1567",
+      "subject": "Unown",
+      "predicate": "opposes",
+      "question": "Who does Unown oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "76aecd999cf7a9e6",
+      "probe_surface_id": "a6b094507e7366d8",
+      "subject": "Unown",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Unown oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "76aecd999cf7a9e6",
+      "probe_surface_id": "cf481bdd1f4ed554",
+      "subject": "Unown",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Unown oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "76aecd999cf7a9e6",
+      "probe_surface_id": "1028fb2c079778c5",
+      "subject": "Unown",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Unown oppose?",
+      "answer": "Team Rocket",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd65575f53b94164",
+      "probe_surface_id": "365aa3d378c4ecad",
+      "subject": "Unown",
+      "predicate": "appears_in",
+      "question": "Where does Unown appear?",
+      "answer": "Spell of the Unown: Entei",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd65575f53b94164",
+      "probe_surface_id": "1a4594172acb9193",
+      "subject": "Unown",
+      "predicate": "appears_in",
+      "question": "Answer briefly: Where does Unown appear?",
+      "answer": "Spell of the Unown: Entei",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd65575f53b94164",
+      "probe_surface_id": "5a2c5f5c95fac5e8",
+      "subject": "Unown",
+      "predicate": "appears_in",
+      "question": "Using the stated lore, where does Unown appear?",
+      "answer": "Spell of the Unown: Entei",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "dd65575f53b94164",
+      "probe_surface_id": "67cc2d4b49eef078",
+      "subject": "Unown",
+      "predicate": "appears_in",
+      "question": "Give only the named fact: Where does Unown appear?",
+      "answer": "Spell of the Unown: Entei",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "d79569f66c09ea06",
+      "probe_surface_id": "b0b411b5347cee93",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "occurs_at",
+      "question": "Where does Mission 24: The Plate of Snowpoint Temple take place?",
+      "answer": "Snowpoint Temple",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d79569f66c09ea06",
+      "probe_surface_id": "005dbb41dae12f33",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "occurs_at",
+      "question": "Answer briefly: Where does Mission 24: The Plate of Snowpoint Temple take place?",
+      "answer": "Snowpoint Temple",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d79569f66c09ea06",
+      "probe_surface_id": "c1afbe8b3152eeaf",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "occurs_at",
+      "question": "Using the stated lore, where does Mission 24: The Plate of Snowpoint Temple take place?",
+      "answer": "Snowpoint Temple",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "d79569f66c09ea06",
+      "probe_surface_id": "86fc8cd43b6f67ea",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "occurs_at",
+      "question": "Give only the named fact: Where does Mission 24: The Plate of Snowpoint Temple take place?",
+      "answer": "Snowpoint Temple",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "71298738e16e0d31",
+      "probe_surface_id": "bc7492b8afeca9b8",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "involves",
+      "question": "Who is involved in Mission 24: The Plate of Snowpoint Temple?",
+      "answer": "Regigigas",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "71298738e16e0d31",
+      "probe_surface_id": "790fa1336949e540",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "involves",
+      "question": "Answer briefly: Who is involved in Mission 24: The Plate of Snowpoint Temple?",
+      "answer": "Regigigas",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "71298738e16e0d31",
+      "probe_surface_id": "c8efaff2957b8d9e",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "involves",
+      "question": "Using the stated lore, who is involved in Mission 24: The Plate of Snowpoint Temple?",
+      "answer": "Regigigas",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "71298738e16e0d31",
+      "probe_surface_id": "0ae1a5af7c64f117",
+      "subject": "Mission 24: The Plate of Snowpoint Temple",
+      "predicate": "involves",
+      "question": "Give only the named fact: Who is involved in Mission 24: The Plate of Snowpoint Temple?",
+      "answer": "Regigigas",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "090cf14acfe2fa59",
+      "probe_surface_id": "1c80629f98fb6b3e",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Which region is Team Rocket located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "090cf14acfe2fa59",
+      "probe_surface_id": "b5e0e0b69518c751",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Team Rocket located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "090cf14acfe2fa59",
+      "probe_surface_id": "02417f3d5f832750",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Team Rocket located in?",
+      "answer": "Kanto",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "090cf14acfe2fa59",
+      "probe_surface_id": "f7ee5e3471f729e0",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Team Rocket located in?",
+      "answer": "Kanto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7a067f8c766d4179",
+      "probe_surface_id": "e423c70791bd88be",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Which region is Team Rocket located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7a067f8c766d4179",
+      "probe_surface_id": "3f61c6297836c766",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Answer briefly: Which region is Team Rocket located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7a067f8c766d4179",
+      "probe_surface_id": "1f045422b6f97d6a",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Using the stated lore, which region is Team Rocket located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "7a067f8c766d4179",
+      "probe_surface_id": "b31175d1c6f08669",
+      "subject": "Team Rocket",
+      "predicate": "located_in",
+      "question": "Give only the named fact: Which region is Team Rocket located in?",
+      "answer": "Johto",
+      "base_correct": false,
+      "tuned_correct": true
+    },
+    {
+      "source_triple_id": "649d927d6018b8d5",
+      "probe_surface_id": "a5e82f1b250b9d6d",
+      "subject": "Manaphy",
+      "predicate": "partners_with",
+      "question": "Who is the partner of Manaphy?",
+      "answer": "Ditto",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "649d927d6018b8d5",
+      "probe_surface_id": "b87982cfd8b5b871",
+      "subject": "Manaphy",
+      "predicate": "partners_with",
+      "question": "Answer briefly: Who is the partner of Manaphy?",
+      "answer": "Ditto",
+      "base_correct": true,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "649d927d6018b8d5",
+      "probe_surface_id": "a54545cc3f35a024",
+      "subject": "Manaphy",
+      "predicate": "partners_with",
+      "question": "Using the stated lore, who is the partner of Manaphy?",
+      "answer": "Ditto",
+      "base_correct": false,
+      "tuned_correct": false
+    },
+    {
+      "source_triple_id": "649d927d6018b8d5",
+      "probe_surface_id": "ec47bca93c9e62fd",
+      "subject": "Manaphy",
+      "predicate": "partners_with",
+      "question": "Give only the named fact: Who is the partner of Manaphy?",
+      "answer": "Ditto",
+      "base_correct": false,
+      "tuned_correct": false
+    }
+  ],
+  "quarantined_probe_results": [
+    {
+      "source_triple_id": "c74ccbb0660f7b48",
+      "probe_surface_id": "3ce0093fe8021c67",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Who does Red oppose?",
+      "answer": "Lt. Surge",
+      "base_correct": false,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "c74ccbb0660f7b48",
+      "probe_surface_id": "d5dc0647eba1416d",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Answer briefly: Who does Red oppose?",
+      "answer": "Lt. Surge",
+      "base_correct": true,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "c74ccbb0660f7b48",
+      "probe_surface_id": "f9f71704e77b688a",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Using the stated lore, who does Red oppose?",
+      "answer": "Lt. Surge",
+      "base_correct": false,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "c74ccbb0660f7b48",
+      "probe_surface_id": "625baed3b05ae2b5",
+      "subject": "Red",
+      "predicate": "opposes",
+      "question": "Give only the named fact: Who does Red oppose?",
+      "answer": "Lt. Surge",
+      "base_correct": false,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "3bab9969cebbc03a",
+      "probe_surface_id": "24e8c28bff324f81",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Who is Team Rocket allied with?",
+      "answer": "Giovanni",
+      "base_correct": false,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "3bab9969cebbc03a",
+      "probe_surface_id": "c6f06156a42e420c",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Answer briefly: Who is Team Rocket allied with?",
+      "answer": "Giovanni",
+      "base_correct": true,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "3bab9969cebbc03a",
+      "probe_surface_id": "0dd05c346eff03bc",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Using the stated lore, who is Team Rocket allied with?",
+      "answer": "Giovanni",
+      "base_correct": false,
+      "tuned_correct": false,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    },
+    {
+      "source_triple_id": "3bab9969cebbc03a",
+      "probe_surface_id": "deb4cc88dc5b9025",
+      "subject": "Team Rocket",
+      "predicate": "allied_with",
+      "question": "Give only the named fact: Who is Team Rocket allied with?",
+      "answer": "Giovanni",
+      "base_correct": false,
+      "tuned_correct": true,
+      "quarantine_reason": "floor_states_holdout_class_pair"
+    }
+  ],
+  "base": {
+    "acc": 0.2808219178082192,
+    "hits": 82,
+    "n": 292,
+    "wilson": {
+      "low": 0.23237918358130066,
+      "high": 0.3349566438235417,
+      "center": 0.28366791370242117,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.029260286799032642,
+    "n_status": "ok",
+    "min_n": 50,
+    "bar": 0.25,
+    "bar_status": "within-noise",
+    "clears_bar": false,
+    "within_noise_of_bar": true,
+    "per_predicate": {
+      "allied_with": {
+        "hits": 4,
+        "n": 20,
+        "acc": 0.2,
+        "wilson": {
+          "low": 0.08065766257979809,
+          "high": 0.4160174322518936,
+          "center": 0.24833754741584585,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "allied_with",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "appears_in": {
+        "hits": 10,
+        "n": 20,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.29929800819821234,
+          "high": 0.7007019918017876,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "appears_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "evolves_into_lore": {
+        "hits": 10,
+        "n": 16,
+        "acc": 0.625,
+        "wilson": {
+          "low": 0.38641040545502714,
+          "high": 0.8151876744113636,
+          "center": 0.6007990399331954,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.125,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "evolves_into_lore",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "governs": {
+        "hits": 0,
+        "n": 4,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.4898908364545973,
+          "center": 0.24494541822729865,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "governs",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "involves": {
+        "hits": 2,
+        "n": 4,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.15003898915214953,
+          "high": 0.8499610108478505,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "involves",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "leads": {
+        "hits": 2,
+        "n": 12,
+        "acc": 0.16666666666666666,
+        "wilson": {
+          "low": 0.046965142183853836,
+          "high": 0.44803086225297334,
+          "center": 0.2474980022184136,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "leads",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "located_in": {
+        "hits": 13,
+        "n": 48,
+        "acc": 0.2708333333333333,
+        "wilson": {
+          "low": 0.1656595762745644,
+          "high": 0.40996964982240613,
+          "center": 0.28781461304848527,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.07216878364870323,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "located_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "member_of": {
+        "hits": 6,
+        "n": 24,
+        "acc": 0.25,
+        "wilson": {
+          "low": 0.11999366228595004,
+          "high": 0.44899444005154004,
+          "center": 0.28449405116874504,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "member_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "mentors": {
+        "hits": 4,
+        "n": 12,
+        "acc": 0.3333333333333333,
+        "wilson": {
+          "low": 0.13812009109121315,
+          "high": 0.6093779111272004,
+          "center": 0.3737490011092068,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "mentors",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "occurs_at": {
+        "hits": 3,
+        "n": 16,
+        "acc": 0.1875,
+        "wilson": {
+          "low": 0.06591599071428142,
+          "high": 0.4300888096197414,
+          "center": 0.24800240016701142,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.125,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "occurs_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "opposes": {
+        "hits": 2,
+        "n": 28,
+        "acc": 0.07142857142857142,
+        "wilson": {
+          "low": 0.019812064115305728,
+          "high": 0.22645362568399055,
+          "center": 0.12313284489964814,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.0944911182523068,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "opposes",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "originates_from": {
+        "hits": 4,
+        "n": 8,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.21521606221387757,
+          "high": 0.7847839377861224,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "originates_from",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "owns_pokemon": {
+        "hits": 17,
+        "n": 56,
+        "acc": 0.30357142857142855,
+        "wilson": {
+          "low": 0.19900325085369447,
+          "high": 0.43335865285724834,
+          "center": 0.3161809518554714,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.0668153104781061,
+        "n_status": "ok",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "owns_pokemon",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": true,
+        "bar_status": "within-noise"
+      },
+      "partners_with": {
+        "hits": 1,
+        "n": 4,
+        "acc": 0.25,
+        "wilson": {
+          "low": 0.04558726080970055,
+          "high": 0.6993581574175981,
+          "center": 0.3724727091136493,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "partners_with",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "rival_of": {
+        "hits": 4,
+        "n": 20,
+        "acc": 0.2,
+        "wilson": {
+          "low": 0.08065766257979809,
+          "high": 0.4160174322518936,
+          "center": 0.24833754741584585,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "rival_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      }
+    },
+    "probe_sha256": "595f9e65043910858516640362e719cccfca34cf22bc4c317b49e8ba2a768414",
+    "path": "/home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2",
+    "model_sha256": "e32be5551f13e7ea45fcb86f3743bc4a5d6ce6ea034637765cf816c239139abe"
+  },
+  "tuned": {
+    "acc": 0.6095890410958904,
+    "hits": 178,
+    "n": 292,
+    "wilson": {
+      "low": 0.5525576444173259,
+      "high": 0.6637744418802529,
+      "center": 0.6081660431487894,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "rough_bound_half_over_sqrt_n": 0.029260286799032642,
+    "n_status": "ok",
+    "min_n": 50,
+    "bar": 0.25,
+    "bar_status": "cleared",
+    "clears_bar": true,
+    "within_noise_of_bar": false,
+    "per_predicate": {
+      "allied_with": {
+        "hits": 12,
+        "n": 20,
+        "acc": 0.6,
+        "wilson": {
+          "low": 0.38658150076225317,
+          "high": 0.7811934676271829,
+          "center": 0.583887484194718,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "allied_with",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "appears_in": {
+        "hits": 9,
+        "n": 20,
+        "acc": 0.45,
+        "wilson": {
+          "low": 0.2581978582556243,
+          "high": 0.6579146575496577,
+          "center": 0.45805625790264104,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "appears_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "evolves_into_lore": {
+        "hits": 14,
+        "n": 16,
+        "acc": 0.875,
+        "wilson": {
+          "low": 0.639771727342413,
+          "high": 0.9650225122567595,
+          "center": 0.8023971197995863,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.125,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "evolves_into_lore",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "governs": {
+        "hits": 0,
+        "n": 4,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.4898908364545973,
+          "center": 0.24494541822729865,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "governs",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "involves": {
+        "hits": 3,
+        "n": 4,
+        "acc": 0.75,
+        "wilson": {
+          "low": 0.30064184258240184,
+          "high": 0.9544127391902995,
+          "center": 0.6275272908863506,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "involves",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "leads": {
+        "hits": 6,
+        "n": 12,
+        "acc": 0.5,
+        "wilson": {
+          "low": 0.2537815976337061,
+          "high": 0.7462184023662939,
+          "center": 0.5,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "leads",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "located_in": {
+        "hits": 37,
+        "n": 48,
+        "acc": 0.7708333333333334,
+        "wilson": {
+          "low": 0.6346073590999655,
+          "high": 0.8669217373308877,
+          "center": 0.7507645482154266,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.07216878364870323,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "located_in",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "member_of": {
+        "hits": 17,
+        "n": 24,
+        "acc": 0.7083333333333334,
+        "wilson": {
+          "low": 0.5083230633550337,
+          "high": 0.8508535180303913,
+          "center": 0.6795882906927125,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.10206207261596577,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "member_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "mentors": {
+        "hits": 8,
+        "n": 12,
+        "acc": 0.6666666666666666,
+        "wilson": {
+          "low": 0.39062208887279953,
+          "high": 0.8618799089087867,
+          "center": 0.6262509988907932,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.14433756729740646,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "mentors",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "occurs_at": {
+        "hits": 11,
+        "n": 16,
+        "acc": 0.6875,
+        "wilson": {
+          "low": 0.44404355834740666,
+          "high": 0.8583535614521796,
+          "center": 0.6511985598997931,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.125,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "occurs_at",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "opposes": {
+        "hits": 22,
+        "n": 28,
+        "acc": 0.7857142857142857,
+        "wilson": {
+          "low": 0.6046141434627812,
+          "high": 0.8978753966710211,
+          "center": 0.7512447700669012,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.0944911182523068,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "opposes",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "originates_from": {
+        "hits": 2,
+        "n": 8,
+        "acc": 0.25,
+        "wilson": {
+          "low": 0.071479212752109,
+          "high": 0.5907245696898311,
+          "center": 0.33110189122097006,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.17677669529663687,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "originates_from",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "owns_pokemon": {
+        "hits": 26,
+        "n": 56,
+        "acc": 0.4642857142857143,
+        "wilson": {
+          "low": 0.34019852912223775,
+          "high": 0.5929581806433883,
+          "center": 0.466578354882813,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.0668153104781061,
+        "n_status": "ok",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "owns_pokemon",
+        "bar": 0.25,
+        "clears_bar": true,
+        "within_noise_of_bar": false,
+        "bar_status": "cleared"
+      },
+      "partners_with": {
+        "hits": 0,
+        "n": 4,
+        "acc": 0.0,
+        "wilson": {
+          "low": 0.0,
+          "high": 0.4898908364545973,
+          "center": 0.24494541822729865,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.25,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "partners_with",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      },
+      "rival_of": {
+        "hits": 11,
+        "n": 20,
+        "acc": 0.55,
+        "wilson": {
+          "low": 0.3420853424503424,
+          "high": 0.7418021417443758,
+          "center": 0.5419437420973591,
+          "level": 0.95,
+          "method": "wilson"
+        },
+        "rough_bound_half_over_sqrt_n": 0.11180339887498948,
+        "n_status": "insufficient-n",
+        "min_n": 50,
+        "estimand": "augmentation_holdout",
+        "slice": "rival_of",
+        "bar": 0.25,
+        "clears_bar": false,
+        "within_noise_of_bar": false,
+        "bar_status": "insufficient-n"
+      }
+    },
+    "probe_sha256": "595f9e65043910858516640362e719cccfca34cf22bc4c317b49e8ba2a768414",
+    "path": "checkpoints/cpt/pokemon_lore_kanto_s3_r010_v2",
+    "model_sha256": "c7f9773f6e910e58ca72914edfec715833dab20c1d5226ce057d89f6d75010d1",
+    "run_contract_sha256": "2599e128191ffea1efaece1ae1db823cd249dbb2ee7b0cacab73f3130fbe615b",
+    "run_contract": {
+      "run_name": "pokemon_lore_kanto_s3_r010",
+      "precision": "fp4",
+      "int8_master": "storage",
+      "optimizer_lowbit": 4,
+      "save_dir": "checkpoints/cpt/pokemon_lore_kanto_s3_r010",
+      "init_from": "(base model)",
+      "tokenized": "data/_build/30_tokenized/pokemon_lore_kanto_s3_r010.arrow",
+      "tokenized_total_tokens": 759940,
+      "seq_len": 512,
+      "effective_batch": 16,
+      "max_steps": 450,
+      "decay_frac": 0.2,
+      "anneal": {
+        "active": false,
+        "start_step": 450,
+        "frac": 0.1,
+        "mix_tags": [
+          "hydrated",
+          "replay"
+        ],
+        "lr_end": 0.0,
+        "keep_pre": true,
+        "require_exposure": true,
+        "reason": "max_steps=450 < anneal.min_steps=500 (tiny-run disable)"
+      },
+      "scored_checkpoint": "final",
+      "cuda_visible_devices": "1",
+      "levers_on": [],
+      "smoke": false,
+      "mode": "cpt",
+      "fingerprint": "21c44fef8b964fed",
+      "anneal_started": false,
+      "final_step": 450
+    }
+  }
+}

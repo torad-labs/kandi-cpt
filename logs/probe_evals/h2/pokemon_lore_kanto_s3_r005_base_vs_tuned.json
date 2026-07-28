@@ -3,7 +3,7 @@
   "pilot_class": true,
   "provisional": true,
   "run_name": "pokemon_lore_kanto_s3_r005",
-  "config_fingerprint": "bd6e39ff5ede114e",
+  "config_fingerprint": "3b8b79d947ae65da",
   "checkpoint_fingerprint": "5ae6f9e54a393c7a",
   "measurement_class": "augmentation_holdout",
   "domain": "pokemon-lore",

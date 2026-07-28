@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "measurement_class": "augmentation_holdout",
+  "probe_sha256": "595f9e65043910858516640362e719cccfca34cf22bc4c317b49e8ba2a768414",
+  "forced_choice": {
+    "tuned_acc": 0.6438356164383562,
+    "base_acc": 0.2808219178082192,
+    "n": 292,
+    "wilson": {
+      "low": 0.5873688225005352,
+      "high": 0.696567040765037,
+      "center": 0.6419679316327861,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "n_status": "ok",
+    "delta_acc": 0.363013698630137,
+    "estimand": "augmentation_holdout",
+    "status": "PASS"
+  },
+  "generative": {
+    "tuned_acc": 0.576271186440678,
+    "n": 59,
+    "wilson": {
+      "low": 0.449344828000343,
+      "high": 0.6938727256481132,
+      "center": 0.5716087768242281,
+      "level": 0.95,
+      "method": "wilson"
+    },
+    "n_status": "ok",
+    "bar": 0.4,
+    "bar_status": "cleared",
+    "estimand": "augmentation_holdout",
+    "status": "PASS",
+    "provisional": false
+  },
+  "rule": "install-strength PASS requires forced_choice PASS and generative PASS; uncalibrated judge \u2192 generative PROVISIONAL \u2192 dual-axis PROVISIONAL at best",
+  "failed": {
+    "forced_choice": [],
+    "generative": []
+  }
+}

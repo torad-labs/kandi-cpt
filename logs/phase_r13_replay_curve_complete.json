@@ -1,0 +1,103 @@
+{
+  "schema": "replay-curve/2",
+  "recorded_at": "2026-07-28",
+  "campaign": "S3 replay sweep",
+  "headline": "All four arms measured for the first time. At n=292 the arms are statistically indistinguishable \u2014 the curve is FLAT within noise, and no replay ratio can be derived from it.",
+  "what_unblocked_it": "Every prior attempt died at quartet2/quant.py:120 `assert x.shape[0] % 128 == 0`, reached through model.generate(): with a KV cache each decode step feeds ONE row. eval_generative now routes Quartet models through score_sentinel_live._greedy_generate_quartet. Before this the curve read fit.status incomplete / n_points 0 with probe_eval null on all four arms.",
+  "curve": [
+    {
+      "arm": "r005",
+      "replay_frac": 0.05,
+      "base_acc": 0.2808219178082192,
+      "tuned_acc": 0.6438356164383562,
+      "delta_acc": 0.363013698630137,
+      "n": 292,
+      "forced_choice_status": "PASS",
+      "generative_status": "PASS",
+      "generative_acc": 0.576271186440678
+    },
+    {
+      "arm": "r010",
+      "replay_frac": 0.1,
+      "base_acc": 0.2808219178082192,
+      "tuned_acc": 0.6095890410958904,
+      "delta_acc": 0.3287671232876712,
+      "n": 292,
+      "forced_choice_status": "PASS",
+      "generative_status": "FAIL",
+      "generative_acc": 0.4745762711864407
+    },
+    {
+      "arm": "r020",
+      "replay_frac": 0.2,
+      "base_acc": 0.2808219178082192,
+      "tuned_acc": 0.613013698630137,
+      "delta_acc": 0.3321917808219178,
+      "n": 292,
+      "forced_choice_status": "PASS",
+      "generative_status": "PASS",
+      "generative_acc": 0.5423728813559322
+    },
+    {
+      "arm": "r030",
+      "replay_frac": 0.3,
+      "base_acc": 0.2808219178082192,
+      "tuned_acc": 0.660958904109589,
+      "delta_acc": 0.38013698630136983,
+      "n": 292,
+      "forced_choice_status": "PASS",
+      "generative_status": "PASS",
+      "generative_acc": 0.6101694915254238
+    }
+  ],
+  "pairwise": [
+    {
+      "pair": "r005 vs r010",
+      "diff": -0.0342,
+      "se": 0.04,
+      "z": -0.86,
+      "significant": false
+    },
+    {
+      "pair": "r005 vs r020",
+      "diff": -0.0308,
+      "se": 0.04,
+      "z": -0.77,
+      "significant": false
+    },
+    {
+      "pair": "r005 vs r030",
+      "diff": 0.0171,
+      "se": 0.0394,
+      "z": 0.43,
+      "significant": false
+    },
+    {
+      "pair": "r010 vs r020",
+      "diff": 0.0034,
+      "se": 0.0403,
+      "z": 0.08,
+      "significant": false
+    },
+    {
+      "pair": "r010 vs r030",
+      "diff": 0.0514,
+      "se": 0.0398,
+      "z": 1.29,
+      "significant": false
+    },
+    {
+      "pair": "r020 vs r030",
+      "diff": 0.0479,
+      "se": 0.0397,
+      "z": 1.21,
+      "significant": false
+    }
+  ],
+  "significant_pairs": 0,
+  "spread_tuned_acc": 0.0514,
+  "verdict": "MEASURED BUT UNDERPOWERED. 0 of 6 pairwise comparisons clear |z|>1.96, and the whole four-arm spread (0.0514) is smaller than 1.96 SE of one pairwise difference (~0.078). The monotone reading offered mid-sweep from three arms did not survive the fourth: r030 is the highest point, r010 the lowest, and neither is distinguishable from any other.",
+  "to_resolve": "~1373 forced-choice items per arm would be needed to resolve the largest observed gap (0.0514) at alpha 0.05 / power 0.80. Current n is 292 per arm.",
+  "controls_held": "base_acc 0.2808 and n=292 identical across all four arms, so the deltas are comparable.",
+  "note_on_r010_exit_1": "r010's driver exit=1 is a VERDICT, not a crash: its forced-choice axis PASSED and only the generative axis missed its bar. The eval ran to completion and wrote its report."
+}
