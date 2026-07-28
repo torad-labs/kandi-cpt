@@ -33,6 +33,7 @@ from datasets import Dataset, load_from_disk
 from transformers import Gemma4ForCausalLM
 
 import config as C
+import lever_receipts
 from cpt_config import CptConfig
 
 
@@ -1231,6 +1232,10 @@ def main():
             if lever4_on and "fact_ids" in batch:   # count this microbatch's fact exposures (per-block lists)
                 for fids in batch["fact_ids"]:
                     exposure.update(fids)
+                # Receipt from INSIDE the branch: make_loader only LOGS when fact_ids is absent, so
+                # without this the lever can be on for a whole run, never reach here, and still be
+                # reported as an active intervention.
+                lever_receipts.fire("lever4_exposure_tracking")
         else:
             ids, emask, labels = batch.to(device), None, None
         if _can_nosync:                          # sync grads only on the last microbatch of the window
@@ -1241,6 +1246,7 @@ def main():
         if lever1_on and emask is not None:      # Lever 1: manual entity-weighted CE on logits (no labels=)
             out = model(input_ids=ids, shared_kv_states=UserDict())
             loss = entity_weighted_ce(out.logits, ids, emask, entity_w)
+            lever_receipts.fire("lever1_entity_loss")   # the weighting actually reached the loss
         else:                                    # CPT: labels=input_ids (predict-next). SFT: assistant-only
             out = model(input_ids=ids, labels=(labels if labels is not None else ids), shared_kv_states=UserDict())
             loss = out.loss
@@ -1342,6 +1348,13 @@ def main():
                 model.train()
 
     log(f"done {step} steps in {time.time()-t0:.0f}s")
+    # Reconcile ENABLED levers against receipts fired from inside their effect branches. Smoke runs
+    # force lever1_on/lever4_on off against a config that may still enable them, so they are exempt
+    # by construction rather than through a status the audit would have to special-case.
+    lever_audit = ({"status": "SKIPPED_SMOKE"} if smoke_steps
+                   else lever_receipts.audit(_levers, optimizer_steps=step))
+    if lever_audit.get("status") == "FAIL":
+        log(f"[levers] RECEIPT FAILURE — enabled but never executed: {lever_audit['silent']}")
     if save_dir and not smoke_steps:
         save_checkpoint(model, cfg, save_dir, rank, world)
         if rank0():                          # recipe provenance: what RUN CONTRACT produced this checkpoint
@@ -1352,6 +1365,7 @@ def main():
             contract["scored_checkpoint"] = scored_checkpoint
             contract["anneal_started"] = anneal_started
             contract["final_step"] = step
+            contract["lever_receipts"] = lever_audit   # what RAN, beside what was configured
             if anneal_started and anneal_plan.get("keep_pre"):
                 contract["pre_anneal_checkpoint"] = f"{save_dir}/pre_anneal"
             (Path(save_dir) / "run_contract.json").write_text(_json.dumps(contract, indent=2, default=str))
@@ -1359,6 +1373,10 @@ def main():
                 + (f" (pre-anneal fallback at {save_dir}/pre_anneal)" if anneal_started else ""))
         if lever4_on and rank0():
             _save_exposure(save_dir, step, exposure)
+    # Enforced AFTER the checkpoint and run_contract are on disk: the weights are already trained and
+    # a silent lever is a reporting failure, not a reason to discard them. The artifact carries the
+    # FAIL record, so what died and why is readable from the checkpoint itself.
+    lever_receipts.enforce(lever_audit)
     if rank0():
         _finish_status("done")               # flip the console heartbeat to done; close the run log
         # The canonical launcher starts the config-bound trust chain after this process exits. That
