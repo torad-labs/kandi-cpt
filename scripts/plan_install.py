@@ -20,6 +20,7 @@ import config as C
 from execution_contract import build_contract
 from pipeline.domain import RECIPE_PROFILES, Domain
 from pipeline.editions import iter_editions
+from pipeline.tier_routing import DEFAULT_TIER as TIER_DEFAULT
 from run_pipeline import check_domain
 
 
@@ -180,6 +181,28 @@ def _recipe_state(domain: Domain, editions: str) -> dict[str, Any]:
         if not ok:
             gaps.append("reasoning: templates must contain a non-empty sft_templates.rel_q block "
                         "(the declaratives the walk states to the generator)")
+    # Predicate tiers. Undeclared defaults to `hot`, which is the right fail-closed default
+    # (misroute-to-hot is cheap, misroute-to-weights is a governance incident) — but hot NEVER
+    # reaches the hydrate/tokenize train shard. A facts domain that declares a CPT route while
+    # declaring NO tiers therefore routes every predicate to retrieval and installs nothing. EDC is
+    # the live case: 34 of 34 undeclared. Latent today because its bespoke hydrate bypasses the
+    # filter, and armed the moment it moves to the generic path.
+    if getattr(domain, "kind", "facts") == "facts" and "tokenize" in stage_names:
+        predicates = domain.spec.get("predicates") or {}
+        declared = {name for name, meta in predicates.items() if (meta or {}).get("tier")}
+        declared |= set(domain.spec.get("tiers") or {})
+        tier_check = {
+            "predicate_tiers_declared": len(declared),
+            "predicates_total": len(predicates),
+            "undeclared_default_tier": TIER_DEFAULT,
+        }
+        template_checks.append(tier_check)
+        if predicates and not declared:
+            gaps.append(
+                f"predicate tiers: 0 of {len(predicates)} predicates declare a tier, so every one "
+                f"defaults to '{TIER_DEFAULT}' — hot never reaches the train shard, so this domain's "
+                f"CPT route would install nothing")
+
     evidence.extend(template_checks)
     return {
         "state": "RECIPE_COMPLETE",

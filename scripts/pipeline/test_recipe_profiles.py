@@ -92,9 +92,39 @@ def test_profile_defaults_and_unknown_keys_fail_closed() -> None:
         domain.recipe_profile = "generic_facts"
 
 
+def test_a_domain_that_declares_no_predicate_tiers_installs_nothing() -> None:
+    """Undeclared defaults to `hot`, and hot NEVER reaches the train shard.
+
+    The default is right — misroute-to-hot is cheap, misroute-to-weights is a governance incident.
+    But a facts domain declaring a CPT route and NO tiers routes every predicate to retrieval, so
+    its install route silently carries nothing. EDC is the live case at 34 of 34 undeclared; it is
+    latent only because its bespoke hydrate bypasses the filter, and arms the moment it moves to
+    the generic path.
+    """
+    from pipeline.tier_routing import DEFAULT_TIER
+
+    def tier_evidence(state):
+        return next(e for e in state["evidence"]
+                    if isinstance(e, dict) and "predicate_tiers_declared" in e)
+
+    edc = _recipe("edc", "las_vegas/2011")
+    evidence = tier_evidence(edc)
+    assert evidence["predicate_tiers_declared"] == 0
+    assert evidence["predicates_total"] == 34
+    assert evidence["undeclared_default_tier"] == DEFAULT_TIER == "hot"
+    assert any("predicate tiers" in g for g in edc["gaps"]), edc["gaps"]
+
+    # Contrast: a domain that DOES declare its tiers must not be flagged, or the check is noise.
+    kanto = _recipe("pokemon-lore", "kanto")
+    kanto_evidence = tier_evidence(kanto)
+    assert kanto_evidence["predicate_tiers_declared"] == kanto_evidence["predicates_total"] == 19
+    assert not [g for g in kanto["gaps"] if "predicate tiers" in g], kanto["gaps"]
+
+
 if __name__ == "__main__":
     test_unset_profile_keeps_the_generic_meaning()
     test_bespoke_domain_is_not_asked_for_templates_it_never_reads()
     test_declaring_a_capability_false_cannot_silence_a_stage_that_uses_it()
     test_profile_defaults_and_unknown_keys_fail_closed()
+    test_a_domain_that_declares_no_predicate_tiers_installs_nothing()
     print("OK — declared profiles validated, false gaps gone, real gaps and lies both refused")
