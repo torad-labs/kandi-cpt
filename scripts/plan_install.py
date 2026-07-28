@@ -23,11 +23,18 @@ from pipeline.editions import iter_editions
 from run_pipeline import check_domain
 
 
+# The rungs are deliberately separate because they fail for unrelated reasons and an operator
+# needs to read WHICH. A single TRAINING_READY that meant "the files a stage would read exist"
+# reported PASS for Kanto while its own extraction audit said FAIL: mechanically launchable and
+# actually ready are different claims, and collapsing them is what makes an unattended GPU launch
+# look authorised.
 LADDER_STATES = [
     "MANIFEST_VALID",
     "INPUTS_ADMITTED",
     "RECIPE_COMPLETE",
-    "STAGE_READY",
+    "MECHANICALLY_LAUNCHABLE",
+    "DATA_GATES_PASS",
+    "TRAIN_CONFIG_FROZEN",
     "TRAINING_READY",
 ]
 
@@ -274,7 +281,7 @@ def _split_status(domain: Domain, units: list[Any]) -> list[dict[str, Any]]:
 _QUALITY_STAGES = ("pii_scan", "audit_recall")
 
 
-def _quality_verdicts(contract_stages: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _quality_verdicts(contract_stages: list[dict[str, Any]], units: list[Any]) -> list[dict[str, Any]]:
     """Recover each quality stage's recorded PASS/FAIL from the report it declares as an output.
 
     The path comes from the execution contract, not a literal here, so a stage that moves its
@@ -312,11 +319,112 @@ def _quality_verdicts(contract_stages: list[dict[str, Any]]) -> list[dict[str, A
                 if isinstance(report.get("overall"), dict):
                     entry["overall"] = report["overall"]
         verdicts.append(entry)
+    verdicts.extend(_audit_verdicts(by_id, units))
     return verdicts
 
 
-def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list[Any],
-                    contract_stages: list[dict[str, Any]]) -> dict[str, Any]:
+def _audit_verdicts(by_id: dict[str, dict[str, Any]], units: list[Any]) -> list[dict[str, Any]]:
+    """`audit` records a different shape: JSONL, one row per edition, dimension -> pass/fail/warn.
+
+    Read separately rather than forced into the report_*.json reader, because pretending the shapes
+    match is how a gate ends up reading a field that is never present and passing everything.
+    """
+    stage = by_id.get("audit")
+    if stage is None:
+        return [{"stage": "audit", "report": None, "status": "NOT_DECLARED",
+                 "detail": "domain does not declare this quality stage"}]
+    rows_path = next((_rooted(out) for out in stage["outputs"] if out.endswith(".jsonl")), None)
+    entry: dict[str, Any] = {"stage": "audit", "report": str(rows_path) if rows_path else None}
+    if rows_path is None or not rows_path.is_file():
+        entry.update(status="NOT_RUN", detail="stage has recorded no verdict")
+        return [entry]
+    wanted = {unit.slug for unit in units}
+    failed: dict[str, list[str]] = {}
+    matched = 0
+    try:
+        for line in rows_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            # The file is shared across domains and keyed only by edition slug, so a row is ours
+            # only when its editions match the units actually selected for this plan.
+            if str(row.get("editions")) not in wanted:
+                continue
+            matched += 1
+            bad = sorted(k for k, v in (row.get("verdicts") or {}).items() if str(v).lower() == "fail")
+            if bad:
+                failed[str(row["editions"])] = bad
+    except (OSError, ValueError) as error:
+        entry.update(status="UNREADABLE", detail=str(error))
+        return [entry]
+    if not matched:
+        entry.update(status="NOT_RUN", detail=f"no audit row for editions {sorted(wanted)}")
+    elif failed:
+        entry.update(status="FAIL", detail=f"failing dimensions by edition: {failed}")
+    else:
+        entry.update(status="PASS", detail=f"{matched} edition row(s), no failing dimension")
+    return [entry]
+
+
+def _config_frozen_checks(domain: Domain, derivations: dict[str, Any]) -> list[dict[str, Any]]:
+    """Reconcile every DERIVED knob that names a training-config path against what is configured.
+
+    A knob name containing a dot IS the config path (`train.max_steps`), so the mapping is derived
+    rather than hand-maintained — a hand-written table would go stale the way every other list in
+    this pipeline has. Kanto is the live case: the planner derives train.max_steps=277 while
+    configs/train_pokemon_lore_kanto_v1.yaml sets 450, and nothing reconciled the two.
+    """
+    ref = domain.configs.get("cpt")
+    path = _rooted(str(ref)) if ref else None
+    if path is None or not path.is_file():
+        return [{"knob": "*", "status": "NO_CONFIG",
+                 "detail": f"cpt training config unresolved: {path or 'manifest value unset'}"}]
+    try:
+        configured = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError) as error:
+        return [{"knob": "*", "status": "UNREADABLE", "detail": str(error)}]
+
+    def lookup(dotted: str) -> tuple[bool, Any]:
+        # Try from the config root, then under `train.` — AnnealConfig and friends are nested there
+        # while the knob names them bare.
+        for prefix in ((), ("train",)):
+            node: Any = configured
+            for part in (*prefix, *dotted.split(".")):
+                if not isinstance(node, dict) or part not in node:
+                    node = _UNSET
+                    break
+                node = node[part]
+            if node is not _UNSET:
+                return True, node
+        return False, None
+
+    checks = []
+    for knob in derivations.get("knobs") or []:
+        name = str(knob.get("knob", ""))
+        if "." not in name:                       # not a config path (corpus/eval sizing knobs)
+            continue
+        found, value = lookup(name)
+        check = {"knob": name, "derived": knob.get("value"), "configured": value,
+                 "derivation": knob.get("derivation")}
+        if not found:
+            check["status"] = "NOT_IN_CONFIG"     # config relies on the code default — not a drift
+        elif value == knob.get("value"):
+            check["status"] = "AGREES"
+        else:
+            check["status"] = "DRIFTED"
+        checks.append(check)
+    return checks
+
+
+_UNSET = object()
+
+
+def _mechanically_launchable(domain: Domain, readiness: list[dict[str, Any]]) -> dict[str, Any]:
+    """Could the commands run at all — do the inputs and configs a stage would read exist.
+
+    This is the ONLY question the old TRAINING_READY actually answered. It is a real and useful
+    rung; it is just not readiness, and naming it honestly is the point of the split.
+    """
     by_stage = {entry["stage"]: entry for entry in readiness}
     stage_names = [stage.name for stage in domain.stages]
     gaps: list[str] = []
@@ -349,7 +457,27 @@ def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list
         if not exists:
             gaps.append(f"training config {config_key} is missing: {path or 'manifest value unset'}")
 
-    quality = _quality_verdicts(contract_stages)
+    return {
+        "state": "MECHANICALLY_LAUNCHABLE",
+        "value": "PASS" if not gaps else "FAIL",
+        "evidence": [{
+            "data_stages_through_tokenize": data_stages,
+            "training_stages": declared_train_stages,
+            "train_configs": config_evidence,
+            "stage_readiness": readiness,
+        }],
+        "gaps": list(dict.fromkeys(gaps)),
+    }
+
+
+def _data_gates_state(contract_stages: list[dict[str, Any]], units: list[Any]) -> dict[str, Any]:
+    """Did the quality stages PASS — read from the verdict each one recorded, not from its exit code.
+
+    pii_scan, audit_recall and audit all exit 0 whether they pass or fail; the judgement lives in
+    the report. A rung that stats the declared output only proves the stage ran.
+    """
+    quality = _quality_verdicts(contract_stages, units)
+    gaps = []
     for entry in quality:
         if entry["status"] in ("PASS", "NOT_DECLARED"):
             continue
@@ -358,19 +486,91 @@ def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list
             f"data quality stage {entry['stage']} did not pass: {entry['status']}"
             + (f" — {detail}" if detail else "")
         )
+    return {
+        "state": "DATA_GATES_PASS",
+        "value": "PASS" if not gaps else "FAIL",
+        "evidence": quality,
+        "gaps": gaps,
+    }
 
-    evidence = [{
-        "data_stages_through_tokenize": data_stages,
-        "training_stages": declared_train_stages,
-        "train_configs": config_evidence,
-        "data_quality": quality,
-        "split_status": _split_status(domain, units),
-    }]
+
+def _train_config_frozen(domain: Domain, units: list[Any], derivations: dict[str, Any]) -> dict[str, Any]:
+    """Do the configured values match the derived plan, and do the split fingerprints agree."""
+    checks = _config_frozen_checks(domain, derivations)
+    gaps = [
+        f"{check['knob']}: derived {check['derived']!r} but config sets {check['configured']!r}"
+        f" ({check.get('derivation')})"
+        for check in checks if check["status"] == "DRIFTED"
+    ]
+    gaps += [
+        f"{check['knob']}: {check['status']} — {check.get('detail')}"
+        for check in checks if check["status"] in ("NO_CONFIG", "UNREADABLE")
+    ]
+    split = _split_status(domain, units)
+    for entry in split:
+        if not entry.get("exists"):
+            gaps.append(f"split manifest missing for {entry.get('unit')}: {entry.get('split_manifest')}")
+    if not derivations.get("ok", False):
+        gaps.append(f"derivation table unavailable: {derivations.get('error')}")
+    return {
+        "state": "TRAIN_CONFIG_FROZEN",
+        "value": "PASS" if not gaps else "FAIL",
+        "evidence": [{"knob_reconciliation": checks, "split_status": split}],
+        "gaps": gaps,
+    }
+
+
+def _stage_records_current_build(domain: Domain, readiness: list[dict[str, Any]]) -> dict[str, Any]:
+    """Do the stage records on disk belong to the build the current recipe hashes to.
+
+    Reads only; build_identity now covers the whole recipe read set, so a record written under a
+    different id is evidence the recipe changed since that stage ran.
+    """
+    try:
+        from run_stage import build_identity
+        from execution_contract import CONTRACT_VERSION
+        build_id, _ = build_identity(domain, CONTRACT_VERSION)
+    except Exception as error:  # noqa: BLE001 — the ladder must still emit
+        return {"build_id": None, "error": f"cannot compute build identity: {error}", "stale": []}
+    records = C.DATA / domain.name / "builds" / build_id / "stages"
+    present = {path.stem for path in records.glob("*.json")} if records.is_dir() else set()
+    expected = [entry["stage"] for entry in readiness]
+    return {
+        "build_id": build_id,
+        "records_dir": str(records),
+        "present": sorted(present),
+        "missing_for_current_build": [name for name in expected if name not in present],
+    }
+
+
+def _training_ready(rungs: list[dict[str, Any]], admitted: dict[str, Any],
+                    records: dict[str, Any]) -> dict[str, Any]:
+    """The conjunction. PASS requires every rung AND an operator attestation.
+
+    Reported as a summary an operator can read at a glance, because the failure the review is
+    guarding against is a human seeing one green token and authorising an unattended GPU run.
+    """
+    by_state = {rung["state"]: rung for rung in rungs}
+    blocked_by = [name for name, rung in by_state.items() if rung["value"] != "PASS"]
+    if admitted["value"] != "PASS":
+        blocked_by.append("INPUTS_ADMITTED")
+    summary = [
+        "MECHANICALLY LAUNCHABLE" if by_state["MECHANICALLY_LAUNCHABLE"]["value"] == "PASS"
+        else "NOT MECHANICALLY LAUNCHABLE",
+        "DATA QUALITY PASSED" if by_state["DATA_GATES_PASS"]["value"] == "PASS" else "DATA QUALITY FAILED",
+        "TRAIN CONFIG FROZEN" if by_state["TRAIN_CONFIG_FROZEN"]["value"] == "PASS" else "TRAIN CONFIG DRIFTED",
+        "INPUTS ADMITTED" if admitted["value"] == "PASS" else "OPERATOR ATTESTATION REQUIRED",
+        "TRAINING READY" if not blocked_by else "NOT TRAINING READY",
+    ]
+    gaps = [f"blocked by {name}" for name in blocked_by]
+    stale = records.get("missing_for_current_build") or []
+    if stale:
+        gaps.append(f"stage records absent for the current build {records.get('build_id')}: {stale}")
     return {
         "state": "TRAINING_READY",
         "value": "PASS" if not gaps else "FAIL",
-        "evidence": evidence,
-        "gaps": list(dict.fromkeys(gaps)),
+        "evidence": [{"summary": summary, "blocked_by": blocked_by, "stage_records": records}],
+        "gaps": gaps,
     }
 
 
@@ -403,7 +603,9 @@ def _unavailable_plan(domain_name: str, manifest_state: dict[str, Any], error: E
                 ],
             },
             unavailable("RECIPE_COMPLETE"),
-            unavailable("STAGE_READY"),
+            unavailable("MECHANICALLY_LAUNCHABLE"),
+            unavailable("DATA_GATES_PASS"),
+            unavailable("TRAIN_CONFIG_FROZEN"),
             unavailable("TRAINING_READY"),
         ],
         "plan": [],
@@ -426,21 +628,10 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
 
     recipe_state = _recipe_state(domain, editions)
     readiness = _stage_readiness(domain, units, editions, unit_error)
-    stage_state = {
-        "state": "STAGE_READY",
-        "value": "PASS" if readiness and all(entry["ready"] for entry in readiness) else "FAIL",
-        "evidence": readiness,
-        "gaps": [
-            f"{entry['stage']}: {missing}"
-            for entry in readiness
-            for missing in entry["missing"]
-        ],
-    }
-    # One contract build feeds both the training-readiness quality gate (which reads the quality
-    # stages' declared report outputs) and the ordered plan below.
+    # One contract build feeds both the data-quality rung (which reads the quality stages' declared
+    # report outputs) and the ordered plan below.
     resolved_editions = ",".join(unit.slug for unit in units)
     contract_stages = build_contract(domain_name, resolved_editions)["stages"]
-    training_state = _training_state(domain, readiness, units, contract_stages)
     admitted_state = {
         "state": "INPUTS_ADMITTED",
         "value": "OPERATOR_ATTESTED_REQUIRED",
@@ -490,10 +681,22 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
             "plain_language": "",
         }
 
+    # The rungs are built here, after the derivation table, because TRAIN_CONFIG_FROZEN reconciles
+    # the derived plan against what the training config actually sets.
+    mechanical_state = _mechanically_launchable(domain, readiness)
+    data_gates_state = _data_gates_state(contract_stages, units)
+    config_frozen_state = _train_config_frozen(domain, units, derivations)
+    training_state = _training_ready(
+        [mechanical_state, data_gates_state, config_frozen_state],
+        admitted_state,
+        _stage_records_current_build(domain, readiness),
+    )
+
     result = {
         "domain": domain_name,
         "editions": [unit.slug for unit in units],
-        "ladder": [manifest_state, admitted_state, recipe_state, stage_state, training_state],
+        "ladder": [manifest_state, admitted_state, recipe_state,
+                   mechanical_state, data_gates_state, config_frozen_state, training_state],
         "plan": ordered_plan,
         "derivations": derivations,
     }

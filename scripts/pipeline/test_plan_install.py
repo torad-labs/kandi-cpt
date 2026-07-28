@@ -68,30 +68,40 @@ def test_plan_install_is_read_only_and_computed() -> None:
     )
     plan = json.loads(result.stdout)
     assert [entry["state"] for entry in plan["ladder"]] == [
-        "MANIFEST_VALID", "INPUTS_ADMITTED", "RECIPE_COMPLETE", "STAGE_READY", "TRAINING_READY",
+        "MANIFEST_VALID", "INPUTS_ADMITTED", "RECIPE_COMPLETE",
+        "MECHANICALLY_LAUNCHABLE", "DATA_GATES_PASS", "TRAIN_CONFIG_FROZEN", "TRAINING_READY",
     ]
     states = _by_state(plan)
     assert states["MANIFEST_VALID"]["value"] == "PASS"
     assert states["INPUTS_ADMITTED"]["value"] == "OPERATOR_ATTESTED_REQUIRED"
-    readiness = {entry["stage"]: entry for entry in states["STAGE_READY"]["evidence"]}
+    readiness = {
+        entry["stage"]: entry
+        for entry in states["MECHANICALLY_LAUNCHABLE"]["evidence"][0]["stage_readiness"]
+    }
     for stage in (
         "extract", "pii_scan", "score_educational", "structured", "resolve",
         "hydrate", "synth", "dedup_surfaces", "probes", "audit", "audit_recall",
         "tokenize", "cpt",
     ):
         assert readiness[stage]["ready"], (stage, readiness[stage]["missing"])
-    # Mechanically launchable — every stage's outputs exist — but NOT training ready: audit_recall
-    # judged the extraction FAIL. This assertion read PASS until 2026-07-27; see
-    # test_data_quality_verdicts_gate_training_ready for why that was a green light on bad data.
+
+    # The whole point of the split: every input a stage would read EXISTS, and the domain is still
+    # not ready. A single state cannot say both, and the one that existed said only the first.
+    assert states["MECHANICALLY_LAUNCHABLE"]["value"] == "PASS"
     assert states["TRAINING_READY"]["value"] == "FAIL"
-    split = states["TRAINING_READY"]["evidence"][0]["split_status"]
+    assert states["TRAINING_READY"]["evidence"][0]["summary"][:2] == [
+        "MECHANICALLY LAUNCHABLE", "DATA QUALITY FAILED",
+    ]
+    assert states["TRAINING_READY"]["evidence"][0]["summary"][-1] == "NOT TRAINING READY"
+
+    split = states["TRAIN_CONFIG_FROZEN"]["evidence"][0]["split_status"]
     assert split[0]["unit"] == "kanto"
     assert split[0]["split_manifest"].endswith("/splits/split_v2.json")
     assert split[0]["exists"] and split[0]["measurement"] == "augmentation-holdout only"
 
     millbrook = build_plan("millbrook-hollow", "main")
     millbrook_states = _by_state(millbrook)
-    millbrook_split = millbrook_states["TRAINING_READY"]["evidence"][0]["split_status"]
+    millbrook_split = millbrook_states["TRAIN_CONFIG_FROZEN"]["evidence"][0]["split_status"]
     assert millbrook_split[0]["split_manifest"].endswith("/splits/split_v2.json")
     assert millbrook_split[0]["exists"]
 
@@ -150,29 +160,64 @@ def test_data_quality_verdicts_gate_training_ready() -> None:
         "this test is only meaningful while the recall report is FAILing"
     )
 
-    training = _by_state(build_plan("pokemon-lore", "kanto"))["TRAINING_READY"]
-    assert training["value"] == "FAIL", (
-        "audit_recall reported FAIL but the ladder still declared the domain trainable"
+    states = _by_state(build_plan("pokemon-lore", "kanto"))
+    gates = states["DATA_GATES_PASS"]
+    assert gates["value"] == "FAIL", (
+        "audit_recall reported FAIL but the ladder still declared the data gates clear"
     )
-    assert any("audit_recall" in gap for gap in training["gaps"]), training["gaps"]
-    quality = {q["stage"]: q for q in training["evidence"][0]["data_quality"]}
+    assert any("audit_recall" in gap for gap in gates["gaps"]), gates["gaps"]
+    quality = {q["stage"]: q for q in gates["evidence"]}
     assert quality["audit_recall"]["status"] == "FAIL"
 
     # The load-bearing contrast, in the SAME domain: pii_scan is declared, ran, and returned PASS.
-    # It must appear in the evidence and produce no gap — otherwise this gate is just failing
+    # It must appear in the evidence and produce no gap — otherwise this rung is just failing
     # everything and the FAIL above would prove nothing.
     assert quality["pii_scan"]["status"] == "PASS"
-    assert not [g for g in training["gaps"] if "pii_scan" in g], training["gaps"]
+    assert not [g for g in gates["gaps"] if "pii_scan" in g], gates["gaps"]
 
-    # A domain declaring neither quality stage records NOT_DECLARED — visible, deliberately not
-    # gapped (see _quality_verdicts). "No gate" must not read the same as "gate passed".
-    millbrook = _by_state(build_plan("millbrook-hollow", "main"))["TRAINING_READY"]
-    undeclared = {q["stage"]: q["status"] for q in millbrook["evidence"][0]["data_quality"]}
-    assert undeclared == {"pii_scan": "NOT_DECLARED", "audit_recall": "NOT_DECLARED"}, undeclared
-    assert not [g for g in millbrook["gaps"] if "data quality" in g], millbrook["gaps"]
+    # ...and the failure must reach TRAINING_READY rather than staying a leaf verdict nothing reads.
+    assert "DATA_GATES_PASS" in states["TRAINING_READY"]["evidence"][0]["blocked_by"]
+
+    # A domain declaring no quality stage records NOT_DECLARED — visible, deliberately not gapped
+    # (see _quality_verdicts). "No gate" must not read the same as "gate passed".
+    millbrook = _by_state(build_plan("millbrook-hollow", "main"))["DATA_GATES_PASS"]
+    verdicts = {q["stage"]: q["status"] for q in millbrook["evidence"]}
+    assert verdicts == {"pii_scan": "NOT_DECLARED", "audit_recall": "NOT_DECLARED",
+                        "audit": "PASS"}, verdicts
+
+    # `audit` records a different shape — JSONL, one row per edition, dimension -> pass/fail — in a
+    # file SHARED across domains and keyed only by edition slug. Red-green on that reader: the same
+    # file holds a booster_1 row with coverage=fail, so selecting that edition must flip the verdict.
+    # Without this the reader could match nothing and report PASS for everything.
+    booster = _by_state(build_plan("millbrook-hollow", "booster_1"))["DATA_GATES_PASS"]
+    audit_row = next(q for q in booster["evidence"] if q["stage"] == "audit")
+    assert audit_row["status"] == "FAIL", audit_row
+    assert "coverage" in str(audit_row["detail"]), audit_row
+
+
+def test_train_config_frozen_catches_derived_vs_configured_drift() -> None:
+    """A derived step count that disagrees with the referenced config must block readiness.
+
+    The planner derives train.max_steps from corpus size and the optimizer window; the training
+    config sets its own. Nothing reconciled them, so an operator could approve a plan describing
+    277 steps and launch a run configured for 450.
+    """
+    frozen = _by_state(build_plan("pokemon-lore", "kanto"))["TRAIN_CONFIG_FROZEN"]
+    checks = {c["knob"]: c for c in frozen["evidence"][0]["knob_reconciliation"]}
+
+    # Non-vacuous anchor: this knob must actually RESOLVE against the config, not fall into
+    # NOT_IN_CONFIG. A resolver that finds nothing would make every check vacuously clean.
+    assert checks["train.max_steps"]["status"] == "DRIFTED", checks["train.max_steps"]
+    assert checks["train.max_steps"]["derived"] != checks["train.max_steps"]["configured"]
+    assert frozen["value"] == "FAIL"
+    assert any("train.max_steps" in gap for gap in frozen["gaps"]), frozen["gaps"]
+
+    # Knobs that name no config path are not drift — the config legitimately relies on the default.
+    assert checks["anneal.enabled"]["status"] == "NOT_IN_CONFIG"
 
 
 if __name__ == "__main__":
     test_plan_install_is_read_only_and_computed()
     test_data_quality_verdicts_gate_training_ready()
+    test_train_config_frozen_catches_derived_vs_configured_drift()
     print("OK — computed ladder, data-quality gating, Kanto reality, and zero planner writes")
