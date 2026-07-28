@@ -23,7 +23,9 @@ export PYTHONPATH=scripts
 # (avail 29% -> 16%), and earlyoom SIGTERM'd the eval itself — correctly, since choom -n 800
 # makes build-class processes die first. The eval's own scope peaked at only 3.9G; the compile
 # was the whale, not the model load. flashinfer honours MAX_JOBS (jit/cpp_ext.py:345).
-export MAX_JOBS="${MAX_JOBS:-4}"       # ~5.2G of frontends, not ~20G
+# Bounded, not configurable: an unbounded JIT fanned out to 16 cicc frontends at ~1.3G each
+# (20G) and earlyoom SIGTERMd the eval. 4 is the value that fits; it is not a knob to forget.
+export MAX_JOBS=4
 
 STAMP="$(date +%Y%m%d-%H%M%S)"
 DRIVER_LOG="logs/probe_eval_s3_driver_${STAMP}.log"

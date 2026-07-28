@@ -18,7 +18,7 @@
 #   scripts/qgre/check_artifact_precision.sh [--verbose]
 set -euo pipefail
 cd "$(dirname "$0")/../.."
-exec "${PY:-.venv/bin/python}" - "$@" <<'PYEOF'
+exec .venv/bin/python - "$@" <<'PYEOF'
 import json, re, struct, sys
 from pathlib import Path
 ROOT = Path.cwd(); VERBOSE = "--verbose" in sys.argv
