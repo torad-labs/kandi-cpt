@@ -159,6 +159,40 @@ def test_distinct_entities_keep_their_distractors():
         assert len(item["choices"]) == 3, "each keeps both other regions as distractors"
 
 
+
+
+def test_summary_reports_its_clustering_not_just_n():
+    """Probe items are NOT independent — several surfaces per gold fact.
+
+    Kanto emits exactly 4 surfaces for each of 75 triples, so n=300 counts paraphrases while the
+    model either knows a fact or does not. A comparison built on n as if it were independent
+    understates every interval; the summary must carry the fact count so a reader can deflate.
+    """
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from eval_probes import summarize_hits
+
+    probes = [
+        {"question": f"q{i}", "choices": ["a", "b"], "answer": "a",
+         "predicate": "p", "source_triple_id": f"t{i // 4}"}
+        for i in range(20)                       # 5 facts x 4 surfaces
+    ]
+    summary = summarize_hits(probes, [True] * 20, min_n=1, estimand="clustering")
+    assert summary["n"] == 20
+    assert summary["n_independent_facts"] == 5, summary
+    assert summary["items_per_fact"] == 4.0
+    assert "design effect" in summary["clustering_note"]
+
+    # Genuinely independent items must not be reported as clustered.
+    independent = [
+        {"question": f"q{i}", "choices": ["a", "b"], "answer": "a",
+         "predicate": "p", "source_triple_id": f"t{i}"}
+        for i in range(20)
+    ]
+    flat = summarize_hits(independent, [True] * 20, min_n=1, estimand="clustering")
+    assert flat["n_independent_facts"] == 20 and flat["items_per_fact"] == 1.0
+
 if __name__ == "__main__":
     test_forced_choice_items_built()
     test_deterministic_and_skips_no_distractor_or_template()
@@ -168,4 +202,5 @@ if __name__ == "__main__":
     test_one_entity_under_two_ids_never_leaks_a_truth_as_distractor()
     test_resolve_merged_ids_never_leak_a_truth_as_distractor()
     test_distinct_entities_keep_their_distractors()
+    test_summary_reports_its_clustering_not_just_n()
     print("OK — G3: generic_probes builds forced-choice items over arbitrary triples, domain-agnostic")

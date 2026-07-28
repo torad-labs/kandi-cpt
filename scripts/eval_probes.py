@@ -367,10 +367,26 @@ def summarize_hits(
         estimand=estimand,
         slice_name="all",
     )
+    # CLUSTERING. Probe items are NOT independent: generic_probes emits several surfaces per gold
+    # triple (kanto: exactly 4 for each of 75), so n counts paraphrases while the model either knows
+    # a fact or does not. Treating n as independent understates every interval built from it — the
+    # same unpinned-denominator failure this pipeline keeps paying for. Reported so a reader can
+    # deflate rather than having to notice.
+    clusters = {str(probe.get("source_triple_id") or probe.get("subject") or index)
+                for index, probe in enumerate(probes)}
+    n_clusters = len(clusters)
+    per_cluster = (n / n_clusters) if n_clusters else 1.0
     return {
         "acc": overall["acc"],
         "hits": total_hits,
         "n": n,
+        "n_independent_facts": n_clusters,
+        "items_per_fact": round(per_cluster, 3),
+        "clustering_note": (
+            "n counts probe ITEMS; n_independent_facts counts the gold facts they came from. "
+            "With m items per fact the design effect is 1+(m-1)*rho, so the effective sample size "
+            "is n/DEFF — never n — for any comparison across runs."
+        ),
         "wilson": overall["wilson"],
         "rough_bound_half_over_sqrt_n": overall["rough_bound_half_over_sqrt_n"],
         "n_status": overall["n_status"],

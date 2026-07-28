@@ -96,8 +96,17 @@
   ],
   "significant_pairs": 0,
   "spread_tuned_acc": 0.0514,
-  "verdict": "MEASURED BUT UNDERPOWERED. 0 of 6 pairwise comparisons clear |z|>1.96, and the whole four-arm spread (0.0514) is smaller than 1.96 SE of one pairwise difference (~0.078). The monotone reading offered mid-sweep from three arms did not survive the fourth: r030 is the highest point, r010 the lowest, and neither is distinguishable from any other.",
+  "verdict": "MEASURED, FLAT, AND UNRESOLVABLE ON THIS DOMAIN. 0 of 6 pairwise comparisons are significant even under the optimistic independent-n assumption, and clustering lowers the z-scores further. Resolving a ~0.05 effect needs hundreds of additional DISTINCT FACTS, which Kanto does not have while its extraction gate is failing.",
   "to_resolve": "~1373 forced-choice items per arm would be needed to resolve the largest observed gap (0.0514) at alpha 0.05 / power 0.80. Current n is 292 per arm.",
   "controls_held": "base_acc 0.2808 and n=292 identical across all four arms, so the deltas are comparable.",
-  "note_on_r010_exit_1": "r010's driver exit=1 is a VERDICT, not a crash: its forced-choice axis PASSED and only the generative axis missed its bar. The eval ran to completion and wrote its report."
+  "note_on_r010_exit_1": "r010's driver exit=1 is a VERDICT, not a crash: its forced-choice axis PASSED and only the generative axis missed its bar. The eval ran to completion and wrote its report.",
+  "CORRECTION_clustering": {
+    "found": "2026-07-28, checking my own independence assumption",
+    "what": "The reported n=292 counts probe ITEMS, not independent observations. data/pokemon-lore/kanto/probes.jsonl holds 300 items over just 75 distinct source triples \u2014 exactly 4 surfaces each, across 35 subjects. A model either knows a fact or does not, so the 4 paraphrases of one fact are strongly correlated.",
+    "consequence": "Every interval built from n=292 as if independent is too narrow. Design effect is 1+(m-1)*rho with m=4, so n_eff = 292/DEFF: 154 at rho=0.3, 117 at 0.5, 94 at 0.7, and 73 (the fact count) at rho=1.",
+    "does_not_change_the_verdict": "The arms were already indistinguishable at the optimistic independent-n assumption (largest z=1.29). Correcting for clustering only lowers it further \u2014 z falls to 0.82 at rho=0.5 and 0.73 at rho=0.7. The curve is flat, more firmly than first reported.",
+    "changes_the_prescription": "My earlier 'needs ~1373 items per arm' was wrong IN KIND. More paraphrases of the same 75 facts add almost no information. Resolving the largest observed gap needs ~1372 EFFECTIVE observations, which at rho=0.5 means ~857 distinct facts and at rho=0.7 means ~1063 \u2014 against the 73 available. The review anticipated exactly this: DeepKnowledge reports diminishing returns past a few phrasing variants, and warns that semantic diversity must not be reduced to paraphrase volume.",
+    "connects_to_the_coverage_gap": "The binding constraint is the FACT POOL, not the probe count. Kanto's extraction coverage is 0.3529 against a 0.6 gate, so the domain cannot currently supply the facts this experiment needs. The coverage failure is not merely a data-quality nit \u2014 it is what makes the replay curve unresolvable on this domain at any probe-set size.",
+    "fix_landed": "eval_probes.summarize_hits now reports n_independent_facts and items_per_fact beside n, with a note that any cross-run comparison must use n/DEFF. The denominator can no longer be read as independent without the reader being told otherwise."
+  }
 }
