@@ -388,6 +388,14 @@ class RunConfig:
     smoke_steps: int = 0                # >0 → synthetic-data sanity loop (folds the old --smoke flag)
     dry_run: bool = False               # True → validate + print contract + exit (folds the old --dry-run flag)
     early_stop_patience: int = 0        # >0 → stop if smoothed loss hasn't improved for N log-windows. 0 = OFF (default reproduces current behavior). Saves scarce single-GPU compute past the optimum.
+    # Directory holding a recovery.pt (scripts/recovery.py) to CONTINUE from: optimizer moments,
+    # LR/anneal position, step, RNG, sampler epoch, exposure counters. Distinct from
+    # data.init_from, which reloads weights and starts a fresh optimizer at step 0 — a warm
+    # restart that makes a crashed run produce a different model than one that never died.
+    resume_from: str = ""
+    # Write recovery.pt beside each deploy checkpoint. Default ON: a long fleet run that dies
+    # without one cannot be continued, only restarted, and the compute is already spent.
+    write_recovery: bool = True
 
     def __post_init__(self) -> None:
         if not self.run_name:
@@ -569,6 +577,20 @@ class CptConfig:
         sub = {k: flat.get(k) for k in _FINGERPRINT_FIELDS}
         return hashlib.sha256(json.dumps(sub, sort_keys=True, separators=(",", ":")).encode()).hexdigest()[:16]
 
+    def continuation_fingerprint(self) -> str:
+        """Run identity for the purpose of RESUMING — everything the full fingerprint covers except
+        `data.init_from`.
+
+        A resume necessarily repoints init_from at the run's own checkpoint, so comparing the full
+        fingerprint refuses every legitimate continuation while still catching what actually
+        matters: a recovery file carrying another recipe's optimizer moments, LR schedule, or
+        precision mode. Found by running the resume rather than reasoning about it — the guard
+        rejected the very case it exists to permit.
+        """
+        flat = _flatten(asdict(self))
+        sub = {k: flat.get(k) for k in _FINGERPRINT_FIELDS if k != "data.init_from"}
+        return hashlib.sha256(json.dumps(sub, sort_keys=True, separators=(",", ":")).encode()).hexdigest()[:16]
+
     def to_resolved_dict(self) -> dict:
         d = asdict(self)
         d["_fingerprint"] = self.fingerprint()
@@ -587,6 +609,8 @@ class CptConfig:
         d["nvfp4"] = asdict(self.model.nvfp4)
         d["levers"] = _unalias(asdict(self.train.levers))   # lambda_ → lambda (match original YAML shape)
         d["anneal"] = asdict(self.train.anneal)
+        # Resume identity: same recipe minus data.init_from, which a continuation must change.
+        d["continuation_fingerprint"] = self.continuation_fingerprint()
         return d
 
 

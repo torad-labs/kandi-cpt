@@ -1,0 +1,52 @@
+{
+  "schema": "finding/1",
+  "recorded_at": "2026-07-28",
+  "headline": "Trainer-written checkpoints do not reload: a run at loss 0.4119 comes back at 36.12.",
+  "how_found": "Building review item 6 (recovery checkpoints) and PROVING the resume rather than reasoning about it. Four 4-step CPT runs on the same recipe, GPU 1, CUDA 13.3.",
+  "arms": {
+    "A_control_uninterrupted": [
+      3.4189,
+      1.2261,
+      0.7277,
+      0.4119
+    ],
+    "C_recovered_from_A_step2": {
+      "steps_3_4": [
+        36.695,
+        33.3406
+      ],
+      "note": "resumed at step 2/4, rng restored: python, torch_cpu, torch_cuda, numpy"
+    },
+    "D_warm_restart_from_A_step2": {
+      "steps_1_4": [
+        36.695,
+        27.2844,
+        19.5684,
+        17.8888
+      ],
+      "note": "NO recovery involved \u2014 identical first loss to C, which isolates the fault"
+    },
+    "E_warm_restart_from_A_FINAL": {
+      "steps_1": [
+        36.1216
+      ],
+      "note": "the final checkpoint of a run that had just reached 0.4119"
+    }
+  },
+  "defect_1": {
+    "what": "save_checkpoint writes embeddings under wrapper-internal names the loader cannot reconstruct.",
+    "evidence": "quant_keys.json records method=int8_rowwise with 276 keys, but the file holds 279 scales. The three unrecorded ones are lm_head._emb, model.embed_tokens, model.embed_tokens_per_layer \u2014 written as lm_head._emb.weight / .embed_scale / .weight_scale, wrapper-internal names with no embedding_keys entry. load_causal_ckpt_quartet sets is_v2 = (method == int8_rowwise_v2 or embedding_keys present) = False, so it neither reconstructs the int8 embeddings nor matches those names, and the embeddings are effectively not loaded.",
+    "impact": "Every continuation is silently corrupt: booster runs, SFT initialised from a CPT checkpoint, anneal continuation, and crash resume all start from a model whose embeddings are garbage. The EVAL path is unaffected \u2014 it loads the same files correctly \u2014 which is why this survived: install numbers looked right while continuation was broken.",
+    "not_caused_by": "recovery.py. Arm D uses no recovery at all and reproduces the first loss exactly."
+  },
+  "defect_2": {
+    "what": "The trainer still writes the v1/bf16 format; the v2 purge fixed artifacts but not the producer.",
+    "evidence": "A trainer-written checkpoint carries BF16 scales and BF16 embeddings ([262144,1536] and [262144,8960]) \u2014 ~5.5GB of bf16 storage. The artifact gate was run against one, symlinked into checkpoints/cpt: EXIT 1, wide={'BF16': 547}, e.g. lm_head._emb.weight.",
+    "impact": "The next real training run re-introduces exactly the bf16 storage the purge removed, and check_artifact_precision.sh goes red."
+  },
+  "recovery_status": "recovery.py itself is landed and works: arm C resumed at the right step with all four RNG streams restored, optimizer moments reloaded, and the continuation fingerprint accepted. End-to-end determinism CANNOT be demonstrated until defect 1 is fixed, because the weights the resume loads are already wrong before recovery runs. Item 6 is NOT complete.",
+  "bugs_in_my_own_code_found_by_running_it": [
+    "The resume guard compared the FULL run fingerprint, which includes data.init_from \u2014 a value every legitimate resume must change. It refused the exact case it exists to permit. Fixed with continuation_fingerprint (same recipe minus init_from).",
+    "recovery.load used map_location=<training device>, handing set_rng_state a CUDA tensor: 'RNG state must be a torch.ByteTensor', minutes into the resume. Now always CPU, with a regression test."
+  ]
+}

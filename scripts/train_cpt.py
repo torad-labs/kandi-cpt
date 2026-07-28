@@ -35,6 +35,7 @@ from transformers import Gemma4ForCausalLM
 import config as C
 import cuda_home
 import lever_receipts
+import recovery
 from cpt_config import CptConfig
 
 
@@ -929,6 +930,31 @@ def save_file_streaming(filename, entries, metadata=None):
     return written
 
 
+
+def _write_recovery(out_dir, cfg, rank, step, micro, opt, exposure, anneal_started,
+                    scored_checkpoint, es_best, es_bad, sampler, contract):
+    """Write the recovery checkpoint beside a deploy checkpoint. Never fails the run.
+
+    A recovery file is an insurance policy; losing the policy must not destroy the thing it
+    insures. A failure here is logged loudly and the trained weights, already written, stand.
+    """
+    if rank != 0 or not cfg.get("write_recovery", True):
+        return
+    try:
+        state = recovery.capture(
+            step=step, micro=micro, optimizer=opt, exposure=exposure,
+            anneal_started=anneal_started, scored_checkpoint=scored_checkpoint,
+            early_stop_best=es_best, early_stop_bad=es_bad,
+            sampler_epoch=step if sampler is not None else None,
+            recipe_fingerprint=cfg.get("continuation_fingerprint"),
+        )
+        path = recovery.save(out_dir, state)
+        log(f"[recovery] wrote {path} ({path.stat().st_size / 1e9:.2f} GB) at step {step}")
+    except Exception as error:  # noqa: BLE001 — never lose a saved checkpoint over its sidecar
+        log(f"[recovery] WARNING could not write recovery state at step {step}: "
+            f"{type(error).__name__}: {error}")
+
+
 def save_checkpoint(model, cfg, out_dir, rank, world):
     """Save a Gemma4ForCausalLM checkpoint on rank 0. For an int8-master run, save the weights in their NATIVE
     int8 form (int8 `_data` + per-row `scale`) — half the size, and crucially NO full-bf16 materialization: the
@@ -1226,6 +1252,24 @@ def main():
     es_best, es_bad = float("inf"), 0
     anneal_started = False
     scored_checkpoint = "final"  # overwritten to anneal-end when anneal runs to completion
+
+    # RECOVERY (not init_from). init_from reloads weights and starts a fresh optimizer at step 0;
+    # this restores optimizer moments, RNG, sampler epoch, exposure and the step itself, so a run
+    # killed mid-flight continues instead of silently becoming a different experiment.
+    resume_dir = str(cfg.get("resume_from") or "")
+    if resume_dir and not smoke_steps:
+        saved = recovery.load(resume_dir)
+        if saved is None:
+            raise RuntimeError(f"run.resume_from={resume_dir!r} holds no {recovery.FILENAME}")
+        loop = recovery.restore(saved, optimizer=opt, exposure=exposure, sampler=sampler,
+                                recipe_fingerprint=cfg.get("continuation_fingerprint"))
+        step, micro = loop["step"], loop["micro"]
+        anneal_started, scored_checkpoint = loop["anneal_started"], loop["scored_checkpoint"]
+        es_best, es_bad = loop["early_stop_best"], loop["early_stop_bad"]
+        if rank0():
+            log(f"[recovery] resumed at step {step}/{total} from {resume_dir} "
+                f"(rng restored: {', '.join(loop['restored_rng']) or 'none'}; "
+                f"exposure facts {len(exposure)})")
     data_iter = iter(dl)
     while step < total:
         try:
@@ -1355,6 +1399,8 @@ def main():
                 save_checkpoint(model, cfg, f"{save_dir}/step_{step:06d}", rank, world)
                 if lever4_on and rank0():    # snapshot cumulative fact exposures alongside the checkpoint
                     _save_exposure(f"{save_dir}/step_{step:06d}", step, exposure)
+                _write_recovery(f"{save_dir}/step_{step:06d}", cfg, rank, step, micro, opt, exposure,
+                                anneal_started, scored_checkpoint, es_best, es_bad, sampler, contract)
                 model.train()
 
     log(f"done {step} steps in {time.time()-t0:.0f}s")
@@ -1383,6 +1429,8 @@ def main():
                 + (f" (pre-anneal fallback at {save_dir}/pre_anneal)" if anneal_started else ""))
         if lever4_on and rank0():
             _save_exposure(save_dir, step, exposure)
+        _write_recovery(save_dir, cfg, rank, step, micro, opt, exposure, anneal_started,
+                        scored_checkpoint, es_best, es_bad, sampler, contract)
     # Enforced AFTER the checkpoint and run_contract are on disk: the weights are already trained and
     # a silent lever is a reporting failure, not a reason to discard them. The artifact carries the
     # FAIL record, so what died and why is readable from the checkpoint itself.
