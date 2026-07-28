@@ -497,6 +497,16 @@ def _split_integrity_ok(path: Path) -> bool:
             return False
         if decontamination.get("n_alias_leaks") != 0 or decontamination.get("zero_alias_leaks") is not True:
             return False
+    # Population coverage, against the denominator the split now RECORDS. Previously unmeasurable:
+    # train_ids/holdout_ids hold unique triple IDs while n_triples counts triples, so comparing
+    # them read as dropped facts when nothing was dropped. With n_unique_triple_ids recorded the
+    # real question is answerable — did every fact get classified as train or holdout.
+    unique_ids = manifest.get("n_unique_triple_ids")
+    if unique_ids is not None:
+        assigned = len(set(train) | set(holdout))
+        if int(unique_ids) <= 0 or assigned < int(unique_ids):
+            return False
+
     declared = manifest.get("holdout_frac")
     if isinstance(declared, (int, float)) and not isinstance(declared, bool) and declared > 0:
         realized = len(holdout) / max(1, len(train) + len(holdout))

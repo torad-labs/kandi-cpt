@@ -402,12 +402,23 @@ def main():
         if args.dry_run:
             continue
         out.parent.mkdir(parents=True, exist_ok=True)
+        # RECORD THE DENOMINATOR. train_ids/holdout_ids hold unique triple IDs while n_triples
+        # counts triples, so len(train)+len(holdout) < n_triples is normal (duplicate s,p,o across
+        # documents) and comparing the two reads as dropped facts when nothing was dropped. Without
+        # the unique-id count nothing downstream can tell a healthy split from one that silently
+        # lost facts — an unpinned denominator in the middle of the estimand.
+        unique_ids = {triple_id(t) for t in triples}
+        assigned = set(train) | set(holdout)
         payload = {
             "version": version,
             "seed": args.seed,
             "holdout_frac": args.holdout_frac,
             "grouping": meta.get("grouping", "subject"),
             "n_triples": len(triples),
+            "n_unique_triple_ids": len(unique_ids),
+            "n_assigned_ids": len(assigned),
+            "id_coverage": round(len(assigned) / len(unique_ids), 6) if unique_ids else 0.0,
+            "unassigned_ids": sorted(unique_ids - assigned)[:20],
             "train_ids": sorted(train),
             "holdout_ids": sorted(holdout),
         }

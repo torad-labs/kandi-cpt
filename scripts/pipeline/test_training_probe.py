@@ -126,10 +126,32 @@ def test_a_family_that_was_not_measured_is_not_treated_as_passing() -> None:
     assert not any("general ability" in rule for rule in fired_rules), fired_rules
 
 
+def test_previously_installed_facts_must_not_be_traded_away() -> None:
+    """A booster that installs new knowledge by destroying old knowledge has not installed
+    anything — it has traded. install strength rising while prior_install falls is that trade."""
+    n = 400
+    drop = rough_bound(n) * 2
+    history = [
+        _row(100, 2.0, install=(0.50, n), prior_install=(0.90, n)),
+        _row(200, 1.9, install=(0.90, n), prior_install=(0.90 - drop, n)),
+    ]
+    verdict = TP.decide(history)
+    assert verdict["stop"] is True
+    assert any("previously installed facts regressed" in r for r in verdict["reasons"])
+
+    # Holding steady must not fire, or the rule is noise.
+    steady = [
+        _row(100, 2.0, install=(0.50, n), prior_install=(0.90, n)),
+        _row(200, 1.9, install=(0.90, n), prior_install=(0.90, n)),
+    ]
+    assert TP.decide(steady)["stop"] is False
+
+
 def test_families_are_recorded_separately_and_never_merged() -> None:
-    row = _row(100, 2.0, install=(0.5, 100), longtail=(0.2, 50), confusable=(0.9, 40),
-               general=(0.7, 30))
-    assert set(TP.FAMILIES) == {"install", "longtail", "confusable", "general"}
+    row = _row(100, 2.0, install=(0.5, 100), extraction=(0.4, 60), longtail=(0.2, 50),
+               confusable=(0.9, 40), general=(0.7, 30), prior_install=(0.8, 45))
+    assert set(TP.FAMILIES) == {"install", "extraction", "longtail", "confusable",
+                                "general", "prior_install"}
     for family in TP.FAMILIES:
         assert family in row and set(row[family]) == {"hits", "n", "acc"}
     assert "score" not in row and "combined" not in row, (
@@ -146,5 +168,6 @@ if __name__ == "__main__":
     test_general_ability_is_compared_to_BASE_not_to_the_last_checkpoint()
     test_noise_inside_the_bound_must_not_stop_a_paid_run()
     test_a_family_that_was_not_measured_is_not_treated_as_passing()
+    test_previously_installed_facts_must_not_be_traded_away()
     test_families_are_recorded_separately_and_never_merged()
     print("OK — stops on measured learning, holds through noise, never merges the families")

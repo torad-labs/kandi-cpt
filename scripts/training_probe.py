@@ -36,7 +36,12 @@ SCHEMA = "kandi.training_probe.v1"
 
 # Families the review names. Each is scored separately and NEVER merged into one number: a single
 # "knowledge installed" score hides the difference between memorising and generalising.
-FAMILIES = ("install", "longtail", "confusable", "general")
+FAMILIES = ("install", "extraction", "longtail", "confusable", "general", "prior_install")
+# The review names six diagnostic slices. `extraction` is short generative extraction (an unseen
+# paraphrase) and `prior_install` is previously-installed facts — the regression surface a booster
+# run can quietly destroy. Both are scored the same way as the rest: whichever slices the frozen
+# file supplies get measured, and a slice that is absent is reported as not-evaluated rather than
+# assumed passing.
 
 # Install strength may stall for this many consecutive checkpoints before the run is stopped.
 STALL_PATIENCE = 2
@@ -118,6 +123,20 @@ def decide(
             verdict["reasons"].append(
                 f"install strength has not improved beyond the sampling bound for "
                 f"{STALL_PATIENCE} checkpoints (acc {window})")
+
+    # 2b — previously-installed facts must not regress: a booster that installs new knowledge by
+    #      destroying old knowledge has not installed anything, it has traded.
+    prior_now, prior_before = _acc(latest, "prior_install"), _acc(previous, "prior_install")
+    if prior_now is not None and prior_before is not None:
+        n = _n(latest, "prior_install")
+        fired = _regressed(prior_before, prior_now, n)
+        verdict["rules"].append({"rule": "previously installed facts held", "fired": fired,
+                                 "from": prior_before, "to": prior_now, "n": n,
+                                 "bound": rough_bound(n)})
+        if fired:
+            verdict["reasons"].append(
+                f"previously installed facts regressed ({prior_before:.4f} -> {prior_now:.4f}, "
+                f"beyond ±{rough_bound(n):.4f}) — new knowledge traded against old")
 
     # 2 — confusable error increased materially (accuracy fell beyond the bound).
     confusable_now, confusable_before = _acc(latest, "confusable"), _acc(previous, "confusable")

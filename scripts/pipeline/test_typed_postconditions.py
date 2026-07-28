@@ -130,8 +130,14 @@ def test_split_integrity_rejects_leaking_and_degenerate_splits() -> None:
                 "decontamination": {"n_alias_leaks": 0, "zero_alias_leaks": True}}
         path = root / "split_v2.json"
 
+        good["n_unique_triple_ids"] = 100                      # every id assigned
         path.write_text(json.dumps(good), encoding="utf-8")
         assert run_stage._split_integrity_ok(path) is True, "the healthy split must pass"
+
+        # A legacy split predating the denominator must not be retro-failed.
+        legacy = {k: v for k, v in good.items() if k != "n_unique_triple_ids"}
+        path.write_text(json.dumps(legacy), encoding="utf-8")
+        assert run_stage._split_integrity_ok(path) is True
 
         for label, mutate in (
             ("holdout leaks into train", lambda d: d.update(train_ids=d["train_ids"] + ["h0"])),
@@ -139,6 +145,9 @@ def test_split_integrity_rejects_leaking_and_degenerate_splits() -> None:
             ("alias leaks present", lambda d: d["decontamination"].update(n_alias_leaks=3, zero_alias_leaks=False)),
             ("decontamination block absent", lambda d: d.pop("decontamination")),
             ("realized fraction far from declared", lambda d: d.update(holdout_frac=0.5)),
+            # Population coverage, newly measurable now that split records its denominator: facts
+            # the split never classified are invisible to evaluation entirely.
+            ("facts left unclassified", lambda d: d.update(n_unique_triple_ids=140)),
         ):
             broken = json.loads(json.dumps(good))
             mutate(broken)
