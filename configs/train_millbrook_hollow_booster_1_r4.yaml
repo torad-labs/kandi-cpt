@@ -11,7 +11,7 @@ model:
     bf16_last_layers: 5
 data:
   tokenized: data/_build/30_tokenized/millbrook_hollow_booster_1.arrow
-  init_from: checkpoints/cpt/millbrook_hollow_v1
+  init_from: checkpoints/cpt/millbrook_hollow_v1_v2
 train:
   precision: fp4
   seq_len: 512

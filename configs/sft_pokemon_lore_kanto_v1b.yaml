@@ -16,7 +16,7 @@ model:
     bf16_first_layers: 0
     bf16_last_layers: 0
 data:
-  init_from: checkpoints/cpt/pokemon_lore_kanto_v1
+  init_from: checkpoints/cpt/pokemon_lore_kanto_v1_v2
   tokenized: data/_build/30_tokenized/sft_pokemon_lore_kanto_v1b.arrow
 train:
   precision: fp4

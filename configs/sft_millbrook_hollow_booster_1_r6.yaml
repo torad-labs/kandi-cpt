@@ -10,7 +10,7 @@ model:
     bf16_first_layers: 0
     bf16_last_layers: 0
 data:
-  init_from: checkpoints/cpt/millbrook_hollow_v1
+  init_from: checkpoints/cpt/millbrook_hollow_v1_v2
   tokenized: data/_build/30_tokenized/sft_millbrook_hollow_booster_1.arrow
 train:
   precision: fp4
