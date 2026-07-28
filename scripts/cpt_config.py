@@ -399,6 +399,20 @@ class RunConfig:
     # LR/anneal position, step, RNG, sampler epoch, exposure counters. Distinct from
     # data.init_from, which reloads weights and starts a fresh optimizer at step 0 — a warm
     # restart that makes a crashed run produce a different model than one that never died.
+    # Frozen probe slices for mid-run learning measurement: a JSON of
+    # {install|longtail|confusable|general: [forced-choice items]}. Unset = no probing.
+    # Loss is the wrong stopping instrument for knowledge installation (it can fall while fact
+    # acquisition stalls), so this measures the thing being installed instead.
+    probe_slices: str = ""
+    # Arm the stop rules. OFF by default ON PURPOSE: the rules are proven on synthetic
+    # trajectories but not yet on a real run's probe series, and an unvalidated instrument must
+    # not be allowed to kill paid GPU runs. The trajectory is RECORDED either way, which is what
+    # lets the instrument earn its arming.
+    probe_stop: bool = False
+    # Base-model accuracy on the `general` slice. Rule 3 compares against BASE, not against the
+    # previous checkpoint: slow drift never trips a step-to-step check and still ends in a
+    # damaged model. Unset = the general-regression rule is not evaluated (never assumed passing).
+    probe_general_base_acc: float | None = None
     resume_from: str = ""
     # Write recovery.pt beside each deploy checkpoint. Default ON: a long fleet run that dies
     # without one cannot be continued, only restarted, and the compute is already spent.

@@ -36,6 +36,7 @@ import config as C
 import cuda_home
 import lever_receipts
 import recovery
+import training_probe
 import window_sampler
 from cpt_config import CptConfig
 
@@ -1043,6 +1044,26 @@ def save_file_streaming(filename, entries, metadata=None):
 
 
 
+def _load_probe_slices(cfg) -> dict:
+    """Frozen forced-choice slices for mid-run probing, or {} when not configured.
+
+    Deliberately a path rather than a guess at the domain's sentinel: a probe drawn from a
+    different set than the post-run verdict would not be comparable to it.
+    """
+    ref = str(cfg.get("probe_slices") or "")
+    if not ref:
+        return {}
+    import json as _json
+    from pathlib import Path as _Path
+    path = _Path(ref) if str(ref).startswith("/") else C.ROOT / ref
+    try:
+        loaded = _json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        log(f"[probe] WARNING cannot read probe_slices {path}: {type(error).__name__}: {error}")
+        return {}
+    return {k: v for k, v in loaded.items() if k in training_probe.FAMILIES and v}
+
+
 def _write_recovery(out_dir, cfg, rank, step, micro, opt, exposure, anneal_started,
                     scored_checkpoint, es_best, es_bad, sampler, contract):
     """Write the recovery checkpoint beside a deploy checkpoint. Never fails the run.
@@ -1370,6 +1391,10 @@ def main():
     es_best, es_bad = float("inf"), 0
     anneal_started = False
     scored_checkpoint = "final"  # overwritten to anneal-end when anneal runs to completion
+    probe_history: list = []
+    last_window_loss = float("nan")   # the most recent logged window mean, for the probe record
+    probe_verdict: dict | None = None
+    probe_slices = _load_probe_slices(cfg)
 
     # RECOVERY (not init_from). init_from reloads weights and starts a fresh optimizer at step 0;
     # this restores optimizer moments, RNG, sampler epoch, exposure and the step itself, so a run
@@ -1501,6 +1526,7 @@ def main():
                 wmean = window_loss / (accum * cfg['log_every'])
                 log(f"step {step}/{total} loss {wmean:.4f} "
                     f"lr {lr:.2e} peakmem {mem:.1f}GB (resident {cur:.1f}GB; transient {mem-cur:.1f}GB) {(time.time()-t0)/step:.2f}s/step")
+                last_window_loss = wmean
                 window_loss = 0.0
                 if es_pat:                       # loss-plateau early stop — inert unless run.early_stop_patience>0
                     if wmean < es_best - 1e-4:
@@ -1519,6 +1545,29 @@ def main():
                     _save_exposure(f"{save_dir}/step_{step:06d}", step, exposure)
                 _write_recovery(f"{save_dir}/step_{step:06d}", cfg, rank, step, micro, opt, exposure,
                                 anneal_started, scored_checkpoint, es_best, es_bad, sampler, contract)
+                # Measure LEARNING, not loss. Forced choice is a logprob pass on the model already
+                # in memory, so this costs a fraction of a step and needs no checkpoint reload.
+                if probe_slices and rank0():
+                    try:
+                        model.eval()
+                        with torch.no_grad():
+                            scored = training_probe.probe_loaded_model(
+                                _cached_tokenizer(cfg["model_path"]), model, str(device), probe_slices)
+                        probe_history.append(training_probe.record(
+                            step=step, loss=last_window_loss, scores=scored))
+                        probe_verdict = training_probe.decide(
+                            probe_history, general_base_acc=cfg.get("probe_general_base_acc"))
+                        log(f"[probe] step {step}: "
+                            + ", ".join(f"{k}={v['acc']:.4f}" for k, v in scored.items())
+                            + (f" — STOP: {probe_verdict['reasons'][0]}" if probe_verdict["stop"] else ""))
+                        if probe_verdict["stop"] and cfg.get("probe_stop"):
+                            log(f"[probe] stopping at step {step}/{total} on measured learning: "
+                                + "; ".join(probe_verdict["reasons"]))
+                            model.train()
+                            break
+                    except Exception as error:  # noqa: BLE001 — a probe must never kill a paid run
+                        log(f"[probe] WARNING probe failed at step {step}: "
+                            f"{type(error).__name__}: {error}")
                 model.train()
 
     log(f"done {step} steps in {time.time()-t0:.0f}s")
@@ -1543,6 +1592,9 @@ def main():
             # Per-window replay: the distribution and the zero-replay count, not just the
             # realized share — a share cannot distinguish a healthy schedule from a clumped one.
             contract["replay_schedule"] = getattr(dl, "replay_report", None)
+            # The learning trajectory, recorded whether or not the stop rules are armed.
+            contract["training_probe"] = {"history": probe_history, "verdict": probe_verdict,
+                                          "armed": bool(cfg.get("probe_stop"))}
             if anneal_started and anneal_plan.get("keep_pre"):
                 contract["pre_anneal_checkpoint"] = f"{save_dir}/pre_anneal"
             (Path(save_dir) / "run_contract.json").write_text(_json.dumps(contract, indent=2, default=str))
