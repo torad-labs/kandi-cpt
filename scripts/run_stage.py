@@ -332,6 +332,11 @@ def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
         passed = bool(matched) and all(_jsonl_verdicts_ok(candidate, spec) for candidate in matched)
     elif kind == "json_field_positive":
         passed = bool(matched) and all(_json_field_positive(candidate, spec) for candidate in matched)
+    elif kind == "split_integrity":
+        passed = bool(matched) and all(_split_integrity_ok(candidate) for candidate in matched)
+    elif kind == "checkpoint_integrity":
+        target = _rooted(path)
+        passed = target.is_dir() and _checkpoint_integrity_ok(target)
     else:
         passed = False
     return {"check": check, "pass": passed}
@@ -404,6 +409,101 @@ def _json_field_positive(path: Path, spec: dict[str, Any]) -> bool:
         return False
     value = report[field]
     return isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0
+
+
+def _split_integrity_ok(path: Path) -> bool:
+    """A split whose holdout leaks into train measures nothing; it just reports a number.
+
+    Checked against what the manifest itself declares, which is what a postcondition can do
+    cheaply and honestly: train and holdout disjoint, holdout non-empty, zero alias leaks on the
+    alias-closed versions, and a realized holdout fraction near the declared one.
+
+    NOT checked here: coverage against the expected fact population. train_ids/holdout_ids hold
+    unique triple IDs while n_triples counts triples, so 553+77 against n_triples 721 is 91
+    DUPLICATE ids, not 91 dropped facts — asserting equality would be a false alarm. Establishing
+    real coverage needs the triples reloaded, which belongs in the split stage, not a postcondition.
+    """
+    manifest = _load_json(path)
+    if not isinstance(manifest, dict):
+        return False
+    train, holdout = manifest.get("train_ids"), manifest.get("holdout_ids")
+    if not isinstance(train, list) or not isinstance(holdout, list) or not holdout:
+        return False
+    if set(train) & set(holdout):
+        return False
+    if str(manifest.get("version")) in ("v2", "v3"):
+        decontamination = manifest.get("decontamination")
+        if not isinstance(decontamination, dict):
+            return False
+        if decontamination.get("n_alias_leaks") != 0 or decontamination.get("zero_alias_leaks") is not True:
+            return False
+    declared = manifest.get("holdout_frac")
+    if isinstance(declared, (int, float)) and not isinstance(declared, bool) and declared > 0:
+        realized = len(holdout) / max(1, len(train) + len(holdout))
+        # Group-based splitting cannot hit the fraction exactly; a wide band still catches a split
+        # that produced a token holdout or handed over most of the corpus.
+        if not (declared * 0.5) <= realized <= (declared * 2.0):
+            return False
+    return True
+
+
+def _safetensors_tensor_names(path: Path) -> set[str] | None:
+    """Tensor names from the safetensors header alone — 8-byte LE length then JSON, no tensor data.
+
+    Parsed directly rather than through torch so the check stays a header read of a few hundred
+    kilobytes instead of loading a multi-gigabyte checkpoint into a validator.
+    """
+    try:
+        with path.open("rb") as handle:
+            raw_length = handle.read(8)
+            if len(raw_length) != 8:
+                return None
+            length = int.from_bytes(raw_length, "little")
+            if not 0 < length <= 200 * 1024 * 1024:
+                return None
+            header = json.loads(handle.read(length).decode("utf-8"))
+    except (OSError, ValueError, UnicodeDecodeError):
+        return None
+    if not isinstance(header, dict):
+        return None
+    return {name for name in header if name != "__metadata__"}
+
+
+_INCOMPLETE_SUFFIXES = (".partial", ".tmp", ".next", ".incomplete")
+
+
+def _checkpoint_integrity_ok(directory: Path) -> bool:
+    """The checkpoint opens, its quant manifest matches the tensors, and nothing half-written remains.
+
+    "The output directory changed" is what the generic delta check sees, and a changed log file
+    satisfies it without a loadable checkpoint ever being written. This opens the real artifact.
+    """
+    weights = directory / "model.safetensors"
+    quant_keys = directory / "quant_keys.json"
+    if not weights.is_file() or not quant_keys.is_file():
+        return False
+    for required in ("config.json", "tokenizer.json"):
+        if not (directory / required).is_file():
+            return False
+    if any(child.name.endswith(_INCOMPLETE_SUFFIXES) for child in directory.iterdir()):
+        return False
+
+    names = _safetensors_tensor_names(weights)
+    if names is None:
+        return False
+    manifest = _load_json(quant_keys)
+    if not isinstance(manifest, dict):
+        return False
+    quantized = [*(manifest.get("keys") or []), *(manifest.get("embedding_keys") or [])]
+    if not quantized:
+        return False
+    for key in quantized:
+        # Every declared quantized tensor must be present WITH its scale. A manifest naming a
+        # tensor the file does not hold is precisely the "shipped a format nothing had loaded"
+        # failure: bytes moved, the artifact was unusable.
+        if key not in names or f"{key}.weight_scale" not in names:
+            return False
+    return True
 
 
 def _base_record(

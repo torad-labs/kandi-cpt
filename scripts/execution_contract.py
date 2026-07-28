@@ -285,6 +285,12 @@ _SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
               "kind": "jsonl_no_fail_verdict", "field": "verdicts"},
     "tokenize": {"suffix": "_stats.json", "prefix": "",
                  "kind": "json_field_positive", "field": "num_chunks"},
+    "split": {"suffix": ".json", "prefix": "split_", "kind": "split_integrity", "field": None},
+    # The cpt output is a directory glob; the validator wants the directory itself.
+    "cpt": {"suffix": "/**", "prefix": "", "kind": "checkpoint_integrity", "field": None,
+            "strip_suffix": True},
+    "sft": {"suffix": "/**", "prefix": "", "kind": "checkpoint_integrity", "field": None,
+            "strip_suffix": True},
 }
 
 
@@ -295,11 +301,19 @@ def _semantic_postconditions(stage_name: str, outputs: list[str],
         return []
     emitted = []
     for output in outputs:
-        name = output.rsplit("/", 1)[-1]
-        if not (name.endswith(rule["suffix"]) and name.startswith(rule["prefix"])):
-            continue
-        condition = {"check": f"{stage_name} recorded a passing verdict in {output}",
-                     "kind": rule["kind"], "path": output, "field": rule["field"]}
+        if rule.get("strip_suffix"):
+            if not output.endswith(rule["suffix"]):
+                continue
+            path = output[: -len(rule["suffix"])].rstrip("/")
+        else:
+            name = output.rsplit("/", 1)[-1]
+            if not (name.endswith(rule["suffix"]) and name.startswith(rule["prefix"])):
+                continue
+            path = output
+        condition = {"check": f"{stage_name} produced a valid artifact at {path}",
+                     "kind": rule["kind"], "path": path}
+        if rule.get("field"):
+            condition["field"] = rule["field"]
         if "expect" in rule:
             condition["expect"] = rule["expect"]
         if rule["kind"] == "jsonl_no_fail_verdict":

@@ -32,6 +32,8 @@ def test_contract_emits_semantic_postconditions_for_verdict_stages() -> None:
     assert "report_verdict" in _kinds("pii_scan"), _kinds("pii_scan")
     assert "jsonl_no_fail_verdict" in _kinds("audit"), _kinds("audit")
     assert "json_field_positive" in _kinds("tokenize"), _kinds("tokenize")
+    assert "split_integrity" in _kinds("split"), _kinds("split")
+    assert "checkpoint_integrity" in _kinds("cpt"), _kinds("cpt")
 
     # Contrast: a stage with no recorded verdict must NOT acquire one, or the emission rule is
     # just decorating everything and the assertions above prove nothing.
@@ -111,8 +113,86 @@ def test_jsonl_no_fail_verdict_and_json_field_positive() -> None:
             run_stage.C.ROOT = original
 
 
+def _write_safetensors(path: Path, names: list[str]) -> None:
+    """A minimal real safetensors file: 8-byte LE header length, JSON header, then the data block."""
+    header = {name: {"dtype": "I8", "shape": [1], "data_offsets": [i, i + 1]}
+              for i, name in enumerate(names)}
+    blob = json.dumps(header).encode("utf-8")
+    path.write_bytes(len(blob).to_bytes(8, "little") + blob + bytes(len(names)))
+
+
+def test_split_integrity_rejects_leaking_and_degenerate_splits() -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        good = {"version": "v2", "holdout_frac": 0.1,
+                "train_ids": [f"t{i}" for i in range(90)],
+                "holdout_ids": [f"h{i}" for i in range(10)],
+                "decontamination": {"n_alias_leaks": 0, "zero_alias_leaks": True}}
+        path = root / "split_v2.json"
+
+        path.write_text(json.dumps(good), encoding="utf-8")
+        assert run_stage._split_integrity_ok(path) is True, "the healthy split must pass"
+
+        for label, mutate in (
+            ("holdout leaks into train", lambda d: d.update(train_ids=d["train_ids"] + ["h0"])),
+            ("empty holdout", lambda d: d.update(holdout_ids=[])),
+            ("alias leaks present", lambda d: d["decontamination"].update(n_alias_leaks=3, zero_alias_leaks=False)),
+            ("decontamination block absent", lambda d: d.pop("decontamination")),
+            ("realized fraction far from declared", lambda d: d.update(holdout_frac=0.5)),
+        ):
+            broken = json.loads(json.dumps(good))
+            mutate(broken)
+            path.write_text(json.dumps(broken), encoding="utf-8")
+            assert run_stage._split_integrity_ok(path) is False, f"accepted a split with: {label}"
+
+
+def test_checkpoint_integrity_rejects_an_unloadable_checkpoint() -> None:
+    """The generic delta check sees "the directory changed" — a touched log satisfies that.
+
+    This is the guard against the failure that actually happened here: 22 checkpoints converted and
+    byte-verified, 181GB of originals deleted, four commits shipped — and the format was unloadable.
+    Bytes moving is not an artifact working.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        directory = Path(tmp) / "ckpt"
+        directory.mkdir()
+
+        def rebuild(tensors: list[str], keys: list[str]) -> None:
+            _write_safetensors(directory / "model.safetensors", tensors)
+            (directory / "quant_keys.json").write_text(
+                json.dumps({"method": "int8_rowwise_v2", "keys": keys, "embedding_keys": []}),
+                encoding="utf-8")
+            (directory / "config.json").write_text("{}", encoding="utf-8")
+            (directory / "tokenizer.json").write_text("{}", encoding="utf-8")
+
+        rebuild(["a.weight", "a.weight.weight_scale"], ["a.weight"])
+        assert run_stage._checkpoint_integrity_ok(directory) is True, "the healthy checkpoint must pass"
+
+        # quant_keys names a tensor the file does not hold
+        rebuild(["a.weight", "a.weight.weight_scale"], ["a.weight", "b.weight"])
+        assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted a manifest/tensor mismatch"
+
+        # the tensor is there but its scale is not — half-converted
+        rebuild(["a.weight"], ["a.weight"])
+        assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted a weight with no scale"
+
+        rebuild(["a.weight", "a.weight.weight_scale"], ["a.weight"])
+        (directory / "model.safetensors.partial").write_text("x", encoding="utf-8")
+        assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted a half-written checkpoint"
+        (directory / "model.safetensors.partial").unlink()
+
+        (directory / "tokenizer.json").unlink()
+        assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted a checkpoint with no tokenizer"
+        (directory / "tokenizer.json").write_text("{}", encoding="utf-8")
+
+        (directory / "model.safetensors").write_bytes(b"\xff" * 4)
+        assert run_stage._checkpoint_integrity_ok(directory) is False, "accepted an unparseable header"
+
+
 if __name__ == "__main__":
     test_contract_emits_semantic_postconditions_for_verdict_stages()
     test_report_verdict_rejects_a_failing_report()
     test_jsonl_no_fail_verdict_and_json_field_positive()
+    test_split_integrity_rejects_leaking_and_degenerate_splits()
+    test_checkpoint_integrity_rejects_an_unloadable_checkpoint()
     print("OK — a FAIL verdict now fails its stage, and degenerate reports fail closed")
