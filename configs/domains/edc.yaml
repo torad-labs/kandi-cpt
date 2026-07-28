@@ -5,6 +5,16 @@
 # The generic machinery (hydration/EntiGraph, CPT, SFT, tokenizer, eval) is domain-agnostic; only this
 # manifest + the ontology refs (schema/taxonomy) + the Q/A templates are domain-specific.
 
+# EDC generates its surfaces with a bespoke script (rehydrate_vc1.sh), not the generic expander,
+# so requiring the generic hydrate/contrast templates it never reads produced two permanent false
+# gaps in RECIPE_COMPLETE. Declared, not silenced: plan_install refuses a manifest whose stage
+# command runs the generic tool while claiming otherwise.
+recipe_profile: bespoke_facts
+supports:
+  # Accurate per stage, not a blanket profile: hydrate is bespoke (rehydrate_vc1.sh) but the
+  # contrast stage really does run generic_contrast.py, and plan_install refuses the mismatch.
+  contrast: true
+
 name: edc
 description: Electric Daisy Carnival — worldwide festival editions (1997–2026)
 

@@ -18,7 +18,7 @@ import yaml
 
 import config as C
 from execution_contract import build_contract
-from pipeline.domain import Domain
+from pipeline.domain import RECIPE_PROFILES, Domain
 from pipeline.editions import iter_editions
 from run_pipeline import check_domain
 
@@ -135,22 +135,46 @@ def _recipe_state(domain: Domain, editions: str) -> dict[str, Any]:
 
     stage_names = {stage.name for stage in domain.stages}
     template_checks = []
-    if "hydrate" in stage_names:
+    supports = getattr(domain, "supports", {})
+    profile = getattr(domain, "recipe_profile", "generic_facts")
+
+    if profile not in RECIPE_PROFILES:
+        gaps.append(f"recipe_profile {profile!r} is not one of {sorted(RECIPE_PROFILES)}")
+    unknown = sorted(set(supports) - set(RECIPE_PROFILES["generic_facts"]))
+    if unknown:
+        gaps.append(f"supports declares unknown capabilities {unknown} — typo'd keys must not silently pass")
+    template_checks.append({"recipe_profile": profile, "supports": dict(supports)})
+
+    # A declaration must not become an escape hatch: `generic_hydrate: false` beside a hydrate stage
+    # that actually runs the generic expander is a manifest that lies about itself, and it would
+    # silence the very check that catches a missing template.
+    for capability, marker, stage in (("generic_hydrate", "generic_expand.py", "hydrate"),
+                                      ("contrast", "generic_contrast.py", "contrast"),
+                                      ("reasoning", "generic_reasoning.py", "reasoning")):
+        declared = bool(supports.get(capability, True))
+        spec = domain.stage(stage)
+        runs_generic = bool(spec) and any(marker in str(token) for token in spec.cmd)
+        if runs_generic and not declared:
+            gaps.append(
+                f"{stage}: supports.{capability}=false but the stage command runs {marker} — "
+                f"the declared profile contradicts what the stage actually does")
+
+    if "hydrate" in stage_names and supports.get("generic_hydrate", True):
         ok = _has_authored_predicate_templates(domain.templates)
         template_checks.append({"template": "hydrate_templates.predicate_templates", "ok": ok})
         if not ok:
             gaps.append("hydrate: templates must author hydrate_templates.predicate_templates for at least one predicate")
-    if "contrast" in stage_names:
+    if "contrast" in stage_names and supports.get("contrast", True):
         ok = bool(domain.templates.get("contrast"))
         template_checks.append({"template": "contrast", "ok": ok})
         if not ok:
             gaps.append("contrast: templates must contain a non-empty contrast block")
-    if "sft" in stage_names:
+    if "sft" in stage_names and supports.get("sft", True):
         ok = bool(domain.templates.get("sft_templates", {}).get("rel_q"))
         template_checks.append({"template": "sft_templates.rel_q", "ok": ok})
         if not ok:
             gaps.append("sft: templates must contain a non-empty sft_templates.rel_q block")
-    if "reasoning" in stage_names:
+    if "reasoning" in stage_names and supports.get("reasoning", True):
         ok = bool(domain.templates.get("sft_templates", {}).get("rel_q"))
         template_checks.append({"template": "reasoning:sft_templates.rel_q", "ok": ok})
         if not ok:

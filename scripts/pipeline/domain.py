@@ -22,6 +22,15 @@ class Stage:
         self.gpu = bool(spec.get("gpu", False))
 
 
+# What each profile expects to be able to validate. An explicit `supports:` block overrides
+# individual entries — the profile is the default, not a straitjacket.
+RECIPE_PROFILES = {
+    "generic_facts": {"generic_hydrate": True, "contrast": True, "reasoning": True, "sft": True},
+    "bespoke_facts": {"generic_hydrate": False, "contrast": False, "reasoning": False, "sft": True},
+    "style": {"generic_hydrate": False, "contrast": False, "reasoning": False, "sft": False},
+}
+
+
 class Domain:
     """Parsed configs/domains/<name>.yaml."""
 
@@ -40,6 +49,13 @@ class Domain:
         self.configs = self.spec.get("configs", {})
         self.ontology = self.spec.get("ontology", {})
         self.vars = self.spec.get("vars", {})
+        # Recipe profile: what capability model this domain actually follows. EDC generates its
+        # surfaces with a bespoke script; requiring it to expose generic hydrate/contrast templates
+        # it never reads produced two permanent false gaps. Unset = generic_facts, so every existing
+        # manifest keeps its current meaning.
+        self.recipe_profile = str(self.spec.get("recipe_profile") or "generic_facts")
+        self.supports = dict(RECIPE_PROFILES.get(self.recipe_profile, RECIPE_PROFILES["generic_facts"]))
+        self.supports.update(self.spec.get("supports") or {})
         self.templates = self._load_templates()
         self.stages = [Stage(s) for s in self.spec.get("stages", [])]
 
