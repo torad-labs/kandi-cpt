@@ -267,7 +267,56 @@ def _split_status(domain: Domain, units: list[Any]) -> list[dict[str, Any]]:
     return status
 
 
-def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list[Any]) -> dict[str, Any]:
+# Stages whose EXIT CODE IS NOT THEIR VERDICT: each writes a report carrying the judgement in
+# "status" and exits 0 either way. Readiness therefore has to read the verdict; statting the
+# declared output only proves the stage ran. Kanto shipped as TRAINING_READY=PASS for a day with
+# audit_recall status=FAIL (coverage 0.3529 against its own 0.6 gate) sitting in the report.
+_QUALITY_STAGES = ("pii_scan", "audit_recall")
+
+
+def _quality_verdicts(contract_stages: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Recover each quality stage's recorded PASS/FAIL from the report it declares as an output.
+
+    The path comes from the execution contract, not a literal here, so a stage that moves its
+    report cannot silently detach the gate from the artifact it is supposed to be reading.
+    """
+    by_id = {stage["id"]: stage for stage in contract_stages}
+    verdicts: list[dict[str, Any]] = []
+    for name in _QUALITY_STAGES:
+        stage = by_id.get(name)
+        if stage is None:
+            # Recorded, not gapped. A domain that never declares audit_recall has no extraction-
+            # quality evidence at all, which is weaker than one that ran it and failed — but
+            # millbrook-hollow is a deliberately minimal selftest domain, so making an undeclared
+            # quality stage BLOCK readiness is an operator policy call, not this gate's to make.
+            # Surfaced here so "no gate" is legible instead of indistinguishable from "gate passed".
+            verdicts.append({"stage": name, "report": None, "status": "NOT_DECLARED",
+                             "detail": "domain does not declare this quality stage"})
+            continue
+        reports = [out for out in stage["outputs"] if Path(out).name.startswith("report_")]
+        if not reports:
+            verdicts.append({"stage": name, "report": None, "status": "NO_REPORT_DECLARED",
+                             "detail": "contract declares no report_*.json output for this stage"})
+            continue
+        path = _rooted(reports[0])
+        entry: dict[str, Any] = {"stage": name, "report": str(path)}
+        if not path.is_file():
+            entry.update(status="NOT_RUN", detail="stage has recorded no verdict")
+        else:
+            try:
+                report = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, ValueError) as error:
+                entry.update(status="UNREADABLE", detail=str(error))
+            else:
+                entry["status"] = str(report.get("status", "NO_STATUS_FIELD")).upper()
+                if isinstance(report.get("overall"), dict):
+                    entry["overall"] = report["overall"]
+        verdicts.append(entry)
+    return verdicts
+
+
+def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list[Any],
+                    contract_stages: list[dict[str, Any]]) -> dict[str, Any]:
     by_stage = {entry["stage"]: entry for entry in readiness}
     stage_names = [stage.name for stage in domain.stages]
     gaps: list[str] = []
@@ -300,10 +349,21 @@ def _training_state(domain: Domain, readiness: list[dict[str, Any]], units: list
         if not exists:
             gaps.append(f"training config {config_key} is missing: {path or 'manifest value unset'}")
 
+    quality = _quality_verdicts(contract_stages)
+    for entry in quality:
+        if entry["status"] in ("PASS", "NOT_DECLARED"):
+            continue
+        detail = entry.get("detail") or entry.get("overall") or ""
+        gaps.append(
+            f"data quality stage {entry['stage']} did not pass: {entry['status']}"
+            + (f" — {detail}" if detail else "")
+        )
+
     evidence = [{
         "data_stages_through_tokenize": data_stages,
         "training_stages": declared_train_stages,
         "train_configs": config_evidence,
+        "data_quality": quality,
         "split_status": _split_status(domain, units),
     }]
     return {
@@ -376,7 +436,11 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
             for missing in entry["missing"]
         ],
     }
-    training_state = _training_state(domain, readiness, units)
+    # One contract build feeds both the training-readiness quality gate (which reads the quality
+    # stages' declared report outputs) and the ordered plan below.
+    resolved_editions = ",".join(unit.slug for unit in units)
+    contract_stages = build_contract(domain_name, resolved_editions)["stages"]
+    training_state = _training_state(domain, readiness, units, contract_stages)
     admitted_state = {
         "state": "INPUTS_ADMITTED",
         "value": "OPERATOR_ATTESTED_REQUIRED",
@@ -390,8 +454,7 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
     readiness_by_stage = {entry["stage"]: entry for entry in readiness}
     ordered_plan = []
     # Reuse P1's emitted stages so effects, approvals, providers, and manifest-owned GPU truth have one source.
-    resolved_editions = ",".join(unit.slug for unit in units)
-    for stage in build_contract(domain_name, resolved_editions)["stages"]:
+    for stage in contract_stages:
         ready = readiness_by_stage[stage["id"]]
         planned = {
             "stage": stage["id"],

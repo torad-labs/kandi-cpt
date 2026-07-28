@@ -80,7 +80,10 @@ def test_plan_install_is_read_only_and_computed() -> None:
         "tokenize", "cpt",
     ):
         assert readiness[stage]["ready"], (stage, readiness[stage]["missing"])
-    assert states["TRAINING_READY"]["value"] == "PASS"
+    # Mechanically launchable — every stage's outputs exist — but NOT training ready: audit_recall
+    # judged the extraction FAIL. This assertion read PASS until 2026-07-27; see
+    # test_data_quality_verdicts_gate_training_ready for why that was a green light on bad data.
+    assert states["TRAINING_READY"]["value"] == "FAIL"
     split = states["TRAINING_READY"]["evidence"][0]["split_status"]
     assert split[0]["unit"] == "kanto"
     assert split[0]["split_manifest"].endswith("/splits/split_v2.json")
@@ -132,6 +135,44 @@ def test_plan_install_is_read_only_and_computed() -> None:
         assert before == after, "plan_install created a file or directory"
 
 
+def test_data_quality_verdicts_gate_training_ready() -> None:
+    """A quality stage that RAN is not a quality stage that PASSED.
+
+    audit_recall writes report_<domain>.json and exits 0 whether its verdict is PASS or FAIL,
+    so a readiness ladder that only stats the declared output reports TRAINING_READY on data
+    the pipeline itself judged unusable. Kanto is the live case: extraction recall 0.3529
+    against the 0.6 gate, status FAIL, quotable false — and the ladder said PASS, which is a
+    green light for an unattended multi-hour GPU run on data that already failed its own audit.
+    """
+    report = C.BUILD / "recall" / "report_pokemon-lore.json"
+    assert report.is_file(), f"fixture gone: {report}"
+    assert json.loads(report.read_text(encoding="utf-8"))["status"] == "FAIL", (
+        "this test is only meaningful while the recall report is FAILing"
+    )
+
+    training = _by_state(build_plan("pokemon-lore", "kanto"))["TRAINING_READY"]
+    assert training["value"] == "FAIL", (
+        "audit_recall reported FAIL but the ladder still declared the domain trainable"
+    )
+    assert any("audit_recall" in gap for gap in training["gaps"]), training["gaps"]
+    quality = {q["stage"]: q for q in training["evidence"][0]["data_quality"]}
+    assert quality["audit_recall"]["status"] == "FAIL"
+
+    # The load-bearing contrast, in the SAME domain: pii_scan is declared, ran, and returned PASS.
+    # It must appear in the evidence and produce no gap — otherwise this gate is just failing
+    # everything and the FAIL above would prove nothing.
+    assert quality["pii_scan"]["status"] == "PASS"
+    assert not [g for g in training["gaps"] if "pii_scan" in g], training["gaps"]
+
+    # A domain declaring neither quality stage records NOT_DECLARED — visible, deliberately not
+    # gapped (see _quality_verdicts). "No gate" must not read the same as "gate passed".
+    millbrook = _by_state(build_plan("millbrook-hollow", "main"))["TRAINING_READY"]
+    undeclared = {q["stage"]: q["status"] for q in millbrook["evidence"][0]["data_quality"]}
+    assert undeclared == {"pii_scan": "NOT_DECLARED", "audit_recall": "NOT_DECLARED"}, undeclared
+    assert not [g for g in millbrook["gaps"] if "data quality" in g], millbrook["gaps"]
+
+
 if __name__ == "__main__":
     test_plan_install_is_read_only_and_computed()
-    print("OK — computed ladder, missing-template gap, Kanto reality, and zero planner writes")
+    test_data_quality_verdicts_gate_training_ready()
+    print("OK — computed ladder, data-quality gating, Kanto reality, and zero planner writes")
