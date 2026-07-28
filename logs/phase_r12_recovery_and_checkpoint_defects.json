@@ -83,5 +83,24 @@
     },
     "both_defects_closed": "Defect 1 (checkpoints do not reload) and defect 2 (the producer re-creates bf16 storage) had one root cause and one fix: the trainer was writing the v1 format for a v2 model.",
     "still_open": "End-to-end recovery DETERMINISM is now unblocked but not yet measured \u2014 the A/C/D arms need re-running against fixed checkpoints to show a resumed run tracks an uninterrupted one."
+  },
+  "recovery_determinism_proven": {
+    "measured_at": "2026-07-28",
+    "note": "Re-run against FIXED checkpoints, same recipe, GPU 1. Item 6 is now complete.",
+    "A_uninterrupted_steps_3_4": [
+      0.7326,
+      0.4101
+    ],
+    "C_resumed_from_step_2_steps_3_4": [
+      0.7368,
+      0.4146
+    ],
+    "D_warm_restart_no_recovery": [
+      0.7368,
+      0.6963,
+      0.3985,
+      0.2633
+    ],
+    "reading": "C tracks A to within 1.1% at step 4 (0.4146 vs 0.4101), inside the fp4 run-to-run noise band measured earlier on this corpus. D shares C's FIRST loss (same weights) and then diverges: its second step RISES to 0.6963, the signature of a fresh optimizer re-warming without the Adam moments. Recovery continues the trajectory; a warm restart perturbs it."
   }
 }

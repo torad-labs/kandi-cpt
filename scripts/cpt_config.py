@@ -242,7 +242,14 @@ class TrainConfig:
     betas: list[float] = field(default_factory=lambda: [0.9, 0.95])
     adam_eps: float = 1.0e-8
     grad_clip: float = 1.0
-    gradient_checkpointing: bool = True  # forces use_cache=False
+    gradient_checkpointing: bool = True
+    # Replay blocks guaranteed per optimizer window (micro_batch_size x grad_accum).
+    #   None -> derive from the corpus's own replay share, floored at 1 (the default)
+    #      0 -> OFF: plain shuffling, replay correct only in expectation (pre-2026-07-28)
+    # At a 9.09% share with a 16-block window, plain shuffling leaves ~22% of optimizer updates
+    # with NO replay block at all; at 4.76% it is ~46%. This is a DATA ORDER change and is
+    # fingerprinted, so runs either side of it are never silently compared.
+    replay_per_window: int | None = None  # forces use_cache=False
     levers: LeversConfig = field(default_factory=LeversConfig)
     anneal: AnnealConfig = field(default_factory=AnnealConfig)
 
@@ -446,6 +453,7 @@ _FINGERPRINT_FIELDS = (
     "train.precision", "train.int8_master", "train.optimizer_lowbit", "train.lr", "train.min_lr",
     "train.warmup_steps", "train.max_steps", "train.decay_frac", "train.micro_batch_size",
     "train.grad_accum", "train.seq_len", "train.weight_decay", "train.betas",
+    "train.replay_per_window",
     "train.anneal.enabled", "train.anneal.frac", "train.anneal.min_steps", "train.anneal.lr_end",
     "model.model_path", "data.tokenized", "data.init_from", "mode",
 )

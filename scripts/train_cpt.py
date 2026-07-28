@@ -36,6 +36,7 @@ import config as C
 import cuda_home
 import lever_receipts
 import recovery
+import window_sampler
 from cpt_config import CptConfig
 
 
@@ -685,8 +686,49 @@ def make_loader(cfg, rank, world, want_mask=False, want_facts=False, tag_filter=
         DistributedSampler(ds, num_replicas=world, rank=rank, shuffle=True, drop_last=True)
         if world > 1 else None
     )
+    # Replay per optimizer window. Plain shuffling delivers the right replay share ON AVERAGE and
+    # leaves a large fraction of updates with none at all — pure domain gradient, which is exactly
+    # what replay exists to prevent, and invisible in the corpus stats.
+    replay_report = None
+    if sampler is None and has_block_tag:
+        tags = list(ds["block_tag"])
+        replay_idx = [i for i, t in enumerate(tags) if t == "replay"]
+        domain_idx = [i for i, t in enumerate(tags) if t != "replay"]
+        window = int(cfg["micro_batch_size"]) * int(cfg["grad_accum"])
+        share = (len(replay_idx) / len(tags)) if tags else 0.0
+        requested = cfg.get("replay_per_window")
+        n_windows = max(1, int(cfg.get("max_steps") or 1))
+        seed = int(cfg.get("seed", 42))
+        # Per-window counts rather than one flat number: a flat quota either drops the realized
+        # share (round 1.456 -> 1 turns 9.10% into 6.25%) or overshoots it. Spreading the
+        # fractional part keeps the corpus share AND leaves no window empty.
+        quotas = (window_sampler.window_quotas(n_windows, window, share, seed=seed)
+                  if requested is None else [int(requested)] * n_windows)
+        quota = max(quotas) if quotas else 0
+        if any(q > 0 for q in quotas) and replay_idx and domain_idx:
+            sampler = window_sampler.OptimizerWindowSampler(
+                replay_idx, domain_idx, window=window, quota=quotas,
+                n_windows=n_windows, seed=seed)
+            replay_report = window_sampler.window_report(list(sampler), replay_idx, window=window)
+            replay_report.update(
+                corpus_replay_block_share=round(share, 6),
+                replay_per_window_quota=quota,
+                replay_per_window_target=round(window * share, 4),
+                quota_source="derived" if requested is None else "configured",
+                zero_replay_fraction_if_shuffled=round(
+                    window_sampler.expected_zero_replay_fraction(window, share), 6),
+            )
+            if rank0():
+                log(f"[replay] {replay_report['replay_per_window_mean']:.2f}/{window} blocks per optimizer window "
+                    f"({replay_report['quota_source']}; corpus share {share:.4f}) — "
+                    f"zero-replay updates {replay_report['zero_replay_fraction']:.4f} "
+                    f"vs {replay_report['zero_replay_fraction_if_shuffled']:.4f} under plain shuffling")
+        elif rank0() and requested != 0:
+            log(f"[replay] per-window quota inactive (replay blocks {len(replay_idx)}, "
+                f"domain {len(domain_idx)}, window {window}) — falling back to shuffling")
     dl = DataLoader(ds, batch_size=cfg["micro_batch_size"], sampler=sampler,
                     shuffle=(sampler is None), collate_fn=collate, drop_last=True)
+    dl.replay_report = replay_report
     if want_mask and not has_mask:
         # Hard error, not a warning: silently running unweighted CE would mislabel the run as
         # "lever1 entity_loss" in the A/B log (a corrupted experimental conclusion).
@@ -1498,6 +1540,9 @@ def main():
             contract["anneal_started"] = anneal_started
             contract["final_step"] = step
             contract["lever_receipts"] = lever_audit   # what RAN, beside what was configured
+            # Per-window replay: the distribution and the zero-replay count, not just the
+            # realized share — a share cannot distinguish a healthy schedule from a clumped one.
+            contract["replay_schedule"] = getattr(dl, "replay_report", None)
             if anneal_started and anneal_plan.get("keep_pre"):
                 contract["pre_anneal_checkpoint"] = f"{save_dir}/pre_anneal"
             (Path(save_dir) / "run_contract.json").write_text(_json.dumps(contract, indent=2, default=str))
