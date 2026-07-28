@@ -147,8 +147,11 @@ def test_run_stage() -> None:
             build_b, hashes_b = run_stage.build_identity(domain, "1")
             assert build_a == build_b and hashes_a == hashes_b
             assert len(build_a) == 16 and set(hashes_a) == {
-                "manifest_sha256", "templates_sha256", "contract_version_sha256",
+                "recipe_sha256", "contract_version_sha256", "read_set",
             }
+            # The read set is the content-addressed recipe manifest; every entry carries its role,
+            # its repo-relative path, and the digest the build id was computed over.
+            assert all({"role", "path", "sha256"} == set(entry) for entry in hashes_a["read_set"])
 
             env_record, env_exit, build_id = _execute(root, "env-pin", "env", devices="3,4")
             assert env_exit == 0 and env_record["status"] == "PASS"
@@ -422,6 +425,58 @@ def test_run_stage() -> None:
             C.ROOT, C.CONFIGS, C.DATA = original
 
 
+def test_build_identity_covers_the_whole_recipe_read_set() -> None:
+    """Approving a recipe must bind everything whose content can change what actually runs.
+
+    build_identity hashed only manifest + templates + contract version. A stage digest hashes the
+    RESOLVED COMMAND, and editing the contents of a YAML the command merely references does not
+    change that command — so an operator could approve one recipe and then run materially different
+    parameters under the same build identity. Proven as a class, not an instance: four different
+    roles in the read set, each mutated and restored independently.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        _fixture(root)
+        (root / "configs/train_fixture.yaml").write_text("train:\n  lr: 1.0e-5\n", encoding="utf-8")
+        (root / "schema").mkdir()
+        (root / "schema/entity.schema.json").write_text('{"a": 1}\n', encoding="utf-8")
+        manifest = yaml.safe_load((root / "configs/domains/fixture.yaml").read_text(encoding="utf-8"))
+        manifest["configs"] = {"cpt": "configs/train_fixture.yaml"}
+        manifest["ontology"] = {"schema_dir": "schema"}
+        manifest["stages"] = [
+            {"name": "stub", "cmd": ["{py}", "scripts/stub.py", "pass", "data/fixture/x.txt"]},
+        ]
+        (root / "configs/domains/fixture.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
+
+        original = C.ROOT, C.CONFIGS, C.DATA
+        C.ROOT, C.CONFIGS, C.DATA = root, root / "configs", root / "data"
+        try:
+            base, inputs = run_stage.build_identity(Domain("fixture"), "1")
+            roles = {entry["role"] for entry in inputs["read_set"]}
+            assert {"domain_manifest", "templates", "unit_registry", "ontology_schema",
+                    "train_config:cpt"} <= roles, roles
+            assert any(role.startswith("stage_code:") for role in roles), roles
+
+            moved = {}
+            for label, path, replacement in (
+                ("train_config", root / "configs/train_fixture.yaml", "train:\n  lr: 9.0e-9\n"),
+                ("unit_registry", root / "configs/editions_fixture.json", '{"editions": ["gold"]}\n'),
+                ("ontology_schema", root / "schema/entity.schema.json", '{"a": 2}\n'),
+                ("stage_code", root / "scripts/stub.py", "raise SystemExit(0)\n"),
+            ):
+                previous = path.read_text(encoding="utf-8")
+                path.write_text(replacement, encoding="utf-8")
+                moved[label] = run_stage.build_identity(Domain("fixture"), "1")[0] != base
+                path.write_text(previous, encoding="utf-8")
+                assert run_stage.build_identity(Domain("fixture"), "1")[0] == base, (
+                    f"{label}: build id did not return to base after restore — hash is not content-addressed"
+                )
+            assert all(moved.values()), f"recipe content changed without moving the build id: {moved}"
+        finally:
+            C.ROOT, C.CONFIGS, C.DATA = original
+
+
 if __name__ == "__main__":
     test_run_stage()
-    print("OK — deterministic build id, drift/device refusals, fail-closed records, and zero-write inspect")
+    test_build_identity_covers_the_whole_recipe_read_set()
+    print("OK — recipe-wide build id, drift/device refusals, fail-closed records, and zero-write inspect")

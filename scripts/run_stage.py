@@ -45,21 +45,110 @@ def _sha256_bytes(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
-def _templates_path(domain: Domain) -> Path:
-    ref = domain.spec.get("templates") or f"configs/templates/{domain.name}.yaml"
+def _rooted(ref: str) -> Path:
     path = Path(str(ref))
     return path if path.is_absolute() else C.ROOT / path
 
 
-def build_identity(domain: Domain, contract_version: str) -> tuple[str, dict[str, str]]:
-    manifest_bytes = domain.path.read_bytes()
-    templates_bytes = _templates_path(domain).read_bytes()
-    version_bytes = contract_version.encode("utf-8")
-    build_id = hashlib.sha256(manifest_bytes + templates_bytes + version_bytes).hexdigest()[:16]
-    return build_id, {
-        "manifest_sha256": _sha256_bytes(manifest_bytes),
-        "templates_sha256": _sha256_bytes(templates_bytes),
-        "contract_version_sha256": _sha256_bytes(version_bytes),
+def _templates_path(domain: Domain) -> Path:
+    return _rooted(domain.spec.get("templates") or f"configs/templates/{domain.name}.yaml")
+
+
+MISSING_DIGEST = "<missing>"
+# Tokens in a stage command that name an implementation file. "{py}" and "{editions}" carry braces
+# and cannot match, so the interpreter and the placeholders are excluded by construction.
+_CODE_TOKEN = re.compile(r"^[\w./-]+\.(?:py|sh)$")
+
+
+def _sha256_stream(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _sha256_path(path: Path) -> str:
+    """Content digest of a file, or of a directory tree keyed by sorted relative path."""
+    if path.is_dir():
+        digest = hashlib.sha256()
+        for child in sorted(candidate for candidate in path.rglob("*") if candidate.is_file()):
+            digest.update(str(child.relative_to(path)).encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(_sha256_stream(child).encode("ascii"))
+            digest.update(b"\0")
+        return digest.hexdigest()
+    return _sha256_stream(path)
+
+
+def _stage_code_paths(domain: Domain) -> list[Path]:
+    """Implementation files named by the manifest's own stage commands.
+
+    Read from the manifest rather than the execution contract so the read set stays
+    edition-independent: the same recipe must hash identically no matter which units are selected.
+    """
+    seen: set[str] = set()
+    for stage in domain.stages:
+        for token in stage.cmd:
+            if isinstance(token, str) and _CODE_TOKEN.match(token):
+                seen.add(str(_rooted(token)))
+    return sorted(Path(value) for value in seen)
+
+
+def recipe_read_set(domain: Domain) -> list[dict[str, str]]:
+    """Every AUTHORED file whose content can change what the pipeline does, content-addressed.
+
+    Authored, not derived. The tokenized shard and the split report are PRODUCED by the pipeline,
+    so folding them in here would change the build id the moment `tokenize` runs and orphan every
+    stage record written before it — readiness would then never find a record belonging to the
+    current build. Their fingerprints belong to the readiness ladder's "shard, split, model and
+    configuration fingerprints agree" clause, which is checked against a build, not baked into it.
+
+    Admission has no file: it is an operator attestation (INPUTS_ADMITTED), so there is nothing to
+    hash and no path is invented for it.
+    """
+    entries: list[tuple[str, Path]] = [
+        ("domain_manifest", domain.path),
+        ("templates", _templates_path(domain)),
+    ]
+    if domain.registry:
+        entries.append(("unit_registry", _rooted(domain.registry)))
+    schema_dir = (domain.ontology or {}).get("schema_dir")
+    if schema_dir:
+        entries.append(("ontology_schema", _rooted(str(schema_dir))))
+    for key in sorted(domain.configs):
+        entries.append((f"train_config:{key}", _rooted(str(domain.configs[key]))))
+    for path in _stage_code_paths(domain):
+        entries.append((f"stage_code:{path.name}", path))
+
+    return [
+        {
+            "role": role,
+            "path": _display_path(path),
+            # A missing file is recorded as missing rather than skipped: deleting a referenced
+            # config must move the build id, not silently shrink the read set back to a match.
+            "sha256": _sha256_path(path) if path.exists() else MISSING_DIGEST,
+        }
+        for role, path in entries
+    ]
+
+
+def build_identity(domain: Domain, contract_version: str) -> tuple[str, dict[str, Any]]:
+    """Build id over the COMPLETE recipe read set, not just the manifest and templates.
+
+    A stage digest hashes the resolved command; changing the contents of a YAML that command
+    merely references leaves the command — and previously the build id — identical, so an operator
+    could approve one recipe and run materially different parameters under the same identity.
+    """
+    read_set = recipe_read_set(domain)
+    payload = json.dumps(
+        {"read_set": read_set, "contract_version": contract_version},
+        sort_keys=True, separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()[:16], {
+        "recipe_sha256": _sha256_bytes(payload),
+        "contract_version_sha256": _sha256_bytes(contract_version.encode("utf-8")),
+        "read_set": read_set,
     }
 
 
