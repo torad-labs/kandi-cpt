@@ -56,7 +56,12 @@ for arm in r005 r010 r020 r030; do
     [ -d "$ckpt" ] || { say "SKIP $arm — missing $ckpt"; rc_all=1; continue; }
 
     say "$arm START -> $log"
-    evalgate .venv/bin/python scripts/eval.py \
+    # evalgate GIVES THE MEMORY BOX (20G/22G) and sets choom -n 800 — die FIRST. oom-shield then
+    # overrides the adj on itself to -800 (die LAST) and it inherits through exec. Both are
+    # required: the box alone left this eval the first victim, and the whale daemon SIGTERMed it
+    # at 13.7G on 2026-07-27 doing precisely what it is designed to do. hostshield's declared
+    # policy is shield-or-die for paid/unrepeatable work; an unshielded run is the bug.
+    evalgate oom-shield .venv/bin/python scripts/eval.py \
         --config "$cfg" --mode cpt --checkpoints "$ckpt" > "$log" 2>&1
     rc=$?
     if [ $rc -eq 0 ]; then

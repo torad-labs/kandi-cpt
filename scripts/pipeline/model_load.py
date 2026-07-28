@@ -228,7 +228,14 @@ def load_causal_ckpt_quartet(path, device: str = "cuda:0", requires_grad: bool =
                 escale = (text_cfg.hidden_size ** 0.5) if attr == "embed_tokens" else (
                     text_cfg.hidden_size_per_layer_input ** 0.5)
                 w = f.get_tensor(ek).to(device)
-                s = f.get_tensor(ek + ".weight_scale").to(device) / 128.0   # unfold
+                # Cast BEFORE the unfold, exactly as the linear path above does. Dividing while
+                # still fp8 raises NotImplementedError: "div_true_cuda" not implemented for
+                # 'Float8_e4m3fn' — torch ships no fp8 division kernel. This made EVERY v2
+                # artifact unloadable (base and checkpoints alike), i.e. the v2 format was
+                # written but never round-tripped. The cast is exact: fp8 e4m3 ⊂ bf16, and
+                # storage stays fp8.
+                s = f.get_tensor(ek + ".weight_scale").to(torch.bfloat16).to(device)  # bf16-sanctioned: S2 fp8→bf16 exact cast at load (storage stays fp8)
+                s = s / 128.0   # unfold the ×128 e4m3-range fold (exact power of 2)
                 setattr(parent, attr, Int8ScaledEmbedding(w, s, escale))
             model.lm_head = Int8TiedLmHead(model.model.embed_tokens)
         else:
