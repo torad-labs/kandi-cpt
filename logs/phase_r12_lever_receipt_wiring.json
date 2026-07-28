@@ -1,0 +1,44 @@
+{
+  "schema": "wiring-proof/1",
+  "recorded_at": "2026-07-28",
+  "claim": "lever_receipts.fire() sits in branches the real train_cpt step loop reaches",
+  "why_needed": "The module was unit-proven, but unit tests cannot show that the fire() calls are inside the branches that actually execute. Reading the code is what shipped an unloadable checkpoint format earlier in this campaign.",
+  "method": "Two 2-step CPT runs, identical config and corpus, GPU 1, evalgate oom-shield, CUDA 13.3. The only difference is the fact_ids column, removed for the red arm.",
+  "green": {
+    "corpus": "millbrook_hollow_booster_1",
+    "exit": 0,
+    "receipts": {
+      "enabled": [
+        "lever4_exposure_tracking"
+      ],
+      "fired": {
+        "lever4_exposure_tracking": 32
+      },
+      "optimizer_steps": 2,
+      "silent": [],
+      "status": "PASS"
+    },
+    "note": "32 fires = 2 optimizer steps x 16 grad-accum microbatches"
+  },
+  "red": {
+    "corpus": "_receiptproof_nofacts (same corpus, fact_ids removed)",
+    "exit": 1,
+    "receipts": {
+      "enabled": [
+        "lever4_exposure_tracking"
+      ],
+      "fired": {
+        "lever4_exposure_tracking": 0
+      },
+      "optimizer_steps": 2,
+      "silent": [
+        "lever4_exposure_tracking"
+      ],
+      "status": "FAIL"
+    },
+    "loader_line": "[lever4] exposure_tracking enabled but corpus has no fact_ids column",
+    "note": "The loader WARNED AND CONTINUED, which is the pre-existing silent-inert path: before receipts this run would have completed reporting lever4 as an active intervention. The audit failed it instead."
+  },
+  "ordering_verified": "The red arm's checkpoint is on disk with weights intact and its run_contract carries status FAIL / fired 0, so a silent lever kills the run without discarding trained weights and the artifact explains itself.",
+  "incidental_defect_found": "Both arms first died on CUDA_HOME=/usr/local/cuda-12.8, a debug-tools-only toolkit with no compiler; fixed at the default by scripts/cuda_home.py rather than in this script."
+}

@@ -33,6 +33,7 @@ from datasets import Dataset, load_from_disk
 from transformers import Gemma4ForCausalLM
 
 import config as C
+import cuda_home
 import lever_receipts
 from cpt_config import CptConfig
 
@@ -1059,6 +1060,15 @@ def run_contract(typed, cfg, save_dir, world, smoke_steps):
 
 
 def main():
+    # Point CUDA_HOME at a toolkit that can actually compile BEFORE anything imports a JIT. The
+    # shell default here is 12.8, a debug-tools-only install with no compiler, so flashinfer's fp4
+    # GEMM dies with "cuda-12.8/bin/nvcc: not found" — but only after the model has loaded, minutes
+    # in. train_fp4.sh resolved its own toolkit; a direct `python scripts/train_cpt.py` inherited
+    # the broken default. Fixing the DEFAULT rather than each call site is the point.
+    _cuda_root = cuda_home.apply()
+    if _cuda_root is None:
+        log("[cuda] WARNING no toolkit with a compiler found; a JIT-compiling kernel will fail. "
+            "Set QGRE_CUDA_HOME.")
     # THE ONE TRAINING ENTRYPOINT. Accepts only --config + --mode — NO behavior-affecting flags (the config
     # IS the run; see docs/CONFIG_AUDIT.md + AGENTS.md). Everything that changes a run lives in the YAML and is
     # validated at load by CptConfig (hard-error on a typo'd/unknown key, cross-field gates, fail-loud preserved).

@@ -1,1 +1,1 @@
-{"run": "pokemon_lore_kanto_s3_r030", "log_path": "checkpoints/cpt/pokemon_lore_kanto_s3_r030/train.log", "pid": 381442, "total_steps": 450, "started": 1785049096.9191895, "status": "done", "phase": "training", "ended": 1785052059.9098675}
+{"run": "receiptproof_red", "log_path": "/home/marcos/.cache/qgre/scratch/claude-1000/-home-marcos-Documents-dev-projects-conductor-repo/7f322285-f65d-4d75-94cb-3374f1262157/scratchpad/receiptproof_red/train.log", "pid": 1014452, "total_steps": 2, "started": 1785252418.6337621, "status": "running", "phase": "training"}

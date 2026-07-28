@@ -27,27 +27,11 @@ cd "$(dirname "$0")/.."
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 _KANDI_ROOT="$PWD"
 
-find_cuda_home() {
-  local roots=(
-    "${QGRE_CUDA_HOME:-}"
-    /usr/local/cuda-12.9
-    /usr/local/cuda-13.3
-    /usr/local/cuda-13
-    "$_KANDI_ROOT/.venv/lib/python3.13/site-packages/nvidia/cu13"
-    /usr/local/cuda
-  )
-  local root
-  for root in "${roots[@]}"; do
-    [[ -n "$root" && -x "$root/bin/nvcc" ]] || continue
-    printf '%s\n' "$root"
-    return 0
-  done
-  return 1
-}
-
-CUDA_HOME="$(find_cuda_home)" || {
-  echo "train_fp4.sh: no CUDA >=12.9 toolkit with bin/nvcc found." >&2
-  echo "Set QGRE_CUDA_HOME=/path/to/cuda or install nvcc under /usr/local/cuda-12.9 or /usr/local/cuda-13.3." >&2
+# Toolkit choice has ONE owner: scripts/cuda_home.py. This used to be a second copy of the path
+# list and it drifted — the shell preferred 12.9 while the operator rule is 13.3 first.
+CUDA_HOME="$("$_KANDI_ROOT/.venv/bin/python" "$_KANDI_ROOT/scripts/cuda_home.py")" || {
+  echo "train_fp4.sh: no CUDA toolkit with a compiler found (see scripts/cuda_home.py)." >&2
+  echo "Set QGRE_CUDA_HOME=/path/to/cuda." >&2
   exit 127
 }
 export CUDA_HOME
