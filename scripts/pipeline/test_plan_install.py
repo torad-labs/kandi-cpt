@@ -216,8 +216,61 @@ def test_train_config_frozen_catches_derived_vs_configured_drift() -> None:
     assert checks["anneal.enabled"]["status"] == "NOT_IN_CONFIG"
 
 
+def test_admission_can_be_attested_and_is_bound_to_the_recipe() -> None:
+    """INPUTS_ADMITTED was hardcoded to OPERATOR_ATTESTED_REQUIRED with nothing able to satisfy it.
+
+    TRAINING_READY therefore could never be PASS: the top rung was unreachable by construction. A
+    gate that cannot open is a wall, and a permanently-failing check is one people learn to route
+    around — the exact failure this ladder exists to prevent.
+
+    The attestation is bound to the BUILD ID, so attesting to one recipe cannot authorize another.
+    """
+    import shutil
+    from attest_admission import SCHEMA, attestation_path
+    from execution_contract import CONTRACT_VERSION
+    from pipeline.domain import Domain
+    from run_stage import build_identity
+
+    build_id, _ = build_identity(Domain("pokemon-lore"), CONTRACT_VERSION)
+    path = attestation_path("pokemon-lore", build_id)
+    assert not path.exists(), f"a real attestation exists at {path}; refusing to overwrite it"
+
+    def admitted():
+        return _by_state(build_plan("pokemon-lore", "kanto"))["INPUTS_ADMITTED"]
+
+    assert admitted()["value"] == "OPERATOR_ATTESTED_REQUIRED"
+
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({
+            "schema": SCHEMA, "domain": "pokemon-lore", "build_id": build_id,
+            "attested_by": "test", "sources_reviewed": ["data-governance.md"],
+        }), encoding="utf-8")
+        state = admitted()
+        assert state["value"] == "PASS", state
+        assert state["evidence"][0]["attestation"]["attested_by"] == "test"
+
+        # A record naming a DIFFERENT build must not authorize this one.
+        path.write_text(json.dumps({
+            "schema": SCHEMA, "domain": "pokemon-lore", "build_id": "0" * 16,
+            "attested_by": "test", "sources_reviewed": ["data-governance.md"],
+        }), encoding="utf-8")
+        assert admitted()["value"] == "OPERATOR_ATTESTED_REQUIRED", "a foreign build id was accepted"
+
+        # An incomplete record is not an attestation.
+        path.write_text(json.dumps({
+            "schema": SCHEMA, "domain": "pokemon-lore", "build_id": build_id, "attested_by": "test",
+        }), encoding="utf-8")
+        assert admitted()["value"] == "OPERATOR_ATTESTED_REQUIRED", "a record with no sources passed"
+    finally:
+        shutil.rmtree(path.parent, ignore_errors=True)
+
+    assert admitted()["value"] == "OPERATOR_ATTESTED_REQUIRED", "cleanup left the domain attested"
+
+
 if __name__ == "__main__":
     test_plan_install_is_read_only_and_computed()
     test_data_quality_verdicts_gate_training_ready()
     test_train_config_frozen_catches_derived_vs_configured_drift()
+    test_admission_can_be_attested_and_is_bound_to_the_recipe()
     print("OK — computed ladder, data-quality gating, Kanto reality, and zero planner writes")

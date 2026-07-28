@@ -679,15 +679,11 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
     # report outputs) and the ordered plan below.
     resolved_editions = ",".join(unit.slug for unit in units)
     contract_stages = build_contract(domain_name, resolved_editions)["stages"]
-    admitted_state = {
-        "state": "INPUTS_ADMITTED",
-        "value": "OPERATOR_ATTESTED_REQUIRED",
-        "evidence": [],
-        "gaps": [
-            "every source needs a run-record admission line naming basis, trust class, and PII/injection/poisoning review",
-            "operator attestation against data-governance.md is required",
-        ],
-    }
+    # Read the attestation from disk rather than hardcoding its absence. Bound to the BUILD ID, so
+    # attesting to one recipe cannot authorize a different one — the same rule run_stage applies to
+    # approved digests, applied to the human approval.
+    from attest_admission import admission_state
+    admitted_state = {"state": "INPUTS_ADMITTED", **admission_state(domain_name)}
 
     readiness_by_stage = {entry["stage"]: entry for entry in readiness}
     ordered_plan = []
