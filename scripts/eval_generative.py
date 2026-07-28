@@ -271,6 +271,71 @@ class UsageMeter:
             self.completion_tokens += usage.get("completion_tokens") or 0
 
 
+class JudgeAudit:
+    """How each verdict was actually reached — LLM or heuristic fallback.
+
+    judge_one never raises on unparseable judge output; it runs a gold-containment heuristic and
+    returns a label indistinguishable from an LLM verdict. That keeps a run alive through a
+    transient blip, but it also means a provider outage produces a full set of labels and a report
+    that looks like a working calibrated judge. Counting is what separates the two.
+
+    Excessive fallback downgrades the verdict rather than being noted in prose: a number nothing
+    reads is the same defect this campaign has been closing everywhere else.
+    """
+
+    # Above this share of heuristic verdicts the run is not judged, it is pattern-matched.
+    MAX_FALLBACK_RATIO = 0.10
+
+    def __init__(self) -> None:
+        self.total = 0
+        self.llm = 0
+        self.parse_failures = 0
+        self.heuristic = 0
+        self.empty_answer = 0
+
+    def record(self, *, source: str) -> None:
+        self.total += 1
+        if source == "llm":
+            self.llm += 1
+        elif source == "heuristic":
+            self.parse_failures += 1
+            self.heuristic += 1
+        elif source == "empty":
+            self.empty_answer += 1
+
+    @property
+    def judged(self) -> int:
+        """Verdicts that went to the judge at all — empty answers never do."""
+        return self.llm + self.heuristic
+
+    @property
+    def fallback_ratio(self) -> float:
+        return (self.heuristic / self.judged) if self.judged else 0.0
+
+    @property
+    def mode(self) -> str:
+        if not self.judged or self.heuristic == 0:
+            return "llm"
+        return "heuristic" if self.heuristic == self.judged else "mixed"
+
+    @property
+    def excessive(self) -> bool:
+        return self.fallback_ratio > self.MAX_FALLBACK_RATIO
+
+    def report(self, calibration_stamp: str | None = None) -> dict:
+        return {
+            "judge_mode": self.mode,
+            "judge_verdicts": self.total,
+            "judge_llm_verdicts": self.llm,
+            "judge_parse_failures": self.parse_failures,
+            "heuristic_fallback_count": self.heuristic,
+            "empty_answer_verdicts": self.empty_answer,
+            "fallback_ratio": round(self.fallback_ratio, 6),
+            "max_fallback_ratio": self.MAX_FALLBACK_RATIO,
+            "judge_calibration_stamp": calibration_stamp,
+        }
+
+
 def chat(
     chat_url: str,
     key: str,
@@ -330,6 +395,7 @@ def judge_one(
     answer: str,
     judge_ctx: tuple[str, str, str],
     meter: UsageMeter,
+    audit: "JudgeAudit | None" = None,
 ) -> str:
     """Return one of JUDGE_LABELS.
 
@@ -340,13 +406,19 @@ def judge_one(
     inflated by judge failure and the caller always gets a label.
     """
     if not (answer or "").strip():
+        if audit:
+            audit.record(source="empty")
         return "deflected"
     model, key, url = judge_ctx
     user = f"QUESTION:\n{question}\n\nGOLD:\n{gold}\n\nMODEL ANSWER:\n{answer}"
     raw = chat(url, key, model, JUDGE_SYSTEM, user, 0.0, 400, meter)
     label = parse_judge_verdict(raw)
     if label in JUDGE_LABELS:
+        if audit:
+            audit.record(source="llm")
         return label
+    if audit:
+        audit.record(source="heuristic")
     # Fail-soft fallback when the judge emits garbage (free-tier collapse, empty, etc.):
     # heuristic over gold containment — never a silent pass.
     ans_l = (answer or "").lower()
@@ -593,6 +665,7 @@ def build_generative_report(
     config_fingerprint: str,
     checkpoint_fingerprint: str | None = None,
     tokenized: str,
+    judge_audit: "JudgeAudit | None" = None,
     scored_checkpoint: str = "anneal-end-or-final",
 ) -> dict[str, Any]:
     """Machine-readable generative receipt. PASS requires calibrated-or-provisional-labeled judge,
@@ -691,6 +764,20 @@ def build_generative_report(
             "pass": False,
         })
 
+    # A heuristic verdict is indistinguishable from an LLM one in the labels, so a provider outage
+    # yields a complete label set and a report that reads like a working calibrated judge. Gate on
+    # the measured share rather than noting it in prose.
+    audit_report = (judge_audit.report(calibration_stamp=(calibration or {}).get("stamp"))
+                    if judge_audit else None)
+    if judge_audit is not None:
+        checks.append({
+            "check": (f"judge answered ≥{100 * (1 - JudgeAudit.MAX_FALLBACK_RATIO):.0f}% of verdicts "
+                      f"itself (heuristic fallback is not a calibrated judge)"),
+            "pass": not judge_audit.excessive,
+            "fallback_ratio": round(judge_audit.fallback_ratio, 6),
+            "judge_mode": judge_audit.mode,
+        })
+
     failed = [check["check"] for check in checks if not check["pass"]]
     if provisional_judge and failed == [
         "judge κ-calibration is usable (κ ≥ 0.6); else verdict is provisional"
@@ -754,6 +841,7 @@ def build_generative_report(
 
     return {
         "status": status,
+        "judge_audit": audit_report,
         "axis": "generative",
         "provisional": provisional_judge or status == "PROVISIONAL",
         "run_name": run_name,
@@ -905,6 +993,7 @@ def run_generative_comparison(
     meter = UsageMeter()
     forced_judge = judge_model or os.environ.get("QGRE_EVAL_JUDGE_MODEL", "").strip() or None
     judge_ctx = resolve_judge_ctx(forced_judge_model=forced_judge)
+    judge_audit = JudgeAudit()   # how each verdict was actually reached — LLM or heuristic
     judge_model = judge_ctx[0] if judge_ctx else (forced_judge or DEFAULT_JUDGE_MODEL)
 
     calibration: dict[str, Any] | None
@@ -964,7 +1053,7 @@ def run_generative_comparison(
                 "or a pre-judged labels file"
             )
         tuned_labels = [
-            judge_one(item.question, item.gold, answer, judge_ctx, meter)
+            judge_one(item.question, item.gold, answer, judge_ctx, meter, judge_audit)
             for item, answer in zip(items, tuned_answers, strict=True)
         ]
 
@@ -977,12 +1066,13 @@ def run_generative_comparison(
         if judge_ctx is None:
             raise ValueError("base generative grading needs a judge")
         base_labels = [
-            judge_one(item.question, item.gold, answer, judge_ctx, meter)
+            judge_one(item.question, item.gold, answer, judge_ctx, meter, judge_audit)
             for item, answer in zip(items, base_answers, strict=True)
         ]
 
     generative_bar = float(getattr(eval_config, "generative_bar", DEFAULT_GENERATIVE_BAR))
     report = build_generative_report(
+        judge_audit=judge_audit,
         run_name=config.run.run_name,
         config_path=Path(config_path),
         base_path=None if skip_base else config.model.model_path,
