@@ -74,6 +74,7 @@ Output: <edition>/25_hydrated/relations_reasoning.jsonl
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -647,17 +648,48 @@ def assert_train_only(records: list[dict], train_ids: set[str], holdout_ids: set
         )
 
 
+RULER_VERSION = "effective-forms-v1"
+
+
+def ruler_stamp(texts: list[str], threshold: float) -> str:
+    """`<version>:jaccard=<t>:<sha16 of the scored inputs>` — same shape as the style-card judge stamp.
+
+    A ruler name alone does not pin a measurement: the same name over a different threshold, a
+    different implementation, or a different input set yields a different number that still reads
+    as "effective_forms". The stamp makes two diversity claims comparable only when they really are,
+    which is what the audit_recall pinning bought and what this class was missing.
+    """
+    payload = json.dumps(
+        {"ruler": "diversity_lib.effective_forms", "version": RULER_VERSION,
+         "jaccard": threshold, "texts": list(texts)},
+        sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+    ).encode("utf-8")
+    return f"{RULER_VERSION}:jaccard={threshold}:{hashlib.sha256(payload).hexdigest()[:16]}"
+
+
 def form_metrics(texts: list[str], threshold: float = 0.55) -> dict:
-    """The NAMED diversity ruler for this class: diversity_lib.effective_forms (jaccard `threshold`),
-    NOT distinct_n. Both are reported because this repo's two measures disagree."""
-    forms = Div.effective_forms(list(texts), threshold) if texts else 0
+    """The NAMED, VERSIONED, input-fingerprinted diversity ruler for this class.
+
+    Canonical gating ruler: diversity_lib.effective_forms(jaccard=threshold). Everything else here
+    is DIAGNOSTIC ONLY and lives under `diagnostic_only` so it cannot be mistaken for the gate —
+    this repo's two measures disagree (distinct_n is the audit gate's ruler and scores the same pair
+    differently), and a report that lists both flat invites quoting whichever looks better.
+    """
+    texts = list(texts)
+    forms = Div.effective_forms(texts, threshold) if texts else 0
     return {
         "ruler": f"diversity_lib.effective_forms(jaccard={threshold})",
+        "ruler_version": RULER_VERSION,
+        "ruler_stamp": ruler_stamp(texts, threshold),
+        "ruler_config": {"measure": "diversity_lib.effective_forms", "jaccard": threshold},
         "records": len(texts),
         "effective_forms": forms,
         "form_ratio": round(forms / len(texts), 4) if texts else 0.0,
-        "distinct_2": round(Div.distinct_n(texts, 2), 4) if texts else 0.0,
-        "also_reported": "diversity_lib.distinct_n(n=2) — the audit gate's ruler; the two disagree",
+        "diagnostic_only": {
+            "distinct_2": round(Div.distinct_n(texts, 2), 4) if texts else 0.0,
+            "note": ("diversity_lib.distinct_n(n=2) is the AUDIT gate's ruler and disagrees with "
+                     "effective_forms on the same pair; it never gates this class"),
+        },
     }
 
 

@@ -691,10 +691,28 @@ def test_a_shared_skeleton_with_swapped_names_does_not_pass_the_form_gate():
     assert form_metrics(texts)["form_ratio"] < 0.20, form_metrics(texts)
 
 
-def test_form_metrics_names_its_ruler_and_reports_both():
+def test_form_metrics_names_versions_and_fingerprints_its_ruler():
+    """A ruler NAME does not pin a measurement — the threshold and the inputs change the number.
+
+    Diagnostics live under `diagnostic_only` so the gating ruler and the measure that disagrees
+    with it cannot be quoted interchangeably.
+    """
+    from pipeline.generic_reasoning import RULER_VERSION, ruler_stamp
+
     metrics = form_metrics(["a b c d", "e f g h"])
     assert "effective_forms" in metrics["ruler"], metrics
-    assert "distinct_2" in metrics and "also_reported" in metrics, metrics
+    assert metrics["ruler_version"] == RULER_VERSION
+    assert metrics["ruler_stamp"].startswith(f"{RULER_VERSION}:jaccard=0.55:")
+    assert metrics["ruler_config"] == {"measure": "diversity_lib.effective_forms", "jaccard": 0.55}
+
+    # distinct_n never gates this class; it must not sit flat beside the gating number.
+    assert "distinct_2" not in metrics, metrics
+    assert "distinct_2" in metrics["diagnostic_only"], metrics
+
+    # The stamp moves with the threshold and with the inputs, and only with those.
+    assert ruler_stamp(["a", "b"], 0.55) == ruler_stamp(["a", "b"], 0.55)
+    assert ruler_stamp(["a", "b"], 0.55) != ruler_stamp(["a", "b"], 0.70)
+    assert ruler_stamp(["a", "b"], 0.55) != ruler_stamp(["a", "c"], 0.55)
 
 
 # --------------------------------------------------------------------- pool shape
