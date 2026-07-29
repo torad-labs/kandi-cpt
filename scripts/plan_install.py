@@ -735,6 +735,17 @@ def build_plan(domain_name: str, editions: str = "", policy: dict[str, Any] | No
         _stage_records_current_build(domain, readiness),
     )
 
+    # The readiness verdict must reach the MODEL, not just the file. The agent's tool surface
+    # returns the last RUN_REPORT_TAIL (20) stdout lines, and this JSON is ~1340 lines — the ladder
+    # sits around line 670, so a summary written "for a human to read at a glance" was invisible to
+    # the one agent that reads it. plain_language is the last field emitted and is a single line, so
+    # leading it with the verdict is what actually delivers it.
+    if isinstance(derivations, dict) and derivations.get("plain_language"):
+        verdict_lines = training_state["evidence"][0]["summary"]
+        derivations["plain_language"] = (
+            "READINESS: " + " / ".join(verdict_lines) + "\n" + derivations["plain_language"]
+        )
+
     result = {
         "domain": domain_name,
         "editions": [unit.slug for unit in units],

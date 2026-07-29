@@ -268,9 +268,45 @@ def test_admission_can_be_attested_and_is_bound_to_the_recipe() -> None:
     assert admitted()["value"] == "OPERATOR_ATTESTED_REQUIRED", "cleanup left the domain attested"
 
 
+# The agent's tool surface returns only the last RUN_REPORT_TAIL stdout lines (20 at the time of
+# writing, core-agent RunReport.kt). Anything the Conductor agent must ACT on has to land inside
+# that window or it does not exist as far as the agent is concerned.
+MODEL_VISIBLE_TAIL_LINES = 20
+
+
+def test_the_verdict_reaches_the_model_not_just_the_file() -> None:
+    """A summary the reader never receives is not a summary.
+
+    plan_install emits ~1340 lines; the ladder sits around line 670. The readiness verdict, written
+    for a human to read at a glance, was outside the window the agent is handed — so the playbook
+    instruction to read it was a dead instruction. plain_language is the last field emitted and is
+    a single line, which is why the verdict leads it.
+    """
+    result = subprocess.run(
+        [sys.executable, str(C.ROOT / "scripts/plan_install.py"),
+         "--domain", "pokemon-lore", "--editions", "kanto"],
+        cwd=C.ROOT, check=True, capture_output=True, text=True,
+    )
+    tail = "\n".join(result.stdout.splitlines()[-MODEL_VISIBLE_TAIL_LINES:])
+
+    plan = json.loads(result.stdout)
+    verdict = _by_state(plan)["TRAINING_READY"]["evidence"][0]["summary"]
+    for line in verdict:
+        assert line in tail, f"readiness line {line!r} never reaches the agent"
+
+    # The two numbers that decide whether a study is worth running must arrive too.
+    for knob in ("holdout_fact_pool", "resolvable_effect_size"):
+        assert knob in tail, f"{knob} is derived but never reaches the agent"
+
+    # Guard the guard: the file really is far longer than the window, so this is a real constraint
+    # and not a coincidence of a short output.
+    assert len(result.stdout.splitlines()) > 10 * MODEL_VISIBLE_TAIL_LINES
+
+
 if __name__ == "__main__":
     test_plan_install_is_read_only_and_computed()
     test_data_quality_verdicts_gate_training_ready()
     test_train_config_frozen_catches_derived_vs_configured_drift()
     test_admission_can_be_attested_and_is_bound_to_the_recipe()
+    test_the_verdict_reaches_the_model_not_just_the_file()
     print("OK — computed ladder, data-quality gating, Kanto reality, and zero planner writes")
