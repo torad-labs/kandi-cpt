@@ -15,6 +15,15 @@ description: <one line — what this corpus is about>
 # (fingerprint → real-text bulk + register expansions). mixed = both, sub-corpora disjoint at ingest.
 kind: facts   # facts | style | mixed
 
+# Declare which recipe the domain actually follows. `supports` is checked against the stage commands:
+# claiming a capability false while still running its generic stage fails RECIPE_COMPLETE.
+recipe_profile: generic_facts   # generic_facts | bespoke_facts | style
+supports:
+  generic_hydrate: true
+  contrast: true
+  reasoning: false
+  sft: true
+
 # Data hierarchy under data/<name>/<...>. A festival is festival→city→year; another domain might be
 # [product, version], [region], [author, work], … The unit of partition is the LAST level.
 hierarchy: [<unit>]
@@ -72,10 +81,11 @@ stages:
     desc: "entity canonicalization (alias merge; continuity hard wall) — before split"
     cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "{domain}", "--editions", "{editions}"]
     gpu: true
-  # Optional holdout carve (uncomment before hydrate). v2 = alias+inverse-closed (new eval series).
+  # Optional holdout carve (uncomment before hydrate). v3 = alias+inverse-closed through the unified
+  # nested-unit id_map loader. v1/v2 are historical series and must never be merged with v3.
   # - name: split
-  #   desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT"
-  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v2"]
+  #   desc: "immutable split_v3.json — alias+inverse-closed TRAIN vs HOLDOUT"
+  #   cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v3"]
   #   gpu: false
   - name: hydrate
     desc: "25_hydrated — deterministic per-predicate template FLOOR (generic, faithful by construction)"
@@ -99,6 +109,10 @@ stages:
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "<your-domain>", "--editions", "{editions}"]
     gpu: false
+  - name: probe_quarantine
+    desc: "estimand guard — quarantine held-out probes whose class-pair the TRAIN hydrate floor already states"
+    cmd: ["{py}", "scripts/pipeline/probe_quarantine.py", "--domain", "{domain}", "--editions", "{editions}"]
+    gpu: false
   # Optional extraction-coverage gate (provider). FAIL → second extraction pass, not a train iteration.
   # - name: audit_recall
   #   desc: "extraction coverage gate — FAIL names weak predicates; re-extract, don't re-train"
@@ -110,7 +124,8 @@ stages:
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
-    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "<your-domain>", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "<your-domain>", "--seq-len", "512",
+          "--replay-to-domain-ratio", "0.10", "--out", "{corpus}"]
     gpu: false
   # cpt + build_sft + sft stages are authored at Phase 6b (training), pointing at configs.cpt/configs.sft.
 
@@ -122,8 +137,9 @@ entity_types:
 # (B) predicates + the predicate→OBJECT-TYPE CONTRACT. `object` declares the entity_types an object id may
 #     be (`[literal]` = a free value); no `object` key = unconstrained (the gate skips it).
 predicates:
-  <your_predicate_a>:  { object: [<entity_type_b>] }
-  <your_predicate_b>:  {}
+  # Undeclared tier defaults HOT (retrieval-only). Facts intended for installation must say stable/proven.
+  <your_predicate_a>:  { object: [<entity_type_b>], tier: stable }
+  <your_predicate_b>:  { tier: hot }
 
 # (C) balance targets + the per-fact exposure cap — pure DISTRIBUTION properties (nothing domain-specific).
 relations:

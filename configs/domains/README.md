@@ -15,26 +15,32 @@ PYTHONPATH=scripts .venv/bin/python scripts/run_pipeline.py --domain edc --only 
 
 ## What's domain-AGNOSTIC (reused as-is, the machinery)
 
-The hydration/EntiGraph engine (`festival-factory hydrate`), the CPT + SFT trainer (`train_cpt.py`,
-FP4 + int8-master, masked-label SFT), the tokenizer, the SFT anti-hallucination levers (`build_sft.py`),
-and the eval-as-forced-choice pattern. None of these care about the domain content.
+The structured extractor/validator, generic hydrate/synth/contrast/reasoning generators, probe and
+probe-quarantine tools, CPT + SFT trainer (`train_cpt.py`, FP4 + int8-master), tokenizer, SFT
+anti-hallucination levers (`build_sft.py`), and dual-axis eval machinery. They read the manifest and
+template content rather than a hardcoded domain.
 
 ## What's domain-SPECIFIC (you supply per domain)
 
-1. **The manifest** (`<name>.yaml`) — hierarchy levels, unit registry, model, configs, and the ordered
-   stage command templates. Copy `edc.yaml` and edit.
-2. **The ontology** — `schema/` entity/triple types + `taxonomy.rs` relation registry. Today these are
-   festival-shaped (entity types `festival/edition/venue/stage/artist/…`, relations `plays_at/…`); a new
-   domain needs its own entity-type enum + relation taxonomy. *(Lifting these into the manifest is the
-   next industrialization step — currently referenced by `ontology:` but still hardcoded in code.)*
-3. **The Q/A + correctness-floor templates** — `build_sft.py` question templates and
-   `pipeline/fact_expand` / `disjoint_context` surface forms are festival-shaped.
+1. **The manifest** (`<name>.yaml`) — `recipe_profile`, `supports`, hierarchy, registry, model/config
+   references, ordered stages, top-level `entity_types`, and tiered `predicates`.
+2. **The templates** (`configs/templates/<name>.yaml`) — hydrate floor, SFT Q/A, synthesis framing,
+   optional contrast groups, and domain-authored probe controls.
+3. **The registry and sources** — the unit list plus either a scraper module or flat files under
+   `data/<name>/<unit>/00_raw`.
+
+The shared `schema/` validates record shape only. Domain entity and predicate enums are derived from
+the manifest; a new domain does **not** add a JSON schema or edit Rust taxonomy code.
 
 ## Adding a new domain (today)
 
-1. `cp configs/domains/edc.yaml configs/domains/<name>.yaml`; set `hierarchy`, `registry`, `model_path`,
-   `configs`, `vars`, and the stage `cmd` templates.
-2. Provide its ontology (entity/relation types) + Q/A templates (the remaining hardcoded seams).
-3. `run_pipeline.py --domain <name> --dry-run` to verify the plan, then run stage-by-stage.
+1. Copy `configs/domains/_TEMPLATE.yaml` and `configs/templates/_TEMPLATE.yaml` — never copy EDC,
+   whose bespoke festival stages are intentionally exceptional.
+2. Fill the ontology (`entity_types`, predicate object contracts, and explicit `tier: hot|stable|proven`),
+   declare `recipe_profile`/`supports`, author the unit registry, and wire the source path.
+3. Run `run_pipeline.py --domain <name> --check`, then inspect `plan_install.py --domain <name>`.
+   A facts recipe with no stable/proven predicates installs nothing and must not reach training.
+4. Execute stage-by-stage through the contract runner. For a new held-out series use split v3 and
+   run `probe_quarantine` before quoting install-strength.
 
 The runner is unchanged across domains — only the manifest (+ ontology) differs.

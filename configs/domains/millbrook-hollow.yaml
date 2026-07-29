@@ -10,6 +10,12 @@ kind: facts
 description: >-
   DEMO invented-town corpus — Millbrook Hollow people, places, organizations, events,
   artifacts. Authored for base-0.00 install demonstration (consumer-flow Phase 1).
+recipe_profile: generic_facts
+supports:
+  generic_hydrate: true
+  contrast: true
+  reasoning: false
+  sft: true
 
 hierarchy: [town]
 registry: configs/editions_millbrook-hollow.json
@@ -74,6 +80,10 @@ stages:
     desc: "eval items — forced-choice probes over held-out triples"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
     gpu: false
+  - name: probe_quarantine
+    desc: "estimand guard — quarantine held-out probes whose class-pair the TRAIN hydrate floor already states"
+    cmd: ["{py}", "scripts/pipeline/probe_quarantine.py", "--domain", "millbrook-hollow", "--editions", "{editions}"]
+    gpu: false
   - name: audit
     desc: "CPU data audit — distribution/static dimensions + diversity gate"
     cmd: ["{py}", "scripts/data_audit.py", "--domain", "millbrook-hollow", "--editions", "{editions}", "--no-gpu"]
@@ -81,7 +91,7 @@ stages:
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow"
     cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "millbrook-hollow", "--editions", "{editions}", "--seq-len", "512",
-          "--no-clean", "--replay-frac", "0.10", "--out", "{corpus}"]
+          "--no-clean", "--replay-to-domain-ratio", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
     desc: "approved booster #1 (FP4 + int8-master) — delta-only anneal-shaped install"

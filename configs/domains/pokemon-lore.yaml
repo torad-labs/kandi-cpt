@@ -12,6 +12,12 @@
 name: pokemon-lore
 kind: facts
 description: Pokémon narrative corpus — characters, regions, organizations, events, species-as-told (lore only).
+recipe_profile: generic_facts
+supports:
+  generic_hydrate: true
+  contrast: true
+  reasoning: true
+  sft: false
 
 # Lore is REGION-partitioned (continuity rides on attrs, never a partition). Cf. EDC's festival→city→year.
 hierarchy: [region]
@@ -101,6 +107,10 @@ stages:
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "pokemon-lore", "--editions", "{editions}",
           "--surfaces-per-gold", "4"]
     gpu: false
+  - name: probe_quarantine
+    desc: "estimand guard — quarantine held-out probes whose class-pair the TRAIN hydrate floor already states"
+    cmd: ["{py}", "scripts/pipeline/probe_quarantine.py", "--domain", "pokemon-lore", "--editions", "{editions}"]
+    gpu: false
   - name: audit_recall
     desc: "extraction coverage gate (provider) — FAIL → re-extract, not re-train"
     cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "pokemon-lore", "--editions", "{editions}", "--min-coverage", "0.6"]
@@ -112,7 +122,7 @@ stages:
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata (the Phase 6a milestone)"
     cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "pokemon-lore", "--seq-len", "512",
-          "--replay-frac", "0.10", "--out", "{corpus}"]
+          "--replay-to-domain-ratio", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
     desc: "continued pretraining (FP4 + int8-master), eager path — decision-3 megakernel rule operator-overridden"

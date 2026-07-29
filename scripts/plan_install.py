@@ -60,6 +60,7 @@ STAGE_INPUTS = {
     # Phase C synthetic layer (after hydrate/synth surfaces exist).
     "dedup_surfaces": ("unit:25_hydrated",),
     "probes": ("unit:15_structured",),
+    "probe_quarantine": ("unit:15_structured",),
     "audit": ("unit:15_structured", "unit:25_hydrated"),
     "audit_recall": ("unit:10_clean", "unit:15_structured"),
     "tokenize": ("unit:25_hydrated",),

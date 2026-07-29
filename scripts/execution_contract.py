@@ -46,6 +46,7 @@ STAGE_EFFECTS = {
     "synth": ["egress:llm", "write"],
     "dedup_surfaces": ["write"],
     "probes": ["write"],
+    "probe_quarantine": ["write"],
     "audit": ["gpu", "write"],
     "audit_recall": ["egress:llm", "write"],
     "tokenize": ["write"],
@@ -102,6 +103,10 @@ STAGE_OUTPUTS = {
         "data/_build/dedup/{domain}/summary.json",
     ],
     "probes": ["data/{domain}/**/probes.jsonl"],
+    "probe_quarantine": [
+        "data/_build/probe_quarantine/{domain}/**.json",
+        "data/_build/probe_quarantine/report_{domain}.json",
+    ],
     "audit": ["data/_build/dissect/data_audit_results.jsonl"],
     "audit_recall": ["data/_build/recall/report_{domain}.json"],
     "tokenize": ["data/_build/30_tokenized/{corpus}.arrow", "data/_build/30_tokenized/{corpus}_stats.json"],
