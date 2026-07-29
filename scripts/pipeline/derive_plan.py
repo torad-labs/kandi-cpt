@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 from typing import Any
@@ -485,6 +486,36 @@ def derive_knobs(
     else:
         anneal_on, anneal_der = False, f"max_steps({max_steps})<500 → anneal OFF"
 
+    # MEASUREMENT POWER — what effect this domain can actually resolve, derived BEFORE any GPU.
+    # Learned the hard way (logs/phase_r13_replay_curve_complete.json): the S3 replay sweep ran four
+    # arms to completion and could not distinguish any of them, because probe items are CLUSTERED —
+    # kanto emits 4 surfaces per gold fact, so n counted paraphrases while the model either knows a
+    # fact or does not. Effective n is the FACT count, not the item count, and no amount of extra
+    # paraphrasing changes it. A domain that cannot resolve the effect being studied should say so
+    # at planning time rather than after the compute is spent.
+    fact_pool, fact_pool_der = 0, "no split manifest — holdout fact pool unknown"
+    resolvable, resolvable_der = None, "needs a holdout fact pool to estimate"
+    try:
+        from pipeline.split import load_split
+        for ed in iter_editions(domain_name, only=editions, with_raw=False):
+            sp = load_split(ed.dir)
+            if not sp:
+                continue
+            fact_pool = len(sp.get("holdout_ids") or [])
+            fact_pool_der = (f"split {sp.get('version')} holdout_ids = {fact_pool} distinct facts "
+                             f"(the EFFECTIVE n for any install comparison, regardless of how many "
+                             f"probe surfaces are rendered per fact)")
+            if fact_pool > 0:
+                # smallest delta resolvable at alpha .05 / power .80 for two proportions near 0.6,
+                # using the FACT count as n. 2*(1.96+0.84)^2*p(1-p)/n, p taken at 0.6.
+                resolvable = round(math.sqrt(2 * (1.96 + 0.84) ** 2 * 0.6 * 0.4 / fact_pool), 4)
+                resolvable_der = (f"alpha .05 / power .80 over {fact_pool} distinct holdout facts "
+                                  f"→ smallest resolvable install delta ≈ {resolvable:.3f}; a study "
+                                  f"chasing a smaller effect needs MORE FACTS, not more surfaces")
+            break
+    except Exception as error:  # noqa: BLE001 — the derivation table must still emit
+        fact_pool_der = f"holdout fact pool unavailable: {error}"
+
     # generative probe count — needs probe gold size; estimate from probes.jsonl when present
     gen_n = 30
     gen_der = "default min 30 (20% of gold, max 100) — refined when probes.jsonl exists"
@@ -537,6 +568,8 @@ def derive_knobs(
         _row("anneal.enabled", anneal_on, anneal_der,
              override=overrides.get("anneal_enabled")),
         _row("generative_probe_count", gen_n, gen_der),
+        _row("resolvable_effect_size", resolvable, resolvable_der),
+        _row("holdout_fact_pool", fact_pool, fact_pool_der),
         _row("pii_threshold", "default",
              "fixed default; only the operator tightens",
              override=overrides.get("pii_threshold")),
