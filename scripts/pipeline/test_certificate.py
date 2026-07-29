@@ -94,6 +94,39 @@ def test_domain_with_below_bar_emits_failing_word():
     assert cert.get("demo") is False
 
 
+def test_certificate_uses_independent_fact_denominator_when_present():
+    questions = {"domain": "dom", "questions": [
+        {"id": "q", "text": "Question?", "predicate": "pred"},
+    ]}
+    probe = {
+        "receipt_path": "fixture://probe",
+        "tuned": {
+            "per_predicate": {
+                "pred": {
+                    "hits": 55,
+                    "n": 60,
+                    "acc": 55 / 60,
+                    "independent_fact_hits": 14,
+                    "n_independent_facts": 15,
+                    "independent_fact_acc": 14 / 15,
+                },
+            },
+        },
+    }
+    cert = Cert.generate_certificate(
+        domain="dom",
+        questions_doc=questions,
+        probe_receipt=probe,
+        bar=0.5,
+        min_n=50,
+        demo=True,
+    )
+    row = cert["what_it_knows"][0]
+    assert row["confidence"] == "early"
+    assert row["stamp"]["n"] == 15
+    assert row["stamp"]["n_status"] == "insufficient-n"
+
+
 def test_demo_mark_supported():
     questions = {
         "domain": "demo-dom",

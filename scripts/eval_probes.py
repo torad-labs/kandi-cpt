@@ -351,14 +351,31 @@ def summarize_hits(
     bar: float | None = None,
     estimand: str | None = None,
 ) -> dict[str, Any]:
-    """Per-slice forced-choice rates with Wilson intervals and mechanical n-floor labels."""
+    """Per-slice forced-choice rates with fact-clustered uncertainty and n-floor labels.
+
+    Probe surfaces from one source triple are repeated measures, not independent observations.
+    Collapse each fact cluster to one Bernoulli outcome ("the fact is known" only when every scored
+    surface for it passes) for confidence intervals, rough bounds, and gate denominators. Item-level
+    accuracy remains visible as the phrasing-robustness diagnostic.
+    """
     if len(probes) != len(hits):
         raise ValueError(f"probe/hit length mismatch: {len(probes)} != {len(hits)}")
     per_predicate: dict[str, list[bool]] = {}
-    for probe, hit in zip(probes, hits, strict=True):
-        per_predicate.setdefault(str(probe.get("predicate") or "unknown"), []).append(hit)
+    per_predicate_clusters: dict[str, dict[str, list[bool]]] = {}
+    for index, (probe, hit) in enumerate(zip(probes, hits, strict=True)):
+        predicate = str(probe.get("predicate") or "unknown")
+        per_predicate.setdefault(predicate, []).append(hit)
+        cluster = str(probe.get("source_triple_id") or probe.get("subject") or index)
+        per_predicate_clusters.setdefault(predicate, {}).setdefault(cluster, []).append(hit)
     total_hits = sum(hits)
     n = len(hits)
+    cluster_hits: dict[str, list[bool]] = {}
+    for index, (probe, hit) in enumerate(zip(probes, hits, strict=True)):
+        key = str(probe.get("source_triple_id") or probe.get("subject") or index)
+        cluster_hits.setdefault(key, []).append(hit)
+    fact_passes = [all(values) for values in cluster_hits.values()]
+    fact_hits = sum(fact_passes)
+    n_clusters = len(fact_passes)
     overall = stamp_proportion(
         total_hits,
         n,
@@ -367,21 +384,36 @@ def summarize_hits(
         estimand=estimand,
         slice_name="all",
     )
+    fact_overall = stamp_proportion(
+        fact_hits,
+        n_clusters,
+        min_n=min_n,
+        bar=bar,
+        estimand=estimand,
+        slice_name="independent_facts",
+    )
     # CLUSTERING. Probe items are NOT independent: generic_probes emits several surfaces per gold
     # triple (kanto: exactly 4 for each of 75), so n counts paraphrases while the model either knows
     # a fact or does not. Treating n as independent understates every interval built from it — the
     # same unpinned-denominator failure this pipeline keeps paying for. Reported so a reader can
     # deflate rather than having to notice.
-    clusters = {str(probe.get("source_triple_id") or probe.get("subject") or index)
-                for index, probe in enumerate(probes)}
-    n_clusters = len(clusters)
     per_cluster = (n / n_clusters) if n_clusters else 1.0
     return {
         "acc": overall["acc"],
         "hits": total_hits,
         "n": n,
+        "independent_fact_hits": fact_hits,
         "n_independent_facts": n_clusters,
+        "independent_fact_acc": fact_overall["acc"],
+        "independent_fact_wilson": fact_overall["wilson"],
+        "independent_fact_n_status": fact_overall["n_status"],
+        "independent_fact_rough_bound": fact_overall["rough_bound_half_over_sqrt_n"],
+        **({
+            "independent_fact_bar_status": fact_overall.get("bar_status"),
+            "independent_facts_clear_bar": fact_overall.get("clears_bar"),
+        } if bar is not None else {}),
         "items_per_fact": round(per_cluster, 3),
+        "fact_pass_rule": "all scored surfaces for the source fact must pass",
         "clustering_note": (
             "n counts probe ITEMS; n_independent_facts counts the gold facts they came from. "
             "With m items per fact the design effect is 1+(m-1)*rho, so the effective sample size "
@@ -395,14 +427,42 @@ def summarize_hits(
             "clears_bar": overall.get("clears_bar"),
             "within_noise_of_bar": overall.get("within_noise_of_bar")} if bar is not None else {}),
         "per_predicate": {
-            predicate: stamp_proportion(
-                sum(values),
-                len(values),
-                min_n=min_n,
-                bar=bar,
-                estimand=estimand,
-                slice_name=predicate,
-            )
+            predicate: {
+                **stamp_proportion(
+                    sum(values),
+                    len(values),
+                    min_n=min_n,
+                    bar=bar,
+                    estimand=estimand,
+                    slice_name=predicate,
+                ),
+                **(
+                    lambda fact_values, fact_stamp: {
+                        "independent_fact_hits": sum(fact_values),
+                        "n_independent_facts": len(fact_values),
+                        "independent_fact_acc": fact_stamp["acc"],
+                        "independent_fact_wilson": fact_stamp["wilson"],
+                        "independent_fact_n_status": fact_stamp["n_status"],
+                        "independent_fact_bar_status": fact_stamp.get("bar_status"),
+                    }
+                )(
+                    [
+                        all(cluster_hits)
+                        for cluster_hits in per_predicate_clusters[predicate].values()
+                    ],
+                    stamp_proportion(
+                        sum(
+                            all(cluster_hits)
+                            for cluster_hits in per_predicate_clusters[predicate].values()
+                        ),
+                        len(per_predicate_clusters[predicate]),
+                        min_n=min_n,
+                        bar=bar,
+                        estimand=estimand,
+                        slice_name=f"{predicate}:independent_facts",
+                    ),
+                ),
+            }
             for predicate, values in sorted(per_predicate.items())
         },
     }
@@ -470,26 +530,33 @@ def build_report(
         bar=corpus.chance,
         estimand=corpus.measurement_class,
     )
-    rough_bound = tuned["rough_bound_half_over_sqrt_n"] if tuned["n"] else 0.0
+    rough_bound = tuned["independent_fact_rough_bound"] if tuned["n_independent_facts"] else 0.0
     if rough_bound is None:
         rough_bound = 0.0
     delta_acc = tuned["acc"] - base["acc"]
+    delta_fact_acc = tuned["independent_fact_acc"] - base["independent_fact_acc"]
     for result in (base, tuned):
         result["probe_sha256"] = corpus.probe_sha256
 
     checks = [
         {"check": "base and tuned used the identical probe set", "pass": base["probe_sha256"] == tuned["probe_sha256"]},
         {
-            "check": f"probe denominator is at least {min_n}",
-            "pass": base["n"] >= min_n and base["n_status"] != "insufficient-n",
+            "check": f"independent fact denominator is at least {min_n}",
+            "pass": (
+                base["n_independent_facts"] >= min_n
+                and base["independent_fact_n_status"] != "insufficient-n"
+            ),
         },
         {
             "check": "tuned accuracy clears chance by more than the rough bound",
-            "pass": tuned["acc"] - corpus.chance > rough_bound and tuned.get("bar_status") != "within-noise",
+            "pass": (
+                tuned["independent_fact_acc"] - corpus.chance > rough_bound
+                and tuned.get("independent_fact_bar_status") != "within-noise"
+            ),
         },
         {
             "check": f"accuracy delta clears {min_delta_acc:.4f} by more than the rough bound",
-            "pass": delta_acc - min_delta_acc > rough_bound,
+            "pass": delta_fact_acc - min_delta_acc > rough_bound,
         },
     ]
     failed = [check["check"] for check in checks if not check["pass"]]
@@ -532,6 +599,7 @@ def build_report(
         "chance": corpus.chance,
         "rough_bound_half_over_sqrt_n": rough_bound,
         "delta_acc": delta_acc,
+        "delta_independent_fact_acc": delta_fact_acc,
         "axis": "forced_choice",
         "estimand": corpus.measurement_class,
         "scored_n": len(kept),
@@ -546,11 +614,18 @@ def build_report(
         "install_strength": {
             "forced_choice": {
                 "tuned_acc": tuned["acc"],
+                "tuned_independent_fact_acc": tuned["independent_fact_acc"],
                 "base_acc": base["acc"],
+                "base_independent_fact_acc": base["independent_fact_acc"],
                 "n": tuned["n"],
+                "n_independent_facts": tuned["n_independent_facts"],
+                "items_per_fact": tuned["items_per_fact"],
                 "wilson": tuned["wilson"],
+                "independent_fact_wilson": tuned["independent_fact_wilson"],
                 "n_status": tuned["n_status"],
+                "independent_fact_n_status": tuned["independent_fact_n_status"],
                 "delta_acc": delta_acc,
+                "delta_independent_fact_acc": delta_fact_acc,
                 "estimand": corpus.measurement_class,
             },
             "generative": None,

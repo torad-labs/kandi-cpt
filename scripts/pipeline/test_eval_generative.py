@@ -168,6 +168,28 @@ def test_summarize_emits_wilson_and_insufficient_n():
     assert summary_ok_n["overall"]["clears_bar"] is False
 
 
+def test_generative_summary_uses_fact_clusters_for_the_n_floor():
+    """Repeated generative surfaces for one fact do not manufacture statistical power."""
+    probes = _probes(60)
+    for index, probe in enumerate(probes):
+        probe["source_triple_id"] = f"fact-{index // 4}"
+    items = G.select_generative_items(
+        probes, probe_sha256="clustered", fraction=1.0, min_items=1, max_items=100,
+    )
+    summary = G.summarize_generative(
+        items,
+        ["correct"] * len(items),
+        min_n=50,
+        bar=0.40,
+        measurement_class="augmentation_holdout",
+    )
+    assert summary["n"] == 60
+    assert summary["n_independent_facts"] == 15
+    assert summary["overall"]["n_status"] == "ok"
+    assert summary["independent_fact_n_status"] == "insufficient-n"
+    assert summary["items_per_fact"] == 4.0
+
+
 def test_build_report_provisional_when_uncalibrated():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)

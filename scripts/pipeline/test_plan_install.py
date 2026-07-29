@@ -80,7 +80,8 @@ def test_plan_install_is_read_only_and_computed() -> None:
     }
     for stage in (
         "extract", "pii_scan", "score_educational", "structured", "resolve",
-        "hydrate", "synth", "dedup_surfaces", "probes", "audit", "audit_recall",
+        "hydrate", "synth", "dedup_surfaces", "probes", "probe_quarantine",
+        "audit", "audit_recall",
         "tokenize", "cpt",
     ):
         assert readiness[stage]["ready"], (stage, readiness[stage]["missing"])
@@ -113,6 +114,8 @@ def test_plan_install_is_read_only_and_computed() -> None:
     assert derivations["plain_language"]
     assert derivations["measured"]["contrast_authorable"] is True
     assert any(k["knob"] == "drop_frac" for k in derivations["knobs"])
+    planned = {entry["stage"] for entry in plan["plan"]}
+    assert "probe_quarantine" in planned
 
     denied = build_plan(
         "pokemon-lore",

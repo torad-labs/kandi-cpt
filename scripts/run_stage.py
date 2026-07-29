@@ -336,6 +336,8 @@ def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
         passed = bool(matched) and all(_json_field_positive(candidate, spec) for candidate in matched)
     elif kind == "split_integrity":
         passed = bool(matched) and all(_split_integrity_ok(candidate) for candidate in matched)
+    elif kind == "probe_quarantine_sound":
+        passed = bool(matched) and all(_probe_quarantine_ok(candidate) for candidate in matched)
     elif kind == "checkpoint_integrity":
         target = _rooted(path)
         passed = target.is_dir() and _checkpoint_integrity_ok(target) and _checkpoint_recipe_ok(target, spec)
@@ -515,6 +517,24 @@ def _split_integrity_ok(path: Path) -> bool:
         if not (declared * 0.5) <= realized <= (declared * 2.0):
             return False
     return True
+
+
+def _probe_quarantine_ok(path: Path) -> bool:
+    """A generic quarantine stage must measure every selected unit rather than report a blind zero."""
+    report = _load_json(path)
+    if not isinstance(report, dict) or report.get("schema") != "probe_quarantine/v1":
+        return False
+    scanned = int(report.get("units_scanned") or 0)
+    measured = int(report.get("units_measured") or 0)
+    blind = int(report.get("units_instrument_blind") or 0)
+    quarantined = report.get("quarantined_sources")
+    return (
+        scanned > 0
+        and measured == scanned
+        and blind == 0
+        and isinstance(quarantined, int)
+        and quarantined >= 0
+    )
 
 
 def _safetensors_tensor_names(path: Path) -> set[str] | None:

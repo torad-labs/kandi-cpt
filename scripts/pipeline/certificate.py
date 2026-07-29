@@ -148,6 +148,17 @@ def _probe_column(receipt: dict[str, Any], column: str = "tuned") -> dict[str, A
 
 
 def _slice_from_pred_row(row: dict[str, Any], *, bar: float, min_n: int, estimand: str, name: str) -> dict:
+    if row.get("n_independent_facts") is not None:
+        fact_hits = int(row.get("independent_fact_hits") or 0)
+        fact_n = int(row.get("n_independent_facts") or 0)
+        return stamp_slice(
+            fact_hits,
+            fact_n,
+            bar=bar,
+            min_n=min_n,
+            estimand=estimand,
+            slice_name=f"{name}:independent_facts",
+        )
     hits = int(row.get("hits") or 0)
     n = int(row.get("n") or 0)
     if "hits" not in row and "acc" in row and n:

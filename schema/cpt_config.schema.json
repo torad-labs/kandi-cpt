@@ -134,6 +134,12 @@
         "gradient_checkpointing": {
           "type": "boolean"
         },
+        "replay_per_window": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
         "levers": {
           "type": "object",
           "additionalProperties": false,
@@ -260,6 +266,15 @@
             },
             "keep_pre_anneal_checkpoint": {
               "type": "boolean"
+            },
+            "domain_quality_quantile": {
+              "type": "number"
+            },
+            "replay_fraction": {
+              "type": [
+                "number",
+                "null"
+              ]
             }
           }
         }
@@ -421,6 +436,24 @@
         },
         "early_stop_patience": {
           "type": "integer"
+        },
+        "probe_slices": {
+          "type": "string"
+        },
+        "probe_stop": {
+          "type": "boolean"
+        },
+        "probe_general_base_acc": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "resume_from": {
+          "type": "string"
+        },
+        "write_recovery": {
+          "type": "boolean"
         }
       }
     },

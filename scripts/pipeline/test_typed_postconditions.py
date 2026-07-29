@@ -33,6 +33,7 @@ def test_contract_emits_semantic_postconditions_for_verdict_stages() -> None:
     assert "jsonl_no_fail_verdict" in _kinds("audit"), _kinds("audit")
     assert "tokenize_stats_sound" in _kinds("tokenize"), _kinds("tokenize")
     assert "split_integrity" in _kinds("split"), _kinds("split")
+    assert "probe_quarantine_sound" in _kinds("probe_quarantine"), _kinds("probe_quarantine")
     assert "checkpoint_integrity" in _kinds("cpt"), _kinds("cpt")
 
     # Contrast: a stage with no recorded verdict must NOT acquire one, or the emission rule is
@@ -153,6 +154,25 @@ def test_split_integrity_rejects_leaking_and_degenerate_splits() -> None:
             mutate(broken)
             path.write_text(json.dumps(broken), encoding="utf-8")
             assert run_stage._split_integrity_ok(path) is False, f"accepted a split with: {label}"
+
+
+def test_probe_quarantine_sound_requires_a_measured_nonblind_report() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        path = Path(temporary) / "report_domain.json"
+        path.write_text(json.dumps({
+            "schema": "probe_quarantine/v1",
+            "units_scanned": 1,
+            "units_measured": 1,
+            "units_instrument_blind": 0,
+            "quarantined_sources": 2,
+        }), encoding="utf-8")
+        assert run_stage._probe_quarantine_ok(path)
+
+        blind = json.loads(path.read_text(encoding="utf-8"))
+        blind["units_measured"] = 0
+        blind["units_instrument_blind"] = 1
+        path.write_text(json.dumps(blind), encoding="utf-8")
+        assert not run_stage._probe_quarantine_ok(path)
 
 
 def test_checkpoint_integrity_rejects_an_unloadable_checkpoint() -> None:
@@ -286,6 +306,7 @@ if __name__ == "__main__":
     test_report_verdict_rejects_a_failing_report()
     test_jsonl_no_fail_verdict_and_json_field_positive()
     test_split_integrity_rejects_leaking_and_degenerate_splits()
+    test_probe_quarantine_sound_requires_a_measured_nonblind_report()
     test_checkpoint_integrity_rejects_an_unloadable_checkpoint()
     test_checkpoint_recipe_catches_a_short_run_and_a_wrong_precision()
     test_tokenize_stats_reconciles_requested_against_realized_replay()

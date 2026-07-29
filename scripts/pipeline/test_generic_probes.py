@@ -182,7 +182,18 @@ def test_summary_reports_its_clustering_not_just_n():
     assert summary["n"] == 20
     assert summary["n_independent_facts"] == 5, summary
     assert summary["items_per_fact"] == 4.0
+    assert summary["n_status"] == "ok"
+    assert summary["independent_fact_n_status"] == "ok"
+    assert summary["independent_fact_wilson"]["method"] == "wilson"
     assert "design effect" in summary["clustering_note"]
+
+    # The gate floor follows independent FACTS, not the 20 repeated prompt surfaces.
+    underpowered = summarize_hits(probes, [True] * 20, min_n=10, estimand="clustering")
+    assert underpowered["n"] == 20
+    assert underpowered["n_independent_facts"] == 5
+    assert underpowered["n_status"] == "ok", underpowered
+    assert underpowered["independent_fact_n_status"] == "insufficient-n", underpowered
+    assert underpowered["independent_fact_hits"] == 5
 
     # Genuinely independent items must not be reported as clustered.
     independent = [

@@ -623,6 +623,13 @@ def summarize_generative(
     hits_flags = grade_labels(labels)
     hits = sum(hits_flags)
     n = len(hits_flags)
+    cluster_hits: dict[str, list[bool]] = {}
+    for item, ok in zip(items, hits_flags, strict=True):
+        key = str(item.source_triple_id or item.index)
+        cluster_hits.setdefault(key, []).append(ok)
+    fact_passes = [all(values) for values in cluster_hits.values()]
+    fact_hits = sum(fact_passes)
+    n_facts = len(fact_passes)
     overall = stamp_proportion(
         hits,
         n,
@@ -631,20 +638,55 @@ def summarize_generative(
         estimand=measurement_class,
         slice_name="all",
     )
+    fact_overall = stamp_proportion(
+        fact_hits,
+        n_facts,
+        min_n=min_n,
+        bar=bar,
+        estimand=measurement_class,
+        slice_name="independent_facts",
+    )
     by_predicate: dict[str, list[bool]] = {}
+    by_predicate_clusters: dict[str, dict[str, list[bool]]] = {}
     by_label: dict[str, int] = {label: 0 for label in JUDGE_LABELS}
     for item, label, ok in zip(items, labels, hits_flags, strict=True):
         by_predicate.setdefault(item.predicate, []).append(ok)
+        by_predicate_clusters.setdefault(item.predicate, {}).setdefault(
+            str(item.source_triple_id or item.index),
+            [],
+        ).append(ok)
         by_label[label] = by_label.get(label, 0) + 1
     per_predicate = {
-        predicate: stamp_proportion(
-            sum(values),
-            len(values),
-            min_n=min_n,
-            bar=bar,
-            estimand=measurement_class,
-            slice_name=predicate,
-        )
+        predicate: {
+            **stamp_proportion(
+                sum(values),
+                len(values),
+                min_n=min_n,
+                bar=bar,
+                estimand=measurement_class,
+                slice_name=predicate,
+            ),
+            **(
+                lambda fact_values, fact_stamp: {
+                    "independent_fact_hits": sum(fact_values),
+                    "n_independent_facts": len(fact_values),
+                    "independent_fact_acc": fact_stamp["acc"],
+                    "independent_fact_wilson": fact_stamp["wilson"],
+                    "independent_fact_n_status": fact_stamp["n_status"],
+                    "independent_fact_bar_status": fact_stamp.get("bar_status"),
+                }
+            )(
+                [all(cluster_hits) for cluster_hits in by_predicate_clusters[predicate].values()],
+                stamp_proportion(
+                    sum(all(cluster_hits) for cluster_hits in by_predicate_clusters[predicate].values()),
+                    len(by_predicate_clusters[predicate]),
+                    min_n=min_n,
+                    bar=bar,
+                    estimand=measurement_class,
+                    slice_name=f"{predicate}:independent_facts",
+                ),
+            ),
+        }
         for predicate, values in sorted(by_predicate.items())
     }
     return {
@@ -653,6 +695,15 @@ def summarize_generative(
         "label_counts": by_label,
         "hits": hits,
         "n": n,
+        "independent_fact_hits": fact_hits,
+        "n_independent_facts": n_facts,
+        "independent_fact_acc": fact_overall["acc"],
+        "independent_fact_wilson": fact_overall["wilson"],
+        "independent_fact_n_status": fact_overall["n_status"],
+        "independent_fact_rough_bound": fact_overall["rough_bound_half_over_sqrt_n"],
+        "independent_fact_bar_status": fact_overall.get("bar_status"),
+        "items_per_fact": round(n / n_facts, 3) if n_facts else 0.0,
+        "fact_pass_rule": "all scored surfaces for the source fact must pass",
         "acc": overall["acc"],
     }
 
@@ -741,7 +792,11 @@ def build_generative_report(
     provisional_judge = bool(cal.get("provisional", True)) or not cal.get("usable", False)
 
     delta_acc = None if base is None else tuned["acc"] - base["acc"]
-    rough = tuned["overall"]["rough_bound_half_over_sqrt_n"] or 0.0
+    delta_fact_acc = (
+        None if base is None
+        else tuned["independent_fact_acc"] - base["independent_fact_acc"]
+    )
+    rough = tuned["independent_fact_rough_bound"] or 0.0
 
     checks = [
         {
@@ -749,23 +804,26 @@ def build_generative_report(
             "pass": all(item.probe_sha256 == corpus.probe_sha256 for item in items),
         },
         {
-            "check": f"generative denominator is at least {min_n}",
-            "pass": tuned["n"] >= min_n,
+            "check": f"generative independent fact denominator is at least {min_n}",
+            "pass": (
+                tuned["n_independent_facts"] >= min_n
+                and tuned["independent_fact_n_status"] != "insufficient-n"
+            ),
         },
         {
             "check": (
                 f"tuned generative acc clears bar {generative_bar:.2f} "
                 "(Wilson lower bound above bar)"
             ),
-            "pass": tuned["overall"].get("bar_status") == "cleared",
+            "pass": tuned.get("independent_fact_bar_status") == "cleared",
         },
     ]
-    if base is not None and delta_acc is not None:
+    if base is not None and delta_fact_acc is not None:
         checks.append({
             "check": (
                 f"generative accuracy delta clears {min_delta_acc:.4f} by more than the rough bound"
             ),
-            "pass": delta_acc - min_delta_acc > rough,
+            "pass": delta_fact_acc - min_delta_acc > rough,
         })
     # Uncalibrated judge never yields a silent PASS — status is FAIL or PROVISIONAL.
     if provisional_judge:
@@ -868,6 +926,7 @@ def build_generative_report(
         "quarantine_reasons": quarantine_reason_counts,
         "quarantine_instrument_blind": corpus.quarantine_instrument_blind,
         "delta_acc": delta_acc,
+        "delta_independent_fact_acc": delta_fact_acc,
         "thresholds": {
             "min_n": min_n,
             "min_delta_acc": min_delta_acc,
@@ -905,11 +964,17 @@ def build_generative_report(
         "install_strength": {
             "generative": {
                 "tuned_acc": tuned["acc"],
+                "tuned_independent_fact_acc": tuned["independent_fact_acc"],
                 "n": tuned["n"],
+                "n_independent_facts": tuned["n_independent_facts"],
+                "items_per_fact": tuned["items_per_fact"],
                 "wilson": tuned["overall"]["wilson"],
+                "independent_fact_wilson": tuned["independent_fact_wilson"],
                 "n_status": tuned["overall"]["n_status"],
+                "independent_fact_n_status": tuned["independent_fact_n_status"],
                 "bar": generative_bar,
                 "bar_status": tuned["overall"].get("bar_status"),
+                "independent_fact_bar_status": tuned["independent_fact_bar_status"],
                 "estimand": corpus.measurement_class,
             },
             # forced_choice filled by the dual-axis merger when both axes run.

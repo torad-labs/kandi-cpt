@@ -51,7 +51,7 @@ def test_execution_contract_matches_manifest() -> None:
             kinds = {check["kind"] for check in emitted["postconditions"]}
             assert kinds <= {"output_exists", "report_verdict", "jsonl_no_fail_verdict",
                              "json_field_positive", "tokenize_stats_sound", "split_integrity",
-                             "checkpoint_integrity"}, kinds
+                             "checkpoint_integrity", "probe_quarantine_sound"}, kinds
             existence = {check["path"] for check in emitted["postconditions"]
                          if check["kind"] == "output_exists"}
             assert existence == set(emitted["outputs"])
@@ -88,10 +88,21 @@ def test_execution_contract_matches_manifest() -> None:
     assert "resolve" in poke_ids
     assert "audit_recall" in poke_ids
     assert "dedup_surfaces" in poke_ids
+    assert "probe_quarantine" in poke_ids
     assert any(
         "--version" in " ".join(s["cmd"]) and "v2" in " ".join(s["cmd"])
         for s in contracts["pokemon-lore"]["stages"] if s["id"] == "split"
     )
+    for domain_name in ("pokemon-lore", "millbrook-hollow"):
+        quarantine = next(stage for stage in contracts[domain_name]["stages"]
+                          if stage["id"] == "probe_quarantine")
+        assert quarantine["effects"] == ["write"]
+        assert quarantine["outputs"] == [
+            f"data/_build/probe_quarantine/{domain_name}/**.json",
+            f"data/_build/probe_quarantine/report_{domain_name}.json",
+        ]
+        assert any(check["kind"] == "probe_quarantine_sound"
+                   for check in quarantine["postconditions"])
     for domain_name in ("pokemon-lore", "millbrook-hollow"):
         split = next(stage for stage in contracts[domain_name]["stages"] if stage["id"] == "split")
         assert split["outputs"]

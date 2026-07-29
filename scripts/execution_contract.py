@@ -291,6 +291,8 @@ _SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
     "tokenize": {"suffix": "_stats.json", "prefix": "",
                  "kind": "tokenize_stats_sound", "field": "num_chunks"},
     "split": {"suffix": ".json", "prefix": "split_", "kind": "split_integrity", "field": None},
+    "probe_quarantine": {"suffix": ".json", "prefix": "report_",
+                         "kind": "probe_quarantine_sound", "field": None},
     # The cpt output is a directory glob; the validator wants the directory itself.
     "cpt": {"suffix": "/**", "prefix": "", "kind": "checkpoint_integrity", "field": None,
             "strip_suffix": True},

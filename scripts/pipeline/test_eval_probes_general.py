@@ -196,6 +196,36 @@ def test_pilot_gate_fails_closed_on_small_n_and_weak_delta():
         assert any("accuracy delta" in failure for failure in report["failed_checks"])
 
 
+def test_gate_uses_independent_facts_not_repeated_probe_surfaces():
+    """Sixty prompt rows over fifteen facts are still an underpowered fifteen-fact eval."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        E.C.ROOT = root
+        corpus = _corpus(root, n=60)
+        for index, probe in enumerate(corpus.probes):
+            probe["source_triple_id"] = f"fact-{index // 4}"
+        checkpoint = _checkpoint(root, "clustered")
+        report = E.build_report(
+            run_name="clustered",
+            config_path=_config(root),
+            base_path="models/base",
+            tuned_path=str(checkpoint.relative_to(root)),
+            corpus=corpus,
+            base_hits=[False] * 60,
+            tuned_hits=[True] * 60,
+            min_n=50,
+            min_delta_acc=0.10,
+            config_fingerprint="fixture-fingerprint",
+            tokenized="data/_build/30_tokenized/pokemon_eval.arrow",
+        )
+        assert report["status"] == "FAIL"
+        assert report["tuned"]["n"] == 60
+        assert report["tuned"]["n_independent_facts"] == 15
+        assert report["tuned"]["n_status"] == "ok"
+        assert report["tuned"]["independent_fact_n_status"] == "insufficient-n"
+        assert any("independent fact denominator" in failure for failure in report["failed_checks"])
+
+
 def test_probe_loader_binds_every_item_to_the_hashed_holdout():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)

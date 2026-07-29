@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import training_probe as TP
 from eval_stats import rough_bound
+from eval_probes import summarize_hits
 
 
 def _row(step: int, loss: float, **families) -> dict:
@@ -159,6 +160,29 @@ def test_families_are_recorded_separately_and_never_merged() -> None:
     )
 
 
+def test_checkpoint_probe_summary_uses_independent_fact_counts() -> None:
+    probes = [
+        {
+            "question": f"q{i}",
+            "choices": ["a", "b"],
+            "answer": "a",
+            "predicate": "p",
+            "source_triple_id": f"fact-{i // 4}",
+        }
+        for i in range(60)
+    ]
+    summary = summarize_hits(probes, [True] * 60, min_n=50, estimand="training_probe:test")
+    row = TP.record(step=100, loss=1.0, scores={
+        "install": {
+            "hits": summary["independent_fact_hits"],
+            "n": summary["n_independent_facts"],
+            "acc": summary["independent_fact_acc"],
+        },
+    })
+    assert row["install"]["n"] == 15
+    assert rough_bound(row["install"]["n"]) > rough_bound(60)
+
+
 if __name__ == "__main__":
     test_too_little_trajectory_never_stops_a_run()
     test_healthy_progress_does_not_stop()
@@ -170,4 +194,5 @@ if __name__ == "__main__":
     test_a_family_that_was_not_measured_is_not_treated_as_passing()
     test_previously_installed_facts_must_not_be_traded_away()
     test_families_are_recorded_separately_and_never_merged()
+    test_checkpoint_probe_summary_uses_independent_fact_counts()
     print("OK — stops on measured learning, holds through noise, never merges the families")
