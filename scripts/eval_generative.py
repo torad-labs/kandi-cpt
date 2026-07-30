@@ -627,9 +627,17 @@ def summarize_generative(
     for item, ok in zip(items, hits_flags, strict=True):
         key = str(item.source_triple_id or item.index)
         cluster_hits.setdefault(key, []).append(ok)
-    fact_passes = [all(values) for values in cluster_hits.values()]
-    fact_hits = sum(fact_passes)
-    n_facts = len(fact_passes)
+    # CLUSTER SUMMARY, not an AND-collapse. Each fact contributes ONE observation: its own pass rate over the
+    # surfaces rendered for it. That keeps the fact-level statistic on the SAME scale as `chance` (a per-item
+    # floor) while the denominator counts independent facts, which is the whole point of clustering. Collapsing
+    # with all() instead would measure "known under EVERY phrasing" — a strictly harder property whose chance
+    # rate is chance**m, not chance — so comparing it to a per-item floor reads a phrasing-fragile model that
+    # knows every fact as knowing none. That number is still reported, as `phrasing_consistent_facts`, because
+    # it is a useful robustness diagnostic; it is never the gate.
+    fact_rates = [sum(values) / len(values) for values in cluster_hits.values()]
+    n_facts = len(fact_rates)
+    fact_hits = round(sum(fact_rates))
+    phrasing_consistent = sum(1 for values in cluster_hits.values() if all(values))
     overall = stamp_proportion(
         hits,
         n,
@@ -703,7 +711,12 @@ def summarize_generative(
         "independent_fact_rough_bound": fact_overall["rough_bound_half_over_sqrt_n"],
         "independent_fact_bar_status": fact_overall.get("bar_status"),
         "items_per_fact": round(n / n_facts, 3) if n_facts else 0.0,
-        "fact_pass_rule": "all scored surfaces for the source fact must pass",
+        "independent_fact_acc_exact": (sum(fact_rates) / n_facts) if n_facts else 0.0,
+        "phrasing_consistent_facts": phrasing_consistent,
+        "fact_pass_rule": (
+            "each fact contributes one observation: its pass rate over its own surfaces (cluster summary). "
+            "phrasing_consistent_facts counts facts correct under EVERY surface — a diagnostic, not the gate"
+        ),
         "acc": overall["acc"],
     }
 

@@ -373,9 +373,17 @@ def summarize_hits(
     for index, (probe, hit) in enumerate(zip(probes, hits, strict=True)):
         key = str(probe.get("source_triple_id") or probe.get("subject") or index)
         cluster_hits.setdefault(key, []).append(hit)
-    fact_passes = [all(values) for values in cluster_hits.values()]
-    fact_hits = sum(fact_passes)
-    n_clusters = len(fact_passes)
+    # CLUSTER SUMMARY, not an AND-collapse. Each fact contributes ONE observation: its own pass rate over the
+    # surfaces rendered for it. That keeps the fact-level statistic on the SAME scale as `chance` (a per-item
+    # floor) while the denominator counts independent facts, which is the whole point of clustering. Collapsing
+    # with all() instead would measure "known under EVERY phrasing" — a strictly harder property whose chance
+    # rate is chance**m, not chance — so comparing it to a per-item floor reads a phrasing-fragile model that
+    # knows every fact as knowing none. That number is still reported, as `phrasing_consistent_facts`, because
+    # it is a useful robustness diagnostic; it is never the gate.
+    fact_rates = [sum(values) / len(values) for values in cluster_hits.values()]
+    n_clusters = len(fact_rates)
+    fact_hits = round(sum(fact_rates))
+    phrasing_consistent = sum(1 for values in cluster_hits.values() if all(values))
     overall = stamp_proportion(
         total_hits,
         n,
@@ -413,7 +421,12 @@ def summarize_hits(
             "independent_facts_clear_bar": fact_overall.get("clears_bar"),
         } if bar is not None else {}),
         "items_per_fact": round(per_cluster, 3),
-        "fact_pass_rule": "all scored surfaces for the source fact must pass",
+        "independent_fact_acc_exact": (sum(fact_rates) / n_clusters) if n_clusters else 0.0,
+        "phrasing_consistent_facts": phrasing_consistent,
+        "fact_pass_rule": (
+            "each fact contributes one observation: its pass rate over its own surfaces (cluster summary). "
+            "phrasing_consistent_facts counts facts correct under EVERY surface — a diagnostic, not the gate"
+        ),
         "clustering_note": (
             "n counts probe ITEMS; n_independent_facts counts the gold facts they came from. "
             "With m items per fact the design effect is 1+(m-1)*rho, so the effective sample size "
