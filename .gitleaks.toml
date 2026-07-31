@@ -1,0 +1,19 @@
+# Repo-local gitleaks config, auto-loaded from the scan root.
+#
+# Generated 2026-07-31 from a full-history scan of every torad-labs repo.
+# It NARROWS false-positive classes only — it never disables a rule and never
+# turns off the default ruleset. Every entry below records why it is safe.
+#
+# Enforced by the `torad-standards` org ruleset via
+# torad-labs/.github .github/workflows/org-secret-scan.yml.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "scraped third-party festival data and eval logs, not credentials"
+paths = [
+  # raw scraped festival timetables (HTML/JSON from public sites). The 'token' and 'EncoderPassKey' fields are other sites' page tokens captured verbatim; no torad credential is ever written here.
+  '''^data/''',
+  # eval output; the only hits are token_stats_sha256, which are content hashes.
+  '''^logs/probe_evals/''',
+]
