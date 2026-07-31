@@ -12,6 +12,7 @@ import fcntl
 import glob
 import hashlib
 import json
+from collections import Counter
 import os
 import re
 import shutil
@@ -334,6 +335,10 @@ def _postcondition(spec: dict[str, Any]) -> dict[str, Any]:
         passed = bool(matched) and all(_tokenize_stats_ok(candidate, spec) for candidate in matched)
     elif kind == "json_field_positive":
         passed = bool(matched) and all(_json_field_positive(candidate, spec) for candidate in matched)
+    elif kind == "fact_concentration_sound":
+        # Concentration is a property of the CORPUS, not of any one unit file, so this checker
+        # takes every matched file at once rather than all()-ing per candidate.
+        passed = _fact_concentration_ok(matched, spec)
     elif kind == "split_integrity":
         passed = bool(matched) and all(_split_integrity_ok(candidate) for candidate in matched)
     elif kind == "probe_quarantine_sound":
@@ -471,6 +476,49 @@ def _tokenize_stats_ok(path: Path, spec: dict[str, Any]) -> bool:
         return False
     tolerance = float(spec.get("replay_tolerance", 0.02))
     return abs(float(realized) - float(requested)) <= tolerance
+
+
+def _fact_concentration_ok(paths: list[Path], spec: dict[str, Any]) -> bool:
+    """The extracted graph must not collapse onto a handful of predicates.
+
+    Every OTHER balance instrument in this engine reads the hydrated layer: relations
+    .dominance_max_frac caps hydrated surface FAMILIES (artist_to_stage, set_time, b2b_pairing),
+    and diversity_lib.effective_forms() takes texts. Hydration manufactures exactly the signal
+    they read — EDC turned 19,229 facts into 836,840 surfaces with 347,797 distinct six-token
+    openings — so a graph that is 95.53% two predicates passes every downstream diversity gate.
+    This reads the FACT layer, which nothing else does.
+
+    Fails CLOSED in all three "I could not tell" cases: no files, no parseable predicate rows, or
+    an undeclared cap. An undeclared cap is the important one — a domain that never declares
+    relations.dominance_max_frac would otherwise be silently exempt from the only check that can
+    see this, which is the "gate that audits nothing" failure this repo keeps paying for.
+    """
+    cap = spec.get("expect_max_top_share")
+    if not isinstance(cap, (int, float)) or not 0 < float(cap) <= 1:
+        return False
+    top_n = int(spec.get("top_n_predicates") or 2)
+    counts: Counter[str] = Counter()
+    for path in paths:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            return False
+        for line in text.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            predicate = row.get("predicate") if isinstance(row, dict) else None
+            if isinstance(predicate, str) and predicate:
+                counts[predicate] += 1
+    total = sum(counts.values())
+    if total <= 0:
+        return False
+    top_share = sum(n for _, n in counts.most_common(top_n)) / total
+    return top_share <= float(cap)
 
 
 def _split_integrity_ok(path: Path) -> bool:

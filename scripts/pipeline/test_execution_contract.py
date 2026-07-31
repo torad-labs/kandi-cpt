@@ -51,7 +51,8 @@ def test_execution_contract_matches_manifest() -> None:
             kinds = {check["kind"] for check in emitted["postconditions"]}
             assert kinds <= {"output_exists", "report_verdict", "jsonl_no_fail_verdict",
                              "json_field_positive", "tokenize_stats_sound", "split_integrity",
-                             "checkpoint_integrity", "probe_quarantine_sound"}, kinds
+                             "checkpoint_integrity", "probe_quarantine_sound",
+                             "fact_concentration_sound"}, kinds
             existence = {check["path"] for check in emitted["postconditions"]
                          if check["kind"] == "output_exists"}
             assert existence == set(emitted["outputs"])

@@ -291,6 +291,16 @@ _SEMANTIC_POSTCONDITIONS: dict[str, dict[str, Any]] = {
     "tokenize": {"suffix": "_stats.json", "prefix": "",
                  "kind": "tokenize_stats_sound", "field": "num_chunks"},
     "split": {"suffix": ".json", "prefix": "split_", "kind": "split_integrity", "field": None},
+    # The fact layer's own shape. Every diversity and balance instrument in this engine reads the
+    # HYDRATED layer — dominance_max_frac caps surface families, effective_forms() takes texts —
+    # so a graph that is functionally one relation arrives at training wearing the costume of a
+    # rich one and no gate downstream can tell. Measured on EDC: in_lineup 59.60% + plays_at
+    # 35.93% = 95.53% of 19,229 facts, against pokemon-lore 28.54% and millbrook-hollow 30.00%.
+    # Checked HERE because this is the last stage where the fix is cheap: after hydrate the
+    # concentration is baked into ~43 surfaces per fact and rebalancing provably cannot undo it
+    # (phase_h7b, phase_r1). Only triples.jsonl — entities.jsonl shares the suffix.
+    "structured": {"suffix": "triples.jsonl", "prefix": "",
+                   "kind": "fact_concentration_sound", "field": None},
     "probe_quarantine": {"suffix": ".json", "prefix": "report_",
                          "kind": "probe_quarantine_sound", "field": None},
     # The cpt output is a directory glob; the validator wants the directory itself.
@@ -321,6 +331,14 @@ def _semantic_postconditions(stage_name: str, outputs: list[str],
                      "kind": rule["kind"], "path": path}
         if rule.get("field"):
             condition["field"] = rule["field"]
+        if rule["kind"] == "fact_concentration_sound":
+            # The cap travels WITH the check, same as checkpoint_integrity's recipe: the domain
+            # already declares relations.dominance_max_frac, which was only ever applied to
+            # hydrated surface families. An undeclared cap is emitted as None and fails CLOSED
+            # downstream — "I could not tell" is never "it passed".
+            relations = getattr(domain, "spec", {}).get("relations") or {}
+            condition["expect_max_top_share"] = relations.get("dominance_max_frac")
+            condition["top_n_predicates"] = 2
         if rule["kind"] == "checkpoint_integrity":
             # The approved recipe travels WITH the check: the validator compares the trainer's own
             # run_contract against what the config declared, so "valid artifact" and "the run we
