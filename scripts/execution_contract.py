@@ -327,8 +327,22 @@ def _semantic_postconditions(stage_name: str, outputs: list[str],
             if not (name.endswith(rule["suffix"]) and name.startswith(rule["prefix"])):
                 continue
             path = output
-        condition = {"check": f"{stage_name} produced a valid artifact at {path}",
-                     "kind": rule["kind"], "path": path}
+        check_text = f"{stage_name} produced a valid artifact at {path}"
+        if rule["kind"] == "fact_concentration_sound":
+            # A boolean tells the driver something is wrong; it cannot tell it what to DO. This
+            # stage's failure has a specific, counter-intuitive remedy — breadth of relation TYPES,
+            # never more rows — and the doctrine lives in the playbook the driver can read. Route
+            # there in the check text, because the check text is what a failing record surfaces.
+            check_text = (
+                f"{stage_name}: the top-2 predicate share of {path} stays within the domain's "
+                f"declared relations.dominance_max_frac. A graph that collapses onto a couple of "
+                f"predicates installs those predicates no matter how much text is hydrated from "
+                f"it, and every diversity gate downstream reads the hydrated layer, so nothing "
+                f"else can see this. If it fails, the lever is extraction BREADTH — more relation "
+                f"types — and never more rows: read cpt/04-structured.md before acting, and "
+                f"cpt/06-improve.md for why rebalancing after hydrate cannot undo it."
+            )
+        condition = {"check": check_text, "kind": rule["kind"], "path": path}
         if rule.get("field"):
             condition["field"] = rule["field"]
         if rule["kind"] == "fact_concentration_sound":
