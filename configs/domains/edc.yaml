@@ -13,6 +13,12 @@ recipe_profile: bespoke_facts
 supports:
   # Accurate per stage, not a blanket profile: hydrate is bespoke (rehydrate_vc1.sh) but the
   # contrast stage really does run generic_contrast.py, and plan_install refuses the mismatch.
+  #
+  # DELIBERATELY PARTIAL, and measured to be a no-op to complete: domain.py:57-58 seeds supports from
+  # RECIPE_PROFILES[recipe_profile] and then .update()s it with this block, so all four capabilities
+  # already resolve (generic_hydrate:false, contrast:true, reasoning:false, sft:true). plan_install.py:145
+  # only rejects UNKNOWN keys; it never requires completeness. Spelling the inherited three out here
+  # would produce a byte-identical resolved dict. Do not "complete" it.
   contrast: true
 
 name: edc
@@ -94,6 +100,31 @@ stages:
     desc: "entity canonicalization (alias merge; continuity hard wall) before split"
     cmd: ["{py}", "scripts/pipeline/resolve_entities.py", "--domain", "{domain}", "--editions", "{editions}"]
     gpu: true
+  # STAYS v2 ON PURPOSE. 50 of 98 editions ALSO carry a split_v3.json, and v3 is a different eval
+  # SERIES, not a refresh: 35 of those 50 hold a genuinely different holdout set from their v2
+  # (las_vegas/2012 holds out 16 at v2 and 17 at v3); the other 15 are identical. What moved is
+  # alias closure. Every v3 file records a NON-ZERO meta.id_map_size, and it is not uniform — 21 of
+  # the 50 read 1, 29 read more, the largest is 15 — while the supersedes_v2 block beside it records
+  # 0, which is the size of the cut being REPLACED and not the v3's own. The v3 series_note names
+  # the root cause: v2's loader keyed on ed_dir.name, the YEAR only, so EDC's nested city/year units
+  # never closed at all. Re-derive before re-judging, with a TWO-level path —
+  # `find data/edc -maxdepth 4 -name split_v3.json` — never `data/edc/*/splits/*.json`, which
+  # matches nothing and still exits 0.
+  #
+  # None of that is the reason the stage stays v2, though; the reason is mechanical. The
+  # declaration is what plan_install._split_status checks per unit: declared v2 leaves 1 missing unit
+  # (las_vegas/2026, which has no splits/ dir at all), declared v3 leaves 48. Re-declaring without
+  # re-cutting all 98 units multiplies the gap 48x, and because load_split prefers v3 > v2 > v1 it
+  # silently changes which holdout every downstream consumer reads — an eval-series change, not a
+  # line edit. A v3 migration is an operator-approved campaign.
+  #
+  # SEPARATE FINDING, recorded here because this is where it is visible, NOT fixed here: two
+  # subsystems already disagree about which series is live. derive_plan.py:499-515 calls
+  # load_split(ed.dir) with version=None, so the preference order picks v3, takes the FIRST unit
+  # that has any split, and breaks — today that is las_vegas/2011 @ v3 (holdout 13, train 123). So
+  # holdout_fact_pool=13 and resolvable_effect_size=0.538 are ONE unit's v3 holdout reported as the
+  # whole domain's estimand, while the readiness check above pins v2. Neither number is a manifest
+  # bug; both need their own item.
   - name: split
     desc: "immutable split_v2.json — alias+inverse-closed TRAIN vs HOLDOUT (NEW eval series for EDC)"
     cmd: ["{py}", "scripts/pipeline/split.py", "--domain", "{domain}", "--editions", "{editions}", "--version", "v2"]
@@ -122,6 +153,13 @@ stages:
     desc: "eval items — forced-choice probes over held-out triples (the eval-axis skeleton)"
     cmd: ["{py}", "scripts/pipeline/generic_probes.py", "--domain", "{domain}", "--editions", "{editions}", "--surfaces-per-gold", "4"]
     gpu: false
+  # probe_quarantine is NOT declared for EDC, and that is a measured refusal, not an oversight.
+  # Its only floor channel is generic_expand.predicate_templates, which is {} for EDC (pokemon-lore
+  # 18, millbrook-hollow 16), so every unit reports instrument_blind: the stage HAS run for EDC
+  # (data/_build/probe_quarantine/report_edc.json, 97 units scanned / 0 measured / 97 blind, per
+  # logs/phase_r6_floor_holdout_leak.json) and run_stage._probe_quarantine_ok is False on it, so
+  # declaring the stage would attach a probe_quarantine_sound postcondition that can never pass.
+  # Blocked on an EDC-side floor detector, which phase_r6 already calls a separate item.
   - name: audit_recall
     desc: "extraction coverage gate (provider) — FAIL → re-extract, not re-train"
     cmd: ["{py}", "scripts/pipeline/audit_recall.py", "--domain", "{domain}", "--editions", "{editions}", "--min-coverage", "0.6"]
@@ -132,7 +170,13 @@ stages:
     gpu: false
   - name: tokenize
     desc: "30_tokenized — pack clean+hydrated+replay → Arrow + lever metadata"
-    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "edc", "--seq-len", "512", "--replay-frac", "0.10", "--out", "{corpus}"]
+    # --replay-to-domain-ratio replaces the deprecated --replay-frac alias (tokenize_corpus.py:268-284:
+    # identical semantics, assigned straight through, so NO number changes — the only observable delta
+    # is that the [warn] line stops printing). The value is replay tokens per DOMAIN token, NOT a share
+    # of the final mixture: 0.10 realizes 0.10/1.10 = 9.09%. Receipt, not a claim — the shard already on
+    # disk measures 784,936 replay / 8,634,302 total = 9.0909%
+    # (data/_build/30_tokenized/corpus_all97_v2_stats.json).
+    cmd: ["{py}", "scripts/tokenize_corpus.py", "--domain", "edc", "--seq-len", "512", "--replay-to-domain-ratio", "0.10", "--out", "{corpus}"]
     gpu: false
   - name: cpt
     desc: "continued pretraining (FP4 + int8-master). CONFIG-ONLY — save_dir/tokenized live in {cpt}."
@@ -166,41 +210,86 @@ entity_types:
 #     (insertion order preserved), so the extraction prompt is unchanged. `object` declares the entity_types an
 #     object id may be (`[literal]` = a free value); a predicate with NO `object` key is unconstrained (the gate
 #     skips it — we only enforce the contracts we've written). `plays_at` is the load-bearing contract.
+#
+#     `tier` is the ROUTING tier (hot|stable|proven — the only three tier_routing.py:28 accepts; anything
+#     else fails closed at load). Undeclared defaults to `hot`, and hot NEVER reaches a train shard, so a
+#     facts domain declaring a CPT route and no tiers routes everything to retrieval and installs nothing.
+#     Do NOT confuse it with the `has_tier` PREDICATE below (a festival's ticket/access tier) or with
+#     provenance.tier_for(), the numeric SOURCE-TRUST tier extract_structured.py:299 compares to --min-tier.
+#     Three different things named "tier"; only this one routes knowledge.
+#
+#     THE RULE APPLIED HERE: `stable` when the fact's truth is FIXED once its edition is defined —
+#     which is nearly everything, because every EDC triple is scoped to one city/year edition and a
+#     2011 lineup does not change retroactively. `hot` when the value is live operational state that
+#     moves WITHIN the edition it describes, where a stale weight-baked answer is actively harmful
+#     (someone sent to a closed gate). That is a volatility test, not a "[literal] object" test:
+#     proximity_meters is a literal and is stable because a measured distance does not move.
+#     `proven` is NOT USED — it means usage-evidenced, digest-approved, and EDC has no usage evidence;
+#     inventing it here would be a claim with no receipt.
+#
+#     MEASURED COST OF THE HOT SET, so nobody reads it as a big call: over all 98 editions'
+#     15_structured/triples.jsonl there are 19,229 triple rows across 25 distinct predicates. The four
+#     hot predicates hold 1 row between them (operating_hours x1; gets_busy_at, peak_density and
+#     service_constraint have zero), i.e. 0.005%. in_lineup (11,461) and plays_at (6,909) are 95.5% of
+#     the mass and are both stable, so the install route carries essentially everything.
+#
+#     EFFECT OF DECLARING THESE, stated exactly: NO data artifact changes — not 15_structured, not
+#     25_hydrated, not the tokenized shard. Outside tier_routing.py itself, the ONLY consumer of
+#     filter_triples_by_tier / load_predicate_tiers in the engine is generic_expand.py:227-231, the
+#     GENERIC hydrate stage, and EDC's hydrate is `bash scripts/rehydrate_vc1.sh`, which never calls
+#     it. (tier_routing's own entry points read them too — derivation_rows, assert_style_all_stable
+#     and the --audit-shard/--build-hot-index CLI — but none of those is a declared EDC stage.) So
+#     EDC's declared pipeline contains zero tier consumers today. The effects: the
+#     RECIPE_COMPLETE verdict, the derive_plan/certificate derivation tables, any FUTURE
+#     migration of EDC to the generic hydrate path — AND the recipe identity itself. Editing this
+#     manifest at all, comments included, moves EDC's build id: run_stage.recipe_read_set
+#     (scripts/run_stage.py:99,111-112) content-addresses this FILE and build_identity (:137)
+#     hashes that read set. A moved build id surfaces in INPUTS_ADMITTED (attestation is keyed to
+#     the build id — a record for another build does not count) and TRAINING_READY (stage records
+#     live under the build id). Re-running `structured` applies no predicate tier at all.
+#     REVERT SEMANTICS, stated exactly: reverting the tier hunk alone restores the tier
+#     assignment, the gap count and the test verdict — but yields a THIRD build id, not the
+#     pre-patch one. A byte-exact identity restore means reverting the whole file.
 predicates:
-  walk_time_to:        { object: [stage, venue, landmark, gate, camping_zone, transit_node] }
-  adjacent_to:         { object: [stage, venue, landmark, gate, camping_zone] }
-  bounded_by:          {}
-  visible_from:        {}
-  proximity_meters:    { object: [literal] }
-  plays_at:            { object: [stage, set, venue] }          # NOT festival/edition — the masquerade bug
-  in_lineup:           { object: [festival, edition] }          # plays_at's coarse fallback: in the lineup, stage unknown
-  conflicts_with:      {}
-  precedes:            {}
-  gets_busy_at:        { object: [literal] }
-  peak_density:        { object: [literal] }
-  has_tier:            {}
-  recommended_for:     {}
-  tradeoff_with:       {}
-  substitutes_for:     {}
-  causes_density_at:   { object: [stage, venue, landmark] }
-  correlates_with:     {}
-  mitigates:           { object: [incident_class, policy] }
-  prerequisite_for:    {}
-  practiced_by:        { object: [community] }
-  originates_from:     {}
-  signals_membership:  { object: [community] }
-  serves:              {}
-  located_at:          { object: [venue, landmark, stage, gate] }
-  operating_hours:     { object: [literal] }
-  service_constraint:  { object: [literal] }
-  prohibits:           {}
-  requires:            {}
-  succeeded_by:        { object: [edition] }
-  differs_from:        {}
-  incident_occurred:   { object: [incident_class] }
-  structurally_similar: {}
-  belongs_to_class:    { object: [incident_class, festival, edition] }
-  inherits_norms_from: { object: [edition, festival] }
+  # Order is UNCHANGED (it is the prompt's predicate enum). Only a `tier:` key is added per entry;
+  # no `guidance:` is added, because guidance IS rendered into Ontology.system() and EDC's empty
+  # guidance map is what keeps the extraction prompt byte-identical.
+  walk_time_to:        { object: [stage, venue, landmark, gate, camping_zone, transit_node], tier: stable }
+  adjacent_to:         { object: [stage, venue, landmark, gate, camping_zone], tier: stable }
+  bounded_by:          { tier: stable }
+  visible_from:        { tier: stable }
+  proximity_meters:    { object: [literal], tier: stable }      # a measured distance; literal but not volatile
+  plays_at:            { object: [stage, set, venue], tier: stable }          # NOT festival/edition — the masquerade bug
+  in_lineup:           { object: [festival, edition], tier: stable }          # plays_at's coarse fallback: in the lineup, stage unknown
+  conflicts_with:      { tier: stable }
+  precedes:            { tier: stable }
+  # HOT — live operational state, moves within the edition it describes; retrieval only, never trained.
+  gets_busy_at:        { object: [literal], tier: hot }
+  peak_density:        { object: [literal], tier: hot }
+  has_tier:            { tier: stable }                         # a ticket/access tier, NOT the routing tier
+  recommended_for:     { tier: stable }
+  tradeoff_with:       { tier: stable }
+  substitutes_for:     { tier: stable }
+  causes_density_at:   { object: [stage, venue, landmark], tier: stable }
+  correlates_with:     { tier: stable }
+  mitigates:           { object: [incident_class, policy], tier: stable }
+  prerequisite_for:    { tier: stable }
+  practiced_by:        { object: [community], tier: stable }
+  originates_from:     { tier: stable }
+  signals_membership:  { object: [community], tier: stable }
+  serves:              { tier: stable }
+  located_at:          { object: [venue, landmark, stage, gate], tier: stable }
+  # HOT — announced-then-revised operational parameters; a stale answer sends someone to a closed gate.
+  operating_hours:     { object: [literal], tier: hot }
+  service_constraint:  { object: [literal], tier: hot }
+  prohibits:           { tier: stable }
+  requires:            { tier: stable }
+  succeeded_by:        { object: [edition], tier: stable }
+  differs_from:        { tier: stable }
+  incident_occurred:   { object: [incident_class], tier: stable }
+  structurally_similar: { tier: stable }
+  belongs_to_class:    { object: [incident_class, festival, edition], tier: stable }
+  inherits_norms_from: { object: [edition, festival], tier: stable }
 
 # (C) relation taxonomy + BALANCE TARGETS + the per-fact EXPOSURE CAP (catches defects #1 monoculture & #2 runaway).
 #     `needs` is the SOURCE-GAP key: when a relation is missing/thin, gate_source_vs_gap probes these artifacts —

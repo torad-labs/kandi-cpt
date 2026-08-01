@@ -31,7 +31,8 @@
       "objection": "configs/domains/edc.yaml comment claims the 50 v3 splits carry a non-empty id_map",
       "ruling": "PARTLY_VALID",
       "reviewer_command_was_wrong": "checked top-level 'id_map' and supersedes_v2.id_map_size; neither is the field",
-      "measured_truth": "meta.id_map_size == 1 on all 50; supersedes_v2.id_map_size == 0 on all 50 (that is the SUPERSEDED v2's size)",
+      "measured_truth": "meta.id_map_size is NON-ZERO on all 50 v3 splits but is NOT uniform: 21 of 50 read 1, 29 read more, the largest is 15, none is 0. supersedes_v2.id_map_size == 0 on all 50 (that is the SUPERSEDED v2's size \u2014 the inert alias closure the v3 re-cut fixed).",
+      "measured_truth_SUPERSEDED_2026-07-31": "WAS: 'meta.id_map_size == 1 on all 50; supersedes_v2.id_map_size == 0 on all 50 (that is the SUPERSEDED v2's size)'. The FIRST clause is wrong, and wrong the same way law L6 was: it generalized a las_vegas/2012 spot-check (which does read 1) to all 50. Re-measured over `find data/edc -maxdepth 4 -name split_v3.json` -> Counter({1: 21, 2: 9, 3: 5, 5: 4, 4: 2, 7: 2, 6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 13: 1, 15: 1}). The SECOND clause is correct and stands.",
       "orchestrator_law_L6_was_also_wrong": "'all 50 carry a non-empty id_map' is technically true (1>0) but misleading; it rode into all 22 agents",
       "substantive_replacement_claim_CONFIRMED": "15 of 50 dual units have an identical holdout set, 35 DIFFER (las_vegas/2012 v2 16 -> v3 17). THAT is why v3 is a different eval series, not the id_map."
     },

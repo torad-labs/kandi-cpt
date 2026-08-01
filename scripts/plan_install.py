@@ -185,9 +185,15 @@ def _recipe_state(domain: Domain, editions: str) -> dict[str, Any]:
     # Predicate tiers. Undeclared defaults to `hot`, which is the right fail-closed default
     # (misroute-to-hot is cheap, misroute-to-weights is a governance incident) — but hot NEVER
     # reaches the hydrate/tokenize train shard. A facts domain that declares a CPT route while
-    # declaring NO tiers therefore routes every predicate to retrieval and installs nothing. EDC is
-    # the live case: 34 of 34 undeclared. Latent today because its bespoke hydrate bypasses the
-    # filter, and armed the moment it moves to the generic path.
+    # declaring NO tiers therefore routes every predicate to retrieval and installs nothing. EDC was
+    # the live case at 34 of 34 undeclared and is now reconciled (30 stable / 4 hot). Of the 11
+    # manifests in configs/domains it was the ONLY one this check flagged, so the check now flags
+    # none — which is why the negative case lives in test_recipe_profiles.py as a synthetic strip
+    # rather than as whichever manifest happens to still be broken. (_selftest.yaml does leave 3
+    # predicates undeclared, but declares no tokenize stage, so this branch never reaches it.)
+    # KNOWN HOLE, not closed here: the gap fires only on ALL-undeclared, so declaring one predicate
+    # silences it while the other N-1 still route to hot. Widening it is a behaviour change for
+    # every domain and needs its own item; the fixture pins declared == total meanwhile.
     if getattr(domain, "kind", "facts") == "facts" and "tokenize" in stage_names:
         predicates = domain.spec.get("predicates") or {}
         declared = {name for name, meta in predicates.items() if (meta or {}).get("tier")}
