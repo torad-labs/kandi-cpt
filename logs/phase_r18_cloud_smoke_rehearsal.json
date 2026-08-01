@@ -31,7 +31,7 @@
   ],
   "paid_run_ready": {
     "vast_ssh_key": "registered on the account (id 1165879, qgre-cloud-smoke)",
-    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/torad-labs/conductor-trainer@sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5 QGRE_CLOUD_REGISTRY_LOGIN=\"$(secret-tool lookup service vastai-registry)\" QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
+    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/torad-labs/conductor-trainer@sha256:0a3c5ec3ca0704b3cee1c13e818c4689a70b221819c17d8488ce8d085bb136f3 QGRE_CLOUD_REGISTRY_LOGIN=\"$(secret-tool lookup service vastai-registry)\" QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
     "expected": "post_install DONE with >=1 metric rows (the paid arm asserts it), teardown + no conductor-labeled instance left billing",
     "still_unarbitrated_until_paid": [
       "vast ssh_direct plumbing to the image's own sshd",
@@ -42,6 +42,7 @@
   },
   "registry_correction_2026_08_01": {
     "what": "the first push went PUBLIC-intent to a personal namespace (ghcr.io/marcospaulo) \u2014 wrong on both axes for an image carrying the moat kernels + model weights. Corrected: the image lives at ghcr.io/torad-labs/conductor-trainer:smoke (org-owned, PRIVATE, digest sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5, blobs cross-repo mounted so no re-upload), and conductor 3b442df6 adds the image_login seam so vast authenticates its pull \u2014 the image never needs to be public",
-    "leftover": "the private ghcr.io/marcospaulo/conductor-trainer package could not be API-deleted (needs delete:packages); it is private and inert \u2014 delete via the package UI when convenient"
+    "leftover": "the private ghcr.io/marcospaulo/conductor-trainer package could not be API-deleted (needs delete:packages); it is private and inert \u2014 delete via the package UI when convenient",
+    "fine_grained_linkage": "re-pushed with org.opencontainers.image.source=github.com/torad-labs/conductor-app so the package is repo-linked (fine-grained PATs reach ghcr only through a linked repo); NEW digest sha256:0a3c5ec3ca0704b3cee1c13e818c4689a70b221819c17d8488ce8d085bb136f3 (label-only change, layers + host-key fingerprint unchanged)"
   }
 }
