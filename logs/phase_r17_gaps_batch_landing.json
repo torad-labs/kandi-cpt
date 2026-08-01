@@ -44,5 +44,20 @@
   "still_operator_owned": [
     "the paid vast.ai smoke (push the image, set QGRE_CLOUD_TRAINING_IMAGE, one ~$1 launch)",
     "the eval re-baseline on Gemini (queued as the orchestrator's next serial step)"
-  ]
+  ],
+  "in_container_addendum_2026_08_01": {
+    "image": "conductor-trainer:aloop-final f890306be96f (engine 9017fde5, dirty=false)",
+    "first_run": "run_tests.sh in-container: 60 PASS, 4 FAIL, exit 1 (my first check read exit 0 through a tail pipe \u2014 the same vacuity class the harness documents; reran with the true code)",
+    "triage": {
+      "absent_host_artifact_by_design": [
+        "check_artifact_precision.sh (scans checkpoints/ \u2014 weights are never baked)",
+        "test_plan_install (REQUIRED model_path points at the host model dir)",
+        "test_selftest_domain_e2e (same model_path)"
+      ],
+      "real_defect": "test_execution_contract: contract.engine.commit was null in-container \u2014 the image bakes /opt/qgre/ENGINE_COMMIT but _git_identity() never read it, so a rented-box run would carry no engine provenance"
+    },
+    "fix": "_git_identity(root=C.ROOT) falls back to _baked_identity: parses commit=/dirty= from <engine parent>/ENGINE_COMMIT, rejects the ARG default 'unknown' and non-sha values",
+    "proof": "new test red on unmodified HEAD (TypeError: no root param) AND red under a disarmed-fallback mutant (AssertionError); green after; host suite all green",
+    "expected_in_container_after_rebuild": "61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list above"
+  }
 }

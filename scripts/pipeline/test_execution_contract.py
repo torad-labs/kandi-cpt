@@ -138,6 +138,36 @@ def test_execution_contract_matches_manifest() -> None:
         raise AssertionError("unknown stages defaulted to write instead of failing closed")
 
 
+def test_git_identity_falls_back_to_the_baked_engine_stamp() -> None:
+    """The cloud image ships no .git; the build stamps <engine parent>/ENGINE_COMMIT. Without the
+    fallback every in-container stage record carries commit=null — a rented-box training run would
+    arrive home with no engine provenance (observed: this module red in conductor-trainer)."""
+    import tempfile
+    from pathlib import Path
+
+    from execution_contract import _git_identity
+
+    sha = "9017fde5d3b73c56fd9a246599964832bed9df21"
+    with tempfile.TemporaryDirectory() as tmp:
+        engine = Path(tmp) / "kandi-cpt"
+        engine.mkdir()
+        stamp = Path(tmp) / "ENGINE_COMMIT"
+
+        # no .git above system tmp and no stamp file -> identity is honestly unknown
+        assert _git_identity(root=engine) == (None, None)
+
+        stamp.write_text(f"commit={sha}\ndirty=false\n")
+        assert _git_identity(root=engine) == (sha, False)
+
+        stamp.write_text(f"commit={sha}\ndirty=true\n")
+        assert _git_identity(root=engine) == (sha, True)
+
+        # the Dockerfile's ARG default must never masquerade as provenance
+        stamp.write_text("commit=unknown\ndirty=unknown\n")
+        assert _git_identity(root=engine) == (None, None)
+
+
 if __name__ == "__main__":
     test_execution_contract_matches_manifest()
+    test_git_identity_falls_back_to_the_baked_engine_stamp()
     print("OK — execution contract matches manifest GPU flags and egress providers")

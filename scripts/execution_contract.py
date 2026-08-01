@@ -153,25 +153,41 @@ REQUIRED_PLAYBOOKS = {
 }
 
 
-def _git_identity() -> tuple[str | None, bool | None]:
+def _git_identity(root: Path = C.ROOT) -> tuple[str | None, bool | None]:
     try:
         commit = subprocess.run(
             ["git", "rev-parse", "HEAD"],
-            cwd=C.ROOT,
+            cwd=root,
             check=True,
             capture_output=True,
             text=True,
         ).stdout.strip()
         status = subprocess.run(
             ["git", "status", "--porcelain"],
-            cwd=C.ROOT,
+            cwd=root,
             check=True,
             capture_output=True,
             text=True,
         ).stdout
         return commit, bool(status.strip())
     except (OSError, subprocess.CalledProcessError):
+        return _baked_identity(root)
+
+
+def _baked_identity(root: Path) -> tuple[str | None, bool | None]:
+    """The cloud image ships the engine without .git; docker/build-cloud-trainer.sh stamps the
+    build-time identity into <engine parent>/ENGINE_COMMIT instead (commit=<sha>\\ndirty=<bool>).
+    Without this fallback every in-container stage record and contract carries commit=null — a
+    training run on a rented box would arrive home with no engine provenance."""
+    try:
+        text = (root.parent / "ENGINE_COMMIT").read_text()
+    except OSError:
         return None, None
+    fields = dict(line.split("=", 1) for line in text.splitlines() if "=" in line)
+    commit = fields.get("commit", "").strip()
+    if len(commit) != 40 or any(c not in "0123456789abcdef" for c in commit):
+        return None, None  # covers the Dockerfile's ARG default "unknown" and truncation
+    return commit, {"true": True, "false": False}.get(fields.get("dirty", "").strip())
 
 
 def _uses_llm(command: list[str]) -> bool:
