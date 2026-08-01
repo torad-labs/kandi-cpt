@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -968,6 +970,351 @@ def test_clean_unfiltered_arm_reports_the_contract_reject_mass():
         assert report["clean_unfiltered"]["ratio"] == 0.8
         assert report["reject_reasons"].get("object_type_mismatch") == 10, report["reject_reasons"]
         assert report["raw"]["n"] == 10
+
+
+# ── the replay-determinism lock ──────────────────────────────────────────────────────────────
+# Replay reproducibility is the WHOLE point of the fixture: --facts-json exists so a later
+# iteration re-runs the identical assertion set and any movement is attributable to the graph
+# alone. That property holds on HEAD but nothing gates it, so a later change that serializes a
+# SET, a sampler draw, a uuid or a TIMESTAMP into the report would destroy it silently and every
+# number after it would be uncomparable in a way no existing test can see.
+#
+# THREE SEPARATE PROCESSES at DIFFERENT PYTHONHASHSEED, comparing BYTES ON DISK — not calls in
+# one interpreter. Set iteration order over strings is a function of the per-process hash seed,
+# so a set leaking into the report is IDENTICAL on two in-process calls and only diverges across
+# processes. Not hypothetical in this tree: test_dedup_surfaces.py:58 guards the same class after
+# a live `hash(text)` leak wrote dedup keys tokenize_corpus could never reproduce (8063 stored
+# exclusions, ZERO whole-key matches). This mirrors that test's shape, including its three seeds.
+#
+# The corpus is deliberately WIDE (6 documents, 3 sampled, 38 fixture entries) — but wide for
+# the FIXTURE-KEY collections only (assertions, per-doc keys, coverage rows). The happy path
+# leaves missing_sample / judge_rejected_sample / out_of_unit_sample / reject_reasons all EMPTY,
+# and a set of size <= 1 iterates identically under every hash seed, so this arm alone cannot
+# catch a leak in the FAILURE-path collections. That is what the wide-MISS arm below exists for:
+# a 30-doc unit whose fixture covers one doc drives n_docs_missing >= 20, making the miss-path
+# sets wide enough that seed-dependent iteration would show. Neither arm covers everything;
+# together they cover both families.
+_REPLAY_WORKER = '''
+import json
+import sys
+from pathlib import Path
+from types import SimpleNamespace
+
+# SHIFTED CLOCK, a DIFFERENT epoch per worker, installed BEFORE audit_recall is imported so a
+# `from datetime import date` inside it binds the fake too. Without it the lock is blind to
+# COARSE timestamps: the replays run milliseconds apart, so a date-, hour- or year-granularity
+# stamp is byte-identical today and destroys the property the moment the next iteration runs on
+# another day — the multi-week cadence the coverage campaign runs on. The clock is SHIFTED, not
+# frozen: it still ticks, so an elapsed-duration leak (`time.time() - t0`) stays nondeterministic
+# and stays caught, which a hard-frozen clock would silently collapse to a constant 0.0.
+import datetime as _dt
+import time as _time
+_real_time = _time.time
+_OFFSET = float(sys.argv[5]) - _real_time()
+_time.time = lambda: _real_time() + _OFFSET
+_real_localtime, _real_gmtime = _time.localtime, _time.gmtime
+_real_strftime, _real_ctime, _real_asctime = _time.strftime, _time.ctime, _time.asctime
+_time.localtime = lambda t=None: _real_localtime(_time.time() if t is None else t)
+_time.gmtime = lambda t=None: _real_gmtime(_time.time() if t is None else t)
+# time.strftime(fmt) resolves its default tuple in C, not via the module attribute, so each
+# entry point is wrapped individually — patching localtime alone leaves strftime on the real clock.
+_time.strftime = lambda f, t=None: _real_strftime(f, _real_localtime(_time.time()) if t is None else t)
+_time.ctime = lambda t=None: _real_ctime(_time.time() if t is None else t)
+_time.asctime = lambda t=None: _real_asctime(_real_localtime(_time.time()) if t is None else t)
+_time.time_ns = lambda: int(_time.time() * 1_000_000_000)
+
+
+class _ShiftedDateTime(_dt.datetime):
+    @classmethod
+    def now(cls, tz=None):
+        return cls.fromtimestamp(_time.time(), tz)
+
+    @classmethod
+    def utcnow(cls):
+        return cls.fromtimestamp(_time.time(), _dt.timezone.utc).replace(tzinfo=None)
+
+    @classmethod
+    def today(cls):
+        return cls.fromtimestamp(_time.time())
+
+
+class _ShiftedDate(_dt.date):
+    @classmethod
+    def today(cls):
+        return cls.fromtimestamp(_time.time())
+
+
+_dt.datetime = _ShiftedDateTime
+_dt.date = _ShiftedDate
+
+import config as C
+import pipeline.audit_recall as A
+
+root = Path(sys.argv[1])
+C.ROOT = root
+C.BUILD = root / "data" / "_build"
+A.iter_editions = lambda *a, **k: [SimpleNamespace(slug="u", dir=root / "data" / "dom" / "u")]
+
+
+def _forbidden(*a, **k):
+    raise AssertionError("replay consulted the judge")
+
+
+def _no_network(*a, **k):
+    raise AssertionError("replay opened a network connection")
+
+
+# The ONLY egress point in run_audit is _judge_facts (audit_recall.py:1597, the sole caller of
+# try_resolve_provider). Do NOT swap this for scrubbing $OPENROUTER_API_KEY: llm_provider.py also
+# resolves the key from `secret-tool lookup service=openrouter`, so scrubbing looks like
+# protection and is not. This class has already fired for real in this repo — a red-proof that
+# deleted the replay guard made the suite issue live HTTP requests from inside the gate sweep.
+assert hasattr(A, "_judge_facts"), "the judge entry point moved - this tripwire is stale"
+A._judge_facts = _forbidden
+# Belt and braces, because one arm below deliberately drives the LIVE path to prove the tripwire
+# above is reachable rather than decorative. A future rename of the judge entry point would turn
+# that arm into real provider egress from inside run_tests.sh, so the TRANSPORT is stopped too:
+# urllib.request.urlopen is the only one audit_recall uses (:1646) and socket.socket is under it.
+import socket as _socket
+import urllib.request as _urlreq
+_urlreq.urlopen = _no_network
+_socket.socket = _no_network
+
+# A worker that does not write its own artifacts would silently compare a PREVIOUS worker's file
+# with itself, so a total non-write would read as perfectly reproducible. Delete first: a
+# non-write is then a loud FileNotFoundError.
+report_path = C.BUILD / "recall" / "report_dom.json"
+unit_path = C.BUILD / "recall" / "dom" / "u.json"
+report_path.unlink(missing_ok=True)
+unit_path.unlink(missing_ok=True)
+
+facts_json = None if sys.argv[6] == "-" else root / sys.argv[6]
+A.run_audit("dom", None, min_coverage=0.6, sample_n=int(sys.argv[7]), facts_json=facts_json)
+if len(sys.argv) > 8 and sys.argv[8] == "inject-stamps":
+    # The two calendar forms the shim widening + non-day-aligned stride exist to catch: a date
+    # stamp (moves on the 400-day component) and a seconds-of-day stamp (moves on the 3661s
+    # component). Injected AFTER scoring so the probe perturbs only the artifact under comparison.
+    _probe = json.loads(report_path.read_text())
+    _probe["_probe_calendar_stamp"] = _time.strftime("%Y-%m-%d")
+    _probe["_probe_seconds_of_day"] = int(_time.time()) % 86400
+    report_path.write_text(json.dumps(_probe, indent=1, sort_keys=True))
+Path(sys.argv[2]).write_bytes(report_path.read_bytes())
+Path(sys.argv[3]).write_bytes(unit_path.read_bytes())
+# Canary: this process's set-iteration order. Workers whose canaries MATCH were not actually
+# running under different hash seeds, which would make byte-identity vacuous.
+Path(sys.argv[4]).write_text(json.dumps(list({"canary-%02d" % i for i in range(32)})))
+'''
+
+
+def _replay(worker: Path, root: Path, out: Path, tag: str, hashseed: str,
+            epoch: float = 1.6e9, fixture: str = "facts.json", expect_rc: int = 0,
+            sample_n: int = 3, inject_stamps: bool = False):
+    """One replay in its own interpreter. Returns (report, unit, canary, stdout, stderr).
+
+    `expect_rc` is the calibration lever, not a convenience: expect_rc=1 asserts the worker DIED,
+    which is how the no-fixture arm below proves `_judge_facts = _forbidden` is a live tripwire
+    rather than three decorative lines that never execute.
+    """
+    # PYTHONPATH comes from the module UNDER TEST, not from this file's location: the worker must
+    # import the same audit_recall this file imported.
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(Path(A.__file__).resolve().parents[1])
+    env["PYTHONHASHSEED"] = hashseed
+    report, unit, canary = out / f"report.{tag}", out / f"unit.{tag}", out / f"canary.{tag}"
+    done = subprocess.run(
+        [sys.executable, str(worker), str(root), str(report), str(unit), str(canary),
+         str(epoch), fixture, str(sample_n)] + (["inject-stamps"] if inject_stamps else []),
+        env=env, capture_output=True, text=True, timeout=300,
+    )
+    if done.returncode != expect_rc and (
+            "replay consulted the judge" in done.stderr
+            or "replay opened a network connection" in done.stderr):
+        raise AssertionError(
+            f"replay consulted the judge ({tag}) - the no-judge guard at audit_recall.py:1144 is "
+            f"gone and the gate sweep is one keyring lookup from live provider egress: "
+            f"{done.stderr[-600:]}")
+    assert done.returncode == expect_rc, \
+        f"replay {tag} rc={done.returncode} (expected {expect_rc}): {done.stderr[-2000:]}"
+    if expect_rc != 0:
+        return None, None, None, done.stdout, done.stderr
+    # stdout too: the printed receipt at audit_recall.py:1566 is "the surface receipts copy from"
+    # and is the third of three replay-reachable serialization sites (:1332 <unit>.json,
+    # :1563 report_<domain>.json, :1566 the print). The two file comparisons are blind to it.
+    return report.read_bytes(), unit.read_bytes(), canary.read_text(), done.stdout, done.stderr
+
+
+def _replay_corpus(root: Path) -> dict:
+    """A MULTI-DOC, OVER-COVERED fixture. Both properties are load-bearing.
+
+    * 6 docs sampled 3 puts the SAMPLE SELECTOR inside the lock. With one document
+      rng.sample(docs, 1) returns that document under every seed, so sampler nondeterminism
+      (audit_recall.py:274, the exact drift select_sample's docstring exists to prevent) is
+      invisible no matter how the report is compared.
+    * 32 phantom entries make the fixture-derived collections large enough to REORDER. A set of
+      size <= 1 iterates identically under every hash seed, so against a 1-entry fixture only a
+      leak whose size is independent of the data could ever fail — the lock would lock nothing.
+
+    Every document on disk is covered, so the extra documents are not fixture_missing and the
+    calibration below fails for the reason it names rather than for a corpus mistake.
+    """
+    made = _ruler_unit(root, extra_docs=5)
+    facts = [{"subject": f"s{i}", "predicate": "rel", "object": f"o{i}"} for i in range(10)]
+    fixture_doc = {p.name: facts for p in sorted((made["unit"] / "10_clean").glob("*.md"))}
+    for i in range(32):
+        fixture_doc[f"phantom-{i:02d}.md"] = []
+    made["fixture"].write_text(json.dumps(fixture_doc), encoding="utf-8")
+    return made
+
+
+def test_replay_is_byte_identical_across_processes():
+    """Consecutive replays over the same pinned ruler must produce byte-identical output."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        made = _replay_corpus(root)
+        pinned = _score(made["unit"], made["fixture"], sample_n=3, pin_ruler=True)
+        assert pinned["ruler"]["verified"] is True, pinned["ruler"]["problems"]
+
+        worker = root / "replay_worker.py"
+        worker.write_text(_REPLAY_WORKER, encoding="utf-8")
+        out = root / "replays"
+        out.mkdir()
+        # THREE seeds, matching test_dedup_surfaces.py:58. Measured over 60 string prefixes, the
+        # fraction of leaks that iterate identically (and so slip through): a 3-element leak
+        # 7/60 under (0, 12345) vs 4/60 under (0, 1, 12345); 4-element 2/60 vs 0/60; 5 or more
+        # 0/60 either way. Residual, stated plainly: a 2-element leak is still 16/60 blind even
+        # with three seeds — inherent to short sets, not worth chasing. The epochs are 400 days
+        # PLUS 3661 seconds apart: the day component moves date- and year-granularity stamps, and
+        # the 3661s (1h 1m 1s) moves hour/minute/second stamps — a whole-day stride left every
+        # %H:%M and seconds-of-day stamp IDENTICAL across arms, so only the SHIM covered the time
+        # module and nothing proved it. The stride diversifies the stamps; the shim shifts the
+        # clock; the arms below need both.
+        seeds = ("0", "1", "12345")
+        runs = [_replay(worker, root, out, tag, seed, 1.6e9 + i * (400 * 86400 + 3661))
+                for i, (tag, seed) in enumerate(zip("abc", seeds))]
+
+        # RED calibration 1 — the canary. Workers that shared a hash seed would agree for free.
+        canaries = [run[2] for run in runs]
+        assert len(set(canaries)) == len(canaries), \
+            "replays shared a hash seed - byte-identity is vacuous"
+        # RED calibration 2 — two identical FAILURES are also byte-identical. Every replay must be
+        # a real, quotable, ruler-verified, fully-covered score of the pinned ruler, over a corpus
+        # wide enough for the comparison to mean something.
+        scored = json.loads(runs[0][0])
+        assert scored["quotable"] is True, scored["quotable_note"]
+        assert scored["ruler"]["verified"] is True, scored["ruler"]["problems"]
+        assert scored["overall"]["ratio"] == 0.8 and scored["overall"]["n"] == 30, scored["overall"]
+        assert scored["fixture_sample"]["n_docs_sampled"] == 3, scored["fixture_sample"]
+        assert scored["fixture_sample"]["n_docs_missing"] == 0, scored["fixture_sample"]
+        assert scored["fixture_sample"]["n_fixture_entries_unused"] >= 8, scored["fixture_sample"]
+        assert scored["judge_unavailable"]["n_docs"] == 0, scored["judge_unavailable"]
+
+        for tag, run in zip("abc", runs):
+            assert run[0] == runs[0][0], f"report_dom.json is not reproducible across replays ({tag})"
+            assert run[1] == runs[0][1], f"u.json is not reproducible across replays ({tag})"
+            assert run[3] == runs[0][3], f"the printed receipt is not reproducible ({tag})"
+
+
+def test_replay_never_reaches_the_judge_when_a_sampled_doc_is_uncovered():
+    """`and not fixture` (audit_recall.py:1144) is the only thing between replay mode and a live
+    provider fan-out; delete it and run_tests.sh calls OpenRouter from inside the gate sweep.
+
+    Three arms, because the property is worthless without its own calibration:
+      (1) NO fixture at all — the judge MUST be reached. If this arm passes quietly, the
+          `_forbidden` stub in the worker is decoration and arms (2) and (3) prove nothing.
+      (2) a NON-EMPTY fixture covering nothing on disk — every sampled document is uncovered
+          whatever the sampler picks, so this is the guard's exact state with no dependence on
+          random.sample internals. The judge must NOT be reached and the run must fail CLOSED.
+      (3) a GENUINELY EMPTY assertion list for a document that IS on disk — the shape the real
+          kanto fixture holds three of. `is not None` (audit_recall.py:1191), not truthiness, is
+          what keeps this an answer instead of an absence; read as absence it would fall through
+          to the judge.
+    """
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        made = _ruler_unit(root)
+        worker = root / "replay_worker.py"
+        worker.write_text(_REPLAY_WORKER, encoding="utf-8")
+        out = root / "replays"
+        out.mkdir()
+
+        # (1) the tripwire is REACHABLE — this is the red calibration for the other two arms
+        _r, _u, _c, _o, stderr = _replay(worker, root, out, "live", "0", fixture="-", expect_rc=1)
+        assert "replay consulted the judge" in stderr, stderr[-2000:]
+
+        # (2) uncovered sampled document — a non-zero rc here IS the judge having been consulted
+        made["fixture"].write_text(json.dumps({
+            "phantom-not-on-disk.md": [{"subject": "s0", "predicate": "rel", "object": "o0"}],
+        }), encoding="utf-8")
+        report = _replay(worker, root, out, "uncovered", "0")[0]
+        scored = json.loads(report)
+        assert scored["quotable"] is False, scored["quotable_note"]
+        assert scored["fixture_sample"]["n_docs_missing"] == 1, scored["fixture_sample"]
+
+        # (3) an empty assertion list is an ANSWER, not an absence: still no judge, still not
+        # missing, and an empty denominator that fails closed rather than scoring a vacuous 1.0
+        made["fixture"].write_text(json.dumps({"doc.md": []}), encoding="utf-8")
+        report = _replay(worker, root, out, "empty", "0")[0]
+        scored = json.loads(report)
+        assert scored["fixture_sample"]["n_docs_missing"] == 0, scored["fixture_sample"]
+        assert scored["fixture_sample"]["n_fixture_entries_unused"] == 0, scored["fixture_sample"]
+        assert scored["judge_unavailable"]["n_docs"] == 0, scored["judge_unavailable"]
+        assert scored["overall"]["n"] == 0 and scored["quotable"] is False, scored["overall"]
+
+
+def test_replay_is_byte_identical_when_the_fixture_MISSES_sampled_documents():
+    """The lock's own law — a collection of size <= 1 iterates identically under every hash
+    seed — must hold for the FAILURE-path collections too, not only the fixture keys.
+    In the happy-path corpus missing_sample/judge_rejected_sample/out_of_unit_sample/
+    reject_reasons are all empty, so a set leaking into any of them is invisible there."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        _ruler_unit(root, extra_docs=29)          # 30 docs; the fixture covers only doc.md
+        worker = root / "replay_worker.py"
+        worker.write_text(_REPLAY_WORKER, encoding="utf-8")
+        out = root / "replays"
+        out.mkdir()
+        runs = [_replay(worker, root, out, tag, seed, 1.6e9 + i * (400 * 86400 + 3661),
+                        sample_n=25)
+                for i, (tag, seed) in enumerate(zip("abc", ("0", "1", "12345")))]
+        assert len({r[2] for r in runs}) == 3, "replays shared a hash seed - byte-identity is vacuous"
+        scored = json.loads(runs[0][0])
+        # calibration: this arm is worthless unless the miss-path collection is WIDE
+        assert scored["fixture_sample"]["n_docs_missing"] >= 20, scored["fixture_sample"]
+        assert len(scored["fixture_sample"]["missing_sample"]) >= 20, scored["fixture_sample"]
+        assert scored["quotable"] is False, scored.get("quotable_note")   # a miss is FAIL by design
+        for tag, run in zip("abc", runs):
+            assert run[0] == runs[0][0], f"report_dom.json is not reproducible across replays ({tag})"
+            assert run[1] == runs[0][1], f"u.json is not reproducible across replays ({tag})"
+            assert run[3] == runs[0][3], f"the printed receipt is not reproducible ({tag})"
+
+
+
+def test_the_clock_shim_covers_calendar_stamps_and_the_stride_dealiases_them():
+    """The lock can only catch a timestamp leak it can SEE diverge. Two forms were measured
+    invisible before this probe existed: time.strftime("%Y-%m-%d") (strftime resolves its default
+    tuple in C, so patching time.time alone leaves it on the real clock) and int(time.time())%86400
+    (identical across arms when the epoch stride is a whole number of days). With the widened shim
+    and the 400d+3661s stride, BOTH must differ pairwise across the three arms — this is the
+    cannot-fail probe for the byte-identity lock, made permanent so neither regresses."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = _ruler_root(temporary)
+        _ruler_unit(root)
+        worker = root / "replay_worker.py"
+        worker.write_text(_REPLAY_WORKER, encoding="utf-8")
+        out = root / "replays"
+        out.mkdir()
+        runs = [_replay(worker, root, out, tag, seed, 1.6e9 + i * (400 * 86400 + 3661),
+                        inject_stamps=True)
+                for i, (tag, seed) in enumerate(zip("abc", ("0", "1", "12345")))]
+        stamps = [json.loads(run[0])["_probe_calendar_stamp"] for run in runs]
+        seconds = [json.loads(run[0])["_probe_seconds_of_day"] for run in runs]
+        assert len(set(stamps)) == 3, (
+            f"calendar stamps agree across shifted arms ({stamps}) - the strftime shim is gone "
+            "and a %Y-%m-%d leak in the report would pass the byte-identity lock silently")
+        assert len(set(seconds)) == 3, (
+            f"seconds-of-day agree across shifted arms ({seconds}) - the epoch stride is a whole "
+            "number of days again and any seconds-of-day stamp is invisible to the lock")
+
 
 
 if __name__ == "__main__":
