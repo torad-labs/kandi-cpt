@@ -1,0 +1,44 @@
+{
+  "schema": "finding/1",
+  "title": "Phase r18 \u2014 the cloud smoke: local rehearsal PROVEN, paid run armed and blocked on two operator gates",
+  "recorded_at": "2026-08-01",
+  "proven_locally": {
+    "what": "conductor's ENTIRE cloud chain ran unmodified against conductor-trainer:smoke serving sshd on this host with PUBLIC_KEY injected exactly as vast injects it \u2014 StartCloudRun, sshj host-key verify + pubkey auth, bundle build/upload/sha-verify, nohup entrypoint launch + 1s pid probe, stage polling through ReadCloudRemoteTelemetry (timeline parsed), StopTrackedCloudRun teardown. ONE stub: the vast HTTP seam (LocalContainerProvisioner).",
+    "shape": "bundle DONE -> config DONE (verdict admitted train_smoke_cloud.yaml) -> train RUNNING -> train FAILED (torch.cuda: no NVIDIA driver) -> post_install stayed PENDING \u2014 the evidence gate observed end-to-end from the conductor side; teardown Stopped(ids=[1])",
+    "probe": "conductor CloudSmokeProbe (liveTest, env-gated; conductor 31a7c50c); deterministic suite excludes it by the *Probe glob"
+  },
+  "seam_defect_found": {
+    "what": "conductor requires QGRE_CLOUD_SSH_HOST_KEY BEFORE launch (CloudRemoteResolver.kt:10) but the base image generates host keys at FIRST BOOT (qgre-sshd-entrypoint) \u2014 a fresh instance's fingerprint is unknowable pre-launch, so as shipped NO instance could ever pass sshj's verifier",
+    "smoke_closure": "docker/Dockerfile.smoke bakes host keys at BUILD (ssh-keygen -A; -A regenerates nothing at boot) and prints the fingerprint: SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc. TRADEOFF: anyone with the image holds the host private key -> the channel is MITM-able by an on-path attacker with the image; acceptable for a throwaway smoke, NOT production",
+    "production_fix_options": [
+      "instance publishes its first-boot fingerprint through a provider-readable channel",
+      "a TOFU capture step before the auth policy hardens",
+      "per-instance keys + vast API exposure if vast ever surfaces host keys"
+    ]
+  },
+  "smoke_image": {
+    "tag": "conductor-trainer:smoke",
+    "id": "83cdfa41687d",
+    "size": "13.2GB",
+    "adds": [
+      "base model baked at /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2 (4.4GB)",
+      "baked host keys + /opt/qgre/SMOKE_HOST_KEY_FPR"
+    ],
+    "config": "configs/train_smoke_cloud.yaml \u2014 smoke_steps=20, fp4 + int8_master=storage (the floor), no corpus needed, save_dir unset; engine-oracle ACCEPTED"
+  },
+  "paid_run_blocked_on_operator": [
+    "vast balance is NEGATIVE: -30.28 USD (credit 0, threshold -0.01) \u2014 top up before anything can rent",
+    "registry push: ghcr login succeeds but the gh token lacks write:packages (push denied; measured) \u2014 run `gh auth refresh -h github.com -s write:packages`, then `docker push ghcr.io/marcospaulo/conductor-trainer:smoke` (13.2GB), then set QGRE_CLOUD_TRAINING_IMAGE to the pushed digest"
+  ],
+  "paid_run_ready": {
+    "vast_ssh_key": "registered on the account (id 1165879, qgre-cloud-smoke)",
+    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/marcospaulo/conductor-trainer@sha256:<pushed digest> QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
+    "expected": "post_install DONE with >=1 metric rows (the paid arm asserts it), teardown + no conductor-labeled instance left billing",
+    "still_unarbitrated_until_paid": [
+      "vast ssh_direct plumbing to the image's own sshd",
+      "whether vast overrides CMD",
+      "default disk fits a 13.2GB pull (createInstance sends no disk field)",
+      "the first real fp4 training step from this image"
+    ]
+  }
+}

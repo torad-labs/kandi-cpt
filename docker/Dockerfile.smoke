@@ -1,0 +1,41 @@
+# conductor-trainer SMOKE overlay — the paid-run variant of the base image.
+#
+# Two additions over conductor-trainer:<tag>, both required by the first real cloud run and both
+# deliberately NOT in the base image:
+#
+# 1. THE BASE MODEL, baked at its config-declared absolute path. The bundle is a flat zip (no
+#    directories can travel) and the entrypoint refuses a config whose model_path does not exist,
+#    so the only reachable route today is baking (docs/cloud-trainer-image.md "two payloads").
+#
+# 2. BAKED SSH HOST KEYS. The base entrypoint generates host keys at first boot on principle
+#    (same key in a distributed image = same private key on every machine). But conductor's auth
+#    policy (CloudRemoteResolver.kt:10, QGRE_CLOUD_SSH_HOST_KEY) requires the fingerprint BEFORE
+#    launch, and a first-boot key's fingerprint is unknowable pre-launch — the two policies are
+#    contradictory, and as shipped no fresh instance can ever pass sshj's host-key verifier.
+#    Baking keys at BUILD time closes the seam for a single-operator smoke: qgre-sshd-entrypoint
+#    runs `ssh-keygen -A`, which generates only MISSING keys, so baked keys survive boot untouched.
+#    TRADEOFF, stated plainly: anyone who pulls this image learns the host private key, so the
+#    ssh channel to a smoke instance is MITM-able by an on-path attacker who also has the image.
+#    Acceptable for a ~$1 smoke on a throwaway bundle; NOT the production design. The production
+#    fix is a host-key channel (e.g. the instance publishes its first-boot fingerprint via the
+#    provider API, or a TOFU capture step) — recorded in the smoke receipt.
+#
+# Build (context must be the models dir parent so the COPY source resolves):
+#   docker build -f docker/Dockerfile.smoke \
+#     --build-arg BASE=conductor-trainer:aloop-final \
+#     -t conductor-trainer:smoke /home/marcos/Documents/dev/infra/models
+# The build prints the ed25519 host-key SHA256 fingerprint; export it as QGRE_CLOUD_SSH_HOST_KEY.
+
+ARG BASE=conductor-trainer:aloop-final
+FROM ${BASE}
+
+COPY gemma-4-E2B-it-int8-v2 /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
+
+RUN ssh-keygen -A \
+ && printf 'smoke-bake: host key fingerprints (export the ed25519 one as QGRE_CLOUD_SSH_HOST_KEY):\n' \
+ && for k in /etc/ssh/ssh_host_*_key.pub; do ssh-keygen -lf "$k"; done \
+ && ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E sha256 | awk '{print $2}' > /opt/qgre/SMOKE_HOST_KEY_FPR \
+ && cat /opt/qgre/SMOKE_HOST_KEY_FPR
+
+LABEL ai.torad.qgre.smoke="true" \
+      ai.torad.qgre.smoke.host-keys="baked-at-build (see Dockerfile.smoke header for the tradeoff)"
