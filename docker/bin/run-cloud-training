@@ -1,0 +1,476 @@
+#!/bin/bash
+# /opt/qgre/bin/run-cloud-training <bundlePath> <runDir>
+#
+# The remote half of the conductor cloud-training contract. The host half is ALREADY SHIPPED and
+# fixed; this script exists to satisfy it. Host references (conductor @ d54eff3d):
+#
+#   CloudRemoteLaunch.kt:6        the entrypoint path is this exact file
+#   CloudRemoteLaunch.kt:163-170  launch:   mkdir -p <runDir> && { nohup <this> <bundle> <runDir>
+#                                           > <runDir>/train.log 2>&1 < /dev/null &
+#                                           pid=$!; printf %s "$pid" > <runDir>/pid
+#                                           && sleep 1 && kill -0 "$pid"; then echo pid; else FAIL }
+#   CloudRemoteLaunch.kt:173-179  cleanup:  kill "$(cat <runDir>/pid)"
+#   CloudRemoteLaunch.kt:222-228  liveness: test "$(cat <runDir>/pid)" = "<pid>" && kill -0 <pid>
+#   CloudRemoteTelemetry.kt:134-148  telemetry: tail <runDir>/metrics.jsonl ; cat <runDir>/cpt_stages.json
+#
+# THE ONE-SECOND LAW, AND WHY THE VERDICT IS O(1) IN BUNDLE SIZE. The launcher backgrounds us and
+# decides Started-vs-Failed on a `sleep 1 && kill -0` probe. A bad bundle must therefore be rejected
+# in WELL UNDER ONE SECOND. It is not enough for the checks themselves to be cheap: anything the
+# script does BEFORE the verdict is on the clock. An earlier revision ran `unzip -t` (full CRC) and
+# `unzip -j` (full extract) first, which is O(bundle size) — measured in this image, a bundle with an
+# invalid config was still reported STARTED at 300MB (verdict 1606ms) and at 3200MB (16299ms),
+# leaving a rented machine running because CloudRunStart.kt:111-118 only calls stopTrackedMachine on
+# a non-Started branch. So the order below is load-bearing:
+#
+#   O(1) stats -> `unzip -Z1` (central directory only, 1-3ms at 3.2GB) -> `unzip -p` the ONE config
+#   entry (2-4ms at 3.2GB) -> THE VERDICT -> only then the full extract and the CRC test.
+#
+# The CRC test is MOVED, never dropped: it now runs on the Started side of the probe, so a corrupt
+# payload becomes `bundle FAILED` in cpt_stages.json plus a non-zero supervisor exit, which the
+# host's liveness command reports as NotRunning.
+#
+# THE CONFIG VERDICT IS THE ENGINE'S OWN, NOT A TRANSCRIPTION. preflight calls
+# CptConfig.from_yaml() + CptConfig.validate_runtime(world=1) — the same two calls train_cpt.py makes
+# at :1248 and :1256, before it touches torch or a device. Hand-mirroring those rules here is the
+# defect this revision removes: the previous revision stat'd model_path and data.tokenized by hand
+# and so disagreed with the engine in BOTH directions — it refused a legitimate smoke run (the
+# engine gates data.tokenized behind `smoke = run.smoke_steps > 0`, cpt_config.py:561-562) and it
+# admitted a resume config whose data.init_from checkpoint was absent (cpt_config.py:571, checked
+# unconditionally) and a config with run.save_dir unset. The only checks written out here are the
+# two the ENGINE does not perform: model.model_path existence, and a save_dir/runDir collision.
+#
+# THE SUPERVISOR SHAPE. We do NOT exec the trainer. We stay alive as its parent because
+#   (a) the pid the host recorded must remain the thing whose liveness tracks the run, and
+#   (b) `cleanup` TERMs that pid — if we exec'd away or ignored TERM, "stop cloud run" would leave
+#       an orphaned trainer holding the GPU and still billing. The trap kills the child's whole
+#       process group, which is why the trainer is started under `set -m` (job control gives the
+#       background job its own process group whose PGID is exactly the pid $! reports).
+#
+# WHY NOT A PIPELINE. An earlier shape ran `trainer | awk-bridge &`. In bash `$!` for a background
+# pipeline is the pid of the LAST element, so TRAINER_PID would have been the awk, `kill -TERM
+# -$TRAINER_PID` would have hit the wrong (or no) process group, and stopping a run would have
+# reaped the bridge while the trainer kept billing. The trainer is therefore backgrounded alone,
+# and the bridge independently follows the log the launcher is already writing.
+#
+# THE BUNDLE. The host bundle is a FLAT zip: CloudBundleTransfer.kt:21 + :272-278 full-match every
+# entry name against [A-Za-z0-9._-]+, and :258 takes the name from the local file's basename. No
+# "/" is representable, so a bundle cannot carry a directory tree. Its contents are otherwise
+# UNDEFINED host-side (QGRE_CLOUD_BUNDLE_FILES has no default anywhere in either tree), so this
+# image defines the contract and documents it in docs/cloud-trainer-image.md:
+#
+#   the bundle MUST contain exactly one .yaml/.yml entry -> that is the CPT config.
+#   zero  -> fail loud (there is nothing to train)
+#   many  -> fail loud (ambiguity is not a default)
+#
+# There is deliberately no environment-variable override for the many-config case. The shipped host
+# transport cannot set one: CloudRemoteTransport.kt:285 is `ssh.startSession().use { session ->
+# session.exec(...) }` with no setEnvVar, the launch command string is host-authored with no env
+# prefix, and this image's own sshd_config allowlists only `LANG LC_* COLORTERM NO_COLOR`. An error
+# message naming a variable the operator cannot set is worse than no message.
+#
+# Anything else in the bundle is unpacked beside the config and left alone.
+
+set -uo pipefail
+
+# Overridable for the host-side regression harness (docker/tests/verdict-time-bound.sh), which
+# runs this exact script against the real engine checkout; the container default is unchanged.
+readonly ENGINE_DIR="${QGRE_ENGINE_DIR:-/opt/qgre/kandi-cpt}"
+# Resolved relative to THIS script: /opt/qgre/bin in the container, docker/bin on a host checkout
+# (the regression harness runs this exact file host-side). An absolute pin here made the end-of-run
+# rebuild silently install an EMPTY metrics.jsonl on any box where /opt/qgre does not exist.
+readonly BRIDGE="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)/qgre-metrics-bridge.awk"
+readonly METRICS_NAME="metrics.jsonl"     # MetricsSeries.kt:23
+readonly STAGES_NAME="cpt_stages.json"    # RunTimelineModels.kt:5
+# The launcher's probe is `sleep 1` (CloudRemoteLaunch.kt:167). A supervisor that has already exited
+# by then is CERTAIN to be reported Failed, whatever the trainer's own exit code was.
+readonly LAUNCH_PROBE_MS=1000
+# The verdict-time law: everything before the accept/reject verdict is O(central directory), never
+# O(payload bytes). 1 MB is ~60x the largest config in the engine tree (17,395 B); the declared-size
+# guard keeps the verdict at ~4-12ms and the stream cap is the belt for a central directory that lies.
+readonly MAX_CONFIG_BYTES=1048576
+readonly MAX_BUNDLE_ENTRIES=10000
+
+RUN_DIR=""
+TRAINER_PID=""
+BRIDGE_PID=""
+START_MS=""
+
+now_ms() { date +%s%3N; }
+
+die() {
+    local stage="$1"
+    shift
+    printf 'run-cloud-training: FATAL: %s\n' "$*" >&2
+    if [ -n "$RUN_DIR" ] && [ -d "$RUN_DIR" ]; then
+        stages_write "$stage" FAILED "$*"
+    fi
+    exit 1
+}
+
+# ---------------------------------------------------------------- cpt_stages.json
+# RunTimeline.parse (RunTimeline.kt:59-81) REJECTS the whole document when two entries share a
+# stage name or when MORE THAN ONE entry is RUNNING/FAILED. So exactly one stage here is ever
+# non-terminal. Status vocabulary is the Kotlin enum: PENDING|RUNNING|DONE|FAILED
+# (RunTimelineModels.kt:14-19) and is serialized by name.
+stage_index() {
+    case "$1" in
+        bundle) echo 0 ;;
+        config) echo 1 ;;
+        train) echo 2 ;;
+        post_install) echo 3 ;;
+        *) echo 99 ;;
+    esac
+}
+
+stages_write() {
+    local active="$1" status="$2" note="${3:-}"
+    local out="$RUN_DIR/$STAGES_NAME" tmp="$RUN_DIR/.$STAGES_NAME.tmp"
+    local stage st first=1 esc_note active_ix
+    active_ix="$(stage_index "$active")"
+    esc_note=$(printf '%s' "$note" | tr -d '\000-\037' | sed 's/\\/\\\\/g; s/"/\\"/g')
+    {
+        printf '{"stages":['
+        for stage in bundle config train post_install; do
+            if [ "$stage" = "$active" ]; then
+                st="$status"
+            elif [ "$(stage_index "$stage")" -lt "$active_ix" ]; then
+                st="DONE"
+            else
+                st="PENDING"
+            fi
+            [ "$first" -eq 1 ] || printf ','
+            first=0
+            if [ "$stage" = "$active" ] && [ -n "$esc_note" ]; then
+                printf '{"stage":"%s","status":"%s","note":"%s"}' "$stage" "$st" "$esc_note"
+            else
+                printf '{"stage":"%s","status":"%s"}' "$stage" "$st"
+            fi
+        done
+        printf ']}\n'
+    } > "$tmp" && mv -f "$tmp" "$out"
+}
+
+# Stop the live follower and then rebuild metrics.jsonl from the COMPLETE log in one pass.
+#
+# The obvious shape here - `sleep 1` to let the follower drain - is a TRAP, and it was in this file
+# until the anti-gaming probe caught it. That sleep keeps the supervisor alive past the launcher's
+# 1-second probe, so a trainer that exits instantly (the classic do-nothing entrypoint, or a real
+# trainer that dies on a missing GPU) got reported STARTED instead of FAILED, nondeterministically.
+# A one-shot regeneration loses nothing, costs milliseconds, and lets a fast failure stay fast.
+#
+# The regeneration writes a TEMP file and rename()s it over the live one, the same shape
+# stages_write uses. The earlier revision truncated the live file (`: > metrics.jsonl`) and then
+# re-appended, so a telemetry poll landing in that window read a zero-row file for a run that had
+# already produced rows — an empty chart, with nothing wrong anywhere else to explain it.
+stop_bridge() {
+    if [ -n "$BRIDGE_PID" ]; then
+        kill -TERM "-$BRIDGE_PID" 2>/dev/null || kill -TERM "$BRIDGE_PID" 2>/dev/null
+        wait "$BRIDGE_PID" 2>/dev/null
+        BRIDGE_PID=""
+    fi
+    if [ -n "$RUN_DIR" ] && [ -f "$RUN_DIR/train.log" ]; then
+        local tmp="$RUN_DIR/.$METRICS_NAME.tmp"
+        : > "$tmp"
+        # The rebuild REPLACES the live file only when awk actually succeeded: a missing or failing
+        # bridge must not convert a run's telemetry into an empty file (measured: the absolute
+        # BRIDGE pin + unconditional mv did exactly that on the host, and the evidence gate then
+        # read a real metric-emitting run as "no install evidence").
+        if awk -v M="$tmp" -f "$BRIDGE" "$RUN_DIR/train.log" 2>/dev/null; then
+            mv -f "$tmp" "$RUN_DIR/$METRICS_NAME"
+        else
+            rm -f "$tmp"
+            printf 'run-cloud-training: metrics rebuild failed (bridge %s) - keeping the live tail file\n' "$BRIDGE" >&2
+        fi
+    fi
+}
+
+# cleanup() TERMs the pid the host recorded, i.e. US. Pass it on to the trainer's process group,
+# escalate if it will not go, and only then leave.
+on_term() {
+    trap - TERM INT
+    if [ -n "$TRAINER_PID" ] && kill -0 "$TRAINER_PID" 2>/dev/null; then
+        printf 'run-cloud-training: TERM received - stopping trainer pid %s\n' "$TRAINER_PID" >&2
+        kill -TERM "-$TRAINER_PID" 2>/dev/null || kill -TERM "$TRAINER_PID" 2>/dev/null
+        for _ in 1 2 3 4 5 6 7 8 9 10; do
+            kill -0 "$TRAINER_PID" 2>/dev/null || break
+            sleep 1
+        done
+        kill -KILL "-$TRAINER_PID" 2>/dev/null || kill -KILL "$TRAINER_PID" 2>/dev/null
+    fi
+    stop_bridge
+    if [ -n "$RUN_DIR" ] && [ -d "$RUN_DIR" ]; then
+        stages_write train FAILED "stopped by operator"
+    fi
+    exit 143
+}
+
+# ---------------------------------------------------------------- preflight
+# Everything before `THE VERDICT` below is O(1) in bundle size. Measured in this image over five
+# reps at 400MB / 1600MB / 3200MB with the config as the LAST archive entry, verdict times (ms):
+#   400MB  132 78 68 70 67      1600MB  81 66 64 66 63      3200MB  63 63 70 71 68
+# i.e. the 3.2GB median (68ms) is at or below the 400MB median (70ms) — the size term is gone, not
+# merely small. Almost all of what is left is the python interpreter start plus from_yaml +
+# validate_runtime (~44-51ms); the two archive reads are 2-3ms each at every size.
+preflight() {
+    if [ "$#" -ne 2 ]; then
+        printf 'run-cloud-training: FATAL: usage: run-cloud-training <bundlePath> <runDir> (got %s arg(s))\n' "$#" >&2
+        exit 2
+    fi
+    BUNDLE="$1"
+    RUN_DIR="$2"
+
+    case "$RUN_DIR" in
+        /*) : ;;
+        *)
+            printf 'run-cloud-training: FATAL: runDir must be an absolute path: %s\n' "$RUN_DIR" >&2
+            exit 2
+            ;;
+    esac
+    mkdir -p "$RUN_DIR" || {
+        printf 'run-cloud-training: FATAL: cannot create runDir %s\n' "$RUN_DIR" >&2
+        exit 2
+    }
+
+    stages_write bundle RUNNING "validating bundle"
+
+    # (b) O(1) stats. These stay AHEAD of the archive read so the three distinct diagnostics survive:
+    #     `unzip -Z1` collapses "empty file" and "not a zip" to the same rc=9.
+    [ -e "$BUNDLE" ] || die bundle "bundle does not exist: $BUNDLE"
+    [ -f "$BUNDLE" ] || die bundle "bundle is not a regular file: $BUNDLE"
+    [ -s "$BUNDLE" ] || die bundle "bundle is empty: $BUNDLE"
+
+    # (c) Read the CENTRAL DIRECTORY only. No entry data is touched, so this is O(entry count), not
+    #     O(bytes): 1-3ms on a 3.2GB archive versus 7308ms for the `unzip -t` it replaces.
+    local entries
+    entries=$(unzip -Z1 "$BUNDLE" 2>/dev/null) \
+        || die bundle "bundle is not a readable zip archive: $BUNDLE"
+
+    # (d0) Bound the entry count BEFORE the while-read loop walks it: the loop is O(entries) in
+    #      bash, and a hand-made archive with 300k entries costs ~938ms — outside the launcher's
+    #      probe before any real work starts. Real bundles carry a config plus data files; 10k is
+    #      ~30ms and generous.
+    local n_entries
+    n_entries=$(printf '%s\n' "$entries" | wc -l)
+    [ "$n_entries" -le "$MAX_BUNDLE_ENTRIES" ] || die bundle \
+        "bundle declares $n_entries entries; the cap is $MAX_BUNDLE_ENTRIES - a training bundle is a config plus data files, not a filesystem"
+
+    # (d) Resolve the config from that listing.
+    local yamls=() e
+    while IFS= read -r e; do
+        case "$e" in
+            *.yaml|*.yml) yamls+=("$e") ;;
+        esac
+    done <<< "$entries"
+
+    local cfgentry
+    if [ "${#yamls[@]}" -eq 1 ]; then
+        cfgentry="${yamls[0]}"
+    elif [ "${#yamls[@]}" -eq 0 ]; then
+        die config "bundle contains no .yaml/.yml CPT config (entries: $(printf '%s\n' "$entries" | tr '\n' ' '))"
+    else
+        die config "bundle contains ${#yamls[@]} yaml entries - refusing to guess which is the CPT config (${yamls[*]##*/})"
+    fi
+
+    # The config entry name is the ONE archive-controlled string this script hands to another
+    # program as an argument, so it gets the one check that argument position needs: unzip has no
+    # `--` terminator, and a name beginning with `-` is parsed as an OPTION. Measured: an entry
+    # called `-x.yaml` becomes unzip's exclude flag and the stream comes back empty; other
+    # leading-dash names would select other modes. Fail loud instead of relying on which option a
+    # name happens to spell. (Glob metacharacters are only a MATCHING concern and were measured to
+    # be safe: `a[1].yaml` matches nothing and is rejected, `we*ird.yaml` matches itself.)
+    case "$cfgentry" in
+        -*) die config "bundle entry '$cfgentry' starts with '-'; a config name cannot begin with a dash" ;;
+    esac
+
+    WORK_DIR="$RUN_DIR/bundle"
+    rm -rf "$WORK_DIR"
+    mkdir -p "$WORK_DIR" || die bundle "cannot create $WORK_DIR"
+
+    # (e) Stream ONLY the config out of the archive. The destination is the BASENAME inside WORK_DIR,
+    #     so an entry name carrying a path (impossible from the host, possible in a hand-made
+    #     archive) cannot escape — the same property the flattening `-j` gives the full extract.
+    CONFIG="$WORK_DIR/$(basename "$cfgentry")"
+    # Declared-size guard, from the CENTRAL DIRECTORY so the verdict stays O(1): a 40MB "config"
+    # is refused in ~4-12ms instead of being streamed for seconds inside the launcher's probe.
+    local declared_sz
+    declared_sz=$(unzip -l "$BUNDLE" 2>/dev/null | awk -v e="$cfgentry" '$NF==e {print $1; exit}')
+    [ "${declared_sz:-0}" -le "$MAX_CONFIG_BYTES" ] || die config \
+        "config entry '$cfgentry' declares ${declared_sz} bytes; a CPT config is a few KB (largest in the engine tree is 17,395 B). Refusing before streaming so the verdict stays inside the launcher's ${LAUNCH_PROBE_MS}ms probe"
+    # Belt as well as braces — a central directory can LIE about the size, so cap the stream
+    # itself. head -c closing the pipe makes unzip die on SIGPIPE, and under `set -o pipefail`
+    # that would misread a legitimately refused-oversize (or even a small) config as a read
+    # failure, so pipefail is suspended for exactly this pipeline; a genuine unzip failure
+    # yields an EMPTY file and the emptiness check below stays the fail-loud path for it.
+    set +o pipefail
+    unzip -p "$BUNDLE" "$cfgentry" 2>/dev/null | head -c $((MAX_CONFIG_BYTES + 1)) > "$CONFIG"
+    set -o pipefail
+    [ "$(wc -c < "$CONFIG")" -le "$MAX_CONFIG_BYTES" ] || die config \
+        "config entry '$cfgentry' streamed past ${MAX_CONFIG_BYTES} bytes although the central directory declared ${declared_sz:-?} - the archive lies about its sizes; refusing"
+    [ -s "$CONFIG" ] || die config "bundle entry '$cfgentry' is empty or could not be read - there is no config to train from"
+
+    stages_write config RUNNING "resolving CPT config"
+
+    # (f) THE VERDICT. The engine's own typed loader and runtime validator, in the order
+    #     train_cpt.py uses them (:1248 from_yaml, :1256 validate_runtime), plus the two checks the
+    #     engine does NOT own:
+    #       * model.model_path — validate_runtime never stats it; it is an absolute, out-of-repo
+    #         path in every shipped config, so on a fresh instance it is the likeliest thing missing.
+    #       * run.save_dir == runDir — the launcher redirects our stdout into <runDir>/train.log
+    #         while train_cpt.py's _start_status opens <save_dir>/train.log in append mode. If they
+    #         are the same file, two writers interleave into the file the metrics bridge parses.
+    #     Nothing else is written out here, and no path list is transcribed: whatever
+    #     validate_runtime accepts, this entrypoint accepts, by construction rather than by review.
+    #     PYTHONPATH=scripts is cwd-relative, hence the `cd`; the engine's own path anchor is
+    #     module-derived (cpt_config.py:37), so path resolution itself is cwd-independent.
+    local config_err
+    config_err=$(cd "$ENGINE_DIR" && PYTHONPATH=scripts "$ENGINE_DIR/.venv/bin/python" -c '
+import sys
+from pathlib import Path
+from cpt_config import CptConfig
+
+cfg = CptConfig.from_yaml(sys.argv[1])          # parse + unknown keys + cross-field
+cfg.validate_runtime(1)                          # save_dir / tokenized (smoke-aware) / init_from
+
+if not Path(cfg.model.model_path).exists():
+    sys.exit("declared input not present on this machine: model.model_path=" + cfg.model.model_path)
+
+root = Path(sys.argv[2])
+run_dir = Path(sys.argv[3]).resolve()
+save_dir = (cfg.run.save_dir or "").strip()
+if save_dir:
+    p = Path(save_dir)
+    if not p.is_absolute():
+        p = root / p
+    if p.resolve() == run_dir:
+        sys.exit("run.save_dir resolves to the runDir itself (" + str(run_dir) + ") — the trainer would "
+                 "append to the same train.log the launcher is writing, corrupting the metrics stream. "
+                 "Point run.save_dir somewhere else.")
+' "$CONFIG" "$ENGINE_DIR" "$RUN_DIR" 2>&1) \
+        || die config "$(basename "$CONFIG"): $(printf '%s' "$config_err" | tail -3 | tr '\n' ' ')"
+
+    # THE VERDICT IS IN. Announce it before doing anything size-proportional, so the admit decision
+    # is observable at the same instant the reject decision is — otherwise "the verdict is O(1)"
+    # would only be true of rejections, and a reader timing an accepted bundle would measure the
+    # unpack instead. This line IS the instrument the verdict times above are taken from.
+    printf 'run-cloud-training: CONFIG-ACCEPTED %s - declared inputs present; unpacking payload\n' \
+        "$(basename "$CONFIG")"
+
+    # ---- past the verdict; everything below is allowed to be O(bundle size) --------------------
+    stages_write config RUNNING "unpacking bundle payload"
+
+    # (g) -j flattens. The archive is flat by construction host-side; -j additionally neuters any
+    #     path a hand-made archive might smuggle in. -o overwrites the config streamed at (e) with
+    #     the byte-identical copy from the archive.
+    #     NOTE, measured: for a STORED payload whose bytes are corrupt, THIS is the step that
+    #     notices — unzip verifies each entry's CRC as it writes it — so the diagnostic must name
+    #     corruption, not just "could not unpack".
+    unzip -qq -j -o "$BUNDLE" -d "$WORK_DIR" >/dev/null 2>&1 \
+        || die bundle "could not unpack bundle - unreadable, corrupt payload, or no space: $BUNDLE"
+
+    # (h) The explicit CRC gate. MOVED from in front of the verdict, never dropped: a bundle whose
+    #     central directory is intact but whose payload is corrupt now costs the operator a
+    #     Started-then-immediately-dead run (liveness reports NotRunning, cpt_stages.json records
+    #     bundle FAILED) instead of costing every GOOD bundle a size-proportional delay in FRONT of
+    #     the verdict.
+    #     HONEST SCOPE, measured rather than assumed: for the flat archives this contract admits,
+    #     (g) already fails on a corrupt payload, and I could not construct a bundle that (g) passes
+    #     and (h) rejects — flipping the CRC field in the CENTRAL DIRECTORY leaves BOTH at rc=0
+    #     (unzip verifies against the LOCAL header). So (h) is a named, explicit integrity gate that
+    #     is in practice subsumed by (g), kept because the check must not silently disappear from
+    #     the entrypoint, and affordable only because it now sits after the verdict: it costs a
+    #     second full read (measured 936ms at 400MB, 7308ms at 3200MB) of a machine that is already
+    #     Started and about to train for hours.
+    unzip -qq -t "$BUNDLE" >/dev/null 2>&1 \
+        || die bundle "bundle failed its CRC check - the upload is corrupt: $BUNDLE"
+}
+
+# ---------------------------------------------------------------- main
+main() {
+    START_MS="$(now_ms)"
+
+    preflight "$@"
+
+    trap on_term TERM INT
+
+    : > "$RUN_DIR/$METRICS_NAME"
+    stages_write train RUNNING "$(basename "$CONFIG")"
+
+    printf 'run-cloud-training: engine=%s\n' "$(tr '\n' ' ' < /opt/qgre/ENGINE_COMMIT 2>/dev/null)"
+    printf 'run-cloud-training: config=%s runDir=%s\n' "$CONFIG" "$RUN_DIR"
+
+    cd "$ENGINE_DIR" || die train "engine directory missing: $ENGINE_DIR"
+
+    # The bridge follows the log the LAUNCHER is writing (our stdout is <runDir>/train.log by the
+    # launch line's redirect) and turns the engine's step lines into the metrics.jsonl the telemetry
+    # reader expects, live, while the run is in flight. It is wrapped in its own `bash -c` and
+    # started under job control so that BRIDGE_PID is a process-group leader: a bare `tail | awk &`
+    # would set $! to the awk, and killing that would strand the tail forever.
+    set -m
+    bash -c 'exec tail -n +1 -F "$1" 2>/dev/null | awk -v M="$2" -f "$3"' \
+        _ "$RUN_DIR/train.log" "$RUN_DIR/$METRICS_NAME" "$BRIDGE" &
+    BRIDGE_PID=$!
+
+    # QGRE_CLOUD_TRAINER_CMD is a TEST HOOK, documented in docs/cloud-trainer-image.md. It exists
+    # so supervision/telemetry/liveness/teardown can be proven on a CPU-only box with no GPU and no
+    # driver. UNSET - the operator path - the trainer is the engine's own canonical launcher
+    # scripts/train_fp4.sh, which owns CUDA_HOME / -ccbin g++-14 / JIT env (train_fp4.sh:26-56).
+    if [ -n "${QGRE_CLOUD_TRAINER_CMD:-}" ]; then
+        printf 'run-cloud-training: TRAINER-EXEC (test hook) %s\n' "$QGRE_CLOUD_TRAINER_CMD"
+        bash -c "$QGRE_CLOUD_TRAINER_CMD" &
+    else
+        printf 'run-cloud-training: TRAINER-EXEC bash scripts/train_fp4.sh --config %s\n' "$CONFIG"
+        bash scripts/train_fp4.sh --config "$CONFIG" &
+    fi
+    TRAINER_PID=$!
+    set +m
+    # The trainer's OWN start. The supervisor's START_MS is the right clock for "did the host see
+    # us at the probe" and the WRONG one for "did an install run": the pre-verdict work above can
+    # take seconds on a large payload, so a do-nothing trainer inherits enough supervisor lifetime
+    # to clear LAUNCH_PROBE_MS. Measured: QGRE_CLOUD_TRAINER_CMD=true with a 150-300MB STORED
+    # payload read as post_install DONE on supervisor lifetime 1126-1716ms with 0 metric rows.
+    TRAINER_START_MS="$(now_ms)"
+
+    wait "$TRAINER_PID"
+    local rc=$?
+
+    stop_bridge
+
+    # TWO clocks, deliberately: the probe-discard predicate below is about whether the HOST's
+    # 1s liveness probe saw the pid (supervisor clock, from START_MS), while install evidence is
+    # about the TRAINER's own lifetime (from TRAINER_START_MS) - after the reorder, pre-verdict
+    # work can hold the supervisor alive for seconds that the trainer never lived.
+    local lifetime_ms=$(( $(now_ms) - START_MS ))
+    local trainer_ms=$(( $(now_ms) - TRAINER_START_MS ))
+
+    if [ "$rc" -ne 0 ]; then
+        stages_write train FAILED "trainer exited $rc"
+        printf 'run-cloud-training: trainer FAILED rc=%s\n' "$rc" >&2
+    elif [ "$lifetime_ms" -lt "$LAUNCH_PROBE_MS" ]; then
+        # The launcher's probe has not fired yet and we are already gone, so `kill -0` at ~1s is
+        # certain to fail: it removes <runDir>/pid and returns Failed (CloudRemoteLaunch.kt:169), and
+        # CloudRunStart.kt:111-118 destroys the machine. Writing `post_install DONE` here would leave
+        # a RunTimeline-VALID document at the FIXED runDir (CloudRemoteLaunch.kt:10) claiming a
+        # completed successful install for a launch the host recorded as failed — the next telemetry
+        # read of that path would show a finished run that never happened. Record what actually
+        # occurred instead. No sleep is added to "wait out" the probe: that drain is exactly the
+        # anti-gaming defect a previous revision shipped.
+        stages_write train FAILED \
+            "trainer exited 0 after ${lifetime_ms}ms, inside the launcher's ${LAUNCH_PROBE_MS}ms probe - the launch was DISCARDED, no install ran"
+        printf 'run-cloud-training: trainer exited 0 after %sms - inside the launcher probe window; launch discarded\n' \
+            "$lifetime_ms" >&2
+    elif [ ! -s "$RUN_DIR/$METRICS_NAME" ]; then
+        # rc==0 is the trainer's claim; a metric row is its EVIDENCE. A validate-only run
+        # (run.dry_run), a stubbed trainer, or a trainer that idled and exited emits zero rows -
+        # writing post_install DONE on any of those leaves a RunTimeline-valid success document
+        # for an install that never happened, at the fixed runDir the host will read.
+        stages_write post_install FAILED \
+            "trainer exited 0 after ${trainer_ms}ms but emitted no metric rows - no install evidence, not reporting success"
+        printf 'run-cloud-training: trainer exited 0 with no metric rows - post_install NOT done\n' >&2
+    else
+        stages_write post_install DONE "trainer exited 0 with metric evidence"
+        printf 'run-cloud-training: trainer finished rc=0\n'
+    fi
+    exit "$rc"
+}
+
+main "$@"
