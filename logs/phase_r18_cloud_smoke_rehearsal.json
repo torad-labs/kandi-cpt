@@ -27,12 +27,11 @@
     "config": "configs/train_smoke_cloud.yaml \u2014 smoke_steps=20, fp4 + int8_master=storage (the floor), no corpus needed, save_dir unset; engine-oracle ACCEPTED"
   },
   "paid_run_blocked_on_operator": [
-    "vast balance is NEGATIVE: -30.28 USD (credit 0, threshold -0.01) \u2014 top up before anything can rent",
-    "registry push: ghcr login succeeds but the gh token lacks write:packages (push denied; measured) \u2014 run `gh auth refresh -h github.com -s write:packages`, then `docker push ghcr.io/marcospaulo/conductor-trainer:smoke` (13.2GB), then set QGRE_CLOUD_TRAINING_IMAGE to the pushed digest"
+    "mint a READ-ONLY ghcr pull token (classic PAT, ONLY read:packages) and store the vast login string in the keyring: printf '%s' '-u marcospaulo -p <token> ghcr.io' | secret-tool store --label='vast image_login (ghcr read-only)' service vastai-registry"
   ],
   "paid_run_ready": {
     "vast_ssh_key": "registered on the account (id 1165879, qgre-cloud-smoke)",
-    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/marcospaulo/conductor-trainer@sha256:<pushed digest> QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
+    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/torad-labs/conductor-trainer@sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5 QGRE_CLOUD_REGISTRY_LOGIN=\"$(secret-tool lookup service vastai-registry)\" QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
     "expected": "post_install DONE with >=1 metric rows (the paid arm asserts it), teardown + no conductor-labeled instance left billing",
     "still_unarbitrated_until_paid": [
       "vast ssh_direct plumbing to the image's own sshd",
@@ -40,5 +39,9 @@
       "default disk fits a 13.2GB pull (createInstance sends no disk field)",
       "the first real fp4 training step from this image"
     ]
+  },
+  "registry_correction_2026_08_01": {
+    "what": "the first push went PUBLIC-intent to a personal namespace (ghcr.io/marcospaulo) \u2014 wrong on both axes for an image carrying the moat kernels + model weights. Corrected: the image lives at ghcr.io/torad-labs/conductor-trainer:smoke (org-owned, PRIVATE, digest sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5, blobs cross-repo mounted so no re-upload), and conductor 3b442df6 adds the image_login seam so vast authenticates its pull \u2014 the image never needs to be public",
+    "leftover": "the private ghcr.io/marcospaulo/conductor-trainer package could not be API-deleted (needs delete:packages); it is private and inert \u2014 delete via the package UI when convenient"
   }
 }

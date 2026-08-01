@@ -71,11 +71,20 @@ export QGRE_CLOUD_TRAINING_IMAGE=myreg.io/qgre/conductor-trainer:2026-08-01
 an explicit tag or a `sha256:` digest. A bare `conductor-trainer` is rejected. Prefer the digest —
 the launcher accepts `name@sha256:<64 hex>` and that is the only form that pins what actually runs.
 
-The registry must be public or the instance must be able to authenticate to it; vast pulls the
-image itself. Note that `CloudProvisioner.createInstance` sends exactly five fields — `image`,
-`runtype: "ssh_direct"`, `target_state`, `cancel_unavail`, `label` — and **no `disk` field**
-(`CloudProvisioner.kt:115-124`), so the provider's default disk allocation has to be big enough for
-an 8.54 GB pull. Check it before the first paid launch.
+**Keep the registry PRIVATE.** The image carries the engine tree, the compiled `quartet2` fp4
+kernels (the moat), and — in the smoke variant — the base model weights; a public registry hands
+all of that to anyone. Vast pulls the image itself, and conductor authenticates that pull:
+`createInstance` carries vast's `image_login` pass-through (the CLI's documented
+`-u <user> -p <token> <server>` string) whenever a login is configured — env
+`QGRE_CLOUD_REGISTRY_LOGIN`, else libsecret `secret-tool lookup service vastai-registry`. Use a
+READ-ONLY registry token there (for ghcr: a token with only `read:packages`), never a
+broad-scoped account token — the string lands in the rented machine's docker config. With no
+login configured the body reverts to the five-field shape — `image`, `runtype: "ssh_direct"`,
+`target_state`, `cancel_unavail`, `label` — which requires a public image and is only acceptable
+for images carrying nothing proprietary. Either way there is **no `disk` field**, so the
+provider's default disk allocation has to be big enough for the pull (8.54 GB base / 13.2 GB
+smoke). Check it before the first paid launch. The canonical home is
+`ghcr.io/torad-labs/conductor-trainer` (org-owned, private).
 
 ## What the bundle must contain
 
