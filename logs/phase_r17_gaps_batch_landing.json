@@ -58,6 +58,7 @@
     },
     "fix": "_git_identity(root=C.ROOT) falls back to _baked_identity: parses commit=/dirty= from <engine parent>/ENGINE_COMMIT, rejects the ARG default 'unknown' and non-sha values",
     "proof": "new test red on unmodified HEAD (TypeError: no root param) AND red under a disarmed-fallback mutant (AssertionError); green after; host suite all green",
-    "expected_in_container_after_rebuild": "61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list above"
+    "expected_in_container_after_rebuild": "61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list above",
+    "measured_after_rebuild": "image rebuilt from 9f6b12a4: 61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list \u2014 matches the prediction; execution_contract.py --domain edc emits commit=9f6b12a48a3bdc77c53e92435c4a61e54b510f24 in-container, byte-identical to /opt/qgre/ENGINE_COMMIT"
   }
 }
