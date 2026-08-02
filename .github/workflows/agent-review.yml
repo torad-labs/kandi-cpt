@@ -121,7 +121,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@b3e3c5091f1c8856d1759409b0d153d6e8580456 # v1-97-gb3e3c50
+    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@2c835c7e45cb9c7b4d8853f5ee47b0f18d6b2593 # v1-99-g2c835c7
     with:
       pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.gate.outputs.pr) }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
