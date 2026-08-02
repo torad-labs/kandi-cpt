@@ -444,6 +444,10 @@ main() {
 
     if [ "$rc" -ne 0 ]; then
         stages_write train FAILED "trainer exited $rc"
+        # Terminal non-success on the evidence stage too: leaving post_install PENDING made a
+        # missing-stage document look like "not success yet" rather than "install never happened"
+        # (local rehearsal + conductor probe both need a closed post_install).
+        stages_write post_install FAILED "no install evidence — trainer exited $rc"
         printf 'run-cloud-training: trainer FAILED rc=%s\n' "$rc" >&2
     elif [ "$lifetime_ms" -lt "$LAUNCH_PROBE_MS" ]; then
         # The launcher's probe has not fired yet and we are already gone, so `kill -0` at ~1s is
@@ -456,6 +460,7 @@ main() {
         # anti-gaming defect a previous revision shipped.
         stages_write train FAILED \
             "trainer exited 0 after ${lifetime_ms}ms, inside the launcher's ${LAUNCH_PROBE_MS}ms probe - the launch was DISCARDED, no install ran"
+        stages_write post_install FAILED "launch discarded inside probe window — no install evidence"
         printf 'run-cloud-training: trainer exited 0 after %sms - inside the launcher probe window; launch discarded\n' \
             "$lifetime_ms" >&2
     elif [ ! -s "$RUN_DIR/$METRICS_NAME" ]; then
