@@ -44,5 +44,54 @@
     "what": "the first push went PUBLIC-intent to a personal namespace (ghcr.io/marcospaulo) \u2014 wrong on both axes for an image carrying the moat kernels + model weights. Corrected: the image lives at ghcr.io/torad-labs/conductor-trainer:smoke (org-owned, PRIVATE, digest sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5, blobs cross-repo mounted so no re-upload), and conductor 3b442df6 adds the image_login seam so vast authenticates its pull \u2014 the image never needs to be public",
     "leftover": "the private ghcr.io/marcospaulo/conductor-trainer package could not be API-deleted (needs delete:packages); it is private and inert \u2014 delete via the package UI when convenient",
     "fine_grained_linkage": "re-pushed with org.opencontainers.image.source=github.com/torad-labs/conductor-app so the package is repo-linked (fine-grained PATs reach ghcr only through a linked repo); NEW digest sha256:0a3c5ec3ca0704b3cee1c13e818c4689a70b221819c17d8488ce8d085bb136f3 (label-only change, layers + host-key fingerprint unchanged)"
+  },
+  "paid_attempts_ledger_2026_08_01_02": {
+    "note": "every attempt tore down cleanly or was swept within minutes; total stray billing across all attempts ~cents",
+    "attempts": [
+      {
+        "n": 1,
+        "machine": "GTX TITAN X $0.049/h",
+        "outcome": "READY TIMEOUT at 60s",
+        "finding": "the 12x5s ready window was sized for a warm machine, never a 13.2GB cold pull",
+        "fix": "window 60s -> 10min (conductor ff53d722)"
+      },
+      {
+        "n": 2,
+        "machine": "RTX 3060 $0.052/h",
+        "outcome": "READY TIMEOUT at 10min",
+        "finding": "instrumented rental: a 1.3Gbps host was STILL mid-pull at nine minutes, docker retrying blobs \u2014 ghcr throttles per-blob throughput, nominal bandwidth is not the limit; ALSO attempt-1's TITAN X was sm_52, which torch cu130 cannot run at all",
+        "fix": "window -> 30min + capability floor compute_cap>=750 server+client, unknown refused (ff53d722, 556dfb34); image_login private pull PROVEN in the same rental (layers authenticated and pulled)"
+      },
+      {
+        "n": 3,
+        "machine": "RTX 3060 $0.056/h",
+        "outcome": "trainer exited 1",
+        "finding": "StopIteration at build_model:434 \u2014 the int8-v2 base is a TEXT-ONLY export with zero model.language_model.* keys; model_path-only boots the multimodal remap, which is empty",
+        "fix": "smoke config boots via data.init_from (the native int8-master loader); empty remap now dies with a named RuntimeError (engine fb38c988)"
+      },
+      {
+        "n": "4-6",
+        "machine": "(host-side)",
+        "outcome": "gradle client killed thrice by this box's memory reaper (earlyoom domain; oom-shield covers the client, not the daemon tree)",
+        "finding": "the launcher process must be detachable from the operator seat",
+        "fix": "runs as a systemd user unit with the host-policy caps (MemoryHigh=13G/Max=14G), --no-daemon"
+      },
+      {
+        "n": 7,
+        "machine": "RTX 3060 $0.056/h",
+        "outcome": "trainer exited 1",
+        "finding": "CUDA init refused: host DRIVER was 12.6-era under a capable card \u2014 'driver too old (found version 12060)'; the card is not the whole machine",
+        "fix": "third marketplace filter cuda_max_good>=13.0 server+client, unknown refused (conductor 556dfb34+c42410a6; the latter also repairs my own red-gate push, disclosed in its message)"
+      },
+      {
+        "n": 8,
+        "machine": "RTX 3060 $0.056/h cuda_max_good=13.2",
+        "outcome": "trainer exited 1",
+        "finding": "Triton JIT-compiles its CUDA driver shim with cc/gcc at RUNTIME; the image ships only g++-14. Never seen anywhere before: Blackwell (build host) takes the real Quartet kernel, and the pseudoquant path (capability<10) had never executed until a rented Ampere card ran it",
+        "fix": "image carries gcc-14 + cc/gcc names (engine 7c836fa5); rebuild+push in flight"
+      }
+    ],
+    "structural_fix_from_the_push_pain": "the venv is now its own image layer baked before the tree (engine 3c6e4963) \u2014 a one-line engine fix re-ships ~1GB instead of the ~8GB measured tonight",
+    "remaining_unproven": "one real fp4 smoke step on rented hardware \u2014 attempt 9 fires when the gcc-fixed image push lands"
   }
 }
