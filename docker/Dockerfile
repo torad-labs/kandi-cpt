@@ -69,7 +69,13 @@ RUN apt-get update \
 RUN python3 --version 2>&1 | grep -q '^Python 3\.13' \
  || { echo "BUILD ASSERT FAILED: /usr/bin/python3 is $(python3 --version 2>&1), need 3.13" >&2; exit 1; }
 
-COPY engine /opt/qgre/kandi-cpt
+# The venv is its OWN layer, baked BEFORE the engine tree: it is 6.8GB and changes ~never, while
+# the tree changes with every engine commit. One combined COPY meant a one-line engine fix
+# invalidated the whole ~8GB blob (measured 2026-08-02: a multi-hour ghcr re-upload for the gcc
+# fix). Ordered this way, the venv layer and its two RUN fixups below stay cached across engine
+# changes, and only the ~1GB tree layer re-ships. COPY merges into the existing directory, so the
+# later tree COPY lands beside .venv without touching it.
+COPY venv /opt/qgre/kandi-cpt/.venv
 
 # The venv was built at a path that does not exist here, so every console script in .venv/bin still
 # carries the build host's interpreter in its shebang. Repoint them at the baked interpreter.
@@ -105,6 +111,8 @@ RUN set -eu; \
       echo "  The venv was compiled on a newer host than the FROM line. Raise the base image to a" >&2; \
       echo "  release whose glibc is >= $need, or rebuild the venv on a host matching this base." >&2; \
       exit 1; }
+
+COPY engine /opt/qgre/kandi-cpt
 
 COPY bin/ /opt/qgre/bin/
 RUN chmod 0755 /opt/qgre/bin/run-cloud-training /opt/qgre/bin/qgre-sshd-entrypoint \

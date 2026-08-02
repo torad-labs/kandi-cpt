@@ -69,7 +69,11 @@ fi
 mkdir -p "$CTX/engine"
 git ls-files -z | tar --null -T - -cf - | (cd "$CTX/engine" && tar -xf -)
 echo "  tracked files: $(find "$CTX/engine" -type f | wc -l)"
-cp -a .venv "$CTX/engine/.venv"
+# The venv is staged as its OWN context dir so the Dockerfile can bake it as its own layer.
+# One COPY carrying venv+tree meant any engine commit invalidated an ~8GB layer; measured on
+# 2026-08-02 as a multi-hour ghcr re-upload (~2.5Mbps effective) for a one-line gcc fix. Split,
+# the venv layer (6.8GB, changes ~never) stays cached and an engine change re-ships ~1GB.
+cp -a .venv "$CTX/venv"
 cp "$REPO_ROOT/docker/Dockerfile" "$CTX/Dockerfile"
 cp -a "$REPO_ROOT/docker/bin" "$CTX/bin"
 echo "  context size: $(du -sh "$CTX" | cut -f1)"
