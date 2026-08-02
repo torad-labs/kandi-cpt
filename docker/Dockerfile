@@ -49,6 +49,9 @@ FROM ubuntu:25.10
 #   whatever `cc`/`gcc` resolves at RUNTIME. The build host never exercised this (Blackwell takes
 #   the real Quartet kernel; Triton pseudoquant only runs on capability < 10), so the gap surfaced
 #   on the first rented Ampere card: paid smoke 2026-08-02, trainer dead in triton _build().
+# g++-14 + c++/g++ names : flashinfer's ninja link step invokes bare `c++` (not nvcc) to produce
+#   the .so. Paid smoke attempt 24 (2026-08-02) compiled all 17 sm_120f objects with nvcc/g++-14
+#   then died at link: `/bin/sh: 1: c++: not found`. Symlink the same way as cc/gcc.
 # python3.13-dev : Triton's cuda_utils.c does `#include <Python.h>`. gcc alone is not enough —
 #   paid smoke attempt 14 (2026-08-02) got past "no C compiler" and died on missing Python.h.
 # openssh-server : runtype "ssh_direct" (CloudProvisioner.kt:121) + the sshj transport
@@ -65,7 +68,9 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* \
  && ln -sf /usr/bin/python3.13 /usr/bin/python3 \
  && ln -sf /usr/bin/gcc-14 /usr/bin/gcc \
- && ln -sf /usr/bin/gcc /usr/bin/cc
+ && ln -sf /usr/bin/gcc /usr/bin/cc \
+ && ln -sf /usr/bin/g++-14 /usr/bin/g++ \
+ && ln -sf /usr/bin/g++ /usr/bin/c++
 
 # The baked venv's bin/python3 is an absolute symlink to /usr/bin/python3; if that is not 3.13 the
 # whole site-packages tree is unloadable. Assert rather than discover it on a rented instance.
@@ -169,11 +174,17 @@ sys.exit(0 if r is not None else 1)"; \
 # Paid smoke attempt 22 (2026-08-02) reached the real Quartet path on an RTX 5060 Ti and died
 # FileNotFoundError: ninja. Kept as its OWN late layer so a one-package add does not invalidate
 # the multi-GB venv/tree layers above (the python3.13-dev apt edit earlier forced that re-push).
+# c++/g++ names: also asserted here so a future base that ships g++-14 without the unversioned
+# names fails the BUILD (attempt 24 linked 17/18 nvcc objects then died: c++: not found).
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ninja-build \
  && rm -rf /var/lib/apt/lists/* \
  && command -v ninja >/dev/null \
- || { echo "BUILD ASSERT FAILED: ninja not on PATH after ninja-build install" >&2; exit 1; }
+ || { echo "BUILD ASSERT FAILED: ninja not on PATH after ninja-build install" >&2; exit 1; } \
+ && ln -sf /usr/bin/g++-14 /usr/bin/g++ \
+ && ln -sf /usr/bin/g++ /usr/bin/c++ \
+ && command -v c++ >/dev/null && command -v g++ >/dev/null \
+ || { echo "BUILD ASSERT FAILED: c++/g++ not on PATH (flashinfer ninja link needs bare c++)" >&2; exit 1; }
 
 LABEL org.opencontainers.image.title="conductor-trainer" \
       org.opencontainers.image.description="kandi-cpt engine + its proven virtualenv, for conductor cloud training" \
