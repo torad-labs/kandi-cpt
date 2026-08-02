@@ -431,7 +431,16 @@ def build_model(cfg):
     # materializes ~20 GB of throw-away four-byte parameters while a resumed run also holds the
     # int8 checkpoint and its dequantized state dict. Inferring the dtype from the receipt keeps
     # buffers real (unlike meta construction) without changing checkpoint bytes or training policy.
-    load_dtype = next(value.dtype for value in remapped.values() if value.is_floating_point())
+    load_dtype = next((value.dtype for value in remapped.values() if value.is_floating_point()), None)
+    if load_dtype is None:
+        # Measured on the first paid cloud smoke (2026-08-01): a text-only int8 export has ZERO
+        # 'model.language_model.'-prefixed keys, so the remap is empty and the old bare next()
+        # died as an unexplained StopIteration on a rented GPU. Say what is actually wrong.
+        raise RuntimeError(
+            f"remap of '{cfg['model_path']}/model.safetensors' produced {len(remapped)} tensors and "
+            f"no floating-point ones — this is not a 'model.language_model.'-prefixed multimodal "
+            f"export. An int8 artifact (quant_keys.json present) boots via data.init_from, not "
+            f"model_path-only.")
     prior_default_dtype = torch.get_default_dtype()
     try:
         torch.set_default_dtype(load_dtype)

@@ -15,6 +15,12 @@ mode: cpt
 model:
   model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
   freeze_embeddings: true
+data:
+  # The int8 artifact boots through the NATIVE int8-master loader (it ships quant_keys.json).
+  # Without init_from, build_model falls to the multimodal-safetensors remap, which finds ZERO
+  # 'model.language_model.'-prefixed keys in this text-only export — measured as the paid-smoke
+  # trainer crash (StopIteration at train_cpt.py:434, vast RTX 3060, 2026-08-01).
+  init_from: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
 train:
   precision: fp4
   seq_len: 512
