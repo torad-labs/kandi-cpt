@@ -7,12 +7,17 @@
 # the 400-line entrypoint — including the one-second verdict law — has zero mechanical coverage.
 # docs/cloud-trainer-image.md names this script as the pre-push check.
 #
-# TWO LAWS, both parameterised over payload size because a single-size probe is what let the
-# last defect through:
+# THREE LAWS, the first two parameterised over payload size because a single-size probe is what
+# let the last defect through:
 #   1. VERDICT TIME IS O(central directory): a malformed bundle is refused inside the launcher's
 #      1s probe REGARDLESS of payload bytes.
 #   2. SUCCESS NEEDS EVIDENCE: a trainer that exits 0 with no metric rows must NOT leave
-#      post_install DONE, regardless of how long the supervisor lived on pre-verdict work.
+#      post_install DONE, regardless of how long the supervisor lived on pre-verdict work —
+#      and MUST leave post_install FAILED (terminal non-success, not PENDING).
+#   3. TRAINER FAILURE CLOSES THE EVIDENCE STAGE: a nonzero trainer exit (and a probe-window
+#      discard) must write train FAILED + post_install FAILED. Leaving post_install PENDING made
+#      incomplete documents look like "not success yet" rather than "install never happened"
+#      (conductor CloudSmokeProbe honest no-GPU path; paid smoke 2026-08-02).
 #
 # Usage:  QGRE_ENGINE_DIR=<engine checkout> docker/tests/verdict-time-bound.sh
 #         PAYLOAD_MB="50 150 300" to change the size sweep (default "50 150 300").
@@ -134,7 +139,9 @@ for MB in $SIZES; do
         bad "stub trainer ${MB}MB: the stub never ran - this arm is VACUOUS"
     elif grep -qE '"stage": ?"post_install", ?"status": ?"DONE"' "$R/cpt_stages.json" 2>/dev/null; then
         bad "stub trainer ${MB}MB left post_install DONE with no metric rows"
-    else ok "stub trainer ${MB}MB: no success document (stub proven to have run)"; fi
+    elif ! grep -qE '"stage": ?"post_install", ?"status": ?"FAILED"' "$R/cpt_stages.json" 2>/dev/null; then
+        bad "stub trainer ${MB}MB left post_install non-terminal (want FAILED, not PENDING)"; dump "$R"
+    else ok "stub trainer ${MB}MB: post_install FAILED, no success document (stub proven to have run)"; fi
 done
 
 say ""
@@ -153,6 +160,45 @@ done
 if grep -qE '"stage": ?"post_install", ?"status": ?"DONE"' "$R/cpt_stages.json" 2>/dev/null; then
     ok "evidence-emitting trainer reports post_install DONE"
 else bad "evidence-emitting trainer did NOT reach post_install DONE (gate may be always-red)"; dump "$R"; fi
+
+say ""
+say "LAW 3 — trainer failure closes post_install (terminal FAILED, not PENDING)"
+# stages_write keeps exactly ONE non-terminal stage (RunTimeline rejects two FAILED/RUNNING).
+# When the active write is post_install FAILED, prior stages (including train) collapse to DONE
+# in the document — the failure evidence is the post_install status + note, not train FAILED.
+# 3a: nonzero exit after the launcher probe has already seen the pid alive.
+R="$TMP/nonzero"; B="$TMP/nonzero.zip"
+mkbundle "$B" 0 "$GOOD_CFG"
+launch "$B" "$R" 'sleep 1.2; exit 7' >/dev/null 2>&1 || true
+for _ in $(seq 1 600); do
+    grep -qE '"stage": ?"post_install", ?"status": ?"(DONE|FAILED)"' "$R/cpt_stages.json" 2>/dev/null && break
+    sleep 0.05
+done
+if ! grep -q 'TRAINER-EXEC (test hook)' "$R/train.log" 2>/dev/null; then
+    bad "nonzero trainer: stub never ran - arm is VACUOUS"; dump "$R"
+elif ! grep -qE '"stage": ?"post_install", ?"status": ?"FAILED"' "$R/cpt_stages.json" 2>/dev/null; then
+    bad "nonzero trainer: post_install not FAILED (still PENDING?)"; dump "$R"
+elif ! grep -q 'trainer exited 7' "$R/cpt_stages.json" 2>/dev/null; then
+    bad "nonzero trainer: post_install FAILED but note lacks exit rc"; dump "$R"
+elif grep -qE '"stage": ?"post_install", ?"status": ?"DONE"' "$R/cpt_stages.json" 2>/dev/null; then
+    bad "nonzero trainer: post_install DONE — evidence gate inverted"; dump "$R"
+else ok "nonzero trainer (exit 7): post_install FAILED with exit note"; fi
+
+# 3b: fast exit 0 — hits probe-discard and/or no-metrics; both must leave post_install FAILED.
+R="$TMP/discard"; B="$TMP/discard.zip"
+mkbundle "$B" 0 "$GOOD_CFG"
+launch "$B" "$R" true >/dev/null 2>&1 || true
+for _ in $(seq 1 600); do
+    grep -qE '"stage": ?"post_install", ?"status": ?"(DONE|FAILED)"' "$R/cpt_stages.json" 2>/dev/null && break
+    sleep 0.05
+done
+if ! grep -q 'TRAINER-EXEC (test hook)' "$R/train.log" 2>/dev/null; then
+    bad "fast-exit trainer: stub never ran - arm is VACUOUS"; dump "$R"
+elif grep -qE '"stage": ?"post_install", ?"status": ?"DONE"' "$R/cpt_stages.json" 2>/dev/null; then
+    bad "fast-exit trainer left post_install DONE with no metrics"; dump "$R"
+elif ! grep -qE '"stage": ?"post_install", ?"status": ?"FAILED"' "$R/cpt_stages.json" 2>/dev/null; then
+    bad "fast-exit trainer: post_install not FAILED"; dump "$R"
+else ok "fast-exit trainer: post_install FAILED (probe-discard or no-metrics path)"; fi
 
 say ""
 say "RESULT: $PASS ok, $FAIL failed"
