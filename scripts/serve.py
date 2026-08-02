@@ -41,6 +41,29 @@ OBJECTIVES_CFG = ROOT / "configs" / "objectives.json"
 STATUS_FILE = ROOT / "data" / "_build" / "train_status.json"
 LEDGER = DISSECT / "calibration_results.jsonl"
 
+# Run ids and asset names come from URL path/query — allow only safe single segments /
+# relative subpaths (no absolute paths, no '..') so path joins cannot escape their root.
+_RUN_ID_RE = re.compile(r"^[\w.-]+$")
+
+
+def _safe_run_id(rid: str | None) -> str | None:
+    if not rid or not _RUN_ID_RE.fullmatch(rid):
+        return None
+    return rid
+
+
+def _under(root: Path, rel: str) -> Path | None:
+    """Return root/rel resolved, or None if rel escapes root (path-injection guard)."""
+    if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
+        return None
+    try:
+        base = root.resolve()
+        target = (root / rel).resolve()
+        target.relative_to(base)
+        return target
+    except (ValueError, OSError):
+        return None
+
 
 def corpus_dir(festival):
     return DATA_ROOT / festival
@@ -101,8 +124,16 @@ def read_jsonl(path):
 
 
 def _vnum(run_id):
-    m = re.search(r"(\d+)\s*$", run_id or "")
-    return int(m.group(1)) if m else 0
+    """Trailing integer in a run id (edc_sft_v12 → 12). Linear scan — no regex backtracking."""
+    if not run_id:
+        return 0
+    s = run_id.rstrip()
+    i = len(s)
+    while i > 0 and s[i - 1].isdigit():
+        i -= 1
+    if i == len(s):
+        return 0
+    return int(s[i:])
 
 
 def run_id_from_ckpt(ckpt):
@@ -227,8 +258,11 @@ def list_runs(obj):
 
 
 def run_detail(rid):
-    rdir = SFT_DIR / rid
-    if not rdir.is_dir():
+    rid = _safe_run_id(rid)
+    if not rid:
+        return None
+    rdir = _under(SFT_DIR, rid)
+    if not rdir or not rdir.is_dir():
         return None
     led = ledger_latest_by_run()
     summ = run_summary(rdir, led)
@@ -419,8 +453,11 @@ def _prior_metrics(rid, led):
 def coach_report_run(rid):
     """The Coach's read of ONE run: what went well / wrong / could-improve, which levers to pull next,
     and the actual probes that misfired as evidence. Diagnostic — no ship/keep verdict."""
-    rdir = SFT_DIR / rid
-    if not rdir.is_dir():
+    rid = _safe_run_id(rid)
+    if not rid:
+        return None
+    rdir = _under(SFT_DIR, rid)
+    if not rdir or not rdir.is_dir():
         return None
     led = ledger_latest_by_run()
     summ = run_summary(rdir, led)
@@ -442,8 +479,11 @@ def compare_runs(rids, baseline=None):
     led = ledger_latest_by_run()
     out, rowmaps = [], {}
     for rid in rids:
-        rdir = SFT_DIR / rid
-        if not rdir.is_dir():
+        rid = _safe_run_id(rid)
+        if not rid:
+            continue
+        rdir = _under(SFT_DIR, rid)
+        if not rdir or not rdir.is_dir():
             continue
         summ = run_summary(rdir, led)
         label = summ.get("label")
@@ -634,17 +674,34 @@ def _gpu_stat(device=0):
 def _log_path(rid):
     """Resolve a run's log. While a chain/trainer is live it registers its combined log in
     train_status.json (build→train→gate as one stream); else the canonical per-run train.log;
-    else the /tmp convention for older runs."""
-    st = read_json(STATUS_FILE)
-    if st and st.get("run") == rid and st.get("log_path") and Path(st["log_path"]).is_file():
-        return Path(st["log_path"])
-    cand = SFT_DIR / rid / "train.log"
-    if cand.is_file():
+    else the /tmp convention for older runs. `rid` is URL-sourced — validated before any join."""
+    rid = _safe_run_id(rid)
+    if not rid:
+        return None
+    st = read_json(STATUS_FILE) or {}
+    # Status file is host-written, not URL input; still require the path to stay under ROOT or /tmp.
+    if st.get("run") == rid and st.get("log_path"):
+        lp = Path(st["log_path"]).resolve()
+        root = ROOT.resolve()
+        tmp = Path("/tmp").resolve()
+        try:
+            under_root = str(lp).startswith(str(root) + os.sep) or lp == root
+        except Exception:
+            under_root = False
+        try:
+            under_tmp = str(lp).startswith(str(tmp) + os.sep)
+        except Exception:
+            under_tmp = False
+        if lp.is_file() and (under_root or under_tmp):
+            return lp
+    cand = _under(SFT_DIR, f"{rid}/train.log")
+    if cand and cand.is_file():
         return cand
-    m = re.search(r"(v\d+)$", rid or "")
+    m = re.search(r"(v\d+)$", rid)
     if m:
-        legacy = Path("/tmp") / f"train_sft_{m.group(1)}.log"
-        if legacy.is_file():
+        # Constructed only from the validated trailing vN — never a raw user path.
+        legacy = (Path("/tmp") / f"train_sft_{m.group(1)}.log").resolve()
+        if legacy.is_file() and legacy.parent == Path("/tmp").resolve():
             return legacy
     return None
 
@@ -737,6 +794,8 @@ class Handler(BaseHTTPRequestHandler):
         self._send(code, obj, "application/json")
 
     def _file(self, path: Path, fallback_ctype="text/plain"):
+        # Callers must pass a containment-checked Path (_under / PAGE_ROUTES). Re-check is_file
+        # only — never build paths from raw URL strings here.
         if not path.is_file():
             return self._send(404, {"error": f"not found: {path.name}"})
         ctype = MIME.get(path.suffix, fallback_ctype)
@@ -849,14 +908,17 @@ class Handler(BaseHTTPRequestHandler):
         # assets ───────────────────────────────────────────
         if path.startswith("/assets/"):
             name = path[len("/assets/"):]
-            target = (ASSETS / name).resolve()
-            if str(target).startswith(str(ASSETS.resolve())):
+            target = _under(ASSETS, name)
+            if target is not None:
                 return self._file(target)
             return self._send(403, {"error": "forbidden"})
 
         # pages ────────────────────────────────────────────
         if path in PAGE_ROUTES:
-            return self._file(PAGES / f"{PAGE_ROUTES[path]}.html", "text/html")
+            page = _under(PAGES, f"{PAGE_ROUTES[path]}.html")
+            if page is None:
+                return self._send(404, {"error": f"no route: {path}"})
+            return self._file(page, "text/html")
         if path == "/favicon.ico":
             return self._send(204, b"")
 

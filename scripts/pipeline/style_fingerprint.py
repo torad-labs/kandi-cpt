@@ -33,11 +33,12 @@ from pipeline.editions import iter_editions
 
 _WORD_RE = re.compile(r"[A-Za-z0-9']+")
 _SENT_RE = re.compile(r"[^.!?]+[.!?]+|[^.!?]+$")
+# Non-overlapping ranges only (1F600–1F64F sits inside 1F300–1F9FF — listing it twice
+# tripped CodeQL py/overly-large-range).
 _EMOJI_RE = re.compile(
     "["
-    "\U0001F300-\U0001F9FF"
-    "\U00002700-\U000027BF"
-    "\U0001F600-\U0001F64F"
+    "\U0001F300-\U0001F9FF"  # misc symbols & pictographs through supplemental symbols
+    "\U00002700-\U000027BF"  # dingbats
     "]+",
     flags=re.UNICODE,
 )
