@@ -45,6 +45,10 @@ FROM ubuntu:25.10
 # unzip      : the host bundle is a zip (CloudBundleTransfer.kt:18)
 # gawk       : the metrics bridge calls fflush(FILE); gawk supports the 1-arg form unambiguously
 # g++-14     : train_fp4.sh:46 exports NVCC_PREPEND_FLAGS="-ccbin g++-14" for the flashinfer JIT
+# gcc-14 + cc/gcc names : Triton JIT-compiles its CUDA driver shim (triton/runtime/build.py) with
+#   whatever `cc`/`gcc` resolves at RUNTIME. The build host never exercised this (Blackwell takes
+#   the real Quartet kernel; Triton pseudoquant only runs on capability < 10), so the gap surfaced
+#   on the first rented Ampere card: paid smoke 2026-08-02, trainer dead in triton _build().
 # openssh-server : runtype "ssh_direct" (CloudProvisioner.kt:121) + the sshj transport
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
@@ -52,10 +56,13 @@ RUN apt-get update \
       unzip \
       gawk \
       g++-14 \
+      gcc-14 \
       openssh-server \
       ca-certificates \
  && rm -rf /var/lib/apt/lists/* \
- && ln -sf /usr/bin/python3.13 /usr/bin/python3
+ && ln -sf /usr/bin/python3.13 /usr/bin/python3 \
+ && ln -sf /usr/bin/gcc-14 /usr/bin/gcc \
+ && ln -sf /usr/bin/gcc /usr/bin/cc
 
 # The baked venv's bin/python3 is an absolute symlink to /usr/bin/python3; if that is not 3.13 the
 # whole site-packages tree is unloadable. Assert rather than discover it on a rented instance.
