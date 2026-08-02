@@ -1,0 +1,65 @@
+{
+  "schema": "finding/1",
+  "title": "Phase r15 \u2014 the EDC ceiling is the fact layer, and every instrument reads downstream of it",
+  "recorded_at": "2026-07-31",
+  "how_found": "Operator asked whether the adversarial-loop escalations meant nothing was salvageable, and whether the fault was in how the data was organized/synthesized/hydrated. Measured the fact layer directly instead of re-reading the hydrated layer's instruments.",
+  "fact_layer": {
+    "measured_over": "data/edc/*/*/15_structured/triples.jsonl (98 files; NOTE the two-level glob \u2014 one level returns 0 with exit 0)",
+    "rows": 19229,
+    "distinct_predicates": 25,
+    "top_shares": {
+      "in_lineup": 0.596,
+      "plays_at": 0.3593,
+      "top2": 0.9553
+    },
+    "predicates_under_10_rows": 17,
+    "manifest_predicates_never_appearing": 9,
+    "comparison": {
+      "pokemon-lore": {
+        "rows": 869,
+        "top2": 0.2854
+      },
+      "millbrook-hollow": {
+        "rows": 60,
+        "top2": 0.3
+      }
+    }
+  },
+  "hydrated_layer": {
+    "surfaces": 836840,
+    "surfaces_per_fact": 43.5,
+    "distinct_six_token_openings": 347797,
+    "top5_opening_share": 0.018,
+    "reading": "excellent diversity by every ruler the engine owns \u2014 over a graph that is functionally one relation"
+  },
+  "why_nothing_caught_it": {
+    "dominance_max_frac": "caps HYDRATED SURFACE FAMILIES (artist_to_stage, set_time, b2b_pairing), not graph predicates",
+    "effective_forms": "diversity_lib.effective_forms() takes texts",
+    "conclusion": "every diversity/balance instrument reads the layer AFTER hydration, where the paraphrase machine manufactures the signal they measure; the fact layer had no cap at all"
+  },
+  "threads_this_closes_with_one_cause": [
+    "balance gate FAIL cov 2.3236, recorded unfixable post-hoc (phase_h7b_balance_fix.json)",
+    "utilization balancing: spread 12.0x->1.00x at relation coverage 0.7668->0.5865 (phase_r1_utilization_balance.json)",
+    "+107 triples moving coverage DOWN 0.1485->0.1391 (phase_f_audit_recall_kanto.json)"
+  ],
+  "structural_fix": {
+    "what": "fact_concentration_sound \u2014 a semantic postcondition on the structured stage; the cap is the domain's own relations.dominance_max_frac, travelling WITH the check",
+    "commits": [
+      "81bb1c0d",
+      "c6ac3894 (failure text routes to cpt/04-structured.md + cpt/06-improve.md)"
+    ],
+    "red_green_at_declared_0.85": {
+      "edc": "FAIL 0.9553",
+      "pokemon-lore": "PASS 0.2854",
+      "millbrook-hollow": "PASS 0.3000"
+    },
+    "cannot_fail_probe": [
+      "cap 0.20 on healthy corpus -> red",
+      "undeclared cap -> red (fails closed)",
+      "no files -> red",
+      "cap 1.5 -> red",
+      "EDC at cap 0.99 -> PASS (not always-red)"
+    ]
+  },
+  "doctrine": "the lever for a concentrated graph is extraction BREADTH \u2014 more relation TYPES \u2014 never more rows and never post-hydrate rebalancing"
+}

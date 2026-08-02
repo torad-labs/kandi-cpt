@@ -1,0 +1,83 @@
+{
+  "title": "Phase r14 \u2014 EDC close-out via adversarial-loop (fix-forward), 22 agents, 0 errors",
+  "date": "2026-07-31",
+  "batch": {
+    "items": 2,
+    "agents": 22,
+    "errors": 0,
+    "outcome": "2 ESCALATE, 0 clean, 0 repaired",
+    "ceiling_in_spec": 0,
+    "false_landings": 0,
+    "duration_h": 2.9
+  },
+  "premise_phase_corrected_the_orchestrator": {
+    "note": "Three carried numbers were wrong BEFORE fan-out; the skill's serial premise check caught them.",
+    "splits_not_missing": {
+      "claimed": "0 split files (written into CLAUDE.md 2026-07-30)",
+      "measured": "294 files \u2014 97 split_v2, 50 split_v3, 97 decontamination_v2, 50 decontamination_v3",
+      "cause": "one-level glob data/edc/*/splits/*.json over NESTED city/year units; matches nothing, exits 0",
+      "same_class_as": "the id_map defect (unit_slug = ed_dir.name read the YEAR), 498a1cfe"
+    },
+    "tier_filter_not_on_the_shard_path": {
+      "claimed": "declaring tiers unblocks the train shard",
+      "measured": "tier_for is consumed at scripts/extract_structured.py:299 (the STRUCTURED stage); EDC 15_structured is already built for 98 editions and EDC hydrate is bespoke (rehydrate_vc1.sh)",
+      "consequence": "declaring tiers moves the READINESS verdict and any FUTURE re-extraction, not shard contents",
+      "recorded_as": "DOMAIN_LAW L3, stated binding and counter-intuitive before fan-out"
+    }
+  },
+  "orchestrator_adjudications": [
+    {
+      "item": "EDC-1",
+      "objection": "configs/domains/edc.yaml comment claims the 50 v3 splits carry a non-empty id_map",
+      "ruling": "PARTLY_VALID",
+      "reviewer_command_was_wrong": "checked top-level 'id_map' and supersedes_v2.id_map_size; neither is the field",
+      "measured_truth": "meta.id_map_size is NON-ZERO on all 50 v3 splits but is NOT uniform: 21 of 50 read 1, 29 read more, the largest is 15, none is 0. supersedes_v2.id_map_size == 0 on all 50 (that is the SUPERSEDED v2's size \u2014 the inert alias closure the v3 re-cut fixed).",
+      "measured_truth_SUPERSEDED_2026-07-31": "WAS: 'meta.id_map_size == 1 on all 50; supersedes_v2.id_map_size == 0 on all 50 (that is the SUPERSEDED v2's size)'. The FIRST clause is wrong, and wrong the same way law L6 was: it generalized a las_vegas/2012 spot-check (which does read 1) to all 50. Re-measured over `find data/edc -maxdepth 4 -name split_v3.json` -> Counter({1: 21, 2: 9, 3: 5, 5: 4, 4: 2, 7: 2, 6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 13: 1, 15: 1}). The SECOND clause is correct and stands.",
+      "orchestrator_law_L6_was_also_wrong": "'all 50 carry a non-empty id_map' is technically true (1>0) but misleading; it rode into all 22 agents",
+      "substantive_replacement_claim_CONFIRMED": "15 of 50 dual units have an identical holdout set, 35 DIFFER (las_vegas/2012 v2 16 -> v3 17). THAT is why v3 is a different eval series, not the id_map."
+    },
+    {
+      "item": "EDC-2",
+      "objection": "artifact asserts 'nothing notices a manifest with an empty holdout'",
+      "ruling": "VALID",
+      "adjudicating_command": "sed -n '476,495p' scripts/run_stage.py",
+      "evidence": "_split_integrity_ok rejects on `or not holdout` \u2014 the owner exists; the universal negative is false"
+    }
+  ],
+  "measured_facts_now_pinned": {
+    "registry_units": 98,
+    "split_v2": 97,
+    "split_v3": 50,
+    "units_with_no_splits_dir": [
+      "las_vegas/2026"
+    ],
+    "declared_v2_missing_units": 1,
+    "declared_v3_would_miss": 48,
+    "dual_units_holdout_identical": 15,
+    "dual_units_holdout_differs": 35,
+    "structured_rows": 19229,
+    "distinct_predicates_in_data": 25,
+    "manifest_predicates": 34,
+    "tokenized_edc_shard": 0
+  },
+  "proposed_but_NOT_APPLIED": {
+    "tier_assignment": {
+      "stable": 30,
+      "hot": 4,
+      "hot_predicates": [
+        "gets_busy_at",
+        "peak_density",
+        "operating_hours",
+        "service_constraint"
+      ],
+      "rows_held_by_hot_predicates": 1,
+      "why_not_applied": "which facts a model should permanently KNOW versus look up is a domain judgment the operator owns, not one the gate can adjudicate"
+    },
+    "v3_migration": {
+      "status": "campaign, not a patch",
+      "reason": "load_split prefers v3 > v2 > v1, so authoring v3 per unit silently changes which holdout every downstream consumer reads; 35 of 50 dual units already differ",
+      "blocked_by": "the resolve stage is gpu:true and this batch spawned no GPU work"
+    }
+  },
+  "engine_head": "3497312e"
+}

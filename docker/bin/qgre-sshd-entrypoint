@@ -1,0 +1,33 @@
+#!/bin/sh
+# Default CMD. The image must serve sshd: CloudProvisioner.kt:121 sends runtype "ssh_direct" when
+# it creates the instance, and every later host action (upload, launch, liveness, cleanup,
+# telemetry) rides an sshj session — CloudRemoteTransport.kt:6-8. An image that does not answer on
+# 22 provisions fine and then fails every command, which reads as a broken bundle rather than a
+# broken image.
+#
+# THIS IS THE ONE PART OF THE CONTRACT A LOCAL DOCKER PROOF CANNOT ARBITRATE: nothing here says
+# whether vast.ai's ssh_direct plumbing is satisfied by a container that merely runs sshd. That is
+# an operator smoke test on a real instance. Treat "sshd starts and accepts the injected key" as
+# proven locally, and "vast routes to it" as unproven.
+#
+# Host keys are generated at first boot, never baked: a host key inside a distributed image is the
+# same private key on every machine that ever runs it.
+set -eu
+
+mkdir -p /run/sshd /root/.ssh
+chmod 700 /root/.ssh
+
+ssh-keygen -A
+
+# vast.ai injects the operator's public key as PUBLIC_KEY on ssh_direct instances; accept the same
+# variable name so the image needs no vast-specific glue.
+if [ -n "${PUBLIC_KEY:-}" ]; then
+    printf '%s\n' "$PUBLIC_KEY" >> /root/.ssh/authorized_keys
+fi
+if [ -f /root/.ssh/authorized_keys ]; then
+    chmod 600 /root/.ssh/authorized_keys
+else
+    echo "qgre-sshd-entrypoint: WARNING no authorized_keys and no PUBLIC_KEY - no one can log in" >&2
+fi
+
+exec /usr/sbin/sshd -D -e

@@ -1,0 +1,497 @@
+{
+ "schema": "kandi.edc_split_coverage.v1",
+ "campaign": "phase_r16_edc_split_coverage",
+ "recorded_at": "2026-07-31T00:00:00Z",
+ "engine_head_at_measurement": "9cd16822",
+ "status": "LANDED",
+ "headline": "EDC split coverage is MEASURABILITY, not file existence, over a pool pinned by FROZEN MEMBERSHIP, not by a live re-read and not by cardinality. Over the 98 units the registry enumerates, 90 are covered and 8 are not: 1 carries no split (las_vegas/2026), 6 carry a split whose holdout is EMPTY, and 1 carries a split that no longer partitions its own graph (milton_keynes/2015). A has-a-split-FILE predicate certifies 97 of 98 and hides the last seven. The r10 v3 re-cut is complete for the class it targeted (0 closures without a v3, 0 v3 files whose closure went empty) and the 47 units still on v2 are provably correct -- but so are the 49 v3 units, re-derived here for the first time. NO split file was written by this campaign and no GPU work was spawned.",
+ "depends_on": [
+  "phase_r9_id_map_loader_audit",
+  "phase_r10_edc_alias_overlaps"
+ ],
+ "question": {
+  "asked": "97 split_v2 vs 50 split_v3 on disk. Are the 47 editions holding a v2 and no v3 correctly on v2, or is the migration simply incomplete?",
+  "answered_with": "the loader the engine resolves TODAY (pipeline.split.load_split / load_id_map), run over every edition the registry enumerates -- not the count that was true when the r10 sweep ran",
+  "verdict": "correctly on v2, proven by re-derivation over ALL 97 split-carrying units rather than by assertion -- and the question turned out to be the smaller half of the finding"
+ },
+ "repair_round": {
+  "why_this_block_exists_in_this_shape": "A previous revision of this same landing was reviewed and found defective in three places. All three are now closed and each has a permanent probe; they are recorded here because every one of them was a sentence in the receipt that read as a strength.",
+  "defect_1_the_membership_pin_was_a_NO_OP": {
+   "claimed": "'Two readers deliberately' -- an expected slug set read from `_registry_units(C.load_editions(\"edc\"))`, one call BELOW `iter_editions`, so that a swapped registry could not prove itself.",
+   "measured": "`iter_editions(only=None, with_raw=False)` applies no filter and yields exactly one Ed per `_registry_units` tuple, so the two readers were the SAME computation. Under a real registry edit -- configs/editions_edc.json loses orlando/2014 and gains newcity/2027, which moves BOTH readers -- the symmetric difference between the rows and the expected set was [] and the coverage assertion stayed GREEN with orlando/2014 silently out of the estimand. Transcript, measured on the shipped block by this campaign: `shipped _edc_registry_slugs() size: 98  symmetric difference vs rows: []` / `gaps(shipped) = []` / `gaps(circular) = []` / `gaps(shipped) == gaps(circular) -> True`. The previous revision's own cannot-fail probe for this (replace the second reader with a circular one and watch the catch disappear) established NOTHING for the same reason: it was true only because that probe monkeypatched `iter_editions`, a route no registry edit takes.",
+   "severity": "the only FALSE-GREEN in the batch, and reachable by an ordinary config edit rather than only forward-reachable",
+   "fix": "EDC_REGISTRY_SLUGS -- a frozen 98-entry constant. `_edc_registry_slugs()` is DELETED. A constant is the only thing a registry edit cannot move.",
+   "permanent_probe": "test_a_constant_size_registry_swap_names_the_departed_unit performs exactly that edit against a throwaway symlink DATA root and asserts the coverage failure text contains POOL_MEMBERSHIP_DRIFT: left=['orlando/2014'] arrived=['newcity/2027']. Restore a live re-read and the probe goes RED with 'POOL_MEMBERSHIP_DRIFT IS A NO-OP'."
+  },
+  "defect_2_the_two_readers_graded_different_file_sets_and_DEADLOCKED": {
+   "claimed": "'Two mechanical readers of the same files.'",
+   "measured": "They were not the same files. `test_declared_zero_holdout_matches_the_engines_own_split_postcondition` enumerated `for v in (\"v2\", \"v3\")` and opened 147 VERSION FILES, while `_edc_coverage_rows` graded the 97 WINNING manifests. The two agreed at HEAD only by accident (both rejection sets are the identical six; superseded v2 manifests that fail integrity today: none).",
+   "consequence": "Split versions are IMMUTABLE, so this block's own named repair for the six zero-holdout units -- a frac/floor policy, which must be authored as a v3 -- leaves the failing v2 on disk forever and NO value of EDC_DECLARED_ZERO_HOLDOUT makes both assertions green. Measured on the shipped block with a healthy floored v3 authored for denver/2008 in a scratch DATA root (5 current ids, v2 holdout 0, v3 train 4 / holdout 1, realized frac 0.2000, `_split_integrity_ok(v2)=False`, `_split_integrity_ok(v3)=True`, `load_split` resolves v3): KEPT -> coverage RED / postcondition GREEN; REMOVED -> coverage GREEN / postcondition RED; SATISFYING DECLARATION EXISTS: False []. The coverage message told the operator to make the exact edit its sibling assertion then rejected.",
+   "fix": "`_winning_split_path` is now the ONE owner of 'which manifest is this unit's split', and the postcondition reader resolves through it. Same scratch fixture on the repaired block: KEPT -> RED/RED, REMOVED -> GREEN/GREEN, SATISFYING DECLARATION EXISTS: True ['REMOVED'].",
+   "measured_no_op_at_HEAD": "all-versions rejection set and winner-only rejection set are the identical six; IDENTICAL ON HEAD: True. The change moves nothing today and is the sole fix for the deadlock.",
+   "permanent_probe": "the same test asserts the (slug, version) pairs `_winning_split_path` resolves equal the pairs `load_split` resolves, over a non-empty compared set of 97 units. Restoring a hand-ordered (\"v2\", \"v3\") walk names every dual-series unit."
+  },
+  "defect_3_the_tightness_predicates_were_ASYMMETRIC": {
+   "claimed": "an earlier repair added `not row[\"overlap\"]` to the EDC_DECLARED_STALE_SPLIT tightness predicate and reported the wrong-advice class closed",
+   "measured": "the guard was added to ONE of the two predicates. On a row with holdout 4 and overlap 4 -- a manifest whose every held-out fact was trained on -- the shipped block emitted TWO gaps: the leak, AND 'STALE_EXEMPTION a/1: now has a non-empty holdout - remove it from EDC_DECLARED_ZERO_HOLDOUT'. Verbatim the wrong-advice class the sibling guard exists for, one predicate over.",
+   "fix": "the same term on the zero-holdout tightness predicate. Repaired: ONE gap, the leak alone, for BOTH declaration settings. The SPLITLESS tightness message ('now carries a split') is correct on a leaky row and deliberately keeps no guard.",
+   "no_live_effect": "milton_keynes/2015 has overlap 0 and the live leak census is 0 over 97 manifests, so no verdict on the real tree changes."
+  },
+  "process_defect_two_revisions_under_one_item_id": "Two different revisions of this landing were live at the same time -- the 622-line block four reviewers read, and an unreviewed 644-line variant that closed the membership defect and left the deadlock and the asymmetry open. Landing the unreviewed one would have shipped two of three defects while discarding four reviewers' verification. The rule that follows is mechanical: one content hash per item id, verified by whoever applies it.",
+  "what_this_round_added_that_no_reviewer_demanded": [
+   "ONE OWNER for the LEAKED_HOLDOUT sentence (`_leaked_holdout_gap`). It was authored twice, independently, in the verdict function and in the re-derivation test, rendering identically only by coincidence; nothing compared them, so a one-sided edit was silent. Both readers are now asserted to hold no private string literal naming the class, so a re-inlined copy is a RED rather than a second source of truth.",
+   "PAIRWISE-DISJOINT declaration sets. The ordering guard read `EDC_DECLARED_STALE_SPLIT <= leak_checked | EDC_DECLARED_SPLITLESS`; that union term existed only to tolerate a unit declared BOTH stale and splitless, and tolerating it also blunted the guard, since a splitless unit can never be disjointness-checked. The incoherent state is now named instead of absorbed, and the ordering guard reads `<= leak_checked`.",
+   "A PURE ROW BUILDER (`_split_row`) with its own red-green proof. overlap, unassigned and orphan are ALL 0 for every unit on the live tree, so no tree-reading assertion could show any of the three is derived from the manifest at all -- force one to a constant and every other test in the file stayed green. Measured: with `overlap`, `unassigned` or `orphan` pinned to 0, the file is now RED in each case. This is the only place `orphan` is exercised by anything in the repo."
+  ]
+ },
+ "pool_correction": {
+  "item_pool": 97,
+  "measured_pool": 98,
+  "why": "iter_editions('edc', with_raw=False) and plan_install both enumerate 98 city/year units from configs/editions_edc.json. 97 is the count of units carrying a splits/ directory -- the ANSWER being measured, not the denominator to measure it over. A pool defined by having a splits/ dir structurally cannot contain a unit that has none.",
+  "partition_of_98": {
+   "non_empty_live_id_map, holds split_v3": 50,
+   "empty_live_id_map, holds split_v2 only": 47,
+   "no split of any version": 1
+  },
+  "second_over_pin_found_in_review": "Correcting the POOL and then defining the PREDICATE as 'carries a split file' reproduces the identical shape one level down. The predicate was the real ceiling: a unit can carry a manifest and still contribute nothing measurable. Seven such units exist and all of them read COVERED under file existence.",
+  "third_over_pin_found_in_the_NEXT_review": "Pinning the corrected pool by its CARDINALITY reproduces the shape a third time. EDC_REGISTRY_COUNT = 98 is an equality, which makes growth and shrinkage loud -- and lets one unit leave while another arrives, holding 98, printing an identical census line, and silently dropping the departed unit from the estimand.",
+  "fourth_over_pin_found_in_the_ROUND_AFTER_THAT": "Answering the swap with a LIVE second reader of the registry reproduces the shape a fourth time, and this one was a total no-op rather than a partial fix: both readers consume `C.load_editions`, so the edit that moves the pool moves the expected set with it. See repair_round.defect_1 for the transcript. Membership is now a FROZEN CONSTANT, which is the first pin in this sequence that the thing it measures cannot move."
+ },
+ "coverage_definition": {
+  "covered_iff": "the unit (a) resolves a split, (b) carries a NON-EMPTY holdout, and (c) that manifest PARTITIONS the unit's CURRENT triple id set -- covering it (nothing unassigned, no orphans) AND splitting it (train and holdout disjoint)",
+  "measured_2026_07_31": {
+   "pool": 98,
+   "covered": 90,
+   "uncovered": 8
+  },
+  "uncovered": {
+   "no_split": 1,
+   "split_with_empty_holdout": 6,
+   "split_that_does_not_partition_the_current_graph": 1,
+   "split_whose_holdout_leaks_into_train": 0
+  },
+  "graded_against": "the CURRENT graph -- {triple_id(t) for t in load_all_triples(ed)} versus train_ids|holdout_ids, plus train_ids&holdout_ids for the disjointness half. Never the manifest's own frozen n_triples, and never n_unique_triple_ids.",
+  "which_manifest": "the WINNING one, resolved by `_winning_split_path` for the path readers and by `load_split` for the manifest readers, with the two asserted to agree on (slug, version) for all 97. Superseded version files are opened by no consumer and are NOT graded; grading them made the declared-debt set a function of files outside the estimand and deadlocked the previous revision.",
+  "why_disjointness_is_a_separate_term": "`assigned = train_ids | holdout_ids` is a UNION and hides an overlap perfectly. A manifest whose every holdout id is also a train id reads unassigned=0, orphan=0 and looks like the healthiest unit in the corpus, while every 'held-out' fact was trained on -- the exact defect split.py's own docstring says the module exists to end. The live census is 0 leaks over the 97 split-carrying units, measured 2026-07-31; the check lands green and is a guard, not a finding.",
+  "the_leak_predicate_has_THREE_pre_existing_owners_and_this_is_the_fourth": "Named here rather than left for a reviewer to find. (1) run_stage._split_integrity_ok -- `if set(train) & set(holdout): return False` -- wired as the split stage's split_integrity postcondition, so it runs only when that stage EXECUTES, over its declared output patterns. (2) scripts/pipeline/test_typed_postconditions.py:125, whose mutation table already red-green proves (1) with a 'holdout leaks into train' case. (3) scripts/eval_probes.py:138 -- `if train_ids & holdout_ids: raise ValueError('split manifest train/holdout overlap')` -- which fires only at eval time, only for units carrying probes, and is NOT declared in edc.yaml (grep -n eval_probes configs/domains/edc.yaml -> 0 hits). NONE of the three enumerates the registry and none runs at commit time. LEAKED_HOLDOUT is a fourth reader whose distinguishing property is exactly that: registry-wide, on every commit, over all 98 units including the splitless one."
+ },
+ "pool_membership_pin": {
+  "EDC_REGISTRY_COUNT": 98,
+  "EDC_REGISTRY_SLUGS": "a frozen 98-entry frozenset of the slugs this campaign measured",
+  "EDC_REGISTRY_DIGEST": "9a490fa577736290",
+  "digest_definition": "sha1(\"\\n\".join(sorted(ed.slug for ed in iter_editions('edc', with_raw=False)))).hexdigest()[:16]",
+  "measured": "9a490fa577736290 at engine HEAD 9cd16822 over n=98; identical for with_raw=True; and sha1 over the sorted FROZEN set is the same 16 hex characters, so no constant needed recomputing when the frozen set replaced the live reader",
+  "membership_is_pinned_by_a_CONSTANT_not_by_a_second_reader": "The expected slug set may NOT be recomputed from the registry at run time, and it is not. An earlier revision read it from `_registry_units(C.load_editions('edc'))` on the theory that reading one call below `iter_editions` bought independence; measured, it bought nothing (repair_round.defect_1). `iter_editions(only=None, with_raw=False)` applies no filter and yields exactly one Ed per `_registry_units` tuple, so the two were one computation and a registry edit moved both. The frozen set is the only reader a registry edit cannot move.",
+  "the_three_assertions_do_different_jobs": "(1) sha1 over EDC_REGISTRY_SLUGS == EDC_REGISTRY_DIGEST -- the two constants pin each other, so a one-line edit inside a 98-entry frozenset cannot pass as arithmetic. (2) len(EDC_REGISTRY_SLUGS) == EDC_REGISTRY_COUNT. (3) sha1 over the LIVE registry == EDC_REGISTRY_DIGEST -- the only reader here that notices a registry MOVE at all, since nothing recomputes the frozen set. (3) is deliberately NOT derived from (1): computing the live digest from the frozen set would make it x == x, which is the precise circularity that made the second live reader a no-op.",
+  "the_digest_names_nothing": "It fires on any move and reports two hex strings. WHICH unit left is reported by POOL_MEMBERSHIP_DRIFT, and that difference is asserted rather than assumed: the registry-swap probe checks that the coverage message contains 'orlando/2014' and that the digest message does not.",
+  "growth_is_permitted": "a reviewable constant edit, not a wall. Registry growth, shrinkage and swaps are all allowed; they are merely no longer SILENT, and each now requires editing the frozen set AND both constants."
+ },
+ "settled": {
+  "claim": "every split-carrying EDC unit reproduces bit-for-bit under its own recorded parameters, v3 closure units included -- with exactly one exception, which is declared",
+  "mechanism": "Only the id_map distinguishes a v3 cut from a v2 cut (split.py main: `id_map = load_id_map(...) if alias_closed else {}`; the algorithm is the same make_split_v2 for both). pipeline.split.canonical_subject is id_map.get(subject_id, subject_id), so on an EMPTY map it is the identity and a v3 cut for a v2-only unit is bit-for-bit the computation that produced the on-disk v2.",
+  "measured": {
+   "v2_only_units_reproducing": 47,
+   "v2_only_units_differing": 0,
+   "v3_units_reproducing": 49,
+   "v3_units_differing": 1,
+   "the_one_differing": "milton_keynes/2015 -- live_map=2, holdout on disk 4 vs re-cut 8, train on disk 39 vs re-cut 74; see stale_split_manifests",
+   "train_holdout_disjointness_measured_over": 97,
+   "train_holdout_leaks_found": 0,
+   "on_disk_v2_manifests_all_recording": {
+    "version": "v2",
+    "seed": 42,
+    "holdout_frac": 0.1,
+    "grouping": "alias+inverse",
+    "meta.id_map_size": 0
+   },
+   "on_disk_v3_manifests_all_recording": {
+    "version": "v3",
+    "seed": 42,
+    "holdout_frac": 0.1,
+    "grouping": "alias+inverse",
+    "meta.id_map_size": "> 0"
+   },
+   "seed_census_over_97": {
+    "42": 97
+   },
+   "holdout_frac_census_over_97": {
+    "0.1": 97
+   }
+  },
+  "what_the_narrow_form_could_not_have_found": "Re-deriving only the 47 empty-id_map units applies the instrument exactly where canonical_subject is the identity, so the assertion is f(x)==f(x). The 50 units where it CAN fail are where the single defect lives. Widening the class from 47 to 96 is what surfaced milton_keynes/2015.",
+  "the_skip_that_was_narrowed": "The declared-stale exemption used to be a blanket `continue` at the top of the re-derivation loop, which exempted its unit from re-derivation AND from every content check after it -- so the one declaration documented as a growing queue handed out total content blindness. A leak needs no re-cut to detect and is meaningful on a manifest whose graph moved, so disjointness now runs for EVERY manifest BEFORE any declaration-keyed skip, and an assert fires if that ordering is ever reversed.",
+  "immutability_consequence": "Split versions are immutable and load_split prefers v3 > v2 > v1, so authoring a v3 normally CHANGES which holdout every downstream consumer reads -- an eval-series change, never a patch. For the 47 the general rule does not bite: the cut is provably identical, so no holdout moves and no series starts. It is precisely because a v3 there adds nothing but a second label on the same cut that the 47 files are DELIBERATELY NOT AUTHORED.",
+  "n_split_files_written_by_this_campaign": 0
+ },
+ "open": [
+  {
+   "id": "las_vegas_2026_has_no_split",
+   "unit": "las_vegas/2026",
+   "state": "registry edition, ruler-pinned as one of the 98 (data/_build/recall/edc/las_vegas_2026.ruler.json), 859 lines in 15_structured/triples.jsonl (792 distinct triple ids under the canonical loader; a raw line read gives 795, which is why load_all_triples is the reader of record), NO splits/ directory, NO data/_build/resolve/edc/las_vegas_2026",
+   "live_consequence_on_the_DECLARED_path": "scripts/pipeline/generic_probes.py -- EDC's declared probes stage -- takes the else branch when load_split returns None: gold_triples = all_triples and split_label = 'trained'. Every triple is gold and the stamp is honest. The unit contributes zero to any install-strength estimand.",
+   "already_reported_by_the_gate": "plan_install --domain edc, TRAIN_CONFIG_FROZEN evidence, split_status: 98 rows, exists:false = 1, that row being las_vegas/2026 with measurement 'recall-only' -- one line inside a rung already failing for six other reasons",
+   "NOT_CUT_IN_THIS_CAMPAIGN": "two independent blockers, either one disqualifying -- see next_campaign.preconditions"
+  },
+  {
+   "id": "six_units_carry_a_split_with_an_empty_holdout",
+   "see": "zero_holdout_units"
+  },
+  {
+   "id": "one_manifest_no_longer_partitions_its_graph",
+   "see": "stale_split_manifests"
+  },
+  {
+   "id": "the_split_stage_cannot_satisfy_its_own_postcondition_for_edc",
+   "see": "zero_holdout_units.disagreement_with_the_stage_contract"
+  }
+ ],
+ "zero_holdout_units": {
+  "finding": "Six units carry a split manifest whose holdout_ids is EMPTY. A has-a-split-file predicate certifies all six as covered while they contribute zero to any install-strength estimand -- the artifact's own definition of the gap, one level down from the pool correction.",
+  "units": [
+   {
+    "unit": "los_angeles/2000",
+    "version": "v2",
+    "n_triples": 2,
+    "unique_triple_ids": 2,
+    "int_n_times_frac": 0
+   },
+   {
+    "unit": "los_angeles/2008",
+    "version": "v2",
+    "n_triples": 4,
+    "unique_triple_ids": 3,
+    "int_n_times_frac": 0
+   },
+   {
+    "unit": "san_bernardino/2005",
+    "version": "v2",
+    "n_triples": 5,
+    "unique_triple_ids": 4,
+    "int_n_times_frac": 0
+   },
+   {
+    "unit": "san_bernardino/2006",
+    "version": "v2",
+    "n_triples": 7,
+    "unique_triple_ids": 7,
+    "int_n_times_frac": 0
+   },
+   {
+    "unit": "denver/2008",
+    "version": "v2",
+    "n_triples": 5,
+    "unique_triple_ids": 5,
+    "int_n_times_frac": 0
+   },
+   {
+    "unit": "edsea/2026",
+    "version": "v2",
+    "n_triples": 2,
+    "unique_triple_ids": 2,
+    "int_n_times_frac": 0
+   }
+  ],
+  "arithmetic": "make_split_v2 computes target = int(len(triples) * holdout_frac). At the declared holdout_frac 0.10 every n above yields target 0, so the greedy loop takes no group and writes holdout_ids: []. NO re-cut at the declared frac can ever give these units a holdout.",
+  "live_consequence_on_the_DECLARED_path": "scripts/pipeline/generic_probes.py takes the `if sp:` branch (a manifest exists), sets gold_triples = [t for t in all_triples if triple_id(t) in sp['holdout_ids']] = [], and stamps split_label = 'held_out'. That is strictly WORSE than las_vegas/2026's honest 'trained': a held-out label over zero gold facts.",
+  "the_empty_holdout_predicate_is_NOT_new_here": {
+   "correction": "An earlier draft of this campaign asserted, unqualified, that 'nothing notices a manifest with an empty holdout'. That universal negative is FALSE and it was asserted without checking. It is falsified twice over, by a live code path AND by a green test that predates this campaign.",
+   "existing_owner_code": "run_stage._split_integrity_ok rejects an empty holdout outright -- the `not holdout` clause. Cited by SYMBOL on purpose: every line number in circulation for this function is stale (an earlier reading said run_stage.py:482, another :492, another :506), because _fact_concentration_ok was inserted above it. AS OF engine HEAD 9cd16822 the def is at run_stage.py:524 and the clause at :540; re-derive with `grep -n 'def _split_integrity_ok' scripts/run_stage.py` rather than trusting any of those numbers.",
+   "existing_owner_wiring": "scripts/execution_contract.py:293 wires it as the split stage's postcondition kind 'split_integrity' (this citation IS stable; verified at HEAD). build_contract('edc') emits one split_integrity postcondition per unit for the split stage.",
+   "existing_owner_test": "scripts/pipeline/test_typed_postconditions.py:125 test_split_integrity_rejects_leaking_and_degenerate_splits already red-green proves it; its mutation table at :143-152 contains BOTH ('empty holdout', holdout_ids=[]) and ('holdout leaks into train'), each asserted is False. So the LEAK class of this campaign's LEAKED_HOLDOUT check is also already owned at the postcondition layer.",
+   "measured": "over the 97 WINNING manifests -- one per split-carrying unit, the file load_split resolves -- run_stage._split_integrity_ok rejects exactly these six. SETS EQUAL to the declared set: True. THE DENOMINATORS, stated because a previous revision stated one of them wrong and the wrong number is what hid a version-scope mismatch: 98 registry units; 97 of them split-carrying; 147 version FILES on disk (97 v2 + 50 v3); 97 winning manifests. The all-versions read and the winner-only read return the identical six at HEAD, so the correction moves nothing today.",
+   "why_this_campaign_is_still_not_a_duplicate": "the predicates exist but are UNREACHABLE AT GATE TIME. The postcondition runs only when the split stage EXECUTES, over that stage's declared output patterns. It never enumerates the registry, never sees the splitless unit, and never compares a manifest to the current graph. This block is a second, registry-wide reader that runs on every commit; the honest claim is 'unreachable at gate time', not 'unowned'."
+  },
+  "disagreement_with_the_stage_contract": {
+   "statement": "EDC_DECLARED_ZERO_HOLDOUT is a DELIBERATE DISAGREEMENT with the split stage's declared postcondition, not an observation that nothing else cares. The engine's own checker classifies all six as integrity FAILURES.",
+   "consequence": "the split stage is UN-PASSABLE for EDC until a holdout_frac/floor policy lands. Six of its 98 declared per-unit split_integrity postconditions cannot be satisfied by any re-run at the declared frac, so these six are NOT cost-free debt -- they are a MECHANICALLY_LAUNCHABLE fact the readiness ladder should eventually carry.",
+   "why_the_disposition_still_stands": "the arithmetic is unchanged: int(n*0.10) == 0 for every n in {2,3,4,5,7}, so no re-cut at the declared frac produces a holdout. 'NEVER a re-cut' is now argued AGAINST a checker that says otherwise rather than asserted over its silence. The repair is a frac/floor POLICY decision or a permanent out-of-estimand declaration.",
+   "pinned_so_it_cannot_drift": "test_declared_zero_holdout_matches_the_engines_own_split_postcondition asserts the two readers name the same six over the same 97 files, with a mandatory vacuity assert first (a checker that rejects nothing is not a witness) and a (slug, version) agreement assert before that (two readers that resolve different manifests are not agreeing about anything). WHAT THIS PIN DOES UNDER A REPAIR, measured rather than asserted: the previous revision graded 147 version files here and DEADLOCKED -- author the floored v3 the block itself prescribes for one of the six and coverage demanded the declaration be removed while the postcondition demanded it be kept, with no satisfying value (SATISFYING DECLARATION EXISTS: False). Reading the winning manifest only, the same repair loudly and satisfiably retires exactly one declaration (KEPT -> RED/RED, REMOVED -> GREEN/GREEN).",
+   "read_before_editing_either_set": "_split_integrity_ok has SEVEN `return False` sites, counted over the body at run_stage.py:524 -- not a dict; train_ids/holdout_ids missing or holdout empty; train and holdout overlapping; a missing decontamination block on v2/v3; a non-zero alias-leak count or zero_alias_leaks not True; a coverage shortfall against a recorded n_unique_triple_ids; a realized frac outside the 0.5x-2.0x band. Earlier readings of this file said five and 'at least five'; both undercounted, which makes the set equality MORE brittle than either said. A new name in its verdict is therefore not necessarily a seventh empty holdout; the failure message enumerates all seven."
+  },
+  "evidence_that_does_NOT_discriminate": "probes.jsonl emptiness. Census over all 98, re-measured by this round: 1 unit has no probes.jsonl file at all (las_vegas/2026), 73 have the file with 0 rows, 24 have rows. Empty probes are the norm in this tree and say nothing about these six. The finding stands on holdout_ids == 0 alone. (For the same reason, eval_probes.py's fail-closed guard is not the reason these six are invisible: at 0 rows split_labels == set(), so `len(split_labels) != 1` raises at scripts/eval_probes.py:130 -- note the path is scripts/, NOT scripts/pipeline/ -- and the empty-holdout raise at :136 is never reached.)",
+  "forward_reachable": "This class is not a legacy artifact of six tiny units. A FULL alias closure collapses a healthy holdout to zero: 400 triples over 40 subjects with an id_map merging all 40 to one canonical yields n_groups 1 / train 400 / holdout 0, where the same triples with an empty id_map yield n_groups 40 / train 360 / holdout 40. A single alias component is rejected wholesale by split.py's per-predicate train-side guard. Running resolve and cutting v3 -- the named next campaign -- can therefore CREATE a seventh."
+ },
+ "stale_split_manifests": {
+  "finding": "milton_keynes/2015 carries a split_v3 that does not partition its CURRENT graph. 39 of 82 current triple ids are in NEITHER train nor holdout; 0 manifest ids have left the graph; train and holdout are disjoint.",
+  "unit": "milton_keynes/2015",
+  "version": "v3",
+  "manifest": {
+   "train_ids": 39,
+   "holdout_ids": 4,
+   "assigned": 43,
+   "overlap": 0
+  },
+  "current_graph": {
+   "lines": 87,
+   "distinct_triple_ids": 82,
+   "unassigned": 39,
+   "orphan": 0
+  },
+  "provenance_is_real_not_a_harness_artifact": {
+   "splits/split_v3.json mtime": "2026-07-25 15:13:24",
+   "15_structured/triples.jsonl mtime": "2026-07-25 15:38:43",
+   "reading": "the graph was rewritten 25 minutes AFTER the cut",
+   "control": "orlando/2014 -- triples.jsonl 2026-06-04 15:26, split_v2 2026-07-25 01:00 -> stable, 0 unassigned"
+  },
+  "re_derivation": "re-cut with its own recorded seed/holdout_frac and its LIVE id_map (2 entries): holdout 4 on disk vs 8 re-cut, train 39 on disk vs 74 re-cut",
+  "consequence_on_the_GENERIC_path": "scripts/pipeline/generic_expand.py:219-221 filters to sp['train_ids'] and reports the remainder as excluded holdout: it would hydrate 44 of 87 triples and print '43 holdout EXCLUDED' against a real holdout of 4. (Stated as a would: EDC's declared hydrate stage is bash scripts/rehydrate_vc1.sh, not generic_expand -- see fail_open_attribution.)",
+  "why_nothing_else_catches_the_CURRENT_GRAPH_half": "run_stage._split_integrity_ok's population-coverage sub-check reads `unique_ids = manifest.get('n_unique_triple_ids'); if unique_ids is not None: ...` (run_stage.py:554 at HEAD 9cd16822). Census over every winning EDC manifest: {('v3', has_n_unique_triple_ids=False, has_n_assigned_ids=False): 50, ('v2', False, False): 47} -- ZERO of the 97 carry either key, so that sub-check is skipped for all 97. It would also grade against the manifest's own frozen denominator rather than the current graph even when it does fire. The DISJOINTNESS half is a different story and is stated as such: that checker does own it, at stage-execution time.",
+  "the_declaration_no_longer_buys_content_blindness": "EDC_DECLARED_STALE_SPLIT exempts its unit from RE-DERIVATION only. Disjointness is measured for every manifest before any declaration-keyed skip, and an assert fires if that ordering is ever reversed -- proven by moving the check back below the skip, which turns the untouched tree RED with 'a unit declared STALE carries a manifest that was never disjointness-checked: [milton_keynes/2015] - the declaration-keyed skip has moved back above the leak check'. That proof still fires after the `| EDC_DECLARED_SPLITLESS` union term was removed from the guard.",
+  "NOT_RE_CUT_IN_THIS_CAMPAIGN": "its resolve map is LIVE (2 entries), so a re-cut is a new eval series with the same three preconditions las_vegas/2026 has. The declared exemption is the placeholder until that campaign runs."
+ },
+ "fail_open_attribution": {
+  "correction": "An earlier reading of this campaign attributed las_vegas/2026's whole-graph hydration to scripts/pipeline/generic_expand.py's fail-open (load_split returns None -> hydrate ALL 859 triples). That is FALSE for EDC and was read from source rather than measured.",
+  "why_it_is_false": "EDC's declared hydrate stage is `bash scripts/rehydrate_vc1.sh` (configs/domains/edc.yaml:107) and its meta stage is gen_festival_meta.py -- both bespoke, which is why the domain declares recipe_profile: bespoke_facts. `grep -c generic_expand configs/domains/edc.yaml` -> 0: the script is not referenced by the manifest at all.",
+  "measured_join": "25_hydrated/relations.jsonl keys on `source_triple_ids` in a DIFFERENT id space entirely -- values like 'calendar:Friday', 'plays_at:21', 'stage_meta:basspod'. Coverage of the unit's structured triple ids, re-measured by this round: las_vegas/2026 0 of 792 (11337 rows, 76 distinct keys), orlando/2014 0 of 71 (1722 rows, 10 keys), milton_keynes/2015 0 of 82 (2431 rows, 14 keys). Zero overlap everywhere, so it is the bespoke path across the corpus, not one stale file.",
+  "what_survives": "generic_probes.py IS on EDC's declared path (the probes stage) and its split branch is a live consequence for both open classes -- 'trained' with all triples gold for las_vegas/2026, 'held_out' with ZERO gold triples for the six zero-holdout units.",
+  "probe_quarantine": "scripts/pipeline/probe_quarantine.py exists but is NOT declared in edc.yaml's stage list. Its scan_unit returns None on a missing split, which explains r10's post-fix rescan reading units_scanned: 97 against a 98-unit registry -- undeclared tooling, not a declared-path consequence."
+ },
+ "next_campaign": {
+  "name": "cut a split for las_vegas/2026",
+  "preconditions": [
+   "1. resolve must run first. configs/domains/edc.yaml:96 declares the resolve stage gpu: true. A cut without resolve is alias-inert (empty id_map) and reproduces the exact r9 defect the v3 series exists to fix.",
+   "2. las_vegas/2026 is a PROTECTED unit. configs/domains/edc.yaml:234 lists it in protected_editions ('the gold -- hand-curated 15_structured + 25_hydrated + set_times.jsonl + confusable_groups -- not regenerable'), and run_stage.py's PROTECTED_UNITS refusal rejects any stage whose declared outputs write under data/edc/las_vegas/2026/. This is a policy refusal, not a scheduling constraint.",
+   "3. whether the cut demands a re-hydrate is UNPROVEN. The earlier claim that 25_hydrated was built from all 859 triples by generic_expand's fail-open does not describe what produced it -- EDC hydrates bespoke via rehydrate_vc1.sh and relations.jsonl does not join on triple ids at all. Establishing the contamination relationship is itself work, not an assumption to inherit.",
+   "4. it starts a NEW eval series for this unit and shifts every corpus-level holdout count. Treat as a campaign with its own receipt, not a patch.",
+   "5. it will trip 'STALE_EXEMPTION las_vegas/2026: now carries a split' -- the intended handoff: the declaration must be removed in the same change that cuts the split. It will NOT trip EDC_REGISTRY_DIGEST or POOL_MEMBERSHIP_DRIFT: the registry is unchanged, only the unit's artifacts are. Cutting a v3 will also not trip the two-reader version agreement, because both readers resolve v3."
+  ],
+  "trap_waiting_for_it": "plan_install._split_status stats split_<declared_version>.json, and the manifest declares split at --version v2. Cutting v3 directly for this unit would leave the readiness ladder still reporting exists:false while every runtime consumer happily reads the v3. See out_of_scope_findings.plan_install_reads_the_declared_version."
+ },
+ "instruments": {
+  "primary_pinned_MUST_NOT_MOVE": {
+   "command": "buildgate env PYTHONPATH=scripts .venv/bin/python scripts/plan_install.py --domain edc  # ladder[TRAIN_CONFIG_FROZEN].evidence[0].split_status",
+   "before": {
+    "rows": 98,
+    "exists_false": 1,
+    "unit": "las_vegas/2026",
+    "measurement": "recall-only"
+   },
+   "after": {
+    "rows": 98,
+    "exists_false": 1,
+    "unit": "las_vegas/2026",
+    "measurement": "recall-only"
+   },
+   "verdict": "CORRECTLY UNMOVED. The only routes to 0 are running the gpu:true resolve stage (forbidden) or authoring a split for a unit whose alias closure was never resolved (recreates the r9 defect) and which run_stage refuses to write to (PROTECTED_UNITS). Reporting this at 0 would be a violated law, not a success. Rows staying 98 rather than 97 is the anti-gaming corollary: the pool must not shrink back to the framing that hid the gap.",
+   "guaranteed_by_construction": "recipe_read_set(Domain('edc')) returns 24 entries across roles {domain_manifest, ontology_schema, stage_code, templates, train_config, unit_registry}; the test_ path list and the logs/ path list are both empty. Neither file this campaign lands can shift the build id.",
+   "closed_by_the_applier": "the implementer may not write the tree, so the post-landing reading is taken by whoever applies these two files, as the last step of the apply order."
+  },
+  "secondary_MUST_MOVE": {
+   "command": "grep -c '^def test_' scripts/pipeline/test_split_v2.py ; buildgate bash scripts/run_tests.sh",
+   "before": {
+    "def_test_in_test_split_v2": 6,
+    "run_tests_modules": 60,
+    "run_tests": "all green"
+   },
+   "after": {
+    "def_test_in_test_split_v2": 16,
+    "run_tests_modules": 60,
+    "run_tests": "all green"
+   },
+   "verdict": "MOVED 6 -> 16 (15 from the repaired block, +1 the re-review's required routing test test_the_live_coverage_reader_routes_through_the_proven_row_builder, which binds _edc_coverage_rows to _split_row \u2014 red-proven: a faithful re-inline of the row dict reds with '98 of 98 rows survived the substitution'). Module count stays 60. Module prints ALL 16 SPLIT-V2 TESTS PASS.",
+   "the_ninth_test": "the eight this block's previous revision landed, plus test_a_constant_size_registry_swap_names_the_departed_unit -- the permanent probe for the one FALSE-GREEN the review found. The five other required cases (the version agreement, the two constant-pinning asserts, the tightness symmetry, the one-owner assertions, the pairwise-disjointness assertion) land INSIDE the tests that own their subject rather than as new functions, so the count is 15 and not 20.",
+   "why_not_14": "The repair plan's negative-case entry predicts 'ALL 14 SPLIT-V2 TESTS PASS', a number measured on a reference implementation that lands NONE of the required test cases. The same plan requires the registry-swap case to be landed permanently in the module. 14 and that requirement cannot both hold; 15 is the number that satisfies the requirement. Every other clause of that entry is met verbatim: exit 0, the census line 're-derived under their own recorded parameters: v2=47 v3=49 (96 checked, 1 declared stale); train/holdout disjointness measured over 97 manifests', run_tests.sh '-- all green' over 60 modules, module count still 60, preserved-region diff EMPTY."
+  },
+  "verdict_function_shape": {
+   "command": "AST shape() over split_coverage_gaps + the row builder \u2014 script in reproduce.verdict_function_shape, re-derivable not remembered",
+   "CORRECTED_2026-08-01": "The shipped before/after table was FALSE and a re-review flagged it FALSE_LANDING: it claimed gap_kinds 6->8, params 5->6, row_keys 5->6 for THIS round, but those three moved in ROUND 1 \u2014 the declared base (the reviewed block, sha b2d345fd) already measures 8/6/6. Claiming round-1 movement as round-2 movement is exactly the false-landing class the loop exists to catch. Both absolutes of edc_constants/helpers were also wrong.",
+   "measured_base_reviewed_block": {
+    "gap_kinds": 8,
+    "params": 6,
+    "row_keys": 6,
+    "edc_constants": 7,
+    "helpers": 3
+   },
+   "measured_repaired_block": {
+    "gap_kinds": 8,
+    "params": 6,
+    "row_keys": 6,
+    "edc_constants": 8,
+    "helpers": 6
+   },
+   "measured_landed_module": {
+    "gap_kinds": 8,
+    "params": 6,
+    "row_keys": 6,
+    "edc_constants": 8,
+    "helpers": 7
+   },
+   "true_deltas_this_round": {
+    "gap_kinds": "UNMOVED (moved in round 1)",
+    "params": "UNMOVED (round 1)",
+    "row_keys": "UNMOVED (round 1)",
+    "edc_constants": "+1 (EDC_REGISTRY_DIGEST)",
+    "helpers": "+3 on the block; landed module +4 vs base (the routing test's bind target plus the module's own pre-existing helper)"
+   }
+  },
+  "tertiary_EXISTENCE_PREDICATE_ONLY": {
+   "command": "iterate iter_editions('edc'), count units where len(split.load_id_map(ed.dir, domain='edc')) > 0 and split_v3.json is absent, and the reverse",
+   "before": {
+    "closure_without_v3": 0,
+    "v3_without_closure": 0
+   },
+   "after": {
+    "closure_without_v3": 0,
+    "v3_without_closure": 0
+   },
+   "verdict": "0 in both directions, before and after. Stated precisely: what this measures is that every unit with a live alias closure carries a split_v3 FILE. That is an EXISTENCE predicate, not a coverage one -- it says nothing about whether those 50 manifests hold a non-empty holdout or still partition their graphs, and one of them does not. It is now a standing assertion with a vacuity guard instead of a one-off measurement."
+  }
+ },
+ "premise_corrected": {
+  "item_claim": "the enabling property is that coverage was decided by a snapshot of a value the r9 fix had just changed",
+  "measured": "FALSE as a live defect. The r9 loader fix landed before the r10 sweep, the sweep read the fixed loader, and the class is still exactly 50 under today's loader with zero drift in either direction. There is no stale snapshot.",
+  "item_claim_2": "the manifest still declares split at --version v2, so a re-run today would author v2 for every unit",
+  "measured_2": "FALSE. split.py refuses to overwrite an existing split ('a split is immutable; a new split is a new version file, never an overwrite. Skipping.'). A declared re-run today would author v2 for exactly ONE unit -- las_vegas/2026, the only one lacking a v2 -- and skip the other 97. It would also be alias-inert (precondition 1) and refused as a protected unit (precondition 2).",
+  "own_claim_retracted": "'nothing notices a manifest with an empty holdout' was asserted in an earlier draft of this campaign and is FALSE -- see zero_holdout_units.the_empty_holdout_predicate_is_NOT_new_here. The correct non-duplication claim is 'the predicate exists but is unreachable at gate time'.",
+  "own_claim_retracted_2": "'the 50 v3 splits each carry a non-empty id_map' is true but was being read as substantive remapping, which it is not on its own. Re-measured 2026-07-31 over all 50 v3 files by this round: meta.id_map_size census {1: 21, 2: 9, 3: 5, 4: 2, 5: 4, 6: 1, 7: 2, 8: 1, 10: 1, 11: 1, 12: 1, 13: 1, 15: 1} -- so 21 of the 50 carry a map of exactly ONE entry, not all 50 as a prior summary of this measurement stated. supersedes_v2.id_map_size == 0 on all 50, but that is the SUPERSEDED v2's size, not the v3's, and reading it as the v3's is how the confusion started. The true series-difference fact is that 15 of the 50 dual units hold an IDENTICAL holdout set and 35 DIFFER (las_vegas/2012 v2 16 -> v3 17), which is why v3 is a separate eval series.",
+  "own_claim_retracted_3": "'Two readers deliberately' -- the expected slug set read live from `_registry_units(C.load_editions(\"edc\"))` and described as bounded-but-real independence -- is FALSE. It was a total no-op against the only edit that matters. Retracted with its transcript in repair_round.defect_1; the constant replaces it and `_edc_registry_slugs` is deleted.",
+  "own_claim_retracted_4": "'Two mechanical readers of the same files' in the postcondition test was FALSE: one read 147 version files and the other 97 winning manifests. It is true now, and the (slug, version) agreement is asserted rather than described.",
+  "own_claim_retracted_5": "'that checker rejects exactly these six of the 97 manifests on disk' used the wrong denominator. There are 147 manifest FILES on disk across 97 split-carrying units; the checker now grades 97 WINNING manifests and rejects exactly the six. The wrong denominator is precisely what made the two readers look like they read the same file set.",
+  "own_claim_retracted_6": "'_split_integrity_ok rejects for at least five reasons' undercounts. Measured over the body at run_stage.py:524: SEVEN `return False` sites. The set equality is therefore more brittle than the earlier text admitted -- see SPLIT-POSTCOND-WITNESS in follow_ups.",
+  "own_claim_retracted_7": "the block banner cited the three pre-existing r9 skip guards as test_split_v2.py:87/:107/:130. Inserting this block shifts every line number in the file, so those citations were stale the moment the block landed. They are cited by TEST NAME now, which is the same rule this receipt already applies to run_stage."
+ },
+ "artifact": {
+  "tests_added_to": "scripts/pipeline/test_split_v2.py",
+  "test_functions": {
+   "before": 6,
+   "after": 15
+  },
+  "module_level_helpers": [
+   "_leaked_holdout_gap",
+   "split_coverage_gaps",
+   "_winning_split_path",
+   "_split_row",
+   "_edc_coverage_rows",
+   "_swap_one_registry_unit"
+  ],
+  "tests": [
+   "split_coverage_gaps -- a PURE verdict function over {slug: row} with EIGHT non-collapsible gap shapes (POOL_MISMATCH / POOL_MEMBERSHIP_DRIFT / DECLARED_UNIT_ABSENT / UNDECLARED_SPLITLESS / LEAKED_HOLDOUT / UNDECLARED_ZERO_HOLDOUT / UNDECLARED_STALE_SPLIT / STALE_EXEMPTION). No skip guard and no early return of any kind; both pool checks are computed FIRST.",
+   "test_split_coverage_gaps_detects_each_failure_shape -- every shape proven reachable ALONE, plus the compliant case, the cross-set cases that make the declaration sets unpaddable, the constant-size membership swap, the PURE ROW BUILDER proof (overlap / unassigned / orphan each shown to move, the only place orphan is exercised at all), the SYMMETRY case (a 100%-leaked holdout declared in either set yields the leak and nothing else), and the ONE-OWNER assertions for the LEAKED_HOLDOUT sentence",
+   "test_maximal_gaming_states_are_not_suppressed -- the three states a `if not any(has_split): return` guard silently swallowed (pool shrunk to the one exempt unit, registry emptied, every split purged) shipped as permanent probes, with the one-split-alive boundary and the constant-size swap kept alongside",
+   "test_edc_registry_membership_is_pinned_by_digest -- the two constant-pinning asserts (frozen set hashes to the digest; its length is the count) plus the LIVE registry's sorted-slug sha1 against the same digest, deliberately not derived from the frozen set",
+   "test_a_constant_size_registry_swap_names_the_departed_unit -- a real configs/editions_edc.json-shaped edit against a throwaway symlink DATA root: one unit leaves, one genuinely covered unit arrives, the count holds at 98, and the coverage failure text must NAME the departed unit. Also asserts the digest fires AND that the digest message names neither unit, so the two reds stay distinguishable.",
+   "test_edc_split_coverage_has_no_undeclared_gap -- every registry unit COVERED or DECLARED by name, graded against the CURRENT graph, over a pool pinned by EQUALITY at EDC_REGISTRY_COUNT and by MEMBERSHIP against the frozen EDC_REGISTRY_SLUGS",
+   "test_declared_zero_holdout_matches_the_engines_own_split_postcondition -- the declared-debt set against run_stage._split_integrity_ok's verdict on the same 97 WINNING manifests, with a (slug, version) agreement assert and a mandatory vacuity assert first",
+   "test_edc_splits_reproduce_under_their_recorded_parameters -- re-derives ALL 96 non-exempt split-carrying units (v2=47, v3=49) with each manifest's OWN recorded seed/holdout_frac and the live id_map; PARAM_DRIFT and train/holdout disjointness folded in over all 97 including the declared-stale unit; three vacuity asserts, pairwise-disjoint declaration sets, and the ordering guard on the declaration-keyed skip",
+   "test_a_full_alias_closure_that_zeroes_the_holdout_is_a_gap -- the forward-reachable zero-holdout case, pure, no tree and no GPU",
+   "test_edc_v3_covers_exactly_the_units_with_a_live_alias_closure -- the r10 existence class in both directions, with a vacuity guard whose skip is keyed on split artifacts existing rather than on the measured class"
+  ],
+  "declared_debt": {
+   "EDC_REGISTRY_COUNT": 98,
+   "EDC_REGISTRY_SLUGS": "the 98 slugs, frozen",
+   "EDC_REGISTRY_DIGEST": "9a490fa577736290",
+   "EDC_DECLARED_SPLITLESS": [
+    "las_vegas/2026"
+   ],
+   "EDC_DECLARED_ZERO_HOLDOUT": [
+    "denver/2008",
+    "edsea/2026",
+    "los_angeles/2000",
+    "los_angeles/2008",
+    "san_bernardino/2005",
+    "san_bernardino/2006"
+   ],
+   "EDC_DECLARED_STALE_SPLIT": [
+    "milton_keynes/2015"
+   ],
+   "pairwise_disjoint": "asserted, not assumed. All three intersections are empty today. The ordering guard used to carry a `| EDC_DECLARED_SPLITLESS` union term whose only function was to tolerate a unit declared BOTH stale and splitless -- an incoherent state nothing else reported, and one the union also let past the guard, since a splitless unit can never be disjointness-checked. The term is gone and the incoherence is named.",
+   "no_declaration_set_for_leaks": "LEAKED_HOLDOUT consults NO declaration set, deliberately. The live census is 0, so no set is needed, and a holdout that was trained on is not declarable debt -- it is a split that measures nothing while reporting a number.",
+   "tightness": "every declaration is asserted in BOTH directions -- a slug that stops exhibiting its condition emits STALE_EXEMPTION naming the exact edit, so a set can neither outlive its condition nor be padded with a healthy unit. Each condition consults its OWN set, so declaring a unit in one set never buys exemption from another. BOTH the zero-holdout and the stale tightness predicates require `not overlap`: a holdout whose every id is also trained on does not retire either declaration."
+  },
+  "four_deliberate_reversals": [
+   "A cut declared gap is now RED, not green. When las_vegas/2026 is finally cut it emits 'STALE_EXEMPTION las_vegas/2026: now carries a split - remove it from EDC_DECLARED_SPLITLESS'. An exemption that outlives its condition is write-only debt that could later mask a real gap on that exact slug.",
+   "Registry GROWTH is now RED, not free, and so is a constant-size SWAP -- and the swap is now caught by NAME rather than only by a hex mismatch. EDC_REGISTRY_COUNT is an equality rather than a floor; EDC_REGISTRY_SLUGS is a frozen constant a registry edit cannot move; EDC_REGISTRY_DIGEST pins that constant and, separately, the live registry. Every direction now requires a reviewable edit to all three.",
+   "STALE_EXEMPTION for BOTH the stale set and the zero-holdout set now also requires train/holdout disjointness. Without that term the messages read 'now partitions its graph' / 'now has a non-empty holdout' about a manifest whose holdout is entirely trained on, retiring a declaration on a unit that partitions nothing.",
+   "A superseded manifest is now graded by NOBODY. Reading `for v in (\"v2\", \"v3\")` felt like more coverage and was strictly less: it made the declared-debt set a function of immutable files no consumer opens, and it deadlocked the block's own prescribed repair."
+  ],
+  "red_green": "Three passes. (1) SHIPPED vs REPAIRED on the three review counterexamples: the registry swap is GREEN on the shipped block with orlando/2014 named nowhere and RED on the repair naming it; the floored-v3 deadlock reads SATISFYING DECLARATION EXISTS: False on the shipped block and True ['REMOVED'] on the repair; the 100%-leaked declared-zero-holdout row yields 2 gaps on the shipped block (including the wrong advice) and 1 on the repair, for both declaration settings. (2) Twelve source mutations, each breaking one landed piece and watching the catch disappear or the right message appear -- the hand-ordered version walk, a one-slug edit inside the 98-entry frozenset, a re-inlined divergent leak literal, an edit to the owner's literal, a both-declared unit, the leak check moved below the skip, a circular expected_slugs, the dropped overlap term, and overlap / unassigned / orphan each pinned to 0. (3) The two vacuity asserts, exercised by emptying the class each guards: as landed they are RED ('VACUOUS: the split postcondition rejected nothing', 'VACUOUS: 0 EDC units were re-derived'), with them removed the same emptied world passes GREEN."
+ },
+ "follow_ups": [
+  {
+   "id": "SPLIT-POSTCOND-WITNESS",
+   "statement": "EDC_DECLARED_ZERO_HOLDOUT is asserted set-equal to a SEVEN-reason predicate (measured, run_stage.py:524). A set named ZERO_HOLDOUT bound to a seven-way checker will keep regenerating name/semantics divergence: a manifest failing the frac band would break the equality with a message that has to explain itself.",
+   "durable_fix": "a narrow witness (`not manifest['holdout_ids']`) plus a separate assertion that the broader checker rejects nothing else",
+   "disposition": "recorded, NOT folded in. Reading the winning manifest removes the deadlock; it does not remove this."
+  },
+  {
+   "id": "SPLIT-GATE-LOUDNESS",
+   "statement": "This block takes the module from two skip-on-missing-fixture data-root guards to FIVE hard tree-reading assertions (coverage, re-derivation, digest, postcondition-agreement, registry-swap), so run_tests.sh becomes a code+data gate and a purge -- ~1TB was purged once already -- turns the commit gate red for a data reason.",
+   "disposition": "recorded, NOT folded in. The decision (a data-integrity gate vs the code commit gate) is the operator's, and it is a bigger decision because of this landing. This campaign's position is that the loudness is desired; where it LIVES is not this campaign's call."
+  }
+ ],
+ "out_of_scope_findings": [
+  {
+   "id": "derive_plan_holdout_fact_pool_breaks_after_the_first_unit",
+   "locus": "scripts/pipeline/derive_plan.py, the holdout_fact_pool loop",
+   "defect": "the loop over iter_editions assigns fact_pool = len(sp['holdout_ids']) and then `break`s after the FIRST unit carrying a split, so a per-unit holdout count is reported as the corpus-wide effective n.",
+   "measured": {
+    "reported_effective_n": 13,
+    "unit_it_actually_read": "las_vegas/2011",
+    "true_sum_over_97_units": 1291,
+    "resolvable_effect_size_reported": 0.538,
+    "resolvable_effect_size_at_corpus_n": 0.054
+   },
+   "settle_with": "the same loop with the `break` removed, plus a test summing over all split-carrying units",
+   "disposition": "its own item; deliberately NOT folded into this one"
+  },
+  {
+   "id": "plan_install_reads_the_declared_version",
+   "locus": "scripts/plan_install.py, _split_status",
+   "defect": "readiness stats splits/split_<declared_version>.json, taking the version literal from the manifest's split stage command, while every runtime consumer calls load_split which resolves v3 > v2 > v1. Two readers of the same coverage question with different resolution rules -- structurally the r9 defect class, and the same class this block just repaired inside itself.",
+   "live_today": "no. All 50 v3 units also carry a v2, so the two views agree on existence for all 98 rows and exists:false is 1 under both.",
+   "arms_when": "a unit gets a v3 without a v2 -- the most natural way to cut las_vegas/2026's split, and equally the natural way to re-cut milton_keynes/2015",
+   "disposition": "its own item; reported, not fixed here"
+  },
+  {
+   "id": "does_the_bespoke_hydrate_honour_the_split_at_all",
+   "locus": "scripts/rehydrate_vc1.sh vs scripts/pipeline/generic_expand.py:219-221",
+   "question": "nothing on EDC's DECLARED path filters hydration to train_ids the way generic_expand does, and 25_hydrated/relations.jsonl shares zero triple ids with 15_structured across the corpus. If that holds, every one of the 90 'covered' units has an unenforced holdout and the split manifest is a label rather than a fact for the whole domain.",
+   "disposition": "its own item; strictly larger than this one and NOT folded in"
+  }
+ ],
+ "duplication_check": {
+  "who_already_tests_registry_wide_split_coverage": "nobody. `grep -rln 'load_split' scripts/pipeline/test_*.py` -> 0 files. `grep -rn 'EDC_DECLARED_|EDC_REGISTRY_|split_coverage_gaps|_leaked_holdout_gap|_winning_split_path|_split_row|POOL_MEMBERSHIP_DRIFT' scripts/ configs/` -> 0 hits, so no name in this block collides with anything.",
+  "private_symbol_idiom": "After deleting `_edc_registry_slugs` this block imports NO private symbol via `from X import _y`. It touches exactly one private symbol from another module, `run_stage._split_integrity_ok`, as a `module._attr` access -- the identical idiom scripts/pipeline/test_typed_postconditions.py already uses on the identical symbol, and that agreement is the whole point of the test. Census at HEAD over scripts/**/test_*.py, by rule because the number is rule-dependent: `from X import _y` -> 4 modules (test_anneal, test_execution_contract, test_recipe_profiles, test_schema_general); `module._attr` where the module is an imported name -> 13 modules, test_split_v2.py already among them via `S._domain_and_slug`; union 16. An earlier revision of this receipt said '13 test modules already import private symbols', which is neither figure under either rule."
+ },
+ "real_occurrences": {
+  "las_vegas_2026_directory_listing": [
+   "00_raw",
+   "10_clean",
+   "15_structured",
+   "20_synthetic",
+   "20_synthetic_capped_bak",
+   "25_hydrated",
+   "festival_meta.json",
+   "holdout",
+   "_poison_quarantine_entigraph",
+   "README.md",
+   "set_times.jsonl"
+  ],
+  "note_on_the_holdout_directory": "data/edc/las_vegas/2026/holdout/manifest.json is a legacy DOCUMENT-level curate carve -- {\"stems\": [\"edc_guides_aggregated\", \"insomniac_rookie_mistakes\"], \"carved_from\": \"10_clean (curated, pre-synth)\"} -- the only one in the tree. It is NOT read by pipeline.split.load_split and has nothing to do with the triple-id split series. Named here precisely because a directory called `holdout` inside the one unit reported as having no holdout is exactly what a later reader trips on.",
+  "the_47_v2_only_units": "NOT occurrences of a defect: all 47 re-derive to their on-disk v2 exactly. That is the finding, recorded rather than 'fixed'.",
+  "the_49_reproducing_v3_units": "likewise clean, and measured for the first time by this campaign rather than assumed.",
+  "train_holdout_leaks": "none. 0 over the 97 split-carrying manifests. The LEAKED_HOLDOUT check lands green on the real tree and is a guard against a forward-reachable class, not a report of a live defect.",
+  "row_fields_that_are_zero_everywhere": "overlap, unassigned and orphan are 0 for every unit except milton_keynes/2015's unassigned=39. That is why the row builder has a pure red-green proof of its own: on the live tree, pinning any of the three to a constant is invisible."
+ },
+ "reproduce": {
+  "pool_and_partition": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;import pipeline.split as S;r=[(e.slug,len(S.load_id_map(e.dir,domain='edc')),S.split_path(e.dir,'v3').exists(),S.load_split(e.dir) is not None) for e in iter_editions('edc',with_raw=False)];print('units',len(r));print('closure',sum(1 for x in r if x[1]));print('v3',sum(1 for x in r if x[2]));print('closure_no_v3',sum(1 for x in r if x[1] and not x[2]));print('no_split',[x[0] for x in r if not x[3]])\"",
+  "registry_digest": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys,hashlib;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;s=sorted(e.slug for e in iter_editions('edc',with_raw=False));print(len(s),hashlib.sha1(chr(10).join(s).encode()).hexdigest()[:16])\"",
+  "the_three_denominators": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;import pipeline.split as S;u=list(iter_editions('edc',with_raw=False));print('units',len(u));print('version_files',sum(1 for e in u for v in ('v2','v3') if S.split_path(e.dir,v).exists()));print('winning',sum(1 for e in u if S.load_split(e.dir) is not None))\"",
+  "postcondition_agreement_over_the_WINNING_manifest": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys;sys.path.insert(0,'scripts');import run_stage;from pipeline.editions import iter_editions;import pipeline.split as S;w=lambda d:next((S.split_path(d,v) for v in S.SPLIT_VERSION_PREFERENCE if S.split_path(d,v).exists()),None);print(sorted({e.slug for e in iter_editions('edc',with_raw=False) if w(e.dir) and not run_stage._split_integrity_ok(w(e.dir))}))\"",
+  "leak_census": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;import pipeline.split as S;r=[(e.slug,len(set(m['train_ids'])&set(m['holdout_ids']))) for e in iter_editions('edc',with_raw=False) for m in [S.load_split(e.dir)] if m];print('manifests',len(r),'leaks',[x for x in r if x[1]])\"",
+  "v3_id_map_census": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys,json,collections;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;import pipeline.split as S;M=[json.loads(S.split_path(e.dir,'v3').read_text()) for e in iter_editions('edc',with_raw=False) if S.split_path(e.dir,'v3').exists()];print('n',len(M));print('meta',dict(sorted(collections.Counter((m.get('meta') or {}).get('id_map_size') for m in M).items())));print('supersedes_v2',dict(collections.Counter((m.get('supersedes_v2') or {}).get('id_map_size') for m in M)))\"",
+  "dual_series_holdout_difference": "buildgate env PYTHONPATH=scripts .venv/bin/python -c \"import sys,json,collections;sys.path.insert(0,'scripts');from pipeline.editions import iter_editions;import pipeline.split as S;D=[(set(json.loads(S.split_path(e.dir,'v3').read_text())['holdout_ids'])==set(json.loads(S.split_path(e.dir,'v2').read_text())['holdout_ids'])) for e in iter_editions('edc',with_raw=False) if S.split_path(e.dir,'v3').exists() and S.split_path(e.dir,'v2').exists()];print('dual',len(D),'identical',sum(D),'DIFFER',len(D)-sum(D))\"",
+  "coverage_and_rederivation": "buildgate env PYTHONPATH=scripts CUDA_VISIBLE_DEVICES=\"\" .venv/bin/python scripts/pipeline/test_split_v2.py",
+  "primary_instrument": "buildgate env PYTHONPATH=scripts .venv/bin/python scripts/plan_install.py --domain edc",
+  "gate": "buildgate bash scripts/run_tests.sh",
+  "verdict_function_shape": "python3 - <<'PY'\nimport ast\nK=('POOL_MISMATCH','POOL_MEMBERSHIP_DRIFT','DECLARED_UNIT_ABSENT','UNDECLARED_SPLITLESS',\n   'UNDECLARED_ZERO_HOLDOUT','UNDECLARED_STALE_SPLIT','STALE_EXEMPTION','LEAKED_HOLDOUT')\ndef shape(p):\n    src=open(p).read(); t=ast.parse(src)\n    fn=next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='split_coverage_gaps')\n    seg=ast.get_source_segment(src,fn)\n    row=next((n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='_split_row'),\n             None) or next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='_edc_coverage_rows')\n    keys=sorted({c.value for d2 in ast.walk(row) if isinstance(d2,ast.Dict)\n                 for c in d2.keys if isinstance(c,ast.Constant) and isinstance(c.value,str)})\n    return dict(gap_kinds=sum(1 for k in K if k in seg), params=len(fn.args.args),\n        row_keys=len(keys),\n        edc_constants=sum(1 for n in t.body if isinstance(n,ast.Assign)\n            and isinstance(n.targets[0],ast.Name) and n.targets[0].id.startswith('EDC_')),\n        helpers=sum(1 for n in t.body if isinstance(n,ast.FunctionDef) and not n.name.startswith('test_')))\nprint(shape('scripts/pipeline/test_split_v2.py'))\nPY"
+ },
+ "gate_at_landing": {
+  "plan_install --domain edc": "exit 0; ladder MANIFEST_VALID=PASS INPUTS_ADMITTED=OPERATOR_ATTESTED_REQUIRED RECIPE_COMPLETE=FAIL MECHANICALLY_LAUNCHABLE=FAIL DATA_GATES_PASS=FAIL TRAIN_CONFIG_FROZEN=FAIL TRAINING_READY=FAIL (unchanged); split_status rows 98, exists:false = ['las_vegas/2026'], measurement 'recall-only'",
+  "run_pipeline --domain edc --check": "exit 0; summary {\"required_failed\": 0, \"warnings\": 1}",
+  "run_tests.sh": "exit 0; '-- all green' over 60 pipeline test modules; test_split_v2.py PASS with ALL 15 SPLIT-V2 TESTS PASS",
+  "qgre/test_gates.py": "exit 0; ALL 9 QGRE-GATE TESTS PASS",
+  "test_cpt_config.py": "exit 0; ALL 11 CONFIG-CONTRACT TESTS PASS",
+  "note": "verdicts read from the output, never from the exit code -- plan_install exits 0 while its ladder is FAIL on five rungs, and that FAIL is the pre-existing state, byte-identical before and after."
+ }
+}

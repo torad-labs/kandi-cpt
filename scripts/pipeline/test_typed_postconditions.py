@@ -301,6 +301,50 @@ def test_tokenize_stats_reconciles_requested_against_realized_replay() -> None:
             run_stage.C.ROOT = original
 
 
+def test_fact_concentration_catches_a_one_relation_graph():
+    """A graph that collapses onto two predicates must fail at STRUCTURED, not sail to training.
+
+    Every other balance instrument here reads the hydrated layer, where ~43 surfaces per fact
+    manufacture the diversity signal those instruments measure. Measured on the real tree: EDC is
+    95.53% two predicates (in_lineup 59.60 + plays_at 35.93) and still produced 347,797 distinct
+    six-token openings. This is the only check that can see the difference.
+    """
+    import json as _json
+    from pathlib import Path as _Path
+    import run_stage as R
+
+    with tempfile.TemporaryDirectory() as tmp:
+        root = _Path(tmp)
+
+        def write(name, rows):
+            f = root / name
+            f.write_text("\n".join(_json.dumps({"predicate": p}) for p in rows) + "\n")
+            return f
+
+        # 95% of rows in two predicates — the EDC shape, scaled down.
+        degenerate = write("degenerate.jsonl", ["in_lineup"] * 60 + ["plays_at"] * 35
+                           + [f"other_{i}" for i in range(5)])
+        # A spread graph: no two predicates dominate.
+        healthy = write("healthy.jsonl", [f"rel_{i % 10}" for i in range(100)])
+
+        cap = {"expect_max_top_share": 0.85, "top_n_predicates": 2}
+        assert not R._fact_concentration_ok([degenerate], cap), "a 95% two-predicate graph passed"
+        assert R._fact_concentration_ok([healthy], cap), "a spread graph was wrongly rejected"
+
+        # It must be able to go red on the healthy corpus too, or the threshold is decorative.
+        assert not R._fact_concentration_ok([healthy], {"expect_max_top_share": 0.10,
+                                                        "top_n_predicates": 2})
+
+        # Fails CLOSED on every "I could not tell": no files, undeclared cap, nonsense cap,
+        # and a file with no parseable predicate rows.
+        assert not R._fact_concentration_ok([], cap), "no files read as a pass"
+        assert not R._fact_concentration_ok([healthy], {"expect_max_top_share": None}), \
+            "an undeclared cap silently exempted the domain"
+        assert not R._fact_concentration_ok([healthy], {"expect_max_top_share": 1.5})
+        empty = write("empty.jsonl", [])
+        assert not R._fact_concentration_ok([empty], cap), "a corpus with no predicates passed"
+
+
 if __name__ == "__main__":
     test_contract_emits_semantic_postconditions_for_verdict_stages()
     test_report_verdict_rejects_a_failing_report()
@@ -310,4 +354,5 @@ if __name__ == "__main__":
     test_checkpoint_integrity_rejects_an_unloadable_checkpoint()
     test_checkpoint_recipe_catches_a_short_run_and_a_wrong_precision()
     test_tokenize_stats_reconciles_requested_against_realized_replay()
+    test_fact_concentration_catches_a_one_relation_graph()
     print("OK — a FAIL verdict now fails its stage, and degenerate reports fail closed")

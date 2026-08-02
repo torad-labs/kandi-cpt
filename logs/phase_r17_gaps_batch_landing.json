@@ -1,0 +1,64 @@
+{
+  "schema": "finding/1",
+  "title": "Phase r17 \u2014 the gaps batch lands: 5 of 5 items closed at the orchestrator's seat",
+  "recorded_at": "2026-08-01",
+  "batch": {
+    "workflow": "wf_ebc352f8-7fe (resumed once across a quota reset)",
+    "agents": 55,
+    "errors": 0,
+    "outcome_from_loop": "5 ESCALATE with LAND/LAND_WIDENED recommendations + 13 surviving objections",
+    "outcome_after_landing": "5 landed; every objection adjudicated by command, none relayed"
+  },
+  "landed": {
+    "GAP-C": {
+      "commit_conductor": "e80d0098",
+      "what": "DashboardPaneTest AWT-thread fix; 0/20 after (2/4 before); 3 prose objections accepted \u2014 claims corrected in the note, patch bytes frozen (sha 4e18e6d9)"
+    },
+    "GAP-D": {
+      "commit_engine": "161747cd",
+      "what": "EDC manifest: 34/34 tiers, truthful comments, citation guard with guarded prepend + exact-match disambiguation, satisfiability guard, build-identity blast radius stated and pinned by a red-proven roles fixture"
+    },
+    "GAP-E": {
+      "commit_engine": "2e5c2638",
+      "what": "split-coverage census witness-bound (zero-holdout deadlock closed over all six declared units, proven with the reviewer's driver extended to four declaration states) + caller-bound (routing test, red on faithful re-inline) + the FALSE_LANDING receipt corrected with the AST script embedded"
+    },
+    "GAP-B": {
+      "commit_engine": "5916769b",
+      "what": "replay byte-identity lock: calendar-clock shim (each entry point wrapped), non-day-aligned stride, permanent inject-stamps probe (both mutants red), failure-path wide-MISS arm; 37/37"
+    },
+    "GAP-A": {
+      "commit_engine": "9017fde5",
+      "what": "conductor-trainer image: O(1) verdict (declared-size + entry-count + stream-cap belt), evidence-gated post_install DONE (two clocks split), self-relative bridge with no-clobber rebuild, verdict-time-bound.sh harness 8 arms 50-300MB, both mutants red at the right payload size"
+    }
+  },
+  "orchestrator_seat_findings": [
+    "the metrics rebuild clobbered telemetry with an empty file whenever the bridge path was absent (absolute pin + unconditional mv) \u2014 found by the harness, fixed, message added",
+    "the harness's env-prefix-on-function stub never reached the nohup child: the no-success passes were VACUOUS (right answer, wrong mechanism); fixed with explicit export + a TRAINER-EXEC vacuity guard",
+    "cpt_stages.json pre-declares stages as PENDING, so polling on the stage NAME returns at t=0 \u2014 poll terminal statuses",
+    "mutant-B passed at 50MB and reds at 300MB \u2014 re-proving in one run why obj-2.c demands the payload-size sweep"
+  ],
+  "law_corrections_this_round": [
+    "L14 was wrong twice over: the kanto fixture is COMPLETE (20/20 docs, 376 assertions, sha 0b50daf3) and PINNED_RULER_FIELDS is SEVEN \u2014 the '3/20' was a docstring drift-example read as state; with GAP-B landed, coverage-on-replay is deterministic BY CONSTRUCTION and a fresh capture is an operator-timed refresh, not a blocker",
+    "L15a's 'meta.id_map_size == 1 on all 50' was a spot-check generalized: measured Counter {1:21 .. 15:1}; corrected in the r14 receipt in-place"
+  ],
+  "still_operator_owned": [
+    "the paid vast.ai smoke (push the image, set QGRE_CLOUD_TRAINING_IMAGE, one ~$1 launch)",
+    "the eval re-baseline on Gemini (queued as the orchestrator's next serial step)"
+  ],
+  "in_container_addendum_2026_08_01": {
+    "image": "conductor-trainer:aloop-final f890306be96f (engine 9017fde5, dirty=false)",
+    "first_run": "run_tests.sh in-container: 60 PASS, 4 FAIL, exit 1 (my first check read exit 0 through a tail pipe \u2014 the same vacuity class the harness documents; reran with the true code)",
+    "triage": {
+      "absent_host_artifact_by_design": [
+        "check_artifact_precision.sh (scans checkpoints/ \u2014 weights are never baked)",
+        "test_plan_install (REQUIRED model_path points at the host model dir)",
+        "test_selftest_domain_e2e (same model_path)"
+      ],
+      "real_defect": "test_execution_contract: contract.engine.commit was null in-container \u2014 the image bakes /opt/qgre/ENGINE_COMMIT but _git_identity() never read it, so a rented-box run would carry no engine provenance"
+    },
+    "fix": "_git_identity(root=C.ROOT) falls back to _baked_identity: parses commit=/dirty= from <engine parent>/ENGINE_COMMIT, rejects the ARG default 'unknown' and non-sha values",
+    "proof": "new test red on unmodified HEAD (TypeError: no root param) AND red under a disarmed-fallback mutant (AssertionError); green after; host suite all green",
+    "expected_in_container_after_rebuild": "61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list above",
+    "measured_after_rebuild": "image rebuilt from 9f6b12a4: 61 PASS / 3 FAIL, every FAIL in the absent-host-artifact list \u2014 matches the prediction; execution_contract.py --domain edc emits commit=9f6b12a48a3bdc77c53e92435c4a61e54b510f24 in-container, byte-identical to /opt/qgre/ENGINE_COMMIT"
+  }
+}

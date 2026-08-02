@@ -1,0 +1,183 @@
+{
+  "schema": "finding/1",
+  "title": "Phase r18 \u2014 cloud smoke: local rehearsal PROVEN, paid vast smoke PROVEN (attempt 25)",
+  "recorded_at": "2026-08-02",
+  "proven_locally": {
+    "what": "conductor's ENTIRE cloud chain ran unmodified against conductor-trainer:smoke serving sshd on this host with PUBLIC_KEY injected exactly as vast injects it \u2014 StartCloudRun, sshj host-key verify + pubkey auth, bundle build/upload/sha-verify, nohup entrypoint launch + 1s pid probe, stage polling through ReadCloudRemoteTelemetry (timeline parsed), StopTrackedCloudRun teardown. ONE stub: the vast HTTP seam (LocalContainerProvisioner).",
+    "shape": "bundle DONE -> config DONE (verdict admitted train_smoke_cloud.yaml) -> train RUNNING -> train FAILED (torch.cuda: no NVIDIA driver) -> post_install stayed PENDING \u2014 the evidence gate observed end-to-end from the conductor side; teardown Stopped(ids=[1])",
+    "probe": "conductor CloudSmokeProbe (liveTest, env-gated; conductor 31a7c50c); deterministic suite excludes it by the *Probe glob"
+  },
+  "seam_defect_found": {
+    "what": "conductor requires QGRE_CLOUD_SSH_HOST_KEY BEFORE launch (CloudRemoteResolver.kt:10) but the base image generates host keys at FIRST BOOT (qgre-sshd-entrypoint) \u2014 a fresh instance's fingerprint is unknowable pre-launch, so as shipped NO instance could ever pass sshj's verifier",
+    "smoke_closure": "docker/Dockerfile.smoke bakes host keys at BUILD (ssh-keygen -A; -A regenerates nothing at boot) and prints the fingerprint: SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc. TRADEOFF: anyone with the image holds the host private key -> the channel is MITM-able by an on-path attacker with the image; acceptable for a throwaway smoke, NOT production",
+    "production_fix_options": [
+      "instance publishes its first-boot fingerprint through a provider-readable channel",
+      "a TOFU capture step before the auth policy hardens",
+      "per-instance keys + vast API exposure if vast ever surfaces host keys"
+    ]
+  },
+  "smoke_image": {
+    "tag": "conductor-trainer:smoke",
+    "id": "83cdfa41687d",
+    "size": "13.2GB",
+    "adds": [
+      "base model baked at /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2 (4.4GB)",
+      "baked host keys + /opt/qgre/SMOKE_HOST_KEY_FPR"
+    ],
+    "config": "configs/train_smoke_cloud.yaml \u2014 smoke_steps=20, fp4 + int8_master=storage (the floor), no corpus needed, save_dir unset; engine-oracle ACCEPTED"
+  },
+  "paid_run_blocked_on_operator": [],
+  "paid_run_ready": {
+    "vast_ssh_key": "registered on the account (id 1165879, qgre-cloud-smoke)",
+    "command": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/torad-labs/conductor-trainer@sha256:0a3c5ec3ca0704b3cee1c13e818c4689a70b221819c17d8488ce8d085bb136f3 QGRE_CLOUD_REGISTRY_LOGIN=\"$(secret-tool lookup service vastai-registry)\" QGRE_CLOUD_SSH_USER=root QGRE_CLOUD_SSH_KEY_PATH=$HOME/.ssh/qgre_cloud_smoke QGRE_CLOUD_SSH_HOST_KEY=SHA256:qY1NodMMv+cSXlVVSWN7/0OSvEkWgPaaBwt3Zb3sCtc QGRE_CLOUD_BUNDLE_FILES=<engine>/configs/train_smoke_cloud.yaml ./gradlew :conductor-agent:liveTest --tests 'ai.torad.conductor.agent.provider.CloudSmokeProbe'",
+    "expected": "post_install DONE with >=1 metric rows (the paid arm asserts it), teardown + no conductor-labeled instance left billing",
+    "still_unarbitrated_until_paid": [
+      "vast ssh_direct plumbing to the image's own sshd",
+      "whether vast overrides CMD",
+      "default disk fits a 13.2GB pull (createInstance sends no disk field)",
+      "the first real fp4 training step from this image"
+    ],
+    "status": "PROVEN attempt 25",
+    "proven_command_shape": "QGRE_PAID_SMOKE=1 QGRE_CLOUD_TRAINING_IMAGE=ghcr.io/torad-labs/conductor-trainer@sha256:de70ae6902c561\u2026 QGRE_CLOUD_MIN_COMPUTE_CAP=1000 QGRE_CLOUD_SSH_* systemd-run MemoryHigh=13G"
+  },
+  "registry_correction_2026_08_01": {
+    "what": "the first push went PUBLIC-intent to a personal namespace (ghcr.io/marcospaulo) \u2014 wrong on both axes for an image carrying the moat kernels + model weights. Corrected: the image lives at ghcr.io/torad-labs/conductor-trainer:smoke (org-owned, PRIVATE, digest sha256:71f65c283063ce5b630b75d6f4e9551943cf59c9f0ef7528fb85ad00dbf020c5, blobs cross-repo mounted so no re-upload), and conductor 3b442df6 adds the image_login seam so vast authenticates its pull \u2014 the image never needs to be public",
+    "leftover": "the private ghcr.io/marcospaulo/conductor-trainer package could not be API-deleted (needs delete:packages); it is private and inert \u2014 delete via the package UI when convenient",
+    "fine_grained_linkage": "re-pushed with org.opencontainers.image.source=github.com/torad-labs/conductor-app so the package is repo-linked (fine-grained PATs reach ghcr only through a linked repo); NEW digest sha256:0a3c5ec3ca0704b3cee1c13e818c4689a70b221819c17d8488ce8d085bb136f3 (label-only change, layers + host-key fingerprint unchanged)"
+  },
+  "paid_attempts_ledger_2026_08_01_02": {
+    "note": "every attempt tore down cleanly or was swept within minutes; total stray billing across all attempts ~cents",
+    "attempts": [
+      {
+        "n": 1,
+        "machine": "GTX TITAN X $0.049/h",
+        "outcome": "READY TIMEOUT at 60s",
+        "finding": "the 12x5s ready window was sized for a warm machine, never a 13.2GB cold pull",
+        "fix": "window 60s -> 10min (conductor ff53d722)"
+      },
+      {
+        "n": 2,
+        "machine": "RTX 3060 $0.052/h",
+        "outcome": "READY TIMEOUT at 10min",
+        "finding": "instrumented rental: a 1.3Gbps host was STILL mid-pull at nine minutes, docker retrying blobs \u2014 ghcr throttles per-blob throughput, nominal bandwidth is not the limit; ALSO attempt-1's TITAN X was sm_52, which torch cu130 cannot run at all",
+        "fix": "window -> 30min + capability floor compute_cap>=750 server+client, unknown refused (ff53d722, 556dfb34); image_login private pull PROVEN in the same rental (layers authenticated and pulled)"
+      },
+      {
+        "n": 3,
+        "machine": "RTX 3060 $0.056/h",
+        "outcome": "trainer exited 1",
+        "finding": "StopIteration at build_model:434 \u2014 the int8-v2 base is a TEXT-ONLY export with zero model.language_model.* keys; model_path-only boots the multimodal remap, which is empty",
+        "fix": "smoke config boots via data.init_from (the native int8-master loader); empty remap now dies with a named RuntimeError (engine fb38c988)"
+      },
+      {
+        "n": "4-6",
+        "machine": "(host-side)",
+        "outcome": "gradle client killed thrice by this box's memory reaper (earlyoom domain; oom-shield covers the client, not the daemon tree)",
+        "finding": "the launcher process must be detachable from the operator seat",
+        "fix": "runs as a systemd user unit with the host-policy caps (MemoryHigh=13G/Max=14G), --no-daemon"
+      },
+      {
+        "n": 7,
+        "machine": "RTX 3060 $0.056/h",
+        "outcome": "trainer exited 1",
+        "finding": "CUDA init refused: host DRIVER was 12.6-era under a capable card \u2014 'driver too old (found version 12060)'; the card is not the whole machine",
+        "fix": "third marketplace filter cuda_max_good>=13.0 server+client, unknown refused (conductor 556dfb34+c42410a6; the latter also repairs my own red-gate push, disclosed in its message)"
+      },
+      {
+        "n": 8,
+        "machine": "RTX 3060 $0.056/h cuda_max_good=13.2",
+        "outcome": "trainer exited 1",
+        "finding": "Triton JIT-compiles its CUDA driver shim with cc/gcc at RUNTIME; the image ships only g++-14. Never seen anywhere before: Blackwell (build host) takes the real Quartet kernel, and the pseudoquant path (capability<10) had never executed until a rented Ampere card ran it",
+        "fix": "image carries gcc-14 + cc/gcc names (engine 7c836fa5); rebuild+push in flight"
+      },
+      {
+        "n": 9,
+        "outcome": "operator mis-kill mid-train RUNNING after late attach",
+        "finding": "do not destroy while train RUNNING"
+      },
+      {
+        "n": "10-13",
+        "outcome": "ready/host churn (HK ghcr retry, Norway DNS)",
+        "finding": "destroy and re-rent on stuck pull"
+      },
+      {
+        "n": 14,
+        "machine": "Ampere path",
+        "outcome": "trainer exited 1",
+        "finding": "Triton cuda_utils.c needs Python.h",
+        "fix": "python3.13-dev (41a54536)"
+      },
+      {
+        "n": 20,
+        "machine": "A4000 Ampere",
+        "outcome": "trainer exited 1",
+        "finding": "Triton float8e4nv CompilationError on pseudoquant path (cap<10)",
+        "fix": "smoke raises MIN_COMPUTE_CAP=1000 for real Quartet/Blackwell"
+      },
+      {
+        "n": 22,
+        "machine": "RTX 5060 Ti Blackwell",
+        "outcome": "trainer exited 1",
+        "finding": "FileNotFoundError: ninja at flashinfer sm120 cutlass JIT",
+        "fix": "ninja-build late layer (eecf05a8)"
+      },
+      {
+        "n": 23,
+        "machine": "RTX 5060 Ti",
+        "outcome": "READY TIMEOUT 30min",
+        "finding": "cold pull of new ninja digest exceeded ready window on slow host",
+        "fix": "retry; auth/registry OK"
+      },
+      {
+        "n": 24,
+        "machine": "RTX 5060 Ti 46629781",
+        "outcome": "trainer exited 1 after ~10min JIT",
+        "finding": "flashinfer compiled 17/18 nvcc objects then link failed: c++: not found (g++-14 shipped, bare c++/g++ names missing)",
+        "fix": "symlink g++/c++ (c8be1f5e) + thin smoke overlay"
+      },
+      {
+        "n": 25,
+        "machine": "RTX 5060 Ti 46631188",
+        "outcome": "PROVEN",
+        "finding": "full chain + 20 fp4 smoke steps in 713s; post_install DONE; teardown clean",
+        "fix": null,
+        "image": "sha256:de70ae6902c5619473bd8acd528633d4b51e4cb46b545e05ad236388d17e581b"
+      }
+    ],
+    "structural_fix_from_the_push_pain": "the venv is now its own image layer baked before the tree (engine 3c6e4963) \u2014 a one-line engine fix re-ships ~1GB instead of the ~8GB measured tonight",
+    "remaining_unproven": "none for the paid smoke success criteria; Ampere pseudoquant float8e4nv path still open long-term; production host-key channel still open",
+    "paid_proven_at": "2026-08-02T14:01-05:00",
+    "paid_image_digest": "sha256:de70ae6902c5619473bd8acd528633d4b51e4cb46b545e05ad236388d17e581b"
+  },
+  "paid_smoke_proven_2026_08_02": {
+    "what": "Full conductor cloud chain on rented vast hardware with a real fp4 training step",
+    "attempt": 25,
+    "instance_id": 46631188,
+    "machine": "RTX 5060 Ti 15GiB compute_cap=1200 cuda_max_good=13.1 ~$0.086/h",
+    "image": "ghcr.io/torad-labs/conductor-trainer@sha256:de70ae6902c5619473bd8acd528633d4b51e4cb46b545e05ad236388d17e581b",
+    "host_key_fpr": "SHA256:d3tOkudJvqqgEs3U/shdUArgjPRNTKNUFVImSK4ufaU",
+    "min_compute_cap": 1000,
+    "stages": "bundle DONE -> config DONE -> train DONE -> post_install DONE",
+    "metrics_rows": 20,
+    "train_wall_s": 713,
+    "smoke_steps": 20,
+    "trainer_rc": 0,
+    "teardown": "Stopped(ids=[46631188])",
+    "orphans_after": 0,
+    "probe_log_line": "PAID SMOKE PROVEN: post_install DONE with 20 metric rows; log tail: 9:00:58] done 20 steps in 713s",
+    "unit_exit": 0,
+    "wall_clock": "BUILD SUCCESSFUL in 17m 20s",
+    "precision": "fp4 + int8_master=storage (floor held)",
+    "engine_commits_required": [
+      "41a54536 python3.13-dev (Python.h for Triton)",
+      "eecf05a8 ninja-build (flashinfer sm120 JIT)",
+      "c8be1f5e g++/c++ symlinks (flashinfer ninja link)"
+    ],
+    "conductor_working_tree_required": [
+      "PUBLIC_KEY env on createInstance",
+      "QGRE_CLOUD_MIN_COMPUTE_CAP (Blackwell floor 1000 for real Quartet)",
+      "30min ready window",
+      "image_login from vastai-registry keyring"
+    ]
+  }
+}

@@ -226,6 +226,30 @@ def test_gate_uses_independent_facts_not_repeated_probe_surfaces():
         assert any("independent fact denominator" in failure for failure in report["failed_checks"])
 
 
+def test_fact_rate_stays_on_the_per_item_scale_it_is_compared_against():
+    """A phrasing-fragile model that knows every fact must not score zero.
+
+    The gate compares the fact-level rate against `chance`, a PER-ITEM floor (1/n_choices). Collapsing a fact
+    with all() measures "correct under every surface", whose chance rate is chance**m — so a model answering
+    3 of 4 surfaces for all 60 facts scored 0.0000 and FAILed a gate it clears comfortably. Each fact now
+    contributes one observation: its own pass rate.
+    """
+    probes, hits = [], []
+    for fact in range(60):
+        for surface in range(4):
+            probes.append({"question": f"q{fact}.{surface}", "choices": list("abcd"), "answer": "a",
+                           "predicate": "located_in", "source_triple_id": f"t{fact}"})
+            hits.append(surface != 0)
+
+    summary = E.summarize_hits(probes, hits, min_n=50, bar=0.25, estimand="scale")
+
+    assert summary["n"] == 240 and summary["n_independent_facts"] == 60
+    assert abs(summary["independent_fact_acc"] - 0.75) < 0.02, summary["independent_fact_acc"]
+    assert summary["independent_fact_acc"] - 0.25 > summary["independent_fact_rough_bound"]
+    # the strict property is still measured, just never used as the gate
+    assert summary["phrasing_consistent_facts"] == 0
+
+
 def test_probe_loader_binds_every_item_to_the_hashed_holdout():
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)

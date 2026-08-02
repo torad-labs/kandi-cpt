@@ -1,0 +1,41 @@
+# Cloud smoke — the ~$1 vast.ai proof run. NOT a training run: run.smoke_steps>0 selects the
+# engine's synthetic-data sanity loop (cpt_config.py:395), which needs NO tokenized corpus
+# (validate_runtime gates data.tokenized behind smoke) and saves nothing (save_dir deliberately
+# unset — the entrypoint refuses save_dir==runDir, and unset never collides).
+#
+# What this run proves, in order: vast provisions the image → sshd answers (ssh_direct + the
+# injected PUBLIC_KEY) → the bundle verdict admits this config → the fp4 path acquires a real
+# GPU (first time ever from this image) → step lines flow through the metrics bridge into
+# <runDir>/metrics.jsonl → post_install DONE lands on EVIDENCE.
+#
+# Precision is the fp4 + int8-master floor, as everywhere. A smoke that upcast to prove
+# "the cloud works" would prove the wrong pipeline works.
+
+mode: cpt
+model:
+  model_path: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
+  freeze_embeddings: true
+data:
+  # The int8 artifact boots through the NATIVE int8-master loader (it ships quant_keys.json).
+  # Without init_from, build_model falls to the multimodal-safetensors remap, which finds ZERO
+  # 'model.language_model.'-prefixed keys in this text-only export — measured as the paid-smoke
+  # trainer crash (StopIteration at train_cpt.py:434, vast RTX 3060, 2026-08-01).
+  init_from: /home/marcos/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2
+train:
+  precision: fp4
+  seq_len: 512
+  micro_batch_size: 1
+  grad_accum: 1
+  lr: 5.0e-05
+  min_lr: 5.0e-06
+  weight_decay: 0.0
+  grad_clip: 1.0
+  optimizer_8bit: false
+  optimizer_lowbit: 4
+  int8_master: storage
+  warmup_steps: 5
+  max_steps: 20
+  gradient_checkpointing: true
+run:
+  smoke_steps: 20
+  seed: 0
