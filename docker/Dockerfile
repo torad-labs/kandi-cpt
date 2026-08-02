@@ -165,6 +165,16 @@ sys.exit(0 if r is not None else 1)"; \
       || { echo "BUILD ASSERT FAILED: libcudart.so.13 is not in the venv, so it cannot resolve at runtime" >&2; exit 1; }; \
     echo "build-assert: libcudart.so.13 ships in the venv; libcuda.so.1 is the DRIVER and is supplied only by the GPU runtime"
 
+# ninja: flashinfer JIT-builds cutlass fp4 gemm modules at RUNTIME on sm_120 (Blackwell).
+# Paid smoke attempt 22 (2026-08-02) reached the real Quartet path on an RTX 5060 Ti and died
+# FileNotFoundError: ninja. Kept as its OWN late layer so a one-package add does not invalidate
+# the multi-GB venv/tree layers above (the python3.13-dev apt edit earlier forced that re-push).
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ninja-build \
+ && rm -rf /var/lib/apt/lists/* \
+ && command -v ninja >/dev/null \
+ || { echo "BUILD ASSERT FAILED: ninja not on PATH after ninja-build install" >&2; exit 1; }
+
 LABEL org.opencontainers.image.title="conductor-trainer" \
       org.opencontainers.image.description="kandi-cpt engine + its proven virtualenv, for conductor cloud training" \
       org.opencontainers.image.revision="${ENGINE_COMMIT}" \
