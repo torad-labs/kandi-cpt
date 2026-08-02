@@ -49,10 +49,13 @@ FROM ubuntu:25.10
 #   whatever `cc`/`gcc` resolves at RUNTIME. The build host never exercised this (Blackwell takes
 #   the real Quartet kernel; Triton pseudoquant only runs on capability < 10), so the gap surfaced
 #   on the first rented Ampere card: paid smoke 2026-08-02, trainer dead in triton _build().
+# python3.13-dev : Triton's cuda_utils.c does `#include <Python.h>`. gcc alone is not enough —
+#   paid smoke attempt 14 (2026-08-02) got past "no C compiler" and died on missing Python.h.
 # openssh-server : runtype "ssh_direct" (CloudProvisioner.kt:121) + the sshj transport
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       python3.13 \
+      python3.13-dev \
       unzip \
       gawk \
       g++-14 \
@@ -66,8 +69,11 @@ RUN apt-get update \
 
 # The baked venv's bin/python3 is an absolute symlink to /usr/bin/python3; if that is not 3.13 the
 # whole site-packages tree is unloadable. Assert rather than discover it on a rented instance.
+# Python.h is the next link in the Triton JIT chain (see python3.13-dev above).
 RUN python3 --version 2>&1 | grep -q '^Python 3\.13' \
- || { echo "BUILD ASSERT FAILED: /usr/bin/python3 is $(python3 --version 2>&1), need 3.13" >&2; exit 1; }
+ || { echo "BUILD ASSERT FAILED: /usr/bin/python3 is $(python3 --version 2>&1), need 3.13" >&2; exit 1; } \
+ && test -f /usr/include/python3.13/Python.h \
+ || { echo "BUILD ASSERT FAILED: /usr/include/python3.13/Python.h missing (need python3.13-dev)" >&2; exit 1; }
 
 # The venv is its OWN layer, baked BEFORE the engine tree: it is 6.8GB and changes ~never, while
 # the tree changes with every engine commit. One combined COPY meant a one-line engine fix
