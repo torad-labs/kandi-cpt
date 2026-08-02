@@ -9,7 +9,7 @@
 # Blackwell sm_120 requires torch built with CUDA 12.8+. The torch wheel
 # below is the cu130 channel that ships sm_120 kernels.
 
-torch==2.12.1+cu130            ; sys_platform == "linux"
+torch==2.13.0+cu130            ; sys_platform == "linux"
 --extra-index-url https://download.pytorch.org/whl/cu130
 
 transformers>=4.49.0           # Gemma 4 family support
