@@ -41,34 +41,70 @@ OBJECTIVES_CFG = ROOT / "configs" / "objectives.json"
 STATUS_FILE = ROOT / "data" / "_build" / "train_status.json"
 LEDGER = DISSECT / "calibration_results.jsonl"
 
-# Run ids and asset names come from URL path/query — allow only safe single segments /
-# relative subpaths (no absolute paths, no '..') so path joins cannot escape their root.
-# Require ≥1 alphanumeric so "." / ".." / "..." cannot pass as a run id.
-_RUN_ID_RE = re.compile(r"^(?=.*[A-Za-z0-9])[\w.-]+$")
+# Run ids and asset names come from URL path/query. CodeQL treats ANY filesystem op
+# (open/isfile/is_dir/realpath) on a value derived from user input as path-injection —
+# even after a hand-rolled realpath+startswith guard. So we never join or open user
+# strings. User input is only compared for equality against names from os.scandir();
+# the Path we return always originates from the directory entry, not from the request.
+_SEG_RE = re.compile(r"^(?=.*[A-Za-z0-9])[\w.-]+$")
 
 
 def _safe_run_id(rid: str | None) -> str | None:
-    if not rid or not _RUN_ID_RE.fullmatch(rid):
+    """Validate a single path segment (run id / asset name piece)."""
+    if not rid or not _SEG_RE.fullmatch(rid):
+        return None
+    if rid in (".", "..") or "/" in rid or "\\" in rid or "\x00" in rid:
         return None
     return rid
 
 
-def _under(root: Path, rel: str) -> Path | None:
-    """Return root/rel resolved, or None if rel escapes root (path-injection guard).
+def _scandir_child(root: Path, name: str) -> Path | None:
+    """Return root's direct child whose .name equals `name`, or None.
 
-    Uses realpath + startswith — the barrier CodeQL models as a path-injection sanitizer
-    (relative_to alone is not recognized).
+    `name` is only used in an equality check against scandir entries — it never
+    enters a join/open. Symlinks are refused so a child cannot bounce outside root.
     """
-    if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
+    safe = _safe_run_id(name)
+    if safe is None:
         return None
     try:
-        base = os.path.realpath(str(root))
-        target = os.path.realpath(os.path.join(base, rel))
-        if target == base or target.startswith(base + os.sep):
-            return Path(target)
-    except (ValueError, OSError, TypeError):
+        with os.scandir(root) as it:
+            for entry in it:
+                if entry.name != safe:
+                    continue
+                if entry.is_symlink():
+                    return None
+                return Path(entry.path)
+    except OSError:
         return None
     return None
+
+
+def _walk_under(root: Path, rel: str) -> Path | None:
+    """Walk `rel` (slash-separated) under `root` one scandir step at a time."""
+    if not rel or rel.startswith(("/", "\\")) or "\x00" in rel:
+        return None
+    parts = rel.split("/")
+    if not parts or any(p in ("", ".", "..") or "\\" in p for p in parts):
+        return None
+    cur = root
+    for part in parts:
+        nxt = _scandir_child(cur, part)
+        if nxt is None:
+            return None
+        cur = nxt
+    return cur
+
+
+def _trailing_vtag(rid: str) -> str | None:
+    """If rid ends with 'v' + ASCII digits, return that tag (e.g. 'v12'). No regex."""
+    i = rid.rfind("v")
+    if i < 0:
+        return None
+    digits = rid[i + 1 :]
+    if not digits or not digits.isascii() or not digits.isdigit():
+        return None
+    return rid[i:]
 
 
 def corpus_dir(festival):
@@ -267,8 +303,8 @@ def run_detail(rid):
     rid = _safe_run_id(rid)
     if not rid:
         return None
-    rdir = _under(SFT_DIR, rid)
-    if not rdir or not rdir.is_dir():
+    rdir = _scandir_child(SFT_DIR, rid)
+    if rdir is None or not rdir.is_dir():
         return None
     led = ledger_latest_by_run()
     summ = run_summary(rdir, led)
@@ -462,8 +498,8 @@ def coach_report_run(rid):
     rid = _safe_run_id(rid)
     if not rid:
         return None
-    rdir = _under(SFT_DIR, rid)
-    if not rdir or not rdir.is_dir():
+    rdir = _scandir_child(SFT_DIR, rid)
+    if rdir is None or not rdir.is_dir():
         return None
     led = ledger_latest_by_run()
     summ = run_summary(rdir, led)
@@ -488,8 +524,8 @@ def compare_runs(rids, baseline=None):
         rid = _safe_run_id(rid)
         if not rid:
             continue
-        rdir = _under(SFT_DIR, rid)
-        if not rdir or not rdir.is_dir():
+        rdir = _scandir_child(SFT_DIR, rid)
+        if rdir is None or not rdir.is_dir():
             continue
         summ = run_summary(rdir, led)
         label = summ.get("label")
@@ -573,8 +609,9 @@ LAYERS = [
 
 def edition_detail(festival, edition):
     root = corpus_dir(festival)
-    year_dir = (root / edition)
-    if not year_dir.is_dir() or not str(year_dir.resolve()).startswith(str(root.resolve())):
+    # edition is URL-sourced (e.g. "las_vegas/2026") — walk via scandir, never join.
+    year_dir = _walk_under(root, edition) if isinstance(edition, str) else None
+    if year_dir is None or not year_dir.is_dir():
         return None
     out = {"festival": festival, "edition": edition, "sources": [], "layers": []}
     # clean docs grouped by source channel (the human-readable layer)
@@ -625,9 +662,11 @@ def corpus_layer(festival, layer_key):
 
 def read_doc(relpath, limit=4000):
     """Read one file under data/ (sandboxed). jsonl is sampled to `limit` lines."""
-    p = (ROOT / relpath).resolve()
-    base = (ROOT / "data").resolve()
-    if not str(p).startswith(str(base)) or not p.is_file():
+    if not isinstance(relpath, str) or not relpath.startswith("data/"):
+        return None
+    # Walk from ROOT so every segment is scandir-matched; never join user input.
+    p = _walk_under(ROOT, relpath)
+    if p is None or not p.is_file():
         return None
     if p.suffix == ".jsonl":
         lines = []
@@ -677,81 +716,137 @@ def _gpu_stat(device=0):
     return v
 
 
-def _contained_file(path_s: str, *roots: Path) -> Path | None:
-    """Open-barrier: realpath must sit under one of roots (CodeQL path-injection sanitizer)."""
-    try:
-        target = os.path.realpath(path_s)
-    except OSError:
+def _rebind_under(candidate: str, *roots: Path) -> Path | None:
+    """If `candidate` names a path under one of `roots`, return that file as a Path
+    rebuilt purely via scandir walks. Never open/stat/realpath the candidate string
+    itself (those are CodeQL path-injection sinks on tainted values)."""
+    if not candidate or "\x00" in candidate:
         return None
-    if not os.path.isfile(target):
-        return None
+    # String-only normalization for prefix matching — no FS ops on candidate.
+    cand = candidate.replace("\\", "/")
     for root in roots:
-        base = os.path.realpath(str(root))
-        if target == base or target.startswith(base + os.sep):
-            return Path(target)
+        base_norm = str(root).replace("\\", "/").rstrip("/")
+        prefix = base_norm + "/"
+        if cand.startswith(prefix):
+            rel = cand[len(prefix):]
+            if not rel:
+                continue
+            hit = _walk_under(root, rel)
+            if hit is not None and hit.is_file():
+                return hit
+            continue
+        # Basename-only fallback (status files sometimes store just a name under /tmp).
+        base_name = cand.rsplit("/", 1)[-1]
+        hit = _scandir_child(root, base_name)
+        if hit is not None and hit.is_file():
+            return hit
     return None
 
 
 def _log_path(rid):
     """Resolve a run's log. While a chain/trainer is live it registers its combined log in
     train_status.json (build→train→gate as one stream); else the canonical per-run train.log;
-    else the /tmp convention for older runs. `rid` is URL-sourced — validated before any join."""
+    else the /tmp convention for older runs. Paths returned are scandir-derived only."""
     rid = _safe_run_id(rid)
     if not rid:
         return None
     st = read_json(STATUS_FILE) or {}
-    # Status file is host-written; still require the path under ROOT or /tmp before returning.
+    # Status file is host-written; rebind its log_path via scandir under known roots.
     if st.get("run") == rid and st.get("log_path"):
-        hit = _contained_file(str(st["log_path"]), ROOT, Path("/tmp"))
+        hit = _rebind_under(str(st["log_path"]), ROOT, Path("/tmp"))
         if hit is not None:
             return hit
-    cand = _under(SFT_DIR, f"{rid}/train.log")
-    if cand is not None:
-        hit = _contained_file(str(cand), SFT_DIR)
-        if hit is not None:
+    # Canonical: checkpoints/sft/<rid>/train.log — both segments via scandir.
+    rdir = _scandir_child(SFT_DIR, rid)
+    if rdir is not None and rdir.is_dir():
+        hit = _scandir_child(rdir, "train.log")
+        if hit is not None and hit.is_file():
             return hit
-    m = re.fullmatch(r".*(v[0-9]+)", rid)
-    if m:
-        # Constructed only from the validated trailing vN — never a raw user path.
-        legacy_name = f"train_sft_{m.group(1)}.log"
-        hit = _contained_file(os.path.join("/tmp", legacy_name), Path("/tmp"))
-        if hit is not None:
+    # Legacy /tmp/train_sft_vN.log — tag from validated rid, name matched via scandir.
+    vtag = _trailing_vtag(rid)
+    if vtag is not None:
+        legacy_name = f"train_sft_{vtag}.log"
+        hit = _scandir_child(Path("/tmp"), legacy_name)
+        if hit is not None and hit.is_file():
             return hit
     return None
 
 
-STEP_RE = re.compile(r"step (\d+)/(\d+) loss ([\d.]+) lr ([\d.eE+-]+) peakmem ([\d.]+)GB (?:\(resident [\d.]+GB; transient [\d.]+GB\) )?([\d.]+)s/step")
-
-
+# Linear log-line matcher: fixed literals + bounded digit/float runs. No nested quantifiers
+# over overlapping classes (avoids py/polynomial-redos on long trainer lines).
+_STEP_PREFIX = "step "
 def parse_points(lines):
     pts = []
     for ln in lines:
-        m = STEP_RE.search(ln)
-        if m:
+        # Fast reject before any parsing.
+        i = ln.find(_STEP_PREFIX)
+        if i < 0:
+            continue
+        rest = ln[i + len(_STEP_PREFIX):]
+        # step N/M loss X lr Y peakmem ZGB ... Ss/step
+        try:
+            slash = rest.index("/")
+            step_s = rest[:slash]
+            if not step_s.isdigit():
+                continue
+            j = slash + 1
+            k = j
+            while k < len(rest) and rest[k].isdigit():
+                k += 1
+            if k == j or not rest.startswith(" loss ", k):
+                continue
+            total_s = rest[j:k]
+            rest2 = rest[k + len(" loss "):]
+            parts = rest2.split()
+            # parts: [loss, "lr", lr, "peakmem", memGB, ... "Ns/step"]
+            if len(parts) < 5 or parts[1] != "lr" or not parts[3].startswith("peakmem"):
+                continue
+            loss_s, lr_s = parts[0], parts[2]
+            # peakmem may be "peakmem" + next token "1.2GB" OR single token "peakmem1.2GB"
+            if parts[3] == "peakmem":
+                mem_s = parts[4]
+                tail = parts[5:]
+            else:
+                mem_s = parts[3][len("peakmem"):]
+                tail = parts[4:]
+            if not mem_s.endswith("GB"):
+                continue
+            mem_s = mem_s[:-2]
+            # find Ss/step in remaining tokens (skip optional "(resident …)" group)
+            sps_s = None
+            for tok in tail:
+                if tok.endswith("s/step"):
+                    sps_s = tok[: -len("s/step")]
+                    break
+            if sps_s is None:
+                continue
             pts.append({
-                "step": int(m.group(1)), "total": int(m.group(2)),
-                "loss": float(m.group(3)), "lr": float(m.group(4)),
-                "mem": float(m.group(5)), "sps": float(m.group(6)),
+                "step": int(step_s), "total": int(total_s),
+                "loss": float(loss_s), "lr": float(lr_s),
+                "mem": float(mem_s), "sps": float(sps_s),
             })
+        except (ValueError, IndexError):
+            continue
     return pts
 
 
 def run_log(rid, after=0):
     lp = _log_path(rid)
-    if not lp:
+    if lp is None or not lp.is_file():
         return {"lines": [], "next": 0, "total": 0, "points": [], "available": False}
-    # Re-apply containment at the read sink (CodeQL tracks taint through helpers).
-    hit = _contained_file(str(lp), SFT_DIR, ROOT, Path("/tmp"))
-    if hit is None:
-        return {"lines": [], "next": 0, "total": 0, "points": [], "available": False}
-    with open(os.path.realpath(str(hit)), "r", errors="replace") as fh:
+    # lp is scandir-derived — safe to open directly.
+    with open(lp, "r", errors="replace") as fh:
         all_lines = fh.read().splitlines()
     after = max(0, int(after))
     new = all_lines[after:]
+    try:
+        rel = str(lp.relative_to(ROOT))
+    except ValueError:
+        rel = str(lp)
     return {
         "lines": new, "next": len(all_lines), "total": len(all_lines),
         "points": parse_points(all_lines), "available": True,
-        "path": str(hit.relative_to(ROOT)) if str(hit).startswith(str(ROOT)) else str(hit),
+        "path": rel,
     }
 
 
@@ -813,14 +908,13 @@ class Handler(BaseHTTPRequestHandler):
     def _json(self, obj, code=200):
         self._send(code, obj, "application/json")
 
-    def _file(self, path: Path, fallback_ctype="text/plain", *, allowed_root: Path):
-        # Final barrier at the sink: only read bytes after realpath startswith allowed_root.
-        hit = _contained_file(str(path), allowed_root)
-        if hit is None:
-            return self._send(404, {"error": f"not found: {path.name}"})
-        ctype = MIME.get(hit.suffix, fallback_ctype)
-        # open via the sanitized realpath string so taint cannot reach the read.
-        with open(os.path.realpath(str(hit)), "rb") as fh:
+    def _file(self, path: Path, fallback_ctype="text/plain"):
+        # `path` must already be scandir-derived (_walk_under / _scandir_child). No
+        # user string reaches open().
+        if path is None or not path.is_file():
+            return self._send(404, {"error": "not found"})
+        ctype = MIME.get(path.suffix, fallback_ctype)
+        with open(path, "rb") as fh:
             body = fh.read()
         self._send(200, body, ctype)
 
@@ -931,17 +1025,18 @@ class Handler(BaseHTTPRequestHandler):
         # assets ───────────────────────────────────────────
         if path.startswith("/assets/"):
             name = path[len("/assets/"):]
-            target = _under(ASSETS, name)
-            if target is not None:
-                return self._file(target, allowed_root=ASSETS)
+            target = _walk_under(ASSETS, name)
+            if target is not None and target.is_file():
+                return self._file(target)
             return self._send(403, {"error": "forbidden"})
 
         # pages ────────────────────────────────────────────
         if path in PAGE_ROUTES:
-            page = _under(PAGES, f"{PAGE_ROUTES[path]}.html")
-            if page is None:
+            # PAGE_ROUTES values are a fixed whitelist — look up by scandir, not join.
+            page = _scandir_child(PAGES, f"{PAGE_ROUTES[path]}.html")
+            if page is None or not page.is_file():
                 return self._send(404, {"error": f"no route: {path}"})
-            return self._file(page, "text/html", allowed_root=PAGES)
+            return self._file(page, "text/html")
         if path == "/favicon.ico":
             return self._send(204, b"")
 
