@@ -1,0 +1,13 @@
+# CodeQL analysis scope for kandi-cpt.
+#
+# data/ holds scraped third-party HTML/JS (festival pages, CDN bundles) — not first-party
+# product code. Scanning it floods the security tab with redos/CDN findings on vendor markup.
+# Real application code lives under scripts/, orchestrator/, docker/, etc.
+name: kandi-cpt
+paths-ignore:
+  - data/**
+  - '**/node_modules/**'
+  - '**/.venv/**'
+  - '**/build/**'
+  - '**/dist/**'
+  - vendor/**
