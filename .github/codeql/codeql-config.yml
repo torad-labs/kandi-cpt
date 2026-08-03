@@ -1,13 +1,54 @@
 # CodeQL analysis scope for kandi-cpt.
 #
-# data/ holds scraped third-party HTML/JS (festival pages, CDN bundles) — not first-party
-# product code. Scanning it floods the security tab with redos/CDN findings on vendor markup.
-# Real application code lives under scripts/, orchestrator/, docker/, etc.
+# Default setup cannot paths-ignore; this file is loaded by the advanced-setup
+# workflow (.github/workflows/codeql.yml).
+#
+# Two layers:
+#   1. `paths`     — positive allowlist of first-party product code
+#   2. `paths-ignore` — belt-and-suspenders denylist (docs, scraped data,
+#                       build artifacts, vendored trees)
+#
+# A file is analyzed only if it matches `paths` AND does not match
+# `paths-ignore`. Markdown under docs/ is not a CodeQL language input today,
+# but we exclude the tree explicitly so any future HTML/JS drop-ins there
+# stay out of the security tab.
 name: kandi-cpt
+
+paths:
+  # First-party application / pipeline code
+  - scripts
+  - orchestrator
+  - docker
+  - tools
+  - trainer
+  - scrapers
+  - schema
+  - festival-factory
+  - qgre-agent
+  # CI / workflow definitions (actions language pack)
+  - .github
+
 paths-ignore:
+  # Documentation — not product code; never security-relevant for CodeQL
+  - docs/**
+  - '**/README.md'
+  - '**/CLAUDE.md'
+  - '**/AGENTS.md'
+  # Scraped third-party HTML/JS (festival pages, CDN bundles) — flooded the
+  # security tab with js/redos false positives before advanced setup.
   - data/**
+  # Run artifacts / regenerable outputs
+  - logs/**
+  - checkpoints/**
+  - eval-inputs/**
+  - exports/**
+  - manifests/**
+  - configs/**
+  # Vendored / generated / env
+  - vendor/**
   - '**/node_modules/**'
   - '**/.venv/**'
   - '**/build/**'
   - '**/dist/**'
-  - vendor/**
+  - '**/target/**'
+  - '**/.gradle/**'
