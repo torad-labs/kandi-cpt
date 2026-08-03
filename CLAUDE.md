@@ -12,8 +12,9 @@ orchestration agent (`../../agents/qgre-agent`, a Kotlin `ToolLoopAgent`) DRIVES
 `scripts/run_pipeline.py` + `bash`; it does not contain the training competence — that lives here and in
 qgre-agent's `core-agent/knowledge/` playbooks. Base model: `~/Documents/dev/models/gemma-4-E2B-it` (Gemma 4 E2B).
 
-`README.md`'s "State of play" (the `0/17`, QLoRA-NF4-on-16GB framing) is **historical** — superseded by the
-fp4 full-param recipe below. Trust this file + `docs/` + the manifests for the current shape.
+`README.md` is the **agent map** (layout, cloud smoke recipe, CodeQL, commands). This file is the **law**
+(precision, domain-general architecture, GPU safety). If they disagree on methodology or precision,
+**believe this file**. Receipts under `logs/phase_*.json` beat both for "what was measured".
 
 ## ⚠ The two things you MUST NOT break
 
