@@ -1,7 +1,8 @@
-# Advanced CodeQL setup — replaces default setup so we can paths-ignore data/.
-# Default setup has no paths-ignore API; without this, scraped HTML under data/edc
-# generates 1000+ false-positive js/redos alerts.
+# Advanced CodeQL setup — replaces default setup so we can scope analysis.
+# Default setup has no paths-ignore API; without this, scraped HTML under data/
+# and anything dropped under docs/ can flood the security tab.
 #
+# Scope lives in .github/codeql/codeql-config.yml (allowlist + denylist).
 # Action SHAs pinned (zizmor unpinned-uses policy).
 name: CodeQL
 
