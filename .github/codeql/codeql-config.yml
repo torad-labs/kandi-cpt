@@ -9,18 +9,21 @@
 #                       build artifacts, vendored trees)
 #
 # A file is analyzed only if it matches `paths` AND does not match
-# `paths-ignore`. Markdown under docs/ is not a CodeQL language input today,
-# but we exclude the tree explicitly so any future HTML/JS drop-ins there
-# stay out of the security tab.
+# `paths-ignore`.
+#
+# IMPORTANT: every entry under `paths` MUST exist in the git checkout.
+# CodeQL's Python extractor walks each path and FileNotFoundError-crashes
+# on missing dirs (empty local-only trees like trainer/ do not count).
+# Markdown under docs/ is not a CodeQL language input today, but we exclude
+# the tree explicitly so any future HTML/JS drop-ins stay out of the security tab.
 name: kandi-cpt
 
 paths:
-  # First-party application / pipeline code
+  # First-party application / pipeline code (git-tracked content only)
   - scripts
   - orchestrator
   - docker
   - tools
-  - trainer
   - scrapers
   - schema
   - festival-factory
@@ -29,7 +32,7 @@ paths:
   - .github
 
 paths-ignore:
-  # Documentation — not product code; never security-relevant for CodeQL
+  # Documentation — not product code
   - docs/**
   - '**/README.md'
   - '**/CLAUDE.md'
