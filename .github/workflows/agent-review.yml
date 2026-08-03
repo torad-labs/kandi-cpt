@@ -27,16 +27,35 @@ on:
 permissions: {}
 
 concurrency:
-  group: agent-review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr-number }}
+  # Real reviews (PR auto-path + @torad-review mentions) share one group per PR
+  # so two runs cannot race the sticky status comment. Non-mention issue_comment
+  # events still CREATE a workflow run — GitHub has no workflow-level body filter
+  # — and the job `if` below skips them. If those noise runs shared this group
+  # they sat `pending` for the entire 20–40 min review, then skipped: Actions
+  # showed "2 agent-reviews" per PR and looked like the bot's "Review in
+  # progress" status comment had re-triggered a review. Isolate noise on run_id.
+  group: >-
+    agent-review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr-number || github.run_id }}-${{
+      github.event_name == 'issue_comment'
+      && (github.event.comment.user.type == 'Bot'
+          || !contains(github.event.comment.body, '@torad-review'))
+      && github.run_id
+      || 'work'
+    }}
   cancel-in-progress: false
 
 jobs:
   gate:
     runs-on: ubuntu-latest
     timeout-minutes: 2
+    # Cheap pre-filter so an unrelated comment never even allocates a runner.
+    # Requires the @torad-review token (not bare "review") AND a human author —
+    # the bot's own status comment is `<!-- torad-review:status -->` (no @) plus
+    # user.type Bot; either is enough to skip. Authorization still lives below.
     if: >-
       github.event_name != 'issue_comment' ||
       (github.event.issue.pull_request != null &&
+       github.event.comment.user.type != 'Bot' &&
        contains(github.event.comment.body, '@torad-review'))
     permissions:
       pull-requests: write
@@ -121,7 +140,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@2c835c7e45cb9c7b4d8853f5ee47b0f18d6b2593 # v1-99-g2c835c7
+    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@8037ba5eeb93c16a90ce6eab2f9c2a587ea44829 # v1-108-g8037ba5
     with:
       pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.gate.outputs.pr) }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
