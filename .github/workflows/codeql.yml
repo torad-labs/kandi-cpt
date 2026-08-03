@@ -1,6 +1,8 @@
 # Advanced CodeQL setup — replaces default setup so we can paths-ignore data/.
 # Default setup has no paths-ignore API; without this, scraped HTML under data/edc
 # generates 1000+ false-positive js/redos alerts.
+#
+# Action SHAs pinned (zizmor unpinned-uses policy).
 name: CodeQL
 
 on:
@@ -38,10 +40,10 @@ jobs:
           # rust is optional here; re-add if/when first-party Rust is in-tree again
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@a2983b8bed1923f44751c5c43237f479442827b3 # v3.37.4
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -49,6 +51,6 @@ jobs:
           queries: security-extended
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@a2983b8bed1923f44751c5c43237f479442827b3 # v3.37.4
         with:
           category: "/language:${{ matrix.language }}"

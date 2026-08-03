@@ -43,7 +43,8 @@ LEDGER = DISSECT / "calibration_results.jsonl"
 
 # Run ids and asset names come from URL path/query — allow only safe single segments /
 # relative subpaths (no absolute paths, no '..') so path joins cannot escape their root.
-_RUN_ID_RE = re.compile(r"^[\w.-]+$")
+# Require ≥1 alphanumeric so "." / ".." / "..." cannot pass as a run id.
+_RUN_ID_RE = re.compile(r"^(?=.*[A-Za-z0-9])[\w.-]+$")
 
 
 def _safe_run_id(rid: str | None) -> str | None:
@@ -53,16 +54,21 @@ def _safe_run_id(rid: str | None) -> str | None:
 
 
 def _under(root: Path, rel: str) -> Path | None:
-    """Return root/rel resolved, or None if rel escapes root (path-injection guard)."""
+    """Return root/rel resolved, or None if rel escapes root (path-injection guard).
+
+    Uses realpath + startswith — the barrier CodeQL models as a path-injection sanitizer
+    (relative_to alone is not recognized).
+    """
     if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
         return None
     try:
-        base = root.resolve()
-        target = (root / rel).resolve()
-        target.relative_to(base)
-        return target
-    except (ValueError, OSError):
+        base = os.path.realpath(str(root))
+        target = os.path.realpath(os.path.join(base, rel))
+        if target == base or target.startswith(base + os.sep):
+            return Path(target)
+    except (ValueError, OSError, TypeError):
         return None
+    return None
 
 
 def corpus_dir(festival):
@@ -124,12 +130,12 @@ def read_jsonl(path):
 
 
 def _vnum(run_id):
-    """Trailing integer in a run id (edc_sft_v12 → 12). Linear scan — no regex backtracking."""
+    """Trailing integer in a run id (edc_sft_v12 → 12). ASCII digits only — linear, int()-safe."""
     if not run_id:
         return 0
     s = run_id.rstrip()
     i = len(s)
-    while i > 0 and s[i - 1].isdigit():
+    while i > 0 and "0" <= s[i - 1] <= "9":
         i -= 1
     if i == len(s):
         return 0
@@ -671,6 +677,21 @@ def _gpu_stat(device=0):
     return v
 
 
+def _contained_file(path_s: str, *roots: Path) -> Path | None:
+    """Open-barrier: realpath must sit under one of roots (CodeQL path-injection sanitizer)."""
+    try:
+        target = os.path.realpath(path_s)
+    except OSError:
+        return None
+    if not os.path.isfile(target):
+        return None
+    for root in roots:
+        base = os.path.realpath(str(root))
+        if target == base or target.startswith(base + os.sep):
+            return Path(target)
+    return None
+
+
 def _log_path(rid):
     """Resolve a run's log. While a chain/trainer is live it registers its combined log in
     train_status.json (build→train→gate as one stream); else the canonical per-run train.log;
@@ -679,30 +700,23 @@ def _log_path(rid):
     if not rid:
         return None
     st = read_json(STATUS_FILE) or {}
-    # Status file is host-written, not URL input; still require the path to stay under ROOT or /tmp.
+    # Status file is host-written; still require the path under ROOT or /tmp before returning.
     if st.get("run") == rid and st.get("log_path"):
-        lp = Path(st["log_path"]).resolve()
-        root = ROOT.resolve()
-        tmp = Path("/tmp").resolve()
-        try:
-            under_root = str(lp).startswith(str(root) + os.sep) or lp == root
-        except Exception:
-            under_root = False
-        try:
-            under_tmp = str(lp).startswith(str(tmp) + os.sep)
-        except Exception:
-            under_tmp = False
-        if lp.is_file() and (under_root or under_tmp):
-            return lp
+        hit = _contained_file(str(st["log_path"]), ROOT, Path("/tmp"))
+        if hit is not None:
+            return hit
     cand = _under(SFT_DIR, f"{rid}/train.log")
-    if cand and cand.is_file():
-        return cand
-    m = re.search(r"(v\d+)$", rid)
+    if cand is not None:
+        hit = _contained_file(str(cand), SFT_DIR)
+        if hit is not None:
+            return hit
+    m = re.fullmatch(r".*(v[0-9]+)", rid)
     if m:
         # Constructed only from the validated trailing vN — never a raw user path.
-        legacy = (Path("/tmp") / f"train_sft_{m.group(1)}.log").resolve()
-        if legacy.is_file() and legacy.parent == Path("/tmp").resolve():
-            return legacy
+        legacy_name = f"train_sft_{m.group(1)}.log"
+        hit = _contained_file(os.path.join("/tmp", legacy_name), Path("/tmp"))
+        if hit is not None:
+            return hit
     return None
 
 
@@ -726,12 +740,18 @@ def run_log(rid, after=0):
     lp = _log_path(rid)
     if not lp:
         return {"lines": [], "next": 0, "total": 0, "points": [], "available": False}
-    all_lines = lp.read_text(errors="replace").splitlines()
+    # Re-apply containment at the read sink (CodeQL tracks taint through helpers).
+    hit = _contained_file(str(lp), SFT_DIR, ROOT, Path("/tmp"))
+    if hit is None:
+        return {"lines": [], "next": 0, "total": 0, "points": [], "available": False}
+    with open(os.path.realpath(str(hit)), "r", errors="replace") as fh:
+        all_lines = fh.read().splitlines()
     after = max(0, int(after))
     new = all_lines[after:]
     return {
         "lines": new, "next": len(all_lines), "total": len(all_lines),
-        "points": parse_points(all_lines), "available": True, "path": str(lp.relative_to(ROOT)) if str(lp).startswith(str(ROOT)) else str(lp),
+        "points": parse_points(all_lines), "available": True,
+        "path": str(hit.relative_to(ROOT)) if str(hit).startswith(str(ROOT)) else str(hit),
     }
 
 
@@ -793,13 +813,16 @@ class Handler(BaseHTTPRequestHandler):
     def _json(self, obj, code=200):
         self._send(code, obj, "application/json")
 
-    def _file(self, path: Path, fallback_ctype="text/plain"):
-        # Callers must pass a containment-checked Path (_under / PAGE_ROUTES). Re-check is_file
-        # only — never build paths from raw URL strings here.
-        if not path.is_file():
+    def _file(self, path: Path, fallback_ctype="text/plain", *, allowed_root: Path):
+        # Final barrier at the sink: only read bytes after realpath startswith allowed_root.
+        hit = _contained_file(str(path), allowed_root)
+        if hit is None:
             return self._send(404, {"error": f"not found: {path.name}"})
-        ctype = MIME.get(path.suffix, fallback_ctype)
-        self._send(200, path.read_bytes(), ctype)
+        ctype = MIME.get(hit.suffix, fallback_ctype)
+        # open via the sanitized realpath string so taint cannot reach the read.
+        with open(os.path.realpath(str(hit)), "rb") as fh:
+            body = fh.read()
+        self._send(200, body, ctype)
 
     def do_HEAD(self):
         self.do_GET()
@@ -910,7 +933,7 @@ class Handler(BaseHTTPRequestHandler):
             name = path[len("/assets/"):]
             target = _under(ASSETS, name)
             if target is not None:
-                return self._file(target)
+                return self._file(target, allowed_root=ASSETS)
             return self._send(403, {"error": "forbidden"})
 
         # pages ────────────────────────────────────────────
@@ -918,7 +941,7 @@ class Handler(BaseHTTPRequestHandler):
             page = _under(PAGES, f"{PAGE_ROUTES[path]}.html")
             if page is None:
                 return self._send(404, {"error": f"no route: {path}"})
-            return self._file(page, "text/html")
+            return self._file(page, "text/html", allowed_root=PAGES)
         if path == "/favicon.ico":
             return self._send(204, b"")
 

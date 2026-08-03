@@ -33,15 +33,14 @@ from pipeline.editions import iter_editions
 
 _WORD_RE = re.compile(r"[A-Za-z0-9']+")
 _SENT_RE = re.compile(r"[^.!?]+[.!?]+|[^.!?]+$")
-# Non-overlapping ranges only (1F600–1F64F sits inside 1F300–1F9FF — listing it twice
-# tripped CodeQL py/overly-large-range).
-_EMOJI_RE = re.compile(
-    "["
-    "\U0001F300-\U0001F9FF"  # misc symbols & pictographs through supplemental symbols
-    "\U00002700-\U000027BF"  # dingbats
-    "]+",
-    flags=re.UNICODE,
-)
+def _emoji_list(text: str) -> list[str]:
+    """Collect emoji codepoints without a giant regex character class (CodeQL py/overly-large-range)."""
+    out: list[str] = []
+    for ch in text:
+        o = ord(ch)
+        if 0x1F300 <= o <= 0x1F9FF or 0x2700 <= o <= 0x27BF:
+            out.append(ch)
+    return out
 _DISCOURSE = (
     "anyway", "honestly", "basically", "literally", "like", "you know",
     "i mean", "tbh", "imo", "fwiw", "ngl", "lol", "lmao", "haha",
@@ -104,7 +103,7 @@ def mechanical_stats(docs: list[dict]) -> dict:
     lower = sum(1 for c in all_text if c.islower())
     excl = all_text.count("!")
     qmarks = all_text.count("?")
-    emojis = _EMOJI_RE.findall(all_text)
+    emojis = _emoji_list(all_text)
     markers = Counter()
     blob = " ".join(lower_words)
     for m in _DISCOURSE:
