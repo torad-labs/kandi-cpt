@@ -45,7 +45,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  gate:
+  authorize:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     # Cheap pre-filter so an unrelated comment never even allocates a runner.
@@ -122,7 +122,7 @@ jobs:
           fi
           { echo "go=$go"; echo "pr=$pr"; echo "provider=$provider"; } >> "$GITHUB_OUTPUT"
           echo "decision: go=$go provider=$provider ($why)"
-          echo "Agent review gate: **$go** — $why (provider: $provider)" >> "$GITHUB_STEP_SUMMARY"
+          echo "Agent review authorize: **$go** — $why (provider: $provider)" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Acknowledge the mention
         if: ${{ steps.decide.outputs.go == 'true' && github.event_name == 'issue_comment' }}
@@ -135,16 +135,16 @@ jobs:
           gh api -X POST "repos/${REPO}/issues/comments/${COMMENT_ID}/reactions" -f content=eyes --silent
 
   review:
-    needs: gate
-    if: ${{ needs.gate.outputs.go == 'true' }}
+    needs: authorize
+    if: ${{ needs.authorize.outputs.go == 'true' }}
     permissions:
       contents: read
       pull-requests: write
-    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@ad6e8aabeef93d4cfc42702f4d7056ca6bb1af3f # v1-109-gad6e8aa
+    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@f29ea753a8ed86d6f2e9014d632dc38994d4c67d # v1-110-gf29ea75
     with:
-      pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.gate.outputs.pr) }}
+      pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.authorize.outputs.pr) }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
-      provider: ${{ needs.gate.outputs.provider }}
+      provider: ${{ needs.authorize.outputs.provider }}
       model: ''
       timeout-minutes: 120
     secrets:
