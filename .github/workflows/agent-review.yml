@@ -85,7 +85,7 @@ jobs:
           # against a CLOSED SET and echoed as a fixed literal — the comment text
           # never becomes the value, so an unknown or hostile string degrades to
           # the default instead of reaching the gateway config.
-          provider=codex
+          provider=grok
           case "$(printf '%s' "${COMMENT_BODY:-}" | tr '[:upper:]' '[:lower:]')" in
             *"using kimi"*|*"--provider kimi"*|*"--provider=kimi"*) provider=kimi ;;
             *"using grok"*|*"--provider grok"*|*"--provider=grok"*) provider=grok ;;
@@ -140,7 +140,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@8037ba5eeb93c16a90ce6eab2f9c2a587ea44829 # v1-108-g8037ba5
+    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@ad6e8aabeef93d4cfc42702f4d7056ca6bb1af3f # v1-109-gad6e8aa
     with:
       pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.gate.outputs.pr) }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
