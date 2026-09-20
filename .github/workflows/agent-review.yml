@@ -140,7 +140,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@0a29be5fbe5410410ec3e53d9a486164c8bf3e1f # v1-131-g0a29be5
+    uses: torad-labs/github-operator/.github/workflows/reusable-agent-review.yml@dd2eb1ec821c298ae28924435e759ab2e792c050 # v1-133-gdd2eb1e
     with:
       pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJSON(inputs.pr-number) || fromJSON(needs.authorize.outputs.pr) }}
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
@@ -149,7 +149,7 @@ jobs:
       timeout-minutes: 120
       # Skills + review-payload.ts must match this reusable pin (CI post snapshots
       # the domain module from the harness checkout).
-      harness-ref: 0a29be5fbe5410410ec3e53d9a486164c8bf3e1f
+      harness-ref: dd2eb1ec821c298ae28924435e759ab2e792c050
     secrets:
       MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
       KIMI_CODE_JSON: ${{ secrets.KIMI_CODE_JSON }}
