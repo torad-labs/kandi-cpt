@@ -1,2 +1,0 @@
-# Empty landing zone — iter_editions(with_raw=True) only yields units that have a 00_raw/ dir.
-# The fixture starts from committed 15_structured (no scrape stage), so this just satisfies that filter.

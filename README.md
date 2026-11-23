@@ -1,8 +1,16 @@
 # kandi-cpt
 
-**CPT / knowledge-install training engine** for Torad. Turns documents about a subject into a
-relationally-complete corpus and continues-pretrains a small model (Gemma 4 E2B) so that subject's
-knowledge lives in the weights.
+**Single-GPU continued pretraining (CPT), SFT, and entity-graph synthetic corpus engine** for installing post-cutoff factual knowledge into small language models (Gemma 4 E2B on one 16 GB consumer GPU).
+
+### Key findings (verified in `configs/`, `scripts/`, and `logs/phase_*.json`)
+
+- **Fact-triple density drives recall, not hyperparameters:** Standard fine-tuning and hyperparameter sweeps scored `0/17` on post-cutoff probes at ~80K seed tokens. Scaling an entity-graph synthetic corpus pipeline (multi-persona rewrites, faithfulness gate, confusable-entity isolation, per-fact exposure cap) to 7.18M tokens across 97 domain editions lifted cross-edition recall from ~5% chance to `57.5%` stage@1 and `59.8%` day@1 (`74.4%` single-edition) with 10% replay preserving general ability.
+- **Low-precision training as a small-corpus regularizer:** Training natively at NVFP4 (Quartet-II) with 4-bit AdamW states and INT8 stochastic-rounding master weights (`11.2–13.5 GB` peak VRAM, zero FP32 master weights) monotonically improved factual probe recall across matched runs (`0.689` full-precision master → `0.722` 4-bit optimizer → `0.744` INT8 SR master) even as training loss rose (`1.06 → 1.12`).
+- **Calibration-gated SFT elicitation:** Knowledge-filtered SFT with absent-entity negatives is gated deterministically on `fab ≤ 0.25 ∧ acc ≥ 0.55 ∧ cov ≥ 0.40` (`scripts/eval_sft_calibration.py`).
+
+> **Public release note:** Raw third-party scraped HTML (`00_raw/`), local backups, and previously LFS-tracked generated corpus shards were removed from `HEAD` so this repository clones cleanly without external LFS blobs. All training, synthetic corpus, evaluation, Rust (`festival-factory/`), config, documentation, self-test fixtures (`data/_selftest/`), and campaign receipts (`logs/phase_*.json`) remain intact.
+
+---
 
 This is **not** the orchestration agent. Conductor (`conductor-app`) drives this engine over SSH /
 `run_pipeline.py` / bash. Training competence lives **here** (and in conductor's knowledge playbooks),
@@ -12,8 +20,7 @@ not in the driver's weights.
 |---|---|
 | **Precision** | **fp4 (Quartet-II NVFP4) + int8/fp8 master** — never raise (see below) |
 | **Reference domain** | EDC (`configs/domains/edc.yaml`) — byte-identity goldens gate every generalization |
-| **Base model (runtime)** | `~/Documents/dev/infra/models/gemma-4-E2B-it-int8-v2` (int8_rowwise_v2) |
-| **Cloud image** | `ghcr.io/torad-labs/conductor-trainer` (private) |
+| **Base model** | Gemma 4 E2B IT (`int8_rowwise_v2` / Quartet-II NVFP4) |
 | **Paid smoke** | **PROVEN 2026-08-02** — receipt `logs/phase_r18_cloud_smoke_rehearsal.json` |
 
 ---
